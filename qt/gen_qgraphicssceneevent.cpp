@@ -56,76 +56,76 @@ void QGraphicsSceneMouseEvent_virtbase(QGraphicsSceneMouseEvent* src, QGraphicsS
 	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(src);
 }
 
-QPointF* QGraphicsSceneMouseEvent_pos(const QGraphicsSceneMouseEvent* self) {
-	return new QPointF(self->pos());
+struct miqt_qpointf QGraphicsSceneMouseEvent_pos(const QGraphicsSceneMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pos());
 }
 
-void QGraphicsSceneMouseEvent_setPos(QGraphicsSceneMouseEvent* self, QPointF* pos) {
-	self->setPos(*pos);
+void QGraphicsSceneMouseEvent_setPos(QGraphicsSceneMouseEvent* self, struct miqt_qpointf pos) {
+	self->setPos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QGraphicsSceneMouseEvent_scenePos(const QGraphicsSceneMouseEvent* self) {
-	return new QPointF(self->scenePos());
+struct miqt_qpointf QGraphicsSceneMouseEvent_scenePos(const QGraphicsSceneMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->scenePos());
 }
 
-void QGraphicsSceneMouseEvent_setScenePos(QGraphicsSceneMouseEvent* self, QPointF* pos) {
-	self->setScenePos(*pos);
+void QGraphicsSceneMouseEvent_setScenePos(QGraphicsSceneMouseEvent* self, struct miqt_qpointf pos) {
+	self->setScenePos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPoint* QGraphicsSceneMouseEvent_screenPos(const QGraphicsSceneMouseEvent* self) {
-	return new QPoint(self->screenPos());
+struct miqt_qpoint QGraphicsSceneMouseEvent_screenPos(const QGraphicsSceneMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->screenPos());
 }
 
-void QGraphicsSceneMouseEvent_setScreenPos(QGraphicsSceneMouseEvent* self, QPoint* pos) {
-	self->setScreenPos(*pos);
+void QGraphicsSceneMouseEvent_setScreenPos(QGraphicsSceneMouseEvent* self, struct miqt_qpoint pos) {
+	self->setScreenPos(miqt_from_cabi<QPoint>(pos));
 }
 
-QPointF* QGraphicsSceneMouseEvent_buttonDownPos(const QGraphicsSceneMouseEvent* self, int button) {
-	return new QPointF(self->buttonDownPos(static_cast<Qt::MouseButton>(button)));
+struct miqt_qpointf QGraphicsSceneMouseEvent_buttonDownPos(const QGraphicsSceneMouseEvent* self, int button) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->buttonDownPos(static_cast<Qt::MouseButton>(button)));
 }
 
-void QGraphicsSceneMouseEvent_setButtonDownPos(QGraphicsSceneMouseEvent* self, int button, QPointF* pos) {
-	self->setButtonDownPos(static_cast<Qt::MouseButton>(button), *pos);
+void QGraphicsSceneMouseEvent_setButtonDownPos(QGraphicsSceneMouseEvent* self, int button, struct miqt_qpointf pos) {
+	self->setButtonDownPos(static_cast<Qt::MouseButton>(button), miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QGraphicsSceneMouseEvent_buttonDownScenePos(const QGraphicsSceneMouseEvent* self, int button) {
-	return new QPointF(self->buttonDownScenePos(static_cast<Qt::MouseButton>(button)));
+struct miqt_qpointf QGraphicsSceneMouseEvent_buttonDownScenePos(const QGraphicsSceneMouseEvent* self, int button) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->buttonDownScenePos(static_cast<Qt::MouseButton>(button)));
 }
 
-void QGraphicsSceneMouseEvent_setButtonDownScenePos(QGraphicsSceneMouseEvent* self, int button, QPointF* pos) {
-	self->setButtonDownScenePos(static_cast<Qt::MouseButton>(button), *pos);
+void QGraphicsSceneMouseEvent_setButtonDownScenePos(QGraphicsSceneMouseEvent* self, int button, struct miqt_qpointf pos) {
+	self->setButtonDownScenePos(static_cast<Qt::MouseButton>(button), miqt_from_cabi<QPointF>(pos));
 }
 
-QPoint* QGraphicsSceneMouseEvent_buttonDownScreenPos(const QGraphicsSceneMouseEvent* self, int button) {
-	return new QPoint(self->buttonDownScreenPos(static_cast<Qt::MouseButton>(button)));
+struct miqt_qpoint QGraphicsSceneMouseEvent_buttonDownScreenPos(const QGraphicsSceneMouseEvent* self, int button) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->buttonDownScreenPos(static_cast<Qt::MouseButton>(button)));
 }
 
-void QGraphicsSceneMouseEvent_setButtonDownScreenPos(QGraphicsSceneMouseEvent* self, int button, QPoint* pos) {
-	self->setButtonDownScreenPos(static_cast<Qt::MouseButton>(button), *pos);
+void QGraphicsSceneMouseEvent_setButtonDownScreenPos(QGraphicsSceneMouseEvent* self, int button, struct miqt_qpoint pos) {
+	self->setButtonDownScreenPos(static_cast<Qt::MouseButton>(button), miqt_from_cabi<QPoint>(pos));
 }
 
-QPointF* QGraphicsSceneMouseEvent_lastPos(const QGraphicsSceneMouseEvent* self) {
-	return new QPointF(self->lastPos());
+struct miqt_qpointf QGraphicsSceneMouseEvent_lastPos(const QGraphicsSceneMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->lastPos());
 }
 
-void QGraphicsSceneMouseEvent_setLastPos(QGraphicsSceneMouseEvent* self, QPointF* pos) {
-	self->setLastPos(*pos);
+void QGraphicsSceneMouseEvent_setLastPos(QGraphicsSceneMouseEvent* self, struct miqt_qpointf pos) {
+	self->setLastPos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QGraphicsSceneMouseEvent_lastScenePos(const QGraphicsSceneMouseEvent* self) {
-	return new QPointF(self->lastScenePos());
+struct miqt_qpointf QGraphicsSceneMouseEvent_lastScenePos(const QGraphicsSceneMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->lastScenePos());
 }
 
-void QGraphicsSceneMouseEvent_setLastScenePos(QGraphicsSceneMouseEvent* self, QPointF* pos) {
-	self->setLastScenePos(*pos);
+void QGraphicsSceneMouseEvent_setLastScenePos(QGraphicsSceneMouseEvent* self, struct miqt_qpointf pos) {
+	self->setLastScenePos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPoint* QGraphicsSceneMouseEvent_lastScreenPos(const QGraphicsSceneMouseEvent* self) {
-	return new QPoint(self->lastScreenPos());
+struct miqt_qpoint QGraphicsSceneMouseEvent_lastScreenPos(const QGraphicsSceneMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->lastScreenPos());
 }
 
-void QGraphicsSceneMouseEvent_setLastScreenPos(QGraphicsSceneMouseEvent* self, QPoint* pos) {
-	self->setLastScreenPos(*pos);
+void QGraphicsSceneMouseEvent_setLastScreenPos(QGraphicsSceneMouseEvent* self, struct miqt_qpoint pos) {
+	self->setLastScreenPos(miqt_from_cabi<QPoint>(pos));
 }
 
 int QGraphicsSceneMouseEvent_buttons(const QGraphicsSceneMouseEvent* self) {
@@ -189,28 +189,28 @@ void QGraphicsSceneWheelEvent_virtbase(QGraphicsSceneWheelEvent* src, QGraphicsS
 	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(src);
 }
 
-QPointF* QGraphicsSceneWheelEvent_pos(const QGraphicsSceneWheelEvent* self) {
-	return new QPointF(self->pos());
+struct miqt_qpointf QGraphicsSceneWheelEvent_pos(const QGraphicsSceneWheelEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pos());
 }
 
-void QGraphicsSceneWheelEvent_setPos(QGraphicsSceneWheelEvent* self, QPointF* pos) {
-	self->setPos(*pos);
+void QGraphicsSceneWheelEvent_setPos(QGraphicsSceneWheelEvent* self, struct miqt_qpointf pos) {
+	self->setPos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QGraphicsSceneWheelEvent_scenePos(const QGraphicsSceneWheelEvent* self) {
-	return new QPointF(self->scenePos());
+struct miqt_qpointf QGraphicsSceneWheelEvent_scenePos(const QGraphicsSceneWheelEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->scenePos());
 }
 
-void QGraphicsSceneWheelEvent_setScenePos(QGraphicsSceneWheelEvent* self, QPointF* pos) {
-	self->setScenePos(*pos);
+void QGraphicsSceneWheelEvent_setScenePos(QGraphicsSceneWheelEvent* self, struct miqt_qpointf pos) {
+	self->setScenePos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPoint* QGraphicsSceneWheelEvent_screenPos(const QGraphicsSceneWheelEvent* self) {
-	return new QPoint(self->screenPos());
+struct miqt_qpoint QGraphicsSceneWheelEvent_screenPos(const QGraphicsSceneWheelEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->screenPos());
 }
 
-void QGraphicsSceneWheelEvent_setScreenPos(QGraphicsSceneWheelEvent* self, QPoint* pos) {
-	self->setScreenPos(*pos);
+void QGraphicsSceneWheelEvent_setScreenPos(QGraphicsSceneWheelEvent* self, struct miqt_qpoint pos) {
+	self->setScreenPos(miqt_from_cabi<QPoint>(pos));
 }
 
 int QGraphicsSceneWheelEvent_buttons(const QGraphicsSceneWheelEvent* self) {
@@ -264,28 +264,28 @@ void QGraphicsSceneContextMenuEvent_virtbase(QGraphicsSceneContextMenuEvent* src
 	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(src);
 }
 
-QPointF* QGraphicsSceneContextMenuEvent_pos(const QGraphicsSceneContextMenuEvent* self) {
-	return new QPointF(self->pos());
+struct miqt_qpointf QGraphicsSceneContextMenuEvent_pos(const QGraphicsSceneContextMenuEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pos());
 }
 
-void QGraphicsSceneContextMenuEvent_setPos(QGraphicsSceneContextMenuEvent* self, QPointF* pos) {
-	self->setPos(*pos);
+void QGraphicsSceneContextMenuEvent_setPos(QGraphicsSceneContextMenuEvent* self, struct miqt_qpointf pos) {
+	self->setPos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QGraphicsSceneContextMenuEvent_scenePos(const QGraphicsSceneContextMenuEvent* self) {
-	return new QPointF(self->scenePos());
+struct miqt_qpointf QGraphicsSceneContextMenuEvent_scenePos(const QGraphicsSceneContextMenuEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->scenePos());
 }
 
-void QGraphicsSceneContextMenuEvent_setScenePos(QGraphicsSceneContextMenuEvent* self, QPointF* pos) {
-	self->setScenePos(*pos);
+void QGraphicsSceneContextMenuEvent_setScenePos(QGraphicsSceneContextMenuEvent* self, struct miqt_qpointf pos) {
+	self->setScenePos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPoint* QGraphicsSceneContextMenuEvent_screenPos(const QGraphicsSceneContextMenuEvent* self) {
-	return new QPoint(self->screenPos());
+struct miqt_qpoint QGraphicsSceneContextMenuEvent_screenPos(const QGraphicsSceneContextMenuEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->screenPos());
 }
 
-void QGraphicsSceneContextMenuEvent_setScreenPos(QGraphicsSceneContextMenuEvent* self, QPoint* pos) {
-	self->setScreenPos(*pos);
+void QGraphicsSceneContextMenuEvent_setScreenPos(QGraphicsSceneContextMenuEvent* self, struct miqt_qpoint pos) {
+	self->setScreenPos(miqt_from_cabi<QPoint>(pos));
 }
 
 int QGraphicsSceneContextMenuEvent_modifiers(const QGraphicsSceneContextMenuEvent* self) {
@@ -322,52 +322,52 @@ void QGraphicsSceneHoverEvent_virtbase(QGraphicsSceneHoverEvent* src, QGraphicsS
 	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(src);
 }
 
-QPointF* QGraphicsSceneHoverEvent_pos(const QGraphicsSceneHoverEvent* self) {
-	return new QPointF(self->pos());
+struct miqt_qpointf QGraphicsSceneHoverEvent_pos(const QGraphicsSceneHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pos());
 }
 
-void QGraphicsSceneHoverEvent_setPos(QGraphicsSceneHoverEvent* self, QPointF* pos) {
-	self->setPos(*pos);
+void QGraphicsSceneHoverEvent_setPos(QGraphicsSceneHoverEvent* self, struct miqt_qpointf pos) {
+	self->setPos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QGraphicsSceneHoverEvent_scenePos(const QGraphicsSceneHoverEvent* self) {
-	return new QPointF(self->scenePos());
+struct miqt_qpointf QGraphicsSceneHoverEvent_scenePos(const QGraphicsSceneHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->scenePos());
 }
 
-void QGraphicsSceneHoverEvent_setScenePos(QGraphicsSceneHoverEvent* self, QPointF* pos) {
-	self->setScenePos(*pos);
+void QGraphicsSceneHoverEvent_setScenePos(QGraphicsSceneHoverEvent* self, struct miqt_qpointf pos) {
+	self->setScenePos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPoint* QGraphicsSceneHoverEvent_screenPos(const QGraphicsSceneHoverEvent* self) {
-	return new QPoint(self->screenPos());
+struct miqt_qpoint QGraphicsSceneHoverEvent_screenPos(const QGraphicsSceneHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->screenPos());
 }
 
-void QGraphicsSceneHoverEvent_setScreenPos(QGraphicsSceneHoverEvent* self, QPoint* pos) {
-	self->setScreenPos(*pos);
+void QGraphicsSceneHoverEvent_setScreenPos(QGraphicsSceneHoverEvent* self, struct miqt_qpoint pos) {
+	self->setScreenPos(miqt_from_cabi<QPoint>(pos));
 }
 
-QPointF* QGraphicsSceneHoverEvent_lastPos(const QGraphicsSceneHoverEvent* self) {
-	return new QPointF(self->lastPos());
+struct miqt_qpointf QGraphicsSceneHoverEvent_lastPos(const QGraphicsSceneHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->lastPos());
 }
 
-void QGraphicsSceneHoverEvent_setLastPos(QGraphicsSceneHoverEvent* self, QPointF* pos) {
-	self->setLastPos(*pos);
+void QGraphicsSceneHoverEvent_setLastPos(QGraphicsSceneHoverEvent* self, struct miqt_qpointf pos) {
+	self->setLastPos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QGraphicsSceneHoverEvent_lastScenePos(const QGraphicsSceneHoverEvent* self) {
-	return new QPointF(self->lastScenePos());
+struct miqt_qpointf QGraphicsSceneHoverEvent_lastScenePos(const QGraphicsSceneHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->lastScenePos());
 }
 
-void QGraphicsSceneHoverEvent_setLastScenePos(QGraphicsSceneHoverEvent* self, QPointF* pos) {
-	self->setLastScenePos(*pos);
+void QGraphicsSceneHoverEvent_setLastScenePos(QGraphicsSceneHoverEvent* self, struct miqt_qpointf pos) {
+	self->setLastScenePos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPoint* QGraphicsSceneHoverEvent_lastScreenPos(const QGraphicsSceneHoverEvent* self) {
-	return new QPoint(self->lastScreenPos());
+struct miqt_qpoint QGraphicsSceneHoverEvent_lastScreenPos(const QGraphicsSceneHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->lastScreenPos());
 }
 
-void QGraphicsSceneHoverEvent_setLastScreenPos(QGraphicsSceneHoverEvent* self, QPoint* pos) {
-	self->setLastScreenPos(*pos);
+void QGraphicsSceneHoverEvent_setLastScreenPos(QGraphicsSceneHoverEvent* self, struct miqt_qpoint pos) {
+	self->setLastScreenPos(miqt_from_cabi<QPoint>(pos));
 }
 
 int QGraphicsSceneHoverEvent_modifiers(const QGraphicsSceneHoverEvent* self) {
@@ -395,20 +395,20 @@ void QGraphicsSceneHelpEvent_virtbase(QGraphicsSceneHelpEvent* src, QGraphicsSce
 	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(src);
 }
 
-QPointF* QGraphicsSceneHelpEvent_scenePos(const QGraphicsSceneHelpEvent* self) {
-	return new QPointF(self->scenePos());
+struct miqt_qpointf QGraphicsSceneHelpEvent_scenePos(const QGraphicsSceneHelpEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->scenePos());
 }
 
-void QGraphicsSceneHelpEvent_setScenePos(QGraphicsSceneHelpEvent* self, QPointF* pos) {
-	self->setScenePos(*pos);
+void QGraphicsSceneHelpEvent_setScenePos(QGraphicsSceneHelpEvent* self, struct miqt_qpointf pos) {
+	self->setScenePos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPoint* QGraphicsSceneHelpEvent_screenPos(const QGraphicsSceneHelpEvent* self) {
-	return new QPoint(self->screenPos());
+struct miqt_qpoint QGraphicsSceneHelpEvent_screenPos(const QGraphicsSceneHelpEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->screenPos());
 }
 
-void QGraphicsSceneHelpEvent_setScreenPos(QGraphicsSceneHelpEvent* self, QPoint* pos) {
-	self->setScreenPos(*pos);
+void QGraphicsSceneHelpEvent_setScreenPos(QGraphicsSceneHelpEvent* self, struct miqt_qpoint pos) {
+	self->setScreenPos(miqt_from_cabi<QPoint>(pos));
 }
 
 void QGraphicsSceneHelpEvent_delete(QGraphicsSceneHelpEvent* self) {
@@ -427,28 +427,28 @@ void QGraphicsSceneDragDropEvent_virtbase(QGraphicsSceneDragDropEvent* src, QGra
 	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(src);
 }
 
-QPointF* QGraphicsSceneDragDropEvent_pos(const QGraphicsSceneDragDropEvent* self) {
-	return new QPointF(self->pos());
+struct miqt_qpointf QGraphicsSceneDragDropEvent_pos(const QGraphicsSceneDragDropEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pos());
 }
 
-void QGraphicsSceneDragDropEvent_setPos(QGraphicsSceneDragDropEvent* self, QPointF* pos) {
-	self->setPos(*pos);
+void QGraphicsSceneDragDropEvent_setPos(QGraphicsSceneDragDropEvent* self, struct miqt_qpointf pos) {
+	self->setPos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QGraphicsSceneDragDropEvent_scenePos(const QGraphicsSceneDragDropEvent* self) {
-	return new QPointF(self->scenePos());
+struct miqt_qpointf QGraphicsSceneDragDropEvent_scenePos(const QGraphicsSceneDragDropEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->scenePos());
 }
 
-void QGraphicsSceneDragDropEvent_setScenePos(QGraphicsSceneDragDropEvent* self, QPointF* pos) {
-	self->setScenePos(*pos);
+void QGraphicsSceneDragDropEvent_setScenePos(QGraphicsSceneDragDropEvent* self, struct miqt_qpointf pos) {
+	self->setScenePos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPoint* QGraphicsSceneDragDropEvent_screenPos(const QGraphicsSceneDragDropEvent* self) {
-	return new QPoint(self->screenPos());
+struct miqt_qpoint QGraphicsSceneDragDropEvent_screenPos(const QGraphicsSceneDragDropEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->screenPos());
 }
 
-void QGraphicsSceneDragDropEvent_setScreenPos(QGraphicsSceneDragDropEvent* self, QPoint* pos) {
-	self->setScreenPos(*pos);
+void QGraphicsSceneDragDropEvent_setScreenPos(QGraphicsSceneDragDropEvent* self, struct miqt_qpoint pos) {
+	self->setScreenPos(miqt_from_cabi<QPoint>(pos));
 }
 
 int QGraphicsSceneDragDropEvent_buttons(const QGraphicsSceneDragDropEvent* self) {
@@ -528,20 +528,20 @@ void QGraphicsSceneResizeEvent_virtbase(QGraphicsSceneResizeEvent* src, QGraphic
 	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(src);
 }
 
-QSizeF* QGraphicsSceneResizeEvent_oldSize(const QGraphicsSceneResizeEvent* self) {
-	return new QSizeF(self->oldSize());
+struct miqt_qsizef QGraphicsSceneResizeEvent_oldSize(const QGraphicsSceneResizeEvent* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->oldSize());
 }
 
-void QGraphicsSceneResizeEvent_setOldSize(QGraphicsSceneResizeEvent* self, QSizeF* size) {
-	self->setOldSize(*size);
+void QGraphicsSceneResizeEvent_setOldSize(QGraphicsSceneResizeEvent* self, struct miqt_qsizef size) {
+	self->setOldSize(miqt_from_cabi<QSizeF>(size));
 }
 
-QSizeF* QGraphicsSceneResizeEvent_newSize(const QGraphicsSceneResizeEvent* self) {
-	return new QSizeF(self->newSize());
+struct miqt_qsizef QGraphicsSceneResizeEvent_newSize(const QGraphicsSceneResizeEvent* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->newSize());
 }
 
-void QGraphicsSceneResizeEvent_setNewSize(QGraphicsSceneResizeEvent* self, QSizeF* size) {
-	self->setNewSize(*size);
+void QGraphicsSceneResizeEvent_setNewSize(QGraphicsSceneResizeEvent* self, struct miqt_qsizef size) {
+	self->setNewSize(miqt_from_cabi<QSizeF>(size));
 }
 
 void QGraphicsSceneResizeEvent_delete(QGraphicsSceneResizeEvent* self) {
@@ -556,20 +556,20 @@ void QGraphicsSceneMoveEvent_virtbase(QGraphicsSceneMoveEvent* src, QGraphicsSce
 	*outptr_QGraphicsSceneEvent = static_cast<QGraphicsSceneEvent*>(src);
 }
 
-QPointF* QGraphicsSceneMoveEvent_oldPos(const QGraphicsSceneMoveEvent* self) {
-	return new QPointF(self->oldPos());
+struct miqt_qpointf QGraphicsSceneMoveEvent_oldPos(const QGraphicsSceneMoveEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->oldPos());
 }
 
-void QGraphicsSceneMoveEvent_setOldPos(QGraphicsSceneMoveEvent* self, QPointF* pos) {
-	self->setOldPos(*pos);
+void QGraphicsSceneMoveEvent_setOldPos(QGraphicsSceneMoveEvent* self, struct miqt_qpointf pos) {
+	self->setOldPos(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QGraphicsSceneMoveEvent_newPos(const QGraphicsSceneMoveEvent* self) {
-	return new QPointF(self->newPos());
+struct miqt_qpointf QGraphicsSceneMoveEvent_newPos(const QGraphicsSceneMoveEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->newPos());
 }
 
-void QGraphicsSceneMoveEvent_setNewPos(QGraphicsSceneMoveEvent* self, QPointF* pos) {
-	self->setNewPos(*pos);
+void QGraphicsSceneMoveEvent_setNewPos(QGraphicsSceneMoveEvent* self, struct miqt_qpointf pos) {
+	self->setNewPos(miqt_from_cabi<QPointF>(pos));
 }
 
 void QGraphicsSceneMoveEvent_delete(QGraphicsSceneMoveEvent* self) {

@@ -39,7 +39,7 @@ struct miqt_string QImageEncoderControl_tr(const char* s);
 struct miqt_string QImageEncoderControl_trUtf8(const char* s);
 struct miqt_array /* of struct miqt_string */  QImageEncoderControl_supportedImageCodecs(const QImageEncoderControl* self);
 struct miqt_string QImageEncoderControl_imageCodecDescription(const QImageEncoderControl* self, struct miqt_string codec);
-struct miqt_array /* of QSize* */  QImageEncoderControl_supportedResolutions(const QImageEncoderControl* self, QImageEncoderSettings* settings, bool* continuous);
+struct miqt_array /* of struct miqt_qsize */  QImageEncoderControl_supportedResolutions(const QImageEncoderControl* self, QImageEncoderSettings* settings, bool* continuous);
 QImageEncoderSettings* QImageEncoderControl_imageSettings(const QImageEncoderControl* self);
 void QImageEncoderControl_setImageSettings(QImageEncoderControl* self, QImageEncoderSettings* settings);
 struct miqt_string QImageEncoderControl_tr2(const char* s, const char* c);

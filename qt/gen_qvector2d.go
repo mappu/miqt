@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -71,24 +72,21 @@ func NewQVector2D3(xpos float32, ypos float32) *QVector2D {
 }
 
 // NewQVector2D4 constructs a new QVector2D object.
-func NewQVector2D4(point *QPoint) *QVector2D {
-	defer runtime.KeepAlive(point)
+func NewQVector2D4(point QPoint) *QVector2D {
 
-	return newQVector2D(C.QVector2D_new4(point.cPointer()))
+	return newQVector2D(C.QVector2D_new4(libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
 // NewQVector2D5 constructs a new QVector2D object.
-func NewQVector2D5(point *QPointF) *QVector2D {
-	defer runtime.KeepAlive(point)
+func NewQVector2D5(point QPointF) *QVector2D {
 
-	return newQVector2D(C.QVector2D_new5(point.cPointer()))
+	return newQVector2D(C.QVector2D_new5(libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 // NewQVector2D6 constructs a new QVector2D object.
-func NewQVector2D6(vector *QVector3D) *QVector2D {
-	defer runtime.KeepAlive(vector)
+func NewQVector2D6(vector QVector3D) *QVector2D {
 
-	return newQVector2D(C.QVector2D_new6(vector.cPointer()))
+	return newQVector2D(C.QVector2D_new6(libmiqt.ValueCast[C.struct_miqt_qvector3d](vector)))
 }
 
 // NewQVector2D7 constructs a new QVector2D object.
@@ -222,11 +220,9 @@ func QVector2D_DotProduct(v1 *QVector2D, v2 *QVector2D) float32 {
 	return (float32)(C.QVector2D_dotProduct(v1.cPointer(), v2.cPointer()))
 }
 
-func (this *QVector2D) ToVector3D() *QVector3D {
+func (this *QVector2D) ToVector3D() QVector3D {
 	defer runtime.KeepAlive(this)
-	_goptr := newQVector3D(C.QVector2D_toVector3D(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QVector3D](C.QVector2D_toVector3D(this.h))
 }
 
 func (this *QVector2D) ToVector4D() *QVector4D {
@@ -236,18 +232,14 @@ func (this *QVector2D) ToVector4D() *QVector4D {
 	return _goptr
 }
 
-func (this *QVector2D) ToPoint() *QPoint {
+func (this *QVector2D) ToPoint() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QVector2D_toPoint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QVector2D_toPoint(this.h))
 }
 
-func (this *QVector2D) ToPointF() *QPointF {
+func (this *QVector2D) ToPointF() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QVector2D_toPointF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QVector2D_toPointF(this.h))
 }
 
 func (this *QVector2D) ToQVariant() *QVariant {

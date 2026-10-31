@@ -25,7 +25,7 @@ typedef struct QVideoFrameFormat QVideoFrameFormat;
 #endif
 
 QVideoFrameFormat* QVideoFrameFormat_new();
-QVideoFrameFormat* QVideoFrameFormat_new2(QSize* size, int pixelFormat);
+QVideoFrameFormat* QVideoFrameFormat_new2(struct miqt_qsize size, int pixelFormat);
 QVideoFrameFormat* QVideoFrameFormat_new3(QVideoFrameFormat* format);
 void QVideoFrameFormat_swap(QVideoFrameFormat* self, QVideoFrameFormat* other);
 void QVideoFrameFormat_detach(QVideoFrameFormat* self);
@@ -34,14 +34,14 @@ bool QVideoFrameFormat_operatorEqual(const QVideoFrameFormat* self, QVideoFrameF
 bool QVideoFrameFormat_operatorNotEqual(const QVideoFrameFormat* self, QVideoFrameFormat* format);
 bool QVideoFrameFormat_isValid(const QVideoFrameFormat* self);
 int QVideoFrameFormat_pixelFormat(const QVideoFrameFormat* self);
-QSize* QVideoFrameFormat_frameSize(const QVideoFrameFormat* self);
-void QVideoFrameFormat_setFrameSize(QVideoFrameFormat* self, QSize* size);
+struct miqt_qsize QVideoFrameFormat_frameSize(const QVideoFrameFormat* self);
+void QVideoFrameFormat_setFrameSize(QVideoFrameFormat* self, struct miqt_qsize size);
 void QVideoFrameFormat_setFrameSize2(QVideoFrameFormat* self, int width, int height);
 int QVideoFrameFormat_frameWidth(const QVideoFrameFormat* self);
 int QVideoFrameFormat_frameHeight(const QVideoFrameFormat* self);
 int QVideoFrameFormat_planeCount(const QVideoFrameFormat* self);
-QRect* QVideoFrameFormat_viewport(const QVideoFrameFormat* self);
-void QVideoFrameFormat_setViewport(QVideoFrameFormat* self, QRect* viewport);
+struct miqt_qrect QVideoFrameFormat_viewport(const QVideoFrameFormat* self);
+void QVideoFrameFormat_setViewport(QVideoFrameFormat* self, struct miqt_qrect viewport);
 int QVideoFrameFormat_scanLineDirection(const QVideoFrameFormat* self);
 void QVideoFrameFormat_setScanLineDirection(QVideoFrameFormat* self, int direction);
 double QVideoFrameFormat_frameRate(const QVideoFrameFormat* self);

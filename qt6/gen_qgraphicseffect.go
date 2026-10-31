@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -114,17 +115,12 @@ func QGraphicsEffect_Tr(s string) string {
 	return _ret
 }
 
-func (this *QGraphicsEffect) BoundingRectFor(sourceRect *QRectF) *QRectF {
-	defer runtime.KeepAlive(sourceRect)
-	_goptr := newQRectF(C.QGraphicsEffect_boundingRectFor(this.h, sourceRect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsEffect) BoundingRectFor(sourceRect QRectF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsEffect_boundingRectFor(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](sourceRect)))
 }
 
-func (this *QGraphicsEffect) BoundingRect() *QRectF {
-	_goptr := newQRectF(C.QGraphicsEffect_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsEffect) BoundingRect() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsEffect_boundingRect(this.h))
 }
 
 func (this *QGraphicsEffect) IsEnabled() bool {
@@ -211,9 +207,7 @@ func (this *QGraphicsEffect) SourceIsPixmap() bool {
 func (this *QGraphicsEffect) SourceBoundingRect() QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRectF(C.QGraphicsEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRectF](C.QGraphicsEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -256,9 +250,7 @@ func (this *QGraphicsEffect) SourcePixmap() QPixmap {
 func (this *QGraphicsEffect) SourceBoundingRectWithSystem(system CoordinateSystem) QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRectF(C.QGraphicsEffect_protectedbase_sourceBoundingRectWithSystem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRectF](C.QGraphicsEffect_protectedbase_sourceBoundingRectWithSystem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -286,7 +278,6 @@ func (this *QGraphicsEffect) SourcePixmapWithSystem(system CoordinateSystem) QPi
 
 // SourcePixmap2 can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SourcePixmap2(system CoordinateSystem, offset *QPoint) QPixmap {
-	defer runtime.KeepAlive(offset)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system), offset.cPointer()))
@@ -303,7 +294,6 @@ func (this *QGraphicsEffect) SourcePixmap2(system CoordinateSystem, offset *QPoi
 
 // SourcePixmap3 can only be called from a QGraphicsEffect that was directly constructed.
 func (this *QGraphicsEffect) SourcePixmap3(system CoordinateSystem, offset *QPoint, mode QGraphicsEffect__PixmapPadMode) QPixmap {
-	defer runtime.KeepAlive(offset)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap3(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system), offset.cPointer(), (C.int)(mode)))
@@ -377,15 +367,12 @@ func (this *QGraphicsEffect) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QGraphicsEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
-	defer runtime.KeepAlive(sourceRect)
+func (this *QGraphicsEffect) callVirtualBase_BoundingRectFor(sourceRect QRectF) QRectF {
 
-	_goptr := newQRectF(C.QGraphicsEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](sourceRect)))
 
 }
-func (this *QGraphicsEffect) OnBoundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
+func (this *QGraphicsEffect) OnBoundingRectFor(slot func(super func(sourceRect QRectF) QRectF, sourceRect QRectF) QRectF) {
 	ok := C.QGraphicsEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -393,19 +380,18 @@ func (this *QGraphicsEffect) OnBoundingRectFor(slot func(super func(sourceRect *
 }
 
 //export miqt_exec_callback_QGraphicsEffect_boundingRectFor
-func miqt_exec_callback_QGraphicsEffect_boundingRectFor(self *C.QGraphicsEffect, cb C.intptr_t, sourceRect *C.QRectF) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsEffect_boundingRectFor(self *C.QGraphicsEffect, cb C.intptr_t, sourceRect C.struct_miqt_qrectf) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceRect QRectF) QRectF, sourceRect QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(sourceRect)
+	slotval1 := libmiqt.ValueCast[QRectF](sourceRect)
 
 	virtualReturn := gofunc((&QGraphicsEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 func (this *QGraphicsEffect) OnDraw(slot func(painter *QPainter)) {
@@ -746,42 +732,38 @@ func QGraphicsColorizeEffect_Tr(s string) string {
 	return _ret
 }
 
-func (this *QGraphicsColorizeEffect) Color() *QColor {
-	_goptr := newQColor(C.QGraphicsColorizeEffect_color(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsColorizeEffect) Color() QColor {
+	return libmiqt.ValueCast[QColor](C.QGraphicsColorizeEffect_color(this.h))
 }
 
 func (this *QGraphicsColorizeEffect) Strength() float64 {
 	return (float64)(C.QGraphicsColorizeEffect_strength(this.h))
 }
 
-func (this *QGraphicsColorizeEffect) SetColor(c *QColor) {
-	defer runtime.KeepAlive(c)
-	C.QGraphicsColorizeEffect_setColor(this.h, c.cPointer())
+func (this *QGraphicsColorizeEffect) SetColor(c QColor) {
+	C.QGraphicsColorizeEffect_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 }
 
 func (this *QGraphicsColorizeEffect) SetStrength(strength float64) {
 	C.QGraphicsColorizeEffect_setStrength(this.h, (C.double)(strength))
 }
 
-func (this *QGraphicsColorizeEffect) ColorChanged(color *QColor) {
-	defer runtime.KeepAlive(color)
-	C.QGraphicsColorizeEffect_colorChanged(this.h, color.cPointer())
+func (this *QGraphicsColorizeEffect) ColorChanged(color QColor) {
+	C.QGraphicsColorizeEffect_colorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QGraphicsColorizeEffect) OnColorChanged(slot func(color *QColor)) {
+func (this *QGraphicsColorizeEffect) OnColorChanged(slot func(color QColor)) {
 	C.QGraphicsColorizeEffect_connect_colorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsColorizeEffect_colorChanged
-func miqt_exec_callback_QGraphicsColorizeEffect_colorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *QColor))
+func miqt_exec_callback_QGraphicsColorizeEffect_colorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQColor(color)
+	slotval1 := libmiqt.ValueCast[QColor](color)
 
 	gofunc(slotval1)
 }
@@ -858,9 +840,7 @@ func (this *QGraphicsColorizeEffect) SourceIsPixmap() bool {
 func (this *QGraphicsColorizeEffect) SourceBoundingRect() QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRectF(C.QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRectF](C.QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -985,15 +965,12 @@ func miqt_exec_callback_QGraphicsColorizeEffect_draw(self *C.QGraphicsColorizeEf
 
 }
 
-func (this *QGraphicsColorizeEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
-	defer runtime.KeepAlive(sourceRect)
+func (this *QGraphicsColorizeEffect) callVirtualBase_BoundingRectFor(sourceRect QRectF) QRectF {
 
-	_goptr := newQRectF(C.QGraphicsColorizeEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsColorizeEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](sourceRect)))
 
 }
-func (this *QGraphicsColorizeEffect) OnBoundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
+func (this *QGraphicsColorizeEffect) OnBoundingRectFor(slot func(super func(sourceRect QRectF) QRectF, sourceRect QRectF) QRectF) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1001,19 +978,18 @@ func (this *QGraphicsColorizeEffect) OnBoundingRectFor(slot func(super func(sour
 }
 
 //export miqt_exec_callback_QGraphicsColorizeEffect_boundingRectFor
-func miqt_exec_callback_QGraphicsColorizeEffect_boundingRectFor(self *C.QGraphicsColorizeEffect, cb C.intptr_t, sourceRect *C.QRectF) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsColorizeEffect_boundingRectFor(self *C.QGraphicsColorizeEffect, cb C.intptr_t, sourceRect C.struct_miqt_qrectf) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceRect QRectF) QRectF, sourceRect QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(sourceRect)
+	slotval1 := libmiqt.ValueCast[QRectF](sourceRect)
 
 	virtualReturn := gofunc((&QGraphicsColorizeEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsColorizeEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -1334,11 +1310,8 @@ func QGraphicsBlurEffect_Tr(s string) string {
 	return _ret
 }
 
-func (this *QGraphicsBlurEffect) BoundingRectFor(rect *QRectF) *QRectF {
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRectF(C.QGraphicsBlurEffect_boundingRectFor(this.h, rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsBlurEffect) BoundingRectFor(rect QRectF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsBlurEffect_boundingRectFor(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 func (this *QGraphicsBlurEffect) BlurRadius() float64 {
@@ -1449,9 +1422,7 @@ func (this *QGraphicsBlurEffect) SourceIsPixmap() bool {
 func (this *QGraphicsBlurEffect) SourceBoundingRect() QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRectF(C.QGraphicsBlurEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRectF](C.QGraphicsBlurEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -1549,15 +1520,12 @@ func (this *QGraphicsBlurEffect) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QGraphicsBlurEffect) callVirtualBase_BoundingRectFor(rect *QRectF) *QRectF {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsBlurEffect) callVirtualBase_BoundingRectFor(rect QRectF) QRectF {
 
-	_goptr := newQRectF(C.QGraphicsBlurEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsBlurEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 
 }
-func (this *QGraphicsBlurEffect) OnBoundingRectFor(slot func(super func(rect *QRectF) *QRectF, rect *QRectF) *QRectF) {
+func (this *QGraphicsBlurEffect) OnBoundingRectFor(slot func(super func(rect QRectF) QRectF, rect QRectF) QRectF) {
 	ok := C.QGraphicsBlurEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1565,19 +1533,18 @@ func (this *QGraphicsBlurEffect) OnBoundingRectFor(slot func(super func(rect *QR
 }
 
 //export miqt_exec_callback_QGraphicsBlurEffect_boundingRectFor
-func miqt_exec_callback_QGraphicsBlurEffect_boundingRectFor(self *C.QGraphicsBlurEffect, cb C.intptr_t, rect *C.QRectF) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF) *QRectF, rect *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsBlurEffect_boundingRectFor(self *C.QGraphicsBlurEffect, cb C.intptr_t, rect C.struct_miqt_qrectf) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRectF) QRectF, rect QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(rect)
+	slotval1 := libmiqt.ValueCast[QRectF](rect)
 
 	virtualReturn := gofunc((&QGraphicsBlurEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsBlurEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -1925,17 +1892,12 @@ func QGraphicsDropShadowEffect_Tr(s string) string {
 	return _ret
 }
 
-func (this *QGraphicsDropShadowEffect) BoundingRectFor(rect *QRectF) *QRectF {
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRectF(C.QGraphicsDropShadowEffect_boundingRectFor(this.h, rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsDropShadowEffect) BoundingRectFor(rect QRectF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsDropShadowEffect_boundingRectFor(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
-func (this *QGraphicsDropShadowEffect) Offset() *QPointF {
-	_goptr := newQPointF(C.QGraphicsDropShadowEffect_offset(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsDropShadowEffect) Offset() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QGraphicsDropShadowEffect_offset(this.h))
 }
 
 func (this *QGraphicsDropShadowEffect) XOffset() float64 {
@@ -1950,15 +1912,12 @@ func (this *QGraphicsDropShadowEffect) BlurRadius() float64 {
 	return (float64)(C.QGraphicsDropShadowEffect_blurRadius(this.h))
 }
 
-func (this *QGraphicsDropShadowEffect) Color() *QColor {
-	_goptr := newQColor(C.QGraphicsDropShadowEffect_color(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsDropShadowEffect) Color() QColor {
+	return libmiqt.ValueCast[QColor](C.QGraphicsDropShadowEffect_color(this.h))
 }
 
-func (this *QGraphicsDropShadowEffect) SetOffset(ofs *QPointF) {
-	defer runtime.KeepAlive(ofs)
-	C.QGraphicsDropShadowEffect_setOffset(this.h, ofs.cPointer())
+func (this *QGraphicsDropShadowEffect) SetOffset(ofs QPointF) {
+	C.QGraphicsDropShadowEffect_setOffset(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](ofs))
 }
 
 func (this *QGraphicsDropShadowEffect) SetOffset2(dx float64, dy float64) {
@@ -1981,28 +1940,26 @@ func (this *QGraphicsDropShadowEffect) SetBlurRadius(blurRadius float64) {
 	C.QGraphicsDropShadowEffect_setBlurRadius(this.h, (C.double)(blurRadius))
 }
 
-func (this *QGraphicsDropShadowEffect) SetColor(color *QColor) {
-	defer runtime.KeepAlive(color)
-	C.QGraphicsDropShadowEffect_setColor(this.h, color.cPointer())
+func (this *QGraphicsDropShadowEffect) SetColor(color QColor) {
+	C.QGraphicsDropShadowEffect_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QGraphicsDropShadowEffect) OffsetChanged(offset *QPointF) {
-	defer runtime.KeepAlive(offset)
-	C.QGraphicsDropShadowEffect_offsetChanged(this.h, offset.cPointer())
+func (this *QGraphicsDropShadowEffect) OffsetChanged(offset QPointF) {
+	C.QGraphicsDropShadowEffect_offsetChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](offset))
 }
-func (this *QGraphicsDropShadowEffect) OnOffsetChanged(slot func(offset *QPointF)) {
+func (this *QGraphicsDropShadowEffect) OnOffsetChanged(slot func(offset QPointF)) {
 	C.QGraphicsDropShadowEffect_connect_offsetChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsDropShadowEffect_offsetChanged
-func miqt_exec_callback_QGraphicsDropShadowEffect_offsetChanged(cb C.intptr_t, offset *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(offset *QPointF))
+func miqt_exec_callback_QGraphicsDropShadowEffect_offsetChanged(cb C.intptr_t, offset C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(offset QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(offset)
+	slotval1 := libmiqt.ValueCast[QPointF](offset)
 
 	gofunc(slotval1)
 }
@@ -2027,23 +1984,22 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_blurRadiusChanged(cb C.intptr_
 	gofunc(slotval1)
 }
 
-func (this *QGraphicsDropShadowEffect) ColorChanged(color *QColor) {
-	defer runtime.KeepAlive(color)
-	C.QGraphicsDropShadowEffect_colorChanged(this.h, color.cPointer())
+func (this *QGraphicsDropShadowEffect) ColorChanged(color QColor) {
+	C.QGraphicsDropShadowEffect_colorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QGraphicsDropShadowEffect) OnColorChanged(slot func(color *QColor)) {
+func (this *QGraphicsDropShadowEffect) OnColorChanged(slot func(color QColor)) {
 	C.QGraphicsDropShadowEffect_connect_colorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsDropShadowEffect_colorChanged
-func miqt_exec_callback_QGraphicsDropShadowEffect_colorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *QColor))
+func miqt_exec_callback_QGraphicsDropShadowEffect_colorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQColor(color)
+	slotval1 := libmiqt.ValueCast[QColor](color)
 
 	gofunc(slotval1)
 }
@@ -2100,9 +2056,7 @@ func (this *QGraphicsDropShadowEffect) SourceIsPixmap() bool {
 func (this *QGraphicsDropShadowEffect) SourceBoundingRect() QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRectF(C.QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRectF](C.QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -2200,15 +2154,12 @@ func (this *QGraphicsDropShadowEffect) IsSignalConnected(signal *QMetaMethod) bo
 
 }
 
-func (this *QGraphicsDropShadowEffect) callVirtualBase_BoundingRectFor(rect *QRectF) *QRectF {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsDropShadowEffect) callVirtualBase_BoundingRectFor(rect QRectF) QRectF {
 
-	_goptr := newQRectF(C.QGraphicsDropShadowEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsDropShadowEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 
 }
-func (this *QGraphicsDropShadowEffect) OnBoundingRectFor(slot func(super func(rect *QRectF) *QRectF, rect *QRectF) *QRectF) {
+func (this *QGraphicsDropShadowEffect) OnBoundingRectFor(slot func(super func(rect QRectF) QRectF, rect QRectF) QRectF) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2216,19 +2167,18 @@ func (this *QGraphicsDropShadowEffect) OnBoundingRectFor(slot func(super func(re
 }
 
 //export miqt_exec_callback_QGraphicsDropShadowEffect_boundingRectFor
-func miqt_exec_callback_QGraphicsDropShadowEffect_boundingRectFor(self *C.QGraphicsDropShadowEffect, cb C.intptr_t, rect *C.QRectF) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF) *QRectF, rect *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsDropShadowEffect_boundingRectFor(self *C.QGraphicsDropShadowEffect, cb C.intptr_t, rect C.struct_miqt_qrectf) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRectF) QRectF, rect QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(rect)
+	slotval1 := libmiqt.ValueCast[QRectF](rect)
 
 	virtualReturn := gofunc((&QGraphicsDropShadowEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsDropShadowEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -2688,9 +2638,7 @@ func (this *QGraphicsOpacityEffect) SourceIsPixmap() bool {
 func (this *QGraphicsOpacityEffect) SourceBoundingRect() QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRectF(C.QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRectF](C.QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -2815,15 +2763,12 @@ func miqt_exec_callback_QGraphicsOpacityEffect_draw(self *C.QGraphicsOpacityEffe
 
 }
 
-func (this *QGraphicsOpacityEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
-	defer runtime.KeepAlive(sourceRect)
+func (this *QGraphicsOpacityEffect) callVirtualBase_BoundingRectFor(sourceRect QRectF) QRectF {
 
-	_goptr := newQRectF(C.QGraphicsOpacityEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsOpacityEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](sourceRect)))
 
 }
-func (this *QGraphicsOpacityEffect) OnBoundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
+func (this *QGraphicsOpacityEffect) OnBoundingRectFor(slot func(super func(sourceRect QRectF) QRectF, sourceRect QRectF) QRectF) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2831,19 +2776,18 @@ func (this *QGraphicsOpacityEffect) OnBoundingRectFor(slot func(super func(sourc
 }
 
 //export miqt_exec_callback_QGraphicsOpacityEffect_boundingRectFor
-func miqt_exec_callback_QGraphicsOpacityEffect_boundingRectFor(self *C.QGraphicsOpacityEffect, cb C.intptr_t, sourceRect *C.QRectF) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsOpacityEffect_boundingRectFor(self *C.QGraphicsOpacityEffect, cb C.intptr_t, sourceRect C.struct_miqt_qrectf) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceRect QRectF) QRectF, sourceRect QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(sourceRect)
+	slotval1 := libmiqt.ValueCast[QRectF](sourceRect)
 
 	virtualReturn := gofunc((&QGraphicsOpacityEffect{h: self}).callVirtualBase_BoundingRectFor, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsOpacityEffect_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 

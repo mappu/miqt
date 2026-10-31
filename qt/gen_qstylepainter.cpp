@@ -58,22 +58,22 @@ void QStylePainter_drawComplexControl(QStylePainter* self, int cc, QStyleOptionC
 	self->drawComplexControl(static_cast<QStyle::ComplexControl>(cc), *opt);
 }
 
-void QStylePainter_drawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text) {
+void QStylePainter_drawItemText(QStylePainter* self, struct miqt_qrect r, int flags, QPalette* pal, bool enabled, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	self->drawItemText(*r, static_cast<int>(flags), *pal, enabled, text_QString);
+	self->drawItemText(miqt_from_cabi<QRect>(r), static_cast<int>(flags), *pal, enabled, text_QString);
 }
 
-void QStylePainter_drawItemPixmap(QStylePainter* self, QRect* r, int flags, QPixmap* pixmap) {
-	self->drawItemPixmap(*r, static_cast<int>(flags), *pixmap);
+void QStylePainter_drawItemPixmap(QStylePainter* self, struct miqt_qrect r, int flags, QPixmap* pixmap) {
+	self->drawItemPixmap(miqt_from_cabi<QRect>(r), static_cast<int>(flags), *pixmap);
 }
 
 QStyle* QStylePainter_style(const QStylePainter* self) {
 	return self->style();
 }
 
-void QStylePainter_drawItemText2(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
+void QStylePainter_drawItemText2(QStylePainter* self, struct miqt_qrect r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	self->drawItemText(*r, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
+	self->drawItemText(miqt_from_cabi<QRect>(r), static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }
 
 void QStylePainter_delete(QStylePainter* self) {

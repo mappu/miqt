@@ -54,7 +54,7 @@ bool QwtPlotTradingCurve_testPaintAttribute(const QwtPlotTradingCurve* self, int
 void QwtPlotTradingCurve_setSamples(QwtPlotTradingCurve* self, struct miqt_array /* of QwtOHLCSample* */  samples);
 void QwtPlotTradingCurve_setSymbolStyle(QwtPlotTradingCurve* self, int style);
 int QwtPlotTradingCurve_symbolStyle(const QwtPlotTradingCurve* self);
-void QwtPlotTradingCurve_setSymbolPen(QwtPlotTradingCurve* self, QColor* param1);
+void QwtPlotTradingCurve_setSymbolPen(QwtPlotTradingCurve* self, struct miqt_qcolor param1);
 void QwtPlotTradingCurve_setSymbolPenWithSymbolPen(QwtPlotTradingCurve* self, QPen* symbolPen);
 QPen* QwtPlotTradingCurve_symbolPen(const QwtPlotTradingCurve* self);
 void QwtPlotTradingCurve_setSymbolBrush(QwtPlotTradingCurve* self, int param1, QBrush* param2);
@@ -65,12 +65,12 @@ void QwtPlotTradingCurve_setMinSymbolWidth(QwtPlotTradingCurve* self, double min
 double QwtPlotTradingCurve_minSymbolWidth(const QwtPlotTradingCurve* self);
 void QwtPlotTradingCurve_setMaxSymbolWidth(QwtPlotTradingCurve* self, double maxSymbolWidth);
 double QwtPlotTradingCurve_maxSymbolWidth(const QwtPlotTradingCurve* self);
-QRectF* QwtPlotTradingCurve_boundingRect(const QwtPlotTradingCurve* self);
-QwtGraphic* QwtPlotTradingCurve_legendIcon(const QwtPlotTradingCurve* self, int index, QSizeF* param2);
+struct miqt_qrectf QwtPlotTradingCurve_boundingRect(const QwtPlotTradingCurve* self);
+QwtGraphic* QwtPlotTradingCurve_legendIcon(const QwtPlotTradingCurve* self, int index, struct miqt_qsizef param2);
 void QwtPlotTradingCurve_drawUserSymbol(const QwtPlotTradingCurve* self, QPainter* param1, int param2, QwtOHLCSample* param3, int param4, bool inverted, double symbolWidth);
 void QwtPlotTradingCurve_setPaintAttribute2(QwtPlotTradingCurve* self, int param1, bool on);
-void QwtPlotTradingCurve_setSymbolPen2(QwtPlotTradingCurve* self, QColor* param1, double width);
-void QwtPlotTradingCurve_setSymbolPen3(QwtPlotTradingCurve* self, QColor* param1, double width, int param3);
+void QwtPlotTradingCurve_setSymbolPen2(QwtPlotTradingCurve* self, struct miqt_qcolor param1, double width);
+void QwtPlotTradingCurve_setSymbolPen3(QwtPlotTradingCurve* self, struct miqt_qcolor param1, double width, int param3);
 
 void QwtPlotTradingCurve_delete(QwtPlotTradingCurve* self);
 

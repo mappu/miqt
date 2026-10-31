@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -110,16 +111,12 @@ func (this *QDialog) SetVisible(visible bool) {
 	C.QDialog_setVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QDialog) SizeHint() *QSize {
-	_goptr := newQSize(C.QDialog_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDialog) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QDialog_sizeHint(this.h))
 }
 
-func (this *QDialog) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QDialog_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDialog) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QDialog_minimumSizeHint(this.h))
 }
 
 func (this *QDialog) SetSizeGripEnabled(sizeGripEnabled bool) {
@@ -395,14 +392,12 @@ func miqt_exec_callback_QDialog_setVisible(self *C.QDialog, cb C.intptr_t, visib
 
 }
 
-func (this *QDialog) callVirtualBase_SizeHint() *QSize {
+func (this *QDialog) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDialog) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDialog_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -410,27 +405,24 @@ func (this *QDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QDialog_sizeHint
-func miqt_exec_callback_QDialog_sizeHint(self *C.QDialog, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDialog_sizeHint(self *C.QDialog, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDialog{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QDialog) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QDialog) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QDialog) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDialog_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -438,16 +430,15 @@ func (this *QDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QDialog_minimumSizeHint
-func miqt_exec_callback_QDialog_minimumSizeHint(self *C.QDialog, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDialog_minimumSizeHint(self *C.QDialog, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDialog{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1507,7 +1498,6 @@ func miqt_exec_callback_QDialog_initPainter(self *C.QDialog, cb C.intptr_t, pain
 }
 
 func (this *QDialog) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDialog_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

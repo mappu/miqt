@@ -9,6 +9,7 @@ package designer
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -501,14 +502,12 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_setVisible(self *C.QDes
 
 }
 
-func (this *QDesignerPropertyEditorInterface) callVirtualBase_SizeHint() *qt6.QSize {
+func (this *QDesignerPropertyEditorInterface) callVirtualBase_SizeHint() qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QDesignerPropertyEditorInterface_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QDesignerPropertyEditorInterface_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDesignerPropertyEditorInterface) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QDesignerPropertyEditorInterface) OnSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QDesignerPropertyEditorInterface_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -516,27 +515,24 @@ func (this *QDesignerPropertyEditorInterface) OnSizeHint(slot func(super func() 
 }
 
 //export miqt_exec_callback_QDesignerPropertyEditorInterface_sizeHint
-func miqt_exec_callback_QDesignerPropertyEditorInterface_sizeHint(self *C.QDesignerPropertyEditorInterface, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QDesignerPropertyEditorInterface_sizeHint(self *C.QDesignerPropertyEditorInterface, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDesignerPropertyEditorInterface{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDesignerPropertyEditorInterface_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QDesignerPropertyEditorInterface) callVirtualBase_MinimumSizeHint() *qt6.QSize {
-
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QDesignerPropertyEditorInterface_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QDesignerPropertyEditorInterface) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+
+func (this *QDesignerPropertyEditorInterface) callVirtualBase_MinimumSizeHint() qt6.QSize {
+
+	return libmiqt.ValueCast[qt6.QSize](C.QDesignerPropertyEditorInterface_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QDesignerPropertyEditorInterface) OnMinimumSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QDesignerPropertyEditorInterface_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -544,16 +540,15 @@ func (this *QDesignerPropertyEditorInterface) OnMinimumSizeHint(slot func(super 
 }
 
 //export miqt_exec_callback_QDesignerPropertyEditorInterface_minimumSizeHint
-func miqt_exec_callback_QDesignerPropertyEditorInterface_minimumSizeHint(self *C.QDesignerPropertyEditorInterface, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QDesignerPropertyEditorInterface_minimumSizeHint(self *C.QDesignerPropertyEditorInterface, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDesignerPropertyEditorInterface{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDesignerPropertyEditorInterface_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1437,7 +1432,6 @@ func miqt_exec_callback_QDesignerPropertyEditorInterface_initPainter(self *C.QDe
 }
 
 func (this *QDesignerPropertyEditorInterface) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QDesignerPropertyEditorInterface_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

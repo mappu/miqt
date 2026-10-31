@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -65,10 +66,9 @@ func NewQPen2(param1 PenStyle) *QPen {
 }
 
 // NewQPen3 constructs a new QPen object.
-func NewQPen3(color *QColor) *QPen {
-	defer runtime.KeepAlive(color)
+func NewQPen3(color QColor) *QPen {
 
-	return newQPen(C.QPen_new3(color.cPointer()))
+	return newQPen(C.QPen_new3(libmiqt.ValueCast[C.struct_miqt_qcolor](color)))
 }
 
 // NewQPen4 constructs a new QPen object.
@@ -191,17 +191,14 @@ func (this *QPen) SetWidth(width int) {
 	C.QPen_setWidth(this.h, (C.int)(width))
 }
 
-func (this *QPen) Color() *QColor {
+func (this *QPen) Color() QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QPen_color(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QPen_color(this.h))
 }
 
-func (this *QPen) SetColor(color *QColor) {
+func (this *QPen) SetColor(color QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QPen_setColor(this.h, color.cPointer())
+	C.QPen_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QPen) Brush() *QBrush {

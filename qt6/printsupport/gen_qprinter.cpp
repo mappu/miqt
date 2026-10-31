@@ -29,7 +29,7 @@ int miqt_exec_callback_QPrinter_metric(const QPrinter*, intptr_t, int);
 bool miqt_exec_callback_QPrinter_setPageLayout(QPrinter*, intptr_t, QPageLayout*);
 bool miqt_exec_callback_QPrinter_setPageSize(QPrinter*, intptr_t, QPageSize*);
 bool miqt_exec_callback_QPrinter_setPageOrientation(QPrinter*, intptr_t, int);
-bool miqt_exec_callback_QPrinter_setPageMargins(QPrinter*, intptr_t, QMarginsF*, int);
+bool miqt_exec_callback_QPrinter_setPageMargins(QPrinter*, intptr_t, struct miqt_qmarginsf, int);
 void miqt_exec_callback_QPrinter_setPageRanges(QPrinter*, intptr_t, QPageRanges*);
 void miqt_exec_callback_QPrinter_initPainter(const QPrinter*, intptr_t, QPainter*);
 QPaintDevice* miqt_exec_callback_QPrinter_redirected(const QPrinter*, intptr_t, QPoint*);
@@ -172,16 +172,14 @@ public:
 			return QPrinter::setPageMargins(margins, units);
 		}
 
-		const QMarginsF& margins_ret = margins;
-		// Cast returned reference into pointer
-		QMarginsF* sigval1 = const_cast<QMarginsF*>(&margins_ret);
+		struct miqt_qmarginsf sigval1 = miqt_to_cabi<struct miqt_qmarginsf>(margins);
 		QPageLayout::Unit units_ret = units;
 		int sigval2 = static_cast<int>(units_ret);
 		bool callback_return_value = miqt_exec_callback_QPrinter_setPageMargins(this, handle__setPageMargins, sigval1, sigval2);
 		return callback_return_value;
 	}
 
-	friend bool QPrinter_virtualbase_setPageMargins(void* self, QMarginsF* margins, int units);
+	friend bool QPrinter_virtualbase_setPageMargins(void* self, struct miqt_qmarginsf margins, int units);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setPageRanges = 0;
@@ -473,12 +471,12 @@ bool QPrinter_fontEmbeddingEnabled(const QPrinter* self) {
 	return self->fontEmbeddingEnabled();
 }
 
-QRectF* QPrinter_paperRect(const QPrinter* self, int param1) {
-	return new QRectF(self->paperRect(static_cast<QPrinter::Unit>(param1)));
+struct miqt_qrectf QPrinter_paperRect(const QPrinter* self, int param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->paperRect(static_cast<QPrinter::Unit>(param1)));
 }
 
-QRectF* QPrinter_pageRect(const QPrinter* self, int param1) {
-	return new QRectF(self->pageRect(static_cast<QPrinter::Unit>(param1)));
+struct miqt_qrectf QPrinter_pageRect(const QPrinter* self, int param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->pageRect(static_cast<QPrinter::Unit>(param1)));
 }
 
 struct miqt_string QPrinter_printerSelectionOption(const QPrinter* self) {
@@ -647,8 +645,8 @@ bool QPrinter_override_virtual_setPageMargins(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QPrinter_virtualbase_setPageMargins(void* self, QMarginsF* margins, int units) {
-	return static_cast<MiqtVirtualQPrinter*>(self)->QPrinter::setPageMargins(*margins, static_cast<QPageLayout::Unit>(units));
+bool QPrinter_virtualbase_setPageMargins(void* self, struct miqt_qmarginsf margins, int units) {
+	return static_cast<MiqtVirtualQPrinter*>(self)->QPrinter::setPageMargins(miqt_from_cabi<QMarginsF>(margins), static_cast<QPageLayout::Unit>(units));
 }
 
 bool QPrinter_override_virtual_setPageRanges(void* self, intptr_t slot) {

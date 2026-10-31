@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -83,18 +84,15 @@ func NewQItemSelectionRange2(other *QItemSelectionRange) *QItemSelectionRange {
 }
 
 // NewQItemSelectionRange3 constructs a new QItemSelectionRange object.
-func NewQItemSelectionRange3(topL *QModelIndex, bottomR *QModelIndex) *QItemSelectionRange {
-	defer runtime.KeepAlive(topL)
-	defer runtime.KeepAlive(bottomR)
+func NewQItemSelectionRange3(topL QModelIndex, bottomR QModelIndex) *QItemSelectionRange {
 
-	return newQItemSelectionRange(C.QItemSelectionRange_new3(topL.cPointer(), bottomR.cPointer()))
+	return newQItemSelectionRange(C.QItemSelectionRange_new3(libmiqt.ValueCast[C.struct_miqt_qmodelindex](topL), libmiqt.ValueCast[C.struct_miqt_qmodelindex](bottomR)))
 }
 
 // NewQItemSelectionRange4 constructs a new QItemSelectionRange object.
-func NewQItemSelectionRange4(index *QModelIndex) *QItemSelectionRange {
-	defer runtime.KeepAlive(index)
+func NewQItemSelectionRange4(index QModelIndex) *QItemSelectionRange {
 
-	return newQItemSelectionRange(C.QItemSelectionRange_new4(index.cPointer()))
+	return newQItemSelectionRange(C.QItemSelectionRange_new4(libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QItemSelectionRange) OperatorAssign(other *QItemSelectionRange) {
@@ -153,11 +151,9 @@ func (this *QItemSelectionRange) BottomRight() *QPersistentModelIndex {
 	return _ret
 }
 
-func (this *QItemSelectionRange) Parent() *QModelIndex {
+func (this *QItemSelectionRange) Parent() QModelIndex {
 	defer runtime.KeepAlive(this)
-	_goptr := newQModelIndex(C.QItemSelectionRange_parent(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QModelIndex](C.QItemSelectionRange_parent(this.h))
 }
 
 func (this *QItemSelectionRange) Model() *QAbstractItemModel {
@@ -165,16 +161,14 @@ func (this *QItemSelectionRange) Model() *QAbstractItemModel {
 	return newQAbstractItemModel(C.QItemSelectionRange_model(this.h))
 }
 
-func (this *QItemSelectionRange) Contains(index *QModelIndex) bool {
+func (this *QItemSelectionRange) Contains(index QModelIndex) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(index)
-	return (bool)(C.QItemSelectionRange_contains(this.h, index.cPointer()))
+	return (bool)(C.QItemSelectionRange_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QItemSelectionRange) Contains2(row int, column int, parentIndex *QModelIndex) bool {
+func (this *QItemSelectionRange) Contains2(row int, column int, parentIndex QModelIndex) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parentIndex)
-	return (bool)(C.QItemSelectionRange_contains2(this.h, (C.int)(row), (C.int)(column), parentIndex.cPointer()))
+	return (bool)(C.QItemSelectionRange_contains2(this.h, (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parentIndex)))
 }
 
 func (this *QItemSelectionRange) Intersects(other *QItemSelectionRange) bool {
@@ -223,11 +217,9 @@ func (this *QItemSelectionRange) Indexes() []QModelIndex {
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QItemSelectionRange_indexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 }
@@ -341,15 +333,12 @@ func QItemSelectionModel_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QItemSelectionModel) CurrentIndex() *QModelIndex {
-	_goptr := newQModelIndex(C.QItemSelectionModel_currentIndex(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QItemSelectionModel) CurrentIndex() QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QItemSelectionModel_currentIndex(this.h))
 }
 
-func (this *QItemSelectionModel) IsSelected(index *QModelIndex) bool {
-	defer runtime.KeepAlive(index)
-	return (bool)(C.QItemSelectionModel_isSelected(this.h, index.cPointer()))
+func (this *QItemSelectionModel) IsSelected(index QModelIndex) bool {
+	return (bool)(C.QItemSelectionModel_isSelected(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QItemSelectionModel) IsRowSelected(row int) bool {
@@ -375,11 +364,9 @@ func (this *QItemSelectionModel) HasSelection() bool {
 func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedIndexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 }
@@ -387,11 +374,9 @@ func (this *QItemSelectionModel) SelectedIndexes() []QModelIndex {
 func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedRows(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 }
@@ -399,11 +384,9 @@ func (this *QItemSelectionModel) SelectedRows() []QModelIndex {
 func (this *QItemSelectionModel) SelectedColumns() []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedColumns(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 }
@@ -426,14 +409,12 @@ func (this *QItemSelectionModel) SetModel(model *QAbstractItemModel) {
 	C.QItemSelectionModel_setModel(this.h, model.cPointer())
 }
 
-func (this *QItemSelectionModel) SetCurrentIndex(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
-	defer runtime.KeepAlive(index)
-	C.QItemSelectionModel_setCurrentIndex(this.h, index.cPointer(), (C.int)(command))
+func (this *QItemSelectionModel) SetCurrentIndex(index QModelIndex, command QItemSelectionModel__SelectionFlag) {
+	C.QItemSelectionModel_setCurrentIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(command))
 }
 
-func (this *QItemSelectionModel) Select(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
-	defer runtime.KeepAlive(index)
-	C.QItemSelectionModel_select(this.h, index.cPointer(), (C.int)(command))
+func (this *QItemSelectionModel) Select(index QModelIndex, command QItemSelectionModel__SelectionFlag) {
+	C.QItemSelectionModel_select(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(command))
 }
 
 func (this *QItemSelectionModel) Select2(selection *QItemSelection, command QItemSelectionModel__SelectionFlag) {
@@ -481,74 +462,68 @@ func miqt_exec_callback_QItemSelectionModel_selectionChanged(cb C.intptr_t, sele
 	gofunc(slotval1, slotval2)
 }
 
-func (this *QItemSelectionModel) CurrentChanged(current *QModelIndex, previous *QModelIndex) {
-	defer runtime.KeepAlive(current)
-	defer runtime.KeepAlive(previous)
-	C.QItemSelectionModel_currentChanged(this.h, current.cPointer(), previous.cPointer())
+func (this *QItemSelectionModel) CurrentChanged(current QModelIndex, previous QModelIndex) {
+	C.QItemSelectionModel_currentChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](current), libmiqt.ValueCast[C.struct_miqt_qmodelindex](previous))
 }
-func (this *QItemSelectionModel) OnCurrentChanged(slot func(current *QModelIndex, previous *QModelIndex)) {
+func (this *QItemSelectionModel) OnCurrentChanged(slot func(current QModelIndex, previous QModelIndex)) {
 	C.QItemSelectionModel_connect_currentChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_currentChanged
-func miqt_exec_callback_QItemSelectionModel_currentChanged(cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(current *QModelIndex, previous *QModelIndex))
+func miqt_exec_callback_QItemSelectionModel_currentChanged(cb C.intptr_t, current C.struct_miqt_qmodelindex, previous C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current QModelIndex, previous QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(current)
+	slotval1 := libmiqt.ValueCast[QModelIndex](current)
 
-	slotval2 := newQModelIndex(previous)
+	slotval2 := libmiqt.ValueCast[QModelIndex](previous)
 
 	gofunc(slotval1, slotval2)
 }
 
-func (this *QItemSelectionModel) CurrentRowChanged(current *QModelIndex, previous *QModelIndex) {
-	defer runtime.KeepAlive(current)
-	defer runtime.KeepAlive(previous)
-	C.QItemSelectionModel_currentRowChanged(this.h, current.cPointer(), previous.cPointer())
+func (this *QItemSelectionModel) CurrentRowChanged(current QModelIndex, previous QModelIndex) {
+	C.QItemSelectionModel_currentRowChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](current), libmiqt.ValueCast[C.struct_miqt_qmodelindex](previous))
 }
-func (this *QItemSelectionModel) OnCurrentRowChanged(slot func(current *QModelIndex, previous *QModelIndex)) {
+func (this *QItemSelectionModel) OnCurrentRowChanged(slot func(current QModelIndex, previous QModelIndex)) {
 	C.QItemSelectionModel_connect_currentRowChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_currentRowChanged
-func miqt_exec_callback_QItemSelectionModel_currentRowChanged(cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(current *QModelIndex, previous *QModelIndex))
+func miqt_exec_callback_QItemSelectionModel_currentRowChanged(cb C.intptr_t, current C.struct_miqt_qmodelindex, previous C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current QModelIndex, previous QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(current)
+	slotval1 := libmiqt.ValueCast[QModelIndex](current)
 
-	slotval2 := newQModelIndex(previous)
+	slotval2 := libmiqt.ValueCast[QModelIndex](previous)
 
 	gofunc(slotval1, slotval2)
 }
 
-func (this *QItemSelectionModel) CurrentColumnChanged(current *QModelIndex, previous *QModelIndex) {
-	defer runtime.KeepAlive(current)
-	defer runtime.KeepAlive(previous)
-	C.QItemSelectionModel_currentColumnChanged(this.h, current.cPointer(), previous.cPointer())
+func (this *QItemSelectionModel) CurrentColumnChanged(current QModelIndex, previous QModelIndex) {
+	C.QItemSelectionModel_currentColumnChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](current), libmiqt.ValueCast[C.struct_miqt_qmodelindex](previous))
 }
-func (this *QItemSelectionModel) OnCurrentColumnChanged(slot func(current *QModelIndex, previous *QModelIndex)) {
+func (this *QItemSelectionModel) OnCurrentColumnChanged(slot func(current QModelIndex, previous QModelIndex)) {
 	C.QItemSelectionModel_connect_currentColumnChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_currentColumnChanged
-func miqt_exec_callback_QItemSelectionModel_currentColumnChanged(cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(current *QModelIndex, previous *QModelIndex))
+func miqt_exec_callback_QItemSelectionModel_currentColumnChanged(cb C.intptr_t, current C.struct_miqt_qmodelindex, previous C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(current QModelIndex, previous QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(current)
+	slotval1 := libmiqt.ValueCast[QModelIndex](current)
 
-	slotval2 := newQModelIndex(previous)
+	slotval2 := libmiqt.ValueCast[QModelIndex](previous)
 
 	gofunc(slotval1, slotval2)
 }
@@ -617,34 +592,28 @@ func QItemSelectionModel_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QItemSelectionModel) IsRowSelected2(row int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QItemSelectionModel_isRowSelected2(this.h, (C.int)(row), parent.cPointer()))
+func (this *QItemSelectionModel) IsRowSelected2(row int, parent QModelIndex) bool {
+	return (bool)(C.QItemSelectionModel_isRowSelected2(this.h, (C.int)(row), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QItemSelectionModel) IsColumnSelected2(column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QItemSelectionModel_isColumnSelected2(this.h, (C.int)(column), parent.cPointer()))
+func (this *QItemSelectionModel) IsColumnSelected2(column int, parent QModelIndex) bool {
+	return (bool)(C.QItemSelectionModel_isColumnSelected2(this.h, (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QItemSelectionModel) RowIntersectsSelection2(row int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QItemSelectionModel_rowIntersectsSelection2(this.h, (C.int)(row), parent.cPointer()))
+func (this *QItemSelectionModel) RowIntersectsSelection2(row int, parent QModelIndex) bool {
+	return (bool)(C.QItemSelectionModel_rowIntersectsSelection2(this.h, (C.int)(row), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QItemSelectionModel) ColumnIntersectsSelection2(column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QItemSelectionModel_columnIntersectsSelection2(this.h, (C.int)(column), parent.cPointer()))
+func (this *QItemSelectionModel) ColumnIntersectsSelection2(column int, parent QModelIndex) bool {
+	return (bool)(C.QItemSelectionModel_columnIntersectsSelection2(this.h, (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
 func (this *QItemSelectionModel) SelectedRowsWithColumn(column int) []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedRowsWithColumn(this.h, (C.int)(column))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 }
@@ -652,11 +621,9 @@ func (this *QItemSelectionModel) SelectedRowsWithColumn(column int) []QModelInde
 func (this *QItemSelectionModel) SelectedColumnsWithRow(row int) []QModelIndex {
 	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedColumnsWithRow(this.h, (C.int)(row))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 }
@@ -734,13 +701,12 @@ func (this *QItemSelectionModel) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QItemSelectionModel) callVirtualBase_SetCurrentIndex(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
-	defer runtime.KeepAlive(index)
+func (this *QItemSelectionModel) callVirtualBase_SetCurrentIndex(index QModelIndex, command QItemSelectionModel__SelectionFlag) {
 
-	C.QItemSelectionModel_virtualbase_setCurrentIndex(unsafe.Pointer(this.h), index.cPointer(), (C.int)(command))
+	C.QItemSelectionModel_virtualbase_setCurrentIndex(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(command))
 
 }
-func (this *QItemSelectionModel) OnSetCurrentIndex(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
+func (this *QItemSelectionModel) OnSetCurrentIndex(slot func(super func(index QModelIndex, command QItemSelectionModel__SelectionFlag), index QModelIndex, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QItemSelectionModel_override_virtual_setCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -748,14 +714,14 @@ func (this *QItemSelectionModel) OnSetCurrentIndex(slot func(super func(index *Q
 }
 
 //export miqt_exec_callback_QItemSelectionModel_setCurrentIndex
-func miqt_exec_callback_QItemSelectionModel_setCurrentIndex(self *C.QItemSelectionModel, cb C.intptr_t, index *C.QModelIndex, command C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag))
+func miqt_exec_callback_QItemSelectionModel_setCurrentIndex(self *C.QItemSelectionModel, cb C.intptr_t, index C.struct_miqt_qmodelindex, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, command QItemSelectionModel__SelectionFlag), index QModelIndex, command QItemSelectionModel__SelectionFlag))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
@@ -763,13 +729,12 @@ func miqt_exec_callback_QItemSelectionModel_setCurrentIndex(self *C.QItemSelecti
 
 }
 
-func (this *QItemSelectionModel) callVirtualBase_Select(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
-	defer runtime.KeepAlive(index)
+func (this *QItemSelectionModel) callVirtualBase_Select(index QModelIndex, command QItemSelectionModel__SelectionFlag) {
 
-	C.QItemSelectionModel_virtualbase_select(unsafe.Pointer(this.h), index.cPointer(), (C.int)(command))
+	C.QItemSelectionModel_virtualbase_select(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(command))
 
 }
-func (this *QItemSelectionModel) OnSelect(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
+func (this *QItemSelectionModel) OnSelect(slot func(super func(index QModelIndex, command QItemSelectionModel__SelectionFlag), index QModelIndex, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QItemSelectionModel_override_virtual_select(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -777,14 +742,14 @@ func (this *QItemSelectionModel) OnSelect(slot func(super func(index *QModelInde
 }
 
 //export miqt_exec_callback_QItemSelectionModel_select
-func miqt_exec_callback_QItemSelectionModel_select(self *C.QItemSelectionModel, cb C.intptr_t, index *C.QModelIndex, command C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag))
+func miqt_exec_callback_QItemSelectionModel_select(self *C.QItemSelectionModel, cb C.intptr_t, index C.struct_miqt_qmodelindex, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, command QItemSelectionModel__SelectionFlag), index QModelIndex, command QItemSelectionModel__SelectionFlag))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
@@ -1154,11 +1119,9 @@ func NewQItemSelection() *QItemSelection {
 }
 
 // NewQItemSelection2 constructs a new QItemSelection object.
-func NewQItemSelection2(topLeft *QModelIndex, bottomRight *QModelIndex) *QItemSelection {
-	defer runtime.KeepAlive(topLeft)
-	defer runtime.KeepAlive(bottomRight)
+func NewQItemSelection2(topLeft QModelIndex, bottomRight QModelIndex) *QItemSelection {
 
-	return newQItemSelection(C.QItemSelection_new2(topLeft.cPointer(), bottomRight.cPointer()))
+	return newQItemSelection(C.QItemSelection_new2(libmiqt.ValueCast[C.struct_miqt_qmodelindex](topLeft), libmiqt.ValueCast[C.struct_miqt_qmodelindex](bottomRight)))
 }
 
 // NewQItemSelection3 constructs a new QItemSelection object.
@@ -1168,28 +1131,23 @@ func NewQItemSelection3(param1 *QItemSelection) *QItemSelection {
 	return newQItemSelection(C.QItemSelection_new3(param1.cPointer()))
 }
 
-func (this *QItemSelection) Select(topLeft *QModelIndex, bottomRight *QModelIndex) {
+func (this *QItemSelection) Select(topLeft QModelIndex, bottomRight QModelIndex) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(topLeft)
-	defer runtime.KeepAlive(bottomRight)
-	C.QItemSelection_select(this.h, topLeft.cPointer(), bottomRight.cPointer())
+	C.QItemSelection_select(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](topLeft), libmiqt.ValueCast[C.struct_miqt_qmodelindex](bottomRight))
 }
 
-func (this *QItemSelection) Contains(index *QModelIndex) bool {
+func (this *QItemSelection) Contains(index QModelIndex) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(index)
-	return (bool)(C.QItemSelection_contains(this.h, index.cPointer()))
+	return (bool)(C.QItemSelection_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QItemSelection) Indexes() []QModelIndex {
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QItemSelection_indexes(this.h)
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 }

@@ -9,6 +9,7 @@ package spatialaudio
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -126,14 +127,11 @@ func (this *QSpatialSound) SetAutoPlay(autoPlay bool) {
 }
 
 func (this *QSpatialSound) SetPosition(pos qt6.QVector3D) {
-	defer runtime.KeepAlive(pos)
-	C.QSpatialSound_setPosition(this.h, (*C.QVector3D)(pos.UnsafePointer()))
+	C.QSpatialSound_setPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](pos))
 }
 
-func (this *QSpatialSound) Position() *qt6.QVector3D {
-	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(C.QSpatialSound_position(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QSpatialSound) Position() qt6.QVector3D {
+	return libmiqt.ValueCast[qt6.QVector3D](C.QSpatialSound_position(this.h))
 }
 
 func (this *QSpatialSound) SetRotation(q *qt6.QQuaternion) {

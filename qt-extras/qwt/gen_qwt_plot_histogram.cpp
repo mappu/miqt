@@ -40,8 +40,8 @@ int QwtPlotHistogram_rtti(const QwtPlotHistogram* self) {
 	return self->rtti();
 }
 
-void QwtPlotHistogram_setPen(QwtPlotHistogram* self, QColor* param1) {
-	self->setPen(*param1);
+void QwtPlotHistogram_setPen(QwtPlotHistogram* self, struct miqt_qcolor param1) {
+	self->setPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotHistogram_setPenWithPen(QwtPlotHistogram* self, QPen* pen) {
@@ -99,20 +99,20 @@ QwtColumnSymbol* QwtPlotHistogram_symbol(const QwtPlotHistogram* self) {
 	return (QwtColumnSymbol*) self->symbol();
 }
 
-QRectF* QwtPlotHistogram_boundingRect(const QwtPlotHistogram* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotHistogram_boundingRect(const QwtPlotHistogram* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
-QwtGraphic* QwtPlotHistogram_legendIcon(const QwtPlotHistogram* self, int index, QSizeF* param2) {
-	return new QwtGraphic(self->legendIcon(static_cast<int>(index), *param2));
+QwtGraphic* QwtPlotHistogram_legendIcon(const QwtPlotHistogram* self, int index, struct miqt_qsizef param2) {
+	return new QwtGraphic(self->legendIcon(static_cast<int>(index), miqt_from_cabi<QSizeF>(param2)));
 }
 
-void QwtPlotHistogram_setPen2(QwtPlotHistogram* self, QColor* param1, double width) {
-	self->setPen(*param1, static_cast<qreal>(width));
+void QwtPlotHistogram_setPen2(QwtPlotHistogram* self, struct miqt_qcolor param1, double width) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotHistogram_setPen3(QwtPlotHistogram* self, QColor* param1, double width, int param3) {
-	self->setPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotHistogram_setPen3(QwtPlotHistogram* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 void QwtPlotHistogram_delete(QwtPlotHistogram* self) {

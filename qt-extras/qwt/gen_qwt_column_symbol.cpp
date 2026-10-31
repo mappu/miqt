@@ -17,8 +17,8 @@ QwtColumnRect* QwtColumnRect_new() {
 	return new (std::nothrow) QwtColumnRect();
 }
 
-QRectF* QwtColumnRect_toRect(const QwtColumnRect* self) {
-	return new QRectF(self->toRect());
+struct miqt_qrectf QwtColumnRect_toRect(const QwtColumnRect* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->toRect());
 }
 
 int QwtColumnRect_orientation(const QwtColumnRect* self) {

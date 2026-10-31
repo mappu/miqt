@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -256,10 +257,8 @@ func (this *QCompleter) CurrentRow() int {
 	return (int)(C.QCompleter_currentRow(this.h))
 }
 
-func (this *QCompleter) CurrentIndex() *QModelIndex {
-	_goptr := newQModelIndex(C.QCompleter_currentIndex(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCompleter) CurrentIndex() QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QCompleter_currentIndex(this.h))
 }
 
 func (this *QCompleter) CurrentCompletion() string {
@@ -296,9 +295,8 @@ func (this *QCompleter) SetWrapAround(wrap bool) {
 	C.QCompleter_setWrapAround(this.h, (C.bool)(wrap))
 }
 
-func (this *QCompleter) PathFromIndex(index *QModelIndex) string {
-	defer runtime.KeepAlive(index)
-	var _ms C.struct_miqt_string = C.QCompleter_pathFromIndex(this.h, index.cPointer())
+func (this *QCompleter) PathFromIndex(index QModelIndex) string {
+	var _ms C.struct_miqt_string = C.QCompleter_pathFromIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -348,23 +346,22 @@ func miqt_exec_callback_QCompleter_activated(cb C.intptr_t, text C.struct_miqt_s
 	gofunc(slotval1)
 }
 
-func (this *QCompleter) ActivatedWithIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QCompleter_activatedWithIndex(this.h, index.cPointer())
+func (this *QCompleter) ActivatedWithIndex(index QModelIndex) {
+	C.QCompleter_activatedWithIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
-func (this *QCompleter) OnActivatedWithIndex(slot func(index *QModelIndex)) {
+func (this *QCompleter) OnActivatedWithIndex(slot func(index QModelIndex)) {
 	C.QCompleter_connect_activatedWithIndex(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCompleter_activatedWithIndex
-func miqt_exec_callback_QCompleter_activatedWithIndex(cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
+func miqt_exec_callback_QCompleter_activatedWithIndex(cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc(slotval1)
 }
@@ -396,23 +393,22 @@ func miqt_exec_callback_QCompleter_highlighted(cb C.intptr_t, text C.struct_miqt
 	gofunc(slotval1)
 }
 
-func (this *QCompleter) HighlightedWithIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QCompleter_highlightedWithIndex(this.h, index.cPointer())
+func (this *QCompleter) HighlightedWithIndex(index QModelIndex) {
+	C.QCompleter_highlightedWithIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
-func (this *QCompleter) OnHighlightedWithIndex(slot func(index *QModelIndex)) {
+func (this *QCompleter) OnHighlightedWithIndex(slot func(index QModelIndex)) {
 	C.QCompleter_connect_highlightedWithIndex(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCompleter_highlightedWithIndex
-func miqt_exec_callback_QCompleter_highlightedWithIndex(cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
+func miqt_exec_callback_QCompleter_highlightedWithIndex(cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc(slotval1)
 }
@@ -461,9 +457,8 @@ func QCompleter_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QCompleter) CompleteWithRect(rect *QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QCompleter_completeWithRect(this.h, rect.cPointer())
+func (this *QCompleter) CompleteWithRect(rect QRect) {
+	C.QCompleter_completeWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
 // Sender can only be called from a QCompleter that was directly constructed.
@@ -525,15 +520,14 @@ func (this *QCompleter) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QCompleter) callVirtualBase_PathFromIndex(index *QModelIndex) string {
-	defer runtime.KeepAlive(index)
+func (this *QCompleter) callVirtualBase_PathFromIndex(index QModelIndex) string {
 
-	var _ms C.struct_miqt_string = C.QCompleter_virtualbase_pathFromIndex(unsafe.Pointer(this.h), index.cPointer())
+	var _ms C.struct_miqt_string = C.QCompleter_virtualbase_pathFromIndex(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QCompleter) OnPathFromIndex(slot func(super func(index *QModelIndex) string, index *QModelIndex) string) {
+func (this *QCompleter) OnPathFromIndex(slot func(super func(index QModelIndex) string, index QModelIndex) string) {
 	ok := C.QCompleter_override_virtual_pathFromIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -541,14 +535,14 @@ func (this *QCompleter) OnPathFromIndex(slot func(super func(index *QModelIndex)
 }
 
 //export miqt_exec_callback_QCompleter_pathFromIndex
-func miqt_exec_callback_QCompleter_pathFromIndex(self *C.QCompleter, cb C.intptr_t, index *C.QModelIndex) C.struct_miqt_string {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) string, index *QModelIndex) string)
+func miqt_exec_callback_QCompleter_pathFromIndex(self *C.QCompleter, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_string {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) string, index QModelIndex) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QCompleter{h: self}).callVirtualBase_PathFromIndex, slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}

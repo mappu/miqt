@@ -93,24 +93,24 @@ int QScroller_state(const QScroller* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QScroller_handleInput(QScroller* self, int input, QPointF* position) {
-	return self->handleInput(static_cast<QScroller::Input>(input), *position);
+bool QScroller_handleInput(QScroller* self, int input, struct miqt_qpointf position) {
+	return self->handleInput(static_cast<QScroller::Input>(input), miqt_from_cabi<QPointF>(position));
 }
 
 void QScroller_stop(QScroller* self) {
 	self->stop();
 }
 
-QPointF* QScroller_velocity(const QScroller* self) {
-	return new QPointF(self->velocity());
+struct miqt_qpointf QScroller_velocity(const QScroller* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->velocity());
 }
 
-QPointF* QScroller_finalPosition(const QScroller* self) {
-	return new QPointF(self->finalPosition());
+struct miqt_qpointf QScroller_finalPosition(const QScroller* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->finalPosition());
 }
 
-QPointF* QScroller_pixelPerMeter(const QScroller* self) {
-	return new QPointF(self->pixelPerMeter());
+struct miqt_qpointf QScroller_pixelPerMeter(const QScroller* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pixelPerMeter());
 }
 
 QScrollerProperties* QScroller_scrollerProperties(const QScroller* self) {
@@ -149,20 +149,20 @@ void QScroller_setScrollerProperties(QScroller* self, QScrollerProperties* prop)
 	self->setScrollerProperties(*prop);
 }
 
-void QScroller_scrollTo(QScroller* self, QPointF* pos) {
-	self->scrollTo(*pos);
+void QScroller_scrollTo(QScroller* self, struct miqt_qpointf pos) {
+	self->scrollTo(miqt_from_cabi<QPointF>(pos));
 }
 
-void QScroller_scrollTo2(QScroller* self, QPointF* pos, int scrollTime) {
-	self->scrollTo(*pos, static_cast<int>(scrollTime));
+void QScroller_scrollTo2(QScroller* self, struct miqt_qpointf pos, int scrollTime) {
+	self->scrollTo(miqt_from_cabi<QPointF>(pos), static_cast<int>(scrollTime));
 }
 
-void QScroller_ensureVisible(QScroller* self, QRectF* rect, double xmargin, double ymargin) {
-	self->ensureVisible(*rect, static_cast<qreal>(xmargin), static_cast<qreal>(ymargin));
+void QScroller_ensureVisible(QScroller* self, struct miqt_qrectf rect, double xmargin, double ymargin) {
+	self->ensureVisible(miqt_from_cabi<QRectF>(rect), static_cast<qreal>(xmargin), static_cast<qreal>(ymargin));
 }
 
-void QScroller_ensureVisible2(QScroller* self, QRectF* rect, double xmargin, double ymargin, int scrollTime) {
-	self->ensureVisible(*rect, static_cast<qreal>(xmargin), static_cast<qreal>(ymargin), static_cast<int>(scrollTime));
+void QScroller_ensureVisible2(QScroller* self, struct miqt_qrectf rect, double xmargin, double ymargin, int scrollTime) {
+	self->ensureVisible(miqt_from_cabi<QRectF>(rect), static_cast<qreal>(xmargin), static_cast<qreal>(ymargin), static_cast<int>(scrollTime));
 }
 
 void QScroller_resendPrepareEvent(QScroller* self) {
@@ -221,7 +221,7 @@ int QScroller_grabGesture2(QObject* target, int gestureType) {
 	return static_cast<int>(_ret);
 }
 
-bool QScroller_handleInput2(QScroller* self, int input, QPointF* position, long long timestamp) {
-	return self->handleInput(static_cast<QScroller::Input>(input), *position, static_cast<qint64>(timestamp));
+bool QScroller_handleInput2(QScroller* self, int input, struct miqt_qpointf position, long long timestamp) {
+	return self->handleInput(static_cast<QScroller::Input>(input), miqt_from_cabi<QPointF>(position), static_cast<qint64>(timestamp));
 }
 

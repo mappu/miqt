@@ -45,7 +45,7 @@ void miqt_exec_callback_QRasterWindow_paintEvent(QRasterWindow*, intptr_t, QPain
 bool miqt_exec_callback_QRasterWindow_event(QRasterWindow*, intptr_t, QEvent*);
 int miqt_exec_callback_QRasterWindow_surfaceType(const QRasterWindow*, intptr_t);
 QSurfaceFormat* miqt_exec_callback_QRasterWindow_format(const QRasterWindow*, intptr_t);
-QSize* miqt_exec_callback_QRasterWindow_size(const QRasterWindow*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QRasterWindow_size(const QRasterWindow*, intptr_t);
 QAccessibleInterface* miqt_exec_callback_QRasterWindow_accessibleRoot(const QRasterWindow*, intptr_t);
 QObject* miqt_exec_callback_QRasterWindow_focusObject(const QRasterWindow*, intptr_t);
 void miqt_exec_callback_QRasterWindow_resizeEvent(QRasterWindow*, intptr_t, QResizeEvent*);
@@ -210,13 +210,11 @@ public:
 			return QRasterWindow::size();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QRasterWindow_size(this, handle__size);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QRasterWindow_size(this, handle__size);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QRasterWindow_virtualbase_size(const void* self);
+	friend struct miqt_qsize QRasterWindow_virtualbase_size(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__accessibleRoot = 0;
@@ -867,8 +865,8 @@ bool QRasterWindow_override_virtual_size(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QRasterWindow_virtualbase_size(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQRasterWindow*>(self)->QRasterWindow::size());
+struct miqt_qsize QRasterWindow_virtualbase_size(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQRasterWindow*>(self)->QRasterWindow::size());
 }
 
 bool QRasterWindow_override_virtual_accessibleRoot(void* self, intptr_t slot) {
@@ -1266,10 +1264,6 @@ QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self) {
 
 QSurfaceFormat* QRasterWindow_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src) {
 	return new QSurfaceFormat(*src);
-}
-
-QSize* QRasterWindow_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 void* QRasterWindow_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {

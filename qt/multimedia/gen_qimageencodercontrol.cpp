@@ -86,12 +86,12 @@ struct miqt_string QImageEncoderControl_imageCodecDescription(const QImageEncode
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QImageEncoderControl_supportedResolutions(const QImageEncoderControl* self, QImageEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of struct miqt_qsize */  QImageEncoderControl_supportedResolutions(const QImageEncoderControl* self, QImageEncoderSettings* settings, bool* continuous) {
 	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
+	struct miqt_qsize* _arr = static_cast<struct miqt_qsize*>(malloc(sizeof(struct miqt_qsize) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qsize>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

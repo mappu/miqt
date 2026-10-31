@@ -26,17 +26,17 @@ extern "C" {
 
 void miqt_exec_callback_QAbstractItemDelegate_commitData(intptr_t, QWidget*);
 void miqt_exec_callback_QAbstractItemDelegate_closeEditor(intptr_t, QWidget*);
-void miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged(intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged(intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QAbstractItemDelegate_closeEditor2(intptr_t, QWidget*, int);
-void miqt_exec_callback_QAbstractItemDelegate_paint(const QAbstractItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
-QSize* miqt_exec_callback_QAbstractItemDelegate_sizeHint(const QAbstractItemDelegate*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
-QWidget* miqt_exec_callback_QAbstractItemDelegate_createEditor(const QAbstractItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
-void miqt_exec_callback_QAbstractItemDelegate_destroyEditor(const QAbstractItemDelegate*, intptr_t, QWidget*, QModelIndex*);
-void miqt_exec_callback_QAbstractItemDelegate_setEditorData(const QAbstractItemDelegate*, intptr_t, QWidget*, QModelIndex*);
-void miqt_exec_callback_QAbstractItemDelegate_setModelData(const QAbstractItemDelegate*, intptr_t, QWidget*, QAbstractItemModel*, QModelIndex*);
-void miqt_exec_callback_QAbstractItemDelegate_updateEditorGeometry(const QAbstractItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
-bool miqt_exec_callback_QAbstractItemDelegate_editorEvent(QAbstractItemDelegate*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, QModelIndex*);
-bool miqt_exec_callback_QAbstractItemDelegate_helpEvent(QAbstractItemDelegate*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_paint(const QAbstractItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, struct miqt_qmodelindex);
+struct miqt_qsize miqt_exec_callback_QAbstractItemDelegate_sizeHint(const QAbstractItemDelegate*, intptr_t, QStyleOptionViewItem*, struct miqt_qmodelindex);
+QWidget* miqt_exec_callback_QAbstractItemDelegate_createEditor(const QAbstractItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemDelegate_destroyEditor(const QAbstractItemDelegate*, intptr_t, QWidget*, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemDelegate_setEditorData(const QAbstractItemDelegate*, intptr_t, QWidget*, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemDelegate_setModelData(const QAbstractItemDelegate*, intptr_t, QWidget*, QAbstractItemModel*, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemDelegate_updateEditorGeometry(const QAbstractItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, struct miqt_qmodelindex);
+bool miqt_exec_callback_QAbstractItemDelegate_editorEvent(QAbstractItemDelegate*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, struct miqt_qmodelindex);
+bool miqt_exec_callback_QAbstractItemDelegate_helpEvent(QAbstractItemDelegate*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, struct miqt_qmodelindex);
 struct miqt_array /* of int */  miqt_exec_callback_QAbstractItemDelegate_paintingRoles(const QAbstractItemDelegate*, intptr_t);
 bool miqt_exec_callback_QAbstractItemDelegate_event(QAbstractItemDelegate*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAbstractItemDelegate_eventFilter(QAbstractItemDelegate*, intptr_t, QObject*, QEvent*);
@@ -70,9 +70,7 @@ public:
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
 		QStyleOptionViewItem* sigval2 = const_cast<QStyleOptionViewItem*>(&option_ret);
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemDelegate_paint(this, handle__paint, sigval1, sigval2, sigval3);
 
 	}
@@ -89,13 +87,9 @@ public:
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
 		QStyleOptionViewItem* sigval1 = const_cast<QStyleOptionViewItem*>(&option_ret);
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
-		QSize* callback_return_value = miqt_exec_callback_QAbstractItemDelegate_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(index);
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractItemDelegate_sizeHint(this, handle__sizeHint, sigval1, sigval2);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -111,14 +105,12 @@ public:
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
 		QStyleOptionViewItem* sigval2 = const_cast<QStyleOptionViewItem*>(&option_ret);
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QWidget* callback_return_value = miqt_exec_callback_QAbstractItemDelegate_createEditor(this, handle__createEditor, sigval1, sigval2, sigval3);
 		return callback_return_value;
 	}
 
-	friend QWidget* QAbstractItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index);
+	friend QWidget* QAbstractItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__destroyEditor = 0;
@@ -131,14 +123,12 @@ public:
 		}
 
 		QWidget* sigval1 = editor;
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemDelegate_destroyEditor(this, handle__destroyEditor, sigval1, sigval2);
 
 	}
 
-	friend void QAbstractItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, QModelIndex* index);
+	friend void QAbstractItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEditorData = 0;
@@ -151,14 +141,12 @@ public:
 		}
 
 		QWidget* sigval1 = editor;
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemDelegate_setEditorData(this, handle__setEditorData, sigval1, sigval2);
 
 	}
 
-	friend void QAbstractItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, QModelIndex* index);
+	friend void QAbstractItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setModelData = 0;
@@ -172,14 +160,12 @@ public:
 
 		QWidget* sigval1 = editor;
 		QAbstractItemModel* sigval2 = model;
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemDelegate_setModelData(this, handle__setModelData, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QAbstractItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index);
+	friend void QAbstractItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateEditorGeometry = 0;
@@ -195,14 +181,12 @@ public:
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
 		QStyleOptionViewItem* sigval2 = const_cast<QStyleOptionViewItem*>(&option_ret);
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemDelegate_updateEditorGeometry(this, handle__updateEditorGeometry, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QAbstractItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index);
+	friend void QAbstractItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__editorEvent = 0;
@@ -218,14 +202,12 @@ public:
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
 		QStyleOptionViewItem* sigval3 = const_cast<QStyleOptionViewItem*>(&option_ret);
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval4 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval4 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		bool callback_return_value = miqt_exec_callback_QAbstractItemDelegate_editorEvent(this, handle__editorEvent, sigval1, sigval2, sigval3, sigval4);
 		return callback_return_value;
 	}
 
-	friend bool QAbstractItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index);
+	friend bool QAbstractItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__helpEvent = 0;
@@ -241,14 +223,12 @@ public:
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
 		QStyleOptionViewItem* sigval3 = const_cast<QStyleOptionViewItem*>(&option_ret);
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval4 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval4 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		bool callback_return_value = miqt_exec_callback_QAbstractItemDelegate_helpEvent(this, handle__helpEvent, sigval1, sigval2, sigval3, sigval4);
 		return callback_return_value;
 	}
 
-	friend bool QAbstractItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index);
+	friend bool QAbstractItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintingRoles = 0;
@@ -432,40 +412,40 @@ struct miqt_string QAbstractItemDelegate_tr(const char* s) {
 	return _ms;
 }
 
-void QAbstractItemDelegate_paint(const QAbstractItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
-	self->paint(painter, *option, *index);
+void QAbstractItemDelegate_paint(const QAbstractItemDelegate* self, QPainter* painter, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	self->paint(painter, *option, miqt_from_cabi<QModelIndex>(index));
 }
 
-QSize* QAbstractItemDelegate_sizeHint(const QAbstractItemDelegate* self, QStyleOptionViewItem* option, QModelIndex* index) {
-	return new QSize(self->sizeHint(*option, *index));
+struct miqt_qsize QAbstractItemDelegate_sizeHint(const QAbstractItemDelegate* self, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint(*option, miqt_from_cabi<QModelIndex>(index)));
 }
 
-QWidget* QAbstractItemDelegate_createEditor(const QAbstractItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
-	return self->createEditor(parent, *option, *index);
+QWidget* QAbstractItemDelegate_createEditor(const QAbstractItemDelegate* self, QWidget* parent, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	return self->createEditor(parent, *option, miqt_from_cabi<QModelIndex>(index));
 }
 
-void QAbstractItemDelegate_destroyEditor(const QAbstractItemDelegate* self, QWidget* editor, QModelIndex* index) {
-	self->destroyEditor(editor, *index);
+void QAbstractItemDelegate_destroyEditor(const QAbstractItemDelegate* self, QWidget* editor, struct miqt_qmodelindex index) {
+	self->destroyEditor(editor, miqt_from_cabi<QModelIndex>(index));
 }
 
-void QAbstractItemDelegate_setEditorData(const QAbstractItemDelegate* self, QWidget* editor, QModelIndex* index) {
-	self->setEditorData(editor, *index);
+void QAbstractItemDelegate_setEditorData(const QAbstractItemDelegate* self, QWidget* editor, struct miqt_qmodelindex index) {
+	self->setEditorData(editor, miqt_from_cabi<QModelIndex>(index));
 }
 
-void QAbstractItemDelegate_setModelData(const QAbstractItemDelegate* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
-	self->setModelData(editor, model, *index);
+void QAbstractItemDelegate_setModelData(const QAbstractItemDelegate* self, QWidget* editor, QAbstractItemModel* model, struct miqt_qmodelindex index) {
+	self->setModelData(editor, model, miqt_from_cabi<QModelIndex>(index));
 }
 
-void QAbstractItemDelegate_updateEditorGeometry(const QAbstractItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
-	self->updateEditorGeometry(editor, *option, *index);
+void QAbstractItemDelegate_updateEditorGeometry(const QAbstractItemDelegate* self, QWidget* editor, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	self->updateEditorGeometry(editor, *option, miqt_from_cabi<QModelIndex>(index));
 }
 
-bool QAbstractItemDelegate_editorEvent(QAbstractItemDelegate* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
-	return self->editorEvent(event, model, *option, *index);
+bool QAbstractItemDelegate_editorEvent(QAbstractItemDelegate* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	return self->editorEvent(event, model, *option, miqt_from_cabi<QModelIndex>(index));
 }
 
-bool QAbstractItemDelegate_helpEvent(QAbstractItemDelegate* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
-	return self->helpEvent(event, view, *option, *index);
+bool QAbstractItemDelegate_helpEvent(QAbstractItemDelegate* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	return self->helpEvent(event, view, *option, miqt_from_cabi<QModelIndex>(index));
 }
 
 struct miqt_array /* of int */  QAbstractItemDelegate_paintingRoles(const QAbstractItemDelegate* self) {
@@ -503,15 +483,13 @@ void QAbstractItemDelegate_connect_closeEditor(QAbstractItemDelegate* self, intp
 	});
 }
 
-void QAbstractItemDelegate_sizeHintChanged(QAbstractItemDelegate* self, QModelIndex* param1) {
-	self->sizeHintChanged(*param1);
+void QAbstractItemDelegate_sizeHintChanged(QAbstractItemDelegate* self, struct miqt_qmodelindex param1) {
+	self->sizeHintChanged(miqt_from_cabi<QModelIndex>(param1));
 }
 
 void QAbstractItemDelegate_connect_sizeHintChanged(QAbstractItemDelegate* self, intptr_t slot) {
 	QAbstractItemDelegate::connect(self, static_cast<void (QAbstractItemDelegate::*)(const QModelIndex&)>(&QAbstractItemDelegate::sizeHintChanged), self, [=](const QModelIndex& param1) {
-		const QModelIndex& param1_ret = param1;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&param1_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(param1);
 		miqt_exec_callback_QAbstractItemDelegate_sizeHintChanged(slot, sigval1);
 	});
 }
@@ -581,8 +559,8 @@ bool QAbstractItemDelegate_override_virtual_createEditor(void* self, intptr_t sl
 	return true;
 }
 
-QWidget* QAbstractItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
-	return static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::createEditor(parent, *option, *index);
+QWidget* QAbstractItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	return static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::createEditor(parent, *option, miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QAbstractItemDelegate_override_virtual_destroyEditor(void* self, intptr_t slot) {
@@ -595,8 +573,8 @@ bool QAbstractItemDelegate_override_virtual_destroyEditor(void* self, intptr_t s
 	return true;
 }
 
-void QAbstractItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, QModelIndex* index) {
-	static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::destroyEditor(editor, *index);
+void QAbstractItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, struct miqt_qmodelindex index) {
+	static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::destroyEditor(editor, miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QAbstractItemDelegate_override_virtual_setEditorData(void* self, intptr_t slot) {
@@ -609,8 +587,8 @@ bool QAbstractItemDelegate_override_virtual_setEditorData(void* self, intptr_t s
 	return true;
 }
 
-void QAbstractItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, QModelIndex* index) {
-	static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::setEditorData(editor, *index);
+void QAbstractItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, struct miqt_qmodelindex index) {
+	static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::setEditorData(editor, miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QAbstractItemDelegate_override_virtual_setModelData(void* self, intptr_t slot) {
@@ -623,8 +601,8 @@ bool QAbstractItemDelegate_override_virtual_setModelData(void* self, intptr_t sl
 	return true;
 }
 
-void QAbstractItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
-	static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::setModelData(editor, model, *index);
+void QAbstractItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, struct miqt_qmodelindex index) {
+	static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::setModelData(editor, model, miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QAbstractItemDelegate_override_virtual_updateEditorGeometry(void* self, intptr_t slot) {
@@ -637,8 +615,8 @@ bool QAbstractItemDelegate_override_virtual_updateEditorGeometry(void* self, int
 	return true;
 }
 
-void QAbstractItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
-	static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::updateEditorGeometry(editor, *option, *index);
+void QAbstractItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	static_cast<const MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::updateEditorGeometry(editor, *option, miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QAbstractItemDelegate_override_virtual_editorEvent(void* self, intptr_t slot) {
@@ -651,8 +629,8 @@ bool QAbstractItemDelegate_override_virtual_editorEvent(void* self, intptr_t slo
 	return true;
 }
 
-bool QAbstractItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
-	return static_cast<MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::editorEvent(event, model, *option, *index);
+bool QAbstractItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	return static_cast<MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::editorEvent(event, model, *option, miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QAbstractItemDelegate_override_virtual_helpEvent(void* self, intptr_t slot) {
@@ -665,8 +643,8 @@ bool QAbstractItemDelegate_override_virtual_helpEvent(void* self, intptr_t slot)
 	return true;
 }
 
-bool QAbstractItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
-	return static_cast<MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::helpEvent(event, view, *option, *index);
+bool QAbstractItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, struct miqt_qmodelindex index) {
+	return static_cast<MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::helpEvent(event, view, *option, miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QAbstractItemDelegate_override_virtual_paintingRoles(void* self, intptr_t slot) {
@@ -788,10 +766,6 @@ bool QAbstractItemDelegate_override_virtual_disconnectNotify(void* self, intptr_
 
 void QAbstractItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQAbstractItemDelegate*>(self)->QAbstractItemDelegate::disconnectNotify(*signal);
-}
-
-QSize* QAbstractItemDelegate_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QObject* QAbstractItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

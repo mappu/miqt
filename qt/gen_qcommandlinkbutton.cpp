@@ -44,15 +44,15 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QCommandLinkButton_sizeHint(const QCommandLinkButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QCommandLinkButton_sizeHint(const QCommandLinkButton*, intptr_t);
 int miqt_exec_callback_QCommandLinkButton_heightForWidth(const QCommandLinkButton*, intptr_t, int);
-QSize* miqt_exec_callback_QCommandLinkButton_minimumSizeHint(const QCommandLinkButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QCommandLinkButton_minimumSizeHint(const QCommandLinkButton*, intptr_t);
 bool miqt_exec_callback_QCommandLinkButton_event(QCommandLinkButton*, intptr_t, QEvent*);
 void miqt_exec_callback_QCommandLinkButton_paintEvent(QCommandLinkButton*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QCommandLinkButton_keyPressEvent(QCommandLinkButton*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QCommandLinkButton_focusInEvent(QCommandLinkButton*, intptr_t, QFocusEvent*);
 void miqt_exec_callback_QCommandLinkButton_focusOutEvent(QCommandLinkButton*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QCommandLinkButton_hitButton(const QCommandLinkButton*, intptr_t, QPoint*);
+bool miqt_exec_callback_QCommandLinkButton_hitButton(const QCommandLinkButton*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QCommandLinkButton_checkStateSet(QCommandLinkButton*, intptr_t);
 void miqt_exec_callback_QCommandLinkButton_nextCheckState(QCommandLinkButton*, intptr_t);
 void miqt_exec_callback_QCommandLinkButton_keyReleaseEvent(QCommandLinkButton*, intptr_t, QKeyEvent*);
@@ -119,13 +119,11 @@ public:
 			return QCommandLinkButton::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QCommandLinkButton_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QCommandLinkButton_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QCommandLinkButton_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QCommandLinkButton_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -152,13 +150,11 @@ public:
 			return QCommandLinkButton::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QCommandLinkButton_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QCommandLinkButton_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QCommandLinkButton_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QCommandLinkButton_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -253,14 +249,12 @@ public:
 			return QCommandLinkButton::hitButton(pos);
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		bool callback_return_value = miqt_exec_callback_QCommandLinkButton_hitButton(this, handle__hitButton, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QCommandLinkButton_virtualbase_hitButton(const void* self, QPoint* pos);
+	friend bool QCommandLinkButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__checkStateSet = 0;
@@ -1106,8 +1100,8 @@ bool QCommandLinkButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QCommandLinkButton_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQCommandLinkButton*>(self)->QCommandLinkButton::sizeHint());
+struct miqt_qsize QCommandLinkButton_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQCommandLinkButton*>(self)->QCommandLinkButton::sizeHint());
 }
 
 bool QCommandLinkButton_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1134,8 +1128,8 @@ bool QCommandLinkButton_override_virtual_minimumSizeHint(void* self, intptr_t sl
 	return true;
 }
 
-QSize* QCommandLinkButton_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQCommandLinkButton*>(self)->QCommandLinkButton::minimumSizeHint());
+struct miqt_qsize QCommandLinkButton_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQCommandLinkButton*>(self)->QCommandLinkButton::minimumSizeHint());
 }
 
 bool QCommandLinkButton_override_virtual_event(void* self, intptr_t slot) {
@@ -1218,8 +1212,8 @@ bool QCommandLinkButton_override_virtual_hitButton(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QCommandLinkButton_virtualbase_hitButton(const void* self, QPoint* pos) {
-	return static_cast<const MiqtVirtualQCommandLinkButton*>(self)->QCommandLinkButton::hitButton(*pos);
+bool QCommandLinkButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos) {
+	return static_cast<const MiqtVirtualQCommandLinkButton*>(self)->QCommandLinkButton::hitButton(miqt_from_cabi<QPoint>(pos));
 }
 
 bool QCommandLinkButton_override_virtual_checkStateSet(void* self, intptr_t slot) {
@@ -1795,10 +1789,6 @@ bool QCommandLinkButton_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QCommandLinkButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQCommandLinkButton*>(self)->QCommandLinkButton::disconnectNotify(*signal);
-}
-
-QSize* QCommandLinkButton_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QCommandLinkButton_virtualreturncopy_QVariant(QVariant* src) {

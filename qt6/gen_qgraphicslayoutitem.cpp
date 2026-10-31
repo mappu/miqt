@@ -10,11 +10,11 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsLayoutItem_setGeometry(QGraphicsLayoutItem*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsLayoutItem_setGeometry(QGraphicsLayoutItem*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QGraphicsLayoutItem_getContentsMargins(const QGraphicsLayoutItem*, intptr_t, double*, double*, double*, double*);
 void miqt_exec_callback_QGraphicsLayoutItem_updateGeometry(QGraphicsLayoutItem*, intptr_t);
 bool miqt_exec_callback_QGraphicsLayoutItem_isEmpty(const QGraphicsLayoutItem*, intptr_t);
-QSizeF* miqt_exec_callback_QGraphicsLayoutItem_sizeHint(const QGraphicsLayoutItem*, intptr_t, int, QSizeF*);
+struct miqt_qsizef miqt_exec_callback_QGraphicsLayoutItem_sizeHint(const QGraphicsLayoutItem*, intptr_t, int, struct miqt_qsizef);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -38,14 +38,12 @@ public:
 			return;
 		}
 
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QGraphicsLayoutItem_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QGraphicsLayoutItem_virtualbase_setGeometry(void* self, QRectF* rect);
+	friend void QGraphicsLayoutItem_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__getContentsMargins = 0;
@@ -113,13 +111,9 @@ public:
 
 		Qt::SizeHint which_ret = which;
 		int sigval1 = static_cast<int>(which_ret);
-		const QSizeF& constraint_ret = constraint;
-		// Cast returned reference into pointer
-		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
-		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsLayoutItem_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef sigval2 = miqt_to_cabi<struct miqt_qsizef>(constraint);
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QGraphicsLayoutItem_sizeHint(this, handle__sizeHint, sigval1, sigval2);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
 	// Wrappers to allow calling protected methods:
@@ -151,16 +145,16 @@ QSizePolicy* QGraphicsLayoutItem_sizePolicy(const QGraphicsLayoutItem* self) {
 	return new QSizePolicy(self->sizePolicy());
 }
 
-void QGraphicsLayoutItem_setMinimumSize(QGraphicsLayoutItem* self, QSizeF* size) {
-	self->setMinimumSize(*size);
+void QGraphicsLayoutItem_setMinimumSize(QGraphicsLayoutItem* self, struct miqt_qsizef size) {
+	self->setMinimumSize(miqt_from_cabi<QSizeF>(size));
 }
 
 void QGraphicsLayoutItem_setMinimumSize2(QGraphicsLayoutItem* self, double w, double h) {
 	self->setMinimumSize(static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-QSizeF* QGraphicsLayoutItem_minimumSize(const QGraphicsLayoutItem* self) {
-	return new QSizeF(self->minimumSize());
+struct miqt_qsizef QGraphicsLayoutItem_minimumSize(const QGraphicsLayoutItem* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->minimumSize());
 }
 
 void QGraphicsLayoutItem_setMinimumWidth(QGraphicsLayoutItem* self, double width) {
@@ -181,16 +175,16 @@ double QGraphicsLayoutItem_minimumHeight(const QGraphicsLayoutItem* self) {
 	return static_cast<double>(_ret);
 }
 
-void QGraphicsLayoutItem_setPreferredSize(QGraphicsLayoutItem* self, QSizeF* size) {
-	self->setPreferredSize(*size);
+void QGraphicsLayoutItem_setPreferredSize(QGraphicsLayoutItem* self, struct miqt_qsizef size) {
+	self->setPreferredSize(miqt_from_cabi<QSizeF>(size));
 }
 
 void QGraphicsLayoutItem_setPreferredSize2(QGraphicsLayoutItem* self, double w, double h) {
 	self->setPreferredSize(static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-QSizeF* QGraphicsLayoutItem_preferredSize(const QGraphicsLayoutItem* self) {
-	return new QSizeF(self->preferredSize());
+struct miqt_qsizef QGraphicsLayoutItem_preferredSize(const QGraphicsLayoutItem* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->preferredSize());
 }
 
 void QGraphicsLayoutItem_setPreferredWidth(QGraphicsLayoutItem* self, double width) {
@@ -211,16 +205,16 @@ double QGraphicsLayoutItem_preferredHeight(const QGraphicsLayoutItem* self) {
 	return static_cast<double>(_ret);
 }
 
-void QGraphicsLayoutItem_setMaximumSize(QGraphicsLayoutItem* self, QSizeF* size) {
-	self->setMaximumSize(*size);
+void QGraphicsLayoutItem_setMaximumSize(QGraphicsLayoutItem* self, struct miqt_qsizef size) {
+	self->setMaximumSize(miqt_from_cabi<QSizeF>(size));
 }
 
 void QGraphicsLayoutItem_setMaximumSize2(QGraphicsLayoutItem* self, double w, double h) {
 	self->setMaximumSize(static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-QSizeF* QGraphicsLayoutItem_maximumSize(const QGraphicsLayoutItem* self) {
-	return new QSizeF(self->maximumSize());
+struct miqt_qsizef QGraphicsLayoutItem_maximumSize(const QGraphicsLayoutItem* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->maximumSize());
 }
 
 void QGraphicsLayoutItem_setMaximumWidth(QGraphicsLayoutItem* self, double width) {
@@ -241,24 +235,24 @@ double QGraphicsLayoutItem_maximumHeight(const QGraphicsLayoutItem* self) {
 	return static_cast<double>(_ret);
 }
 
-void QGraphicsLayoutItem_setGeometry(QGraphicsLayoutItem* self, QRectF* rect) {
-	self->setGeometry(*rect);
+void QGraphicsLayoutItem_setGeometry(QGraphicsLayoutItem* self, struct miqt_qrectf rect) {
+	self->setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
-QRectF* QGraphicsLayoutItem_geometry(const QGraphicsLayoutItem* self) {
-	return new QRectF(self->geometry());
+struct miqt_qrectf QGraphicsLayoutItem_geometry(const QGraphicsLayoutItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->geometry());
 }
 
 void QGraphicsLayoutItem_getContentsMargins(const QGraphicsLayoutItem* self, double* left, double* top, double* right, double* bottom) {
 	self->getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 }
 
-QRectF* QGraphicsLayoutItem_contentsRect(const QGraphicsLayoutItem* self) {
-	return new QRectF(self->contentsRect());
+struct miqt_qrectf QGraphicsLayoutItem_contentsRect(const QGraphicsLayoutItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->contentsRect());
 }
 
-QSizeF* QGraphicsLayoutItem_effectiveSizeHint(const QGraphicsLayoutItem* self, int which) {
-	return new QSizeF(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which)));
+struct miqt_qsizef QGraphicsLayoutItem_effectiveSizeHint(const QGraphicsLayoutItem* self, int which) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which)));
 }
 
 void QGraphicsLayoutItem_updateGeometry(QGraphicsLayoutItem* self) {
@@ -293,8 +287,8 @@ void QGraphicsLayoutItem_setSizePolicy3(QGraphicsLayoutItem* self, int hPolicy, 
 	self->setSizePolicy(static_cast<QSizePolicy::Policy>(hPolicy), static_cast<QSizePolicy::Policy>(vPolicy), static_cast<QSizePolicy::ControlType>(controlType));
 }
 
-QSizeF* QGraphicsLayoutItem_effectiveSizeHint2(const QGraphicsLayoutItem* self, int which, QSizeF* constraint) {
-	return new QSizeF(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+struct miqt_qsizef QGraphicsLayoutItem_effectiveSizeHint2(const QGraphicsLayoutItem* self, int which, struct miqt_qsizef constraint) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), miqt_from_cabi<QSizeF>(constraint)));
 }
 
 bool QGraphicsLayoutItem_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -307,8 +301,8 @@ bool QGraphicsLayoutItem_override_virtual_setGeometry(void* self, intptr_t slot)
 	return true;
 }
 
-void QGraphicsLayoutItem_virtualbase_setGeometry(void* self, QRectF* rect) {
-	static_cast<MiqtVirtualQGraphicsLayoutItem*>(self)->QGraphicsLayoutItem::setGeometry(*rect);
+void QGraphicsLayoutItem_virtualbase_setGeometry(void* self, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQGraphicsLayoutItem*>(self)->QGraphicsLayoutItem::setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 bool QGraphicsLayoutItem_override_virtual_getContentsMargins(void* self, intptr_t slot) {
@@ -361,10 +355,6 @@ bool QGraphicsLayoutItem_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 	self_cast->handle__sizeHint = slot;
 	return true;
-}
-
-QSizeF* QGraphicsLayoutItem_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
 }
 
 void QGraphicsLayoutItem_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item) {

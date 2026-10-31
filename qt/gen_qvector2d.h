@@ -33,9 +33,9 @@ typedef struct QVector4D QVector4D;
 QVector2D* QVector2D_new();
 QVector2D* QVector2D_new2(int param1);
 QVector2D* QVector2D_new3(float xpos, float ypos);
-QVector2D* QVector2D_new4(QPoint* point);
-QVector2D* QVector2D_new5(QPointF* point);
-QVector2D* QVector2D_new6(QVector3D* vector);
+QVector2D* QVector2D_new4(struct miqt_qpoint point);
+QVector2D* QVector2D_new5(struct miqt_qpointf point);
+QVector2D* QVector2D_new6(struct miqt_qvector3d vector);
 QVector2D* QVector2D_new7(QVector4D* vector);
 QVector2D* QVector2D_new8(QVector2D* param1);
 bool QVector2D_isNull(const QVector2D* self);
@@ -57,10 +57,10 @@ QVector2D* QVector2D_operatorMultiplyAssignWithVector(QVector2D* self, QVector2D
 QVector2D* QVector2D_operatorDivideAssign(QVector2D* self, float divisor);
 QVector2D* QVector2D_operatorDivideAssignWithVector(QVector2D* self, QVector2D* vector);
 float QVector2D_dotProduct(QVector2D* v1, QVector2D* v2);
-QVector3D* QVector2D_toVector3D(const QVector2D* self);
+struct miqt_qvector3d QVector2D_toVector3D(const QVector2D* self);
 QVector4D* QVector2D_toVector4D(const QVector2D* self);
-QPoint* QVector2D_toPoint(const QVector2D* self);
-QPointF* QVector2D_toPointF(const QVector2D* self);
+struct miqt_qpoint QVector2D_toPoint(const QVector2D* self);
+struct miqt_qpointf QVector2D_toPointF(const QVector2D* self);
 QVariant* QVector2D_ToQVariant(const QVector2D* self);
 
 void QVector2D_delete(QVector2D* self);

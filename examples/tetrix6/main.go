@@ -462,11 +462,11 @@ func NewTetrixBoard() *TetrixBoard {
 
 	frameWidth := self.frame.FrameWidth()
 
-	self.frame.OnSizeHint(func(super func() *qt.QSize) *qt.QSize {
+	self.frame.OnSizeHint(func(super func() qt.QSize) qt.QSize {
 		return qt.NewQSize2(boardWidth*15+frameWidth*2, boardHeight*15+frameWidth*2)
 	})
 
-	self.frame.OnMinimumSizeHint(func(super func() *qt.QSize) *qt.QSize {
+	self.frame.OnMinimumSizeHint(func(super func() qt.QSize) qt.QSize {
 		return qt.NewQSize2(boardWidth*5+frameWidth*2, boardHeight*5+frameWidth*2)
 	})
 

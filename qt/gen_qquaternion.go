@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -71,10 +72,9 @@ func NewQQuaternion3(scalar float32, xpos float32, ypos float32, zpos float32) *
 }
 
 // NewQQuaternion4 constructs a new QQuaternion object.
-func NewQQuaternion4(scalar float32, vector *QVector3D) *QQuaternion {
-	defer runtime.KeepAlive(vector)
+func NewQQuaternion4(scalar float32, vector QVector3D) *QQuaternion {
 
-	return newQQuaternion(C.QQuaternion_new4((C.float)(scalar), vector.cPointer()))
+	return newQQuaternion(C.QQuaternion_new4((C.float)(scalar), libmiqt.ValueCast[C.struct_miqt_qvector3d](vector)))
 }
 
 // NewQQuaternion5 constructs a new QQuaternion object.
@@ -101,17 +101,14 @@ func (this *QQuaternion) IsIdentity() bool {
 	return (bool)(C.QQuaternion_isIdentity(this.h))
 }
 
-func (this *QQuaternion) Vector() *QVector3D {
+func (this *QQuaternion) Vector() QVector3D {
 	defer runtime.KeepAlive(this)
-	_goptr := newQVector3D(C.QQuaternion_vector(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QVector3D](C.QQuaternion_vector(this.h))
 }
 
-func (this *QQuaternion) SetVector(vector *QVector3D) {
+func (this *QQuaternion) SetVector(vector QVector3D) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(vector)
-	C.QQuaternion_setVector(this.h, vector.cPointer())
+	C.QQuaternion_setVector(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](vector))
 }
 
 func (this *QQuaternion) SetVector2(x float32, y float32, z float32) {
@@ -208,12 +205,9 @@ func (this *QQuaternion) Conjugate() *QQuaternion {
 	return _goptr
 }
 
-func (this *QQuaternion) RotatedVector(vector *QVector3D) *QVector3D {
+func (this *QQuaternion) RotatedVector(vector QVector3D) QVector3D {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(vector)
-	_goptr := newQVector3D(C.QQuaternion_rotatedVector(this.h, vector.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QVector3D](C.QQuaternion_rotatedVector(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](vector)))
 }
 
 func (this *QQuaternion) OperatorPlusAssign(quaternion *QQuaternion) *QQuaternion {
@@ -270,13 +264,11 @@ func (this *QQuaternion) ToQVariant() *QVariant {
 
 func (this *QQuaternion) GetAxisAndAngle(axis *QVector3D, angle *float32) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(axis)
 	C.QQuaternion_getAxisAndAngle(this.h, axis.cPointer(), (*C.float)(unsafe.Pointer(angle)))
 }
 
-func QQuaternion_FromAxisAndAngle(axis *QVector3D, angle float32) *QQuaternion {
-	defer runtime.KeepAlive(axis)
-	_goptr := newQQuaternion(C.QQuaternion_fromAxisAndAngle(axis.cPointer(), (C.float)(angle)))
+func QQuaternion_FromAxisAndAngle(axis QVector3D, angle float32) *QQuaternion {
+	_goptr := newQQuaternion(C.QQuaternion_fromAxisAndAngle(libmiqt.ValueCast[C.struct_miqt_qvector3d](axis), (C.float)(angle)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -292,16 +284,13 @@ func QQuaternion_FromAxisAndAngle2(x float32, y float32, z float32, angle float3
 	return _goptr
 }
 
-func (this *QQuaternion) ToEulerAngles() *QVector3D {
+func (this *QQuaternion) ToEulerAngles() QVector3D {
 	defer runtime.KeepAlive(this)
-	_goptr := newQVector3D(C.QQuaternion_toEulerAngles(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QVector3D](C.QQuaternion_toEulerAngles(this.h))
 }
 
-func QQuaternion_FromEulerAngles(eulerAngles *QVector3D) *QQuaternion {
-	defer runtime.KeepAlive(eulerAngles)
-	_goptr := newQQuaternion(C.QQuaternion_fromEulerAngles(eulerAngles.cPointer()))
+func QQuaternion_FromEulerAngles(eulerAngles QVector3D) *QQuaternion {
+	_goptr := newQQuaternion(C.QQuaternion_fromEulerAngles(libmiqt.ValueCast[C.struct_miqt_qvector3d](eulerAngles)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -319,33 +308,23 @@ func QQuaternion_FromEulerAngles2(pitch float32, yaw float32, roll float32) *QQu
 
 func (this *QQuaternion) GetAxes(xAxis *QVector3D, yAxis *QVector3D, zAxis *QVector3D) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(xAxis)
-	defer runtime.KeepAlive(yAxis)
-	defer runtime.KeepAlive(zAxis)
 	C.QQuaternion_getAxes(this.h, xAxis.cPointer(), yAxis.cPointer(), zAxis.cPointer())
 }
 
-func QQuaternion_FromAxes(xAxis *QVector3D, yAxis *QVector3D, zAxis *QVector3D) *QQuaternion {
-	defer runtime.KeepAlive(xAxis)
-	defer runtime.KeepAlive(yAxis)
-	defer runtime.KeepAlive(zAxis)
-	_goptr := newQQuaternion(C.QQuaternion_fromAxes(xAxis.cPointer(), yAxis.cPointer(), zAxis.cPointer()))
+func QQuaternion_FromAxes(xAxis QVector3D, yAxis QVector3D, zAxis QVector3D) *QQuaternion {
+	_goptr := newQQuaternion(C.QQuaternion_fromAxes(libmiqt.ValueCast[C.struct_miqt_qvector3d](xAxis), libmiqt.ValueCast[C.struct_miqt_qvector3d](yAxis), libmiqt.ValueCast[C.struct_miqt_qvector3d](zAxis)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QQuaternion_FromDirection(direction *QVector3D, up *QVector3D) *QQuaternion {
-	defer runtime.KeepAlive(direction)
-	defer runtime.KeepAlive(up)
-	_goptr := newQQuaternion(C.QQuaternion_fromDirection(direction.cPointer(), up.cPointer()))
+func QQuaternion_FromDirection(direction QVector3D, up QVector3D) *QQuaternion {
+	_goptr := newQQuaternion(C.QQuaternion_fromDirection(libmiqt.ValueCast[C.struct_miqt_qvector3d](direction), libmiqt.ValueCast[C.struct_miqt_qvector3d](up)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QQuaternion_RotationTo(from *QVector3D, to *QVector3D) *QQuaternion {
-	defer runtime.KeepAlive(from)
-	defer runtime.KeepAlive(to)
-	_goptr := newQQuaternion(C.QQuaternion_rotationTo(from.cPointer(), to.cPointer()))
+func QQuaternion_RotationTo(from QVector3D, to QVector3D) *QQuaternion {
+	_goptr := newQQuaternion(C.QQuaternion_rotationTo(libmiqt.ValueCast[C.struct_miqt_qvector3d](from), libmiqt.ValueCast[C.struct_miqt_qvector3d](to)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

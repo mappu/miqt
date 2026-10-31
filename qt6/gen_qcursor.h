@@ -49,13 +49,13 @@ QBitmap* QCursor_mask(const QCursor* self, int param1);
 QBitmap* QCursor_bitmap2(const QCursor* self);
 QBitmap* QCursor_mask2(const QCursor* self);
 QPixmap* QCursor_pixmap(const QCursor* self);
-QPoint* QCursor_hotSpot(const QCursor* self);
-QPoint* QCursor_pos();
-QPoint* QCursor_posWithScreen(QScreen* screen);
+struct miqt_qpoint QCursor_hotSpot(const QCursor* self);
+struct miqt_qpoint QCursor_pos();
+struct miqt_qpoint QCursor_posWithScreen(QScreen* screen);
 void QCursor_setPos(int x, int y);
 void QCursor_setPos2(QScreen* screen, int x, int y);
-void QCursor_setPosWithQPoint(QPoint* p);
-void QCursor_setPos3(QScreen* screen, QPoint* p);
+void QCursor_setPosWithQPoint(struct miqt_qpoint p);
+void QCursor_setPos3(QScreen* screen, struct miqt_qpoint p);
 
 void QCursor_delete(QCursor* self);
 

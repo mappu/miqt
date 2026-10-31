@@ -82,7 +82,7 @@ bool QsciPrinter_virtualbase_setPageSize(void* self, QPageSize* pageSize);
 bool QsciPrinter_override_virtual_setPageOrientation(void* self, intptr_t slot);
 bool QsciPrinter_virtualbase_setPageOrientation(void* self, int orientation);
 bool QsciPrinter_override_virtual_setPageMargins(void* self, intptr_t slot);
-bool QsciPrinter_virtualbase_setPageMargins(void* self, QMarginsF* margins, int units);
+bool QsciPrinter_virtualbase_setPageMargins(void* self, struct miqt_qmarginsf margins, int units);
 bool QsciPrinter_override_virtual_setPageRanges(void* self, intptr_t slot);
 void QsciPrinter_virtualbase_setPageRanges(void* self, QPageRanges* ranges);
 bool QsciPrinter_override_virtual_initPainter(void* self, intptr_t slot);

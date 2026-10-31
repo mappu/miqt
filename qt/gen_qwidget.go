@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -188,20 +189,16 @@ func (this *QWidget) SetWindowModified(windowModified bool) {
 	C.QWidget_setWindowModified(this.h, (C.bool)(windowModified))
 }
 
-func (this *QWidget) FrameGeometry() *QRect {
-	_goptr := newQRect(C.QWidget_frameGeometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) FrameGeometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QWidget_frameGeometry(this.h))
 }
 
-func (this *QWidget) Geometry() *QRect {
-	return newQRect(C.QWidget_geometry(this.h))
+func (this *QWidget) Geometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QWidget_geometry(this.h))
 }
 
-func (this *QWidget) NormalGeometry() *QRect {
-	_goptr := newQRect(C.QWidget_normalGeometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) NormalGeometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QWidget_normalGeometry(this.h))
 }
 
 func (this *QWidget) X() int {
@@ -212,22 +209,16 @@ func (this *QWidget) Y() int {
 	return (int)(C.QWidget_y(this.h))
 }
 
-func (this *QWidget) Pos() *QPoint {
-	_goptr := newQPoint(C.QWidget_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) Pos() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWidget_pos(this.h))
 }
 
-func (this *QWidget) FrameSize() *QSize {
-	_goptr := newQSize(C.QWidget_frameSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) FrameSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QWidget_frameSize(this.h))
 }
 
-func (this *QWidget) Size() *QSize {
-	_goptr := newQSize(C.QWidget_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) Size() QSize {
+	return libmiqt.ValueCast[QSize](C.QWidget_size(this.h))
 }
 
 func (this *QWidget) Width() int {
@@ -238,16 +229,12 @@ func (this *QWidget) Height() int {
 	return (int)(C.QWidget_height(this.h))
 }
 
-func (this *QWidget) Rect() *QRect {
-	_goptr := newQRect(C.QWidget_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) Rect() QRect {
+	return libmiqt.ValueCast[QRect](C.QWidget_rect(this.h))
 }
 
-func (this *QWidget) ChildrenRect() *QRect {
-	_goptr := newQRect(C.QWidget_childrenRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) ChildrenRect() QRect {
+	return libmiqt.ValueCast[QRect](C.QWidget_childrenRect(this.h))
 }
 
 func (this *QWidget) ChildrenRegion() *QRegion {
@@ -256,16 +243,12 @@ func (this *QWidget) ChildrenRegion() *QRegion {
 	return _goptr
 }
 
-func (this *QWidget) MinimumSize() *QSize {
-	_goptr := newQSize(C.QWidget_minimumSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) MinimumSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QWidget_minimumSize(this.h))
 }
 
-func (this *QWidget) MaximumSize() *QSize {
-	_goptr := newQSize(C.QWidget_maximumSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) MaximumSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QWidget_maximumSize(this.h))
 }
 
 func (this *QWidget) MinimumWidth() int {
@@ -284,18 +267,16 @@ func (this *QWidget) MaximumHeight() int {
 	return (int)(C.QWidget_maximumHeight(this.h))
 }
 
-func (this *QWidget) SetMinimumSize(minimumSize *QSize) {
-	defer runtime.KeepAlive(minimumSize)
-	C.QWidget_setMinimumSize(this.h, minimumSize.cPointer())
+func (this *QWidget) SetMinimumSize(minimumSize QSize) {
+	C.QWidget_setMinimumSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](minimumSize))
 }
 
 func (this *QWidget) SetMinimumSize2(minw int, minh int) {
 	C.QWidget_setMinimumSize2(this.h, (C.int)(minw), (C.int)(minh))
 }
 
-func (this *QWidget) SetMaximumSize(maximumSize *QSize) {
-	defer runtime.KeepAlive(maximumSize)
-	C.QWidget_setMaximumSize(this.h, maximumSize.cPointer())
+func (this *QWidget) SetMaximumSize(maximumSize QSize) {
+	C.QWidget_setMaximumSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](maximumSize))
 }
 
 func (this *QWidget) SetMaximumSize2(maxw int, maxh int) {
@@ -318,39 +299,32 @@ func (this *QWidget) SetMaximumHeight(maxh int) {
 	C.QWidget_setMaximumHeight(this.h, (C.int)(maxh))
 }
 
-func (this *QWidget) SizeIncrement() *QSize {
-	_goptr := newQSize(C.QWidget_sizeIncrement(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) SizeIncrement() QSize {
+	return libmiqt.ValueCast[QSize](C.QWidget_sizeIncrement(this.h))
 }
 
-func (this *QWidget) SetSizeIncrement(sizeIncrement *QSize) {
-	defer runtime.KeepAlive(sizeIncrement)
-	C.QWidget_setSizeIncrement(this.h, sizeIncrement.cPointer())
+func (this *QWidget) SetSizeIncrement(sizeIncrement QSize) {
+	C.QWidget_setSizeIncrement(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](sizeIncrement))
 }
 
 func (this *QWidget) SetSizeIncrement2(w int, h int) {
 	C.QWidget_setSizeIncrement2(this.h, (C.int)(w), (C.int)(h))
 }
 
-func (this *QWidget) BaseSize() *QSize {
-	_goptr := newQSize(C.QWidget_baseSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) BaseSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QWidget_baseSize(this.h))
 }
 
-func (this *QWidget) SetBaseSize(baseSize *QSize) {
-	defer runtime.KeepAlive(baseSize)
-	C.QWidget_setBaseSize(this.h, baseSize.cPointer())
+func (this *QWidget) SetBaseSize(baseSize QSize) {
+	C.QWidget_setBaseSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](baseSize))
 }
 
 func (this *QWidget) SetBaseSize2(basew int, baseh int) {
 	C.QWidget_setBaseSize2(this.h, (C.int)(basew), (C.int)(baseh))
 }
 
-func (this *QWidget) SetFixedSize(fixedSize *QSize) {
-	defer runtime.KeepAlive(fixedSize)
-	C.QWidget_setFixedSize(this.h, fixedSize.cPointer())
+func (this *QWidget) SetFixedSize(fixedSize QSize) {
+	C.QWidget_setFixedSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](fixedSize))
 }
 
 func (this *QWidget) SetFixedSize2(w int, h int) {
@@ -365,46 +339,28 @@ func (this *QWidget) SetFixedHeight(h int) {
 	C.QWidget_setFixedHeight(this.h, (C.int)(h))
 }
 
-func (this *QWidget) MapToGlobal(param1 *QPoint) *QPoint {
-	defer runtime.KeepAlive(param1)
-	_goptr := newQPoint(C.QWidget_mapToGlobal(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) MapToGlobal(param1 QPoint) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWidget_mapToGlobal(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 }
 
-func (this *QWidget) MapFromGlobal(param1 *QPoint) *QPoint {
-	defer runtime.KeepAlive(param1)
-	_goptr := newQPoint(C.QWidget_mapFromGlobal(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) MapFromGlobal(param1 QPoint) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWidget_mapFromGlobal(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 }
 
-func (this *QWidget) MapToParent(param1 *QPoint) *QPoint {
-	defer runtime.KeepAlive(param1)
-	_goptr := newQPoint(C.QWidget_mapToParent(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) MapToParent(param1 QPoint) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWidget_mapToParent(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 }
 
-func (this *QWidget) MapFromParent(param1 *QPoint) *QPoint {
-	defer runtime.KeepAlive(param1)
-	_goptr := newQPoint(C.QWidget_mapFromParent(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) MapFromParent(param1 QPoint) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWidget_mapFromParent(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 }
 
-func (this *QWidget) MapTo(param1 *QWidget, param2 *QPoint) *QPoint {
-	defer runtime.KeepAlive(param2)
-	_goptr := newQPoint(C.QWidget_mapTo(this.h, param1.cPointer(), param2.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) MapTo(param1 *QWidget, param2 QPoint) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWidget_mapTo(this.h, param1.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](param2)))
 }
 
-func (this *QWidget) MapFrom(param1 *QWidget, param2 *QPoint) *QPoint {
-	defer runtime.KeepAlive(param2)
-	_goptr := newQPoint(C.QWidget_mapFrom(this.h, param1.cPointer(), param2.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) MapFrom(param1 *QWidget, param2 QPoint) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWidget_mapFrom(this.h, param1.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](param2)))
 }
 
 func (this *QWidget) Window() *QWidget {
@@ -890,9 +846,8 @@ func (this *QWidget) Update2(x int, y int, w int, h int) {
 	C.QWidget_update2(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 }
 
-func (this *QWidget) UpdateWithQRect(param1 *QRect) {
-	defer runtime.KeepAlive(param1)
-	C.QWidget_updateWithQRect(this.h, param1.cPointer())
+func (this *QWidget) UpdateWithQRect(param1 QRect) {
+	C.QWidget_updateWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](param1))
 }
 
 func (this *QWidget) UpdateWithQRegion(param1 *QRegion) {
@@ -904,9 +859,8 @@ func (this *QWidget) Repaint2(x int, y int, w int, h int) {
 	C.QWidget_repaint2(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 }
 
-func (this *QWidget) RepaintWithQRect(param1 *QRect) {
-	defer runtime.KeepAlive(param1)
-	C.QWidget_repaintWithQRect(this.h, param1.cPointer())
+func (this *QWidget) RepaintWithQRect(param1 QRect) {
+	C.QWidget_repaintWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](param1))
 }
 
 func (this *QWidget) RepaintWithQRegion(param1 *QRegion) {
@@ -966,27 +920,24 @@ func (this *QWidget) Move(x int, y int) {
 	C.QWidget_move(this.h, (C.int)(x), (C.int)(y))
 }
 
-func (this *QWidget) MoveWithQPoint(param1 *QPoint) {
-	defer runtime.KeepAlive(param1)
-	C.QWidget_moveWithQPoint(this.h, param1.cPointer())
+func (this *QWidget) MoveWithQPoint(param1 QPoint) {
+	C.QWidget_moveWithQPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](param1))
 }
 
 func (this *QWidget) Resize(w int, h int) {
 	C.QWidget_resize(this.h, (C.int)(w), (C.int)(h))
 }
 
-func (this *QWidget) ResizeWithQSize(param1 *QSize) {
-	defer runtime.KeepAlive(param1)
-	C.QWidget_resizeWithQSize(this.h, param1.cPointer())
+func (this *QWidget) ResizeWithQSize(param1 QSize) {
+	C.QWidget_resizeWithQSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](param1))
 }
 
 func (this *QWidget) SetGeometry(x int, y int, w int, h int) {
 	C.QWidget_setGeometry(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 }
 
-func (this *QWidget) SetGeometryWithGeometry(geometry *QRect) {
-	defer runtime.KeepAlive(geometry)
-	C.QWidget_setGeometryWithGeometry(this.h, geometry.cPointer())
+func (this *QWidget) SetGeometryWithGeometry(geometry QRect) {
+	C.QWidget_setGeometryWithGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](geometry))
 }
 
 func (this *QWidget) SaveGeometry() []byte {
@@ -1047,16 +998,12 @@ func (this *QWidget) OverrideWindowState(state WindowState) {
 	C.QWidget_overrideWindowState(this.h, (C.int)(state))
 }
 
-func (this *QWidget) SizeHint() *QSize {
-	_goptr := newQSize(C.QWidget_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QWidget_sizeHint(this.h))
 }
 
-func (this *QWidget) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QWidget_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QWidget_minimumSizeHint(this.h))
 }
 
 func (this *QWidget) SizePolicy() *QSizePolicy {
@@ -1092,25 +1039,20 @@ func (this *QWidget) SetContentsMargins(left int, top int, right int, bottom int
 	C.QWidget_setContentsMargins(this.h, (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
 }
 
-func (this *QWidget) SetContentsMarginsWithMargins(margins *QMargins) {
-	defer runtime.KeepAlive(margins)
-	C.QWidget_setContentsMarginsWithMargins(this.h, margins.cPointer())
+func (this *QWidget) SetContentsMarginsWithMargins(margins QMargins) {
+	C.QWidget_setContentsMarginsWithMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmargins](margins))
 }
 
 func (this *QWidget) GetContentsMargins(left *int, top *int, right *int, bottom *int) {
 	C.QWidget_getContentsMargins(this.h, (*C.int)(unsafe.Pointer(left)), (*C.int)(unsafe.Pointer(top)), (*C.int)(unsafe.Pointer(right)), (*C.int)(unsafe.Pointer(bottom)))
 }
 
-func (this *QWidget) ContentsMargins() *QMargins {
-	_goptr := newQMargins(C.QWidget_contentsMargins(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) ContentsMargins() QMargins {
+	return libmiqt.ValueCast[QMargins](C.QWidget_contentsMargins(this.h))
 }
 
-func (this *QWidget) ContentsRect() *QRect {
-	_goptr := newQRect(C.QWidget_contentsRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWidget) ContentsRect() QRect {
+	return libmiqt.ValueCast[QRect](C.QWidget_contentsRect(this.h))
 }
 
 func (this *QWidget) Layout() *QLayout {
@@ -1137,9 +1079,8 @@ func (this *QWidget) Scroll(dx int, dy int) {
 	C.QWidget_scroll(this.h, (C.int)(dx), (C.int)(dy))
 }
 
-func (this *QWidget) Scroll2(dx int, dy int, param3 *QRect) {
-	defer runtime.KeepAlive(param3)
-	C.QWidget_scroll2(this.h, (C.int)(dx), (C.int)(dy), param3.cPointer())
+func (this *QWidget) Scroll2(dx int, dy int, param3 QRect) {
+	C.QWidget_scroll2(this.h, (C.int)(dx), (C.int)(dy), libmiqt.ValueCast[C.struct_miqt_qrect](param3))
 }
 
 func (this *QWidget) FocusWidget() *QWidget {
@@ -1238,9 +1179,8 @@ func (this *QWidget) ChildAt(x int, y int) *QWidget {
 	return newQWidget(C.QWidget_childAt(this.h, (C.int)(x), (C.int)(y)))
 }
 
-func (this *QWidget) ChildAtWithQPoint(p *QPoint) *QWidget {
-	defer runtime.KeepAlive(p)
-	return newQWidget(C.QWidget_childAtWithQPoint(this.h, p.cPointer()))
+func (this *QWidget) ChildAtWithQPoint(p QPoint) *QWidget {
+	return newQWidget(C.QWidget_childAtWithQPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
 func (this *QWidget) SetAttribute(param1 WidgetAttribute) {
@@ -1362,23 +1302,22 @@ func miqt_exec_callback_QWidget_windowIconTextChanged(cb C.intptr_t, iconText C.
 	gofunc(slotval1)
 }
 
-func (this *QWidget) CustomContextMenuRequested(pos *QPoint) {
-	defer runtime.KeepAlive(pos)
-	C.QWidget_customContextMenuRequested(this.h, pos.cPointer())
+func (this *QWidget) CustomContextMenuRequested(pos QPoint) {
+	C.QWidget_customContextMenuRequested(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
-func (this *QWidget) OnCustomContextMenuRequested(slot func(pos *QPoint)) {
+func (this *QWidget) OnCustomContextMenuRequested(slot func(pos QPoint)) {
 	C.QWidget_connect_customContextMenuRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidget_customContextMenuRequested
-func miqt_exec_callback_QWidget_customContextMenuRequested(cb C.intptr_t, pos *C.QPoint) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(pos *QPoint))
+func miqt_exec_callback_QWidget_customContextMenuRequested(cb C.intptr_t, pos C.struct_miqt_qpoint) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pos QPoint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPoint(pos)
+	slotval1 := libmiqt.ValueCast[QPoint](pos)
 
 	gofunc(slotval1)
 }
@@ -1441,49 +1380,42 @@ func QWidget_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QWidget) Render2(target *QPaintDevice, targetOffset *QPoint) {
+func (this *QWidget) Render2(target *QPaintDevice, targetOffset QPoint) {
 	defer runtime.KeepAlive(target)
-	defer runtime.KeepAlive(targetOffset)
-	C.QWidget_render2(this.h, target.cPointer(), targetOffset.cPointer())
+	C.QWidget_render2(this.h, target.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](targetOffset))
 }
 
-func (this *QWidget) Render3(target *QPaintDevice, targetOffset *QPoint, sourceRegion *QRegion) {
+func (this *QWidget) Render3(target *QPaintDevice, targetOffset QPoint, sourceRegion *QRegion) {
 	defer runtime.KeepAlive(target)
-	defer runtime.KeepAlive(targetOffset)
 	defer runtime.KeepAlive(sourceRegion)
-	C.QWidget_render3(this.h, target.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer())
+	C.QWidget_render3(this.h, target.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](targetOffset), sourceRegion.cPointer())
 }
 
-func (this *QWidget) Render4(target *QPaintDevice, targetOffset *QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
+func (this *QWidget) Render4(target *QPaintDevice, targetOffset QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
 	defer runtime.KeepAlive(target)
-	defer runtime.KeepAlive(targetOffset)
 	defer runtime.KeepAlive(sourceRegion)
-	C.QWidget_render4(this.h, target.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
+	C.QWidget_render4(this.h, target.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](targetOffset), sourceRegion.cPointer(), (C.int)(renderFlags))
 }
 
-func (this *QWidget) Render5(painter *QPainter, targetOffset *QPoint) {
+func (this *QWidget) Render5(painter *QPainter, targetOffset QPoint) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(targetOffset)
-	C.QWidget_render5(this.h, painter.cPointer(), targetOffset.cPointer())
+	C.QWidget_render5(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](targetOffset))
 }
 
-func (this *QWidget) Render6(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion) {
+func (this *QWidget) Render6(painter *QPainter, targetOffset QPoint, sourceRegion *QRegion) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(targetOffset)
 	defer runtime.KeepAlive(sourceRegion)
-	C.QWidget_render6(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer())
+	C.QWidget_render6(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](targetOffset), sourceRegion.cPointer())
 }
 
-func (this *QWidget) Render7(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
+func (this *QWidget) Render7(painter *QPainter, targetOffset QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(targetOffset)
 	defer runtime.KeepAlive(sourceRegion)
-	C.QWidget_render7(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
+	C.QWidget_render7(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](targetOffset), sourceRegion.cPointer(), (C.int)(renderFlags))
 }
 
-func (this *QWidget) GrabWithRectangle(rectangle *QRect) *QPixmap {
-	defer runtime.KeepAlive(rectangle)
-	_goptr := newQPixmap(C.QWidget_grabWithRectangle(this.h, rectangle.cPointer()))
+func (this *QWidget) GrabWithRectangle(rectangle QRect) *QPixmap {
+	_goptr := newQPixmap(C.QWidget_grabWithRectangle(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rectangle)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1755,14 +1687,12 @@ func miqt_exec_callback_QWidget_setVisible(self *C.QWidget, cb C.intptr_t, visib
 
 }
 
-func (this *QWidget) callVirtualBase_SizeHint() *QSize {
+func (this *QWidget) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QWidget) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1770,27 +1700,24 @@ func (this *QWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QWidget_sizeHint
-func miqt_exec_callback_QWidget_sizeHint(self *C.QWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QWidget_sizeHint(self *C.QWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QWidget{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QWidget) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QWidget) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QWidget) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1798,16 +1725,15 @@ func (this *QWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QWidget_minimumSizeHint
-func miqt_exec_callback_QWidget_minimumSizeHint(self *C.QWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QWidget_minimumSizeHint(self *C.QWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QWidget{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2691,7 +2617,6 @@ func miqt_exec_callback_QWidget_initPainter(self *C.QWidget, cb C.intptr_t, pain
 }
 
 func (this *QWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

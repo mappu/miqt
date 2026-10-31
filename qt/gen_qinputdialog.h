@@ -130,8 +130,8 @@ void QInputDialog_setOkButtonText(QInputDialog* self, struct miqt_string text);
 struct miqt_string QInputDialog_okButtonText(const QInputDialog* self);
 void QInputDialog_setCancelButtonText(QInputDialog* self, struct miqt_string text);
 struct miqt_string QInputDialog_cancelButtonText(const QInputDialog* self);
-QSize* QInputDialog_minimumSizeHint(const QInputDialog* self);
-QSize* QInputDialog_sizeHint(const QInputDialog* self);
+struct miqt_qsize QInputDialog_minimumSizeHint(const QInputDialog* self);
+struct miqt_qsize QInputDialog_sizeHint(const QInputDialog* self);
 void QInputDialog_setVisible(QInputDialog* self, bool visible);
 struct miqt_string QInputDialog_getText(QWidget* parent, struct miqt_string title, struct miqt_string label);
 struct miqt_string QInputDialog_getMultiLineText(QWidget* parent, struct miqt_string title, struct miqt_string label);
@@ -187,9 +187,9 @@ double QInputDialog_getDouble7(QWidget* parent, struct miqt_string title, struct
 double QInputDialog_getDouble8(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok, int flags);
 
 bool QInputDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QInputDialog_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QInputDialog_virtualbase_minimumSizeHint(const void* self);
 bool QInputDialog_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QInputDialog_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QInputDialog_virtualbase_sizeHint(const void* self);
 bool QInputDialog_override_virtual_setVisible(void* self, intptr_t slot);
 void QInputDialog_virtualbase_setVisible(void* self, bool visible);
 bool QInputDialog_override_virtual_done(void* self, intptr_t slot);
@@ -290,7 +290,6 @@ bool QInputDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QInputDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QInputDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QInputDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QInputDialog_virtualreturncopy_QSize(QSize* src);
 QVariant* QInputDialog_virtualreturncopy_QVariant(QVariant* src);
 
 void QInputDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);

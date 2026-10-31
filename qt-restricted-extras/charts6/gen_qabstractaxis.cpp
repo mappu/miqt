@@ -28,17 +28,17 @@ void miqt_exec_callback_QAbstractAxis_gridLinePenChanged(intptr_t, QPen*);
 void miqt_exec_callback_QAbstractAxis_gridVisibleChanged(intptr_t, bool);
 void miqt_exec_callback_QAbstractAxis_minorGridVisibleChanged(intptr_t, bool);
 void miqt_exec_callback_QAbstractAxis_minorGridLinePenChanged(intptr_t, QPen*);
-void miqt_exec_callback_QAbstractAxis_gridLineColorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QAbstractAxis_minorGridLineColorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QAbstractAxis_colorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QAbstractAxis_labelsColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QAbstractAxis_gridLineColorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QAbstractAxis_minorGridLineColorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QAbstractAxis_colorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QAbstractAxis_labelsColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QAbstractAxis_titleTextChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QAbstractAxis_titleBrushChanged(intptr_t, QBrush*);
 void miqt_exec_callback_QAbstractAxis_titleVisibleChanged(intptr_t, bool);
 void miqt_exec_callback_QAbstractAxis_titleFontChanged(intptr_t, QFont*);
 void miqt_exec_callback_QAbstractAxis_shadesVisibleChanged(intptr_t, bool);
-void miqt_exec_callback_QAbstractAxis_shadesColorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QAbstractAxis_shadesBorderColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QAbstractAxis_shadesColorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QAbstractAxis_shadesBorderColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QAbstractAxis_shadesPenChanged(intptr_t, QPen*);
 void miqt_exec_callback_QAbstractAxis_shadesBrushChanged(intptr_t, QBrush*);
 void miqt_exec_callback_QAbstractAxis_reverseChanged(intptr_t, bool);
@@ -109,12 +109,12 @@ QPen* QAbstractAxis_linePen(const QAbstractAxis* self) {
 	return new QPen(self->linePen());
 }
 
-void QAbstractAxis_setLinePenColor(QAbstractAxis* self, QColor* color) {
-	self->setLinePenColor(*color);
+void QAbstractAxis_setLinePenColor(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->setLinePenColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QAbstractAxis_linePenColor(const QAbstractAxis* self) {
-	return new QColor(self->linePenColor());
+struct miqt_qcolor QAbstractAxis_linePenColor(const QAbstractAxis* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->linePenColor());
 }
 
 bool QAbstractAxis_isGridLineVisible(const QAbstractAxis* self) {
@@ -149,20 +149,20 @@ QPen* QAbstractAxis_minorGridLinePen(const QAbstractAxis* self) {
 	return new QPen(self->minorGridLinePen());
 }
 
-void QAbstractAxis_setGridLineColor(QAbstractAxis* self, QColor* color) {
-	self->setGridLineColor(*color);
+void QAbstractAxis_setGridLineColor(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->setGridLineColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QAbstractAxis_gridLineColor(QAbstractAxis* self) {
-	return new QColor(self->gridLineColor());
+struct miqt_qcolor QAbstractAxis_gridLineColor(QAbstractAxis* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->gridLineColor());
 }
 
-void QAbstractAxis_setMinorGridLineColor(QAbstractAxis* self, QColor* color) {
-	self->setMinorGridLineColor(*color);
+void QAbstractAxis_setMinorGridLineColor(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->setMinorGridLineColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QAbstractAxis_minorGridLineColor(QAbstractAxis* self) {
-	return new QColor(self->minorGridLineColor());
+struct miqt_qcolor QAbstractAxis_minorGridLineColor(QAbstractAxis* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->minorGridLineColor());
 }
 
 bool QAbstractAxis_labelsVisible(const QAbstractAxis* self) {
@@ -197,12 +197,12 @@ int QAbstractAxis_labelsAngle(const QAbstractAxis* self) {
 	return self->labelsAngle();
 }
 
-void QAbstractAxis_setLabelsColor(QAbstractAxis* self, QColor* color) {
-	self->setLabelsColor(*color);
+void QAbstractAxis_setLabelsColor(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->setLabelsColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QAbstractAxis_labelsColor(const QAbstractAxis* self) {
-	return new QColor(self->labelsColor());
+struct miqt_qcolor QAbstractAxis_labelsColor(const QAbstractAxis* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->labelsColor());
 }
 
 bool QAbstractAxis_isTitleVisible(const QAbstractAxis* self) {
@@ -269,20 +269,20 @@ QBrush* QAbstractAxis_shadesBrush(const QAbstractAxis* self) {
 	return new QBrush(self->shadesBrush());
 }
 
-void QAbstractAxis_setShadesColor(QAbstractAxis* self, QColor* color) {
-	self->setShadesColor(*color);
+void QAbstractAxis_setShadesColor(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->setShadesColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QAbstractAxis_shadesColor(const QAbstractAxis* self) {
-	return new QColor(self->shadesColor());
+struct miqt_qcolor QAbstractAxis_shadesColor(const QAbstractAxis* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->shadesColor());
 }
 
-void QAbstractAxis_setShadesBorderColor(QAbstractAxis* self, QColor* color) {
-	self->setShadesBorderColor(*color);
+void QAbstractAxis_setShadesBorderColor(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->setShadesBorderColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QAbstractAxis_shadesBorderColor(const QAbstractAxis* self) {
-	return new QColor(self->shadesBorderColor());
+struct miqt_qcolor QAbstractAxis_shadesBorderColor(const QAbstractAxis* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->shadesBorderColor());
 }
 
 int QAbstractAxis_orientation(const QAbstractAxis* self) {
@@ -466,50 +466,46 @@ void QAbstractAxis_connect_minorGridLinePenChanged(QAbstractAxis* self, intptr_t
 	});
 }
 
-void QAbstractAxis_gridLineColorChanged(QAbstractAxis* self, QColor* color) {
-	self->gridLineColorChanged(*color);
+void QAbstractAxis_gridLineColorChanged(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->gridLineColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QAbstractAxis_connect_gridLineColorChanged(QAbstractAxis* self, intptr_t slot) {
 	QAbstractAxis::connect(self, static_cast<void (QAbstractAxis::*)(const QColor&)>(&QAbstractAxis::gridLineColorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QAbstractAxis_gridLineColorChanged(slot, sigval1);
 	});
 }
 
-void QAbstractAxis_minorGridLineColorChanged(QAbstractAxis* self, QColor* color) {
-	self->minorGridLineColorChanged(*color);
+void QAbstractAxis_minorGridLineColorChanged(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->minorGridLineColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QAbstractAxis_connect_minorGridLineColorChanged(QAbstractAxis* self, intptr_t slot) {
 	QAbstractAxis::connect(self, static_cast<void (QAbstractAxis::*)(const QColor&)>(&QAbstractAxis::minorGridLineColorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QAbstractAxis_minorGridLineColorChanged(slot, sigval1);
 	});
 }
 
-void QAbstractAxis_colorChanged(QAbstractAxis* self, QColor* color) {
-	self->colorChanged(*color);
+void QAbstractAxis_colorChanged(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->colorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QAbstractAxis_connect_colorChanged(QAbstractAxis* self, intptr_t slot) {
 	QAbstractAxis::connect(self, static_cast<void (QAbstractAxis::*)(QColor)>(&QAbstractAxis::colorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QAbstractAxis_colorChanged(slot, sigval1);
 	});
 }
 
-void QAbstractAxis_labelsColorChanged(QAbstractAxis* self, QColor* color) {
-	self->labelsColorChanged(*color);
+void QAbstractAxis_labelsColorChanged(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->labelsColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QAbstractAxis_connect_labelsColorChanged(QAbstractAxis* self, intptr_t slot) {
 	QAbstractAxis::connect(self, static_cast<void (QAbstractAxis::*)(QColor)>(&QAbstractAxis::labelsColorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QAbstractAxis_labelsColorChanged(slot, sigval1);
 	});
 }
@@ -581,24 +577,24 @@ void QAbstractAxis_connect_shadesVisibleChanged(QAbstractAxis* self, intptr_t sl
 	});
 }
 
-void QAbstractAxis_shadesColorChanged(QAbstractAxis* self, QColor* color) {
-	self->shadesColorChanged(*color);
+void QAbstractAxis_shadesColorChanged(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->shadesColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QAbstractAxis_connect_shadesColorChanged(QAbstractAxis* self, intptr_t slot) {
 	QAbstractAxis::connect(self, static_cast<void (QAbstractAxis::*)(QColor)>(&QAbstractAxis::shadesColorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QAbstractAxis_shadesColorChanged(slot, sigval1);
 	});
 }
 
-void QAbstractAxis_shadesBorderColorChanged(QAbstractAxis* self, QColor* color) {
-	self->shadesBorderColorChanged(*color);
+void QAbstractAxis_shadesBorderColorChanged(QAbstractAxis* self, struct miqt_qcolor color) {
+	self->shadesBorderColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QAbstractAxis_connect_shadesBorderColorChanged(QAbstractAxis* self, intptr_t slot) {
 	QAbstractAxis::connect(self, static_cast<void (QAbstractAxis::*)(QColor)>(&QAbstractAxis::shadesBorderColorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QAbstractAxis_shadesBorderColorChanged(slot, sigval1);
 	});
 }

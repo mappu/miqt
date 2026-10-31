@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -263,16 +264,12 @@ func (this *QwtScaleWidget) ColorMap() *QwtColorMap {
 	return newQwtColorMap(C.QwtScaleWidget_colorMap(this.h))
 }
 
-func (this *QwtScaleWidget) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtScaleWidget_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtScaleWidget) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtScaleWidget_sizeHint(this.h))
 }
 
-func (this *QwtScaleWidget) MinimumSizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtScaleWidget_minimumSizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtScaleWidget) MinimumSizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtScaleWidget_minimumSizeHint(this.h))
 }
 
 func (this *QwtScaleWidget) TitleHeightForWidth(width int) int {
@@ -284,16 +281,14 @@ func (this *QwtScaleWidget) DimForLength(length int, scaleFont *qt.QFont) int {
 	return (int)(C.QwtScaleWidget_dimForLength(this.h, (C.int)(length), (*C.QFont)(scaleFont.UnsafePointer())))
 }
 
-func (this *QwtScaleWidget) DrawColorBar(painter *qt.QPainter, param2 *qt.QRectF) {
+func (this *QwtScaleWidget) DrawColorBar(painter *qt.QPainter, param2 qt.QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(param2)
-	C.QwtScaleWidget_drawColorBar(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
+	C.QwtScaleWidget_drawColorBar(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2))
 }
 
-func (this *QwtScaleWidget) DrawTitle(painter *qt.QPainter, param2 QwtScaleDraw__Alignment, rect *qt.QRectF) {
+func (this *QwtScaleWidget) DrawTitle(painter *qt.QPainter, param2 QwtScaleDraw__Alignment, rect qt.QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
-	C.QwtScaleWidget_drawTitle(this.h, (*C.QPainter)(painter.UnsafePointer()), (C.int)(param2), (*C.QRectF)(rect.UnsafePointer()))
+	C.QwtScaleWidget_drawTitle(this.h, (*C.QPainter)(painter.UnsafePointer()), (C.int)(param2), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QwtScaleWidget) SetAlignment(alignment QwtScaleDraw__Alignment) {
@@ -304,11 +299,8 @@ func (this *QwtScaleWidget) Alignment() QwtScaleDraw__Alignment {
 	return (QwtScaleDraw__Alignment)(C.QwtScaleWidget_alignment(this.h))
 }
 
-func (this *QwtScaleWidget) ColorBarRect(param1 *qt.QRectF) *qt.QRectF {
-	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtScaleWidget_colorBarRect(this.h, (*C.QRectF)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtScaleWidget) ColorBarRect(param1 qt.QRectF) qt.QRectF {
+	return libmiqt.ValueCast[qt.QRectF](C.QwtScaleWidget_colorBarRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 }
 
 func QwtScaleWidget_Tr2(s string, c string) string {
@@ -527,14 +519,12 @@ func (this *QwtScaleWidget) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 
-func (this *QwtScaleWidget) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QwtScaleWidget) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtScaleWidget_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtScaleWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtScaleWidget) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtScaleWidget) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtScaleWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -542,27 +532,24 @@ func (this *QwtScaleWidget) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSi
 }
 
 //export miqt_exec_callback_QwtScaleWidget_sizeHint
-func miqt_exec_callback_QwtScaleWidget_sizeHint(self *C.QwtScaleWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtScaleWidget_sizeHint(self *C.QwtScaleWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtScaleWidget{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtScaleWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtScaleWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtScaleWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QwtScaleWidget) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtScaleWidget) callVirtualBase_MinimumSizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtScaleWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtScaleWidget) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtScaleWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -570,16 +557,15 @@ func (this *QwtScaleWidget) OnMinimumSizeHint(slot func(super func() *qt.QSize) 
 }
 
 //export miqt_exec_callback_QwtScaleWidget_minimumSizeHint
-func miqt_exec_callback_QwtScaleWidget_minimumSizeHint(self *C.QwtScaleWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtScaleWidget_minimumSizeHint(self *C.QwtScaleWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtScaleWidget{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtScaleWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1514,7 +1500,6 @@ func miqt_exec_callback_QwtScaleWidget_initPainter(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtScaleWidget_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

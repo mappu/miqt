@@ -30,8 +30,8 @@ QColorSpace* QColorSpace_new4(int primaries, float gamma) {
 	return new (std::nothrow) QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<float>(gamma));
 }
 
-QColorSpace* QColorSpace_new5(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction) {
-	return new (std::nothrow) QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction));
+QColorSpace* QColorSpace_new5(struct miqt_qpointf whitePoint, struct miqt_qpointf redPoint, struct miqt_qpointf greenPoint, struct miqt_qpointf bluePoint, int transferFunction) {
+	return new (std::nothrow) QColorSpace(miqt_from_cabi<QPointF>(whitePoint), miqt_from_cabi<QPointF>(redPoint), miqt_from_cabi<QPointF>(greenPoint), miqt_from_cabi<QPointF>(bluePoint), static_cast<QColorSpace::TransferFunction>(transferFunction));
 }
 
 QColorSpace* QColorSpace_new6(QColorSpace* colorSpace) {
@@ -42,8 +42,8 @@ QColorSpace* QColorSpace_new7(int primaries, int transferFunction, float gamma) 
 	return new (std::nothrow) QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
 }
 
-QColorSpace* QColorSpace_new8(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction, float gamma) {
-	return new (std::nothrow) QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
+QColorSpace* QColorSpace_new8(struct miqt_qpointf whitePoint, struct miqt_qpointf redPoint, struct miqt_qpointf greenPoint, struct miqt_qpointf bluePoint, int transferFunction, float gamma) {
+	return new (std::nothrow) QColorSpace(miqt_from_cabi<QPointF>(whitePoint), miqt_from_cabi<QPointF>(redPoint), miqt_from_cabi<QPointF>(greenPoint), miqt_from_cabi<QPointF>(bluePoint), static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
 }
 
 void QColorSpace_operatorAssign(QColorSpace* self, QColorSpace* colorSpace) {
@@ -80,8 +80,8 @@ void QColorSpace_setPrimaries(QColorSpace* self, int primariesId) {
 	self->setPrimaries(static_cast<QColorSpace::Primaries>(primariesId));
 }
 
-void QColorSpace_setPrimaries2(QColorSpace* self, QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint) {
-	self->setPrimaries(*whitePoint, *redPoint, *greenPoint, *bluePoint);
+void QColorSpace_setPrimaries2(QColorSpace* self, struct miqt_qpointf whitePoint, struct miqt_qpointf redPoint, struct miqt_qpointf greenPoint, struct miqt_qpointf bluePoint) {
+	self->setPrimaries(miqt_from_cabi<QPointF>(whitePoint), miqt_from_cabi<QPointF>(redPoint), miqt_from_cabi<QPointF>(greenPoint), miqt_from_cabi<QPointF>(bluePoint));
 }
 
 bool QColorSpace_isValid(const QColorSpace* self) {

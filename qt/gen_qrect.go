@@ -9,1040 +9,692 @@ package qt
 import "C"
 
 import (
-	"runtime"
+	"github.com/mappu/miqt/libmiqt"
 	"unsafe"
 )
 
+// QRect is a plain Go struct with the same memory layout as the
+// Qt class. The zero value is not always the same as the default constructor;
+// use NewQRect().
 type QRect struct {
-	h  *C.QRect
-	gc *[1]unsafe.Pointer
-}
-
-// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
-// and its base class wrappers, so that they all keep it alive.
-func (this *QRect) miqtSetGC(gc *[1]unsafe.Pointer) {
-	this.gc = gc
+	x1 int32
+	y1 int32
+	x2 int32
+	y2 int32
 }
 
 func (this *QRect) cPointer() *C.QRect {
-	if this == nil {
-		return nil
-	}
-	return this.h
+	return (*C.QRect)(unsafe.Pointer(this))
 }
 
 func (this *QRect) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
+	return unsafe.Pointer(this)
 }
 
-// newQRect constructs the type using only CGO pointers.
+// newQRect views C++ memory as this type, without copying it.
 func newQRect(h *C.QRect) *QRect {
-	if h == nil {
-		return nil
-	}
-
-	return &QRect{h: h}
+	return (*QRect)(unsafe.Pointer(h))
 }
 
-// UnsafeNewQRect constructs the type using only unsafe pointers.
+// UnsafeNewQRect views C++ memory as this type, without copying it.
 func UnsafeNewQRect(h unsafe.Pointer) *QRect {
-	return newQRect((*C.QRect)(h))
+	return (*QRect)(h)
 }
 
 // NewQRect constructs a new QRect object.
-func NewQRect() *QRect {
+func NewQRect() QRect {
 
-	return newQRect(C.QRect_new())
+	return libmiqt.ValueCast[QRect](C.QRect_new())
 }
 
 // NewQRect2 constructs a new QRect object.
-func NewQRect2(topleft *QPoint, bottomright *QPoint) *QRect {
-	defer runtime.KeepAlive(topleft)
-	defer runtime.KeepAlive(bottomright)
+func NewQRect2(topleft QPoint, bottomright QPoint) QRect {
 
-	return newQRect(C.QRect_new2(topleft.cPointer(), bottomright.cPointer()))
+	return libmiqt.ValueCast[QRect](C.QRect_new2(libmiqt.ValueCast[C.struct_miqt_qpoint](topleft), libmiqt.ValueCast[C.struct_miqt_qpoint](bottomright)))
 }
 
 // NewQRect3 constructs a new QRect object.
-func NewQRect3(topleft *QPoint, size *QSize) *QRect {
-	defer runtime.KeepAlive(topleft)
-	defer runtime.KeepAlive(size)
+func NewQRect3(topleft QPoint, size QSize) QRect {
 
-	return newQRect(C.QRect_new3(topleft.cPointer(), size.cPointer()))
+	return libmiqt.ValueCast[QRect](C.QRect_new3(libmiqt.ValueCast[C.struct_miqt_qpoint](topleft), libmiqt.ValueCast[C.struct_miqt_qsize](size)))
 }
 
 // NewQRect4 constructs a new QRect object.
-func NewQRect4(left int, top int, width int, height int) *QRect {
+func NewQRect4(left int, top int, width int, height int) QRect {
 
-	return newQRect(C.QRect_new4((C.int)(left), (C.int)(top), (C.int)(width), (C.int)(height)))
+	return libmiqt.ValueCast[QRect](C.QRect_new4((C.int)(left), (C.int)(top), (C.int)(width), (C.int)(height)))
 }
 
 // NewQRect5 constructs a new QRect object.
-func NewQRect5(param1 *QRect) *QRect {
-	defer runtime.KeepAlive(param1)
+func NewQRect5(param1 QRect) QRect {
 
-	return newQRect(C.QRect_new5(param1.cPointer()))
+	return libmiqt.ValueCast[QRect](C.QRect_new5(libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 }
 
-func (this *QRect) IsNull() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QRect_isNull(this.h))
+func (this QRect) IsNull() bool {
+	return (bool)(C.QRect_isNull(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) IsEmpty() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QRect_isEmpty(this.h))
+func (this QRect) IsEmpty() bool {
+	return (bool)(C.QRect_isEmpty(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) IsValid() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QRect_isValid(this.h))
+func (this QRect) IsValid() bool {
+	return (bool)(C.QRect_isValid(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) Left() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QRect_left(this.h))
+func (this QRect) Left() int {
+	return (int)(C.QRect_left(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) Top() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QRect_top(this.h))
+func (this QRect) Top() int {
+	return (int)(C.QRect_top(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) Right() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QRect_right(this.h))
+func (this QRect) Right() int {
+	return (int)(C.QRect_right(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) Bottom() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QRect_bottom(this.h))
+func (this QRect) Bottom() int {
+	return (int)(C.QRect_bottom(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) Normalized() *QRect {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QRect_normalized(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) Normalized() QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_normalized(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) X() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QRect_x(this.h))
+func (this QRect) X() int {
+	return (int)(C.QRect_x(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) Y() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QRect_y(this.h))
+func (this QRect) Y() int {
+	return (int)(C.QRect_y(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
 func (this *QRect) SetLeft(pos int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setLeft(this.h, (C.int)(pos))
+	C.QRect_setLeft(this.cPointer(), (C.int)(pos))
 }
 
 func (this *QRect) SetTop(pos int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setTop(this.h, (C.int)(pos))
+	C.QRect_setTop(this.cPointer(), (C.int)(pos))
 }
 
 func (this *QRect) SetRight(pos int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setRight(this.h, (C.int)(pos))
+	C.QRect_setRight(this.cPointer(), (C.int)(pos))
 }
 
 func (this *QRect) SetBottom(pos int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setBottom(this.h, (C.int)(pos))
+	C.QRect_setBottom(this.cPointer(), (C.int)(pos))
 }
 
 func (this *QRect) SetX(x int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setX(this.h, (C.int)(x))
+	C.QRect_setX(this.cPointer(), (C.int)(x))
 }
 
 func (this *QRect) SetY(y int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setY(this.h, (C.int)(y))
+	C.QRect_setY(this.cPointer(), (C.int)(y))
 }
 
-func (this *QRect) SetTopLeft(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_setTopLeft(this.h, p.cPointer())
+func (this *QRect) SetTopLeft(p QPoint) {
+	C.QRect_setTopLeft(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func (this *QRect) SetBottomRight(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_setBottomRight(this.h, p.cPointer())
+func (this *QRect) SetBottomRight(p QPoint) {
+	C.QRect_setBottomRight(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func (this *QRect) SetTopRight(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_setTopRight(this.h, p.cPointer())
+func (this *QRect) SetTopRight(p QPoint) {
+	C.QRect_setTopRight(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func (this *QRect) SetBottomLeft(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_setBottomLeft(this.h, p.cPointer())
+func (this *QRect) SetBottomLeft(p QPoint) {
+	C.QRect_setBottomLeft(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func (this *QRect) TopLeft() *QPoint {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QRect_topLeft(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) TopLeft() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QRect_topLeft(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) BottomRight() *QPoint {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QRect_bottomRight(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) BottomRight() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QRect_bottomRight(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) TopRight() *QPoint {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QRect_topRight(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) TopRight() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QRect_topRight(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) BottomLeft() *QPoint {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QRect_bottomLeft(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) BottomLeft() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QRect_bottomLeft(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) Center() *QPoint {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QRect_center(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) Center() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QRect_center(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
 func (this *QRect) MoveLeft(pos int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_moveLeft(this.h, (C.int)(pos))
+	C.QRect_moveLeft(this.cPointer(), (C.int)(pos))
 }
 
 func (this *QRect) MoveTop(pos int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_moveTop(this.h, (C.int)(pos))
+	C.QRect_moveTop(this.cPointer(), (C.int)(pos))
 }
 
 func (this *QRect) MoveRight(pos int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_moveRight(this.h, (C.int)(pos))
+	C.QRect_moveRight(this.cPointer(), (C.int)(pos))
 }
 
 func (this *QRect) MoveBottom(pos int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_moveBottom(this.h, (C.int)(pos))
+	C.QRect_moveBottom(this.cPointer(), (C.int)(pos))
 }
 
-func (this *QRect) MoveTopLeft(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_moveTopLeft(this.h, p.cPointer())
+func (this *QRect) MoveTopLeft(p QPoint) {
+	C.QRect_moveTopLeft(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func (this *QRect) MoveBottomRight(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_moveBottomRight(this.h, p.cPointer())
+func (this *QRect) MoveBottomRight(p QPoint) {
+	C.QRect_moveBottomRight(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func (this *QRect) MoveTopRight(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_moveTopRight(this.h, p.cPointer())
+func (this *QRect) MoveTopRight(p QPoint) {
+	C.QRect_moveTopRight(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func (this *QRect) MoveBottomLeft(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_moveBottomLeft(this.h, p.cPointer())
+func (this *QRect) MoveBottomLeft(p QPoint) {
+	C.QRect_moveBottomLeft(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func (this *QRect) MoveCenter(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_moveCenter(this.h, p.cPointer())
+func (this *QRect) MoveCenter(p QPoint) {
+	C.QRect_moveCenter(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
 func (this *QRect) Translate(dx int, dy int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_translate(this.h, (C.int)(dx), (C.int)(dy))
+	C.QRect_translate(this.cPointer(), (C.int)(dx), (C.int)(dy))
 }
 
-func (this *QRect) TranslateWithQPoint(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_translateWithQPoint(this.h, p.cPointer())
+func (this *QRect) TranslateWithQPoint(p QPoint) {
+	C.QRect_translateWithQPoint(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func (this *QRect) Translated(dx int, dy int) *QRect {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QRect_translated(this.h, (C.int)(dx), (C.int)(dy)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) Translated(dx int, dy int) QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_translated(libmiqt.ValueCast[C.struct_miqt_qrect](this), (C.int)(dx), (C.int)(dy)))
 }
 
-func (this *QRect) TranslatedWithQPoint(p *QPoint) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_goptr := newQRect(C.QRect_translatedWithQPoint(this.h, p.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) TranslatedWithQPoint(p QPoint) QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_translatedWithQPoint(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
-func (this *QRect) Transposed() *QRect {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QRect_transposed(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) Transposed() QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_transposed(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
 func (this *QRect) MoveTo(x int, t int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_moveTo(this.h, (C.int)(x), (C.int)(t))
+	C.QRect_moveTo(this.cPointer(), (C.int)(x), (C.int)(t))
 }
 
-func (this *QRect) MoveToWithQPoint(p *QPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRect_moveToWithQPoint(this.h, p.cPointer())
+func (this *QRect) MoveToWithQPoint(p QPoint) {
+	C.QRect_moveToWithQPoint(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
 func (this *QRect) SetRect(x int, y int, w int, h int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setRect(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
+	C.QRect_setRect(this.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 }
 
-func (this *QRect) GetRect(x *int, y *int, w *int, h *int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_getRect(this.h, (*C.int)(unsafe.Pointer(x)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(w)), (*C.int)(unsafe.Pointer(h)))
+func (this QRect) GetRect(x *int, y *int, w *int, h *int) {
+	C.QRect_getRect(libmiqt.ValueCast[C.struct_miqt_qrect](this), (*C.int)(unsafe.Pointer(x)), (*C.int)(unsafe.Pointer(y)), (*C.int)(unsafe.Pointer(w)), (*C.int)(unsafe.Pointer(h)))
 }
 
 func (this *QRect) SetCoords(x1 int, y1 int, x2 int, y2 int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setCoords(this.h, (C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2))
+	C.QRect_setCoords(this.cPointer(), (C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2))
 }
 
-func (this *QRect) GetCoords(x1 *int, y1 *int, x2 *int, y2 *int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_getCoords(this.h, (*C.int)(unsafe.Pointer(x1)), (*C.int)(unsafe.Pointer(y1)), (*C.int)(unsafe.Pointer(x2)), (*C.int)(unsafe.Pointer(y2)))
+func (this QRect) GetCoords(x1 *int, y1 *int, x2 *int, y2 *int) {
+	C.QRect_getCoords(libmiqt.ValueCast[C.struct_miqt_qrect](this), (*C.int)(unsafe.Pointer(x1)), (*C.int)(unsafe.Pointer(y1)), (*C.int)(unsafe.Pointer(x2)), (*C.int)(unsafe.Pointer(y2)))
 }
 
 func (this *QRect) Adjust(x1 int, y1 int, x2 int, y2 int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_adjust(this.h, (C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2))
+	C.QRect_adjust(this.cPointer(), (C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2))
 }
 
-func (this *QRect) Adjusted(x1 int, y1 int, x2 int, y2 int) *QRect {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QRect_adjusted(this.h, (C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) Adjusted(x1 int, y1 int, x2 int, y2 int) QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_adjusted(libmiqt.ValueCast[C.struct_miqt_qrect](this), (C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2)))
 }
 
-func (this *QRect) Size() *QSize {
-	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QRect_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) Size() QSize {
+	return libmiqt.ValueCast[QSize](C.QRect_size(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) Width() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QRect_width(this.h))
+func (this QRect) Width() int {
+	return (int)(C.QRect_width(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
-func (this *QRect) Height() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QRect_height(this.h))
+func (this QRect) Height() int {
+	return (int)(C.QRect_height(libmiqt.ValueCast[C.struct_miqt_qrect](this)))
 }
 
 func (this *QRect) SetWidth(w int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setWidth(this.h, (C.int)(w))
+	C.QRect_setWidth(this.cPointer(), (C.int)(w))
 }
 
 func (this *QRect) SetHeight(h int) {
-	defer runtime.KeepAlive(this)
-	C.QRect_setHeight(this.h, (C.int)(h))
+	C.QRect_setHeight(this.cPointer(), (C.int)(h))
 }
 
-func (this *QRect) SetSize(s *QSize) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(s)
-	C.QRect_setSize(this.h, s.cPointer())
+func (this *QRect) SetSize(s QSize) {
+	C.QRect_setSize(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qsize](s))
 }
 
-func (this *QRect) OperatorBitwiseOr(r *QRect) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	_goptr := newQRect(C.QRect_operatorBitwiseOr(this.h, r.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) OperatorBitwiseOr(r QRect) QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_operatorBitwiseOr(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 }
 
-func (this *QRect) OperatorBitwiseAnd(r *QRect) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	_goptr := newQRect(C.QRect_operatorBitwiseAnd(this.h, r.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) OperatorBitwiseAnd(r QRect) QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_operatorBitwiseAnd(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 }
 
-func (this *QRect) OperatorBitwiseOrAssign(r *QRect) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QRect_operatorBitwiseOrAssign(this.h, r.cPointer())
+func (this *QRect) OperatorBitwiseOrAssign(r QRect) {
+	C.QRect_operatorBitwiseOrAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrect](r))
 }
 
-func (this *QRect) OperatorBitwiseAndAssign(r *QRect) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QRect_operatorBitwiseAndAssign(this.h, r.cPointer())
+func (this *QRect) OperatorBitwiseAndAssign(r QRect) {
+	C.QRect_operatorBitwiseAndAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrect](r))
 }
 
-func (this *QRect) Contains(r *QRect) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	return (bool)(C.QRect_contains(this.h, r.cPointer()))
+func (this QRect) Contains(r QRect) bool {
+	return (bool)(C.QRect_contains(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 }
 
-func (this *QRect) ContainsWithQPoint(p *QPoint) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	return (bool)(C.QRect_containsWithQPoint(this.h, p.cPointer()))
+func (this QRect) ContainsWithQPoint(p QPoint) bool {
+	return (bool)(C.QRect_containsWithQPoint(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
-func (this *QRect) Contains2(x int, y int) bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QRect_contains2(this.h, (C.int)(x), (C.int)(y)))
+func (this QRect) Contains2(x int, y int) bool {
+	return (bool)(C.QRect_contains2(libmiqt.ValueCast[C.struct_miqt_qrect](this), (C.int)(x), (C.int)(y)))
 }
 
-func (this *QRect) Contains3(x int, y int, proper bool) bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QRect_contains3(this.h, (C.int)(x), (C.int)(y), (C.bool)(proper)))
+func (this QRect) Contains3(x int, y int, proper bool) bool {
+	return (bool)(C.QRect_contains3(libmiqt.ValueCast[C.struct_miqt_qrect](this), (C.int)(x), (C.int)(y), (C.bool)(proper)))
 }
 
-func (this *QRect) United(other *QRect) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(other)
-	_goptr := newQRect(C.QRect_united(this.h, other.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) United(other QRect) QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_united(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qrect](other)))
 }
 
-func (this *QRect) Intersected(other *QRect) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(other)
-	_goptr := newQRect(C.QRect_intersected(this.h, other.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) Intersected(other QRect) QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_intersected(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qrect](other)))
 }
 
-func (this *QRect) Intersects(r *QRect) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	return (bool)(C.QRect_intersects(this.h, r.cPointer()))
+func (this QRect) Intersects(r QRect) bool {
+	return (bool)(C.QRect_intersects(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 }
 
-func (this *QRect) MarginsAdded(margins *QMargins) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_goptr := newQRect(C.QRect_marginsAdded(this.h, margins.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) MarginsAdded(margins QMargins) QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_marginsAdded(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qmargins](margins)))
 }
 
-func (this *QRect) MarginsRemoved(margins *QMargins) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_goptr := newQRect(C.QRect_marginsRemoved(this.h, margins.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRect) MarginsRemoved(margins QMargins) QRect {
+	return libmiqt.ValueCast[QRect](C.QRect_marginsRemoved(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qmargins](margins)))
 }
 
-func (this *QRect) OperatorPlusAssign(margins *QMargins) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_ret := newQRect(C.QRect_operatorPlusAssign(this.h, margins.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QRect) OperatorPlusAssign(margins QMargins) *QRect {
+	return newQRect(C.QRect_operatorPlusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmargins](margins)))
 }
 
-func (this *QRect) OperatorMinusAssign(margins *QMargins) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_ret := newQRect(C.QRect_operatorMinusAssign(this.h, margins.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QRect) OperatorMinusAssign(margins QMargins) *QRect {
+	return newQRect(C.QRect_operatorMinusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmargins](margins)))
 }
 
-func (this *QRect) OperatorAssign(param1 *QRect) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QRect_operatorAssign(this.h, param1.cPointer())
+func (this *QRect) OperatorAssign(param1 QRect) {
+	C.QRect_operatorAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrect](param1))
 }
 
-func (this *QRect) Contains4(r *QRect, proper bool) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	return (bool)(C.QRect_contains4(this.h, r.cPointer(), (C.bool)(proper)))
+func (this QRect) Contains4(r QRect, proper bool) bool {
+	return (bool)(C.QRect_contains4(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qrect](r), (C.bool)(proper)))
 }
 
-func (this *QRect) Contains5(p *QPoint, proper bool) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	return (bool)(C.QRect_contains5(this.h, p.cPointer(), (C.bool)(proper)))
+func (this QRect) Contains5(p QPoint, proper bool) bool {
+	return (bool)(C.QRect_contains5(libmiqt.ValueCast[C.struct_miqt_qrect](this), libmiqt.ValueCast[C.struct_miqt_qpoint](p), (C.bool)(proper)))
 }
 
-// Delete this object from C++ memory.
-func (this *QRect) Delete() {
-	C.QRect_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this object, so that it will be deleted
-// from C++ memory once it (and every value copy of it) is unreachable
-// from Go memory.
-func (this *QRect) GoGC() {
-	if this.gc != nil {
-		return
-	}
-	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
-	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
-		C.QRect_delete((*C.QRect)(gc[0]))
-	})
-	this.miqtSetGC(gc)
-}
-
+// QRectF is a plain Go struct with the same memory layout as the
+// Qt class. The zero value is not always the same as the default constructor;
+// use NewQRectF().
 type QRectF struct {
-	h  *C.QRectF
-	gc *[1]unsafe.Pointer
-}
-
-// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
-// and its base class wrappers, so that they all keep it alive.
-func (this *QRectF) miqtSetGC(gc *[1]unsafe.Pointer) {
-	this.gc = gc
+	xp float64
+	yp float64
+	w  float64
+	h  float64
 }
 
 func (this *QRectF) cPointer() *C.QRectF {
-	if this == nil {
-		return nil
-	}
-	return this.h
+	return (*C.QRectF)(unsafe.Pointer(this))
 }
 
 func (this *QRectF) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
+	return unsafe.Pointer(this)
 }
 
-// newQRectF constructs the type using only CGO pointers.
+// newQRectF views C++ memory as this type, without copying it.
 func newQRectF(h *C.QRectF) *QRectF {
-	if h == nil {
-		return nil
-	}
-
-	return &QRectF{h: h}
+	return (*QRectF)(unsafe.Pointer(h))
 }
 
-// UnsafeNewQRectF constructs the type using only unsafe pointers.
+// UnsafeNewQRectF views C++ memory as this type, without copying it.
 func UnsafeNewQRectF(h unsafe.Pointer) *QRectF {
-	return newQRectF((*C.QRectF)(h))
+	return (*QRectF)(h)
 }
 
 // NewQRectF constructs a new QRectF object.
-func NewQRectF() *QRectF {
+func NewQRectF() QRectF {
 
-	return newQRectF(C.QRectF_new())
+	return libmiqt.ValueCast[QRectF](C.QRectF_new())
 }
 
 // NewQRectF2 constructs a new QRectF object.
-func NewQRectF2(topleft *QPointF, size *QSizeF) *QRectF {
-	defer runtime.KeepAlive(topleft)
-	defer runtime.KeepAlive(size)
+func NewQRectF2(topleft QPointF, size QSizeF) QRectF {
 
-	return newQRectF(C.QRectF_new2(topleft.cPointer(), size.cPointer()))
+	return libmiqt.ValueCast[QRectF](C.QRectF_new2(libmiqt.ValueCast[C.struct_miqt_qpointf](topleft), libmiqt.ValueCast[C.struct_miqt_qsizef](size)))
 }
 
 // NewQRectF3 constructs a new QRectF object.
-func NewQRectF3(topleft *QPointF, bottomRight *QPointF) *QRectF {
-	defer runtime.KeepAlive(topleft)
-	defer runtime.KeepAlive(bottomRight)
+func NewQRectF3(topleft QPointF, bottomRight QPointF) QRectF {
 
-	return newQRectF(C.QRectF_new3(topleft.cPointer(), bottomRight.cPointer()))
+	return libmiqt.ValueCast[QRectF](C.QRectF_new3(libmiqt.ValueCast[C.struct_miqt_qpointf](topleft), libmiqt.ValueCast[C.struct_miqt_qpointf](bottomRight)))
 }
 
 // NewQRectF4 constructs a new QRectF object.
-func NewQRectF4(left float64, top float64, width float64, height float64) *QRectF {
+func NewQRectF4(left float64, top float64, width float64, height float64) QRectF {
 
-	return newQRectF(C.QRectF_new4((C.double)(left), (C.double)(top), (C.double)(width), (C.double)(height)))
+	return libmiqt.ValueCast[QRectF](C.QRectF_new4((C.double)(left), (C.double)(top), (C.double)(width), (C.double)(height)))
 }
 
 // NewQRectF5 constructs a new QRectF object.
-func NewQRectF5(rect *QRect) *QRectF {
-	defer runtime.KeepAlive(rect)
+func NewQRectF5(rect QRect) QRectF {
 
-	return newQRectF(C.QRectF_new5(rect.cPointer()))
+	return libmiqt.ValueCast[QRectF](C.QRectF_new5(libmiqt.ValueCast[C.struct_miqt_qrect](rect)))
 }
 
 // NewQRectF6 constructs a new QRectF object.
-func NewQRectF6(param1 *QRectF) *QRectF {
-	defer runtime.KeepAlive(param1)
+func NewQRectF6(param1 QRectF) QRectF {
 
-	return newQRectF(C.QRectF_new6(param1.cPointer()))
+	return libmiqt.ValueCast[QRectF](C.QRectF_new6(libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 }
 
-func (this *QRectF) IsNull() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QRectF_isNull(this.h))
+func (this QRectF) IsNull() bool {
+	return (bool)(C.QRectF_isNull(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) IsEmpty() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QRectF_isEmpty(this.h))
+func (this QRectF) IsEmpty() bool {
+	return (bool)(C.QRectF_isEmpty(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) IsValid() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QRectF_isValid(this.h))
+func (this QRectF) IsValid() bool {
+	return (bool)(C.QRectF_isValid(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) Normalized() *QRectF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QRectF_normalized(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) Normalized() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_normalized(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) Left() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QRectF_left(this.h))
+func (this QRectF) Left() float64 {
+	return (float64)(C.QRectF_left(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) Top() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QRectF_top(this.h))
+func (this QRectF) Top() float64 {
+	return (float64)(C.QRectF_top(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) Right() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QRectF_right(this.h))
+func (this QRectF) Right() float64 {
+	return (float64)(C.QRectF_right(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) Bottom() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QRectF_bottom(this.h))
+func (this QRectF) Bottom() float64 {
+	return (float64)(C.QRectF_bottom(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) X() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QRectF_x(this.h))
+func (this QRectF) X() float64 {
+	return (float64)(C.QRectF_x(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) Y() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QRectF_y(this.h))
+func (this QRectF) Y() float64 {
+	return (float64)(C.QRectF_y(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
 func (this *QRectF) SetLeft(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setLeft(this.h, (C.double)(pos))
+	C.QRectF_setLeft(this.cPointer(), (C.double)(pos))
 }
 
 func (this *QRectF) SetTop(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setTop(this.h, (C.double)(pos))
+	C.QRectF_setTop(this.cPointer(), (C.double)(pos))
 }
 
 func (this *QRectF) SetRight(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setRight(this.h, (C.double)(pos))
+	C.QRectF_setRight(this.cPointer(), (C.double)(pos))
 }
 
 func (this *QRectF) SetBottom(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setBottom(this.h, (C.double)(pos))
+	C.QRectF_setBottom(this.cPointer(), (C.double)(pos))
 }
 
 func (this *QRectF) SetX(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setX(this.h, (C.double)(pos))
+	C.QRectF_setX(this.cPointer(), (C.double)(pos))
 }
 
 func (this *QRectF) SetY(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setY(this.h, (C.double)(pos))
+	C.QRectF_setY(this.cPointer(), (C.double)(pos))
 }
 
-func (this *QRectF) TopLeft() *QPointF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QRectF_topLeft(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) TopLeft() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QRectF_topLeft(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) BottomRight() *QPointF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QRectF_bottomRight(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) BottomRight() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QRectF_bottomRight(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) TopRight() *QPointF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QRectF_topRight(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) TopRight() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QRectF_topRight(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) BottomLeft() *QPointF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QRectF_bottomLeft(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) BottomLeft() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QRectF_bottomLeft(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) Center() *QPointF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QRectF_center(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) Center() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QRectF_center(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) SetTopLeft(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_setTopLeft(this.h, p.cPointer())
+func (this *QRectF) SetTopLeft(p QPointF) {
+	C.QRectF_setTopLeft(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
-func (this *QRectF) SetBottomRight(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_setBottomRight(this.h, p.cPointer())
+func (this *QRectF) SetBottomRight(p QPointF) {
+	C.QRectF_setBottomRight(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
-func (this *QRectF) SetTopRight(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_setTopRight(this.h, p.cPointer())
+func (this *QRectF) SetTopRight(p QPointF) {
+	C.QRectF_setTopRight(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
-func (this *QRectF) SetBottomLeft(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_setBottomLeft(this.h, p.cPointer())
+func (this *QRectF) SetBottomLeft(p QPointF) {
+	C.QRectF_setBottomLeft(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
 func (this *QRectF) MoveLeft(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_moveLeft(this.h, (C.double)(pos))
+	C.QRectF_moveLeft(this.cPointer(), (C.double)(pos))
 }
 
 func (this *QRectF) MoveTop(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_moveTop(this.h, (C.double)(pos))
+	C.QRectF_moveTop(this.cPointer(), (C.double)(pos))
 }
 
 func (this *QRectF) MoveRight(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_moveRight(this.h, (C.double)(pos))
+	C.QRectF_moveRight(this.cPointer(), (C.double)(pos))
 }
 
 func (this *QRectF) MoveBottom(pos float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_moveBottom(this.h, (C.double)(pos))
+	C.QRectF_moveBottom(this.cPointer(), (C.double)(pos))
 }
 
-func (this *QRectF) MoveTopLeft(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_moveTopLeft(this.h, p.cPointer())
+func (this *QRectF) MoveTopLeft(p QPointF) {
+	C.QRectF_moveTopLeft(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
-func (this *QRectF) MoveBottomRight(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_moveBottomRight(this.h, p.cPointer())
+func (this *QRectF) MoveBottomRight(p QPointF) {
+	C.QRectF_moveBottomRight(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
-func (this *QRectF) MoveTopRight(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_moveTopRight(this.h, p.cPointer())
+func (this *QRectF) MoveTopRight(p QPointF) {
+	C.QRectF_moveTopRight(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
-func (this *QRectF) MoveBottomLeft(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_moveBottomLeft(this.h, p.cPointer())
+func (this *QRectF) MoveBottomLeft(p QPointF) {
+	C.QRectF_moveBottomLeft(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
-func (this *QRectF) MoveCenter(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_moveCenter(this.h, p.cPointer())
+func (this *QRectF) MoveCenter(p QPointF) {
+	C.QRectF_moveCenter(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
 func (this *QRectF) Translate(dx float64, dy float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_translate(this.h, (C.double)(dx), (C.double)(dy))
+	C.QRectF_translate(this.cPointer(), (C.double)(dx), (C.double)(dy))
 }
 
-func (this *QRectF) TranslateWithQPointF(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_translateWithQPointF(this.h, p.cPointer())
+func (this *QRectF) TranslateWithQPointF(p QPointF) {
+	C.QRectF_translateWithQPointF(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
-func (this *QRectF) Translated(dx float64, dy float64) *QRectF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QRectF_translated(this.h, (C.double)(dx), (C.double)(dy)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) Translated(dx float64, dy float64) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_translated(libmiqt.ValueCast[C.struct_miqt_qrectf](this), (C.double)(dx), (C.double)(dy)))
 }
 
-func (this *QRectF) TranslatedWithQPointF(p *QPointF) *QRectF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_goptr := newQRectF(C.QRectF_translatedWithQPointF(this.h, p.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) TranslatedWithQPointF(p QPointF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_translatedWithQPointF(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qpointf](p)))
 }
 
-func (this *QRectF) Transposed() *QRectF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QRectF_transposed(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) Transposed() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_transposed(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
 func (this *QRectF) MoveTo(x float64, y float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_moveTo(this.h, (C.double)(x), (C.double)(y))
+	C.QRectF_moveTo(this.cPointer(), (C.double)(x), (C.double)(y))
 }
 
-func (this *QRectF) MoveToWithQPointF(p *QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRectF_moveToWithQPointF(this.h, p.cPointer())
+func (this *QRectF) MoveToWithQPointF(p QPointF) {
+	C.QRectF_moveToWithQPointF(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
 func (this *QRectF) SetRect(x float64, y float64, w float64, h float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setRect(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
+	C.QRectF_setRect(this.cPointer(), (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
 }
 
-func (this *QRectF) GetRect(x *float64, y *float64, w *float64, h *float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_getRect(this.h, (*C.double)(unsafe.Pointer(x)), (*C.double)(unsafe.Pointer(y)), (*C.double)(unsafe.Pointer(w)), (*C.double)(unsafe.Pointer(h)))
+func (this QRectF) GetRect(x *float64, y *float64, w *float64, h *float64) {
+	C.QRectF_getRect(libmiqt.ValueCast[C.struct_miqt_qrectf](this), (*C.double)(unsafe.Pointer(x)), (*C.double)(unsafe.Pointer(y)), (*C.double)(unsafe.Pointer(w)), (*C.double)(unsafe.Pointer(h)))
 }
 
 func (this *QRectF) SetCoords(x1 float64, y1 float64, x2 float64, y2 float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setCoords(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2))
+	C.QRectF_setCoords(this.cPointer(), (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2))
 }
 
-func (this *QRectF) GetCoords(x1 *float64, y1 *float64, x2 *float64, y2 *float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_getCoords(this.h, (*C.double)(unsafe.Pointer(x1)), (*C.double)(unsafe.Pointer(y1)), (*C.double)(unsafe.Pointer(x2)), (*C.double)(unsafe.Pointer(y2)))
+func (this QRectF) GetCoords(x1 *float64, y1 *float64, x2 *float64, y2 *float64) {
+	C.QRectF_getCoords(libmiqt.ValueCast[C.struct_miqt_qrectf](this), (*C.double)(unsafe.Pointer(x1)), (*C.double)(unsafe.Pointer(y1)), (*C.double)(unsafe.Pointer(x2)), (*C.double)(unsafe.Pointer(y2)))
 }
 
 func (this *QRectF) Adjust(x1 float64, y1 float64, x2 float64, y2 float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_adjust(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2))
+	C.QRectF_adjust(this.cPointer(), (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2))
 }
 
-func (this *QRectF) Adjusted(x1 float64, y1 float64, x2 float64, y2 float64) *QRectF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QRectF_adjusted(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) Adjusted(x1 float64, y1 float64, x2 float64, y2 float64) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_adjusted(libmiqt.ValueCast[C.struct_miqt_qrectf](this), (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2)))
 }
 
-func (this *QRectF) Size() *QSizeF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QRectF_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) Size() QSizeF {
+	return libmiqt.ValueCast[QSizeF](C.QRectF_size(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) Width() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QRectF_width(this.h))
+func (this QRectF) Width() float64 {
+	return (float64)(C.QRectF_width(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) Height() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QRectF_height(this.h))
+func (this QRectF) Height() float64 {
+	return (float64)(C.QRectF_height(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
 func (this *QRectF) SetWidth(w float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setWidth(this.h, (C.double)(w))
+	C.QRectF_setWidth(this.cPointer(), (C.double)(w))
 }
 
 func (this *QRectF) SetHeight(h float64) {
-	defer runtime.KeepAlive(this)
-	C.QRectF_setHeight(this.h, (C.double)(h))
+	C.QRectF_setHeight(this.cPointer(), (C.double)(h))
 }
 
-func (this *QRectF) SetSize(s *QSizeF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(s)
-	C.QRectF_setSize(this.h, s.cPointer())
+func (this *QRectF) SetSize(s QSizeF) {
+	C.QRectF_setSize(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qsizef](s))
 }
 
-func (this *QRectF) OperatorBitwiseOr(r *QRectF) *QRectF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	_goptr := newQRectF(C.QRectF_operatorBitwiseOr(this.h, r.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) OperatorBitwiseOr(r QRectF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_operatorBitwiseOr(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qrectf](r)))
 }
 
-func (this *QRectF) OperatorBitwiseAnd(r *QRectF) *QRectF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	_goptr := newQRectF(C.QRectF_operatorBitwiseAnd(this.h, r.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) OperatorBitwiseAnd(r QRectF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_operatorBitwiseAnd(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qrectf](r)))
 }
 
-func (this *QRectF) OperatorBitwiseOrAssign(r *QRectF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QRectF_operatorBitwiseOrAssign(this.h, r.cPointer())
+func (this *QRectF) OperatorBitwiseOrAssign(r QRectF) {
+	C.QRectF_operatorBitwiseOrAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](r))
 }
 
-func (this *QRectF) OperatorBitwiseAndAssign(r *QRectF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QRectF_operatorBitwiseAndAssign(this.h, r.cPointer())
+func (this *QRectF) OperatorBitwiseAndAssign(r QRectF) {
+	C.QRectF_operatorBitwiseAndAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](r))
 }
 
-func (this *QRectF) Contains(r *QRectF) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	return (bool)(C.QRectF_contains(this.h, r.cPointer()))
+func (this QRectF) Contains(r QRectF) bool {
+	return (bool)(C.QRectF_contains(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qrectf](r)))
 }
 
-func (this *QRectF) ContainsWithQPointF(p *QPointF) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	return (bool)(C.QRectF_containsWithQPointF(this.h, p.cPointer()))
+func (this QRectF) ContainsWithQPointF(p QPointF) bool {
+	return (bool)(C.QRectF_containsWithQPointF(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qpointf](p)))
 }
 
-func (this *QRectF) Contains2(x float64, y float64) bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QRectF_contains2(this.h, (C.double)(x), (C.double)(y)))
+func (this QRectF) Contains2(x float64, y float64) bool {
+	return (bool)(C.QRectF_contains2(libmiqt.ValueCast[C.struct_miqt_qrectf](this), (C.double)(x), (C.double)(y)))
 }
 
-func (this *QRectF) United(other *QRectF) *QRectF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(other)
-	_goptr := newQRectF(C.QRectF_united(this.h, other.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) United(other QRectF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_united(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qrectf](other)))
 }
 
-func (this *QRectF) Intersected(other *QRectF) *QRectF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(other)
-	_goptr := newQRectF(C.QRectF_intersected(this.h, other.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) Intersected(other QRectF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_intersected(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qrectf](other)))
 }
 
-func (this *QRectF) Intersects(r *QRectF) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	return (bool)(C.QRectF_intersects(this.h, r.cPointer()))
+func (this QRectF) Intersects(r QRectF) bool {
+	return (bool)(C.QRectF_intersects(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qrectf](r)))
 }
 
-func (this *QRectF) MarginsAdded(margins *QMarginsF) *QRectF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_goptr := newQRectF(C.QRectF_marginsAdded(this.h, margins.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) MarginsAdded(margins QMarginsF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_marginsAdded(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins)))
 }
 
-func (this *QRectF) MarginsRemoved(margins *QMarginsF) *QRectF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_goptr := newQRectF(C.QRectF_marginsRemoved(this.h, margins.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) MarginsRemoved(margins QMarginsF) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QRectF_marginsRemoved(libmiqt.ValueCast[C.struct_miqt_qrectf](this), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins)))
 }
 
-func (this *QRectF) OperatorPlusAssign(margins *QMarginsF) *QRectF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_ret := newQRectF(C.QRectF_operatorPlusAssign(this.h, margins.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QRectF) OperatorPlusAssign(margins QMarginsF) *QRectF {
+	return newQRectF(C.QRectF_operatorPlusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins)))
 }
 
-func (this *QRectF) OperatorMinusAssign(margins *QMarginsF) *QRectF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_ret := newQRectF(C.QRectF_operatorMinusAssign(this.h, margins.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QRectF) OperatorMinusAssign(margins QMarginsF) *QRectF {
+	return newQRectF(C.QRectF_operatorMinusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins)))
 }
 
-func (this *QRectF) ToRect() *QRect {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QRectF_toRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) ToRect() QRect {
+	return libmiqt.ValueCast[QRect](C.QRectF_toRect(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) ToAlignedRect() *QRect {
-	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QRectF_toAlignedRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QRectF) ToAlignedRect() QRect {
+	return libmiqt.ValueCast[QRect](C.QRectF_toAlignedRect(libmiqt.ValueCast[C.struct_miqt_qrectf](this)))
 }
 
-func (this *QRectF) OperatorAssign(param1 *QRectF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QRectF_operatorAssign(this.h, param1.cPointer())
-}
-
-// Delete this object from C++ memory.
-func (this *QRectF) Delete() {
-	C.QRectF_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this object, so that it will be deleted
-// from C++ memory once it (and every value copy of it) is unreachable
-// from Go memory.
-func (this *QRectF) GoGC() {
-	if this.gc != nil {
-		return
-	}
-	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
-	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
-		C.QRectF_delete((*C.QRectF)(gc[0]))
-	})
-	this.miqtSetGC(gc)
+func (this *QRectF) OperatorAssign(param1 QRectF) {
+	C.QRectF_operatorAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](param1))
 }

@@ -91,12 +91,12 @@ void miqt_exec_callback_QTextBrowser_insertFromMimeData(QTextBrowser*, intptr_t,
 void miqt_exec_callback_QTextBrowser_inputMethodEvent(QTextBrowser*, intptr_t, QInputMethodEvent*);
 void miqt_exec_callback_QTextBrowser_scrollContentsBy(QTextBrowser*, intptr_t, int, int);
 void miqt_exec_callback_QTextBrowser_doSetTextCursor(QTextBrowser*, intptr_t, QTextCursor*);
-QSize* miqt_exec_callback_QTextBrowser_minimumSizeHint(const QTextBrowser*, intptr_t);
-QSize* miqt_exec_callback_QTextBrowser_sizeHint(const QTextBrowser*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTextBrowser_minimumSizeHint(const QTextBrowser*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTextBrowser_sizeHint(const QTextBrowser*, intptr_t);
 void miqt_exec_callback_QTextBrowser_setupViewport(QTextBrowser*, intptr_t, QWidget*);
 bool miqt_exec_callback_QTextBrowser_eventFilter(QTextBrowser*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QTextBrowser_viewportEvent(QTextBrowser*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QTextBrowser_viewportSizeHint(const QTextBrowser*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTextBrowser_viewportSizeHint(const QTextBrowser*, intptr_t);
 void miqt_exec_callback_QTextBrowser_initStyleOption(const QTextBrowser*, intptr_t, QStyleOptionFrame*);
 int miqt_exec_callback_QTextBrowser_devType(const QTextBrowser*, intptr_t);
 void miqt_exec_callback_QTextBrowser_setVisible(QTextBrowser*, intptr_t, bool);
@@ -722,13 +722,11 @@ public:
 			return QTextBrowser::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTextBrowser_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTextBrowser_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QTextBrowser_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -739,13 +737,11 @@ public:
 			return QTextBrowser::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTextBrowser_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTextBrowser_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QTextBrowser_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -806,13 +802,11 @@ public:
 			return QTextBrowser::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTextBrowser_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTextBrowser_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QTextBrowser_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -1192,7 +1186,7 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QTextBrowser_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range);
 	friend void QTextBrowser_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QTextBrowser_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QTextBrowser_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QTextBrowser_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QTextBrowser_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QTextBrowser_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -1934,8 +1928,8 @@ bool QTextBrowser_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTextBrowser_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTextBrowser*>(self)->QTextBrowser::minimumSizeHint());
+struct miqt_qsize QTextBrowser_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTextBrowser*>(self)->QTextBrowser::minimumSizeHint());
 }
 
 bool QTextBrowser_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1948,8 +1942,8 @@ bool QTextBrowser_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTextBrowser_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTextBrowser*>(self)->QTextBrowser::sizeHint());
+struct miqt_qsize QTextBrowser_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTextBrowser*>(self)->QTextBrowser::sizeHint());
 }
 
 bool QTextBrowser_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -2004,8 +1998,8 @@ bool QTextBrowser_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTextBrowser_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTextBrowser*>(self)->QTextBrowser::viewportSizeHint());
+struct miqt_qsize QTextBrowser_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTextBrowser*>(self)->QTextBrowser::viewportSizeHint());
 }
 
 bool QTextBrowser_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -2321,10 +2315,6 @@ QVariant* QTextBrowser_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
 
-QSize* QTextBrowser_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 void QTextBrowser_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range) {
 	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
 	if (self_cast == nullptr) {
@@ -2347,15 +2337,15 @@ void QTextBrowser_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void*
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QTextBrowser_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QTextBrowser_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QTextBrowser_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

@@ -18,7 +18,7 @@ extern "C" {
 
 void miqt_exec_callback_QCameraFocusControl_focusModeChanged(intptr_t, int);
 void miqt_exec_callback_QCameraFocusControl_focusPointModeChanged(intptr_t, int);
-void miqt_exec_callback_QCameraFocusControl_customFocusPointChanged(intptr_t, QPointF*);
+void miqt_exec_callback_QCameraFocusControl_customFocusPointChanged(intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QCameraFocusControl_focusZonesChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
@@ -84,12 +84,12 @@ bool QCameraFocusControl_isFocusPointModeSupported(const QCameraFocusControl* se
 	return self->isFocusPointModeSupported(static_cast<QCameraFocus::FocusPointMode>(mode));
 }
 
-QPointF* QCameraFocusControl_customFocusPoint(const QCameraFocusControl* self) {
-	return new QPointF(self->customFocusPoint());
+struct miqt_qpointf QCameraFocusControl_customFocusPoint(const QCameraFocusControl* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->customFocusPoint());
 }
 
-void QCameraFocusControl_setCustomFocusPoint(QCameraFocusControl* self, QPointF* point) {
-	self->setCustomFocusPoint(*point);
+void QCameraFocusControl_setCustomFocusPoint(QCameraFocusControl* self, struct miqt_qpointf point) {
+	self->setCustomFocusPoint(miqt_from_cabi<QPointF>(point));
 }
 
 struct miqt_array /* of QCameraFocusZone* */  QCameraFocusControl_focusZones(const QCameraFocusControl* self) {
@@ -129,15 +129,13 @@ void QCameraFocusControl_connect_focusPointModeChanged(QCameraFocusControl* self
 	});
 }
 
-void QCameraFocusControl_customFocusPointChanged(QCameraFocusControl* self, QPointF* point) {
-	self->customFocusPointChanged(*point);
+void QCameraFocusControl_customFocusPointChanged(QCameraFocusControl* self, struct miqt_qpointf point) {
+	self->customFocusPointChanged(miqt_from_cabi<QPointF>(point));
 }
 
 void QCameraFocusControl_connect_customFocusPointChanged(QCameraFocusControl* self, intptr_t slot) {
 	QCameraFocusControl::connect(self, static_cast<void (QCameraFocusControl::*)(const QPointF&)>(&QCameraFocusControl::customFocusPointChanged), self, [=](const QPointF& point) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		miqt_exec_callback_QCameraFocusControl_customFocusPointChanged(slot, sigval1);
 	});
 }

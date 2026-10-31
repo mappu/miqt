@@ -20,8 +20,8 @@ QWidget* QDesignerDnDItemInterface_decoration(const QDesignerDnDItemInterface* s
 	return self->decoration();
 }
 
-QPoint* QDesignerDnDItemInterface_hotSpot(const QDesignerDnDItemInterface* self) {
-	return new QPoint(self->hotSpot());
+struct miqt_qpoint QDesignerDnDItemInterface_hotSpot(const QDesignerDnDItemInterface* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->hotSpot());
 }
 
 int QDesignerDnDItemInterface_type(const QDesignerDnDItemInterface* self) {

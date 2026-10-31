@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -133,13 +134,11 @@ func (this *QwtDateScaleDraw) ToDateTime(param1 float64) *qt.QDateTime {
 }
 
 // LabelTransformation can only be called from a QwtDateScaleDraw that was directly constructed.
-func (this *QwtDateScaleDraw) LabelTransformation(param1 *qt.QPointF, param2 *qt.QSizeF) qt.QTransform {
+func (this *QwtDateScaleDraw) LabelTransformation(param1 qt.QPointF, param2 qt.QSizeF) qt.QTransform {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQTransform(unsafe.Pointer(C.QwtDateScaleDraw_protectedbase_labelTransformation(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (*C.QSizeF)(param2.UnsafePointer()))))
+	_goptr := qt.UnsafeNewQTransform(unsafe.Pointer(C.QwtDateScaleDraw_protectedbase_labelTransformation(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](param1), libmiqt.ValueCast[C.struct_miqt_qsizef](param2))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_method_ret := *_goptr
 

@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -237,20 +238,15 @@ func (this *QwtPlotLegendItem) UpdateLegend(param1 *QwtPlotItem, param2 []QwtLeg
 	C.QwtPlotLegendItem_updateLegend(this.h, param1.cPointer(), param2_ma)
 }
 
-func (this *QwtPlotLegendItem) Geometry(canvasRect *qt.QRectF) *qt.QRect {
+func (this *QwtPlotLegendItem) Geometry(canvasRect qt.QRectF) qt.QRect {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(canvasRect)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPlotLegendItem_geometry(this.h, (*C.QRectF)(canvasRect.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtPlotLegendItem_geometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](canvasRect)))
 }
 
-func (this *QwtPlotLegendItem) MinimumSize(param1 *QwtLegendData) *qt.QSize {
+func (this *QwtPlotLegendItem) MinimumSize(param1 *QwtLegendData) qt.QSize {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtPlotLegendItem_minimumSize(this.h, param1.cPointer())))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtPlotLegendItem_minimumSize(this.h, param1.cPointer()))
 }
 
 func (this *QwtPlotLegendItem) HeightForWidth(param1 *QwtLegendData, width int) int {
@@ -275,11 +271,9 @@ func (this *QwtPlotLegendItem) LegendGeometries(param1 *QwtPlotItem) []qt.QRect 
 	defer runtime.KeepAlive(param1)
 	var _ma C.struct_miqt_array = C.QwtPlotLegendItem_legendGeometries(this.h, param1.cPointer())
 	_ret := make([]qt.QRect, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QRect)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qrect)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt.QRect](_outCast[i])
 	}
 	return _ret
 }

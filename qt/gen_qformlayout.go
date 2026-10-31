@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -310,21 +311,16 @@ func (this *QFormLayout) TakeAt(index int) *QLayoutItem {
 	return newQLayoutItem(C.QFormLayout_takeAt(this.h, (C.int)(index)))
 }
 
-func (this *QFormLayout) SetGeometry(rect *QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QFormLayout_setGeometry(this.h, rect.cPointer())
+func (this *QFormLayout) SetGeometry(rect QRect) {
+	C.QFormLayout_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
-func (this *QFormLayout) MinimumSize() *QSize {
-	_goptr := newQSize(C.QFormLayout_minimumSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QFormLayout) MinimumSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QFormLayout_minimumSize(this.h))
 }
 
-func (this *QFormLayout) SizeHint() *QSize {
-	_goptr := newQSize(C.QFormLayout_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QFormLayout) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QFormLayout_sizeHint(this.h))
 }
 
 func (this *QFormLayout) Invalidate() {
@@ -447,13 +443,10 @@ func (this *QFormLayout) AdoptLayout(layout *QLayout) bool {
 }
 
 // AlignmentRect can only be called from a QFormLayout that was directly constructed.
-func (this *QFormLayout) AlignmentRect(param1 *QRect) QRect {
-	defer runtime.KeepAlive(param1)
+func (this *QFormLayout) AlignmentRect(param1 QRect) QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRect(C.QFormLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRect](C.QFormLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -607,13 +600,12 @@ func miqt_exec_callback_QFormLayout_takeAt(self *C.QFormLayout, cb C.intptr_t, i
 
 }
 
-func (this *QFormLayout) callVirtualBase_SetGeometry(rect *QRect) {
-	defer runtime.KeepAlive(rect)
+func (this *QFormLayout) callVirtualBase_SetGeometry(rect QRect) {
 
-	C.QFormLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QFormLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 
 }
-func (this *QFormLayout) OnSetGeometry(slot func(super func(rect *QRect), rect *QRect)) {
+func (this *QFormLayout) OnSetGeometry(slot func(super func(rect QRect), rect QRect)) {
 	ok := C.QFormLayout_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -621,27 +613,25 @@ func (this *QFormLayout) OnSetGeometry(slot func(super func(rect *QRect), rect *
 }
 
 //export miqt_exec_callback_QFormLayout_setGeometry
-func miqt_exec_callback_QFormLayout_setGeometry(self *C.QFormLayout, cb C.intptr_t, rect *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRect), rect *QRect))
+func miqt_exec_callback_QFormLayout_setGeometry(self *C.QFormLayout, cb C.intptr_t, rect C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRect), rect QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(rect)
+	slotval1 := libmiqt.ValueCast[QRect](rect)
 
 	gofunc((&QFormLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
 }
 
-func (this *QFormLayout) callVirtualBase_MinimumSize() *QSize {
+func (this *QFormLayout) callVirtualBase_MinimumSize() QSize {
 
-	_goptr := newQSize(C.QFormLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QFormLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnMinimumSize(slot func(super func() *QSize) *QSize) {
+func (this *QFormLayout) OnMinimumSize(slot func(super func() QSize) QSize) {
 	ok := C.QFormLayout_override_virtual_minimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -649,27 +639,24 @@ func (this *QFormLayout) OnMinimumSize(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QFormLayout_minimumSize
-func miqt_exec_callback_QFormLayout_minimumSize(self *C.QFormLayout, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QFormLayout_minimumSize(self *C.QFormLayout, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_MinimumSize)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QFormLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QFormLayout) callVirtualBase_SizeHint() *QSize {
-
-	_goptr := newQSize(C.QFormLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QFormLayout) OnSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QFormLayout) callVirtualBase_SizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QFormLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QFormLayout) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QFormLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -677,16 +664,15 @@ func (this *QFormLayout) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QFormLayout_sizeHint
-func miqt_exec_callback_QFormLayout_sizeHint(self *C.QFormLayout, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QFormLayout_sizeHint(self *C.QFormLayout, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QFormLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -816,14 +802,12 @@ func miqt_exec_callback_QFormLayout_count(self *C.QFormLayout, cb C.intptr_t) C.
 
 }
 
-func (this *QFormLayout) callVirtualBase_Geometry() *QRect {
+func (this *QFormLayout) callVirtualBase_Geometry() QRect {
 
-	_goptr := newQRect(C.QFormLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QFormLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnGeometry(slot func(super func() *QRect) *QRect) {
+func (this *QFormLayout) OnGeometry(slot func(super func() QRect) QRect) {
 	ok := C.QFormLayout_override_virtual_geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -831,27 +815,24 @@ func (this *QFormLayout) OnGeometry(slot func(super func() *QRect) *QRect) {
 }
 
 //export miqt_exec_callback_QFormLayout_geometry
-func miqt_exec_callback_QFormLayout_geometry(self *C.QFormLayout, cb C.intptr_t) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRect) *QRect)
+func miqt_exec_callback_QFormLayout_geometry(self *C.QFormLayout, cb C.intptr_t) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRect) QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_Geometry)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QFormLayout_virtualreturncopy_QRect(virtualReturn.cPointer())
-
-}
-
-func (this *QFormLayout) callVirtualBase_MaximumSize() *QSize {
-
-	_goptr := newQSize(C.QFormLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
-func (this *QFormLayout) OnMaximumSize(slot func(super func() *QSize) *QSize) {
+
+func (this *QFormLayout) callVirtualBase_MaximumSize() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QFormLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
+
+}
+func (this *QFormLayout) OnMaximumSize(slot func(super func() QSize) QSize) {
 	ok := C.QFormLayout_override_virtual_maximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -859,16 +840,15 @@ func (this *QFormLayout) OnMaximumSize(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QFormLayout_maximumSize
-func miqt_exec_callback_QFormLayout_maximumSize(self *C.QFormLayout, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QFormLayout_maximumSize(self *C.QFormLayout, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_MaximumSize)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QFormLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 

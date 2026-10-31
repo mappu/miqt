@@ -29,20 +29,20 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QwtPicker_activated(intptr_t, bool);
-void miqt_exec_callback_QwtPicker_appended(intptr_t, QPoint*);
-void miqt_exec_callback_QwtPicker_moved(intptr_t, QPoint*);
-void miqt_exec_callback_QwtPicker_removed(intptr_t, QPoint*);
+void miqt_exec_callback_QwtPicker_appended(intptr_t, struct miqt_qpoint);
+void miqt_exec_callback_QwtPicker_moved(intptr_t, struct miqt_qpoint);
+void miqt_exec_callback_QwtPicker_removed(intptr_t, struct miqt_qpoint);
 bool miqt_exec_callback_QwtPicker_eventFilter(QwtPicker*, intptr_t, QObject*, QEvent*);
 QPainterPath* miqt_exec_callback_QwtPicker_pickArea(const QwtPicker*, intptr_t);
 void miqt_exec_callback_QwtPicker_drawRubberBand(const QwtPicker*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtPicker_drawTracker(const QwtPicker*, intptr_t, QPainter*);
 QRegion* miqt_exec_callback_QwtPicker_rubberBandMask(const QwtPicker*, intptr_t);
-QwtText* miqt_exec_callback_QwtPicker_trackerText(const QwtPicker*, intptr_t, QPoint*);
-QRect* miqt_exec_callback_QwtPicker_trackerRect(const QwtPicker*, intptr_t, QFont*);
+QwtText* miqt_exec_callback_QwtPicker_trackerText(const QwtPicker*, intptr_t, struct miqt_qpoint);
+struct miqt_qrect miqt_exec_callback_QwtPicker_trackerRect(const QwtPicker*, intptr_t, QFont*);
 void miqt_exec_callback_QwtPicker_transition(QwtPicker*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPicker_begin(QwtPicker*, intptr_t);
-void miqt_exec_callback_QwtPicker_append(QwtPicker*, intptr_t, QPoint*);
-void miqt_exec_callback_QwtPicker_move(QwtPicker*, intptr_t, QPoint*);
+void miqt_exec_callback_QwtPicker_append(QwtPicker*, intptr_t, struct miqt_qpoint);
+void miqt_exec_callback_QwtPicker_move(QwtPicker*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QwtPicker_remove(QwtPicker*, intptr_t);
 bool miqt_exec_callback_QwtPicker_end(QwtPicker*, intptr_t, bool);
 void miqt_exec_callback_QwtPicker_reset(QwtPicker*, intptr_t);
@@ -55,7 +55,7 @@ void miqt_exec_callback_QwtPicker_widgetKeyPressEvent(QwtPicker*, intptr_t, QKey
 void miqt_exec_callback_QwtPicker_widgetKeyReleaseEvent(QwtPicker*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QwtPicker_widgetEnterEvent(QwtPicker*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPicker_widgetLeaveEvent(QwtPicker*, intptr_t, QEvent*);
-void miqt_exec_callback_QwtPicker_stretchSelection(QwtPicker*, intptr_t, QSize*, QSize*);
+void miqt_exec_callback_QwtPicker_stretchSelection(QwtPicker*, intptr_t, struct miqt_qsize, struct miqt_qsize);
 void miqt_exec_callback_QwtPicker_updateDisplay(QwtPicker*, intptr_t);
 bool miqt_exec_callback_QwtPicker_event(QwtPicker*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPicker_timerEvent(QwtPicker*, intptr_t, QTimerEvent*);
@@ -171,16 +171,14 @@ public:
 			return QwtPicker::trackerText(pos);
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPicker_trackerText(this, handle__trackerText, sigval1);
 		QwtText callback_return_value_ret = *callback_return_value;
 		delete callback_return_value;
 		return callback_return_value_ret;
 	}
 
-	friend QwtText* QwtPicker_virtualbase_trackerText(const void* self, QPoint* pos);
+	friend QwtText* QwtPicker_virtualbase_trackerText(const void* self, struct miqt_qpoint pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__trackerRect = 0;
@@ -194,13 +192,11 @@ public:
 		const QFont& param1_ret = param1;
 		// Cast returned reference into pointer
 		QFont* sigval1 = const_cast<QFont*>(&param1_ret);
-		QRect* callback_return_value = miqt_exec_callback_QwtPicker_trackerRect(this, handle__trackerRect, sigval1);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QwtPicker_trackerRect(this, handle__trackerRect, sigval1);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QwtPicker_virtualbase_trackerRect(const void* self, QFont* param1);
+	friend struct miqt_qrect QwtPicker_virtualbase_trackerRect(const void* self, QFont* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__transition = 0;
@@ -245,14 +241,12 @@ public:
 			return;
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		miqt_exec_callback_QwtPicker_append(this, handle__append, sigval1);
 
 	}
 
-	friend void QwtPicker_virtualbase_append(void* self, QPoint* param1);
+	friend void QwtPicker_virtualbase_append(void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__move = 0;
@@ -264,14 +258,12 @@ public:
 			return;
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		miqt_exec_callback_QwtPicker_move(this, handle__move, sigval1);
 
 	}
 
-	friend void QwtPicker_virtualbase_move(void* self, QPoint* param1);
+	friend void QwtPicker_virtualbase_move(void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__remove = 0;
@@ -484,17 +476,13 @@ public:
 			return;
 		}
 
-		const QSize& oldSize_ret = oldSize;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&oldSize_ret);
-		const QSize& newSize_ret = newSize;
-		// Cast returned reference into pointer
-		QSize* sigval2 = const_cast<QSize*>(&newSize_ret);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(oldSize);
+		struct miqt_qsize sigval2 = miqt_to_cabi<struct miqt_qsize>(newSize);
 		miqt_exec_callback_QwtPicker_stretchSelection(this, handle__stretchSelection, sigval1, sigval2);
 
 	}
 
-	friend void QwtPicker_virtualbase_stretchSelection(void* self, QSize* oldSize, QSize* newSize);
+	friend void QwtPicker_virtualbase_stretchSelection(void* self, struct miqt_qsize oldSize, struct miqt_qsize newSize);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateDisplay = 0;
@@ -806,16 +794,16 @@ QRegion* QwtPicker_rubberBandMask(const QwtPicker* self) {
 	return new QRegion(self->rubberBandMask());
 }
 
-QwtText* QwtPicker_trackerText(const QwtPicker* self, QPoint* pos) {
-	return new QwtText(self->trackerText(*pos));
+QwtText* QwtPicker_trackerText(const QwtPicker* self, struct miqt_qpoint pos) {
+	return new QwtText(self->trackerText(miqt_from_cabi<QPoint>(pos)));
 }
 
-QPoint* QwtPicker_trackerPosition(const QwtPicker* self) {
-	return new QPoint(self->trackerPosition());
+struct miqt_qpoint QwtPicker_trackerPosition(const QwtPicker* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->trackerPosition());
 }
 
-QRect* QwtPicker_trackerRect(const QwtPicker* self, QFont* param1) {
-	return new QRect(self->trackerRect(*param1));
+struct miqt_qrect QwtPicker_trackerRect(const QwtPicker* self, QFont* param1) {
+	return miqt_to_cabi<struct miqt_qrect>(self->trackerRect(*param1));
 }
 
 void QwtPicker_setEnabled(QwtPicker* self, bool enabled) {
@@ -833,41 +821,35 @@ void QwtPicker_connect_activated(QwtPicker* self, intptr_t slot) {
 	});
 }
 
-void QwtPicker_appended(QwtPicker* self, QPoint* pos) {
-	self->appended(*pos);
+void QwtPicker_appended(QwtPicker* self, struct miqt_qpoint pos) {
+	self->appended(miqt_from_cabi<QPoint>(pos));
 }
 
 void QwtPicker_connect_appended(QwtPicker* self, intptr_t slot) {
 	QwtPicker::connect(self, static_cast<void (QwtPicker::*)(const QPoint&)>(&QwtPicker::appended), self, [=](const QPoint& pos) {
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		miqt_exec_callback_QwtPicker_appended(slot, sigval1);
 	});
 }
 
-void QwtPicker_moved(QwtPicker* self, QPoint* pos) {
-	self->moved(*pos);
+void QwtPicker_moved(QwtPicker* self, struct miqt_qpoint pos) {
+	self->moved(miqt_from_cabi<QPoint>(pos));
 }
 
 void QwtPicker_connect_moved(QwtPicker* self, intptr_t slot) {
 	QwtPicker::connect(self, static_cast<void (QwtPicker::*)(const QPoint&)>(&QwtPicker::moved), self, [=](const QPoint& pos) {
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		miqt_exec_callback_QwtPicker_moved(slot, sigval1);
 	});
 }
 
-void QwtPicker_removed(QwtPicker* self, QPoint* pos) {
-	self->removed(*pos);
+void QwtPicker_removed(QwtPicker* self, struct miqt_qpoint pos) {
+	self->removed(miqt_from_cabi<QPoint>(pos));
 }
 
 void QwtPicker_connect_removed(QwtPicker* self, intptr_t slot) {
 	QwtPicker::connect(self, static_cast<void (QwtPicker::*)(const QPoint&)>(&QwtPicker::removed), self, [=](const QPoint& pos) {
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		miqt_exec_callback_QwtPicker_removed(slot, sigval1);
 	});
 }
@@ -996,8 +978,8 @@ bool QwtPicker_override_virtual_trackerText(void* self, intptr_t slot) {
 	return true;
 }
 
-QwtText* QwtPicker_virtualbase_trackerText(const void* self, QPoint* pos) {
-	return new QwtText(static_cast<const MiqtVirtualQwtPicker*>(self)->QwtPicker::trackerText(*pos));
+QwtText* QwtPicker_virtualbase_trackerText(const void* self, struct miqt_qpoint pos) {
+	return new QwtText(static_cast<const MiqtVirtualQwtPicker*>(self)->QwtPicker::trackerText(miqt_from_cabi<QPoint>(pos)));
 }
 
 bool QwtPicker_override_virtual_trackerRect(void* self, intptr_t slot) {
@@ -1010,8 +992,8 @@ bool QwtPicker_override_virtual_trackerRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QwtPicker_virtualbase_trackerRect(const void* self, QFont* param1) {
-	return new QRect(static_cast<const MiqtVirtualQwtPicker*>(self)->QwtPicker::trackerRect(*param1));
+struct miqt_qrect QwtPicker_virtualbase_trackerRect(const void* self, QFont* param1) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQwtPicker*>(self)->QwtPicker::trackerRect(*param1));
 }
 
 bool QwtPicker_override_virtual_transition(void* self, intptr_t slot) {
@@ -1052,8 +1034,8 @@ bool QwtPicker_override_virtual_append(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPicker_virtualbase_append(void* self, QPoint* param1) {
-	static_cast<MiqtVirtualQwtPicker*>(self)->QwtPicker::append(*param1);
+void QwtPicker_virtualbase_append(void* self, struct miqt_qpoint param1) {
+	static_cast<MiqtVirtualQwtPicker*>(self)->QwtPicker::append(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtPicker_override_virtual_move(void* self, intptr_t slot) {
@@ -1066,8 +1048,8 @@ bool QwtPicker_override_virtual_move(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPicker_virtualbase_move(void* self, QPoint* param1) {
-	static_cast<MiqtVirtualQwtPicker*>(self)->QwtPicker::move(*param1);
+void QwtPicker_virtualbase_move(void* self, struct miqt_qpoint param1) {
+	static_cast<MiqtVirtualQwtPicker*>(self)->QwtPicker::move(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtPicker_override_virtual_remove(void* self, intptr_t slot) {
@@ -1248,8 +1230,8 @@ bool QwtPicker_override_virtual_stretchSelection(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPicker_virtualbase_stretchSelection(void* self, QSize* oldSize, QSize* newSize) {
-	static_cast<MiqtVirtualQwtPicker*>(self)->QwtPicker::stretchSelection(*oldSize, *newSize);
+void QwtPicker_virtualbase_stretchSelection(void* self, struct miqt_qsize oldSize, struct miqt_qsize newSize) {
+	static_cast<MiqtVirtualQwtPicker*>(self)->QwtPicker::stretchSelection(miqt_from_cabi<QSize>(oldSize), miqt_from_cabi<QSize>(newSize));
 }
 
 bool QwtPicker_override_virtual_updateDisplay(void* self, intptr_t slot) {
@@ -1388,10 +1370,6 @@ QRegion* QwtPicker_virtualreturncopy_QRegion(QRegion* src) {
 
 QwtText* QwtPicker_virtualreturncopy_QwtText(QwtText* src) {
 	return new QwtText(*src);
-}
-
-QRect* QwtPicker_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
 }
 
 QwtWidgetOverlay* QwtPicker_protectedbase_rubberBandOverlay(bool* _dynamic_cast_ok, const void* self) {

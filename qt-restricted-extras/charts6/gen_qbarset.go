@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -203,48 +204,36 @@ func (this *QBarSet) LabelFont() *qt6.QFont {
 	return _goptr
 }
 
-func (this *QBarSet) Color() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QBarSet_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QBarSet) Color() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QBarSet_color(this.h))
 }
 
 func (this *QBarSet) SetColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QBarSet_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QBarSet_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QBarSet) BorderColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QBarSet_borderColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QBarSet) BorderColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QBarSet_borderColor(this.h))
 }
 
 func (this *QBarSet) SetBorderColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QBarSet_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QBarSet_setBorderColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QBarSet) LabelColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QBarSet_labelColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QBarSet) LabelColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QBarSet_labelColor(this.h))
 }
 
 func (this *QBarSet) SetLabelColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QBarSet_setLabelColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QBarSet_setLabelColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QBarSet) SelectedColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QBarSet_selectedColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QBarSet) SelectedColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QBarSet_selectedColor(this.h))
 }
 
-func (this *QBarSet) SetSelectedColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QBarSet_setSelectedColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QBarSet) SetSelectedColor(color qt6.QColor) {
+	C.QBarSet_setSelectedColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QBarSet) IsBarSelected(index int) bool {
@@ -502,91 +491,81 @@ func miqt_exec_callback_QBarSet_labelFontChanged(cb C.intptr_t) {
 }
 
 func (this *QBarSet) ColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QBarSet_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QBarSet_colorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QBarSet) OnColorChanged(slot func(color qt6.QColor)) {
 	C.QBarSet_connect_colorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QBarSet_colorChanged
-func miqt_exec_callback_QBarSet_colorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QBarSet_colorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
 func (this *QBarSet) BorderColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QBarSet_borderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QBarSet_borderColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QBarSet) OnBorderColorChanged(slot func(color qt6.QColor)) {
 	C.QBarSet_connect_borderColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QBarSet_borderColorChanged
-func miqt_exec_callback_QBarSet_borderColorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QBarSet_borderColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
 func (this *QBarSet) LabelColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QBarSet_labelColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QBarSet_labelColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QBarSet) OnLabelColorChanged(slot func(color qt6.QColor)) {
 	C.QBarSet_connect_labelColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QBarSet_labelColorChanged
-func miqt_exec_callback_QBarSet_labelColorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QBarSet_labelColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
-func (this *QBarSet) SelectedColorChanged(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QBarSet_selectedColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QBarSet) SelectedColorChanged(color qt6.QColor) {
+	C.QBarSet_selectedColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QBarSet) OnSelectedColorChanged(slot func(color *qt6.QColor)) {
+func (this *QBarSet) OnSelectedColorChanged(slot func(color qt6.QColor)) {
 	C.QBarSet_connect_selectedColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QBarSet_selectedColorChanged
-func miqt_exec_callback_QBarSet_selectedColorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *qt6.QColor))
+func miqt_exec_callback_QBarSet_selectedColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }

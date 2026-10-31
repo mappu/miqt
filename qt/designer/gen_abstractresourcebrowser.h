@@ -109,9 +109,9 @@ int QDesignerResourceBrowserInterface_virtualbase_devType(const void* self);
 bool QDesignerResourceBrowserInterface_override_virtual_setVisible(void* self, intptr_t slot);
 void QDesignerResourceBrowserInterface_virtualbase_setVisible(void* self, bool visible);
 bool QDesignerResourceBrowserInterface_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QDesignerResourceBrowserInterface_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QDesignerResourceBrowserInterface_virtualbase_sizeHint(const void* self);
 bool QDesignerResourceBrowserInterface_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QDesignerResourceBrowserInterface_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QDesignerResourceBrowserInterface_virtualbase_minimumSizeHint(const void* self);
 bool QDesignerResourceBrowserInterface_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QDesignerResourceBrowserInterface_virtualbase_heightForWidth(const void* self, int param1);
 bool QDesignerResourceBrowserInterface_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -198,7 +198,6 @@ bool QDesignerResourceBrowserInterface_override_virtual_connectNotify(void* self
 void QDesignerResourceBrowserInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesignerResourceBrowserInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesignerResourceBrowserInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QDesignerResourceBrowserInterface_virtualreturncopy_QSize(QSize* src);
 QVariant* QDesignerResourceBrowserInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerResourceBrowserInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

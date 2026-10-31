@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 struct miqt_array /* of QWidget* */  miqt_exec_callback_QDesignerLayoutDecorationExtension_widgets(const QDesignerLayoutDecorationExtension*, intptr_t, QLayout*);
-QRect* miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo(const QDesignerLayoutDecorationExtension*, intptr_t, int);
+struct miqt_qrect miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo(const QDesignerLayoutDecorationExtension*, intptr_t, int);
 int miqt_exec_callback_QDesignerLayoutDecorationExtension_indexOf(const QDesignerLayoutDecorationExtension*, intptr_t, QWidget*);
 int miqt_exec_callback_QDesignerLayoutDecorationExtension_indexOfWithItem(const QDesignerLayoutDecorationExtension*, intptr_t, QLayoutItem*);
 int miqt_exec_callback_QDesignerLayoutDecorationExtension_currentInsertMode(const QDesignerLayoutDecorationExtension*, intptr_t);
@@ -25,9 +25,9 @@ void miqt_exec_callback_QDesignerLayoutDecorationExtension_removeWidget(QDesigne
 void miqt_exec_callback_QDesignerLayoutDecorationExtension_insertRow(QDesignerLayoutDecorationExtension*, intptr_t, int);
 void miqt_exec_callback_QDesignerLayoutDecorationExtension_insertColumn(QDesignerLayoutDecorationExtension*, intptr_t, int);
 void miqt_exec_callback_QDesignerLayoutDecorationExtension_simplify(QDesignerLayoutDecorationExtension*, intptr_t);
-int miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt(const QDesignerLayoutDecorationExtension*, intptr_t, QPoint*);
+int miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt(const QDesignerLayoutDecorationExtension*, intptr_t, struct miqt_qpoint);
 int miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt2(const QDesignerLayoutDecorationExtension*, intptr_t, int, int);
-void miqt_exec_callback_QDesignerLayoutDecorationExtension_adjustIndicator(QDesignerLayoutDecorationExtension*, intptr_t, QPoint*, int);
+void miqt_exec_callback_QDesignerLayoutDecorationExtension_adjustIndicator(QDesignerLayoutDecorationExtension*, intptr_t, struct miqt_qpoint, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -70,10 +70,8 @@ public:
 		}
 
 		int sigval1 = index;
-		QRect* callback_return_value = miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo(this, handle__itemInfo, sigval1);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo(this, handle__itemInfo, sigval1);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -239,9 +237,7 @@ public:
 			return 0; // Pure virtual, there is no base we can call
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		int callback_return_value = miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt(this, handle__findItemAt, sigval1);
 		return static_cast<int>(callback_return_value);
 	}
@@ -270,9 +266,7 @@ public:
 			return; // Pure virtual, there is no base we can call
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		int sigval2 = index;
 		miqt_exec_callback_QDesignerLayoutDecorationExtension_adjustIndicator(this, handle__adjustIndicator, sigval1, sigval2);
 
@@ -297,8 +291,8 @@ struct miqt_array /* of QWidget* */  QDesignerLayoutDecorationExtension_widgets(
 	return _out;
 }
 
-QRect* QDesignerLayoutDecorationExtension_itemInfo(const QDesignerLayoutDecorationExtension* self, int index) {
-	return new QRect(self->itemInfo(static_cast<int>(index)));
+struct miqt_qrect QDesignerLayoutDecorationExtension_itemInfo(const QDesignerLayoutDecorationExtension* self, int index) {
+	return miqt_to_cabi<struct miqt_qrect>(self->itemInfo(static_cast<int>(index)));
 }
 
 int QDesignerLayoutDecorationExtension_indexOf(const QDesignerLayoutDecorationExtension* self, QWidget* widget) {
@@ -357,16 +351,16 @@ void QDesignerLayoutDecorationExtension_simplify(QDesignerLayoutDecorationExtens
 	self->simplify();
 }
 
-int QDesignerLayoutDecorationExtension_findItemAt(const QDesignerLayoutDecorationExtension* self, QPoint* pos) {
-	return self->findItemAt(*pos);
+int QDesignerLayoutDecorationExtension_findItemAt(const QDesignerLayoutDecorationExtension* self, struct miqt_qpoint pos) {
+	return self->findItemAt(miqt_from_cabi<QPoint>(pos));
 }
 
 int QDesignerLayoutDecorationExtension_findItemAt2(const QDesignerLayoutDecorationExtension* self, int row, int column) {
 	return self->findItemAt(static_cast<int>(row), static_cast<int>(column));
 }
 
-void QDesignerLayoutDecorationExtension_adjustIndicator(QDesignerLayoutDecorationExtension* self, QPoint* pos, int index) {
-	self->adjustIndicator(*pos, static_cast<int>(index));
+void QDesignerLayoutDecorationExtension_adjustIndicator(QDesignerLayoutDecorationExtension* self, struct miqt_qpoint pos, int index) {
+	self->adjustIndicator(miqt_from_cabi<QPoint>(pos), static_cast<int>(index));
 }
 
 bool QDesignerLayoutDecorationExtension_override_virtual_widgets(void* self, intptr_t slot) {
@@ -517,10 +511,6 @@ bool QDesignerLayoutDecorationExtension_override_virtual_adjustIndicator(void* s
 
 	self_cast->handle__adjustIndicator = slot;
 	return true;
-}
-
-QRect* QDesignerLayoutDecorationExtension_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
 }
 
 void QDesignerLayoutDecorationExtension_delete(QDesignerLayoutDecorationExtension* self) {

@@ -34,7 +34,7 @@ void QWebEngineContextMenuRequest_virtbase(QWebEngineContextMenuRequest* src, QO
 QMetaObject* QWebEngineContextMenuRequest_metaObject(const QWebEngineContextMenuRequest* self);
 void* QWebEngineContextMenuRequest_metacast(QWebEngineContextMenuRequest* self, const char* param1);
 struct miqt_string QWebEngineContextMenuRequest_tr(const char* s);
-QPoint* QWebEngineContextMenuRequest_position(const QWebEngineContextMenuRequest* self);
+struct miqt_qpoint QWebEngineContextMenuRequest_position(const QWebEngineContextMenuRequest* self);
 struct miqt_string QWebEngineContextMenuRequest_selectedText(const QWebEngineContextMenuRequest* self);
 struct miqt_string QWebEngineContextMenuRequest_linkText(const QWebEngineContextMenuRequest* self);
 QUrl* QWebEngineContextMenuRequest_linkUrl(const QWebEngineContextMenuRequest* self);

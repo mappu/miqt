@@ -48,8 +48,8 @@ double QwtPlotMarker_yValue(const QwtPlotMarker* self) {
 	return self->yValue();
 }
 
-QPointF* QwtPlotMarker_value(const QwtPlotMarker* self) {
-	return new QPointF(self->value());
+struct miqt_qpointf QwtPlotMarker_value(const QwtPlotMarker* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->value());
 }
 
 void QwtPlotMarker_setXValue(QwtPlotMarker* self, double xValue) {
@@ -64,8 +64,8 @@ void QwtPlotMarker_setValue(QwtPlotMarker* self, double param1, double param2) {
 	self->setValue(static_cast<double>(param1), static_cast<double>(param2));
 }
 
-void QwtPlotMarker_setValueWithValue(QwtPlotMarker* self, QPointF* value) {
-	self->setValue(*value);
+void QwtPlotMarker_setValueWithValue(QwtPlotMarker* self, struct miqt_qpointf value) {
+	self->setValue(miqt_from_cabi<QPointF>(value));
 }
 
 void QwtPlotMarker_setLineStyle(QwtPlotMarker* self, int lineStyle) {
@@ -77,8 +77,8 @@ int QwtPlotMarker_lineStyle(const QwtPlotMarker* self) {
 	return static_cast<int>(_ret);
 }
 
-void QwtPlotMarker_setLinePen(QwtPlotMarker* self, QColor* param1) {
-	self->setLinePen(*param1);
+void QwtPlotMarker_setLinePen(QwtPlotMarker* self, struct miqt_qcolor param1) {
+	self->setLinePen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotMarker_setLinePenWithLinePen(QwtPlotMarker* self, QPen* linePen) {
@@ -133,20 +133,20 @@ int QwtPlotMarker_spacing(const QwtPlotMarker* self) {
 	return self->spacing();
 }
 
-QRectF* QwtPlotMarker_boundingRect(const QwtPlotMarker* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotMarker_boundingRect(const QwtPlotMarker* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
-QwtGraphic* QwtPlotMarker_legendIcon(const QwtPlotMarker* self, int index, QSizeF* param2) {
-	return new QwtGraphic(self->legendIcon(static_cast<int>(index), *param2));
+QwtGraphic* QwtPlotMarker_legendIcon(const QwtPlotMarker* self, int index, struct miqt_qsizef param2) {
+	return new QwtGraphic(self->legendIcon(static_cast<int>(index), miqt_from_cabi<QSizeF>(param2)));
 }
 
-void QwtPlotMarker_setLinePen2(QwtPlotMarker* self, QColor* param1, double width) {
-	self->setLinePen(*param1, static_cast<qreal>(width));
+void QwtPlotMarker_setLinePen2(QwtPlotMarker* self, struct miqt_qcolor param1, double width) {
+	self->setLinePen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotMarker_setLinePen3(QwtPlotMarker* self, QColor* param1, double width, int param3) {
-	self->setLinePen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotMarker_setLinePen3(QwtPlotMarker* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setLinePen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 void QwtPlotMarker_delete(QwtPlotMarker* self) {

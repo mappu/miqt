@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -313,9 +314,8 @@ func (this *QChart) ZoomOut() {
 	C.QChart_zoomOut(this.h)
 }
 
-func (this *QChart) ZoomInWithRect(rect *qt6.QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QChart_zoomInWithRect(this.h, (*C.QRectF)(rect.UnsafePointer()))
+func (this *QChart) ZoomInWithRect(rect qt6.QRectF) {
+	C.QChart_zoomInWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QChart) Zoom(factor float64) {
@@ -338,26 +338,20 @@ func (this *QChart) Legend() *QLegend {
 	return newQLegend(C.QChart_legend(this.h))
 }
 
-func (this *QChart) SetMargins(margins *qt6.QMargins) {
-	defer runtime.KeepAlive(margins)
-	C.QChart_setMargins(this.h, (*C.QMargins)(margins.UnsafePointer()))
+func (this *QChart) SetMargins(margins qt6.QMargins) {
+	C.QChart_setMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmargins](margins))
 }
 
-func (this *QChart) Margins() *qt6.QMargins {
-	_goptr := qt6.UnsafeNewQMargins(unsafe.Pointer(C.QChart_margins(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QChart) Margins() qt6.QMargins {
+	return libmiqt.ValueCast[qt6.QMargins](C.QChart_margins(this.h))
 }
 
-func (this *QChart) PlotArea() *qt6.QRectF {
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QChart_plotArea(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QChart) PlotArea() qt6.QRectF {
+	return libmiqt.ValueCast[qt6.QRectF](C.QChart_plotArea(this.h))
 }
 
-func (this *QChart) SetPlotArea(rect *qt6.QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QChart_setPlotArea(this.h, (*C.QRectF)(rect.UnsafePointer()))
+func (this *QChart) SetPlotArea(rect qt6.QRectF) {
+	C.QChart_setPlotArea(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QChart) SetPlotAreaBackgroundBrush(brush *qt6.QBrush) {
@@ -409,41 +403,34 @@ func (this *QChart) Locale() *qt6.QLocale {
 	return _goptr
 }
 
-func (this *QChart) MapToValue(position *qt6.QPointF) *qt6.QPointF {
-	defer runtime.KeepAlive(position)
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QChart_mapToValue(this.h, (*C.QPointF)(position.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QChart) MapToValue(position qt6.QPointF) qt6.QPointF {
+	return libmiqt.ValueCast[qt6.QPointF](C.QChart_mapToValue(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](position)))
 }
 
-func (this *QChart) MapToPosition(value *qt6.QPointF) *qt6.QPointF {
-	defer runtime.KeepAlive(value)
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QChart_mapToPosition(this.h, (*C.QPointF)(value.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QChart) MapToPosition(value qt6.QPointF) qt6.QPointF {
+	return libmiqt.ValueCast[qt6.QPointF](C.QChart_mapToPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](value)))
 }
 
 func (this *QChart) ChartType() QChart__ChartType {
 	return (QChart__ChartType)(C.QChart_chartType(this.h))
 }
 
-func (this *QChart) PlotAreaChanged(plotArea *qt6.QRectF) {
-	defer runtime.KeepAlive(plotArea)
-	C.QChart_plotAreaChanged(this.h, (*C.QRectF)(plotArea.UnsafePointer()))
+func (this *QChart) PlotAreaChanged(plotArea qt6.QRectF) {
+	C.QChart_plotAreaChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](plotArea))
 }
-func (this *QChart) OnPlotAreaChanged(slot func(plotArea *qt6.QRectF)) {
+func (this *QChart) OnPlotAreaChanged(slot func(plotArea qt6.QRectF)) {
 	C.QChart_connect_plotAreaChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QChart_plotAreaChanged
-func miqt_exec_callback_QChart_plotAreaChanged(cb C.intptr_t, plotArea *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(plotArea *qt6.QRectF))
+func miqt_exec_callback_QChart_plotAreaChanged(cb C.intptr_t, plotArea C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(plotArea qt6.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQRectF(unsafe.Pointer(plotArea))
+	slotval1 := libmiqt.ValueCast[qt6.QRectF](plotArea)
 
 	gofunc(slotval1)
 }
@@ -518,18 +505,12 @@ func (this *QChart) SetPlotAreaBackgroundVisibleWithVisible(visible bool) {
 	C.QChart_setPlotAreaBackgroundVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QChart) MapToValue2(position *qt6.QPointF, series *QAbstractSeries) *qt6.QPointF {
-	defer runtime.KeepAlive(position)
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QChart_mapToValue2(this.h, (*C.QPointF)(position.UnsafePointer()), series.cPointer())))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QChart) MapToValue2(position qt6.QPointF, series *QAbstractSeries) qt6.QPointF {
+	return libmiqt.ValueCast[qt6.QPointF](C.QChart_mapToValue2(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](position), series.cPointer()))
 }
 
-func (this *QChart) MapToPosition2(value *qt6.QPointF, series *QAbstractSeries) *qt6.QPointF {
-	defer runtime.KeepAlive(value)
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QChart_mapToPosition2(this.h, (*C.QPointF)(value.UnsafePointer()), series.cPointer())))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QChart) MapToPosition2(value qt6.QPointF, series *QAbstractSeries) qt6.QPointF {
+	return libmiqt.ValueCast[qt6.QPointF](C.QChart_mapToPosition2(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](value), series.cPointer()))
 }
 
 // UpdateMicroFocus can only be called from a QChart that was directly constructed.
@@ -664,13 +645,12 @@ func (this *QChart) SetOwnedByLayout(ownedByLayout bool) {
 
 }
 
-func (this *QChart) callVirtualBase_SetGeometry(rect *qt6.QRectF) {
-	defer runtime.KeepAlive(rect)
+func (this *QChart) callVirtualBase_SetGeometry(rect qt6.QRectF) {
 
-	C.QChart_virtualbase_setGeometry(unsafe.Pointer(this.h), (*C.QRectF)(rect.UnsafePointer()))
+	C.QChart_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QChart) OnSetGeometry(slot func(super func(rect *qt6.QRectF), rect *qt6.QRectF)) {
+func (this *QChart) OnSetGeometry(slot func(super func(rect qt6.QRectF), rect qt6.QRectF)) {
 	ok := C.QChart_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -678,14 +658,14 @@ func (this *QChart) OnSetGeometry(slot func(super func(rect *qt6.QRectF), rect *
 }
 
 //export miqt_exec_callback_QChart_setGeometry
-func miqt_exec_callback_QChart_setGeometry(self *C.QChart, cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *qt6.QRectF), rect *qt6.QRectF))
+func miqt_exec_callback_QChart_setGeometry(self *C.QChart, cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect qt6.QRectF), rect qt6.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := libmiqt.ValueCast[qt6.QRectF](rect)
 
 	gofunc((&QChart{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -812,14 +792,12 @@ func miqt_exec_callback_QChart_paintWindowFrame(self *C.QChart, cb C.intptr_t, p
 
 }
 
-func (this *QChart) callVirtualBase_BoundingRect() *qt6.QRectF {
+func (this *QChart) callVirtualBase_BoundingRect() qt6.QRectF {
 
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QChart_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QRectF](C.QChart_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QChart) OnBoundingRect(slot func(super func() *qt6.QRectF) *qt6.QRectF) {
+func (this *QChart) OnBoundingRect(slot func(super func() qt6.QRectF) qt6.QRectF) {
 	ok := C.QChart_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -827,16 +805,15 @@ func (this *QChart) OnBoundingRect(slot func(super func() *qt6.QRectF) *qt6.QRec
 }
 
 //export miqt_exec_callback_QChart_boundingRect
-func miqt_exec_callback_QChart_boundingRect(self *C.QChart, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QRectF) *qt6.QRectF)
+func miqt_exec_callback_QChart_boundingRect(self *C.QChart, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QRectF) qt6.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QChart{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QChart_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -895,15 +872,12 @@ func miqt_exec_callback_QChart_initStyleOption(self *C.QChart, cb C.intptr_t, op
 
 }
 
-func (this *QChart) callVirtualBase_SizeHint(which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF {
-	defer runtime.KeepAlive(constraint)
+func (this *QChart) callVirtualBase_SizeHint(which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF {
 
-	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QChart_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSizeF](C.QChart_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 
 }
-func (this *QChart) OnSizeHint(slot func(super func(which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF, which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF) {
+func (this *QChart) OnSizeHint(slot func(super func(which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF, which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF) {
 	ok := C.QChart_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -911,8 +885,8 @@ func (this *QChart) OnSizeHint(slot func(super func(which qt6.SizeHint, constrai
 }
 
 //export miqt_exec_callback_QChart_sizeHint
-func miqt_exec_callback_QChart_sizeHint(self *C.QChart, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF, which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF)
+func miqt_exec_callback_QChart_sizeHint(self *C.QChart, cb C.intptr_t, which C.int, constraint C.struct_miqt_qsizef) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF, which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -920,12 +894,11 @@ func miqt_exec_callback_QChart_sizeHint(self *C.QChart, cb C.intptr_t, which C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (qt6.SizeHint)(which)
 
-	slotval2 := qt6.UnsafeNewQSizeF(unsafe.Pointer(constraint))
+	slotval2 := libmiqt.ValueCast[qt6.QSizeF](constraint)
 
 	virtualReturn := gofunc((&QChart{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QChart_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 
@@ -1084,13 +1057,12 @@ func miqt_exec_callback_QChart_windowFrameEvent(self *C.QChart, cb C.intptr_t, e
 
 }
 
-func (this *QChart) callVirtualBase_WindowFrameSectionAt(pos *qt6.QPointF) qt6.WindowFrameSection {
-	defer runtime.KeepAlive(pos)
+func (this *QChart) callVirtualBase_WindowFrameSectionAt(pos qt6.QPointF) qt6.WindowFrameSection {
 
-	return (qt6.WindowFrameSection)(C.QChart_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), (*C.QPointF)(pos.UnsafePointer())))
+	return (qt6.WindowFrameSection)(C.QChart_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](pos)))
 
 }
-func (this *QChart) OnWindowFrameSectionAt(slot func(super func(pos *qt6.QPointF) qt6.WindowFrameSection, pos *qt6.QPointF) qt6.WindowFrameSection) {
+func (this *QChart) OnWindowFrameSectionAt(slot func(super func(pos qt6.QPointF) qt6.WindowFrameSection, pos qt6.QPointF) qt6.WindowFrameSection) {
 	ok := C.QChart_override_virtual_windowFrameSectionAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1098,14 +1070,14 @@ func (this *QChart) OnWindowFrameSectionAt(slot func(super func(pos *qt6.QPointF
 }
 
 //export miqt_exec_callback_QChart_windowFrameSectionAt
-func miqt_exec_callback_QChart_windowFrameSectionAt(self *C.QChart, cb C.intptr_t, pos *C.QPointF) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos *qt6.QPointF) qt6.WindowFrameSection, pos *qt6.QPointF) qt6.WindowFrameSection)
+func miqt_exec_callback_QChart_windowFrameSectionAt(self *C.QChart, cb C.intptr_t, pos C.struct_miqt_qpointf) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos qt6.QPointF) qt6.WindowFrameSection, pos qt6.QPointF) qt6.WindowFrameSection)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(pos))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](pos)
 
 	virtualReturn := gofunc((&QChart{h: self}).callVirtualBase_WindowFrameSectionAt, slotval1)
 
@@ -1763,13 +1735,12 @@ func miqt_exec_callback_QChart_advance(self *C.QChart, cb C.intptr_t, phase C.in
 
 }
 
-func (this *QChart) callVirtualBase_Contains(point *qt6.QPointF) bool {
-	defer runtime.KeepAlive(point)
+func (this *QChart) callVirtualBase_Contains(point qt6.QPointF) bool {
 
-	return (bool)(C.QChart_virtualbase_contains(unsafe.Pointer(this.h), (*C.QPointF)(point.UnsafePointer())))
+	return (bool)(C.QChart_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QChart) OnContains(slot func(super func(point *qt6.QPointF) bool, point *qt6.QPointF) bool) {
+func (this *QChart) OnContains(slot func(super func(point qt6.QPointF) bool, point qt6.QPointF) bool) {
 	ok := C.QChart_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1777,14 +1748,14 @@ func (this *QChart) OnContains(slot func(super func(point *qt6.QPointF) bool, po
 }
 
 //export miqt_exec_callback_QChart_contains
-func miqt_exec_callback_QChart_contains(self *C.QChart, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *qt6.QPointF) bool, point *qt6.QPointF) bool)
+func miqt_exec_callback_QChart_contains(self *C.QChart, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point qt6.QPointF) bool, point qt6.QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	virtualReturn := gofunc((&QChart{h: self}).callVirtualBase_Contains, slotval1)
 

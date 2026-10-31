@@ -84,16 +84,16 @@ void QGraphicsSvgItem_setElementId(QGraphicsSvgItem* self, struct miqt_string id
 struct miqt_string QGraphicsSvgItem_elementId(const QGraphicsSvgItem* self);
 void QGraphicsSvgItem_setCachingEnabled(QGraphicsSvgItem* self, bool cachingEnabled);
 bool QGraphicsSvgItem_isCachingEnabled(const QGraphicsSvgItem* self);
-void QGraphicsSvgItem_setMaximumCacheSize(QGraphicsSvgItem* self, QSize* size);
-QSize* QGraphicsSvgItem_maximumCacheSize(const QGraphicsSvgItem* self);
-QRectF* QGraphicsSvgItem_boundingRect(const QGraphicsSvgItem* self);
+void QGraphicsSvgItem_setMaximumCacheSize(QGraphicsSvgItem* self, struct miqt_qsize size);
+struct miqt_qsize QGraphicsSvgItem_maximumCacheSize(const QGraphicsSvgItem* self);
+struct miqt_qrectf QGraphicsSvgItem_boundingRect(const QGraphicsSvgItem* self);
 void QGraphicsSvgItem_paint(QGraphicsSvgItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
 int QGraphicsSvgItem_type(const QGraphicsSvgItem* self);
 struct miqt_string QGraphicsSvgItem_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsSvgItem_tr3(const char* s, const char* c, int n);
 
 bool QGraphicsSvgItem_override_virtual_boundingRect(void* self, intptr_t slot);
-QRectF* QGraphicsSvgItem_virtualbase_boundingRect(const void* self);
+struct miqt_qrectf QGraphicsSvgItem_virtualbase_boundingRect(const void* self);
 bool QGraphicsSvgItem_override_virtual_paint(void* self, intptr_t slot);
 void QGraphicsSvgItem_virtualbase_paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
 bool QGraphicsSvgItem_override_virtual_type(void* self, intptr_t slot);
@@ -117,7 +117,7 @@ void QGraphicsSvgItem_virtualbase_advance(void* self, int phase);
 bool QGraphicsSvgItem_override_virtual_shape(void* self, intptr_t slot);
 QPainterPath* QGraphicsSvgItem_virtualbase_shape(const void* self);
 bool QGraphicsSvgItem_override_virtual_contains(void* self, intptr_t slot);
-bool QGraphicsSvgItem_virtualbase_contains(const void* self, QPointF* point);
+bool QGraphicsSvgItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 bool QGraphicsSvgItem_override_virtual_collidesWithItem(void* self, intptr_t slot);
 bool QGraphicsSvgItem_virtualbase_collidesWithItem(const void* self, QGraphicsItem* other, int mode);
 bool QGraphicsSvgItem_override_virtual_collidesWithPath(void* self, intptr_t slot);
@@ -176,7 +176,6 @@ bool QGraphicsSvgItem_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsSvgItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsSvgItem_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsSvgItem_virtualbase_extension(const void* self, QVariant* variant);
-QRectF* QGraphicsSvgItem_virtualreturncopy_QRectF(QRectF* src);
 QPainterPath* QGraphicsSvgItem_virtualreturncopy_QPainterPath(QPainterPath* src);
 QVariant* QGraphicsSvgItem_virtualreturncopy_QVariant(QVariant* src);
 

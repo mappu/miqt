@@ -68,12 +68,12 @@ void QVideoWindowControl_setWinId(QVideoWindowControl* self, uintptr_t id) {
 	self->setWinId(static_cast<WId>(id));
 }
 
-QRect* QVideoWindowControl_displayRect(const QVideoWindowControl* self) {
-	return new QRect(self->displayRect());
+struct miqt_qrect QVideoWindowControl_displayRect(const QVideoWindowControl* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->displayRect());
 }
 
-void QVideoWindowControl_setDisplayRect(QVideoWindowControl* self, QRect* rect) {
-	self->setDisplayRect(*rect);
+void QVideoWindowControl_setDisplayRect(QVideoWindowControl* self, struct miqt_qrect rect) {
+	self->setDisplayRect(miqt_from_cabi<QRect>(rect));
 }
 
 bool QVideoWindowControl_isFullScreen(const QVideoWindowControl* self) {
@@ -88,8 +88,8 @@ void QVideoWindowControl_repaint(QVideoWindowControl* self) {
 	self->repaint();
 }
 
-QSize* QVideoWindowControl_nativeSize(const QVideoWindowControl* self) {
-	return new QSize(self->nativeSize());
+struct miqt_qsize QVideoWindowControl_nativeSize(const QVideoWindowControl* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->nativeSize());
 }
 
 int QVideoWindowControl_aspectRatioMode(const QVideoWindowControl* self) {

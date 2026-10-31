@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -223,22 +224,19 @@ func (this *QMatrix4x4) OperatorNotEqual(other *QMatrix4x4) bool {
 	return (bool)(C.QMatrix4x4_operatorNotEqual(this.h, other.cPointer()))
 }
 
-func (this *QMatrix4x4) Scale(vector *QVector3D) {
+func (this *QMatrix4x4) Scale(vector QVector3D) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(vector)
-	C.QMatrix4x4_scale(this.h, vector.cPointer())
+	C.QMatrix4x4_scale(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](vector))
 }
 
-func (this *QMatrix4x4) Translate(vector *QVector3D) {
+func (this *QMatrix4x4) Translate(vector QVector3D) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(vector)
-	C.QMatrix4x4_translate(this.h, vector.cPointer())
+	C.QMatrix4x4_translate(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](vector))
 }
 
-func (this *QMatrix4x4) Rotate(angle float32, vector *QVector3D) {
+func (this *QMatrix4x4) Rotate(angle float32, vector QVector3D) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(vector)
-	C.QMatrix4x4_rotate(this.h, (C.float)(angle), vector.cPointer())
+	C.QMatrix4x4_rotate(this.h, (C.float)(angle), libmiqt.ValueCast[C.struct_miqt_qvector3d](vector))
 }
 
 func (this *QMatrix4x4) Scale2(x float32, y float32) {
@@ -277,16 +275,14 @@ func (this *QMatrix4x4) RotateWithQuaternion(quaternion *QQuaternion) {
 	C.QMatrix4x4_rotateWithQuaternion(this.h, quaternion.cPointer())
 }
 
-func (this *QMatrix4x4) Ortho(rect *QRect) {
+func (this *QMatrix4x4) Ortho(rect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QMatrix4x4_ortho(this.h, rect.cPointer())
+	C.QMatrix4x4_ortho(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
-func (this *QMatrix4x4) OrthoWithRect(rect *QRectF) {
+func (this *QMatrix4x4) OrthoWithRect(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QMatrix4x4_orthoWithRect(this.h, rect.cPointer())
+	C.QMatrix4x4_orthoWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QMatrix4x4) Ortho2(left float32, right float32, bottom float32, top float32, nearPlane float32, farPlane float32) {
@@ -304,18 +300,14 @@ func (this *QMatrix4x4) Perspective(verticalAngle float32, aspectRatio float32, 
 	C.QMatrix4x4_perspective(this.h, (C.float)(verticalAngle), (C.float)(aspectRatio), (C.float)(nearPlane), (C.float)(farPlane))
 }
 
-func (this *QMatrix4x4) LookAt(eye *QVector3D, center *QVector3D, up *QVector3D) {
+func (this *QMatrix4x4) LookAt(eye QVector3D, center QVector3D, up QVector3D) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(eye)
-	defer runtime.KeepAlive(center)
-	defer runtime.KeepAlive(up)
-	C.QMatrix4x4_lookAt(this.h, eye.cPointer(), center.cPointer(), up.cPointer())
+	C.QMatrix4x4_lookAt(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](eye), libmiqt.ValueCast[C.struct_miqt_qvector3d](center), libmiqt.ValueCast[C.struct_miqt_qvector3d](up))
 }
 
-func (this *QMatrix4x4) Viewport(rect *QRectF) {
+func (this *QMatrix4x4) Viewport(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QMatrix4x4_viewport(this.h, rect.cPointer())
+	C.QMatrix4x4_viewport(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QMatrix4x4) Viewport2(left float32, bottom float32, width float32, height float32) {
@@ -347,36 +339,24 @@ func (this *QMatrix4x4) ToTransformWithDistanceToPlane(distanceToPlane float32) 
 	return _goptr
 }
 
-func (this *QMatrix4x4) Map(point *QPoint) *QPoint {
+func (this *QMatrix4x4) Map(point QPoint) QPoint {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	_goptr := newQPoint(C.QMatrix4x4_map(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QMatrix4x4_map(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
-func (this *QMatrix4x4) MapWithPoint(point *QPointF) *QPointF {
+func (this *QMatrix4x4) MapWithPoint(point QPointF) QPointF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	_goptr := newQPointF(C.QMatrix4x4_mapWithPoint(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QMatrix4x4_mapWithPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
-func (this *QMatrix4x4) Map2(point *QVector3D) *QVector3D {
+func (this *QMatrix4x4) Map2(point QVector3D) QVector3D {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	_goptr := newQVector3D(C.QMatrix4x4_map2(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QVector3D](C.QMatrix4x4_map2(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](point)))
 }
 
-func (this *QMatrix4x4) MapVector(vector *QVector3D) *QVector3D {
+func (this *QMatrix4x4) MapVector(vector QVector3D) QVector3D {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(vector)
-	_goptr := newQVector3D(C.QMatrix4x4_mapVector(this.h, vector.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QVector3D](C.QMatrix4x4_mapVector(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](vector)))
 }
 
 func (this *QMatrix4x4) Map3(point *QVector4D) *QVector4D {
@@ -387,20 +367,14 @@ func (this *QMatrix4x4) Map3(point *QVector4D) *QVector4D {
 	return _goptr
 }
 
-func (this *QMatrix4x4) MapRect(rect *QRect) *QRect {
+func (this *QMatrix4x4) MapRect(rect QRect) QRect {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRect(C.QMatrix4x4_mapRect(this.h, rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QMatrix4x4_mapRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect)))
 }
 
-func (this *QMatrix4x4) MapRectWithRect(rect *QRectF) *QRectF {
+func (this *QMatrix4x4) MapRectWithRect(rect QRectF) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRectF(C.QMatrix4x4_mapRectWithRect(this.h, rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QMatrix4x4_mapRectWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 func (this *QMatrix4x4) Data() *float32 {

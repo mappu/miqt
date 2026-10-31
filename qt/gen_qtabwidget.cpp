@@ -48,8 +48,8 @@ void miqt_exec_callback_QTabWidget_currentChanged(intptr_t, int);
 void miqt_exec_callback_QTabWidget_tabCloseRequested(intptr_t, int);
 void miqt_exec_callback_QTabWidget_tabBarClicked(intptr_t, int);
 void miqt_exec_callback_QTabWidget_tabBarDoubleClicked(intptr_t, int);
-QSize* miqt_exec_callback_QTabWidget_sizeHint(const QTabWidget*, intptr_t);
-QSize* miqt_exec_callback_QTabWidget_minimumSizeHint(const QTabWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTabWidget_sizeHint(const QTabWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTabWidget_minimumSizeHint(const QTabWidget*, intptr_t);
 int miqt_exec_callback_QTabWidget_heightForWidth(const QTabWidget*, intptr_t, int);
 bool miqt_exec_callback_QTabWidget_hasHeightForWidth(const QTabWidget*, intptr_t);
 void miqt_exec_callback_QTabWidget_tabInserted(QTabWidget*, intptr_t, int);
@@ -118,13 +118,11 @@ public:
 			return QTabWidget::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTabWidget_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTabWidget_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTabWidget_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QTabWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -135,13 +133,11 @@ public:
 			return QTabWidget::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTabWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTabWidget_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTabWidget_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QTabWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1148,12 +1144,12 @@ void QTabWidget_setTabShape(QTabWidget* self, int s) {
 	self->setTabShape(static_cast<QTabWidget::TabShape>(s));
 }
 
-QSize* QTabWidget_sizeHint(const QTabWidget* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QTabWidget_sizeHint(const QTabWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QTabWidget_minimumSizeHint(const QTabWidget* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QTabWidget_minimumSizeHint(const QTabWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 int QTabWidget_heightForWidth(const QTabWidget* self, int width) {
@@ -1181,12 +1177,12 @@ void QTabWidget_setElideMode(QTabWidget* self, int mode) {
 	self->setElideMode(static_cast<Qt::TextElideMode>(mode));
 }
 
-QSize* QTabWidget_iconSize(const QTabWidget* self) {
-	return new QSize(self->iconSize());
+struct miqt_qsize QTabWidget_iconSize(const QTabWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize());
 }
 
-void QTabWidget_setIconSize(QTabWidget* self, QSize* size) {
-	self->setIconSize(*size);
+void QTabWidget_setIconSize(QTabWidget* self, struct miqt_qsize size) {
+	self->setIconSize(miqt_from_cabi<QSize>(size));
 }
 
 bool QTabWidget_usesScrollButtons(const QTabWidget* self) {
@@ -1335,8 +1331,8 @@ bool QTabWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTabWidget_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTabWidget*>(self)->QTabWidget::sizeHint());
+struct miqt_qsize QTabWidget_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTabWidget*>(self)->QTabWidget::sizeHint());
 }
 
 bool QTabWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1349,8 +1345,8 @@ bool QTabWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTabWidget_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTabWidget*>(self)->QTabWidget::minimumSizeHint());
+struct miqt_qsize QTabWidget_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTabWidget*>(self)->QTabWidget::minimumSizeHint());
 }
 
 bool QTabWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2010,10 +2006,6 @@ bool QTabWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTabWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQTabWidget*>(self)->QTabWidget::disconnectNotify(*signal);
-}
-
-QSize* QTabWidget_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QTabWidget_virtualreturncopy_QVariant(QVariant* src) {

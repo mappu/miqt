@@ -61,12 +61,11 @@ QGraphicsLayoutItem* QGraphicsLayout_virtualbase_itemAt(const void* self, int i)
 bool QGraphicsLayout_override_virtual_removeAt(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_removeAt(void* self, int index);
 bool QGraphicsLayout_override_virtual_setGeometry(void* self, intptr_t slot);
-void QGraphicsLayout_virtualbase_setGeometry(void* self, QRectF* rect);
+void QGraphicsLayout_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 bool QGraphicsLayout_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsLayout_virtualbase_isEmpty(const void* self);
 bool QGraphicsLayout_override_virtual_sizeHint(void* self, intptr_t slot);
-QSizeF* QGraphicsLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
-QSizeF* QGraphicsLayout_virtualreturncopy_QSizeF(QSizeF* src);
+struct miqt_qsizef QGraphicsLayout_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint);
 
 void QGraphicsLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
 void QGraphicsLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);

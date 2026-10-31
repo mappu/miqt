@@ -110,8 +110,8 @@ unsigned char QwtColorMap_colorIndex(const QwtColorMap* self, QwtInterval* inter
 	return self->colorIndex(*interval, static_cast<double>(value));
 }
 
-QColor* QwtColorMap_color(const QwtColorMap* self, QwtInterval* param1, double value) {
-	return new QColor(self->color(*param1, static_cast<double>(value)));
+struct miqt_qcolor QwtColorMap_color(const QwtColorMap* self, QwtInterval* param1, double value) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color(*param1, static_cast<double>(value)));
 }
 
 struct miqt_array /* of unsigned int */  QwtColorMap_colorTable(const QwtColorMap* self, QwtInterval* param1) {
@@ -257,16 +257,16 @@ QwtLinearColorMap* QwtLinearColorMap_new() {
 	return new (std::nothrow) MiqtVirtualQwtLinearColorMap();
 }
 
-QwtLinearColorMap* QwtLinearColorMap_new2(QColor* color1, QColor* color2) {
-	return new (std::nothrow) MiqtVirtualQwtLinearColorMap(*color1, *color2);
+QwtLinearColorMap* QwtLinearColorMap_new2(struct miqt_qcolor color1, struct miqt_qcolor color2) {
+	return new (std::nothrow) MiqtVirtualQwtLinearColorMap(miqt_from_cabi<QColor>(color1), miqt_from_cabi<QColor>(color2));
 }
 
 QwtLinearColorMap* QwtLinearColorMap_new3(int param1) {
 	return new (std::nothrow) MiqtVirtualQwtLinearColorMap(static_cast<QwtColorMap::Format>(param1));
 }
 
-QwtLinearColorMap* QwtLinearColorMap_new4(QColor* color1, QColor* color2, int param3) {
-	return new (std::nothrow) MiqtVirtualQwtLinearColorMap(*color1, *color2, static_cast<QwtColorMap::Format>(param3));
+QwtLinearColorMap* QwtLinearColorMap_new4(struct miqt_qcolor color1, struct miqt_qcolor color2, int param3) {
+	return new (std::nothrow) MiqtVirtualQwtLinearColorMap(miqt_from_cabi<QColor>(color1), miqt_from_cabi<QColor>(color2), static_cast<QwtColorMap::Format>(param3));
 }
 
 void QwtLinearColorMap_virtbase(QwtLinearColorMap* src, QwtColorMap** outptr_QwtColorMap) {
@@ -282,12 +282,12 @@ int QwtLinearColorMap_mode(const QwtLinearColorMap* self) {
 	return static_cast<int>(_ret);
 }
 
-void QwtLinearColorMap_setColorInterval(QwtLinearColorMap* self, QColor* color1, QColor* color2) {
-	self->setColorInterval(*color1, *color2);
+void QwtLinearColorMap_setColorInterval(QwtLinearColorMap* self, struct miqt_qcolor color1, struct miqt_qcolor color2) {
+	self->setColorInterval(miqt_from_cabi<QColor>(color1), miqt_from_cabi<QColor>(color2));
 }
 
-void QwtLinearColorMap_addColorStop(QwtLinearColorMap* self, double value, QColor* param2) {
-	self->addColorStop(static_cast<double>(value), *param2);
+void QwtLinearColorMap_addColorStop(QwtLinearColorMap* self, double value, struct miqt_qcolor param2) {
+	self->addColorStop(static_cast<double>(value), miqt_from_cabi<QColor>(param2));
 }
 
 struct miqt_array /* of double */  QwtLinearColorMap_colorStops(const QwtLinearColorMap* self) {
@@ -303,12 +303,12 @@ struct miqt_array /* of double */  QwtLinearColorMap_colorStops(const QwtLinearC
 	return _out;
 }
 
-QColor* QwtLinearColorMap_color1(const QwtLinearColorMap* self) {
-	return new QColor(self->color1());
+struct miqt_qcolor QwtLinearColorMap_color1(const QwtLinearColorMap* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color1());
 }
 
-QColor* QwtLinearColorMap_color2(const QwtLinearColorMap* self) {
-	return new QColor(self->color2());
+struct miqt_qcolor QwtLinearColorMap_color2(const QwtLinearColorMap* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color2());
 }
 
 unsigned int QwtLinearColorMap_rgb(const QwtLinearColorMap* self, QwtInterval* param1, double value) {
@@ -434,20 +434,20 @@ QwtAlphaColorMap* QwtAlphaColorMap_new() {
 	return new (std::nothrow) MiqtVirtualQwtAlphaColorMap();
 }
 
-QwtAlphaColorMap* QwtAlphaColorMap_new2(QColor* param1) {
-	return new (std::nothrow) MiqtVirtualQwtAlphaColorMap(*param1);
+QwtAlphaColorMap* QwtAlphaColorMap_new2(struct miqt_qcolor param1) {
+	return new (std::nothrow) MiqtVirtualQwtAlphaColorMap(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtAlphaColorMap_virtbase(QwtAlphaColorMap* src, QwtColorMap** outptr_QwtColorMap) {
 	*outptr_QwtColorMap = static_cast<QwtColorMap*>(src);
 }
 
-void QwtAlphaColorMap_setColor(QwtAlphaColorMap* self, QColor* color) {
-	self->setColor(*color);
+void QwtAlphaColorMap_setColor(QwtAlphaColorMap* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QwtAlphaColorMap_color(const QwtAlphaColorMap* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QwtAlphaColorMap_color(const QwtAlphaColorMap* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
 unsigned int QwtAlphaColorMap_rgb(const QwtAlphaColorMap* self, QwtInterval* param1, double value) {

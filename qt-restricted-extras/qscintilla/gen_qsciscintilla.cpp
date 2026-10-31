@@ -103,37 +103,37 @@ void miqt_exec_callback_QsciScintilla_setAutoCompletionUseSingle(QsciScintilla*,
 void miqt_exec_callback_QsciScintilla_setAutoIndent(QsciScintilla*, intptr_t, bool);
 void miqt_exec_callback_QsciScintilla_setBraceMatching(QsciScintilla*, intptr_t, int);
 void miqt_exec_callback_QsciScintilla_setBackspaceUnindents(QsciScintilla*, intptr_t, bool);
-void miqt_exec_callback_QsciScintilla_setCaretForegroundColor(QsciScintilla*, intptr_t, QColor*);
-void miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor(QsciScintilla*, intptr_t, QColor*);
+void miqt_exec_callback_QsciScintilla_setCaretForegroundColor(QsciScintilla*, intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor(QsciScintilla*, intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QsciScintilla_setCaretLineFrameWidth(QsciScintilla*, intptr_t, int);
 void miqt_exec_callback_QsciScintilla_setCaretLineVisible(QsciScintilla*, intptr_t, bool);
 void miqt_exec_callback_QsciScintilla_setCaretWidth(QsciScintilla*, intptr_t, int);
-void miqt_exec_callback_QsciScintilla_setColor(QsciScintilla*, intptr_t, QColor*);
+void miqt_exec_callback_QsciScintilla_setColor(QsciScintilla*, intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QsciScintilla_setCursorPosition(QsciScintilla*, intptr_t, int, int);
 void miqt_exec_callback_QsciScintilla_setEolMode(QsciScintilla*, intptr_t, int);
 void miqt_exec_callback_QsciScintilla_setEolVisibility(QsciScintilla*, intptr_t, bool);
 void miqt_exec_callback_QsciScintilla_setFolding(QsciScintilla*, intptr_t, int, int);
 void miqt_exec_callback_QsciScintilla_setIndentation(QsciScintilla*, intptr_t, int, int);
 void miqt_exec_callback_QsciScintilla_setIndentationGuides(QsciScintilla*, intptr_t, bool);
-void miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor(QsciScintilla*, intptr_t, QColor*);
-void miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor(QsciScintilla*, intptr_t, QColor*);
+void miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor(QsciScintilla*, intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor(QsciScintilla*, intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QsciScintilla_setIndentationsUseTabs(QsciScintilla*, intptr_t, bool);
 void miqt_exec_callback_QsciScintilla_setIndentationWidth(QsciScintilla*, intptr_t, int);
 void miqt_exec_callback_QsciScintilla_setLexer(QsciScintilla*, intptr_t, QsciLexer*);
-void miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor(QsciScintilla*, intptr_t, QColor*);
+void miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor(QsciScintilla*, intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QsciScintilla_setMarginsFont(QsciScintilla*, intptr_t, QFont*);
-void miqt_exec_callback_QsciScintilla_setMarginsForegroundColor(QsciScintilla*, intptr_t, QColor*);
+void miqt_exec_callback_QsciScintilla_setMarginsForegroundColor(QsciScintilla*, intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QsciScintilla_setMarginLineNumbers(QsciScintilla*, intptr_t, int, bool);
 void miqt_exec_callback_QsciScintilla_setMarginMarkerMask(QsciScintilla*, intptr_t, int, int);
 void miqt_exec_callback_QsciScintilla_setMarginSensitivity(QsciScintilla*, intptr_t, int, bool);
 void miqt_exec_callback_QsciScintilla_setMarginWidth(QsciScintilla*, intptr_t, int, int);
 void miqt_exec_callback_QsciScintilla_setMarginWidth2(QsciScintilla*, intptr_t, int, struct miqt_string);
 void miqt_exec_callback_QsciScintilla_setModified(QsciScintilla*, intptr_t, bool);
-void miqt_exec_callback_QsciScintilla_setPaper(QsciScintilla*, intptr_t, QColor*);
+void miqt_exec_callback_QsciScintilla_setPaper(QsciScintilla*, intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QsciScintilla_setReadOnly(QsciScintilla*, intptr_t, bool);
 void miqt_exec_callback_QsciScintilla_setSelection(QsciScintilla*, intptr_t, int, int, int, int);
-void miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor(QsciScintilla*, intptr_t, QColor*);
-void miqt_exec_callback_QsciScintilla_setSelectionForegroundColor(QsciScintilla*, intptr_t, QColor*);
+void miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor(QsciScintilla*, intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QsciScintilla_setSelectionForegroundColor(QsciScintilla*, intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QsciScintilla_setTabIndents(QsciScintilla*, intptr_t, bool);
 void miqt_exec_callback_QsciScintilla_setTabWidth(QsciScintilla*, intptr_t, int);
 void miqt_exec_callback_QsciScintilla_setText(QsciScintilla*, intptr_t, struct miqt_string);
@@ -171,12 +171,12 @@ void miqt_exec_callback_QsciScintilla_mouseReleaseEvent(QsciScintilla*, intptr_t
 void miqt_exec_callback_QsciScintilla_paintEvent(QsciScintilla*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QsciScintilla_resizeEvent(QsciScintilla*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QsciScintilla_scrollContentsBy(QsciScintilla*, intptr_t, int, int);
-QSize* miqt_exec_callback_QsciScintilla_minimumSizeHint(const QsciScintilla*, intptr_t);
-QSize* miqt_exec_callback_QsciScintilla_sizeHint(const QsciScintilla*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QsciScintilla_minimumSizeHint(const QsciScintilla*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QsciScintilla_sizeHint(const QsciScintilla*, intptr_t);
 void miqt_exec_callback_QsciScintilla_setupViewport(QsciScintilla*, intptr_t, QWidget*);
 bool miqt_exec_callback_QsciScintilla_eventFilter(QsciScintilla*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QsciScintilla_viewportEvent(QsciScintilla*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QsciScintilla_viewportSizeHint(const QsciScintilla*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QsciScintilla_viewportSizeHint(const QsciScintilla*, intptr_t);
 int miqt_exec_callback_QsciScintilla_devType(const QsciScintilla*, intptr_t);
 void miqt_exec_callback_QsciScintilla_setVisible(QsciScintilla*, intptr_t, bool);
 int miqt_exec_callback_QsciScintilla_heightForWidth(const QsciScintilla*, intptr_t, int);
@@ -952,14 +952,12 @@ public:
 			return;
 		}
 
-		const QColor& col_ret = col;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&col_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(col);
 		miqt_exec_callback_QsciScintilla_setCaretForegroundColor(this, handle__setCaretForegroundColor, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setCaretForegroundColor(void* self, QColor* col);
+	friend void QsciScintilla_virtualbase_setCaretForegroundColor(void* self, struct miqt_qcolor col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setCaretLineBackgroundColor = 0;
@@ -971,14 +969,12 @@ public:
 			return;
 		}
 
-		const QColor& col_ret = col;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&col_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(col);
 		miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor(this, handle__setCaretLineBackgroundColor, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setCaretLineBackgroundColor(void* self, QColor* col);
+	friend void QsciScintilla_virtualbase_setCaretLineBackgroundColor(void* self, struct miqt_qcolor col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setCaretLineFrameWidth = 0;
@@ -1041,14 +1037,12 @@ public:
 			return;
 		}
 
-		const QColor& c_ret = c;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&c_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(c);
 		miqt_exec_callback_QsciScintilla_setColor(this, handle__setColor, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setColor(void* self, QColor* c);
+	friend void QsciScintilla_virtualbase_setColor(void* self, struct miqt_qcolor c);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setCursorPosition = 0;
@@ -1167,14 +1161,12 @@ public:
 			return;
 		}
 
-		const QColor& col_ret = col;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&col_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(col);
 		miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor(this, handle__setIndentationGuidesBackgroundColor, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(void* self, QColor* col);
+	friend void QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(void* self, struct miqt_qcolor col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setIndentationGuidesForegroundColor = 0;
@@ -1186,14 +1178,12 @@ public:
 			return;
 		}
 
-		const QColor& col_ret = col;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&col_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(col);
 		miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor(this, handle__setIndentationGuidesForegroundColor, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(void* self, QColor* col);
+	friend void QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(void* self, struct miqt_qcolor col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setIndentationsUseTabs = 0;
@@ -1256,14 +1246,12 @@ public:
 			return;
 		}
 
-		const QColor& col_ret = col;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&col_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(col);
 		miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor(this, handle__setMarginsBackgroundColor, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setMarginsBackgroundColor(void* self, QColor* col);
+	friend void QsciScintilla_virtualbase_setMarginsBackgroundColor(void* self, struct miqt_qcolor col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginsFont = 0;
@@ -1294,14 +1282,12 @@ public:
 			return;
 		}
 
-		const QColor& col_ret = col;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&col_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(col);
 		miqt_exec_callback_QsciScintilla_setMarginsForegroundColor(this, handle__setMarginsForegroundColor, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setMarginsForegroundColor(void* self, QColor* col);
+	friend void QsciScintilla_virtualbase_setMarginsForegroundColor(void* self, struct miqt_qcolor col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginLineNumbers = 0;
@@ -1427,14 +1413,12 @@ public:
 			return;
 		}
 
-		const QColor& c_ret = c;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&c_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(c);
 		miqt_exec_callback_QsciScintilla_setPaper(this, handle__setPaper, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setPaper(void* self, QColor* c);
+	friend void QsciScintilla_virtualbase_setPaper(void* self, struct miqt_qcolor c);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setReadOnly = 0;
@@ -1483,14 +1467,12 @@ public:
 			return;
 		}
 
-		const QColor& col_ret = col;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&col_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(col);
 		miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor(this, handle__setSelectionBackgroundColor, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setSelectionBackgroundColor(void* self, QColor* col);
+	friend void QsciScintilla_virtualbase_setSelectionBackgroundColor(void* self, struct miqt_qcolor col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setSelectionForegroundColor = 0;
@@ -1502,14 +1484,12 @@ public:
 			return;
 		}
 
-		const QColor& col_ret = col;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&col_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(col);
 		miqt_exec_callback_QsciScintilla_setSelectionForegroundColor(this, handle__setSelectionForegroundColor, sigval1);
 
 	}
 
-	friend void QsciScintilla_virtualbase_setSelectionForegroundColor(void* self, QColor* col);
+	friend void QsciScintilla_virtualbase_setSelectionForegroundColor(void* self, struct miqt_qcolor col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTabIndents = 0;
@@ -2162,13 +2142,11 @@ public:
 			return QsciScintilla::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QsciScintilla_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QsciScintilla_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QsciScintilla_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QsciScintilla_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -2179,13 +2157,11 @@ public:
 			return QsciScintilla::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QsciScintilla_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QsciScintilla_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QsciScintilla_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QsciScintilla_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -2246,13 +2222,11 @@ public:
 			return QsciScintilla::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QsciScintilla_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QsciScintilla_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QsciScintilla_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QsciScintilla_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -2668,7 +2642,7 @@ public:
 	friend struct miqt_string QsciScintilla_protectedbase_bytesAsText(bool* _dynamic_cast_ok, const void* self, const char* bytes);
 	friend bool QsciScintilla_protectedbase_contextMenuNeeded(bool* _dynamic_cast_ok, const void* self, int x, int y);
 	friend void QsciScintilla_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QsciScintilla_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QsciScintilla_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QsciScintilla_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QsciScintilla_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 	friend void QsciScintilla_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -2872,8 +2846,8 @@ void QsciScintilla_clearRegisteredImages(QsciScintilla* self) {
 	self->clearRegisteredImages();
 }
 
-QColor* QsciScintilla_color(const QsciScintilla* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QsciScintilla_color(const QsciScintilla* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
 struct miqt_array /* of int */  QsciScintilla_contractedFolds(const QsciScintilla* self) {
@@ -2905,8 +2879,8 @@ void QsciScintilla_endUndoAction(QsciScintilla* self) {
 	self->endUndoAction();
 }
 
-QColor* QsciScintilla_edgeColor(const QsciScintilla* self) {
-	return new QColor(self->edgeColor());
+struct miqt_qcolor QsciScintilla_edgeColor(const QsciScintilla* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->edgeColor());
 }
 
 int QsciScintilla_edgeColumn(const QsciScintilla* self) {
@@ -3038,8 +3012,8 @@ bool QsciScintilla_isWordCharacter(const QsciScintilla* self, char ch) {
 	return self->isWordCharacter(static_cast<char>(ch));
 }
 
-int QsciScintilla_lineAt(const QsciScintilla* self, QPoint* point) {
-	return self->lineAt(*point);
+int QsciScintilla_lineAt(const QsciScintilla* self, struct miqt_qpoint point) {
+	return self->lineAt(miqt_from_cabi<QPoint>(point));
 }
 
 void QsciScintilla_lineIndexFromPosition(const QsciScintilla* self, int position, int* line, int* index) {
@@ -3062,8 +3036,8 @@ QsciLexer* QsciScintilla_lexer(const QsciScintilla* self) {
 	return self->lexer();
 }
 
-QColor* QsciScintilla_marginBackgroundColor(const QsciScintilla* self, int margin) {
-	return new QColor(self->marginBackgroundColor(static_cast<int>(margin)));
+struct miqt_qcolor QsciScintilla_marginBackgroundColor(const QsciScintilla* self, int margin) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->marginBackgroundColor(static_cast<int>(margin)));
 }
 
 bool QsciScintilla_marginLineNumbers(const QsciScintilla* self, int margin) {
@@ -3147,8 +3121,8 @@ bool QsciScintilla_overwriteMode(const QsciScintilla* self) {
 	return self->overwriteMode();
 }
 
-QColor* QsciScintilla_paper(const QsciScintilla* self) {
-	return new QColor(self->paper());
+struct miqt_qcolor QsciScintilla_paper(const QsciScintilla* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->paper());
 }
 
 int QsciScintilla_positionFromLineIndex(const QsciScintilla* self, int line, int index) {
@@ -3196,8 +3170,8 @@ bool QsciScintilla_scrollWidthTracking(const QsciScintilla* self) {
 	return self->scrollWidthTracking();
 }
 
-void QsciScintilla_setFoldMarginColors(QsciScintilla* self, QColor* fore, QColor* back) {
-	self->setFoldMarginColors(*fore, *back);
+void QsciScintilla_setFoldMarginColors(QsciScintilla* self, struct miqt_qcolor fore, struct miqt_qcolor back) {
+	self->setFoldMarginColors(miqt_from_cabi<QColor>(fore), miqt_from_cabi<QColor>(back));
 }
 
 void QsciScintilla_setAnnotationDisplay(QsciScintilla* self, int display) {
@@ -3223,16 +3197,16 @@ void QsciScintilla_setAutoCompletionWordSeparators(QsciScintilla* self, struct m
 	self->setAutoCompletionWordSeparators(separators_QList);
 }
 
-void QsciScintilla_setCallTipsBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setCallTipsBackgroundColor(*col);
+void QsciScintilla_setCallTipsBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setCallTipsBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setCallTipsForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setCallTipsForegroundColor(*col);
+void QsciScintilla_setCallTipsForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setCallTipsForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setCallTipsHighlightColor(QsciScintilla* self, QColor* col) {
-	self->setCallTipsHighlightColor(*col);
+void QsciScintilla_setCallTipsHighlightColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setCallTipsHighlightColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setCallTipsPosition(QsciScintilla* self, int position) {
@@ -3261,16 +3235,16 @@ void QsciScintilla_setDocument(QsciScintilla* self, QsciDocument* document) {
 	self->setDocument(*document);
 }
 
-void QsciScintilla_addEdgeColumn(QsciScintilla* self, int colnr, QColor* col) {
-	self->addEdgeColumn(static_cast<int>(colnr), *col);
+void QsciScintilla_addEdgeColumn(QsciScintilla* self, int colnr, struct miqt_qcolor col) {
+	self->addEdgeColumn(static_cast<int>(colnr), miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_clearEdgeColumns(QsciScintilla* self) {
 	self->clearEdgeColumns();
 }
 
-void QsciScintilla_setEdgeColor(QsciScintilla* self, QColor* col) {
-	self->setEdgeColor(*col);
+void QsciScintilla_setEdgeColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setEdgeColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setEdgeColumn(QsciScintilla* self, int colnr) {
@@ -3289,24 +3263,24 @@ void QsciScintilla_setIndicatorDrawUnder(QsciScintilla* self, bool under) {
 	self->setIndicatorDrawUnder(under);
 }
 
-void QsciScintilla_setIndicatorForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setIndicatorForegroundColor(*col);
+void QsciScintilla_setIndicatorForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setIndicatorForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setIndicatorHoverForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setIndicatorHoverForegroundColor(*col);
+void QsciScintilla_setIndicatorHoverForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setIndicatorHoverForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setIndicatorHoverStyle(QsciScintilla* self, int style) {
 	self->setIndicatorHoverStyle(static_cast<QsciScintilla::IndicatorStyle>(style));
 }
 
-void QsciScintilla_setIndicatorOutlineColor(QsciScintilla* self, QColor* col) {
-	self->setIndicatorOutlineColor(*col);
+void QsciScintilla_setIndicatorOutlineColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setIndicatorOutlineColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setMarginBackgroundColor(QsciScintilla* self, int margin, QColor* col) {
-	self->setMarginBackgroundColor(static_cast<int>(margin), *col);
+void QsciScintilla_setMarginBackgroundColor(QsciScintilla* self, int margin, struct miqt_qcolor col) {
+	self->setMarginBackgroundColor(static_cast<int>(margin), miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setMarginOptions(QsciScintilla* self, int options) {
@@ -3339,20 +3313,20 @@ void QsciScintilla_setMargins(QsciScintilla* self, int margins) {
 	self->setMargins(static_cast<int>(margins));
 }
 
-void QsciScintilla_setMarkerBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setMarkerBackgroundColor(*col);
+void QsciScintilla_setMarkerBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setMarkerBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setMarkerForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setMarkerForegroundColor(*col);
+void QsciScintilla_setMarkerForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setMarkerForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setMatchedBraceBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setMatchedBraceBackgroundColor(*col);
+void QsciScintilla_setMatchedBraceBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setMatchedBraceBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setMatchedBraceForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setMatchedBraceForegroundColor(*col);
+void QsciScintilla_setMatchedBraceForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setMatchedBraceForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setMatchedBraceIndicator(QsciScintilla* self, int indicatorNumber) {
@@ -3375,12 +3349,12 @@ void QsciScintilla_setTabDrawMode(QsciScintilla* self, int mode) {
 	self->setTabDrawMode(static_cast<QsciScintilla::TabDrawMode>(mode));
 }
 
-void QsciScintilla_setUnmatchedBraceBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setUnmatchedBraceBackgroundColor(*col);
+void QsciScintilla_setUnmatchedBraceBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setUnmatchedBraceBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setUnmatchedBraceForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setUnmatchedBraceForegroundColor(*col);
+void QsciScintilla_setUnmatchedBraceForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setUnmatchedBraceForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setUnmatchedBraceIndicator(QsciScintilla* self, int indicatorNumber) {
@@ -3410,12 +3384,12 @@ bool QsciScintilla_selectionToEol(const QsciScintilla* self) {
 	return self->selectionToEol();
 }
 
-void QsciScintilla_setHotspotBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setHotspotBackgroundColor(*col);
+void QsciScintilla_setHotspotBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setHotspotBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setHotspotForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setHotspotForegroundColor(*col);
+void QsciScintilla_setHotspotForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setHotspotForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setHotspotUnderline(QsciScintilla* self, bool enable) {
@@ -3442,12 +3416,12 @@ void QsciScintilla_setOverwriteMode(QsciScintilla* self, bool overwrite) {
 	self->setOverwriteMode(overwrite);
 }
 
-void QsciScintilla_setWhitespaceBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setWhitespaceBackgroundColor(*col);
+void QsciScintilla_setWhitespaceBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setWhitespaceBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setWhitespaceForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setWhitespaceForegroundColor(*col);
+void QsciScintilla_setWhitespaceForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setWhitespaceForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setWhitespaceSize(QsciScintilla* self, int size) {
@@ -3543,8 +3517,8 @@ struct miqt_string QsciScintilla_wordAtLineIndex(const QsciScintilla* self, int 
 	return _ms;
 }
 
-struct miqt_string QsciScintilla_wordAtPoint(const QsciScintilla* self, QPoint* point) {
-	QString _ret = self->wordAtPoint(*point);
+struct miqt_string QsciScintilla_wordAtPoint(const QsciScintilla* self, struct miqt_qpoint point) {
+	QString _ret = self->wordAtPoint(miqt_from_cabi<QPoint>(point));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -3708,12 +3682,12 @@ void QsciScintilla_setBackspaceUnindents(QsciScintilla* self, bool unindent) {
 	self->setBackspaceUnindents(unindent);
 }
 
-void QsciScintilla_setCaretForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setCaretForegroundColor(*col);
+void QsciScintilla_setCaretForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setCaretForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setCaretLineBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setCaretLineBackgroundColor(*col);
+void QsciScintilla_setCaretLineBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setCaretLineBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setCaretLineFrameWidth(QsciScintilla* self, int width) {
@@ -3728,8 +3702,8 @@ void QsciScintilla_setCaretWidth(QsciScintilla* self, int width) {
 	self->setCaretWidth(static_cast<int>(width));
 }
 
-void QsciScintilla_setColor(QsciScintilla* self, QColor* c) {
-	self->setColor(*c);
+void QsciScintilla_setColor(QsciScintilla* self, struct miqt_qcolor c) {
+	self->setColor(miqt_from_cabi<QColor>(c));
 }
 
 void QsciScintilla_setCursorPosition(QsciScintilla* self, int line, int index) {
@@ -3756,12 +3730,12 @@ void QsciScintilla_setIndentationGuides(QsciScintilla* self, bool enable) {
 	self->setIndentationGuides(enable);
 }
 
-void QsciScintilla_setIndentationGuidesBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setIndentationGuidesBackgroundColor(*col);
+void QsciScintilla_setIndentationGuidesBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setIndentationGuidesBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setIndentationGuidesForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setIndentationGuidesForegroundColor(*col);
+void QsciScintilla_setIndentationGuidesForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setIndentationGuidesForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setIndentationsUseTabs(QsciScintilla* self, bool tabs) {
@@ -3776,16 +3750,16 @@ void QsciScintilla_setLexer(QsciScintilla* self, QsciLexer* lexer) {
 	self->setLexer(lexer);
 }
 
-void QsciScintilla_setMarginsBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setMarginsBackgroundColor(*col);
+void QsciScintilla_setMarginsBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setMarginsBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setMarginsFont(QsciScintilla* self, QFont* f) {
 	self->setMarginsFont(*f);
 }
 
-void QsciScintilla_setMarginsForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setMarginsForegroundColor(*col);
+void QsciScintilla_setMarginsForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setMarginsForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setMarginLineNumbers(QsciScintilla* self, int margin, bool lnrs) {
@@ -3813,8 +3787,8 @@ void QsciScintilla_setModified(QsciScintilla* self, bool m) {
 	self->setModified(m);
 }
 
-void QsciScintilla_setPaper(QsciScintilla* self, QColor* c) {
-	self->setPaper(*c);
+void QsciScintilla_setPaper(QsciScintilla* self, struct miqt_qcolor c) {
+	self->setPaper(miqt_from_cabi<QColor>(c));
 }
 
 void QsciScintilla_setReadOnly(QsciScintilla* self, bool ro) {
@@ -3825,12 +3799,12 @@ void QsciScintilla_setSelection(QsciScintilla* self, int lineFrom, int indexFrom
 	self->setSelection(static_cast<int>(lineFrom), static_cast<int>(indexFrom), static_cast<int>(lineTo), static_cast<int>(indexTo));
 }
 
-void QsciScintilla_setSelectionBackgroundColor(QsciScintilla* self, QColor* col) {
-	self->setSelectionBackgroundColor(*col);
+void QsciScintilla_setSelectionBackgroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setSelectionBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
-void QsciScintilla_setSelectionForegroundColor(QsciScintilla* self, QColor* col) {
-	self->setSelectionForegroundColor(*col);
+void QsciScintilla_setSelectionForegroundColor(QsciScintilla* self, struct miqt_qcolor col) {
+	self->setSelectionForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 void QsciScintilla_setTabIndents(QsciScintilla* self, bool indent) {
@@ -4116,32 +4090,32 @@ void QsciScintilla_setIndicatorDrawUnder2(QsciScintilla* self, bool under, int i
 	self->setIndicatorDrawUnder(under, static_cast<int>(indicatorNumber));
 }
 
-void QsciScintilla_setIndicatorForegroundColor2(QsciScintilla* self, QColor* col, int indicatorNumber) {
-	self->setIndicatorForegroundColor(*col, static_cast<int>(indicatorNumber));
+void QsciScintilla_setIndicatorForegroundColor2(QsciScintilla* self, struct miqt_qcolor col, int indicatorNumber) {
+	self->setIndicatorForegroundColor(miqt_from_cabi<QColor>(col), static_cast<int>(indicatorNumber));
 }
 
-void QsciScintilla_setIndicatorHoverForegroundColor2(QsciScintilla* self, QColor* col, int indicatorNumber) {
-	self->setIndicatorHoverForegroundColor(*col, static_cast<int>(indicatorNumber));
+void QsciScintilla_setIndicatorHoverForegroundColor2(QsciScintilla* self, struct miqt_qcolor col, int indicatorNumber) {
+	self->setIndicatorHoverForegroundColor(miqt_from_cabi<QColor>(col), static_cast<int>(indicatorNumber));
 }
 
 void QsciScintilla_setIndicatorHoverStyle2(QsciScintilla* self, int style, int indicatorNumber) {
 	self->setIndicatorHoverStyle(static_cast<QsciScintilla::IndicatorStyle>(style), static_cast<int>(indicatorNumber));
 }
 
-void QsciScintilla_setIndicatorOutlineColor2(QsciScintilla* self, QColor* col, int indicatorNumber) {
-	self->setIndicatorOutlineColor(*col, static_cast<int>(indicatorNumber));
+void QsciScintilla_setIndicatorOutlineColor2(QsciScintilla* self, struct miqt_qcolor col, int indicatorNumber) {
+	self->setIndicatorOutlineColor(miqt_from_cabi<QColor>(col), static_cast<int>(indicatorNumber));
 }
 
 void QsciScintilla_clearMarginTextWithLine(QsciScintilla* self, int line) {
 	self->clearMarginText(static_cast<int>(line));
 }
 
-void QsciScintilla_setMarkerBackgroundColor2(QsciScintilla* self, QColor* col, int markerNumber) {
-	self->setMarkerBackgroundColor(*col, static_cast<int>(markerNumber));
+void QsciScintilla_setMarkerBackgroundColor2(QsciScintilla* self, struct miqt_qcolor col, int markerNumber) {
+	self->setMarkerBackgroundColor(miqt_from_cabi<QColor>(col), static_cast<int>(markerNumber));
 }
 
-void QsciScintilla_setMarkerForegroundColor2(QsciScintilla* self, QColor* col, int markerNumber) {
-	self->setMarkerForegroundColor(*col, static_cast<int>(markerNumber));
+void QsciScintilla_setMarkerForegroundColor2(QsciScintilla* self, struct miqt_qcolor col, int markerNumber) {
+	self->setMarkerForegroundColor(miqt_from_cabi<QColor>(col), static_cast<int>(markerNumber));
 }
 
 void QsciScintilla_setWrapVisualFlags2(QsciScintilla* self, int endFlag, int startFlag) {
@@ -4731,8 +4705,8 @@ bool QsciScintilla_override_virtual_setCaretForegroundColor(void* self, intptr_t
 	return true;
 }
 
-void QsciScintilla_virtualbase_setCaretForegroundColor(void* self, QColor* col) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setCaretForegroundColor(*col);
+void QsciScintilla_virtualbase_setCaretForegroundColor(void* self, struct miqt_qcolor col) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setCaretForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 bool QsciScintilla_override_virtual_setCaretLineBackgroundColor(void* self, intptr_t slot) {
@@ -4745,8 +4719,8 @@ bool QsciScintilla_override_virtual_setCaretLineBackgroundColor(void* self, intp
 	return true;
 }
 
-void QsciScintilla_virtualbase_setCaretLineBackgroundColor(void* self, QColor* col) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setCaretLineBackgroundColor(*col);
+void QsciScintilla_virtualbase_setCaretLineBackgroundColor(void* self, struct miqt_qcolor col) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setCaretLineBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
 bool QsciScintilla_override_virtual_setCaretLineFrameWidth(void* self, intptr_t slot) {
@@ -4801,8 +4775,8 @@ bool QsciScintilla_override_virtual_setColor(void* self, intptr_t slot) {
 	return true;
 }
 
-void QsciScintilla_virtualbase_setColor(void* self, QColor* c) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setColor(*c);
+void QsciScintilla_virtualbase_setColor(void* self, struct miqt_qcolor c) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setColor(miqt_from_cabi<QColor>(c));
 }
 
 bool QsciScintilla_override_virtual_setCursorPosition(void* self, intptr_t slot) {
@@ -4899,8 +4873,8 @@ bool QsciScintilla_override_virtual_setIndentationGuidesBackgroundColor(void* se
 	return true;
 }
 
-void QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(void* self, QColor* col) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setIndentationGuidesBackgroundColor(*col);
+void QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(void* self, struct miqt_qcolor col) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setIndentationGuidesBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
 bool QsciScintilla_override_virtual_setIndentationGuidesForegroundColor(void* self, intptr_t slot) {
@@ -4913,8 +4887,8 @@ bool QsciScintilla_override_virtual_setIndentationGuidesForegroundColor(void* se
 	return true;
 }
 
-void QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(void* self, QColor* col) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setIndentationGuidesForegroundColor(*col);
+void QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(void* self, struct miqt_qcolor col) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setIndentationGuidesForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 bool QsciScintilla_override_virtual_setIndentationsUseTabs(void* self, intptr_t slot) {
@@ -4969,8 +4943,8 @@ bool QsciScintilla_override_virtual_setMarginsBackgroundColor(void* self, intptr
 	return true;
 }
 
-void QsciScintilla_virtualbase_setMarginsBackgroundColor(void* self, QColor* col) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setMarginsBackgroundColor(*col);
+void QsciScintilla_virtualbase_setMarginsBackgroundColor(void* self, struct miqt_qcolor col) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setMarginsBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
 bool QsciScintilla_override_virtual_setMarginsFont(void* self, intptr_t slot) {
@@ -4997,8 +4971,8 @@ bool QsciScintilla_override_virtual_setMarginsForegroundColor(void* self, intptr
 	return true;
 }
 
-void QsciScintilla_virtualbase_setMarginsForegroundColor(void* self, QColor* col) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setMarginsForegroundColor(*col);
+void QsciScintilla_virtualbase_setMarginsForegroundColor(void* self, struct miqt_qcolor col) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setMarginsForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 bool QsciScintilla_override_virtual_setMarginLineNumbers(void* self, intptr_t slot) {
@@ -5096,8 +5070,8 @@ bool QsciScintilla_override_virtual_setPaper(void* self, intptr_t slot) {
 	return true;
 }
 
-void QsciScintilla_virtualbase_setPaper(void* self, QColor* c) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setPaper(*c);
+void QsciScintilla_virtualbase_setPaper(void* self, struct miqt_qcolor c) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setPaper(miqt_from_cabi<QColor>(c));
 }
 
 bool QsciScintilla_override_virtual_setReadOnly(void* self, intptr_t slot) {
@@ -5138,8 +5112,8 @@ bool QsciScintilla_override_virtual_setSelectionBackgroundColor(void* self, intp
 	return true;
 }
 
-void QsciScintilla_virtualbase_setSelectionBackgroundColor(void* self, QColor* col) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setSelectionBackgroundColor(*col);
+void QsciScintilla_virtualbase_setSelectionBackgroundColor(void* self, struct miqt_qcolor col) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setSelectionBackgroundColor(miqt_from_cabi<QColor>(col));
 }
 
 bool QsciScintilla_override_virtual_setSelectionForegroundColor(void* self, intptr_t slot) {
@@ -5152,8 +5126,8 @@ bool QsciScintilla_override_virtual_setSelectionForegroundColor(void* self, intp
 	return true;
 }
 
-void QsciScintilla_virtualbase_setSelectionForegroundColor(void* self, QColor* col) {
-	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setSelectionForegroundColor(*col);
+void QsciScintilla_virtualbase_setSelectionForegroundColor(void* self, struct miqt_qcolor col) {
+	static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::setSelectionForegroundColor(miqt_from_cabi<QColor>(col));
 }
 
 bool QsciScintilla_override_virtual_setTabIndents(void* self, intptr_t slot) {
@@ -5691,8 +5665,8 @@ bool QsciScintilla_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QsciScintilla_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQsciScintilla*>(self)->QsciScintilla::minimumSizeHint());
+struct miqt_qsize QsciScintilla_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQsciScintilla*>(self)->QsciScintilla::minimumSizeHint());
 }
 
 bool QsciScintilla_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -5705,8 +5679,8 @@ bool QsciScintilla_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QsciScintilla_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQsciScintilla*>(self)->QsciScintilla::sizeHint());
+struct miqt_qsize QsciScintilla_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQsciScintilla*>(self)->QsciScintilla::sizeHint());
 }
 
 bool QsciScintilla_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -5761,8 +5735,8 @@ bool QsciScintilla_override_virtual_viewportSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QsciScintilla_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQsciScintilla*>(self)->QsciScintilla::viewportSizeHint());
+struct miqt_qsize QsciScintilla_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQsciScintilla*>(self)->QsciScintilla::viewportSizeHint());
 }
 
 bool QsciScintilla_override_virtual_devType(void* self, intptr_t slot) {
@@ -6106,10 +6080,6 @@ QVariant* QsciScintilla_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
 
-QSize* QsciScintilla_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 void QsciScintilla_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
 	if (self_cast == nullptr) {
@@ -6178,15 +6148,15 @@ void QsciScintilla_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QsciScintilla_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QsciScintilla_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QsciScintilla_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

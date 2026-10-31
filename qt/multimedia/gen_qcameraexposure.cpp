@@ -99,12 +99,12 @@ bool QCameraExposure_isMeteringModeSupported(const QCameraExposure* self, int mo
 	return self->isMeteringModeSupported(static_cast<QCameraExposure::MeteringMode>(mode));
 }
 
-QPointF* QCameraExposure_spotMeteringPoint(const QCameraExposure* self) {
-	return new QPointF(self->spotMeteringPoint());
+struct miqt_qpointf QCameraExposure_spotMeteringPoint(const QCameraExposure* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->spotMeteringPoint());
 }
 
-void QCameraExposure_setSpotMeteringPoint(QCameraExposure* self, QPointF* point) {
-	self->setSpotMeteringPoint(*point);
+void QCameraExposure_setSpotMeteringPoint(QCameraExposure* self, struct miqt_qpointf point) {
+	self->setSpotMeteringPoint(miqt_from_cabi<QPointF>(point));
 }
 
 int QCameraExposure_isoSensitivity(const QCameraExposure* self) {

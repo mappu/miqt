@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -165,9 +166,7 @@ func (this *QChartView) SetViewportMargins(left int, top int, right int, bottom 
 func (this *QChartView) ViewportMargins() qt6.QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt6.UnsafeNewQMargins(unsafe.Pointer(C.QChartView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt6.QMargins](C.QChartView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -421,14 +420,12 @@ func miqt_exec_callback_QChartView_mouseReleaseEvent(self *C.QChartView, cb C.in
 
 }
 
-func (this *QChartView) callVirtualBase_SizeHint() *qt6.QSize {
+func (this *QChartView) callVirtualBase_SizeHint() qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QChartView_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QChartView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QChartView) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QChartView) OnSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QChartView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -436,16 +433,15 @@ func (this *QChartView) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize
 }
 
 //export miqt_exec_callback_QChartView_sizeHint
-func miqt_exec_callback_QChartView_sizeHint(self *C.QChartView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QChartView_sizeHint(self *C.QChartView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QChartView{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QChartView_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -998,14 +994,13 @@ func miqt_exec_callback_QChartView_inputMethodEvent(self *C.QChartView, cb C.int
 
 }
 
-func (this *QChartView) callVirtualBase_DrawBackground(painter *qt6.QPainter, rect *qt6.QRectF) {
+func (this *QChartView) callVirtualBase_DrawBackground(painter *qt6.QPainter, rect qt6.QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 
-	C.QChartView_virtualbase_drawBackground(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()))
+	C.QChartView_virtualbase_drawBackground(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QChartView) OnDrawBackground(slot func(super func(painter *qt6.QPainter, rect *qt6.QRectF), painter *qt6.QPainter, rect *qt6.QRectF)) {
+func (this *QChartView) OnDrawBackground(slot func(super func(painter *qt6.QPainter, rect qt6.QRectF), painter *qt6.QPainter, rect qt6.QRectF)) {
 	ok := C.QChartView_override_virtual_drawBackground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1013,8 +1008,8 @@ func (this *QChartView) OnDrawBackground(slot func(super func(painter *qt6.QPain
 }
 
 //export miqt_exec_callback_QChartView_drawBackground
-func miqt_exec_callback_QChartView_drawBackground(self *C.QChartView, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt6.QPainter, rect *qt6.QRectF), painter *qt6.QPainter, rect *qt6.QRectF))
+func miqt_exec_callback_QChartView_drawBackground(self *C.QChartView, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt6.QPainter, rect qt6.QRectF), painter *qt6.QPainter, rect qt6.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1022,20 +1017,19 @@ func miqt_exec_callback_QChartView_drawBackground(self *C.QChartView, cb C.intpt
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt6.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval2 := libmiqt.ValueCast[qt6.QRectF](rect)
 
 	gofunc((&QChartView{h: self}).callVirtualBase_DrawBackground, slotval1, slotval2)
 
 }
 
-func (this *QChartView) callVirtualBase_DrawForeground(painter *qt6.QPainter, rect *qt6.QRectF) {
+func (this *QChartView) callVirtualBase_DrawForeground(painter *qt6.QPainter, rect qt6.QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 
-	C.QChartView_virtualbase_drawForeground(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()))
+	C.QChartView_virtualbase_drawForeground(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QChartView) OnDrawForeground(slot func(super func(painter *qt6.QPainter, rect *qt6.QRectF), painter *qt6.QPainter, rect *qt6.QRectF)) {
+func (this *QChartView) OnDrawForeground(slot func(super func(painter *qt6.QPainter, rect qt6.QRectF), painter *qt6.QPainter, rect qt6.QRectF)) {
 	ok := C.QChartView_override_virtual_drawForeground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1043,8 +1037,8 @@ func (this *QChartView) OnDrawForeground(slot func(super func(painter *qt6.QPain
 }
 
 //export miqt_exec_callback_QChartView_drawForeground
-func miqt_exec_callback_QChartView_drawForeground(self *C.QChartView, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt6.QPainter, rect *qt6.QRectF), painter *qt6.QPainter, rect *qt6.QRectF))
+func miqt_exec_callback_QChartView_drawForeground(self *C.QChartView, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt6.QPainter, rect qt6.QRectF), painter *qt6.QPainter, rect qt6.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1052,20 +1046,18 @@ func miqt_exec_callback_QChartView_drawForeground(self *C.QChartView, cb C.intpt
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt6.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval2 := libmiqt.ValueCast[qt6.QRectF](rect)
 
 	gofunc((&QChartView{h: self}).callVirtualBase_DrawForeground, slotval1, slotval2)
 
 }
 
-func (this *QChartView) callVirtualBase_MinimumSizeHint() *qt6.QSize {
+func (this *QChartView) callVirtualBase_MinimumSizeHint() qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QChartView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QChartView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QChartView) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QChartView) OnMinimumSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QChartView_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1073,16 +1065,15 @@ func (this *QChartView) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt
 }
 
 //export miqt_exec_callback_QChartView_minimumSizeHint
-func miqt_exec_callback_QChartView_minimumSizeHint(self *C.QChartView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QChartView_minimumSizeHint(self *C.QChartView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QChartView{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QChartView_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1117,14 +1108,12 @@ func miqt_exec_callback_QChartView_eventFilter(self *C.QChartView, cb C.intptr_t
 
 }
 
-func (this *QChartView) callVirtualBase_ViewportSizeHint() *qt6.QSize {
+func (this *QChartView) callVirtualBase_ViewportSizeHint() qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QChartView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QChartView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QChartView) OnViewportSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QChartView) OnViewportSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QChartView_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1132,16 +1121,15 @@ func (this *QChartView) OnViewportSizeHint(slot func(super func() *qt6.QSize) *q
 }
 
 //export miqt_exec_callback_QChartView_viewportSizeHint
-func miqt_exec_callback_QChartView_viewportSizeHint(self *C.QChartView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QChartView_viewportSizeHint(self *C.QChartView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QChartView{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QChartView_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1615,7 +1603,6 @@ func miqt_exec_callback_QChartView_initPainter(self *C.QChartView, cb C.intptr_t
 }
 
 func (this *QChartView) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QChartView_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

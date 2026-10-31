@@ -115,7 +115,7 @@ void QSplashScreen_mousePressEvent(QSplashScreen* self, QMouseEvent* param1);
 struct miqt_string QSplashScreen_tr2(const char* s, const char* c);
 struct miqt_string QSplashScreen_tr3(const char* s, const char* c, int n);
 void QSplashScreen_showMessage2(QSplashScreen* self, struct miqt_string message, int alignment);
-void QSplashScreen_showMessage3(QSplashScreen* self, struct miqt_string message, int alignment, QColor* color);
+void QSplashScreen_showMessage3(QSplashScreen* self, struct miqt_string message, int alignment, struct miqt_qcolor color);
 
 bool QSplashScreen_override_virtual_event(void* self, intptr_t slot);
 bool QSplashScreen_virtualbase_event(void* self, QEvent* e);
@@ -128,9 +128,9 @@ int QSplashScreen_virtualbase_devType(const void* self);
 bool QSplashScreen_override_virtual_setVisible(void* self, intptr_t slot);
 void QSplashScreen_virtualbase_setVisible(void* self, bool visible);
 bool QSplashScreen_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QSplashScreen_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QSplashScreen_virtualbase_sizeHint(const void* self);
 bool QSplashScreen_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QSplashScreen_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QSplashScreen_virtualbase_minimumSizeHint(const void* self);
 bool QSplashScreen_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QSplashScreen_virtualbase_heightForWidth(const void* self, int param1);
 bool QSplashScreen_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -213,7 +213,6 @@ bool QSplashScreen_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplashScreen_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplashScreen_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplashScreen_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QSplashScreen_virtualreturncopy_QSize(QSize* src);
 QVariant* QSplashScreen_virtualreturncopy_QVariant(QVariant* src);
 
 void QSplashScreen_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

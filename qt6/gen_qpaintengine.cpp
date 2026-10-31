@@ -35,20 +35,20 @@ void miqt_exec_callback_QPaintEngine_drawRects(QPaintEngine*, intptr_t, QRect*, 
 void miqt_exec_callback_QPaintEngine_drawRects2(QPaintEngine*, intptr_t, QRectF*, int);
 void miqt_exec_callback_QPaintEngine_drawLines(QPaintEngine*, intptr_t, QLine*, int);
 void miqt_exec_callback_QPaintEngine_drawLines2(QPaintEngine*, intptr_t, QLineF*, int);
-void miqt_exec_callback_QPaintEngine_drawEllipse(QPaintEngine*, intptr_t, QRectF*);
-void miqt_exec_callback_QPaintEngine_drawEllipseWithQRect(QPaintEngine*, intptr_t, QRect*);
+void miqt_exec_callback_QPaintEngine_drawEllipse(QPaintEngine*, intptr_t, struct miqt_qrectf);
+void miqt_exec_callback_QPaintEngine_drawEllipseWithQRect(QPaintEngine*, intptr_t, struct miqt_qrect);
 void miqt_exec_callback_QPaintEngine_drawPath(QPaintEngine*, intptr_t, QPainterPath*);
 void miqt_exec_callback_QPaintEngine_drawPoints(QPaintEngine*, intptr_t, QPointF*, int);
 void miqt_exec_callback_QPaintEngine_drawPoints2(QPaintEngine*, intptr_t, QPoint*, int);
 void miqt_exec_callback_QPaintEngine_drawPolygon(QPaintEngine*, intptr_t, QPointF*, int, int);
 void miqt_exec_callback_QPaintEngine_drawPolygon2(QPaintEngine*, intptr_t, QPoint*, int, int);
-void miqt_exec_callback_QPaintEngine_drawPixmap(QPaintEngine*, intptr_t, QRectF*, QPixmap*, QRectF*);
-void miqt_exec_callback_QPaintEngine_drawTextItem(QPaintEngine*, intptr_t, QPointF*, QTextItem*);
-void miqt_exec_callback_QPaintEngine_drawTiledPixmap(QPaintEngine*, intptr_t, QRectF*, QPixmap*, QPointF*);
-void miqt_exec_callback_QPaintEngine_drawImage(QPaintEngine*, intptr_t, QRectF*, QImage*, QRectF*, int);
-QPoint* miqt_exec_callback_QPaintEngine_coordinateOffset(const QPaintEngine*, intptr_t);
+void miqt_exec_callback_QPaintEngine_drawPixmap(QPaintEngine*, intptr_t, struct miqt_qrectf, QPixmap*, struct miqt_qrectf);
+void miqt_exec_callback_QPaintEngine_drawTextItem(QPaintEngine*, intptr_t, struct miqt_qpointf, QTextItem*);
+void miqt_exec_callback_QPaintEngine_drawTiledPixmap(QPaintEngine*, intptr_t, struct miqt_qrectf, QPixmap*, struct miqt_qpointf);
+void miqt_exec_callback_QPaintEngine_drawImage(QPaintEngine*, intptr_t, struct miqt_qrectf, QImage*, struct miqt_qrectf, int);
+struct miqt_qpoint miqt_exec_callback_QPaintEngine_coordinateOffset(const QPaintEngine*, intptr_t);
 int miqt_exec_callback_QPaintEngine_type(const QPaintEngine*, intptr_t);
-QPixmap* miqt_exec_callback_QPaintEngine_createPixmap(QPaintEngine*, intptr_t, QSize*);
+QPixmap* miqt_exec_callback_QPaintEngine_createPixmap(QPaintEngine*, intptr_t, struct miqt_qsize);
 QPixmap* miqt_exec_callback_QPaintEngine_createPixmapFromImage(QPaintEngine*, intptr_t, QImage*, int);
 #ifdef __cplusplus
 } /* extern C */
@@ -226,14 +226,12 @@ public:
 			return;
 		}
 
-		const QRectF& r_ret = r;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&r_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(r);
 		miqt_exec_callback_QPaintEngine_drawEllipse(this, handle__drawEllipse, sigval1);
 
 	}
 
-	friend void QPaintEngine_virtualbase_drawEllipse(void* self, QRectF* r);
+	friend void QPaintEngine_virtualbase_drawEllipse(void* self, struct miqt_qrectf r);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawEllipseWithQRect = 0;
@@ -245,14 +243,12 @@ public:
 			return;
 		}
 
-		const QRect& r_ret = r;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&r_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(r);
 		miqt_exec_callback_QPaintEngine_drawEllipseWithQRect(this, handle__drawEllipseWithQRect, sigval1);
 
 	}
 
-	friend void QPaintEngine_virtualbase_drawEllipseWithQRect(void* self, QRect* r);
+	friend void QPaintEngine_virtualbase_drawEllipseWithQRect(void* self, struct miqt_qrect r);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPath = 0;
@@ -358,15 +354,11 @@ public:
 			return; // Pure virtual, there is no base we can call
 		}
 
-		const QRectF& r_ret = r;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&r_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(r);
 		const QPixmap& pm_ret = pm;
 		// Cast returned reference into pointer
 		QPixmap* sigval2 = const_cast<QPixmap*>(&pm_ret);
-		const QRectF& sr_ret = sr;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&sr_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(sr);
 		miqt_exec_callback_QPaintEngine_drawPixmap(this, handle__drawPixmap, sigval1, sigval2, sigval3);
 
 	}
@@ -381,9 +373,7 @@ public:
 			return;
 		}
 
-		const QPointF& p_ret = p;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&p_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(p);
 		const QTextItem& textItem_ret = textItem;
 		// Cast returned reference into pointer
 		QTextItem* sigval2 = const_cast<QTextItem*>(&textItem_ret);
@@ -391,7 +381,7 @@ public:
 
 	}
 
-	friend void QPaintEngine_virtualbase_drawTextItem(void* self, QPointF* p, QTextItem* textItem);
+	friend void QPaintEngine_virtualbase_drawTextItem(void* self, struct miqt_qpointf p, QTextItem* textItem);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawTiledPixmap = 0;
@@ -403,20 +393,16 @@ public:
 			return;
 		}
 
-		const QRectF& r_ret = r;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&r_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(r);
 		const QPixmap& pixmap_ret = pixmap;
 		// Cast returned reference into pointer
 		QPixmap* sigval2 = const_cast<QPixmap*>(&pixmap_ret);
-		const QPointF& s_ret = s;
-		// Cast returned reference into pointer
-		QPointF* sigval3 = const_cast<QPointF*>(&s_ret);
+		struct miqt_qpointf sigval3 = miqt_to_cabi<struct miqt_qpointf>(s);
 		miqt_exec_callback_QPaintEngine_drawTiledPixmap(this, handle__drawTiledPixmap, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QPaintEngine_virtualbase_drawTiledPixmap(void* self, QRectF* r, QPixmap* pixmap, QPointF* s);
+	friend void QPaintEngine_virtualbase_drawTiledPixmap(void* self, struct miqt_qrectf r, QPixmap* pixmap, struct miqt_qpointf s);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawImage = 0;
@@ -428,22 +414,18 @@ public:
 			return;
 		}
 
-		const QRectF& r_ret = r;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&r_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(r);
 		const QImage& pm_ret = pm;
 		// Cast returned reference into pointer
 		QImage* sigval2 = const_cast<QImage*>(&pm_ret);
-		const QRectF& sr_ret = sr;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&sr_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(sr);
 		Qt::ImageConversionFlags flags_ret = flags;
 		int sigval4 = static_cast<int>(flags_ret);
 		miqt_exec_callback_QPaintEngine_drawImage(this, handle__drawImage, sigval1, sigval2, sigval3, sigval4);
 
 	}
 
-	friend void QPaintEngine_virtualbase_drawImage(void* self, QRectF* r, QImage* pm, QRectF* sr, int flags);
+	friend void QPaintEngine_virtualbase_drawImage(void* self, struct miqt_qrectf r, QImage* pm, struct miqt_qrectf sr, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__coordinateOffset = 0;
@@ -454,13 +436,11 @@ public:
 			return QPaintEngine::coordinateOffset();
 		}
 
-		QPoint* callback_return_value = miqt_exec_callback_QPaintEngine_coordinateOffset(this, handle__coordinateOffset);
-		QPoint callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qpoint callback_return_value = miqt_exec_callback_QPaintEngine_coordinateOffset(this, handle__coordinateOffset);
+		return miqt_from_cabi<QPoint>(callback_return_value);
 	}
 
-	friend QPoint* QPaintEngine_virtualbase_coordinateOffset(const void* self);
+	friend struct miqt_qpoint QPaintEngine_virtualbase_coordinateOffset(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__type = 0;
@@ -484,14 +464,14 @@ public:
 			return QPaintEngine::createPixmap(size);
 		}
 
-		QSize* sigval1 = new QSize(size);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(size);
 		QPixmap* callback_return_value = miqt_exec_callback_QPaintEngine_createPixmap(this, handle__createPixmap, sigval1);
 		QPixmap callback_return_value_ret = *callback_return_value;
 		delete callback_return_value;
 		return callback_return_value_ret;
 	}
 
-	friend QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, QSize* size);
+	friend QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, struct miqt_qsize size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createPixmapFromImage = 0;
@@ -559,12 +539,12 @@ void QPaintEngine_drawLines2(QPaintEngine* self, QLineF* lines, int lineCount) {
 	self->drawLines(lines, static_cast<int>(lineCount));
 }
 
-void QPaintEngine_drawEllipse(QPaintEngine* self, QRectF* r) {
-	self->drawEllipse(*r);
+void QPaintEngine_drawEllipse(QPaintEngine* self, struct miqt_qrectf r) {
+	self->drawEllipse(miqt_from_cabi<QRectF>(r));
 }
 
-void QPaintEngine_drawEllipseWithQRect(QPaintEngine* self, QRect* r) {
-	self->drawEllipse(*r);
+void QPaintEngine_drawEllipseWithQRect(QPaintEngine* self, struct miqt_qrect r) {
+	self->drawEllipse(miqt_from_cabi<QRect>(r));
 }
 
 void QPaintEngine_drawPath(QPaintEngine* self, QPainterPath* path) {
@@ -587,20 +567,20 @@ void QPaintEngine_drawPolygon2(QPaintEngine* self, QPoint* points, int pointCoun
 	self->drawPolygon(points, static_cast<int>(pointCount), static_cast<QPaintEngine::PolygonDrawMode>(mode));
 }
 
-void QPaintEngine_drawPixmap(QPaintEngine* self, QRectF* r, QPixmap* pm, QRectF* sr) {
-	self->drawPixmap(*r, *pm, *sr);
+void QPaintEngine_drawPixmap(QPaintEngine* self, struct miqt_qrectf r, QPixmap* pm, struct miqt_qrectf sr) {
+	self->drawPixmap(miqt_from_cabi<QRectF>(r), *pm, miqt_from_cabi<QRectF>(sr));
 }
 
-void QPaintEngine_drawTextItem(QPaintEngine* self, QPointF* p, QTextItem* textItem) {
-	self->drawTextItem(*p, *textItem);
+void QPaintEngine_drawTextItem(QPaintEngine* self, struct miqt_qpointf p, QTextItem* textItem) {
+	self->drawTextItem(miqt_from_cabi<QPointF>(p), *textItem);
 }
 
-void QPaintEngine_drawTiledPixmap(QPaintEngine* self, QRectF* r, QPixmap* pixmap, QPointF* s) {
-	self->drawTiledPixmap(*r, *pixmap, *s);
+void QPaintEngine_drawTiledPixmap(QPaintEngine* self, struct miqt_qrectf r, QPixmap* pixmap, struct miqt_qpointf s) {
+	self->drawTiledPixmap(miqt_from_cabi<QRectF>(r), *pixmap, miqt_from_cabi<QPointF>(s));
 }
 
-void QPaintEngine_drawImage(QPaintEngine* self, QRectF* r, QImage* pm, QRectF* sr, int flags) {
-	self->drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
+void QPaintEngine_drawImage(QPaintEngine* self, struct miqt_qrectf r, QImage* pm, struct miqt_qrectf sr, int flags) {
+	self->drawImage(miqt_from_cabi<QRectF>(r), *pm, miqt_from_cabi<QRectF>(sr), static_cast<Qt::ImageConversionFlags>(flags));
 }
 
 void QPaintEngine_setPaintDevice(QPaintEngine* self, QPaintDevice* device) {
@@ -619,16 +599,16 @@ QRegion* QPaintEngine_systemClip(const QPaintEngine* self) {
 	return new QRegion(self->systemClip());
 }
 
-void QPaintEngine_setSystemRect(QPaintEngine* self, QRect* rect) {
-	self->setSystemRect(*rect);
+void QPaintEngine_setSystemRect(QPaintEngine* self, struct miqt_qrect rect) {
+	self->setSystemRect(miqt_from_cabi<QRect>(rect));
 }
 
-QRect* QPaintEngine_systemRect(const QPaintEngine* self) {
-	return new QRect(self->systemRect());
+struct miqt_qrect QPaintEngine_systemRect(const QPaintEngine* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->systemRect());
 }
 
-QPoint* QPaintEngine_coordinateOffset(const QPaintEngine* self) {
-	return new QPoint(self->coordinateOffset());
+struct miqt_qpoint QPaintEngine_coordinateOffset(const QPaintEngine* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->coordinateOffset());
 }
 
 int QPaintEngine_type(const QPaintEngine* self) {
@@ -668,8 +648,8 @@ bool QPaintEngine_isExtended(const QPaintEngine* self) {
 	return self->isExtended();
 }
 
-QPixmap* QPaintEngine_createPixmap(QPaintEngine* self, QSize* size) {
-	return new QPixmap(self->createPixmap(*size));
+QPixmap* QPaintEngine_createPixmap(QPaintEngine* self, struct miqt_qsize size) {
+	return new QPixmap(self->createPixmap(miqt_from_cabi<QSize>(size)));
 }
 
 QPixmap* QPaintEngine_createPixmapFromImage(QPaintEngine* self, QImage* image, int flags) {
@@ -772,8 +752,8 @@ bool QPaintEngine_override_virtual_drawEllipse(void* self, intptr_t slot) {
 	return true;
 }
 
-void QPaintEngine_virtualbase_drawEllipse(void* self, QRectF* r) {
-	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawEllipse(*r);
+void QPaintEngine_virtualbase_drawEllipse(void* self, struct miqt_qrectf r) {
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawEllipse(miqt_from_cabi<QRectF>(r));
 }
 
 bool QPaintEngine_override_virtual_drawEllipseWithQRect(void* self, intptr_t slot) {
@@ -786,8 +766,8 @@ bool QPaintEngine_override_virtual_drawEllipseWithQRect(void* self, intptr_t slo
 	return true;
 }
 
-void QPaintEngine_virtualbase_drawEllipseWithQRect(void* self, QRect* r) {
-	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawEllipse(*r);
+void QPaintEngine_virtualbase_drawEllipseWithQRect(void* self, struct miqt_qrect r) {
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawEllipse(miqt_from_cabi<QRect>(r));
 }
 
 bool QPaintEngine_override_virtual_drawPath(void* self, intptr_t slot) {
@@ -880,8 +860,8 @@ bool QPaintEngine_override_virtual_drawTextItem(void* self, intptr_t slot) {
 	return true;
 }
 
-void QPaintEngine_virtualbase_drawTextItem(void* self, QPointF* p, QTextItem* textItem) {
-	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawTextItem(*p, *textItem);
+void QPaintEngine_virtualbase_drawTextItem(void* self, struct miqt_qpointf p, QTextItem* textItem) {
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawTextItem(miqt_from_cabi<QPointF>(p), *textItem);
 }
 
 bool QPaintEngine_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
@@ -894,8 +874,8 @@ bool QPaintEngine_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
 	return true;
 }
 
-void QPaintEngine_virtualbase_drawTiledPixmap(void* self, QRectF* r, QPixmap* pixmap, QPointF* s) {
-	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawTiledPixmap(*r, *pixmap, *s);
+void QPaintEngine_virtualbase_drawTiledPixmap(void* self, struct miqt_qrectf r, QPixmap* pixmap, struct miqt_qpointf s) {
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawTiledPixmap(miqt_from_cabi<QRectF>(r), *pixmap, miqt_from_cabi<QPointF>(s));
 }
 
 bool QPaintEngine_override_virtual_drawImage(void* self, intptr_t slot) {
@@ -908,8 +888,8 @@ bool QPaintEngine_override_virtual_drawImage(void* self, intptr_t slot) {
 	return true;
 }
 
-void QPaintEngine_virtualbase_drawImage(void* self, QRectF* r, QImage* pm, QRectF* sr, int flags) {
-	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
+void QPaintEngine_virtualbase_drawImage(void* self, struct miqt_qrectf r, QImage* pm, struct miqt_qrectf sr, int flags) {
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawImage(miqt_from_cabi<QRectF>(r), *pm, miqt_from_cabi<QRectF>(sr), static_cast<Qt::ImageConversionFlags>(flags));
 }
 
 bool QPaintEngine_override_virtual_coordinateOffset(void* self, intptr_t slot) {
@@ -922,8 +902,8 @@ bool QPaintEngine_override_virtual_coordinateOffset(void* self, intptr_t slot) {
 	return true;
 }
 
-QPoint* QPaintEngine_virtualbase_coordinateOffset(const void* self) {
-	return new QPoint(static_cast<const MiqtVirtualQPaintEngine*>(self)->QPaintEngine::coordinateOffset());
+struct miqt_qpoint QPaintEngine_virtualbase_coordinateOffset(const void* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(static_cast<const MiqtVirtualQPaintEngine*>(self)->QPaintEngine::coordinateOffset());
 }
 
 bool QPaintEngine_override_virtual_type(void* self, intptr_t slot) {
@@ -946,8 +926,8 @@ bool QPaintEngine_override_virtual_createPixmap(void* self, intptr_t slot) {
 	return true;
 }
 
-QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, QSize* size) {
-	return new QPixmap(static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::createPixmap(*size));
+QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, struct miqt_qsize size) {
+	return new QPixmap(static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::createPixmap(miqt_from_cabi<QSize>(size)));
 }
 
 bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t slot) {
@@ -962,10 +942,6 @@ bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t sl
 
 QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* image, int flags) {
 	return new QPixmap(static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::createPixmapFromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
-}
-
-QPoint* QPaintEngine_virtualreturncopy_QPoint(QPoint* src) {
-	return new QPoint(*src);
 }
 
 QPixmap* QPaintEngine_virtualreturncopy_QPixmap(QPixmap* src) {
@@ -993,8 +969,8 @@ QBrush* QPaintEngineState_brush(const QPaintEngineState* self) {
 	return new QBrush(self->brush());
 }
 
-QPointF* QPaintEngineState_brushOrigin(const QPaintEngineState* self) {
-	return new QPointF(self->brushOrigin());
+struct miqt_qpointf QPaintEngineState_brushOrigin(const QPaintEngineState* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->brushOrigin());
 }
 
 QBrush* QPaintEngineState_backgroundBrush(const QPaintEngineState* self) {

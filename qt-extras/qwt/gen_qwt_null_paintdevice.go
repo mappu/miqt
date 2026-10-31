@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -94,13 +95,11 @@ func (this *QwtNullPaintDevice) Metric(param1 qt.QPaintDevice__PaintDeviceMetric
 
 func (this *QwtNullPaintDevice) DrawRects(param1 *qt.QRect, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawRects(this.h, (*C.QRect)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func (this *QwtNullPaintDevice) DrawRects2(param1 *qt.QRectF, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawRects2(this.h, (*C.QRectF)(param1.UnsafePointer()), (C.int)(param2))
 }
 
@@ -116,16 +115,14 @@ func (this *QwtNullPaintDevice) DrawLines2(param1 *qt.QLineF, param2 int) {
 	C.QwtNullPaintDevice_drawLines2(this.h, (*C.QLineF)(param1.UnsafePointer()), (C.int)(param2))
 }
 
-func (this *QwtNullPaintDevice) DrawEllipse(param1 *qt.QRectF) {
+func (this *QwtNullPaintDevice) DrawEllipse(param1 qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtNullPaintDevice_drawEllipse(this.h, (*C.QRectF)(param1.UnsafePointer()))
+	C.QwtNullPaintDevice_drawEllipse(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1))
 }
 
-func (this *QwtNullPaintDevice) DrawEllipseWithQRect(param1 *qt.QRect) {
+func (this *QwtNullPaintDevice) DrawEllipseWithQRect(param1 qt.QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtNullPaintDevice_drawEllipseWithQRect(this.h, (*C.QRect)(param1.UnsafePointer()))
+	C.QwtNullPaintDevice_drawEllipseWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](param1))
 }
 
 func (this *QwtNullPaintDevice) DrawPath(param1 *qt.QPainterPath) {
@@ -136,57 +133,46 @@ func (this *QwtNullPaintDevice) DrawPath(param1 *qt.QPainterPath) {
 
 func (this *QwtNullPaintDevice) DrawPoints(param1 *qt.QPointF, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawPoints(this.h, (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func (this *QwtNullPaintDevice) DrawPoints2(param1 *qt.QPoint, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawPoints2(this.h, (*C.QPoint)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func (this *QwtNullPaintDevice) DrawPolygon(param1 *qt.QPointF, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawPolygon(this.h, (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 }
 
 func (this *QwtNullPaintDevice) DrawPolygon2(param1 *qt.QPoint, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QwtNullPaintDevice_drawPolygon2(this.h, (*C.QPoint)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 }
 
-func (this *QwtNullPaintDevice) DrawPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF) {
+func (this *QwtNullPaintDevice) DrawPixmap(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param3)
-	C.QwtNullPaintDevice_drawPixmap(this.h, (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()))
+	C.QwtNullPaintDevice_drawPixmap(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1), (*C.QPixmap)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param3))
 }
 
-func (this *QwtNullPaintDevice) DrawTextItem(param1 *qt.QPointF, param2 *qt.QTextItem) {
+func (this *QwtNullPaintDevice) DrawTextItem(param1 qt.QPointF, param2 *qt.QTextItem) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	C.QwtNullPaintDevice_drawTextItem(this.h, (*C.QPointF)(param1.UnsafePointer()), (*C.QTextItem)(param2.UnsafePointer()))
+	C.QwtNullPaintDevice_drawTextItem(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](param1), (*C.QTextItem)(param2.UnsafePointer()))
 }
 
-func (this *QwtNullPaintDevice) DrawTiledPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF) {
+func (this *QwtNullPaintDevice) DrawTiledPixmap(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param3)
-	C.QwtNullPaintDevice_drawTiledPixmap(this.h, (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QPointF)(param3.UnsafePointer()))
+	C.QwtNullPaintDevice_drawTiledPixmap(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1), (*C.QPixmap)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](param3))
 }
 
-func (this *QwtNullPaintDevice) DrawImage(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag) {
+func (this *QwtNullPaintDevice) DrawImage(param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param3)
-	C.QwtNullPaintDevice_drawImage(this.h, (*C.QRectF)(param1.UnsafePointer()), (*C.QImage)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()), (C.int)(param4))
+	C.QwtNullPaintDevice_drawImage(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1), (*C.QImage)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param3), (C.int)(param4))
 }
 
 func (this *QwtNullPaintDevice) UpdateState(param1 *qt.QPaintEngineState) {
@@ -253,7 +239,6 @@ func miqt_exec_callback_QwtNullPaintDevice_metric(self *C.QwtNullPaintDevice, cb
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawRects(param1 *qt.QRect, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawRects(unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -283,7 +268,6 @@ func miqt_exec_callback_QwtNullPaintDevice_drawRects(self *C.QwtNullPaintDevice,
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawRects2(param1 *qt.QRectF, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawRects2(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -371,14 +355,13 @@ func miqt_exec_callback_QwtNullPaintDevice_drawLines2(self *C.QwtNullPaintDevice
 
 }
 
-func (this *QwtNullPaintDevice) callVirtualBase_DrawEllipse(param1 *qt.QRectF) {
+func (this *QwtNullPaintDevice) callVirtualBase_DrawEllipse(param1 qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
-	C.QwtNullPaintDevice_virtualbase_drawEllipse(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))
+	C.QwtNullPaintDevice_virtualbase_drawEllipse(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1))
 
 }
-func (this *QwtNullPaintDevice) OnDrawEllipse(slot func(super func(param1 *qt.QRectF), param1 *qt.QRectF)) {
+func (this *QwtNullPaintDevice) OnDrawEllipse(slot func(super func(param1 qt.QRectF), param1 qt.QRectF)) {
 	ok := C.QwtNullPaintDevice_override_virtual_drawEllipse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -386,27 +369,26 @@ func (this *QwtNullPaintDevice) OnDrawEllipse(slot func(super func(param1 *qt.QR
 }
 
 //export miqt_exec_callback_QwtNullPaintDevice_drawEllipse
-func miqt_exec_callback_QwtNullPaintDevice_drawEllipse(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF), param1 *qt.QRectF))
+func miqt_exec_callback_QwtNullPaintDevice_drawEllipse(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF), param1 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	gofunc((&QwtNullPaintDevice{h: self}).callVirtualBase_DrawEllipse, slotval1)
 
 }
 
-func (this *QwtNullPaintDevice) callVirtualBase_DrawEllipseWithQRect(param1 *qt.QRect) {
+func (this *QwtNullPaintDevice) callVirtualBase_DrawEllipseWithQRect(param1 qt.QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
-	C.QwtNullPaintDevice_virtualbase_drawEllipseWithQRect(unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))
+	C.QwtNullPaintDevice_virtualbase_drawEllipseWithQRect(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](param1))
 
 }
-func (this *QwtNullPaintDevice) OnDrawEllipseWithQRect(slot func(super func(param1 *qt.QRect), param1 *qt.QRect)) {
+func (this *QwtNullPaintDevice) OnDrawEllipseWithQRect(slot func(super func(param1 qt.QRect), param1 qt.QRect)) {
 	ok := C.QwtNullPaintDevice_override_virtual_drawEllipseWithQRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -414,14 +396,14 @@ func (this *QwtNullPaintDevice) OnDrawEllipseWithQRect(slot func(super func(para
 }
 
 //export miqt_exec_callback_QwtNullPaintDevice_drawEllipseWithQRect
-func miqt_exec_callback_QwtNullPaintDevice_drawEllipseWithQRect(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRect), param1 *qt.QRect))
+func miqt_exec_callback_QwtNullPaintDevice_drawEllipseWithQRect(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRect), param1 qt.QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRect(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRect](param1)
 
 	gofunc((&QwtNullPaintDevice{h: self}).callVirtualBase_DrawEllipseWithQRect, slotval1)
 
@@ -457,7 +439,6 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPath(self *C.QwtNullPaintDevice, 
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPoints(param1 *qt.QPointF, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawPoints(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -487,7 +468,6 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPoints(self *C.QwtNullPaintDevice
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPoints2(param1 *qt.QPoint, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawPoints2(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -517,7 +497,6 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPoints2(self *C.QwtNullPaintDevic
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPolygon(param1 *qt.QPointF, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawPolygon(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 
@@ -549,7 +528,6 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPolygon(self *C.QwtNullPaintDevic
 
 func (this *QwtNullPaintDevice) callVirtualBase_DrawPolygon2(param1 *qt.QPoint, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QwtNullPaintDevice_virtualbase_drawPolygon2(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 
@@ -579,16 +557,14 @@ func miqt_exec_callback_QwtNullPaintDevice_drawPolygon2(self *C.QwtNullPaintDevi
 
 }
 
-func (this *QwtNullPaintDevice) callVirtualBase_DrawPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF) {
+func (this *QwtNullPaintDevice) callVirtualBase_DrawPixmap(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param3)
 
-	C.QwtNullPaintDevice_virtualbase_drawPixmap(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()))
+	C.QwtNullPaintDevice_virtualbase_drawPixmap(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1), (*C.QPixmap)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param3))
 
 }
-func (this *QwtNullPaintDevice) OnDrawPixmap(slot func(super func(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF), param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF)) {
+func (this *QwtNullPaintDevice) OnDrawPixmap(slot func(super func(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF), param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF)) {
 	ok := C.QwtNullPaintDevice_override_virtual_drawPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -596,32 +572,31 @@ func (this *QwtNullPaintDevice) OnDrawPixmap(slot func(super func(param1 *qt.QRe
 }
 
 //export miqt_exec_callback_QwtNullPaintDevice_drawPixmap
-func miqt_exec_callback_QwtNullPaintDevice_drawPixmap(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 *C.QRectF, param2 *C.QPixmap, param3 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF), param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF))
+func miqt_exec_callback_QwtNullPaintDevice_drawPixmap(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 C.struct_miqt_qrectf, param2 *C.QPixmap, param3 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF), param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	slotval2 := qt.UnsafeNewQPixmap(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQRectF(unsafe.Pointer(param3))
+	slotval3 := libmiqt.ValueCast[qt.QRectF](param3)
 
 	gofunc((&QwtNullPaintDevice{h: self}).callVirtualBase_DrawPixmap, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QwtNullPaintDevice) callVirtualBase_DrawTextItem(param1 *qt.QPointF, param2 *qt.QTextItem) {
+func (this *QwtNullPaintDevice) callVirtualBase_DrawTextItem(param1 qt.QPointF, param2 *qt.QTextItem) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
-	C.QwtNullPaintDevice_virtualbase_drawTextItem(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (*C.QTextItem)(param2.UnsafePointer()))
+	C.QwtNullPaintDevice_virtualbase_drawTextItem(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](param1), (*C.QTextItem)(param2.UnsafePointer()))
 
 }
-func (this *QwtNullPaintDevice) OnDrawTextItem(slot func(super func(param1 *qt.QPointF, param2 *qt.QTextItem), param1 *qt.QPointF, param2 *qt.QTextItem)) {
+func (this *QwtNullPaintDevice) OnDrawTextItem(slot func(super func(param1 qt.QPointF, param2 *qt.QTextItem), param1 qt.QPointF, param2 *qt.QTextItem)) {
 	ok := C.QwtNullPaintDevice_override_virtual_drawTextItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -629,14 +604,14 @@ func (this *QwtNullPaintDevice) OnDrawTextItem(slot func(super func(param1 *qt.Q
 }
 
 //export miqt_exec_callback_QwtNullPaintDevice_drawTextItem
-func miqt_exec_callback_QwtNullPaintDevice_drawTextItem(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 *C.QPointF, param2 *C.QTextItem) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPointF, param2 *qt.QTextItem), param1 *qt.QPointF, param2 *qt.QTextItem))
+func miqt_exec_callback_QwtNullPaintDevice_drawTextItem(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 C.struct_miqt_qpointf, param2 *C.QTextItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPointF, param2 *qt.QTextItem), param1 qt.QPointF, param2 *qt.QTextItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](param1)
 
 	slotval2 := qt.UnsafeNewQTextItem(unsafe.Pointer(param2))
 
@@ -644,16 +619,14 @@ func miqt_exec_callback_QwtNullPaintDevice_drawTextItem(self *C.QwtNullPaintDevi
 
 }
 
-func (this *QwtNullPaintDevice) callVirtualBase_DrawTiledPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF) {
+func (this *QwtNullPaintDevice) callVirtualBase_DrawTiledPixmap(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param3)
 
-	C.QwtNullPaintDevice_virtualbase_drawTiledPixmap(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QPointF)(param3.UnsafePointer()))
+	C.QwtNullPaintDevice_virtualbase_drawTiledPixmap(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1), (*C.QPixmap)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](param3))
 
 }
-func (this *QwtNullPaintDevice) OnDrawTiledPixmap(slot func(super func(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF), param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF)) {
+func (this *QwtNullPaintDevice) OnDrawTiledPixmap(slot func(super func(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF), param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF)) {
 	ok := C.QwtNullPaintDevice_override_virtual_drawTiledPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -661,33 +634,31 @@ func (this *QwtNullPaintDevice) OnDrawTiledPixmap(slot func(super func(param1 *q
 }
 
 //export miqt_exec_callback_QwtNullPaintDevice_drawTiledPixmap
-func miqt_exec_callback_QwtNullPaintDevice_drawTiledPixmap(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 *C.QRectF, param2 *C.QPixmap, param3 *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF), param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF))
+func miqt_exec_callback_QwtNullPaintDevice_drawTiledPixmap(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 C.struct_miqt_qrectf, param2 *C.QPixmap, param3 C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF), param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	slotval2 := qt.UnsafeNewQPixmap(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQPointF(unsafe.Pointer(param3))
+	slotval3 := libmiqt.ValueCast[qt.QPointF](param3)
 
 	gofunc((&QwtNullPaintDevice{h: self}).callVirtualBase_DrawTiledPixmap, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QwtNullPaintDevice) callVirtualBase_DrawImage(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag) {
+func (this *QwtNullPaintDevice) callVirtualBase_DrawImage(param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param3)
 
-	C.QwtNullPaintDevice_virtualbase_drawImage(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QImage)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()), (C.int)(param4))
+	C.QwtNullPaintDevice_virtualbase_drawImage(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1), (*C.QImage)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param3), (C.int)(param4))
 
 }
-func (this *QwtNullPaintDevice) OnDrawImage(slot func(super func(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag), param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag)) {
+func (this *QwtNullPaintDevice) OnDrawImage(slot func(super func(param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag), param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag)) {
 	ok := C.QwtNullPaintDevice_override_virtual_drawImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -695,18 +666,18 @@ func (this *QwtNullPaintDevice) OnDrawImage(slot func(super func(param1 *qt.QRec
 }
 
 //export miqt_exec_callback_QwtNullPaintDevice_drawImage
-func miqt_exec_callback_QwtNullPaintDevice_drawImage(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 *C.QRectF, param2 *C.QImage, param3 *C.QRectF, param4 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag), param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag))
+func miqt_exec_callback_QwtNullPaintDevice_drawImage(self *C.QwtNullPaintDevice, cb C.intptr_t, param1 C.struct_miqt_qrectf, param2 *C.QImage, param3 C.struct_miqt_qrectf, param4 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag), param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	slotval2 := qt.UnsafeNewQImage(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQRectF(unsafe.Pointer(param3))
+	slotval3 := libmiqt.ValueCast[qt.QRectF](param3)
 
 	slotval4 := (qt.ImageConversionFlag)(param4)
 
@@ -741,7 +712,7 @@ func miqt_exec_callback_QwtNullPaintDevice_updateState(self *C.QwtNullPaintDevic
 	gofunc((&QwtNullPaintDevice{h: self}).callVirtualBase_UpdateState, slotval1)
 
 }
-func (this *QwtNullPaintDevice) OnSizeMetrics(slot func() *qt.QSize) {
+func (this *QwtNullPaintDevice) OnSizeMetrics(slot func() qt.QSize) {
 	ok := C.QwtNullPaintDevice_override_virtual_sizeMetrics(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -749,16 +720,15 @@ func (this *QwtNullPaintDevice) OnSizeMetrics(slot func() *qt.QSize) {
 }
 
 //export miqt_exec_callback_QwtNullPaintDevice_sizeMetrics
-func miqt_exec_callback_QwtNullPaintDevice_sizeMetrics(self *C.QwtNullPaintDevice, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func() *qt.QSize)
+func miqt_exec_callback_QwtNullPaintDevice_sizeMetrics(self *C.QwtNullPaintDevice, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func() qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtNullPaintDevice_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -818,7 +788,6 @@ func miqt_exec_callback_QwtNullPaintDevice_initPainter(self *C.QwtNullPaintDevic
 
 func (this *QwtNullPaintDevice) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtNullPaintDevice_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

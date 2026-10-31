@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -116,36 +117,27 @@ func (this *QConcatenateTablesProxyModel) RemoveSourceModel(sourceModel *QAbstra
 	C.QConcatenateTablesProxyModel_removeSourceModel(this.h, sourceModel.cPointer())
 }
 
-func (this *QConcatenateTablesProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(sourceIndex)
-	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_mapFromSource(this.h, sourceIndex.cPointer()))
+func (this *QConcatenateTablesProxyModel) MapFromSource(sourceIndex QModelIndex) QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QConcatenateTablesProxyModel_mapFromSource(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](sourceIndex)))
+}
+
+func (this *QConcatenateTablesProxyModel) MapToSource(proxyIndex QModelIndex) QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QConcatenateTablesProxyModel_mapToSource(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](proxyIndex)))
+}
+
+func (this *QConcatenateTablesProxyModel) Data(index QModelIndex, role int) *QVariant {
+	_goptr := newQVariant(C.QConcatenateTablesProxyModel_data(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QConcatenateTablesProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(proxyIndex)
-	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_mapToSource(this.h, proxyIndex.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QConcatenateTablesProxyModel) Data(index *QModelIndex, role int) *QVariant {
-	defer runtime.KeepAlive(index)
-	_goptr := newQVariant(C.QConcatenateTablesProxyModel_data(this.h, index.cPointer(), (C.int)(role)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QConcatenateTablesProxyModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(index)
+func (this *QConcatenateTablesProxyModel) SetData(index QModelIndex, value *QVariant, role int) bool {
 	defer runtime.KeepAlive(value)
-	return (bool)(C.QConcatenateTablesProxyModel_setData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QConcatenateTablesProxyModel_setData(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), value.cPointer(), (C.int)(role)))
 }
 
-func (this *QConcatenateTablesProxyModel) ItemData(proxyIndex *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(proxyIndex)
-	var _mm C.struct_miqt_map = C.QConcatenateTablesProxyModel_itemData(this.h, proxyIndex.cPointer())
+func (this *QConcatenateTablesProxyModel) ItemData(proxyIndex QModelIndex) map[int]QVariant {
+	var _mm C.struct_miqt_map = C.QConcatenateTablesProxyModel_itemData(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](proxyIndex))
 	_ret := make(map[int]QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
 	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
@@ -161,8 +153,7 @@ func (this *QConcatenateTablesProxyModel) ItemData(proxyIndex *QModelIndex) map[
 	return _ret
 }
 
-func (this *QConcatenateTablesProxyModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(index)
+func (this *QConcatenateTablesProxyModel) SetItemData(index QModelIndex, roles map[int]QVariant) bool {
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
@@ -181,31 +172,23 @@ func (this *QConcatenateTablesProxyModel) SetItemData(index *QModelIndex, roles 
 		keys:   unsafe.Pointer(roles_Keys_CArray_ptr),
 		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
-	return (bool)(C.QConcatenateTablesProxyModel_setItemData(this.h, index.cPointer(), roles_mm))
+	return (bool)(C.QConcatenateTablesProxyModel_setItemData(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), roles_mm))
 }
 
-func (this *QConcatenateTablesProxyModel) Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(index)
-	return (ItemFlag)(C.QConcatenateTablesProxyModel_flags(this.h, index.cPointer()))
+func (this *QConcatenateTablesProxyModel) Flags(index QModelIndex) ItemFlag {
+	return (ItemFlag)(C.QConcatenateTablesProxyModel_flags(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QConcatenateTablesProxyModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(parent)
-	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QConcatenateTablesProxyModel) Index(row int, column int, parent QModelIndex) QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QConcatenateTablesProxyModel_index(this.h, (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QConcatenateTablesProxyModel) Parent(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(index)
-	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_parent(this.h, index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QConcatenateTablesProxyModel) Parent(index QModelIndex) QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QConcatenateTablesProxyModel_parent(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QConcatenateTablesProxyModel) RowCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(parent)
-	return (int)(C.QConcatenateTablesProxyModel_rowCount(this.h, parent.cPointer()))
+func (this *QConcatenateTablesProxyModel) RowCount(parent QModelIndex) int {
+	return (int)(C.QConcatenateTablesProxyModel_rowCount(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
 func (this *QConcatenateTablesProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
@@ -214,9 +197,8 @@ func (this *QConcatenateTablesProxyModel) HeaderData(section int, orientation Or
 	return _goptr
 }
 
-func (this *QConcatenateTablesProxyModel) ColumnCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(parent)
-	return (int)(C.QConcatenateTablesProxyModel_columnCount(this.h, parent.cPointer()))
+func (this *QConcatenateTablesProxyModel) ColumnCount(parent QModelIndex) int {
+	return (int)(C.QConcatenateTablesProxyModel_columnCount(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
 func (this *QConcatenateTablesProxyModel) MimeTypes() []string {
@@ -233,32 +215,26 @@ func (this *QConcatenateTablesProxyModel) MimeTypes() []string {
 }
 
 func (this *QConcatenateTablesProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(indexes)
-	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	indexes_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
-		indexes_CArray[i] = indexes[i].cPointer()
+		indexes_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](indexes[i])
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	return newQMimeData(C.QConcatenateTablesProxyModel_mimeData(this.h, indexes_ma))
 }
 
-func (this *QConcatenateTablesProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QConcatenateTablesProxyModel_canDropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+func (this *QConcatenateTablesProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool {
+	return (bool)(C.QConcatenateTablesProxyModel_canDropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QConcatenateTablesProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QConcatenateTablesProxyModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+func (this *QConcatenateTablesProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool {
+	return (bool)(C.QConcatenateTablesProxyModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QConcatenateTablesProxyModel) Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(index)
-	_goptr := newQSize(C.QConcatenateTablesProxyModel_span(this.h, index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QConcatenateTablesProxyModel) Span(index QModelIndex) QSize {
+	return libmiqt.ValueCast[QSize](C.QConcatenateTablesProxyModel_span(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func QConcatenateTablesProxyModel_Tr2(s string, c string) string {
@@ -321,9 +297,7 @@ func (this *QConcatenateTablesProxyModel) ResetInternalData() {
 func (this *QConcatenateTablesProxyModel) CreateIndex(row int, column int) QModelIndex {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QModelIndex](C.QConcatenateTablesProxyModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -335,13 +309,12 @@ func (this *QConcatenateTablesProxyModel) CreateIndex(row int, column int) QMode
 
 // EncodeData can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	defer runtime.KeepAlive(indexes)
 	defer runtime.KeepAlive(stream)
-	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	indexes_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
-		indexes_CArray[i] = indexes[i].cPointer()
+		indexes_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](indexes[i])
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
@@ -355,12 +328,11 @@ func (this *QConcatenateTablesProxyModel) EncodeData(indexes []QModelIndex, stre
 }
 
 // DecodeData can only be called from a QConcatenateTablesProxyModel that was directly constructed.
-func (this *QConcatenateTablesProxyModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) DecodeData(row int, column int, parent QModelIndex, stream *QDataStream) bool {
 	defer runtime.KeepAlive(stream)
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := (bool)(C.QConcatenateTablesProxyModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer(), stream.cPointer()))
+	_method_ret := (bool)(C.QConcatenateTablesProxyModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), stream.cPointer()))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -371,11 +343,10 @@ func (this *QConcatenateTablesProxyModel) DecodeData(row int, column int, parent
 }
 
 // BeginInsertRows can only be called from a QConcatenateTablesProxyModel that was directly constructed.
-func (this *QConcatenateTablesProxyModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) BeginInsertRows(parent QModelIndex, first int, last int) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QConcatenateTablesProxyModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+	C.QConcatenateTablesProxyModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(first), (C.int)(last))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -396,11 +367,10 @@ func (this *QConcatenateTablesProxyModel) EndInsertRows() {
 }
 
 // BeginRemoveRows can only be called from a QConcatenateTablesProxyModel that was directly constructed.
-func (this *QConcatenateTablesProxyModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) BeginRemoveRows(parent QModelIndex, first int, last int) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QConcatenateTablesProxyModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+	C.QConcatenateTablesProxyModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(first), (C.int)(last))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -421,12 +391,10 @@ func (this *QConcatenateTablesProxyModel) EndRemoveRows() {
 }
 
 // BeginMoveRows can only be called from a QConcatenateTablesProxyModel that was directly constructed.
-func (this *QConcatenateTablesProxyModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
-	defer runtime.KeepAlive(sourceParent)
-	defer runtime.KeepAlive(destinationParent)
+func (this *QConcatenateTablesProxyModel) BeginMoveRows(sourceParent QModelIndex, sourceFirst int, sourceLast int, destinationParent QModelIndex, destinationRow int) bool {
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := (bool)(C.QConcatenateTablesProxyModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationRow)))
+	_method_ret := (bool)(C.QConcatenateTablesProxyModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](sourceParent), (C.int)(sourceFirst), (C.int)(sourceLast), libmiqt.ValueCast[C.struct_miqt_qmodelindex](destinationParent), (C.int)(destinationRow)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -449,11 +417,10 @@ func (this *QConcatenateTablesProxyModel) EndMoveRows() {
 }
 
 // BeginInsertColumns can only be called from a QConcatenateTablesProxyModel that was directly constructed.
-func (this *QConcatenateTablesProxyModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) BeginInsertColumns(parent QModelIndex, first int, last int) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QConcatenateTablesProxyModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+	C.QConcatenateTablesProxyModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(first), (C.int)(last))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -474,11 +441,10 @@ func (this *QConcatenateTablesProxyModel) EndInsertColumns() {
 }
 
 // BeginRemoveColumns can only be called from a QConcatenateTablesProxyModel that was directly constructed.
-func (this *QConcatenateTablesProxyModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) BeginRemoveColumns(parent QModelIndex, first int, last int) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QConcatenateTablesProxyModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+	C.QConcatenateTablesProxyModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(first), (C.int)(last))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -499,12 +465,10 @@ func (this *QConcatenateTablesProxyModel) EndRemoveColumns() {
 }
 
 // BeginMoveColumns can only be called from a QConcatenateTablesProxyModel that was directly constructed.
-func (this *QConcatenateTablesProxyModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
-	defer runtime.KeepAlive(sourceParent)
-	defer runtime.KeepAlive(destinationParent)
+func (this *QConcatenateTablesProxyModel) BeginMoveColumns(sourceParent QModelIndex, sourceFirst int, sourceLast int, destinationParent QModelIndex, destinationColumn int) bool {
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := (bool)(C.QConcatenateTablesProxyModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationColumn)))
+	_method_ret := (bool)(C.QConcatenateTablesProxyModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](sourceParent), (C.int)(sourceFirst), (C.int)(sourceLast), libmiqt.ValueCast[C.struct_miqt_qmodelindex](destinationParent), (C.int)(destinationColumn)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -551,12 +515,10 @@ func (this *QConcatenateTablesProxyModel) EndResetModel() {
 }
 
 // ChangePersistentIndex can only be called from a QConcatenateTablesProxyModel that was directly constructed.
-func (this *QConcatenateTablesProxyModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
-	defer runtime.KeepAlive(from)
-	defer runtime.KeepAlive(to)
+func (this *QConcatenateTablesProxyModel) ChangePersistentIndex(from QModelIndex, to QModelIndex) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QConcatenateTablesProxyModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), from.cPointer(), to.cPointer())
+	C.QConcatenateTablesProxyModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](from), libmiqt.ValueCast[C.struct_miqt_qmodelindex](to))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -566,20 +528,18 @@ func (this *QConcatenateTablesProxyModel) ChangePersistentIndex(from *QModelInde
 
 // ChangePersistentIndexList can only be called from a QConcatenateTablesProxyModel that was directly constructed.
 func (this *QConcatenateTablesProxyModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	defer runtime.KeepAlive(from)
-	defer runtime.KeepAlive(to)
-	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
+	from_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(from))))
 	defer C.free(unsafe.Pointer(from_CArray_ptr))
 	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
 	for i := range from {
-		from_CArray[i] = from[i].cPointer()
+		from_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](from[i])
 	}
 	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray_ptr)}
-	to_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
+	to_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(to))))
 	defer C.free(unsafe.Pointer(to_CArray_ptr))
 	to_CArray := unsafe.Slice(to_CArray_ptr, len(to))
 	for i := range to {
-		to_CArray[i] = to[i].cPointer()
+		to_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](to[i])
 	}
 	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray_ptr)}
 
@@ -598,11 +558,9 @@ func (this *QConcatenateTablesProxyModel) PersistentIndexList() []QModelIndex {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QConcatenateTablesProxyModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	_method_ret := _ret
 
@@ -673,15 +631,14 @@ func (this *QConcatenateTablesProxyModel) IsSignalConnected(signal *QMetaMethod)
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
-	defer runtime.KeepAlive(index)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_Data(index QModelIndex, role int) *QVariant {
 
-	_goptr := newQVariant(C.QConcatenateTablesProxyModel_virtualbase_data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
+	_goptr := newQVariant(C.QConcatenateTablesProxyModel_virtualbase_data(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QConcatenateTablesProxyModel) OnData(slot func(super func(index *QModelIndex, role int) *QVariant, index *QModelIndex, role int) *QVariant) {
+func (this *QConcatenateTablesProxyModel) OnData(slot func(super func(index QModelIndex, role int) *QVariant, index QModelIndex, role int) *QVariant) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -689,14 +646,14 @@ func (this *QConcatenateTablesProxyModel) OnData(slot func(super func(index *QMo
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_data
-func miqt_exec_callback_QConcatenateTablesProxyModel_data(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index *C.QModelIndex, role C.int) *C.QVariant {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, role int) *QVariant, index *QModelIndex, role int) *QVariant)
+func miqt_exec_callback_QConcatenateTablesProxyModel_data(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index C.struct_miqt_qmodelindex, role C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, role int) *QVariant, index QModelIndex, role int) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := (int)(role)
 
@@ -707,14 +664,13 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_data(self *C.QConcatenateTa
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(index)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_SetData(index QModelIndex, value *QVariant, role int) bool {
 	defer runtime.KeepAlive(value)
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_setData(unsafe.Pointer(this.h), index.cPointer(), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_setData(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), value.cPointer(), (C.int)(role)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnSetData(slot func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool) {
+func (this *QConcatenateTablesProxyModel) OnSetData(slot func(super func(index QModelIndex, value *QVariant, role int) bool, index QModelIndex, value *QVariant, role int) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_setData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -722,14 +678,14 @@ func (this *QConcatenateTablesProxyModel) OnSetData(slot func(super func(index *
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_setData
-func miqt_exec_callback_QConcatenateTablesProxyModel_setData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index *C.QModelIndex, value *C.QVariant, role C.int) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_setData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index C.struct_miqt_qmodelindex, value *C.QVariant, role C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, value *QVariant, role int) bool, index QModelIndex, value *QVariant, role int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := newQVariant(value)
 
@@ -741,10 +697,9 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_setData(self *C.QConcatenat
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_ItemData(proxyIndex *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(proxyIndex)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_ItemData(proxyIndex QModelIndex) map[int]QVariant {
 
-	var _mm C.struct_miqt_map = C.QConcatenateTablesProxyModel_virtualbase_itemData(unsafe.Pointer(this.h), proxyIndex.cPointer())
+	var _mm C.struct_miqt_map = C.QConcatenateTablesProxyModel_virtualbase_itemData(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](proxyIndex))
 	_ret := make(map[int]QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
 	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
@@ -760,7 +715,7 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_ItemData(proxyIndex *Q
 	return _ret
 
 }
-func (this *QConcatenateTablesProxyModel) OnItemData(slot func(super func(proxyIndex *QModelIndex) map[int]QVariant, proxyIndex *QModelIndex) map[int]QVariant) {
+func (this *QConcatenateTablesProxyModel) OnItemData(slot func(super func(proxyIndex QModelIndex) map[int]QVariant, proxyIndex QModelIndex) map[int]QVariant) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_itemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -768,14 +723,14 @@ func (this *QConcatenateTablesProxyModel) OnItemData(slot func(super func(proxyI
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_itemData
-func miqt_exec_callback_QConcatenateTablesProxyModel_itemData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, proxyIndex *C.QModelIndex) C.struct_miqt_map {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(proxyIndex *QModelIndex) map[int]QVariant, proxyIndex *QModelIndex) map[int]QVariant)
+func miqt_exec_callback_QConcatenateTablesProxyModel_itemData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, proxyIndex C.struct_miqt_qmodelindex) C.struct_miqt_map {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(proxyIndex QModelIndex) map[int]QVariant, proxyIndex QModelIndex) map[int]QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(proxyIndex)
+	slotval1 := libmiqt.ValueCast[QModelIndex](proxyIndex)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_ItemData, slotval1)
 	defer runtime.KeepAlive(virtualReturn)
@@ -799,8 +754,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_itemData(self *C.QConcatena
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(index)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_SetItemData(index QModelIndex, roles map[int]QVariant) bool {
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
@@ -820,10 +774,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_SetItemData(index *QMo
 		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_setItemData(unsafe.Pointer(this.h), index.cPointer(), roles_mm))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_setItemData(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), roles_mm))
 
 }
-func (this *QConcatenateTablesProxyModel) OnSetItemData(slot func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool) {
+func (this *QConcatenateTablesProxyModel) OnSetItemData(slot func(super func(index QModelIndex, roles map[int]QVariant) bool, index QModelIndex, roles map[int]QVariant) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_setItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -831,14 +785,14 @@ func (this *QConcatenateTablesProxyModel) OnSetItemData(slot func(super func(ind
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_setItemData
-func miqt_exec_callback_QConcatenateTablesProxyModel_setItemData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index *C.QModelIndex, roles C.struct_miqt_map) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_setItemData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index C.struct_miqt_qmodelindex, roles C.struct_miqt_map) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, roles map[int]QVariant) bool, index QModelIndex, roles map[int]QVariant) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
@@ -861,13 +815,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_setItemData(self *C.QConcat
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(index)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_Flags(index QModelIndex) ItemFlag {
 
-	return (ItemFlag)(C.QConcatenateTablesProxyModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
+	return (ItemFlag)(C.QConcatenateTablesProxyModel_virtualbase_flags(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnFlags(slot func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag) {
+func (this *QConcatenateTablesProxyModel) OnFlags(slot func(super func(index QModelIndex) ItemFlag, index QModelIndex) ItemFlag) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -875,14 +828,14 @@ func (this *QConcatenateTablesProxyModel) OnFlags(slot func(super func(index *QM
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_flags
-func miqt_exec_callback_QConcatenateTablesProxyModel_flags(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index *C.QModelIndex) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag)
+func miqt_exec_callback_QConcatenateTablesProxyModel_flags(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) ItemFlag, index QModelIndex) ItemFlag)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_Flags, slotval1)
 
@@ -890,15 +843,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_flags(self *C.QConcatenateT
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_Index(row int, column int, parent QModelIndex) QModelIndex {
 
-	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QModelIndex](C.QConcatenateTablesProxyModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnIndex(slot func(super func(row int, column int, parent *QModelIndex) *QModelIndex, row int, column int, parent *QModelIndex) *QModelIndex) {
+func (this *QConcatenateTablesProxyModel) OnIndex(slot func(super func(row int, column int, parent QModelIndex) QModelIndex, row int, column int, parent QModelIndex) QModelIndex) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -906,8 +856,8 @@ func (this *QConcatenateTablesProxyModel) OnIndex(slot func(super func(row int, 
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_index
-func miqt_exec_callback_QConcatenateTablesProxyModel_index(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, row C.int, column C.int, parent *C.QModelIndex) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, parent *QModelIndex) *QModelIndex, row int, column int, parent *QModelIndex) *QModelIndex)
+func miqt_exec_callback_QConcatenateTablesProxyModel_index(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, row C.int, column C.int, parent C.struct_miqt_qmodelindex) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, parent QModelIndex) QModelIndex, row int, column int, parent QModelIndex) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -917,24 +867,20 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_index(self *C.QConcatenateT
 
 	slotval2 := (int)(column)
 
-	slotval3 := newQModelIndex(parent)
+	slotval3 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QConcatenateTablesProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
-
-}
-
-func (this *QConcatenateTablesProxyModel) callVirtualBase_Parent(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(index)
-
-	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_virtualbase_parent(unsafe.Pointer(this.h), index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
-func (this *QConcatenateTablesProxyModel) OnParent(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_Parent(index QModelIndex) QModelIndex {
+
+	return libmiqt.ValueCast[QModelIndex](C.QConcatenateTablesProxyModel_virtualbase_parent(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
+
+}
+func (this *QConcatenateTablesProxyModel) OnParent(slot func(super func(index QModelIndex) QModelIndex, index QModelIndex) QModelIndex) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -942,29 +888,27 @@ func (this *QConcatenateTablesProxyModel) OnParent(slot func(super func(index *Q
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_parent
-func miqt_exec_callback_QConcatenateTablesProxyModel_parent(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex)
+func miqt_exec_callback_QConcatenateTablesProxyModel_parent(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) QModelIndex, index QModelIndex) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_Parent, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QConcatenateTablesProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
-
-}
-
-func (this *QConcatenateTablesProxyModel) callVirtualBase_RowCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(parent)
-
-	return (int)(C.QConcatenateTablesProxyModel_virtualbase_rowCount(unsafe.Pointer(this.h), parent.cPointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
-func (this *QConcatenateTablesProxyModel) OnRowCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_RowCount(parent QModelIndex) int {
+
+	return (int)(C.QConcatenateTablesProxyModel_virtualbase_rowCount(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
+
+}
+func (this *QConcatenateTablesProxyModel) OnRowCount(slot func(super func(parent QModelIndex) int, parent QModelIndex) int) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_rowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -972,14 +916,14 @@ func (this *QConcatenateTablesProxyModel) OnRowCount(slot func(super func(parent
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_rowCount
-func miqt_exec_callback_QConcatenateTablesProxyModel_rowCount(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) int, parent *QModelIndex) int)
+func miqt_exec_callback_QConcatenateTablesProxyModel_rowCount(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent C.struct_miqt_qmodelindex) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex) int, parent QModelIndex) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_RowCount, slotval1)
 
@@ -1022,13 +966,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_headerData(self *C.QConcate
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_ColumnCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_ColumnCount(parent QModelIndex) int {
 
-	return (int)(C.QConcatenateTablesProxyModel_virtualbase_columnCount(unsafe.Pointer(this.h), parent.cPointer()))
+	return (int)(C.QConcatenateTablesProxyModel_virtualbase_columnCount(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnColumnCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
+func (this *QConcatenateTablesProxyModel) OnColumnCount(slot func(super func(parent QModelIndex) int, parent QModelIndex) int) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_columnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1036,14 +979,14 @@ func (this *QConcatenateTablesProxyModel) OnColumnCount(slot func(super func(par
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_columnCount
-func miqt_exec_callback_QConcatenateTablesProxyModel_columnCount(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) int, parent *QModelIndex) int)
+func miqt_exec_callback_QConcatenateTablesProxyModel_columnCount(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent C.struct_miqt_qmodelindex) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex) int, parent QModelIndex) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_ColumnCount, slotval1)
 
@@ -1095,12 +1038,11 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_mimeTypes(self *C.QConcaten
 }
 
 func (this *QConcatenateTablesProxyModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(indexes)
-	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	indexes_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
-		indexes_CArray[i] = indexes[i].cPointer()
+		indexes_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](indexes[i])
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
@@ -1124,11 +1066,9 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_mimeData(self *C.QConcatena
 	// Convert all CABI parameters to Go parameters
 	var indexes_ma C.struct_miqt_array = indexes
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
-	indexes_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
+	indexes_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
 	for i := 0; i < int(indexes_ma.len); i++ {
-		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
-		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		indexes_ret[i] = *indexes_lv_goptr
+		indexes_ret[i] = libmiqt.ValueCast[QModelIndex](indexes_outCast[i])
 	}
 	slotval1 := indexes_ret
 
@@ -1138,13 +1078,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_mimeData(self *C.QConcatena
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool {
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnCanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
+func (this *QConcatenateTablesProxyModel) OnCanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_canDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1152,8 +1091,8 @@ func (this *QConcatenateTablesProxyModel) OnCanDropMimeData(slot func(super func
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_canDropMimeData
-func miqt_exec_callback_QConcatenateTablesProxyModel_canDropMimeData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_canDropMimeData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1167,7 +1106,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_canDropMimeData(self *C.QCo
 
 	slotval4 := (int)(column)
 
-	slotval5 := newQModelIndex(parent)
+	slotval5 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_CanDropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1175,13 +1114,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_canDropMimeData(self *C.QCo
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool {
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
+func (this *QConcatenateTablesProxyModel) OnDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_dropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1189,8 +1127,8 @@ func (this *QConcatenateTablesProxyModel) OnDropMimeData(slot func(super func(da
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_dropMimeData
-func miqt_exec_callback_QConcatenateTablesProxyModel_dropMimeData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_dropMimeData(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1204,7 +1142,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_dropMimeData(self *C.QConca
 
 	slotval4 := (int)(column)
 
-	slotval5 := newQModelIndex(parent)
+	slotval5 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1212,15 +1150,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_dropMimeData(self *C.QConca
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(index)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_Span(index QModelIndex) QSize {
 
-	_goptr := newQSize(C.QConcatenateTablesProxyModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QConcatenateTablesProxyModel_virtualbase_span(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnSpan(slot func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize) {
+func (this *QConcatenateTablesProxyModel) OnSpan(slot func(super func(index QModelIndex) QSize, index QModelIndex) QSize) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1228,31 +1163,27 @@ func (this *QConcatenateTablesProxyModel) OnSpan(slot func(super func(index *QMo
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_span
-func miqt_exec_callback_QConcatenateTablesProxyModel_span(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize)
+func miqt_exec_callback_QConcatenateTablesProxyModel_span(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) QSize, index QModelIndex) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_Span, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QConcatenateTablesProxyModel_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QConcatenateTablesProxyModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(idx)
-
-	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QConcatenateTablesProxyModel) OnSibling(slot func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex) {
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_Sibling(row int, column int, idx QModelIndex) QModelIndex {
+
+	return libmiqt.ValueCast[QModelIndex](C.QConcatenateTablesProxyModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](idx)))
+
+}
+func (this *QConcatenateTablesProxyModel) OnSibling(slot func(super func(row int, column int, idx QModelIndex) QModelIndex, row int, column int, idx QModelIndex) QModelIndex) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1260,8 +1191,8 @@ func (this *QConcatenateTablesProxyModel) OnSibling(slot func(super func(row int
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_sibling
-func miqt_exec_callback_QConcatenateTablesProxyModel_sibling(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, row C.int, column C.int, idx *C.QModelIndex) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex)
+func miqt_exec_callback_QConcatenateTablesProxyModel_sibling(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, row C.int, column C.int, idx C.struct_miqt_qmodelindex) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, idx QModelIndex) QModelIndex, row int, column int, idx QModelIndex) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1271,22 +1202,20 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_sibling(self *C.QConcatenat
 
 	slotval2 := (int)(column)
 
-	slotval3 := newQModelIndex(idx)
+	slotval3 := libmiqt.ValueCast[QModelIndex](idx)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QConcatenateTablesProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
-
-}
-
-func (this *QConcatenateTablesProxyModel) callVirtualBase_HasChildren(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_hasChildren(unsafe.Pointer(this.h), parent.cPointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
-func (this *QConcatenateTablesProxyModel) OnHasChildren(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_HasChildren(parent QModelIndex) bool {
+
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_hasChildren(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
+
+}
+func (this *QConcatenateTablesProxyModel) OnHasChildren(slot func(super func(parent QModelIndex) bool, parent QModelIndex) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_hasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1294,14 +1223,14 @@ func (this *QConcatenateTablesProxyModel) OnHasChildren(slot func(super func(par
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_hasChildren
-func miqt_exec_callback_QConcatenateTablesProxyModel_hasChildren(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_hasChildren(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex) bool, parent QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_HasChildren, slotval1)
 
@@ -1394,13 +1323,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_supportedDragActions(self *
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_InsertRows(row int, count int, parent QModelIndex) bool {
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnInsertRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
+func (this *QConcatenateTablesProxyModel) OnInsertRows(slot func(super func(row int, count int, parent QModelIndex) bool, row int, count int, parent QModelIndex) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_insertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1408,8 +1336,8 @@ func (this *QConcatenateTablesProxyModel) OnInsertRows(slot func(super func(row 
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_insertRows
-func miqt_exec_callback_QConcatenateTablesProxyModel_insertRows(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_insertRows(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, row C.int, count C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent QModelIndex) bool, row int, count int, parent QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1419,7 +1347,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_insertRows(self *C.QConcate
 
 	slotval2 := (int)(count)
 
-	slotval3 := newQModelIndex(parent)
+	slotval3 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_InsertRows, slotval1, slotval2, slotval3)
 
@@ -1427,13 +1355,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_insertRows(self *C.QConcate
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_InsertColumns(column int, count int, parent QModelIndex) bool {
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnInsertColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
+func (this *QConcatenateTablesProxyModel) OnInsertColumns(slot func(super func(column int, count int, parent QModelIndex) bool, column int, count int, parent QModelIndex) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_insertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1441,8 +1368,8 @@ func (this *QConcatenateTablesProxyModel) OnInsertColumns(slot func(super func(c
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_insertColumns
-func miqt_exec_callback_QConcatenateTablesProxyModel_insertColumns(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_insertColumns(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, column C.int, count C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent QModelIndex) bool, column int, count int, parent QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1452,7 +1379,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_insertColumns(self *C.QConc
 
 	slotval2 := (int)(count)
 
-	slotval3 := newQModelIndex(parent)
+	slotval3 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_InsertColumns, slotval1, slotval2, slotval3)
 
@@ -1460,13 +1387,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_insertColumns(self *C.QConc
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_RemoveRows(row int, count int, parent QModelIndex) bool {
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnRemoveRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
+func (this *QConcatenateTablesProxyModel) OnRemoveRows(slot func(super func(row int, count int, parent QModelIndex) bool, row int, count int, parent QModelIndex) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_removeRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1474,8 +1400,8 @@ func (this *QConcatenateTablesProxyModel) OnRemoveRows(slot func(super func(row 
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_removeRows
-func miqt_exec_callback_QConcatenateTablesProxyModel_removeRows(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_removeRows(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, row C.int, count C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent QModelIndex) bool, row int, count int, parent QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1485,7 +1411,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_removeRows(self *C.QConcate
 
 	slotval2 := (int)(count)
 
-	slotval3 := newQModelIndex(parent)
+	slotval3 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_RemoveRows, slotval1, slotval2, slotval3)
 
@@ -1493,13 +1419,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_removeRows(self *C.QConcate
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_RemoveColumns(column int, count int, parent QModelIndex) bool {
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnRemoveColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
+func (this *QConcatenateTablesProxyModel) OnRemoveColumns(slot func(super func(column int, count int, parent QModelIndex) bool, column int, count int, parent QModelIndex) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_removeColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1507,8 +1432,8 @@ func (this *QConcatenateTablesProxyModel) OnRemoveColumns(slot func(super func(c
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_removeColumns
-func miqt_exec_callback_QConcatenateTablesProxyModel_removeColumns(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_removeColumns(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, column C.int, count C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent QModelIndex) bool, column int, count int, parent QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1518,7 +1443,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_removeColumns(self *C.QConc
 
 	slotval2 := (int)(count)
 
-	slotval3 := newQModelIndex(parent)
+	slotval3 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_RemoveColumns, slotval1, slotval2, slotval3)
 
@@ -1526,14 +1451,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_removeColumns(self *C.QConc
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(sourceParent)
-	defer runtime.KeepAlive(destinationParent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_MoveRows(sourceParent QModelIndex, sourceRow int, count int, destinationParent QModelIndex, destinationChild int) bool {
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_moveRows(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_moveRows(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](sourceParent), (C.int)(sourceRow), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](destinationParent), (C.int)(destinationChild)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnMoveRows(slot func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
+func (this *QConcatenateTablesProxyModel) OnMoveRows(slot func(super func(sourceParent QModelIndex, sourceRow int, count int, destinationParent QModelIndex, destinationChild int) bool, sourceParent QModelIndex, sourceRow int, count int, destinationParent QModelIndex, destinationChild int) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_moveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1541,20 +1464,20 @@ func (this *QConcatenateTablesProxyModel) OnMoveRows(slot func(super func(source
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_moveRows
-func miqt_exec_callback_QConcatenateTablesProxyModel_moveRows(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceRow C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_moveRows(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, sourceParent C.struct_miqt_qmodelindex, sourceRow C.int, count C.int, destinationParent C.struct_miqt_qmodelindex, destinationChild C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent QModelIndex, sourceRow int, count int, destinationParent QModelIndex, destinationChild int) bool, sourceParent QModelIndex, sourceRow int, count int, destinationParent QModelIndex, destinationChild int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(sourceParent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](sourceParent)
 
 	slotval2 := (int)(sourceRow)
 
 	slotval3 := (int)(count)
 
-	slotval4 := newQModelIndex(destinationParent)
+	slotval4 := libmiqt.ValueCast[QModelIndex](destinationParent)
 
 	slotval5 := (int)(destinationChild)
 
@@ -1564,14 +1487,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_moveRows(self *C.QConcatena
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(sourceParent)
-	defer runtime.KeepAlive(destinationParent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_MoveColumns(sourceParent QModelIndex, sourceColumn int, count int, destinationParent QModelIndex, destinationChild int) bool {
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_moveColumns(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_moveColumns(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](sourceParent), (C.int)(sourceColumn), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](destinationParent), (C.int)(destinationChild)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnMoveColumns(slot func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
+func (this *QConcatenateTablesProxyModel) OnMoveColumns(slot func(super func(sourceParent QModelIndex, sourceColumn int, count int, destinationParent QModelIndex, destinationChild int) bool, sourceParent QModelIndex, sourceColumn int, count int, destinationParent QModelIndex, destinationChild int) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_moveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1579,20 +1500,20 @@ func (this *QConcatenateTablesProxyModel) OnMoveColumns(slot func(super func(sou
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_moveColumns
-func miqt_exec_callback_QConcatenateTablesProxyModel_moveColumns(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceColumn C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_moveColumns(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, sourceParent C.struct_miqt_qmodelindex, sourceColumn C.int, count C.int, destinationParent C.struct_miqt_qmodelindex, destinationChild C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent QModelIndex, sourceColumn int, count int, destinationParent QModelIndex, destinationChild int) bool, sourceParent QModelIndex, sourceColumn int, count int, destinationParent QModelIndex, destinationChild int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(sourceParent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](sourceParent)
 
 	slotval2 := (int)(sourceColumn)
 
 	slotval3 := (int)(count)
 
-	slotval4 := newQModelIndex(destinationParent)
+	slotval4 := libmiqt.ValueCast[QModelIndex](destinationParent)
 
 	slotval5 := (int)(destinationChild)
 
@@ -1602,13 +1523,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_moveColumns(self *C.QConcat
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_FetchMore(parent *QModelIndex) {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_FetchMore(parent QModelIndex) {
 
-	C.QConcatenateTablesProxyModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
+	C.QConcatenateTablesProxyModel_virtualbase_fetchMore(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent))
 
 }
-func (this *QConcatenateTablesProxyModel) OnFetchMore(slot func(super func(parent *QModelIndex), parent *QModelIndex)) {
+func (this *QConcatenateTablesProxyModel) OnFetchMore(slot func(super func(parent QModelIndex), parent QModelIndex)) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_fetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1616,26 +1536,25 @@ func (this *QConcatenateTablesProxyModel) OnFetchMore(slot func(super func(paren
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_fetchMore
-func miqt_exec_callback_QConcatenateTablesProxyModel_fetchMore(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex), parent *QModelIndex))
+func miqt_exec_callback_QConcatenateTablesProxyModel_fetchMore(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex), parent QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_FetchMore, slotval1)
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_CanFetchMore(parent QModelIndex) bool {
 
-	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnCanFetchMore(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
+func (this *QConcatenateTablesProxyModel) OnCanFetchMore(slot func(super func(parent QModelIndex) bool, parent QModelIndex) bool) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_canFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1643,14 +1562,14 @@ func (this *QConcatenateTablesProxyModel) OnCanFetchMore(slot func(super func(pa
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_canFetchMore
-func miqt_exec_callback_QConcatenateTablesProxyModel_canFetchMore(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool)
+func miqt_exec_callback_QConcatenateTablesProxyModel_canFetchMore(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex) bool, parent QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_CanFetchMore, slotval1)
 
@@ -1686,15 +1605,12 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_sort(self *C.QConcatenateTa
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(index)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_Buddy(index QModelIndex) QModelIndex {
 
-	_goptr := newQModelIndex(C.QConcatenateTablesProxyModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QModelIndex](C.QConcatenateTablesProxyModel_virtualbase_buddy(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QConcatenateTablesProxyModel) OnBuddy(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
+func (this *QConcatenateTablesProxyModel) OnBuddy(slot func(super func(index QModelIndex) QModelIndex, index QModelIndex) QModelIndex) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1702,38 +1618,34 @@ func (this *QConcatenateTablesProxyModel) OnBuddy(slot func(super func(index *QM
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_buddy
-func miqt_exec_callback_QConcatenateTablesProxyModel_buddy(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex)
+func miqt_exec_callback_QConcatenateTablesProxyModel_buddy(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) QModelIndex, index QModelIndex) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_Buddy, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QConcatenateTablesProxyModel_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
 
-func (this *QConcatenateTablesProxyModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	defer runtime.KeepAlive(start)
+func (this *QConcatenateTablesProxyModel) callVirtualBase_Match(start QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
 	defer runtime.KeepAlive(value)
 
-	var _ma C.struct_miqt_array = C.QConcatenateTablesProxyModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QConcatenateTablesProxyModel_virtualbase_match(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](start), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 
 }
-func (this *QConcatenateTablesProxyModel) OnMatch(slot func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
+func (this *QConcatenateTablesProxyModel) OnMatch(slot func(super func(start QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
 	ok := C.QConcatenateTablesProxyModel_override_virtual_match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1741,14 +1653,14 @@ func (this *QConcatenateTablesProxyModel) OnMatch(slot func(super func(start *QM
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_match
-func miqt_exec_callback_QConcatenateTablesProxyModel_match(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, start *C.QModelIndex, role C.int, value *C.QVariant, hits C.int, flags C.int) C.struct_miqt_array {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex)
+func miqt_exec_callback_QConcatenateTablesProxyModel_match(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, start C.struct_miqt_qmodelindex, role C.int, value *C.QVariant, hits C.int, flags C.int) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(start QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(start)
+	slotval1 := libmiqt.ValueCast[QModelIndex](start)
 
 	slotval2 := (int)(role)
 
@@ -1759,11 +1671,10 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_match(self *C.QConcatenateT
 	slotval5 := (MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
-	defer runtime.KeepAlive(virtualReturn)
-	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = C.QConcatenateTablesProxyModel_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
+		virtualReturn_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn[i])
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 

@@ -29,15 +29,15 @@ QLayoutItem* miqt_exec_callback_QwtDynGridLayout_takeAt(QwtDynGridLayout*, intpt
 int miqt_exec_callback_QwtDynGridLayout_count(const QwtDynGridLayout*, intptr_t);
 int miqt_exec_callback_QwtDynGridLayout_expandingDirections(const QwtDynGridLayout*, intptr_t);
 int miqt_exec_callback_QwtDynGridLayout_maxItemWidth(const QwtDynGridLayout*, intptr_t);
-void miqt_exec_callback_QwtDynGridLayout_setGeometry(QwtDynGridLayout*, intptr_t, QRect*);
+void miqt_exec_callback_QwtDynGridLayout_setGeometry(QwtDynGridLayout*, intptr_t, struct miqt_qrect);
 bool miqt_exec_callback_QwtDynGridLayout_hasHeightForWidth(const QwtDynGridLayout*, intptr_t);
 int miqt_exec_callback_QwtDynGridLayout_heightForWidth(const QwtDynGridLayout*, intptr_t, int);
-QSize* miqt_exec_callback_QwtDynGridLayout_sizeHint(const QwtDynGridLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtDynGridLayout_sizeHint(const QwtDynGridLayout*, intptr_t);
 bool miqt_exec_callback_QwtDynGridLayout_isEmpty(const QwtDynGridLayout*, intptr_t);
 unsigned int miqt_exec_callback_QwtDynGridLayout_columnsForWidth(const QwtDynGridLayout*, intptr_t, int);
-QRect* miqt_exec_callback_QwtDynGridLayout_geometry(const QwtDynGridLayout*, intptr_t);
-QSize* miqt_exec_callback_QwtDynGridLayout_minimumSize(const QwtDynGridLayout*, intptr_t);
-QSize* miqt_exec_callback_QwtDynGridLayout_maximumSize(const QwtDynGridLayout*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QwtDynGridLayout_geometry(const QwtDynGridLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtDynGridLayout_minimumSize(const QwtDynGridLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtDynGridLayout_maximumSize(const QwtDynGridLayout*, intptr_t);
 int miqt_exec_callback_QwtDynGridLayout_indexOf(const QwtDynGridLayout*, intptr_t, QWidget*);
 int miqt_exec_callback_QwtDynGridLayout_controlTypes(const QwtDynGridLayout*, intptr_t);
 QLayout* miqt_exec_callback_QwtDynGridLayout_layout(QwtDynGridLayout*, intptr_t);
@@ -186,14 +186,12 @@ public:
 			return;
 		}
 
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(rect);
 		miqt_exec_callback_QwtDynGridLayout_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QwtDynGridLayout_virtualbase_setGeometry(void* self, QRect* rect);
+	friend void QwtDynGridLayout_virtualbase_setGeometry(void* self, struct miqt_qrect rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -235,13 +233,11 @@ public:
 			return QwtDynGridLayout::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtDynGridLayout_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtDynGridLayout_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtDynGridLayout_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtDynGridLayout_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -283,13 +279,11 @@ public:
 			return QwtDynGridLayout::geometry();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QwtDynGridLayout_geometry(this, handle__geometry);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QwtDynGridLayout_geometry(this, handle__geometry);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QwtDynGridLayout_virtualbase_geometry(const void* self);
+	friend struct miqt_qrect QwtDynGridLayout_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -300,13 +294,11 @@ public:
 			return QwtDynGridLayout::minimumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtDynGridLayout_minimumSize(this, handle__minimumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtDynGridLayout_minimumSize(this, handle__minimumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtDynGridLayout_virtualbase_minimumSize(const void* self);
+	friend struct miqt_qsize QwtDynGridLayout_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -317,13 +309,11 @@ public:
 			return QwtDynGridLayout::maximumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtDynGridLayout_maximumSize(this, handle__maximumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtDynGridLayout_maximumSize(this, handle__maximumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtDynGridLayout_virtualbase_maximumSize(const void* self);
+	friend struct miqt_qsize QwtDynGridLayout_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indexOf = 0;
@@ -541,12 +531,12 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QwtDynGridLayout_protectedbase_layoutGrid(bool* _dynamic_cast_ok, const void* self, unsigned int numColumns, struct miqt_array /* of int */  rowHeight, struct miqt_array /* of int */  colWidth);
-	friend void QwtDynGridLayout_protectedbase_stretchGrid(bool* _dynamic_cast_ok, const void* self, QRect* rect, unsigned int numColumns, struct miqt_array /* of int */  rowHeight, struct miqt_array /* of int */  colWidth);
+	friend void QwtDynGridLayout_protectedbase_stretchGrid(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect rect, unsigned int numColumns, struct miqt_array /* of int */  rowHeight, struct miqt_array /* of int */  colWidth);
 	friend void QwtDynGridLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 	friend void QwtDynGridLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 	friend void QwtDynGridLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
 	friend bool QwtDynGridLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout);
-	friend QRect* QwtDynGridLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
+	friend struct miqt_qrect QwtDynGridLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1);
 	friend QObject* QwtDynGridLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QwtDynGridLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QwtDynGridLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -655,12 +645,12 @@ int QwtDynGridLayout_expandingDirections(const QwtDynGridLayout* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array /* of QRect* */  QwtDynGridLayout_layoutItems(const QwtDynGridLayout* self, QRect* param1, unsigned int numColumns) {
-	QList<QRect> _ret = self->layoutItems(*param1, static_cast<uint>(numColumns));
+struct miqt_array /* of struct miqt_qrect */  QwtDynGridLayout_layoutItems(const QwtDynGridLayout* self, struct miqt_qrect param1, unsigned int numColumns) {
+	QList<QRect> _ret = self->layoutItems(miqt_from_cabi<QRect>(param1), static_cast<uint>(numColumns));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QRect** _arr = static_cast<QRect**>(malloc(sizeof(QRect*) * _ret.length()));
+	struct miqt_qrect* _arr = static_cast<struct miqt_qrect*>(malloc(sizeof(struct miqt_qrect) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QRect(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qrect>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -672,8 +662,8 @@ int QwtDynGridLayout_maxItemWidth(const QwtDynGridLayout* self) {
 	return self->maxItemWidth();
 }
 
-void QwtDynGridLayout_setGeometry(QwtDynGridLayout* self, QRect* rect) {
-	self->setGeometry(*rect);
+void QwtDynGridLayout_setGeometry(QwtDynGridLayout* self, struct miqt_qrect rect) {
+	self->setGeometry(miqt_from_cabi<QRect>(rect));
 }
 
 bool QwtDynGridLayout_hasHeightForWidth(const QwtDynGridLayout* self) {
@@ -684,8 +674,8 @@ int QwtDynGridLayout_heightForWidth(const QwtDynGridLayout* self, int param1) {
 	return self->heightForWidth(static_cast<int>(param1));
 }
 
-QSize* QwtDynGridLayout_sizeHint(const QwtDynGridLayout* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtDynGridLayout_sizeHint(const QwtDynGridLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 bool QwtDynGridLayout_isEmpty(const QwtDynGridLayout* self) {
@@ -855,8 +845,8 @@ bool QwtDynGridLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtDynGridLayout_virtualbase_setGeometry(void* self, QRect* rect) {
-	static_cast<MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::setGeometry(*rect);
+void QwtDynGridLayout_virtualbase_setGeometry(void* self, struct miqt_qrect rect) {
+	static_cast<MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::setGeometry(miqt_from_cabi<QRect>(rect));
 }
 
 bool QwtDynGridLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -897,8 +887,8 @@ bool QwtDynGridLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtDynGridLayout_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::sizeHint());
+struct miqt_qsize QwtDynGridLayout_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::sizeHint());
 }
 
 bool QwtDynGridLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -940,8 +930,8 @@ bool QwtDynGridLayout_override_virtual_geometry(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QwtDynGridLayout_virtualbase_geometry(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::geometry());
+struct miqt_qrect QwtDynGridLayout_virtualbase_geometry(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::geometry());
 }
 
 bool QwtDynGridLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -954,8 +944,8 @@ bool QwtDynGridLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtDynGridLayout_virtualbase_minimumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::minimumSize());
+struct miqt_qsize QwtDynGridLayout_virtualbase_minimumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::minimumSize());
 }
 
 bool QwtDynGridLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -968,8 +958,8 @@ bool QwtDynGridLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtDynGridLayout_virtualbase_maximumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::maximumSize());
+struct miqt_qsize QwtDynGridLayout_virtualbase_maximumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::maximumSize());
 }
 
 bool QwtDynGridLayout_override_virtual_indexOf(void* self, intptr_t slot) {
@@ -1155,14 +1145,6 @@ QSpacerItem* QwtDynGridLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQwtDynGridLayout*>(self)->QwtDynGridLayout::spacerItem();
 }
 
-QSize* QwtDynGridLayout_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
-QRect* QwtDynGridLayout_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
 void QwtDynGridLayout_protectedbase_layoutGrid(bool* _dynamic_cast_ok, const void* self, unsigned int numColumns, struct miqt_array /* of int */  rowHeight, struct miqt_array /* of int */  colWidth) {
 	MiqtVirtualQwtDynGridLayout* self_cast = dynamic_cast<MiqtVirtualQwtDynGridLayout*>( (QwtDynGridLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -1186,7 +1168,7 @@ void QwtDynGridLayout_protectedbase_layoutGrid(bool* _dynamic_cast_ok, const voi
 	self_cast->layoutGrid(static_cast<uint>(numColumns), rowHeight_QList, colWidth_QList);
 }
 
-void QwtDynGridLayout_protectedbase_stretchGrid(bool* _dynamic_cast_ok, const void* self, QRect* rect, unsigned int numColumns, struct miqt_array /* of int */  rowHeight, struct miqt_array /* of int */  colWidth) {
+void QwtDynGridLayout_protectedbase_stretchGrid(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect rect, unsigned int numColumns, struct miqt_array /* of int */  rowHeight, struct miqt_array /* of int */  colWidth) {
 	MiqtVirtualQwtDynGridLayout* self_cast = dynamic_cast<MiqtVirtualQwtDynGridLayout*>( (QwtDynGridLayout*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -1206,7 +1188,7 @@ void QwtDynGridLayout_protectedbase_stretchGrid(bool* _dynamic_cast_ok, const vo
 		for(size_t i = 0; i < colWidth.len; ++i) {
 			colWidth_QList.push_back(static_cast<int>(colWidth_arr[i]));
 		}
-	self_cast->stretchGrid(*rect, static_cast<uint>(numColumns), rowHeight_QList, colWidth_QList);
+	self_cast->stretchGrid(miqt_from_cabi<QRect>(rect), static_cast<uint>(numColumns), rowHeight_QList, colWidth_QList);
 }
 
 void QwtDynGridLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
@@ -1253,15 +1235,15 @@ bool QwtDynGridLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* se
 	return self_cast->adoptLayout(layout);
 }
 
-QRect* QwtDynGridLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
+struct miqt_qrect QwtDynGridLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1) {
 	MiqtVirtualQwtDynGridLayout* self_cast = dynamic_cast<MiqtVirtualQwtDynGridLayout*>( (QwtDynGridLayout*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->alignmentRect(*param1));
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->alignmentRect(miqt_from_cabi<QRect>(param1)));
 }
 
 QObject* QwtDynGridLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

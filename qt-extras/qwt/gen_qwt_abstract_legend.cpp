@@ -44,17 +44,17 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QwtAbstractLegend_renderLegend(const QwtAbstractLegend*, intptr_t, QPainter*, QRectF*, bool);
+void miqt_exec_callback_QwtAbstractLegend_renderLegend(const QwtAbstractLegend*, intptr_t, QPainter*, struct miqt_qrectf, bool);
 bool miqt_exec_callback_QwtAbstractLegend_isEmpty(const QwtAbstractLegend*, intptr_t);
 int miqt_exec_callback_QwtAbstractLegend_scrollExtent(const QwtAbstractLegend*, intptr_t, int);
 void miqt_exec_callback_QwtAbstractLegend_updateLegend(QwtAbstractLegend*, intptr_t, QVariant*, struct miqt_array /* of QwtLegendData* */ );
-QSize* miqt_exec_callback_QwtAbstractLegend_sizeHint(const QwtAbstractLegend*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtAbstractLegend_sizeHint(const QwtAbstractLegend*, intptr_t);
 bool miqt_exec_callback_QwtAbstractLegend_event(QwtAbstractLegend*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtAbstractLegend_paintEvent(QwtAbstractLegend*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtAbstractLegend_changeEvent(QwtAbstractLegend*, intptr_t, QEvent*);
 int miqt_exec_callback_QwtAbstractLegend_devType(const QwtAbstractLegend*, intptr_t);
 void miqt_exec_callback_QwtAbstractLegend_setVisible(QwtAbstractLegend*, intptr_t, bool);
-QSize* miqt_exec_callback_QwtAbstractLegend_minimumSizeHint(const QwtAbstractLegend*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtAbstractLegend_minimumSizeHint(const QwtAbstractLegend*, intptr_t);
 int miqt_exec_callback_QwtAbstractLegend_heightForWidth(const QwtAbstractLegend*, intptr_t, int);
 bool miqt_exec_callback_QwtAbstractLegend_hasHeightForWidth(const QwtAbstractLegend*, intptr_t);
 QPaintEngine* miqt_exec_callback_QwtAbstractLegend_paintEngine(const QwtAbstractLegend*, intptr_t);
@@ -117,9 +117,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		bool sigval3 = fillBackground;
 		miqt_exec_callback_QwtAbstractLegend_renderLegend(this, handle__renderLegend, sigval1, sigval2, sigval3);
 
@@ -190,13 +188,11 @@ public:
 			return QwtAbstractLegend::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtAbstractLegend_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtAbstractLegend_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtAbstractLegend_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtAbstractLegend_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -289,13 +285,11 @@ public:
 			return QwtAbstractLegend::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtAbstractLegend_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtAbstractLegend_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtAbstractLegend_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtAbstractLegend_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1036,8 +1030,8 @@ struct miqt_string QwtAbstractLegend_trUtf8(const char* s) {
 	return _ms;
 }
 
-void QwtAbstractLegend_renderLegend(const QwtAbstractLegend* self, QPainter* painter, QRectF* rect, bool fillBackground) {
-	self->renderLegend(painter, *rect, fillBackground);
+void QwtAbstractLegend_renderLegend(const QwtAbstractLegend* self, QPainter* painter, struct miqt_qrectf rect, bool fillBackground) {
+	self->renderLegend(painter, miqt_from_cabi<QRectF>(rect), fillBackground);
 }
 
 bool QwtAbstractLegend_isEmpty(const QwtAbstractLegend* self) {
@@ -1156,8 +1150,8 @@ bool QwtAbstractLegend_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtAbstractLegend_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtAbstractLegend*>(self)->QwtAbstractLegend::sizeHint());
+struct miqt_qsize QwtAbstractLegend_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtAbstractLegend*>(self)->QwtAbstractLegend::sizeHint());
 }
 
 bool QwtAbstractLegend_override_virtual_event(void* self, intptr_t slot) {
@@ -1240,8 +1234,8 @@ bool QwtAbstractLegend_override_virtual_minimumSizeHint(void* self, intptr_t slo
 	return true;
 }
 
-QSize* QwtAbstractLegend_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtAbstractLegend*>(self)->QwtAbstractLegend::minimumSizeHint());
+struct miqt_qsize QwtAbstractLegend_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtAbstractLegend*>(self)->QwtAbstractLegend::minimumSizeHint());
 }
 
 bool QwtAbstractLegend_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1803,10 +1797,6 @@ bool QwtAbstractLegend_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QwtAbstractLegend_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtAbstractLegend*>(self)->QwtAbstractLegend::disconnectNotify(*signal);
-}
-
-QSize* QwtAbstractLegend_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtAbstractLegend_virtualreturncopy_QVariant(QVariant* src) {

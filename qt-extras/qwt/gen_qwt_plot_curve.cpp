@@ -80,18 +80,18 @@ void QwtPlotCurve_setSamples2(QwtPlotCurve* self, struct miqt_array /* of double
 	self->setSamples(xData_QList, yData_QList);
 }
 
-void QwtPlotCurve_setSamplesWithSamples(QwtPlotCurve* self, struct miqt_array /* of QPointF* */  samples) {
+void QwtPlotCurve_setSamplesWithSamples(QwtPlotCurve* self, struct miqt_array /* of struct miqt_qpointf */  samples) {
 	QVector<QPointF> samples_QList;
 	samples_QList.reserve(samples.len);
-	QPointF** samples_arr = static_cast<QPointF**>(samples.data);
+	struct miqt_qpointf* samples_arr = static_cast<struct miqt_qpointf*>(samples.data);
 	for(size_t i = 0; i < samples.len; ++i) {
-		samples_QList.push_back(*(samples_arr[i]));
+		samples_QList.push_back(miqt_from_cabi<QPointF>(samples_arr[i]));
 	}
 	self->setSamples(samples_QList);
 }
 
-int QwtPlotCurve_closestPoint(const QwtPlotCurve* self, QPoint* pos) {
-	return self->closestPoint(*pos);
+int QwtPlotCurve_closestPoint(const QwtPlotCurve* self, struct miqt_qpoint pos) {
+	return self->closestPoint(miqt_from_cabi<QPoint>(pos));
 }
 
 double QwtPlotCurve_minXValue(const QwtPlotCurve* self) {
@@ -118,8 +118,8 @@ bool QwtPlotCurve_testCurveAttribute(const QwtPlotCurve* self, int param1) {
 	return self->testCurveAttribute(static_cast<QwtPlotCurve::CurveAttribute>(param1));
 }
 
-void QwtPlotCurve_setPen(QwtPlotCurve* self, QColor* param1) {
-	self->setPen(*param1);
+void QwtPlotCurve_setPen(QwtPlotCurve* self, struct miqt_qcolor param1) {
+	self->setPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotCurve_setPenWithPen(QwtPlotCurve* self, QPen* pen) {
@@ -175,8 +175,8 @@ QwtCurveFitter* QwtPlotCurve_curveFitter(const QwtPlotCurve* self) {
 	return self->curveFitter();
 }
 
-QwtGraphic* QwtPlotCurve_legendIcon(const QwtPlotCurve* self, int index, QSizeF* param2) {
-	return new QwtGraphic(self->legendIcon(static_cast<int>(index), *param2));
+QwtGraphic* QwtPlotCurve_legendIcon(const QwtPlotCurve* self, int index, struct miqt_qsizef param2) {
+	return new QwtGraphic(self->legendIcon(static_cast<int>(index), miqt_from_cabi<QSizeF>(param2)));
 }
 
 void QwtPlotCurve_setPaintAttribute2(QwtPlotCurve* self, int param1, bool on) {
@@ -187,20 +187,20 @@ void QwtPlotCurve_setLegendAttribute2(QwtPlotCurve* self, int param1, bool on) {
 	self->setLegendAttribute(static_cast<QwtPlotCurve::LegendAttribute>(param1), on);
 }
 
-int QwtPlotCurve_closestPoint2(const QwtPlotCurve* self, QPoint* pos, double* dist) {
-	return self->closestPoint(*pos, static_cast<double*>(dist));
+int QwtPlotCurve_closestPoint2(const QwtPlotCurve* self, struct miqt_qpoint pos, double* dist) {
+	return self->closestPoint(miqt_from_cabi<QPoint>(pos), static_cast<double*>(dist));
 }
 
 void QwtPlotCurve_setCurveAttribute2(QwtPlotCurve* self, int param1, bool on) {
 	self->setCurveAttribute(static_cast<QwtPlotCurve::CurveAttribute>(param1), on);
 }
 
-void QwtPlotCurve_setPen2(QwtPlotCurve* self, QColor* param1, double width) {
-	self->setPen(*param1, static_cast<qreal>(width));
+void QwtPlotCurve_setPen2(QwtPlotCurve* self, struct miqt_qcolor param1, double width) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotCurve_setPen3(QwtPlotCurve* self, QColor* param1, double width, int param3) {
-	self->setPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotCurve_setPen3(QwtPlotCurve* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 void QwtPlotCurve_delete(QwtPlotCurve* self) {

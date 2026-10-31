@@ -95,7 +95,6 @@ func NewTrafficWidget() *TrafficWidget {
 	defer palette.Delete()
 
 	color := qt.NewQColor2(qt.Black)
-	defer color.Delete()
 
 	palette.SetColor2(qt.QPalette__Window, color)
 	self.widget.SetPalette(palette)

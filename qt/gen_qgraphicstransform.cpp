@@ -661,12 +661,12 @@ struct miqt_string QGraphicsScale_trUtf8(const char* s) {
 	return _ms;
 }
 
-QVector3D* QGraphicsScale_origin(const QGraphicsScale* self) {
-	return new QVector3D(self->origin());
+struct miqt_qvector3d QGraphicsScale_origin(const QGraphicsScale* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->origin());
 }
 
-void QGraphicsScale_setOrigin(QGraphicsScale* self, QVector3D* point) {
-	self->setOrigin(*point);
+void QGraphicsScale_setOrigin(QGraphicsScale* self, struct miqt_qvector3d point) {
+	self->setOrigin(miqt_from_cabi<QVector3D>(point));
 }
 
 double QGraphicsScale_xScale(const QGraphicsScale* self) {
@@ -1162,12 +1162,12 @@ struct miqt_string QGraphicsRotation_trUtf8(const char* s) {
 	return _ms;
 }
 
-QVector3D* QGraphicsRotation_origin(const QGraphicsRotation* self) {
-	return new QVector3D(self->origin());
+struct miqt_qvector3d QGraphicsRotation_origin(const QGraphicsRotation* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->origin());
 }
 
-void QGraphicsRotation_setOrigin(QGraphicsRotation* self, QVector3D* point) {
-	self->setOrigin(*point);
+void QGraphicsRotation_setOrigin(QGraphicsRotation* self, struct miqt_qvector3d point) {
+	self->setOrigin(miqt_from_cabi<QVector3D>(point));
 }
 
 double QGraphicsRotation_angle(const QGraphicsRotation* self) {
@@ -1179,12 +1179,12 @@ void QGraphicsRotation_setAngle(QGraphicsRotation* self, double angle) {
 	self->setAngle(static_cast<qreal>(angle));
 }
 
-QVector3D* QGraphicsRotation_axis(const QGraphicsRotation* self) {
-	return new QVector3D(self->axis());
+struct miqt_qvector3d QGraphicsRotation_axis(const QGraphicsRotation* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->axis());
 }
 
-void QGraphicsRotation_setAxis(QGraphicsRotation* self, QVector3D* axis) {
-	self->setAxis(*axis);
+void QGraphicsRotation_setAxis(QGraphicsRotation* self, struct miqt_qvector3d axis) {
+	self->setAxis(miqt_from_cabi<QVector3D>(axis));
 }
 
 void QGraphicsRotation_setAxisWithAxis(QGraphicsRotation* self, int axis) {

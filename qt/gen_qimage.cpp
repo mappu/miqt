@@ -161,8 +161,8 @@ QImage* QImage_new() {
 	return new (std::nothrow) MiqtVirtualQImage();
 }
 
-QImage* QImage_new2(QSize* size, int format) {
-	return new (std::nothrow) MiqtVirtualQImage(*size, static_cast<QImage::Format>(format));
+QImage* QImage_new2(struct miqt_qsize size, int format) {
+	return new (std::nothrow) MiqtVirtualQImage(miqt_from_cabi<QSize>(size), static_cast<QImage::Format>(format));
 }
 
 QImage* QImage_new3(int width, int height, int format) {
@@ -282,12 +282,12 @@ int QImage_height(const QImage* self) {
 	return self->height();
 }
 
-QSize* QImage_size(const QImage* self) {
-	return new QSize(self->size());
+struct miqt_qsize QImage_size(const QImage* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
-QRect* QImage_rect(const QImage* self) {
-	return new QRect(self->rect());
+struct miqt_qrect QImage_rect(const QImage* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rect());
 }
 
 int QImage_depth(const QImage* self) {
@@ -370,16 +370,16 @@ bool QImage_valid(const QImage* self, int x, int y) {
 	return self->valid(static_cast<int>(x), static_cast<int>(y));
 }
 
-bool QImage_validWithPt(const QImage* self, QPoint* pt) {
-	return self->valid(*pt);
+bool QImage_validWithPt(const QImage* self, struct miqt_qpoint pt) {
+	return self->valid(miqt_from_cabi<QPoint>(pt));
 }
 
 int QImage_pixelIndex(const QImage* self, int x, int y) {
 	return self->pixelIndex(static_cast<int>(x), static_cast<int>(y));
 }
 
-int QImage_pixelIndexWithPt(const QImage* self, QPoint* pt) {
-	return self->pixelIndex(*pt);
+int QImage_pixelIndexWithPt(const QImage* self, struct miqt_qpoint pt) {
+	return self->pixelIndex(miqt_from_cabi<QPoint>(pt));
 }
 
 unsigned int QImage_pixel(const QImage* self, int x, int y) {
@@ -387,8 +387,8 @@ unsigned int QImage_pixel(const QImage* self, int x, int y) {
 	return static_cast<unsigned int>(_ret);
 }
 
-unsigned int QImage_pixelWithPt(const QImage* self, QPoint* pt) {
-	QRgb _ret = self->pixel(*pt);
+unsigned int QImage_pixelWithPt(const QImage* self, struct miqt_qpoint pt) {
+	QRgb _ret = self->pixel(miqt_from_cabi<QPoint>(pt));
 	return static_cast<unsigned int>(_ret);
 }
 
@@ -396,24 +396,24 @@ void QImage_setPixel(QImage* self, int x, int y, unsigned int index_or_rgb) {
 	self->setPixel(static_cast<int>(x), static_cast<int>(y), static_cast<uint>(index_or_rgb));
 }
 
-void QImage_setPixel2(QImage* self, QPoint* pt, unsigned int index_or_rgb) {
-	self->setPixel(*pt, static_cast<uint>(index_or_rgb));
+void QImage_setPixel2(QImage* self, struct miqt_qpoint pt, unsigned int index_or_rgb) {
+	self->setPixel(miqt_from_cabi<QPoint>(pt), static_cast<uint>(index_or_rgb));
 }
 
-QColor* QImage_pixelColor(const QImage* self, int x, int y) {
-	return new QColor(self->pixelColor(static_cast<int>(x), static_cast<int>(y)));
+struct miqt_qcolor QImage_pixelColor(const QImage* self, int x, int y) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->pixelColor(static_cast<int>(x), static_cast<int>(y)));
 }
 
-QColor* QImage_pixelColorWithPt(const QImage* self, QPoint* pt) {
-	return new QColor(self->pixelColor(*pt));
+struct miqt_qcolor QImage_pixelColorWithPt(const QImage* self, struct miqt_qpoint pt) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->pixelColor(miqt_from_cabi<QPoint>(pt)));
 }
 
-void QImage_setPixelColor(QImage* self, int x, int y, QColor* c) {
-	self->setPixelColor(static_cast<int>(x), static_cast<int>(y), *c);
+void QImage_setPixelColor(QImage* self, int x, int y, struct miqt_qcolor c) {
+	self->setPixelColor(static_cast<int>(x), static_cast<int>(y), miqt_from_cabi<QColor>(c));
 }
 
-void QImage_setPixelColor2(QImage* self, QPoint* pt, QColor* c) {
-	self->setPixelColor(*pt, *c);
+void QImage_setPixelColor2(QImage* self, struct miqt_qpoint pt, struct miqt_qcolor c) {
+	self->setPixelColor(miqt_from_cabi<QPoint>(pt), miqt_from_cabi<QColor>(c));
 }
 
 struct miqt_array /* of unsigned int */  QImage_colorTable(const QImage* self) {
@@ -452,8 +452,8 @@ void QImage_fill(QImage* self, unsigned int pixel) {
 	self->fill(static_cast<uint>(pixel));
 }
 
-void QImage_fillWithColor(QImage* self, QColor* color) {
-	self->fill(*color);
+void QImage_fillWithColor(QImage* self, struct miqt_qcolor color) {
+	self->fill(miqt_from_cabi<QColor>(color));
 }
 
 void QImage_fill2(QImage* self, int color) {
@@ -488,8 +488,8 @@ QImage* QImage_scaled(const QImage* self, int w, int h) {
 	return new QImage(self->scaled(static_cast<int>(w), static_cast<int>(h)));
 }
 
-QImage* QImage_scaledWithQSize(const QImage* self, QSize* s) {
-	return new QImage(self->scaled(*s));
+QImage* QImage_scaledWithQSize(const QImage* self, struct miqt_qsize s) {
+	return new QImage(self->scaled(miqt_from_cabi<QSize>(s)));
 }
 
 QImage* QImage_scaledToWidth(const QImage* self, int w) {
@@ -609,12 +609,12 @@ void QImage_setDotsPerMeterY(QImage* self, int dotsPerMeterY) {
 	self->setDotsPerMeterY(static_cast<int>(dotsPerMeterY));
 }
 
-QPoint* QImage_offset(const QImage* self) {
-	return new QPoint(self->offset());
+struct miqt_qpoint QImage_offset(const QImage* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->offset());
 }
 
-void QImage_setOffset(QImage* self, QPoint* offset) {
-	self->setOffset(*offset);
+void QImage_setOffset(QImage* self, struct miqt_qpoint offset) {
+	self->setOffset(miqt_from_cabi<QPoint>(offset));
 }
 
 struct miqt_array /* of struct miqt_string */  QImage_textKeys(const QImage* self) {
@@ -667,8 +667,8 @@ int QImage_toImageFormat(QPixelFormat* format) {
 	return static_cast<int>(_ret);
 }
 
-QImage* QImage_copyWithRect(const QImage* self, QRect* rect) {
-	return new QImage(self->copy(*rect));
+QImage* QImage_copyWithRect(const QImage* self, struct miqt_qrect rect) {
+	return new QImage(self->copy(miqt_from_cabi<QRect>(rect)));
 }
 
 QImage* QImage_convertToFormat3(const QImage* self, int f, int flags) {
@@ -709,12 +709,12 @@ QImage* QImage_scaled3(const QImage* self, int w, int h, int aspectMode, int mod
 	return new QImage(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
-QImage* QImage_scaled4(const QImage* self, QSize* s, int aspectMode) {
-	return new QImage(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode)));
+QImage* QImage_scaled4(const QImage* self, struct miqt_qsize s, int aspectMode) {
+	return new QImage(self->scaled(miqt_from_cabi<QSize>(s), static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
-QImage* QImage_scaled5(const QImage* self, QSize* s, int aspectMode, int mode) {
-	return new QImage(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
+QImage* QImage_scaled5(const QImage* self, struct miqt_qsize s, int aspectMode, int mode) {
+	return new QImage(self->scaled(miqt_from_cabi<QSize>(s), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QImage* QImage_scaledToWidth2(const QImage* self, int w, int mode) {

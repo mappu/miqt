@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -73,10 +74,9 @@ func NewQwtPoint3D3(param1 *QwtPoint3D) *QwtPoint3D {
 }
 
 // NewQwtPoint3D4 constructs a new QwtPoint3D object.
-func NewQwtPoint3D4(param1 *qt.QPointF) *QwtPoint3D {
-	defer runtime.KeepAlive(param1)
+func NewQwtPoint3D4(param1 qt.QPointF) *QwtPoint3D {
 
-	return newQwtPoint3D(C.QwtPoint3D_new4((*C.QPointF)(param1.UnsafePointer())))
+	return newQwtPoint3D(C.QwtPoint3D_new4(libmiqt.ValueCast[C.struct_miqt_qpointf](param1)))
 }
 
 func (this *QwtPoint3D) IsNull() bool {
@@ -114,11 +114,9 @@ func (this *QwtPoint3D) SetZ(y float64) {
 	C.QwtPoint3D_setZ(this.h, (C.double)(y))
 }
 
-func (this *QwtPoint3D) ToPoint() *qt.QPointF {
+func (this *QwtPoint3D) ToPoint() qt.QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtPoint3D_toPoint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPointF](C.QwtPoint3D_toPoint(this.h))
 }
 
 func (this *QwtPoint3D) OperatorEqual(param1 *QwtPoint3D) bool {

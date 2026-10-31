@@ -44,10 +44,10 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCheckBox_stateChanged(intptr_t, int);
-QSize* miqt_exec_callback_QCheckBox_sizeHint(const QCheckBox*, intptr_t);
-QSize* miqt_exec_callback_QCheckBox_minimumSizeHint(const QCheckBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QCheckBox_sizeHint(const QCheckBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QCheckBox_minimumSizeHint(const QCheckBox*, intptr_t);
 bool miqt_exec_callback_QCheckBox_event(QCheckBox*, intptr_t, QEvent*);
-bool miqt_exec_callback_QCheckBox_hitButton(const QCheckBox*, intptr_t, QPoint*);
+bool miqt_exec_callback_QCheckBox_hitButton(const QCheckBox*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QCheckBox_checkStateSet(QCheckBox*, intptr_t);
 void miqt_exec_callback_QCheckBox_nextCheckState(QCheckBox*, intptr_t);
 void miqt_exec_callback_QCheckBox_paintEvent(QCheckBox*, intptr_t, QPaintEvent*);
@@ -117,13 +117,11 @@ public:
 			return QCheckBox::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QCheckBox_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QCheckBox_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QCheckBox_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QCheckBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -134,13 +132,11 @@ public:
 			return QCheckBox::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QCheckBox_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QCheckBox_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QCheckBox_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QCheckBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -167,14 +163,12 @@ public:
 			return QCheckBox::hitButton(pos);
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		bool callback_return_value = miqt_exec_callback_QCheckBox_hitButton(this, handle__hitButton, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QCheckBox_virtualbase_hitButton(const void* self, QPoint* pos);
+	friend bool QCheckBox_virtualbase_hitButton(const void* self, struct miqt_qpoint pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__checkStateSet = 0;
@@ -1022,12 +1016,12 @@ struct miqt_string QCheckBox_trUtf8(const char* s) {
 	return _ms;
 }
 
-QSize* QCheckBox_sizeHint(const QCheckBox* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QCheckBox_sizeHint(const QCheckBox* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QCheckBox_minimumSizeHint(const QCheckBox* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QCheckBox_minimumSizeHint(const QCheckBox* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QCheckBox_setTristate(QCheckBox* self) {
@@ -1116,8 +1110,8 @@ bool QCheckBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QCheckBox_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQCheckBox*>(self)->QCheckBox::sizeHint());
+struct miqt_qsize QCheckBox_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQCheckBox*>(self)->QCheckBox::sizeHint());
 }
 
 bool QCheckBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1130,8 +1124,8 @@ bool QCheckBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QCheckBox_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQCheckBox*>(self)->QCheckBox::minimumSizeHint());
+struct miqt_qsize QCheckBox_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQCheckBox*>(self)->QCheckBox::minimumSizeHint());
 }
 
 bool QCheckBox_override_virtual_event(void* self, intptr_t slot) {
@@ -1158,8 +1152,8 @@ bool QCheckBox_override_virtual_hitButton(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QCheckBox_virtualbase_hitButton(const void* self, QPoint* pos) {
-	return static_cast<const MiqtVirtualQCheckBox*>(self)->QCheckBox::hitButton(*pos);
+bool QCheckBox_virtualbase_hitButton(const void* self, struct miqt_qpoint pos) {
+	return static_cast<const MiqtVirtualQCheckBox*>(self)->QCheckBox::hitButton(miqt_from_cabi<QPoint>(pos));
 }
 
 bool QCheckBox_override_virtual_checkStateSet(void* self, intptr_t slot) {
@@ -1805,10 +1799,6 @@ bool QCheckBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQCheckBox*>(self)->QCheckBox::disconnectNotify(*signal);
-}
-
-QSize* QCheckBox_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QCheckBox_virtualreturncopy_QVariant(QVariant* src) {

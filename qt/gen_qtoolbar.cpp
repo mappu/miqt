@@ -49,7 +49,7 @@ void miqt_exec_callback_QToolBar_actionTriggered(intptr_t, QAction*);
 void miqt_exec_callback_QToolBar_movableChanged(intptr_t, bool);
 void miqt_exec_callback_QToolBar_allowedAreasChanged(intptr_t, int);
 void miqt_exec_callback_QToolBar_orientationChanged(intptr_t, int);
-void miqt_exec_callback_QToolBar_iconSizeChanged(intptr_t, QSize*);
+void miqt_exec_callback_QToolBar_iconSizeChanged(intptr_t, struct miqt_qsize);
 void miqt_exec_callback_QToolBar_toolButtonStyleChanged(intptr_t, int);
 void miqt_exec_callback_QToolBar_topLevelChanged(intptr_t, bool);
 void miqt_exec_callback_QToolBar_visibilityChanged(intptr_t, bool);
@@ -59,8 +59,8 @@ void miqt_exec_callback_QToolBar_paintEvent(QToolBar*, intptr_t, QPaintEvent*);
 bool miqt_exec_callback_QToolBar_event(QToolBar*, intptr_t, QEvent*);
 int miqt_exec_callback_QToolBar_devType(const QToolBar*, intptr_t);
 void miqt_exec_callback_QToolBar_setVisible(QToolBar*, intptr_t, bool);
-QSize* miqt_exec_callback_QToolBar_sizeHint(const QToolBar*, intptr_t);
-QSize* miqt_exec_callback_QToolBar_minimumSizeHint(const QToolBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QToolBar_sizeHint(const QToolBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QToolBar_minimumSizeHint(const QToolBar*, intptr_t);
 int miqt_exec_callback_QToolBar_heightForWidth(const QToolBar*, intptr_t, int);
 bool miqt_exec_callback_QToolBar_hasHeightForWidth(const QToolBar*, intptr_t);
 QPaintEngine* miqt_exec_callback_QToolBar_paintEngine(const QToolBar*, intptr_t);
@@ -222,13 +222,11 @@ public:
 			return QToolBar::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QToolBar_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QToolBar_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QToolBar_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QToolBar_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -239,13 +237,11 @@ public:
 			return QToolBar::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QToolBar_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QToolBar_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QToolBar_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QToolBar_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1038,12 +1034,12 @@ QAction* QToolBar_insertWidget(QToolBar* self, QAction* before, QWidget* widget)
 	return self->insertWidget(before, widget);
 }
 
-QRect* QToolBar_actionGeometry(const QToolBar* self, QAction* action) {
-	return new QRect(self->actionGeometry(action));
+struct miqt_qrect QToolBar_actionGeometry(const QToolBar* self, QAction* action) {
+	return miqt_to_cabi<struct miqt_qrect>(self->actionGeometry(action));
 }
 
-QAction* QToolBar_actionAt(const QToolBar* self, QPoint* p) {
-	return self->actionAt(*p);
+QAction* QToolBar_actionAt(const QToolBar* self, struct miqt_qpoint p) {
+	return self->actionAt(miqt_from_cabi<QPoint>(p));
 }
 
 QAction* QToolBar_actionAt2(const QToolBar* self, int x, int y) {
@@ -1054,8 +1050,8 @@ QAction* QToolBar_toggleViewAction(const QToolBar* self) {
 	return self->toggleViewAction();
 }
 
-QSize* QToolBar_iconSize(const QToolBar* self) {
-	return new QSize(self->iconSize());
+struct miqt_qsize QToolBar_iconSize(const QToolBar* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize());
 }
 
 int QToolBar_toolButtonStyle(const QToolBar* self) {
@@ -1079,8 +1075,8 @@ bool QToolBar_isFloating(const QToolBar* self) {
 	return self->isFloating();
 }
 
-void QToolBar_setIconSize(QToolBar* self, QSize* iconSize) {
-	self->setIconSize(*iconSize);
+void QToolBar_setIconSize(QToolBar* self, struct miqt_qsize iconSize) {
+	self->setIconSize(miqt_from_cabi<QSize>(iconSize));
 }
 
 void QToolBar_setToolButtonStyle(QToolBar* self, int toolButtonStyle) {
@@ -1133,15 +1129,13 @@ void QToolBar_connect_orientationChanged(QToolBar* self, intptr_t slot) {
 	});
 }
 
-void QToolBar_iconSizeChanged(QToolBar* self, QSize* iconSize) {
-	self->iconSizeChanged(*iconSize);
+void QToolBar_iconSizeChanged(QToolBar* self, struct miqt_qsize iconSize) {
+	self->iconSizeChanged(miqt_from_cabi<QSize>(iconSize));
 }
 
 void QToolBar_connect_iconSizeChanged(QToolBar* self, intptr_t slot) {
 	QToolBar::connect(self, static_cast<void (QToolBar::*)(const QSize&)>(&QToolBar::iconSizeChanged), self, [=](const QSize& iconSize) {
-		const QSize& iconSize_ret = iconSize;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&iconSize_ret);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(iconSize);
 		miqt_exec_callback_QToolBar_iconSizeChanged(slot, sigval1);
 	});
 }
@@ -1318,8 +1312,8 @@ bool QToolBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QToolBar_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQToolBar*>(self)->QToolBar::sizeHint());
+struct miqt_qsize QToolBar_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQToolBar*>(self)->QToolBar::sizeHint());
 }
 
 bool QToolBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1332,8 +1326,8 @@ bool QToolBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QToolBar_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQToolBar*>(self)->QToolBar::minimumSizeHint());
+struct miqt_qsize QToolBar_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQToolBar*>(self)->QToolBar::minimumSizeHint());
 }
 
 bool QToolBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1881,10 +1875,6 @@ bool QToolBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QToolBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQToolBar*>(self)->QToolBar::disconnectNotify(*signal);
-}
-
-QSize* QToolBar_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QToolBar_virtualreturncopy_QVariant(QVariant* src) {

@@ -115,9 +115,9 @@ struct miqt_string QAbstractPrintDialog_trUtf83(const char* s, const char* c, in
 bool QAbstractPrintDialog_override_virtual_setVisible(void* self, intptr_t slot);
 void QAbstractPrintDialog_virtualbase_setVisible(void* self, bool visible);
 bool QAbstractPrintDialog_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QAbstractPrintDialog_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QAbstractPrintDialog_virtualbase_sizeHint(const void* self);
 bool QAbstractPrintDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QAbstractPrintDialog_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QAbstractPrintDialog_virtualbase_minimumSizeHint(const void* self);
 bool QAbstractPrintDialog_override_virtual_open(void* self, intptr_t slot);
 void QAbstractPrintDialog_virtualbase_open(void* self);
 bool QAbstractPrintDialog_override_virtual_exec(void* self, intptr_t slot);
@@ -216,7 +216,6 @@ bool QAbstractPrintDialog_override_virtual_connectNotify(void* self, intptr_t sl
 void QAbstractPrintDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractPrintDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QAbstractPrintDialog_virtualreturncopy_QSize(QSize* src);
 QVariant* QAbstractPrintDialog_virtualreturncopy_QVariant(QVariant* src);
 
 void QAbstractPrintDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -162,10 +163,8 @@ func (this *QLCDNumber) IntValue() int {
 	return (int)(C.QLCDNumber_intValue(this.h))
 }
 
-func (this *QLCDNumber) SizeHint() *QSize {
-	_goptr := newQSize(C.QLCDNumber_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QLCDNumber) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QLCDNumber_sizeHint(this.h))
 }
 
 func (this *QLCDNumber) Display(str string) {
@@ -379,14 +378,12 @@ func (this *QLCDNumber) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QLCDNumber) callVirtualBase_SizeHint() *QSize {
+func (this *QLCDNumber) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QLCDNumber_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QLCDNumber_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QLCDNumber) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QLCDNumber) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QLCDNumber_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -394,16 +391,15 @@ func (this *QLCDNumber) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QLCDNumber_sizeHint
-func miqt_exec_callback_QLCDNumber_sizeHint(self *C.QLCDNumber, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QLCDNumber_sizeHint(self *C.QLCDNumber, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QLCDNumber{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QLCDNumber_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -568,14 +564,12 @@ func miqt_exec_callback_QLCDNumber_setVisible(self *C.QLCDNumber, cb C.intptr_t,
 
 }
 
-func (this *QLCDNumber) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QLCDNumber) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QLCDNumber_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QLCDNumber_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QLCDNumber) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QLCDNumber) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QLCDNumber_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -583,16 +577,15 @@ func (this *QLCDNumber) OnMinimumSizeHint(slot func(super func() *QSize) *QSize)
 }
 
 //export miqt_exec_callback_QLCDNumber_minimumSizeHint
-func miqt_exec_callback_QLCDNumber_minimumSizeHint(self *C.QLCDNumber, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QLCDNumber_minimumSizeHint(self *C.QLCDNumber, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QLCDNumber{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QLCDNumber_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1393,7 +1386,6 @@ func miqt_exec_callback_QLCDNumber_initPainter(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QLCDNumber_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

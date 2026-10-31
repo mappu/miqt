@@ -113,7 +113,7 @@ QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface_widget(const QD
 void QDesignerWidgetBoxInterface_addWidget(QDesignerWidgetBoxInterface* self, int cat_idx, QDesignerWidgetBoxInterface__Widget* wgt);
 void QDesignerWidgetBoxInterface_removeWidget(QDesignerWidgetBoxInterface* self, int cat_idx, int wgt_idx);
 int QDesignerWidgetBoxInterface_findOrInsertCategory(QDesignerWidgetBoxInterface* self, struct miqt_string categoryName);
-void QDesignerWidgetBoxInterface_dropWidgets(QDesignerWidgetBoxInterface* self, struct miqt_array /* of QDesignerDnDItemInterface* */  item_list, QPoint* global_mouse_pos);
+void QDesignerWidgetBoxInterface_dropWidgets(QDesignerWidgetBoxInterface* self, struct miqt_array /* of QDesignerDnDItemInterface* */  item_list, struct miqt_qpoint global_mouse_pos);
 void QDesignerWidgetBoxInterface_setFileName(QDesignerWidgetBoxInterface* self, struct miqt_string file_name);
 struct miqt_string QDesignerWidgetBoxInterface_fileName(const QDesignerWidgetBoxInterface* self);
 bool QDesignerWidgetBoxInterface_load(QDesignerWidgetBoxInterface* self);
@@ -140,7 +140,7 @@ void QDesignerWidgetBoxInterface_virtualbase_addWidget(void* self, int cat_idx, 
 bool QDesignerWidgetBoxInterface_override_virtual_removeWidget(void* self, intptr_t slot);
 void QDesignerWidgetBoxInterface_virtualbase_removeWidget(void* self, int cat_idx, int wgt_idx);
 bool QDesignerWidgetBoxInterface_override_virtual_dropWidgets(void* self, intptr_t slot);
-void QDesignerWidgetBoxInterface_virtualbase_dropWidgets(void* self, struct miqt_array /* of QDesignerDnDItemInterface* */  item_list, QPoint* global_mouse_pos);
+void QDesignerWidgetBoxInterface_virtualbase_dropWidgets(void* self, struct miqt_array /* of QDesignerDnDItemInterface* */  item_list, struct miqt_qpoint global_mouse_pos);
 bool QDesignerWidgetBoxInterface_override_virtual_setFileName(void* self, intptr_t slot);
 void QDesignerWidgetBoxInterface_virtualbase_setFileName(void* self, struct miqt_string file_name);
 bool QDesignerWidgetBoxInterface_override_virtual_fileName(void* self, intptr_t slot);
@@ -154,9 +154,9 @@ int QDesignerWidgetBoxInterface_virtualbase_devType(const void* self);
 bool QDesignerWidgetBoxInterface_override_virtual_setVisible(void* self, intptr_t slot);
 void QDesignerWidgetBoxInterface_virtualbase_setVisible(void* self, bool visible);
 bool QDesignerWidgetBoxInterface_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QDesignerWidgetBoxInterface_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QDesignerWidgetBoxInterface_virtualbase_sizeHint(const void* self);
 bool QDesignerWidgetBoxInterface_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(const void* self);
 bool QDesignerWidgetBoxInterface_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QDesignerWidgetBoxInterface_virtualbase_heightForWidth(const void* self, int param1);
 bool QDesignerWidgetBoxInterface_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -245,7 +245,6 @@ bool QDesignerWidgetBoxInterface_override_virtual_disconnectNotify(void* self, i
 void QDesignerWidgetBoxInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface_virtualreturncopy_QDesignerWidgetBoxInterface__Category(QDesignerWidgetBoxInterface__Category* src);
 QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface_virtualreturncopy_QDesignerWidgetBoxInterface__Widget(QDesignerWidgetBoxInterface__Widget* src);
-QSize* QDesignerWidgetBoxInterface_virtualreturncopy_QSize(QSize* src);
 QVariant* QDesignerWidgetBoxInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerWidgetBoxInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

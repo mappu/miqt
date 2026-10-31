@@ -52,7 +52,7 @@ int QwtPlotIntervalCurve_rtti(const QwtPlotIntervalCurve* self);
 void QwtPlotIntervalCurve_setPaintAttribute(QwtPlotIntervalCurve* self, int param1);
 bool QwtPlotIntervalCurve_testPaintAttribute(const QwtPlotIntervalCurve* self, int param1);
 void QwtPlotIntervalCurve_setSamples(QwtPlotIntervalCurve* self, struct miqt_array /* of QwtIntervalSample* */  samples);
-void QwtPlotIntervalCurve_setPen(QwtPlotIntervalCurve* self, QColor* param1);
+void QwtPlotIntervalCurve_setPen(QwtPlotIntervalCurve* self, struct miqt_qcolor param1);
 void QwtPlotIntervalCurve_setPenWithPen(QwtPlotIntervalCurve* self, QPen* pen);
 QPen* QwtPlotIntervalCurve_pen(const QwtPlotIntervalCurve* self);
 void QwtPlotIntervalCurve_setBrush(QwtPlotIntervalCurve* self, QBrush* brush);
@@ -61,11 +61,11 @@ void QwtPlotIntervalCurve_setStyle(QwtPlotIntervalCurve* self, int style);
 int QwtPlotIntervalCurve_style(const QwtPlotIntervalCurve* self);
 void QwtPlotIntervalCurve_setSymbol(QwtPlotIntervalCurve* self, QwtIntervalSymbol* symbol);
 QwtIntervalSymbol* QwtPlotIntervalCurve_symbol(const QwtPlotIntervalCurve* self);
-QRectF* QwtPlotIntervalCurve_boundingRect(const QwtPlotIntervalCurve* self);
-QwtGraphic* QwtPlotIntervalCurve_legendIcon(const QwtPlotIntervalCurve* self, int index, QSizeF* param2);
+struct miqt_qrectf QwtPlotIntervalCurve_boundingRect(const QwtPlotIntervalCurve* self);
+QwtGraphic* QwtPlotIntervalCurve_legendIcon(const QwtPlotIntervalCurve* self, int index, struct miqt_qsizef param2);
 void QwtPlotIntervalCurve_setPaintAttribute2(QwtPlotIntervalCurve* self, int param1, bool on);
-void QwtPlotIntervalCurve_setPen2(QwtPlotIntervalCurve* self, QColor* param1, double width);
-void QwtPlotIntervalCurve_setPen3(QwtPlotIntervalCurve* self, QColor* param1, double width, int param3);
+void QwtPlotIntervalCurve_setPen2(QwtPlotIntervalCurve* self, struct miqt_qcolor param1, double width);
+void QwtPlotIntervalCurve_setPen3(QwtPlotIntervalCurve* self, struct miqt_qcolor param1, double width, int param3);
 
 void QwtPlotIntervalCurve_delete(QwtPlotIntervalCurve* self);
 

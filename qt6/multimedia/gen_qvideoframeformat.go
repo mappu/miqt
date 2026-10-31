@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
@@ -147,10 +148,9 @@ func NewQVideoFrameFormat() *QVideoFrameFormat {
 }
 
 // NewQVideoFrameFormat2 constructs a new QVideoFrameFormat object.
-func NewQVideoFrameFormat2(size *qt6.QSize, pixelFormat QVideoFrameFormat__PixelFormat) *QVideoFrameFormat {
-	defer runtime.KeepAlive(size)
+func NewQVideoFrameFormat2(size qt6.QSize, pixelFormat QVideoFrameFormat__PixelFormat) *QVideoFrameFormat {
 
-	return newQVideoFrameFormat(C.QVideoFrameFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat)))
+	return newQVideoFrameFormat(C.QVideoFrameFormat_new2(libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(pixelFormat)))
 }
 
 // NewQVideoFrameFormat3 constructs a new QVideoFrameFormat object.
@@ -199,17 +199,14 @@ func (this *QVideoFrameFormat) PixelFormat() QVideoFrameFormat__PixelFormat {
 	return (QVideoFrameFormat__PixelFormat)(C.QVideoFrameFormat_pixelFormat(this.h))
 }
 
-func (this *QVideoFrameFormat) FrameSize() *qt6.QSize {
+func (this *QVideoFrameFormat) FrameSize() qt6.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrameFormat_frameSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QVideoFrameFormat_frameSize(this.h))
 }
 
-func (this *QVideoFrameFormat) SetFrameSize(size *qt6.QSize) {
+func (this *QVideoFrameFormat) SetFrameSize(size qt6.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QVideoFrameFormat_setFrameSize(this.h, (*C.QSize)(size.UnsafePointer()))
+	C.QVideoFrameFormat_setFrameSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
 func (this *QVideoFrameFormat) SetFrameSize2(width int, height int) {
@@ -232,17 +229,14 @@ func (this *QVideoFrameFormat) PlaneCount() int {
 	return (int)(C.QVideoFrameFormat_planeCount(this.h))
 }
 
-func (this *QVideoFrameFormat) Viewport() *qt6.QRect {
+func (this *QVideoFrameFormat) Viewport() qt6.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QVideoFrameFormat_viewport(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QRect](C.QVideoFrameFormat_viewport(this.h))
 }
 
-func (this *QVideoFrameFormat) SetViewport(viewport *qt6.QRect) {
+func (this *QVideoFrameFormat) SetViewport(viewport qt6.QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewport)
-	C.QVideoFrameFormat_setViewport(this.h, (*C.QRect)(viewport.UnsafePointer()))
+	C.QVideoFrameFormat_setViewport(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](viewport))
 }
 
 func (this *QVideoFrameFormat) ScanLineDirection() QVideoFrameFormat__Direction {

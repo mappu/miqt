@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -108,10 +109,9 @@ func NewQImage() *QImage {
 }
 
 // NewQImage2 constructs a new QImage object.
-func NewQImage2(size *QSize, format QImage__Format) *QImage {
-	defer runtime.KeepAlive(size)
+func NewQImage2(size QSize, format QImage__Format) *QImage {
 
-	return newQImage(C.QImage_new2(size.cPointer(), (C.int)(format)))
+	return newQImage(C.QImage_new2(libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(format)))
 }
 
 // NewQImage3 constructs a new QImage object.
@@ -284,18 +284,14 @@ func (this *QImage) Height() int {
 	return (int)(C.QImage_height(this.h))
 }
 
-func (this *QImage) Size() *QSize {
+func (this *QImage) Size() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QImage_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QImage_size(this.h))
 }
 
-func (this *QImage) Rect() *QRect {
+func (this *QImage) Rect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QImage_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QImage_rect(this.h))
 }
 
 func (this *QImage) Depth() int {
@@ -388,10 +384,9 @@ func (this *QImage) Valid(x int, y int) bool {
 	return (bool)(C.QImage_valid(this.h, (C.int)(x), (C.int)(y)))
 }
 
-func (this *QImage) ValidWithPt(pt *QPoint) bool {
+func (this *QImage) ValidWithPt(pt QPoint) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	return (bool)(C.QImage_validWithPt(this.h, pt.cPointer()))
+	return (bool)(C.QImage_validWithPt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pt)))
 }
 
 func (this *QImage) PixelIndex(x int, y int) int {
@@ -399,10 +394,9 @@ func (this *QImage) PixelIndex(x int, y int) int {
 	return (int)(C.QImage_pixelIndex(this.h, (C.int)(x), (C.int)(y)))
 }
 
-func (this *QImage) PixelIndexWithPt(pt *QPoint) int {
+func (this *QImage) PixelIndexWithPt(pt QPoint) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	return (int)(C.QImage_pixelIndexWithPt(this.h, pt.cPointer()))
+	return (int)(C.QImage_pixelIndexWithPt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pt)))
 }
 
 func (this *QImage) Pixel(x int, y int) uint {
@@ -410,10 +404,9 @@ func (this *QImage) Pixel(x int, y int) uint {
 	return (uint)(C.QImage_pixel(this.h, (C.int)(x), (C.int)(y)))
 }
 
-func (this *QImage) PixelWithPt(pt *QPoint) uint {
+func (this *QImage) PixelWithPt(pt QPoint) uint {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	return (uint)(C.QImage_pixelWithPt(this.h, pt.cPointer()))
+	return (uint)(C.QImage_pixelWithPt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pt)))
 }
 
 func (this *QImage) SetPixel(x int, y int, index_or_rgb uint) {
@@ -421,38 +414,29 @@ func (this *QImage) SetPixel(x int, y int, index_or_rgb uint) {
 	C.QImage_setPixel(this.h, (C.int)(x), (C.int)(y), (C.uint)(index_or_rgb))
 }
 
-func (this *QImage) SetPixel2(pt *QPoint, index_or_rgb uint) {
+func (this *QImage) SetPixel2(pt QPoint, index_or_rgb uint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	C.QImage_setPixel2(this.h, pt.cPointer(), (C.uint)(index_or_rgb))
+	C.QImage_setPixel2(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pt), (C.uint)(index_or_rgb))
 }
 
-func (this *QImage) PixelColor(x int, y int) *QColor {
+func (this *QImage) PixelColor(x int, y int) QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QImage_pixelColor(this.h, (C.int)(x), (C.int)(y)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QImage_pixelColor(this.h, (C.int)(x), (C.int)(y)))
 }
 
-func (this *QImage) PixelColorWithPt(pt *QPoint) *QColor {
+func (this *QImage) PixelColorWithPt(pt QPoint) QColor {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	_goptr := newQColor(C.QImage_pixelColorWithPt(this.h, pt.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QImage_pixelColorWithPt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pt)))
 }
 
-func (this *QImage) SetPixelColor(x int, y int, c *QColor) {
+func (this *QImage) SetPixelColor(x int, y int, c QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(c)
-	C.QImage_setPixelColor(this.h, (C.int)(x), (C.int)(y), c.cPointer())
+	C.QImage_setPixelColor(this.h, (C.int)(x), (C.int)(y), libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 }
 
-func (this *QImage) SetPixelColor2(pt *QPoint, c *QColor) {
+func (this *QImage) SetPixelColor2(pt QPoint, c QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	defer runtime.KeepAlive(c)
-	C.QImage_setPixelColor2(this.h, pt.cPointer(), c.cPointer())
+	C.QImage_setPixelColor2(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pt), libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 }
 
 func (this *QImage) ColorTable() []uint {
@@ -493,10 +477,9 @@ func (this *QImage) Fill(pixel uint) {
 	C.QImage_fill(this.h, (C.uint)(pixel))
 }
 
-func (this *QImage) FillWithColor(color *QColor) {
+func (this *QImage) FillWithColor(color QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QImage_fillWithColor(this.h, color.cPointer())
+	C.QImage_fillWithColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QImage) Fill2(color GlobalColor) {
@@ -550,10 +533,9 @@ func (this *QImage) Scaled(w int, h int) *QImage {
 	return _goptr
 }
 
-func (this *QImage) ScaledWithQSize(s *QSize) *QImage {
+func (this *QImage) ScaledWithQSize(s QSize) *QImage {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(s)
-	_goptr := newQImage(C.QImage_scaledWithQSize(this.h, s.cPointer()))
+	_goptr := newQImage(C.QImage_scaledWithQSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](s)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -750,17 +732,14 @@ func (this *QImage) SetDotsPerMeterY(dotsPerMeterY int) {
 	C.QImage_setDotsPerMeterY(this.h, (C.int)(dotsPerMeterY))
 }
 
-func (this *QImage) Offset() *QPoint {
+func (this *QImage) Offset() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QImage_offset(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QImage_offset(this.h))
 }
 
-func (this *QImage) SetOffset(offset *QPoint) {
+func (this *QImage) SetOffset(offset QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
-	C.QImage_setOffset(this.h, offset.cPointer())
+	C.QImage_setOffset(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](offset))
 }
 
 func (this *QImage) TextKeys() []string {
@@ -816,10 +795,9 @@ func QImage_ToImageFormat(format QPixelFormat) QImage__Format {
 	return (QImage__Format)(C.QImage_toImageFormat(format.cPointer()))
 }
 
-func (this *QImage) CopyWithRect(rect *QRect) *QImage {
+func (this *QImage) CopyWithRect(rect QRect) *QImage {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQImage(C.QImage_copyWithRect(this.h, rect.cPointer()))
+	_goptr := newQImage(C.QImage_copyWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -885,18 +863,16 @@ func (this *QImage) Scaled3(w int, h int, aspectMode AspectRatioMode, mode Trans
 	return _goptr
 }
 
-func (this *QImage) Scaled4(s *QSize, aspectMode AspectRatioMode) *QImage {
+func (this *QImage) Scaled4(s QSize, aspectMode AspectRatioMode) *QImage {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(s)
-	_goptr := newQImage(C.QImage_scaled4(this.h, s.cPointer(), (C.int)(aspectMode)))
+	_goptr := newQImage(C.QImage_scaled4(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](s), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QImage) Scaled5(s *QSize, aspectMode AspectRatioMode, mode TransformationMode) *QImage {
+func (this *QImage) Scaled5(s QSize, aspectMode AspectRatioMode, mode TransformationMode) *QImage {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(s)
-	_goptr := newQImage(C.QImage_scaled5(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode)))
+	_goptr := newQImage(C.QImage_scaled5(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](s), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1274,7 +1250,6 @@ func miqt_exec_callback_QImage_initPainter(self *C.QImage, cb C.intptr_t, painte
 
 func (this *QImage) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QImage_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

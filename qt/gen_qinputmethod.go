@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -104,39 +105,28 @@ func (this *QInputMethod) SetInputItemTransform(transform *QTransform) {
 	C.QInputMethod_setInputItemTransform(this.h, transform.cPointer())
 }
 
-func (this *QInputMethod) InputItemRectangle() *QRectF {
-	_goptr := newQRectF(C.QInputMethod_inputItemRectangle(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QInputMethod) InputItemRectangle() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QInputMethod_inputItemRectangle(this.h))
 }
 
-func (this *QInputMethod) SetInputItemRectangle(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QInputMethod_setInputItemRectangle(this.h, rect.cPointer())
+func (this *QInputMethod) SetInputItemRectangle(rect QRectF) {
+	C.QInputMethod_setInputItemRectangle(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
-func (this *QInputMethod) CursorRectangle() *QRectF {
-	_goptr := newQRectF(C.QInputMethod_cursorRectangle(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QInputMethod) CursorRectangle() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QInputMethod_cursorRectangle(this.h))
 }
 
-func (this *QInputMethod) AnchorRectangle() *QRectF {
-	_goptr := newQRectF(C.QInputMethod_anchorRectangle(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QInputMethod) AnchorRectangle() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QInputMethod_anchorRectangle(this.h))
 }
 
-func (this *QInputMethod) KeyboardRectangle() *QRectF {
-	_goptr := newQRectF(C.QInputMethod_keyboardRectangle(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QInputMethod) KeyboardRectangle() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QInputMethod_keyboardRectangle(this.h))
 }
 
-func (this *QInputMethod) InputItemClipRectangle() *QRectF {
-	_goptr := newQRectF(C.QInputMethod_inputItemClipRectangle(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QInputMethod) InputItemClipRectangle() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QInputMethod_inputItemClipRectangle(this.h))
 }
 
 func (this *QInputMethod) IsVisible() bool {

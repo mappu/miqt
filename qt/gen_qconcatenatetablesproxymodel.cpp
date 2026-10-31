@@ -25,37 +25,37 @@
 extern "C" {
 #endif
 
-QVariant* miqt_exec_callback_QConcatenateTablesProxyModel_data(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*, int);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_setData(QConcatenateTablesProxyModel*, intptr_t, QModelIndex*, QVariant*, int);
-struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QConcatenateTablesProxyModel_itemData(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_setItemData(QConcatenateTablesProxyModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
-int miqt_exec_callback_QConcatenateTablesProxyModel_flags(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QConcatenateTablesProxyModel_index(const QConcatenateTablesProxyModel*, intptr_t, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QConcatenateTablesProxyModel_parent(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QConcatenateTablesProxyModel_rowCount(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QConcatenateTablesProxyModel_data(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex, int);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_setData(QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex, QVariant*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QConcatenateTablesProxyModel_itemData(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_setItemData(QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex, struct miqt_map /* of int to QVariant* */ );
+int miqt_exec_callback_QConcatenateTablesProxyModel_flags(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
+struct miqt_qmodelindex miqt_exec_callback_QConcatenateTablesProxyModel_index(const QConcatenateTablesProxyModel*, intptr_t, int, int, struct miqt_qmodelindex);
+struct miqt_qmodelindex miqt_exec_callback_QConcatenateTablesProxyModel_parent(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
+int miqt_exec_callback_QConcatenateTablesProxyModel_rowCount(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
 QVariant* miqt_exec_callback_QConcatenateTablesProxyModel_headerData(const QConcatenateTablesProxyModel*, intptr_t, int, int, int);
-int miqt_exec_callback_QConcatenateTablesProxyModel_columnCount(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QConcatenateTablesProxyModel_columnCount(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QConcatenateTablesProxyModel_mimeTypes(const QConcatenateTablesProxyModel*, intptr_t);
-QMimeData* miqt_exec_callback_QConcatenateTablesProxyModel_mimeData(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
-bool miqt_exec_callback_QConcatenateTablesProxyModel_canDropMimeData(const QConcatenateTablesProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_dropMimeData(QConcatenateTablesProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-QSize* miqt_exec_callback_QConcatenateTablesProxyModel_span(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QConcatenateTablesProxyModel_sibling(const QConcatenateTablesProxyModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_hasChildren(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
+QMimeData* miqt_exec_callback_QConcatenateTablesProxyModel_mimeData(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_array /* of struct miqt_qmodelindex */ );
+bool miqt_exec_callback_QConcatenateTablesProxyModel_canDropMimeData(const QConcatenateTablesProxyModel*, intptr_t, QMimeData*, int, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_dropMimeData(QConcatenateTablesProxyModel*, intptr_t, QMimeData*, int, int, int, struct miqt_qmodelindex);
+struct miqt_qsize miqt_exec_callback_QConcatenateTablesProxyModel_span(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
+struct miqt_qmodelindex miqt_exec_callback_QConcatenateTablesProxyModel_sibling(const QConcatenateTablesProxyModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_hasChildren(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
 bool miqt_exec_callback_QConcatenateTablesProxyModel_setHeaderData(QConcatenateTablesProxyModel*, intptr_t, int, int, QVariant*, int);
 int miqt_exec_callback_QConcatenateTablesProxyModel_supportedDropActions(const QConcatenateTablesProxyModel*, intptr_t);
 int miqt_exec_callback_QConcatenateTablesProxyModel_supportedDragActions(const QConcatenateTablesProxyModel*, intptr_t);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_insertRows(QConcatenateTablesProxyModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_insertColumns(QConcatenateTablesProxyModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_removeRows(QConcatenateTablesProxyModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_removeColumns(QConcatenateTablesProxyModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_moveRows(QConcatenateTablesProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_moveColumns(QConcatenateTablesProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-void miqt_exec_callback_QConcatenateTablesProxyModel_fetchMore(QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QConcatenateTablesProxyModel_canFetchMore(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_insertRows(QConcatenateTablesProxyModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_insertColumns(QConcatenateTablesProxyModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_removeRows(QConcatenateTablesProxyModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_removeColumns(QConcatenateTablesProxyModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_moveRows(QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex, int, int, struct miqt_qmodelindex, int);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_moveColumns(QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex, int, int, struct miqt_qmodelindex, int);
+void miqt_exec_callback_QConcatenateTablesProxyModel_fetchMore(QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_canFetchMore(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QConcatenateTablesProxyModel_sort(QConcatenateTablesProxyModel*, intptr_t, int, int);
-QModelIndex* miqt_exec_callback_QConcatenateTablesProxyModel_buddy(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QConcatenateTablesProxyModel_match(const QConcatenateTablesProxyModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+struct miqt_qmodelindex miqt_exec_callback_QConcatenateTablesProxyModel_buddy(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex);
+struct miqt_array /* of struct miqt_qmodelindex */  miqt_exec_callback_QConcatenateTablesProxyModel_match(const QConcatenateTablesProxyModel*, intptr_t, struct miqt_qmodelindex, int, QVariant*, int, int);
 struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QConcatenateTablesProxyModel_roleNames(const QConcatenateTablesProxyModel*, intptr_t);
 bool miqt_exec_callback_QConcatenateTablesProxyModel_submit(QConcatenateTablesProxyModel*, intptr_t);
 void miqt_exec_callback_QConcatenateTablesProxyModel_revert(QConcatenateTablesProxyModel*, intptr_t);
@@ -87,9 +87,7 @@ public:
 			return QConcatenateTablesProxyModel::data(index, role);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		int sigval2 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_data(this, handle__data, sigval1, sigval2);
 		QVariant callback_return_value_ret = *callback_return_value;
@@ -97,7 +95,7 @@ public:
 		return callback_return_value_ret;
 	}
 
-	friend QVariant* QConcatenateTablesProxyModel_virtualbase_data(const void* self, QModelIndex* index, int role);
+	friend QVariant* QConcatenateTablesProxyModel_virtualbase_data(const void* self, struct miqt_qmodelindex index, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setData = 0;
@@ -108,9 +106,7 @@ public:
 			return QConcatenateTablesProxyModel::setData(index, value, role);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
@@ -119,7 +115,7 @@ public:
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role);
+	friend bool QConcatenateTablesProxyModel_virtualbase_setData(void* self, struct miqt_qmodelindex index, QVariant* value, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemData = 0;
@@ -130,9 +126,7 @@ public:
 			return QConcatenateTablesProxyModel::itemData(proxyIndex);
 		}
 
-		const QModelIndex& proxyIndex_ret = proxyIndex;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&proxyIndex_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(proxyIndex);
 		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_itemData(this, handle__itemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
@@ -149,7 +143,7 @@ public:
 		return callback_return_value_QMap;
 	}
 
-	friend struct miqt_map /* of int to QVariant* */  QConcatenateTablesProxyModel_virtualbase_itemData(const void* self, QModelIndex* proxyIndex);
+	friend struct miqt_map /* of int to QVariant* */  QConcatenateTablesProxyModel_virtualbase_itemData(const void* self, struct miqt_qmodelindex proxyIndex);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setItemData = 0;
@@ -160,9 +154,7 @@ public:
 			return QConcatenateTablesProxyModel::setItemData(index, roles);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		const QMap<int, QVariant>& roles_ret = roles;
 		// Convert QMap<> from C++ memory to manually-managed C memory
 		int* roles_karr = static_cast<int*>(malloc(sizeof(int) * roles_ret.size()));
@@ -182,7 +174,7 @@ public:
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles);
+	friend bool QConcatenateTablesProxyModel_virtualbase_setItemData(void* self, struct miqt_qmodelindex index, struct miqt_map /* of int to QVariant* */  roles);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__flags = 0;
@@ -193,14 +185,12 @@ public:
 			return QConcatenateTablesProxyModel::flags(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		int callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_flags(this, handle__flags, sigval1);
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
 
-	friend int QConcatenateTablesProxyModel_virtualbase_flags(const void* self, QModelIndex* index);
+	friend int QConcatenateTablesProxyModel_virtualbase_flags(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__index = 0;
@@ -213,16 +203,12 @@ public:
 
 		int sigval1 = row;
 		int sigval2 = column;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_index(this, handle__index, sigval1, sigval2, sigval3);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_index(this, handle__index, sigval1, sigval2, sigval3);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QConcatenateTablesProxyModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
+	friend struct miqt_qmodelindex QConcatenateTablesProxyModel_virtualbase_index(const void* self, int row, int column, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__parent = 0;
@@ -233,16 +219,12 @@ public:
 			return QConcatenateTablesProxyModel::parent(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_parent(this, handle__parent, sigval1);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_parent(this, handle__parent, sigval1);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QConcatenateTablesProxyModel_virtualbase_parent(const void* self, QModelIndex* index);
+	friend struct miqt_qmodelindex QConcatenateTablesProxyModel_virtualbase_parent(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowCount = 0;
@@ -253,14 +235,12 @@ public:
 			return QConcatenateTablesProxyModel::rowCount(parent);
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_rowCount(this, handle__rowCount, sigval1);
 		return static_cast<int>(callback_return_value);
 	}
 
-	friend int QConcatenateTablesProxyModel_virtualbase_rowCount(const void* self, QModelIndex* parent);
+	friend int QConcatenateTablesProxyModel_virtualbase_rowCount(const void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__headerData = 0;
@@ -292,14 +272,12 @@ public:
 			return QConcatenateTablesProxyModel::columnCount(parent);
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_columnCount(this, handle__columnCount, sigval1);
 		return static_cast<int>(callback_return_value);
 	}
 
-	friend int QConcatenateTablesProxyModel_virtualbase_columnCount(const void* self, QModelIndex* parent);
+	friend int QConcatenateTablesProxyModel_virtualbase_columnCount(const void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mimeTypes = 0;
@@ -339,19 +317,19 @@ public:
 
 		const QModelIndexList& indexes_ret = indexes;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
+		struct miqt_qmodelindex* indexes_arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * indexes_ret.length()));
 		for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
-			indexes_arr[i] = new QModelIndex(indexes_ret[i]);
+			indexes_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(indexes_ret[i]);
 		}
 		struct miqt_array indexes_out;
 		indexes_out.len = indexes_ret.length();
 		indexes_out.data = static_cast<void*>(indexes_arr);
-		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
+		struct miqt_array /* of struct miqt_qmodelindex */  sigval1 = indexes_out;
 		QMimeData* callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_mimeData(this, handle__mimeData, sigval1);
 		return callback_return_value;
 	}
 
-	friend QMimeData* QConcatenateTablesProxyModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes);
+	friend QMimeData* QConcatenateTablesProxyModel_virtualbase_mimeData(const void* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canDropMimeData = 0;
@@ -367,14 +345,12 @@ public:
 		int sigval2 = static_cast<int>(action_ret);
 		int sigval3 = row;
 		int sigval4 = column;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval5 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_canDropMimeData(this, handle__canDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
+	friend bool QConcatenateTablesProxyModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropMimeData = 0;
@@ -390,14 +366,12 @@ public:
 		int sigval2 = static_cast<int>(action_ret);
 		int sigval3 = row;
 		int sigval4 = column;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval5 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_dropMimeData(this, handle__dropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
+	friend bool QConcatenateTablesProxyModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__span = 0;
@@ -408,16 +382,12 @@ public:
 			return QConcatenateTablesProxyModel::span(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		QSize* callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_span(this, handle__span, sigval1);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_span(this, handle__span, sigval1);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QConcatenateTablesProxyModel_virtualbase_span(const void* self, QModelIndex* index);
+	friend struct miqt_qsize QConcatenateTablesProxyModel_virtualbase_span(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sibling = 0;
@@ -430,16 +400,12 @@ public:
 
 		int sigval1 = row;
 		int sigval2 = column;
-		const QModelIndex& idx_ret = idx;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(idx);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QConcatenateTablesProxyModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx);
+	friend struct miqt_qmodelindex QConcatenateTablesProxyModel_virtualbase_sibling(const void* self, int row, int column, struct miqt_qmodelindex idx);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasChildren = 0;
@@ -450,14 +416,12 @@ public:
 			return QConcatenateTablesProxyModel::hasChildren(parent);
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_hasChildren(this, handle__hasChildren, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_hasChildren(const void* self, QModelIndex* parent);
+	friend bool QConcatenateTablesProxyModel_virtualbase_hasChildren(const void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setHeaderData = 0;
@@ -522,14 +486,12 @@ public:
 
 		int sigval1 = row;
 		int sigval2 = count;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_insertRows(this, handle__insertRows, sigval1, sigval2, sigval3);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent);
+	friend bool QConcatenateTablesProxyModel_virtualbase_insertRows(void* self, int row, int count, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insertColumns = 0;
@@ -542,14 +504,12 @@ public:
 
 		int sigval1 = column;
 		int sigval2 = count;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_insertColumns(this, handle__insertColumns, sigval1, sigval2, sigval3);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent);
+	friend bool QConcatenateTablesProxyModel_virtualbase_insertColumns(void* self, int column, int count, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeRows = 0;
@@ -562,14 +522,12 @@ public:
 
 		int sigval1 = row;
 		int sigval2 = count;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_removeRows(this, handle__removeRows, sigval1, sigval2, sigval3);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent);
+	friend bool QConcatenateTablesProxyModel_virtualbase_removeRows(void* self, int row, int count, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeColumns = 0;
@@ -582,14 +540,12 @@ public:
 
 		int sigval1 = column;
 		int sigval2 = count;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_removeColumns(this, handle__removeColumns, sigval1, sigval2, sigval3);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent);
+	friend bool QConcatenateTablesProxyModel_virtualbase_removeColumns(void* self, int column, int count, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveRows = 0;
@@ -600,20 +556,16 @@ public:
 			return QConcatenateTablesProxyModel::moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 		}
 
-		const QModelIndex& sourceParent_ret = sourceParent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(sourceParent);
 		int sigval2 = sourceRow;
 		int sigval3 = count;
-		const QModelIndex& destinationParent_ret = destinationParent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		struct miqt_qmodelindex sigval4 = miqt_to_cabi<struct miqt_qmodelindex>(destinationParent);
 		int sigval5 = destinationChild;
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_moveRows(this, handle__moveRows, sigval1, sigval2, sigval3, sigval4, sigval5);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
+	friend bool QConcatenateTablesProxyModel_virtualbase_moveRows(void* self, struct miqt_qmodelindex sourceParent, int sourceRow, int count, struct miqt_qmodelindex destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveColumns = 0;
@@ -624,20 +576,16 @@ public:
 			return QConcatenateTablesProxyModel::moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 		}
 
-		const QModelIndex& sourceParent_ret = sourceParent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(sourceParent);
 		int sigval2 = sourceColumn;
 		int sigval3 = count;
-		const QModelIndex& destinationParent_ret = destinationParent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		struct miqt_qmodelindex sigval4 = miqt_to_cabi<struct miqt_qmodelindex>(destinationParent);
 		int sigval5 = destinationChild;
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_moveColumns(this, handle__moveColumns, sigval1, sigval2, sigval3, sigval4, sigval5);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild);
+	friend bool QConcatenateTablesProxyModel_virtualbase_moveColumns(void* self, struct miqt_qmodelindex sourceParent, int sourceColumn, int count, struct miqt_qmodelindex destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__fetchMore = 0;
@@ -649,14 +597,12 @@ public:
 			return;
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		miqt_exec_callback_QConcatenateTablesProxyModel_fetchMore(this, handle__fetchMore, sigval1);
 
 	}
 
-	friend void QConcatenateTablesProxyModel_virtualbase_fetchMore(void* self, QModelIndex* parent);
+	friend void QConcatenateTablesProxyModel_virtualbase_fetchMore(void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canFetchMore = 0;
@@ -667,14 +613,12 @@ public:
 			return QConcatenateTablesProxyModel::canFetchMore(parent);
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_canFetchMore(this, handle__canFetchMore, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QConcatenateTablesProxyModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent);
+	friend bool QConcatenateTablesProxyModel_virtualbase_canFetchMore(const void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sort = 0;
@@ -704,16 +648,12 @@ public:
 			return QConcatenateTablesProxyModel::buddy(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_buddy(this, handle__buddy, sigval1);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_buddy(this, handle__buddy, sigval1);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QConcatenateTablesProxyModel_virtualbase_buddy(const void* self, QModelIndex* index);
+	friend struct miqt_qmodelindex QConcatenateTablesProxyModel_virtualbase_buddy(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__match = 0;
@@ -724,9 +664,7 @@ public:
 			return QConcatenateTablesProxyModel::match(start, role, value, hits, flags);
 		}
 
-		const QModelIndex& start_ret = start;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&start_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(start);
 		int sigval2 = role;
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
@@ -734,22 +672,18 @@ public:
 		int sigval4 = hits;
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_match(this, handle__match, sigval1, sigval2, sigval3, sigval4, sigval5);
+		struct miqt_array /* of struct miqt_qmodelindex */  callback_return_value = miqt_exec_callback_QConcatenateTablesProxyModel_match(this, handle__match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
-		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		struct miqt_qmodelindex* callback_return_value_arr = static_cast<struct miqt_qmodelindex*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
-		}
-		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
-		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			delete callback_return_value_free_arr[i];
+			callback_return_value_QList.push_back(miqt_from_cabi<QModelIndex>(callback_return_value_arr[i]));
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 
-	friend struct miqt_array /* of QModelIndex* */  QConcatenateTablesProxyModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
+	friend struct miqt_array /* of struct miqt_qmodelindex */  QConcatenateTablesProxyModel_virtualbase_match(const void* self, struct miqt_qmodelindex start, int role, QVariant* value, int hits, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__roleNames = 0;
@@ -935,26 +869,26 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QConcatenateTablesProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
-	friend QModelIndex* QConcatenateTablesProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
-	friend void QConcatenateTablesProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
-	friend bool QConcatenateTablesProxyModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
-	friend void QConcatenateTablesProxyModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend struct miqt_qmodelindex QConcatenateTablesProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
+	friend void QConcatenateTablesProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes, QDataStream* stream);
+	friend bool QConcatenateTablesProxyModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, struct miqt_qmodelindex parent, QDataStream* stream);
+	friend void QConcatenateTablesProxyModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last);
 	friend void QConcatenateTablesProxyModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self);
-	friend void QConcatenateTablesProxyModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QConcatenateTablesProxyModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last);
 	friend void QConcatenateTablesProxyModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self);
-	friend bool QConcatenateTablesProxyModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow);
+	friend bool QConcatenateTablesProxyModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex sourceParent, int sourceFirst, int sourceLast, struct miqt_qmodelindex destinationParent, int destinationRow);
 	friend void QConcatenateTablesProxyModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self);
-	friend void QConcatenateTablesProxyModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QConcatenateTablesProxyModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last);
 	friend void QConcatenateTablesProxyModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self);
-	friend void QConcatenateTablesProxyModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QConcatenateTablesProxyModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last);
 	friend void QConcatenateTablesProxyModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self);
-	friend bool QConcatenateTablesProxyModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn);
+	friend bool QConcatenateTablesProxyModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex sourceParent, int sourceFirst, int sourceLast, struct miqt_qmodelindex destinationParent, int destinationColumn);
 	friend void QConcatenateTablesProxyModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self);
 	friend void QConcatenateTablesProxyModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self);
 	friend void QConcatenateTablesProxyModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self);
-	friend void QConcatenateTablesProxyModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to);
-	friend void QConcatenateTablesProxyModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to);
-	friend struct miqt_array /* of QModelIndex* */  QConcatenateTablesProxyModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
+	friend void QConcatenateTablesProxyModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex from, struct miqt_qmodelindex to);
+	friend void QConcatenateTablesProxyModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of struct miqt_qmodelindex */  from, struct miqt_array /* of struct miqt_qmodelindex */  to);
+	friend struct miqt_array /* of struct miqt_qmodelindex */  QConcatenateTablesProxyModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
 	friend QObject* QConcatenateTablesProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QConcatenateTablesProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QConcatenateTablesProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -1024,24 +958,24 @@ void QConcatenateTablesProxyModel_removeSourceModel(QConcatenateTablesProxyModel
 	self->removeSourceModel(sourceModel);
 }
 
-QModelIndex* QConcatenateTablesProxyModel_mapFromSource(const QConcatenateTablesProxyModel* self, QModelIndex* sourceIndex) {
-	return new QModelIndex(self->mapFromSource(*sourceIndex));
+struct miqt_qmodelindex QConcatenateTablesProxyModel_mapFromSource(const QConcatenateTablesProxyModel* self, struct miqt_qmodelindex sourceIndex) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->mapFromSource(miqt_from_cabi<QModelIndex>(sourceIndex)));
 }
 
-QModelIndex* QConcatenateTablesProxyModel_mapToSource(const QConcatenateTablesProxyModel* self, QModelIndex* proxyIndex) {
-	return new QModelIndex(self->mapToSource(*proxyIndex));
+struct miqt_qmodelindex QConcatenateTablesProxyModel_mapToSource(const QConcatenateTablesProxyModel* self, struct miqt_qmodelindex proxyIndex) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->mapToSource(miqt_from_cabi<QModelIndex>(proxyIndex)));
 }
 
-QVariant* QConcatenateTablesProxyModel_data(const QConcatenateTablesProxyModel* self, QModelIndex* index, int role) {
-	return new QVariant(self->data(*index, static_cast<int>(role)));
+QVariant* QConcatenateTablesProxyModel_data(const QConcatenateTablesProxyModel* self, struct miqt_qmodelindex index, int role) {
+	return new QVariant(self->data(miqt_from_cabi<QModelIndex>(index), static_cast<int>(role)));
 }
 
-bool QConcatenateTablesProxyModel_setData(QConcatenateTablesProxyModel* self, QModelIndex* index, QVariant* value, int role) {
-	return self->setData(*index, *value, static_cast<int>(role));
+bool QConcatenateTablesProxyModel_setData(QConcatenateTablesProxyModel* self, struct miqt_qmodelindex index, QVariant* value, int role) {
+	return self->setData(miqt_from_cabi<QModelIndex>(index), *value, static_cast<int>(role));
 }
 
-struct miqt_map /* of int to QVariant* */  QConcatenateTablesProxyModel_itemData(const QConcatenateTablesProxyModel* self, QModelIndex* proxyIndex) {
-	QMap<int, QVariant> _ret = self->itemData(*proxyIndex);
+struct miqt_map /* of int to QVariant* */  QConcatenateTablesProxyModel_itemData(const QConcatenateTablesProxyModel* self, struct miqt_qmodelindex proxyIndex) {
+	QMap<int, QVariant> _ret = self->itemData(miqt_from_cabi<QModelIndex>(proxyIndex));
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
@@ -1058,39 +992,39 @@ struct miqt_map /* of int to QVariant* */  QConcatenateTablesProxyModel_itemData
 	return _out;
 }
 
-bool QConcatenateTablesProxyModel_setItemData(QConcatenateTablesProxyModel* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
+bool QConcatenateTablesProxyModel_setItemData(QConcatenateTablesProxyModel* self, struct miqt_qmodelindex index, struct miqt_map /* of int to QVariant* */  roles) {
 	QMap<int, QVariant> roles_QMap;
 	int* roles_karr = static_cast<int*>(roles.keys);
 	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
 	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
 	}
-	return self->setItemData(*index, roles_QMap);
+	return self->setItemData(miqt_from_cabi<QModelIndex>(index), roles_QMap);
 }
 
-int QConcatenateTablesProxyModel_flags(const QConcatenateTablesProxyModel* self, QModelIndex* index) {
-	Qt::ItemFlags _ret = self->flags(*index);
+int QConcatenateTablesProxyModel_flags(const QConcatenateTablesProxyModel* self, struct miqt_qmodelindex index) {
+	Qt::ItemFlags _ret = self->flags(miqt_from_cabi<QModelIndex>(index));
 	return static_cast<int>(_ret);
 }
 
-QModelIndex* QConcatenateTablesProxyModel_index(const QConcatenateTablesProxyModel* self, int row, int column, QModelIndex* parent) {
-	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
+struct miqt_qmodelindex QConcatenateTablesProxyModel_index(const QConcatenateTablesProxyModel* self, int row, int column, struct miqt_qmodelindex parent) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->index(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent)));
 }
 
-QModelIndex* QConcatenateTablesProxyModel_parent(const QConcatenateTablesProxyModel* self, QModelIndex* index) {
-	return new QModelIndex(self->parent(*index));
+struct miqt_qmodelindex QConcatenateTablesProxyModel_parent(const QConcatenateTablesProxyModel* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->parent(miqt_from_cabi<QModelIndex>(index)));
 }
 
-int QConcatenateTablesProxyModel_rowCount(const QConcatenateTablesProxyModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
+int QConcatenateTablesProxyModel_rowCount(const QConcatenateTablesProxyModel* self, struct miqt_qmodelindex parent) {
+	return self->rowCount(miqt_from_cabi<QModelIndex>(parent));
 }
 
 QVariant* QConcatenateTablesProxyModel_headerData(const QConcatenateTablesProxyModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
-int QConcatenateTablesProxyModel_columnCount(const QConcatenateTablesProxyModel* self, QModelIndex* parent) {
-	return self->columnCount(*parent);
+int QConcatenateTablesProxyModel_columnCount(const QConcatenateTablesProxyModel* self, struct miqt_qmodelindex parent) {
+	return self->columnCount(miqt_from_cabi<QModelIndex>(parent));
 }
 
 struct miqt_array /* of struct miqt_string */  QConcatenateTablesProxyModel_mimeTypes(const QConcatenateTablesProxyModel* self) {
@@ -1113,26 +1047,26 @@ struct miqt_array /* of struct miqt_string */  QConcatenateTablesProxyModel_mime
 	return _out;
 }
 
-QMimeData* QConcatenateTablesProxyModel_mimeData(const QConcatenateTablesProxyModel* self, struct miqt_array /* of QModelIndex* */  indexes) {
+QMimeData* QConcatenateTablesProxyModel_mimeData(const QConcatenateTablesProxyModel* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes) {
 	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes.len);
-	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	struct miqt_qmodelindex* indexes_arr = static_cast<struct miqt_qmodelindex*>(indexes.data);
 	for(size_t i = 0; i < indexes.len; ++i) {
-		indexes_QList.push_back(*(indexes_arr[i]));
+		indexes_QList.push_back(miqt_from_cabi<QModelIndex>(indexes_arr[i]));
 	}
 	return self->mimeData(indexes_QList);
 }
 
-bool QConcatenateTablesProxyModel_canDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return self->canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+bool QConcatenateTablesProxyModel_canDropMimeData(const QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent) {
+	return self->canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent));
 }
 
-bool QConcatenateTablesProxyModel_dropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+bool QConcatenateTablesProxyModel_dropMimeData(QConcatenateTablesProxyModel* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent) {
+	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent));
 }
 
-QSize* QConcatenateTablesProxyModel_span(const QConcatenateTablesProxyModel* self, QModelIndex* index) {
-	return new QSize(self->span(*index));
+struct miqt_qsize QConcatenateTablesProxyModel_span(const QConcatenateTablesProxyModel* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qsize>(self->span(miqt_from_cabi<QModelIndex>(index)));
 }
 
 struct miqt_string QConcatenateTablesProxyModel_tr2(const char* s, const char* c) {
@@ -1189,8 +1123,8 @@ bool QConcatenateTablesProxyModel_override_virtual_data(void* self, intptr_t slo
 	return true;
 }
 
-QVariant* QConcatenateTablesProxyModel_virtualbase_data(const void* self, QModelIndex* index, int role) {
-	return new QVariant(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::data(*index, static_cast<int>(role)));
+QVariant* QConcatenateTablesProxyModel_virtualbase_data(const void* self, struct miqt_qmodelindex index, int role) {
+	return new QVariant(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::data(miqt_from_cabi<QModelIndex>(index), static_cast<int>(role)));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_setData(void* self, intptr_t slot) {
@@ -1203,8 +1137,8 @@ bool QConcatenateTablesProxyModel_override_virtual_setData(void* self, intptr_t 
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
-	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::setData(*index, *value, static_cast<int>(role));
+bool QConcatenateTablesProxyModel_virtualbase_setData(void* self, struct miqt_qmodelindex index, QVariant* value, int role) {
+	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::setData(miqt_from_cabi<QModelIndex>(index), *value, static_cast<int>(role));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_itemData(void* self, intptr_t slot) {
@@ -1217,8 +1151,8 @@ bool QConcatenateTablesProxyModel_override_virtual_itemData(void* self, intptr_t
 	return true;
 }
 
-struct miqt_map /* of int to QVariant* */  QConcatenateTablesProxyModel_virtualbase_itemData(const void* self, QModelIndex* proxyIndex) {
-	QMap<int, QVariant> _ret = static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::itemData(*proxyIndex);
+struct miqt_map /* of int to QVariant* */  QConcatenateTablesProxyModel_virtualbase_itemData(const void* self, struct miqt_qmodelindex proxyIndex) {
+	QMap<int, QVariant> _ret = static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::itemData(miqt_from_cabi<QModelIndex>(proxyIndex));
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
@@ -1245,14 +1179,14 @@ bool QConcatenateTablesProxyModel_override_virtual_setItemData(void* self, intpt
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
+bool QConcatenateTablesProxyModel_virtualbase_setItemData(void* self, struct miqt_qmodelindex index, struct miqt_map /* of int to QVariant* */  roles) {
 	QMap<int, QVariant> roles_QMap;
 	int* roles_karr = static_cast<int*>(roles.keys);
 	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
 	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
 	}
-	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::setItemData(*index, roles_QMap);
+	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::setItemData(miqt_from_cabi<QModelIndex>(index), roles_QMap);
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_flags(void* self, intptr_t slot) {
@@ -1265,8 +1199,8 @@ bool QConcatenateTablesProxyModel_override_virtual_flags(void* self, intptr_t sl
 	return true;
 }
 
-int QConcatenateTablesProxyModel_virtualbase_flags(const void* self, QModelIndex* index) {
-	Qt::ItemFlags _ret = static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::flags(*index);
+int QConcatenateTablesProxyModel_virtualbase_flags(const void* self, struct miqt_qmodelindex index) {
+	Qt::ItemFlags _ret = static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::flags(miqt_from_cabi<QModelIndex>(index));
 	return static_cast<int>(_ret);
 }
 
@@ -1280,8 +1214,8 @@ bool QConcatenateTablesProxyModel_override_virtual_index(void* self, intptr_t sl
 	return true;
 }
 
-QModelIndex* QConcatenateTablesProxyModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
-	return new QModelIndex(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
+struct miqt_qmodelindex QConcatenateTablesProxyModel_virtualbase_index(const void* self, int row, int column, struct miqt_qmodelindex parent) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::index(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent)));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_parent(void* self, intptr_t slot) {
@@ -1294,8 +1228,8 @@ bool QConcatenateTablesProxyModel_override_virtual_parent(void* self, intptr_t s
 	return true;
 }
 
-QModelIndex* QConcatenateTablesProxyModel_virtualbase_parent(const void* self, QModelIndex* index) {
-	return new QModelIndex(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::parent(*index));
+struct miqt_qmodelindex QConcatenateTablesProxyModel_virtualbase_parent(const void* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::parent(miqt_from_cabi<QModelIndex>(index)));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_rowCount(void* self, intptr_t slot) {
@@ -1308,8 +1242,8 @@ bool QConcatenateTablesProxyModel_override_virtual_rowCount(void* self, intptr_t
 	return true;
 }
 
-int QConcatenateTablesProxyModel_virtualbase_rowCount(const void* self, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::rowCount(*parent);
+int QConcatenateTablesProxyModel_virtualbase_rowCount(const void* self, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::rowCount(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_headerData(void* self, intptr_t slot) {
@@ -1336,8 +1270,8 @@ bool QConcatenateTablesProxyModel_override_virtual_columnCount(void* self, intpt
 	return true;
 }
 
-int QConcatenateTablesProxyModel_virtualbase_columnCount(const void* self, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::columnCount(*parent);
+int QConcatenateTablesProxyModel_virtualbase_columnCount(const void* self, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::columnCount(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
@@ -1380,12 +1314,12 @@ bool QConcatenateTablesProxyModel_override_virtual_mimeData(void* self, intptr_t
 	return true;
 }
 
-QMimeData* QConcatenateTablesProxyModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
+QMimeData* QConcatenateTablesProxyModel_virtualbase_mimeData(const void* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes) {
 	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes.len);
-	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	struct miqt_qmodelindex* indexes_arr = static_cast<struct miqt_qmodelindex*>(indexes.data);
 	for(size_t i = 0; i < indexes.len; ++i) {
-		indexes_QList.push_back(*(indexes_arr[i]));
+		indexes_QList.push_back(miqt_from_cabi<QModelIndex>(indexes_arr[i]));
 	}
 	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::mimeData(indexes_QList);
 }
@@ -1400,8 +1334,8 @@ bool QConcatenateTablesProxyModel_override_virtual_canDropMimeData(void* self, i
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+bool QConcatenateTablesProxyModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
@@ -1414,8 +1348,8 @@ bool QConcatenateTablesProxyModel_override_virtual_dropMimeData(void* self, intp
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+bool QConcatenateTablesProxyModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_span(void* self, intptr_t slot) {
@@ -1428,8 +1362,8 @@ bool QConcatenateTablesProxyModel_override_virtual_span(void* self, intptr_t slo
 	return true;
 }
 
-QSize* QConcatenateTablesProxyModel_virtualbase_span(const void* self, QModelIndex* index) {
-	return new QSize(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::span(*index));
+struct miqt_qsize QConcatenateTablesProxyModel_virtualbase_span(const void* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::span(miqt_from_cabi<QModelIndex>(index)));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_sibling(void* self, intptr_t slot) {
@@ -1442,8 +1376,8 @@ bool QConcatenateTablesProxyModel_override_virtual_sibling(void* self, intptr_t 
 	return true;
 }
 
-QModelIndex* QConcatenateTablesProxyModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
-	return new QModelIndex(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+struct miqt_qmodelindex QConcatenateTablesProxyModel_virtualbase_sibling(const void* self, int row, int column, struct miqt_qmodelindex idx) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::sibling(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(idx)));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_hasChildren(void* self, intptr_t slot) {
@@ -1456,8 +1390,8 @@ bool QConcatenateTablesProxyModel_override_virtual_hasChildren(void* self, intpt
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_hasChildren(const void* self, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::hasChildren(*parent);
+bool QConcatenateTablesProxyModel_virtualbase_hasChildren(const void* self, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::hasChildren(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
@@ -1514,8 +1448,8 @@ bool QConcatenateTablesProxyModel_override_virtual_insertRows(void* self, intptr
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
+bool QConcatenateTablesProxyModel_virtualbase_insertRows(void* self, int row, int count, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::insertRows(static_cast<int>(row), static_cast<int>(count), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_insertColumns(void* self, intptr_t slot) {
@@ -1528,8 +1462,8 @@ bool QConcatenateTablesProxyModel_override_virtual_insertColumns(void* self, int
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+bool QConcatenateTablesProxyModel_virtualbase_insertColumns(void* self, int column, int count, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::insertColumns(static_cast<int>(column), static_cast<int>(count), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_removeRows(void* self, intptr_t slot) {
@@ -1542,8 +1476,8 @@ bool QConcatenateTablesProxyModel_override_virtual_removeRows(void* self, intptr
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
+bool QConcatenateTablesProxyModel_virtualbase_removeRows(void* self, int row, int count, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::removeRows(static_cast<int>(row), static_cast<int>(count), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_removeColumns(void* self, intptr_t slot) {
@@ -1556,8 +1490,8 @@ bool QConcatenateTablesProxyModel_override_virtual_removeColumns(void* self, int
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+bool QConcatenateTablesProxyModel_virtualbase_removeColumns(void* self, int column, int count, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::removeColumns(static_cast<int>(column), static_cast<int>(count), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_moveRows(void* self, intptr_t slot) {
@@ -1570,8 +1504,8 @@ bool QConcatenateTablesProxyModel_override_virtual_moveRows(void* self, intptr_t
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+bool QConcatenateTablesProxyModel_virtualbase_moveRows(void* self, struct miqt_qmodelindex sourceParent, int sourceRow, int count, struct miqt_qmodelindex destinationParent, int destinationChild) {
+	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::moveRows(miqt_from_cabi<QModelIndex>(sourceParent), static_cast<int>(sourceRow), static_cast<int>(count), miqt_from_cabi<QModelIndex>(destinationParent), static_cast<int>(destinationChild));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_moveColumns(void* self, intptr_t slot) {
@@ -1584,8 +1518,8 @@ bool QConcatenateTablesProxyModel_override_virtual_moveColumns(void* self, intpt
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+bool QConcatenateTablesProxyModel_virtualbase_moveColumns(void* self, struct miqt_qmodelindex sourceParent, int sourceColumn, int count, struct miqt_qmodelindex destinationParent, int destinationChild) {
+	return static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::moveColumns(miqt_from_cabi<QModelIndex>(sourceParent), static_cast<int>(sourceColumn), static_cast<int>(count), miqt_from_cabi<QModelIndex>(destinationParent), static_cast<int>(destinationChild));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_fetchMore(void* self, intptr_t slot) {
@@ -1598,8 +1532,8 @@ bool QConcatenateTablesProxyModel_override_virtual_fetchMore(void* self, intptr_
 	return true;
 }
 
-void QConcatenateTablesProxyModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
-	static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::fetchMore(*parent);
+void QConcatenateTablesProxyModel_virtualbase_fetchMore(void* self, struct miqt_qmodelindex parent) {
+	static_cast<MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::fetchMore(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
@@ -1612,8 +1546,8 @@ bool QConcatenateTablesProxyModel_override_virtual_canFetchMore(void* self, intp
 	return true;
 }
 
-bool QConcatenateTablesProxyModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::canFetchMore(*parent);
+bool QConcatenateTablesProxyModel_virtualbase_canFetchMore(const void* self, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::canFetchMore(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_sort(void* self, intptr_t slot) {
@@ -1640,8 +1574,8 @@ bool QConcatenateTablesProxyModel_override_virtual_buddy(void* self, intptr_t sl
 	return true;
 }
 
-QModelIndex* QConcatenateTablesProxyModel_virtualbase_buddy(const void* self, QModelIndex* index) {
-	return new QModelIndex(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::buddy(*index));
+struct miqt_qmodelindex QConcatenateTablesProxyModel_virtualbase_buddy(const void* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::buddy(miqt_from_cabi<QModelIndex>(index)));
 }
 
 bool QConcatenateTablesProxyModel_override_virtual_match(void* self, intptr_t slot) {
@@ -1654,12 +1588,12 @@ bool QConcatenateTablesProxyModel_override_virtual_match(void* self, intptr_t sl
 	return true;
 }
 
-struct miqt_array /* of QModelIndex* */  QConcatenateTablesProxyModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	QModelIndexList _ret = static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+struct miqt_array /* of struct miqt_qmodelindex */  QConcatenateTablesProxyModel_virtualbase_match(const void* self, struct miqt_qmodelindex start, int role, QVariant* value, int hits, int flags) {
+	QModelIndexList _ret = static_cast<const MiqtVirtualQConcatenateTablesProxyModel*>(self)->QConcatenateTablesProxyModel::match(miqt_from_cabi<QModelIndex>(start), static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -1830,14 +1764,6 @@ QVariant* QConcatenateTablesProxyModel_virtualreturncopy_QVariant(QVariant* src)
 	return new QVariant(*src);
 }
 
-QModelIndex* QConcatenateTablesProxyModel_virtualreturncopy_QModelIndex(QModelIndex* src) {
-	return new QModelIndex(*src);
-}
-
-QSize* QConcatenateTablesProxyModel_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 void QConcatenateTablesProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
@@ -1849,18 +1775,18 @@ void QConcatenateTablesProxyModel_protectedbase_resetInternalData(bool* _dynamic
 	self_cast->resetInternalData();
 }
 
-QModelIndex* QConcatenateTablesProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
+struct miqt_qmodelindex QConcatenateTablesProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmodelindex){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QModelIndex(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
+	return miqt_to_cabi<struct miqt_qmodelindex>(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
 }
 
-void QConcatenateTablesProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+void QConcatenateTablesProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes, QDataStream* stream) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -1870,14 +1796,14 @@ void QConcatenateTablesProxyModel_protectedbase_encodeData(bool* _dynamic_cast_o
 	*_dynamic_cast_ok = true;
 		QModelIndexList indexes_QList;
 		indexes_QList.reserve(indexes.len);
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		struct miqt_qmodelindex* indexes_arr = static_cast<struct miqt_qmodelindex*>(indexes.data);
 		for(size_t i = 0; i < indexes.len; ++i) {
-			indexes_QList.push_back(*(indexes_arr[i]));
+			indexes_QList.push_back(miqt_from_cabi<QModelIndex>(indexes_arr[i]));
 		}
 	self_cast->encodeData(indexes_QList, *stream);
 }
 
-bool QConcatenateTablesProxyModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+bool QConcatenateTablesProxyModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, struct miqt_qmodelindex parent, QDataStream* stream) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -1885,10 +1811,10 @@ bool QConcatenateTablesProxyModel_protectedbase_decodeData(bool* _dynamic_cast_o
 	}
 
 	*_dynamic_cast_ok = true;
-	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent), *stream);
 }
 
-void QConcatenateTablesProxyModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+void QConcatenateTablesProxyModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -1896,7 +1822,7 @@ void QConcatenateTablesProxyModel_protectedbase_beginInsertRows(bool* _dynamic_c
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+	self_cast->beginInsertRows(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(first), static_cast<int>(last));
 }
 
 void QConcatenateTablesProxyModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self) {
@@ -1910,7 +1836,7 @@ void QConcatenateTablesProxyModel_protectedbase_endInsertRows(bool* _dynamic_cas
 	self_cast->endInsertRows();
 }
 
-void QConcatenateTablesProxyModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+void QConcatenateTablesProxyModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -1918,7 +1844,7 @@ void QConcatenateTablesProxyModel_protectedbase_beginRemoveRows(bool* _dynamic_c
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+	self_cast->beginRemoveRows(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(first), static_cast<int>(last));
 }
 
 void QConcatenateTablesProxyModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self) {
@@ -1932,7 +1858,7 @@ void QConcatenateTablesProxyModel_protectedbase_endRemoveRows(bool* _dynamic_cas
 	self_cast->endRemoveRows();
 }
 
-bool QConcatenateTablesProxyModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+bool QConcatenateTablesProxyModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex sourceParent, int sourceFirst, int sourceLast, struct miqt_qmodelindex destinationParent, int destinationRow) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -1940,7 +1866,7 @@ bool QConcatenateTablesProxyModel_protectedbase_beginMoveRows(bool* _dynamic_cas
 	}
 
 	*_dynamic_cast_ok = true;
-	return self_cast->beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+	return self_cast->beginMoveRows(miqt_from_cabi<QModelIndex>(sourceParent), static_cast<int>(sourceFirst), static_cast<int>(sourceLast), miqt_from_cabi<QModelIndex>(destinationParent), static_cast<int>(destinationRow));
 }
 
 void QConcatenateTablesProxyModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self) {
@@ -1954,7 +1880,7 @@ void QConcatenateTablesProxyModel_protectedbase_endMoveRows(bool* _dynamic_cast_
 	self_cast->endMoveRows();
 }
 
-void QConcatenateTablesProxyModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+void QConcatenateTablesProxyModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -1962,7 +1888,7 @@ void QConcatenateTablesProxyModel_protectedbase_beginInsertColumns(bool* _dynami
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+	self_cast->beginInsertColumns(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(first), static_cast<int>(last));
 }
 
 void QConcatenateTablesProxyModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self) {
@@ -1976,7 +1902,7 @@ void QConcatenateTablesProxyModel_protectedbase_endInsertColumns(bool* _dynamic_
 	self_cast->endInsertColumns();
 }
 
-void QConcatenateTablesProxyModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+void QConcatenateTablesProxyModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -1984,7 +1910,7 @@ void QConcatenateTablesProxyModel_protectedbase_beginRemoveColumns(bool* _dynami
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+	self_cast->beginRemoveColumns(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(first), static_cast<int>(last));
 }
 
 void QConcatenateTablesProxyModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self) {
@@ -1998,7 +1924,7 @@ void QConcatenateTablesProxyModel_protectedbase_endRemoveColumns(bool* _dynamic_
 	self_cast->endRemoveColumns();
 }
 
-bool QConcatenateTablesProxyModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+bool QConcatenateTablesProxyModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex sourceParent, int sourceFirst, int sourceLast, struct miqt_qmodelindex destinationParent, int destinationColumn) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2006,7 +1932,7 @@ bool QConcatenateTablesProxyModel_protectedbase_beginMoveColumns(bool* _dynamic_
 	}
 
 	*_dynamic_cast_ok = true;
-	return self_cast->beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+	return self_cast->beginMoveColumns(miqt_from_cabi<QModelIndex>(sourceParent), static_cast<int>(sourceFirst), static_cast<int>(sourceLast), miqt_from_cabi<QModelIndex>(destinationParent), static_cast<int>(destinationColumn));
 }
 
 void QConcatenateTablesProxyModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self) {
@@ -2042,7 +1968,7 @@ void QConcatenateTablesProxyModel_protectedbase_endResetModel(bool* _dynamic_cas
 	self_cast->endResetModel();
 }
 
-void QConcatenateTablesProxyModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to) {
+void QConcatenateTablesProxyModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex from, struct miqt_qmodelindex to) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2050,10 +1976,10 @@ void QConcatenateTablesProxyModel_protectedbase_changePersistentIndex(bool* _dyn
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->changePersistentIndex(*from, *to);
+	self_cast->changePersistentIndex(miqt_from_cabi<QModelIndex>(from), miqt_from_cabi<QModelIndex>(to));
 }
 
-void QConcatenateTablesProxyModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+void QConcatenateTablesProxyModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of struct miqt_qmodelindex */  from, struct miqt_array /* of struct miqt_qmodelindex */  to) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2063,20 +1989,20 @@ void QConcatenateTablesProxyModel_protectedbase_changePersistentIndexList(bool* 
 	*_dynamic_cast_ok = true;
 		QModelIndexList from_QList;
 		from_QList.reserve(from.len);
-		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		struct miqt_qmodelindex* from_arr = static_cast<struct miqt_qmodelindex*>(from.data);
 		for(size_t i = 0; i < from.len; ++i) {
-			from_QList.push_back(*(from_arr[i]));
+			from_QList.push_back(miqt_from_cabi<QModelIndex>(from_arr[i]));
 		}
 		QModelIndexList to_QList;
 		to_QList.reserve(to.len);
-		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		struct miqt_qmodelindex* to_arr = static_cast<struct miqt_qmodelindex*>(to.data);
 		for(size_t i = 0; i < to.len; ++i) {
-			to_QList.push_back(*(to_arr[i]));
+			to_QList.push_back(miqt_from_cabi<QModelIndex>(to_arr[i]));
 		}
 	self_cast->changePersistentIndexList(from_QList, to_QList);
 }
 
-struct miqt_array /* of QModelIndex* */  QConcatenateTablesProxyModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QConcatenateTablesProxyModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2086,9 +2012,9 @@ struct miqt_array /* of QModelIndex* */  QConcatenateTablesProxyModel_protectedb
 	*_dynamic_cast_ok = true;
 	QModelIndexList _ret = self_cast->persistentIndexList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

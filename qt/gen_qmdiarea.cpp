@@ -49,8 +49,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QMdiArea_subWindowActivated(intptr_t, QMdiSubWindow*);
-QSize* miqt_exec_callback_QMdiArea_sizeHint(const QMdiArea*, intptr_t);
-QSize* miqt_exec_callback_QMdiArea_minimumSizeHint(const QMdiArea*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMdiArea_sizeHint(const QMdiArea*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMdiArea_minimumSizeHint(const QMdiArea*, intptr_t);
 void miqt_exec_callback_QMdiArea_setupViewport(QMdiArea*, intptr_t, QWidget*);
 bool miqt_exec_callback_QMdiArea_event(QMdiArea*, intptr_t, QEvent*);
 bool miqt_exec_callback_QMdiArea_eventFilter(QMdiArea*, intptr_t, QObject*, QEvent*);
@@ -72,7 +72,7 @@ void miqt_exec_callback_QMdiArea_dragMoveEvent(QMdiArea*, intptr_t, QDragMoveEve
 void miqt_exec_callback_QMdiArea_dragLeaveEvent(QMdiArea*, intptr_t, QDragLeaveEvent*);
 void miqt_exec_callback_QMdiArea_dropEvent(QMdiArea*, intptr_t, QDropEvent*);
 void miqt_exec_callback_QMdiArea_keyPressEvent(QMdiArea*, intptr_t, QKeyEvent*);
-QSize* miqt_exec_callback_QMdiArea_viewportSizeHint(const QMdiArea*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMdiArea_viewportSizeHint(const QMdiArea*, intptr_t);
 void miqt_exec_callback_QMdiArea_changeEvent(QMdiArea*, intptr_t, QEvent*);
 int miqt_exec_callback_QMdiArea_devType(const QMdiArea*, intptr_t);
 void miqt_exec_callback_QMdiArea_setVisible(QMdiArea*, intptr_t, bool);
@@ -121,13 +121,11 @@ public:
 			return QMdiArea::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMdiArea_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMdiArea_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMdiArea_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QMdiArea_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -138,13 +136,11 @@ public:
 			return QMdiArea::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMdiArea_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMdiArea_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMdiArea_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QMdiArea_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -511,13 +507,11 @@ public:
 			return QMdiArea::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMdiArea_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMdiArea_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMdiArea_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QMdiArea_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -981,7 +975,7 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QMdiArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QMdiArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QMdiArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QMdiArea_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QMdiArea_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 	friend void QMdiArea_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1037,12 +1031,12 @@ struct miqt_string QMdiArea_trUtf8(const char* s) {
 	return _ms;
 }
 
-QSize* QMdiArea_sizeHint(const QMdiArea* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QMdiArea_sizeHint(const QMdiArea* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QMdiArea_minimumSizeHint(const QMdiArea* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QMdiArea_minimumSizeHint(const QMdiArea* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 QMdiSubWindow* QMdiArea_currentSubWindow(const QMdiArea* self) {
@@ -1264,8 +1258,8 @@ bool QMdiArea_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMdiArea_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMdiArea*>(self)->QMdiArea::sizeHint());
+struct miqt_qsize QMdiArea_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMdiArea*>(self)->QMdiArea::sizeHint());
 }
 
 bool QMdiArea_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1278,8 +1272,8 @@ bool QMdiArea_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMdiArea_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMdiArea*>(self)->QMdiArea::minimumSizeHint());
+struct miqt_qsize QMdiArea_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMdiArea*>(self)->QMdiArea::minimumSizeHint());
 }
 
 bool QMdiArea_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -1586,8 +1580,8 @@ bool QMdiArea_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMdiArea_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMdiArea*>(self)->QMdiArea::viewportSizeHint());
+struct miqt_qsize QMdiArea_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMdiArea*>(self)->QMdiArea::viewportSizeHint());
 }
 
 bool QMdiArea_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1969,10 +1963,6 @@ void QMdiArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQMdiArea*>(self)->QMdiArea::disconnectNotify(*signal);
 }
 
-QSize* QMdiArea_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QMdiArea_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -1988,15 +1978,15 @@ void QMdiArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* sel
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QMdiArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QMdiArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQMdiArea* self_cast = dynamic_cast<MiqtVirtualQMdiArea*>( (QMdiArea*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QMdiArea_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

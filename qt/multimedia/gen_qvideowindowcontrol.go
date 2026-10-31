@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -95,15 +96,12 @@ func (this *QVideoWindowControl) SetWinId(id uintptr) {
 	C.QVideoWindowControl_setWinId(this.h, (C.uintptr_t)(id))
 }
 
-func (this *QVideoWindowControl) DisplayRect() *qt.QRect {
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QVideoWindowControl_displayRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QVideoWindowControl) DisplayRect() qt.QRect {
+	return libmiqt.ValueCast[qt.QRect](C.QVideoWindowControl_displayRect(this.h))
 }
 
-func (this *QVideoWindowControl) SetDisplayRect(rect *qt.QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QVideoWindowControl_setDisplayRect(this.h, (*C.QRect)(rect.UnsafePointer()))
+func (this *QVideoWindowControl) SetDisplayRect(rect qt.QRect) {
+	C.QVideoWindowControl_setDisplayRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
 func (this *QVideoWindowControl) IsFullScreen() bool {
@@ -118,10 +116,8 @@ func (this *QVideoWindowControl) Repaint() {
 	C.QVideoWindowControl_repaint(this.h)
 }
 
-func (this *QVideoWindowControl) NativeSize() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWindowControl_nativeSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QVideoWindowControl) NativeSize() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QVideoWindowControl_nativeSize(this.h))
 }
 
 func (this *QVideoWindowControl) AspectRatioMode() qt.AspectRatioMode {

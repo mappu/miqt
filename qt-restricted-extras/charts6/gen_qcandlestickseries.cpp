@@ -348,20 +348,20 @@ bool QCandlestickSeries_capsVisible(const QCandlestickSeries* self) {
 	return self->capsVisible();
 }
 
-void QCandlestickSeries_setIncreasingColor(QCandlestickSeries* self, QColor* increasingColor) {
-	self->setIncreasingColor(*increasingColor);
+void QCandlestickSeries_setIncreasingColor(QCandlestickSeries* self, struct miqt_qcolor increasingColor) {
+	self->setIncreasingColor(miqt_from_cabi<QColor>(increasingColor));
 }
 
-QColor* QCandlestickSeries_increasingColor(const QCandlestickSeries* self) {
-	return new QColor(self->increasingColor());
+struct miqt_qcolor QCandlestickSeries_increasingColor(const QCandlestickSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->increasingColor());
 }
 
-void QCandlestickSeries_setDecreasingColor(QCandlestickSeries* self, QColor* decreasingColor) {
-	self->setDecreasingColor(*decreasingColor);
+void QCandlestickSeries_setDecreasingColor(QCandlestickSeries* self, struct miqt_qcolor decreasingColor) {
+	self->setDecreasingColor(miqt_from_cabi<QColor>(decreasingColor));
 }
 
-QColor* QCandlestickSeries_decreasingColor(const QCandlestickSeries* self) {
-	return new QColor(self->decreasingColor());
+struct miqt_qcolor QCandlestickSeries_decreasingColor(const QCandlestickSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->decreasingColor());
 }
 
 void QCandlestickSeries_setBrush(QCandlestickSeries* self, QBrush* brush) {

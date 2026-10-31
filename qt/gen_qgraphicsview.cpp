@@ -55,8 +55,8 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsView_rubberBandChanged(intptr_t, QRect*, QPointF*, QPointF*);
-QSize* miqt_exec_callback_QGraphicsView_sizeHint(const QGraphicsView*, intptr_t);
+void miqt_exec_callback_QGraphicsView_rubberBandChanged(intptr_t, struct miqt_qrect, struct miqt_qpointf, struct miqt_qpointf);
+struct miqt_qsize miqt_exec_callback_QGraphicsView_sizeHint(const QGraphicsView*, intptr_t);
 QVariant* miqt_exec_callback_QGraphicsView_inputMethodQuery(const QGraphicsView*, intptr_t, int);
 void miqt_exec_callback_QGraphicsView_setupViewport(QGraphicsView*, intptr_t, QWidget*);
 bool miqt_exec_callback_QGraphicsView_event(QGraphicsView*, intptr_t, QEvent*);
@@ -81,11 +81,11 @@ void miqt_exec_callback_QGraphicsView_resizeEvent(QGraphicsView*, intptr_t, QRes
 void miqt_exec_callback_QGraphicsView_scrollContentsBy(QGraphicsView*, intptr_t, int, int);
 void miqt_exec_callback_QGraphicsView_showEvent(QGraphicsView*, intptr_t, QShowEvent*);
 void miqt_exec_callback_QGraphicsView_inputMethodEvent(QGraphicsView*, intptr_t, QInputMethodEvent*);
-void miqt_exec_callback_QGraphicsView_drawBackground(QGraphicsView*, intptr_t, QPainter*, QRectF*);
-void miqt_exec_callback_QGraphicsView_drawForeground(QGraphicsView*, intptr_t, QPainter*, QRectF*);
-QSize* miqt_exec_callback_QGraphicsView_minimumSizeHint(const QGraphicsView*, intptr_t);
+void miqt_exec_callback_QGraphicsView_drawBackground(QGraphicsView*, intptr_t, QPainter*, struct miqt_qrectf);
+void miqt_exec_callback_QGraphicsView_drawForeground(QGraphicsView*, intptr_t, QPainter*, struct miqt_qrectf);
+struct miqt_qsize miqt_exec_callback_QGraphicsView_minimumSizeHint(const QGraphicsView*, intptr_t);
 bool miqt_exec_callback_QGraphicsView_eventFilter(QGraphicsView*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QGraphicsView_viewportSizeHint(const QGraphicsView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QGraphicsView_viewportSizeHint(const QGraphicsView*, intptr_t);
 void miqt_exec_callback_QGraphicsView_changeEvent(QGraphicsView*, intptr_t, QEvent*);
 int miqt_exec_callback_QGraphicsView_devType(const QGraphicsView*, intptr_t);
 void miqt_exec_callback_QGraphicsView_setVisible(QGraphicsView*, intptr_t, bool);
@@ -132,13 +132,11 @@ public:
 			return QGraphicsView::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGraphicsView_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGraphicsView_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGraphicsView_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QGraphicsView_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -559,14 +557,12 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QGraphicsView_drawBackground(this, handle__drawBackground, sigval1, sigval2);
 
 	}
 
-	friend void QGraphicsView_virtualbase_drawBackground(void* self, QPainter* painter, QRectF* rect);
+	friend void QGraphicsView_virtualbase_drawBackground(void* self, QPainter* painter, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawForeground = 0;
@@ -579,14 +575,12 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QGraphicsView_drawForeground(this, handle__drawForeground, sigval1, sigval2);
 
 	}
 
-	friend void QGraphicsView_virtualbase_drawForeground(void* self, QPainter* painter, QRectF* rect);
+	friend void QGraphicsView_virtualbase_drawForeground(void* self, QPainter* painter, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -597,13 +591,11 @@ public:
 			return QGraphicsView::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGraphicsView_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGraphicsView_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGraphicsView_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QGraphicsView_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -631,13 +623,11 @@ public:
 			return QGraphicsView::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGraphicsView_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGraphicsView_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGraphicsView_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QGraphicsView_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -1032,7 +1022,7 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QGraphicsView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QGraphicsView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QGraphicsView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QGraphicsView_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 	friend void QGraphicsView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1096,8 +1086,8 @@ struct miqt_string QGraphicsView_trUtf8(const char* s) {
 	return _ms;
 }
 
-QSize* QGraphicsView_sizeHint(const QGraphicsView* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QGraphicsView_sizeHint(const QGraphicsView* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 int QGraphicsView_renderHints(const QGraphicsView* self) {
@@ -1180,8 +1170,8 @@ void QGraphicsView_setRubberBandSelectionMode(QGraphicsView* self, int mode) {
 	self->setRubberBandSelectionMode(static_cast<Qt::ItemSelectionMode>(mode));
 }
 
-QRect* QGraphicsView_rubberBandRect(const QGraphicsView* self) {
-	return new QRect(self->rubberBandRect());
+struct miqt_qrect QGraphicsView_rubberBandRect(const QGraphicsView* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rubberBandRect());
 }
 
 int QGraphicsView_cacheMode(const QGraphicsView* self) {
@@ -1213,12 +1203,12 @@ void QGraphicsView_setScene(QGraphicsView* self, QGraphicsScene* scene) {
 	self->setScene(scene);
 }
 
-QRectF* QGraphicsView_sceneRect(const QGraphicsView* self) {
-	return new QRectF(self->sceneRect());
+struct miqt_qrectf QGraphicsView_sceneRect(const QGraphicsView* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->sceneRect());
 }
 
-void QGraphicsView_setSceneRect(QGraphicsView* self, QRectF* rect) {
-	self->setSceneRect(*rect);
+void QGraphicsView_setSceneRect(QGraphicsView* self, struct miqt_qrectf rect) {
+	self->setSceneRect(miqt_from_cabi<QRectF>(rect));
 }
 
 void QGraphicsView_setSceneRect2(QGraphicsView* self, double x, double y, double w, double h) {
@@ -1273,8 +1263,8 @@ void QGraphicsView_translate(QGraphicsView* self, double dx, double dy) {
 	self->translate(static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
-void QGraphicsView_centerOn(QGraphicsView* self, QPointF* pos) {
-	self->centerOn(*pos);
+void QGraphicsView_centerOn(QGraphicsView* self, struct miqt_qpointf pos) {
+	self->centerOn(miqt_from_cabi<QPointF>(pos));
 }
 
 void QGraphicsView_centerOn2(QGraphicsView* self, double x, double y) {
@@ -1285,8 +1275,8 @@ void QGraphicsView_centerOnWithItem(QGraphicsView* self, QGraphicsItem* item) {
 	self->centerOn(item);
 }
 
-void QGraphicsView_ensureVisible(QGraphicsView* self, QRectF* rect) {
-	self->ensureVisible(*rect);
+void QGraphicsView_ensureVisible(QGraphicsView* self, struct miqt_qrectf rect) {
+	self->ensureVisible(miqt_from_cabi<QRectF>(rect));
 }
 
 void QGraphicsView_ensureVisible2(QGraphicsView* self, double x, double y, double w, double h) {
@@ -1297,8 +1287,8 @@ void QGraphicsView_ensureVisibleWithItem(QGraphicsView* self, QGraphicsItem* ite
 	self->ensureVisible(item);
 }
 
-void QGraphicsView_fitInView(QGraphicsView* self, QRectF* rect) {
-	self->fitInView(*rect);
+void QGraphicsView_fitInView(QGraphicsView* self, struct miqt_qrectf rect) {
+	self->fitInView(miqt_from_cabi<QRectF>(rect));
 }
 
 void QGraphicsView_fitInView2(QGraphicsView* self, double x, double y, double w, double h) {
@@ -1326,8 +1316,8 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items(const QGraphicsVi
 	return _out;
 }
 
-struct miqt_array /* of QGraphicsItem* */  QGraphicsView_itemsWithPos(const QGraphicsView* self, QPoint* pos) {
-	QList<QGraphicsItem *> _ret = self->items(*pos);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsView_itemsWithPos(const QGraphicsView* self, struct miqt_qpoint pos) {
+	QList<QGraphicsItem *> _ret = self->items(miqt_from_cabi<QPoint>(pos));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1352,8 +1342,8 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items2(const QGraphicsV
 	return _out;
 }
 
-struct miqt_array /* of QGraphicsItem* */  QGraphicsView_itemsWithRect(const QGraphicsView* self, QRect* rect) {
-	QList<QGraphicsItem *> _ret = self->items(*rect);
+struct miqt_array /* of QGraphicsItem* */  QGraphicsView_itemsWithRect(const QGraphicsView* self, struct miqt_qrect rect) {
+	QList<QGraphicsItem *> _ret = self->items(miqt_from_cabi<QRect>(rect));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1391,36 +1381,36 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsView_itemsWithPath(const QGr
 	return _out;
 }
 
-QGraphicsItem* QGraphicsView_itemAt(const QGraphicsView* self, QPoint* pos) {
-	return self->itemAt(*pos);
+QGraphicsItem* QGraphicsView_itemAt(const QGraphicsView* self, struct miqt_qpoint pos) {
+	return self->itemAt(miqt_from_cabi<QPoint>(pos));
 }
 
 QGraphicsItem* QGraphicsView_itemAt2(const QGraphicsView* self, int x, int y) {
 	return self->itemAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-QPointF* QGraphicsView_mapToScene(const QGraphicsView* self, QPoint* point) {
-	return new QPointF(self->mapToScene(*point));
+struct miqt_qpointf QGraphicsView_mapToScene(const QGraphicsView* self, struct miqt_qpoint point) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToScene(miqt_from_cabi<QPoint>(point)));
 }
 
 QPainterPath* QGraphicsView_mapToSceneWithPath(const QGraphicsView* self, QPainterPath* path) {
 	return new QPainterPath(self->mapToScene(*path));
 }
 
-QPoint* QGraphicsView_mapFromScene(const QGraphicsView* self, QPointF* point) {
-	return new QPoint(self->mapFromScene(*point));
+struct miqt_qpoint QGraphicsView_mapFromScene(const QGraphicsView* self, struct miqt_qpointf point) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapFromScene(miqt_from_cabi<QPointF>(point)));
 }
 
 QPainterPath* QGraphicsView_mapFromSceneWithPath(const QGraphicsView* self, QPainterPath* path) {
 	return new QPainterPath(self->mapFromScene(*path));
 }
 
-QPointF* QGraphicsView_mapToScene2(const QGraphicsView* self, int x, int y) {
-	return new QPointF(self->mapToScene(static_cast<int>(x), static_cast<int>(y)));
+struct miqt_qpointf QGraphicsView_mapToScene2(const QGraphicsView* self, int x, int y) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToScene(static_cast<int>(x), static_cast<int>(y)));
 }
 
-QPoint* QGraphicsView_mapFromScene2(const QGraphicsView* self, double x, double y) {
-	return new QPoint(self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y)));
+struct miqt_qpoint QGraphicsView_mapFromScene2(const QGraphicsView* self, double x, double y) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
 QVariant* QGraphicsView_inputMethodQuery(const QGraphicsView* self, int query) {
@@ -1443,12 +1433,12 @@ void QGraphicsView_setForegroundBrush(QGraphicsView* self, QBrush* brush) {
 	self->setForegroundBrush(*brush);
 }
 
-void QGraphicsView_updateScene(QGraphicsView* self, struct miqt_array /* of QRectF* */  rects) {
+void QGraphicsView_updateScene(QGraphicsView* self, struct miqt_array /* of struct miqt_qrectf */  rects) {
 	QList<QRectF> rects_QList;
 	rects_QList.reserve(rects.len);
-	QRectF** rects_arr = static_cast<QRectF**>(rects.data);
+	struct miqt_qrectf* rects_arr = static_cast<struct miqt_qrectf*>(rects.data);
 	for(size_t i = 0; i < rects.len; ++i) {
-		rects_QList.push_back(*(rects_arr[i]));
+		rects_QList.push_back(miqt_from_cabi<QRectF>(rects_arr[i]));
 	}
 	self->updateScene(rects_QList);
 }
@@ -1457,19 +1447,19 @@ void QGraphicsView_invalidateScene(QGraphicsView* self) {
 	self->invalidateScene();
 }
 
-void QGraphicsView_updateSceneRect(QGraphicsView* self, QRectF* rect) {
-	self->updateSceneRect(*rect);
+void QGraphicsView_updateSceneRect(QGraphicsView* self, struct miqt_qrectf rect) {
+	self->updateSceneRect(miqt_from_cabi<QRectF>(rect));
 }
 
-void QGraphicsView_rubberBandChanged(QGraphicsView* self, QRect* viewportRect, QPointF* fromScenePoint, QPointF* toScenePoint) {
-	self->rubberBandChanged(*viewportRect, *fromScenePoint, *toScenePoint);
+void QGraphicsView_rubberBandChanged(QGraphicsView* self, struct miqt_qrect viewportRect, struct miqt_qpointf fromScenePoint, struct miqt_qpointf toScenePoint) {
+	self->rubberBandChanged(miqt_from_cabi<QRect>(viewportRect), miqt_from_cabi<QPointF>(fromScenePoint), miqt_from_cabi<QPointF>(toScenePoint));
 }
 
 void QGraphicsView_connect_rubberBandChanged(QGraphicsView* self, intptr_t slot) {
 	QGraphicsView::connect(self, static_cast<void (QGraphicsView::*)(QRect, QPointF, QPointF)>(&QGraphicsView::rubberBandChanged), self, [=](QRect viewportRect, QPointF fromScenePoint, QPointF toScenePoint) {
-		QRect* sigval1 = new QRect(viewportRect);
-		QPointF* sigval2 = new QPointF(fromScenePoint);
-		QPointF* sigval3 = new QPointF(toScenePoint);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(viewportRect);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(fromScenePoint);
+		struct miqt_qpointf sigval3 = miqt_to_cabi<struct miqt_qpointf>(toScenePoint);
 		miqt_exec_callback_QGraphicsView_rubberBandChanged(slot, sigval1, sigval2, sigval3);
 	});
 }
@@ -1534,12 +1524,12 @@ void QGraphicsView_setTransform2(QGraphicsView* self, QTransform* matrix, bool c
 	self->setTransform(*matrix, combine);
 }
 
-void QGraphicsView_ensureVisible3(QGraphicsView* self, QRectF* rect, int xmargin) {
-	self->ensureVisible(*rect, static_cast<int>(xmargin));
+void QGraphicsView_ensureVisible3(QGraphicsView* self, struct miqt_qrectf rect, int xmargin) {
+	self->ensureVisible(miqt_from_cabi<QRectF>(rect), static_cast<int>(xmargin));
 }
 
-void QGraphicsView_ensureVisible4(QGraphicsView* self, QRectF* rect, int xmargin, int ymargin) {
-	self->ensureVisible(*rect, static_cast<int>(xmargin), static_cast<int>(ymargin));
+void QGraphicsView_ensureVisible4(QGraphicsView* self, struct miqt_qrectf rect, int xmargin, int ymargin) {
+	self->ensureVisible(miqt_from_cabi<QRectF>(rect), static_cast<int>(xmargin), static_cast<int>(ymargin));
 }
 
 void QGraphicsView_ensureVisible5(QGraphicsView* self, double x, double y, double w, double h, int xmargin) {
@@ -1558,8 +1548,8 @@ void QGraphicsView_ensureVisible8(QGraphicsView* self, QGraphicsItem* item, int 
 	self->ensureVisible(item, static_cast<int>(xmargin), static_cast<int>(ymargin));
 }
 
-void QGraphicsView_fitInView3(QGraphicsView* self, QRectF* rect, int aspectRadioMode) {
-	self->fitInView(*rect, static_cast<Qt::AspectRatioMode>(aspectRadioMode));
+void QGraphicsView_fitInView3(QGraphicsView* self, struct miqt_qrectf rect, int aspectRadioMode) {
+	self->fitInView(miqt_from_cabi<QRectF>(rect), static_cast<Qt::AspectRatioMode>(aspectRadioMode));
 }
 
 void QGraphicsView_fitInView4(QGraphicsView* self, double x, double y, double w, double h, int aspectRadioMode) {
@@ -1570,20 +1560,20 @@ void QGraphicsView_fitInView5(QGraphicsView* self, QGraphicsItem* item, int aspe
 	self->fitInView(item, static_cast<Qt::AspectRatioMode>(aspectRadioMode));
 }
 
-void QGraphicsView_render2(QGraphicsView* self, QPainter* painter, QRectF* target) {
-	self->render(painter, *target);
+void QGraphicsView_render2(QGraphicsView* self, QPainter* painter, struct miqt_qrectf target) {
+	self->render(painter, miqt_from_cabi<QRectF>(target));
 }
 
-void QGraphicsView_render3(QGraphicsView* self, QPainter* painter, QRectF* target, QRect* source) {
-	self->render(painter, *target, *source);
+void QGraphicsView_render3(QGraphicsView* self, QPainter* painter, struct miqt_qrectf target, struct miqt_qrect source) {
+	self->render(painter, miqt_from_cabi<QRectF>(target), miqt_from_cabi<QRect>(source));
 }
 
-void QGraphicsView_render4(QGraphicsView* self, QPainter* painter, QRectF* target, QRect* source, int aspectRatioMode) {
-	self->render(painter, *target, *source, static_cast<Qt::AspectRatioMode>(aspectRatioMode));
+void QGraphicsView_render4(QGraphicsView* self, QPainter* painter, struct miqt_qrectf target, struct miqt_qrect source, int aspectRatioMode) {
+	self->render(painter, miqt_from_cabi<QRectF>(target), miqt_from_cabi<QRect>(source), static_cast<Qt::AspectRatioMode>(aspectRatioMode));
 }
 
-struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items4(const QGraphicsView* self, QRect* rect, int mode) {
-	QList<QGraphicsItem *> _ret = self->items(*rect, static_cast<Qt::ItemSelectionMode>(mode));
+struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items4(const QGraphicsView* self, struct miqt_qrect rect, int mode) {
+	QList<QGraphicsItem *> _ret = self->items(miqt_from_cabi<QRect>(rect), static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1621,12 +1611,12 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items7(const QGraphicsV
 	return _out;
 }
 
-void QGraphicsView_invalidateSceneWithRect(QGraphicsView* self, QRectF* rect) {
-	self->invalidateScene(*rect);
+void QGraphicsView_invalidateSceneWithRect(QGraphicsView* self, struct miqt_qrectf rect) {
+	self->invalidateScene(miqt_from_cabi<QRectF>(rect));
 }
 
-void QGraphicsView_invalidateScene2(QGraphicsView* self, QRectF* rect, int layers) {
-	self->invalidateScene(*rect, static_cast<QGraphicsScene::SceneLayers>(layers));
+void QGraphicsView_invalidateScene2(QGraphicsView* self, struct miqt_qrectf rect, int layers) {
+	self->invalidateScene(miqt_from_cabi<QRectF>(rect), static_cast<QGraphicsScene::SceneLayers>(layers));
 }
 
 bool QGraphicsView_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1639,8 +1629,8 @@ bool QGraphicsView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QGraphicsView_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGraphicsView*>(self)->QGraphicsView::sizeHint());
+struct miqt_qsize QGraphicsView_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGraphicsView*>(self)->QGraphicsView::sizeHint());
 }
 
 bool QGraphicsView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1989,8 +1979,8 @@ bool QGraphicsView_override_virtual_drawBackground(void* self, intptr_t slot) {
 	return true;
 }
 
-void QGraphicsView_virtualbase_drawBackground(void* self, QPainter* painter, QRectF* rect) {
-	static_cast<MiqtVirtualQGraphicsView*>(self)->QGraphicsView::drawBackground(painter, *rect);
+void QGraphicsView_virtualbase_drawBackground(void* self, QPainter* painter, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQGraphicsView*>(self)->QGraphicsView::drawBackground(painter, miqt_from_cabi<QRectF>(rect));
 }
 
 bool QGraphicsView_override_virtual_drawForeground(void* self, intptr_t slot) {
@@ -2003,8 +1993,8 @@ bool QGraphicsView_override_virtual_drawForeground(void* self, intptr_t slot) {
 	return true;
 }
 
-void QGraphicsView_virtualbase_drawForeground(void* self, QPainter* painter, QRectF* rect) {
-	static_cast<MiqtVirtualQGraphicsView*>(self)->QGraphicsView::drawForeground(painter, *rect);
+void QGraphicsView_virtualbase_drawForeground(void* self, QPainter* painter, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQGraphicsView*>(self)->QGraphicsView::drawForeground(painter, miqt_from_cabi<QRectF>(rect));
 }
 
 bool QGraphicsView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -2017,8 +2007,8 @@ bool QGraphicsView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QGraphicsView_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGraphicsView*>(self)->QGraphicsView::minimumSizeHint());
+struct miqt_qsize QGraphicsView_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGraphicsView*>(self)->QGraphicsView::minimumSizeHint());
 }
 
 bool QGraphicsView_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2045,8 +2035,8 @@ bool QGraphicsView_override_virtual_viewportSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QGraphicsView_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGraphicsView*>(self)->QGraphicsView::viewportSizeHint());
+struct miqt_qsize QGraphicsView_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGraphicsView*>(self)->QGraphicsView::viewportSizeHint());
 }
 
 bool QGraphicsView_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -2372,10 +2362,6 @@ void QGraphicsView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	static_cast<MiqtVirtualQGraphicsView*>(self)->QGraphicsView::disconnectNotify(*signal);
 }
 
-QSize* QGraphicsView_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QGraphicsView_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -2391,15 +2377,15 @@ void QGraphicsView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QGraphicsView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QGraphicsView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGraphicsView* self_cast = dynamic_cast<MiqtVirtualQGraphicsView*>( (QGraphicsView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QGraphicsView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

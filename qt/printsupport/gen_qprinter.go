@@ -9,6 +9,7 @@ package printsupport
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -316,10 +317,9 @@ func (this *QPrinter) PageSize() qt.QPagedPaintDevice__PageSize {
 	return (qt.QPagedPaintDevice__PageSize)(C.QPrinter_pageSize(this.h))
 }
 
-func (this *QPrinter) SetPageSizeMM(size *qt.QSizeF) {
+func (this *QPrinter) SetPageSizeMM(size qt.QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QPrinter_setPageSizeMM(this.h, (*C.QSizeF)(size.UnsafePointer()))
+	C.QPrinter_setPageSizeMM(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
 func (this *QPrinter) SetPaperSize(paperSize qt.QPagedPaintDevice__PageSize) {
@@ -332,17 +332,14 @@ func (this *QPrinter) PaperSize() qt.QPagedPaintDevice__PageSize {
 	return (qt.QPagedPaintDevice__PageSize)(C.QPrinter_paperSize(this.h))
 }
 
-func (this *QPrinter) SetPaperSize2(paperSize *qt.QSizeF, unit QPrinter__Unit) {
+func (this *QPrinter) SetPaperSize2(paperSize qt.QSizeF, unit QPrinter__Unit) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(paperSize)
-	C.QPrinter_setPaperSize2(this.h, (*C.QSizeF)(paperSize.UnsafePointer()), (C.int)(unit))
+	C.QPrinter_setPaperSize2(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](paperSize), (C.int)(unit))
 }
 
-func (this *QPrinter) PaperSizeWithUnit(unit QPrinter__Unit) *qt.QSizeF {
+func (this *QPrinter) PaperSizeWithUnit(unit QPrinter__Unit) qt.QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QPrinter_paperSizeWithUnit(this.h, (C.int)(unit))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QPrinter_paperSizeWithUnit(this.h, (C.int)(unit)))
 }
 
 func (this *QPrinter) SetPaperName(paperName string) {
@@ -503,32 +500,24 @@ func (this *QPrinter) WinPageSize() int {
 	return (int)(C.QPrinter_winPageSize(this.h))
 }
 
-func (this *QPrinter) PaperRect() *qt.QRect {
+func (this *QPrinter) PaperRect() qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QPrinter_paperRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QPrinter_paperRect(this.h))
 }
 
-func (this *QPrinter) PageRect() *qt.QRect {
+func (this *QPrinter) PageRect() qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QPrinter_pageRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QPrinter_pageRect(this.h))
 }
 
-func (this *QPrinter) PaperRectWithQPrinterUnit(param1 QPrinter__Unit) *qt.QRectF {
+func (this *QPrinter) PaperRectWithQPrinterUnit(param1 QPrinter__Unit) qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QPrinter_paperRectWithQPrinterUnit(this.h, (C.int)(param1))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QPrinter_paperRectWithQPrinterUnit(this.h, (C.int)(param1)))
 }
 
-func (this *QPrinter) PageRectWithQPrinterUnit(param1 QPrinter__Unit) *qt.QRectF {
+func (this *QPrinter) PageRectWithQPrinterUnit(param1 QPrinter__Unit) qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QPrinter_pageRectWithQPrinterUnit(this.h, (C.int)(param1))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QPrinter_pageRectWithQPrinterUnit(this.h, (C.int)(param1)))
 }
 
 func (this *QPrinter) PrinterSelectionOption() string {
@@ -699,14 +688,13 @@ func miqt_exec_callback_QPrinter_setPageSize(self *C.QPrinter, cb C.intptr_t, pa
 
 }
 
-func (this *QPrinter) callVirtualBase_SetPageSizeMM(size *qt.QSizeF) {
+func (this *QPrinter) callVirtualBase_SetPageSizeMM(size qt.QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
 
-	C.QPrinter_virtualbase_setPageSizeMM(unsafe.Pointer(this.h), (*C.QSizeF)(size.UnsafePointer()))
+	C.QPrinter_virtualbase_setPageSizeMM(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 
 }
-func (this *QPrinter) OnSetPageSizeMM(slot func(super func(size *qt.QSizeF), size *qt.QSizeF)) {
+func (this *QPrinter) OnSetPageSizeMM(slot func(super func(size qt.QSizeF), size qt.QSizeF)) {
 	ok := C.QPrinter_override_virtual_setPageSizeMM(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -714,14 +702,14 @@ func (this *QPrinter) OnSetPageSizeMM(slot func(super func(size *qt.QSizeF), siz
 }
 
 //export miqt_exec_callback_QPrinter_setPageSizeMM
-func miqt_exec_callback_QPrinter_setPageSizeMM(self *C.QPrinter, cb C.intptr_t, size *C.QSizeF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size *qt.QSizeF), size *qt.QSizeF))
+func miqt_exec_callback_QPrinter_setPageSizeMM(self *C.QPrinter, cb C.intptr_t, size C.struct_miqt_qsizef) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size qt.QSizeF), size qt.QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSizeF(unsafe.Pointer(size))
+	slotval1 := libmiqt.ValueCast[qt.QSizeF](size)
 
 	gofunc((&QPrinter{h: self}).callVirtualBase_SetPageSizeMM, slotval1)
 
@@ -867,7 +855,6 @@ func miqt_exec_callback_QPrinter_initPainter(self *C.QPrinter, cb C.intptr_t, pa
 
 func (this *QPrinter) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QPrinter_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -109,16 +110,12 @@ func QCheckBox_Tr(s string) string {
 	return _ret
 }
 
-func (this *QCheckBox) SizeHint() *QSize {
-	_goptr := newQSize(C.QCheckBox_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCheckBox) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QCheckBox_sizeHint(this.h))
 }
 
-func (this *QCheckBox) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QCheckBox_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCheckBox) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QCheckBox_minimumSizeHint(this.h))
 }
 
 func (this *QCheckBox) SetTristate() {
@@ -306,14 +303,12 @@ func (this *QCheckBox) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QCheckBox) callVirtualBase_SizeHint() *QSize {
+func (this *QCheckBox) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QCheckBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QCheckBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QCheckBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QCheckBox) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QCheckBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -321,27 +316,24 @@ func (this *QCheckBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QCheckBox_sizeHint
-func miqt_exec_callback_QCheckBox_sizeHint(self *C.QCheckBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QCheckBox_sizeHint(self *C.QCheckBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QCheckBox{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QCheckBox_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QCheckBox) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QCheckBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QCheckBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QCheckBox) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QCheckBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QCheckBox) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QCheckBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -349,16 +341,15 @@ func (this *QCheckBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QCheckBox_minimumSizeHint
-func miqt_exec_callback_QCheckBox_minimumSizeHint(self *C.QCheckBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QCheckBox_minimumSizeHint(self *C.QCheckBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QCheckBox{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QCheckBox_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -391,13 +382,12 @@ func miqt_exec_callback_QCheckBox_event(self *C.QCheckBox, cb C.intptr_t, e *C.Q
 
 }
 
-func (this *QCheckBox) callVirtualBase_HitButton(pos *QPoint) bool {
-	defer runtime.KeepAlive(pos)
+func (this *QCheckBox) callVirtualBase_HitButton(pos QPoint) bool {
 
-	return (bool)(C.QCheckBox_virtualbase_hitButton(unsafe.Pointer(this.h), pos.cPointer()))
+	return (bool)(C.QCheckBox_virtualbase_hitButton(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 
 }
-func (this *QCheckBox) OnHitButton(slot func(super func(pos *QPoint) bool, pos *QPoint) bool) {
+func (this *QCheckBox) OnHitButton(slot func(super func(pos QPoint) bool, pos QPoint) bool) {
 	ok := C.QCheckBox_override_virtual_hitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -405,14 +395,14 @@ func (this *QCheckBox) OnHitButton(slot func(super func(pos *QPoint) bool, pos *
 }
 
 //export miqt_exec_callback_QCheckBox_hitButton
-func miqt_exec_callback_QCheckBox_hitButton(self *C.QCheckBox, cb C.intptr_t, pos *C.QPoint) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos *QPoint) bool, pos *QPoint) bool)
+func miqt_exec_callback_QCheckBox_hitButton(self *C.QCheckBox, cb C.intptr_t, pos C.struct_miqt_qpoint) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos QPoint) bool, pos QPoint) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPoint(pos)
+	slotval1 := libmiqt.ValueCast[QPoint](pos)
 
 	virtualReturn := gofunc((&QCheckBox{h: self}).callVirtualBase_HitButton, slotval1)
 
@@ -1422,7 +1412,6 @@ func miqt_exec_callback_QCheckBox_initPainter(self *C.QCheckBox, cb C.intptr_t, 
 }
 
 func (this *QCheckBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QCheckBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

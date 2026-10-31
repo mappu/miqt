@@ -102,9 +102,9 @@ void* QCommandLinkButton_metacast(QCommandLinkButton* self, const char* param1);
 struct miqt_string QCommandLinkButton_tr(const char* s);
 struct miqt_string QCommandLinkButton_description(const QCommandLinkButton* self);
 void QCommandLinkButton_setDescription(QCommandLinkButton* self, struct miqt_string description);
-QSize* QCommandLinkButton_sizeHint(const QCommandLinkButton* self);
+struct miqt_qsize QCommandLinkButton_sizeHint(const QCommandLinkButton* self);
 int QCommandLinkButton_heightForWidth(const QCommandLinkButton* self, int param1);
-QSize* QCommandLinkButton_minimumSizeHint(const QCommandLinkButton* self);
+struct miqt_qsize QCommandLinkButton_minimumSizeHint(const QCommandLinkButton* self);
 void QCommandLinkButton_initStyleOption(const QCommandLinkButton* self, QStyleOptionButton* option);
 bool QCommandLinkButton_event(QCommandLinkButton* self, QEvent* e);
 void QCommandLinkButton_paintEvent(QCommandLinkButton* self, QPaintEvent* param1);
@@ -112,11 +112,11 @@ struct miqt_string QCommandLinkButton_tr2(const char* s, const char* c);
 struct miqt_string QCommandLinkButton_tr3(const char* s, const char* c, int n);
 
 bool QCommandLinkButton_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QCommandLinkButton_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QCommandLinkButton_virtualbase_sizeHint(const void* self);
 bool QCommandLinkButton_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QCommandLinkButton_virtualbase_heightForWidth(const void* self, int param1);
 bool QCommandLinkButton_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QCommandLinkButton_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QCommandLinkButton_virtualbase_minimumSizeHint(const void* self);
 bool QCommandLinkButton_override_virtual_initStyleOption(void* self, intptr_t slot);
 void QCommandLinkButton_virtualbase_initStyleOption(const void* self, QStyleOptionButton* option);
 bool QCommandLinkButton_override_virtual_event(void* self, intptr_t slot);
@@ -132,7 +132,7 @@ void QCommandLinkButton_virtualbase_focusOutEvent(void* self, QFocusEvent* param
 bool QCommandLinkButton_override_virtual_mouseMoveEvent(void* self, intptr_t slot);
 void QCommandLinkButton_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1);
 bool QCommandLinkButton_override_virtual_hitButton(void* self, intptr_t slot);
-bool QCommandLinkButton_virtualbase_hitButton(const void* self, QPoint* pos);
+bool QCommandLinkButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos);
 bool QCommandLinkButton_override_virtual_checkStateSet(void* self, intptr_t slot);
 void QCommandLinkButton_virtualbase_checkStateSet(void* self);
 bool QCommandLinkButton_override_virtual_nextCheckState(void* self, intptr_t slot);
@@ -213,7 +213,6 @@ bool QCommandLinkButton_override_virtual_connectNotify(void* self, intptr_t slot
 void QCommandLinkButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCommandLinkButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCommandLinkButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QCommandLinkButton_virtualreturncopy_QSize(QSize* src);
 QVariant* QCommandLinkButton_virtualreturncopy_QVariant(QVariant* src);
 
 void QCommandLinkButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

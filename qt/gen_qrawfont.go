@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -207,11 +208,9 @@ func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
 	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray_ptr)}
 	var _ma C.struct_miqt_array = C.QRawFont_advancesForGlyphIndexes(this.h, glyphIndexes_ma)
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qpointf)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_goptr := newQPointF(_outCast[i])
-		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_vv_goptr
+		_ret[i] = libmiqt.ValueCast[QPointF](_outCast[i])
 	}
 	return _ret
 }
@@ -227,11 +226,9 @@ func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags 
 	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray_ptr)}
 	var _ma C.struct_miqt_array = C.QRawFont_advancesForGlyphIndexes2(this.h, glyphIndexes_ma, (C.int)(layoutFlags))
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qpointf)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_goptr := newQPointF(_outCast[i])
-		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_vv_goptr
+		_ret[i] = libmiqt.ValueCast[QPointF](_outCast[i])
 	}
 	return _ret
 }
@@ -244,13 +241,11 @@ func (this *QRawFont) GlyphIndexesForChars(chars *QChar, numChars int, glyphInde
 
 func (this *QRawFont) AdvancesForGlyphIndexes3(glyphIndexes *uint, advances *QPointF, numGlyphs int) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(advances)
 	return (bool)(C.QRawFont_advancesForGlyphIndexes3(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs)))
 }
 
 func (this *QRawFont) AdvancesForGlyphIndexes4(glyphIndexes *uint, advances *QPointF, numGlyphs int, layoutFlags QRawFont__LayoutFlag) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(advances)
 	return (bool)(C.QRawFont_advancesForGlyphIndexes4(this.h, (*C.uint)(unsafe.Pointer(glyphIndexes)), advances.cPointer(), (C.int)(numGlyphs), (C.int)(layoutFlags)))
 }
 
@@ -268,11 +263,9 @@ func (this *QRawFont) PathForGlyph(glyphIndex uint) *QPainterPath {
 	return _goptr
 }
 
-func (this *QRawFont) BoundingRect(glyphIndex uint) *QRectF {
+func (this *QRawFont) BoundingRect(glyphIndex uint) QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QRawFont_boundingRect(this.h, (C.uint)(glyphIndex)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QRawFont_boundingRect(this.h, (C.uint)(glyphIndex)))
 }
 
 func (this *QRawFont) SetPixelSize(pixelSize float64) {

@@ -22,12 +22,12 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QItemSelectionModel_selectionChanged(intptr_t, QItemSelection*, QItemSelection*);
-void miqt_exec_callback_QItemSelectionModel_currentChanged(intptr_t, QModelIndex*, QModelIndex*);
-void miqt_exec_callback_QItemSelectionModel_currentRowChanged(intptr_t, QModelIndex*, QModelIndex*);
-void miqt_exec_callback_QItemSelectionModel_currentColumnChanged(intptr_t, QModelIndex*, QModelIndex*);
+void miqt_exec_callback_QItemSelectionModel_currentChanged(intptr_t, struct miqt_qmodelindex, struct miqt_qmodelindex);
+void miqt_exec_callback_QItemSelectionModel_currentRowChanged(intptr_t, struct miqt_qmodelindex, struct miqt_qmodelindex);
+void miqt_exec_callback_QItemSelectionModel_currentColumnChanged(intptr_t, struct miqt_qmodelindex, struct miqt_qmodelindex);
 void miqt_exec_callback_QItemSelectionModel_modelChanged(intptr_t, QAbstractItemModel*);
-void miqt_exec_callback_QItemSelectionModel_setCurrentIndex(QItemSelectionModel*, intptr_t, QModelIndex*, int);
-void miqt_exec_callback_QItemSelectionModel_select(QItemSelectionModel*, intptr_t, QModelIndex*, int);
+void miqt_exec_callback_QItemSelectionModel_setCurrentIndex(QItemSelectionModel*, intptr_t, struct miqt_qmodelindex, int);
+void miqt_exec_callback_QItemSelectionModel_select(QItemSelectionModel*, intptr_t, struct miqt_qmodelindex, int);
 void miqt_exec_callback_QItemSelectionModel_select2(QItemSelectionModel*, intptr_t, QItemSelection*, int);
 void miqt_exec_callback_QItemSelectionModel_clear(QItemSelectionModel*, intptr_t);
 void miqt_exec_callback_QItemSelectionModel_reset(QItemSelectionModel*, intptr_t);
@@ -47,12 +47,12 @@ QItemSelectionRange* QItemSelectionRange_new() {
 	return new (std::nothrow) QItemSelectionRange();
 }
 
-QItemSelectionRange* QItemSelectionRange_new2(QModelIndex* topL, QModelIndex* bottomR) {
-	return new (std::nothrow) QItemSelectionRange(*topL, *bottomR);
+QItemSelectionRange* QItemSelectionRange_new2(struct miqt_qmodelindex topL, struct miqt_qmodelindex bottomR) {
+	return new (std::nothrow) QItemSelectionRange(miqt_from_cabi<QModelIndex>(topL), miqt_from_cabi<QModelIndex>(bottomR));
 }
 
-QItemSelectionRange* QItemSelectionRange_new3(QModelIndex* index) {
-	return new (std::nothrow) QItemSelectionRange(*index);
+QItemSelectionRange* QItemSelectionRange_new3(struct miqt_qmodelindex index) {
+	return new (std::nothrow) QItemSelectionRange(miqt_from_cabi<QModelIndex>(index));
 }
 
 QItemSelectionRange* QItemSelectionRange_new4(QItemSelectionRange* param1) {
@@ -99,20 +99,20 @@ QPersistentModelIndex* QItemSelectionRange_bottomRight(const QItemSelectionRange
 	return const_cast<QPersistentModelIndex*>(&_ret);
 }
 
-QModelIndex* QItemSelectionRange_parent(const QItemSelectionRange* self) {
-	return new QModelIndex(self->parent());
+struct miqt_qmodelindex QItemSelectionRange_parent(const QItemSelectionRange* self) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->parent());
 }
 
 QAbstractItemModel* QItemSelectionRange_model(const QItemSelectionRange* self) {
 	return (QAbstractItemModel*) self->model();
 }
 
-bool QItemSelectionRange_contains(const QItemSelectionRange* self, QModelIndex* index) {
-	return self->contains(*index);
+bool QItemSelectionRange_contains(const QItemSelectionRange* self, struct miqt_qmodelindex index) {
+	return self->contains(miqt_from_cabi<QModelIndex>(index));
 }
 
-bool QItemSelectionRange_contains2(const QItemSelectionRange* self, int row, int column, QModelIndex* parentIndex) {
-	return self->contains(static_cast<int>(row), static_cast<int>(column), *parentIndex);
+bool QItemSelectionRange_contains2(const QItemSelectionRange* self, int row, int column, struct miqt_qmodelindex parentIndex) {
+	return self->contains(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parentIndex));
 }
 
 bool QItemSelectionRange_intersects(const QItemSelectionRange* self, QItemSelectionRange* other) {
@@ -139,12 +139,12 @@ bool QItemSelectionRange_isEmpty(const QItemSelectionRange* self) {
 	return self->isEmpty();
 }
 
-struct miqt_array /* of QModelIndex* */  QItemSelectionRange_indexes(const QItemSelectionRange* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QItemSelectionRange_indexes(const QItemSelectionRange* self) {
 	QModelIndexList _ret = self->indexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -179,16 +179,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QItemSelectionModel::SelectionFlags command_ret = command;
 		int sigval2 = static_cast<int>(command_ret);
 		miqt_exec_callback_QItemSelectionModel_setCurrentIndex(this, handle__setCurrentIndex, sigval1, sigval2);
 
 	}
 
-	friend void QItemSelectionModel_virtualbase_setCurrentIndex(void* self, QModelIndex* index, int command);
+	friend void QItemSelectionModel_virtualbase_setCurrentIndex(void* self, struct miqt_qmodelindex index, int command);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__select = 0;
@@ -200,16 +198,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QItemSelectionModel::SelectionFlags command_ret = command;
 		int sigval2 = static_cast<int>(command_ret);
 		miqt_exec_callback_QItemSelectionModel_select(this, handle__select, sigval1, sigval2);
 
 	}
 
-	friend void QItemSelectionModel_virtualbase_select(void* self, QModelIndex* index, int command);
+	friend void QItemSelectionModel_virtualbase_select(void* self, struct miqt_qmodelindex index, int command);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__select2 = 0;
@@ -445,12 +441,12 @@ struct miqt_string QItemSelectionModel_tr(const char* s) {
 	return _ms;
 }
 
-QModelIndex* QItemSelectionModel_currentIndex(const QItemSelectionModel* self) {
-	return new QModelIndex(self->currentIndex());
+struct miqt_qmodelindex QItemSelectionModel_currentIndex(const QItemSelectionModel* self) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->currentIndex());
 }
 
-bool QItemSelectionModel_isSelected(const QItemSelectionModel* self, QModelIndex* index) {
-	return self->isSelected(*index);
+bool QItemSelectionModel_isSelected(const QItemSelectionModel* self, struct miqt_qmodelindex index) {
+	return self->isSelected(miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QItemSelectionModel_isRowSelected(const QItemSelectionModel* self, int row) {
@@ -473,12 +469,12 @@ bool QItemSelectionModel_hasSelection(const QItemSelectionModel* self) {
 	return self->hasSelection();
 }
 
-struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedIndexes(const QItemSelectionModel* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QItemSelectionModel_selectedIndexes(const QItemSelectionModel* self) {
 	QModelIndexList _ret = self->selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -486,12 +482,12 @@ struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedIndexes(con
 	return _out;
 }
 
-struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedRows(const QItemSelectionModel* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QItemSelectionModel_selectedRows(const QItemSelectionModel* self) {
 	QModelIndexList _ret = self->selectedRows();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -499,12 +495,12 @@ struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedRows(const 
 	return _out;
 }
 
-struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedColumns(const QItemSelectionModel* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QItemSelectionModel_selectedColumns(const QItemSelectionModel* self) {
 	QModelIndexList _ret = self->selectedColumns();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -528,12 +524,12 @@ void QItemSelectionModel_setModel(QItemSelectionModel* self, QAbstractItemModel*
 	self->setModel(model);
 }
 
-void QItemSelectionModel_setCurrentIndex(QItemSelectionModel* self, QModelIndex* index, int command) {
-	self->setCurrentIndex(*index, static_cast<QItemSelectionModel::SelectionFlags>(command));
+void QItemSelectionModel_setCurrentIndex(QItemSelectionModel* self, struct miqt_qmodelindex index, int command) {
+	self->setCurrentIndex(miqt_from_cabi<QModelIndex>(index), static_cast<QItemSelectionModel::SelectionFlags>(command));
 }
 
-void QItemSelectionModel_select(QItemSelectionModel* self, QModelIndex* index, int command) {
-	self->select(*index, static_cast<QItemSelectionModel::SelectionFlags>(command));
+void QItemSelectionModel_select(QItemSelectionModel* self, struct miqt_qmodelindex index, int command) {
+	self->select(miqt_from_cabi<QModelIndex>(index), static_cast<QItemSelectionModel::SelectionFlags>(command));
 }
 
 void QItemSelectionModel_select2(QItemSelectionModel* self, QItemSelection* selection, int command) {
@@ -572,50 +568,38 @@ void QItemSelectionModel_connect_selectionChanged(QItemSelectionModel* self, int
 	});
 }
 
-void QItemSelectionModel_currentChanged(QItemSelectionModel* self, QModelIndex* current, QModelIndex* previous) {
-	self->currentChanged(*current, *previous);
+void QItemSelectionModel_currentChanged(QItemSelectionModel* self, struct miqt_qmodelindex current, struct miqt_qmodelindex previous) {
+	self->currentChanged(miqt_from_cabi<QModelIndex>(current), miqt_from_cabi<QModelIndex>(previous));
 }
 
 void QItemSelectionModel_connect_currentChanged(QItemSelectionModel* self, intptr_t slot) {
 	QItemSelectionModel::connect(self, static_cast<void (QItemSelectionModel::*)(const QModelIndex&, const QModelIndex&)>(&QItemSelectionModel::currentChanged), self, [=](const QModelIndex& current, const QModelIndex& previous) {
-		const QModelIndex& current_ret = current;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&current_ret);
-		const QModelIndex& previous_ret = previous;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&previous_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(current);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(previous);
 		miqt_exec_callback_QItemSelectionModel_currentChanged(slot, sigval1, sigval2);
 	});
 }
 
-void QItemSelectionModel_currentRowChanged(QItemSelectionModel* self, QModelIndex* current, QModelIndex* previous) {
-	self->currentRowChanged(*current, *previous);
+void QItemSelectionModel_currentRowChanged(QItemSelectionModel* self, struct miqt_qmodelindex current, struct miqt_qmodelindex previous) {
+	self->currentRowChanged(miqt_from_cabi<QModelIndex>(current), miqt_from_cabi<QModelIndex>(previous));
 }
 
 void QItemSelectionModel_connect_currentRowChanged(QItemSelectionModel* self, intptr_t slot) {
 	QItemSelectionModel::connect(self, static_cast<void (QItemSelectionModel::*)(const QModelIndex&, const QModelIndex&)>(&QItemSelectionModel::currentRowChanged), self, [=](const QModelIndex& current, const QModelIndex& previous) {
-		const QModelIndex& current_ret = current;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&current_ret);
-		const QModelIndex& previous_ret = previous;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&previous_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(current);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(previous);
 		miqt_exec_callback_QItemSelectionModel_currentRowChanged(slot, sigval1, sigval2);
 	});
 }
 
-void QItemSelectionModel_currentColumnChanged(QItemSelectionModel* self, QModelIndex* current, QModelIndex* previous) {
-	self->currentColumnChanged(*current, *previous);
+void QItemSelectionModel_currentColumnChanged(QItemSelectionModel* self, struct miqt_qmodelindex current, struct miqt_qmodelindex previous) {
+	self->currentColumnChanged(miqt_from_cabi<QModelIndex>(current), miqt_from_cabi<QModelIndex>(previous));
 }
 
 void QItemSelectionModel_connect_currentColumnChanged(QItemSelectionModel* self, intptr_t slot) {
 	QItemSelectionModel::connect(self, static_cast<void (QItemSelectionModel::*)(const QModelIndex&, const QModelIndex&)>(&QItemSelectionModel::currentColumnChanged), self, [=](const QModelIndex& current, const QModelIndex& previous) {
-		const QModelIndex& current_ret = current;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&current_ret);
-		const QModelIndex& previous_ret = previous;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&previous_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(current);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(previous);
 		miqt_exec_callback_QItemSelectionModel_currentColumnChanged(slot, sigval1, sigval2);
 	});
 }
@@ -653,28 +637,28 @@ struct miqt_string QItemSelectionModel_tr3(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-bool QItemSelectionModel_isRowSelected2(const QItemSelectionModel* self, int row, QModelIndex* parent) {
-	return self->isRowSelected(static_cast<int>(row), *parent);
+bool QItemSelectionModel_isRowSelected2(const QItemSelectionModel* self, int row, struct miqt_qmodelindex parent) {
+	return self->isRowSelected(static_cast<int>(row), miqt_from_cabi<QModelIndex>(parent));
 }
 
-bool QItemSelectionModel_isColumnSelected2(const QItemSelectionModel* self, int column, QModelIndex* parent) {
-	return self->isColumnSelected(static_cast<int>(column), *parent);
+bool QItemSelectionModel_isColumnSelected2(const QItemSelectionModel* self, int column, struct miqt_qmodelindex parent) {
+	return self->isColumnSelected(static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent));
 }
 
-bool QItemSelectionModel_rowIntersectsSelection2(const QItemSelectionModel* self, int row, QModelIndex* parent) {
-	return self->rowIntersectsSelection(static_cast<int>(row), *parent);
+bool QItemSelectionModel_rowIntersectsSelection2(const QItemSelectionModel* self, int row, struct miqt_qmodelindex parent) {
+	return self->rowIntersectsSelection(static_cast<int>(row), miqt_from_cabi<QModelIndex>(parent));
 }
 
-bool QItemSelectionModel_columnIntersectsSelection2(const QItemSelectionModel* self, int column, QModelIndex* parent) {
-	return self->columnIntersectsSelection(static_cast<int>(column), *parent);
+bool QItemSelectionModel_columnIntersectsSelection2(const QItemSelectionModel* self, int column, struct miqt_qmodelindex parent) {
+	return self->columnIntersectsSelection(static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent));
 }
 
-struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedRowsWithColumn(const QItemSelectionModel* self, int column) {
+struct miqt_array /* of struct miqt_qmodelindex */  QItemSelectionModel_selectedRowsWithColumn(const QItemSelectionModel* self, int column) {
 	QModelIndexList _ret = self->selectedRows(static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -682,12 +666,12 @@ struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedRowsWithCol
 	return _out;
 }
 
-struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedColumnsWithRow(const QItemSelectionModel* self, int row) {
+struct miqt_array /* of struct miqt_qmodelindex */  QItemSelectionModel_selectedColumnsWithRow(const QItemSelectionModel* self, int row) {
 	QModelIndexList _ret = self->selectedColumns(static_cast<int>(row));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -705,8 +689,8 @@ bool QItemSelectionModel_override_virtual_setCurrentIndex(void* self, intptr_t s
 	return true;
 }
 
-void QItemSelectionModel_virtualbase_setCurrentIndex(void* self, QModelIndex* index, int command) {
-	static_cast<MiqtVirtualQItemSelectionModel*>(self)->QItemSelectionModel::setCurrentIndex(*index, static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
+void QItemSelectionModel_virtualbase_setCurrentIndex(void* self, struct miqt_qmodelindex index, int command) {
+	static_cast<MiqtVirtualQItemSelectionModel*>(self)->QItemSelectionModel::setCurrentIndex(miqt_from_cabi<QModelIndex>(index), static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
 }
 
 bool QItemSelectionModel_override_virtual_select(void* self, intptr_t slot) {
@@ -719,8 +703,8 @@ bool QItemSelectionModel_override_virtual_select(void* self, intptr_t slot) {
 	return true;
 }
 
-void QItemSelectionModel_virtualbase_select(void* self, QModelIndex* index, int command) {
-	static_cast<MiqtVirtualQItemSelectionModel*>(self)->QItemSelectionModel::select(*index, static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
+void QItemSelectionModel_virtualbase_select(void* self, struct miqt_qmodelindex index, int command) {
+	static_cast<MiqtVirtualQItemSelectionModel*>(self)->QItemSelectionModel::select(miqt_from_cabi<QModelIndex>(index), static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
 }
 
 bool QItemSelectionModel_override_virtual_select2(void* self, intptr_t slot) {
@@ -936,8 +920,8 @@ void QItemSelectionModel_delete(QItemSelectionModel* self) {
 	delete self;
 }
 
-QItemSelection* QItemSelection_new(QModelIndex* topLeft, QModelIndex* bottomRight) {
-	return new (std::nothrow) QItemSelection(*topLeft, *bottomRight);
+QItemSelection* QItemSelection_new(struct miqt_qmodelindex topLeft, struct miqt_qmodelindex bottomRight) {
+	return new (std::nothrow) QItemSelection(miqt_from_cabi<QModelIndex>(topLeft), miqt_from_cabi<QModelIndex>(bottomRight));
 }
 
 QItemSelection* QItemSelection_new2() {
@@ -948,20 +932,20 @@ QItemSelection* QItemSelection_new3(QItemSelection* param1) {
 	return new (std::nothrow) QItemSelection(*param1);
 }
 
-void QItemSelection_select(QItemSelection* self, QModelIndex* topLeft, QModelIndex* bottomRight) {
-	self->select(*topLeft, *bottomRight);
+void QItemSelection_select(QItemSelection* self, struct miqt_qmodelindex topLeft, struct miqt_qmodelindex bottomRight) {
+	self->select(miqt_from_cabi<QModelIndex>(topLeft), miqt_from_cabi<QModelIndex>(bottomRight));
 }
 
-bool QItemSelection_contains(const QItemSelection* self, QModelIndex* index) {
-	return self->contains(*index);
+bool QItemSelection_contains(const QItemSelection* self, struct miqt_qmodelindex index) {
+	return self->contains(miqt_from_cabi<QModelIndex>(index));
 }
 
-struct miqt_array /* of QModelIndex* */  QItemSelection_indexes(const QItemSelection* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QItemSelection_indexes(const QItemSelection* self) {
 	QModelIndexList _ret = self->indexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

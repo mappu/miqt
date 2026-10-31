@@ -49,7 +49,7 @@ struct miqt_array /* of int */  QAbstractVideoSurface_supportedPixelFormats(cons
 bool QAbstractVideoSurface_isFormatSupported(const QAbstractVideoSurface* self, QVideoSurfaceFormat* format);
 QVideoSurfaceFormat* QAbstractVideoSurface_nearestFormat(const QAbstractVideoSurface* self, QVideoSurfaceFormat* format);
 QVideoSurfaceFormat* QAbstractVideoSurface_surfaceFormat(const QAbstractVideoSurface* self);
-QSize* QAbstractVideoSurface_nativeResolution(const QAbstractVideoSurface* self);
+struct miqt_qsize QAbstractVideoSurface_nativeResolution(const QAbstractVideoSurface* self);
 bool QAbstractVideoSurface_start(QAbstractVideoSurface* self, QVideoSurfaceFormat* format);
 void QAbstractVideoSurface_stop(QAbstractVideoSurface* self);
 bool QAbstractVideoSurface_isActive(const QAbstractVideoSurface* self);
@@ -61,7 +61,7 @@ void QAbstractVideoSurface_surfaceFormatChanged(QAbstractVideoSurface* self, QVi
 void QAbstractVideoSurface_connect_surfaceFormatChanged(QAbstractVideoSurface* self, intptr_t slot);
 void QAbstractVideoSurface_supportedFormatsChanged(QAbstractVideoSurface* self);
 void QAbstractVideoSurface_connect_supportedFormatsChanged(QAbstractVideoSurface* self, intptr_t slot);
-void QAbstractVideoSurface_nativeResolutionChanged(QAbstractVideoSurface* self, QSize* resolution);
+void QAbstractVideoSurface_nativeResolutionChanged(QAbstractVideoSurface* self, struct miqt_qsize resolution);
 void QAbstractVideoSurface_connect_nativeResolutionChanged(QAbstractVideoSurface* self, intptr_t slot);
 struct miqt_string QAbstractVideoSurface_tr2(const char* s, const char* c);
 struct miqt_string QAbstractVideoSurface_tr3(const char* s, const char* c, int n);
@@ -97,7 +97,7 @@ void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod*
 QVideoSurfaceFormat* QAbstractVideoSurface_virtualreturncopy_QVideoSurfaceFormat(QVideoSurfaceFormat* src);
 
 void QAbstractVideoSurface_protectedbase_setError(bool* _dynamic_cast_ok, void* self, int error);
-void QAbstractVideoSurface_protectedbase_setNativeResolution(bool* _dynamic_cast_ok, void* self, QSize* resolution);
+void QAbstractVideoSurface_protectedbase_setNativeResolution(bool* _dynamic_cast_ok, void* self, struct miqt_qsize resolution);
 QObject* QAbstractVideoSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAbstractVideoSurface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractVideoSurface_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);

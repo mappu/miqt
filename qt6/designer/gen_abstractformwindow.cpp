@@ -283,8 +283,8 @@ void QDesignerFormWindowInterface_registerTool(QDesignerFormWindowInterface* sel
 	self->registerTool(tool);
 }
 
-QPoint* QDesignerFormWindowInterface_grid(const QDesignerFormWindowInterface* self) {
-	return new QPoint(self->grid());
+struct miqt_qpoint QDesignerFormWindowInterface_grid(const QDesignerFormWindowInterface* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->grid());
 }
 
 QWidget* QDesignerFormWindowInterface_mainContainer(const QDesignerFormWindowInterface* self) {
@@ -400,8 +400,8 @@ void QDesignerFormWindowInterface_selectWidget(QDesignerFormWindowInterface* sel
 	self->selectWidget(w, select);
 }
 
-void QDesignerFormWindowInterface_setGrid(QDesignerFormWindowInterface* self, QPoint* grid) {
-	self->setGrid(*grid);
+void QDesignerFormWindowInterface_setGrid(QDesignerFormWindowInterface* self, struct miqt_qpoint grid) {
+	self->setGrid(miqt_from_cabi<QPoint>(grid));
 }
 
 void QDesignerFormWindowInterface_setFileName(QDesignerFormWindowInterface* self, struct miqt_string fileName) {

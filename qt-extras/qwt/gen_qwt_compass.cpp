@@ -51,23 +51,23 @@ void miqt_exec_callback_QwtCompassScaleDraw_drawTick(const QwtCompassScaleDraw*,
 void miqt_exec_callback_QwtCompassScaleDraw_drawBackbone(const QwtCompassScaleDraw*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtCompassScaleDraw_drawLabel(const QwtCompassScaleDraw*, intptr_t, QPainter*, double);
 void miqt_exec_callback_QwtCompassScaleDraw_draw(const QwtCompassScaleDraw*, intptr_t, QPainter*, QPalette*);
-void miqt_exec_callback_QwtCompass_drawRose(const QwtCompass*, intptr_t, QPainter*, QPointF*, double, double, int);
-void miqt_exec_callback_QwtCompass_drawScaleContents(const QwtCompass*, intptr_t, QPainter*, QPointF*, double);
+void miqt_exec_callback_QwtCompass_drawRose(const QwtCompass*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
+void miqt_exec_callback_QwtCompass_drawScaleContents(const QwtCompass*, intptr_t, QPainter*, struct miqt_qpointf, double);
 void miqt_exec_callback_QwtCompass_keyPressEvent(QwtCompass*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QwtCompass_setOrigin(QwtCompass*, intptr_t, double);
-QRect* miqt_exec_callback_QwtCompass_scaleInnerRect(const QwtCompass*, intptr_t);
-QSize* miqt_exec_callback_QwtCompass_sizeHint(const QwtCompass*, intptr_t);
-QSize* miqt_exec_callback_QwtCompass_minimumSizeHint(const QwtCompass*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QwtCompass_scaleInnerRect(const QwtCompass*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtCompass_sizeHint(const QwtCompass*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtCompass_minimumSizeHint(const QwtCompass*, intptr_t);
 void miqt_exec_callback_QwtCompass_wheelEvent(QwtCompass*, intptr_t, QWheelEvent*);
 void miqt_exec_callback_QwtCompass_paintEvent(QwtCompass*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtCompass_changeEvent(QwtCompass*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtCompass_drawFrame(QwtCompass*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtCompass_drawContents(const QwtCompass*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtCompass_drawFocusIndicator(const QwtCompass*, intptr_t, QPainter*);
-void miqt_exec_callback_QwtCompass_drawScale(const QwtCompass*, intptr_t, QPainter*, QPointF*, double);
-void miqt_exec_callback_QwtCompass_drawNeedle(const QwtCompass*, intptr_t, QPainter*, QPointF*, double, double, int);
-double miqt_exec_callback_QwtCompass_scrolledTo(const QwtCompass*, intptr_t, QPoint*);
-bool miqt_exec_callback_QwtCompass_isScrollPosition(const QwtCompass*, intptr_t, QPoint*);
+void miqt_exec_callback_QwtCompass_drawScale(const QwtCompass*, intptr_t, QPainter*, struct miqt_qpointf, double);
+void miqt_exec_callback_QwtCompass_drawNeedle(const QwtCompass*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
+double miqt_exec_callback_QwtCompass_scrolledTo(const QwtCompass*, intptr_t, struct miqt_qpoint);
+bool miqt_exec_callback_QwtCompass_isScrollPosition(const QwtCompass*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QwtCompass_sliderChange(QwtCompass*, intptr_t);
 void miqt_exec_callback_QwtCompass_scaleChange(QwtCompass*, intptr_t);
 void miqt_exec_callback_QwtCompass_mousePressEvent(QwtCompass*, intptr_t, QMouseEvent*);
@@ -432,9 +432,7 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = radius;
 		double sigval4 = north;
 		QPalette::ColorGroup param5_ret = param5;
@@ -443,7 +441,7 @@ public:
 
 	}
 
-	friend void QwtCompass_virtualbase_drawRose(const void* self, QPainter* param1, QPointF* center, double radius, double north, int param5);
+	friend void QwtCompass_virtualbase_drawRose(const void* self, QPainter* param1, struct miqt_qpointf center, double radius, double north, int param5);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawScaleContents = 0;
@@ -456,15 +454,13 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = radius;
 		miqt_exec_callback_QwtCompass_drawScaleContents(this, handle__drawScaleContents, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtCompass_virtualbase_drawScaleContents(const void* self, QPainter* param1, QPointF* center, double radius);
+	friend void QwtCompass_virtualbase_drawScaleContents(const void* self, QPainter* param1, struct miqt_qpointf center, double radius);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -509,13 +505,11 @@ public:
 			return QwtCompass::scaleInnerRect();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QwtCompass_scaleInnerRect(this, handle__scaleInnerRect);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QwtCompass_scaleInnerRect(this, handle__scaleInnerRect);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QwtCompass_virtualbase_scaleInnerRect(const void* self);
+	friend struct miqt_qrect QwtCompass_virtualbase_scaleInnerRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -526,13 +520,11 @@ public:
 			return QwtCompass::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtCompass_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtCompass_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtCompass_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtCompass_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -543,13 +535,11 @@ public:
 			return QwtCompass::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtCompass_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtCompass_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtCompass_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtCompass_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -664,15 +654,13 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = radius;
 		miqt_exec_callback_QwtCompass_drawScale(this, handle__drawScale, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtCompass_virtualbase_drawScale(const void* self, QPainter* param1, QPointF* center, double radius);
+	friend void QwtCompass_virtualbase_drawScale(const void* self, QPainter* param1, struct miqt_qpointf center, double radius);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawNeedle = 0;
@@ -685,9 +673,7 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QPointF& param2_ret = param2;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&param2_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(param2);
 		double sigval3 = radius;
 		double sigval4 = direction;
 		QPalette::ColorGroup param5_ret = param5;
@@ -696,7 +682,7 @@ public:
 
 	}
 
-	friend void QwtCompass_virtualbase_drawNeedle(const void* self, QPainter* param1, QPointF* param2, double radius, double direction, int param5);
+	friend void QwtCompass_virtualbase_drawNeedle(const void* self, QPainter* param1, struct miqt_qpointf param2, double radius, double direction, int param5);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrolledTo = 0;
@@ -707,14 +693,12 @@ public:
 			return QwtCompass::scrolledTo(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		double callback_return_value = miqt_exec_callback_QwtCompass_scrolledTo(this, handle__scrolledTo, sigval1);
 		return static_cast<double>(callback_return_value);
 	}
 
-	friend double QwtCompass_virtualbase_scrolledTo(const void* self, QPoint* param1);
+	friend double QwtCompass_virtualbase_scrolledTo(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isScrollPosition = 0;
@@ -725,14 +709,12 @@ public:
 			return QwtCompass::isScrollPosition(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		bool callback_return_value = miqt_exec_callback_QwtCompass_isScrollPosition(this, handle__isScrollPosition, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QwtCompass_virtualbase_isScrollPosition(const void* self, QPoint* param1);
+	friend bool QwtCompass_virtualbase_isScrollPosition(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sliderChange = 0;
@@ -1589,8 +1571,8 @@ bool QwtCompass_override_virtual_drawRose(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtCompass_virtualbase_drawRose(const void* self, QPainter* param1, QPointF* center, double radius, double north, int param5) {
-	static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::drawRose(param1, *center, static_cast<double>(radius), static_cast<double>(north), static_cast<QPalette::ColorGroup>(param5));
+void QwtCompass_virtualbase_drawRose(const void* self, QPainter* param1, struct miqt_qpointf center, double radius, double north, int param5) {
+	static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::drawRose(param1, miqt_from_cabi<QPointF>(center), static_cast<double>(radius), static_cast<double>(north), static_cast<QPalette::ColorGroup>(param5));
 }
 
 bool QwtCompass_override_virtual_drawScaleContents(void* self, intptr_t slot) {
@@ -1603,8 +1585,8 @@ bool QwtCompass_override_virtual_drawScaleContents(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtCompass_virtualbase_drawScaleContents(const void* self, QPainter* param1, QPointF* center, double radius) {
-	static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::drawScaleContents(param1, *center, static_cast<double>(radius));
+void QwtCompass_virtualbase_drawScaleContents(const void* self, QPainter* param1, struct miqt_qpointf center, double radius) {
+	static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::drawScaleContents(param1, miqt_from_cabi<QPointF>(center), static_cast<double>(radius));
 }
 
 bool QwtCompass_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1645,8 +1627,8 @@ bool QwtCompass_override_virtual_scaleInnerRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QwtCompass_virtualbase_scaleInnerRect(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::scaleInnerRect());
+struct miqt_qrect QwtCompass_virtualbase_scaleInnerRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::scaleInnerRect());
 }
 
 bool QwtCompass_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1659,8 +1641,8 @@ bool QwtCompass_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtCompass_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::sizeHint());
+struct miqt_qsize QwtCompass_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::sizeHint());
 }
 
 bool QwtCompass_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1673,8 +1655,8 @@ bool QwtCompass_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtCompass_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::minimumSizeHint());
+struct miqt_qsize QwtCompass_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::minimumSizeHint());
 }
 
 bool QwtCompass_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1771,8 +1753,8 @@ bool QwtCompass_override_virtual_drawScale(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtCompass_virtualbase_drawScale(const void* self, QPainter* param1, QPointF* center, double radius) {
-	static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::drawScale(param1, *center, static_cast<double>(radius));
+void QwtCompass_virtualbase_drawScale(const void* self, QPainter* param1, struct miqt_qpointf center, double radius) {
+	static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::drawScale(param1, miqt_from_cabi<QPointF>(center), static_cast<double>(radius));
 }
 
 bool QwtCompass_override_virtual_drawNeedle(void* self, intptr_t slot) {
@@ -1785,8 +1767,8 @@ bool QwtCompass_override_virtual_drawNeedle(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtCompass_virtualbase_drawNeedle(const void* self, QPainter* param1, QPointF* param2, double radius, double direction, int param5) {
-	static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::drawNeedle(param1, *param2, static_cast<double>(radius), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
+void QwtCompass_virtualbase_drawNeedle(const void* self, QPainter* param1, struct miqt_qpointf param2, double radius, double direction, int param5) {
+	static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::drawNeedle(param1, miqt_from_cabi<QPointF>(param2), static_cast<double>(radius), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
 }
 
 bool QwtCompass_override_virtual_scrolledTo(void* self, intptr_t slot) {
@@ -1799,8 +1781,8 @@ bool QwtCompass_override_virtual_scrolledTo(void* self, intptr_t slot) {
 	return true;
 }
 
-double QwtCompass_virtualbase_scrolledTo(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::scrolledTo(*param1);
+double QwtCompass_virtualbase_scrolledTo(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::scrolledTo(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtCompass_override_virtual_isScrollPosition(void* self, intptr_t slot) {
@@ -1813,8 +1795,8 @@ bool QwtCompass_override_virtual_isScrollPosition(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QwtCompass_virtualbase_isScrollPosition(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::isScrollPosition(*param1);
+bool QwtCompass_virtualbase_isScrollPosition(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQwtCompass*>(self)->QwtCompass::isScrollPosition(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtCompass_override_virtual_sliderChange(void* self, intptr_t slot) {
@@ -2418,14 +2400,6 @@ bool QwtCompass_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QwtCompass_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtCompass*>(self)->QwtCompass::disconnectNotify(*signal);
-}
-
-QRect* QwtCompass_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
-QSize* QwtCompass_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtCompass_virtualreturncopy_QVariant(QVariant* src) {

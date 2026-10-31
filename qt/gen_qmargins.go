@@ -9,378 +9,244 @@ package qt
 import "C"
 
 import (
-	"runtime"
+	"github.com/mappu/miqt/libmiqt"
 	"unsafe"
 )
 
+// QMargins is a plain Go struct with the same memory layout as the
+// Qt class. The zero value is not always the same as the default constructor;
+// use NewQMargins().
 type QMargins struct {
-	h  *C.QMargins
-	gc *[1]unsafe.Pointer
-}
-
-// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
-// and its base class wrappers, so that they all keep it alive.
-func (this *QMargins) miqtSetGC(gc *[1]unsafe.Pointer) {
-	this.gc = gc
+	left   int32
+	top    int32
+	right  int32
+	bottom int32
 }
 
 func (this *QMargins) cPointer() *C.QMargins {
-	if this == nil {
-		return nil
-	}
-	return this.h
+	return (*C.QMargins)(unsafe.Pointer(this))
 }
 
 func (this *QMargins) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
+	return unsafe.Pointer(this)
 }
 
-// newQMargins constructs the type using only CGO pointers.
+// newQMargins views C++ memory as this type, without copying it.
 func newQMargins(h *C.QMargins) *QMargins {
-	if h == nil {
-		return nil
-	}
-
-	return &QMargins{h: h}
+	return (*QMargins)(unsafe.Pointer(h))
 }
 
-// UnsafeNewQMargins constructs the type using only unsafe pointers.
+// UnsafeNewQMargins views C++ memory as this type, without copying it.
 func UnsafeNewQMargins(h unsafe.Pointer) *QMargins {
-	return newQMargins((*C.QMargins)(h))
+	return (*QMargins)(h)
 }
 
 // NewQMargins constructs a new QMargins object.
-func NewQMargins() *QMargins {
+func NewQMargins() QMargins {
 
-	return newQMargins(C.QMargins_new())
+	return libmiqt.ValueCast[QMargins](C.QMargins_new())
 }
 
 // NewQMargins2 constructs a new QMargins object.
-func NewQMargins2(left int, top int, right int, bottom int) *QMargins {
+func NewQMargins2(left int, top int, right int, bottom int) QMargins {
 
-	return newQMargins(C.QMargins_new2((C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom)))
+	return libmiqt.ValueCast[QMargins](C.QMargins_new2((C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom)))
 }
 
 // NewQMargins3 constructs a new QMargins object.
-func NewQMargins3(param1 *QMargins) *QMargins {
-	defer runtime.KeepAlive(param1)
+func NewQMargins3(param1 QMargins) QMargins {
 
-	return newQMargins(C.QMargins_new3(param1.cPointer()))
+	return libmiqt.ValueCast[QMargins](C.QMargins_new3(libmiqt.ValueCast[C.struct_miqt_qmargins](param1)))
 }
 
-func (this *QMargins) IsNull() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QMargins_isNull(this.h))
+func (this QMargins) IsNull() bool {
+	return (bool)(C.QMargins_isNull(libmiqt.ValueCast[C.struct_miqt_qmargins](this)))
 }
 
-func (this *QMargins) Left() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QMargins_left(this.h))
+func (this QMargins) Left() int {
+	return (int)(C.QMargins_left(libmiqt.ValueCast[C.struct_miqt_qmargins](this)))
 }
 
-func (this *QMargins) Top() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QMargins_top(this.h))
+func (this QMargins) Top() int {
+	return (int)(C.QMargins_top(libmiqt.ValueCast[C.struct_miqt_qmargins](this)))
 }
 
-func (this *QMargins) Right() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QMargins_right(this.h))
+func (this QMargins) Right() int {
+	return (int)(C.QMargins_right(libmiqt.ValueCast[C.struct_miqt_qmargins](this)))
 }
 
-func (this *QMargins) Bottom() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QMargins_bottom(this.h))
+func (this QMargins) Bottom() int {
+	return (int)(C.QMargins_bottom(libmiqt.ValueCast[C.struct_miqt_qmargins](this)))
 }
 
 func (this *QMargins) SetLeft(left int) {
-	defer runtime.KeepAlive(this)
-	C.QMargins_setLeft(this.h, (C.int)(left))
+	C.QMargins_setLeft(this.cPointer(), (C.int)(left))
 }
 
 func (this *QMargins) SetTop(top int) {
-	defer runtime.KeepAlive(this)
-	C.QMargins_setTop(this.h, (C.int)(top))
+	C.QMargins_setTop(this.cPointer(), (C.int)(top))
 }
 
 func (this *QMargins) SetRight(right int) {
-	defer runtime.KeepAlive(this)
-	C.QMargins_setRight(this.h, (C.int)(right))
+	C.QMargins_setRight(this.cPointer(), (C.int)(right))
 }
 
 func (this *QMargins) SetBottom(bottom int) {
-	defer runtime.KeepAlive(this)
-	C.QMargins_setBottom(this.h, (C.int)(bottom))
+	C.QMargins_setBottom(this.cPointer(), (C.int)(bottom))
 }
 
-func (this *QMargins) OperatorPlusAssign(margins *QMargins) *QMargins {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_ret := newQMargins(C.QMargins_operatorPlusAssign(this.h, margins.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QMargins) OperatorPlusAssign(margins QMargins) *QMargins {
+	return newQMargins(C.QMargins_operatorPlusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmargins](margins)))
 }
 
-func (this *QMargins) OperatorMinusAssign(margins *QMargins) *QMargins {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_ret := newQMargins(C.QMargins_operatorMinusAssign(this.h, margins.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QMargins) OperatorMinusAssign(margins QMargins) *QMargins {
+	return newQMargins(C.QMargins_operatorMinusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmargins](margins)))
 }
 
 func (this *QMargins) OperatorPlusAssignWithInt(param1 int) *QMargins {
-	defer runtime.KeepAlive(this)
-	_ret := newQMargins(C.QMargins_operatorPlusAssignWithInt(this.h, (C.int)(param1)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMargins(C.QMargins_operatorPlusAssignWithInt(this.cPointer(), (C.int)(param1)))
 }
 
 func (this *QMargins) OperatorMinusAssignWithInt(param1 int) *QMargins {
-	defer runtime.KeepAlive(this)
-	_ret := newQMargins(C.QMargins_operatorMinusAssignWithInt(this.h, (C.int)(param1)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMargins(C.QMargins_operatorMinusAssignWithInt(this.cPointer(), (C.int)(param1)))
 }
 
 func (this *QMargins) OperatorMultiplyAssign(param1 int) *QMargins {
-	defer runtime.KeepAlive(this)
-	_ret := newQMargins(C.QMargins_operatorMultiplyAssign(this.h, (C.int)(param1)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMargins(C.QMargins_operatorMultiplyAssign(this.cPointer(), (C.int)(param1)))
 }
 
 func (this *QMargins) OperatorDivideAssign(param1 int) *QMargins {
-	defer runtime.KeepAlive(this)
-	_ret := newQMargins(C.QMargins_operatorDivideAssign(this.h, (C.int)(param1)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMargins(C.QMargins_operatorDivideAssign(this.cPointer(), (C.int)(param1)))
 }
 
 func (this *QMargins) OperatorMultiplyAssignWithQreal(param1 float64) *QMargins {
-	defer runtime.KeepAlive(this)
-	_ret := newQMargins(C.QMargins_operatorMultiplyAssignWithQreal(this.h, (C.double)(param1)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMargins(C.QMargins_operatorMultiplyAssignWithQreal(this.cPointer(), (C.double)(param1)))
 }
 
 func (this *QMargins) OperatorDivideAssignWithQreal(param1 float64) *QMargins {
-	defer runtime.KeepAlive(this)
-	_ret := newQMargins(C.QMargins_operatorDivideAssignWithQreal(this.h, (C.double)(param1)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMargins(C.QMargins_operatorDivideAssignWithQreal(this.cPointer(), (C.double)(param1)))
 }
 
-func (this *QMargins) OperatorAssign(param1 *QMargins) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QMargins_operatorAssign(this.h, param1.cPointer())
+func (this *QMargins) OperatorAssign(param1 QMargins) {
+	C.QMargins_operatorAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmargins](param1))
 }
 
-// Delete this object from C++ memory.
-func (this *QMargins) Delete() {
-	C.QMargins_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this object, so that it will be deleted
-// from C++ memory once it (and every value copy of it) is unreachable
-// from Go memory.
-func (this *QMargins) GoGC() {
-	if this.gc != nil {
-		return
-	}
-	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
-	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
-		C.QMargins_delete((*C.QMargins)(gc[0]))
-	})
-	this.miqtSetGC(gc)
-}
-
+// QMarginsF is a plain Go struct with the same memory layout as the
+// Qt class. The zero value is not always the same as the default constructor;
+// use NewQMarginsF().
 type QMarginsF struct {
-	h  *C.QMarginsF
-	gc *[1]unsafe.Pointer
-}
-
-// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
-// and its base class wrappers, so that they all keep it alive.
-func (this *QMarginsF) miqtSetGC(gc *[1]unsafe.Pointer) {
-	this.gc = gc
+	left   float64
+	top    float64
+	right  float64
+	bottom float64
 }
 
 func (this *QMarginsF) cPointer() *C.QMarginsF {
-	if this == nil {
-		return nil
-	}
-	return this.h
+	return (*C.QMarginsF)(unsafe.Pointer(this))
 }
 
 func (this *QMarginsF) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
+	return unsafe.Pointer(this)
 }
 
-// newQMarginsF constructs the type using only CGO pointers.
+// newQMarginsF views C++ memory as this type, without copying it.
 func newQMarginsF(h *C.QMarginsF) *QMarginsF {
-	if h == nil {
-		return nil
-	}
-
-	return &QMarginsF{h: h}
+	return (*QMarginsF)(unsafe.Pointer(h))
 }
 
-// UnsafeNewQMarginsF constructs the type using only unsafe pointers.
+// UnsafeNewQMarginsF views C++ memory as this type, without copying it.
 func UnsafeNewQMarginsF(h unsafe.Pointer) *QMarginsF {
-	return newQMarginsF((*C.QMarginsF)(h))
+	return (*QMarginsF)(h)
 }
 
 // NewQMarginsF constructs a new QMarginsF object.
-func NewQMarginsF() *QMarginsF {
+func NewQMarginsF() QMarginsF {
 
-	return newQMarginsF(C.QMarginsF_new())
+	return libmiqt.ValueCast[QMarginsF](C.QMarginsF_new())
 }
 
 // NewQMarginsF2 constructs a new QMarginsF object.
-func NewQMarginsF2(left float64, top float64, right float64, bottom float64) *QMarginsF {
+func NewQMarginsF2(left float64, top float64, right float64, bottom float64) QMarginsF {
 
-	return newQMarginsF(C.QMarginsF_new2((C.double)(left), (C.double)(top), (C.double)(right), (C.double)(bottom)))
+	return libmiqt.ValueCast[QMarginsF](C.QMarginsF_new2((C.double)(left), (C.double)(top), (C.double)(right), (C.double)(bottom)))
 }
 
 // NewQMarginsF3 constructs a new QMarginsF object.
-func NewQMarginsF3(margins *QMargins) *QMarginsF {
-	defer runtime.KeepAlive(margins)
+func NewQMarginsF3(margins QMargins) QMarginsF {
 
-	return newQMarginsF(C.QMarginsF_new3(margins.cPointer()))
+	return libmiqt.ValueCast[QMarginsF](C.QMarginsF_new3(libmiqt.ValueCast[C.struct_miqt_qmargins](margins)))
 }
 
 // NewQMarginsF4 constructs a new QMarginsF object.
-func NewQMarginsF4(param1 *QMarginsF) *QMarginsF {
-	defer runtime.KeepAlive(param1)
+func NewQMarginsF4(param1 QMarginsF) QMarginsF {
 
-	return newQMarginsF(C.QMarginsF_new4(param1.cPointer()))
+	return libmiqt.ValueCast[QMarginsF](C.QMarginsF_new4(libmiqt.ValueCast[C.struct_miqt_qmarginsf](param1)))
 }
 
-func (this *QMarginsF) IsNull() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QMarginsF_isNull(this.h))
+func (this QMarginsF) IsNull() bool {
+	return (bool)(C.QMarginsF_isNull(libmiqt.ValueCast[C.struct_miqt_qmarginsf](this)))
 }
 
-func (this *QMarginsF) Left() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QMarginsF_left(this.h))
+func (this QMarginsF) Left() float64 {
+	return (float64)(C.QMarginsF_left(libmiqt.ValueCast[C.struct_miqt_qmarginsf](this)))
 }
 
-func (this *QMarginsF) Top() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QMarginsF_top(this.h))
+func (this QMarginsF) Top() float64 {
+	return (float64)(C.QMarginsF_top(libmiqt.ValueCast[C.struct_miqt_qmarginsf](this)))
 }
 
-func (this *QMarginsF) Right() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QMarginsF_right(this.h))
+func (this QMarginsF) Right() float64 {
+	return (float64)(C.QMarginsF_right(libmiqt.ValueCast[C.struct_miqt_qmarginsf](this)))
 }
 
-func (this *QMarginsF) Bottom() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QMarginsF_bottom(this.h))
+func (this QMarginsF) Bottom() float64 {
+	return (float64)(C.QMarginsF_bottom(libmiqt.ValueCast[C.struct_miqt_qmarginsf](this)))
 }
 
 func (this *QMarginsF) SetLeft(left float64) {
-	defer runtime.KeepAlive(this)
-	C.QMarginsF_setLeft(this.h, (C.double)(left))
+	C.QMarginsF_setLeft(this.cPointer(), (C.double)(left))
 }
 
 func (this *QMarginsF) SetTop(top float64) {
-	defer runtime.KeepAlive(this)
-	C.QMarginsF_setTop(this.h, (C.double)(top))
+	C.QMarginsF_setTop(this.cPointer(), (C.double)(top))
 }
 
 func (this *QMarginsF) SetRight(right float64) {
-	defer runtime.KeepAlive(this)
-	C.QMarginsF_setRight(this.h, (C.double)(right))
+	C.QMarginsF_setRight(this.cPointer(), (C.double)(right))
 }
 
 func (this *QMarginsF) SetBottom(bottom float64) {
-	defer runtime.KeepAlive(this)
-	C.QMarginsF_setBottom(this.h, (C.double)(bottom))
+	C.QMarginsF_setBottom(this.cPointer(), (C.double)(bottom))
 }
 
-func (this *QMarginsF) OperatorPlusAssign(margins *QMarginsF) *QMarginsF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_ret := newQMarginsF(C.QMarginsF_operatorPlusAssign(this.h, margins.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QMarginsF) OperatorPlusAssign(margins QMarginsF) *QMarginsF {
+	return newQMarginsF(C.QMarginsF_operatorPlusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins)))
 }
 
-func (this *QMarginsF) OperatorMinusAssign(margins *QMarginsF) *QMarginsF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	_ret := newQMarginsF(C.QMarginsF_operatorMinusAssign(this.h, margins.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QMarginsF) OperatorMinusAssign(margins QMarginsF) *QMarginsF {
+	return newQMarginsF(C.QMarginsF_operatorMinusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins)))
 }
 
 func (this *QMarginsF) OperatorPlusAssignWithAddend(addend float64) *QMarginsF {
-	defer runtime.KeepAlive(this)
-	_ret := newQMarginsF(C.QMarginsF_operatorPlusAssignWithAddend(this.h, (C.double)(addend)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMarginsF(C.QMarginsF_operatorPlusAssignWithAddend(this.cPointer(), (C.double)(addend)))
 }
 
 func (this *QMarginsF) OperatorMinusAssignWithSubtrahend(subtrahend float64) *QMarginsF {
-	defer runtime.KeepAlive(this)
-	_ret := newQMarginsF(C.QMarginsF_operatorMinusAssignWithSubtrahend(this.h, (C.double)(subtrahend)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMarginsF(C.QMarginsF_operatorMinusAssignWithSubtrahend(this.cPointer(), (C.double)(subtrahend)))
 }
 
 func (this *QMarginsF) OperatorMultiplyAssign(factor float64) *QMarginsF {
-	defer runtime.KeepAlive(this)
-	_ret := newQMarginsF(C.QMarginsF_operatorMultiplyAssign(this.h, (C.double)(factor)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMarginsF(C.QMarginsF_operatorMultiplyAssign(this.cPointer(), (C.double)(factor)))
 }
 
 func (this *QMarginsF) OperatorDivideAssign(divisor float64) *QMarginsF {
-	defer runtime.KeepAlive(this)
-	_ret := newQMarginsF(C.QMarginsF_operatorDivideAssign(this.h, (C.double)(divisor)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQMarginsF(C.QMarginsF_operatorDivideAssign(this.cPointer(), (C.double)(divisor)))
 }
 
-func (this *QMarginsF) ToMargins() *QMargins {
-	defer runtime.KeepAlive(this)
-	_goptr := newQMargins(C.QMarginsF_toMargins(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QMarginsF) ToMargins() QMargins {
+	return libmiqt.ValueCast[QMargins](C.QMarginsF_toMargins(libmiqt.ValueCast[C.struct_miqt_qmarginsf](this)))
 }
 
-func (this *QMarginsF) OperatorAssign(param1 *QMarginsF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QMarginsF_operatorAssign(this.h, param1.cPointer())
-}
-
-// Delete this object from C++ memory.
-func (this *QMarginsF) Delete() {
-	C.QMarginsF_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this object, so that it will be deleted
-// from C++ memory once it (and every value copy of it) is unreachable
-// from Go memory.
-func (this *QMarginsF) GoGC() {
-	if this.gc != nil {
-		return
-	}
-	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
-	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
-		C.QMarginsF_delete((*C.QMarginsF)(gc[0]))
-	})
-	this.miqtSetGC(gc)
+func (this *QMarginsF) OperatorAssign(param1 QMarginsF) {
+	C.QMarginsF_operatorAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmarginsf](param1))
 }

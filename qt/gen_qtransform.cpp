@@ -218,12 +218,12 @@ void QTransform_reset(QTransform* self) {
 	self->reset();
 }
 
-QPoint* QTransform_map(const QTransform* self, QPoint* p) {
-	return new QPoint(self->map(*p));
+struct miqt_qpoint QTransform_map(const QTransform* self, struct miqt_qpoint p) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->map(miqt_from_cabi<QPoint>(p)));
 }
 
-QPointF* QTransform_mapWithQPointF(const QTransform* self, QPointF* p) {
-	return new QPointF(self->map(*p));
+struct miqt_qpointf QTransform_mapWithQPointF(const QTransform* self, struct miqt_qpointf p) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->map(miqt_from_cabi<QPointF>(p)));
 }
 
 QLine* QTransform_mapWithQLine(const QTransform* self, QLine* l) {
@@ -242,12 +242,12 @@ QPainterPath* QTransform_mapWithQPainterPath(const QTransform* self, QPainterPat
 	return new QPainterPath(self->map(*p));
 }
 
-QRect* QTransform_mapRect(const QTransform* self, QRect* param1) {
-	return new QRect(self->mapRect(*param1));
+struct miqt_qrect QTransform_mapRect(const QTransform* self, struct miqt_qrect param1) {
+	return miqt_to_cabi<struct miqt_qrect>(self->mapRect(miqt_from_cabi<QRect>(param1)));
 }
 
-QRectF* QTransform_mapRectWithQRectF(const QTransform* self, QRectF* param1) {
-	return new QRectF(self->mapRect(*param1));
+struct miqt_qrectf QTransform_mapRectWithQRectF(const QTransform* self, struct miqt_qrectf param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRect(miqt_from_cabi<QRectF>(param1)));
 }
 
 void QTransform_map2(const QTransform* self, int x, int y, int* tx, int* ty) {

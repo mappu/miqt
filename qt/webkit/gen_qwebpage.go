@@ -9,6 +9,7 @@ package webkit
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"github.com/mappu/miqt/qt/network"
 	"runtime"
@@ -298,9 +299,8 @@ func (this *QWebPage) CurrentFrame() *QWebFrame {
 	return newQWebFrame(C.QWebPage_currentFrame(this.h))
 }
 
-func (this *QWebPage) FrameAt(pos *qt.QPoint) *QWebFrame {
-	defer runtime.KeepAlive(pos)
-	return newQWebFrame(C.QWebPage_frameAt(this.h, (*C.QPoint)(pos.UnsafePointer())))
+func (this *QWebPage) FrameAt(pos qt.QPoint) *QWebFrame {
+	return newQWebFrame(C.QWebPage_frameAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 func (this *QWebPage) History() *QWebHistory {
@@ -405,38 +405,30 @@ func (this *QWebPage) ResetDevicePixelRatio() {
 	C.QWebPage_resetDevicePixelRatio(this.h)
 }
 
-func (this *QWebPage) ViewportSize() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebPage_viewportSize(this.h)))
+func (this *QWebPage) ViewportSize() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QWebPage_viewportSize(this.h))
+}
+
+func (this *QWebPage) SetViewportSize(size qt.QSize) {
+	C.QWebPage_setViewportSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
+}
+
+func (this *QWebPage) ViewportAttributesForSize(availableSize qt.QSize) *QWebPage__ViewportAttributes {
+	_goptr := newQWebPage__ViewportAttributes(C.QWebPage_viewportAttributesForSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](availableSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QWebPage) SetViewportSize(size *qt.QSize) {
-	defer runtime.KeepAlive(size)
-	C.QWebPage_setViewportSize(this.h, (*C.QSize)(size.UnsafePointer()))
+func (this *QWebPage) PreferredContentsSize() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QWebPage_preferredContentsSize(this.h))
 }
 
-func (this *QWebPage) ViewportAttributesForSize(availableSize *qt.QSize) *QWebPage__ViewportAttributes {
-	defer runtime.KeepAlive(availableSize)
-	_goptr := newQWebPage__ViewportAttributes(C.QWebPage_viewportAttributesForSize(this.h, (*C.QSize)(availableSize.UnsafePointer())))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebPage) SetPreferredContentsSize(size qt.QSize) {
+	C.QWebPage_setPreferredContentsSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QWebPage) PreferredContentsSize() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebPage_preferredContentsSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QWebPage) SetPreferredContentsSize(size *qt.QSize) {
-	defer runtime.KeepAlive(size)
-	C.QWebPage_setPreferredContentsSize(this.h, (*C.QSize)(size.UnsafePointer()))
-}
-
-func (this *QWebPage) SetActualVisibleContentRect(rect *qt.QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QWebPage_setActualVisibleContentRect(this.h, (*C.QRect)(rect.UnsafePointer()))
+func (this *QWebPage) SetActualVisibleContentRect(rect qt.QRect) {
+	C.QWebPage_setActualVisibleContentRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
 func (this *QWebPage) Event(param1 *qt.QEvent) bool {
@@ -502,9 +494,8 @@ func (this *QWebPage) SwallowContextMenuEvent(event *qt.QContextMenuEvent) bool 
 	return (bool)(C.QWebPage_swallowContextMenuEvent(this.h, (*C.QContextMenuEvent)(event.UnsafePointer())))
 }
 
-func (this *QWebPage) UpdatePositionDependentActions(pos *qt.QPoint) {
-	defer runtime.KeepAlive(pos)
-	C.QWebPage_updatePositionDependentActions(this.h, (*C.QPoint)(pos.UnsafePointer()))
+func (this *QWebPage) UpdatePositionDependentActions(pos qt.QPoint) {
+	C.QWebPage_updatePositionDependentActions(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QWebPage) CreateStandardContextMenu() *qt.QMenu {
@@ -714,59 +705,56 @@ func miqt_exec_callback_QWebPage_frameCreated(cb C.intptr_t, frame *C.QWebFrame)
 	gofunc(slotval1)
 }
 
-func (this *QWebPage) GeometryChangeRequested(geom *qt.QRect) {
-	defer runtime.KeepAlive(geom)
-	C.QWebPage_geometryChangeRequested(this.h, (*C.QRect)(geom.UnsafePointer()))
+func (this *QWebPage) GeometryChangeRequested(geom qt.QRect) {
+	C.QWebPage_geometryChangeRequested(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](geom))
 }
-func (this *QWebPage) OnGeometryChangeRequested(slot func(geom *qt.QRect)) {
+func (this *QWebPage) OnGeometryChangeRequested(slot func(geom qt.QRect)) {
 	C.QWebPage_connect_geometryChangeRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_geometryChangeRequested
-func miqt_exec_callback_QWebPage_geometryChangeRequested(cb C.intptr_t, geom *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(geom *qt.QRect))
+func miqt_exec_callback_QWebPage_geometryChangeRequested(cb C.intptr_t, geom C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(geom qt.QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRect(unsafe.Pointer(geom))
+	slotval1 := libmiqt.ValueCast[qt.QRect](geom)
 
 	gofunc(slotval1)
 }
 
-func (this *QWebPage) RepaintRequested(dirtyRect *qt.QRect) {
-	defer runtime.KeepAlive(dirtyRect)
-	C.QWebPage_repaintRequested(this.h, (*C.QRect)(dirtyRect.UnsafePointer()))
+func (this *QWebPage) RepaintRequested(dirtyRect qt.QRect) {
+	C.QWebPage_repaintRequested(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](dirtyRect))
 }
-func (this *QWebPage) OnRepaintRequested(slot func(dirtyRect *qt.QRect)) {
+func (this *QWebPage) OnRepaintRequested(slot func(dirtyRect qt.QRect)) {
 	C.QWebPage_connect_repaintRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_repaintRequested
-func miqt_exec_callback_QWebPage_repaintRequested(cb C.intptr_t, dirtyRect *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(dirtyRect *qt.QRect))
+func miqt_exec_callback_QWebPage_repaintRequested(cb C.intptr_t, dirtyRect C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(dirtyRect qt.QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRect(unsafe.Pointer(dirtyRect))
+	slotval1 := libmiqt.ValueCast[qt.QRect](dirtyRect)
 
 	gofunc(slotval1)
 }
 
-func (this *QWebPage) ScrollRequested(dx int, dy int, scrollViewRect *qt.QRect) {
-	defer runtime.KeepAlive(scrollViewRect)
-	C.QWebPage_scrollRequested(this.h, (C.int)(dx), (C.int)(dy), (*C.QRect)(scrollViewRect.UnsafePointer()))
+func (this *QWebPage) ScrollRequested(dx int, dy int, scrollViewRect qt.QRect) {
+	C.QWebPage_scrollRequested(this.h, (C.int)(dx), (C.int)(dy), libmiqt.ValueCast[C.struct_miqt_qrect](scrollViewRect))
 }
-func (this *QWebPage) OnScrollRequested(slot func(dx int, dy int, scrollViewRect *qt.QRect)) {
+func (this *QWebPage) OnScrollRequested(slot func(dx int, dy int, scrollViewRect qt.QRect)) {
 	C.QWebPage_connect_scrollRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_scrollRequested
-func miqt_exec_callback_QWebPage_scrollRequested(cb C.intptr_t, dx C.int, dy C.int, scrollViewRect *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(dx int, dy int, scrollViewRect *qt.QRect))
+func miqt_exec_callback_QWebPage_scrollRequested(cb C.intptr_t, dx C.int, dy C.int, scrollViewRect C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(dx int, dy int, scrollViewRect qt.QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -776,7 +764,7 @@ func miqt_exec_callback_QWebPage_scrollRequested(cb C.intptr_t, dx C.int, dy C.i
 
 	slotval2 := (int)(dy)
 
-	slotval3 := qt.UnsafeNewQRect(unsafe.Pointer(scrollViewRect))
+	slotval3 := libmiqt.ValueCast[qt.QRect](scrollViewRect)
 
 	gofunc(slotval1, slotval2, slotval3)
 }
@@ -2100,11 +2088,9 @@ func (this *QWebPage__ViewportAttributes) IsValid() bool {
 	return (bool)(C.QWebPage__ViewportAttributes_isValid(this.h))
 }
 
-func (this *QWebPage__ViewportAttributes) Size() *qt.QSizeF {
+func (this *QWebPage__ViewportAttributes) Size() qt.QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QWebPage__ViewportAttributes_size(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QWebPage__ViewportAttributes_size(this.h))
 }
 
 // Delete this object from C++ memory.

@@ -43,8 +43,8 @@ extern "C" {
 void miqt_exec_callback_QwtAbstractScale_scaleChange(QwtAbstractScale*, intptr_t);
 int miqt_exec_callback_QwtAbstractScale_devType(const QwtAbstractScale*, intptr_t);
 void miqt_exec_callback_QwtAbstractScale_setVisible(QwtAbstractScale*, intptr_t, bool);
-QSize* miqt_exec_callback_QwtAbstractScale_sizeHint(const QwtAbstractScale*, intptr_t);
-QSize* miqt_exec_callback_QwtAbstractScale_minimumSizeHint(const QwtAbstractScale*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtAbstractScale_sizeHint(const QwtAbstractScale*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtAbstractScale_minimumSizeHint(const QwtAbstractScale*, intptr_t);
 int miqt_exec_callback_QwtAbstractScale_heightForWidth(const QwtAbstractScale*, intptr_t, int);
 bool miqt_exec_callback_QwtAbstractScale_hasHeightForWidth(const QwtAbstractScale*, intptr_t);
 QPaintEngine* miqt_exec_callback_QwtAbstractScale_paintEngine(const QwtAbstractScale*, intptr_t);
@@ -157,13 +157,11 @@ public:
 			return QwtAbstractScale::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtAbstractScale_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtAbstractScale_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtAbstractScale_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtAbstractScale_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -174,13 +172,11 @@ public:
 			return QwtAbstractScale::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtAbstractScale_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtAbstractScale_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtAbstractScale_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtAbstractScale_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1159,8 +1155,8 @@ bool QwtAbstractScale_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtAbstractScale_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtAbstractScale*>(self)->QwtAbstractScale::sizeHint());
+struct miqt_qsize QwtAbstractScale_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtAbstractScale*>(self)->QwtAbstractScale::sizeHint());
 }
 
 bool QwtAbstractScale_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1173,8 +1169,8 @@ bool QwtAbstractScale_override_virtual_minimumSizeHint(void* self, intptr_t slot
 	return true;
 }
 
-QSize* QwtAbstractScale_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtAbstractScale*>(self)->QwtAbstractScale::minimumSizeHint());
+struct miqt_qsize QwtAbstractScale_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtAbstractScale*>(self)->QwtAbstractScale::minimumSizeHint());
 }
 
 bool QwtAbstractScale_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1778,10 +1774,6 @@ bool QwtAbstractScale_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QwtAbstractScale_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtAbstractScale*>(self)->QwtAbstractScale::disconnectNotify(*signal);
-}
-
-QSize* QwtAbstractScale_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtAbstractScale_virtualreturncopy_QVariant(QVariant* src) {

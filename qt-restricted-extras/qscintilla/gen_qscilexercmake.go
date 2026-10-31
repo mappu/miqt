@@ -9,6 +9,7 @@ package qscintilla
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -129,10 +130,8 @@ func (this *QsciLexerCMake) Lexer() string {
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerCMake) DefaultColor(style int) *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCMake_defaultColor(this.h, (C.int)(style))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QsciLexerCMake) DefaultColor(style int) qt.QColor {
+	return libmiqt.ValueCast[qt.QColor](C.QsciLexerCMake_defaultColor(this.h, (C.int)(style)))
 }
 
 func (this *QsciLexerCMake) DefaultFont(style int) *qt.QFont {
@@ -141,10 +140,8 @@ func (this *QsciLexerCMake) DefaultFont(style int) *qt.QFont {
 	return _goptr
 }
 
-func (this *QsciLexerCMake) DefaultPaper(style int) *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCMake_defaultPaper(this.h, (C.int)(style))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QsciLexerCMake) DefaultPaper(style int) qt.QColor {
+	return libmiqt.ValueCast[qt.QColor](C.QsciLexerCMake_defaultPaper(this.h, (C.int)(style)))
 }
 
 func (this *QsciLexerCMake) Keywords(set int) string {
@@ -643,14 +640,12 @@ func miqt_exec_callback_QsciLexerCMake_caseSensitive(self *C.QsciLexerCMake, cb 
 
 }
 
-func (this *QsciLexerCMake) callVirtualBase_Color(style int) *qt.QColor {
+func (this *QsciLexerCMake) callVirtualBase_Color(style int) qt.QColor {
 
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCMake_virtualbase_color(unsafe.Pointer(this.h), (C.int)(style))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QsciLexerCMake_virtualbase_color(unsafe.Pointer(this.h), (C.int)(style)))
 
 }
-func (this *QsciLexerCMake) OnColor(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+func (this *QsciLexerCMake) OnColor(slot func(super func(style int) qt.QColor, style int) qt.QColor) {
 	ok := C.QsciLexerCMake_override_virtual_color(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -658,8 +653,8 @@ func (this *QsciLexerCMake) OnColor(slot func(super func(style int) *qt.QColor, 
 }
 
 //export miqt_exec_callback_QsciLexerCMake_color
-func miqt_exec_callback_QsciLexerCMake_color(self *C.QsciLexerCMake, cb C.intptr_t, style C.int) *C.QColor {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
+func miqt_exec_callback_QsciLexerCMake_color(self *C.QsciLexerCMake, cb C.intptr_t, style C.int) C.struct_miqt_qcolor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) qt.QColor, style int) qt.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -668,9 +663,8 @@ func miqt_exec_callback_QsciLexerCMake_color(self *C.QsciLexerCMake, cb C.intptr
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerCMake{h: self}).callVirtualBase_Color, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciLexerCMake_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qcolor](virtualReturn)
 
 }
 
@@ -838,14 +832,12 @@ func miqt_exec_callback_QsciLexerCMake_description(self *C.QsciLexerCMake, cb C.
 
 }
 
-func (this *QsciLexerCMake) callVirtualBase_Paper(style int) *qt.QColor {
+func (this *QsciLexerCMake) callVirtualBase_Paper(style int) qt.QColor {
 
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCMake_virtualbase_paper(unsafe.Pointer(this.h), (C.int)(style))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QsciLexerCMake_virtualbase_paper(unsafe.Pointer(this.h), (C.int)(style)))
 
 }
-func (this *QsciLexerCMake) OnPaper(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+func (this *QsciLexerCMake) OnPaper(slot func(super func(style int) qt.QColor, style int) qt.QColor) {
 	ok := C.QsciLexerCMake_override_virtual_paper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -853,8 +845,8 @@ func (this *QsciLexerCMake) OnPaper(slot func(super func(style int) *qt.QColor, 
 }
 
 //export miqt_exec_callback_QsciLexerCMake_paper
-func miqt_exec_callback_QsciLexerCMake_paper(self *C.QsciLexerCMake, cb C.intptr_t, style C.int) *C.QColor {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
+func miqt_exec_callback_QsciLexerCMake_paper(self *C.QsciLexerCMake, cb C.intptr_t, style C.int) C.struct_miqt_qcolor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) qt.QColor, style int) qt.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -863,20 +855,17 @@ func miqt_exec_callback_QsciLexerCMake_paper(self *C.QsciLexerCMake, cb C.intptr
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerCMake{h: self}).callVirtualBase_Paper, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciLexerCMake_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QsciLexerCMake) callVirtualBase_DefaultColorWithStyle(style int) *qt.QColor {
-
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCMake_virtualbase_defaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qcolor](virtualReturn)
 
 }
-func (this *QsciLexerCMake) OnDefaultColorWithStyle(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+
+func (this *QsciLexerCMake) callVirtualBase_DefaultColorWithStyle(style int) qt.QColor {
+
+	return libmiqt.ValueCast[qt.QColor](C.QsciLexerCMake_virtualbase_defaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style)))
+
+}
+func (this *QsciLexerCMake) OnDefaultColorWithStyle(slot func(super func(style int) qt.QColor, style int) qt.QColor) {
 	ok := C.QsciLexerCMake_override_virtual_defaultColorWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -884,8 +873,8 @@ func (this *QsciLexerCMake) OnDefaultColorWithStyle(slot func(super func(style i
 }
 
 //export miqt_exec_callback_QsciLexerCMake_defaultColorWithStyle
-func miqt_exec_callback_QsciLexerCMake_defaultColorWithStyle(self *C.QsciLexerCMake, cb C.intptr_t, style C.int) *C.QColor {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
+func miqt_exec_callback_QsciLexerCMake_defaultColorWithStyle(self *C.QsciLexerCMake, cb C.intptr_t, style C.int) C.struct_miqt_qcolor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) qt.QColor, style int) qt.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -894,9 +883,8 @@ func miqt_exec_callback_QsciLexerCMake_defaultColorWithStyle(self *C.QsciLexerCM
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerCMake{h: self}).callVirtualBase_DefaultColorWithStyle, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciLexerCMake_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qcolor](virtualReturn)
 
 }
 
@@ -959,14 +947,12 @@ func miqt_exec_callback_QsciLexerCMake_defaultFontWithStyle(self *C.QsciLexerCMa
 
 }
 
-func (this *QsciLexerCMake) callVirtualBase_DefaultPaperWithStyle(style int) *qt.QColor {
+func (this *QsciLexerCMake) callVirtualBase_DefaultPaperWithStyle(style int) qt.QColor {
 
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCMake_virtualbase_defaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QsciLexerCMake_virtualbase_defaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style)))
 
 }
-func (this *QsciLexerCMake) OnDefaultPaperWithStyle(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+func (this *QsciLexerCMake) OnDefaultPaperWithStyle(slot func(super func(style int) qt.QColor, style int) qt.QColor) {
 	ok := C.QsciLexerCMake_override_virtual_defaultPaperWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -974,8 +960,8 @@ func (this *QsciLexerCMake) OnDefaultPaperWithStyle(slot func(super func(style i
 }
 
 //export miqt_exec_callback_QsciLexerCMake_defaultPaperWithStyle
-func miqt_exec_callback_QsciLexerCMake_defaultPaperWithStyle(self *C.QsciLexerCMake, cb C.intptr_t, style C.int) *C.QColor {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
+func miqt_exec_callback_QsciLexerCMake_defaultPaperWithStyle(self *C.QsciLexerCMake, cb C.intptr_t, style C.int) C.struct_miqt_qcolor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) qt.QColor, style int) qt.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -984,9 +970,8 @@ func miqt_exec_callback_QsciLexerCMake_defaultPaperWithStyle(self *C.QsciLexerCM
 	slotval1 := (int)(style)
 
 	virtualReturn := gofunc((&QsciLexerCMake{h: self}).callVirtualBase_DefaultPaperWithStyle, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciLexerCMake_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qcolor](virtualReturn)
 
 }
 
@@ -1117,13 +1102,12 @@ func miqt_exec_callback_QsciLexerCMake_setAutoIndentStyle(self *C.QsciLexerCMake
 
 }
 
-func (this *QsciLexerCMake) callVirtualBase_SetColor(c *qt.QColor, style int) {
-	defer runtime.KeepAlive(c)
+func (this *QsciLexerCMake) callVirtualBase_SetColor(c qt.QColor, style int) {
 
-	C.QsciLexerCMake_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
+	C.QsciLexerCMake_virtualbase_setColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](c), (C.int)(style))
 
 }
-func (this *QsciLexerCMake) OnSetColor(slot func(super func(c *qt.QColor, style int), c *qt.QColor, style int)) {
+func (this *QsciLexerCMake) OnSetColor(slot func(super func(c qt.QColor, style int), c qt.QColor, style int)) {
 	ok := C.QsciLexerCMake_override_virtual_setColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1131,14 +1115,14 @@ func (this *QsciLexerCMake) OnSetColor(slot func(super func(c *qt.QColor, style 
 }
 
 //export miqt_exec_callback_QsciLexerCMake_setColor
-func miqt_exec_callback_QsciLexerCMake_setColor(self *C.QsciLexerCMake, cb C.intptr_t, c *C.QColor, style C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt.QColor, style int), c *qt.QColor, style int))
+func miqt_exec_callback_QsciLexerCMake_setColor(self *C.QsciLexerCMake, cb C.intptr_t, c C.struct_miqt_qcolor, style C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c qt.QColor, style int), c qt.QColor, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQColor(unsafe.Pointer(c))
+	slotval1 := libmiqt.ValueCast[qt.QColor](c)
 
 	slotval2 := (int)(style)
 
@@ -1203,13 +1187,12 @@ func miqt_exec_callback_QsciLexerCMake_setFont(self *C.QsciLexerCMake, cb C.intp
 
 }
 
-func (this *QsciLexerCMake) callVirtualBase_SetPaper(c *qt.QColor, style int) {
-	defer runtime.KeepAlive(c)
+func (this *QsciLexerCMake) callVirtualBase_SetPaper(c qt.QColor, style int) {
 
-	C.QsciLexerCMake_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
+	C.QsciLexerCMake_virtualbase_setPaper(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](c), (C.int)(style))
 
 }
-func (this *QsciLexerCMake) OnSetPaper(slot func(super func(c *qt.QColor, style int), c *qt.QColor, style int)) {
+func (this *QsciLexerCMake) OnSetPaper(slot func(super func(c qt.QColor, style int), c qt.QColor, style int)) {
 	ok := C.QsciLexerCMake_override_virtual_setPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1217,14 +1200,14 @@ func (this *QsciLexerCMake) OnSetPaper(slot func(super func(c *qt.QColor, style 
 }
 
 //export miqt_exec_callback_QsciLexerCMake_setPaper
-func miqt_exec_callback_QsciLexerCMake_setPaper(self *C.QsciLexerCMake, cb C.intptr_t, c *C.QColor, style C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt.QColor, style int), c *qt.QColor, style int))
+func miqt_exec_callback_QsciLexerCMake_setPaper(self *C.QsciLexerCMake, cb C.intptr_t, c C.struct_miqt_qcolor, style C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c qt.QColor, style int), c qt.QColor, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQColor(unsafe.Pointer(c))
+	slotval1 := libmiqt.ValueCast[qt.QColor](c)
 
 	slotval2 := (int)(style)
 

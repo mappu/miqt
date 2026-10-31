@@ -9,6 +9,7 @@ package designer
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -301,10 +302,8 @@ func (this *QDesignerFormWindowInterface) RegisterTool(tool *QDesignerFormWindow
 	C.QDesignerFormWindowInterface_registerTool(this.h, tool.cPointer())
 }
 
-func (this *QDesignerFormWindowInterface) Grid() *qt.QPoint {
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QDesignerFormWindowInterface_grid(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDesignerFormWindowInterface) Grid() qt.QPoint {
+	return libmiqt.ValueCast[qt.QPoint](C.QDesignerFormWindowInterface_grid(this.h))
 }
 
 func (this *QDesignerFormWindowInterface) MainContainer() *qt.QWidget {
@@ -423,9 +422,8 @@ func (this *QDesignerFormWindowInterface) SelectWidget(w *qt.QWidget, selectVal 
 	C.QDesignerFormWindowInterface_selectWidget(this.h, (*C.QWidget)(w.UnsafePointer()), (C.bool)(selectVal))
 }
 
-func (this *QDesignerFormWindowInterface) SetGrid(grid *qt.QPoint) {
-	defer runtime.KeepAlive(grid)
-	C.QDesignerFormWindowInterface_setGrid(this.h, (*C.QPoint)(grid.UnsafePointer()))
+func (this *QDesignerFormWindowInterface) SetGrid(grid qt.QPoint) {
+	C.QDesignerFormWindowInterface_setGrid(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](grid))
 }
 
 func (this *QDesignerFormWindowInterface) SetFileName(fileName string) {

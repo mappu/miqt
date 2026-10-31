@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -173,21 +174,19 @@ func (this *QwtPlotCurve) SetSamples2(xData []float64, yData []float64) {
 
 func (this *QwtPlotCurve) SetSamplesWithSamples(samples []qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(samples)
-	samples_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(samples))))
+	samples_CArray_ptr := (*C.struct_miqt_qpointf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qpointf{})) * len(samples))))
 	defer C.free(unsafe.Pointer(samples_CArray_ptr))
 	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
 	for i := range samples {
-		samples_CArray[i] = (*C.QPointF)(samples[i].UnsafePointer())
+		samples_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qpointf](samples[i])
 	}
 	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray_ptr)}
 	C.QwtPlotCurve_setSamplesWithSamples(this.h, samples_ma)
 }
 
-func (this *QwtPlotCurve) ClosestPoint(pos *qt.QPoint) int {
+func (this *QwtPlotCurve) ClosestPoint(pos qt.QPoint) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	return (int)(C.QwtPlotCurve_closestPoint(this.h, (*C.QPoint)(pos.UnsafePointer())))
+	return (int)(C.QwtPlotCurve_closestPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 func (this *QwtPlotCurve) MinXValue() float64 {
@@ -220,10 +219,9 @@ func (this *QwtPlotCurve) TestCurveAttribute(param1 QwtPlotCurve__CurveAttribute
 	return (bool)(C.QwtPlotCurve_testCurveAttribute(this.h, (C.int)(param1)))
 }
 
-func (this *QwtPlotCurve) SetPen(param1 *qt.QColor) {
+func (this *QwtPlotCurve) SetPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotCurve_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotCurve_setPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotCurve) SetPenWithPen(pen *qt.QPen) {
@@ -290,10 +288,9 @@ func (this *QwtPlotCurve) CurveFitter() *QwtCurveFitter {
 	return newQwtCurveFitter(C.QwtPlotCurve_curveFitter(this.h))
 }
 
-func (this *QwtPlotCurve) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+func (this *QwtPlotCurve) LegendIcon(index int, param2 qt.QSizeF) *QwtGraphic {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	_goptr := newQwtGraphic(C.QwtPlotCurve_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
+	_goptr := newQwtGraphic(C.QwtPlotCurve_legendIcon(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qsizef](param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -308,10 +305,9 @@ func (this *QwtPlotCurve) SetLegendAttribute2(param1 QwtPlotCurve__LegendAttribu
 	C.QwtPlotCurve_setLegendAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
-func (this *QwtPlotCurve) ClosestPoint2(pos *qt.QPoint, dist *float64) int {
+func (this *QwtPlotCurve) ClosestPoint2(pos qt.QPoint, dist *float64) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	return (int)(C.QwtPlotCurve_closestPoint2(this.h, (*C.QPoint)(pos.UnsafePointer()), (*C.double)(unsafe.Pointer(dist))))
+	return (int)(C.QwtPlotCurve_closestPoint2(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos), (*C.double)(unsafe.Pointer(dist))))
 }
 
 func (this *QwtPlotCurve) SetCurveAttribute2(param1 QwtPlotCurve__CurveAttribute, on bool) {
@@ -319,16 +315,14 @@ func (this *QwtPlotCurve) SetCurveAttribute2(param1 QwtPlotCurve__CurveAttribute
 	C.QwtPlotCurve_setCurveAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
-func (this *QwtPlotCurve) SetPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotCurve) SetPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotCurve_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtPlotCurve_setPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotCurve) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtPlotCurve) SetPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotCurve_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotCurve_setPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
 // Delete this object from C++ memory.

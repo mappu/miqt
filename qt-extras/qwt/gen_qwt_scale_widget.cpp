@@ -43,8 +43,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QwtScaleWidget_scaleDivChanged(intptr_t);
-QSize* miqt_exec_callback_QwtScaleWidget_sizeHint(const QwtScaleWidget*, intptr_t);
-QSize* miqt_exec_callback_QwtScaleWidget_minimumSizeHint(const QwtScaleWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtScaleWidget_sizeHint(const QwtScaleWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtScaleWidget_minimumSizeHint(const QwtScaleWidget*, intptr_t);
 void miqt_exec_callback_QwtScaleWidget_paintEvent(QwtScaleWidget*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtScaleWidget_resizeEvent(QwtScaleWidget*, intptr_t, QResizeEvent*);
 int miqt_exec_callback_QwtScaleWidget_devType(const QwtScaleWidget*, intptr_t);
@@ -113,13 +113,11 @@ public:
 			return QwtScaleWidget::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtScaleWidget_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtScaleWidget_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtScaleWidget_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtScaleWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -130,13 +128,11 @@ public:
 			return QwtScaleWidget::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtScaleWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtScaleWidget_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtScaleWidget_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtScaleWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -1096,12 +1092,12 @@ QwtColorMap* QwtScaleWidget_colorMap(const QwtScaleWidget* self) {
 	return (QwtColorMap*) self->colorMap();
 }
 
-QSize* QwtScaleWidget_sizeHint(const QwtScaleWidget* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtScaleWidget_sizeHint(const QwtScaleWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QwtScaleWidget_minimumSizeHint(const QwtScaleWidget* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QwtScaleWidget_minimumSizeHint(const QwtScaleWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 int QwtScaleWidget_titleHeightForWidth(const QwtScaleWidget* self, int width) {
@@ -1112,12 +1108,12 @@ int QwtScaleWidget_dimForLength(const QwtScaleWidget* self, int length, QFont* s
 	return self->dimForLength(static_cast<int>(length), *scaleFont);
 }
 
-void QwtScaleWidget_drawColorBar(const QwtScaleWidget* self, QPainter* painter, QRectF* param2) {
-	self->drawColorBar(painter, *param2);
+void QwtScaleWidget_drawColorBar(const QwtScaleWidget* self, QPainter* painter, struct miqt_qrectf param2) {
+	self->drawColorBar(painter, miqt_from_cabi<QRectF>(param2));
 }
 
-void QwtScaleWidget_drawTitle(const QwtScaleWidget* self, QPainter* painter, int param2, QRectF* rect) {
-	self->drawTitle(painter, static_cast<QwtScaleDraw::Alignment>(param2), *rect);
+void QwtScaleWidget_drawTitle(const QwtScaleWidget* self, QPainter* painter, int param2, struct miqt_qrectf rect) {
+	self->drawTitle(painter, static_cast<QwtScaleDraw::Alignment>(param2), miqt_from_cabi<QRectF>(rect));
 }
 
 void QwtScaleWidget_setAlignment(QwtScaleWidget* self, int alignment) {
@@ -1129,8 +1125,8 @@ int QwtScaleWidget_alignment(const QwtScaleWidget* self) {
 	return static_cast<int>(_ret);
 }
 
-QRectF* QwtScaleWidget_colorBarRect(const QwtScaleWidget* self, QRectF* param1) {
-	return new QRectF(self->colorBarRect(*param1));
+struct miqt_qrectf QwtScaleWidget_colorBarRect(const QwtScaleWidget* self, struct miqt_qrectf param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->colorBarRect(miqt_from_cabi<QRectF>(param1)));
 }
 
 struct miqt_string QwtScaleWidget_tr2(const char* s, const char* c) {
@@ -1187,8 +1183,8 @@ bool QwtScaleWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtScaleWidget_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtScaleWidget*>(self)->QwtScaleWidget::sizeHint());
+struct miqt_qsize QwtScaleWidget_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtScaleWidget*>(self)->QwtScaleWidget::sizeHint());
 }
 
 bool QwtScaleWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1201,8 +1197,8 @@ bool QwtScaleWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QwtScaleWidget_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtScaleWidget*>(self)->QwtScaleWidget::minimumSizeHint());
+struct miqt_qsize QwtScaleWidget_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtScaleWidget*>(self)->QwtScaleWidget::minimumSizeHint());
 }
 
 bool QwtScaleWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1834,10 +1830,6 @@ bool QwtScaleWidget_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QwtScaleWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtScaleWidget*>(self)->QwtScaleWidget::disconnectNotify(*signal);
-}
-
-QSize* QwtScaleWidget_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtScaleWidget_virtualreturncopy_QVariant(QVariant* src) {

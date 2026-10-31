@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -213,18 +214,16 @@ func QApplication_SetActiveWindow(act *QWidget) {
 	C.QApplication_setActiveWindow(act.cPointer())
 }
 
-func QApplication_WidgetAt(p *QPoint) *QWidget {
-	defer runtime.KeepAlive(p)
-	return newQWidget(C.QApplication_widgetAt(p.cPointer()))
+func QApplication_WidgetAt(p QPoint) *QWidget {
+	return newQWidget(C.QApplication_widgetAt(libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
 func QApplication_WidgetAt2(x int, y int) *QWidget {
 	return newQWidget(C.QApplication_widgetAt2((C.int)(x), (C.int)(y)))
 }
 
-func QApplication_TopLevelAt(p *QPoint) *QWidget {
-	defer runtime.KeepAlive(p)
-	return newQWidget(C.QApplication_topLevelAt(p.cPointer()))
+func QApplication_TopLevelAt(p QPoint) *QWidget {
+	return newQWidget(C.QApplication_topLevelAt(libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
 func QApplication_TopLevelAt2(x int, y int) *QWidget {

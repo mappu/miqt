@@ -50,12 +50,12 @@ struct miqt_string QPdfSearchResult_contextAfter(const QPdfSearchResult* self) {
 	return _ms;
 }
 
-struct miqt_array /* of QRectF* */  QPdfSearchResult_rectangles(const QPdfSearchResult* self) {
+struct miqt_array /* of struct miqt_qrectf */  QPdfSearchResult_rectangles(const QPdfSearchResult* self) {
 	QVector<QRectF> _ret = self->rectangles();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QRectF** _arr = static_cast<QRectF**>(malloc(sizeof(QRectF*) * _ret.length()));
+	struct miqt_qrectf* _arr = static_cast<struct miqt_qrectf*>(malloc(sizeof(struct miqt_qrectf) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QRectF(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qrectf>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

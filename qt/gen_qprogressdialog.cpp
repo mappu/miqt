@@ -46,13 +46,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QProgressDialog_canceled(intptr_t);
-QSize* miqt_exec_callback_QProgressDialog_sizeHint(const QProgressDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QProgressDialog_sizeHint(const QProgressDialog*, intptr_t);
 void miqt_exec_callback_QProgressDialog_resizeEvent(QProgressDialog*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QProgressDialog_closeEvent(QProgressDialog*, intptr_t, QCloseEvent*);
 void miqt_exec_callback_QProgressDialog_changeEvent(QProgressDialog*, intptr_t, QEvent*);
 void miqt_exec_callback_QProgressDialog_showEvent(QProgressDialog*, intptr_t, QShowEvent*);
 void miqt_exec_callback_QProgressDialog_setVisible(QProgressDialog*, intptr_t, bool);
-QSize* miqt_exec_callback_QProgressDialog_minimumSizeHint(const QProgressDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QProgressDialog_minimumSizeHint(const QProgressDialog*, intptr_t);
 void miqt_exec_callback_QProgressDialog_open(QProgressDialog*, intptr_t);
 int miqt_exec_callback_QProgressDialog_exec(QProgressDialog*, intptr_t);
 void miqt_exec_callback_QProgressDialog_done(QProgressDialog*, intptr_t, int);
@@ -123,13 +123,11 @@ public:
 			return QProgressDialog::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QProgressDialog_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QProgressDialog_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QProgressDialog_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QProgressDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -225,13 +223,11 @@ public:
 			return QProgressDialog::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QProgressDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QProgressDialog_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QProgressDialog_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QProgressDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1099,8 +1095,8 @@ int QProgressDialog_value(const QProgressDialog* self) {
 	return self->value();
 }
 
-QSize* QProgressDialog_sizeHint(const QProgressDialog* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QProgressDialog_sizeHint(const QProgressDialog* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 struct miqt_string QProgressDialog_labelText(const QProgressDialog* self) {
@@ -1236,8 +1232,8 @@ bool QProgressDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QProgressDialog_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQProgressDialog*>(self)->QProgressDialog::sizeHint());
+struct miqt_qsize QProgressDialog_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQProgressDialog*>(self)->QProgressDialog::sizeHint());
 }
 
 bool QProgressDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1320,8 +1316,8 @@ bool QProgressDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 	return true;
 }
 
-QSize* QProgressDialog_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQProgressDialog*>(self)->QProgressDialog::minimumSizeHint());
+struct miqt_qsize QProgressDialog_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQProgressDialog*>(self)->QProgressDialog::minimumSizeHint());
 }
 
 bool QProgressDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1953,10 +1949,6 @@ bool QProgressDialog_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQProgressDialog*>(self)->QProgressDialog::disconnectNotify(*signal);
-}
-
-QSize* QProgressDialog_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QProgressDialog_virtualreturncopy_QVariant(QVariant* src) {

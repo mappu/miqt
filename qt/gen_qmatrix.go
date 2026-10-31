@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -128,36 +129,24 @@ func (this *QMatrix) Map2(x float64, y float64, tx *float64, ty *float64) {
 	C.QMatrix_map2(this.h, (C.double)(x), (C.double)(y), (*C.double)(unsafe.Pointer(tx)), (*C.double)(unsafe.Pointer(ty)))
 }
 
-func (this *QMatrix) MapRect(param1 *QRect) *QRect {
+func (this *QMatrix) MapRect(param1 QRect) QRect {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := newQRect(C.QMatrix_mapRect(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QMatrix_mapRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 }
 
-func (this *QMatrix) MapRectWithQRectF(param1 *QRectF) *QRectF {
+func (this *QMatrix) MapRectWithQRectF(param1 QRectF) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := newQRectF(C.QMatrix_mapRectWithQRectF(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QMatrix_mapRectWithQRectF(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 }
 
-func (this *QMatrix) MapWithQPoint(p *QPoint) *QPoint {
+func (this *QMatrix) MapWithQPoint(p QPoint) QPoint {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_goptr := newQPoint(C.QMatrix_mapWithQPoint(this.h, p.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QMatrix_mapWithQPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
-func (this *QMatrix) MapWithQPointF(p *QPointF) *QPointF {
+func (this *QMatrix) MapWithQPointF(p QPointF) QPointF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_goptr := newQPointF(C.QMatrix_mapWithQPointF(this.h, p.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QMatrix_mapWithQPointF(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p)))
 }
 
 func (this *QMatrix) MapWithQLine(l *QLine) *QLine {

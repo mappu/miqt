@@ -109,8 +109,8 @@ void QwtPlotMultiBarChart_resetSymbolMap(QwtPlotMultiBarChart* self) {
 	self->resetSymbolMap();
 }
 
-QRectF* QwtPlotMultiBarChart_boundingRect(const QwtPlotMultiBarChart* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotMultiBarChart_boundingRect(const QwtPlotMultiBarChart* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 struct miqt_array /* of QwtLegendData* */  QwtPlotMultiBarChart_legendData(const QwtPlotMultiBarChart* self) {
@@ -126,8 +126,8 @@ struct miqt_array /* of QwtLegendData* */  QwtPlotMultiBarChart_legendData(const
 	return _out;
 }
 
-QwtGraphic* QwtPlotMultiBarChart_legendIcon(const QwtPlotMultiBarChart* self, int index, QSizeF* param2) {
-	return new QwtGraphic(self->legendIcon(static_cast<int>(index), *param2));
+QwtGraphic* QwtPlotMultiBarChart_legendIcon(const QwtPlotMultiBarChart* self, int index, struct miqt_qsizef param2) {
+	return new QwtGraphic(self->legendIcon(static_cast<int>(index), miqt_from_cabi<QSizeF>(param2)));
 }
 
 void QwtPlotMultiBarChart_delete(QwtPlotMultiBarChart* self) {

@@ -8,8 +8,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QwtRasterData_setInterval(QwtRasterData*, intptr_t, int, QwtInterval*);
-QRectF* miqt_exec_callback_QwtRasterData_pixelHint(const QwtRasterData*, intptr_t, QRectF*);
-void miqt_exec_callback_QwtRasterData_initRaster(QwtRasterData*, intptr_t, QRectF*, QSize*);
+struct miqt_qrectf miqt_exec_callback_QwtRasterData_pixelHint(const QwtRasterData*, intptr_t, struct miqt_qrectf);
+void miqt_exec_callback_QwtRasterData_initRaster(QwtRasterData*, intptr_t, struct miqt_qrectf, struct miqt_qsize);
 void miqt_exec_callback_QwtRasterData_discardRaster(QwtRasterData*, intptr_t);
 double miqt_exec_callback_QwtRasterData_value(const QwtRasterData*, intptr_t, double, double);
 #ifdef __cplusplus
@@ -53,16 +53,12 @@ public:
 			return QwtRasterData::pixelHint(param1);
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
-		QRectF* callback_return_value = miqt_exec_callback_QwtRasterData_pixelHint(this, handle__pixelHint, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QwtRasterData_pixelHint(this, handle__pixelHint, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QwtRasterData_virtualbase_pixelHint(const void* self, QRectF* param1);
+	friend struct miqt_qrectf QwtRasterData_virtualbase_pixelHint(const void* self, struct miqt_qrectf param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initRaster = 0;
@@ -74,17 +70,13 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
-		const QSize& raster_ret = raster;
-		// Cast returned reference into pointer
-		QSize* sigval2 = const_cast<QSize*>(&raster_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
+		struct miqt_qsize sigval2 = miqt_to_cabi<struct miqt_qsize>(raster);
 		miqt_exec_callback_QwtRasterData_initRaster(this, handle__initRaster, sigval1, sigval2);
 
 	}
 
-	friend void QwtRasterData_virtualbase_initRaster(void* self, QRectF* param1, QSize* raster);
+	friend void QwtRasterData_virtualbase_initRaster(void* self, struct miqt_qrectf param1, struct miqt_qsize raster);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__discardRaster = 0;
@@ -133,12 +125,12 @@ QwtInterval* QwtRasterData_interval(const QwtRasterData* self, int param1) {
 	return const_cast<QwtInterval*>(&_ret);
 }
 
-QRectF* QwtRasterData_pixelHint(const QwtRasterData* self, QRectF* param1) {
-	return new QRectF(self->pixelHint(*param1));
+struct miqt_qrectf QwtRasterData_pixelHint(const QwtRasterData* self, struct miqt_qrectf param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->pixelHint(miqt_from_cabi<QRectF>(param1)));
 }
 
-void QwtRasterData_initRaster(QwtRasterData* self, QRectF* param1, QSize* raster) {
-	self->initRaster(*param1, *raster);
+void QwtRasterData_initRaster(QwtRasterData* self, struct miqt_qrectf param1, struct miqt_qsize raster) {
+	self->initRaster(miqt_from_cabi<QRectF>(param1), miqt_from_cabi<QSize>(raster));
 }
 
 void QwtRasterData_discardRaster(QwtRasterData* self) {
@@ -173,8 +165,8 @@ bool QwtRasterData_override_virtual_pixelHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QRectF* QwtRasterData_virtualbase_pixelHint(const void* self, QRectF* param1) {
-	return new QRectF(static_cast<const MiqtVirtualQwtRasterData*>(self)->QwtRasterData::pixelHint(*param1));
+struct miqt_qrectf QwtRasterData_virtualbase_pixelHint(const void* self, struct miqt_qrectf param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQwtRasterData*>(self)->QwtRasterData::pixelHint(miqt_from_cabi<QRectF>(param1)));
 }
 
 bool QwtRasterData_override_virtual_initRaster(void* self, intptr_t slot) {
@@ -187,8 +179,8 @@ bool QwtRasterData_override_virtual_initRaster(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtRasterData_virtualbase_initRaster(void* self, QRectF* param1, QSize* raster) {
-	static_cast<MiqtVirtualQwtRasterData*>(self)->QwtRasterData::initRaster(*param1, *raster);
+void QwtRasterData_virtualbase_initRaster(void* self, struct miqt_qrectf param1, struct miqt_qsize raster) {
+	static_cast<MiqtVirtualQwtRasterData*>(self)->QwtRasterData::initRaster(miqt_from_cabi<QRectF>(param1), miqt_from_cabi<QSize>(raster));
 }
 
 bool QwtRasterData_override_virtual_discardRaster(void* self, intptr_t slot) {
@@ -213,10 +205,6 @@ bool QwtRasterData_override_virtual_value(void* self, intptr_t slot) {
 
 	self_cast->handle__value = slot;
 	return true;
-}
-
-QRectF* QwtRasterData_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
 }
 
 void QwtRasterData_delete(QwtRasterData* self) {

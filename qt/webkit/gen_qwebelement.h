@@ -73,7 +73,7 @@ void QWebElement_removeClass(QWebElement* self, struct miqt_string name);
 void QWebElement_toggleClass(QWebElement* self, struct miqt_string name);
 bool QWebElement_hasFocus(const QWebElement* self);
 void QWebElement_setFocus(QWebElement* self);
-QRect* QWebElement_geometry(const QWebElement* self);
+struct miqt_qrect QWebElement_geometry(const QWebElement* self);
 struct miqt_string QWebElement_tagName(const QWebElement* self);
 struct miqt_string QWebElement_prefix(const QWebElement* self);
 struct miqt_string QWebElement_localName(const QWebElement* self);
@@ -107,7 +107,7 @@ QVariant* QWebElement_evaluateJavaScript(QWebElement* self, struct miqt_string s
 struct miqt_string QWebElement_styleProperty(const QWebElement* self, struct miqt_string name, int strategy);
 void QWebElement_setStyleProperty(QWebElement* self, struct miqt_string name, struct miqt_string value);
 void QWebElement_render(QWebElement* self, QPainter* painter);
-void QWebElement_render2(QWebElement* self, QPainter* painter, QRect* clipRect);
+void QWebElement_render2(QWebElement* self, QPainter* painter, struct miqt_qrect clipRect);
 struct miqt_string QWebElement_attribute2(const QWebElement* self, struct miqt_string name, struct miqt_string defaultValue);
 struct miqt_string QWebElement_attributeNS2(const QWebElement* self, struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string defaultValue);
 struct miqt_array /* of struct miqt_string */  QWebElement_attributeNamesWithNamespaceUri(const QWebElement* self, struct miqt_string namespaceUri);

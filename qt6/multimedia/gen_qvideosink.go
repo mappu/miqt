@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -89,10 +90,8 @@ func QVideoSink_Tr(s string) string {
 	return _ret
 }
 
-func (this *QVideoSink) VideoSize() *qt6.QSize {
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QVideoSink_videoSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QVideoSink) VideoSize() qt6.QSize {
+	return libmiqt.ValueCast[qt6.QSize](C.QVideoSink_videoSize(this.h))
 }
 
 func (this *QVideoSink) SubtitleText() string {

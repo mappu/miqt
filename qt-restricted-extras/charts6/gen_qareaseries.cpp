@@ -22,18 +22,18 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAreaSeries_clicked(intptr_t, QPointF*);
-void miqt_exec_callback_QAreaSeries_hovered(intptr_t, QPointF*, bool);
-void miqt_exec_callback_QAreaSeries_pressed(intptr_t, QPointF*);
-void miqt_exec_callback_QAreaSeries_released(intptr_t, QPointF*);
-void miqt_exec_callback_QAreaSeries_doubleClicked(intptr_t, QPointF*);
+void miqt_exec_callback_QAreaSeries_clicked(intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QAreaSeries_hovered(intptr_t, struct miqt_qpointf, bool);
+void miqt_exec_callback_QAreaSeries_pressed(intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QAreaSeries_released(intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QAreaSeries_doubleClicked(intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QAreaSeries_selected(intptr_t);
-void miqt_exec_callback_QAreaSeries_colorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QAreaSeries_borderColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QAreaSeries_colorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QAreaSeries_borderColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QAreaSeries_pointLabelsFormatChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QAreaSeries_pointLabelsVisibilityChanged(intptr_t, bool);
 void miqt_exec_callback_QAreaSeries_pointLabelsFontChanged(intptr_t, QFont*);
-void miqt_exec_callback_QAreaSeries_pointLabelsColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QAreaSeries_pointLabelsColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QAreaSeries_pointLabelsClippingChanged(intptr_t, bool);
 int miqt_exec_callback_QAreaSeries_type(const QAreaSeries*, intptr_t);
 bool miqt_exec_callback_QAreaSeries_event(QAreaSeries*, intptr_t, QEvent*);
@@ -277,20 +277,20 @@ QBrush* QAreaSeries_brush(const QAreaSeries* self) {
 	return new QBrush(self->brush());
 }
 
-void QAreaSeries_setColor(QAreaSeries* self, QColor* color) {
-	self->setColor(*color);
+void QAreaSeries_setColor(QAreaSeries* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QAreaSeries_color(const QAreaSeries* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QAreaSeries_color(const QAreaSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-void QAreaSeries_setBorderColor(QAreaSeries* self, QColor* color) {
-	self->setBorderColor(*color);
+void QAreaSeries_setBorderColor(QAreaSeries* self, struct miqt_qcolor color) {
+	self->setBorderColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QAreaSeries_borderColor(const QAreaSeries* self) {
-	return new QColor(self->borderColor());
+struct miqt_qcolor QAreaSeries_borderColor(const QAreaSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->borderColor());
 }
 
 void QAreaSeries_setPointsVisible(QAreaSeries* self) {
@@ -333,12 +333,12 @@ QFont* QAreaSeries_pointLabelsFont(const QAreaSeries* self) {
 	return new QFont(self->pointLabelsFont());
 }
 
-void QAreaSeries_setPointLabelsColor(QAreaSeries* self, QColor* color) {
-	self->setPointLabelsColor(*color);
+void QAreaSeries_setPointLabelsColor(QAreaSeries* self, struct miqt_qcolor color) {
+	self->setPointLabelsColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QAreaSeries_pointLabelsColor(const QAreaSeries* self) {
-	return new QColor(self->pointLabelsColor());
+struct miqt_qcolor QAreaSeries_pointLabelsColor(const QAreaSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->pointLabelsColor());
 }
 
 void QAreaSeries_setPointLabelsClipping(QAreaSeries* self) {
@@ -349,68 +349,58 @@ bool QAreaSeries_pointLabelsClipping(const QAreaSeries* self) {
 	return self->pointLabelsClipping();
 }
 
-void QAreaSeries_clicked(QAreaSeries* self, QPointF* point) {
-	self->clicked(*point);
+void QAreaSeries_clicked(QAreaSeries* self, struct miqt_qpointf point) {
+	self->clicked(miqt_from_cabi<QPointF>(point));
 }
 
 void QAreaSeries_connect_clicked(QAreaSeries* self, intptr_t slot) {
 	QAreaSeries::connect(self, static_cast<void (QAreaSeries::*)(const QPointF&)>(&QAreaSeries::clicked), self, [=](const QPointF& point) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		miqt_exec_callback_QAreaSeries_clicked(slot, sigval1);
 	});
 }
 
-void QAreaSeries_hovered(QAreaSeries* self, QPointF* point, bool state) {
-	self->hovered(*point, state);
+void QAreaSeries_hovered(QAreaSeries* self, struct miqt_qpointf point, bool state) {
+	self->hovered(miqt_from_cabi<QPointF>(point), state);
 }
 
 void QAreaSeries_connect_hovered(QAreaSeries* self, intptr_t slot) {
 	QAreaSeries::connect(self, static_cast<void (QAreaSeries::*)(const QPointF&, bool)>(&QAreaSeries::hovered), self, [=](const QPointF& point, bool state) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool sigval2 = state;
 		miqt_exec_callback_QAreaSeries_hovered(slot, sigval1, sigval2);
 	});
 }
 
-void QAreaSeries_pressed(QAreaSeries* self, QPointF* point) {
-	self->pressed(*point);
+void QAreaSeries_pressed(QAreaSeries* self, struct miqt_qpointf point) {
+	self->pressed(miqt_from_cabi<QPointF>(point));
 }
 
 void QAreaSeries_connect_pressed(QAreaSeries* self, intptr_t slot) {
 	QAreaSeries::connect(self, static_cast<void (QAreaSeries::*)(const QPointF&)>(&QAreaSeries::pressed), self, [=](const QPointF& point) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		miqt_exec_callback_QAreaSeries_pressed(slot, sigval1);
 	});
 }
 
-void QAreaSeries_released(QAreaSeries* self, QPointF* point) {
-	self->released(*point);
+void QAreaSeries_released(QAreaSeries* self, struct miqt_qpointf point) {
+	self->released(miqt_from_cabi<QPointF>(point));
 }
 
 void QAreaSeries_connect_released(QAreaSeries* self, intptr_t slot) {
 	QAreaSeries::connect(self, static_cast<void (QAreaSeries::*)(const QPointF&)>(&QAreaSeries::released), self, [=](const QPointF& point) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		miqt_exec_callback_QAreaSeries_released(slot, sigval1);
 	});
 }
 
-void QAreaSeries_doubleClicked(QAreaSeries* self, QPointF* point) {
-	self->doubleClicked(*point);
+void QAreaSeries_doubleClicked(QAreaSeries* self, struct miqt_qpointf point) {
+	self->doubleClicked(miqt_from_cabi<QPointF>(point));
 }
 
 void QAreaSeries_connect_doubleClicked(QAreaSeries* self, intptr_t slot) {
 	QAreaSeries::connect(self, static_cast<void (QAreaSeries::*)(const QPointF&)>(&QAreaSeries::doubleClicked), self, [=](const QPointF& point) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		miqt_exec_callback_QAreaSeries_doubleClicked(slot, sigval1);
 	});
 }
@@ -425,24 +415,24 @@ void QAreaSeries_connect_selected(QAreaSeries* self, intptr_t slot) {
 	});
 }
 
-void QAreaSeries_colorChanged(QAreaSeries* self, QColor* color) {
-	self->colorChanged(*color);
+void QAreaSeries_colorChanged(QAreaSeries* self, struct miqt_qcolor color) {
+	self->colorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QAreaSeries_connect_colorChanged(QAreaSeries* self, intptr_t slot) {
 	QAreaSeries::connect(self, static_cast<void (QAreaSeries::*)(QColor)>(&QAreaSeries::colorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QAreaSeries_colorChanged(slot, sigval1);
 	});
 }
 
-void QAreaSeries_borderColorChanged(QAreaSeries* self, QColor* color) {
-	self->borderColorChanged(*color);
+void QAreaSeries_borderColorChanged(QAreaSeries* self, struct miqt_qcolor color) {
+	self->borderColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QAreaSeries_connect_borderColorChanged(QAreaSeries* self, intptr_t slot) {
 	QAreaSeries::connect(self, static_cast<void (QAreaSeries::*)(QColor)>(&QAreaSeries::borderColorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QAreaSeries_borderColorChanged(slot, sigval1);
 	});
 }
@@ -490,15 +480,13 @@ void QAreaSeries_connect_pointLabelsFontChanged(QAreaSeries* self, intptr_t slot
 	});
 }
 
-void QAreaSeries_pointLabelsColorChanged(QAreaSeries* self, QColor* color) {
-	self->pointLabelsColorChanged(*color);
+void QAreaSeries_pointLabelsColorChanged(QAreaSeries* self, struct miqt_qcolor color) {
+	self->pointLabelsColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QAreaSeries_connect_pointLabelsColorChanged(QAreaSeries* self, intptr_t slot) {
 	QAreaSeries::connect(self, static_cast<void (QAreaSeries::*)(const QColor&)>(&QAreaSeries::pointLabelsColorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QAreaSeries_pointLabelsColorChanged(slot, sigval1);
 	});
 }

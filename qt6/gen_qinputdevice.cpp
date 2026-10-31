@@ -17,7 +17,7 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged(intptr_t, QRect*);
+void miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged(intptr_t, struct miqt_qrect);
 bool miqt_exec_callback_QInputDevice_event(QInputDevice*, intptr_t, QEvent*);
 bool miqt_exec_callback_QInputDevice_eventFilter(QInputDevice*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QInputDevice_timerEvent(QInputDevice*, intptr_t, QTimerEvent*);
@@ -258,8 +258,8 @@ struct miqt_string QInputDevice_seatName(const QInputDevice* self) {
 	return _ms;
 }
 
-QRect* QInputDevice_availableVirtualGeometry(const QInputDevice* self) {
-	return new QRect(self->availableVirtualGeometry());
+struct miqt_qrect QInputDevice_availableVirtualGeometry(const QInputDevice* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->availableVirtualGeometry());
 }
 
 struct miqt_array /* of struct miqt_string */  QInputDevice_seatNames() {
@@ -303,13 +303,13 @@ bool QInputDevice_operatorEqual(const QInputDevice* self, QInputDevice* other) {
 	return (*self == *other);
 }
 
-void QInputDevice_availableVirtualGeometryChanged(QInputDevice* self, QRect* area) {
-	self->availableVirtualGeometryChanged(*area);
+void QInputDevice_availableVirtualGeometryChanged(QInputDevice* self, struct miqt_qrect area) {
+	self->availableVirtualGeometryChanged(miqt_from_cabi<QRect>(area));
 }
 
 void QInputDevice_connect_availableVirtualGeometryChanged(QInputDevice* self, intptr_t slot) {
 	QInputDevice::connect(self, static_cast<void (QInputDevice::*)(QRect)>(&QInputDevice::availableVirtualGeometryChanged), self, [=](QRect area) {
-		QRect* sigval1 = new QRect(area);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(area);
 		miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged(slot, sigval1);
 	});
 }

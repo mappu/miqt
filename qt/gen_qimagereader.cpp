@@ -120,8 +120,8 @@ struct miqt_string QImageReader_fileName(const QImageReader* self) {
 	return _ms;
 }
 
-QSize* QImageReader_size(const QImageReader* self) {
-	return new QSize(self->size());
+struct miqt_qsize QImageReader_size(const QImageReader* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
 int QImageReader_imageFormat(const QImageReader* self) {
@@ -161,20 +161,20 @@ struct miqt_string QImageReader_text(const QImageReader* self, struct miqt_strin
 	return _ms;
 }
 
-void QImageReader_setClipRect(QImageReader* self, QRect* rect) {
-	self->setClipRect(*rect);
+void QImageReader_setClipRect(QImageReader* self, struct miqt_qrect rect) {
+	self->setClipRect(miqt_from_cabi<QRect>(rect));
 }
 
-QRect* QImageReader_clipRect(const QImageReader* self) {
-	return new QRect(self->clipRect());
+struct miqt_qrect QImageReader_clipRect(const QImageReader* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->clipRect());
 }
 
-void QImageReader_setScaledSize(QImageReader* self, QSize* size) {
-	self->setScaledSize(*size);
+void QImageReader_setScaledSize(QImageReader* self, struct miqt_qsize size) {
+	self->setScaledSize(miqt_from_cabi<QSize>(size));
 }
 
-QSize* QImageReader_scaledSize(const QImageReader* self) {
-	return new QSize(self->scaledSize());
+struct miqt_qsize QImageReader_scaledSize(const QImageReader* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->scaledSize());
 }
 
 void QImageReader_setQuality(QImageReader* self, int quality) {
@@ -185,20 +185,20 @@ int QImageReader_quality(const QImageReader* self) {
 	return self->quality();
 }
 
-void QImageReader_setScaledClipRect(QImageReader* self, QRect* rect) {
-	self->setScaledClipRect(*rect);
+void QImageReader_setScaledClipRect(QImageReader* self, struct miqt_qrect rect) {
+	self->setScaledClipRect(miqt_from_cabi<QRect>(rect));
 }
 
-QRect* QImageReader_scaledClipRect(const QImageReader* self) {
-	return new QRect(self->scaledClipRect());
+struct miqt_qrect QImageReader_scaledClipRect(const QImageReader* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->scaledClipRect());
 }
 
-void QImageReader_setBackgroundColor(QImageReader* self, QColor* color) {
-	self->setBackgroundColor(*color);
+void QImageReader_setBackgroundColor(QImageReader* self, struct miqt_qcolor color) {
+	self->setBackgroundColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QImageReader_backgroundColor(const QImageReader* self) {
-	return new QColor(self->backgroundColor());
+struct miqt_qcolor QImageReader_backgroundColor(const QImageReader* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->backgroundColor());
 }
 
 bool QImageReader_supportsAnimation(const QImageReader* self) {
@@ -289,8 +289,8 @@ int QImageReader_currentImageNumber(const QImageReader* self) {
 	return self->currentImageNumber();
 }
 
-QRect* QImageReader_currentImageRect(const QImageReader* self) {
-	return new QRect(self->currentImageRect());
+struct miqt_qrect QImageReader_currentImageRect(const QImageReader* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->currentImageRect());
 }
 
 int QImageReader_error(const QImageReader* self) {

@@ -57,8 +57,8 @@ QwtRasterData* QwtPlotSpectrogram_data2(QwtPlotSpectrogram* self);
 void QwtPlotSpectrogram_setColorMap(QwtPlotSpectrogram* self, QwtColorMap* colorMap);
 QwtColorMap* QwtPlotSpectrogram_colorMap(const QwtPlotSpectrogram* self);
 QwtInterval* QwtPlotSpectrogram_interval(const QwtPlotSpectrogram* self, int param1);
-QRectF* QwtPlotSpectrogram_pixelHint(const QwtPlotSpectrogram* self, QRectF* param1);
-void QwtPlotSpectrogram_setDefaultContourPen(QwtPlotSpectrogram* self, QColor* param1);
+struct miqt_qrectf QwtPlotSpectrogram_pixelHint(const QwtPlotSpectrogram* self, struct miqt_qrectf param1);
+void QwtPlotSpectrogram_setDefaultContourPen(QwtPlotSpectrogram* self, struct miqt_qcolor param1);
 void QwtPlotSpectrogram_setDefaultContourPenWithDefaultContourPen(QwtPlotSpectrogram* self, QPen* defaultContourPen);
 QPen* QwtPlotSpectrogram_defaultContourPen(const QwtPlotSpectrogram* self);
 QPen* QwtPlotSpectrogram_contourPen(const QwtPlotSpectrogram* self, double level);
@@ -67,10 +67,10 @@ bool QwtPlotSpectrogram_testConrecFlag(const QwtPlotSpectrogram* self, int param
 void QwtPlotSpectrogram_setContourLevels(QwtPlotSpectrogram* self, struct miqt_array /* of double */  contourLevels);
 struct miqt_array /* of double */  QwtPlotSpectrogram_contourLevels(const QwtPlotSpectrogram* self);
 int QwtPlotSpectrogram_rtti(const QwtPlotSpectrogram* self);
-QSize* QwtPlotSpectrogram_contourRasterSize(const QwtPlotSpectrogram* self, QRectF* param1, QRect* param2);
+struct miqt_qsize QwtPlotSpectrogram_contourRasterSize(const QwtPlotSpectrogram* self, struct miqt_qrectf param1, struct miqt_qrect param2);
 void QwtPlotSpectrogram_setDisplayMode2(QwtPlotSpectrogram* self, int param1, bool on);
-void QwtPlotSpectrogram_setDefaultContourPen2(QwtPlotSpectrogram* self, QColor* param1, double width);
-void QwtPlotSpectrogram_setDefaultContourPen3(QwtPlotSpectrogram* self, QColor* param1, double width, int param3);
+void QwtPlotSpectrogram_setDefaultContourPen2(QwtPlotSpectrogram* self, struct miqt_qcolor param1, double width);
+void QwtPlotSpectrogram_setDefaultContourPen3(QwtPlotSpectrogram* self, struct miqt_qcolor param1, double width, int param3);
 
 void QwtPlotSpectrogram_delete(QwtPlotSpectrogram* self);
 

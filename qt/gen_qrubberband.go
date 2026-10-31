@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -109,9 +110,8 @@ func (this *QRubberBand) Shape() QRubberBand__Shape {
 	return (QRubberBand__Shape)(C.QRubberBand_shape(this.h))
 }
 
-func (this *QRubberBand) SetGeometry(r *QRect) {
-	defer runtime.KeepAlive(r)
-	C.QRubberBand_setGeometry(this.h, r.cPointer())
+func (this *QRubberBand) SetGeometry(r QRect) {
+	C.QRubberBand_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r))
 }
 
 func (this *QRubberBand) SetGeometry2(x int, y int, w int, h int) {
@@ -122,18 +122,16 @@ func (this *QRubberBand) Move(x int, y int) {
 	C.QRubberBand_move(this.h, (C.int)(x), (C.int)(y))
 }
 
-func (this *QRubberBand) MoveWithQPoint(p *QPoint) {
-	defer runtime.KeepAlive(p)
-	C.QRubberBand_moveWithQPoint(this.h, p.cPointer())
+func (this *QRubberBand) MoveWithQPoint(p QPoint) {
+	C.QRubberBand_moveWithQPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
 func (this *QRubberBand) Resize(w int, h int) {
 	C.QRubberBand_resize(this.h, (C.int)(w), (C.int)(h))
 }
 
-func (this *QRubberBand) ResizeWithQSize(s *QSize) {
-	defer runtime.KeepAlive(s)
-	C.QRubberBand_resizeWithQSize(this.h, s.cPointer())
+func (this *QRubberBand) ResizeWithQSize(s QSize) {
+	C.QRubberBand_resizeWithQSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](s))
 }
 
 func QRubberBand_Tr2(s string, c string) string {
@@ -531,14 +529,12 @@ func miqt_exec_callback_QRubberBand_setVisible(self *C.QRubberBand, cb C.intptr_
 
 }
 
-func (this *QRubberBand) callVirtualBase_SizeHint() *QSize {
+func (this *QRubberBand) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QRubberBand_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QRubberBand_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QRubberBand) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QRubberBand) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QRubberBand_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -546,27 +542,24 @@ func (this *QRubberBand) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QRubberBand_sizeHint
-func miqt_exec_callback_QRubberBand_sizeHint(self *C.QRubberBand, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QRubberBand_sizeHint(self *C.QRubberBand, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QRubberBand_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QRubberBand) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QRubberBand_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QRubberBand) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QRubberBand) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QRubberBand_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QRubberBand) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QRubberBand_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -574,16 +567,15 @@ func (this *QRubberBand) OnMinimumSizeHint(slot func(super func() *QSize) *QSize
 }
 
 //export miqt_exec_callback_QRubberBand_minimumSizeHint
-func miqt_exec_callback_QRubberBand_minimumSizeHint(self *C.QRubberBand, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QRubberBand_minimumSizeHint(self *C.QRubberBand, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QRubberBand{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QRubberBand_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1303,7 +1295,6 @@ func miqt_exec_callback_QRubberBand_initPainter(self *C.QRubberBand, cb C.intptr
 }
 
 func (this *QRubberBand) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QRubberBand_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

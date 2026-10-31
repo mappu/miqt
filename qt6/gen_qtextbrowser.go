@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -379,9 +380,7 @@ func (this *QTextBrowser) SetViewportMargins(left int, top int, right int, botto
 func (this *QTextBrowser) ViewportMargins() QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQMargins(C.QTextBrowser_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QMargins](C.QTextBrowser_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -1444,14 +1443,12 @@ func miqt_exec_callback_QTextBrowser_doSetTextCursor(self *C.QTextBrowser, cb C.
 
 }
 
-func (this *QTextBrowser) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QTextBrowser) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QTextBrowser_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTextBrowser_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextBrowser) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTextBrowser) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTextBrowser_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1459,27 +1456,24 @@ func (this *QTextBrowser) OnMinimumSizeHint(slot func(super func() *QSize) *QSiz
 }
 
 //export miqt_exec_callback_QTextBrowser_minimumSizeHint
-func miqt_exec_callback_QTextBrowser_minimumSizeHint(self *C.QTextBrowser, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTextBrowser_minimumSizeHint(self *C.QTextBrowser, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTextBrowser_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QTextBrowser) callVirtualBase_SizeHint() *QSize {
-
-	_goptr := newQSize(C.QTextBrowser_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QTextBrowser) OnSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QTextBrowser) callVirtualBase_SizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QTextBrowser_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QTextBrowser) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTextBrowser_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1487,16 +1481,15 @@ func (this *QTextBrowser) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QTextBrowser_sizeHint
-func miqt_exec_callback_QTextBrowser_sizeHint(self *C.QTextBrowser, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTextBrowser_sizeHint(self *C.QTextBrowser, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTextBrowser_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1586,14 +1579,12 @@ func miqt_exec_callback_QTextBrowser_viewportEvent(self *C.QTextBrowser, cb C.in
 
 }
 
-func (this *QTextBrowser) callVirtualBase_ViewportSizeHint() *QSize {
+func (this *QTextBrowser) callVirtualBase_ViewportSizeHint() QSize {
 
-	_goptr := newQSize(C.QTextBrowser_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTextBrowser_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextBrowser) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTextBrowser) OnViewportSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTextBrowser_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1601,16 +1592,15 @@ func (this *QTextBrowser) OnViewportSizeHint(slot func(super func() *QSize) *QSi
 }
 
 //export miqt_exec_callback_QTextBrowser_viewportSizeHint
-func miqt_exec_callback_QTextBrowser_viewportSizeHint(self *C.QTextBrowser, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTextBrowser_viewportSizeHint(self *C.QTextBrowser, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTextBrowser_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2057,7 +2047,6 @@ func miqt_exec_callback_QTextBrowser_initPainter(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTextBrowser_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

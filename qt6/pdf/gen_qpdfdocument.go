@@ -9,6 +9,7 @@ package pdf
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -181,10 +182,8 @@ func (this *QPdfDocument) PageCount() int {
 	return (int)(C.QPdfDocument_pageCount(this.h))
 }
 
-func (this *QPdfDocument) PagePointSize(page int) *qt6.QSizeF {
-	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QPdfDocument_pagePointSize(this.h, (C.int)(page))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPdfDocument) PagePointSize(page int) qt6.QSizeF {
+	return libmiqt.ValueCast[qt6.QSizeF](C.QPdfDocument_pagePointSize(this.h, (C.int)(page)))
 }
 
 func (this *QPdfDocument) PageLabel(page int) string {
@@ -199,16 +198,13 @@ func (this *QPdfDocument) PageModel() *qt6.QAbstractListModel {
 }
 
 func (this *QPdfDocument) Render(page int, imageSize qt6.QSize) *qt6.QImage {
-	defer runtime.KeepAlive(imageSize)
-	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QPdfDocument_render(this.h, (C.int)(page), (*C.QSize)(imageSize.UnsafePointer()))))
+	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QPdfDocument_render(this.h, (C.int)(page), libmiqt.ValueCast[C.struct_miqt_qsize](imageSize))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfDocument) GetSelection(page int, start qt6.QPointF, end qt6.QPointF) *QPdfSelection {
-	defer runtime.KeepAlive(start)
-	defer runtime.KeepAlive(end)
-	_goptr := newQPdfSelection(C.QPdfDocument_getSelection(this.h, (C.int)(page), (*C.QPointF)(start.UnsafePointer()), (*C.QPointF)(end.UnsafePointer())))
+	_goptr := newQPdfSelection(C.QPdfDocument_getSelection(this.h, (C.int)(page), libmiqt.ValueCast[C.struct_miqt_qpointf](start), libmiqt.ValueCast[C.struct_miqt_qpointf](end)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -339,9 +335,8 @@ func QPdfDocument_Tr3(s string, c string, n int) string {
 }
 
 func (this *QPdfDocument) Render2(page int, imageSize qt6.QSize, options QPdfDocumentRenderOptions) *qt6.QImage {
-	defer runtime.KeepAlive(imageSize)
 	defer runtime.KeepAlive(options)
-	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QPdfDocument_render2(this.h, (C.int)(page), (*C.QSize)(imageSize.UnsafePointer()), options.cPointer())))
+	_goptr := qt6.UnsafeNewQImage(unsafe.Pointer(C.QPdfDocument_render2(this.h, (C.int)(page), libmiqt.ValueCast[C.struct_miqt_qsize](imageSize), options.cPointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

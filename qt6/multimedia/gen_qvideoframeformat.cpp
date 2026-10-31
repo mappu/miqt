@@ -19,8 +19,8 @@ QVideoFrameFormat* QVideoFrameFormat_new() {
 	return new (std::nothrow) QVideoFrameFormat();
 }
 
-QVideoFrameFormat* QVideoFrameFormat_new2(QSize* size, int pixelFormat) {
-	return new (std::nothrow) QVideoFrameFormat(*size, static_cast<QVideoFrameFormat::PixelFormat>(pixelFormat));
+QVideoFrameFormat* QVideoFrameFormat_new2(struct miqt_qsize size, int pixelFormat) {
+	return new (std::nothrow) QVideoFrameFormat(miqt_from_cabi<QSize>(size), static_cast<QVideoFrameFormat::PixelFormat>(pixelFormat));
 }
 
 QVideoFrameFormat* QVideoFrameFormat_new3(QVideoFrameFormat* format) {
@@ -56,12 +56,12 @@ int QVideoFrameFormat_pixelFormat(const QVideoFrameFormat* self) {
 	return static_cast<int>(_ret);
 }
 
-QSize* QVideoFrameFormat_frameSize(const QVideoFrameFormat* self) {
-	return new QSize(self->frameSize());
+struct miqt_qsize QVideoFrameFormat_frameSize(const QVideoFrameFormat* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->frameSize());
 }
 
-void QVideoFrameFormat_setFrameSize(QVideoFrameFormat* self, QSize* size) {
-	self->setFrameSize(*size);
+void QVideoFrameFormat_setFrameSize(QVideoFrameFormat* self, struct miqt_qsize size) {
+	self->setFrameSize(miqt_from_cabi<QSize>(size));
 }
 
 void QVideoFrameFormat_setFrameSize2(QVideoFrameFormat* self, int width, int height) {
@@ -80,12 +80,12 @@ int QVideoFrameFormat_planeCount(const QVideoFrameFormat* self) {
 	return self->planeCount();
 }
 
-QRect* QVideoFrameFormat_viewport(const QVideoFrameFormat* self) {
-	return new QRect(self->viewport());
+struct miqt_qrect QVideoFrameFormat_viewport(const QVideoFrameFormat* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->viewport());
 }
 
-void QVideoFrameFormat_setViewport(QVideoFrameFormat* self, QRect* viewport) {
-	self->setViewport(*viewport);
+void QVideoFrameFormat_setViewport(QVideoFrameFormat* self, struct miqt_qrect viewport) {
+	self->setViewport(miqt_from_cabi<QRect>(viewport));
 }
 
 int QVideoFrameFormat_scanLineDirection(const QVideoFrameFormat* self) {

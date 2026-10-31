@@ -16,8 +16,8 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QwtSymbol_setColor(QwtSymbol*, intptr_t, QColor*);
-QRect* miqt_exec_callback_QwtSymbol_boundingRect(const QwtSymbol*, intptr_t);
+void miqt_exec_callback_QwtSymbol_setColor(QwtSymbol*, intptr_t, struct miqt_qcolor);
+struct miqt_qrect miqt_exec_callback_QwtSymbol_boundingRect(const QwtSymbol*, intptr_t);
 void miqt_exec_callback_QwtSymbol_renderSymbols(const QwtSymbol*, intptr_t, QPainter*, QPointF*, int);
 #ifdef __cplusplus
 } /* extern C */
@@ -43,14 +43,12 @@ public:
 			return;
 		}
 
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QwtSymbol_setColor(this, handle__setColor, sigval1);
 
 	}
 
-	friend void QwtSymbol_virtualbase_setColor(void* self, QColor* color);
+	friend void QwtSymbol_virtualbase_setColor(void* self, struct miqt_qcolor color);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__boundingRect = 0;
@@ -61,13 +59,11 @@ public:
 			return QwtSymbol::boundingRect();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QwtSymbol_boundingRect(this, handle__boundingRect);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QwtSymbol_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QwtSymbol_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrect QwtSymbol_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__renderSymbols = 0;
@@ -94,8 +90,8 @@ QwtSymbol* QwtSymbol_new() {
 	return new (std::nothrow) MiqtVirtualQwtSymbol();
 }
 
-QwtSymbol* QwtSymbol_new2(int param1, QBrush* param2, QPen* param3, QSize* param4) {
-	return new (std::nothrow) MiqtVirtualQwtSymbol(static_cast<QwtSymbol::Style>(param1), *param2, *param3, *param4);
+QwtSymbol* QwtSymbol_new2(int param1, QBrush* param2, QPen* param3, struct miqt_qsize param4) {
+	return new (std::nothrow) MiqtVirtualQwtSymbol(static_cast<QwtSymbol::Style>(param1), *param2, *param3, miqt_from_cabi<QSize>(param4));
 }
 
 QwtSymbol* QwtSymbol_new3(QPainterPath* param1, QBrush* param2, QPen* param3) {
@@ -115,26 +111,24 @@ int QwtSymbol_cachePolicy(const QwtSymbol* self) {
 	return static_cast<int>(_ret);
 }
 
-void QwtSymbol_setSize(QwtSymbol* self, QSize* size) {
-	self->setSize(*size);
+void QwtSymbol_setSize(QwtSymbol* self, struct miqt_qsize size) {
+	self->setSize(miqt_from_cabi<QSize>(size));
 }
 
 void QwtSymbol_setSizeWithWidth(QwtSymbol* self, int width) {
 	self->setSize(static_cast<int>(width));
 }
 
-QSize* QwtSymbol_size(const QwtSymbol* self) {
-	const QSize& _ret = self->size();
-	// Cast returned reference into pointer
-	return const_cast<QSize*>(&_ret);
+struct miqt_qsize QwtSymbol_size(const QwtSymbol* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
-void QwtSymbol_setPinPoint(QwtSymbol* self, QPointF* pos) {
-	self->setPinPoint(*pos);
+void QwtSymbol_setPinPoint(QwtSymbol* self, struct miqt_qpointf pos) {
+	self->setPinPoint(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QwtSymbol_pinPoint(const QwtSymbol* self) {
-	return new QPointF(self->pinPoint());
+struct miqt_qpointf QwtSymbol_pinPoint(const QwtSymbol* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pinPoint());
 }
 
 void QwtSymbol_setPinPointEnabled(QwtSymbol* self, bool pinPointEnabled) {
@@ -145,8 +139,8 @@ bool QwtSymbol_isPinPointEnabled(const QwtSymbol* self) {
 	return self->isPinPointEnabled();
 }
 
-void QwtSymbol_setColor(QwtSymbol* self, QColor* color) {
-	self->setColor(*color);
+void QwtSymbol_setColor(QwtSymbol* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
 void QwtSymbol_setBrush(QwtSymbol* self, QBrush* brush) {
@@ -159,8 +153,8 @@ QBrush* QwtSymbol_brush(const QwtSymbol* self) {
 	return const_cast<QBrush*>(&_ret);
 }
 
-void QwtSymbol_setPen(QwtSymbol* self, QColor* param1) {
-	self->setPen(*param1);
+void QwtSymbol_setPen(QwtSymbol* self, struct miqt_qcolor param1) {
+	self->setPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtSymbol_setPenWithPen(QwtSymbol* self, QPen* pen) {
@@ -217,20 +211,20 @@ void QwtSymbol_setSvgDocument(QwtSymbol* self, struct miqt_string svgDocument) {
 	self->setSvgDocument(svgDocument_QByteArray);
 }
 
-void QwtSymbol_drawSymbol(const QwtSymbol* self, QPainter* param1, QRectF* param2) {
-	self->drawSymbol(param1, *param2);
+void QwtSymbol_drawSymbol(const QwtSymbol* self, QPainter* param1, struct miqt_qrectf param2) {
+	self->drawSymbol(param1, miqt_from_cabi<QRectF>(param2));
 }
 
-void QwtSymbol_drawSymbol2(const QwtSymbol* self, QPainter* param1, QPointF* param2) {
-	self->drawSymbol(param1, *param2);
+void QwtSymbol_drawSymbol2(const QwtSymbol* self, QPainter* param1, struct miqt_qpointf param2) {
+	self->drawSymbol(param1, miqt_from_cabi<QPointF>(param2));
 }
 
 void QwtSymbol_drawSymbols2(const QwtSymbol* self, QPainter* param1, QPointF* param2, int numPoints) {
 	self->drawSymbols(param1, param2, static_cast<int>(numPoints));
 }
 
-QRect* QwtSymbol_boundingRect(const QwtSymbol* self) {
-	return new QRect(self->boundingRect());
+struct miqt_qrect QwtSymbol_boundingRect(const QwtSymbol* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->boundingRect());
 }
 
 void QwtSymbol_invalidateCache(QwtSymbol* self) {
@@ -241,16 +235,16 @@ void QwtSymbol_setSize2(QwtSymbol* self, int width, int height) {
 	self->setSize(static_cast<int>(width), static_cast<int>(height));
 }
 
-void QwtSymbol_setPinPoint2(QwtSymbol* self, QPointF* pos, bool enable) {
-	self->setPinPoint(*pos, enable);
+void QwtSymbol_setPinPoint2(QwtSymbol* self, struct miqt_qpointf pos, bool enable) {
+	self->setPinPoint(miqt_from_cabi<QPointF>(pos), enable);
 }
 
-void QwtSymbol_setPen2(QwtSymbol* self, QColor* param1, double width) {
-	self->setPen(*param1, static_cast<qreal>(width));
+void QwtSymbol_setPen2(QwtSymbol* self, struct miqt_qcolor param1, double width) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtSymbol_setPen3(QwtSymbol* self, QColor* param1, double width, int param3) {
-	self->setPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtSymbol_setPen3(QwtSymbol* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 bool QwtSymbol_override_virtual_setColor(void* self, intptr_t slot) {
@@ -263,8 +257,8 @@ bool QwtSymbol_override_virtual_setColor(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtSymbol_virtualbase_setColor(void* self, QColor* color) {
-	static_cast<MiqtVirtualQwtSymbol*>(self)->QwtSymbol::setColor(*color);
+void QwtSymbol_virtualbase_setColor(void* self, struct miqt_qcolor color) {
+	static_cast<MiqtVirtualQwtSymbol*>(self)->QwtSymbol::setColor(miqt_from_cabi<QColor>(color));
 }
 
 bool QwtSymbol_override_virtual_boundingRect(void* self, intptr_t slot) {
@@ -277,8 +271,8 @@ bool QwtSymbol_override_virtual_boundingRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QwtSymbol_virtualbase_boundingRect(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQwtSymbol*>(self)->QwtSymbol::boundingRect());
+struct miqt_qrect QwtSymbol_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQwtSymbol*>(self)->QwtSymbol::boundingRect());
 }
 
 bool QwtSymbol_override_virtual_renderSymbols(void* self, intptr_t slot) {
@@ -293,10 +287,6 @@ bool QwtSymbol_override_virtual_renderSymbols(void* self, intptr_t slot) {
 
 void QwtSymbol_virtualbase_renderSymbols(const void* self, QPainter* param1, QPointF* param2, int numPoints) {
 	static_cast<const MiqtVirtualQwtSymbol*>(self)->QwtSymbol::renderSymbols(param1, param2, static_cast<int>(numPoints));
-}
-
-QRect* QwtSymbol_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
 }
 
 void QwtSymbol_delete(QwtSymbol* self) {

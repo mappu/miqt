@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -78,10 +79,9 @@ func NewQBitmap3(w int, h int) *QBitmap {
 }
 
 // NewQBitmap4 constructs a new QBitmap object.
-func NewQBitmap4(param1 *QSize) *QBitmap {
-	defer runtime.KeepAlive(param1)
+func NewQBitmap4(param1 QSize) *QBitmap {
 
-	return newQBitmap(C.QBitmap_new4(param1.cPointer()))
+	return newQBitmap(C.QBitmap_new4(libmiqt.ValueCast[C.struct_miqt_qsize](param1)))
 }
 
 // NewQBitmap5 constructs a new QBitmap object.
@@ -144,9 +144,8 @@ func QBitmap_FromImage(image *QImage) *QBitmap {
 	return _goptr
 }
 
-func QBitmap_FromData(size *QSize, bits *byte) *QBitmap {
-	defer runtime.KeepAlive(size)
-	_goptr := newQBitmap(C.QBitmap_fromData(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits))))
+func QBitmap_FromData(size QSize, bits *byte) *QBitmap {
+	_goptr := newQBitmap(C.QBitmap_fromData(libmiqt.ValueCast[C.struct_miqt_qsize](size), (*C.uchar)(unsafe.Pointer(bits))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -179,9 +178,8 @@ func QBitmap_FromImage2(image *QImage, flags ImageConversionFlag) *QBitmap {
 	return _goptr
 }
 
-func QBitmap_FromData2(size *QSize, bits *byte, monoFormat QImage__Format) *QBitmap {
-	defer runtime.KeepAlive(size)
-	_goptr := newQBitmap(C.QBitmap_fromData2(size.cPointer(), (*C.uchar)(unsafe.Pointer(bits)), (C.int)(monoFormat)))
+func QBitmap_FromData2(size QSize, bits *byte, monoFormat QImage__Format) *QBitmap {
+	_goptr := newQBitmap(C.QBitmap_fromData2(libmiqt.ValueCast[C.struct_miqt_qsize](size), (*C.uchar)(unsafe.Pointer(bits)), (C.int)(monoFormat)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -298,7 +296,6 @@ func miqt_exec_callback_QBitmap_initPainter(self *C.QBitmap, cb C.intptr_t, pain
 
 func (this *QBitmap) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QBitmap_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

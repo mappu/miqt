@@ -44,7 +44,7 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QScrollBar_sizeHint(const QScrollBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QScrollBar_sizeHint(const QScrollBar*, intptr_t);
 bool miqt_exec_callback_QScrollBar_event(QScrollBar*, intptr_t, QEvent*);
 void miqt_exec_callback_QScrollBar_wheelEvent(QScrollBar*, intptr_t, QWheelEvent*);
 void miqt_exec_callback_QScrollBar_paintEvent(QScrollBar*, intptr_t, QPaintEvent*);
@@ -60,7 +60,7 @@ void miqt_exec_callback_QScrollBar_timerEvent(QScrollBar*, intptr_t, QTimerEvent
 void miqt_exec_callback_QScrollBar_changeEvent(QScrollBar*, intptr_t, QEvent*);
 int miqt_exec_callback_QScrollBar_devType(const QScrollBar*, intptr_t);
 void miqt_exec_callback_QScrollBar_setVisible(QScrollBar*, intptr_t, bool);
-QSize* miqt_exec_callback_QScrollBar_minimumSizeHint(const QScrollBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QScrollBar_minimumSizeHint(const QScrollBar*, intptr_t);
 int miqt_exec_callback_QScrollBar_heightForWidth(const QScrollBar*, intptr_t, int);
 bool miqt_exec_callback_QScrollBar_hasHeightForWidth(const QScrollBar*, intptr_t);
 QPaintEngine* miqt_exec_callback_QScrollBar_paintEngine(const QScrollBar*, intptr_t);
@@ -116,13 +116,11 @@ public:
 			return QScrollBar::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QScrollBar_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QScrollBar_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QScrollBar_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QScrollBar_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -386,13 +384,11 @@ public:
 			return QScrollBar::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QScrollBar_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QScrollBar_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QScrollBar_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QScrollBar_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -995,8 +991,8 @@ struct miqt_string QScrollBar_tr(const char* s) {
 	return _ms;
 }
 
-QSize* QScrollBar_sizeHint(const QScrollBar* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QScrollBar_sizeHint(const QScrollBar* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 bool QScrollBar_event(QScrollBar* self, QEvent* event) {
@@ -1035,8 +1031,8 @@ bool QScrollBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QScrollBar_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQScrollBar*>(self)->QScrollBar::sizeHint());
+struct miqt_qsize QScrollBar_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQScrollBar*>(self)->QScrollBar::sizeHint());
 }
 
 bool QScrollBar_override_virtual_event(void* self, intptr_t slot) {
@@ -1259,8 +1255,8 @@ bool QScrollBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QScrollBar_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQScrollBar*>(self)->QScrollBar::minimumSizeHint());
+struct miqt_qsize QScrollBar_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQScrollBar*>(self)->QScrollBar::minimumSizeHint());
 }
 
 bool QScrollBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1710,10 +1706,6 @@ bool QScrollBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQScrollBar*>(self)->QScrollBar::disconnectNotify(*signal);
-}
-
-QSize* QScrollBar_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QScrollBar_virtualreturncopy_QVariant(QVariant* src) {

@@ -35,18 +35,18 @@ void QwtPlotSvgItem_virtbase(QwtPlotSvgItem* src, QwtPlotItem** outptr_QwtPlotIt
 	*outptr_QwtPlotItem = static_cast<QwtPlotItem*>(src);
 }
 
-bool QwtPlotSvgItem_loadFile(QwtPlotSvgItem* self, QRectF* param1, struct miqt_string fileName) {
+bool QwtPlotSvgItem_loadFile(QwtPlotSvgItem* self, struct miqt_qrectf param1, struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return self->loadFile(*param1, fileName_QString);
+	return self->loadFile(miqt_from_cabi<QRectF>(param1), fileName_QString);
 }
 
-bool QwtPlotSvgItem_loadData(QwtPlotSvgItem* self, QRectF* param1, struct miqt_string param2) {
+bool QwtPlotSvgItem_loadData(QwtPlotSvgItem* self, struct miqt_qrectf param1, struct miqt_string param2) {
 	QByteArray param2_QByteArray(param2.data, param2.len);
-	return self->loadData(*param1, param2_QByteArray);
+	return self->loadData(miqt_from_cabi<QRectF>(param1), param2_QByteArray);
 }
 
-QRectF* QwtPlotSvgItem_boundingRect(const QwtPlotSvgItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotSvgItem_boundingRect(const QwtPlotSvgItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 int QwtPlotSvgItem_rtti(const QwtPlotSvgItem* self) {

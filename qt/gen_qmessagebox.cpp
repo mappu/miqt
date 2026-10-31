@@ -55,8 +55,8 @@ void miqt_exec_callback_QMessageBox_closeEvent(QMessageBox*, intptr_t, QCloseEve
 void miqt_exec_callback_QMessageBox_keyPressEvent(QMessageBox*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QMessageBox_changeEvent(QMessageBox*, intptr_t, QEvent*);
 void miqt_exec_callback_QMessageBox_setVisible(QMessageBox*, intptr_t, bool);
-QSize* miqt_exec_callback_QMessageBox_sizeHint(const QMessageBox*, intptr_t);
-QSize* miqt_exec_callback_QMessageBox_minimumSizeHint(const QMessageBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMessageBox_sizeHint(const QMessageBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMessageBox_minimumSizeHint(const QMessageBox*, intptr_t);
 void miqt_exec_callback_QMessageBox_open(QMessageBox*, intptr_t);
 int miqt_exec_callback_QMessageBox_exec(QMessageBox*, intptr_t);
 void miqt_exec_callback_QMessageBox_done(QMessageBox*, intptr_t, int);
@@ -246,13 +246,11 @@ public:
 			return QMessageBox::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMessageBox_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMessageBox_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMessageBox_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QMessageBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -263,13 +261,11 @@ public:
 			return QMessageBox::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMessageBox_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMessageBox_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMessageBox_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QMessageBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1818,8 +1814,8 @@ bool QMessageBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMessageBox_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::sizeHint());
+struct miqt_qsize QMessageBox_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::sizeHint());
 }
 
 bool QMessageBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1832,8 +1828,8 @@ bool QMessageBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMessageBox_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::minimumSizeHint());
+struct miqt_qsize QMessageBox_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::minimumSizeHint());
 }
 
 bool QMessageBox_override_virtual_open(void* self, intptr_t slot) {
@@ -2437,10 +2433,6 @@ bool QMessageBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QMessageBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::disconnectNotify(*signal);
-}
-
-QSize* QMessageBox_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QMessageBox_virtualreturncopy_QVariant(QVariant* src) {

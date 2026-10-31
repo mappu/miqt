@@ -9,6 +9,7 @@ package spatialaudio
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -124,25 +125,19 @@ func QAudioRoom_Tr(s string) string {
 }
 
 func (this *QAudioRoom) SetPosition(pos qt6.QVector3D) {
-	defer runtime.KeepAlive(pos)
-	C.QAudioRoom_setPosition(this.h, (*C.QVector3D)(pos.UnsafePointer()))
+	C.QAudioRoom_setPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](pos))
 }
 
-func (this *QAudioRoom) Position() *qt6.QVector3D {
-	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(C.QAudioRoom_position(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAudioRoom) Position() qt6.QVector3D {
+	return libmiqt.ValueCast[qt6.QVector3D](C.QAudioRoom_position(this.h))
 }
 
 func (this *QAudioRoom) SetDimensions(dim qt6.QVector3D) {
-	defer runtime.KeepAlive(dim)
-	C.QAudioRoom_setDimensions(this.h, (*C.QVector3D)(dim.UnsafePointer()))
+	C.QAudioRoom_setDimensions(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](dim))
 }
 
-func (this *QAudioRoom) Dimensions() *qt6.QVector3D {
-	_goptr := qt6.UnsafeNewQVector3D(unsafe.Pointer(C.QAudioRoom_dimensions(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAudioRoom) Dimensions() qt6.QVector3D {
+	return libmiqt.ValueCast[qt6.QVector3D](C.QAudioRoom_dimensions(this.h))
 }
 
 func (this *QAudioRoom) SetRotation(q *qt6.QQuaternion) {

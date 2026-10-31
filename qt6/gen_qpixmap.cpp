@@ -153,8 +153,8 @@ QPixmap* QPixmap_new2(int w, int h) {
 	return new (std::nothrow) MiqtVirtualQPixmap(static_cast<int>(w), static_cast<int>(h));
 }
 
-QPixmap* QPixmap_new3(QSize* param1) {
-	return new (std::nothrow) MiqtVirtualQPixmap(*param1);
+QPixmap* QPixmap_new3(struct miqt_qsize param1) {
+	return new (std::nothrow) MiqtVirtualQPixmap(miqt_from_cabi<QSize>(param1));
 }
 
 QPixmap* QPixmap_new4(struct miqt_string fileName) {
@@ -208,12 +208,12 @@ int QPixmap_height(const QPixmap* self) {
 	return self->height();
 }
 
-QSize* QPixmap_size(const QPixmap* self) {
-	return new QSize(self->size());
+struct miqt_qsize QPixmap_size(const QPixmap* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
-QRect* QPixmap_rect(const QPixmap* self) {
-	return new QRect(self->rect());
+struct miqt_qrect QPixmap_rect(const QPixmap* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rect());
 }
 
 int QPixmap_depth(const QPixmap* self) {
@@ -245,8 +245,8 @@ void QPixmap_setDevicePixelRatio(QPixmap* self, double scaleFactor) {
 	self->setDevicePixelRatio(static_cast<qreal>(scaleFactor));
 }
 
-QSizeF* QPixmap_deviceIndependentSize(const QPixmap* self) {
-	return new QSizeF(self->deviceIndependentSize());
+struct miqt_qsizef QPixmap_deviceIndependentSize(const QPixmap* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->deviceIndependentSize());
 }
 
 bool QPixmap_hasAlpha(const QPixmap* self) {
@@ -261,16 +261,16 @@ QBitmap* QPixmap_createHeuristicMask(const QPixmap* self) {
 	return new QBitmap(self->createHeuristicMask());
 }
 
-QBitmap* QPixmap_createMaskFromColor(const QPixmap* self, QColor* maskColor) {
-	return new QBitmap(self->createMaskFromColor(*maskColor));
+QBitmap* QPixmap_createMaskFromColor(const QPixmap* self, struct miqt_qcolor maskColor) {
+	return new QBitmap(self->createMaskFromColor(miqt_from_cabi<QColor>(maskColor)));
 }
 
 QPixmap* QPixmap_scaled(const QPixmap* self, int w, int h) {
 	return new QPixmap(self->scaled(static_cast<int>(w), static_cast<int>(h)));
 }
 
-QPixmap* QPixmap_scaledWithQSize(const QPixmap* self, QSize* s) {
-	return new QPixmap(self->scaled(*s));
+QPixmap* QPixmap_scaledWithQSize(const QPixmap* self, struct miqt_qsize s) {
+	return new QPixmap(self->scaled(miqt_from_cabi<QSize>(s)));
 }
 
 QPixmap* QPixmap_scaledToWidth(const QPixmap* self, int w) {
@@ -340,8 +340,8 @@ void QPixmap_scroll(QPixmap* self, int dx, int dy, int x, int y, int width, int 
 	self->scroll(static_cast<int>(dx), static_cast<int>(dy), static_cast<int>(x), static_cast<int>(y), static_cast<int>(width), static_cast<int>(height));
 }
 
-void QPixmap_scroll2(QPixmap* self, int dx, int dy, QRect* rect) {
-	self->scroll(static_cast<int>(dx), static_cast<int>(dy), *rect);
+void QPixmap_scroll2(QPixmap* self, int dx, int dy, struct miqt_qrect rect) {
+	self->scroll(static_cast<int>(dx), static_cast<int>(dy), miqt_from_cabi<QRect>(rect));
 }
 
 long long QPixmap_cacheKey(const QPixmap* self) {
@@ -369,16 +369,16 @@ bool QPixmap_operatorNot(const QPixmap* self) {
 	return self->operator!();
 }
 
-void QPixmap_fillWithFillColor(QPixmap* self, QColor* fillColor) {
-	self->fill(*fillColor);
+void QPixmap_fillWithFillColor(QPixmap* self, struct miqt_qcolor fillColor) {
+	self->fill(miqt_from_cabi<QColor>(fillColor));
 }
 
 QBitmap* QPixmap_createHeuristicMaskWithClipTight(const QPixmap* self, bool clipTight) {
 	return new QBitmap(self->createHeuristicMask(clipTight));
 }
 
-QBitmap* QPixmap_createMaskFromColor2(const QPixmap* self, QColor* maskColor, int mode) {
-	return new QBitmap(self->createMaskFromColor(*maskColor, static_cast<Qt::MaskMode>(mode)));
+QBitmap* QPixmap_createMaskFromColor2(const QPixmap* self, struct miqt_qcolor maskColor, int mode) {
+	return new QBitmap(self->createMaskFromColor(miqt_from_cabi<QColor>(maskColor), static_cast<Qt::MaskMode>(mode)));
 }
 
 QPixmap* QPixmap_scaled2(const QPixmap* self, int w, int h, int aspectMode) {
@@ -389,12 +389,12 @@ QPixmap* QPixmap_scaled3(const QPixmap* self, int w, int h, int aspectMode, int 
 	return new QPixmap(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
-QPixmap* QPixmap_scaled4(const QPixmap* self, QSize* s, int aspectMode) {
-	return new QPixmap(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode)));
+QPixmap* QPixmap_scaled4(const QPixmap* self, struct miqt_qsize s, int aspectMode) {
+	return new QPixmap(self->scaled(miqt_from_cabi<QSize>(s), static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
-QPixmap* QPixmap_scaled5(const QPixmap* self, QSize* s, int aspectMode, int mode) {
-	return new QPixmap(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
+QPixmap* QPixmap_scaled5(const QPixmap* self, struct miqt_qsize s, int aspectMode, int mode) {
+	return new QPixmap(self->scaled(miqt_from_cabi<QSize>(s), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
 QPixmap* QPixmap_scaledToWidth2(const QPixmap* self, int w, int mode) {
@@ -467,16 +467,16 @@ bool QPixmap_convertFromImage2(QPixmap* self, QImage* img, int flags) {
 	return self->convertFromImage(*img, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
-QPixmap* QPixmap_copyWithRect(const QPixmap* self, QRect* rect) {
-	return new QPixmap(self->copy(*rect));
+QPixmap* QPixmap_copyWithRect(const QPixmap* self, struct miqt_qrect rect) {
+	return new QPixmap(self->copy(miqt_from_cabi<QRect>(rect)));
 }
 
 void QPixmap_scroll3(QPixmap* self, int dx, int dy, int x, int y, int width, int height, QRegion* exposed) {
 	self->scroll(static_cast<int>(dx), static_cast<int>(dy), static_cast<int>(x), static_cast<int>(y), static_cast<int>(width), static_cast<int>(height), exposed);
 }
 
-void QPixmap_scroll4(QPixmap* self, int dx, int dy, QRect* rect, QRegion* exposed) {
-	self->scroll(static_cast<int>(dx), static_cast<int>(dy), *rect, exposed);
+void QPixmap_scroll4(QPixmap* self, int dx, int dy, struct miqt_qrect rect, QRegion* exposed) {
+	self->scroll(static_cast<int>(dx), static_cast<int>(dy), miqt_from_cabi<QRect>(rect), exposed);
 }
 
 bool QPixmap_override_virtual_devType(void* self, intptr_t slot) {

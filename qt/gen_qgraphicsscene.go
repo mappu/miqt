@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -81,10 +82,9 @@ func NewQGraphicsScene() *QGraphicsScene {
 }
 
 // NewQGraphicsScene2 constructs a new QGraphicsScene object.
-func NewQGraphicsScene2(sceneRect *QRectF) *QGraphicsScene {
-	defer runtime.KeepAlive(sceneRect)
+func NewQGraphicsScene2(sceneRect QRectF) *QGraphicsScene {
 
-	return newQGraphicsScene(C.QGraphicsScene_new2(sceneRect.cPointer()))
+	return newQGraphicsScene(C.QGraphicsScene_new2(libmiqt.ValueCast[C.struct_miqt_qrectf](sceneRect)))
 }
 
 // NewQGraphicsScene3 constructs a new QGraphicsScene object.
@@ -100,10 +100,9 @@ func NewQGraphicsScene4(parent *QObject) *QGraphicsScene {
 }
 
 // NewQGraphicsScene5 constructs a new QGraphicsScene object.
-func NewQGraphicsScene5(sceneRect *QRectF, parent *QObject) *QGraphicsScene {
-	defer runtime.KeepAlive(sceneRect)
+func NewQGraphicsScene5(sceneRect QRectF, parent *QObject) *QGraphicsScene {
 
-	return newQGraphicsScene(C.QGraphicsScene_new5(sceneRect.cPointer(), parent.cPointer()))
+	return newQGraphicsScene(C.QGraphicsScene_new5(libmiqt.ValueCast[C.struct_miqt_qrectf](sceneRect), parent.cPointer()))
 }
 
 // NewQGraphicsScene6 constructs a new QGraphicsScene object.
@@ -140,10 +139,8 @@ func QGraphicsScene_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QGraphicsScene) SceneRect() *QRectF {
-	_goptr := newQRectF(C.QGraphicsScene_sceneRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsScene) SceneRect() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsScene_sceneRect(this.h))
 }
 
 func (this *QGraphicsScene) Width() float64 {
@@ -154,9 +151,8 @@ func (this *QGraphicsScene) Height() float64 {
 	return (float64)(C.QGraphicsScene_height(this.h))
 }
 
-func (this *QGraphicsScene) SetSceneRect(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsScene_setSceneRect(this.h, rect.cPointer())
+func (this *QGraphicsScene) SetSceneRect(rect QRectF) {
+	C.QGraphicsScene_setSceneRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsScene) SetSceneRect2(x float64, y float64, w float64, h float64) {
@@ -192,10 +188,8 @@ func (this *QGraphicsScene) SetBspTreeDepth(depth int) {
 	C.QGraphicsScene_setBspTreeDepth(this.h, (C.int)(depth))
 }
 
-func (this *QGraphicsScene) ItemsBoundingRect() *QRectF {
-	_goptr := newQRectF(C.QGraphicsScene_itemsBoundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsScene) ItemsBoundingRect() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsScene_itemsBoundingRect(this.h))
 }
 
 func (this *QGraphicsScene) Items() []*QGraphicsItem {
@@ -208,9 +202,8 @@ func (this *QGraphicsScene) Items() []*QGraphicsItem {
 	return _ret
 }
 
-func (this *QGraphicsScene) ItemsWithPos(pos *QPointF) []*QGraphicsItem {
-	defer runtime.KeepAlive(pos)
-	var _ma C.struct_miqt_array = C.QGraphicsScene_itemsWithPos(this.h, pos.cPointer())
+func (this *QGraphicsScene) ItemsWithPos(pos QPointF) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsScene_itemsWithPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -219,9 +212,8 @@ func (this *QGraphicsScene) ItemsWithPos(pos *QPointF) []*QGraphicsItem {
 	return _ret
 }
 
-func (this *QGraphicsScene) ItemsWithRect(rect *QRectF) []*QGraphicsItem {
-	defer runtime.KeepAlive(rect)
-	var _ma C.struct_miqt_array = C.QGraphicsScene_itemsWithRect(this.h, rect.cPointer())
+func (this *QGraphicsScene) ItemsWithRect(rect QRectF) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsScene_itemsWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -252,10 +244,9 @@ func (this *QGraphicsScene) CollidingItems(item *QGraphicsItem) []*QGraphicsItem
 	return _ret
 }
 
-func (this *QGraphicsScene) ItemAt(pos *QPointF, deviceTransform *QTransform) *QGraphicsItem {
-	defer runtime.KeepAlive(pos)
+func (this *QGraphicsScene) ItemAt(pos QPointF, deviceTransform *QTransform) *QGraphicsItem {
 	defer runtime.KeepAlive(deviceTransform)
-	return newQGraphicsItem(C.QGraphicsScene_itemAt(this.h, pos.cPointer(), deviceTransform.cPointer()))
+	return newQGraphicsItem(C.QGraphicsScene_itemAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos), deviceTransform.cPointer()))
 }
 
 func (this *QGraphicsScene) Items2(x float64, y float64, w float64, h float64, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
@@ -327,9 +318,8 @@ func (this *QGraphicsScene) AddItem(item *QGraphicsItem) {
 	C.QGraphicsScene_addItem(this.h, item.cPointer())
 }
 
-func (this *QGraphicsScene) AddEllipse(rect *QRectF) *QGraphicsEllipseItem {
-	defer runtime.KeepAlive(rect)
-	return newQGraphicsEllipseItem(C.QGraphicsScene_addEllipse(this.h, rect.cPointer()))
+func (this *QGraphicsScene) AddEllipse(rect QRectF) *QGraphicsEllipseItem {
+	return newQGraphicsEllipseItem(C.QGraphicsScene_addEllipse(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 func (this *QGraphicsScene) AddLine(line *QLineF) *QGraphicsLineItem {
@@ -347,9 +337,8 @@ func (this *QGraphicsScene) AddPixmap(pixmap *QPixmap) *QGraphicsPixmapItem {
 	return newQGraphicsPixmapItem(C.QGraphicsScene_addPixmap(this.h, pixmap.cPointer()))
 }
 
-func (this *QGraphicsScene) AddRect(rect *QRectF) *QGraphicsRectItem {
-	defer runtime.KeepAlive(rect)
-	return newQGraphicsRectItem(C.QGraphicsScene_addRect(this.h, rect.cPointer()))
+func (this *QGraphicsScene) AddRect(rect QRectF) *QGraphicsRectItem {
+	return newQGraphicsRectItem(C.QGraphicsScene_addRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 func (this *QGraphicsScene) AddText(text string) *QGraphicsTextItem {
@@ -562,12 +551,11 @@ func (this *QGraphicsScene) Clear() {
 }
 
 func (this *QGraphicsScene) Changed(region []QRectF) {
-	defer runtime.KeepAlive(region)
-	region_CArray_ptr := (**C.QRectF)(C.malloc(C.size_t(8 * len(region))))
+	region_CArray_ptr := (*C.struct_miqt_qrectf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qrectf{})) * len(region))))
 	defer C.free(unsafe.Pointer(region_CArray_ptr))
 	region_CArray := unsafe.Slice(region_CArray_ptr, len(region))
 	for i := range region {
-		region_CArray[i] = region[i].cPointer()
+		region_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qrectf](region[i])
 	}
 	region_ma := C.struct_miqt_array{len: C.size_t(len(region)), data: unsafe.Pointer(region_CArray_ptr)}
 	C.QGraphicsScene_changed(this.h, region_ma)
@@ -586,34 +574,31 @@ func miqt_exec_callback_QGraphicsScene_changed(cb C.intptr_t, region C.struct_mi
 	// Convert all CABI parameters to Go parameters
 	var region_ma C.struct_miqt_array = region
 	region_ret := make([]QRectF, int(region_ma.len))
-	region_outCast := unsafe.Slice((**C.QRectF)(unsafe.Pointer(region_ma.data)), int(region_ma.len))
+	region_outCast := unsafe.Slice((*C.struct_miqt_qrectf)(unsafe.Pointer(region_ma.data)), int(region_ma.len))
 	for i := 0; i < int(region_ma.len); i++ {
-		region_lv_goptr := newQRectF(region_outCast[i])
-		region_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		region_ret[i] = *region_lv_goptr
+		region_ret[i] = libmiqt.ValueCast[QRectF](region_outCast[i])
 	}
 	slotval1 := region_ret
 
 	gofunc(slotval1)
 }
 
-func (this *QGraphicsScene) SceneRectChanged(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsScene_sceneRectChanged(this.h, rect.cPointer())
+func (this *QGraphicsScene) SceneRectChanged(rect QRectF) {
+	C.QGraphicsScene_sceneRectChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
-func (this *QGraphicsScene) OnSceneRectChanged(slot func(rect *QRectF)) {
+func (this *QGraphicsScene) OnSceneRectChanged(slot func(rect QRectF)) {
 	C.QGraphicsScene_connect_sceneRectChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsScene_sceneRectChanged
-func miqt_exec_callback_QGraphicsScene_sceneRectChanged(cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(rect *QRectF))
+func miqt_exec_callback_QGraphicsScene_sceneRectChanged(cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(rect)
+	slotval1 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc(slotval1)
 }
@@ -705,24 +690,19 @@ func QGraphicsScene_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QGraphicsScene) Render2(painter *QPainter, target *QRectF) {
+func (this *QGraphicsScene) Render2(painter *QPainter, target QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(target)
-	C.QGraphicsScene_render2(this.h, painter.cPointer(), target.cPointer())
+	C.QGraphicsScene_render2(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](target))
 }
 
-func (this *QGraphicsScene) Render3(painter *QPainter, target *QRectF, source *QRectF) {
+func (this *QGraphicsScene) Render3(painter *QPainter, target QRectF, source QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(target)
-	defer runtime.KeepAlive(source)
-	C.QGraphicsScene_render3(this.h, painter.cPointer(), target.cPointer(), source.cPointer())
+	C.QGraphicsScene_render3(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](target), libmiqt.ValueCast[C.struct_miqt_qrectf](source))
 }
 
-func (this *QGraphicsScene) Render4(painter *QPainter, target *QRectF, source *QRectF, aspectRatioMode AspectRatioMode) {
+func (this *QGraphicsScene) Render4(painter *QPainter, target QRectF, source QRectF, aspectRatioMode AspectRatioMode) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(target)
-	defer runtime.KeepAlive(source)
-	C.QGraphicsScene_render4(this.h, painter.cPointer(), target.cPointer(), source.cPointer(), (C.int)(aspectRatioMode))
+	C.QGraphicsScene_render4(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](target), libmiqt.ValueCast[C.struct_miqt_qrectf](source), (C.int)(aspectRatioMode))
 }
 
 func (this *QGraphicsScene) ItemsWithOrder(order SortOrder) []*QGraphicsItem {
@@ -735,9 +715,8 @@ func (this *QGraphicsScene) ItemsWithOrder(order SortOrder) []*QGraphicsItem {
 	return _ret
 }
 
-func (this *QGraphicsScene) Items3(pos *QPointF, mode ItemSelectionMode) []*QGraphicsItem {
-	defer runtime.KeepAlive(pos)
-	var _ma C.struct_miqt_array = C.QGraphicsScene_items3(this.h, pos.cPointer(), (C.int)(mode))
+func (this *QGraphicsScene) Items3(pos QPointF, mode ItemSelectionMode) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsScene_items3(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -746,9 +725,8 @@ func (this *QGraphicsScene) Items3(pos *QPointF, mode ItemSelectionMode) []*QGra
 	return _ret
 }
 
-func (this *QGraphicsScene) Items4(pos *QPointF, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
-	defer runtime.KeepAlive(pos)
-	var _ma C.struct_miqt_array = C.QGraphicsScene_items4(this.h, pos.cPointer(), (C.int)(mode), (C.int)(order))
+func (this *QGraphicsScene) Items4(pos QPointF, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsScene_items4(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos), (C.int)(mode), (C.int)(order))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -757,10 +735,9 @@ func (this *QGraphicsScene) Items4(pos *QPointF, mode ItemSelectionMode, order S
 	return _ret
 }
 
-func (this *QGraphicsScene) Items5(pos *QPointF, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
-	defer runtime.KeepAlive(pos)
+func (this *QGraphicsScene) Items5(pos QPointF, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	defer runtime.KeepAlive(deviceTransform)
-	var _ma C.struct_miqt_array = C.QGraphicsScene_items5(this.h, pos.cPointer(), (C.int)(mode), (C.int)(order), deviceTransform.cPointer())
+	var _ma C.struct_miqt_array = C.QGraphicsScene_items5(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos), (C.int)(mode), (C.int)(order), deviceTransform.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -769,9 +746,8 @@ func (this *QGraphicsScene) Items5(pos *QPointF, mode ItemSelectionMode, order S
 	return _ret
 }
 
-func (this *QGraphicsScene) Items6(rect *QRectF, mode ItemSelectionMode) []*QGraphicsItem {
-	defer runtime.KeepAlive(rect)
-	var _ma C.struct_miqt_array = C.QGraphicsScene_items6(this.h, rect.cPointer(), (C.int)(mode))
+func (this *QGraphicsScene) Items6(rect QRectF, mode ItemSelectionMode) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsScene_items6(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -780,9 +756,8 @@ func (this *QGraphicsScene) Items6(rect *QRectF, mode ItemSelectionMode) []*QGra
 	return _ret
 }
 
-func (this *QGraphicsScene) Items7(rect *QRectF, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
-	defer runtime.KeepAlive(rect)
-	var _ma C.struct_miqt_array = C.QGraphicsScene_items7(this.h, rect.cPointer(), (C.int)(mode), (C.int)(order))
+func (this *QGraphicsScene) Items7(rect QRectF, mode ItemSelectionMode, order SortOrder) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsScene_items7(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(mode), (C.int)(order))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -791,10 +766,9 @@ func (this *QGraphicsScene) Items7(rect *QRectF, mode ItemSelectionMode, order S
 	return _ret
 }
 
-func (this *QGraphicsScene) Items8(rect *QRectF, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsScene) Items8(rect QRectF, mode ItemSelectionMode, order SortOrder, deviceTransform *QTransform) []*QGraphicsItem {
 	defer runtime.KeepAlive(deviceTransform)
-	var _ma C.struct_miqt_array = C.QGraphicsScene_items8(this.h, rect.cPointer(), (C.int)(mode), (C.int)(order), deviceTransform.cPointer())
+	var _ma C.struct_miqt_array = C.QGraphicsScene_items8(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(mode), (C.int)(order), deviceTransform.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -881,17 +855,15 @@ func (this *QGraphicsScene) SetSelectionArea6(path *QPainterPath, selectionOpera
 	C.QGraphicsScene_setSelectionArea6(this.h, path.cPointer(), (C.int)(selectionOperation), (C.int)(mode), deviceTransform.cPointer())
 }
 
-func (this *QGraphicsScene) AddEllipse3(rect *QRectF, pen *QPen) *QGraphicsEllipseItem {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsScene) AddEllipse3(rect QRectF, pen *QPen) *QGraphicsEllipseItem {
 	defer runtime.KeepAlive(pen)
-	return newQGraphicsEllipseItem(C.QGraphicsScene_addEllipse3(this.h, rect.cPointer(), pen.cPointer()))
+	return newQGraphicsEllipseItem(C.QGraphicsScene_addEllipse3(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), pen.cPointer()))
 }
 
-func (this *QGraphicsScene) AddEllipse4(rect *QRectF, pen *QPen, brush *QBrush) *QGraphicsEllipseItem {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsScene) AddEllipse4(rect QRectF, pen *QPen, brush *QBrush) *QGraphicsEllipseItem {
 	defer runtime.KeepAlive(pen)
 	defer runtime.KeepAlive(brush)
-	return newQGraphicsEllipseItem(C.QGraphicsScene_addEllipse4(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer()))
+	return newQGraphicsEllipseItem(C.QGraphicsScene_addEllipse4(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), pen.cPointer(), brush.cPointer()))
 }
 
 func (this *QGraphicsScene) AddLine3(line *QLineF, pen *QPen) *QGraphicsLineItem {
@@ -913,17 +885,15 @@ func (this *QGraphicsScene) AddPath3(path *QPainterPath, pen *QPen, brush *QBrus
 	return newQGraphicsPathItem(C.QGraphicsScene_addPath3(this.h, path.cPointer(), pen.cPointer(), brush.cPointer()))
 }
 
-func (this *QGraphicsScene) AddRect3(rect *QRectF, pen *QPen) *QGraphicsRectItem {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsScene) AddRect3(rect QRectF, pen *QPen) *QGraphicsRectItem {
 	defer runtime.KeepAlive(pen)
-	return newQGraphicsRectItem(C.QGraphicsScene_addRect3(this.h, rect.cPointer(), pen.cPointer()))
+	return newQGraphicsRectItem(C.QGraphicsScene_addRect3(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), pen.cPointer()))
 }
 
-func (this *QGraphicsScene) AddRect4(rect *QRectF, pen *QPen, brush *QBrush) *QGraphicsRectItem {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsScene) AddRect4(rect QRectF, pen *QPen, brush *QBrush) *QGraphicsRectItem {
 	defer runtime.KeepAlive(pen)
 	defer runtime.KeepAlive(brush)
-	return newQGraphicsRectItem(C.QGraphicsScene_addRect4(this.h, rect.cPointer(), pen.cPointer(), brush.cPointer()))
+	return newQGraphicsRectItem(C.QGraphicsScene_addRect4(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), pen.cPointer(), brush.cPointer()))
 }
 
 func (this *QGraphicsScene) AddText2(text string, font *QFont) *QGraphicsTextItem {
@@ -988,19 +958,16 @@ func (this *QGraphicsScene) Invalidate3(x float64, y float64, w float64, h float
 	C.QGraphicsScene_invalidate3(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.int)(layers))
 }
 
-func (this *QGraphicsScene) UpdateWithRect(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsScene_updateWithRect(this.h, rect.cPointer())
+func (this *QGraphicsScene) UpdateWithRect(rect QRectF) {
+	C.QGraphicsScene_updateWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
-func (this *QGraphicsScene) InvalidateWithRect(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsScene_invalidateWithRect(this.h, rect.cPointer())
+func (this *QGraphicsScene) InvalidateWithRect(rect QRectF) {
+	C.QGraphicsScene_invalidateWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
-func (this *QGraphicsScene) Invalidate4(rect *QRectF, layers QGraphicsScene__SceneLayer) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsScene_invalidate4(this.h, rect.cPointer(), (C.int)(layers))
+func (this *QGraphicsScene) Invalidate4(rect QRectF, layers QGraphicsScene__SceneLayer) {
+	C.QGraphicsScene_invalidate4(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(layers))
 }
 
 // FocusNextPrevChild can only be called from a QGraphicsScene that was directly constructed.
@@ -1599,14 +1566,13 @@ func miqt_exec_callback_QGraphicsScene_inputMethodEvent(self *C.QGraphicsScene, 
 
 }
 
-func (this *QGraphicsScene) callVirtualBase_DrawBackground(painter *QPainter, rect *QRectF) {
+func (this *QGraphicsScene) callVirtualBase_DrawBackground(painter *QPainter, rect QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 
-	C.QGraphicsScene_virtualbase_drawBackground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
+	C.QGraphicsScene_virtualbase_drawBackground(unsafe.Pointer(this.h), painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsScene) OnDrawBackground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
+func (this *QGraphicsScene) OnDrawBackground(slot func(super func(painter *QPainter, rect QRectF), painter *QPainter, rect QRectF)) {
 	ok := C.QGraphicsScene_override_virtual_drawBackground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1614,8 +1580,8 @@ func (this *QGraphicsScene) OnDrawBackground(slot func(super func(painter *QPain
 }
 
 //export miqt_exec_callback_QGraphicsScene_drawBackground
-func miqt_exec_callback_QGraphicsScene_drawBackground(self *C.QGraphicsScene, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF))
+func miqt_exec_callback_QGraphicsScene_drawBackground(self *C.QGraphicsScene, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect QRectF), painter *QPainter, rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1623,20 +1589,19 @@ func miqt_exec_callback_QGraphicsScene_drawBackground(self *C.QGraphicsScene, cb
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQRectF(rect)
+	slotval2 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_DrawBackground, slotval1, slotval2)
 
 }
 
-func (this *QGraphicsScene) callVirtualBase_DrawForeground(painter *QPainter, rect *QRectF) {
+func (this *QGraphicsScene) callVirtualBase_DrawForeground(painter *QPainter, rect QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 
-	C.QGraphicsScene_virtualbase_drawForeground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
+	C.QGraphicsScene_virtualbase_drawForeground(unsafe.Pointer(this.h), painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsScene) OnDrawForeground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
+func (this *QGraphicsScene) OnDrawForeground(slot func(super func(painter *QPainter, rect QRectF), painter *QPainter, rect QRectF)) {
 	ok := C.QGraphicsScene_override_virtual_drawForeground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1644,8 +1609,8 @@ func (this *QGraphicsScene) OnDrawForeground(slot func(super func(painter *QPain
 }
 
 //export miqt_exec_callback_QGraphicsScene_drawForeground
-func miqt_exec_callback_QGraphicsScene_drawForeground(self *C.QGraphicsScene, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF))
+func miqt_exec_callback_QGraphicsScene_drawForeground(self *C.QGraphicsScene, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect QRectF), painter *QPainter, rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1653,7 +1618,7 @@ func miqt_exec_callback_QGraphicsScene_drawForeground(self *C.QGraphicsScene, cb
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQRectF(rect)
+	slotval2 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc((&QGraphicsScene{h: self}).callVirtualBase_DrawForeground, slotval1, slotval2)
 

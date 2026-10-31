@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -658,17 +659,14 @@ func (this *QStyleOption) SetDirection(direction LayoutDirection) {
 	C.QStyleOption_setDirection(this.h, (C.int)(direction))
 }
 
-func (this *QStyleOption) Rect() *QRect {
+func (this *QStyleOption) Rect() QRect {
 	defer runtime.KeepAlive(this)
-	rect_goptr := newQRect(C.QStyleOption_rect(this.h))
-	rect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return rect_goptr
+	return libmiqt.ValueCast[QRect](C.QStyleOption_rect(this.h))
 }
 
 func (this *QStyleOption) SetRect(rect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QStyleOption_setRect(this.h, rect.cPointer())
+	C.QStyleOption_setRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
 func (this *QStyleOption) FontMetrics() *QFontMetrics {
@@ -799,17 +797,14 @@ func NewQStyleOptionFocusRect2(other *QStyleOptionFocusRect) *QStyleOptionFocusR
 	return newQStyleOptionFocusRect(C.QStyleOptionFocusRect_new2(other.cPointer()))
 }
 
-func (this *QStyleOptionFocusRect) BackgroundColor() *QColor {
+func (this *QStyleOptionFocusRect) BackgroundColor() QColor {
 	defer runtime.KeepAlive(this)
-	backgroundColor_goptr := newQColor(C.QStyleOptionFocusRect_backgroundColor(this.h))
-	backgroundColor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return backgroundColor_goptr
+	return libmiqt.ValueCast[QColor](C.QStyleOptionFocusRect_backgroundColor(this.h))
 }
 
 func (this *QStyleOptionFocusRect) SetBackgroundColor(backgroundColor QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(backgroundColor)
-	C.QStyleOptionFocusRect_setBackgroundColor(this.h, backgroundColor.cPointer())
+	C.QStyleOptionFocusRect_setBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](backgroundColor))
 }
 
 func (this *QStyleOptionFocusRect) OperatorAssign(param1 *QStyleOptionFocusRect) {
@@ -1046,69 +1041,54 @@ func (this *QStyleOptionTabWidgetFrame) SetShape(shape QTabBar__Shape) {
 	C.QStyleOptionTabWidgetFrame_setShape(this.h, (C.int)(shape))
 }
 
-func (this *QStyleOptionTabWidgetFrame) TabBarSize() *QSize {
+func (this *QStyleOptionTabWidgetFrame) TabBarSize() QSize {
 	defer runtime.KeepAlive(this)
-	tabBarSize_goptr := newQSize(C.QStyleOptionTabWidgetFrame_tabBarSize(this.h))
-	tabBarSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return tabBarSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionTabWidgetFrame_tabBarSize(this.h))
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetTabBarSize(tabBarSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(tabBarSize)
-	C.QStyleOptionTabWidgetFrame_setTabBarSize(this.h, tabBarSize.cPointer())
+	C.QStyleOptionTabWidgetFrame_setTabBarSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](tabBarSize))
 }
 
-func (this *QStyleOptionTabWidgetFrame) RightCornerWidgetSize() *QSize {
+func (this *QStyleOptionTabWidgetFrame) RightCornerWidgetSize() QSize {
 	defer runtime.KeepAlive(this)
-	rightCornerWidgetSize_goptr := newQSize(C.QStyleOptionTabWidgetFrame_rightCornerWidgetSize(this.h))
-	rightCornerWidgetSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return rightCornerWidgetSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionTabWidgetFrame_rightCornerWidgetSize(this.h))
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetRightCornerWidgetSize(rightCornerWidgetSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rightCornerWidgetSize)
-	C.QStyleOptionTabWidgetFrame_setRightCornerWidgetSize(this.h, rightCornerWidgetSize.cPointer())
+	C.QStyleOptionTabWidgetFrame_setRightCornerWidgetSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](rightCornerWidgetSize))
 }
 
-func (this *QStyleOptionTabWidgetFrame) LeftCornerWidgetSize() *QSize {
+func (this *QStyleOptionTabWidgetFrame) LeftCornerWidgetSize() QSize {
 	defer runtime.KeepAlive(this)
-	leftCornerWidgetSize_goptr := newQSize(C.QStyleOptionTabWidgetFrame_leftCornerWidgetSize(this.h))
-	leftCornerWidgetSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return leftCornerWidgetSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionTabWidgetFrame_leftCornerWidgetSize(this.h))
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetLeftCornerWidgetSize(leftCornerWidgetSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(leftCornerWidgetSize)
-	C.QStyleOptionTabWidgetFrame_setLeftCornerWidgetSize(this.h, leftCornerWidgetSize.cPointer())
+	C.QStyleOptionTabWidgetFrame_setLeftCornerWidgetSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](leftCornerWidgetSize))
 }
 
-func (this *QStyleOptionTabWidgetFrame) TabBarRect() *QRect {
+func (this *QStyleOptionTabWidgetFrame) TabBarRect() QRect {
 	defer runtime.KeepAlive(this)
-	tabBarRect_goptr := newQRect(C.QStyleOptionTabWidgetFrame_tabBarRect(this.h))
-	tabBarRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return tabBarRect_goptr
+	return libmiqt.ValueCast[QRect](C.QStyleOptionTabWidgetFrame_tabBarRect(this.h))
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetTabBarRect(tabBarRect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(tabBarRect)
-	C.QStyleOptionTabWidgetFrame_setTabBarRect(this.h, tabBarRect.cPointer())
+	C.QStyleOptionTabWidgetFrame_setTabBarRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](tabBarRect))
 }
 
-func (this *QStyleOptionTabWidgetFrame) SelectedTabRect() *QRect {
+func (this *QStyleOptionTabWidgetFrame) SelectedTabRect() QRect {
 	defer runtime.KeepAlive(this)
-	selectedTabRect_goptr := newQRect(C.QStyleOptionTabWidgetFrame_selectedTabRect(this.h))
-	selectedTabRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return selectedTabRect_goptr
+	return libmiqt.ValueCast[QRect](C.QStyleOptionTabWidgetFrame_selectedTabRect(this.h))
 }
 
 func (this *QStyleOptionTabWidgetFrame) SetSelectedTabRect(selectedTabRect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(selectedTabRect)
-	C.QStyleOptionTabWidgetFrame_setSelectedTabRect(this.h, selectedTabRect.cPointer())
+	C.QStyleOptionTabWidgetFrame_setSelectedTabRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](selectedTabRect))
 }
 
 func (this *QStyleOptionTabWidgetFrame) OperatorAssign(param1 *QStyleOptionTabWidgetFrame) {
@@ -1203,30 +1183,24 @@ func (this *QStyleOptionTabBarBase) SetShape(shape QTabBar__Shape) {
 	C.QStyleOptionTabBarBase_setShape(this.h, (C.int)(shape))
 }
 
-func (this *QStyleOptionTabBarBase) TabBarRect() *QRect {
+func (this *QStyleOptionTabBarBase) TabBarRect() QRect {
 	defer runtime.KeepAlive(this)
-	tabBarRect_goptr := newQRect(C.QStyleOptionTabBarBase_tabBarRect(this.h))
-	tabBarRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return tabBarRect_goptr
+	return libmiqt.ValueCast[QRect](C.QStyleOptionTabBarBase_tabBarRect(this.h))
 }
 
 func (this *QStyleOptionTabBarBase) SetTabBarRect(tabBarRect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(tabBarRect)
-	C.QStyleOptionTabBarBase_setTabBarRect(this.h, tabBarRect.cPointer())
+	C.QStyleOptionTabBarBase_setTabBarRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](tabBarRect))
 }
 
-func (this *QStyleOptionTabBarBase) SelectedTabRect() *QRect {
+func (this *QStyleOptionTabBarBase) SelectedTabRect() QRect {
 	defer runtime.KeepAlive(this)
-	selectedTabRect_goptr := newQRect(C.QStyleOptionTabBarBase_selectedTabRect(this.h))
-	selectedTabRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return selectedTabRect_goptr
+	return libmiqt.ValueCast[QRect](C.QStyleOptionTabBarBase_selectedTabRect(this.h))
 }
 
 func (this *QStyleOptionTabBarBase) SetSelectedTabRect(selectedTabRect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(selectedTabRect)
-	C.QStyleOptionTabBarBase_setSelectedTabRect(this.h, selectedTabRect.cPointer())
+	C.QStyleOptionTabBarBase_setSelectedTabRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](selectedTabRect))
 }
 
 func (this *QStyleOptionTabBarBase) DocumentMode() bool {
@@ -1543,17 +1517,14 @@ func (this *QStyleOptionButton) SetIcon(icon QIcon) {
 	C.QStyleOptionButton_setIcon(this.h, icon.cPointer())
 }
 
-func (this *QStyleOptionButton) IconSize() *QSize {
+func (this *QStyleOptionButton) IconSize() QSize {
 	defer runtime.KeepAlive(this)
-	iconSize_goptr := newQSize(C.QStyleOptionButton_iconSize(this.h))
-	iconSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return iconSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionButton_iconSize(this.h))
 }
 
 func (this *QStyleOptionButton) SetIconSize(iconSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(iconSize)
-	C.QStyleOptionButton_setIconSize(this.h, iconSize.cPointer())
+	C.QStyleOptionButton_setIconSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](iconSize))
 }
 
 func (this *QStyleOptionButton) OperatorAssign(param1 *QStyleOptionButton) {
@@ -1718,17 +1689,14 @@ func (this *QStyleOptionTab) SetCornerWidgets(cornerWidgets QStyleOptionTab__Cor
 	C.QStyleOptionTab_setCornerWidgets(this.h, (C.int)(cornerWidgets))
 }
 
-func (this *QStyleOptionTab) IconSize() *QSize {
+func (this *QStyleOptionTab) IconSize() QSize {
 	defer runtime.KeepAlive(this)
-	iconSize_goptr := newQSize(C.QStyleOptionTab_iconSize(this.h))
-	iconSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return iconSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionTab_iconSize(this.h))
 }
 
 func (this *QStyleOptionTab) SetIconSize(iconSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(iconSize)
-	C.QStyleOptionTab_setIconSize(this.h, iconSize.cPointer())
+	C.QStyleOptionTab_setIconSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](iconSize))
 }
 
 func (this *QStyleOptionTab) DocumentMode() bool {
@@ -1741,30 +1709,24 @@ func (this *QStyleOptionTab) SetDocumentMode(documentMode bool) {
 	C.QStyleOptionTab_setDocumentMode(this.h, (C.bool)(documentMode))
 }
 
-func (this *QStyleOptionTab) LeftButtonSize() *QSize {
+func (this *QStyleOptionTab) LeftButtonSize() QSize {
 	defer runtime.KeepAlive(this)
-	leftButtonSize_goptr := newQSize(C.QStyleOptionTab_leftButtonSize(this.h))
-	leftButtonSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return leftButtonSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionTab_leftButtonSize(this.h))
 }
 
 func (this *QStyleOptionTab) SetLeftButtonSize(leftButtonSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(leftButtonSize)
-	C.QStyleOptionTab_setLeftButtonSize(this.h, leftButtonSize.cPointer())
+	C.QStyleOptionTab_setLeftButtonSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](leftButtonSize))
 }
 
-func (this *QStyleOptionTab) RightButtonSize() *QSize {
+func (this *QStyleOptionTab) RightButtonSize() QSize {
 	defer runtime.KeepAlive(this)
-	rightButtonSize_goptr := newQSize(C.QStyleOptionTab_rightButtonSize(this.h))
-	rightButtonSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return rightButtonSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionTab_rightButtonSize(this.h))
 }
 
 func (this *QStyleOptionTab) SetRightButtonSize(rightButtonSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rightButtonSize)
-	C.QStyleOptionTab_setRightButtonSize(this.h, rightButtonSize.cPointer())
+	C.QStyleOptionTab_setRightButtonSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](rightButtonSize))
 }
 
 func (this *QStyleOptionTab) Features() QStyleOptionTab__TabFeature {
@@ -2312,17 +2274,14 @@ func (this *QStyleOptionMenuItem) SetMenuHasCheckableItems(menuHasCheckableItems
 	C.QStyleOptionMenuItem_setMenuHasCheckableItems(this.h, (C.bool)(menuHasCheckableItems))
 }
 
-func (this *QStyleOptionMenuItem) MenuRect() *QRect {
+func (this *QStyleOptionMenuItem) MenuRect() QRect {
 	defer runtime.KeepAlive(this)
-	menuRect_goptr := newQRect(C.QStyleOptionMenuItem_menuRect(this.h))
-	menuRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return menuRect_goptr
+	return libmiqt.ValueCast[QRect](C.QStyleOptionMenuItem_menuRect(this.h))
 }
 
 func (this *QStyleOptionMenuItem) SetMenuRect(menuRect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(menuRect)
-	C.QStyleOptionMenuItem_setMenuRect(this.h, menuRect.cPointer())
+	C.QStyleOptionMenuItem_setMenuRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](menuRect))
 }
 
 func (this *QStyleOptionMenuItem) Text() string {
@@ -2649,17 +2608,14 @@ func (this *QStyleOptionViewItem) SetDecorationPosition(decorationPosition QStyl
 	C.QStyleOptionViewItem_setDecorationPosition(this.h, (C.int)(decorationPosition))
 }
 
-func (this *QStyleOptionViewItem) DecorationSize() *QSize {
+func (this *QStyleOptionViewItem) DecorationSize() QSize {
 	defer runtime.KeepAlive(this)
-	decorationSize_goptr := newQSize(C.QStyleOptionViewItem_decorationSize(this.h))
-	decorationSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return decorationSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionViewItem_decorationSize(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetDecorationSize(decorationSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(decorationSize)
-	C.QStyleOptionViewItem_setDecorationSize(this.h, decorationSize.cPointer())
+	C.QStyleOptionViewItem_setDecorationSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](decorationSize))
 }
 
 func (this *QStyleOptionViewItem) Font() *QFont {
@@ -2718,17 +2674,14 @@ func (this *QStyleOptionViewItem) SetWidget(widget *QWidget) {
 	C.QStyleOptionViewItem_setWidget(this.h, widget.cPointer())
 }
 
-func (this *QStyleOptionViewItem) Index() *QModelIndex {
+func (this *QStyleOptionViewItem) Index() QModelIndex {
 	defer runtime.KeepAlive(this)
-	index_goptr := newQModelIndex(C.QStyleOptionViewItem_index(this.h))
-	index_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return index_goptr
+	return libmiqt.ValueCast[QModelIndex](C.QStyleOptionViewItem_index(this.h))
 }
 
 func (this *QStyleOptionViewItem) SetIndex(index QModelIndex) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(index)
-	C.QStyleOptionViewItem_setIndex(this.h, index.cPointer())
+	C.QStyleOptionViewItem_setIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QStyleOptionViewItem) CheckState() CheckState {
@@ -3561,17 +3514,14 @@ func (this *QStyleOptionToolButton) SetIcon(icon QIcon) {
 	C.QStyleOptionToolButton_setIcon(this.h, icon.cPointer())
 }
 
-func (this *QStyleOptionToolButton) IconSize() *QSize {
+func (this *QStyleOptionToolButton) IconSize() QSize {
 	defer runtime.KeepAlive(this)
-	iconSize_goptr := newQSize(C.QStyleOptionToolButton_iconSize(this.h))
-	iconSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return iconSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionToolButton_iconSize(this.h))
 }
 
 func (this *QStyleOptionToolButton) SetIconSize(iconSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(iconSize)
-	C.QStyleOptionToolButton_setIconSize(this.h, iconSize.cPointer())
+	C.QStyleOptionToolButton_setIconSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](iconSize))
 }
 
 func (this *QStyleOptionToolButton) Text() string {
@@ -3611,17 +3561,14 @@ func (this *QStyleOptionToolButton) SetToolButtonStyle(toolButtonStyle ToolButto
 	C.QStyleOptionToolButton_setToolButtonStyle(this.h, (C.int)(toolButtonStyle))
 }
 
-func (this *QStyleOptionToolButton) Pos() *QPoint {
+func (this *QStyleOptionToolButton) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	pos_goptr := newQPoint(C.QStyleOptionToolButton_pos(this.h))
-	pos_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return pos_goptr
+	return libmiqt.ValueCast[QPoint](C.QStyleOptionToolButton_pos(this.h))
 }
 
 func (this *QStyleOptionToolButton) SetPos(pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QStyleOptionToolButton_setPos(this.h, pos.cPointer())
+	C.QStyleOptionToolButton_setPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QStyleOptionToolButton) Font() *QFont {
@@ -3729,17 +3676,14 @@ func (this *QStyleOptionComboBox) SetEditable(editable bool) {
 	C.QStyleOptionComboBox_setEditable(this.h, (C.bool)(editable))
 }
 
-func (this *QStyleOptionComboBox) PopupRect() *QRect {
+func (this *QStyleOptionComboBox) PopupRect() QRect {
 	defer runtime.KeepAlive(this)
-	popupRect_goptr := newQRect(C.QStyleOptionComboBox_popupRect(this.h))
-	popupRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return popupRect_goptr
+	return libmiqt.ValueCast[QRect](C.QStyleOptionComboBox_popupRect(this.h))
 }
 
 func (this *QStyleOptionComboBox) SetPopupRect(popupRect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(popupRect)
-	C.QStyleOptionComboBox_setPopupRect(this.h, popupRect.cPointer())
+	C.QStyleOptionComboBox_setPopupRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](popupRect))
 }
 
 func (this *QStyleOptionComboBox) Frame() bool {
@@ -3782,17 +3726,14 @@ func (this *QStyleOptionComboBox) SetCurrentIcon(currentIcon QIcon) {
 	C.QStyleOptionComboBox_setCurrentIcon(this.h, currentIcon.cPointer())
 }
 
-func (this *QStyleOptionComboBox) IconSize() *QSize {
+func (this *QStyleOptionComboBox) IconSize() QSize {
 	defer runtime.KeepAlive(this)
-	iconSize_goptr := newQSize(C.QStyleOptionComboBox_iconSize(this.h))
-	iconSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return iconSize_goptr
+	return libmiqt.ValueCast[QSize](C.QStyleOptionComboBox_iconSize(this.h))
 }
 
 func (this *QStyleOptionComboBox) SetIconSize(iconSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(iconSize)
-	C.QStyleOptionComboBox_setIconSize(this.h, iconSize.cPointer())
+	C.QStyleOptionComboBox_setIconSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](iconSize))
 }
 
 func (this *QStyleOptionComboBox) OperatorAssign(param1 *QStyleOptionComboBox) {
@@ -4046,17 +3987,14 @@ func (this *QStyleOptionGroupBox) SetTextAlignment(textAlignment AlignmentFlag) 
 	C.QStyleOptionGroupBox_setTextAlignment(this.h, (C.int)(textAlignment))
 }
 
-func (this *QStyleOptionGroupBox) TextColor() *QColor {
+func (this *QStyleOptionGroupBox) TextColor() QColor {
 	defer runtime.KeepAlive(this)
-	textColor_goptr := newQColor(C.QStyleOptionGroupBox_textColor(this.h))
-	textColor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return textColor_goptr
+	return libmiqt.ValueCast[QColor](C.QStyleOptionGroupBox_textColor(this.h))
 }
 
 func (this *QStyleOptionGroupBox) SetTextColor(textColor QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(textColor)
-	C.QStyleOptionGroupBox_setTextColor(this.h, textColor.cPointer())
+	C.QStyleOptionGroupBox_setTextColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](textColor))
 }
 
 func (this *QStyleOptionGroupBox) LineWidth() int {
@@ -4253,17 +4191,14 @@ func NewQStyleOptionGraphicsItem2(other *QStyleOptionGraphicsItem) *QStyleOption
 	return newQStyleOptionGraphicsItem(C.QStyleOptionGraphicsItem_new2(other.cPointer()))
 }
 
-func (this *QStyleOptionGraphicsItem) ExposedRect() *QRectF {
+func (this *QStyleOptionGraphicsItem) ExposedRect() QRectF {
 	defer runtime.KeepAlive(this)
-	exposedRect_goptr := newQRectF(C.QStyleOptionGraphicsItem_exposedRect(this.h))
-	exposedRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return exposedRect_goptr
+	return libmiqt.ValueCast[QRectF](C.QStyleOptionGraphicsItem_exposedRect(this.h))
 }
 
 func (this *QStyleOptionGraphicsItem) SetExposedRect(exposedRect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(exposedRect)
-	C.QStyleOptionGraphicsItem_setExposedRect(this.h, exposedRect.cPointer())
+	C.QStyleOptionGraphicsItem_setExposedRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](exposedRect))
 }
 
 func (this *QStyleOptionGraphicsItem) Matrix() *QMatrix {

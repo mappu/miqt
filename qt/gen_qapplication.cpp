@@ -347,16 +347,16 @@ void QApplication_setActiveWindow(QWidget* act) {
 	QApplication::setActiveWindow(act);
 }
 
-QWidget* QApplication_widgetAt(QPoint* p) {
-	return QApplication::widgetAt(*p);
+QWidget* QApplication_widgetAt(struct miqt_qpoint p) {
+	return QApplication::widgetAt(miqt_from_cabi<QPoint>(p));
 }
 
 QWidget* QApplication_widgetAt2(int x, int y) {
 	return QApplication::widgetAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-QWidget* QApplication_topLevelAt(QPoint* p) {
-	return QApplication::topLevelAt(*p);
+QWidget* QApplication_topLevelAt(struct miqt_qpoint p) {
+	return QApplication::topLevelAt(miqt_from_cabi<QPoint>(p));
 }
 
 QWidget* QApplication_topLevelAt2(int x, int y) {
@@ -403,12 +403,12 @@ int QApplication_wheelScrollLines() {
 	return QApplication::wheelScrollLines();
 }
 
-void QApplication_setGlobalStrut(QSize* globalStrut) {
-	QApplication::setGlobalStrut(*globalStrut);
+void QApplication_setGlobalStrut(struct miqt_qsize globalStrut) {
+	QApplication::setGlobalStrut(miqt_from_cabi<QSize>(globalStrut));
 }
 
-QSize* QApplication_globalStrut() {
-	return new QSize(QApplication::globalStrut());
+struct miqt_qsize QApplication_globalStrut() {
+	return miqt_to_cabi<struct miqt_qsize>(QApplication::globalStrut());
 }
 
 void QApplication_setStartDragTime(int ms) {

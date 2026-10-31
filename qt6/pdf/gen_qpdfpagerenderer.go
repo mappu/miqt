@@ -9,6 +9,7 @@ package pdf
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -113,8 +114,7 @@ func (this *QPdfPageRenderer) SetDocument(document *QPdfDocument) {
 }
 
 func (this *QPdfPageRenderer) RequestPage(pageNumber int, imageSize qt6.QSize) uint64 {
-	defer runtime.KeepAlive(imageSize)
-	return (uint64)(C.QPdfPageRenderer_requestPage(this.h, (C.int)(pageNumber), (*C.QSize)(imageSize.UnsafePointer())))
+	return (uint64)(C.QPdfPageRenderer_requestPage(this.h, (C.int)(pageNumber), libmiqt.ValueCast[C.struct_miqt_qsize](imageSize)))
 }
 
 func (this *QPdfPageRenderer) DocumentChanged(document *QPdfDocument) {
@@ -158,17 +158,16 @@ func miqt_exec_callback_QPdfPageRenderer_renderModeChanged(cb C.intptr_t, render
 }
 
 func (this *QPdfPageRenderer) PageRendered(pageNumber int, imageSize qt6.QSize, image *qt6.QImage, options QPdfDocumentRenderOptions, requestId uint64) {
-	defer runtime.KeepAlive(imageSize)
 	defer runtime.KeepAlive(image)
 	defer runtime.KeepAlive(options)
-	C.QPdfPageRenderer_pageRendered(this.h, (C.int)(pageNumber), (*C.QSize)(imageSize.UnsafePointer()), (*C.QImage)(image.UnsafePointer()), options.cPointer(), (C.ulonglong)(requestId))
+	C.QPdfPageRenderer_pageRendered(this.h, (C.int)(pageNumber), libmiqt.ValueCast[C.struct_miqt_qsize](imageSize), (*C.QImage)(image.UnsafePointer()), options.cPointer(), (C.ulonglong)(requestId))
 }
 func (this *QPdfPageRenderer) OnPageRendered(slot func(pageNumber int, imageSize qt6.QSize, image *qt6.QImage, options QPdfDocumentRenderOptions, requestId uint64)) {
 	C.QPdfPageRenderer_connect_pageRendered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfPageRenderer_pageRendered
-func miqt_exec_callback_QPdfPageRenderer_pageRendered(cb C.intptr_t, pageNumber C.int, imageSize *C.QSize, image *C.QImage, options *C.QPdfDocumentRenderOptions, requestId C.ulonglong) {
+func miqt_exec_callback_QPdfPageRenderer_pageRendered(cb C.intptr_t, pageNumber C.int, imageSize C.struct_miqt_qsize, image *C.QImage, options *C.QPdfDocumentRenderOptions, requestId C.ulonglong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(pageNumber int, imageSize qt6.QSize, image *qt6.QImage, options QPdfDocumentRenderOptions, requestId uint64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -177,9 +176,7 @@ func miqt_exec_callback_QPdfPageRenderer_pageRendered(cb C.intptr_t, pageNumber 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(pageNumber)
 
-	imageSize_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(imageSize))
-	imageSize_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval2 := *imageSize_goptr
+	slotval2 := libmiqt.ValueCast[qt6.QSize](imageSize)
 
 	slotval3 := qt6.UnsafeNewQImage(unsafe.Pointer(image))
 
@@ -215,9 +212,8 @@ func QPdfPageRenderer_Tr3(s string, c string, n int) string {
 }
 
 func (this *QPdfPageRenderer) RequestPage2(pageNumber int, imageSize qt6.QSize, options QPdfDocumentRenderOptions) uint64 {
-	defer runtime.KeepAlive(imageSize)
 	defer runtime.KeepAlive(options)
-	return (uint64)(C.QPdfPageRenderer_requestPage2(this.h, (C.int)(pageNumber), (*C.QSize)(imageSize.UnsafePointer()), options.cPointer()))
+	return (uint64)(C.QPdfPageRenderer_requestPage2(this.h, (C.int)(pageNumber), libmiqt.ValueCast[C.struct_miqt_qsize](imageSize), options.cPointer()))
 }
 
 // Sender can only be called from a QPdfPageRenderer that was directly constructed.

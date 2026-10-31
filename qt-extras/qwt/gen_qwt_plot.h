@@ -180,8 +180,8 @@ QwtAbstractLegend* QwtPlot_legend(QwtPlot* self);
 QwtAbstractLegend* QwtPlot_legend2(const QwtPlot* self);
 void QwtPlot_updateLegend(QwtPlot* self);
 void QwtPlot_updateLegendWithQwtPlotItem(QwtPlot* self, QwtPlotItem* param1);
-QSize* QwtPlot_sizeHint(const QwtPlot* self);
-QSize* QwtPlot_minimumSizeHint(const QwtPlot* self);
+struct miqt_qsize QwtPlot_sizeHint(const QwtPlot* self);
+struct miqt_qsize QwtPlot_minimumSizeHint(const QwtPlot* self);
 void QwtPlot_updateLayout(QwtPlot* self);
 void QwtPlot_drawCanvas(QwtPlot* self, QPainter* param1);
 void QwtPlot_updateAxes(QwtPlot* self);
@@ -209,9 +209,9 @@ void QwtPlot_insertLegend2(QwtPlot* self, QwtAbstractLegend* param1, int param2)
 void QwtPlot_insertLegend3(QwtPlot* self, QwtAbstractLegend* param1, int param2, double ratio);
 
 bool QwtPlot_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QwtPlot_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QwtPlot_virtualbase_sizeHint(const void* self);
 bool QwtPlot_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QwtPlot_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QwtPlot_virtualbase_minimumSizeHint(const void* self);
 bool QwtPlot_override_virtual_updateLayout(void* self, intptr_t slot);
 void QwtPlot_virtualbase_updateLayout(void* self);
 bool QwtPlot_override_virtual_drawCanvas(void* self, intptr_t slot);
@@ -312,7 +312,6 @@ bool QwtPlot_override_virtual_connectNotify(void* self, intptr_t slot);
 void QwtPlot_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QwtPlot_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QwtPlot_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QwtPlot_virtualreturncopy_QSize(QSize* src);
 QVariant* QwtPlot_virtualreturncopy_QVariant(QVariant* src);
 
 void QwtPlot_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);

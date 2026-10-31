@@ -86,8 +86,8 @@ QAccessibleInterface* QAccessibleWidget_focusChild(const QAccessibleWidget* self
 	return self->focusChild();
 }
 
-QRect* QAccessibleWidget_rect(const QAccessibleWidget* self) {
-	return new QRect(self->rect());
+struct miqt_qrect QAccessibleWidget_rect(const QAccessibleWidget* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rect());
 }
 
 QAccessibleInterface* QAccessibleWidget_parent(const QAccessibleWidget* self) {
@@ -118,12 +118,12 @@ QAccessible__State* QAccessibleWidget_state(const QAccessibleWidget* self) {
 	return new QAccessible::State(self->state());
 }
 
-QColor* QAccessibleWidget_foregroundColor(const QAccessibleWidget* self) {
-	return new QColor(self->foregroundColor());
+struct miqt_qcolor QAccessibleWidget_foregroundColor(const QAccessibleWidget* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->foregroundColor());
 }
 
-QColor* QAccessibleWidget_backgroundColor(const QAccessibleWidget* self) {
-	return new QColor(self->backgroundColor());
+struct miqt_qcolor QAccessibleWidget_backgroundColor(const QAccessibleWidget* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->backgroundColor());
 }
 
 void* QAccessibleWidget_interfaceCast(QAccessibleWidget* self, int t) {

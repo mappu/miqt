@@ -83,14 +83,14 @@ QTransform* QTransform_operatorMultiplyAssign(QTransform* self, QTransform* para
 QTransform* QTransform_operatorMultiply(const QTransform* self, QTransform* o);
 QVariant* QTransform_ToQVariant(const QTransform* self);
 void QTransform_reset(QTransform* self);
-QPoint* QTransform_map(const QTransform* self, QPoint* p);
-QPointF* QTransform_mapWithQPointF(const QTransform* self, QPointF* p);
+struct miqt_qpoint QTransform_map(const QTransform* self, struct miqt_qpoint p);
+struct miqt_qpointf QTransform_mapWithQPointF(const QTransform* self, struct miqt_qpointf p);
 QLine* QTransform_mapWithQLine(const QTransform* self, QLine* l);
 QLineF* QTransform_mapWithQLineF(const QTransform* self, QLineF* l);
 QRegion* QTransform_mapWithQRegion(const QTransform* self, QRegion* r);
 QPainterPath* QTransform_mapWithQPainterPath(const QTransform* self, QPainterPath* p);
-QRect* QTransform_mapRect(const QTransform* self, QRect* param1);
-QRectF* QTransform_mapRectWithQRectF(const QTransform* self, QRectF* param1);
+struct miqt_qrect QTransform_mapRect(const QTransform* self, struct miqt_qrect param1);
+struct miqt_qrectf QTransform_mapRectWithQRectF(const QTransform* self, struct miqt_qrectf param1);
 void QTransform_map2(const QTransform* self, int x, int y, int* tx, int* ty);
 void QTransform_map3(const QTransform* self, double x, double y, double* tx, double* ty);
 QMatrix* QTransform_toAffine(const QTransform* self);

@@ -9,6 +9,7 @@ package qscintilla6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -431,10 +432,8 @@ func (this *QsciScintilla) ClearRegisteredImages() {
 	C.QsciScintilla_clearRegisteredImages(this.h)
 }
 
-func (this *QsciScintilla) Color() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QsciScintilla) Color() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QsciScintilla_color(this.h))
 }
 
 func (this *QsciScintilla) ContractedFolds() []int {
@@ -465,10 +464,8 @@ func (this *QsciScintilla) EndUndoAction() {
 	C.QsciScintilla_endUndoAction(this.h)
 }
 
-func (this *QsciScintilla) EdgeColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_edgeColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QsciScintilla) EdgeColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QsciScintilla_edgeColor(this.h))
 }
 
 func (this *QsciScintilla) EdgeColumn() int {
@@ -604,9 +601,8 @@ func (this *QsciScintilla) IsWordCharacter(ch int8) bool {
 	return (bool)(C.QsciScintilla_isWordCharacter(this.h, (C.char)(ch)))
 }
 
-func (this *QsciScintilla) LineAt(point *qt6.QPoint) int {
-	defer runtime.KeepAlive(point)
-	return (int)(C.QsciScintilla_lineAt(this.h, (*C.QPoint)(point.UnsafePointer())))
+func (this *QsciScintilla) LineAt(point qt6.QPoint) int {
+	return (int)(C.QsciScintilla_lineAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
 func (this *QsciScintilla) LineIndexFromPosition(position int, line *int, index *int) {
@@ -629,10 +625,8 @@ func (this *QsciScintilla) Lexer() *QsciLexer {
 	return newQsciLexer(C.QsciScintilla_lexer(this.h))
 }
 
-func (this *QsciScintilla) MarginBackgroundColor(margin int) *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_marginBackgroundColor(this.h, (C.int)(margin))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QsciScintilla) MarginBackgroundColor(margin int) qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QsciScintilla_marginBackgroundColor(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) MarginLineNumbers(margin int) bool {
@@ -717,10 +711,8 @@ func (this *QsciScintilla) OverwriteMode() bool {
 	return (bool)(C.QsciScintilla_overwriteMode(this.h))
 }
 
-func (this *QsciScintilla) Paper() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_paper(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QsciScintilla) Paper() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QsciScintilla_paper(this.h))
 }
 
 func (this *QsciScintilla) PositionFromLineIndex(line int, index int) int {
@@ -773,10 +765,8 @@ func (this *QsciScintilla) ScrollWidthTracking() bool {
 	return (bool)(C.QsciScintilla_scrollWidthTracking(this.h))
 }
 
-func (this *QsciScintilla) SetFoldMarginColors(fore *qt6.QColor, back *qt6.QColor) {
-	defer runtime.KeepAlive(fore)
-	defer runtime.KeepAlive(back)
-	C.QsciScintilla_setFoldMarginColors(this.h, (*C.QColor)(fore.UnsafePointer()), (*C.QColor)(back.UnsafePointer()))
+func (this *QsciScintilla) SetFoldMarginColors(fore qt6.QColor, back qt6.QColor) {
+	C.QsciScintilla_setFoldMarginColors(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](fore), libmiqt.ValueCast[C.struct_miqt_qcolor](back))
 }
 
 func (this *QsciScintilla) SetAnnotationDisplay(display QsciScintilla__AnnotationDisplay) {
@@ -808,19 +798,16 @@ func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) 
 	C.QsciScintilla_setAutoCompletionWordSeparators(this.h, separators_ma)
 }
 
-func (this *QsciScintilla) SetCallTipsBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setCallTipsBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetCallTipsBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setCallTipsBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetCallTipsForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setCallTipsForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetCallTipsForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setCallTipsForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetCallTipsHighlightColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setCallTipsHighlightColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetCallTipsHighlightColor(col qt6.QColor) {
+	C.QsciScintilla_setCallTipsHighlightColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetCallTipsPosition(position QsciScintilla__CallTipsPosition) {
@@ -851,18 +838,16 @@ func (this *QsciScintilla) SetDocument(document *QsciDocument) {
 	C.QsciScintilla_setDocument(this.h, document.cPointer())
 }
 
-func (this *QsciScintilla) AddEdgeColumn(colnr int, col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_addEdgeColumn(this.h, (C.int)(colnr), (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) AddEdgeColumn(colnr int, col qt6.QColor) {
+	C.QsciScintilla_addEdgeColumn(this.h, (C.int)(colnr), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) ClearEdgeColumns() {
 	C.QsciScintilla_clearEdgeColumns(this.h)
 }
 
-func (this *QsciScintilla) SetEdgeColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setEdgeColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetEdgeColor(col qt6.QColor) {
+	C.QsciScintilla_setEdgeColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetEdgeColumn(colnr int) {
@@ -881,28 +866,24 @@ func (this *QsciScintilla) SetIndicatorDrawUnder(under bool) {
 	C.QsciScintilla_setIndicatorDrawUnder(this.h, (C.bool)(under))
 }
 
-func (this *QsciScintilla) SetIndicatorForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setIndicatorForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetIndicatorForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setIndicatorForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetIndicatorHoverForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setIndicatorHoverForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetIndicatorHoverForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setIndicatorHoverForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverStyle(style QsciScintilla__IndicatorStyle) {
 	C.QsciScintilla_setIndicatorHoverStyle(this.h, (C.int)(style))
 }
 
-func (this *QsciScintilla) SetIndicatorOutlineColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setIndicatorOutlineColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetIndicatorOutlineColor(col qt6.QColor) {
+	C.QsciScintilla_setIndicatorOutlineColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetMarginBackgroundColor(margin int, col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setMarginBackgroundColor(this.h, (C.int)(margin), (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetMarginBackgroundColor(margin int, col qt6.QColor) {
+	C.QsciScintilla_setMarginBackgroundColor(this.h, (C.int)(margin), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetMarginOptions(options int) {
@@ -943,24 +924,20 @@ func (this *QsciScintilla) SetMargins(margins int) {
 	C.QsciScintilla_setMargins(this.h, (C.int)(margins))
 }
 
-func (this *QsciScintilla) SetMarkerBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setMarkerBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetMarkerBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setMarkerBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetMarkerForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setMarkerForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetMarkerForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setMarkerForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetMatchedBraceBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setMatchedBraceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetMatchedBraceBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setMatchedBraceBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetMatchedBraceForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setMatchedBraceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetMatchedBraceForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setMatchedBraceForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetMatchedBraceIndicator(indicatorNumber int) {
@@ -983,14 +960,12 @@ func (this *QsciScintilla) SetTabDrawMode(mode QsciScintilla__TabDrawMode) {
 	C.QsciScintilla_setTabDrawMode(this.h, (C.int)(mode))
 }
 
-func (this *QsciScintilla) SetUnmatchedBraceBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setUnmatchedBraceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetUnmatchedBraceBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setUnmatchedBraceBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetUnmatchedBraceForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setUnmatchedBraceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetUnmatchedBraceForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setUnmatchedBraceForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetUnmatchedBraceIndicator(indicatorNumber int) {
@@ -1016,14 +991,12 @@ func (this *QsciScintilla) SelectionToEol() bool {
 	return (bool)(C.QsciScintilla_selectionToEol(this.h))
 }
 
-func (this *QsciScintilla) SetHotspotBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setHotspotBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetHotspotBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setHotspotBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetHotspotForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setHotspotForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetHotspotForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setHotspotForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetHotspotUnderline(enable bool) {
@@ -1050,14 +1023,12 @@ func (this *QsciScintilla) SetOverwriteMode(overwrite bool) {
 	C.QsciScintilla_setOverwriteMode(this.h, (C.bool)(overwrite))
 }
 
-func (this *QsciScintilla) SetWhitespaceBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setWhitespaceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetWhitespaceBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setWhitespaceBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetWhitespaceForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setWhitespaceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetWhitespaceForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setWhitespaceForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetWhitespaceSize(size int) {
@@ -1139,9 +1110,8 @@ func (this *QsciScintilla) WordAtLineIndex(line int, index int) string {
 	return _ret
 }
 
-func (this *QsciScintilla) WordAtPoint(point *qt6.QPoint) string {
-	defer runtime.KeepAlive(point)
-	var _ms C.struct_miqt_string = C.QsciScintilla_wordAtPoint(this.h, (*C.QPoint)(point.UnsafePointer()))
+func (this *QsciScintilla) WordAtPoint(point qt6.QPoint) string {
+	var _ms C.struct_miqt_string = C.QsciScintilla_wordAtPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1312,14 +1282,12 @@ func (this *QsciScintilla) SetBackspaceUnindents(unindent bool) {
 	C.QsciScintilla_setBackspaceUnindents(this.h, (C.bool)(unindent))
 }
 
-func (this *QsciScintilla) SetCaretForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setCaretForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetCaretForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setCaretForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetCaretLineBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setCaretLineBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetCaretLineBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setCaretLineBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetCaretLineFrameWidth(width int) {
@@ -1334,9 +1302,8 @@ func (this *QsciScintilla) SetCaretWidth(width int) {
 	C.QsciScintilla_setCaretWidth(this.h, (C.int)(width))
 }
 
-func (this *QsciScintilla) SetColor(c *qt6.QColor) {
-	defer runtime.KeepAlive(c)
-	C.QsciScintilla_setColor(this.h, (*C.QColor)(c.UnsafePointer()))
+func (this *QsciScintilla) SetColor(c qt6.QColor) {
+	C.QsciScintilla_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 }
 
 func (this *QsciScintilla) SetCursorPosition(line int, index int) {
@@ -1363,14 +1330,12 @@ func (this *QsciScintilla) SetIndentationGuides(enable bool) {
 	C.QsciScintilla_setIndentationGuides(this.h, (C.bool)(enable))
 }
 
-func (this *QsciScintilla) SetIndentationGuidesBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setIndentationGuidesBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetIndentationGuidesBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setIndentationGuidesBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetIndentationGuidesForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setIndentationGuidesForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetIndentationGuidesForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setIndentationGuidesForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetIndentationsUseTabs(tabs bool) {
@@ -1385,9 +1350,8 @@ func (this *QsciScintilla) SetLexer(lexer *QsciLexer) {
 	C.QsciScintilla_setLexer(this.h, lexer.cPointer())
 }
 
-func (this *QsciScintilla) SetMarginsBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setMarginsBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetMarginsBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setMarginsBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetMarginsFont(f *qt6.QFont) {
@@ -1395,9 +1359,8 @@ func (this *QsciScintilla) SetMarginsFont(f *qt6.QFont) {
 	C.QsciScintilla_setMarginsFont(this.h, (*C.QFont)(f.UnsafePointer()))
 }
 
-func (this *QsciScintilla) SetMarginsForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setMarginsForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetMarginsForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setMarginsForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetMarginLineNumbers(margin int, lnrs bool) {
@@ -1428,9 +1391,8 @@ func (this *QsciScintilla) SetModified(m bool) {
 	C.QsciScintilla_setModified(this.h, (C.bool)(m))
 }
 
-func (this *QsciScintilla) SetPaper(c *qt6.QColor) {
-	defer runtime.KeepAlive(c)
-	C.QsciScintilla_setPaper(this.h, (*C.QColor)(c.UnsafePointer()))
+func (this *QsciScintilla) SetPaper(c qt6.QColor) {
+	C.QsciScintilla_setPaper(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 }
 
 func (this *QsciScintilla) SetReadOnly(ro bool) {
@@ -1441,14 +1403,12 @@ func (this *QsciScintilla) SetSelection(lineFrom int, indexFrom int, lineTo int,
 	C.QsciScintilla_setSelection(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo))
 }
 
-func (this *QsciScintilla) SetSelectionBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setSelectionBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetSelectionBackgroundColor(col qt6.QColor) {
+	C.QsciScintilla_setSelectionBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
-func (this *QsciScintilla) SetSelectionForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setSelectionForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+func (this *QsciScintilla) SetSelectionForegroundColor(col qt6.QColor) {
+	C.QsciScintilla_setSelectionForegroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 }
 
 func (this *QsciScintilla) SetTabIndents(indent bool) {
@@ -1822,37 +1782,32 @@ func (this *QsciScintilla) SetIndicatorDrawUnder2(under bool, indicatorNumber in
 	C.QsciScintilla_setIndicatorDrawUnder2(this.h, (C.bool)(under), (C.int)(indicatorNumber))
 }
 
-func (this *QsciScintilla) SetIndicatorForegroundColor2(col *qt6.QColor, indicatorNumber int) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setIndicatorForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
+func (this *QsciScintilla) SetIndicatorForegroundColor2(col qt6.QColor, indicatorNumber int) {
+	C.QsciScintilla_setIndicatorForegroundColor2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col), (C.int)(indicatorNumber))
 }
 
-func (this *QsciScintilla) SetIndicatorHoverForegroundColor2(col *qt6.QColor, indicatorNumber int) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setIndicatorHoverForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
+func (this *QsciScintilla) SetIndicatorHoverForegroundColor2(col qt6.QColor, indicatorNumber int) {
+	C.QsciScintilla_setIndicatorHoverForegroundColor2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverStyle2(style QsciScintilla__IndicatorStyle, indicatorNumber int) {
 	C.QsciScintilla_setIndicatorHoverStyle2(this.h, (C.int)(style), (C.int)(indicatorNumber))
 }
 
-func (this *QsciScintilla) SetIndicatorOutlineColor2(col *qt6.QColor, indicatorNumber int) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setIndicatorOutlineColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
+func (this *QsciScintilla) SetIndicatorOutlineColor2(col qt6.QColor, indicatorNumber int) {
+	C.QsciScintilla_setIndicatorOutlineColor2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) ClearMarginTextWithLine(line int) {
 	C.QsciScintilla_clearMarginTextWithLine(this.h, (C.int)(line))
 }
 
-func (this *QsciScintilla) SetMarkerBackgroundColor2(col *qt6.QColor, markerNumber int) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setMarkerBackgroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(markerNumber))
+func (this *QsciScintilla) SetMarkerBackgroundColor2(col qt6.QColor, markerNumber int) {
+	C.QsciScintilla_setMarkerBackgroundColor2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col), (C.int)(markerNumber))
 }
 
-func (this *QsciScintilla) SetMarkerForegroundColor2(col *qt6.QColor, markerNumber int) {
-	defer runtime.KeepAlive(col)
-	C.QsciScintilla_setMarkerForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(markerNumber))
+func (this *QsciScintilla) SetMarkerForegroundColor2(col qt6.QColor, markerNumber int) {
+	C.QsciScintilla_setMarkerForegroundColor2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](col), (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) SetWrapVisualFlags2(endFlag QsciScintilla__WrapVisualFlag, startFlag QsciScintilla__WrapVisualFlag) {
@@ -1943,9 +1898,7 @@ func (this *QsciScintilla) SetViewportMargins(left int, top int, right int, bott
 func (this *QsciScintilla) ViewportMargins() qt6.QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt6.UnsafeNewQMargins(unsafe.Pointer(C.QsciScintilla_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt6.QMargins](C.QsciScintilla_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -3173,13 +3126,12 @@ func miqt_exec_callback_QsciScintilla_setBackspaceUnindents(self *C.QsciScintill
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetCaretForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
+func (this *QsciScintilla) callVirtualBase_SetCaretForegroundColor(col qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setCaretForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setCaretForegroundColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 
 }
-func (this *QsciScintilla) OnSetCaretForegroundColor(slot func(super func(col *qt6.QColor), col *qt6.QColor)) {
+func (this *QsciScintilla) OnSetCaretForegroundColor(slot func(super func(col qt6.QColor), col qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setCaretForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3187,26 +3139,25 @@ func (this *QsciScintilla) OnSetCaretForegroundColor(slot func(super func(col *q
 }
 
 //export miqt_exec_callback_QsciScintilla_setCaretForegroundColor
-func miqt_exec_callback_QsciScintilla_setCaretForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt6.QColor), col *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setCaretForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col qt6.QColor), col qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(col))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](col)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetCaretForegroundColor, slotval1)
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetCaretLineBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
+func (this *QsciScintilla) callVirtualBase_SetCaretLineBackgroundColor(col qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setCaretLineBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setCaretLineBackgroundColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 
 }
-func (this *QsciScintilla) OnSetCaretLineBackgroundColor(slot func(super func(col *qt6.QColor), col *qt6.QColor)) {
+func (this *QsciScintilla) OnSetCaretLineBackgroundColor(slot func(super func(col qt6.QColor), col qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setCaretLineBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3214,14 +3165,14 @@ func (this *QsciScintilla) OnSetCaretLineBackgroundColor(slot func(super func(co
 }
 
 //export miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor
-func miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt6.QColor), col *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col qt6.QColor), col qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(col))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](col)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetCaretLineBackgroundColor, slotval1)
 
@@ -3305,13 +3256,12 @@ func miqt_exec_callback_QsciScintilla_setCaretWidth(self *C.QsciScintilla, cb C.
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetColor(c *qt6.QColor) {
-	defer runtime.KeepAlive(c)
+func (this *QsciScintilla) callVirtualBase_SetColor(c qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 
 }
-func (this *QsciScintilla) OnSetColor(slot func(super func(c *qt6.QColor), c *qt6.QColor)) {
+func (this *QsciScintilla) OnSetColor(slot func(super func(c qt6.QColor), c qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3319,14 +3269,14 @@ func (this *QsciScintilla) OnSetColor(slot func(super func(c *qt6.QColor), c *qt
 }
 
 //export miqt_exec_callback_QsciScintilla_setColor
-func miqt_exec_callback_QsciScintilla_setColor(self *C.QsciScintilla, cb C.intptr_t, c *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt6.QColor), c *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setColor(self *C.QsciScintilla, cb C.intptr_t, c C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c qt6.QColor), c qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(c))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](c)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetColor, slotval1)
 
@@ -3494,13 +3444,12 @@ func miqt_exec_callback_QsciScintilla_setIndentationGuides(self *C.QsciScintilla
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetIndentationGuidesBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
+func (this *QsciScintilla) callVirtualBase_SetIndentationGuidesBackgroundColor(col qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 
 }
-func (this *QsciScintilla) OnSetIndentationGuidesBackgroundColor(slot func(super func(col *qt6.QColor), col *qt6.QColor)) {
+func (this *QsciScintilla) OnSetIndentationGuidesBackgroundColor(slot func(super func(col qt6.QColor), col qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setIndentationGuidesBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3508,26 +3457,25 @@ func (this *QsciScintilla) OnSetIndentationGuidesBackgroundColor(slot func(super
 }
 
 //export miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor
-func miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt6.QColor), col *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col qt6.QColor), col qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(col))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](col)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetIndentationGuidesBackgroundColor, slotval1)
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetIndentationGuidesForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
+func (this *QsciScintilla) callVirtualBase_SetIndentationGuidesForegroundColor(col qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 
 }
-func (this *QsciScintilla) OnSetIndentationGuidesForegroundColor(slot func(super func(col *qt6.QColor), col *qt6.QColor)) {
+func (this *QsciScintilla) OnSetIndentationGuidesForegroundColor(slot func(super func(col qt6.QColor), col qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setIndentationGuidesForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3535,14 +3483,14 @@ func (this *QsciScintilla) OnSetIndentationGuidesForegroundColor(slot func(super
 }
 
 //export miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor
-func miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt6.QColor), col *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col qt6.QColor), col qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(col))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](col)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetIndentationGuidesForegroundColor, slotval1)
 
@@ -3626,13 +3574,12 @@ func miqt_exec_callback_QsciScintilla_setLexer(self *C.QsciScintilla, cb C.intpt
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetMarginsBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
+func (this *QsciScintilla) callVirtualBase_SetMarginsBackgroundColor(col qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setMarginsBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setMarginsBackgroundColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 
 }
-func (this *QsciScintilla) OnSetMarginsBackgroundColor(slot func(super func(col *qt6.QColor), col *qt6.QColor)) {
+func (this *QsciScintilla) OnSetMarginsBackgroundColor(slot func(super func(col qt6.QColor), col qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setMarginsBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3640,14 +3587,14 @@ func (this *QsciScintilla) OnSetMarginsBackgroundColor(slot func(super func(col 
 }
 
 //export miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor
-func miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt6.QColor), col *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col qt6.QColor), col qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(col))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](col)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetMarginsBackgroundColor, slotval1)
 
@@ -3680,13 +3627,12 @@ func miqt_exec_callback_QsciScintilla_setMarginsFont(self *C.QsciScintilla, cb C
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetMarginsForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
+func (this *QsciScintilla) callVirtualBase_SetMarginsForegroundColor(col qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setMarginsForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setMarginsForegroundColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 
 }
-func (this *QsciScintilla) OnSetMarginsForegroundColor(slot func(super func(col *qt6.QColor), col *qt6.QColor)) {
+func (this *QsciScintilla) OnSetMarginsForegroundColor(slot func(super func(col qt6.QColor), col qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setMarginsForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3694,14 +3640,14 @@ func (this *QsciScintilla) OnSetMarginsForegroundColor(slot func(super func(col 
 }
 
 //export miqt_exec_callback_QsciScintilla_setMarginsForegroundColor
-func miqt_exec_callback_QsciScintilla_setMarginsForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt6.QColor), col *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setMarginsForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col qt6.QColor), col qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(col))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](col)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetMarginsForegroundColor, slotval1)
 
@@ -3880,13 +3826,12 @@ func miqt_exec_callback_QsciScintilla_setModified(self *C.QsciScintilla, cb C.in
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetPaper(c *qt6.QColor) {
-	defer runtime.KeepAlive(c)
+func (this *QsciScintilla) callVirtualBase_SetPaper(c qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setPaper(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 
 }
-func (this *QsciScintilla) OnSetPaper(slot func(super func(c *qt6.QColor), c *qt6.QColor)) {
+func (this *QsciScintilla) OnSetPaper(slot func(super func(c qt6.QColor), c qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3894,14 +3839,14 @@ func (this *QsciScintilla) OnSetPaper(slot func(super func(c *qt6.QColor), c *qt
 }
 
 //export miqt_exec_callback_QsciScintilla_setPaper
-func miqt_exec_callback_QsciScintilla_setPaper(self *C.QsciScintilla, cb C.intptr_t, c *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt6.QColor), c *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setPaper(self *C.QsciScintilla, cb C.intptr_t, c C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c qt6.QColor), c qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(c))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](c)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetPaper, slotval1)
 
@@ -3965,13 +3910,12 @@ func miqt_exec_callback_QsciScintilla_setSelection(self *C.QsciScintilla, cb C.i
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetSelectionBackgroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
+func (this *QsciScintilla) callVirtualBase_SetSelectionBackgroundColor(col qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setSelectionBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setSelectionBackgroundColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 
 }
-func (this *QsciScintilla) OnSetSelectionBackgroundColor(slot func(super func(col *qt6.QColor), col *qt6.QColor)) {
+func (this *QsciScintilla) OnSetSelectionBackgroundColor(slot func(super func(col qt6.QColor), col qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setSelectionBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3979,26 +3923,25 @@ func (this *QsciScintilla) OnSetSelectionBackgroundColor(slot func(super func(co
 }
 
 //export miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor
-func miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt6.QColor), col *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col qt6.QColor), col qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(col))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](col)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetSelectionBackgroundColor, slotval1)
 
 }
 
-func (this *QsciScintilla) callVirtualBase_SetSelectionForegroundColor(col *qt6.QColor) {
-	defer runtime.KeepAlive(col)
+func (this *QsciScintilla) callVirtualBase_SetSelectionForegroundColor(col qt6.QColor) {
 
-	C.QsciScintilla_virtualbase_setSelectionForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setSelectionForegroundColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](col))
 
 }
-func (this *QsciScintilla) OnSetSelectionForegroundColor(slot func(super func(col *qt6.QColor), col *qt6.QColor)) {
+func (this *QsciScintilla) OnSetSelectionForegroundColor(slot func(super func(col qt6.QColor), col qt6.QColor)) {
 	ok := C.QsciScintilla_override_virtual_setSelectionForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -4006,14 +3949,14 @@ func (this *QsciScintilla) OnSetSelectionForegroundColor(slot func(super func(co
 }
 
 //export miqt_exec_callback_QsciScintilla_setSelectionForegroundColor
-func miqt_exec_callback_QsciScintilla_setSelectionForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt6.QColor), col *qt6.QColor))
+func miqt_exec_callback_QsciScintilla_setSelectionForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col qt6.QColor), col qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(col))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](col)
 
 	gofunc((&QsciScintilla{h: self}).callVirtualBase_SetSelectionForegroundColor, slotval1)
 
@@ -5036,14 +4979,12 @@ func miqt_exec_callback_QsciScintilla_scrollContentsBy(self *C.QsciScintilla, cb
 
 }
 
-func (this *QsciScintilla) callVirtualBase_MinimumSizeHint() *qt6.QSize {
+func (this *QsciScintilla) callVirtualBase_MinimumSizeHint() qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QsciScintilla_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciScintilla) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QsciScintilla) OnMinimumSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QsciScintilla_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -5051,27 +4992,24 @@ func (this *QsciScintilla) OnMinimumSizeHint(slot func(super func() *qt6.QSize) 
 }
 
 //export miqt_exec_callback_QsciScintilla_minimumSizeHint
-func miqt_exec_callback_QsciScintilla_minimumSizeHint(self *C.QsciScintilla, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QsciScintilla_minimumSizeHint(self *C.QsciScintilla, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciScintilla_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QsciScintilla) callVirtualBase_SizeHint() *qt6.QSize {
-
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QsciScintilla) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+
+func (this *QsciScintilla) callVirtualBase_SizeHint() qt6.QSize {
+
+	return libmiqt.ValueCast[qt6.QSize](C.QsciScintilla_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciScintilla) OnSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QsciScintilla_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -5079,16 +5017,15 @@ func (this *QsciScintilla) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QS
 }
 
 //export miqt_exec_callback_QsciScintilla_sizeHint
-func miqt_exec_callback_QsciScintilla_sizeHint(self *C.QsciScintilla, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QsciScintilla_sizeHint(self *C.QsciScintilla, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciScintilla_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -5178,14 +5115,12 @@ func miqt_exec_callback_QsciScintilla_viewportEvent(self *C.QsciScintilla, cb C.
 
 }
 
-func (this *QsciScintilla) callVirtualBase_ViewportSizeHint() *qt6.QSize {
+func (this *QsciScintilla) callVirtualBase_ViewportSizeHint() qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QsciScintilla_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciScintilla) OnViewportSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QsciScintilla) OnViewportSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QsciScintilla_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -5193,16 +5128,15 @@ func (this *QsciScintilla) OnViewportSizeHint(slot func(super func() *qt6.QSize)
 }
 
 //export miqt_exec_callback_QsciScintilla_viewportSizeHint
-func miqt_exec_callback_QsciScintilla_viewportSizeHint(self *C.QsciScintilla, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QsciScintilla_viewportSizeHint(self *C.QsciScintilla, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciScintilla_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -5703,7 +5637,6 @@ func miqt_exec_callback_QsciScintilla_initPainter(self *C.QsciScintilla, cb C.in
 }
 
 func (this *QsciScintilla) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciScintilla_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

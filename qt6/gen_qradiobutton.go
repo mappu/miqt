@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -109,16 +110,12 @@ func QRadioButton_Tr(s string) string {
 	return _ret
 }
 
-func (this *QRadioButton) SizeHint() *QSize {
-	_goptr := newQSize(C.QRadioButton_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QRadioButton) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QRadioButton_sizeHint(this.h))
 }
 
-func (this *QRadioButton) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QRadioButton_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QRadioButton) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QRadioButton_minimumSizeHint(this.h))
 }
 
 func QRadioButton_Tr2(s string, c string) string {
@@ -266,14 +263,12 @@ func (this *QRadioButton) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QRadioButton) callVirtualBase_SizeHint() *QSize {
+func (this *QRadioButton) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QRadioButton_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QRadioButton_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QRadioButton) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QRadioButton) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QRadioButton_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -281,27 +276,24 @@ func (this *QRadioButton) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QRadioButton_sizeHint
-func miqt_exec_callback_QRadioButton_sizeHint(self *C.QRadioButton, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QRadioButton_sizeHint(self *C.QRadioButton, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QRadioButton_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QRadioButton) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QRadioButton_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QRadioButton) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QRadioButton) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QRadioButton_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QRadioButton) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QRadioButton_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -309,16 +301,15 @@ func (this *QRadioButton) OnMinimumSizeHint(slot func(super func() *QSize) *QSiz
 }
 
 //export miqt_exec_callback_QRadioButton_minimumSizeHint
-func miqt_exec_callback_QRadioButton_minimumSizeHint(self *C.QRadioButton, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QRadioButton_minimumSizeHint(self *C.QRadioButton, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QRadioButton_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -351,13 +342,12 @@ func miqt_exec_callback_QRadioButton_event(self *C.QRadioButton, cb C.intptr_t, 
 
 }
 
-func (this *QRadioButton) callVirtualBase_HitButton(param1 *QPoint) bool {
-	defer runtime.KeepAlive(param1)
+func (this *QRadioButton) callVirtualBase_HitButton(param1 QPoint) bool {
 
-	return (bool)(C.QRadioButton_virtualbase_hitButton(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QRadioButton_virtualbase_hitButton(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 
 }
-func (this *QRadioButton) OnHitButton(slot func(super func(param1 *QPoint) bool, param1 *QPoint) bool) {
+func (this *QRadioButton) OnHitButton(slot func(super func(param1 QPoint) bool, param1 QPoint) bool) {
 	ok := C.QRadioButton_override_virtual_hitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -365,14 +355,14 @@ func (this *QRadioButton) OnHitButton(slot func(super func(param1 *QPoint) bool,
 }
 
 //export miqt_exec_callback_QRadioButton_hitButton
-func miqt_exec_callback_QRadioButton_hitButton(self *C.QRadioButton, cb C.intptr_t, param1 *C.QPoint) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPoint) bool, param1 *QPoint) bool)
+func miqt_exec_callback_QRadioButton_hitButton(self *C.QRadioButton, cb C.intptr_t, param1 C.struct_miqt_qpoint) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPoint) bool, param1 QPoint) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPoint(param1)
+	slotval1 := libmiqt.ValueCast[QPoint](param1)
 
 	virtualReturn := gofunc((&QRadioButton{h: self}).callVirtualBase_HitButton, slotval1)
 
@@ -1382,7 +1372,6 @@ func miqt_exec_callback_QRadioButton_initPainter(self *C.QRadioButton, cb C.intp
 }
 
 func (this *QRadioButton) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QRadioButton_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

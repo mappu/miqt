@@ -24,8 +24,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QMovie_started(intptr_t);
-void miqt_exec_callback_QMovie_resized(intptr_t, QSize*);
-void miqt_exec_callback_QMovie_updated(intptr_t, QRect*);
+void miqt_exec_callback_QMovie_resized(intptr_t, struct miqt_qsize);
+void miqt_exec_callback_QMovie_updated(intptr_t, struct miqt_qrect);
 void miqt_exec_callback_QMovie_stateChanged(intptr_t, int);
 void miqt_exec_callback_QMovie_error(intptr_t, int);
 void miqt_exec_callback_QMovie_finished(intptr_t);
@@ -302,12 +302,12 @@ struct miqt_string QMovie_format(const QMovie* self) {
 	return _ms;
 }
 
-void QMovie_setBackgroundColor(QMovie* self, QColor* color) {
-	self->setBackgroundColor(*color);
+void QMovie_setBackgroundColor(QMovie* self, struct miqt_qcolor color) {
+	self->setBackgroundColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QMovie_backgroundColor(const QMovie* self) {
-	return new QColor(self->backgroundColor());
+struct miqt_qcolor QMovie_backgroundColor(const QMovie* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->backgroundColor());
 }
 
 int QMovie_state(const QMovie* self) {
@@ -315,8 +315,8 @@ int QMovie_state(const QMovie* self) {
 	return static_cast<int>(_ret);
 }
 
-QRect* QMovie_frameRect(const QMovie* self) {
-	return new QRect(self->frameRect());
+struct miqt_qrect QMovie_frameRect(const QMovie* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->frameRect());
 }
 
 QImage* QMovie_currentImage(const QMovie* self) {
@@ -371,12 +371,12 @@ int QMovie_speed(const QMovie* self) {
 	return self->speed();
 }
 
-QSize* QMovie_scaledSize(QMovie* self) {
-	return new QSize(self->scaledSize());
+struct miqt_qsize QMovie_scaledSize(QMovie* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->scaledSize());
 }
 
-void QMovie_setScaledSize(QMovie* self, QSize* size) {
-	self->setScaledSize(*size);
+void QMovie_setScaledSize(QMovie* self, struct miqt_qsize size) {
+	self->setScaledSize(miqt_from_cabi<QSize>(size));
 }
 
 int QMovie_cacheMode(const QMovie* self) {
@@ -398,28 +398,24 @@ void QMovie_connect_started(QMovie* self, intptr_t slot) {
 	});
 }
 
-void QMovie_resized(QMovie* self, QSize* size) {
-	self->resized(*size);
+void QMovie_resized(QMovie* self, struct miqt_qsize size) {
+	self->resized(miqt_from_cabi<QSize>(size));
 }
 
 void QMovie_connect_resized(QMovie* self, intptr_t slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)(const QSize&)>(&QMovie::resized), self, [=](const QSize& size) {
-		const QSize& size_ret = size;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&size_ret);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(size);
 		miqt_exec_callback_QMovie_resized(slot, sigval1);
 	});
 }
 
-void QMovie_updated(QMovie* self, QRect* rect) {
-	self->updated(*rect);
+void QMovie_updated(QMovie* self, struct miqt_qrect rect) {
+	self->updated(miqt_from_cabi<QRect>(rect));
 }
 
 void QMovie_connect_updated(QMovie* self, intptr_t slot) {
 	QMovie::connect(self, static_cast<void (QMovie::*)(const QRect&)>(&QMovie::updated), self, [=](const QRect& rect) {
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(rect);
 		miqt_exec_callback_QMovie_updated(slot, sigval1);
 	});
 }

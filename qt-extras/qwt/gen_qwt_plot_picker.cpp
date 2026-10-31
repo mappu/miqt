@@ -30,23 +30,23 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QwtPlotPicker_selected(intptr_t, QPointF*);
-void miqt_exec_callback_QwtPlotPicker_selectedWithRect(intptr_t, QRectF*);
-void miqt_exec_callback_QwtPlotPicker_selectedWithPa(intptr_t, struct miqt_array /* of QPointF* */ );
-void miqt_exec_callback_QwtPlotPicker_appended(intptr_t, QPointF*);
-void miqt_exec_callback_QwtPlotPicker_moved(intptr_t, QPointF*);
+void miqt_exec_callback_QwtPlotPicker_selected(intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QwtPlotPicker_selectedWithRect(intptr_t, struct miqt_qrectf);
+void miqt_exec_callback_QwtPlotPicker_selectedWithPa(intptr_t, struct miqt_array /* of struct miqt_qpointf */ );
+void miqt_exec_callback_QwtPlotPicker_appended(intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QwtPlotPicker_moved(intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QwtPlotPicker_setAxis(QwtPlotPicker*, intptr_t, int, int);
-QwtText* miqt_exec_callback_QwtPlotPicker_trackerText(const QwtPlotPicker*, intptr_t, QPoint*);
-QwtText* miqt_exec_callback_QwtPlotPicker_trackerTextF(const QwtPlotPicker*, intptr_t, QPointF*);
-void miqt_exec_callback_QwtPlotPicker_move(QwtPlotPicker*, intptr_t, QPoint*);
-void miqt_exec_callback_QwtPlotPicker_append(QwtPlotPicker*, intptr_t, QPoint*);
+QwtText* miqt_exec_callback_QwtPlotPicker_trackerText(const QwtPlotPicker*, intptr_t, struct miqt_qpoint);
+QwtText* miqt_exec_callback_QwtPlotPicker_trackerTextF(const QwtPlotPicker*, intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QwtPlotPicker_move(QwtPlotPicker*, intptr_t, struct miqt_qpoint);
+void miqt_exec_callback_QwtPlotPicker_append(QwtPlotPicker*, intptr_t, struct miqt_qpoint);
 bool miqt_exec_callback_QwtPlotPicker_end(QwtPlotPicker*, intptr_t, bool);
 bool miqt_exec_callback_QwtPlotPicker_eventFilter(QwtPlotPicker*, intptr_t, QObject*, QEvent*);
 QPainterPath* miqt_exec_callback_QwtPlotPicker_pickArea(const QwtPlotPicker*, intptr_t);
 void miqt_exec_callback_QwtPlotPicker_drawRubberBand(const QwtPlotPicker*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtPlotPicker_drawTracker(const QwtPlotPicker*, intptr_t, QPainter*);
 QRegion* miqt_exec_callback_QwtPlotPicker_rubberBandMask(const QwtPlotPicker*, intptr_t);
-QRect* miqt_exec_callback_QwtPlotPicker_trackerRect(const QwtPlotPicker*, intptr_t, QFont*);
+struct miqt_qrect miqt_exec_callback_QwtPlotPicker_trackerRect(const QwtPlotPicker*, intptr_t, QFont*);
 void miqt_exec_callback_QwtPlotPicker_transition(QwtPlotPicker*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPlotPicker_begin(QwtPlotPicker*, intptr_t);
 void miqt_exec_callback_QwtPlotPicker_remove(QwtPlotPicker*, intptr_t);
@@ -60,7 +60,7 @@ void miqt_exec_callback_QwtPlotPicker_widgetKeyPressEvent(QwtPlotPicker*, intptr
 void miqt_exec_callback_QwtPlotPicker_widgetKeyReleaseEvent(QwtPlotPicker*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QwtPlotPicker_widgetEnterEvent(QwtPlotPicker*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPlotPicker_widgetLeaveEvent(QwtPlotPicker*, intptr_t, QEvent*);
-void miqt_exec_callback_QwtPlotPicker_stretchSelection(QwtPlotPicker*, intptr_t, QSize*, QSize*);
+void miqt_exec_callback_QwtPlotPicker_stretchSelection(QwtPlotPicker*, intptr_t, struct miqt_qsize, struct miqt_qsize);
 void miqt_exec_callback_QwtPlotPicker_updateDisplay(QwtPlotPicker*, intptr_t);
 bool miqt_exec_callback_QwtPlotPicker_event(QwtPlotPicker*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPlotPicker_timerEvent(QwtPlotPicker*, intptr_t, QTimerEvent*);
@@ -110,16 +110,14 @@ public:
 			return QwtPlotPicker::trackerText(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPlotPicker_trackerText(this, handle__trackerText, sigval1);
 		QwtText callback_return_value_ret = *callback_return_value;
 		delete callback_return_value;
 		return callback_return_value_ret;
 	}
 
-	friend QwtText* QwtPlotPicker_virtualbase_trackerText(const void* self, QPoint* param1);
+	friend QwtText* QwtPlotPicker_virtualbase_trackerText(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__trackerTextF = 0;
@@ -130,16 +128,14 @@ public:
 			return QwtPlotPicker::trackerTextF(param1);
 		}
 
-		const QPointF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&param1_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(param1);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPlotPicker_trackerTextF(this, handle__trackerTextF, sigval1);
 		QwtText callback_return_value_ret = *callback_return_value;
 		delete callback_return_value;
 		return callback_return_value_ret;
 	}
 
-	friend QwtText* QwtPlotPicker_virtualbase_trackerTextF(const void* self, QPointF* param1);
+	friend QwtText* QwtPlotPicker_virtualbase_trackerTextF(const void* self, struct miqt_qpointf param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__move = 0;
@@ -151,14 +147,12 @@ public:
 			return;
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		miqt_exec_callback_QwtPlotPicker_move(this, handle__move, sigval1);
 
 	}
 
-	friend void QwtPlotPicker_virtualbase_move(void* self, QPoint* param1);
+	friend void QwtPlotPicker_virtualbase_move(void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__append = 0;
@@ -170,14 +164,12 @@ public:
 			return;
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		miqt_exec_callback_QwtPlotPicker_append(this, handle__append, sigval1);
 
 	}
 
-	friend void QwtPlotPicker_virtualbase_append(void* self, QPoint* param1);
+	friend void QwtPlotPicker_virtualbase_append(void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__end = 0;
@@ -292,13 +284,11 @@ public:
 		const QFont& param1_ret = param1;
 		// Cast returned reference into pointer
 		QFont* sigval1 = const_cast<QFont*>(&param1_ret);
-		QRect* callback_return_value = miqt_exec_callback_QwtPlotPicker_trackerRect(this, handle__trackerRect, sigval1);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QwtPlotPicker_trackerRect(this, handle__trackerRect, sigval1);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QwtPlotPicker_virtualbase_trackerRect(const void* self, QFont* param1);
+	friend struct miqt_qrect QwtPlotPicker_virtualbase_trackerRect(const void* self, QFont* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__transition = 0;
@@ -528,17 +518,13 @@ public:
 			return;
 		}
 
-		const QSize& oldSize_ret = oldSize;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&oldSize_ret);
-		const QSize& newSize_ret = newSize;
-		// Cast returned reference into pointer
-		QSize* sigval2 = const_cast<QSize*>(&newSize_ret);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(oldSize);
+		struct miqt_qsize sigval2 = miqt_to_cabi<struct miqt_qsize>(newSize);
 		miqt_exec_callback_QwtPlotPicker_stretchSelection(this, handle__stretchSelection, sigval1, sigval2);
 
 	}
 
-	friend void QwtPlotPicker_virtualbase_stretchSelection(void* self, QSize* oldSize, QSize* newSize);
+	friend void QwtPlotPicker_virtualbase_stretchSelection(void* self, struct miqt_qsize oldSize, struct miqt_qsize newSize);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateDisplay = 0;
@@ -700,11 +686,11 @@ public:
 	friend bool QwtPlotPicker_virtualbase_keyMatch2(const void* self, QwtEventPattern__KeyPattern* param1, QKeyEvent* param2);
 
 	// Wrappers to allow calling protected methods:
-	friend QRectF* QwtPlotPicker_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QwtPlotPicker_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, QRect* param1);
-	friend QRect* QwtPlotPicker_protectedbase_transform(bool* _dynamic_cast_ok, const void* self, QRectF* param1);
-	friend QPointF* QwtPlotPicker_protectedbase_invTransformWithQPoint(bool* _dynamic_cast_ok, const void* self, QPoint* param1);
-	friend QPoint* QwtPlotPicker_protectedbase_transformWithQPointF(bool* _dynamic_cast_ok, const void* self, QPointF* param1);
+	friend struct miqt_qrectf QwtPlotPicker_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrectf QwtPlotPicker_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1);
+	friend struct miqt_qrect QwtPlotPicker_protectedbase_transform(bool* _dynamic_cast_ok, const void* self, struct miqt_qrectf param1);
+	friend struct miqt_qpointf QwtPlotPicker_protectedbase_invTransformWithQPoint(bool* _dynamic_cast_ok, const void* self, struct miqt_qpoint param1);
+	friend struct miqt_qpoint QwtPlotPicker_protectedbase_transformWithQPointF(bool* _dynamic_cast_ok, const void* self, struct miqt_qpointf param1);
 	friend QwtWidgetOverlay* QwtPlotPicker_protectedbase_rubberBandOverlay(bool* _dynamic_cast_ok, const void* self);
 	friend QwtWidgetOverlay* QwtPlotPicker_protectedbase_trackerOverlay(bool* _dynamic_cast_ok, const void* self);
 	friend QObject* QwtPlotPicker_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -787,38 +773,34 @@ QWidget* QwtPlotPicker_canvas2(const QwtPlotPicker* self) {
 	return (QWidget*) self->canvas();
 }
 
-void QwtPlotPicker_selected(QwtPlotPicker* self, QPointF* pos) {
-	self->selected(*pos);
+void QwtPlotPicker_selected(QwtPlotPicker* self, struct miqt_qpointf pos) {
+	self->selected(miqt_from_cabi<QPointF>(pos));
 }
 
 void QwtPlotPicker_connect_selected(QwtPlotPicker* self, intptr_t slot) {
 	QwtPlotPicker::connect(self, static_cast<void (QwtPlotPicker::*)(const QPointF&)>(&QwtPlotPicker::selected), self, [=](const QPointF& pos) {
-		const QPointF& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&pos_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(pos);
 		miqt_exec_callback_QwtPlotPicker_selected(slot, sigval1);
 	});
 }
 
-void QwtPlotPicker_selectedWithRect(QwtPlotPicker* self, QRectF* rect) {
-	self->selected(*rect);
+void QwtPlotPicker_selectedWithRect(QwtPlotPicker* self, struct miqt_qrectf rect) {
+	self->selected(miqt_from_cabi<QRectF>(rect));
 }
 
 void QwtPlotPicker_connect_selectedWithRect(QwtPlotPicker* self, intptr_t slot) {
 	QwtPlotPicker::connect(self, static_cast<void (QwtPlotPicker::*)(const QRectF&)>(&QwtPlotPicker::selected), self, [=](const QRectF& rect) {
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QwtPlotPicker_selectedWithRect(slot, sigval1);
 	});
 }
 
-void QwtPlotPicker_selectedWithPa(QwtPlotPicker* self, struct miqt_array /* of QPointF* */  pa) {
+void QwtPlotPicker_selectedWithPa(QwtPlotPicker* self, struct miqt_array /* of struct miqt_qpointf */  pa) {
 	QVector<QPointF> pa_QList;
 	pa_QList.reserve(pa.len);
-	QPointF** pa_arr = static_cast<QPointF**>(pa.data);
+	struct miqt_qpointf* pa_arr = static_cast<struct miqt_qpointf*>(pa.data);
 	for(size_t i = 0; i < pa.len; ++i) {
-		pa_QList.push_back(*(pa_arr[i]));
+		pa_QList.push_back(miqt_from_cabi<QPointF>(pa_arr[i]));
 	}
 	self->selected(pa_QList);
 }
@@ -827,40 +809,36 @@ void QwtPlotPicker_connect_selectedWithPa(QwtPlotPicker* self, intptr_t slot) {
 	QwtPlotPicker::connect(self, static_cast<void (QwtPlotPicker::*)(const QVector<QPointF>&)>(&QwtPlotPicker::selected), self, [=](const QVector<QPointF>& pa) {
 		const QVector<QPointF>& pa_ret = pa;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QPointF** pa_arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * pa_ret.length()));
+		struct miqt_qpointf* pa_arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf) * pa_ret.length()));
 		for (size_t i = 0, e = pa_ret.length(); i < e; ++i) {
-			pa_arr[i] = new QPointF(pa_ret[i]);
+			pa_arr[i] = miqt_to_cabi<struct miqt_qpointf>(pa_ret[i]);
 		}
 		struct miqt_array pa_out;
 		pa_out.len = pa_ret.length();
 		pa_out.data = static_cast<void*>(pa_arr);
-		struct miqt_array /* of QPointF* */  sigval1 = pa_out;
+		struct miqt_array /* of struct miqt_qpointf */  sigval1 = pa_out;
 		miqt_exec_callback_QwtPlotPicker_selectedWithPa(slot, sigval1);
 	});
 }
 
-void QwtPlotPicker_appended(QwtPlotPicker* self, QPointF* pos) {
-	self->appended(*pos);
+void QwtPlotPicker_appended(QwtPlotPicker* self, struct miqt_qpointf pos) {
+	self->appended(miqt_from_cabi<QPointF>(pos));
 }
 
 void QwtPlotPicker_connect_appended(QwtPlotPicker* self, intptr_t slot) {
 	QwtPlotPicker::connect(self, static_cast<void (QwtPlotPicker::*)(const QPointF&)>(&QwtPlotPicker::appended), self, [=](const QPointF& pos) {
-		const QPointF& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&pos_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(pos);
 		miqt_exec_callback_QwtPlotPicker_appended(slot, sigval1);
 	});
 }
 
-void QwtPlotPicker_moved(QwtPlotPicker* self, QPointF* pos) {
-	self->moved(*pos);
+void QwtPlotPicker_moved(QwtPlotPicker* self, struct miqt_qpointf pos) {
+	self->moved(miqt_from_cabi<QPointF>(pos));
 }
 
 void QwtPlotPicker_connect_moved(QwtPlotPicker* self, intptr_t slot) {
 	QwtPlotPicker::connect(self, static_cast<void (QwtPlotPicker::*)(const QPointF&)>(&QwtPlotPicker::moved), self, [=](const QPointF& pos) {
-		const QPointF& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&pos_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(pos);
 		miqt_exec_callback_QwtPlotPicker_moved(slot, sigval1);
 	});
 }
@@ -933,8 +911,8 @@ bool QwtPlotPicker_override_virtual_trackerText(void* self, intptr_t slot) {
 	return true;
 }
 
-QwtText* QwtPlotPicker_virtualbase_trackerText(const void* self, QPoint* param1) {
-	return new QwtText(static_cast<const MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::trackerText(*param1));
+QwtText* QwtPlotPicker_virtualbase_trackerText(const void* self, struct miqt_qpoint param1) {
+	return new QwtText(static_cast<const MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::trackerText(miqt_from_cabi<QPoint>(param1)));
 }
 
 bool QwtPlotPicker_override_virtual_trackerTextF(void* self, intptr_t slot) {
@@ -947,8 +925,8 @@ bool QwtPlotPicker_override_virtual_trackerTextF(void* self, intptr_t slot) {
 	return true;
 }
 
-QwtText* QwtPlotPicker_virtualbase_trackerTextF(const void* self, QPointF* param1) {
-	return new QwtText(static_cast<const MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::trackerTextF(*param1));
+QwtText* QwtPlotPicker_virtualbase_trackerTextF(const void* self, struct miqt_qpointf param1) {
+	return new QwtText(static_cast<const MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::trackerTextF(miqt_from_cabi<QPointF>(param1)));
 }
 
 bool QwtPlotPicker_override_virtual_move(void* self, intptr_t slot) {
@@ -961,8 +939,8 @@ bool QwtPlotPicker_override_virtual_move(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotPicker_virtualbase_move(void* self, QPoint* param1) {
-	static_cast<MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::move(*param1);
+void QwtPlotPicker_virtualbase_move(void* self, struct miqt_qpoint param1) {
+	static_cast<MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::move(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtPlotPicker_override_virtual_append(void* self, intptr_t slot) {
@@ -975,8 +953,8 @@ bool QwtPlotPicker_override_virtual_append(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotPicker_virtualbase_append(void* self, QPoint* param1) {
-	static_cast<MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::append(*param1);
+void QwtPlotPicker_virtualbase_append(void* self, struct miqt_qpoint param1) {
+	static_cast<MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::append(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtPlotPicker_override_virtual_end(void* self, intptr_t slot) {
@@ -1073,8 +1051,8 @@ bool QwtPlotPicker_override_virtual_trackerRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QwtPlotPicker_virtualbase_trackerRect(const void* self, QFont* param1) {
-	return new QRect(static_cast<const MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::trackerRect(*param1));
+struct miqt_qrect QwtPlotPicker_virtualbase_trackerRect(const void* self, QFont* param1) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::trackerRect(*param1));
 }
 
 bool QwtPlotPicker_override_virtual_transition(void* self, intptr_t slot) {
@@ -1269,8 +1247,8 @@ bool QwtPlotPicker_override_virtual_stretchSelection(void* self, intptr_t slot) 
 	return true;
 }
 
-void QwtPlotPicker_virtualbase_stretchSelection(void* self, QSize* oldSize, QSize* newSize) {
-	static_cast<MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::stretchSelection(*oldSize, *newSize);
+void QwtPlotPicker_virtualbase_stretchSelection(void* self, struct miqt_qsize oldSize, struct miqt_qsize newSize) {
+	static_cast<MiqtVirtualQwtPlotPicker*>(self)->QwtPlotPicker::stretchSelection(miqt_from_cabi<QSize>(oldSize), miqt_from_cabi<QSize>(newSize));
 }
 
 bool QwtPlotPicker_override_virtual_updateDisplay(void* self, intptr_t slot) {
@@ -1411,63 +1389,59 @@ QRegion* QwtPlotPicker_virtualreturncopy_QRegion(QRegion* src) {
 	return new QRegion(*src);
 }
 
-QRect* QwtPlotPicker_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
-QRectF* QwtPlotPicker_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrectf QwtPlotPicker_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQwtPlotPicker* self_cast = dynamic_cast<MiqtVirtualQwtPlotPicker*>( (QwtPlotPicker*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->scaleRect());
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->scaleRect());
 }
 
-QRectF* QwtPlotPicker_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
+struct miqt_qrectf QwtPlotPicker_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1) {
 	MiqtVirtualQwtPlotPicker* self_cast = dynamic_cast<MiqtVirtualQwtPlotPicker*>( (QwtPlotPicker*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->invTransform(*param1));
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->invTransform(miqt_from_cabi<QRect>(param1)));
 }
 
-QRect* QwtPlotPicker_protectedbase_transform(bool* _dynamic_cast_ok, const void* self, QRectF* param1) {
+struct miqt_qrect QwtPlotPicker_protectedbase_transform(bool* _dynamic_cast_ok, const void* self, struct miqt_qrectf param1) {
 	MiqtVirtualQwtPlotPicker* self_cast = dynamic_cast<MiqtVirtualQwtPlotPicker*>( (QwtPlotPicker*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->transform(*param1));
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->transform(miqt_from_cabi<QRectF>(param1)));
 }
 
-QPointF* QwtPlotPicker_protectedbase_invTransformWithQPoint(bool* _dynamic_cast_ok, const void* self, QPoint* param1) {
+struct miqt_qpointf QwtPlotPicker_protectedbase_invTransformWithQPoint(bool* _dynamic_cast_ok, const void* self, struct miqt_qpoint param1) {
 	MiqtVirtualQwtPlotPicker* self_cast = dynamic_cast<MiqtVirtualQwtPlotPicker*>( (QwtPlotPicker*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qpointf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QPointF(self_cast->invTransform(*param1));
+	return miqt_to_cabi<struct miqt_qpointf>(self_cast->invTransform(miqt_from_cabi<QPoint>(param1)));
 }
 
-QPoint* QwtPlotPicker_protectedbase_transformWithQPointF(bool* _dynamic_cast_ok, const void* self, QPointF* param1) {
+struct miqt_qpoint QwtPlotPicker_protectedbase_transformWithQPointF(bool* _dynamic_cast_ok, const void* self, struct miqt_qpointf param1) {
 	MiqtVirtualQwtPlotPicker* self_cast = dynamic_cast<MiqtVirtualQwtPlotPicker*>( (QwtPlotPicker*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qpoint){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QPoint(self_cast->transform(*param1));
+	return miqt_to_cabi<struct miqt_qpoint>(self_cast->transform(miqt_from_cabi<QPointF>(param1)));
 }
 
 QwtWidgetOverlay* QwtPlotPicker_protectedbase_rubberBandOverlay(bool* _dynamic_cast_ok, const void* self) {

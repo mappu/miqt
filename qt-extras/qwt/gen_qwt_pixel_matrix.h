@@ -24,11 +24,11 @@ typedef struct QRect QRect;
 typedef struct QwtPixelMatrix QwtPixelMatrix;
 #endif
 
-QwtPixelMatrix* QwtPixelMatrix_new(QRect* rect);
+QwtPixelMatrix* QwtPixelMatrix_new(struct miqt_qrect rect);
 QwtPixelMatrix* QwtPixelMatrix_new2(QwtPixelMatrix* param1);
 void QwtPixelMatrix_virtbase(QwtPixelMatrix* src, QBitArray** outptr_QBitArray);
-void QwtPixelMatrix_setRect(QwtPixelMatrix* self, QRect* rect);
-QRect* QwtPixelMatrix_rect(const QwtPixelMatrix* self);
+void QwtPixelMatrix_setRect(QwtPixelMatrix* self, struct miqt_qrect rect);
+struct miqt_qrect QwtPixelMatrix_rect(const QwtPixelMatrix* self);
 bool QwtPixelMatrix_testPixel(const QwtPixelMatrix* self, int x, int y);
 bool QwtPixelMatrix_testAndSetPixel(QwtPixelMatrix* self, int x, int y, bool on);
 int QwtPixelMatrix_index(const QwtPixelMatrix* self, int x, int y);

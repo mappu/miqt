@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -71,17 +72,15 @@ func NewQVector4D3(xpos float32, ypos float32, zpos float32, wpos float32) *QVec
 }
 
 // NewQVector4D4 constructs a new QVector4D object.
-func NewQVector4D4(point *QPoint) *QVector4D {
-	defer runtime.KeepAlive(point)
+func NewQVector4D4(point QPoint) *QVector4D {
 
-	return newQVector4D(C.QVector4D_new4(point.cPointer()))
+	return newQVector4D(C.QVector4D_new4(libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
 // NewQVector4D5 constructs a new QVector4D object.
-func NewQVector4D5(point *QPointF) *QVector4D {
-	defer runtime.KeepAlive(point)
+func NewQVector4D5(point QPointF) *QVector4D {
 
-	return newQVector4D(C.QVector4D_new5(point.cPointer()))
+	return newQVector4D(C.QVector4D_new5(libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 // NewQVector4D6 constructs a new QVector4D object.
@@ -99,17 +98,15 @@ func NewQVector4D7(vector *QVector2D, zpos float32, wpos float32) *QVector4D {
 }
 
 // NewQVector4D8 constructs a new QVector4D object.
-func NewQVector4D8(vector *QVector3D) *QVector4D {
-	defer runtime.KeepAlive(vector)
+func NewQVector4D8(vector QVector3D) *QVector4D {
 
-	return newQVector4D(C.QVector4D_new8(vector.cPointer()))
+	return newQVector4D(C.QVector4D_new8(libmiqt.ValueCast[C.struct_miqt_qvector3d](vector)))
 }
 
 // NewQVector4D9 constructs a new QVector4D object.
-func NewQVector4D9(vector *QVector3D, wpos float32) *QVector4D {
-	defer runtime.KeepAlive(vector)
+func NewQVector4D9(vector QVector3D, wpos float32) *QVector4D {
 
-	return newQVector4D(C.QVector4D_new9(vector.cPointer(), (C.float)(wpos)))
+	return newQVector4D(C.QVector4D_new9(libmiqt.ValueCast[C.struct_miqt_qvector3d](vector), (C.float)(wpos)))
 }
 
 // NewQVector4D10 constructs a new QVector4D object.
@@ -257,32 +254,24 @@ func (this *QVector4D) ToVector2DAffine() *QVector2D {
 	return _goptr
 }
 
-func (this *QVector4D) ToVector3D() *QVector3D {
+func (this *QVector4D) ToVector3D() QVector3D {
 	defer runtime.KeepAlive(this)
-	_goptr := newQVector3D(C.QVector4D_toVector3D(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QVector3D](C.QVector4D_toVector3D(this.h))
 }
 
-func (this *QVector4D) ToVector3DAffine() *QVector3D {
+func (this *QVector4D) ToVector3DAffine() QVector3D {
 	defer runtime.KeepAlive(this)
-	_goptr := newQVector3D(C.QVector4D_toVector3DAffine(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QVector3D](C.QVector4D_toVector3DAffine(this.h))
 }
 
-func (this *QVector4D) ToPoint() *QPoint {
+func (this *QVector4D) ToPoint() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QVector4D_toPoint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QVector4D_toPoint(this.h))
 }
 
-func (this *QVector4D) ToPointF() *QPointF {
+func (this *QVector4D) ToPointF() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QVector4D_toPointF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QVector4D_toPointF(this.h))
 }
 
 func (this *QVector4D) ToQVariant() *QVariant {

@@ -81,20 +81,20 @@ void QMatrix_map2(const QMatrix* self, double x, double y, double* tx, double* t
 	self->map(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal*>(tx), static_cast<qreal*>(ty));
 }
 
-QRect* QMatrix_mapRect(const QMatrix* self, QRect* param1) {
-	return new QRect(self->mapRect(*param1));
+struct miqt_qrect QMatrix_mapRect(const QMatrix* self, struct miqt_qrect param1) {
+	return miqt_to_cabi<struct miqt_qrect>(self->mapRect(miqt_from_cabi<QRect>(param1)));
 }
 
-QRectF* QMatrix_mapRectWithQRectF(const QMatrix* self, QRectF* param1) {
-	return new QRectF(self->mapRect(*param1));
+struct miqt_qrectf QMatrix_mapRectWithQRectF(const QMatrix* self, struct miqt_qrectf param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRect(miqt_from_cabi<QRectF>(param1)));
 }
 
-QPoint* QMatrix_mapWithQPoint(const QMatrix* self, QPoint* p) {
-	return new QPoint(self->map(*p));
+struct miqt_qpoint QMatrix_mapWithQPoint(const QMatrix* self, struct miqt_qpoint p) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->map(miqt_from_cabi<QPoint>(p)));
 }
 
-QPointF* QMatrix_mapWithQPointF(const QMatrix* self, QPointF* p) {
-	return new QPointF(self->map(*p));
+struct miqt_qpointf QMatrix_mapWithQPointF(const QMatrix* self, struct miqt_qpointf p) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->map(miqt_from_cabi<QPointF>(p)));
 }
 
 QLine* QMatrix_mapWithQLine(const QMatrix* self, QLine* l) {

@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -105,11 +106,9 @@ func (this *QwtPlotMarker) YValue() float64 {
 	return (float64)(C.QwtPlotMarker_yValue(this.h))
 }
 
-func (this *QwtPlotMarker) Value() *qt.QPointF {
+func (this *QwtPlotMarker) Value() qt.QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtPlotMarker_value(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPointF](C.QwtPlotMarker_value(this.h))
 }
 
 func (this *QwtPlotMarker) SetXValue(xValue float64) {
@@ -127,10 +126,9 @@ func (this *QwtPlotMarker) SetValue(param1 float64, param2 float64) {
 	C.QwtPlotMarker_setValue(this.h, (C.double)(param1), (C.double)(param2))
 }
 
-func (this *QwtPlotMarker) SetValueWithValue(value *qt.QPointF) {
+func (this *QwtPlotMarker) SetValueWithValue(value qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(value)
-	C.QwtPlotMarker_setValueWithValue(this.h, (*C.QPointF)(value.UnsafePointer()))
+	C.QwtPlotMarker_setValueWithValue(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](value))
 }
 
 func (this *QwtPlotMarker) SetLineStyle(lineStyle QwtPlotMarker__LineStyle) {
@@ -143,10 +141,9 @@ func (this *QwtPlotMarker) LineStyle() QwtPlotMarker__LineStyle {
 	return (QwtPlotMarker__LineStyle)(C.QwtPlotMarker_lineStyle(this.h))
 }
 
-func (this *QwtPlotMarker) SetLinePen(param1 *qt.QColor) {
+func (this *QwtPlotMarker) SetLinePen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotMarker_setLinePen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotMarker_setLinePen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotMarker) SetLinePenWithLinePen(linePen *qt.QPen) {
@@ -214,31 +211,26 @@ func (this *QwtPlotMarker) Spacing() int {
 	return (int)(C.QwtPlotMarker_spacing(this.h))
 }
 
-func (this *QwtPlotMarker) BoundingRect() *qt.QRectF {
+func (this *QwtPlotMarker) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotMarker_boundingRect(this.h)))
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotMarker_boundingRect(this.h))
+}
+
+func (this *QwtPlotMarker) LegendIcon(index int, param2 qt.QSizeF) *QwtGraphic {
+	defer runtime.KeepAlive(this)
+	_goptr := newQwtGraphic(C.QwtPlotMarker_legendIcon(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qsizef](param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QwtPlotMarker) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+func (this *QwtPlotMarker) SetLinePen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	_goptr := newQwtGraphic(C.QwtPlotMarker_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	C.QwtPlotMarker_setLinePen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotMarker) SetLinePen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotMarker) SetLinePen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotMarker_setLinePen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
-}
-
-func (this *QwtPlotMarker) SetLinePen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotMarker_setLinePen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotMarker_setLinePen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
 // Delete this object from C++ memory.

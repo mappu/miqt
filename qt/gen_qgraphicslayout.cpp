@@ -18,8 +18,8 @@ void miqt_exec_callback_QGraphicsLayout_widgetEvent(QGraphicsLayout*, intptr_t, 
 int miqt_exec_callback_QGraphicsLayout_count(const QGraphicsLayout*, intptr_t);
 QGraphicsLayoutItem* miqt_exec_callback_QGraphicsLayout_itemAt(const QGraphicsLayout*, intptr_t, int);
 void miqt_exec_callback_QGraphicsLayout_removeAt(QGraphicsLayout*, intptr_t, int);
-void miqt_exec_callback_QGraphicsLayout_setGeometry(QGraphicsLayout*, intptr_t, QRectF*);
-QSizeF* miqt_exec_callback_QGraphicsLayout_sizeHint(const QGraphicsLayout*, intptr_t, int, QSizeF*);
+void miqt_exec_callback_QGraphicsLayout_setGeometry(QGraphicsLayout*, intptr_t, struct miqt_qrectf);
+struct miqt_qsizef miqt_exec_callback_QGraphicsLayout_sizeHint(const QGraphicsLayout*, intptr_t, int, struct miqt_qsizef);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -156,14 +156,12 @@ public:
 			return;
 		}
 
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QGraphicsLayout_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QGraphicsLayout_virtualbase_setGeometry(void* self, QRectF* rect);
+	friend void QGraphicsLayout_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -176,13 +174,9 @@ public:
 
 		Qt::SizeHint which_ret = which;
 		int sigval1 = static_cast<int>(which_ret);
-		const QSizeF& constraint_ret = constraint;
-		// Cast returned reference into pointer
-		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
-		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsLayout_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef sigval2 = miqt_to_cabi<struct miqt_qsizef>(constraint);
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QGraphicsLayout_sizeHint(this, handle__sizeHint, sigval1, sigval2);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
 	// Wrappers to allow calling protected methods:
@@ -347,8 +341,8 @@ bool QGraphicsLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 	return true;
 }
 
-void QGraphicsLayout_virtualbase_setGeometry(void* self, QRectF* rect) {
-	static_cast<MiqtVirtualQGraphicsLayout*>(self)->QGraphicsLayout::setGeometry(*rect);
+void QGraphicsLayout_virtualbase_setGeometry(void* self, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQGraphicsLayout*>(self)->QGraphicsLayout::setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 bool QGraphicsLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -359,10 +353,6 @@ bool QGraphicsLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 	self_cast->handle__sizeHint = slot;
 	return true;
-}
-
-QSizeF* QGraphicsLayout_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
 }
 
 void QGraphicsLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {

@@ -55,8 +55,8 @@ int QMediaResource_channelCount(const QMediaResource* self);
 void QMediaResource_setChannelCount(QMediaResource* self, int channels);
 int QMediaResource_videoBitRate(const QMediaResource* self);
 void QMediaResource_setVideoBitRate(QMediaResource* self, int rate);
-QSize* QMediaResource_resolution(const QMediaResource* self);
-void QMediaResource_setResolution(QMediaResource* self, QSize* resolution);
+struct miqt_qsize QMediaResource_resolution(const QMediaResource* self);
+void QMediaResource_setResolution(QMediaResource* self, struct miqt_qsize resolution);
 void QMediaResource_setResolution2(QMediaResource* self, int width, int height);
 
 void QMediaResource_delete(QMediaResource* self);

@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QwtIntervalSymbol_draw(const QwtIntervalSymbol*, intptr_t, QPainter*, int, QPointF*, QPointF*);
+void miqt_exec_callback_QwtIntervalSymbol_draw(const QwtIntervalSymbol*, intptr_t, QPainter*, int, struct miqt_qpointf, struct miqt_qpointf);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -37,17 +37,13 @@ public:
 		QPainter* sigval1 = param1;
 		Qt::Orientation param2_ret = param2;
 		int sigval2 = static_cast<int>(param2_ret);
-		const QPointF& from_ret = from;
-		// Cast returned reference into pointer
-		QPointF* sigval3 = const_cast<QPointF*>(&from_ret);
-		const QPointF& to_ret = to;
-		// Cast returned reference into pointer
-		QPointF* sigval4 = const_cast<QPointF*>(&to_ret);
+		struct miqt_qpointf sigval3 = miqt_to_cabi<struct miqt_qpointf>(from);
+		struct miqt_qpointf sigval4 = miqt_to_cabi<struct miqt_qpointf>(to);
 		miqt_exec_callback_QwtIntervalSymbol_draw(this, handle__draw, sigval1, sigval2, sigval3, sigval4);
 
 	}
 
-	friend void QwtIntervalSymbol_virtualbase_draw(const void* self, QPainter* param1, int param2, QPointF* from, QPointF* to);
+	friend void QwtIntervalSymbol_virtualbase_draw(const void* self, QPainter* param1, int param2, struct miqt_qpointf from, struct miqt_qpointf to);
 
 };
 
@@ -93,8 +89,8 @@ QBrush* QwtIntervalSymbol_brush(const QwtIntervalSymbol* self) {
 	return const_cast<QBrush*>(&_ret);
 }
 
-void QwtIntervalSymbol_setPen(QwtIntervalSymbol* self, QColor* param1) {
-	self->setPen(*param1);
+void QwtIntervalSymbol_setPen(QwtIntervalSymbol* self, struct miqt_qcolor param1) {
+	self->setPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtIntervalSymbol_setPenWithPen(QwtIntervalSymbol* self, QPen* pen) {
@@ -116,16 +112,16 @@ int QwtIntervalSymbol_style(const QwtIntervalSymbol* self) {
 	return static_cast<int>(_ret);
 }
 
-void QwtIntervalSymbol_draw(const QwtIntervalSymbol* self, QPainter* param1, int param2, QPointF* from, QPointF* to) {
-	self->draw(param1, static_cast<Qt::Orientation>(param2), *from, *to);
+void QwtIntervalSymbol_draw(const QwtIntervalSymbol* self, QPainter* param1, int param2, struct miqt_qpointf from, struct miqt_qpointf to) {
+	self->draw(param1, static_cast<Qt::Orientation>(param2), miqt_from_cabi<QPointF>(from), miqt_from_cabi<QPointF>(to));
 }
 
-void QwtIntervalSymbol_setPen2(QwtIntervalSymbol* self, QColor* param1, double width) {
-	self->setPen(*param1, static_cast<qreal>(width));
+void QwtIntervalSymbol_setPen2(QwtIntervalSymbol* self, struct miqt_qcolor param1, double width) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtIntervalSymbol_setPen3(QwtIntervalSymbol* self, QColor* param1, double width, int param3) {
-	self->setPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtIntervalSymbol_setPen3(QwtIntervalSymbol* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 bool QwtIntervalSymbol_override_virtual_draw(void* self, intptr_t slot) {
@@ -138,8 +134,8 @@ bool QwtIntervalSymbol_override_virtual_draw(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtIntervalSymbol_virtualbase_draw(const void* self, QPainter* param1, int param2, QPointF* from, QPointF* to) {
-	static_cast<const MiqtVirtualQwtIntervalSymbol*>(self)->QwtIntervalSymbol::draw(param1, static_cast<Qt::Orientation>(param2), *from, *to);
+void QwtIntervalSymbol_virtualbase_draw(const void* self, QPainter* param1, int param2, struct miqt_qpointf from, struct miqt_qpointf to) {
+	static_cast<const MiqtVirtualQwtIntervalSymbol*>(self)->QwtIntervalSymbol::draw(param1, static_cast<Qt::Orientation>(param2), miqt_from_cabi<QPointF>(from), miqt_from_cabi<QPointF>(to));
 }
 
 void QwtIntervalSymbol_delete(QwtIntervalSymbol* self) {

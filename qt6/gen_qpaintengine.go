@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -276,13 +277,11 @@ func (this *QPaintEngine) UpdateState(state *QPaintEngineState) {
 
 func (this *QPaintEngine) DrawRects(rects *QRect, rectCount int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rects)
 	C.QPaintEngine_drawRects(this.h, rects.cPointer(), (C.int)(rectCount))
 }
 
 func (this *QPaintEngine) DrawRects2(rects *QRectF, rectCount int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rects)
 	C.QPaintEngine_drawRects2(this.h, rects.cPointer(), (C.int)(rectCount))
 }
 
@@ -298,16 +297,14 @@ func (this *QPaintEngine) DrawLines2(lines *QLineF, lineCount int) {
 	C.QPaintEngine_drawLines2(this.h, lines.cPointer(), (C.int)(lineCount))
 }
 
-func (this *QPaintEngine) DrawEllipse(r *QRectF) {
+func (this *QPaintEngine) DrawEllipse(r QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QPaintEngine_drawEllipse(this.h, r.cPointer())
+	C.QPaintEngine_drawEllipse(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](r))
 }
 
-func (this *QPaintEngine) DrawEllipseWithQRect(r *QRect) {
+func (this *QPaintEngine) DrawEllipseWithQRect(r QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QPaintEngine_drawEllipseWithQRect(this.h, r.cPointer())
+	C.QPaintEngine_drawEllipseWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r))
 }
 
 func (this *QPaintEngine) DrawPath(path *QPainterPath) {
@@ -318,57 +315,46 @@ func (this *QPaintEngine) DrawPath(path *QPainterPath) {
 
 func (this *QPaintEngine) DrawPoints(points *QPointF, pointCount int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(points)
 	C.QPaintEngine_drawPoints(this.h, points.cPointer(), (C.int)(pointCount))
 }
 
 func (this *QPaintEngine) DrawPoints2(points *QPoint, pointCount int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(points)
 	C.QPaintEngine_drawPoints2(this.h, points.cPointer(), (C.int)(pointCount))
 }
 
 func (this *QPaintEngine) DrawPolygon(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(points)
 	C.QPaintEngine_drawPolygon(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 }
 
 func (this *QPaintEngine) DrawPolygon2(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(points)
 	C.QPaintEngine_drawPolygon2(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 }
 
-func (this *QPaintEngine) DrawPixmap(r *QRectF, pm *QPixmap, sr *QRectF) {
+func (this *QPaintEngine) DrawPixmap(r QRectF, pm *QPixmap, sr QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 	defer runtime.KeepAlive(pm)
-	defer runtime.KeepAlive(sr)
-	C.QPaintEngine_drawPixmap(this.h, r.cPointer(), pm.cPointer(), sr.cPointer())
+	C.QPaintEngine_drawPixmap(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](r), pm.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](sr))
 }
 
-func (this *QPaintEngine) DrawTextItem(p *QPointF, textItem *QTextItem) {
+func (this *QPaintEngine) DrawTextItem(p QPointF, textItem *QTextItem) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
 	defer runtime.KeepAlive(textItem)
-	C.QPaintEngine_drawTextItem(this.h, p.cPointer(), textItem.cPointer())
+	C.QPaintEngine_drawTextItem(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p), textItem.cPointer())
 }
 
-func (this *QPaintEngine) DrawTiledPixmap(r *QRectF, pixmap *QPixmap, s *QPointF) {
+func (this *QPaintEngine) DrawTiledPixmap(r QRectF, pixmap *QPixmap, s QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 	defer runtime.KeepAlive(pixmap)
-	defer runtime.KeepAlive(s)
-	C.QPaintEngine_drawTiledPixmap(this.h, r.cPointer(), pixmap.cPointer(), s.cPointer())
+	C.QPaintEngine_drawTiledPixmap(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](r), pixmap.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](s))
 }
 
-func (this *QPaintEngine) DrawImage(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag) {
+func (this *QPaintEngine) DrawImage(r QRectF, pm *QImage, sr QRectF, flags ImageConversionFlag) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 	defer runtime.KeepAlive(pm)
-	defer runtime.KeepAlive(sr)
-	C.QPaintEngine_drawImage(this.h, r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
+	C.QPaintEngine_drawImage(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](r), pm.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](sr), (C.int)(flags))
 }
 
 func (this *QPaintEngine) SetPaintDevice(device *QPaintDevice) {
@@ -395,24 +381,19 @@ func (this *QPaintEngine) SystemClip() *QRegion {
 	return _goptr
 }
 
-func (this *QPaintEngine) SetSystemRect(rect *QRect) {
+func (this *QPaintEngine) SetSystemRect(rect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QPaintEngine_setSystemRect(this.h, rect.cPointer())
+	C.QPaintEngine_setSystemRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
-func (this *QPaintEngine) SystemRect() *QRect {
+func (this *QPaintEngine) SystemRect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QPaintEngine_systemRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPaintEngine_systemRect(this.h))
 }
 
-func (this *QPaintEngine) CoordinateOffset() *QPoint {
+func (this *QPaintEngine) CoordinateOffset() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QPaintEngine_coordinateOffset(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QPaintEngine_coordinateOffset(this.h))
 }
 
 func (this *QPaintEngine) Type() QPaintEngine__Type {
@@ -462,8 +443,7 @@ func (this *QPaintEngine) IsExtended() bool {
 
 func (this *QPaintEngine) CreatePixmap(size QSize) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	_goptr := newQPixmap(C.QPaintEngine_createPixmap(this.h, size.cPointer()))
+	_goptr := newQPixmap(C.QPaintEngine_createPixmap(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -539,7 +519,6 @@ func miqt_exec_callback_QPaintEngine_updateState(self *C.QPaintEngine, cb C.intp
 
 func (this *QPaintEngine) callVirtualBase_DrawRects(rects *QRect, rectCount int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rects)
 
 	C.QPaintEngine_virtualbase_drawRects(unsafe.Pointer(this.h), rects.cPointer(), (C.int)(rectCount))
 
@@ -569,7 +548,6 @@ func miqt_exec_callback_QPaintEngine_drawRects(self *C.QPaintEngine, cb C.intptr
 
 func (this *QPaintEngine) callVirtualBase_DrawRects2(rects *QRectF, rectCount int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rects)
 
 	C.QPaintEngine_virtualbase_drawRects2(unsafe.Pointer(this.h), rects.cPointer(), (C.int)(rectCount))
 
@@ -657,14 +635,13 @@ func miqt_exec_callback_QPaintEngine_drawLines2(self *C.QPaintEngine, cb C.intpt
 
 }
 
-func (this *QPaintEngine) callVirtualBase_DrawEllipse(r *QRectF) {
+func (this *QPaintEngine) callVirtualBase_DrawEllipse(r QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 
-	C.QPaintEngine_virtualbase_drawEllipse(unsafe.Pointer(this.h), r.cPointer())
+	C.QPaintEngine_virtualbase_drawEllipse(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](r))
 
 }
-func (this *QPaintEngine) OnDrawEllipse(slot func(super func(r *QRectF), r *QRectF)) {
+func (this *QPaintEngine) OnDrawEllipse(slot func(super func(r QRectF), r QRectF)) {
 	ok := C.QPaintEngine_override_virtual_drawEllipse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -672,27 +649,26 @@ func (this *QPaintEngine) OnDrawEllipse(slot func(super func(r *QRectF), r *QRec
 }
 
 //export miqt_exec_callback_QPaintEngine_drawEllipse
-func miqt_exec_callback_QPaintEngine_drawEllipse(self *C.QPaintEngine, cb C.intptr_t, r *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r *QRectF), r *QRectF))
+func miqt_exec_callback_QPaintEngine_drawEllipse(self *C.QPaintEngine, cb C.intptr_t, r C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r QRectF), r QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(r)
+	slotval1 := libmiqt.ValueCast[QRectF](r)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawEllipse, slotval1)
 
 }
 
-func (this *QPaintEngine) callVirtualBase_DrawEllipseWithQRect(r *QRect) {
+func (this *QPaintEngine) callVirtualBase_DrawEllipseWithQRect(r QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 
-	C.QPaintEngine_virtualbase_drawEllipseWithQRect(unsafe.Pointer(this.h), r.cPointer())
+	C.QPaintEngine_virtualbase_drawEllipseWithQRect(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](r))
 
 }
-func (this *QPaintEngine) OnDrawEllipseWithQRect(slot func(super func(r *QRect), r *QRect)) {
+func (this *QPaintEngine) OnDrawEllipseWithQRect(slot func(super func(r QRect), r QRect)) {
 	ok := C.QPaintEngine_override_virtual_drawEllipseWithQRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -700,14 +676,14 @@ func (this *QPaintEngine) OnDrawEllipseWithQRect(slot func(super func(r *QRect),
 }
 
 //export miqt_exec_callback_QPaintEngine_drawEllipseWithQRect
-func miqt_exec_callback_QPaintEngine_drawEllipseWithQRect(self *C.QPaintEngine, cb C.intptr_t, r *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r *QRect), r *QRect))
+func miqt_exec_callback_QPaintEngine_drawEllipseWithQRect(self *C.QPaintEngine, cb C.intptr_t, r C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r QRect), r QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(r)
+	slotval1 := libmiqt.ValueCast[QRect](r)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawEllipseWithQRect, slotval1)
 
@@ -743,7 +719,6 @@ func miqt_exec_callback_QPaintEngine_drawPath(self *C.QPaintEngine, cb C.intptr_
 
 func (this *QPaintEngine) callVirtualBase_DrawPoints(points *QPointF, pointCount int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(points)
 
 	C.QPaintEngine_virtualbase_drawPoints(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount))
 
@@ -773,7 +748,6 @@ func miqt_exec_callback_QPaintEngine_drawPoints(self *C.QPaintEngine, cb C.intpt
 
 func (this *QPaintEngine) callVirtualBase_DrawPoints2(points *QPoint, pointCount int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(points)
 
 	C.QPaintEngine_virtualbase_drawPoints2(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount))
 
@@ -803,7 +777,6 @@ func miqt_exec_callback_QPaintEngine_drawPoints2(self *C.QPaintEngine, cb C.intp
 
 func (this *QPaintEngine) callVirtualBase_DrawPolygon(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(points)
 
 	C.QPaintEngine_virtualbase_drawPolygon(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 
@@ -835,7 +808,6 @@ func miqt_exec_callback_QPaintEngine_drawPolygon(self *C.QPaintEngine, cb C.intp
 
 func (this *QPaintEngine) callVirtualBase_DrawPolygon2(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(points)
 
 	C.QPaintEngine_virtualbase_drawPolygon2(unsafe.Pointer(this.h), points.cPointer(), (C.int)(pointCount), (C.int)(mode))
 
@@ -864,7 +836,7 @@ func miqt_exec_callback_QPaintEngine_drawPolygon2(self *C.QPaintEngine, cb C.int
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawPolygon2, slotval1, slotval2, slotval3)
 
 }
-func (this *QPaintEngine) OnDrawPixmap(slot func(r *QRectF, pm *QPixmap, sr *QRectF)) {
+func (this *QPaintEngine) OnDrawPixmap(slot func(r QRectF, pm *QPixmap, sr QRectF)) {
 	ok := C.QPaintEngine_override_virtual_drawPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -872,32 +844,31 @@ func (this *QPaintEngine) OnDrawPixmap(slot func(r *QRectF, pm *QPixmap, sr *QRe
 }
 
 //export miqt_exec_callback_QPaintEngine_drawPixmap
-func miqt_exec_callback_QPaintEngine_drawPixmap(self *C.QPaintEngine, cb C.intptr_t, r *C.QRectF, pm *C.QPixmap, sr *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(r *QRectF, pm *QPixmap, sr *QRectF))
+func miqt_exec_callback_QPaintEngine_drawPixmap(self *C.QPaintEngine, cb C.intptr_t, r C.struct_miqt_qrectf, pm *C.QPixmap, sr C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(r QRectF, pm *QPixmap, sr QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(r)
+	slotval1 := libmiqt.ValueCast[QRectF](r)
 
 	slotval2 := newQPixmap(pm)
 
-	slotval3 := newQRectF(sr)
+	slotval3 := libmiqt.ValueCast[QRectF](sr)
 
 	gofunc(slotval1, slotval2, slotval3)
 
 }
 
-func (this *QPaintEngine) callVirtualBase_DrawTextItem(p *QPointF, textItem *QTextItem) {
+func (this *QPaintEngine) callVirtualBase_DrawTextItem(p QPointF, textItem *QTextItem) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
 	defer runtime.KeepAlive(textItem)
 
-	C.QPaintEngine_virtualbase_drawTextItem(unsafe.Pointer(this.h), p.cPointer(), textItem.cPointer())
+	C.QPaintEngine_virtualbase_drawTextItem(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](p), textItem.cPointer())
 
 }
-func (this *QPaintEngine) OnDrawTextItem(slot func(super func(p *QPointF, textItem *QTextItem), p *QPointF, textItem *QTextItem)) {
+func (this *QPaintEngine) OnDrawTextItem(slot func(super func(p QPointF, textItem *QTextItem), p QPointF, textItem *QTextItem)) {
 	ok := C.QPaintEngine_override_virtual_drawTextItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -905,14 +876,14 @@ func (this *QPaintEngine) OnDrawTextItem(slot func(super func(p *QPointF, textIt
 }
 
 //export miqt_exec_callback_QPaintEngine_drawTextItem
-func miqt_exec_callback_QPaintEngine_drawTextItem(self *C.QPaintEngine, cb C.intptr_t, p *C.QPointF, textItem *C.QTextItem) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p *QPointF, textItem *QTextItem), p *QPointF, textItem *QTextItem))
+func miqt_exec_callback_QPaintEngine_drawTextItem(self *C.QPaintEngine, cb C.intptr_t, p C.struct_miqt_qpointf, textItem *C.QTextItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p QPointF, textItem *QTextItem), p QPointF, textItem *QTextItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(p)
+	slotval1 := libmiqt.ValueCast[QPointF](p)
 
 	slotval2 := newQTextItem(textItem)
 
@@ -920,16 +891,14 @@ func miqt_exec_callback_QPaintEngine_drawTextItem(self *C.QPaintEngine, cb C.int
 
 }
 
-func (this *QPaintEngine) callVirtualBase_DrawTiledPixmap(r *QRectF, pixmap *QPixmap, s *QPointF) {
+func (this *QPaintEngine) callVirtualBase_DrawTiledPixmap(r QRectF, pixmap *QPixmap, s QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 	defer runtime.KeepAlive(pixmap)
-	defer runtime.KeepAlive(s)
 
-	C.QPaintEngine_virtualbase_drawTiledPixmap(unsafe.Pointer(this.h), r.cPointer(), pixmap.cPointer(), s.cPointer())
+	C.QPaintEngine_virtualbase_drawTiledPixmap(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](r), pixmap.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](s))
 
 }
-func (this *QPaintEngine) OnDrawTiledPixmap(slot func(super func(r *QRectF, pixmap *QPixmap, s *QPointF), r *QRectF, pixmap *QPixmap, s *QPointF)) {
+func (this *QPaintEngine) OnDrawTiledPixmap(slot func(super func(r QRectF, pixmap *QPixmap, s QPointF), r QRectF, pixmap *QPixmap, s QPointF)) {
 	ok := C.QPaintEngine_override_virtual_drawTiledPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -937,33 +906,31 @@ func (this *QPaintEngine) OnDrawTiledPixmap(slot func(super func(r *QRectF, pixm
 }
 
 //export miqt_exec_callback_QPaintEngine_drawTiledPixmap
-func miqt_exec_callback_QPaintEngine_drawTiledPixmap(self *C.QPaintEngine, cb C.intptr_t, r *C.QRectF, pixmap *C.QPixmap, s *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r *QRectF, pixmap *QPixmap, s *QPointF), r *QRectF, pixmap *QPixmap, s *QPointF))
+func miqt_exec_callback_QPaintEngine_drawTiledPixmap(self *C.QPaintEngine, cb C.intptr_t, r C.struct_miqt_qrectf, pixmap *C.QPixmap, s C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r QRectF, pixmap *QPixmap, s QPointF), r QRectF, pixmap *QPixmap, s QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(r)
+	slotval1 := libmiqt.ValueCast[QRectF](r)
 
 	slotval2 := newQPixmap(pixmap)
 
-	slotval3 := newQPointF(s)
+	slotval3 := libmiqt.ValueCast[QPointF](s)
 
 	gofunc((&QPaintEngine{h: self}).callVirtualBase_DrawTiledPixmap, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QPaintEngine) callVirtualBase_DrawImage(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag) {
+func (this *QPaintEngine) callVirtualBase_DrawImage(r QRectF, pm *QImage, sr QRectF, flags ImageConversionFlag) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 	defer runtime.KeepAlive(pm)
-	defer runtime.KeepAlive(sr)
 
-	C.QPaintEngine_virtualbase_drawImage(unsafe.Pointer(this.h), r.cPointer(), pm.cPointer(), sr.cPointer(), (C.int)(flags))
+	C.QPaintEngine_virtualbase_drawImage(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](r), pm.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](sr), (C.int)(flags))
 
 }
-func (this *QPaintEngine) OnDrawImage(slot func(super func(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag), r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag)) {
+func (this *QPaintEngine) OnDrawImage(slot func(super func(r QRectF, pm *QImage, sr QRectF, flags ImageConversionFlag), r QRectF, pm *QImage, sr QRectF, flags ImageConversionFlag)) {
 	ok := C.QPaintEngine_override_virtual_drawImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -971,18 +938,18 @@ func (this *QPaintEngine) OnDrawImage(slot func(super func(r *QRectF, pm *QImage
 }
 
 //export miqt_exec_callback_QPaintEngine_drawImage
-func miqt_exec_callback_QPaintEngine_drawImage(self *C.QPaintEngine, cb C.intptr_t, r *C.QRectF, pm *C.QImage, sr *C.QRectF, flags C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag), r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag))
+func miqt_exec_callback_QPaintEngine_drawImage(self *C.QPaintEngine, cb C.intptr_t, r C.struct_miqt_qrectf, pm *C.QImage, sr C.struct_miqt_qrectf, flags C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(r QRectF, pm *QImage, sr QRectF, flags ImageConversionFlag), r QRectF, pm *QImage, sr QRectF, flags ImageConversionFlag))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(r)
+	slotval1 := libmiqt.ValueCast[QRectF](r)
 
 	slotval2 := newQImage(pm)
 
-	slotval3 := newQRectF(sr)
+	slotval3 := libmiqt.ValueCast[QRectF](sr)
 
 	slotval4 := (ImageConversionFlag)(flags)
 
@@ -990,15 +957,13 @@ func miqt_exec_callback_QPaintEngine_drawImage(self *C.QPaintEngine, cb C.intptr
 
 }
 
-func (this *QPaintEngine) callVirtualBase_CoordinateOffset() *QPoint {
+func (this *QPaintEngine) callVirtualBase_CoordinateOffset() QPoint {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQPoint(C.QPaintEngine_virtualbase_coordinateOffset(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QPaintEngine_virtualbase_coordinateOffset(unsafe.Pointer(this.h)))
 
 }
-func (this *QPaintEngine) OnCoordinateOffset(slot func(super func() *QPoint) *QPoint) {
+func (this *QPaintEngine) OnCoordinateOffset(slot func(super func() QPoint) QPoint) {
 	ok := C.QPaintEngine_override_virtual_coordinateOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1006,16 +971,15 @@ func (this *QPaintEngine) OnCoordinateOffset(slot func(super func() *QPoint) *QP
 }
 
 //export miqt_exec_callback_QPaintEngine_coordinateOffset
-func miqt_exec_callback_QPaintEngine_coordinateOffset(self *C.QPaintEngine, cb C.intptr_t) *C.QPoint {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPoint) *QPoint)
+func miqt_exec_callback_QPaintEngine_coordinateOffset(self *C.QPaintEngine, cb C.intptr_t) C.struct_miqt_qpoint {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QPoint) QPoint)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPaintEngine{h: self}).callVirtualBase_CoordinateOffset)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPaintEngine_virtualreturncopy_QPoint(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qpoint](virtualReturn)
 
 }
 func (this *QPaintEngine) OnType(slot func() QPaintEngine__Type) {
@@ -1040,9 +1004,8 @@ func miqt_exec_callback_QPaintEngine_type(self *C.QPaintEngine, cb C.intptr_t) C
 
 func (this *QPaintEngine) callVirtualBase_CreatePixmap(size QSize) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
 
-	_goptr := newQPixmap(C.QPaintEngine_virtualbase_createPixmap(unsafe.Pointer(this.h), size.cPointer()))
+	_goptr := newQPixmap(C.QPaintEngine_virtualbase_createPixmap(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsize](size)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
@@ -1055,16 +1018,14 @@ func (this *QPaintEngine) OnCreatePixmap(slot func(super func(size QSize) *QPixm
 }
 
 //export miqt_exec_callback_QPaintEngine_createPixmap
-func miqt_exec_callback_QPaintEngine_createPixmap(self *C.QPaintEngine, cb C.intptr_t, size *C.QSize) *C.QPixmap {
+func miqt_exec_callback_QPaintEngine_createPixmap(self *C.QPaintEngine, cb C.intptr_t, size C.struct_miqt_qsize) *C.QPixmap {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size QSize) *QPixmap, size QSize) *QPixmap)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	size_goptr := newQSize(size)
-	size_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *size_goptr
+	slotval1 := libmiqt.ValueCast[QSize](size)
 
 	virtualReturn := gofunc((&QPaintEngine{h: self}).callVirtualBase_CreatePixmap, slotval1)
 	defer runtime.KeepAlive(virtualReturn)
@@ -1193,11 +1154,9 @@ func (this *QPaintEngineState) Brush() *QBrush {
 	return _goptr
 }
 
-func (this *QPaintEngineState) BrushOrigin() *QPointF {
+func (this *QPaintEngineState) BrushOrigin() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QPaintEngineState_brushOrigin(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QPaintEngineState_brushOrigin(this.h))
 }
 
 func (this *QPaintEngineState) BackgroundBrush() *QBrush {

@@ -77,16 +77,16 @@ QwtScaleDiv* QwtPlotGrid_yScaleDiv(const QwtPlotGrid* self) {
 	return const_cast<QwtScaleDiv*>(&_ret);
 }
 
-void QwtPlotGrid_setPen(QwtPlotGrid* self, QColor* param1) {
-	self->setPen(*param1);
+void QwtPlotGrid_setPen(QwtPlotGrid* self, struct miqt_qcolor param1) {
+	self->setPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotGrid_setPenWithPen(QwtPlotGrid* self, QPen* pen) {
 	self->setPen(*pen);
 }
 
-void QwtPlotGrid_setMajorPen(QwtPlotGrid* self, QColor* param1) {
-	self->setMajorPen(*param1);
+void QwtPlotGrid_setMajorPen(QwtPlotGrid* self, struct miqt_qcolor param1) {
+	self->setMajorPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotGrid_setMajorPenWithMajorPen(QwtPlotGrid* self, QPen* majorPen) {
@@ -99,8 +99,8 @@ QPen* QwtPlotGrid_majorPen(const QwtPlotGrid* self) {
 	return const_cast<QPen*>(&_ret);
 }
 
-void QwtPlotGrid_setMinorPen(QwtPlotGrid* self, QColor* param1) {
-	self->setMinorPen(*param1);
+void QwtPlotGrid_setMinorPen(QwtPlotGrid* self, struct miqt_qcolor param1) {
+	self->setMinorPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotGrid_setMinorPenWithMinorPen(QwtPlotGrid* self, QPen* minorPen) {
@@ -117,28 +117,28 @@ void QwtPlotGrid_updateScaleDiv(QwtPlotGrid* self, QwtScaleDiv* xScaleDiv, QwtSc
 	self->updateScaleDiv(*xScaleDiv, *yScaleDiv);
 }
 
-void QwtPlotGrid_setPen2(QwtPlotGrid* self, QColor* param1, double width) {
-	self->setPen(*param1, static_cast<qreal>(width));
+void QwtPlotGrid_setPen2(QwtPlotGrid* self, struct miqt_qcolor param1, double width) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotGrid_setPen3(QwtPlotGrid* self, QColor* param1, double width, int param3) {
-	self->setPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotGrid_setPen3(QwtPlotGrid* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
-void QwtPlotGrid_setMajorPen2(QwtPlotGrid* self, QColor* param1, double width) {
-	self->setMajorPen(*param1, static_cast<qreal>(width));
+void QwtPlotGrid_setMajorPen2(QwtPlotGrid* self, struct miqt_qcolor param1, double width) {
+	self->setMajorPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotGrid_setMajorPen3(QwtPlotGrid* self, QColor* param1, double width, int param3) {
-	self->setMajorPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotGrid_setMajorPen3(QwtPlotGrid* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setMajorPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
-void QwtPlotGrid_setMinorPen2(QwtPlotGrid* self, QColor* param1, double width) {
-	self->setMinorPen(*param1, static_cast<qreal>(width));
+void QwtPlotGrid_setMinorPen2(QwtPlotGrid* self, struct miqt_qcolor param1, double width) {
+	self->setMinorPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotGrid_setMinorPen3(QwtPlotGrid* self, QColor* param1, double width, int param3) {
-	self->setMinorPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotGrid_setMinorPen3(QwtPlotGrid* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setMinorPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 void QwtPlotGrid_delete(QwtPlotGrid* self) {

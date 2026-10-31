@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -230,16 +231,12 @@ func (this *QAbstractItemView) SelectionBehavior() QAbstractItemView__SelectionB
 	return (QAbstractItemView__SelectionBehavior)(C.QAbstractItemView_selectionBehavior(this.h))
 }
 
-func (this *QAbstractItemView) CurrentIndex() *QModelIndex {
-	_goptr := newQModelIndex(C.QAbstractItemView_currentIndex(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractItemView) CurrentIndex() QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QAbstractItemView_currentIndex(this.h))
 }
 
-func (this *QAbstractItemView) RootIndex() *QModelIndex {
-	_goptr := newQModelIndex(C.QAbstractItemView_rootIndex(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractItemView) RootIndex() QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QAbstractItemView_rootIndex(this.h))
 }
 
 func (this *QAbstractItemView) SetEditTriggers(triggers QAbstractItemView__EditTrigger) {
@@ -346,15 +343,12 @@ func (this *QAbstractItemView) AlternatingRowColors() bool {
 	return (bool)(C.QAbstractItemView_alternatingRowColors(this.h))
 }
 
-func (this *QAbstractItemView) SetIconSize(size *QSize) {
-	defer runtime.KeepAlive(size)
-	C.QAbstractItemView_setIconSize(this.h, size.cPointer())
+func (this *QAbstractItemView) SetIconSize(size QSize) {
+	C.QAbstractItemView_setIconSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QAbstractItemView) IconSize() *QSize {
-	_goptr := newQSize(C.QAbstractItemView_iconSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractItemView) IconSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QAbstractItemView_iconSize(this.h))
 }
 
 func (this *QAbstractItemView) SetTextElideMode(mode TextElideMode) {
@@ -373,30 +367,20 @@ func (this *QAbstractItemView) KeyboardSearch(search string) {
 	C.QAbstractItemView_keyboardSearch(this.h, search_ms)
 }
 
-func (this *QAbstractItemView) VisualRect(index *QModelIndex) *QRect {
-	defer runtime.KeepAlive(index)
-	_goptr := newQRect(C.QAbstractItemView_visualRect(this.h, index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractItemView) VisualRect(index QModelIndex) QRect {
+	return libmiqt.ValueCast[QRect](C.QAbstractItemView_visualRect(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QAbstractItemView) ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_scrollTo(this.h, index.cPointer(), (C.int)(hint))
+func (this *QAbstractItemView) ScrollTo(index QModelIndex, hint QAbstractItemView__ScrollHint) {
+	C.QAbstractItemView_scrollTo(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(hint))
 }
 
-func (this *QAbstractItemView) IndexAt(point *QPoint) *QModelIndex {
-	defer runtime.KeepAlive(point)
-	_goptr := newQModelIndex(C.QAbstractItemView_indexAt(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractItemView) IndexAt(point QPoint) QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QAbstractItemView_indexAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
-func (this *QAbstractItemView) SizeHintForIndex(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(index)
-	_goptr := newQSize(C.QAbstractItemView_sizeHintForIndex(this.h, index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractItemView) SizeHintForIndex(index QModelIndex) QSize {
+	return libmiqt.ValueCast[QSize](C.QAbstractItemView_sizeHintForIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QAbstractItemView) SizeHintForRow(row int) int {
@@ -407,29 +391,24 @@ func (this *QAbstractItemView) SizeHintForColumn(column int) int {
 	return (int)(C.QAbstractItemView_sizeHintForColumn(this.h, (C.int)(column)))
 }
 
-func (this *QAbstractItemView) OpenPersistentEditor(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_openPersistentEditor(this.h, index.cPointer())
+func (this *QAbstractItemView) OpenPersistentEditor(index QModelIndex) {
+	C.QAbstractItemView_openPersistentEditor(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
-func (this *QAbstractItemView) ClosePersistentEditor(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_closePersistentEditor(this.h, index.cPointer())
+func (this *QAbstractItemView) ClosePersistentEditor(index QModelIndex) {
+	C.QAbstractItemView_closePersistentEditor(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
-func (this *QAbstractItemView) IsPersistentEditorOpen(index *QModelIndex) bool {
-	defer runtime.KeepAlive(index)
-	return (bool)(C.QAbstractItemView_isPersistentEditorOpen(this.h, index.cPointer()))
+func (this *QAbstractItemView) IsPersistentEditorOpen(index QModelIndex) bool {
+	return (bool)(C.QAbstractItemView_isPersistentEditorOpen(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QAbstractItemView) SetIndexWidget(index *QModelIndex, widget *QWidget) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_setIndexWidget(this.h, index.cPointer(), widget.cPointer())
+func (this *QAbstractItemView) SetIndexWidget(index QModelIndex, widget *QWidget) {
+	C.QAbstractItemView_setIndexWidget(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), widget.cPointer())
 }
 
-func (this *QAbstractItemView) IndexWidget(index *QModelIndex) *QWidget {
-	defer runtime.KeepAlive(index)
-	return newQWidget(C.QAbstractItemView_indexWidget(this.h, index.cPointer()))
+func (this *QAbstractItemView) IndexWidget(index QModelIndex) *QWidget {
+	return newQWidget(C.QAbstractItemView_indexWidget(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstractItemDelegate) {
@@ -448,9 +427,8 @@ func (this *QAbstractItemView) ItemDelegateForColumn(column int) *QAbstractItemD
 	return newQAbstractItemDelegate(C.QAbstractItemView_itemDelegateForColumn(this.h, (C.int)(column)))
 }
 
-func (this *QAbstractItemView) ItemDelegateWithIndex(index *QModelIndex) *QAbstractItemDelegate {
-	defer runtime.KeepAlive(index)
-	return newQAbstractItemDelegate(C.QAbstractItemView_itemDelegateWithIndex(this.h, index.cPointer()))
+func (this *QAbstractItemView) ItemDelegateWithIndex(index QModelIndex) *QAbstractItemDelegate {
+	return newQAbstractItemDelegate(C.QAbstractItemView_itemDelegateWithIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QAbstractItemView) InputMethodQuery(query InputMethodQuery) *QVariant {
@@ -463,9 +441,8 @@ func (this *QAbstractItemView) Reset() {
 	C.QAbstractItemView_reset(this.h)
 }
 
-func (this *QAbstractItemView) SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_setRootIndex(this.h, index.cPointer())
+func (this *QAbstractItemView) SetRootIndex(index QModelIndex) {
+	C.QAbstractItemView_setRootIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QAbstractItemView) DoItemsLayout() {
@@ -476,18 +453,16 @@ func (this *QAbstractItemView) SelectAll() {
 	C.QAbstractItemView_selectAll(this.h)
 }
 
-func (this *QAbstractItemView) Edit(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_edit(this.h, index.cPointer())
+func (this *QAbstractItemView) Edit(index QModelIndex) {
+	C.QAbstractItemView_edit(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QAbstractItemView) ClearSelection() {
 	C.QAbstractItemView_clearSelection(this.h)
 }
 
-func (this *QAbstractItemView) SetCurrentIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_setCurrentIndex(this.h, index.cPointer())
+func (this *QAbstractItemView) SetCurrentIndex(index QModelIndex) {
+	C.QAbstractItemView_setCurrentIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QAbstractItemView) ScrollToTop() {
@@ -498,112 +473,106 @@ func (this *QAbstractItemView) ScrollToBottom() {
 	C.QAbstractItemView_scrollToBottom(this.h)
 }
 
-func (this *QAbstractItemView) Update(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_update(this.h, index.cPointer())
+func (this *QAbstractItemView) Update(index QModelIndex) {
+	C.QAbstractItemView_update(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
-func (this *QAbstractItemView) Pressed(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_pressed(this.h, index.cPointer())
+func (this *QAbstractItemView) Pressed(index QModelIndex) {
+	C.QAbstractItemView_pressed(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
-func (this *QAbstractItemView) OnPressed(slot func(index *QModelIndex)) {
+func (this *QAbstractItemView) OnPressed(slot func(index QModelIndex)) {
 	C.QAbstractItemView_connect_pressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_pressed
-func miqt_exec_callback_QAbstractItemView_pressed(cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_pressed(cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc(slotval1)
 }
 
-func (this *QAbstractItemView) Clicked(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_clicked(this.h, index.cPointer())
+func (this *QAbstractItemView) Clicked(index QModelIndex) {
+	C.QAbstractItemView_clicked(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
-func (this *QAbstractItemView) OnClicked(slot func(index *QModelIndex)) {
+func (this *QAbstractItemView) OnClicked(slot func(index QModelIndex)) {
 	C.QAbstractItemView_connect_clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_clicked
-func miqt_exec_callback_QAbstractItemView_clicked(cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_clicked(cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc(slotval1)
 }
 
-func (this *QAbstractItemView) DoubleClicked(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_doubleClicked(this.h, index.cPointer())
+func (this *QAbstractItemView) DoubleClicked(index QModelIndex) {
+	C.QAbstractItemView_doubleClicked(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
-func (this *QAbstractItemView) OnDoubleClicked(slot func(index *QModelIndex)) {
+func (this *QAbstractItemView) OnDoubleClicked(slot func(index QModelIndex)) {
 	C.QAbstractItemView_connect_doubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_doubleClicked
-func miqt_exec_callback_QAbstractItemView_doubleClicked(cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_doubleClicked(cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc(slotval1)
 }
 
-func (this *QAbstractItemView) Activated(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_activated(this.h, index.cPointer())
+func (this *QAbstractItemView) Activated(index QModelIndex) {
+	C.QAbstractItemView_activated(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
-func (this *QAbstractItemView) OnActivated(slot func(index *QModelIndex)) {
+func (this *QAbstractItemView) OnActivated(slot func(index QModelIndex)) {
 	C.QAbstractItemView_connect_activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_activated
-func miqt_exec_callback_QAbstractItemView_activated(cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_activated(cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc(slotval1)
 }
 
-func (this *QAbstractItemView) Entered(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QAbstractItemView_entered(this.h, index.cPointer())
+func (this *QAbstractItemView) Entered(index QModelIndex) {
+	C.QAbstractItemView_entered(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
-func (this *QAbstractItemView) OnEntered(slot func(index *QModelIndex)) {
+func (this *QAbstractItemView) OnEntered(slot func(index QModelIndex)) {
 	C.QAbstractItemView_connect_entered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_entered
-func miqt_exec_callback_QAbstractItemView_entered(cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_entered(cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc(slotval1)
 }
@@ -625,23 +594,22 @@ func miqt_exec_callback_QAbstractItemView_viewportEntered(cb C.intptr_t) {
 	gofunc()
 }
 
-func (this *QAbstractItemView) IconSizeChanged(size *QSize) {
-	defer runtime.KeepAlive(size)
-	C.QAbstractItemView_iconSizeChanged(this.h, size.cPointer())
+func (this *QAbstractItemView) IconSizeChanged(size QSize) {
+	C.QAbstractItemView_iconSizeChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
-func (this *QAbstractItemView) OnIconSizeChanged(slot func(size *QSize)) {
+func (this *QAbstractItemView) OnIconSizeChanged(slot func(size QSize)) {
 	C.QAbstractItemView_connect_iconSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractItemView_iconSizeChanged
-func miqt_exec_callback_QAbstractItemView_iconSizeChanged(cb C.intptr_t, size *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(size *QSize))
+func miqt_exec_callback_QAbstractItemView_iconSizeChanged(cb C.intptr_t, size C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(size QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize(size)
+	slotval1 := libmiqt.ValueCast[QSize](size)
 
 	gofunc(slotval1)
 }
@@ -821,9 +789,7 @@ func (this *QAbstractItemView) ScrollDirtyRegion(dx int, dy int) {
 func (this *QAbstractItemView) DirtyRegionOffset() QPoint {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQPoint(C.QAbstractItemView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QPoint](C.QAbstractItemView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -899,9 +865,7 @@ func (this *QAbstractItemView) SetViewportMargins(left int, top int, right int, 
 func (this *QAbstractItemView) ViewportMargins() QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQMargins(C.QAbstractItemView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QMargins](C.QAbstractItemView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -1144,7 +1108,7 @@ func miqt_exec_callback_QAbstractItemView_keyboardSearch(self *C.QAbstractItemVi
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_KeyboardSearch, slotval1)
 
 }
-func (this *QAbstractItemView) OnVisualRect(slot func(index *QModelIndex) *QRect) {
+func (this *QAbstractItemView) OnVisualRect(slot func(index QModelIndex) QRect) {
 	ok := C.QAbstractItemView_override_virtual_visualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1152,22 +1116,21 @@ func (this *QAbstractItemView) OnVisualRect(slot func(index *QModelIndex) *QRect
 }
 
 //export miqt_exec_callback_QAbstractItemView_visualRect
-func miqt_exec_callback_QAbstractItemView_visualRect(self *C.QAbstractItemView, cb C.intptr_t, index *C.QModelIndex) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex) *QRect)
+func miqt_exec_callback_QAbstractItemView_visualRect(self *C.QAbstractItemView, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex) QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QAbstractItemView_virtualreturncopy_QRect(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
-func (this *QAbstractItemView) OnScrollTo(slot func(index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
+func (this *QAbstractItemView) OnScrollTo(slot func(index QModelIndex, hint QAbstractItemView__ScrollHint)) {
 	ok := C.QAbstractItemView_override_virtual_scrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1175,21 +1138,21 @@ func (this *QAbstractItemView) OnScrollTo(slot func(index *QModelIndex, hint QAb
 }
 
 //export miqt_exec_callback_QAbstractItemView_scrollTo
-func miqt_exec_callback_QAbstractItemView_scrollTo(self *C.QAbstractItemView, cb C.intptr_t, index *C.QModelIndex, hint C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex, hint QAbstractItemView__ScrollHint))
+func miqt_exec_callback_QAbstractItemView_scrollTo(self *C.QAbstractItemView, cb C.intptr_t, index C.struct_miqt_qmodelindex, hint C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex, hint QAbstractItemView__ScrollHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := (QAbstractItemView__ScrollHint)(hint)
 
 	gofunc(slotval1, slotval2)
 
 }
-func (this *QAbstractItemView) OnIndexAt(slot func(point *QPoint) *QModelIndex) {
+func (this *QAbstractItemView) OnIndexAt(slot func(point QPoint) QModelIndex) {
 	ok := C.QAbstractItemView_override_virtual_indexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1197,19 +1160,18 @@ func (this *QAbstractItemView) OnIndexAt(slot func(point *QPoint) *QModelIndex) 
 }
 
 //export miqt_exec_callback_QAbstractItemView_indexAt
-func miqt_exec_callback_QAbstractItemView_indexAt(self *C.QAbstractItemView, cb C.intptr_t, point *C.QPoint) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *QPoint) *QModelIndex)
+func miqt_exec_callback_QAbstractItemView_indexAt(self *C.QAbstractItemView, cb C.intptr_t, point C.struct_miqt_qpoint) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point QPoint) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPoint(point)
+	slotval1 := libmiqt.ValueCast[QPoint](point)
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QAbstractItemView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
 
@@ -1323,13 +1285,12 @@ func miqt_exec_callback_QAbstractItemView_reset(self *C.QAbstractItemView, cb C.
 
 }
 
-func (this *QAbstractItemView) callVirtualBase_SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
+func (this *QAbstractItemView) callVirtualBase_SetRootIndex(index QModelIndex) {
 
-	C.QAbstractItemView_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
+	C.QAbstractItemView_virtualbase_setRootIndex(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QAbstractItemView) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
+func (this *QAbstractItemView) OnSetRootIndex(slot func(super func(index QModelIndex), index QModelIndex)) {
 	ok := C.QAbstractItemView_override_virtual_setRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1337,14 +1298,14 @@ func (this *QAbstractItemView) OnSetRootIndex(slot func(super func(index *QModel
 }
 
 //export miqt_exec_callback_QAbstractItemView_setRootIndex
-func miqt_exec_callback_QAbstractItemView_setRootIndex(self *C.QAbstractItemView, cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex), index *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_setRootIndex(self *C.QAbstractItemView, cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex), index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_SetRootIndex, slotval1)
 
@@ -1396,9 +1357,7 @@ func miqt_exec_callback_QAbstractItemView_selectAll(self *C.QAbstractItemView, c
 
 }
 
-func (this *QAbstractItemView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	defer runtime.KeepAlive(topLeft)
-	defer runtime.KeepAlive(bottomRight)
+func (this *QAbstractItemView) callVirtualBase_DataChanged(topLeft QModelIndex, bottomRight QModelIndex, roles []int) {
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray_ptr))
 	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
@@ -1407,10 +1366,10 @@ func (this *QAbstractItemView) callVirtualBase_DataChanged(topLeft *QModelIndex,
 	}
 	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray_ptr)}
 
-	C.QAbstractItemView_virtualbase_dataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
+	C.QAbstractItemView_virtualbase_dataChanged(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](topLeft), libmiqt.ValueCast[C.struct_miqt_qmodelindex](bottomRight), roles_ma)
 
 }
-func (this *QAbstractItemView) OnDataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
+func (this *QAbstractItemView) OnDataChanged(slot func(super func(topLeft QModelIndex, bottomRight QModelIndex, roles []int), topLeft QModelIndex, bottomRight QModelIndex, roles []int)) {
 	ok := C.QAbstractItemView_override_virtual_dataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1418,16 +1377,16 @@ func (this *QAbstractItemView) OnDataChanged(slot func(super func(topLeft *QMode
 }
 
 //export miqt_exec_callback_QAbstractItemView_dataChanged
-func miqt_exec_callback_QAbstractItemView_dataChanged(self *C.QAbstractItemView, cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles C.struct_miqt_array) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int))
+func miqt_exec_callback_QAbstractItemView_dataChanged(self *C.QAbstractItemView, cb C.intptr_t, topLeft C.struct_miqt_qmodelindex, bottomRight C.struct_miqt_qmodelindex, roles C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(topLeft QModelIndex, bottomRight QModelIndex, roles []int), topLeft QModelIndex, bottomRight QModelIndex, roles []int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(topLeft)
+	slotval1 := libmiqt.ValueCast[QModelIndex](topLeft)
 
-	slotval2 := newQModelIndex(bottomRight)
+	slotval2 := libmiqt.ValueCast[QModelIndex](bottomRight)
 
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
@@ -1441,13 +1400,12 @@ func miqt_exec_callback_QAbstractItemView_dataChanged(self *C.QAbstractItemView,
 
 }
 
-func (this *QAbstractItemView) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(parent)
+func (this *QAbstractItemView) callVirtualBase_RowsInserted(parent QModelIndex, start int, end int) {
 
-	C.QAbstractItemView_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+	C.QAbstractItemView_virtualbase_rowsInserted(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(start), (C.int)(end))
 
 }
-func (this *QAbstractItemView) OnRowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QAbstractItemView) OnRowsInserted(slot func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int)) {
 	ok := C.QAbstractItemView_override_virtual_rowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1455,14 +1413,14 @@ func (this *QAbstractItemView) OnRowsInserted(slot func(super func(parent *QMode
 }
 
 //export miqt_exec_callback_QAbstractItemView_rowsInserted
-func miqt_exec_callback_QAbstractItemView_rowsInserted(self *C.QAbstractItemView, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
+func miqt_exec_callback_QAbstractItemView_rowsInserted(self *C.QAbstractItemView, cb C.intptr_t, parent C.struct_miqt_qmodelindex, start C.int, end C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	slotval2 := (int)(start)
 
@@ -1472,13 +1430,12 @@ func miqt_exec_callback_QAbstractItemView_rowsInserted(self *C.QAbstractItemView
 
 }
 
-func (this *QAbstractItemView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(parent)
+func (this *QAbstractItemView) callVirtualBase_RowsAboutToBeRemoved(parent QModelIndex, start int, end int) {
 
-	C.QAbstractItemView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+	C.QAbstractItemView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(start), (C.int)(end))
 
 }
-func (this *QAbstractItemView) OnRowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QAbstractItemView) OnRowsAboutToBeRemoved(slot func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int)) {
 	ok := C.QAbstractItemView_override_virtual_rowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1486,14 +1443,14 @@ func (this *QAbstractItemView) OnRowsAboutToBeRemoved(slot func(super func(paren
 }
 
 //export miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved
-func miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved(self *C.QAbstractItemView, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
+func miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved(self *C.QAbstractItemView, cb C.intptr_t, parent C.struct_miqt_qmodelindex, start C.int, end C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	slotval2 := (int)(start)
 
@@ -1533,14 +1490,12 @@ func miqt_exec_callback_QAbstractItemView_selectionChanged(self *C.QAbstractItem
 
 }
 
-func (this *QAbstractItemView) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
-	defer runtime.KeepAlive(current)
-	defer runtime.KeepAlive(previous)
+func (this *QAbstractItemView) callVirtualBase_CurrentChanged(current QModelIndex, previous QModelIndex) {
 
-	C.QAbstractItemView_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
+	C.QAbstractItemView_virtualbase_currentChanged(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](current), libmiqt.ValueCast[C.struct_miqt_qmodelindex](previous))
 
 }
-func (this *QAbstractItemView) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
+func (this *QAbstractItemView) OnCurrentChanged(slot func(super func(current QModelIndex, previous QModelIndex), current QModelIndex, previous QModelIndex)) {
 	ok := C.QAbstractItemView_override_virtual_currentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1548,16 +1503,16 @@ func (this *QAbstractItemView) OnCurrentChanged(slot func(super func(current *QM
 }
 
 //export miqt_exec_callback_QAbstractItemView_currentChanged
-func miqt_exec_callback_QAbstractItemView_currentChanged(self *C.QAbstractItemView, cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex))
+func miqt_exec_callback_QAbstractItemView_currentChanged(self *C.QAbstractItemView, cb C.intptr_t, current C.struct_miqt_qmodelindex, previous C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(current QModelIndex, previous QModelIndex), current QModelIndex, previous QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(current)
+	slotval1 := libmiqt.ValueCast[QModelIndex](current)
 
-	slotval2 := newQModelIndex(previous)
+	slotval2 := libmiqt.ValueCast[QModelIndex](previous)
 
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_CurrentChanged, slotval1, slotval2)
 
@@ -1815,7 +1770,7 @@ func miqt_exec_callback_QAbstractItemView_editorDestroyed(self *C.QAbstractItemV
 	gofunc((&QAbstractItemView{h: self}).callVirtualBase_EditorDestroyed, slotval1)
 
 }
-func (this *QAbstractItemView) OnMoveCursor(slot func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
+func (this *QAbstractItemView) OnMoveCursor(slot func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex) {
 	ok := C.QAbstractItemView_override_virtual_moveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1823,8 +1778,8 @@ func (this *QAbstractItemView) OnMoveCursor(slot func(cursorAction QAbstractItem
 }
 
 //export miqt_exec_callback_QAbstractItemView_moveCursor
-func miqt_exec_callback_QAbstractItemView_moveCursor(self *C.QAbstractItemView, cb C.intptr_t, cursorAction C.int, modifiers C.int) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex)
+func miqt_exec_callback_QAbstractItemView_moveCursor(self *C.QAbstractItemView, cb C.intptr_t, cursorAction C.int, modifiers C.int) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1835,9 +1790,8 @@ func miqt_exec_callback_QAbstractItemView_moveCursor(self *C.QAbstractItemView, 
 	slotval2 := (KeyboardModifier)(modifiers)
 
 	virtualReturn := gofunc(slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QAbstractItemView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
 func (this *QAbstractItemView) OnHorizontalOffset(slot func() int) {
@@ -1878,7 +1832,7 @@ func miqt_exec_callback_QAbstractItemView_verticalOffset(self *C.QAbstractItemVi
 	return (C.int)(virtualReturn)
 
 }
-func (this *QAbstractItemView) OnIsIndexHidden(slot func(index *QModelIndex) bool) {
+func (this *QAbstractItemView) OnIsIndexHidden(slot func(index QModelIndex) bool) {
 	ok := C.QAbstractItemView_override_virtual_isIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1886,21 +1840,21 @@ func (this *QAbstractItemView) OnIsIndexHidden(slot func(index *QModelIndex) boo
 }
 
 //export miqt_exec_callback_QAbstractItemView_isIndexHidden
-func miqt_exec_callback_QAbstractItemView_isIndexHidden(self *C.QAbstractItemView, cb C.intptr_t, index *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex) bool)
+func miqt_exec_callback_QAbstractItemView_isIndexHidden(self *C.QAbstractItemView, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc(slotval1)
 
 	return (C.bool)(virtualReturn)
 
 }
-func (this *QAbstractItemView) OnSetSelection(slot func(rect *QRect, command QItemSelectionModel__SelectionFlag)) {
+func (this *QAbstractItemView) OnSetSelection(slot func(rect QRect, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QAbstractItemView_override_virtual_setSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1908,14 +1862,14 @@ func (this *QAbstractItemView) OnSetSelection(slot func(rect *QRect, command QIt
 }
 
 //export miqt_exec_callback_QAbstractItemView_setSelection
-func miqt_exec_callback_QAbstractItemView_setSelection(self *C.QAbstractItemView, cb C.intptr_t, rect *C.QRect, command C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(rect *QRect, command QItemSelectionModel__SelectionFlag))
+func miqt_exec_callback_QAbstractItemView_setSelection(self *C.QAbstractItemView, cb C.intptr_t, rect C.struct_miqt_qrect, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rect QRect, command QItemSelectionModel__SelectionFlag))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(rect)
+	slotval1 := libmiqt.ValueCast[QRect](rect)
 
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
@@ -1950,11 +1904,9 @@ func (this *QAbstractItemView) callVirtualBase_SelectedIndexes() []QModelIndex {
 
 	var _ma C.struct_miqt_array = C.QAbstractItemView_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 
@@ -1974,11 +1926,10 @@ func miqt_exec_callback_QAbstractItemView_selectedIndexes(self *C.QAbstractItemV
 	}
 
 	virtualReturn := gofunc((&QAbstractItemView{h: self}).callVirtualBase_SelectedIndexes)
-	defer runtime.KeepAlive(virtualReturn)
-	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = C.QAbstractItemView_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
+		virtualReturn_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn[i])
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -1986,14 +1937,13 @@ func miqt_exec_callback_QAbstractItemView_selectedIndexes(self *C.QAbstractItemV
 
 }
 
-func (this *QAbstractItemView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
-	defer runtime.KeepAlive(index)
+func (this *QAbstractItemView) callVirtualBase_Edit2(index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
 	defer runtime.KeepAlive(event)
 
-	return (bool)(C.QAbstractItemView_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
+	return (bool)(C.QAbstractItemView_virtualbase_edit2(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(trigger), event.cPointer()))
 
 }
-func (this *QAbstractItemView) OnEdit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
+func (this *QAbstractItemView) OnEdit2(slot func(super func(index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
 	ok := C.QAbstractItemView_override_virtual_edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2001,14 +1951,14 @@ func (this *QAbstractItemView) OnEdit2(slot func(super func(index *QModelIndex, 
 }
 
 //export miqt_exec_callback_QAbstractItemView_edit2
-func miqt_exec_callback_QAbstractItemView_edit2(self *C.QAbstractItemView, cb C.intptr_t, index *C.QModelIndex, trigger C.int, event *C.QEvent) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool)
+func miqt_exec_callback_QAbstractItemView_edit2(self *C.QAbstractItemView, cb C.intptr_t, index C.struct_miqt_qmodelindex, trigger C.int, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := (QAbstractItemView__EditTrigger)(trigger)
 
@@ -2020,14 +1970,13 @@ func miqt_exec_callback_QAbstractItemView_edit2(self *C.QAbstractItemView, cb C.
 
 }
 
-func (this *QAbstractItemView) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
-	defer runtime.KeepAlive(index)
+func (this *QAbstractItemView) callVirtualBase_SelectionCommand(index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
 	defer runtime.KeepAlive(event)
 
-	return (QItemSelectionModel__SelectionFlag)(C.QAbstractItemView_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
+	return (QItemSelectionModel__SelectionFlag)(C.QAbstractItemView_virtualbase_selectionCommand(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), event.cPointer()))
 
 }
-func (this *QAbstractItemView) OnSelectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
+func (this *QAbstractItemView) OnSelectionCommand(slot func(super func(index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
 	ok := C.QAbstractItemView_override_virtual_selectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2035,14 +1984,14 @@ func (this *QAbstractItemView) OnSelectionCommand(slot func(super func(index *QM
 }
 
 //export miqt_exec_callback_QAbstractItemView_selectionCommand
-func miqt_exec_callback_QAbstractItemView_selectionCommand(self *C.QAbstractItemView, cb C.intptr_t, index *C.QModelIndex, event *C.QEvent) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag)
+func miqt_exec_callback_QAbstractItemView_selectionCommand(self *C.QAbstractItemView, cb C.intptr_t, index C.struct_miqt_qmodelindex, event *C.QEvent) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := newQEvent(event)
 
@@ -2601,14 +2550,12 @@ func miqt_exec_callback_QAbstractItemView_eventFilter(self *C.QAbstractItemView,
 
 }
 
-func (this *QAbstractItemView) callVirtualBase_ViewportSizeHint() *QSize {
+func (this *QAbstractItemView) callVirtualBase_ViewportSizeHint() QSize {
 
-	_goptr := newQSize(C.QAbstractItemView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QAbstractItemView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractItemView) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QAbstractItemView) OnViewportSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QAbstractItemView_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2616,27 +2563,24 @@ func (this *QAbstractItemView) OnViewportSizeHint(slot func(super func() *QSize)
 }
 
 //export miqt_exec_callback_QAbstractItemView_viewportSizeHint
-func miqt_exec_callback_QAbstractItemView_viewportSizeHint(self *C.QAbstractItemView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QAbstractItemView_viewportSizeHint(self *C.QAbstractItemView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QAbstractItemView{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QAbstractItemView_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QAbstractItemView) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QAbstractItemView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QAbstractItemView) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QAbstractItemView) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QAbstractItemView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QAbstractItemView) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QAbstractItemView_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2644,27 +2588,24 @@ func (this *QAbstractItemView) OnMinimumSizeHint(slot func(super func() *QSize) 
 }
 
 //export miqt_exec_callback_QAbstractItemView_minimumSizeHint
-func miqt_exec_callback_QAbstractItemView_minimumSizeHint(self *C.QAbstractItemView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QAbstractItemView_minimumSizeHint(self *C.QAbstractItemView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QAbstractItemView{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QAbstractItemView_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QAbstractItemView) callVirtualBase_SizeHint() *QSize {
-
-	_goptr := newQSize(C.QAbstractItemView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QAbstractItemView) OnSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QAbstractItemView) callVirtualBase_SizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QAbstractItemView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QAbstractItemView) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QAbstractItemView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2672,16 +2613,15 @@ func (this *QAbstractItemView) OnSizeHint(slot func(super func() *QSize) *QSize)
 }
 
 //export miqt_exec_callback_QAbstractItemView_sizeHint
-func miqt_exec_callback_QAbstractItemView_sizeHint(self *C.QAbstractItemView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QAbstractItemView_sizeHint(self *C.QAbstractItemView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QAbstractItemView{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QAbstractItemView_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -3317,7 +3257,6 @@ func miqt_exec_callback_QAbstractItemView_initPainter(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QAbstractItemView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

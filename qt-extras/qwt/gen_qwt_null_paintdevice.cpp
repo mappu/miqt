@@ -26,19 +26,19 @@ void miqt_exec_callback_QwtNullPaintDevice_drawRects(QwtNullPaintDevice*, intptr
 void miqt_exec_callback_QwtNullPaintDevice_drawRects2(QwtNullPaintDevice*, intptr_t, QRectF*, int);
 void miqt_exec_callback_QwtNullPaintDevice_drawLines(QwtNullPaintDevice*, intptr_t, QLine*, int);
 void miqt_exec_callback_QwtNullPaintDevice_drawLines2(QwtNullPaintDevice*, intptr_t, QLineF*, int);
-void miqt_exec_callback_QwtNullPaintDevice_drawEllipse(QwtNullPaintDevice*, intptr_t, QRectF*);
-void miqt_exec_callback_QwtNullPaintDevice_drawEllipseWithQRect(QwtNullPaintDevice*, intptr_t, QRect*);
+void miqt_exec_callback_QwtNullPaintDevice_drawEllipse(QwtNullPaintDevice*, intptr_t, struct miqt_qrectf);
+void miqt_exec_callback_QwtNullPaintDevice_drawEllipseWithQRect(QwtNullPaintDevice*, intptr_t, struct miqt_qrect);
 void miqt_exec_callback_QwtNullPaintDevice_drawPath(QwtNullPaintDevice*, intptr_t, QPainterPath*);
 void miqt_exec_callback_QwtNullPaintDevice_drawPoints(QwtNullPaintDevice*, intptr_t, QPointF*, int);
 void miqt_exec_callback_QwtNullPaintDevice_drawPoints2(QwtNullPaintDevice*, intptr_t, QPoint*, int);
 void miqt_exec_callback_QwtNullPaintDevice_drawPolygon(QwtNullPaintDevice*, intptr_t, QPointF*, int, int);
 void miqt_exec_callback_QwtNullPaintDevice_drawPolygon2(QwtNullPaintDevice*, intptr_t, QPoint*, int, int);
-void miqt_exec_callback_QwtNullPaintDevice_drawPixmap(QwtNullPaintDevice*, intptr_t, QRectF*, QPixmap*, QRectF*);
-void miqt_exec_callback_QwtNullPaintDevice_drawTextItem(QwtNullPaintDevice*, intptr_t, QPointF*, QTextItem*);
-void miqt_exec_callback_QwtNullPaintDevice_drawTiledPixmap(QwtNullPaintDevice*, intptr_t, QRectF*, QPixmap*, QPointF*);
-void miqt_exec_callback_QwtNullPaintDevice_drawImage(QwtNullPaintDevice*, intptr_t, QRectF*, QImage*, QRectF*, int);
+void miqt_exec_callback_QwtNullPaintDevice_drawPixmap(QwtNullPaintDevice*, intptr_t, struct miqt_qrectf, QPixmap*, struct miqt_qrectf);
+void miqt_exec_callback_QwtNullPaintDevice_drawTextItem(QwtNullPaintDevice*, intptr_t, struct miqt_qpointf, QTextItem*);
+void miqt_exec_callback_QwtNullPaintDevice_drawTiledPixmap(QwtNullPaintDevice*, intptr_t, struct miqt_qrectf, QPixmap*, struct miqt_qpointf);
+void miqt_exec_callback_QwtNullPaintDevice_drawImage(QwtNullPaintDevice*, intptr_t, struct miqt_qrectf, QImage*, struct miqt_qrectf, int);
 void miqt_exec_callback_QwtNullPaintDevice_updateState(QwtNullPaintDevice*, intptr_t, QPaintEngineState*);
-QSize* miqt_exec_callback_QwtNullPaintDevice_sizeMetrics(const QwtNullPaintDevice*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtNullPaintDevice_sizeMetrics(const QwtNullPaintDevice*, intptr_t);
 int miqt_exec_callback_QwtNullPaintDevice_devType(const QwtNullPaintDevice*, intptr_t);
 void miqt_exec_callback_QwtNullPaintDevice_initPainter(const QwtNullPaintDevice*, intptr_t, QPainter*);
 QPaintDevice* miqt_exec_callback_QwtNullPaintDevice_redirected(const QwtNullPaintDevice*, intptr_t, QPoint*);
@@ -168,14 +168,12 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		miqt_exec_callback_QwtNullPaintDevice_drawEllipse(this, handle__drawEllipse, sigval1);
 
 	}
 
-	friend void QwtNullPaintDevice_virtualbase_drawEllipse(void* self, QRectF* param1);
+	friend void QwtNullPaintDevice_virtualbase_drawEllipse(void* self, struct miqt_qrectf param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawEllipseWithQRect = 0;
@@ -187,14 +185,12 @@ public:
 			return;
 		}
 
-		const QRect& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&param1_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(param1);
 		miqt_exec_callback_QwtNullPaintDevice_drawEllipseWithQRect(this, handle__drawEllipseWithQRect, sigval1);
 
 	}
 
-	friend void QwtNullPaintDevice_virtualbase_drawEllipseWithQRect(void* self, QRect* param1);
+	friend void QwtNullPaintDevice_virtualbase_drawEllipseWithQRect(void* self, struct miqt_qrect param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPath = 0;
@@ -301,20 +297,16 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		const QPixmap& param2_ret = param2;
 		// Cast returned reference into pointer
 		QPixmap* sigval2 = const_cast<QPixmap*>(&param2_ret);
-		const QRectF& param3_ret = param3;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&param3_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(param3);
 		miqt_exec_callback_QwtNullPaintDevice_drawPixmap(this, handle__drawPixmap, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtNullPaintDevice_virtualbase_drawPixmap(void* self, QRectF* param1, QPixmap* param2, QRectF* param3);
+	friend void QwtNullPaintDevice_virtualbase_drawPixmap(void* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qrectf param3);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawTextItem = 0;
@@ -326,9 +318,7 @@ public:
 			return;
 		}
 
-		const QPointF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&param1_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(param1);
 		const QTextItem& param2_ret = param2;
 		// Cast returned reference into pointer
 		QTextItem* sigval2 = const_cast<QTextItem*>(&param2_ret);
@@ -336,7 +326,7 @@ public:
 
 	}
 
-	friend void QwtNullPaintDevice_virtualbase_drawTextItem(void* self, QPointF* param1, QTextItem* param2);
+	friend void QwtNullPaintDevice_virtualbase_drawTextItem(void* self, struct miqt_qpointf param1, QTextItem* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawTiledPixmap = 0;
@@ -348,20 +338,16 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		const QPixmap& param2_ret = param2;
 		// Cast returned reference into pointer
 		QPixmap* sigval2 = const_cast<QPixmap*>(&param2_ret);
-		const QPointF& param3_ret = param3;
-		// Cast returned reference into pointer
-		QPointF* sigval3 = const_cast<QPointF*>(&param3_ret);
+		struct miqt_qpointf sigval3 = miqt_to_cabi<struct miqt_qpointf>(param3);
 		miqt_exec_callback_QwtNullPaintDevice_drawTiledPixmap(this, handle__drawTiledPixmap, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtNullPaintDevice_virtualbase_drawTiledPixmap(void* self, QRectF* param1, QPixmap* param2, QPointF* param3);
+	friend void QwtNullPaintDevice_virtualbase_drawTiledPixmap(void* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qpointf param3);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawImage = 0;
@@ -373,22 +359,18 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		const QImage& param2_ret = param2;
 		// Cast returned reference into pointer
 		QImage* sigval2 = const_cast<QImage*>(&param2_ret);
-		const QRectF& param3_ret = param3;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&param3_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(param3);
 		Qt::ImageConversionFlags param4_ret = param4;
 		int sigval4 = static_cast<int>(param4_ret);
 		miqt_exec_callback_QwtNullPaintDevice_drawImage(this, handle__drawImage, sigval1, sigval2, sigval3, sigval4);
 
 	}
 
-	friend void QwtNullPaintDevice_virtualbase_drawImage(void* self, QRectF* param1, QImage* param2, QRectF* param3, int param4);
+	friend void QwtNullPaintDevice_virtualbase_drawImage(void* self, struct miqt_qrectf param1, QImage* param2, struct miqt_qrectf param3, int param4);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateState = 0;
@@ -418,10 +400,8 @@ public:
 			return QSize(); // Pure virtual, there is no base we can call
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtNullPaintDevice_sizeMetrics(this, handle__sizeMetrics);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtNullPaintDevice_sizeMetrics(this, handle__sizeMetrics);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -530,12 +510,12 @@ void QwtNullPaintDevice_drawLines2(QwtNullPaintDevice* self, QLineF* param1, int
 	self->drawLines(param1, static_cast<int>(param2));
 }
 
-void QwtNullPaintDevice_drawEllipse(QwtNullPaintDevice* self, QRectF* param1) {
-	self->drawEllipse(*param1);
+void QwtNullPaintDevice_drawEllipse(QwtNullPaintDevice* self, struct miqt_qrectf param1) {
+	self->drawEllipse(miqt_from_cabi<QRectF>(param1));
 }
 
-void QwtNullPaintDevice_drawEllipseWithQRect(QwtNullPaintDevice* self, QRect* param1) {
-	self->drawEllipse(*param1);
+void QwtNullPaintDevice_drawEllipseWithQRect(QwtNullPaintDevice* self, struct miqt_qrect param1) {
+	self->drawEllipse(miqt_from_cabi<QRect>(param1));
 }
 
 void QwtNullPaintDevice_drawPath(QwtNullPaintDevice* self, QPainterPath* param1) {
@@ -558,20 +538,20 @@ void QwtNullPaintDevice_drawPolygon2(QwtNullPaintDevice* self, QPoint* param1, i
 	self->drawPolygon(param1, static_cast<int>(param2), static_cast<QPaintEngine::PolygonDrawMode>(param3));
 }
 
-void QwtNullPaintDevice_drawPixmap(QwtNullPaintDevice* self, QRectF* param1, QPixmap* param2, QRectF* param3) {
-	self->drawPixmap(*param1, *param2, *param3);
+void QwtNullPaintDevice_drawPixmap(QwtNullPaintDevice* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qrectf param3) {
+	self->drawPixmap(miqt_from_cabi<QRectF>(param1), *param2, miqt_from_cabi<QRectF>(param3));
 }
 
-void QwtNullPaintDevice_drawTextItem(QwtNullPaintDevice* self, QPointF* param1, QTextItem* param2) {
-	self->drawTextItem(*param1, *param2);
+void QwtNullPaintDevice_drawTextItem(QwtNullPaintDevice* self, struct miqt_qpointf param1, QTextItem* param2) {
+	self->drawTextItem(miqt_from_cabi<QPointF>(param1), *param2);
 }
 
-void QwtNullPaintDevice_drawTiledPixmap(QwtNullPaintDevice* self, QRectF* param1, QPixmap* param2, QPointF* param3) {
-	self->drawTiledPixmap(*param1, *param2, *param3);
+void QwtNullPaintDevice_drawTiledPixmap(QwtNullPaintDevice* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qpointf param3) {
+	self->drawTiledPixmap(miqt_from_cabi<QRectF>(param1), *param2, miqt_from_cabi<QPointF>(param3));
 }
 
-void QwtNullPaintDevice_drawImage(QwtNullPaintDevice* self, QRectF* param1, QImage* param2, QRectF* param3, int param4) {
-	self->drawImage(*param1, *param2, *param3, static_cast<Qt::ImageConversionFlags>(param4));
+void QwtNullPaintDevice_drawImage(QwtNullPaintDevice* self, struct miqt_qrectf param1, QImage* param2, struct miqt_qrectf param3, int param4) {
+	self->drawImage(miqt_from_cabi<QRectF>(param1), *param2, miqt_from_cabi<QRectF>(param3), static_cast<Qt::ImageConversionFlags>(param4));
 }
 
 void QwtNullPaintDevice_updateState(QwtNullPaintDevice* self, QPaintEngineState* param1) {
@@ -672,8 +652,8 @@ bool QwtNullPaintDevice_override_virtual_drawEllipse(void* self, intptr_t slot) 
 	return true;
 }
 
-void QwtNullPaintDevice_virtualbase_drawEllipse(void* self, QRectF* param1) {
-	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawEllipse(*param1);
+void QwtNullPaintDevice_virtualbase_drawEllipse(void* self, struct miqt_qrectf param1) {
+	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawEllipse(miqt_from_cabi<QRectF>(param1));
 }
 
 bool QwtNullPaintDevice_override_virtual_drawEllipseWithQRect(void* self, intptr_t slot) {
@@ -686,8 +666,8 @@ bool QwtNullPaintDevice_override_virtual_drawEllipseWithQRect(void* self, intptr
 	return true;
 }
 
-void QwtNullPaintDevice_virtualbase_drawEllipseWithQRect(void* self, QRect* param1) {
-	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawEllipse(*param1);
+void QwtNullPaintDevice_virtualbase_drawEllipseWithQRect(void* self, struct miqt_qrect param1) {
+	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawEllipse(miqt_from_cabi<QRect>(param1));
 }
 
 bool QwtNullPaintDevice_override_virtual_drawPath(void* self, intptr_t slot) {
@@ -770,8 +750,8 @@ bool QwtNullPaintDevice_override_virtual_drawPixmap(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtNullPaintDevice_virtualbase_drawPixmap(void* self, QRectF* param1, QPixmap* param2, QRectF* param3) {
-	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawPixmap(*param1, *param2, *param3);
+void QwtNullPaintDevice_virtualbase_drawPixmap(void* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qrectf param3) {
+	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawPixmap(miqt_from_cabi<QRectF>(param1), *param2, miqt_from_cabi<QRectF>(param3));
 }
 
 bool QwtNullPaintDevice_override_virtual_drawTextItem(void* self, intptr_t slot) {
@@ -784,8 +764,8 @@ bool QwtNullPaintDevice_override_virtual_drawTextItem(void* self, intptr_t slot)
 	return true;
 }
 
-void QwtNullPaintDevice_virtualbase_drawTextItem(void* self, QPointF* param1, QTextItem* param2) {
-	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawTextItem(*param1, *param2);
+void QwtNullPaintDevice_virtualbase_drawTextItem(void* self, struct miqt_qpointf param1, QTextItem* param2) {
+	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawTextItem(miqt_from_cabi<QPointF>(param1), *param2);
 }
 
 bool QwtNullPaintDevice_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
@@ -798,8 +778,8 @@ bool QwtNullPaintDevice_override_virtual_drawTiledPixmap(void* self, intptr_t sl
 	return true;
 }
 
-void QwtNullPaintDevice_virtualbase_drawTiledPixmap(void* self, QRectF* param1, QPixmap* param2, QPointF* param3) {
-	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawTiledPixmap(*param1, *param2, *param3);
+void QwtNullPaintDevice_virtualbase_drawTiledPixmap(void* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qpointf param3) {
+	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawTiledPixmap(miqt_from_cabi<QRectF>(param1), *param2, miqt_from_cabi<QPointF>(param3));
 }
 
 bool QwtNullPaintDevice_override_virtual_drawImage(void* self, intptr_t slot) {
@@ -812,8 +792,8 @@ bool QwtNullPaintDevice_override_virtual_drawImage(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtNullPaintDevice_virtualbase_drawImage(void* self, QRectF* param1, QImage* param2, QRectF* param3, int param4) {
-	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawImage(*param1, *param2, *param3, static_cast<Qt::ImageConversionFlags>(param4));
+void QwtNullPaintDevice_virtualbase_drawImage(void* self, struct miqt_qrectf param1, QImage* param2, struct miqt_qrectf param3, int param4) {
+	static_cast<MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::drawImage(miqt_from_cabi<QRectF>(param1), *param2, miqt_from_cabi<QRectF>(param3), static_cast<Qt::ImageConversionFlags>(param4));
 }
 
 bool QwtNullPaintDevice_override_virtual_updateState(void* self, intptr_t slot) {
@@ -894,10 +874,6 @@ bool QwtNullPaintDevice_override_virtual_sharedPainter(void* self, intptr_t slot
 
 QPainter* QwtNullPaintDevice_virtualbase_sharedPainter(const void* self) {
 	return static_cast<const MiqtVirtualQwtNullPaintDevice*>(self)->QwtNullPaintDevice::sharedPainter();
-}
-
-QSize* QwtNullPaintDevice_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 void QwtNullPaintDevice_delete(QwtNullPaintDevice* self) {

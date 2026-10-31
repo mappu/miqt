@@ -9,6 +9,7 @@ package pdf
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
@@ -88,11 +89,9 @@ func (this *QPdfLink) Page() int {
 	return (int)(C.QPdfLink_page(this.h))
 }
 
-func (this *QPdfLink) Location() *qt6.QPointF {
+func (this *QPdfLink) Location() qt6.QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QPdfLink_location(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QPointF](C.QPdfLink_location(this.h))
 }
 
 func (this *QPdfLink) Zoom() float64 {
@@ -127,11 +126,9 @@ func (this *QPdfLink) Rectangles() []qt6.QRectF {
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPdfLink_rectangles(this.h)
 	_ret := make([]qt6.QRectF, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QRectF)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qrectf)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt6.QRectF](_outCast[i])
 	}
 	return _ret
 }

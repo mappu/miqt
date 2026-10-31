@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -129,14 +130,11 @@ func (this *QAbstractAxis) LinePen() *qt6.QPen {
 }
 
 func (this *QAbstractAxis) SetLinePenColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_setLinePenColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAbstractAxis_setLinePenColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QAbstractAxis) LinePenColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_linePenColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractAxis) LinePenColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QAbstractAxis_linePenColor(this.h))
 }
 
 func (this *QAbstractAxis) IsGridLineVisible() bool {
@@ -177,26 +175,20 @@ func (this *QAbstractAxis) MinorGridLinePen() *qt6.QPen {
 	return _goptr
 }
 
-func (this *QAbstractAxis) SetGridLineColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_setGridLineColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QAbstractAxis) SetGridLineColor(color qt6.QColor) {
+	C.QAbstractAxis_setGridLineColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QAbstractAxis) GridLineColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_gridLineColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractAxis) GridLineColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QAbstractAxis_gridLineColor(this.h))
 }
 
-func (this *QAbstractAxis) SetMinorGridLineColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_setMinorGridLineColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QAbstractAxis) SetMinorGridLineColor(color qt6.QColor) {
+	C.QAbstractAxis_setMinorGridLineColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QAbstractAxis) MinorGridLineColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_minorGridLineColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractAxis) MinorGridLineColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QAbstractAxis_minorGridLineColor(this.h))
 }
 
 func (this *QAbstractAxis) LabelsVisible() bool {
@@ -238,14 +230,11 @@ func (this *QAbstractAxis) LabelsAngle() int {
 }
 
 func (this *QAbstractAxis) SetLabelsColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_setLabelsColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAbstractAxis_setLabelsColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QAbstractAxis) LabelsColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_labelsColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractAxis) LabelsColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QAbstractAxis_labelsColor(this.h))
 }
 
 func (this *QAbstractAxis) IsTitleVisible() bool {
@@ -324,25 +313,19 @@ func (this *QAbstractAxis) ShadesBrush() *qt6.QBrush {
 }
 
 func (this *QAbstractAxis) SetShadesColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_setShadesColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAbstractAxis_setShadesColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QAbstractAxis) ShadesColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_shadesColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractAxis) ShadesColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QAbstractAxis_shadesColor(this.h))
 }
 
 func (this *QAbstractAxis) SetShadesBorderColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_setShadesBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAbstractAxis_setShadesBorderColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QAbstractAxis) ShadesBorderColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAbstractAxis_shadesBorderColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractAxis) ShadesBorderColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QAbstractAxis_shadesBorderColor(this.h))
 }
 
 func (this *QAbstractAxis) Orientation() qt6.Orientation {
@@ -622,90 +605,82 @@ func miqt_exec_callback_QAbstractAxis_minorGridLinePenChanged(cb C.intptr_t, pen
 	gofunc(slotval1)
 }
 
-func (this *QAbstractAxis) GridLineColorChanged(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_gridLineColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QAbstractAxis) GridLineColorChanged(color qt6.QColor) {
+	C.QAbstractAxis_gridLineColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QAbstractAxis) OnGridLineColorChanged(slot func(color *qt6.QColor)) {
+func (this *QAbstractAxis) OnGridLineColorChanged(slot func(color qt6.QColor)) {
 	C.QAbstractAxis_connect_gridLineColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAxis_gridLineColorChanged
-func miqt_exec_callback_QAbstractAxis_gridLineColorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *qt6.QColor))
+func miqt_exec_callback_QAbstractAxis_gridLineColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
-func (this *QAbstractAxis) MinorGridLineColorChanged(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_minorGridLineColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QAbstractAxis) MinorGridLineColorChanged(color qt6.QColor) {
+	C.QAbstractAxis_minorGridLineColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QAbstractAxis) OnMinorGridLineColorChanged(slot func(color *qt6.QColor)) {
+func (this *QAbstractAxis) OnMinorGridLineColorChanged(slot func(color qt6.QColor)) {
 	C.QAbstractAxis_connect_minorGridLineColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAxis_minorGridLineColorChanged
-func miqt_exec_callback_QAbstractAxis_minorGridLineColorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *qt6.QColor))
+func miqt_exec_callback_QAbstractAxis_minorGridLineColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
 func (this *QAbstractAxis) ColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAbstractAxis_colorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QAbstractAxis) OnColorChanged(slot func(color qt6.QColor)) {
 	C.QAbstractAxis_connect_colorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAxis_colorChanged
-func miqt_exec_callback_QAbstractAxis_colorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QAbstractAxis_colorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
 func (this *QAbstractAxis) LabelsColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_labelsColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAbstractAxis_labelsColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QAbstractAxis) OnLabelsColorChanged(slot func(color qt6.QColor)) {
 	C.QAbstractAxis_connect_labelsColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAxis_labelsColorChanged
-func miqt_exec_callback_QAbstractAxis_labelsColorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QAbstractAxis_labelsColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
@@ -820,47 +795,41 @@ func miqt_exec_callback_QAbstractAxis_shadesVisibleChanged(cb C.intptr_t, visibl
 }
 
 func (this *QAbstractAxis) ShadesColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_shadesColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAbstractAxis_shadesColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QAbstractAxis) OnShadesColorChanged(slot func(color qt6.QColor)) {
 	C.QAbstractAxis_connect_shadesColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAxis_shadesColorChanged
-func miqt_exec_callback_QAbstractAxis_shadesColorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QAbstractAxis_shadesColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
 func (this *QAbstractAxis) ShadesBorderColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAbstractAxis_shadesBorderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAbstractAxis_shadesBorderColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QAbstractAxis) OnShadesBorderColorChanged(slot func(color qt6.QColor)) {
 	C.QAbstractAxis_connect_shadesBorderColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAxis_shadesBorderColorChanged
-func miqt_exec_callback_QAbstractAxis_shadesBorderColorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QAbstractAxis_shadesBorderColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }

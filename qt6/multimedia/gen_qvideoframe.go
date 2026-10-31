@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
@@ -150,11 +151,9 @@ func (this *QVideoFrame) HandleType() QVideoFrame__HandleType {
 	return (QVideoFrame__HandleType)(C.QVideoFrame_handleType(this.h))
 }
 
-func (this *QVideoFrame) Size() *qt6.QSize {
+func (this *QVideoFrame) Size() qt6.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrame_size(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QVideoFrame_size(this.h))
 }
 
 func (this *QVideoFrame) Width() int {
@@ -286,12 +285,11 @@ func (this *QVideoFrame) SetSubtitleText(text string) {
 	C.QVideoFrame_setSubtitleText(this.h, text_ms)
 }
 
-func (this *QVideoFrame) Paint(painter *qt6.QPainter, rect *qt6.QRectF, options *QVideoFrame__PaintOptions) {
+func (this *QVideoFrame) Paint(painter *qt6.QPainter, rect qt6.QRectF, options *QVideoFrame__PaintOptions) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 	defer runtime.KeepAlive(options)
-	C.QVideoFrame_paint(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()), options.cPointer())
+	C.QVideoFrame_paint(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect), options.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -358,17 +356,14 @@ func NewQVideoFrame__PaintOptions() *QVideoFrame__PaintOptions {
 	return newQVideoFrame__PaintOptions(C.QVideoFrame__PaintOptions_new())
 }
 
-func (this *QVideoFrame__PaintOptions) BackgroundColor() *qt6.QColor {
+func (this *QVideoFrame__PaintOptions) BackgroundColor() qt6.QColor {
 	defer runtime.KeepAlive(this)
-	backgroundColor_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QVideoFrame__PaintOptions_backgroundColor(this.h)))
-	backgroundColor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return backgroundColor_goptr
+	return libmiqt.ValueCast[qt6.QColor](C.QVideoFrame__PaintOptions_backgroundColor(this.h))
 }
 
 func (this *QVideoFrame__PaintOptions) SetBackgroundColor(backgroundColor qt6.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(backgroundColor)
-	C.QVideoFrame__PaintOptions_setBackgroundColor(this.h, (*C.QColor)(backgroundColor.UnsafePointer()))
+	C.QVideoFrame__PaintOptions_setBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](backgroundColor))
 }
 
 func (this *QVideoFrame__PaintOptions) AspectRatioMode() qt6.AspectRatioMode {

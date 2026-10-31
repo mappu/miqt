@@ -67,8 +67,8 @@ int QwtPlotTradingCurve_symbolStyle(const QwtPlotTradingCurve* self) {
 	return static_cast<int>(_ret);
 }
 
-void QwtPlotTradingCurve_setSymbolPen(QwtPlotTradingCurve* self, QColor* param1) {
-	self->setSymbolPen(*param1);
+void QwtPlotTradingCurve_setSymbolPen(QwtPlotTradingCurve* self, struct miqt_qcolor param1) {
+	self->setSymbolPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotTradingCurve_setSymbolPenWithSymbolPen(QwtPlotTradingCurve* self, QPen* symbolPen) {
@@ -111,24 +111,24 @@ double QwtPlotTradingCurve_maxSymbolWidth(const QwtPlotTradingCurve* self) {
 	return self->maxSymbolWidth();
 }
 
-QRectF* QwtPlotTradingCurve_boundingRect(const QwtPlotTradingCurve* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotTradingCurve_boundingRect(const QwtPlotTradingCurve* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
-QwtGraphic* QwtPlotTradingCurve_legendIcon(const QwtPlotTradingCurve* self, int index, QSizeF* param2) {
-	return new QwtGraphic(self->legendIcon(static_cast<int>(index), *param2));
+QwtGraphic* QwtPlotTradingCurve_legendIcon(const QwtPlotTradingCurve* self, int index, struct miqt_qsizef param2) {
+	return new QwtGraphic(self->legendIcon(static_cast<int>(index), miqt_from_cabi<QSizeF>(param2)));
 }
 
 void QwtPlotTradingCurve_setPaintAttribute2(QwtPlotTradingCurve* self, int param1, bool on) {
 	self->setPaintAttribute(static_cast<QwtPlotTradingCurve::PaintAttribute>(param1), on);
 }
 
-void QwtPlotTradingCurve_setSymbolPen2(QwtPlotTradingCurve* self, QColor* param1, double width) {
-	self->setSymbolPen(*param1, static_cast<qreal>(width));
+void QwtPlotTradingCurve_setSymbolPen2(QwtPlotTradingCurve* self, struct miqt_qcolor param1, double width) {
+	self->setSymbolPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotTradingCurve_setSymbolPen3(QwtPlotTradingCurve* self, QColor* param1, double width, int param3) {
-	self->setSymbolPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotTradingCurve_setSymbolPen3(QwtPlotTradingCurve* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setSymbolPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 void QwtPlotTradingCurve_delete(QwtPlotTradingCurve* self) {

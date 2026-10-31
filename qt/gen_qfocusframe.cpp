@@ -47,8 +47,8 @@ bool miqt_exec_callback_QFocusFrame_eventFilter(QFocusFrame*, intptr_t, QObject*
 void miqt_exec_callback_QFocusFrame_paintEvent(QFocusFrame*, intptr_t, QPaintEvent*);
 int miqt_exec_callback_QFocusFrame_devType(const QFocusFrame*, intptr_t);
 void miqt_exec_callback_QFocusFrame_setVisible(QFocusFrame*, intptr_t, bool);
-QSize* miqt_exec_callback_QFocusFrame_sizeHint(const QFocusFrame*, intptr_t);
-QSize* miqt_exec_callback_QFocusFrame_minimumSizeHint(const QFocusFrame*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFocusFrame_sizeHint(const QFocusFrame*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFocusFrame_minimumSizeHint(const QFocusFrame*, intptr_t);
 int miqt_exec_callback_QFocusFrame_heightForWidth(const QFocusFrame*, intptr_t, int);
 bool miqt_exec_callback_QFocusFrame_hasHeightForWidth(const QFocusFrame*, intptr_t);
 QPaintEngine* miqt_exec_callback_QFocusFrame_paintEngine(const QFocusFrame*, intptr_t);
@@ -192,13 +192,11 @@ public:
 			return QFocusFrame::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFocusFrame_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFocusFrame_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFocusFrame_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QFocusFrame_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -209,13 +207,11 @@ public:
 			return QFocusFrame::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFocusFrame_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFocusFrame_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFocusFrame_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QFocusFrame_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1087,8 +1083,8 @@ bool QFocusFrame_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFocusFrame_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFocusFrame*>(self)->QFocusFrame::sizeHint());
+struct miqt_qsize QFocusFrame_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFocusFrame*>(self)->QFocusFrame::sizeHint());
 }
 
 bool QFocusFrame_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1101,8 +1097,8 @@ bool QFocusFrame_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFocusFrame_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFocusFrame*>(self)->QFocusFrame::minimumSizeHint());
+struct miqt_qsize QFocusFrame_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFocusFrame*>(self)->QFocusFrame::minimumSizeHint());
 }
 
 bool QFocusFrame_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1664,10 +1660,6 @@ bool QFocusFrame_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQFocusFrame*>(self)->QFocusFrame::disconnectNotify(*signal);
-}
-
-QSize* QFocusFrame_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QFocusFrame_virtualreturncopy_QVariant(QVariant* src) {

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -200,16 +201,12 @@ func (this *QTextEdit) FontItalic() bool {
 	return (bool)(C.QTextEdit_fontItalic(this.h))
 }
 
-func (this *QTextEdit) TextColor() *QColor {
-	_goptr := newQColor(C.QTextEdit_textColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTextEdit) TextColor() QColor {
+	return libmiqt.ValueCast[QColor](C.QTextEdit_textColor(this.h))
 }
 
-func (this *QTextEdit) TextBackgroundColor() *QColor {
-	_goptr := newQColor(C.QTextEdit_textBackgroundColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTextEdit) TextBackgroundColor() QColor {
+	return libmiqt.ValueCast[QColor](C.QTextEdit_textBackgroundColor(this.h))
 }
 
 func (this *QTextEdit) CurrentFont() *QFont {
@@ -350,34 +347,27 @@ func (this *QTextEdit) CreateStandardContextMenu() *QMenu {
 	return newQMenu(C.QTextEdit_createStandardContextMenu(this.h))
 }
 
-func (this *QTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	defer runtime.KeepAlive(position)
-	return newQMenu(C.QTextEdit_createStandardContextMenuWithPosition(this.h, position.cPointer()))
+func (this *QTextEdit) CreateStandardContextMenuWithPosition(position QPoint) *QMenu {
+	return newQMenu(C.QTextEdit_createStandardContextMenuWithPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](position)))
 }
 
-func (this *QTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
-	defer runtime.KeepAlive(pos)
-	_goptr := newQTextCursor(C.QTextEdit_cursorForPosition(this.h, pos.cPointer()))
+func (this *QTextEdit) CursorForPosition(pos QPoint) *QTextCursor {
+	_goptr := newQTextCursor(C.QTextEdit_cursorForPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextEdit) CursorRect(cursor *QTextCursor) *QRect {
+func (this *QTextEdit) CursorRect(cursor *QTextCursor) QRect {
 	defer runtime.KeepAlive(cursor)
-	_goptr := newQRect(C.QTextEdit_cursorRect(this.h, cursor.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QTextEdit_cursorRect(this.h, cursor.cPointer()))
 }
 
-func (this *QTextEdit) CursorRect2() *QRect {
-	_goptr := newQRect(C.QTextEdit_cursorRect2(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTextEdit) CursorRect2() QRect {
+	return libmiqt.ValueCast[QRect](C.QTextEdit_cursorRect2(this.h))
 }
 
-func (this *QTextEdit) AnchorAt(pos *QPoint) string {
-	defer runtime.KeepAlive(pos)
-	var _ms C.struct_miqt_string = C.QTextEdit_anchorAt(this.h, pos.cPointer())
+func (this *QTextEdit) AnchorAt(pos QPoint) string {
+	var _ms C.struct_miqt_string = C.QTextEdit_anchorAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -489,14 +479,12 @@ func (this *QTextEdit) SetFontItalic(b bool) {
 	C.QTextEdit_setFontItalic(this.h, (C.bool)(b))
 }
 
-func (this *QTextEdit) SetTextColor(c *QColor) {
-	defer runtime.KeepAlive(c)
-	C.QTextEdit_setTextColor(this.h, c.cPointer())
+func (this *QTextEdit) SetTextColor(c QColor) {
+	C.QTextEdit_setTextColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 }
 
-func (this *QTextEdit) SetTextBackgroundColor(c *QColor) {
-	defer runtime.KeepAlive(c)
-	C.QTextEdit_setTextBackgroundColor(this.h, c.cPointer())
+func (this *QTextEdit) SetTextBackgroundColor(c QColor) {
+	C.QTextEdit_setTextBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 }
 
 func (this *QTextEdit) SetCurrentFont(f *QFont) {
@@ -822,9 +810,7 @@ func (this *QTextEdit) SetViewportMargins(left int, top int, right int, bottom i
 func (this *QTextEdit) ViewportMargins() QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQMargins(C.QTextEdit_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QMargins](C.QTextEdit_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -1766,14 +1752,12 @@ func miqt_exec_callback_QTextEdit_doSetTextCursor(self *C.QTextEdit, cb C.intptr
 
 }
 
-func (this *QTextEdit) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QTextEdit) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QTextEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTextEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTextEdit) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTextEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1781,27 +1765,24 @@ func (this *QTextEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QTextEdit_minimumSizeHint
-func miqt_exec_callback_QTextEdit_minimumSizeHint(self *C.QTextEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTextEdit_minimumSizeHint(self *C.QTextEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTextEdit{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTextEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QTextEdit) callVirtualBase_SizeHint() *QSize {
-
-	_goptr := newQSize(C.QTextEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QTextEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QTextEdit) callVirtualBase_SizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QTextEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QTextEdit) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTextEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1809,16 +1790,15 @@ func (this *QTextEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QTextEdit_sizeHint
-func miqt_exec_callback_QTextEdit_sizeHint(self *C.QTextEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTextEdit_sizeHint(self *C.QTextEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTextEdit{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTextEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1908,14 +1888,12 @@ func miqt_exec_callback_QTextEdit_viewportEvent(self *C.QTextEdit, cb C.intptr_t
 
 }
 
-func (this *QTextEdit) callVirtualBase_ViewportSizeHint() *QSize {
+func (this *QTextEdit) callVirtualBase_ViewportSizeHint() QSize {
 
-	_goptr := newQSize(C.QTextEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTextEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextEdit) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTextEdit) OnViewportSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTextEdit_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1923,16 +1901,15 @@ func (this *QTextEdit) OnViewportSizeHint(slot func(super func() *QSize) *QSize)
 }
 
 //export miqt_exec_callback_QTextEdit_viewportSizeHint
-func miqt_exec_callback_QTextEdit_viewportSizeHint(self *C.QTextEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTextEdit_viewportSizeHint(self *C.QTextEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTextEdit{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTextEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2379,7 +2356,6 @@ func miqt_exec_callback_QTextEdit_initPainter(self *C.QTextEdit, cb C.intptr_t, 
 }
 
 func (this *QTextEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTextEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

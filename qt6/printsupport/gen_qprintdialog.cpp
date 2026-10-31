@@ -50,8 +50,8 @@ int miqt_exec_callback_QPrintDialog_exec(QPrintDialog*, intptr_t);
 void miqt_exec_callback_QPrintDialog_accept(QPrintDialog*, intptr_t);
 void miqt_exec_callback_QPrintDialog_done(QPrintDialog*, intptr_t, int);
 void miqt_exec_callback_QPrintDialog_setVisible(QPrintDialog*, intptr_t, bool);
-QSize* miqt_exec_callback_QPrintDialog_sizeHint(const QPrintDialog*, intptr_t);
-QSize* miqt_exec_callback_QPrintDialog_minimumSizeHint(const QPrintDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPrintDialog_sizeHint(const QPrintDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPrintDialog_minimumSizeHint(const QPrintDialog*, intptr_t);
 void miqt_exec_callback_QPrintDialog_open(QPrintDialog*, intptr_t);
 void miqt_exec_callback_QPrintDialog_reject(QPrintDialog*, intptr_t);
 void miqt_exec_callback_QPrintDialog_keyPressEvent(QPrintDialog*, intptr_t, QKeyEvent*);
@@ -186,13 +186,11 @@ public:
 			return QPrintDialog::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPrintDialog_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPrintDialog_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPrintDialog_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QPrintDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -203,13 +201,11 @@ public:
 			return QPrintDialog::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPrintDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPrintDialog_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPrintDialog_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QPrintDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1180,8 +1176,8 @@ bool QPrintDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPrintDialog_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPrintDialog*>(self)->QPrintDialog::sizeHint());
+struct miqt_qsize QPrintDialog_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPrintDialog*>(self)->QPrintDialog::sizeHint());
 }
 
 bool QPrintDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1194,8 +1190,8 @@ bool QPrintDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPrintDialog_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPrintDialog*>(self)->QPrintDialog::minimumSizeHint());
+struct miqt_qsize QPrintDialog_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPrintDialog*>(self)->QPrintDialog::minimumSizeHint());
 }
 
 bool QPrintDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1841,10 +1837,6 @@ bool QPrintDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQPrintDialog*>(self)->QPrintDialog::disconnectNotify(*signal);
-}
-
-QSize* QPrintDialog_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QPrintDialog_virtualreturncopy_QVariant(QVariant* src) {

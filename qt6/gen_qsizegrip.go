@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -83,10 +84,8 @@ func QSizeGrip_Tr(s string) string {
 	return _ret
 }
 
-func (this *QSizeGrip) SizeHint() *QSize {
-	_goptr := newQSize(C.QSizeGrip_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QSizeGrip) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QSizeGrip_sizeHint(this.h))
 }
 
 func (this *QSizeGrip) SetVisible(visible bool) {
@@ -238,14 +237,12 @@ func (this *QSizeGrip) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QSizeGrip) callVirtualBase_SizeHint() *QSize {
+func (this *QSizeGrip) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QSizeGrip_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QSizeGrip_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QSizeGrip) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QSizeGrip) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QSizeGrip_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -253,16 +250,15 @@ func (this *QSizeGrip) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QSizeGrip_sizeHint
-func miqt_exec_callback_QSizeGrip_sizeHint(self *C.QSizeGrip, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QSizeGrip_sizeHint(self *C.QSizeGrip, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSizeGrip_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -566,14 +562,12 @@ func miqt_exec_callback_QSizeGrip_devType(self *C.QSizeGrip, cb C.intptr_t) C.in
 
 }
 
-func (this *QSizeGrip) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QSizeGrip) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QSizeGrip_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QSizeGrip_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QSizeGrip) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QSizeGrip) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QSizeGrip_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -581,16 +575,15 @@ func (this *QSizeGrip) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QSizeGrip_minimumSizeHint
-func miqt_exec_callback_QSizeGrip_minimumSizeHint(self *C.QSizeGrip, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QSizeGrip_minimumSizeHint(self *C.QSizeGrip, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QSizeGrip{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSizeGrip_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1256,7 +1249,6 @@ func miqt_exec_callback_QSizeGrip_initPainter(self *C.QSizeGrip, cb C.intptr_t, 
 }
 
 func (this *QSizeGrip) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QSizeGrip_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

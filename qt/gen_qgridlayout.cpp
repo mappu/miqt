@@ -21,9 +21,9 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QGridLayout_sizeHint(const QGridLayout*, intptr_t);
-QSize* miqt_exec_callback_QGridLayout_minimumSize(const QGridLayout*, intptr_t);
-QSize* miqt_exec_callback_QGridLayout_maximumSize(const QGridLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QGridLayout_sizeHint(const QGridLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QGridLayout_minimumSize(const QGridLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QGridLayout_maximumSize(const QGridLayout*, intptr_t);
 bool miqt_exec_callback_QGridLayout_hasHeightForWidth(const QGridLayout*, intptr_t);
 int miqt_exec_callback_QGridLayout_heightForWidth(const QGridLayout*, intptr_t, int);
 int miqt_exec_callback_QGridLayout_minimumHeightForWidth(const QGridLayout*, intptr_t, int);
@@ -32,9 +32,9 @@ void miqt_exec_callback_QGridLayout_invalidate(QGridLayout*, intptr_t);
 QLayoutItem* miqt_exec_callback_QGridLayout_itemAt(const QGridLayout*, intptr_t, int);
 QLayoutItem* miqt_exec_callback_QGridLayout_takeAt(QGridLayout*, intptr_t, int);
 int miqt_exec_callback_QGridLayout_count(const QGridLayout*, intptr_t);
-void miqt_exec_callback_QGridLayout_setGeometry(QGridLayout*, intptr_t, QRect*);
+void miqt_exec_callback_QGridLayout_setGeometry(QGridLayout*, intptr_t, struct miqt_qrect);
 void miqt_exec_callback_QGridLayout_addItemWithQLayoutItem(QGridLayout*, intptr_t, QLayoutItem*);
-QRect* miqt_exec_callback_QGridLayout_geometry(const QGridLayout*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QGridLayout_geometry(const QGridLayout*, intptr_t);
 int miqt_exec_callback_QGridLayout_indexOf(const QGridLayout*, intptr_t, QWidget*);
 bool miqt_exec_callback_QGridLayout_isEmpty(const QGridLayout*, intptr_t);
 int miqt_exec_callback_QGridLayout_controlTypes(const QGridLayout*, intptr_t);
@@ -69,13 +69,11 @@ public:
 			return QGridLayout::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGridLayout_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGridLayout_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGridLayout_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QGridLayout_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -86,13 +84,11 @@ public:
 			return QGridLayout::minimumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGridLayout_minimumSize(this, handle__minimumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGridLayout_minimumSize(this, handle__minimumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGridLayout_virtualbase_minimumSize(const void* self);
+	friend struct miqt_qsize QGridLayout_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -103,13 +99,11 @@ public:
 			return QGridLayout::maximumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGridLayout_maximumSize(this, handle__maximumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGridLayout_maximumSize(this, handle__maximumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGridLayout_virtualbase_maximumSize(const void* self);
+	friend struct miqt_qsize QGridLayout_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -246,14 +240,12 @@ public:
 			return;
 		}
 
-		const QRect& geometry_ret = geometry;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&geometry_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(geometry);
 		miqt_exec_callback_QGridLayout_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QGridLayout_virtualbase_setGeometry(void* self, QRect* geometry);
+	friend void QGridLayout_virtualbase_setGeometry(void* self, struct miqt_qrect geometry);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__addItemWithQLayoutItem = 0;
@@ -281,13 +273,11 @@ public:
 			return QGridLayout::geometry();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QGridLayout_geometry(this, handle__geometry);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QGridLayout_geometry(this, handle__geometry);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QGridLayout_virtualbase_geometry(const void* self);
+	friend struct miqt_qrect QGridLayout_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indexOf = 0;
@@ -507,7 +497,7 @@ public:
 	friend void QGridLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 	friend void QGridLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
 	friend bool QGridLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout);
-	friend QRect* QGridLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
+	friend struct miqt_qrect QGridLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1);
 	friend QObject* QGridLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QGridLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QGridLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -556,16 +546,16 @@ struct miqt_string QGridLayout_trUtf8(const char* s) {
 	return _ms;
 }
 
-QSize* QGridLayout_sizeHint(const QGridLayout* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QGridLayout_sizeHint(const QGridLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QGridLayout_minimumSize(const QGridLayout* self) {
-	return new QSize(self->minimumSize());
+struct miqt_qsize QGridLayout_minimumSize(const QGridLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSize());
 }
 
-QSize* QGridLayout_maximumSize(const QGridLayout* self) {
-	return new QSize(self->maximumSize());
+struct miqt_qsize QGridLayout_maximumSize(const QGridLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->maximumSize());
 }
 
 void QGridLayout_setHorizontalSpacing(QGridLayout* self, int spacing) {
@@ -632,8 +622,8 @@ int QGridLayout_rowCount(const QGridLayout* self) {
 	return self->rowCount();
 }
 
-QRect* QGridLayout_cellRect(const QGridLayout* self, int row, int column) {
-	return new QRect(self->cellRect(static_cast<int>(row), static_cast<int>(column)));
+struct miqt_qrect QGridLayout_cellRect(const QGridLayout* self, int row, int column) {
+	return miqt_to_cabi<struct miqt_qrect>(self->cellRect(static_cast<int>(row), static_cast<int>(column)));
 }
 
 bool QGridLayout_hasHeightForWidth(const QGridLayout* self) {
@@ -702,8 +692,8 @@ int QGridLayout_count(const QGridLayout* self) {
 	return self->count();
 }
 
-void QGridLayout_setGeometry(QGridLayout* self, QRect* geometry) {
-	self->setGeometry(*geometry);
+void QGridLayout_setGeometry(QGridLayout* self, struct miqt_qrect geometry) {
+	self->setGeometry(miqt_from_cabi<QRect>(geometry));
 }
 
 void QGridLayout_addItem(QGridLayout* self, QLayoutItem* item, int row, int column) {
@@ -800,8 +790,8 @@ bool QGridLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QGridLayout_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGridLayout*>(self)->QGridLayout::sizeHint());
+struct miqt_qsize QGridLayout_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGridLayout*>(self)->QGridLayout::sizeHint());
 }
 
 bool QGridLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -814,8 +804,8 @@ bool QGridLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QGridLayout_virtualbase_minimumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGridLayout*>(self)->QGridLayout::minimumSize());
+struct miqt_qsize QGridLayout_virtualbase_minimumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGridLayout*>(self)->QGridLayout::minimumSize());
 }
 
 bool QGridLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -828,8 +818,8 @@ bool QGridLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QGridLayout_virtualbase_maximumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGridLayout*>(self)->QGridLayout::maximumSize());
+struct miqt_qsize QGridLayout_virtualbase_maximumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGridLayout*>(self)->QGridLayout::maximumSize());
 }
 
 bool QGridLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -955,8 +945,8 @@ bool QGridLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 	return true;
 }
 
-void QGridLayout_virtualbase_setGeometry(void* self, QRect* geometry) {
-	static_cast<MiqtVirtualQGridLayout*>(self)->QGridLayout::setGeometry(*geometry);
+void QGridLayout_virtualbase_setGeometry(void* self, struct miqt_qrect geometry) {
+	static_cast<MiqtVirtualQGridLayout*>(self)->QGridLayout::setGeometry(miqt_from_cabi<QRect>(geometry));
 }
 
 bool QGridLayout_override_virtual_addItemWithQLayoutItem(void* self, intptr_t slot) {
@@ -983,8 +973,8 @@ bool QGridLayout_override_virtual_geometry(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QGridLayout_virtualbase_geometry(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQGridLayout*>(self)->QGridLayout::geometry());
+struct miqt_qrect QGridLayout_virtualbase_geometry(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQGridLayout*>(self)->QGridLayout::geometry());
 }
 
 bool QGridLayout_override_virtual_indexOf(void* self, intptr_t slot) {
@@ -1170,14 +1160,6 @@ QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQGridLayout*>(self)->QGridLayout::spacerItem();
 }
 
-QSize* QGridLayout_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
-QRect* QGridLayout_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
 void QGridLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -1222,15 +1204,15 @@ bool QGridLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, Q
 	return self_cast->adoptLayout(layout);
 }
 
-QRect* QGridLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
+struct miqt_qrect QGridLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1) {
 	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->alignmentRect(*param1));
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->alignmentRect(miqt_from_cabi<QRect>(param1)));
 }
 
 QObject* QGridLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

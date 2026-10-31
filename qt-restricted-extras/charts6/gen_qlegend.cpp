@@ -29,10 +29,10 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QLegend_backgroundVisibleChanged(intptr_t, bool);
-void miqt_exec_callback_QLegend_colorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QLegend_borderColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QLegend_colorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QLegend_borderColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QLegend_fontChanged(intptr_t, QFont*);
-void miqt_exec_callback_QLegend_labelColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QLegend_labelColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QLegend_reverseMarkersChanged(intptr_t, bool);
 void miqt_exec_callback_QLegend_showToolTipsChanged(intptr_t, bool);
 void miqt_exec_callback_QLegend_markerShapeChanged(intptr_t, int);
@@ -77,12 +77,12 @@ QBrush* QLegend_brush(const QLegend* self) {
 	return new QBrush(self->brush());
 }
 
-void QLegend_setColor(QLegend* self, QColor* color) {
-	self->setColor(*color);
+void QLegend_setColor(QLegend* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QLegend_color(QLegend* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QLegend_color(QLegend* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
 void QLegend_setPen(QLegend* self, QPen* pen) {
@@ -93,12 +93,12 @@ QPen* QLegend_pen(const QLegend* self) {
 	return new QPen(self->pen());
 }
 
-void QLegend_setBorderColor(QLegend* self, QColor* color) {
-	self->setBorderColor(*color);
+void QLegend_setBorderColor(QLegend* self, struct miqt_qcolor color) {
+	self->setBorderColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QLegend_borderColor(QLegend* self) {
-	return new QColor(self->borderColor());
+struct miqt_qcolor QLegend_borderColor(QLegend* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->borderColor());
 }
 
 void QLegend_setFont(QLegend* self, QFont* font) {
@@ -117,12 +117,12 @@ QBrush* QLegend_labelBrush(const QLegend* self) {
 	return new QBrush(self->labelBrush());
 }
 
-void QLegend_setLabelColor(QLegend* self, QColor* color) {
-	self->setLabelColor(*color);
+void QLegend_setLabelColor(QLegend* self, struct miqt_qcolor color) {
+	self->setLabelColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QLegend_labelColor(const QLegend* self) {
-	return new QColor(self->labelColor());
+struct miqt_qcolor QLegend_labelColor(const QLegend* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->labelColor());
 }
 
 void QLegend_setAlignment(QLegend* self, int alignment) {
@@ -211,24 +211,24 @@ void QLegend_connect_backgroundVisibleChanged(QLegend* self, intptr_t slot) {
 	});
 }
 
-void QLegend_colorChanged(QLegend* self, QColor* color) {
-	self->colorChanged(*color);
+void QLegend_colorChanged(QLegend* self, struct miqt_qcolor color) {
+	self->colorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QLegend_connect_colorChanged(QLegend* self, intptr_t slot) {
 	QLegend::connect(self, static_cast<void (QLegend::*)(QColor)>(&QLegend::colorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QLegend_colorChanged(slot, sigval1);
 	});
 }
 
-void QLegend_borderColorChanged(QLegend* self, QColor* color) {
-	self->borderColorChanged(*color);
+void QLegend_borderColorChanged(QLegend* self, struct miqt_qcolor color) {
+	self->borderColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QLegend_connect_borderColorChanged(QLegend* self, intptr_t slot) {
 	QLegend::connect(self, static_cast<void (QLegend::*)(QColor)>(&QLegend::borderColorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QLegend_borderColorChanged(slot, sigval1);
 	});
 }
@@ -244,13 +244,13 @@ void QLegend_connect_fontChanged(QLegend* self, intptr_t slot) {
 	});
 }
 
-void QLegend_labelColorChanged(QLegend* self, QColor* color) {
-	self->labelColorChanged(*color);
+void QLegend_labelColorChanged(QLegend* self, struct miqt_qcolor color) {
+	self->labelColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QLegend_connect_labelColorChanged(QLegend* self, intptr_t slot) {
 	QLegend::connect(self, static_cast<void (QLegend::*)(QColor)>(&QLegend::labelColorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QLegend_labelColorChanged(slot, sigval1);
 	});
 }

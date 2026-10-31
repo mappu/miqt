@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -257,21 +258,16 @@ func (this *QCamera) IsFocusModeSupported(mode QCamera__FocusMode) bool {
 	return (bool)(C.QCamera_isFocusModeSupported(this.h, (C.int)(mode)))
 }
 
-func (this *QCamera) FocusPoint() *qt6.QPointF {
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QCamera_focusPoint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCamera) FocusPoint() qt6.QPointF {
+	return libmiqt.ValueCast[qt6.QPointF](C.QCamera_focusPoint(this.h))
 }
 
-func (this *QCamera) CustomFocusPoint() *qt6.QPointF {
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QCamera_customFocusPoint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCamera) CustomFocusPoint() qt6.QPointF {
+	return libmiqt.ValueCast[qt6.QPointF](C.QCamera_customFocusPoint(this.h))
 }
 
-func (this *QCamera) SetCustomFocusPoint(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QCamera_setCustomFocusPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QCamera) SetCustomFocusPoint(point qt6.QPointF) {
+	C.QCamera_setCustomFocusPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
 
 func (this *QCamera) SetFocusDistance(d float32) {

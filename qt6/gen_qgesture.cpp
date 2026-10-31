@@ -250,12 +250,12 @@ int QGesture_state(const QGesture* self) {
 	return static_cast<int>(_ret);
 }
 
-QPointF* QGesture_hotSpot(const QGesture* self) {
-	return new QPointF(self->hotSpot());
+struct miqt_qpointf QGesture_hotSpot(const QGesture* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->hotSpot());
 }
 
-void QGesture_setHotSpot(QGesture* self, QPointF* value) {
-	self->setHotSpot(*value);
+void QGesture_setHotSpot(QGesture* self, struct miqt_qpointf value) {
+	self->setHotSpot(miqt_from_cabi<QPointF>(value));
 }
 
 bool QGesture_hasHotSpot(const QGesture* self) {
@@ -611,16 +611,16 @@ struct miqt_string QPanGesture_tr(const char* s) {
 	return _ms;
 }
 
-QPointF* QPanGesture_lastOffset(const QPanGesture* self) {
-	return new QPointF(self->lastOffset());
+struct miqt_qpointf QPanGesture_lastOffset(const QPanGesture* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->lastOffset());
 }
 
-QPointF* QPanGesture_offset(const QPanGesture* self) {
-	return new QPointF(self->offset());
+struct miqt_qpointf QPanGesture_offset(const QPanGesture* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->offset());
 }
 
-QPointF* QPanGesture_delta(const QPanGesture* self) {
-	return new QPointF(self->delta());
+struct miqt_qpointf QPanGesture_delta(const QPanGesture* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->delta());
 }
 
 double QPanGesture_acceleration(const QPanGesture* self) {
@@ -628,12 +628,12 @@ double QPanGesture_acceleration(const QPanGesture* self) {
 	return static_cast<double>(_ret);
 }
 
-void QPanGesture_setLastOffset(QPanGesture* self, QPointF* value) {
-	self->setLastOffset(*value);
+void QPanGesture_setLastOffset(QPanGesture* self, struct miqt_qpointf value) {
+	self->setLastOffset(miqt_from_cabi<QPointF>(value));
 }
 
-void QPanGesture_setOffset(QPanGesture* self, QPointF* value) {
-	self->setOffset(*value);
+void QPanGesture_setOffset(QPanGesture* self, struct miqt_qpointf value) {
+	self->setOffset(miqt_from_cabi<QPointF>(value));
 }
 
 void QPanGesture_setAcceleration(QPanGesture* self, double value) {
@@ -994,28 +994,28 @@ void QPinchGesture_setChangeFlags(QPinchGesture* self, int value) {
 	self->setChangeFlags(static_cast<QPinchGesture::ChangeFlags>(value));
 }
 
-QPointF* QPinchGesture_startCenterPoint(const QPinchGesture* self) {
-	return new QPointF(self->startCenterPoint());
+struct miqt_qpointf QPinchGesture_startCenterPoint(const QPinchGesture* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->startCenterPoint());
 }
 
-QPointF* QPinchGesture_lastCenterPoint(const QPinchGesture* self) {
-	return new QPointF(self->lastCenterPoint());
+struct miqt_qpointf QPinchGesture_lastCenterPoint(const QPinchGesture* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->lastCenterPoint());
 }
 
-QPointF* QPinchGesture_centerPoint(const QPinchGesture* self) {
-	return new QPointF(self->centerPoint());
+struct miqt_qpointf QPinchGesture_centerPoint(const QPinchGesture* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->centerPoint());
 }
 
-void QPinchGesture_setStartCenterPoint(QPinchGesture* self, QPointF* value) {
-	self->setStartCenterPoint(*value);
+void QPinchGesture_setStartCenterPoint(QPinchGesture* self, struct miqt_qpointf value) {
+	self->setStartCenterPoint(miqt_from_cabi<QPointF>(value));
 }
 
-void QPinchGesture_setLastCenterPoint(QPinchGesture* self, QPointF* value) {
-	self->setLastCenterPoint(*value);
+void QPinchGesture_setLastCenterPoint(QPinchGesture* self, struct miqt_qpointf value) {
+	self->setLastCenterPoint(miqt_from_cabi<QPointF>(value));
 }
 
-void QPinchGesture_setCenterPoint(QPinchGesture* self, QPointF* value) {
-	self->setCenterPoint(*value);
+void QPinchGesture_setCenterPoint(QPinchGesture* self, struct miqt_qpointf value) {
+	self->setCenterPoint(miqt_from_cabi<QPointF>(value));
 }
 
 double QPinchGesture_totalScaleFactor(const QPinchGesture* self) {
@@ -1763,12 +1763,12 @@ struct miqt_string QTapGesture_tr(const char* s) {
 	return _ms;
 }
 
-QPointF* QTapGesture_position(const QTapGesture* self) {
-	return new QPointF(self->position());
+struct miqt_qpointf QTapGesture_position(const QTapGesture* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->position());
 }
 
-void QTapGesture_setPosition(QTapGesture* self, QPointF* pos) {
-	self->setPosition(*pos);
+void QTapGesture_setPosition(QTapGesture* self, struct miqt_qpointf pos) {
+	self->setPosition(miqt_from_cabi<QPointF>(pos));
 }
 
 struct miqt_string QTapGesture_tr2(const char* s, const char* c) {
@@ -2107,12 +2107,12 @@ struct miqt_string QTapAndHoldGesture_tr(const char* s) {
 	return _ms;
 }
 
-QPointF* QTapAndHoldGesture_position(const QTapAndHoldGesture* self) {
-	return new QPointF(self->position());
+struct miqt_qpointf QTapAndHoldGesture_position(const QTapAndHoldGesture* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->position());
 }
 
-void QTapAndHoldGesture_setPosition(QTapAndHoldGesture* self, QPointF* pos) {
-	self->setPosition(*pos);
+void QTapAndHoldGesture_setPosition(QTapAndHoldGesture* self, struct miqt_qpointf pos) {
+	self->setPosition(miqt_from_cabi<QPointF>(pos));
 }
 
 void QTapAndHoldGesture_setTimeout(int msecs) {
@@ -2434,8 +2434,8 @@ QWidget* QGestureEvent_widget(const QGestureEvent* self) {
 	return self->widget();
 }
 
-QPointF* QGestureEvent_mapToGraphicsScene(const QGestureEvent* self, QPointF* gesturePoint) {
-	return new QPointF(self->mapToGraphicsScene(*gesturePoint));
+struct miqt_qpointf QGestureEvent_mapToGraphicsScene(const QGestureEvent* self, struct miqt_qpointf gesturePoint) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToGraphicsScene(miqt_from_cabi<QPointF>(gesturePoint)));
 }
 
 void QGestureEvent_operatorAssign(QGestureEvent* self, QGestureEvent* param1) {

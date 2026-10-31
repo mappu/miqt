@@ -59,28 +59,28 @@ void QInputMethod_setInputItemTransform(QInputMethod* self, QTransform* transfor
 	self->setInputItemTransform(*transform);
 }
 
-QRectF* QInputMethod_inputItemRectangle(const QInputMethod* self) {
-	return new QRectF(self->inputItemRectangle());
+struct miqt_qrectf QInputMethod_inputItemRectangle(const QInputMethod* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->inputItemRectangle());
 }
 
-void QInputMethod_setInputItemRectangle(QInputMethod* self, QRectF* rect) {
-	self->setInputItemRectangle(*rect);
+void QInputMethod_setInputItemRectangle(QInputMethod* self, struct miqt_qrectf rect) {
+	self->setInputItemRectangle(miqt_from_cabi<QRectF>(rect));
 }
 
-QRectF* QInputMethod_cursorRectangle(const QInputMethod* self) {
-	return new QRectF(self->cursorRectangle());
+struct miqt_qrectf QInputMethod_cursorRectangle(const QInputMethod* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->cursorRectangle());
 }
 
-QRectF* QInputMethod_anchorRectangle(const QInputMethod* self) {
-	return new QRectF(self->anchorRectangle());
+struct miqt_qrectf QInputMethod_anchorRectangle(const QInputMethod* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->anchorRectangle());
 }
 
-QRectF* QInputMethod_keyboardRectangle(const QInputMethod* self) {
-	return new QRectF(self->keyboardRectangle());
+struct miqt_qrectf QInputMethod_keyboardRectangle(const QInputMethod* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->keyboardRectangle());
 }
 
-QRectF* QInputMethod_inputItemClipRectangle(const QInputMethod* self) {
-	return new QRectF(self->inputItemClipRectangle());
+struct miqt_qrectf QInputMethod_inputItemClipRectangle(const QInputMethod* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->inputItemClipRectangle());
 }
 
 bool QInputMethod_isVisible(const QInputMethod* self) {

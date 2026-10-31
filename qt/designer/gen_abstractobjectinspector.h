@@ -109,9 +109,9 @@ int QDesignerObjectInspectorInterface_virtualbase_devType(const void* self);
 bool QDesignerObjectInspectorInterface_override_virtual_setVisible(void* self, intptr_t slot);
 void QDesignerObjectInspectorInterface_virtualbase_setVisible(void* self, bool visible);
 bool QDesignerObjectInspectorInterface_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QDesignerObjectInspectorInterface_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QDesignerObjectInspectorInterface_virtualbase_sizeHint(const void* self);
 bool QDesignerObjectInspectorInterface_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QDesignerObjectInspectorInterface_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QDesignerObjectInspectorInterface_virtualbase_minimumSizeHint(const void* self);
 bool QDesignerObjectInspectorInterface_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QDesignerObjectInspectorInterface_virtualbase_heightForWidth(const void* self, int param1);
 bool QDesignerObjectInspectorInterface_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -198,7 +198,6 @@ bool QDesignerObjectInspectorInterface_override_virtual_connectNotify(void* self
 void QDesignerObjectInspectorInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesignerObjectInspectorInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesignerObjectInspectorInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QDesignerObjectInspectorInterface_virtualreturncopy_QSize(QSize* src);
 QVariant* QDesignerObjectInspectorInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerObjectInspectorInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

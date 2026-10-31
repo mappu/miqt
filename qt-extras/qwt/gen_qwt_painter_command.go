@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -77,21 +78,17 @@ func NewQwtPainterCommand2(param1 *qt.QPainterPath) *QwtPainterCommand {
 }
 
 // NewQwtPainterCommand3 constructs a new QwtPainterCommand object.
-func NewQwtPainterCommand3(rect *qt.QRectF, param2 *qt.QPixmap, subRect *qt.QRectF) *QwtPainterCommand {
-	defer runtime.KeepAlive(rect)
+func NewQwtPainterCommand3(rect qt.QRectF, param2 *qt.QPixmap, subRect qt.QRectF) *QwtPainterCommand {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(subRect)
 
-	return newQwtPainterCommand(C.QwtPainterCommand_new3((*C.QRectF)(rect.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QRectF)(subRect.UnsafePointer())))
+	return newQwtPainterCommand(C.QwtPainterCommand_new3(libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (*C.QPixmap)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](subRect)))
 }
 
 // NewQwtPainterCommand4 constructs a new QwtPainterCommand object.
-func NewQwtPainterCommand4(rect *qt.QRectF, param2 *qt.QImage, subRect *qt.QRectF, param4 qt.ImageConversionFlag) *QwtPainterCommand {
-	defer runtime.KeepAlive(rect)
+func NewQwtPainterCommand4(rect qt.QRectF, param2 *qt.QImage, subRect qt.QRectF, param4 qt.ImageConversionFlag) *QwtPainterCommand {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(subRect)
 
-	return newQwtPainterCommand(C.QwtPainterCommand_new4((*C.QRectF)(rect.UnsafePointer()), (*C.QImage)(param2.UnsafePointer()), (*C.QRectF)(subRect.UnsafePointer()), (C.int)(param4)))
+	return newQwtPainterCommand(C.QwtPainterCommand_new4(libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (*C.QImage)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](subRect), (C.int)(param4)))
 }
 
 // NewQwtPainterCommand5 constructs a new QwtPainterCommand object.
@@ -217,17 +214,14 @@ func NewQwtPainterCommand__PixmapData2() *QwtPainterCommand__PixmapData {
 	return newQwtPainterCommand__PixmapData(C.QwtPainterCommand__PixmapData_new2())
 }
 
-func (this *QwtPainterCommand__PixmapData) Rect() *qt.QRectF {
+func (this *QwtPainterCommand__PixmapData) Rect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	rect_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPainterCommand__PixmapData_rect(this.h)))
-	rect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return rect_goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPainterCommand__PixmapData_rect(this.h))
 }
 
 func (this *QwtPainterCommand__PixmapData) SetRect(rect qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QwtPainterCommand__PixmapData_setRect(this.h, (*C.QRectF)(rect.UnsafePointer()))
+	C.QwtPainterCommand__PixmapData_setRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QwtPainterCommand__PixmapData) Pixmap() *qt.QPixmap {
@@ -243,17 +237,14 @@ func (this *QwtPainterCommand__PixmapData) SetPixmap(pixmap qt.QPixmap) {
 	C.QwtPainterCommand__PixmapData_setPixmap(this.h, (*C.QPixmap)(pixmap.UnsafePointer()))
 }
 
-func (this *QwtPainterCommand__PixmapData) SubRect() *qt.QRectF {
+func (this *QwtPainterCommand__PixmapData) SubRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	subRect_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPainterCommand__PixmapData_subRect(this.h)))
-	subRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return subRect_goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPainterCommand__PixmapData_subRect(this.h))
 }
 
 func (this *QwtPainterCommand__PixmapData) SetSubRect(subRect qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(subRect)
-	C.QwtPainterCommand__PixmapData_setSubRect(this.h, (*C.QRectF)(subRect.UnsafePointer()))
+	C.QwtPainterCommand__PixmapData_setSubRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](subRect))
 }
 
 func (this *QwtPainterCommand__PixmapData) OperatorAssign(param1 *QwtPainterCommand__PixmapData) {
@@ -333,17 +324,14 @@ func NewQwtPainterCommand__ImageData2() *QwtPainterCommand__ImageData {
 	return newQwtPainterCommand__ImageData(C.QwtPainterCommand__ImageData_new2())
 }
 
-func (this *QwtPainterCommand__ImageData) Rect() *qt.QRectF {
+func (this *QwtPainterCommand__ImageData) Rect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	rect_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPainterCommand__ImageData_rect(this.h)))
-	rect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return rect_goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPainterCommand__ImageData_rect(this.h))
 }
 
 func (this *QwtPainterCommand__ImageData) SetRect(rect qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QwtPainterCommand__ImageData_setRect(this.h, (*C.QRectF)(rect.UnsafePointer()))
+	C.QwtPainterCommand__ImageData_setRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QwtPainterCommand__ImageData) Image() *qt.QImage {
@@ -359,17 +347,14 @@ func (this *QwtPainterCommand__ImageData) SetImage(image qt.QImage) {
 	C.QwtPainterCommand__ImageData_setImage(this.h, (*C.QImage)(image.UnsafePointer()))
 }
 
-func (this *QwtPainterCommand__ImageData) SubRect() *qt.QRectF {
+func (this *QwtPainterCommand__ImageData) SubRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	subRect_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPainterCommand__ImageData_subRect(this.h)))
-	subRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return subRect_goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPainterCommand__ImageData_subRect(this.h))
 }
 
 func (this *QwtPainterCommand__ImageData) SetSubRect(subRect qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(subRect)
-	C.QwtPainterCommand__ImageData_setSubRect(this.h, (*C.QRectF)(subRect.UnsafePointer()))
+	C.QwtPainterCommand__ImageData_setSubRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](subRect))
 }
 
 func (this *QwtPainterCommand__ImageData) Flags() qt.ImageConversionFlag {
@@ -495,17 +480,14 @@ func (this *QwtPainterCommand__StateData) SetBrush(brush qt.QBrush) {
 	C.QwtPainterCommand__StateData_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
-func (this *QwtPainterCommand__StateData) BrushOrigin() *qt.QPointF {
+func (this *QwtPainterCommand__StateData) BrushOrigin() qt.QPointF {
 	defer runtime.KeepAlive(this)
-	brushOrigin_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtPainterCommand__StateData_brushOrigin(this.h)))
-	brushOrigin_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return brushOrigin_goptr
+	return libmiqt.ValueCast[qt.QPointF](C.QwtPainterCommand__StateData_brushOrigin(this.h))
 }
 
 func (this *QwtPainterCommand__StateData) SetBrushOrigin(brushOrigin qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(brushOrigin)
-	C.QwtPainterCommand__StateData_setBrushOrigin(this.h, (*C.QPointF)(brushOrigin.UnsafePointer()))
+	C.QwtPainterCommand__StateData_setBrushOrigin(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](brushOrigin))
 }
 
 func (this *QwtPainterCommand__StateData) BackgroundBrush() *qt.QBrush {

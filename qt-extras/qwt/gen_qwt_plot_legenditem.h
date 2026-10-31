@@ -73,13 +73,13 @@ void QwtPlotLegendItem_setTextPen(QwtPlotLegendItem* self, QPen* textPen);
 QPen* QwtPlotLegendItem_textPen(const QwtPlotLegendItem* self);
 void QwtPlotLegendItem_clearLegend(QwtPlotLegendItem* self);
 void QwtPlotLegendItem_updateLegend(QwtPlotLegendItem* self, QwtPlotItem* param1, struct miqt_array /* of QwtLegendData* */  param2);
-QRect* QwtPlotLegendItem_geometry(const QwtPlotLegendItem* self, QRectF* canvasRect);
-QSize* QwtPlotLegendItem_minimumSize(const QwtPlotLegendItem* self, QwtLegendData* param1);
+struct miqt_qrect QwtPlotLegendItem_geometry(const QwtPlotLegendItem* self, struct miqt_qrectf canvasRect);
+struct miqt_qsize QwtPlotLegendItem_minimumSize(const QwtPlotLegendItem* self, QwtLegendData* param1);
 int QwtPlotLegendItem_heightForWidth(const QwtPlotLegendItem* self, QwtLegendData* param1, int width);
 struct miqt_array /* of QwtPlotItem* */  QwtPlotLegendItem_plotItems(const QwtPlotLegendItem* self);
-struct miqt_array /* of QRect* */  QwtPlotLegendItem_legendGeometries(const QwtPlotLegendItem* self, QwtPlotItem* param1);
-void QwtPlotLegendItem_drawLegendData(const QwtPlotLegendItem* self, QPainter* painter, QwtPlotItem* param2, QwtLegendData* param3, QRectF* param4);
-void QwtPlotLegendItem_drawBackground(const QwtPlotLegendItem* self, QPainter* param1, QRectF* rect);
+struct miqt_array /* of struct miqt_qrect */  QwtPlotLegendItem_legendGeometries(const QwtPlotLegendItem* self, QwtPlotItem* param1);
+void QwtPlotLegendItem_drawLegendData(const QwtPlotLegendItem* self, QPainter* painter, QwtPlotItem* param2, QwtLegendData* param3, struct miqt_qrectf param4);
+void QwtPlotLegendItem_drawBackground(const QwtPlotLegendItem* self, QPainter* param1, struct miqt_qrectf rect);
 
 void QwtPlotLegendItem_delete(QwtPlotLegendItem* self);
 

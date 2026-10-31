@@ -74,7 +74,7 @@ void QPdfWriter_setDocumentXmpMetadata(QPdfWriter* self, struct miqt_string xmpM
 struct miqt_string QPdfWriter_documentXmpMetadata(const QPdfWriter* self);
 void QPdfWriter_addFileAttachment(QPdfWriter* self, struct miqt_string fileName, struct miqt_string data);
 void QPdfWriter_setPageSize(QPdfWriter* self, int size);
-void QPdfWriter_setPageSizeMM(QPdfWriter* self, QSizeF* size);
+void QPdfWriter_setPageSizeMM(QPdfWriter* self, struct miqt_qsizef size);
 void QPdfWriter_setMargins(QPdfWriter* self, QPagedPaintDevice__Margins* m);
 QPaintEngine* QPdfWriter_paintEngine(const QPdfWriter* self);
 int QPdfWriter_metric(const QPdfWriter* self, int id);
@@ -89,7 +89,7 @@ bool QPdfWriter_virtualbase_newPage(void* self);
 bool QPdfWriter_override_virtual_setPageSize(void* self, intptr_t slot);
 void QPdfWriter_virtualbase_setPageSize(void* self, int size);
 bool QPdfWriter_override_virtual_setPageSizeMM(void* self, intptr_t slot);
-void QPdfWriter_virtualbase_setPageSizeMM(void* self, QSizeF* size);
+void QPdfWriter_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size);
 bool QPdfWriter_override_virtual_setMargins(void* self, intptr_t slot);
 void QPdfWriter_virtualbase_setMargins(void* self, QPagedPaintDevice__Margins* m);
 bool QPdfWriter_override_virtual_paintEngine(void* self, intptr_t slot);

@@ -33,14 +33,14 @@ typedef struct QRectF QRectF;
 #endif
 
 QCameraFocusZone* QCameraFocusZone_new();
-QCameraFocusZone* QCameraFocusZone_new2(QRectF* area);
+QCameraFocusZone* QCameraFocusZone_new2(struct miqt_qrectf area);
 QCameraFocusZone* QCameraFocusZone_new3(QCameraFocusZone* other);
-QCameraFocusZone* QCameraFocusZone_new4(QRectF* area, int status);
+QCameraFocusZone* QCameraFocusZone_new4(struct miqt_qrectf area, int status);
 void QCameraFocusZone_operatorAssign(QCameraFocusZone* self, QCameraFocusZone* other);
 bool QCameraFocusZone_operatorEqual(const QCameraFocusZone* self, QCameraFocusZone* other);
 bool QCameraFocusZone_operatorNotEqual(const QCameraFocusZone* self, QCameraFocusZone* other);
 bool QCameraFocusZone_isValid(const QCameraFocusZone* self);
-QRectF* QCameraFocusZone_area(const QCameraFocusZone* self);
+struct miqt_qrectf QCameraFocusZone_area(const QCameraFocusZone* self);
 int QCameraFocusZone_status(const QCameraFocusZone* self);
 void QCameraFocusZone_setStatus(QCameraFocusZone* self, int status);
 
@@ -58,8 +58,8 @@ bool QCameraFocus_isFocusModeSupported(const QCameraFocus* self, int mode);
 int QCameraFocus_focusPointMode(const QCameraFocus* self);
 void QCameraFocus_setFocusPointMode(QCameraFocus* self, int mode);
 bool QCameraFocus_isFocusPointModeSupported(const QCameraFocus* self, int param1);
-QPointF* QCameraFocus_customFocusPoint(const QCameraFocus* self);
-void QCameraFocus_setCustomFocusPoint(QCameraFocus* self, QPointF* point);
+struct miqt_qpointf QCameraFocus_customFocusPoint(const QCameraFocus* self);
+void QCameraFocus_setCustomFocusPoint(QCameraFocus* self, struct miqt_qpointf point);
 struct miqt_array /* of QCameraFocusZone* */  QCameraFocus_focusZones(const QCameraFocus* self);
 double QCameraFocus_maximumOpticalZoom(const QCameraFocus* self);
 double QCameraFocus_maximumDigitalZoom(const QCameraFocus* self);

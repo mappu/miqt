@@ -9,6 +9,7 @@ package qscintilla6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"github.com/mappu/miqt/qt6/printsupport"
 	"runtime"
@@ -74,7 +75,6 @@ func NewQsciPrinter2(mode printsupport.QPrinter__PrinterMode) *QsciPrinter {
 func (this *QsciPrinter) FormatPage(painter *qt6.QPainter, drawing bool, area *qt6.QRect, pagenr int) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(area)
 	C.QsciPrinter_formatPage(this.h, (*C.QPainter)(painter.UnsafePointer()), (C.bool)(drawing), (*C.QRect)(area.UnsafePointer()), (C.int)(pagenr))
 }
 
@@ -127,7 +127,6 @@ func (this *QsciPrinter) SetEngines(printEngine *printsupport.QPrintEngine, pain
 func (this *QsciPrinter) callVirtualBase_FormatPage(painter *qt6.QPainter, drawing bool, area *qt6.QRect, pagenr int) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(area)
 
 	C.QsciPrinter_virtualbase_formatPage(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (C.bool)(drawing), (*C.QRect)(area.UnsafePointer()), (C.int)(pagenr))
 
@@ -479,14 +478,13 @@ func miqt_exec_callback_QsciPrinter_setPageOrientation(self *C.QsciPrinter, cb C
 
 }
 
-func (this *QsciPrinter) callVirtualBase_SetPageMargins(margins *qt6.QMarginsF, units qt6.QPageLayout__Unit) bool {
+func (this *QsciPrinter) callVirtualBase_SetPageMargins(margins qt6.QMarginsF, units qt6.QPageLayout__Unit) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
 
-	return (bool)(C.QsciPrinter_virtualbase_setPageMargins(unsafe.Pointer(this.h), (*C.QMarginsF)(margins.UnsafePointer()), (C.int)(units)))
+	return (bool)(C.QsciPrinter_virtualbase_setPageMargins(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins), (C.int)(units)))
 
 }
-func (this *QsciPrinter) OnSetPageMargins(slot func(super func(margins *qt6.QMarginsF, units qt6.QPageLayout__Unit) bool, margins *qt6.QMarginsF, units qt6.QPageLayout__Unit) bool) {
+func (this *QsciPrinter) OnSetPageMargins(slot func(super func(margins qt6.QMarginsF, units qt6.QPageLayout__Unit) bool, margins qt6.QMarginsF, units qt6.QPageLayout__Unit) bool) {
 	ok := C.QsciPrinter_override_virtual_setPageMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -494,14 +492,14 @@ func (this *QsciPrinter) OnSetPageMargins(slot func(super func(margins *qt6.QMar
 }
 
 //export miqt_exec_callback_QsciPrinter_setPageMargins
-func miqt_exec_callback_QsciPrinter_setPageMargins(self *C.QsciPrinter, cb C.intptr_t, margins *C.QMarginsF, units C.int) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(margins *qt6.QMarginsF, units qt6.QPageLayout__Unit) bool, margins *qt6.QMarginsF, units qt6.QPageLayout__Unit) bool)
+func miqt_exec_callback_QsciPrinter_setPageMargins(self *C.QsciPrinter, cb C.intptr_t, margins C.struct_miqt_qmarginsf, units C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(margins qt6.QMarginsF, units qt6.QPageLayout__Unit) bool, margins qt6.QMarginsF, units qt6.QPageLayout__Unit) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQMarginsF(unsafe.Pointer(margins))
+	slotval1 := libmiqt.ValueCast[qt6.QMarginsF](margins)
 
 	slotval2 := (qt6.QPageLayout__Unit)(units)
 
@@ -569,7 +567,6 @@ func miqt_exec_callback_QsciPrinter_initPainter(self *C.QsciPrinter, cb C.intptr
 
 func (this *QsciPrinter) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciPrinter_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

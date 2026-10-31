@@ -98,12 +98,12 @@ struct miqt_string QWebEngineHistoryModel_tr(const char* s) {
 	return _ms;
 }
 
-int QWebEngineHistoryModel_rowCount(const QWebEngineHistoryModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
+int QWebEngineHistoryModel_rowCount(const QWebEngineHistoryModel* self, struct miqt_qmodelindex parent) {
+	return self->rowCount(miqt_from_cabi<QModelIndex>(parent));
 }
 
-QVariant* QWebEngineHistoryModel_data(const QWebEngineHistoryModel* self, QModelIndex* index, int role) {
-	return new QVariant(self->data(*index, static_cast<int>(role)));
+QVariant* QWebEngineHistoryModel_data(const QWebEngineHistoryModel* self, struct miqt_qmodelindex index, int role) {
+	return new QVariant(self->data(miqt_from_cabi<QModelIndex>(index), static_cast<int>(role)));
 }
 
 struct miqt_map /* of int to struct miqt_string */  QWebEngineHistoryModel_roleNames(const QWebEngineHistoryModel* self) {

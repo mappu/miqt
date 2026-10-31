@@ -43,14 +43,14 @@ bool QCameraFocusControl_isFocusModeSupported(const QCameraFocusControl* self, i
 int QCameraFocusControl_focusPointMode(const QCameraFocusControl* self);
 void QCameraFocusControl_setFocusPointMode(QCameraFocusControl* self, int mode);
 bool QCameraFocusControl_isFocusPointModeSupported(const QCameraFocusControl* self, int mode);
-QPointF* QCameraFocusControl_customFocusPoint(const QCameraFocusControl* self);
-void QCameraFocusControl_setCustomFocusPoint(QCameraFocusControl* self, QPointF* point);
+struct miqt_qpointf QCameraFocusControl_customFocusPoint(const QCameraFocusControl* self);
+void QCameraFocusControl_setCustomFocusPoint(QCameraFocusControl* self, struct miqt_qpointf point);
 struct miqt_array /* of QCameraFocusZone* */  QCameraFocusControl_focusZones(const QCameraFocusControl* self);
 void QCameraFocusControl_focusModeChanged(QCameraFocusControl* self, int mode);
 void QCameraFocusControl_connect_focusModeChanged(QCameraFocusControl* self, intptr_t slot);
 void QCameraFocusControl_focusPointModeChanged(QCameraFocusControl* self, int mode);
 void QCameraFocusControl_connect_focusPointModeChanged(QCameraFocusControl* self, intptr_t slot);
-void QCameraFocusControl_customFocusPointChanged(QCameraFocusControl* self, QPointF* point);
+void QCameraFocusControl_customFocusPointChanged(QCameraFocusControl* self, struct miqt_qpointf point);
 void QCameraFocusControl_connect_customFocusPointChanged(QCameraFocusControl* self, intptr_t slot);
 void QCameraFocusControl_focusZonesChanged(QCameraFocusControl* self);
 void QCameraFocusControl_connect_focusZonesChanged(QCameraFocusControl* self, intptr_t slot);

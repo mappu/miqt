@@ -27,7 +27,7 @@ void QPdfDestination_operatorAssign(QPdfDestination* self, QPdfDestination* othe
 void QPdfDestination_swap(QPdfDestination* self, QPdfDestination* other);
 bool QPdfDestination_isValid(const QPdfDestination* self);
 int QPdfDestination_page(const QPdfDestination* self);
-QPointF* QPdfDestination_location(const QPdfDestination* self);
+struct miqt_qpointf QPdfDestination_location(const QPdfDestination* self);
 double QPdfDestination_zoom(const QPdfDestination* self);
 
 void QPdfDestination_delete(QPdfDestination* self);

@@ -9,6 +9,7 @@ package webkit
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -139,32 +140,24 @@ func (this *QWebSelectData) Multiple() bool {
 	return (bool)(C.QWebSelectData_multiple(this.h))
 }
 
-func (this *QWebSelectData) BackgroundColor() *qt.QColor {
+func (this *QWebSelectData) BackgroundColor() qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_backgroundColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QWebSelectData_backgroundColor(this.h))
 }
 
-func (this *QWebSelectData) ForegroundColor() *qt.QColor {
+func (this *QWebSelectData) ForegroundColor() qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_foregroundColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QWebSelectData_foregroundColor(this.h))
 }
 
-func (this *QWebSelectData) ItemBackgroundColor(index int) *qt.QColor {
+func (this *QWebSelectData) ItemBackgroundColor(index int) qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_itemBackgroundColor(this.h, (C.int)(index))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QWebSelectData_itemBackgroundColor(this.h, (C.int)(index)))
 }
 
-func (this *QWebSelectData) ItemForegroundColor(index int) *qt.QColor {
+func (this *QWebSelectData) ItemForegroundColor(index int) qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_itemForegroundColor(this.h, (C.int)(index))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QWebSelectData_itemForegroundColor(this.h, (C.int)(index)))
 }
 
 func (this *QWebSelectData) OperatorAssign(param1 *QWebSelectData) {
@@ -272,9 +265,8 @@ func (this *QWebSelectMethod) Hide() {
 	C.QWebSelectMethod_hide(this.h)
 }
 
-func (this *QWebSelectMethod) SetGeometry(geometry *qt.QRect) {
-	defer runtime.KeepAlive(geometry)
-	C.QWebSelectMethod_setGeometry(this.h, (*C.QRect)(geometry.UnsafePointer()))
+func (this *QWebSelectMethod) SetGeometry(geometry qt.QRect) {
+	C.QWebSelectMethod_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](geometry))
 }
 
 func (this *QWebSelectMethod) SetFont(font *qt.QFont) {

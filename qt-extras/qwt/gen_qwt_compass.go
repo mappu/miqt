@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -715,14 +716,13 @@ func (this *QwtCompass) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 
-func (this *QwtCompass) callVirtualBase_DrawRose(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup) {
+func (this *QwtCompass) callVirtualBase_DrawRose(param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(center)
 
-	C.QwtCompass_virtualbase_drawRose(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius), (C.double)(north), (C.int)(param5))
+	C.QwtCompass_virtualbase_drawRose(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(radius), (C.double)(north), (C.int)(param5))
 
 }
-func (this *QwtCompass) OnDrawRose(slot func(super func(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup)) {
+func (this *QwtCompass) OnDrawRose(slot func(super func(param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup)) {
 	ok := C.QwtCompass_override_virtual_drawRose(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -730,8 +730,8 @@ func (this *QwtCompass) OnDrawRose(slot func(super func(param1 *qt.QPainter, cen
 }
 
 //export miqt_exec_callback_QwtCompass_drawRose
-func miqt_exec_callback_QwtCompass_drawRose(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPainter, center *C.QPointF, radius C.double, north C.double, param5 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup))
+func miqt_exec_callback_QwtCompass_drawRose(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPainter, center C.struct_miqt_qpointf, radius C.double, north C.double, param5 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -739,7 +739,7 @@ func miqt_exec_callback_QwtCompass_drawRose(self *C.QwtCompass, cb C.intptr_t, p
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(center))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](center)
 
 	slotval3 := (float64)(radius)
 
@@ -751,14 +751,13 @@ func miqt_exec_callback_QwtCompass_drawRose(self *C.QwtCompass, cb C.intptr_t, p
 
 }
 
-func (this *QwtCompass) callVirtualBase_DrawScaleContents(param1 *qt.QPainter, center *qt.QPointF, radius float64) {
+func (this *QwtCompass) callVirtualBase_DrawScaleContents(param1 *qt.QPainter, center qt.QPointF, radius float64) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(center)
 
-	C.QwtCompass_virtualbase_drawScaleContents(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius))
+	C.QwtCompass_virtualbase_drawScaleContents(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(radius))
 
 }
-func (this *QwtCompass) OnDrawScaleContents(slot func(super func(param1 *qt.QPainter, center *qt.QPointF, radius float64), param1 *qt.QPainter, center *qt.QPointF, radius float64)) {
+func (this *QwtCompass) OnDrawScaleContents(slot func(super func(param1 *qt.QPainter, center qt.QPointF, radius float64), param1 *qt.QPainter, center qt.QPointF, radius float64)) {
 	ok := C.QwtCompass_override_virtual_drawScaleContents(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -766,8 +765,8 @@ func (this *QwtCompass) OnDrawScaleContents(slot func(super func(param1 *qt.QPai
 }
 
 //export miqt_exec_callback_QwtCompass_drawScaleContents
-func miqt_exec_callback_QwtCompass_drawScaleContents(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPainter, center *C.QPointF, radius C.double) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, center *qt.QPointF, radius float64), param1 *qt.QPainter, center *qt.QPointF, radius float64))
+func miqt_exec_callback_QwtCompass_drawScaleContents(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPainter, center C.struct_miqt_qpointf, radius C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, center qt.QPointF, radius float64), param1 *qt.QPainter, center qt.QPointF, radius float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -775,7 +774,7 @@ func miqt_exec_callback_QwtCompass_drawScaleContents(self *C.QwtCompass, cb C.in
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(center))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](center)
 
 	slotval3 := (float64)(radius)
 
@@ -836,14 +835,12 @@ func miqt_exec_callback_QwtCompass_setOrigin(self *C.QwtCompass, cb C.intptr_t, 
 
 }
 
-func (this *QwtCompass) callVirtualBase_ScaleInnerRect() *qt.QRect {
+func (this *QwtCompass) callVirtualBase_ScaleInnerRect() qt.QRect {
 
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtCompass_virtualbase_scaleInnerRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtCompass_virtualbase_scaleInnerRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtCompass) OnScaleInnerRect(slot func(super func() *qt.QRect) *qt.QRect) {
+func (this *QwtCompass) OnScaleInnerRect(slot func(super func() qt.QRect) qt.QRect) {
 	ok := C.QwtCompass_override_virtual_scaleInnerRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -851,27 +848,24 @@ func (this *QwtCompass) OnScaleInnerRect(slot func(super func() *qt.QRect) *qt.Q
 }
 
 //export miqt_exec_callback_QwtCompass_scaleInnerRect
-func miqt_exec_callback_QwtCompass_scaleInnerRect(self *C.QwtCompass, cb C.intptr_t) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRect) *qt.QRect)
+func miqt_exec_callback_QwtCompass_scaleInnerRect(self *C.QwtCompass, cb C.intptr_t) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRect) qt.QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtCompass{h: self}).callVirtualBase_ScaleInnerRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtCompass_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtCompass) callVirtualBase_SizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCompass_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
-func (this *QwtCompass) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtCompass) callVirtualBase_SizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtCompass_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtCompass) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtCompass_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -879,27 +873,24 @@ func (this *QwtCompass) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) 
 }
 
 //export miqt_exec_callback_QwtCompass_sizeHint
-func miqt_exec_callback_QwtCompass_sizeHint(self *C.QwtCompass, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtCompass_sizeHint(self *C.QwtCompass, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtCompass{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtCompass_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtCompass) callVirtualBase_MinimumSizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCompass_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QwtCompass) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtCompass) callVirtualBase_MinimumSizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtCompass_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtCompass) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtCompass_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -907,16 +898,15 @@ func (this *QwtCompass) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.
 }
 
 //export miqt_exec_callback_QwtCompass_minimumSizeHint
-func miqt_exec_callback_QwtCompass_minimumSizeHint(self *C.QwtCompass, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtCompass_minimumSizeHint(self *C.QwtCompass, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtCompass{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtCompass_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1082,14 +1072,13 @@ func miqt_exec_callback_QwtCompass_drawFocusIndicator(self *C.QwtCompass, cb C.i
 
 }
 
-func (this *QwtCompass) callVirtualBase_DrawScale(param1 *qt.QPainter, center *qt.QPointF, radius float64) {
+func (this *QwtCompass) callVirtualBase_DrawScale(param1 *qt.QPainter, center qt.QPointF, radius float64) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(center)
 
-	C.QwtCompass_virtualbase_drawScale(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius))
+	C.QwtCompass_virtualbase_drawScale(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(radius))
 
 }
-func (this *QwtCompass) OnDrawScale(slot func(super func(param1 *qt.QPainter, center *qt.QPointF, radius float64), param1 *qt.QPainter, center *qt.QPointF, radius float64)) {
+func (this *QwtCompass) OnDrawScale(slot func(super func(param1 *qt.QPainter, center qt.QPointF, radius float64), param1 *qt.QPainter, center qt.QPointF, radius float64)) {
 	ok := C.QwtCompass_override_virtual_drawScale(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1097,8 +1086,8 @@ func (this *QwtCompass) OnDrawScale(slot func(super func(param1 *qt.QPainter, ce
 }
 
 //export miqt_exec_callback_QwtCompass_drawScale
-func miqt_exec_callback_QwtCompass_drawScale(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPainter, center *C.QPointF, radius C.double) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, center *qt.QPointF, radius float64), param1 *qt.QPainter, center *qt.QPointF, radius float64))
+func miqt_exec_callback_QwtCompass_drawScale(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPainter, center C.struct_miqt_qpointf, radius C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, center qt.QPointF, radius float64), param1 *qt.QPainter, center qt.QPointF, radius float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1106,7 +1095,7 @@ func miqt_exec_callback_QwtCompass_drawScale(self *C.QwtCompass, cb C.intptr_t, 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(center))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](center)
 
 	slotval3 := (float64)(radius)
 
@@ -1114,14 +1103,13 @@ func miqt_exec_callback_QwtCompass_drawScale(self *C.QwtCompass, cb C.intptr_t, 
 
 }
 
-func (this *QwtCompass) callVirtualBase_DrawNeedle(param1 *qt.QPainter, param2 *qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup) {
+func (this *QwtCompass) callVirtualBase_DrawNeedle(param1 *qt.QPainter, param2 qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
-	C.QwtCompass_virtualbase_drawNeedle(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.double)(radius), (C.double)(direction), (C.int)(param5))
+	C.QwtCompass_virtualbase_drawNeedle(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](param2), (C.double)(radius), (C.double)(direction), (C.int)(param5))
 
 }
-func (this *QwtCompass) OnDrawNeedle(slot func(super func(param1 *qt.QPainter, param2 *qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, param2 *qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup)) {
+func (this *QwtCompass) OnDrawNeedle(slot func(super func(param1 *qt.QPainter, param2 qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, param2 qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup)) {
 	ok := C.QwtCompass_override_virtual_drawNeedle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1129,8 +1117,8 @@ func (this *QwtCompass) OnDrawNeedle(slot func(super func(param1 *qt.QPainter, p
 }
 
 //export miqt_exec_callback_QwtCompass_drawNeedle
-func miqt_exec_callback_QwtCompass_drawNeedle(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPainter, param2 *C.QPointF, radius C.double, direction C.double, param5 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 *qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, param2 *qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup))
+func miqt_exec_callback_QwtCompass_drawNeedle(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPainter, param2 C.struct_miqt_qpointf, radius C.double, direction C.double, param5 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, param2 qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1138,7 +1126,7 @@ func miqt_exec_callback_QwtCompass_drawNeedle(self *C.QwtCompass, cb C.intptr_t,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(param2))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](param2)
 
 	slotval3 := (float64)(radius)
 
@@ -1150,13 +1138,12 @@ func miqt_exec_callback_QwtCompass_drawNeedle(self *C.QwtCompass, cb C.intptr_t,
 
 }
 
-func (this *QwtCompass) callVirtualBase_ScrolledTo(param1 *qt.QPoint) float64 {
-	defer runtime.KeepAlive(param1)
+func (this *QwtCompass) callVirtualBase_ScrolledTo(param1 qt.QPoint) float64 {
 
-	return (float64)(C.QwtCompass_virtualbase_scrolledTo(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
+	return (float64)(C.QwtCompass_virtualbase_scrolledTo(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 
 }
-func (this *QwtCompass) OnScrolledTo(slot func(super func(param1 *qt.QPoint) float64, param1 *qt.QPoint) float64) {
+func (this *QwtCompass) OnScrolledTo(slot func(super func(param1 qt.QPoint) float64, param1 qt.QPoint) float64) {
 	ok := C.QwtCompass_override_virtual_scrolledTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1164,14 +1151,14 @@ func (this *QwtCompass) OnScrolledTo(slot func(super func(param1 *qt.QPoint) flo
 }
 
 //export miqt_exec_callback_QwtCompass_scrolledTo
-func miqt_exec_callback_QwtCompass_scrolledTo(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPoint) C.double {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint) float64, param1 *qt.QPoint) float64)
+func miqt_exec_callback_QwtCompass_scrolledTo(self *C.QwtCompass, cb C.intptr_t, param1 C.struct_miqt_qpoint) C.double {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint) float64, param1 qt.QPoint) float64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	virtualReturn := gofunc((&QwtCompass{h: self}).callVirtualBase_ScrolledTo, slotval1)
 
@@ -1179,13 +1166,12 @@ func miqt_exec_callback_QwtCompass_scrolledTo(self *C.QwtCompass, cb C.intptr_t,
 
 }
 
-func (this *QwtCompass) callVirtualBase_IsScrollPosition(param1 *qt.QPoint) bool {
-	defer runtime.KeepAlive(param1)
+func (this *QwtCompass) callVirtualBase_IsScrollPosition(param1 qt.QPoint) bool {
 
-	return (bool)(C.QwtCompass_virtualbase_isScrollPosition(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
+	return (bool)(C.QwtCompass_virtualbase_isScrollPosition(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 
 }
-func (this *QwtCompass) OnIsScrollPosition(slot func(super func(param1 *qt.QPoint) bool, param1 *qt.QPoint) bool) {
+func (this *QwtCompass) OnIsScrollPosition(slot func(super func(param1 qt.QPoint) bool, param1 qt.QPoint) bool) {
 	ok := C.QwtCompass_override_virtual_isScrollPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1193,14 +1179,14 @@ func (this *QwtCompass) OnIsScrollPosition(slot func(super func(param1 *qt.QPoin
 }
 
 //export miqt_exec_callback_QwtCompass_isScrollPosition
-func miqt_exec_callback_QwtCompass_isScrollPosition(self *C.QwtCompass, cb C.intptr_t, param1 *C.QPoint) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint) bool, param1 *qt.QPoint) bool)
+func miqt_exec_callback_QwtCompass_isScrollPosition(self *C.QwtCompass, cb C.intptr_t, param1 C.struct_miqt_qpoint) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint) bool, param1 qt.QPoint) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	virtualReturn := gofunc((&QwtCompass{h: self}).callVirtualBase_IsScrollPosition, slotval1)
 
@@ -2077,7 +2063,6 @@ func miqt_exec_callback_QwtCompass_initPainter(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtCompass_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

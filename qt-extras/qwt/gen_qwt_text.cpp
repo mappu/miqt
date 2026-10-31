@@ -93,16 +93,16 @@ int QwtText_renderFlags(const QwtText* self) {
 	return self->renderFlags();
 }
 
-void QwtText_setColor(QwtText* self, QColor* color) {
-	self->setColor(*color);
+void QwtText_setColor(QwtText* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QwtText_color(const QwtText* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QwtText_color(const QwtText* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-QColor* QwtText_usedColor(const QwtText* self, QColor* param1) {
-	return new QColor(self->usedColor(*param1));
+struct miqt_qcolor QwtText_usedColor(const QwtText* self, struct miqt_qcolor param1) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->usedColor(miqt_from_cabi<QColor>(param1)));
 }
 
 void QwtText_setBorderRadius(QwtText* self, double borderRadius) {
@@ -149,12 +149,12 @@ double QwtText_heightForWidth(const QwtText* self, double width) {
 	return self->heightForWidth(static_cast<double>(width));
 }
 
-QSizeF* QwtText_textSize(const QwtText* self) {
-	return new QSizeF(self->textSize());
+struct miqt_qsizef QwtText_textSize(const QwtText* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->textSize());
 }
 
-void QwtText_draw(const QwtText* self, QPainter* painter, QRectF* rect) {
-	self->draw(painter, *rect);
+void QwtText_draw(const QwtText* self, QPainter* painter, struct miqt_qrectf rect) {
+	self->draw(painter, miqt_from_cabi<QRectF>(rect));
 }
 
 QwtTextEngine* QwtText_textEngine(struct miqt_string text) {
@@ -187,8 +187,8 @@ double QwtText_heightForWidth2(const QwtText* self, double width, QFont* param2)
 	return self->heightForWidth(static_cast<double>(width), *param2);
 }
 
-QSizeF* QwtText_textSizeWithQFont(const QwtText* self, QFont* param1) {
-	return new QSizeF(self->textSize(*param1));
+struct miqt_qsizef QwtText_textSizeWithQFont(const QwtText* self, QFont* param1) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->textSize(*param1));
 }
 
 QwtTextEngine* QwtText_textEngine2(struct miqt_string text, int param2) {

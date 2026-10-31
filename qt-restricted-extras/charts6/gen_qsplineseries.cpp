@@ -24,8 +24,8 @@ extern "C" {
 int miqt_exec_callback_QSplineSeries_type(const QSplineSeries*, intptr_t);
 void miqt_exec_callback_QSplineSeries_setPen(QSplineSeries*, intptr_t, QPen*);
 void miqt_exec_callback_QSplineSeries_setBrush(QSplineSeries*, intptr_t, QBrush*);
-void miqt_exec_callback_QSplineSeries_setColor(QSplineSeries*, intptr_t, QColor*);
-QColor* miqt_exec_callback_QSplineSeries_color(const QSplineSeries*, intptr_t);
+void miqt_exec_callback_QSplineSeries_setColor(QSplineSeries*, intptr_t, struct miqt_qcolor);
+struct miqt_qcolor miqt_exec_callback_QSplineSeries_color(const QSplineSeries*, intptr_t);
 bool miqt_exec_callback_QSplineSeries_event(QSplineSeries*, intptr_t, QEvent*);
 bool miqt_exec_callback_QSplineSeries_eventFilter(QSplineSeries*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QSplineSeries_timerEvent(QSplineSeries*, intptr_t, QTimerEvent*);
@@ -108,14 +108,12 @@ public:
 			return;
 		}
 
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QSplineSeries_setColor(this, handle__setColor, sigval1);
 
 	}
 
-	friend void QSplineSeries_virtualbase_setColor(void* self, QColor* color);
+	friend void QSplineSeries_virtualbase_setColor(void* self, struct miqt_qcolor color);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__color = 0;
@@ -126,13 +124,11 @@ public:
 			return QSplineSeries::color();
 		}
 
-		QColor* callback_return_value = miqt_exec_callback_QSplineSeries_color(this, handle__color);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QSplineSeries_color(this, handle__color);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QSplineSeries_virtualbase_color(const void* self);
+	friend struct miqt_qcolor QSplineSeries_virtualbase_color(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -374,8 +370,8 @@ bool QSplineSeries_override_virtual_setColor(void* self, intptr_t slot) {
 	return true;
 }
 
-void QSplineSeries_virtualbase_setColor(void* self, QColor* color) {
-	static_cast<MiqtVirtualQSplineSeries*>(self)->QSplineSeries::setColor(*color);
+void QSplineSeries_virtualbase_setColor(void* self, struct miqt_qcolor color) {
+	static_cast<MiqtVirtualQSplineSeries*>(self)->QSplineSeries::setColor(miqt_from_cabi<QColor>(color));
 }
 
 bool QSplineSeries_override_virtual_color(void* self, intptr_t slot) {
@@ -388,8 +384,8 @@ bool QSplineSeries_override_virtual_color(void* self, intptr_t slot) {
 	return true;
 }
 
-QColor* QSplineSeries_virtualbase_color(const void* self) {
-	return new QColor(static_cast<const MiqtVirtualQSplineSeries*>(self)->QSplineSeries::color());
+struct miqt_qcolor QSplineSeries_virtualbase_color(const void* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQSplineSeries*>(self)->QSplineSeries::color());
 }
 
 bool QSplineSeries_override_virtual_event(void* self, intptr_t slot) {
@@ -488,10 +484,6 @@ bool QSplineSeries_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QSplineSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSplineSeries*>(self)->QSplineSeries::disconnectNotify(*signal);
-}
-
-QColor* QSplineSeries_virtualreturncopy_QColor(QColor* src) {
-	return new QColor(*src);
 }
 
 QObject* QSplineSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

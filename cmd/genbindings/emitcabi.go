@@ -97,6 +97,9 @@ func (p CppParameter) RenderTypeCabi() string {
 	} else if inner1, inner2, ok := p.QPairOf(); ok {
 		return "struct miqt_map " + cppComment("tuple of "+inner1.RenderTypeCabi()+" and "+inner2.RenderTypeCabi())
 
+	} else if p.isValueStruct() {
+		return valueStructCabiName(p.ParameterType)
+
 	} else if (p.Pointer || p.ByRef) && p.QtClassType() {
 		if p.PointerCount > 1 {
 			return cabiClassName(p.ParameterType) + strings.Repeat("*", p.PointerCount)
@@ -341,7 +344,7 @@ func emitCABI2CppFreeReturnKeysValues(kType, vType CppParameter, varname, length
 // isValueClassType reports whether p is a Qt class passed by value, which the
 // CABI carries as a pointer to a heap copy.
 func (p CppParameter) isValueClassType() bool {
-	if p.Pointer || p.ByRef || p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
+	if p.Pointer || p.ByRef || p.ParameterType == "QString" || p.ParameterType == "QByteArray" || p.isValueStruct() {
 		return false
 	}
 	_, ok := KnownClassnames[p.ParameterType]
@@ -497,6 +500,9 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 		preamble += indent + nameprefix + "_QPair.second = " + addFwdV + ";\n"
 
 		return preamble, nameprefix + "_QPair"
+
+	} else if p.isValueStruct() {
+		return preamble, "miqt_from_cabi<" + p.ParameterType + ">(" + p.cParameterName() + ")"
 
 	} else if p.IsFlagType() || p.IntType() || p.IsKnownEnum() {
 		castSrc := p.cParameterName()
@@ -717,6 +723,9 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
+	} else if p.isValueStruct() {
+		return indent + assignExpression + "miqt_to_cabi<" + valueStructCabiName(p.ParameterType) + ">(" + rvalue + ");\n"
+
 	} else if p.QtClassType() && p.ByRef {
 		// It's a pointer in disguise, just needs one cast
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
@@ -791,7 +800,10 @@ func getCppZeroValue(p CppParameter) string {
 func getCabiZeroValue(p CppParameter) string {
 	// n.b. Identical to getCppZeroValue in most cases
 
-	if p.Pointer && !(p.ParameterType == "QString") {
+	if p.isValueStruct() {
+		return "(" + valueStructCabiName(p.ParameterType) + "){}"
+
+	} else if p.Pointer && !(p.ParameterType == "QString") {
 		return getCppZeroValue(p)
 
 	} else if ev, ok := KnownEnums[p.ParameterType]; ok {
@@ -1004,7 +1016,7 @@ extern "C" {
 		protectedMethods := c.ProtectedMethods()
 
 		for i, ctor := range c.Ctors {
-			ret.WriteString(fmt.Sprintf("%s* %s(%s);\n", className, cabiNewName(c, i), emitParametersCabiConstructor(&c, &ctor)))
+			ret.WriteString(fmt.Sprintf("%s %s(%s);\n", ctorReturnTypeCabi(c), cabiNewName(c, i), emitParametersCabiConstructor(&c, &ctor)))
 		}
 
 		if len(c.DirectInheritClassInfo()) > 0 {
@@ -1025,12 +1037,12 @@ extern "C" {
 			if m.ReturnType.BecomesConstInVersion != nil {
 				ret.WriteString(fmt.Sprintf("// This method's return type was changed from non-const to const in Qt "+*m.ReturnType.BecomesConstInVersion) + "\n" +
 					"#if QT_VERSION >= QT_VERSION_CHECK(" + strings.Replace(*m.ReturnType.BecomesConstInVersion, `.`, `,`, -1) + ",0)\n" +
-					fmt.Sprintf("%s %s(%s);\n", "const "+m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")) +
+					fmt.Sprintf("%s %s(%s);\n", "const "+m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitMethodParametersCabi(c, m)) +
 					"#else\n" +
-					fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")) +
+					fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitMethodParametersCabi(c, m)) +
 					"#endif\n")
 			} else {
-				ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")))
+				ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitMethodParametersCabi(c, m)))
 			}
 
 			if m.IsSignal {
@@ -1068,7 +1080,7 @@ extern "C" {
 			ret.WriteString("\n")
 		}
 
-		if c.CanDelete {
+		if c.CanDelete && !isValueStructClass(c.ClassName) {
 			ret.WriteString(fmt.Sprintf("void %s(%s* self);\n", cabiDeleteName(c), className))
 		}
 
@@ -1083,6 +1095,14 @@ extern "C" {
 #endif
 `)
 	return ret.String(), nil
+}
+
+// ctorReturnTypeCabi is the CABI return type of the constructors of class c.
+func ctorReturnTypeCabi(c CppClass) string {
+	if isValueStructClass(c.ClassName) {
+		return valueStructCabiName(c.ClassName)
+	}
+	return cabiClassName(c.ClassName) + "*"
 }
 
 func emitParametersCabiConstructor(c *CppClass, ctor *CppMethod) string {
@@ -1356,7 +1376,7 @@ extern "C" {
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters, "\t")
 
 			ret.WriteString(
-				className + "* " + cabiNewName(c, i) + "(" + emitParametersCabi(ctor, "") + ") {\n",
+				ctorReturnTypeCabi(c) + " " + cabiNewName(c, i) + "(" + emitParametersCabi(ctor, "") + ") {\n",
 			)
 
 			if ctor.RequireCpp != nil {
@@ -1365,17 +1385,24 @@ extern "C" {
 				)
 			}
 
-			ret.WriteString(
-				preamble +
-					"\treturn new (std::nothrow) " +
-					ifv(len(virtualMethods) > 0, cppSubclassName(c), c.ClassName) +
-					"(" + forwarding + ");\n",
-			)
+			if isValueStructClass(c.ClassName) {
+				ret.WriteString(
+					preamble +
+						"\treturn miqt_to_cabi<" + valueStructCabiName(c.ClassName) + ">(" + c.ClassName + "(" + forwarding + "));\n",
+				)
+			} else {
+				ret.WriteString(
+					preamble +
+						"\treturn new (std::nothrow) " +
+						ifv(len(virtualMethods) > 0, cppSubclassName(c), c.ClassName) +
+						"(" + forwarding + ");\n",
+				)
+			}
 
 			if ctor.RequireCpp != nil {
 				ret.WriteString(
 					"#else\n" +
-						"\treturn nullptr;\n" +
+						"\treturn " + ifv(isValueStructClass(c.ClassName), "("+valueStructCabiName(c.ClassName)+"){}", "nullptr") + ";\n" +
 						"#endif\n",
 				)
 			}
@@ -1420,6 +1447,7 @@ extern "C" {
 			// Need to take an extra 'self' parameter
 
 			preamble, forwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t")
+			preamble = emitValueStructSelf(c, m) + preamble
 
 			// callTarget is an rvalue representing the full C++ function call.
 			callTarget := "self->"
@@ -1456,7 +1484,7 @@ extern "C" {
 						"#endif\n"+
 						"}\n"+
 						"\n",
-					m.ReturnType.RenderTypeCabi(), className, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
+					m.ReturnType.RenderTypeCabi(), className, m.SafeMethodName(), emitMethodParametersCabi(c, m),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
 					unavailableRetn,
@@ -1467,7 +1495,7 @@ extern "C" {
 				nonConstCallTarget := "const_cast<" + c.ClassName + "*>(self)->" + m.CppCallTarget() + "(" + forwarding + ")"
 
 				ret.WriteString("" +
-					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
+					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitMethodParametersCabi(c, m) + ") {\n" +
 					preamble + "\n" +
 					"// This method was changed from const to non-const in Qt " + *m.BecomesNonConstInVersion + "\n" +
 					"#if QT_VERSION < QT_VERSION_CHECK(" + strings.Replace(*m.BecomesNonConstInVersion, `.`, `,`, -1) + ",0)\n" +
@@ -1484,9 +1512,9 @@ extern "C" {
 				ret.WriteString("" +
 					"// This method's return type was changed from non-const to const in Qt " + *m.ReturnType.BecomesConstInVersion + "\n" +
 					"#if QT_VERSION >= QT_VERSION_CHECK(" + strings.Replace(*m.ReturnType.BecomesConstInVersion, `.`, `,`, -1) + ",0)\n" +
-					"const " + m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
+					"const " + m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitMethodParametersCabi(c, m) + ") {\n" +
 					"#else\n" +
-					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
+					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitMethodParametersCabi(c, m) + ") {\n" +
 					"#endif\n" +
 					preamble + "\n" +
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget) +
@@ -1496,7 +1524,7 @@ extern "C" {
 			} else {
 
 				if m.IsVariable {
-					ret.WriteString(m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n")
+					ret.WriteString(m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitMethodParametersCabi(c, m) + ") {\n")
 					if strings.HasPrefix(m.MethodName, "set") {
 						ret.WriteString(preamble + "\tself->" + m.VariableFieldName + " = " + forwarding + ";\n}\n\n")
 					} else {
@@ -1511,7 +1539,7 @@ extern "C" {
 						"%s"+
 						"}\n"+
 						"\n",
-					m.ReturnType.RenderTypeCabi(), className, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
+					m.ReturnType.RenderTypeCabi(), className, m.SafeMethodName(), emitMethodParametersCabi(c, m),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
 				))
@@ -1694,7 +1722,7 @@ extern "C" {
 		// Delete
 		// If we subclassed, our class destructor is always virtual. Therefore
 		// we can delete from the self ptr without any dynamic_cast<>
-		if c.CanDelete {
+		if c.CanDelete && !isValueStructClass(c.ClassName) {
 			ret.WriteString(
 				"void " + cabiDeleteName(c) + "(" + className + "* self) {\n" +
 					"\tdelete self;\n" +

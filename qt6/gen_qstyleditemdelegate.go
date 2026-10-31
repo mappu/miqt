@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -89,41 +90,33 @@ func QStyledItemDelegate_Tr(s string) string {
 	return _ret
 }
 
-func (this *QStyledItemDelegate) Paint(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex) {
+func (this *QStyledItemDelegate) Paint(painter *QPainter, option *QStyleOptionViewItem, index QModelIndex) {
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
-	C.QStyledItemDelegate_paint(this.h, painter.cPointer(), option.cPointer(), index.cPointer())
+	C.QStyledItemDelegate_paint(this.h, painter.cPointer(), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
-func (this *QStyledItemDelegate) SizeHint(option *QStyleOptionViewItem, index *QModelIndex) *QSize {
+func (this *QStyledItemDelegate) SizeHint(option *QStyleOptionViewItem, index QModelIndex) QSize {
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
-	_goptr := newQSize(C.QStyledItemDelegate_sizeHint(this.h, option.cPointer(), index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QStyledItemDelegate_sizeHint(this.h, option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QStyledItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
+func (this *QStyledItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index QModelIndex) *QWidget {
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
-	return newQWidget(C.QStyledItemDelegate_createEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer()))
+	return newQWidget(C.QStyledItemDelegate_createEditor(this.h, parent.cPointer(), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QStyledItemDelegate) SetEditorData(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QStyledItemDelegate_setEditorData(this.h, editor.cPointer(), index.cPointer())
+func (this *QStyledItemDelegate) SetEditorData(editor *QWidget, index QModelIndex) {
+	C.QStyledItemDelegate_setEditorData(this.h, editor.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
-func (this *QStyledItemDelegate) SetModelData(editor *QWidget, model *QAbstractItemModel, index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QStyledItemDelegate_setModelData(this.h, editor.cPointer(), model.cPointer(), index.cPointer())
+func (this *QStyledItemDelegate) SetModelData(editor *QWidget, model *QAbstractItemModel, index QModelIndex) {
+	C.QStyledItemDelegate_setModelData(this.h, editor.cPointer(), model.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
-func (this *QStyledItemDelegate) UpdateEditorGeometry(editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex) {
+func (this *QStyledItemDelegate) UpdateEditorGeometry(editor *QWidget, option *QStyleOptionViewItem, index QModelIndex) {
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
-	C.QStyledItemDelegate_updateEditorGeometry(this.h, editor.cPointer(), option.cPointer(), index.cPointer())
+	C.QStyledItemDelegate_updateEditorGeometry(this.h, editor.cPointer(), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QStyledItemDelegate) ItemEditorFactory() *QItemEditorFactory {
@@ -225,15 +218,14 @@ func (this *QStyledItemDelegate) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_Paint(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex) {
+func (this *QStyledItemDelegate) callVirtualBase_Paint(painter *QPainter, option *QStyleOptionViewItem, index QModelIndex) {
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
 
-	C.QStyledItemDelegate_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), index.cPointer())
+	C.QStyledItemDelegate_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QStyledItemDelegate) OnPaint(slot func(super func(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex), painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex)) {
+func (this *QStyledItemDelegate) OnPaint(slot func(super func(painter *QPainter, option *QStyleOptionViewItem, index QModelIndex), painter *QPainter, option *QStyleOptionViewItem, index QModelIndex)) {
 	ok := C.QStyledItemDelegate_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -241,8 +233,8 @@ func (this *QStyledItemDelegate) OnPaint(slot func(super func(painter *QPainter,
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_paint
-func miqt_exec_callback_QStyledItemDelegate_paint(self *C.QStyledItemDelegate, cb C.intptr_t, painter *C.QPainter, option *C.QStyleOptionViewItem, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex), painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex))
+func miqt_exec_callback_QStyledItemDelegate_paint(self *C.QStyledItemDelegate, cb C.intptr_t, painter *C.QPainter, option *C.QStyleOptionViewItem, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, option *QStyleOptionViewItem, index QModelIndex), painter *QPainter, option *QStyleOptionViewItem, index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -252,22 +244,19 @@ func miqt_exec_callback_QStyledItemDelegate_paint(self *C.QStyledItemDelegate, c
 
 	slotval2 := newQStyleOptionViewItem(option)
 
-	slotval3 := newQModelIndex(index)
+	slotval3 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_SizeHint(option *QStyleOptionViewItem, index *QModelIndex) *QSize {
+func (this *QStyledItemDelegate) callVirtualBase_SizeHint(option *QStyleOptionViewItem, index QModelIndex) QSize {
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
 
-	_goptr := newQSize(C.QStyledItemDelegate_virtualbase_sizeHint(unsafe.Pointer(this.h), option.cPointer(), index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QStyledItemDelegate_virtualbase_sizeHint(unsafe.Pointer(this.h), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QStyledItemDelegate) OnSizeHint(slot func(super func(option *QStyleOptionViewItem, index *QModelIndex) *QSize, option *QStyleOptionViewItem, index *QModelIndex) *QSize) {
+func (this *QStyledItemDelegate) OnSizeHint(slot func(super func(option *QStyleOptionViewItem, index QModelIndex) QSize, option *QStyleOptionViewItem, index QModelIndex) QSize) {
 	ok := C.QStyledItemDelegate_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -275,8 +264,8 @@ func (this *QStyledItemDelegate) OnSizeHint(slot func(super func(option *QStyleO
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_sizeHint
-func miqt_exec_callback_QStyledItemDelegate_sizeHint(self *C.QStyledItemDelegate, cb C.intptr_t, option *C.QStyleOptionViewItem, index *C.QModelIndex) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionViewItem, index *QModelIndex) *QSize, option *QStyleOptionViewItem, index *QModelIndex) *QSize)
+func miqt_exec_callback_QStyledItemDelegate_sizeHint(self *C.QStyledItemDelegate, cb C.intptr_t, option *C.QStyleOptionViewItem, index C.struct_miqt_qmodelindex) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionViewItem, index QModelIndex) QSize, option *QStyleOptionViewItem, index QModelIndex) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -284,23 +273,21 @@ func miqt_exec_callback_QStyledItemDelegate_sizeHint(self *C.QStyledItemDelegate
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQStyleOptionViewItem(option)
 
-	slotval2 := newQModelIndex(index)
+	slotval2 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QStyledItemDelegate_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
+func (this *QStyledItemDelegate) callVirtualBase_CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index QModelIndex) *QWidget {
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
 
-	return newQWidget(C.QStyledItemDelegate_virtualbase_createEditor(unsafe.Pointer(this.h), parent.cPointer(), option.cPointer(), index.cPointer()))
+	return newQWidget(C.QStyledItemDelegate_virtualbase_createEditor(unsafe.Pointer(this.h), parent.cPointer(), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QStyledItemDelegate) OnCreateEditor(slot func(super func(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget, parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget) {
+func (this *QStyledItemDelegate) OnCreateEditor(slot func(super func(parent *QWidget, option *QStyleOptionViewItem, index QModelIndex) *QWidget, parent *QWidget, option *QStyleOptionViewItem, index QModelIndex) *QWidget) {
 	ok := C.QStyledItemDelegate_override_virtual_createEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -308,8 +295,8 @@ func (this *QStyledItemDelegate) OnCreateEditor(slot func(super func(parent *QWi
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_createEditor
-func miqt_exec_callback_QStyledItemDelegate_createEditor(self *C.QStyledItemDelegate, cb C.intptr_t, parent *C.QWidget, option *C.QStyleOptionViewItem, index *C.QModelIndex) *C.QWidget {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget, parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget)
+func miqt_exec_callback_QStyledItemDelegate_createEditor(self *C.QStyledItemDelegate, cb C.intptr_t, parent *C.QWidget, option *C.QStyleOptionViewItem, index C.struct_miqt_qmodelindex) *C.QWidget {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QWidget, option *QStyleOptionViewItem, index QModelIndex) *QWidget, parent *QWidget, option *QStyleOptionViewItem, index QModelIndex) *QWidget)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -319,7 +306,7 @@ func miqt_exec_callback_QStyledItemDelegate_createEditor(self *C.QStyledItemDele
 
 	slotval2 := newQStyleOptionViewItem(option)
 
-	slotval3 := newQModelIndex(index)
+	slotval3 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2, slotval3)
 
@@ -327,13 +314,12 @@ func miqt_exec_callback_QStyledItemDelegate_createEditor(self *C.QStyledItemDele
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_SetEditorData(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(index)
+func (this *QStyledItemDelegate) callVirtualBase_SetEditorData(editor *QWidget, index QModelIndex) {
 
-	C.QStyledItemDelegate_virtualbase_setEditorData(unsafe.Pointer(this.h), editor.cPointer(), index.cPointer())
+	C.QStyledItemDelegate_virtualbase_setEditorData(unsafe.Pointer(this.h), editor.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QStyledItemDelegate) OnSetEditorData(slot func(super func(editor *QWidget, index *QModelIndex), editor *QWidget, index *QModelIndex)) {
+func (this *QStyledItemDelegate) OnSetEditorData(slot func(super func(editor *QWidget, index QModelIndex), editor *QWidget, index QModelIndex)) {
 	ok := C.QStyledItemDelegate_override_virtual_setEditorData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -341,8 +327,8 @@ func (this *QStyledItemDelegate) OnSetEditorData(slot func(super func(editor *QW
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_setEditorData
-func miqt_exec_callback_QStyledItemDelegate_setEditorData(self *C.QStyledItemDelegate, cb C.intptr_t, editor *C.QWidget, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget, index *QModelIndex), editor *QWidget, index *QModelIndex))
+func miqt_exec_callback_QStyledItemDelegate_setEditorData(self *C.QStyledItemDelegate, cb C.intptr_t, editor *C.QWidget, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget, index QModelIndex), editor *QWidget, index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -350,19 +336,18 @@ func miqt_exec_callback_QStyledItemDelegate_setEditorData(self *C.QStyledItemDel
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQWidget(editor)
 
-	slotval2 := newQModelIndex(index)
+	slotval2 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_SetEditorData, slotval1, slotval2)
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_SetModelData(editor *QWidget, model *QAbstractItemModel, index *QModelIndex) {
-	defer runtime.KeepAlive(index)
+func (this *QStyledItemDelegate) callVirtualBase_SetModelData(editor *QWidget, model *QAbstractItemModel, index QModelIndex) {
 
-	C.QStyledItemDelegate_virtualbase_setModelData(unsafe.Pointer(this.h), editor.cPointer(), model.cPointer(), index.cPointer())
+	C.QStyledItemDelegate_virtualbase_setModelData(unsafe.Pointer(this.h), editor.cPointer(), model.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QStyledItemDelegate) OnSetModelData(slot func(super func(editor *QWidget, model *QAbstractItemModel, index *QModelIndex), editor *QWidget, model *QAbstractItemModel, index *QModelIndex)) {
+func (this *QStyledItemDelegate) OnSetModelData(slot func(super func(editor *QWidget, model *QAbstractItemModel, index QModelIndex), editor *QWidget, model *QAbstractItemModel, index QModelIndex)) {
 	ok := C.QStyledItemDelegate_override_virtual_setModelData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -370,8 +355,8 @@ func (this *QStyledItemDelegate) OnSetModelData(slot func(super func(editor *QWi
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_setModelData
-func miqt_exec_callback_QStyledItemDelegate_setModelData(self *C.QStyledItemDelegate, cb C.intptr_t, editor *C.QWidget, model *C.QAbstractItemModel, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget, model *QAbstractItemModel, index *QModelIndex), editor *QWidget, model *QAbstractItemModel, index *QModelIndex))
+func miqt_exec_callback_QStyledItemDelegate_setModelData(self *C.QStyledItemDelegate, cb C.intptr_t, editor *C.QWidget, model *C.QAbstractItemModel, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget, model *QAbstractItemModel, index QModelIndex), editor *QWidget, model *QAbstractItemModel, index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -381,20 +366,19 @@ func miqt_exec_callback_QStyledItemDelegate_setModelData(self *C.QStyledItemDele
 
 	slotval2 := newQAbstractItemModel(model)
 
-	slotval3 := newQModelIndex(index)
+	slotval3 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_SetModelData, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_UpdateEditorGeometry(editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex) {
+func (this *QStyledItemDelegate) callVirtualBase_UpdateEditorGeometry(editor *QWidget, option *QStyleOptionViewItem, index QModelIndex) {
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
 
-	C.QStyledItemDelegate_virtualbase_updateEditorGeometry(unsafe.Pointer(this.h), editor.cPointer(), option.cPointer(), index.cPointer())
+	C.QStyledItemDelegate_virtualbase_updateEditorGeometry(unsafe.Pointer(this.h), editor.cPointer(), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QStyledItemDelegate) OnUpdateEditorGeometry(slot func(super func(editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex), editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex)) {
+func (this *QStyledItemDelegate) OnUpdateEditorGeometry(slot func(super func(editor *QWidget, option *QStyleOptionViewItem, index QModelIndex), editor *QWidget, option *QStyleOptionViewItem, index QModelIndex)) {
 	ok := C.QStyledItemDelegate_override_virtual_updateEditorGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -402,8 +386,8 @@ func (this *QStyledItemDelegate) OnUpdateEditorGeometry(slot func(super func(edi
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_updateEditorGeometry
-func miqt_exec_callback_QStyledItemDelegate_updateEditorGeometry(self *C.QStyledItemDelegate, cb C.intptr_t, editor *C.QWidget, option *C.QStyleOptionViewItem, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex), editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex))
+func miqt_exec_callback_QStyledItemDelegate_updateEditorGeometry(self *C.QStyledItemDelegate, cb C.intptr_t, editor *C.QWidget, option *C.QStyleOptionViewItem, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget, option *QStyleOptionViewItem, index QModelIndex), editor *QWidget, option *QStyleOptionViewItem, index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -413,7 +397,7 @@ func miqt_exec_callback_QStyledItemDelegate_updateEditorGeometry(self *C.QStyled
 
 	slotval2 := newQStyleOptionViewItem(option)
 
-	slotval3 := newQModelIndex(index)
+	slotval3 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_UpdateEditorGeometry, slotval1, slotval2, slotval3)
 
@@ -456,14 +440,13 @@ func miqt_exec_callback_QStyledItemDelegate_displayText(self *C.QStyledItemDeleg
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_InitStyleOption(option *QStyleOptionViewItem, index *QModelIndex) {
+func (this *QStyledItemDelegate) callVirtualBase_InitStyleOption(option *QStyleOptionViewItem, index QModelIndex) {
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
 
-	C.QStyledItemDelegate_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer(), index.cPointer())
+	C.QStyledItemDelegate_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QStyledItemDelegate) OnInitStyleOption(slot func(super func(option *QStyleOptionViewItem, index *QModelIndex), option *QStyleOptionViewItem, index *QModelIndex)) {
+func (this *QStyledItemDelegate) OnInitStyleOption(slot func(super func(option *QStyleOptionViewItem, index QModelIndex), option *QStyleOptionViewItem, index QModelIndex)) {
 	ok := C.QStyledItemDelegate_override_virtual_initStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -471,8 +454,8 @@ func (this *QStyledItemDelegate) OnInitStyleOption(slot func(super func(option *
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_initStyleOption
-func miqt_exec_callback_QStyledItemDelegate_initStyleOption(self *C.QStyledItemDelegate, cb C.intptr_t, option *C.QStyleOptionViewItem, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionViewItem, index *QModelIndex), option *QStyleOptionViewItem, index *QModelIndex))
+func miqt_exec_callback_QStyledItemDelegate_initStyleOption(self *C.QStyledItemDelegate, cb C.intptr_t, option *C.QStyleOptionViewItem, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionViewItem, index QModelIndex), option *QStyleOptionViewItem, index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -480,7 +463,7 @@ func miqt_exec_callback_QStyledItemDelegate_initStyleOption(self *C.QStyledItemD
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQStyleOptionViewItem(option)
 
-	slotval2 := newQModelIndex(index)
+	slotval2 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_InitStyleOption, slotval1, slotval2)
 
@@ -517,15 +500,14 @@ func miqt_exec_callback_QStyledItemDelegate_eventFilter(self *C.QStyledItemDeleg
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_EditorEvent(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool {
+func (this *QStyledItemDelegate) callVirtualBase_EditorEvent(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index QModelIndex) bool {
 	defer runtime.KeepAlive(event)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
 
-	return (bool)(C.QStyledItemDelegate_virtualbase_editorEvent(unsafe.Pointer(this.h), event.cPointer(), model.cPointer(), option.cPointer(), index.cPointer()))
+	return (bool)(C.QStyledItemDelegate_virtualbase_editorEvent(unsafe.Pointer(this.h), event.cPointer(), model.cPointer(), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QStyledItemDelegate) OnEditorEvent(slot func(super func(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool, event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool) {
+func (this *QStyledItemDelegate) OnEditorEvent(slot func(super func(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index QModelIndex) bool, event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index QModelIndex) bool) {
 	ok := C.QStyledItemDelegate_override_virtual_editorEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -533,8 +515,8 @@ func (this *QStyledItemDelegate) OnEditorEvent(slot func(super func(event *QEven
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_editorEvent
-func miqt_exec_callback_QStyledItemDelegate_editorEvent(self *C.QStyledItemDelegate, cb C.intptr_t, event *C.QEvent, model *C.QAbstractItemModel, option *C.QStyleOptionViewItem, index *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool, event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool)
+func miqt_exec_callback_QStyledItemDelegate_editorEvent(self *C.QStyledItemDelegate, cb C.intptr_t, event *C.QEvent, model *C.QAbstractItemModel, option *C.QStyleOptionViewItem, index C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index QModelIndex) bool, event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -546,7 +528,7 @@ func miqt_exec_callback_QStyledItemDelegate_editorEvent(self *C.QStyledItemDeleg
 
 	slotval3 := newQStyleOptionViewItem(option)
 
-	slotval4 := newQModelIndex(index)
+	slotval4 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_EditorEvent, slotval1, slotval2, slotval3, slotval4)
 
@@ -554,13 +536,12 @@ func miqt_exec_callback_QStyledItemDelegate_editorEvent(self *C.QStyledItemDeleg
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_DestroyEditor(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(index)
+func (this *QStyledItemDelegate) callVirtualBase_DestroyEditor(editor *QWidget, index QModelIndex) {
 
-	C.QStyledItemDelegate_virtualbase_destroyEditor(unsafe.Pointer(this.h), editor.cPointer(), index.cPointer())
+	C.QStyledItemDelegate_virtualbase_destroyEditor(unsafe.Pointer(this.h), editor.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QStyledItemDelegate) OnDestroyEditor(slot func(super func(editor *QWidget, index *QModelIndex), editor *QWidget, index *QModelIndex)) {
+func (this *QStyledItemDelegate) OnDestroyEditor(slot func(super func(editor *QWidget, index QModelIndex), editor *QWidget, index QModelIndex)) {
 	ok := C.QStyledItemDelegate_override_virtual_destroyEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -568,8 +549,8 @@ func (this *QStyledItemDelegate) OnDestroyEditor(slot func(super func(editor *QW
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_destroyEditor
-func miqt_exec_callback_QStyledItemDelegate_destroyEditor(self *C.QStyledItemDelegate, cb C.intptr_t, editor *C.QWidget, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget, index *QModelIndex), editor *QWidget, index *QModelIndex))
+func miqt_exec_callback_QStyledItemDelegate_destroyEditor(self *C.QStyledItemDelegate, cb C.intptr_t, editor *C.QWidget, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget, index QModelIndex), editor *QWidget, index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -577,21 +558,20 @@ func miqt_exec_callback_QStyledItemDelegate_destroyEditor(self *C.QStyledItemDel
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQWidget(editor)
 
-	slotval2 := newQModelIndex(index)
+	slotval2 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_DestroyEditor, slotval1, slotval2)
 
 }
 
-func (this *QStyledItemDelegate) callVirtualBase_HelpEvent(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool {
+func (this *QStyledItemDelegate) callVirtualBase_HelpEvent(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index QModelIndex) bool {
 	defer runtime.KeepAlive(event)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(index)
 
-	return (bool)(C.QStyledItemDelegate_virtualbase_helpEvent(unsafe.Pointer(this.h), event.cPointer(), view.cPointer(), option.cPointer(), index.cPointer()))
+	return (bool)(C.QStyledItemDelegate_virtualbase_helpEvent(unsafe.Pointer(this.h), event.cPointer(), view.cPointer(), option.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QStyledItemDelegate) OnHelpEvent(slot func(super func(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool, event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool) {
+func (this *QStyledItemDelegate) OnHelpEvent(slot func(super func(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index QModelIndex) bool, event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index QModelIndex) bool) {
 	ok := C.QStyledItemDelegate_override_virtual_helpEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -599,8 +579,8 @@ func (this *QStyledItemDelegate) OnHelpEvent(slot func(super func(event *QHelpEv
 }
 
 //export miqt_exec_callback_QStyledItemDelegate_helpEvent
-func miqt_exec_callback_QStyledItemDelegate_helpEvent(self *C.QStyledItemDelegate, cb C.intptr_t, event *C.QHelpEvent, view *C.QAbstractItemView, option *C.QStyleOptionViewItem, index *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool, event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool)
+func miqt_exec_callback_QStyledItemDelegate_helpEvent(self *C.QStyledItemDelegate, cb C.intptr_t, event *C.QHelpEvent, view *C.QAbstractItemView, option *C.QStyleOptionViewItem, index C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index QModelIndex) bool, event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -612,7 +592,7 @@ func miqt_exec_callback_QStyledItemDelegate_helpEvent(self *C.QStyledItemDelegat
 
 	slotval3 := newQStyleOptionViewItem(option)
 
-	slotval4 := newQModelIndex(index)
+	slotval4 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_HelpEvent, slotval1, slotval2, slotval3, slotval4)
 

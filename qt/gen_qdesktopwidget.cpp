@@ -49,8 +49,8 @@ void miqt_exec_callback_QDesktopWidget_primaryScreenChanged(intptr_t);
 void miqt_exec_callback_QDesktopWidget_resizeEvent(QDesktopWidget*, intptr_t, QResizeEvent*);
 int miqt_exec_callback_QDesktopWidget_devType(const QDesktopWidget*, intptr_t);
 void miqt_exec_callback_QDesktopWidget_setVisible(QDesktopWidget*, intptr_t, bool);
-QSize* miqt_exec_callback_QDesktopWidget_sizeHint(const QDesktopWidget*, intptr_t);
-QSize* miqt_exec_callback_QDesktopWidget_minimumSizeHint(const QDesktopWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDesktopWidget_sizeHint(const QDesktopWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDesktopWidget_minimumSizeHint(const QDesktopWidget*, intptr_t);
 int miqt_exec_callback_QDesktopWidget_heightForWidth(const QDesktopWidget*, intptr_t, int);
 bool miqt_exec_callback_QDesktopWidget_hasHeightForWidth(const QDesktopWidget*, intptr_t);
 QPaintEngine* miqt_exec_callback_QDesktopWidget_paintEngine(const QDesktopWidget*, intptr_t);
@@ -162,13 +162,11 @@ public:
 			return QDesktopWidget::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDesktopWidget_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDesktopWidget_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDesktopWidget_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDesktopWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -179,13 +177,11 @@ public:
 			return QDesktopWidget::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDesktopWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDesktopWidget_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDesktopWidget_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDesktopWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -957,12 +953,12 @@ int QDesktopWidget_screenNumber(const QDesktopWidget* self) {
 	return self->screenNumber();
 }
 
-QRect* QDesktopWidget_screenGeometry(const QDesktopWidget* self, QWidget* widget) {
-	return new QRect(self->screenGeometry(widget));
+struct miqt_qrect QDesktopWidget_screenGeometry(const QDesktopWidget* self, QWidget* widget) {
+	return miqt_to_cabi<struct miqt_qrect>(self->screenGeometry(widget));
 }
 
-QRect* QDesktopWidget_availableGeometry(const QDesktopWidget* self, QWidget* widget) {
-	return new QRect(self->availableGeometry(widget));
+struct miqt_qrect QDesktopWidget_availableGeometry(const QDesktopWidget* self, QWidget* widget) {
+	return miqt_to_cabi<struct miqt_qrect>(self->availableGeometry(widget));
 }
 
 bool QDesktopWidget_isVirtualDesktop(const QDesktopWidget* self) {
@@ -981,28 +977,28 @@ int QDesktopWidget_primaryScreen(const QDesktopWidget* self) {
 	return self->primaryScreen();
 }
 
-int QDesktopWidget_screenNumberWithQPoint(const QDesktopWidget* self, QPoint* param1) {
-	return self->screenNumber(*param1);
+int QDesktopWidget_screenNumberWithQPoint(const QDesktopWidget* self, struct miqt_qpoint param1) {
+	return self->screenNumber(miqt_from_cabi<QPoint>(param1));
 }
 
 QWidget* QDesktopWidget_screen(QDesktopWidget* self) {
 	return self->screen();
 }
 
-QRect* QDesktopWidget_screenGeometry2(const QDesktopWidget* self) {
-	return new QRect(self->screenGeometry());
+struct miqt_qrect QDesktopWidget_screenGeometry2(const QDesktopWidget* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->screenGeometry());
 }
 
-QRect* QDesktopWidget_screenGeometryWithPoint(const QDesktopWidget* self, QPoint* point) {
-	return new QRect(self->screenGeometry(*point));
+struct miqt_qrect QDesktopWidget_screenGeometryWithPoint(const QDesktopWidget* self, struct miqt_qpoint point) {
+	return miqt_to_cabi<struct miqt_qrect>(self->screenGeometry(miqt_from_cabi<QPoint>(point)));
 }
 
-QRect* QDesktopWidget_availableGeometry2(const QDesktopWidget* self) {
-	return new QRect(self->availableGeometry());
+struct miqt_qrect QDesktopWidget_availableGeometry2(const QDesktopWidget* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->availableGeometry());
 }
 
-QRect* QDesktopWidget_availableGeometryWithPoint(const QDesktopWidget* self, QPoint* point) {
-	return new QRect(self->availableGeometry(*point));
+struct miqt_qrect QDesktopWidget_availableGeometryWithPoint(const QDesktopWidget* self, struct miqt_qpoint point) {
+	return miqt_to_cabi<struct miqt_qrect>(self->availableGeometry(miqt_from_cabi<QPoint>(point)));
 }
 
 void QDesktopWidget_resized(QDesktopWidget* self, int param1) {
@@ -1100,12 +1096,12 @@ QWidget* QDesktopWidget_screenWithScreen(QDesktopWidget* self, int screen) {
 	return self->screen(static_cast<int>(screen));
 }
 
-QRect* QDesktopWidget_screenGeometryWithScreen(const QDesktopWidget* self, int screen) {
-	return new QRect(self->screenGeometry(static_cast<int>(screen)));
+struct miqt_qrect QDesktopWidget_screenGeometryWithScreen(const QDesktopWidget* self, int screen) {
+	return miqt_to_cabi<struct miqt_qrect>(self->screenGeometry(static_cast<int>(screen)));
 }
 
-QRect* QDesktopWidget_availableGeometryWithScreen(const QDesktopWidget* self, int screen) {
-	return new QRect(self->availableGeometry(static_cast<int>(screen)));
+struct miqt_qrect QDesktopWidget_availableGeometryWithScreen(const QDesktopWidget* self, int screen) {
+	return miqt_to_cabi<struct miqt_qrect>(self->availableGeometry(static_cast<int>(screen)));
 }
 
 bool QDesktopWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1160,8 +1156,8 @@ bool QDesktopWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDesktopWidget_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDesktopWidget*>(self)->QDesktopWidget::sizeHint());
+struct miqt_qsize QDesktopWidget_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDesktopWidget*>(self)->QDesktopWidget::sizeHint());
 }
 
 bool QDesktopWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1174,8 +1170,8 @@ bool QDesktopWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QDesktopWidget_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDesktopWidget*>(self)->QDesktopWidget::minimumSizeHint());
+struct miqt_qsize QDesktopWidget_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDesktopWidget*>(self)->QDesktopWidget::minimumSizeHint());
 }
 
 bool QDesktopWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1765,10 +1761,6 @@ bool QDesktopWidget_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QDesktopWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDesktopWidget*>(self)->QDesktopWidget::disconnectNotify(*signal);
-}
-
-QSize* QDesktopWidget_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QDesktopWidget_virtualreturncopy_QVariant(QVariant* src) {

@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"github.com/mappu/miqt/qt/network"
 	"runtime"
@@ -249,17 +250,14 @@ func (this *QMediaResource) SetVideoBitRate(rate int) {
 	C.QMediaResource_setVideoBitRate(this.h, (C.int)(rate))
 }
 
-func (this *QMediaResource) Resolution() *qt.QSize {
+func (this *QMediaResource) Resolution() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QMediaResource_resolution(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QMediaResource_resolution(this.h))
 }
 
-func (this *QMediaResource) SetResolution(resolution *qt.QSize) {
+func (this *QMediaResource) SetResolution(resolution qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(resolution)
-	C.QMediaResource_setResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
+	C.QMediaResource_setResolution(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](resolution))
 }
 
 func (this *QMediaResource) SetResolution2(width int, height int) {

@@ -49,8 +49,8 @@ void miqt_exec_callback_QInputDialog_intValueChanged(intptr_t, int);
 void miqt_exec_callback_QInputDialog_intValueSelected(intptr_t, int);
 void miqt_exec_callback_QInputDialog_doubleValueChanged(intptr_t, double);
 void miqt_exec_callback_QInputDialog_doubleValueSelected(intptr_t, double);
-QSize* miqt_exec_callback_QInputDialog_minimumSizeHint(const QInputDialog*, intptr_t);
-QSize* miqt_exec_callback_QInputDialog_sizeHint(const QInputDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QInputDialog_minimumSizeHint(const QInputDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QInputDialog_sizeHint(const QInputDialog*, intptr_t);
 void miqt_exec_callback_QInputDialog_setVisible(QInputDialog*, intptr_t, bool);
 void miqt_exec_callback_QInputDialog_done(QInputDialog*, intptr_t, int);
 void miqt_exec_callback_QInputDialog_open(QInputDialog*, intptr_t);
@@ -123,13 +123,11 @@ public:
 			return QInputDialog::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QInputDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QInputDialog_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QInputDialog_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QInputDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -140,13 +138,11 @@ public:
 			return QInputDialog::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QInputDialog_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QInputDialog_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QInputDialog_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QInputDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -1262,12 +1258,12 @@ struct miqt_string QInputDialog_cancelButtonText(const QInputDialog* self) {
 	return _ms;
 }
 
-QSize* QInputDialog_minimumSizeHint(const QInputDialog* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QInputDialog_minimumSizeHint(const QInputDialog* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
-QSize* QInputDialog_sizeHint(const QInputDialog* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QInputDialog_sizeHint(const QInputDialog* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QInputDialog_setVisible(QInputDialog* self, bool visible) {
@@ -1787,8 +1783,8 @@ bool QInputDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QInputDialog_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQInputDialog*>(self)->QInputDialog::minimumSizeHint());
+struct miqt_qsize QInputDialog_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQInputDialog*>(self)->QInputDialog::minimumSizeHint());
 }
 
 bool QInputDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1801,8 +1797,8 @@ bool QInputDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QInputDialog_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQInputDialog*>(self)->QInputDialog::sizeHint());
+struct miqt_qsize QInputDialog_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQInputDialog*>(self)->QInputDialog::sizeHint());
 }
 
 bool QInputDialog_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -2504,10 +2500,6 @@ bool QInputDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QInputDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQInputDialog*>(self)->QInputDialog::disconnectNotify(*signal);
-}
-
-QSize* QInputDialog_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QInputDialog_virtualreturncopy_QVariant(QVariant* src) {

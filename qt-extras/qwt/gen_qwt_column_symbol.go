@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -85,11 +86,9 @@ func NewQwtColumnRect() *QwtColumnRect {
 	return newQwtColumnRect(C.QwtColumnRect_new())
 }
 
-func (this *QwtColumnRect) ToRect() *qt.QRectF {
+func (this *QwtColumnRect) ToRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtColumnRect_toRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtColumnRect_toRect(this.h))
 }
 
 func (this *QwtColumnRect) Orientation() qt.Orientation {

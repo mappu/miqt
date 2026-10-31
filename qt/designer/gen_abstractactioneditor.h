@@ -117,9 +117,9 @@ int QDesignerActionEditorInterface_virtualbase_devType(const void* self);
 bool QDesignerActionEditorInterface_override_virtual_setVisible(void* self, intptr_t slot);
 void QDesignerActionEditorInterface_virtualbase_setVisible(void* self, bool visible);
 bool QDesignerActionEditorInterface_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QDesignerActionEditorInterface_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QDesignerActionEditorInterface_virtualbase_sizeHint(const void* self);
 bool QDesignerActionEditorInterface_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QDesignerActionEditorInterface_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QDesignerActionEditorInterface_virtualbase_minimumSizeHint(const void* self);
 bool QDesignerActionEditorInterface_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QDesignerActionEditorInterface_virtualbase_heightForWidth(const void* self, int param1);
 bool QDesignerActionEditorInterface_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -206,7 +206,6 @@ bool QDesignerActionEditorInterface_override_virtual_connectNotify(void* self, i
 void QDesignerActionEditorInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesignerActionEditorInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesignerActionEditorInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QDesignerActionEditorInterface_virtualreturncopy_QSize(QSize* src);
 QVariant* QDesignerActionEditorInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerActionEditorInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

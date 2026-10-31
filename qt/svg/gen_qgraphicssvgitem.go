@@ -9,6 +9,7 @@ package svg
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -157,21 +158,16 @@ func (this *QGraphicsSvgItem) IsCachingEnabled() bool {
 	return (bool)(C.QGraphicsSvgItem_isCachingEnabled(this.h))
 }
 
-func (this *QGraphicsSvgItem) SetMaximumCacheSize(size *qt.QSize) {
-	defer runtime.KeepAlive(size)
-	C.QGraphicsSvgItem_setMaximumCacheSize(this.h, (*C.QSize)(size.UnsafePointer()))
+func (this *QGraphicsSvgItem) SetMaximumCacheSize(size qt.QSize) {
+	C.QGraphicsSvgItem_setMaximumCacheSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QGraphicsSvgItem) MaximumCacheSize() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QGraphicsSvgItem_maximumCacheSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsSvgItem) MaximumCacheSize() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QGraphicsSvgItem_maximumCacheSize(this.h))
 }
 
-func (this *QGraphicsSvgItem) BoundingRect() *qt.QRectF {
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsSvgItem_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsSvgItem) BoundingRect() qt.QRectF {
+	return libmiqt.ValueCast[qt.QRectF](C.QGraphicsSvgItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsSvgItem) Paint(painter *qt.QPainter, option *qt.QStyleOptionGraphicsItem, widget *qt.QWidget) {
@@ -335,14 +331,12 @@ func (this *QGraphicsSvgItem) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsSvgItem) callVirtualBase_BoundingRect() *qt.QRectF {
+func (this *QGraphicsSvgItem) callVirtualBase_BoundingRect() qt.QRectF {
 
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsSvgItem_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QGraphicsSvgItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsSvgItem) OnBoundingRect(slot func(super func() *qt.QRectF) *qt.QRectF) {
+func (this *QGraphicsSvgItem) OnBoundingRect(slot func(super func() qt.QRectF) qt.QRectF) {
 	ok := C.QGraphicsSvgItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -350,16 +344,15 @@ func (this *QGraphicsSvgItem) OnBoundingRect(slot func(super func() *qt.QRectF) 
 }
 
 //export miqt_exec_callback_QGraphicsSvgItem_boundingRect
-func miqt_exec_callback_QGraphicsSvgItem_boundingRect(self *C.QGraphicsSvgItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRectF) *qt.QRectF)
+func miqt_exec_callback_QGraphicsSvgItem_boundingRect(self *C.QGraphicsSvgItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRectF) qt.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsSvgItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsSvgItem_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -669,13 +662,12 @@ func miqt_exec_callback_QGraphicsSvgItem_shape(self *C.QGraphicsSvgItem, cb C.in
 
 }
 
-func (this *QGraphicsSvgItem) callVirtualBase_Contains(point *qt.QPointF) bool {
-	defer runtime.KeepAlive(point)
+func (this *QGraphicsSvgItem) callVirtualBase_Contains(point qt.QPointF) bool {
 
-	return (bool)(C.QGraphicsSvgItem_virtualbase_contains(unsafe.Pointer(this.h), (*C.QPointF)(point.UnsafePointer())))
+	return (bool)(C.QGraphicsSvgItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsSvgItem) OnContains(slot func(super func(point *qt.QPointF) bool, point *qt.QPointF) bool) {
+func (this *QGraphicsSvgItem) OnContains(slot func(super func(point qt.QPointF) bool, point qt.QPointF) bool) {
 	ok := C.QGraphicsSvgItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -683,14 +675,14 @@ func (this *QGraphicsSvgItem) OnContains(slot func(super func(point *qt.QPointF)
 }
 
 //export miqt_exec_callback_QGraphicsSvgItem_contains
-func miqt_exec_callback_QGraphicsSvgItem_contains(self *C.QGraphicsSvgItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *qt.QPointF) bool, point *qt.QPointF) bool)
+func miqt_exec_callback_QGraphicsSvgItem_contains(self *C.QGraphicsSvgItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point qt.QPointF) bool, point qt.QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsSvgItem{h: self}).callVirtualBase_Contains, slotval1)
 

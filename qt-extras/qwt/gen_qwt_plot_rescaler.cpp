@@ -15,9 +15,9 @@ extern "C" {
 
 bool miqt_exec_callback_QwtPlotRescaler_eventFilter(QwtPlotRescaler*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QwtPlotRescaler_canvasResizeEvent(QwtPlotRescaler*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QwtPlotRescaler_rescale2(const QwtPlotRescaler*, intptr_t, QSize*, QSize*);
-QwtInterval* miqt_exec_callback_QwtPlotRescaler_expandScale(const QwtPlotRescaler*, intptr_t, int, QSize*, QSize*);
-QwtInterval* miqt_exec_callback_QwtPlotRescaler_syncScale(const QwtPlotRescaler*, intptr_t, int, QwtInterval*, QSize*);
+void miqt_exec_callback_QwtPlotRescaler_rescale2(const QwtPlotRescaler*, intptr_t, struct miqt_qsize, struct miqt_qsize);
+QwtInterval* miqt_exec_callback_QwtPlotRescaler_expandScale(const QwtPlotRescaler*, intptr_t, int, struct miqt_qsize, struct miqt_qsize);
+QwtInterval* miqt_exec_callback_QwtPlotRescaler_syncScale(const QwtPlotRescaler*, intptr_t, int, QwtInterval*, struct miqt_qsize);
 void miqt_exec_callback_QwtPlotRescaler_updateScales(const QwtPlotRescaler*, intptr_t, QwtInterval*);
 bool miqt_exec_callback_QwtPlotRescaler_event(QwtPlotRescaler*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPlotRescaler_timerEvent(QwtPlotRescaler*, intptr_t, QTimerEvent*);
@@ -82,17 +82,13 @@ public:
 			return;
 		}
 
-		const QSize& oldSize_ret = oldSize;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&oldSize_ret);
-		const QSize& newSize_ret = newSize;
-		// Cast returned reference into pointer
-		QSize* sigval2 = const_cast<QSize*>(&newSize_ret);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(oldSize);
+		struct miqt_qsize sigval2 = miqt_to_cabi<struct miqt_qsize>(newSize);
 		miqt_exec_callback_QwtPlotRescaler_rescale2(this, handle__rescale2, sigval1, sigval2);
 
 	}
 
-	friend void QwtPlotRescaler_virtualbase_rescale2(const void* self, QSize* oldSize, QSize* newSize);
+	friend void QwtPlotRescaler_virtualbase_rescale2(const void* self, struct miqt_qsize oldSize, struct miqt_qsize newSize);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__expandScale = 0;
@@ -104,19 +100,15 @@ public:
 		}
 
 		int sigval1 = axis;
-		const QSize& oldSize_ret = oldSize;
-		// Cast returned reference into pointer
-		QSize* sigval2 = const_cast<QSize*>(&oldSize_ret);
-		const QSize& newSize_ret = newSize;
-		// Cast returned reference into pointer
-		QSize* sigval3 = const_cast<QSize*>(&newSize_ret);
+		struct miqt_qsize sigval2 = miqt_to_cabi<struct miqt_qsize>(oldSize);
+		struct miqt_qsize sigval3 = miqt_to_cabi<struct miqt_qsize>(newSize);
 		QwtInterval* callback_return_value = miqt_exec_callback_QwtPlotRescaler_expandScale(this, handle__expandScale, sigval1, sigval2, sigval3);
 		QwtInterval callback_return_value_ret = *callback_return_value;
 		delete callback_return_value;
 		return callback_return_value_ret;
 	}
 
-	friend QwtInterval* QwtPlotRescaler_virtualbase_expandScale(const void* self, int axis, QSize* oldSize, QSize* newSize);
+	friend QwtInterval* QwtPlotRescaler_virtualbase_expandScale(const void* self, int axis, struct miqt_qsize oldSize, struct miqt_qsize newSize);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__syncScale = 0;
@@ -131,16 +123,14 @@ public:
 		const QwtInterval& reference_ret = reference;
 		// Cast returned reference into pointer
 		QwtInterval* sigval2 = const_cast<QwtInterval*>(&reference_ret);
-		const QSize& size_ret = size;
-		// Cast returned reference into pointer
-		QSize* sigval3 = const_cast<QSize*>(&size_ret);
+		struct miqt_qsize sigval3 = miqt_to_cabi<struct miqt_qsize>(size);
 		QwtInterval* callback_return_value = miqt_exec_callback_QwtPlotRescaler_syncScale(this, handle__syncScale, sigval1, sigval2, sigval3);
 		QwtInterval callback_return_value_ret = *callback_return_value;
 		delete callback_return_value;
 		return callback_return_value_ret;
 	}
 
-	friend QwtInterval* QwtPlotRescaler_virtualbase_syncScale(const void* self, int axis, QwtInterval* reference, QSize* size);
+	friend QwtInterval* QwtPlotRescaler_virtualbase_syncScale(const void* self, int axis, QwtInterval* reference, struct miqt_qsize size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateScales = 0;
@@ -410,8 +400,8 @@ bool QwtPlotRescaler_override_virtual_rescale2(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotRescaler_virtualbase_rescale2(const void* self, QSize* oldSize, QSize* newSize) {
-	static_cast<const MiqtVirtualQwtPlotRescaler*>(self)->QwtPlotRescaler::rescale(*oldSize, *newSize);
+void QwtPlotRescaler_virtualbase_rescale2(const void* self, struct miqt_qsize oldSize, struct miqt_qsize newSize) {
+	static_cast<const MiqtVirtualQwtPlotRescaler*>(self)->QwtPlotRescaler::rescale(miqt_from_cabi<QSize>(oldSize), miqt_from_cabi<QSize>(newSize));
 }
 
 bool QwtPlotRescaler_override_virtual_expandScale(void* self, intptr_t slot) {
@@ -424,8 +414,8 @@ bool QwtPlotRescaler_override_virtual_expandScale(void* self, intptr_t slot) {
 	return true;
 }
 
-QwtInterval* QwtPlotRescaler_virtualbase_expandScale(const void* self, int axis, QSize* oldSize, QSize* newSize) {
-	return new QwtInterval(static_cast<const MiqtVirtualQwtPlotRescaler*>(self)->QwtPlotRescaler::expandScale(static_cast<int>(axis), *oldSize, *newSize));
+QwtInterval* QwtPlotRescaler_virtualbase_expandScale(const void* self, int axis, struct miqt_qsize oldSize, struct miqt_qsize newSize) {
+	return new QwtInterval(static_cast<const MiqtVirtualQwtPlotRescaler*>(self)->QwtPlotRescaler::expandScale(static_cast<int>(axis), miqt_from_cabi<QSize>(oldSize), miqt_from_cabi<QSize>(newSize)));
 }
 
 bool QwtPlotRescaler_override_virtual_syncScale(void* self, intptr_t slot) {
@@ -438,8 +428,8 @@ bool QwtPlotRescaler_override_virtual_syncScale(void* self, intptr_t slot) {
 	return true;
 }
 
-QwtInterval* QwtPlotRescaler_virtualbase_syncScale(const void* self, int axis, QwtInterval* reference, QSize* size) {
-	return new QwtInterval(static_cast<const MiqtVirtualQwtPlotRescaler*>(self)->QwtPlotRescaler::syncScale(static_cast<int>(axis), *reference, *size));
+QwtInterval* QwtPlotRescaler_virtualbase_syncScale(const void* self, int axis, QwtInterval* reference, struct miqt_qsize size) {
+	return new QwtInterval(static_cast<const MiqtVirtualQwtPlotRescaler*>(self)->QwtPlotRescaler::syncScale(static_cast<int>(axis), *reference, miqt_from_cabi<QSize>(size)));
 }
 
 bool QwtPlotRescaler_override_virtual_updateScales(void* self, intptr_t slot) {

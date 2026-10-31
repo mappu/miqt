@@ -44,8 +44,8 @@ QRegion* miqt_exec_callback_QwtWidgetOverlay_maskHint(const QwtWidgetOverlay*, i
 void miqt_exec_callback_QwtWidgetOverlay_drawOverlay(const QwtWidgetOverlay*, intptr_t, QPainter*);
 int miqt_exec_callback_QwtWidgetOverlay_devType(const QwtWidgetOverlay*, intptr_t);
 void miqt_exec_callback_QwtWidgetOverlay_setVisible(QwtWidgetOverlay*, intptr_t, bool);
-QSize* miqt_exec_callback_QwtWidgetOverlay_sizeHint(const QwtWidgetOverlay*, intptr_t);
-QSize* miqt_exec_callback_QwtWidgetOverlay_minimumSizeHint(const QwtWidgetOverlay*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtWidgetOverlay_sizeHint(const QwtWidgetOverlay*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtWidgetOverlay_minimumSizeHint(const QwtWidgetOverlay*, intptr_t);
 int miqt_exec_callback_QwtWidgetOverlay_heightForWidth(const QwtWidgetOverlay*, intptr_t, int);
 bool miqt_exec_callback_QwtWidgetOverlay_hasHeightForWidth(const QwtWidgetOverlay*, intptr_t);
 QPaintEngine* miqt_exec_callback_QwtWidgetOverlay_paintEngine(const QwtWidgetOverlay*, intptr_t);
@@ -220,13 +220,11 @@ public:
 			return QwtWidgetOverlay::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtWidgetOverlay_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtWidgetOverlay_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtWidgetOverlay_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtWidgetOverlay_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -237,13 +235,11 @@ public:
 			return QwtWidgetOverlay::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtWidgetOverlay_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtWidgetOverlay_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtWidgetOverlay_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtWidgetOverlay_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1077,8 +1073,8 @@ bool QwtWidgetOverlay_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtWidgetOverlay_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtWidgetOverlay*>(self)->QwtWidgetOverlay::sizeHint());
+struct miqt_qsize QwtWidgetOverlay_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtWidgetOverlay*>(self)->QwtWidgetOverlay::sizeHint());
 }
 
 bool QwtWidgetOverlay_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1091,8 +1087,8 @@ bool QwtWidgetOverlay_override_virtual_minimumSizeHint(void* self, intptr_t slot
 	return true;
 }
 
-QSize* QwtWidgetOverlay_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtWidgetOverlay*>(self)->QwtWidgetOverlay::minimumSizeHint());
+struct miqt_qsize QwtWidgetOverlay_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtWidgetOverlay*>(self)->QwtWidgetOverlay::minimumSizeHint());
 }
 
 bool QwtWidgetOverlay_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1658,10 +1654,6 @@ void QwtWidgetOverlay_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 
 QRegion* QwtWidgetOverlay_virtualreturncopy_QRegion(QRegion* src) {
 	return new QRegion(*src);
-}
-
-QSize* QwtWidgetOverlay_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtWidgetOverlay_virtualreturncopy_QVariant(QVariant* src) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -139,17 +140,14 @@ func (this *QPicture) SaveWithFileName(fileName string) bool {
 	return (bool)(C.QPicture_saveWithFileName(this.h, fileName_ms))
 }
 
-func (this *QPicture) BoundingRect() *QRect {
+func (this *QPicture) BoundingRect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QPicture_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPicture_boundingRect(this.h))
 }
 
-func (this *QPicture) SetBoundingRect(r *QRect) {
+func (this *QPicture) SetBoundingRect(r QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QPicture_setBoundingRect(this.h, r.cPointer())
+	C.QPicture_setBoundingRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r))
 }
 
 func (this *QPicture) OperatorAssign(p *QPicture) {
@@ -420,7 +418,6 @@ func miqt_exec_callback_QPicture_initPainter(self *C.QPicture, cb C.intptr_t, pa
 
 func (this *QPicture) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPicture_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

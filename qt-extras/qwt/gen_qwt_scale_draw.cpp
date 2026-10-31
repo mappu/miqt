@@ -141,7 +141,7 @@ public:
 	friend QwtText* QwtScaleDraw_virtualbase_label(const void* self, double param1);
 
 	// Wrappers to allow calling protected methods:
-	friend QTransform* QwtScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, QPointF* param1, QSizeF* param2);
+	friend QTransform* QwtScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, struct miqt_qpointf param1, struct miqt_qsizef param2);
 	friend void QwtScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self);
 	friend QwtText* QwtScaleDraw_protectedbase_tickLabel(bool* _dynamic_cast_ok, const void* self, QFont* param1, double value);
 };
@@ -174,8 +174,8 @@ void QwtScaleDraw_move(QwtScaleDraw* self, double x, double y) {
 	self->move(static_cast<double>(x), static_cast<double>(y));
 }
 
-void QwtScaleDraw_moveWithQPointF(QwtScaleDraw* self, QPointF* param1) {
-	self->move(*param1);
+void QwtScaleDraw_moveWithQPointF(QwtScaleDraw* self, struct miqt_qpointf param1) {
+	self->move(miqt_from_cabi<QPointF>(param1));
 }
 
 void QwtScaleDraw_setLength(QwtScaleDraw* self, double length) {
@@ -196,8 +196,8 @@ int QwtScaleDraw_orientation(const QwtScaleDraw* self) {
 	return static_cast<int>(_ret);
 }
 
-QPointF* QwtScaleDraw_pos(const QwtScaleDraw* self) {
-	return new QPointF(self->pos());
+struct miqt_qpointf QwtScaleDraw_pos(const QwtScaleDraw* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pos());
 }
 
 double QwtScaleDraw_length(const QwtScaleDraw* self) {
@@ -229,20 +229,20 @@ int QwtScaleDraw_maxLabelWidth(const QwtScaleDraw* self, QFont* param1) {
 	return self->maxLabelWidth(*param1);
 }
 
-QPointF* QwtScaleDraw_labelPosition(const QwtScaleDraw* self, double value) {
-	return new QPointF(self->labelPosition(static_cast<double>(value)));
+struct miqt_qpointf QwtScaleDraw_labelPosition(const QwtScaleDraw* self, double value) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->labelPosition(static_cast<double>(value)));
 }
 
-QRectF* QwtScaleDraw_labelRect(const QwtScaleDraw* self, QFont* param1, double value) {
-	return new QRectF(self->labelRect(*param1, static_cast<double>(value)));
+struct miqt_qrectf QwtScaleDraw_labelRect(const QwtScaleDraw* self, QFont* param1, double value) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->labelRect(*param1, static_cast<double>(value)));
 }
 
-QSizeF* QwtScaleDraw_labelSize(const QwtScaleDraw* self, QFont* param1, double value) {
-	return new QSizeF(self->labelSize(*param1, static_cast<double>(value)));
+struct miqt_qsizef QwtScaleDraw_labelSize(const QwtScaleDraw* self, QFont* param1, double value) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->labelSize(*param1, static_cast<double>(value)));
 }
 
-QRect* QwtScaleDraw_boundingLabelRect(const QwtScaleDraw* self, QFont* param1, double value) {
-	return new QRect(self->boundingLabelRect(*param1, static_cast<double>(value)));
+struct miqt_qrect QwtScaleDraw_boundingLabelRect(const QwtScaleDraw* self, QFont* param1, double value) {
+	return miqt_to_cabi<struct miqt_qrect>(self->boundingLabelRect(*param1, static_cast<double>(value)));
 }
 
 bool QwtScaleDraw_override_virtual_extent(void* self, intptr_t slot) {
@@ -333,7 +333,7 @@ QwtText* QwtScaleDraw_virtualreturncopy_QwtText(QwtText* src) {
 	return new QwtText(*src);
 }
 
-QTransform* QwtScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, QPointF* param1, QSizeF* param2) {
+QTransform* QwtScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, struct miqt_qpointf param1, struct miqt_qsizef param2) {
 	MiqtVirtualQwtScaleDraw* self_cast = dynamic_cast<MiqtVirtualQwtScaleDraw*>( (QwtScaleDraw*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -341,7 +341,7 @@ QTransform* QwtScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_o
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QTransform(self_cast->labelTransformation(*param1, *param2));
+	return new QTransform(self_cast->labelTransformation(miqt_from_cabi<QPointF>(param1), miqt_from_cabi<QSizeF>(param2)));
 }
 
 void QwtScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self) {

@@ -186,7 +186,7 @@ public:
 	friend void QwtDateScaleDraw_virtualbase_draw(const void* self, QPainter* param1, QPalette* param2);
 
 	// Wrappers to allow calling protected methods:
-	friend QTransform* QwtDateScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, QPointF* param1, QSizeF* param2);
+	friend QTransform* QwtDateScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, struct miqt_qpointf param1, struct miqt_qsizef param2);
 	friend void QwtDateScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self);
 	friend QwtText* QwtDateScaleDraw_protectedbase_tickLabel(bool* _dynamic_cast_ok, const void* self, QFont* param1, double value);
 };
@@ -377,7 +377,7 @@ QwtText* QwtDateScaleDraw_virtualreturncopy_QwtText(QwtText* src) {
 	return new QwtText(*src);
 }
 
-QTransform* QwtDateScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, QPointF* param1, QSizeF* param2) {
+QTransform* QwtDateScaleDraw_protectedbase_labelTransformation(bool* _dynamic_cast_ok, const void* self, struct miqt_qpointf param1, struct miqt_qsizef param2) {
 	MiqtVirtualQwtDateScaleDraw* self_cast = dynamic_cast<MiqtVirtualQwtDateScaleDraw*>( (QwtDateScaleDraw*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -385,7 +385,7 @@ QTransform* QwtDateScaleDraw_protectedbase_labelTransformation(bool* _dynamic_ca
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QTransform(self_cast->labelTransformation(*param1, *param2));
+	return new QTransform(self_cast->labelTransformation(miqt_from_cabi<QPointF>(param1), miqt_from_cabi<QSizeF>(param2)));
 }
 
 void QwtDateScaleDraw_protectedbase_invalidateCache(bool* _dynamic_cast_ok, void* self) {

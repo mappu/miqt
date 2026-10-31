@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -130,10 +131,8 @@ func (this *QVideoWidget) Saturation() int {
 	return (int)(C.QVideoWidget_saturation(this.h))
 }
 
-func (this *QVideoWidget) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QVideoWidget) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QVideoWidget_sizeHint(this.h))
 }
 
 func (this *QVideoWidget) SetFullScreen(fullScreen bool) {
@@ -452,14 +451,12 @@ func miqt_exec_callback_QVideoWidget_mediaObject(self *C.QVideoWidget, cb C.intp
 
 }
 
-func (this *QVideoWidget) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QVideoWidget) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QVideoWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QVideoWidget) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QVideoWidget) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QVideoWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -467,16 +464,15 @@ func (this *QVideoWidget) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize
 }
 
 //export miqt_exec_callback_QVideoWidget_sizeHint
-func miqt_exec_callback_QVideoWidget_sizeHint(self *C.QVideoWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QVideoWidget_sizeHint(self *C.QVideoWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QVideoWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -723,14 +719,12 @@ func miqt_exec_callback_QVideoWidget_setVisible(self *C.QVideoWidget, cb C.intpt
 
 }
 
-func (this *QVideoWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
+func (this *QVideoWidget) callVirtualBase_MinimumSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QVideoWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QVideoWidget) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QVideoWidget) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QVideoWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -738,16 +732,15 @@ func (this *QVideoWidget) OnMinimumSizeHint(slot func(super func() *qt.QSize) *q
 }
 
 //export miqt_exec_callback_QVideoWidget_minimumSizeHint
-func miqt_exec_callback_QVideoWidget_minimumSizeHint(self *C.QVideoWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QVideoWidget_minimumSizeHint(self *C.QVideoWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QVideoWidget{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QVideoWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1467,7 +1460,6 @@ func miqt_exec_callback_QVideoWidget_initPainter(self *C.QVideoWidget, cb C.intp
 }
 
 func (this *QVideoWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QVideoWidget_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

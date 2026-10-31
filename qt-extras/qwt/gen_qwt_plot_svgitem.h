@@ -40,9 +40,9 @@ QwtPlotSvgItem* QwtPlotSvgItem_new();
 QwtPlotSvgItem* QwtPlotSvgItem_new2(QwtText* title);
 QwtPlotSvgItem* QwtPlotSvgItem_new3(struct miqt_string title);
 void QwtPlotSvgItem_virtbase(QwtPlotSvgItem* src, QwtPlotItem** outptr_QwtPlotItem);
-bool QwtPlotSvgItem_loadFile(QwtPlotSvgItem* self, QRectF* param1, struct miqt_string fileName);
-bool QwtPlotSvgItem_loadData(QwtPlotSvgItem* self, QRectF* param1, struct miqt_string param2);
-QRectF* QwtPlotSvgItem_boundingRect(const QwtPlotSvgItem* self);
+bool QwtPlotSvgItem_loadFile(QwtPlotSvgItem* self, struct miqt_qrectf param1, struct miqt_string fileName);
+bool QwtPlotSvgItem_loadData(QwtPlotSvgItem* self, struct miqt_qrectf param1, struct miqt_string param2);
+struct miqt_qrectf QwtPlotSvgItem_boundingRect(const QwtPlotSvgItem* self);
 int QwtPlotSvgItem_rtti(const QwtPlotSvgItem* self);
 
 void QwtPlotSvgItem_delete(QwtPlotSvgItem* self);

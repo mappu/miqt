@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -164,32 +165,25 @@ func (this *QwtTextLabel) SetMargin(margin int) {
 	C.QwtTextLabel_setMargin(this.h, (C.int)(margin))
 }
 
-func (this *QwtTextLabel) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtTextLabel_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtTextLabel) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtTextLabel_sizeHint(this.h))
 }
 
-func (this *QwtTextLabel) MinimumSizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtTextLabel_minimumSizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtTextLabel) MinimumSizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtTextLabel_minimumSizeHint(this.h))
 }
 
 func (this *QwtTextLabel) HeightForWidth(param1 int) int {
 	return (int)(C.QwtTextLabel_heightForWidth(this.h, (C.int)(param1)))
 }
 
-func (this *QwtTextLabel) TextRect() *qt.QRect {
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtTextLabel_textRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtTextLabel) TextRect() qt.QRect {
+	return libmiqt.ValueCast[qt.QRect](C.QwtTextLabel_textRect(this.h))
 }
 
-func (this *QwtTextLabel) DrawText(param1 *qt.QPainter, param2 *qt.QRectF) {
+func (this *QwtTextLabel) DrawText(param1 *qt.QPainter, param2 qt.QRectF) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	C.QwtTextLabel_drawText(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
+	C.QwtTextLabel_drawText(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2))
 }
 
 func QwtTextLabel_Tr2(s string, c string) string {
@@ -420,14 +414,12 @@ func miqt_exec_callback_QwtTextLabel_setTextWithText(self *C.QwtTextLabel, cb C.
 
 }
 
-func (this *QwtTextLabel) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QwtTextLabel) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtTextLabel_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtTextLabel_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtTextLabel) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtTextLabel) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtTextLabel_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -435,27 +427,24 @@ func (this *QwtTextLabel) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize
 }
 
 //export miqt_exec_callback_QwtTextLabel_sizeHint
-func miqt_exec_callback_QwtTextLabel_sizeHint(self *C.QwtTextLabel, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtTextLabel_sizeHint(self *C.QwtTextLabel, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtTextLabel{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtTextLabel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtTextLabel) callVirtualBase_MinimumSizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtTextLabel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QwtTextLabel) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtTextLabel) callVirtualBase_MinimumSizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtTextLabel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtTextLabel) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtTextLabel_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -463,16 +452,15 @@ func (this *QwtTextLabel) OnMinimumSizeHint(slot func(super func() *qt.QSize) *q
 }
 
 //export miqt_exec_callback_QwtTextLabel_minimumSizeHint
-func miqt_exec_callback_QwtTextLabel_minimumSizeHint(self *C.QwtTextLabel, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtTextLabel_minimumSizeHint(self *C.QwtTextLabel, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtTextLabel{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtTextLabel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -504,14 +492,13 @@ func miqt_exec_callback_QwtTextLabel_heightForWidth(self *C.QwtTextLabel, cb C.i
 
 }
 
-func (this *QwtTextLabel) callVirtualBase_DrawText(param1 *qt.QPainter, param2 *qt.QRectF) {
+func (this *QwtTextLabel) callVirtualBase_DrawText(param1 *qt.QPainter, param2 qt.QRectF) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
-	C.QwtTextLabel_virtualbase_drawText(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
+	C.QwtTextLabel_virtualbase_drawText(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2))
 
 }
-func (this *QwtTextLabel) OnDrawText(slot func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF)) {
+func (this *QwtTextLabel) OnDrawText(slot func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF)) {
 	ok := C.QwtTextLabel_override_virtual_drawText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -519,8 +506,8 @@ func (this *QwtTextLabel) OnDrawText(slot func(super func(param1 *qt.QPainter, p
 }
 
 //export miqt_exec_callback_QwtTextLabel_drawText
-func miqt_exec_callback_QwtTextLabel_drawText(self *C.QwtTextLabel, cb C.intptr_t, param1 *C.QPainter, param2 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF))
+func miqt_exec_callback_QwtTextLabel_drawText(self *C.QwtTextLabel, cb C.intptr_t, param1 *C.QPainter, param2 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -528,7 +515,7 @@ func miqt_exec_callback_QwtTextLabel_drawText(self *C.QwtTextLabel, cb C.intptr_
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQRectF(unsafe.Pointer(param2))
+	slotval2 := libmiqt.ValueCast[qt.QRectF](param2)
 
 	gofunc((&QwtTextLabel{h: self}).callVirtualBase_DrawText, slotval1, slotval2)
 
@@ -1464,7 +1451,6 @@ func miqt_exec_callback_QwtTextLabel_initPainter(self *C.QwtTextLabel, cb C.intp
 }
 
 func (this *QwtTextLabel) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtTextLabel_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

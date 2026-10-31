@@ -44,14 +44,14 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QFrame_sizeHint(const QFrame*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFrame_sizeHint(const QFrame*, intptr_t);
 bool miqt_exec_callback_QFrame_event(QFrame*, intptr_t, QEvent*);
 void miqt_exec_callback_QFrame_paintEvent(QFrame*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QFrame_changeEvent(QFrame*, intptr_t, QEvent*);
 void miqt_exec_callback_QFrame_initStyleOption(const QFrame*, intptr_t, QStyleOptionFrame*);
 int miqt_exec_callback_QFrame_devType(const QFrame*, intptr_t);
 void miqt_exec_callback_QFrame_setVisible(QFrame*, intptr_t, bool);
-QSize* miqt_exec_callback_QFrame_minimumSizeHint(const QFrame*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFrame_minimumSizeHint(const QFrame*, intptr_t);
 int miqt_exec_callback_QFrame_heightForWidth(const QFrame*, intptr_t, int);
 bool miqt_exec_callback_QFrame_hasHeightForWidth(const QFrame*, intptr_t);
 QPaintEngine* miqt_exec_callback_QFrame_paintEngine(const QFrame*, intptr_t);
@@ -114,13 +114,11 @@ public:
 			return QFrame::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFrame_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFrame_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFrame_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QFrame_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -230,13 +228,11 @@ public:
 			return QFrame::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFrame_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFrame_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFrame_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QFrame_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -982,8 +978,8 @@ int QFrame_frameWidth(const QFrame* self) {
 	return self->frameWidth();
 }
 
-QSize* QFrame_sizeHint(const QFrame* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QFrame_sizeHint(const QFrame* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 int QFrame_frameShape(const QFrame* self) {
@@ -1020,12 +1016,12 @@ void QFrame_setMidLineWidth(QFrame* self, int midLineWidth) {
 	self->setMidLineWidth(static_cast<int>(midLineWidth));
 }
 
-QRect* QFrame_frameRect(const QFrame* self) {
-	return new QRect(self->frameRect());
+struct miqt_qrect QFrame_frameRect(const QFrame* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->frameRect());
 }
 
-void QFrame_setFrameRect(QFrame* self, QRect* frameRect) {
-	self->setFrameRect(*frameRect);
+void QFrame_setFrameRect(QFrame* self, struct miqt_qrect frameRect) {
+	self->setFrameRect(miqt_from_cabi<QRect>(frameRect));
 }
 
 struct miqt_string QFrame_tr2(const char* s, const char* c) {
@@ -1060,8 +1056,8 @@ bool QFrame_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFrame_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFrame*>(self)->QFrame::sizeHint());
+struct miqt_qsize QFrame_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFrame*>(self)->QFrame::sizeHint());
 }
 
 bool QFrame_override_virtual_event(void* self, intptr_t slot) {
@@ -1158,8 +1154,8 @@ bool QFrame_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFrame_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFrame*>(self)->QFrame::minimumSizeHint());
+struct miqt_qsize QFrame_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFrame*>(self)->QFrame::minimumSizeHint());
 }
 
 bool QFrame_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1721,10 +1717,6 @@ bool QFrame_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQFrame*>(self)->QFrame::disconnectNotify(*signal);
-}
-
-QSize* QFrame_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QFrame_virtualreturncopy_QVariant(QVariant* src) {

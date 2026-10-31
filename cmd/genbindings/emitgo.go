@@ -175,7 +175,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 		ret = packageName + strings.ToUpper(secondType[0:1]) + secondType[1:]
 	}
 
-	if p.ByRef || p.Pointer {
+	if (p.ByRef || p.Pointer) && !p.isValueStruct() {
 		ret = "*" + ret
 	}
 
@@ -188,7 +188,7 @@ func (p CppParameter) renderReturnTypeGo(gfs *goFileState, indirection bool) str
 		ret = ""
 	}
 
-	if indirection && p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" && p.ParameterType != "QAnyStringView" && !(p.Pointer || p.ByRef) {
+	if indirection && p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" && p.ParameterType != "QAnyStringView" && !(p.Pointer || p.ByRef) && !p.isValueStruct() {
 		// FIXME normalize this part
 		ret = "*" + ret
 	}
@@ -197,6 +197,10 @@ func (p CppParameter) renderReturnTypeGo(gfs *goFileState, indirection bool) str
 }
 
 func (p CppParameter) parameterTypeCgo() string {
+	if p.isValueStruct() {
+		return valueStructCgoName(p.ParameterType)
+	}
+
 	if p.ParameterType == "QString" {
 		return "C.struct_miqt_string"
 	}
@@ -256,6 +260,10 @@ func (p CppParameter) mallocSizeCgoExpression() string {
 		return "int(unsafe.Sizeof(C.struct_miqt_string{}))"
 	}
 
+	if p.isValueStruct() {
+		return "int(unsafe.Sizeof(" + valueStructCgoName(p.ParameterType) + "{}))"
+	}
+
 	// Default (sizeof pointer)
 	return "8"
 }
@@ -297,7 +305,8 @@ type goFileState struct {
 // holdsGoGCWrapper reports whether the Go projection of p is or contains a Go
 // wrapper struct for a Qt class that may own a C++ object through GoGC().
 // QObject classes are excluded: they can't be copied, so Qt never returns them
-// by value and the bindings never call GoGC() on them.
+// by value and the bindings never call GoGC() on them. Value struct classes are
+// excluded too: they don't wrap a C++ object at all.
 func (p CppParameter) holdsGoGCWrapper() bool {
 	if t, _, ok := p.QListOf(); ok {
 		return t.holdsGoGCWrapper()
@@ -311,7 +320,7 @@ func (p CppParameter) holdsGoGCWrapper() bool {
 	if kType, vType, ok := p.QPairOf(); ok {
 		return kType.holdsGoGCWrapper() || vType.holdsGoGCWrapper()
 	}
-	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
+	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" || isValueStructClass(p.ParameterType) {
 		return false
 	}
 	pkg, ok := KnownClassnames[p.ParameterType]
@@ -325,7 +334,7 @@ func (p CppParameter) holdsGoGCWrapper() bool {
 // is still using them.
 func (gfs *goFileState) emitKeepAlive(c *CppClass, m CppMethod) string {
 	ret := ""
-	if c != nil && !m.IsStatic && !c.IsQObject() {
+	if c != nil && !m.IsStatic && !c.IsQObject() && !isValueStructClass(c.ClassName) {
 		ret += "defer runtime.KeepAlive(this)\n"
 	}
 	for i, p := range m.Parameters {
@@ -552,6 +561,10 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter, shouldDef
 		}
 		rvalue = nameprefix + "_Cstring"
 
+	} else if p.isValueStruct() {
+		gfs.imports["libmiqt"] = struct{}{}
+		rvalue = "libmiqt.ValueCast[" + p.parameterTypeCgo() + "](" + p.goParameterName() + ")"
+
 	} else if /*(p.Pointer || p.ByRef) &&*/ p.QtClassType() {
 		// The C++ type is a pointer to Qt class
 		// We want our functions to accept the Go wrapper type, and forward as cPointer()
@@ -712,6 +725,10 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 		afterword += assignExpr + " " + rt.RenderTypeGo(gfs) + " { First: " + namePrefix + "_entry_First , Second: " + namePrefix + "_entry_Second }\n"
 		return shouldReturn + " " + rvalue + "\n" + afterword
+
+	} else if rt.isValueStruct() {
+		gfs.imports["libmiqt"] = struct{}{}
+		return assignExpr + " libmiqt.ValueCast[" + rt.RenderTypeGo(gfs) + "](" + rvalue + ")\n"
 
 	} else if rt.QtClassType() {
 		// Construct our Go type based on this inner CABI type
@@ -890,46 +907,52 @@ import "C"
 
 		// Type definition
 
-		// Value copies of this struct share the gc pointer, so the finalizer
-		// added by GoGC() only runs once all copies are unreachable. The
-		// embedded base class wrappers and wrappers for references into this
-		// object share it too.
-		ret.WriteString(`
+		gfs.imports["unsafe"] = struct{}{}
+
+		if isValueStructClass(c.ClassName) {
+			ret.WriteString(emitValueStructGoType(c))
+
+		} else {
+			// Value copies of this struct share the gc pointer, so the finalizer
+			// added by GoGC() only runs once all copies are unreachable. The
+			// embedded base class wrappers and wrappers for references into this
+			// object share it too.
+			ret.WriteString(`
 		type ` + goClassName + ` struct {
 			h *C.` + goClassName + `
 			gc *[1]unsafe.Pointer
 		`)
 
-		// Embed all inherited types to directly allow calling inherited methods
-		// Only include the direct inherits; the recursive inherits will exist
-		// on these types already
-		for _, base := range c.DirectInherits {
+			// Embed all inherited types to directly allow calling inherited methods
+			// Only include the direct inherits; the recursive inherits will exist
+			// on these types already
+			for _, base := range c.DirectInherits {
 
-			if strings.HasPrefix(base, `QList<`) {
-				ret.WriteString("/* Also inherits unprojectable " + base + " */\n")
+				if strings.HasPrefix(base, `QList<`) {
+					ret.WriteString("/* Also inherits unprojectable " + base + " */\n")
 
-			} else if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
-				// Cross-package parent class
-				ret.WriteString("*" + path.Base(pkg.PackageName) + "." + cabiClassName(base) + "\n")
-				gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
+				} else if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
+					// Cross-package parent class
+					ret.WriteString("*" + path.Base(pkg.PackageName) + "." + cabiClassName(base) + "\n")
+					gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
 
-			} else if !strings.Contains(base, "<") {
-				// Same-package parent class
-				ret.WriteString("*" + cabiClassName(base) + "\n")
+				} else if !strings.Contains(base, "<") {
+					// Same-package parent class
+					ret.WriteString("*" + cabiClassName(base) + "\n")
+				}
+
 			}
 
-		}
-
-		setBaseGC := ""
-		for _, base := range c.DirectInherits {
-			if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName == gfs.currentPackageName && !strings.Contains(base, "<") {
-				setBaseGC += "this." + cabiClassName(base) + ".miqtSetGC(gc)\n"
+			setBaseGC := ""
+			for _, base := range c.DirectInherits {
+				if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName == gfs.currentPackageName && !strings.Contains(base, "<") {
+					setBaseGC += "this." + cabiClassName(base) + ".miqtSetGC(gc)\n"
+				}
+				// n.b. a cross-package base class wrapper can't be reached, so it
+				// doesn't keep this object alive
 			}
-			// n.b. a cross-package base class wrapper can't be reached, so it
-			// doesn't keep this object alive
-		}
 
-		ret.WriteString(`
+			ret.WriteString(`
 		}
 
 		// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
@@ -954,16 +977,16 @@ import "C"
 		
 		`)
 
-		// CGO types only exist within the same Go file, so other Go files can't
-		// call this same private ctor function, unless it goes through unsafe.Pointer{}.
-		// This is probably because C types can possibly violate the ODR whereas
-		// that never happens in Go's type system.
+			// CGO types only exist within the same Go file, so other Go files can't
+			// call this same private ctor function, unless it goes through unsafe.Pointer{}.
+			// This is probably because C types can possibly violate the ODR whereas
+			// that never happens in Go's type system.
 
-		gfs.imports["unsafe"] = struct{}{}
+			gfs.imports["unsafe"] = struct{}{}
 
-		localInit := "h: h"
+			localInit := "h: h"
 
-		ret.WriteString(`
+			ret.WriteString(`
 			// new` + goClassName + ` constructs the type using only CGO pointers.
 			func new` + goClassName + `(h *C.` + goClassName + `) *` + goClassName + ` {
 				if h == nil {
@@ -971,35 +994,35 @@ import "C"
 				}
 		`)
 
-		if len(c.DirectInheritClassInfo()) > 0 {
-			xbaseParams := ""
-			for _, pkg := range c.DirectInheritClassInfo() {
+			if len(c.DirectInheritClassInfo()) > 0 {
+				xbaseParams := ""
+				for _, pkg := range c.DirectInheritClassInfo() {
 
-				base := pkg.Class.ClassName
-				if strings.Contains(base, "<") {
-					continue
+					base := pkg.Class.ClassName
+					if strings.Contains(base, "<") {
+						continue
+					}
+
+					// Make extra CGO call to get base pointers from C++ space
+					outptrVar := "outptr_" + cabiClassName(base)
+					ret.WriteString("var " + outptrVar + " *C." + cabiClassName(base) + " = nil\n")
+					xbaseParams += ", &" + outptrVar
+
+					// Set up how we would pass the pointer to its own make function
+					if pkg.PackageName != gfs.currentPackageName {
+						localInit += ",\n" + cabiClassName(base) + ": " + path.Base(pkg.PackageName) + "." + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(" + outptrVar + "))"
+					} else {
+						localInit += ",\n" + cabiClassName(base) + ": new" + cabiClassName(base) + "(" + outptrVar + ")"
+					}
+
 				}
 
-				// Make extra CGO call to get base pointers from C++ space
-				outptrVar := "outptr_" + cabiClassName(base)
-				ret.WriteString("var " + outptrVar + " *C." + cabiClassName(base) + " = nil\n")
-				xbaseParams += ", &" + outptrVar
-
-				// Set up how we would pass the pointer to its own make function
-				if pkg.PackageName != gfs.currentPackageName {
-					localInit += ",\n" + cabiClassName(base) + ": " + path.Base(pkg.PackageName) + "." + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(" + outptrVar + "))"
-				} else {
-					localInit += ",\n" + cabiClassName(base) + ": new" + cabiClassName(base) + "(" + outptrVar + ")"
-				}
+				// Populate outptr pointers
+				ret.WriteString("C." + cabiVirtBaseName(c) + "(h" + xbaseParams + ")\n")
 
 			}
 
-			// Populate outptr pointers
-			ret.WriteString("C." + cabiVirtBaseName(c) + "(h" + xbaseParams + ")\n")
-
-		}
-
-		ret.WriteString(`
+			ret.WriteString(`
 				return &` + goClassName + `{` + localInit + `}
 			}
 
@@ -1010,6 +1033,8 @@ import "C"
 
 		`)
 
+		}
+
 		//
 
 		for i, ctor := range c.Ctors {
@@ -1017,7 +1042,7 @@ import "C"
 
 			ret.WriteString(`
 			// New` + goClassName + maybeSuffix(i) + ` constructs a new ` + c.ClassName + ` object.
-			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) *` + goClassName + ` {
+			func New` + goClassName + maybeSuffix(i) + `(` + gfs.emitParametersGo(ctor.Parameters) + `) ` + ifv(isValueStructClass(c.ClassName), "", "*") + goClassName + ` {
 				`,
 			)
 
@@ -1035,11 +1060,20 @@ import "C"
 
 			// Call Cgo constructor
 
-			ret.WriteString(`
+			if isValueStructClass(c.ClassName) {
+				gfs.imports["libmiqt"] = struct{}{}
+				ret.WriteString(`
+				return libmiqt.ValueCast[` + goClassName + `](C.` + cabiNewName(c, i) + `(` + forwarding + `))
+			}
+
+			`)
+			} else {
+				ret.WriteString(`
 				return new` + goClassName + `(C.` + cabiNewName(c, i) + `(` + forwarding + `))
 			}
 
 			`)
+			}
 
 		}
 
@@ -1050,6 +1084,13 @@ import "C"
 			}
 
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
+
+			if isValueStructSelfByValue(c, m) {
+				gfs.imports["libmiqt"] = struct{}{}
+				forwarding = "libmiqt.ValueCast[" + valueStructCgoName(c.ClassName) + "](this)" + strings.TrimPrefix(forwarding, `this.h`)
+			} else if isValueStructClass(c.ClassName) && !m.IsStatic {
+				forwarding = "this.cPointer()" + strings.TrimPrefix(forwarding, `this.h`)
+			}
 
 			returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs, true)
 
@@ -1066,6 +1107,9 @@ import "C"
 			}
 
 			receiverAndMethod := `(this *` + goClassName + `) ` + m.goMethodName()
+			if isValueStructSelfByValue(c, m) {
+				receiverAndMethod = `(this ` + goClassName + `) ` + m.goMethodName()
+			}
 			if m.IsStatic {
 				receiverAndMethod = goClassName + `_` + m.goMethodName()
 			}
@@ -1310,7 +1354,7 @@ import "C"
 				`)
 		}
 
-		if c.CanDelete {
+		if c.CanDelete && !isValueStructClass(c.ClassName) {
 			gfs.imports["runtime"] = struct{}{} // Finalizer
 
 			ret.WriteString(`

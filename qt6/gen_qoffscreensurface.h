@@ -54,7 +54,7 @@ bool QOffscreenSurface_isValid(const QOffscreenSurface* self);
 void QOffscreenSurface_setFormat(QOffscreenSurface* self, QSurfaceFormat* format);
 QSurfaceFormat* QOffscreenSurface_format(const QOffscreenSurface* self);
 QSurfaceFormat* QOffscreenSurface_requestedFormat(const QOffscreenSurface* self);
-QSize* QOffscreenSurface_size(const QOffscreenSurface* self);
+struct miqt_qsize QOffscreenSurface_size(const QOffscreenSurface* self);
 QScreen* QOffscreenSurface_screen(const QOffscreenSurface* self);
 void QOffscreenSurface_setScreen(QOffscreenSurface* self, QScreen* screen);
 void QOffscreenSurface_screenChanged(QOffscreenSurface* self, QScreen* screen);
@@ -67,7 +67,7 @@ int QOffscreenSurface_virtualbase_surfaceType(const void* self);
 bool QOffscreenSurface_override_virtual_format(void* self, intptr_t slot);
 QSurfaceFormat* QOffscreenSurface_virtualbase_format(const void* self);
 bool QOffscreenSurface_override_virtual_size(void* self, intptr_t slot);
-QSize* QOffscreenSurface_virtualbase_size(const void* self);
+struct miqt_qsize QOffscreenSurface_virtualbase_size(const void* self);
 bool QOffscreenSurface_override_virtual_event(void* self, intptr_t slot);
 bool QOffscreenSurface_virtualbase_event(void* self, QEvent* event);
 bool QOffscreenSurface_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -83,7 +83,6 @@ void QOffscreenSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal
 bool QOffscreenSurface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 QSurfaceFormat* QOffscreenSurface_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src);
-QSize* QOffscreenSurface_virtualreturncopy_QSize(QSize* src);
 
 void* QOffscreenSurface_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
 QObject* QOffscreenSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

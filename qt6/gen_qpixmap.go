@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -71,10 +72,9 @@ func NewQPixmap2(w int, h int) *QPixmap {
 }
 
 // NewQPixmap3 constructs a new QPixmap object.
-func NewQPixmap3(param1 *QSize) *QPixmap {
-	defer runtime.KeepAlive(param1)
+func NewQPixmap3(param1 QSize) *QPixmap {
 
-	return newQPixmap(C.QPixmap_new3(param1.cPointer()))
+	return newQPixmap(C.QPixmap_new3(libmiqt.ValueCast[C.struct_miqt_qsize](param1)))
 }
 
 // NewQPixmap4 constructs a new QPixmap object.
@@ -157,18 +157,14 @@ func (this *QPixmap) Height() int {
 	return (int)(C.QPixmap_height(this.h))
 }
 
-func (this *QPixmap) Size() *QSize {
+func (this *QPixmap) Size() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QPixmap_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QPixmap_size(this.h))
 }
 
-func (this *QPixmap) Rect() *QRect {
+func (this *QPixmap) Rect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QPixmap_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPixmap_rect(this.h))
 }
 
 func (this *QPixmap) Depth() int {
@@ -208,11 +204,9 @@ func (this *QPixmap) SetDevicePixelRatio(scaleFactor float64) {
 	C.QPixmap_setDevicePixelRatio(this.h, (C.double)(scaleFactor))
 }
 
-func (this *QPixmap) DeviceIndependentSize() *QSizeF {
+func (this *QPixmap) DeviceIndependentSize() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QPixmap_deviceIndependentSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QPixmap_deviceIndependentSize(this.h))
 }
 
 func (this *QPixmap) HasAlpha() bool {
@@ -232,10 +226,9 @@ func (this *QPixmap) CreateHeuristicMask() *QBitmap {
 	return _goptr
 }
 
-func (this *QPixmap) CreateMaskFromColor(maskColor *QColor) *QBitmap {
+func (this *QPixmap) CreateMaskFromColor(maskColor QColor) *QBitmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(maskColor)
-	_goptr := newQBitmap(C.QPixmap_createMaskFromColor(this.h, maskColor.cPointer()))
+	_goptr := newQBitmap(C.QPixmap_createMaskFromColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](maskColor)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -247,10 +240,9 @@ func (this *QPixmap) Scaled(w int, h int) *QPixmap {
 	return _goptr
 }
 
-func (this *QPixmap) ScaledWithQSize(s *QSize) *QPixmap {
+func (this *QPixmap) ScaledWithQSize(s QSize) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(s)
-	_goptr := newQPixmap(C.QPixmap_scaledWithQSize(this.h, s.cPointer()))
+	_goptr := newQPixmap(C.QPixmap_scaledWithQSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](s)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -370,10 +362,9 @@ func (this *QPixmap) Scroll(dx int, dy int, x int, y int, width int, height int)
 	C.QPixmap_scroll(this.h, (C.int)(dx), (C.int)(dy), (C.int)(x), (C.int)(y), (C.int)(width), (C.int)(height))
 }
 
-func (this *QPixmap) Scroll2(dx int, dy int, rect *QRect) {
+func (this *QPixmap) Scroll2(dx int, dy int, rect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QPixmap_scroll2(this.h, (C.int)(dx), (C.int)(dy), rect.cPointer())
+	C.QPixmap_scroll2(this.h, (C.int)(dx), (C.int)(dy), libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
 func (this *QPixmap) CacheKey() int64 {
@@ -406,10 +397,9 @@ func (this *QPixmap) OperatorNot() bool {
 	return (bool)(C.QPixmap_operatorNot(this.h))
 }
 
-func (this *QPixmap) FillWithFillColor(fillColor *QColor) {
+func (this *QPixmap) FillWithFillColor(fillColor QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(fillColor)
-	C.QPixmap_fillWithFillColor(this.h, fillColor.cPointer())
+	C.QPixmap_fillWithFillColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](fillColor))
 }
 
 func (this *QPixmap) CreateHeuristicMaskWithClipTight(clipTight bool) *QBitmap {
@@ -419,10 +409,9 @@ func (this *QPixmap) CreateHeuristicMaskWithClipTight(clipTight bool) *QBitmap {
 	return _goptr
 }
 
-func (this *QPixmap) CreateMaskFromColor2(maskColor *QColor, mode MaskMode) *QBitmap {
+func (this *QPixmap) CreateMaskFromColor2(maskColor QColor, mode MaskMode) *QBitmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(maskColor)
-	_goptr := newQBitmap(C.QPixmap_createMaskFromColor2(this.h, maskColor.cPointer(), (C.int)(mode)))
+	_goptr := newQBitmap(C.QPixmap_createMaskFromColor2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](maskColor), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -441,18 +430,16 @@ func (this *QPixmap) Scaled3(w int, h int, aspectMode AspectRatioMode, mode Tran
 	return _goptr
 }
 
-func (this *QPixmap) Scaled4(s *QSize, aspectMode AspectRatioMode) *QPixmap {
+func (this *QPixmap) Scaled4(s QSize, aspectMode AspectRatioMode) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(s)
-	_goptr := newQPixmap(C.QPixmap_scaled4(this.h, s.cPointer(), (C.int)(aspectMode)))
+	_goptr := newQPixmap(C.QPixmap_scaled4(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](s), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QPixmap) Scaled5(s *QSize, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
+func (this *QPixmap) Scaled5(s QSize, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(s)
-	_goptr := newQPixmap(C.QPixmap_scaled5(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode)))
+	_goptr := newQPixmap(C.QPixmap_scaled5(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](s), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -599,10 +586,9 @@ func (this *QPixmap) ConvertFromImage2(img *QImage, flags ImageConversionFlag) b
 	return (bool)(C.QPixmap_convertFromImage2(this.h, img.cPointer(), (C.int)(flags)))
 }
 
-func (this *QPixmap) CopyWithRect(rect *QRect) *QPixmap {
+func (this *QPixmap) CopyWithRect(rect QRect) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQPixmap(C.QPixmap_copyWithRect(this.h, rect.cPointer()))
+	_goptr := newQPixmap(C.QPixmap_copyWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -613,11 +599,10 @@ func (this *QPixmap) Scroll3(dx int, dy int, x int, y int, width int, height int
 	C.QPixmap_scroll3(this.h, (C.int)(dx), (C.int)(dy), (C.int)(x), (C.int)(y), (C.int)(width), (C.int)(height), exposed.cPointer())
 }
 
-func (this *QPixmap) Scroll4(dx int, dy int, rect *QRect, exposed *QRegion) {
+func (this *QPixmap) Scroll4(dx int, dy int, rect QRect, exposed *QRegion) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
 	defer runtime.KeepAlive(exposed)
-	C.QPixmap_scroll4(this.h, (C.int)(dx), (C.int)(dy), rect.cPointer(), exposed.cPointer())
+	C.QPixmap_scroll4(this.h, (C.int)(dx), (C.int)(dy), libmiqt.ValueCast[C.struct_miqt_qrect](rect), exposed.cPointer())
 }
 
 func (this *QPixmap) callVirtualBase_DevType() int {
@@ -732,7 +717,6 @@ func miqt_exec_callback_QPixmap_initPainter(self *C.QPixmap, cb C.intptr_t, pain
 
 func (this *QPixmap) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPixmap_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

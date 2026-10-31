@@ -266,21 +266,21 @@ void QGraphicsItemAnimation_setTimeLine(QGraphicsItemAnimation* self, QTimeLine*
 	self->setTimeLine(timeLine);
 }
 
-QPointF* QGraphicsItemAnimation_posAt(const QGraphicsItemAnimation* self, double step) {
-	return new QPointF(self->posAt(static_cast<qreal>(step)));
+struct miqt_qpointf QGraphicsItemAnimation_posAt(const QGraphicsItemAnimation* self, double step) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->posAt(static_cast<qreal>(step)));
 }
 
-struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGraphicsItemAnimation_posList(const QGraphicsItemAnimation* self) {
+struct miqt_array /* of struct miqt_map  tuple of double and struct miqt_qpointf   */  QGraphicsItemAnimation_posList(const QGraphicsItemAnimation* self) {
 	QList<QPair<qreal, QPointF>> _ret = self->posList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of double and QPointF* */ * _arr = static_cast<struct miqt_map /* tuple of double and QPointF* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QPointF* */ ) * _ret.length()));
+	struct miqt_map /* tuple of double and struct miqt_qpointf */ * _arr = static_cast<struct miqt_map /* tuple of double and struct miqt_qpointf */ *>(malloc(sizeof(struct miqt_map /* tuple of double and struct miqt_qpointf */ ) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QPair<double, QPointF> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		double* _lv_first_arr = static_cast<double*>(malloc(sizeof(double)));
-		QPointF** _lv_second_arr = static_cast<QPointF**>(malloc(sizeof(QPointF*)));
+		struct miqt_qpointf* _lv_second_arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf)));
 		_lv_first_arr[0] = _lv_ret.first;
-		_lv_second_arr[0] = new QPointF(_lv_ret.second);
+		_lv_second_arr[0] = miqt_to_cabi<struct miqt_qpointf>(_lv_ret.second);
 		struct miqt_map _lv_out;
 		_lv_out.len = 1;
 		_lv_out.keys = static_cast<void*>(_lv_first_arr);
@@ -293,8 +293,8 @@ struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGra
 	return _out;
 }
 
-void QGraphicsItemAnimation_setPosAt(QGraphicsItemAnimation* self, double step, QPointF* pos) {
-	self->setPosAt(static_cast<qreal>(step), *pos);
+void QGraphicsItemAnimation_setPosAt(QGraphicsItemAnimation* self, double step, struct miqt_qpointf pos) {
+	self->setPosAt(static_cast<qreal>(step), miqt_from_cabi<QPointF>(pos));
 }
 
 QMatrix* QGraphicsItemAnimation_matrixAt(const QGraphicsItemAnimation* self, double step) {
@@ -347,17 +347,17 @@ double QGraphicsItemAnimation_yTranslationAt(const QGraphicsItemAnimation* self,
 	return static_cast<double>(_ret);
 }
 
-struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGraphicsItemAnimation_translationList(const QGraphicsItemAnimation* self) {
+struct miqt_array /* of struct miqt_map  tuple of double and struct miqt_qpointf   */  QGraphicsItemAnimation_translationList(const QGraphicsItemAnimation* self) {
 	QList<QPair<qreal, QPointF>> _ret = self->translationList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of double and QPointF* */ * _arr = static_cast<struct miqt_map /* tuple of double and QPointF* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QPointF* */ ) * _ret.length()));
+	struct miqt_map /* tuple of double and struct miqt_qpointf */ * _arr = static_cast<struct miqt_map /* tuple of double and struct miqt_qpointf */ *>(malloc(sizeof(struct miqt_map /* tuple of double and struct miqt_qpointf */ ) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QPair<double, QPointF> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		double* _lv_first_arr = static_cast<double*>(malloc(sizeof(double)));
-		QPointF** _lv_second_arr = static_cast<QPointF**>(malloc(sizeof(QPointF*)));
+		struct miqt_qpointf* _lv_second_arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf)));
 		_lv_first_arr[0] = _lv_ret.first;
-		_lv_second_arr[0] = new QPointF(_lv_ret.second);
+		_lv_second_arr[0] = miqt_to_cabi<struct miqt_qpointf>(_lv_ret.second);
 		struct miqt_map _lv_out;
 		_lv_out.len = 1;
 		_lv_out.keys = static_cast<void*>(_lv_first_arr);
@@ -384,17 +384,17 @@ double QGraphicsItemAnimation_horizontalScaleAt(const QGraphicsItemAnimation* se
 	return static_cast<double>(_ret);
 }
 
-struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGraphicsItemAnimation_scaleList(const QGraphicsItemAnimation* self) {
+struct miqt_array /* of struct miqt_map  tuple of double and struct miqt_qpointf   */  QGraphicsItemAnimation_scaleList(const QGraphicsItemAnimation* self) {
 	QList<QPair<qreal, QPointF>> _ret = self->scaleList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of double and QPointF* */ * _arr = static_cast<struct miqt_map /* tuple of double and QPointF* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QPointF* */ ) * _ret.length()));
+	struct miqt_map /* tuple of double and struct miqt_qpointf */ * _arr = static_cast<struct miqt_map /* tuple of double and struct miqt_qpointf */ *>(malloc(sizeof(struct miqt_map /* tuple of double and struct miqt_qpointf */ ) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QPair<double, QPointF> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		double* _lv_first_arr = static_cast<double*>(malloc(sizeof(double)));
-		QPointF** _lv_second_arr = static_cast<QPointF**>(malloc(sizeof(QPointF*)));
+		struct miqt_qpointf* _lv_second_arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf)));
 		_lv_first_arr[0] = _lv_ret.first;
-		_lv_second_arr[0] = new QPointF(_lv_ret.second);
+		_lv_second_arr[0] = miqt_to_cabi<struct miqt_qpointf>(_lv_ret.second);
 		struct miqt_map _lv_out;
 		_lv_out.len = 1;
 		_lv_out.keys = static_cast<void*>(_lv_first_arr);
@@ -421,17 +421,17 @@ double QGraphicsItemAnimation_horizontalShearAt(const QGraphicsItemAnimation* se
 	return static_cast<double>(_ret);
 }
 
-struct miqt_array /* of struct miqt_map  tuple of double and QPointF*   */  QGraphicsItemAnimation_shearList(const QGraphicsItemAnimation* self) {
+struct miqt_array /* of struct miqt_map  tuple of double and struct miqt_qpointf   */  QGraphicsItemAnimation_shearList(const QGraphicsItemAnimation* self) {
 	QList<QPair<qreal, QPointF>> _ret = self->shearList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of double and QPointF* */ * _arr = static_cast<struct miqt_map /* tuple of double and QPointF* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QPointF* */ ) * _ret.length()));
+	struct miqt_map /* tuple of double and struct miqt_qpointf */ * _arr = static_cast<struct miqt_map /* tuple of double and struct miqt_qpointf */ *>(malloc(sizeof(struct miqt_map /* tuple of double and struct miqt_qpointf */ ) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QPair<double, QPointF> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		double* _lv_first_arr = static_cast<double*>(malloc(sizeof(double)));
-		QPointF** _lv_second_arr = static_cast<QPointF**>(malloc(sizeof(QPointF*)));
+		struct miqt_qpointf* _lv_second_arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf)));
 		_lv_first_arr[0] = _lv_ret.first;
-		_lv_second_arr[0] = new QPointF(_lv_ret.second);
+		_lv_second_arr[0] = miqt_to_cabi<struct miqt_qpointf>(_lv_ret.second);
 		struct miqt_map _lv_out;
 		_lv_out.len = 1;
 		_lv_out.keys = static_cast<void*>(_lv_first_arr);

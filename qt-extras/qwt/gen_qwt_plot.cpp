@@ -47,8 +47,8 @@ extern "C" {
 
 void miqt_exec_callback_QwtPlot_itemAttached(intptr_t, QwtPlotItem*, bool);
 void miqt_exec_callback_QwtPlot_legendDataChanged(intptr_t, QVariant*, struct miqt_array /* of QwtLegendData* */ );
-QSize* miqt_exec_callback_QwtPlot_sizeHint(const QwtPlot*, intptr_t);
-QSize* miqt_exec_callback_QwtPlot_minimumSizeHint(const QwtPlot*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtPlot_sizeHint(const QwtPlot*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtPlot_minimumSizeHint(const QwtPlot*, intptr_t);
 void miqt_exec_callback_QwtPlot_updateLayout(QwtPlot*, intptr_t);
 void miqt_exec_callback_QwtPlot_drawCanvas(QwtPlot*, intptr_t, QPainter*);
 bool miqt_exec_callback_QwtPlot_event(QwtPlot*, intptr_t, QEvent*);
@@ -122,13 +122,11 @@ public:
 			return QwtPlot::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtPlot_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtPlot_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtPlot_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtPlot_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -139,13 +137,11 @@ public:
 			return QwtPlot::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtPlot_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtPlot_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtPlot_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtPlot_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateLayout = 0;
@@ -1305,12 +1301,12 @@ void QwtPlot_updateLegendWithQwtPlotItem(QwtPlot* self, QwtPlotItem* param1) {
 	self->updateLegend(param1);
 }
 
-QSize* QwtPlot_sizeHint(const QwtPlot* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtPlot_sizeHint(const QwtPlot* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QwtPlot_minimumSizeHint(const QwtPlot* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QwtPlot_minimumSizeHint(const QwtPlot* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QwtPlot_updateLayout(QwtPlot* self) {
@@ -1472,8 +1468,8 @@ bool QwtPlot_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtPlot_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtPlot*>(self)->QwtPlot::sizeHint());
+struct miqt_qsize QwtPlot_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtPlot*>(self)->QwtPlot::sizeHint());
 }
 
 bool QwtPlot_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1486,8 +1482,8 @@ bool QwtPlot_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtPlot_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtPlot*>(self)->QwtPlot::minimumSizeHint());
+struct miqt_qsize QwtPlot_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtPlot*>(self)->QwtPlot::minimumSizeHint());
 }
 
 bool QwtPlot_override_virtual_updateLayout(void* self, intptr_t slot) {
@@ -2189,10 +2185,6 @@ bool QwtPlot_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QwtPlot_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtPlot*>(self)->QwtPlot::disconnectNotify(*signal);
-}
-
-QSize* QwtPlot_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtPlot_virtualreturncopy_QVariant(QVariant* src) {

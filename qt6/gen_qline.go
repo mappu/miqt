@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -67,11 +68,9 @@ func NewQLine() *QLine {
 }
 
 // NewQLine2 constructs a new QLine object.
-func NewQLine2(pt1 *QPoint, pt2 *QPoint) *QLine {
-	defer runtime.KeepAlive(pt1)
-	defer runtime.KeepAlive(pt2)
+func NewQLine2(pt1 QPoint, pt2 QPoint) *QLine {
 
-	return newQLine(C.QLine_new2(pt1.cPointer(), pt2.cPointer()))
+	return newQLine(C.QLine_new2(libmiqt.ValueCast[C.struct_miqt_qpoint](pt1), libmiqt.ValueCast[C.struct_miqt_qpoint](pt2)))
 }
 
 // NewQLine3 constructs a new QLine object.
@@ -92,18 +91,14 @@ func (this *QLine) IsNull() bool {
 	return (bool)(C.QLine_isNull(this.h))
 }
 
-func (this *QLine) P1() *QPoint {
+func (this *QLine) P1() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QLine_p1(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QLine_p1(this.h))
 }
 
-func (this *QLine) P2() *QPoint {
+func (this *QLine) P2() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QLine_p2(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QLine_p2(this.h))
 }
 
 func (this *QLine) X1() int {
@@ -136,10 +131,9 @@ func (this *QLine) Dy() int {
 	return (int)(C.QLine_dy(this.h))
 }
 
-func (this *QLine) Translate(p *QPoint) {
+func (this *QLine) Translate(p QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QLine_translate(this.h, p.cPointer())
+	C.QLine_translate(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
 func (this *QLine) Translate2(dx int, dy int) {
@@ -147,10 +141,9 @@ func (this *QLine) Translate2(dx int, dy int) {
 	C.QLine_translate2(this.h, (C.int)(dx), (C.int)(dy))
 }
 
-func (this *QLine) Translated(p *QPoint) *QLine {
+func (this *QLine) Translated(p QPoint) *QLine {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_goptr := newQLine(C.QLine_translated(this.h, p.cPointer()))
+	_goptr := newQLine(C.QLine_translated(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,30 +155,24 @@ func (this *QLine) Translated2(dx int, dy int) *QLine {
 	return _goptr
 }
 
-func (this *QLine) Center() *QPoint {
+func (this *QLine) Center() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QLine_center(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QLine_center(this.h))
 }
 
-func (this *QLine) SetP1(p1 *QPoint) {
+func (this *QLine) SetP1(p1 QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p1)
-	C.QLine_setP1(this.h, p1.cPointer())
+	C.QLine_setP1(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p1))
 }
 
-func (this *QLine) SetP2(p2 *QPoint) {
+func (this *QLine) SetP2(p2 QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p2)
-	C.QLine_setP2(this.h, p2.cPointer())
+	C.QLine_setP2(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p2))
 }
 
-func (this *QLine) SetPoints(p1 *QPoint, p2 *QPoint) {
+func (this *QLine) SetPoints(p1 QPoint, p2 QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p1)
-	defer runtime.KeepAlive(p2)
-	C.QLine_setPoints(this.h, p1.cPointer(), p2.cPointer())
+	C.QLine_setPoints(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p1), libmiqt.ValueCast[C.struct_miqt_qpoint](p2))
 }
 
 func (this *QLine) SetLine(x1 int, y1 int, x2 int, y2 int) {
@@ -277,11 +264,9 @@ func NewQLineF() *QLineF {
 }
 
 // NewQLineF2 constructs a new QLineF object.
-func NewQLineF2(pt1 *QPointF, pt2 *QPointF) *QLineF {
-	defer runtime.KeepAlive(pt1)
-	defer runtime.KeepAlive(pt2)
+func NewQLineF2(pt1 QPointF, pt2 QPointF) *QLineF {
 
-	return newQLineF(C.QLineF_new2(pt1.cPointer(), pt2.cPointer()))
+	return newQLineF(C.QLineF_new2(libmiqt.ValueCast[C.struct_miqt_qpointf](pt1), libmiqt.ValueCast[C.struct_miqt_qpointf](pt2)))
 }
 
 // NewQLineF3 constructs a new QLineF object.
@@ -315,18 +300,14 @@ func (this *QLineF) IsNull() bool {
 	return (bool)(C.QLineF_isNull(this.h))
 }
 
-func (this *QLineF) P1() *QPointF {
+func (this *QLineF) P1() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QLineF_p1(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QLineF_p1(this.h))
 }
 
-func (this *QLineF) P2() *QPointF {
+func (this *QLineF) P2() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QLineF_p2(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QLineF_p2(this.h))
 }
 
 func (this *QLineF) X1() float64 {
@@ -405,17 +386,14 @@ func (this *QLineF) Intersects(l *QLineF) QLineF__IntersectionType {
 	return (QLineF__IntersectionType)(C.QLineF_intersects(this.h, l.cPointer()))
 }
 
-func (this *QLineF) PointAt(t float64) *QPointF {
+func (this *QLineF) PointAt(t float64) QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QLineF_pointAt(this.h, (C.double)(t)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QLineF_pointAt(this.h, (C.double)(t)))
 }
 
-func (this *QLineF) Translate(p *QPointF) {
+func (this *QLineF) Translate(p QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QLineF_translate(this.h, p.cPointer())
+	C.QLineF_translate(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
 func (this *QLineF) Translate2(dx float64, dy float64) {
@@ -423,10 +401,9 @@ func (this *QLineF) Translate2(dx float64, dy float64) {
 	C.QLineF_translate2(this.h, (C.double)(dx), (C.double)(dy))
 }
 
-func (this *QLineF) Translated(p *QPointF) *QLineF {
+func (this *QLineF) Translated(p QPointF) *QLineF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_goptr := newQLineF(C.QLineF_translated(this.h, p.cPointer()))
+	_goptr := newQLineF(C.QLineF_translated(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -438,30 +415,24 @@ func (this *QLineF) Translated2(dx float64, dy float64) *QLineF {
 	return _goptr
 }
 
-func (this *QLineF) Center() *QPointF {
+func (this *QLineF) Center() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QLineF_center(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QLineF_center(this.h))
 }
 
-func (this *QLineF) SetP1(p1 *QPointF) {
+func (this *QLineF) SetP1(p1 QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p1)
-	C.QLineF_setP1(this.h, p1.cPointer())
+	C.QLineF_setP1(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p1))
 }
 
-func (this *QLineF) SetP2(p2 *QPointF) {
+func (this *QLineF) SetP2(p2 QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p2)
-	C.QLineF_setP2(this.h, p2.cPointer())
+	C.QLineF_setP2(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p2))
 }
 
-func (this *QLineF) SetPoints(p1 *QPointF, p2 *QPointF) {
+func (this *QLineF) SetPoints(p1 QPointF, p2 QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p1)
-	defer runtime.KeepAlive(p2)
-	C.QLineF_setPoints(this.h, p1.cPointer(), p2.cPointer())
+	C.QLineF_setPoints(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p1), libmiqt.ValueCast[C.struct_miqt_qpointf](p2))
 }
 
 func (this *QLineF) SetLine(x1 float64, y1 float64, x2 float64, y2 float64) {
@@ -491,7 +462,6 @@ func (this *QLineF) ToLine() *QLine {
 func (this *QLineF) Intersects2(l *QLineF, intersectionPoint *QPointF) QLineF__IntersectionType {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(l)
-	defer runtime.KeepAlive(intersectionPoint)
 	return (QLineF__IntersectionType)(C.QLineF_intersects2(this.h, l.cPointer(), intersectionPoint.cPointer()))
 }
 

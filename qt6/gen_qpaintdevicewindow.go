@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -80,9 +81,8 @@ func QPaintDeviceWindow_Tr(s string) string {
 	return _ret
 }
 
-func (this *QPaintDeviceWindow) Update(rect *QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QPaintDeviceWindow_update(this.h, rect.cPointer())
+func (this *QPaintDeviceWindow) Update(rect QRect) {
+	C.QPaintDeviceWindow_update(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
 func (this *QPaintDeviceWindow) UpdateWithRegion(region *QRegion) {

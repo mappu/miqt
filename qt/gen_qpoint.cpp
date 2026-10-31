@@ -11,27 +11,33 @@ extern "C" {
 } /* extern C */
 #endif
 
-QPoint* QPoint_new() {
-	return new (std::nothrow) QPoint();
+struct miqt_qpoint QPoint_new() {
+	return miqt_to_cabi<struct miqt_qpoint>(QPoint());
 }
 
-QPoint* QPoint_new2(int xpos, int ypos) {
-	return new (std::nothrow) QPoint(static_cast<int>(xpos), static_cast<int>(ypos));
+struct miqt_qpoint QPoint_new2(int xpos, int ypos) {
+	return miqt_to_cabi<struct miqt_qpoint>(QPoint(static_cast<int>(xpos), static_cast<int>(ypos)));
 }
 
-QPoint* QPoint_new3(QPoint* param1) {
-	return new (std::nothrow) QPoint(*param1);
+struct miqt_qpoint QPoint_new3(struct miqt_qpoint param1) {
+	return miqt_to_cabi<struct miqt_qpoint>(QPoint(miqt_from_cabi<QPoint>(param1)));
 }
 
-bool QPoint_isNull(const QPoint* self) {
+bool QPoint_isNull(struct miqt_qpoint self_cabi) {
+	const QPoint self_val = miqt_from_cabi<QPoint>(self_cabi);
+	const QPoint* self = &self_val;
 	return self->isNull();
 }
 
-int QPoint_x(const QPoint* self) {
+int QPoint_x(struct miqt_qpoint self_cabi) {
+	const QPoint self_val = miqt_from_cabi<QPoint>(self_cabi);
+	const QPoint* self = &self_val;
 	return self->x();
 }
 
-int QPoint_y(const QPoint* self) {
+int QPoint_y(struct miqt_qpoint self_cabi) {
+	const QPoint self_val = miqt_from_cabi<QPoint>(self_cabi);
+	const QPoint* self = &self_val;
 	return self->y();
 }
 
@@ -43,22 +49,26 @@ void QPoint_setY(QPoint* self, int y) {
 	self->setY(static_cast<int>(y));
 }
 
-int QPoint_manhattanLength(const QPoint* self) {
+int QPoint_manhattanLength(struct miqt_qpoint self_cabi) {
+	const QPoint self_val = miqt_from_cabi<QPoint>(self_cabi);
+	const QPoint* self = &self_val;
 	return self->manhattanLength();
 }
 
-QPoint* QPoint_transposed(const QPoint* self) {
-	return new QPoint(self->transposed());
+struct miqt_qpoint QPoint_transposed(struct miqt_qpoint self_cabi) {
+	const QPoint self_val = miqt_from_cabi<QPoint>(self_cabi);
+	const QPoint* self = &self_val;
+	return miqt_to_cabi<struct miqt_qpoint>(self->transposed());
 }
 
-QPoint* QPoint_operatorPlusAssign(QPoint* self, QPoint* p) {
-	QPoint& _ret = self->operator+=(*p);
+QPoint* QPoint_operatorPlusAssign(QPoint* self, struct miqt_qpoint p) {
+	QPoint& _ret = self->operator+=(miqt_from_cabi<QPoint>(p));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QPoint* QPoint_operatorMinusAssign(QPoint* self, QPoint* p) {
-	QPoint& _ret = self->operator-=(*p);
+QPoint* QPoint_operatorMinusAssign(QPoint* self, struct miqt_qpoint p) {
+	QPoint& _ret = self->operator-=(miqt_from_cabi<QPoint>(p));
 	// Cast returned reference into pointer
 	return &_ret;
 }
@@ -87,45 +97,49 @@ QPoint* QPoint_operatorDivideAssign(QPoint* self, double divisor) {
 	return &_ret;
 }
 
-int QPoint_dotProduct(QPoint* p1, QPoint* p2) {
-	return QPoint::dotProduct(*p1, *p2);
+int QPoint_dotProduct(struct miqt_qpoint p1, struct miqt_qpoint p2) {
+	return QPoint::dotProduct(miqt_from_cabi<QPoint>(p1), miqt_from_cabi<QPoint>(p2));
 }
 
-void QPoint_delete(QPoint* self) {
-	delete self;
+struct miqt_qpointf QPointF_new() {
+	return miqt_to_cabi<struct miqt_qpointf>(QPointF());
 }
 
-QPointF* QPointF_new() {
-	return new (std::nothrow) QPointF();
+struct miqt_qpointf QPointF_new2(struct miqt_qpoint p) {
+	return miqt_to_cabi<struct miqt_qpointf>(QPointF(miqt_from_cabi<QPoint>(p)));
 }
 
-QPointF* QPointF_new2(QPoint* p) {
-	return new (std::nothrow) QPointF(*p);
+struct miqt_qpointf QPointF_new3(double xpos, double ypos) {
+	return miqt_to_cabi<struct miqt_qpointf>(QPointF(static_cast<qreal>(xpos), static_cast<qreal>(ypos)));
 }
 
-QPointF* QPointF_new3(double xpos, double ypos) {
-	return new (std::nothrow) QPointF(static_cast<qreal>(xpos), static_cast<qreal>(ypos));
+struct miqt_qpointf QPointF_new4(struct miqt_qpointf param1) {
+	return miqt_to_cabi<struct miqt_qpointf>(QPointF(miqt_from_cabi<QPointF>(param1)));
 }
 
-QPointF* QPointF_new4(QPointF* param1) {
-	return new (std::nothrow) QPointF(*param1);
-}
-
-double QPointF_manhattanLength(const QPointF* self) {
+double QPointF_manhattanLength(struct miqt_qpointf self_cabi) {
+	const QPointF self_val = miqt_from_cabi<QPointF>(self_cabi);
+	const QPointF* self = &self_val;
 	qreal _ret = self->manhattanLength();
 	return static_cast<double>(_ret);
 }
 
-bool QPointF_isNull(const QPointF* self) {
+bool QPointF_isNull(struct miqt_qpointf self_cabi) {
+	const QPointF self_val = miqt_from_cabi<QPointF>(self_cabi);
+	const QPointF* self = &self_val;
 	return self->isNull();
 }
 
-double QPointF_x(const QPointF* self) {
+double QPointF_x(struct miqt_qpointf self_cabi) {
+	const QPointF self_val = miqt_from_cabi<QPointF>(self_cabi);
+	const QPointF* self = &self_val;
 	qreal _ret = self->x();
 	return static_cast<double>(_ret);
 }
 
-double QPointF_y(const QPointF* self) {
+double QPointF_y(struct miqt_qpointf self_cabi) {
+	const QPointF self_val = miqt_from_cabi<QPointF>(self_cabi);
+	const QPointF* self = &self_val;
 	qreal _ret = self->y();
 	return static_cast<double>(_ret);
 }
@@ -138,18 +152,20 @@ void QPointF_setY(QPointF* self, double y) {
 	self->setY(static_cast<qreal>(y));
 }
 
-QPointF* QPointF_transposed(const QPointF* self) {
-	return new QPointF(self->transposed());
+struct miqt_qpointf QPointF_transposed(struct miqt_qpointf self_cabi) {
+	const QPointF self_val = miqt_from_cabi<QPointF>(self_cabi);
+	const QPointF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qpointf>(self->transposed());
 }
 
-QPointF* QPointF_operatorPlusAssign(QPointF* self, QPointF* p) {
-	QPointF& _ret = self->operator+=(*p);
+QPointF* QPointF_operatorPlusAssign(QPointF* self, struct miqt_qpointf p) {
+	QPointF& _ret = self->operator+=(miqt_from_cabi<QPointF>(p));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QPointF* QPointF_operatorMinusAssign(QPointF* self, QPointF* p) {
-	QPointF& _ret = self->operator-=(*p);
+QPointF* QPointF_operatorMinusAssign(QPointF* self, struct miqt_qpointf p) {
+	QPointF& _ret = self->operator-=(miqt_from_cabi<QPointF>(p));
 	// Cast returned reference into pointer
 	return &_ret;
 }
@@ -166,16 +182,14 @@ QPointF* QPointF_operatorDivideAssign(QPointF* self, double c) {
 	return &_ret;
 }
 
-double QPointF_dotProduct(QPointF* p1, QPointF* p2) {
-	qreal _ret = QPointF::dotProduct(*p1, *p2);
+double QPointF_dotProduct(struct miqt_qpointf p1, struct miqt_qpointf p2) {
+	qreal _ret = QPointF::dotProduct(miqt_from_cabi<QPointF>(p1), miqt_from_cabi<QPointF>(p2));
 	return static_cast<double>(_ret);
 }
 
-QPoint* QPointF_toPoint(const QPointF* self) {
-	return new QPoint(self->toPoint());
-}
-
-void QPointF_delete(QPointF* self) {
-	delete self;
+struct miqt_qpoint QPointF_toPoint(struct miqt_qpointf self_cabi) {
+	const QPointF self_val = miqt_from_cabi<QPointF>(self_cabi);
+	const QPointF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qpoint>(self->toPoint());
 }
 

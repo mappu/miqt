@@ -9,6 +9,7 @@ package qscintilla
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"github.com/mappu/miqt/qt/printsupport"
 	"runtime"
@@ -74,7 +75,6 @@ func NewQsciPrinter2(mode printsupport.QPrinter__PrinterMode) *QsciPrinter {
 func (this *QsciPrinter) FormatPage(painter *qt.QPainter, drawing bool, area *qt.QRect, pagenr int) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(area)
 	C.QsciPrinter_formatPage(this.h, (*C.QPainter)(painter.UnsafePointer()), (C.bool)(drawing), (*C.QRect)(area.UnsafePointer()), (C.int)(pagenr))
 }
 
@@ -144,7 +144,6 @@ func (this *QsciPrinter) DevicePageLayout() qt.QPageLayout {
 func (this *QsciPrinter) callVirtualBase_FormatPage(painter *qt.QPainter, drawing bool, area *qt.QRect, pagenr int) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(area)
 
 	C.QsciPrinter_virtualbase_formatPage(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (C.bool)(drawing), (*C.QRect)(area.UnsafePointer()), (C.int)(pagenr))
 
@@ -352,14 +351,13 @@ func miqt_exec_callback_QsciPrinter_setPageSize(self *C.QsciPrinter, cb C.intptr
 
 }
 
-func (this *QsciPrinter) callVirtualBase_SetPageSizeMM(size *qt.QSizeF) {
+func (this *QsciPrinter) callVirtualBase_SetPageSizeMM(size qt.QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
 
-	C.QsciPrinter_virtualbase_setPageSizeMM(unsafe.Pointer(this.h), (*C.QSizeF)(size.UnsafePointer()))
+	C.QsciPrinter_virtualbase_setPageSizeMM(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 
 }
-func (this *QsciPrinter) OnSetPageSizeMM(slot func(super func(size *qt.QSizeF), size *qt.QSizeF)) {
+func (this *QsciPrinter) OnSetPageSizeMM(slot func(super func(size qt.QSizeF), size qt.QSizeF)) {
 	ok := C.QsciPrinter_override_virtual_setPageSizeMM(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -367,14 +365,14 @@ func (this *QsciPrinter) OnSetPageSizeMM(slot func(super func(size *qt.QSizeF), 
 }
 
 //export miqt_exec_callback_QsciPrinter_setPageSizeMM
-func miqt_exec_callback_QsciPrinter_setPageSizeMM(self *C.QsciPrinter, cb C.intptr_t, size *C.QSizeF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size *qt.QSizeF), size *qt.QSizeF))
+func miqt_exec_callback_QsciPrinter_setPageSizeMM(self *C.QsciPrinter, cb C.intptr_t, size C.struct_miqt_qsizef) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size qt.QSizeF), size qt.QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSizeF(unsafe.Pointer(size))
+	slotval1 := libmiqt.ValueCast[qt.QSizeF](size)
 
 	gofunc((&QsciPrinter{h: self}).callVirtualBase_SetPageSizeMM, slotval1)
 
@@ -520,7 +518,6 @@ func miqt_exec_callback_QsciPrinter_initPainter(self *C.QsciPrinter, cb C.intptr
 
 func (this *QsciPrinter) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciPrinter_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

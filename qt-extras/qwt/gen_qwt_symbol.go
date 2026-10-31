@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -95,12 +96,11 @@ func NewQwtSymbol() *QwtSymbol {
 }
 
 // NewQwtSymbol2 constructs a new QwtSymbol object.
-func NewQwtSymbol2(param1 QwtSymbol__Style, param2 *qt.QBrush, param3 *qt.QPen, param4 *qt.QSize) *QwtSymbol {
+func NewQwtSymbol2(param1 QwtSymbol__Style, param2 *qt.QBrush, param3 *qt.QPen, param4 qt.QSize) *QwtSymbol {
 	defer runtime.KeepAlive(param2)
 	defer runtime.KeepAlive(param3)
-	defer runtime.KeepAlive(param4)
 
-	return newQwtSymbol(C.QwtSymbol_new2((C.int)(param1), (*C.QBrush)(param2.UnsafePointer()), (*C.QPen)(param3.UnsafePointer()), (*C.QSize)(param4.UnsafePointer())))
+	return newQwtSymbol(C.QwtSymbol_new2((C.int)(param1), (*C.QBrush)(param2.UnsafePointer()), (*C.QPen)(param3.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qsize](param4)))
 }
 
 // NewQwtSymbol3 constructs a new QwtSymbol object.
@@ -128,10 +128,9 @@ func (this *QwtSymbol) CachePolicy() QwtSymbol__CachePolicy {
 	return (QwtSymbol__CachePolicy)(C.QwtSymbol_cachePolicy(this.h))
 }
 
-func (this *QwtSymbol) SetSize(size *qt.QSize) {
+func (this *QwtSymbol) SetSize(size qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QwtSymbol_setSize(this.h, (*C.QSize)(size.UnsafePointer()))
+	C.QwtSymbol_setSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
 func (this *QwtSymbol) SetSizeWithWidth(width int) {
@@ -139,22 +138,19 @@ func (this *QwtSymbol) SetSizeWithWidth(width int) {
 	C.QwtSymbol_setSizeWithWidth(this.h, (C.int)(width))
 }
 
-func (this *QwtSymbol) Size() *qt.QSize {
+func (this *QwtSymbol) Size() qt.QSize {
 	defer runtime.KeepAlive(this)
-	return qt.UnsafeNewQSize(unsafe.Pointer(C.QwtSymbol_size(this.h)))
+	return libmiqt.ValueCast[qt.QSize](C.QwtSymbol_size(this.h))
 }
 
-func (this *QwtSymbol) SetPinPoint(pos *qt.QPointF) {
+func (this *QwtSymbol) SetPinPoint(pos qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QwtSymbol_setPinPoint(this.h, (*C.QPointF)(pos.UnsafePointer()))
+	C.QwtSymbol_setPinPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QwtSymbol) PinPoint() *qt.QPointF {
+func (this *QwtSymbol) PinPoint() qt.QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtSymbol_pinPoint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPointF](C.QwtSymbol_pinPoint(this.h))
 }
 
 func (this *QwtSymbol) SetPinPointEnabled(pinPointEnabled bool) {
@@ -167,10 +163,9 @@ func (this *QwtSymbol) IsPinPointEnabled() bool {
 	return (bool)(C.QwtSymbol_isPinPointEnabled(this.h))
 }
 
-func (this *QwtSymbol) SetColor(color *qt.QColor) {
+func (this *QwtSymbol) SetColor(color qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QwtSymbol_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QwtSymbol_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QwtSymbol) SetBrush(brush *qt.QBrush) {
@@ -184,10 +179,9 @@ func (this *QwtSymbol) Brush() *qt.QBrush {
 	return qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtSymbol_brush(this.h)))
 }
 
-func (this *QwtSymbol) SetPen(param1 *qt.QColor) {
+func (this *QwtSymbol) SetPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtSymbol_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtSymbol_setPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtSymbol) SetPenWithPen(pen *qt.QPen) {
@@ -258,32 +252,27 @@ func (this *QwtSymbol) SetSvgDocument(svgDocument []byte) {
 	C.QwtSymbol_setSvgDocument(this.h, svgDocument_alias)
 }
 
-func (this *QwtSymbol) DrawSymbol(param1 *qt.QPainter, param2 *qt.QRectF) {
+func (this *QwtSymbol) DrawSymbol(param1 *qt.QPainter, param2 qt.QRectF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	C.QwtSymbol_drawSymbol(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
+	C.QwtSymbol_drawSymbol(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2))
 }
 
-func (this *QwtSymbol) DrawSymbol2(param1 *qt.QPainter, param2 *qt.QPointF) {
+func (this *QwtSymbol) DrawSymbol2(param1 *qt.QPainter, param2 qt.QPointF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	C.QwtSymbol_drawSymbol2(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()))
+	C.QwtSymbol_drawSymbol2(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](param2))
 }
 
 func (this *QwtSymbol) DrawSymbols2(param1 *qt.QPainter, param2 *qt.QPointF, numPoints int) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 	C.QwtSymbol_drawSymbols2(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.int)(numPoints))
 }
 
-func (this *QwtSymbol) BoundingRect() *qt.QRect {
+func (this *QwtSymbol) BoundingRect() qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtSymbol_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtSymbol_boundingRect(this.h))
 }
 
 func (this *QwtSymbol) InvalidateCache() {
@@ -296,32 +285,28 @@ func (this *QwtSymbol) SetSize2(width int, height int) {
 	C.QwtSymbol_setSize2(this.h, (C.int)(width), (C.int)(height))
 }
 
-func (this *QwtSymbol) SetPinPoint2(pos *qt.QPointF, enable bool) {
+func (this *QwtSymbol) SetPinPoint2(pos qt.QPointF, enable bool) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QwtSymbol_setPinPoint2(this.h, (*C.QPointF)(pos.UnsafePointer()), (C.bool)(enable))
+	C.QwtSymbol_setPinPoint2(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos), (C.bool)(enable))
 }
 
-func (this *QwtSymbol) SetPen2(param1 *qt.QColor, width float64) {
+func (this *QwtSymbol) SetPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtSymbol_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtSymbol_setPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtSymbol) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtSymbol) SetPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtSymbol_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtSymbol_setPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
-func (this *QwtSymbol) callVirtualBase_SetColor(color *qt.QColor) {
+func (this *QwtSymbol) callVirtualBase_SetColor(color qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
 
-	C.QwtSymbol_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(color.UnsafePointer()))
+	C.QwtSymbol_virtualbase_setColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 
 }
-func (this *QwtSymbol) OnSetColor(slot func(super func(color *qt.QColor), color *qt.QColor)) {
+func (this *QwtSymbol) OnSetColor(slot func(super func(color qt.QColor), color qt.QColor)) {
 	ok := C.QwtSymbol_override_virtual_setColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -329,28 +314,26 @@ func (this *QwtSymbol) OnSetColor(slot func(super func(color *qt.QColor), color 
 }
 
 //export miqt_exec_callback_QwtSymbol_setColor
-func miqt_exec_callback_QwtSymbol_setColor(self *C.QwtSymbol, cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(color *qt.QColor), color *qt.QColor))
+func miqt_exec_callback_QwtSymbol_setColor(self *C.QwtSymbol, cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(color qt.QColor), color qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt.QColor](color)
 
 	gofunc((&QwtSymbol{h: self}).callVirtualBase_SetColor, slotval1)
 
 }
 
-func (this *QwtSymbol) callVirtualBase_BoundingRect() *qt.QRect {
+func (this *QwtSymbol) callVirtualBase_BoundingRect() qt.QRect {
 	defer runtime.KeepAlive(this)
 
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtSymbol_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtSymbol_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtSymbol) OnBoundingRect(slot func(super func() *qt.QRect) *qt.QRect) {
+func (this *QwtSymbol) OnBoundingRect(slot func(super func() qt.QRect) qt.QRect) {
 	ok := C.QwtSymbol_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -358,23 +341,21 @@ func (this *QwtSymbol) OnBoundingRect(slot func(super func() *qt.QRect) *qt.QRec
 }
 
 //export miqt_exec_callback_QwtSymbol_boundingRect
-func miqt_exec_callback_QwtSymbol_boundingRect(self *C.QwtSymbol, cb C.intptr_t) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRect) *qt.QRect)
+func miqt_exec_callback_QwtSymbol_boundingRect(self *C.QwtSymbol, cb C.intptr_t) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRect) qt.QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtSymbol{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtSymbol_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
 
 func (this *QwtSymbol) callVirtualBase_RenderSymbols(param1 *qt.QPainter, param2 *qt.QPointF, numPoints int) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
 	C.QwtSymbol_virtualbase_renderSymbols(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.int)(numPoints))
 

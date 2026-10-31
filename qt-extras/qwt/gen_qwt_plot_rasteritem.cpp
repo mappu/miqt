@@ -45,16 +45,16 @@ void QwtPlotRasterItem_invalidateCache(QwtPlotRasterItem* self) {
 	self->invalidateCache();
 }
 
-QRectF* QwtPlotRasterItem_pixelHint(const QwtPlotRasterItem* self, QRectF* param1) {
-	return new QRectF(self->pixelHint(*param1));
+struct miqt_qrectf QwtPlotRasterItem_pixelHint(const QwtPlotRasterItem* self, struct miqt_qrectf param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->pixelHint(miqt_from_cabi<QRectF>(param1)));
 }
 
 QwtInterval* QwtPlotRasterItem_interval(const QwtPlotRasterItem* self, int param1) {
 	return new QwtInterval(self->interval(static_cast<Qt::Axis>(param1)));
 }
 
-QRectF* QwtPlotRasterItem_boundingRect(const QwtPlotRasterItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotRasterItem_boundingRect(const QwtPlotRasterItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 void QwtPlotRasterItem_setPaintAttribute2(QwtPlotRasterItem* self, int param1, bool on) {

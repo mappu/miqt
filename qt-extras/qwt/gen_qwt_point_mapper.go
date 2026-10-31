@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -86,17 +87,14 @@ func (this *QwtPointMapper) TestFlag(param1 QwtPointMapper__TransformationFlag) 
 	return (bool)(C.QwtPointMapper_testFlag(this.h, (C.int)(param1)))
 }
 
-func (this *QwtPointMapper) SetBoundingRect(boundingRect *qt.QRectF) {
+func (this *QwtPointMapper) SetBoundingRect(boundingRect qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(boundingRect)
-	C.QwtPointMapper_setBoundingRect(this.h, (*C.QRectF)(boundingRect.UnsafePointer()))
+	C.QwtPointMapper_setBoundingRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](boundingRect))
 }
 
-func (this *QwtPointMapper) BoundingRect() *qt.QRectF {
+func (this *QwtPointMapper) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPointMapper_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPointMapper_boundingRect(this.h))
 }
 
 func (this *QwtPointMapper) SetFlag2(param1 QwtPointMapper__TransformationFlag, on bool) {

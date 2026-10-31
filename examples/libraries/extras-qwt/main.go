@@ -105,7 +105,6 @@ func newValueBar(orientation qt.Orientation, text string, value float64) *qt.QWi
 
 	layout := qt.NewQVBoxLayout(valueBar)
 	margins := qt.NewQMargins()
-	defer margins.Delete()
 
 	layout.SetContentsMarginsWithMargins(margins)
 	layout.SetSpacing(0)

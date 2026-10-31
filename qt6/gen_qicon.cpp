@@ -54,8 +54,8 @@ QVariant* QIcon_ToQVariant(const QIcon* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-QPixmap* QIcon_pixmap(const QIcon* self, QSize* size) {
-	return new QPixmap(self->pixmap(*size));
+QPixmap* QIcon_pixmap(const QIcon* self, struct miqt_qsize size) {
+	return new QPixmap(self->pixmap(miqt_from_cabi<QSize>(size)));
 }
 
 QPixmap* QIcon_pixmap2(const QIcon* self, int w, int h) {
@@ -66,20 +66,20 @@ QPixmap* QIcon_pixmapWithExtent(const QIcon* self, int extent) {
 	return new QPixmap(self->pixmap(static_cast<int>(extent)));
 }
 
-QPixmap* QIcon_pixmap3(const QIcon* self, QSize* size, double devicePixelRatio) {
-	return new QPixmap(self->pixmap(*size, static_cast<qreal>(devicePixelRatio)));
+QPixmap* QIcon_pixmap3(const QIcon* self, struct miqt_qsize size, double devicePixelRatio) {
+	return new QPixmap(self->pixmap(miqt_from_cabi<QSize>(size), static_cast<qreal>(devicePixelRatio)));
 }
 
-QPixmap* QIcon_pixmap4(const QIcon* self, QWindow* window, QSize* size) {
-	return new QPixmap(self->pixmap(window, *size));
+QPixmap* QIcon_pixmap4(const QIcon* self, QWindow* window, struct miqt_qsize size) {
+	return new QPixmap(self->pixmap(window, miqt_from_cabi<QSize>(size)));
 }
 
-QSize* QIcon_actualSize(const QIcon* self, QSize* size) {
-	return new QSize(self->actualSize(*size));
+struct miqt_qsize QIcon_actualSize(const QIcon* self, struct miqt_qsize size) {
+	return miqt_to_cabi<struct miqt_qsize>(self->actualSize(miqt_from_cabi<QSize>(size)));
 }
 
-QSize* QIcon_actualSize2(const QIcon* self, QWindow* window, QSize* size) {
-	return new QSize(self->actualSize(window, *size));
+struct miqt_qsize QIcon_actualSize2(const QIcon* self, QWindow* window, struct miqt_qsize size) {
+	return miqt_to_cabi<struct miqt_qsize>(self->actualSize(window, miqt_from_cabi<QSize>(size)));
 }
 
 struct miqt_string QIcon_name(const QIcon* self) {
@@ -93,8 +93,8 @@ struct miqt_string QIcon_name(const QIcon* self) {
 	return _ms;
 }
 
-void QIcon_paint(const QIcon* self, QPainter* painter, QRect* rect) {
-	self->paint(painter, *rect);
+void QIcon_paint(const QIcon* self, QPainter* painter, struct miqt_qrect rect) {
+	self->paint(painter, miqt_from_cabi<QRect>(rect));
 }
 
 void QIcon_paint2(const QIcon* self, QPainter* painter, int x, int y, int w, int h) {
@@ -127,12 +127,12 @@ void QIcon_addFile(QIcon* self, struct miqt_string fileName) {
 	self->addFile(fileName_QString);
 }
 
-struct miqt_array /* of QSize* */  QIcon_availableSizes(const QIcon* self) {
+struct miqt_array /* of struct miqt_qsize */  QIcon_availableSizes(const QIcon* self) {
 	QList<QSize> _ret = self->availableSizes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
+	struct miqt_qsize* _arr = static_cast<struct miqt_qsize*>(malloc(sizeof(struct miqt_qsize) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qsize>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -257,12 +257,12 @@ void QIcon_setFallbackThemeName(struct miqt_string name) {
 	QIcon::setFallbackThemeName(name_QString);
 }
 
-QPixmap* QIcon_pixmap5(const QIcon* self, QSize* size, int mode) {
-	return new QPixmap(self->pixmap(*size, static_cast<QIcon::Mode>(mode)));
+QPixmap* QIcon_pixmap5(const QIcon* self, struct miqt_qsize size, int mode) {
+	return new QPixmap(self->pixmap(miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode)));
 }
 
-QPixmap* QIcon_pixmap6(const QIcon* self, QSize* size, int mode, int state) {
-	return new QPixmap(self->pixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
+QPixmap* QIcon_pixmap6(const QIcon* self, struct miqt_qsize size, int mode, int state) {
+	return new QPixmap(self->pixmap(miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
 QPixmap* QIcon_pixmap7(const QIcon* self, int w, int h, int mode) {
@@ -281,48 +281,48 @@ QPixmap* QIcon_pixmap10(const QIcon* self, int extent, int mode, int state) {
 	return new QPixmap(self->pixmap(static_cast<int>(extent), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QPixmap* QIcon_pixmap11(const QIcon* self, QSize* size, double devicePixelRatio, int mode) {
-	return new QPixmap(self->pixmap(*size, static_cast<qreal>(devicePixelRatio), static_cast<QIcon::Mode>(mode)));
+QPixmap* QIcon_pixmap11(const QIcon* self, struct miqt_qsize size, double devicePixelRatio, int mode) {
+	return new QPixmap(self->pixmap(miqt_from_cabi<QSize>(size), static_cast<qreal>(devicePixelRatio), static_cast<QIcon::Mode>(mode)));
 }
 
-QPixmap* QIcon_pixmap12(const QIcon* self, QSize* size, double devicePixelRatio, int mode, int state) {
-	return new QPixmap(self->pixmap(*size, static_cast<qreal>(devicePixelRatio), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
+QPixmap* QIcon_pixmap12(const QIcon* self, struct miqt_qsize size, double devicePixelRatio, int mode, int state) {
+	return new QPixmap(self->pixmap(miqt_from_cabi<QSize>(size), static_cast<qreal>(devicePixelRatio), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QPixmap* QIcon_pixmap13(const QIcon* self, QWindow* window, QSize* size, int mode) {
-	return new QPixmap(self->pixmap(window, *size, static_cast<QIcon::Mode>(mode)));
+QPixmap* QIcon_pixmap13(const QIcon* self, QWindow* window, struct miqt_qsize size, int mode) {
+	return new QPixmap(self->pixmap(window, miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode)));
 }
 
-QPixmap* QIcon_pixmap14(const QIcon* self, QWindow* window, QSize* size, int mode, int state) {
-	return new QPixmap(self->pixmap(window, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
+QPixmap* QIcon_pixmap14(const QIcon* self, QWindow* window, struct miqt_qsize size, int mode, int state) {
+	return new QPixmap(self->pixmap(window, miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QSize* QIcon_actualSize3(const QIcon* self, QSize* size, int mode) {
-	return new QSize(self->actualSize(*size, static_cast<QIcon::Mode>(mode)));
+struct miqt_qsize QIcon_actualSize3(const QIcon* self, struct miqt_qsize size, int mode) {
+	return miqt_to_cabi<struct miqt_qsize>(self->actualSize(miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode)));
 }
 
-QSize* QIcon_actualSize4(const QIcon* self, QSize* size, int mode, int state) {
-	return new QSize(self->actualSize(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
+struct miqt_qsize QIcon_actualSize4(const QIcon* self, struct miqt_qsize size, int mode, int state) {
+	return miqt_to_cabi<struct miqt_qsize>(self->actualSize(miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QSize* QIcon_actualSize5(const QIcon* self, QWindow* window, QSize* size, int mode) {
-	return new QSize(self->actualSize(window, *size, static_cast<QIcon::Mode>(mode)));
+struct miqt_qsize QIcon_actualSize5(const QIcon* self, QWindow* window, struct miqt_qsize size, int mode) {
+	return miqt_to_cabi<struct miqt_qsize>(self->actualSize(window, miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode)));
 }
 
-QSize* QIcon_actualSize6(const QIcon* self, QWindow* window, QSize* size, int mode, int state) {
-	return new QSize(self->actualSize(window, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
+struct miqt_qsize QIcon_actualSize6(const QIcon* self, QWindow* window, struct miqt_qsize size, int mode, int state) {
+	return miqt_to_cabi<struct miqt_qsize>(self->actualSize(window, miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-void QIcon_paint3(const QIcon* self, QPainter* painter, QRect* rect, int alignment) {
-	self->paint(painter, *rect, static_cast<Qt::Alignment>(alignment));
+void QIcon_paint3(const QIcon* self, QPainter* painter, struct miqt_qrect rect, int alignment) {
+	self->paint(painter, miqt_from_cabi<QRect>(rect), static_cast<Qt::Alignment>(alignment));
 }
 
-void QIcon_paint4(const QIcon* self, QPainter* painter, QRect* rect, int alignment, int mode) {
-	self->paint(painter, *rect, static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode));
+void QIcon_paint4(const QIcon* self, QPainter* painter, struct miqt_qrect rect, int alignment, int mode) {
+	self->paint(painter, miqt_from_cabi<QRect>(rect), static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode));
 }
 
-void QIcon_paint5(const QIcon* self, QPainter* painter, QRect* rect, int alignment, int mode, int state) {
-	self->paint(painter, *rect, static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+void QIcon_paint5(const QIcon* self, QPainter* painter, struct miqt_qrect rect, int alignment, int mode, int state) {
+	self->paint(painter, miqt_from_cabi<QRect>(rect), static_cast<Qt::Alignment>(alignment), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
 void QIcon_paint6(const QIcon* self, QPainter* painter, int x, int y, int w, int h, int alignment) {
@@ -345,27 +345,27 @@ void QIcon_addPixmap3(QIcon* self, QPixmap* pixmap, int mode, int state) {
 	self->addPixmap(*pixmap, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
-void QIcon_addFile2(QIcon* self, struct miqt_string fileName, QSize* size) {
+void QIcon_addFile2(QIcon* self, struct miqt_string fileName, struct miqt_qsize size) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	self->addFile(fileName_QString, *size);
+	self->addFile(fileName_QString, miqt_from_cabi<QSize>(size));
 }
 
-void QIcon_addFile3(QIcon* self, struct miqt_string fileName, QSize* size, int mode) {
+void QIcon_addFile3(QIcon* self, struct miqt_string fileName, struct miqt_qsize size, int mode) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	self->addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode));
+	self->addFile(fileName_QString, miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode));
 }
 
-void QIcon_addFile4(QIcon* self, struct miqt_string fileName, QSize* size, int mode, int state) {
+void QIcon_addFile4(QIcon* self, struct miqt_string fileName, struct miqt_qsize size, int mode, int state) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	self->addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	self->addFile(fileName_QString, miqt_from_cabi<QSize>(size), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
-struct miqt_array /* of QSize* */  QIcon_availableSizesWithMode(const QIcon* self, int mode) {
+struct miqt_array /* of struct miqt_qsize */  QIcon_availableSizesWithMode(const QIcon* self, int mode) {
 	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
+	struct miqt_qsize* _arr = static_cast<struct miqt_qsize*>(malloc(sizeof(struct miqt_qsize) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qsize>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -373,12 +373,12 @@ struct miqt_array /* of QSize* */  QIcon_availableSizesWithMode(const QIcon* sel
 	return _out;
 }
 
-struct miqt_array /* of QSize* */  QIcon_availableSizes2(const QIcon* self, int mode, int state) {
+struct miqt_array /* of struct miqt_qsize */  QIcon_availableSizes2(const QIcon* self, int mode, int state) {
 	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
+	struct miqt_qsize* _arr = static_cast<struct miqt_qsize*>(malloc(sizeof(struct miqt_qsize) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qsize>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

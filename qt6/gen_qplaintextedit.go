@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -288,34 +289,27 @@ func (this *QPlainTextEdit) CreateStandardContextMenu() *QMenu {
 	return newQMenu(C.QPlainTextEdit_createStandardContextMenu(this.h))
 }
 
-func (this *QPlainTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	defer runtime.KeepAlive(position)
-	return newQMenu(C.QPlainTextEdit_createStandardContextMenuWithPosition(this.h, position.cPointer()))
+func (this *QPlainTextEdit) CreateStandardContextMenuWithPosition(position QPoint) *QMenu {
+	return newQMenu(C.QPlainTextEdit_createStandardContextMenuWithPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](position)))
 }
 
-func (this *QPlainTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
-	defer runtime.KeepAlive(pos)
-	_goptr := newQTextCursor(C.QPlainTextEdit_cursorForPosition(this.h, pos.cPointer()))
+func (this *QPlainTextEdit) CursorForPosition(pos QPoint) *QTextCursor {
+	_goptr := newQTextCursor(C.QPlainTextEdit_cursorForPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QPlainTextEdit) CursorRect(cursor *QTextCursor) *QRect {
+func (this *QPlainTextEdit) CursorRect(cursor *QTextCursor) QRect {
 	defer runtime.KeepAlive(cursor)
-	_goptr := newQRect(C.QPlainTextEdit_cursorRect(this.h, cursor.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPlainTextEdit_cursorRect(this.h, cursor.cPointer()))
 }
 
-func (this *QPlainTextEdit) CursorRect2() *QRect {
-	_goptr := newQRect(C.QPlainTextEdit_cursorRect2(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPlainTextEdit) CursorRect2() QRect {
+	return libmiqt.ValueCast[QRect](C.QPlainTextEdit_cursorRect2(this.h))
 }
 
-func (this *QPlainTextEdit) AnchorAt(pos *QPoint) string {
-	defer runtime.KeepAlive(pos)
-	var _ms C.struct_miqt_string = C.QPlainTextEdit_anchorAt(this.h, pos.cPointer())
+func (this *QPlainTextEdit) AnchorAt(pos QPoint) string {
+	var _ms C.struct_miqt_string = C.QPlainTextEdit_anchorAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -582,23 +576,22 @@ func miqt_exec_callback_QPlainTextEdit_cursorPositionChanged(cb C.intptr_t) {
 	gofunc()
 }
 
-func (this *QPlainTextEdit) UpdateRequest(rect *QRect, dy int) {
-	defer runtime.KeepAlive(rect)
-	C.QPlainTextEdit_updateRequest(this.h, rect.cPointer(), (C.int)(dy))
+func (this *QPlainTextEdit) UpdateRequest(rect QRect, dy int) {
+	C.QPlainTextEdit_updateRequest(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect), (C.int)(dy))
 }
-func (this *QPlainTextEdit) OnUpdateRequest(slot func(rect *QRect, dy int)) {
+func (this *QPlainTextEdit) OnUpdateRequest(slot func(rect QRect, dy int)) {
 	C.QPlainTextEdit_connect_updateRequest(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPlainTextEdit_updateRequest
-func miqt_exec_callback_QPlainTextEdit_updateRequest(cb C.intptr_t, rect *C.QRect, dy C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(rect *QRect, dy int))
+func miqt_exec_callback_QPlainTextEdit_updateRequest(cb C.intptr_t, rect C.struct_miqt_qrect, dy C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rect QRect, dy int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(rect)
+	slotval1 := libmiqt.ValueCast[QRect](rect)
 
 	slotval2 := (int)(dy)
 
@@ -712,9 +705,7 @@ func (this *QPlainTextEdit) FirstVisibleBlock() QTextBlock {
 func (this *QPlainTextEdit) ContentOffset() QPointF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQPointF(C.QPlainTextEdit_protectedbase_contentOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QPointF](C.QPlainTextEdit_protectedbase_contentOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -729,9 +720,7 @@ func (this *QPlainTextEdit) BlockBoundingRect(block *QTextBlock) QRectF {
 	defer runtime.KeepAlive(block)
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRectF(C.QPlainTextEdit_protectedbase_blockBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), block.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRectF](C.QPlainTextEdit_protectedbase_blockBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), block.cPointer()))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -746,9 +735,7 @@ func (this *QPlainTextEdit) BlockBoundingGeometry(block *QTextBlock) QRectF {
 	defer runtime.KeepAlive(block)
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRectF(C.QPlainTextEdit_protectedbase_blockBoundingGeometry(&_dynamic_cast_ok, unsafe.Pointer(this.h), block.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRectF](C.QPlainTextEdit_protectedbase_blockBoundingGeometry(&_dynamic_cast_ok, unsafe.Pointer(this.h), block.cPointer()))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -802,9 +789,7 @@ func (this *QPlainTextEdit) SetViewportMargins(left int, top int, right int, bot
 func (this *QPlainTextEdit) ViewportMargins() QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQMargins(C.QPlainTextEdit_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QMargins](C.QPlainTextEdit_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -1746,14 +1731,12 @@ func miqt_exec_callback_QPlainTextEdit_doSetTextCursor(self *C.QPlainTextEdit, c
 
 }
 
-func (this *QPlainTextEdit) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QPlainTextEdit) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QPlainTextEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QPlainTextEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QPlainTextEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QPlainTextEdit) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QPlainTextEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1761,27 +1744,24 @@ func (this *QPlainTextEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QS
 }
 
 //export miqt_exec_callback_QPlainTextEdit_minimumSizeHint
-func miqt_exec_callback_QPlainTextEdit_minimumSizeHint(self *C.QPlainTextEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QPlainTextEdit_minimumSizeHint(self *C.QPlainTextEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPlainTextEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QPlainTextEdit) callVirtualBase_SizeHint() *QSize {
-
-	_goptr := newQSize(C.QPlainTextEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QPlainTextEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QPlainTextEdit) callVirtualBase_SizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QPlainTextEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QPlainTextEdit) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QPlainTextEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1789,16 +1769,15 @@ func (this *QPlainTextEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QPlainTextEdit_sizeHint
-func miqt_exec_callback_QPlainTextEdit_sizeHint(self *C.QPlainTextEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QPlainTextEdit_sizeHint(self *C.QPlainTextEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPlainTextEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1888,14 +1867,12 @@ func miqt_exec_callback_QPlainTextEdit_viewportEvent(self *C.QPlainTextEdit, cb 
 
 }
 
-func (this *QPlainTextEdit) callVirtualBase_ViewportSizeHint() *QSize {
+func (this *QPlainTextEdit) callVirtualBase_ViewportSizeHint() QSize {
 
-	_goptr := newQSize(C.QPlainTextEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QPlainTextEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QPlainTextEdit) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QPlainTextEdit) OnViewportSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QPlainTextEdit_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1903,16 +1880,15 @@ func (this *QPlainTextEdit) OnViewportSizeHint(slot func(super func() *QSize) *Q
 }
 
 //export miqt_exec_callback_QPlainTextEdit_viewportSizeHint
-func miqt_exec_callback_QPlainTextEdit_viewportSizeHint(self *C.QPlainTextEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QPlainTextEdit_viewportSizeHint(self *C.QPlainTextEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPlainTextEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2359,7 +2335,6 @@ func miqt_exec_callback_QPlainTextEdit_initPainter(self *C.QPlainTextEdit, cb C.
 }
 
 func (this *QPlainTextEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPlainTextEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -2618,32 +2593,25 @@ func (this *QPlainTextDocumentLayout) Draw(param1 *QPainter, param2 *QAbstractTe
 	C.QPlainTextDocumentLayout_draw(this.h, param1.cPointer(), param2.cPointer())
 }
 
-func (this *QPlainTextDocumentLayout) HitTest(param1 *QPointF, param2 HitTestAccuracy) int {
-	defer runtime.KeepAlive(param1)
-	return (int)(C.QPlainTextDocumentLayout_hitTest(this.h, param1.cPointer(), (C.int)(param2)))
+func (this *QPlainTextDocumentLayout) HitTest(param1 QPointF, param2 HitTestAccuracy) int {
+	return (int)(C.QPlainTextDocumentLayout_hitTest(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](param1), (C.int)(param2)))
 }
 
 func (this *QPlainTextDocumentLayout) PageCount() int {
 	return (int)(C.QPlainTextDocumentLayout_pageCount(this.h))
 }
 
-func (this *QPlainTextDocumentLayout) DocumentSize() *QSizeF {
-	_goptr := newQSizeF(C.QPlainTextDocumentLayout_documentSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPlainTextDocumentLayout) DocumentSize() QSizeF {
+	return libmiqt.ValueCast[QSizeF](C.QPlainTextDocumentLayout_documentSize(this.h))
 }
 
-func (this *QPlainTextDocumentLayout) FrameBoundingRect(param1 *QTextFrame) *QRectF {
-	_goptr := newQRectF(C.QPlainTextDocumentLayout_frameBoundingRect(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPlainTextDocumentLayout) FrameBoundingRect(param1 *QTextFrame) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QPlainTextDocumentLayout_frameBoundingRect(this.h, param1.cPointer()))
 }
 
-func (this *QPlainTextDocumentLayout) BlockBoundingRect(block *QTextBlock) *QRectF {
+func (this *QPlainTextDocumentLayout) BlockBoundingRect(block *QTextBlock) QRectF {
 	defer runtime.KeepAlive(block)
-	_goptr := newQRectF(C.QPlainTextDocumentLayout_blockBoundingRect(this.h, block.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QPlainTextDocumentLayout_blockBoundingRect(this.h, block.cPointer()))
 }
 
 func (this *QPlainTextDocumentLayout) EnsureBlockLayout(block *QTextBlock) {
@@ -2804,13 +2772,12 @@ func miqt_exec_callback_QPlainTextDocumentLayout_draw(self *C.QPlainTextDocument
 
 }
 
-func (this *QPlainTextDocumentLayout) callVirtualBase_HitTest(param1 *QPointF, param2 HitTestAccuracy) int {
-	defer runtime.KeepAlive(param1)
+func (this *QPlainTextDocumentLayout) callVirtualBase_HitTest(param1 QPointF, param2 HitTestAccuracy) int {
 
-	return (int)(C.QPlainTextDocumentLayout_virtualbase_hitTest(unsafe.Pointer(this.h), param1.cPointer(), (C.int)(param2)))
+	return (int)(C.QPlainTextDocumentLayout_virtualbase_hitTest(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](param1), (C.int)(param2)))
 
 }
-func (this *QPlainTextDocumentLayout) OnHitTest(slot func(super func(param1 *QPointF, param2 HitTestAccuracy) int, param1 *QPointF, param2 HitTestAccuracy) int) {
+func (this *QPlainTextDocumentLayout) OnHitTest(slot func(super func(param1 QPointF, param2 HitTestAccuracy) int, param1 QPointF, param2 HitTestAccuracy) int) {
 	ok := C.QPlainTextDocumentLayout_override_virtual_hitTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2818,14 +2785,14 @@ func (this *QPlainTextDocumentLayout) OnHitTest(slot func(super func(param1 *QPo
 }
 
 //export miqt_exec_callback_QPlainTextDocumentLayout_hitTest
-func miqt_exec_callback_QPlainTextDocumentLayout_hitTest(self *C.QPlainTextDocumentLayout, cb C.intptr_t, param1 *C.QPointF, param2 C.int) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPointF, param2 HitTestAccuracy) int, param1 *QPointF, param2 HitTestAccuracy) int)
+func miqt_exec_callback_QPlainTextDocumentLayout_hitTest(self *C.QPlainTextDocumentLayout, cb C.intptr_t, param1 C.struct_miqt_qpointf, param2 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPointF, param2 HitTestAccuracy) int, param1 QPointF, param2 HitTestAccuracy) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(param1)
+	slotval1 := libmiqt.ValueCast[QPointF](param1)
 
 	slotval2 := (HitTestAccuracy)(param2)
 
@@ -2860,14 +2827,12 @@ func miqt_exec_callback_QPlainTextDocumentLayout_pageCount(self *C.QPlainTextDoc
 
 }
 
-func (this *QPlainTextDocumentLayout) callVirtualBase_DocumentSize() *QSizeF {
+func (this *QPlainTextDocumentLayout) callVirtualBase_DocumentSize() QSizeF {
 
-	_goptr := newQSizeF(C.QPlainTextDocumentLayout_virtualbase_documentSize(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QPlainTextDocumentLayout_virtualbase_documentSize(unsafe.Pointer(this.h)))
 
 }
-func (this *QPlainTextDocumentLayout) OnDocumentSize(slot func(super func() *QSizeF) *QSizeF) {
+func (this *QPlainTextDocumentLayout) OnDocumentSize(slot func(super func() QSizeF) QSizeF) {
 	ok := C.QPlainTextDocumentLayout_override_virtual_documentSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2875,27 +2840,24 @@ func (this *QPlainTextDocumentLayout) OnDocumentSize(slot func(super func() *QSi
 }
 
 //export miqt_exec_callback_QPlainTextDocumentLayout_documentSize
-func miqt_exec_callback_QPlainTextDocumentLayout_documentSize(self *C.QPlainTextDocumentLayout, cb C.intptr_t) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSizeF) *QSizeF)
+func miqt_exec_callback_QPlainTextDocumentLayout_documentSize(self *C.QPlainTextDocumentLayout, cb C.intptr_t) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSizeF) QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_DocumentSize)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPlainTextDocumentLayout_virtualreturncopy_QSizeF(virtualReturn.cPointer())
-
-}
-
-func (this *QPlainTextDocumentLayout) callVirtualBase_FrameBoundingRect(param1 *QTextFrame) *QRectF {
-
-	_goptr := newQRectF(C.QPlainTextDocumentLayout_virtualbase_frameBoundingRect(unsafe.Pointer(this.h), param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
-func (this *QPlainTextDocumentLayout) OnFrameBoundingRect(slot func(super func(param1 *QTextFrame) *QRectF, param1 *QTextFrame) *QRectF) {
+
+func (this *QPlainTextDocumentLayout) callVirtualBase_FrameBoundingRect(param1 *QTextFrame) QRectF {
+
+	return libmiqt.ValueCast[QRectF](C.QPlainTextDocumentLayout_virtualbase_frameBoundingRect(unsafe.Pointer(this.h), param1.cPointer()))
+
+}
+func (this *QPlainTextDocumentLayout) OnFrameBoundingRect(slot func(super func(param1 *QTextFrame) QRectF, param1 *QTextFrame) QRectF) {
 	ok := C.QPlainTextDocumentLayout_override_virtual_frameBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2903,8 +2865,8 @@ func (this *QPlainTextDocumentLayout) OnFrameBoundingRect(slot func(super func(p
 }
 
 //export miqt_exec_callback_QPlainTextDocumentLayout_frameBoundingRect
-func miqt_exec_callback_QPlainTextDocumentLayout_frameBoundingRect(self *C.QPlainTextDocumentLayout, cb C.intptr_t, param1 *C.QTextFrame) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QTextFrame) *QRectF, param1 *QTextFrame) *QRectF)
+func miqt_exec_callback_QPlainTextDocumentLayout_frameBoundingRect(self *C.QPlainTextDocumentLayout, cb C.intptr_t, param1 *C.QTextFrame) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QTextFrame) QRectF, param1 *QTextFrame) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -2913,21 +2875,18 @@ func miqt_exec_callback_QPlainTextDocumentLayout_frameBoundingRect(self *C.QPlai
 	slotval1 := newQTextFrame(param1)
 
 	virtualReturn := gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_FrameBoundingRect, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPlainTextDocumentLayout_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
-func (this *QPlainTextDocumentLayout) callVirtualBase_BlockBoundingRect(block *QTextBlock) *QRectF {
+func (this *QPlainTextDocumentLayout) callVirtualBase_BlockBoundingRect(block *QTextBlock) QRectF {
 	defer runtime.KeepAlive(block)
 
-	_goptr := newQRectF(C.QPlainTextDocumentLayout_virtualbase_blockBoundingRect(unsafe.Pointer(this.h), block.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QPlainTextDocumentLayout_virtualbase_blockBoundingRect(unsafe.Pointer(this.h), block.cPointer()))
 
 }
-func (this *QPlainTextDocumentLayout) OnBlockBoundingRect(slot func(super func(block *QTextBlock) *QRectF, block *QTextBlock) *QRectF) {
+func (this *QPlainTextDocumentLayout) OnBlockBoundingRect(slot func(super func(block *QTextBlock) QRectF, block *QTextBlock) QRectF) {
 	ok := C.QPlainTextDocumentLayout_override_virtual_blockBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2935,8 +2894,8 @@ func (this *QPlainTextDocumentLayout) OnBlockBoundingRect(slot func(super func(b
 }
 
 //export miqt_exec_callback_QPlainTextDocumentLayout_blockBoundingRect
-func miqt_exec_callback_QPlainTextDocumentLayout_blockBoundingRect(self *C.QPlainTextDocumentLayout, cb C.intptr_t, block *C.QTextBlock) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(block *QTextBlock) *QRectF, block *QTextBlock) *QRectF)
+func miqt_exec_callback_QPlainTextDocumentLayout_blockBoundingRect(self *C.QPlainTextDocumentLayout, cb C.intptr_t, block *C.QTextBlock) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(block *QTextBlock) QRectF, block *QTextBlock) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -2945,9 +2904,8 @@ func miqt_exec_callback_QPlainTextDocumentLayout_blockBoundingRect(self *C.QPlai
 	slotval1 := newQTextBlock(block)
 
 	virtualReturn := gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_BlockBoundingRect, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPlainTextDocumentLayout_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -3049,16 +3007,15 @@ func miqt_exec_callback_QPlainTextDocumentLayout_positionInlineObject(self *C.QP
 
 }
 
-func (this *QPlainTextDocumentLayout) callVirtualBase_DrawInlineObject(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat) {
+func (this *QPlainTextDocumentLayout) callVirtualBase_DrawInlineObject(painter *QPainter, rect QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 	defer runtime.KeepAlive(object)
 	defer runtime.KeepAlive(format)
 
-	C.QPlainTextDocumentLayout_virtualbase_drawInlineObject(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), object.cPointer(), (C.int)(posInDocument), format.cPointer())
+	C.QPlainTextDocumentLayout_virtualbase_drawInlineObject(unsafe.Pointer(this.h), painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](rect), object.cPointer(), (C.int)(posInDocument), format.cPointer())
 
 }
-func (this *QPlainTextDocumentLayout) OnDrawInlineObject(slot func(super func(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat)) {
+func (this *QPlainTextDocumentLayout) OnDrawInlineObject(slot func(super func(painter *QPainter, rect QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat)) {
 	ok := C.QPlainTextDocumentLayout_override_virtual_drawInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3066,8 +3023,8 @@ func (this *QPlainTextDocumentLayout) OnDrawInlineObject(slot func(super func(pa
 }
 
 //export miqt_exec_callback_QPlainTextDocumentLayout_drawInlineObject
-func miqt_exec_callback_QPlainTextDocumentLayout_drawInlineObject(self *C.QPlainTextDocumentLayout, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF, object *C.QTextInlineObject, posInDocument C.int, format *C.QTextFormat) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat))
+func miqt_exec_callback_QPlainTextDocumentLayout_drawInlineObject(self *C.QPlainTextDocumentLayout, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf, object *C.QTextInlineObject, posInDocument C.int, format *C.QTextFormat) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -3075,7 +3032,7 @@ func miqt_exec_callback_QPlainTextDocumentLayout_drawInlineObject(self *C.QPlain
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQRectF(rect)
+	slotval2 := libmiqt.ValueCast[QRectF](rect)
 
 	object_goptr := newQTextInlineObject(object)
 	object_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

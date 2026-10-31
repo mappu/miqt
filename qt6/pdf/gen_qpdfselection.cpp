@@ -41,8 +41,8 @@ struct miqt_string QPdfSelection_text(const QPdfSelection* self) {
 	return _ms;
 }
 
-QRectF* QPdfSelection_boundingRectangle(const QPdfSelection* self) {
-	return new QRectF(self->boundingRectangle());
+struct miqt_qrectf QPdfSelection_boundingRectangle(const QPdfSelection* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRectangle());
 }
 
 int QPdfSelection_startIndex(const QPdfSelection* self) {

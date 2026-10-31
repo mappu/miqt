@@ -252,24 +252,24 @@ bool QSvgRenderer_isValid(const QSvgRenderer* self) {
 	return self->isValid();
 }
 
-QSize* QSvgRenderer_defaultSize(const QSvgRenderer* self) {
-	return new QSize(self->defaultSize());
+struct miqt_qsize QSvgRenderer_defaultSize(const QSvgRenderer* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->defaultSize());
 }
 
-QRect* QSvgRenderer_viewBox(const QSvgRenderer* self) {
-	return new QRect(self->viewBox());
+struct miqt_qrect QSvgRenderer_viewBox(const QSvgRenderer* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->viewBox());
 }
 
-QRectF* QSvgRenderer_viewBoxF(const QSvgRenderer* self) {
-	return new QRectF(self->viewBoxF());
+struct miqt_qrectf QSvgRenderer_viewBoxF(const QSvgRenderer* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->viewBoxF());
 }
 
-void QSvgRenderer_setViewBox(QSvgRenderer* self, QRect* viewbox) {
-	self->setViewBox(*viewbox);
+void QSvgRenderer_setViewBox(QSvgRenderer* self, struct miqt_qrect viewbox) {
+	self->setViewBox(miqt_from_cabi<QRect>(viewbox));
 }
 
-void QSvgRenderer_setViewBoxWithViewbox(QSvgRenderer* self, QRectF* viewbox) {
-	self->setViewBox(*viewbox);
+void QSvgRenderer_setViewBoxWithViewbox(QSvgRenderer* self, struct miqt_qrectf viewbox) {
+	self->setViewBox(miqt_from_cabi<QRectF>(viewbox));
 }
 
 int QSvgRenderer_aspectRatioMode(const QSvgRenderer* self) {
@@ -305,9 +305,9 @@ int QSvgRenderer_animationDuration(const QSvgRenderer* self) {
 	return self->animationDuration();
 }
 
-QRectF* QSvgRenderer_boundsOnElement(const QSvgRenderer* self, struct miqt_string id) {
+struct miqt_qrectf QSvgRenderer_boundsOnElement(const QSvgRenderer* self, struct miqt_string id) {
 	QString id_QString = QString::fromUtf8(id.data, id.len);
-	return new QRectF(self->boundsOnElement(id_QString));
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundsOnElement(id_QString));
 }
 
 bool QSvgRenderer_elementExists(const QSvgRenderer* self, struct miqt_string id) {
@@ -343,8 +343,8 @@ void QSvgRenderer_render(QSvgRenderer* self, QPainter* p) {
 	self->render(p);
 }
 
-void QSvgRenderer_render2(QSvgRenderer* self, QPainter* p, QRectF* bounds) {
-	self->render(p, *bounds);
+void QSvgRenderer_render2(QSvgRenderer* self, QPainter* p, struct miqt_qrectf bounds) {
+	self->render(p, miqt_from_cabi<QRectF>(bounds));
 }
 
 void QSvgRenderer_render3(QSvgRenderer* self, QPainter* p, struct miqt_string elementId) {
@@ -406,9 +406,9 @@ struct miqt_string QSvgRenderer_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSvgRenderer_render4(QSvgRenderer* self, QPainter* p, struct miqt_string elementId, QRectF* bounds) {
+void QSvgRenderer_render4(QSvgRenderer* self, QPainter* p, struct miqt_string elementId, struct miqt_qrectf bounds) {
 	QString elementId_QString = QString::fromUtf8(elementId.data, elementId.len);
-	self->render(p, elementId_QString, *bounds);
+	self->render(p, elementId_QString, miqt_from_cabi<QRectF>(bounds));
 }
 
 bool QSvgRenderer_override_virtual_event(void* self, intptr_t slot) {

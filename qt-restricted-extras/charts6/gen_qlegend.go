@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -108,14 +109,11 @@ func (this *QLegend) Brush() *qt6.QBrush {
 }
 
 func (this *QLegend) SetColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QLegend_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QLegend_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QLegend) Color() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QLegend_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QLegend) Color() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QLegend_color(this.h))
 }
 
 func (this *QLegend) SetPen(pen *qt6.QPen) {
@@ -130,14 +128,11 @@ func (this *QLegend) Pen() *qt6.QPen {
 }
 
 func (this *QLegend) SetBorderColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QLegend_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QLegend_setBorderColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QLegend) BorderColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QLegend_borderColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QLegend) BorderColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QLegend_borderColor(this.h))
 }
 
 func (this *QLegend) SetFont(font *qt6.QFont) {
@@ -163,14 +158,11 @@ func (this *QLegend) LabelBrush() *qt6.QBrush {
 }
 
 func (this *QLegend) SetLabelColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QLegend_setLabelColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QLegend_setLabelColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QLegend) LabelColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QLegend_labelColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QLegend) LabelColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QLegend_labelColor(this.h))
 }
 
 func (this *QLegend) SetAlignment(alignment qt6.AlignmentFlag) {
@@ -264,47 +256,41 @@ func miqt_exec_callback_QLegend_backgroundVisibleChanged(cb C.intptr_t, visible 
 }
 
 func (this *QLegend) ColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QLegend_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QLegend_colorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QLegend) OnColorChanged(slot func(color qt6.QColor)) {
 	C.QLegend_connect_colorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLegend_colorChanged
-func miqt_exec_callback_QLegend_colorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QLegend_colorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
 func (this *QLegend) BorderColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QLegend_borderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QLegend_borderColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QLegend) OnBorderColorChanged(slot func(color qt6.QColor)) {
 	C.QLegend_connect_borderColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLegend_borderColorChanged
-func miqt_exec_callback_QLegend_borderColorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QLegend_borderColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
@@ -333,24 +319,21 @@ func miqt_exec_callback_QLegend_fontChanged(cb C.intptr_t, font *C.QFont) {
 }
 
 func (this *QLegend) LabelColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QLegend_labelColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QLegend_labelColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QLegend) OnLabelColorChanged(slot func(color qt6.QColor)) {
 	C.QLegend_connect_labelColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLegend_labelColorChanged
-func miqt_exec_callback_QLegend_labelColorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QLegend_labelColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }

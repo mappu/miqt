@@ -285,12 +285,12 @@ struct miqt_string QImageCapture_fileFormatDescription(int c) {
 	return _ms;
 }
 
-QSize* QImageCapture_resolution(const QImageCapture* self) {
-	return new QSize(self->resolution());
+struct miqt_qsize QImageCapture_resolution(const QImageCapture* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->resolution());
 }
 
-void QImageCapture_setResolution(QImageCapture* self, QSize* resolution) {
-	self->setResolution(*resolution);
+void QImageCapture_setResolution(QImageCapture* self, struct miqt_qsize resolution) {
+	self->setResolution(miqt_from_cabi<QSize>(resolution));
 }
 
 void QImageCapture_setResolution2(QImageCapture* self, int width, int height) {

@@ -25,8 +25,8 @@ QQuaternion* QQuaternion_new3(float scalar, float xpos, float ypos, float zpos) 
 	return new (std::nothrow) QQuaternion(static_cast<float>(scalar), static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
 }
 
-QQuaternion* QQuaternion_new4(float scalar, QVector3D* vector) {
-	return new (std::nothrow) QQuaternion(static_cast<float>(scalar), *vector);
+QQuaternion* QQuaternion_new4(float scalar, struct miqt_qvector3d vector) {
+	return new (std::nothrow) QQuaternion(static_cast<float>(scalar), miqt_from_cabi<QVector3D>(vector));
 }
 
 QQuaternion* QQuaternion_new5(QVector4D* vector) {
@@ -45,12 +45,12 @@ bool QQuaternion_isIdentity(const QQuaternion* self) {
 	return self->isIdentity();
 }
 
-QVector3D* QQuaternion_vector(const QQuaternion* self) {
-	return new QVector3D(self->vector());
+struct miqt_qvector3d QQuaternion_vector(const QQuaternion* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->vector());
 }
 
-void QQuaternion_setVector(QQuaternion* self, QVector3D* vector) {
-	self->setVector(*vector);
+void QQuaternion_setVector(QQuaternion* self, struct miqt_qvector3d vector) {
+	self->setVector(miqt_from_cabi<QVector3D>(vector));
 }
 
 void QQuaternion_setVector2(QQuaternion* self, float x, float y, float z) {
@@ -117,8 +117,8 @@ QQuaternion* QQuaternion_conjugated(const QQuaternion* self) {
 	return new QQuaternion(self->conjugated());
 }
 
-QVector3D* QQuaternion_rotatedVector(const QQuaternion* self, QVector3D* vector) {
-	return new QVector3D(self->rotatedVector(*vector));
+struct miqt_qvector3d QQuaternion_rotatedVector(const QQuaternion* self, struct miqt_qvector3d vector) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->rotatedVector(miqt_from_cabi<QVector3D>(vector)));
 }
 
 QQuaternion* QQuaternion_operatorPlusAssign(QQuaternion* self, QQuaternion* quaternion) {
@@ -163,8 +163,8 @@ void QQuaternion_getAxisAndAngle(const QQuaternion* self, QVector3D* axis, float
 	self->getAxisAndAngle(axis, static_cast<float*>(angle));
 }
 
-QQuaternion* QQuaternion_fromAxisAndAngle(QVector3D* axis, float angle) {
-	return new QQuaternion(QQuaternion::fromAxisAndAngle(*axis, static_cast<float>(angle)));
+QQuaternion* QQuaternion_fromAxisAndAngle(struct miqt_qvector3d axis, float angle) {
+	return new QQuaternion(QQuaternion::fromAxisAndAngle(miqt_from_cabi<QVector3D>(axis), static_cast<float>(angle)));
 }
 
 void QQuaternion_getAxisAndAngle2(const QQuaternion* self, float* x, float* y, float* z, float* angle) {
@@ -175,12 +175,12 @@ QQuaternion* QQuaternion_fromAxisAndAngle2(float x, float y, float z, float angl
 	return new QQuaternion(QQuaternion::fromAxisAndAngle(static_cast<float>(x), static_cast<float>(y), static_cast<float>(z), static_cast<float>(angle)));
 }
 
-QVector3D* QQuaternion_toEulerAngles(const QQuaternion* self) {
-	return new QVector3D(self->toEulerAngles());
+struct miqt_qvector3d QQuaternion_toEulerAngles(const QQuaternion* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->toEulerAngles());
 }
 
-QQuaternion* QQuaternion_fromEulerAngles(QVector3D* eulerAngles) {
-	return new QQuaternion(QQuaternion::fromEulerAngles(*eulerAngles));
+QQuaternion* QQuaternion_fromEulerAngles(struct miqt_qvector3d eulerAngles) {
+	return new QQuaternion(QQuaternion::fromEulerAngles(miqt_from_cabi<QVector3D>(eulerAngles)));
 }
 
 void QQuaternion_getEulerAngles(const QQuaternion* self, float* pitch, float* yaw, float* roll) {
@@ -195,16 +195,16 @@ void QQuaternion_getAxes(const QQuaternion* self, QVector3D* xAxis, QVector3D* y
 	self->getAxes(xAxis, yAxis, zAxis);
 }
 
-QQuaternion* QQuaternion_fromAxes(QVector3D* xAxis, QVector3D* yAxis, QVector3D* zAxis) {
-	return new QQuaternion(QQuaternion::fromAxes(*xAxis, *yAxis, *zAxis));
+QQuaternion* QQuaternion_fromAxes(struct miqt_qvector3d xAxis, struct miqt_qvector3d yAxis, struct miqt_qvector3d zAxis) {
+	return new QQuaternion(QQuaternion::fromAxes(miqt_from_cabi<QVector3D>(xAxis), miqt_from_cabi<QVector3D>(yAxis), miqt_from_cabi<QVector3D>(zAxis)));
 }
 
-QQuaternion* QQuaternion_fromDirection(QVector3D* direction, QVector3D* up) {
-	return new QQuaternion(QQuaternion::fromDirection(*direction, *up));
+QQuaternion* QQuaternion_fromDirection(struct miqt_qvector3d direction, struct miqt_qvector3d up) {
+	return new QQuaternion(QQuaternion::fromDirection(miqt_from_cabi<QVector3D>(direction), miqt_from_cabi<QVector3D>(up)));
 }
 
-QQuaternion* QQuaternion_rotationTo(QVector3D* from, QVector3D* to) {
-	return new QQuaternion(QQuaternion::rotationTo(*from, *to));
+QQuaternion* QQuaternion_rotationTo(struct miqt_qvector3d from, struct miqt_qvector3d to) {
+	return new QQuaternion(QQuaternion::rotationTo(miqt_from_cabi<QVector3D>(from), miqt_from_cabi<QVector3D>(to)));
 }
 
 QQuaternion* QQuaternion_slerp(QQuaternion* q1, QQuaternion* q2, float t) {

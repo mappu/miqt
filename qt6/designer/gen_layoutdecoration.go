@@ -9,6 +9,7 @@ package designer
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -79,11 +80,9 @@ func (this *QDesignerLayoutDecorationExtension) Widgets(layout *qt6.QLayout) []*
 	return _ret
 }
 
-func (this *QDesignerLayoutDecorationExtension) ItemInfo(index int) *qt6.QRect {
+func (this *QDesignerLayoutDecorationExtension) ItemInfo(index int) qt6.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QDesignerLayoutDecorationExtension_itemInfo(this.h, (C.int)(index))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QRect](C.QDesignerLayoutDecorationExtension_itemInfo(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerLayoutDecorationExtension) IndexOf(widget *qt6.QWidget) int {
@@ -164,10 +163,9 @@ func (this *QDesignerLayoutDecorationExtension) Simplify() {
 	C.QDesignerLayoutDecorationExtension_simplify(this.h)
 }
 
-func (this *QDesignerLayoutDecorationExtension) FindItemAt(pos *qt6.QPoint) int {
+func (this *QDesignerLayoutDecorationExtension) FindItemAt(pos qt6.QPoint) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	return (int)(C.QDesignerLayoutDecorationExtension_findItemAt(this.h, (*C.QPoint)(pos.UnsafePointer())))
+	return (int)(C.QDesignerLayoutDecorationExtension_findItemAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 func (this *QDesignerLayoutDecorationExtension) FindItemAt2(row int, column int) int {
@@ -175,10 +173,9 @@ func (this *QDesignerLayoutDecorationExtension) FindItemAt2(row int, column int)
 	return (int)(C.QDesignerLayoutDecorationExtension_findItemAt2(this.h, (C.int)(row), (C.int)(column)))
 }
 
-func (this *QDesignerLayoutDecorationExtension) AdjustIndicator(pos *qt6.QPoint, index int) {
+func (this *QDesignerLayoutDecorationExtension) AdjustIndicator(pos qt6.QPoint, index int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QDesignerLayoutDecorationExtension_adjustIndicator(this.h, (*C.QPoint)(pos.UnsafePointer()), (C.int)(index))
+	C.QDesignerLayoutDecorationExtension_adjustIndicator(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos), (C.int)(index))
 }
 func (this *QDesignerLayoutDecorationExtension) OnWidgets(slot func(layout *qt6.QLayout) []*qt6.QWidget) {
 	ok := C.QDesignerLayoutDecorationExtension_override_virtual_widgets(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
@@ -208,7 +205,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_widgets(self *C.QDesi
 	return virtualReturn_ma
 
 }
-func (this *QDesignerLayoutDecorationExtension) OnItemInfo(slot func(index int) *qt6.QRect) {
+func (this *QDesignerLayoutDecorationExtension) OnItemInfo(slot func(index int) qt6.QRect) {
 	ok := C.QDesignerLayoutDecorationExtension_override_virtual_itemInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -216,8 +213,8 @@ func (this *QDesignerLayoutDecorationExtension) OnItemInfo(slot func(index int) 
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo
-func miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo(self *C.QDesignerLayoutDecorationExtension, cb C.intptr_t, index C.int) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index int) *qt6.QRect)
+func miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo(self *C.QDesignerLayoutDecorationExtension, cb C.intptr_t, index C.int) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index int) qt6.QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -226,9 +223,8 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo(self *C.QDes
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDesignerLayoutDecorationExtension_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnIndexOf(slot func(widget *qt6.QWidget) int) {
@@ -462,7 +458,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_simplify(self *C.QDes
 	gofunc()
 
 }
-func (this *QDesignerLayoutDecorationExtension) OnFindItemAt(slot func(pos *qt6.QPoint) int) {
+func (this *QDesignerLayoutDecorationExtension) OnFindItemAt(slot func(pos qt6.QPoint) int) {
 	ok := C.QDesignerLayoutDecorationExtension_override_virtual_findItemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -470,14 +466,14 @@ func (this *QDesignerLayoutDecorationExtension) OnFindItemAt(slot func(pos *qt6.
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt
-func miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt(self *C.QDesignerLayoutDecorationExtension, cb C.intptr_t, pos *C.QPoint) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(pos *qt6.QPoint) int)
+func miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt(self *C.QDesignerLayoutDecorationExtension, cb C.intptr_t, pos C.struct_miqt_qpoint) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pos qt6.QPoint) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPoint(unsafe.Pointer(pos))
+	slotval1 := libmiqt.ValueCast[qt6.QPoint](pos)
 
 	virtualReturn := gofunc(slotval1)
 
@@ -508,7 +504,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt2(self *C.Q
 	return (C.int)(virtualReturn)
 
 }
-func (this *QDesignerLayoutDecorationExtension) OnAdjustIndicator(slot func(pos *qt6.QPoint, index int)) {
+func (this *QDesignerLayoutDecorationExtension) OnAdjustIndicator(slot func(pos qt6.QPoint, index int)) {
 	ok := C.QDesignerLayoutDecorationExtension_override_virtual_adjustIndicator(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -516,14 +512,14 @@ func (this *QDesignerLayoutDecorationExtension) OnAdjustIndicator(slot func(pos 
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_adjustIndicator
-func miqt_exec_callback_QDesignerLayoutDecorationExtension_adjustIndicator(self *C.QDesignerLayoutDecorationExtension, cb C.intptr_t, pos *C.QPoint, index C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(pos *qt6.QPoint, index int))
+func miqt_exec_callback_QDesignerLayoutDecorationExtension_adjustIndicator(self *C.QDesignerLayoutDecorationExtension, cb C.intptr_t, pos C.struct_miqt_qpoint, index C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pos qt6.QPoint, index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPoint(unsafe.Pointer(pos))
+	slotval1 := libmiqt.ValueCast[qt6.QPoint](pos)
 
 	slotval2 := (int)(index)
 

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -96,16 +97,12 @@ func (this *QDesktopWidget) ScreenNumber() int {
 	return (int)(C.QDesktopWidget_screenNumber(this.h))
 }
 
-func (this *QDesktopWidget) ScreenGeometry(widget *QWidget) *QRect {
-	_goptr := newQRect(C.QDesktopWidget_screenGeometry(this.h, widget.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDesktopWidget) ScreenGeometry(widget *QWidget) QRect {
+	return libmiqt.ValueCast[QRect](C.QDesktopWidget_screenGeometry(this.h, widget.cPointer()))
 }
 
-func (this *QDesktopWidget) AvailableGeometry(widget *QWidget) *QRect {
-	_goptr := newQRect(C.QDesktopWidget_availableGeometry(this.h, widget.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDesktopWidget) AvailableGeometry(widget *QWidget) QRect {
+	return libmiqt.ValueCast[QRect](C.QDesktopWidget_availableGeometry(this.h, widget.cPointer()))
 }
 
 func (this *QDesktopWidget) IsVirtualDesktop() bool {
@@ -124,39 +121,28 @@ func (this *QDesktopWidget) PrimaryScreen() int {
 	return (int)(C.QDesktopWidget_primaryScreen(this.h))
 }
 
-func (this *QDesktopWidget) ScreenNumberWithQPoint(param1 *QPoint) int {
-	defer runtime.KeepAlive(param1)
-	return (int)(C.QDesktopWidget_screenNumberWithQPoint(this.h, param1.cPointer()))
+func (this *QDesktopWidget) ScreenNumberWithQPoint(param1 QPoint) int {
+	return (int)(C.QDesktopWidget_screenNumberWithQPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 }
 
 func (this *QDesktopWidget) Screen() *QWidget {
 	return newQWidget(C.QDesktopWidget_screen(this.h))
 }
 
-func (this *QDesktopWidget) ScreenGeometry2() *QRect {
-	_goptr := newQRect(C.QDesktopWidget_screenGeometry2(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDesktopWidget) ScreenGeometry2() QRect {
+	return libmiqt.ValueCast[QRect](C.QDesktopWidget_screenGeometry2(this.h))
 }
 
-func (this *QDesktopWidget) ScreenGeometryWithPoint(point *QPoint) *QRect {
-	defer runtime.KeepAlive(point)
-	_goptr := newQRect(C.QDesktopWidget_screenGeometryWithPoint(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDesktopWidget) ScreenGeometryWithPoint(point QPoint) QRect {
+	return libmiqt.ValueCast[QRect](C.QDesktopWidget_screenGeometryWithPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
-func (this *QDesktopWidget) AvailableGeometry2() *QRect {
-	_goptr := newQRect(C.QDesktopWidget_availableGeometry2(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDesktopWidget) AvailableGeometry2() QRect {
+	return libmiqt.ValueCast[QRect](C.QDesktopWidget_availableGeometry2(this.h))
 }
 
-func (this *QDesktopWidget) AvailableGeometryWithPoint(point *QPoint) *QRect {
-	defer runtime.KeepAlive(point)
-	_goptr := newQRect(C.QDesktopWidget_availableGeometryWithPoint(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDesktopWidget) AvailableGeometryWithPoint(point QPoint) QRect {
+	return libmiqt.ValueCast[QRect](C.QDesktopWidget_availableGeometryWithPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
 func (this *QDesktopWidget) Resized(param1 int) {
@@ -288,16 +274,12 @@ func (this *QDesktopWidget) ScreenWithScreen(screen int) *QWidget {
 	return newQWidget(C.QDesktopWidget_screenWithScreen(this.h, (C.int)(screen)))
 }
 
-func (this *QDesktopWidget) ScreenGeometryWithScreen(screen int) *QRect {
-	_goptr := newQRect(C.QDesktopWidget_screenGeometryWithScreen(this.h, (C.int)(screen)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDesktopWidget) ScreenGeometryWithScreen(screen int) QRect {
+	return libmiqt.ValueCast[QRect](C.QDesktopWidget_screenGeometryWithScreen(this.h, (C.int)(screen)))
 }
 
-func (this *QDesktopWidget) AvailableGeometryWithScreen(screen int) *QRect {
-	_goptr := newQRect(C.QDesktopWidget_availableGeometryWithScreen(this.h, (C.int)(screen)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDesktopWidget) AvailableGeometryWithScreen(screen int) QRect {
+	return libmiqt.ValueCast[QRect](C.QDesktopWidget_availableGeometryWithScreen(this.h, (C.int)(screen)))
 }
 
 // UpdateMicroFocus can only be called from a QDesktopWidget that was directly constructed.
@@ -501,14 +483,12 @@ func miqt_exec_callback_QDesktopWidget_setVisible(self *C.QDesktopWidget, cb C.i
 
 }
 
-func (this *QDesktopWidget) callVirtualBase_SizeHint() *QSize {
+func (this *QDesktopWidget) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QDesktopWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QDesktopWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDesktopWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDesktopWidget) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDesktopWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -516,27 +496,24 @@ func (this *QDesktopWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QDesktopWidget_sizeHint
-func miqt_exec_callback_QDesktopWidget_sizeHint(self *C.QDesktopWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDesktopWidget_sizeHint(self *C.QDesktopWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDesktopWidget{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDesktopWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QDesktopWidget) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QDesktopWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QDesktopWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QDesktopWidget) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QDesktopWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QDesktopWidget) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDesktopWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -544,16 +521,15 @@ func (this *QDesktopWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QS
 }
 
 //export miqt_exec_callback_QDesktopWidget_minimumSizeHint
-func miqt_exec_callback_QDesktopWidget_minimumSizeHint(self *C.QDesktopWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDesktopWidget_minimumSizeHint(self *C.QDesktopWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDesktopWidget{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDesktopWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1410,7 +1386,6 @@ func miqt_exec_callback_QDesktopWidget_initPainter(self *C.QDesktopWidget, cb C.
 }
 
 func (this *QDesktopWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDesktopWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

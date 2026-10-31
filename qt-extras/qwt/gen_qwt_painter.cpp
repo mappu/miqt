@@ -51,9 +51,9 @@ void QwtPainter_drawText(QPainter* param1, double x, double y, struct miqt_strin
 	QwtPainter::drawText(param1, static_cast<double>(x), static_cast<double>(y), param4_QString);
 }
 
-void QwtPainter_drawText2(QPainter* param1, QPointF* param2, struct miqt_string param3) {
+void QwtPainter_drawText2(QPainter* param1, struct miqt_qpointf param2, struct miqt_string param3) {
 	QString param3_QString = QString::fromUtf8(param3.data, param3.len);
-	QwtPainter::drawText(param1, *param2, param3_QString);
+	QwtPainter::drawText(param1, miqt_from_cabi<QPointF>(param2), param3_QString);
 }
 
 void QwtPainter_drawText3(QPainter* param1, double x, double y, double w, double h, int flags, struct miqt_string param7) {
@@ -61,41 +61,41 @@ void QwtPainter_drawText3(QPainter* param1, double x, double y, double w, double
 	QwtPainter::drawText(param1, static_cast<double>(x), static_cast<double>(y), static_cast<double>(w), static_cast<double>(h), static_cast<int>(flags), param7_QString);
 }
 
-void QwtPainter_drawText4(QPainter* param1, QRectF* param2, int flags, struct miqt_string param4) {
+void QwtPainter_drawText4(QPainter* param1, struct miqt_qrectf param2, int flags, struct miqt_string param4) {
 	QString param4_QString = QString::fromUtf8(param4.data, param4.len);
-	QwtPainter::drawText(param1, *param2, static_cast<int>(flags), param4_QString);
+	QwtPainter::drawText(param1, miqt_from_cabi<QRectF>(param2), static_cast<int>(flags), param4_QString);
 }
 
-void QwtPainter_drawSimpleRichText(QPainter* param1, QRectF* param2, int flags, QTextDocument* param4) {
-	QwtPainter::drawSimpleRichText(param1, *param2, static_cast<int>(flags), *param4);
+void QwtPainter_drawSimpleRichText(QPainter* param1, struct miqt_qrectf param2, int flags, QTextDocument* param4) {
+	QwtPainter::drawSimpleRichText(param1, miqt_from_cabi<QRectF>(param2), static_cast<int>(flags), *param4);
 }
 
 void QwtPainter_drawRect(QPainter* param1, double x, double y, double w, double h) {
 	QwtPainter::drawRect(param1, static_cast<double>(x), static_cast<double>(y), static_cast<double>(w), static_cast<double>(h));
 }
 
-void QwtPainter_drawRect2(QPainter* param1, QRectF* rect) {
-	QwtPainter::drawRect(param1, *rect);
+void QwtPainter_drawRect2(QPainter* param1, struct miqt_qrectf rect) {
+	QwtPainter::drawRect(param1, miqt_from_cabi<QRectF>(rect));
 }
 
-void QwtPainter_fillRect(QPainter* param1, QRectF* param2, QBrush* param3) {
-	QwtPainter::fillRect(param1, *param2, *param3);
+void QwtPainter_fillRect(QPainter* param1, struct miqt_qrectf param2, QBrush* param3) {
+	QwtPainter::fillRect(param1, miqt_from_cabi<QRectF>(param2), *param3);
 }
 
-void QwtPainter_drawEllipse(QPainter* param1, QRectF* param2) {
-	QwtPainter::drawEllipse(param1, *param2);
+void QwtPainter_drawEllipse(QPainter* param1, struct miqt_qrectf param2) {
+	QwtPainter::drawEllipse(param1, miqt_from_cabi<QRectF>(param2));
 }
 
-void QwtPainter_drawPie(QPainter* param1, QRectF* param2, int a, int alen) {
-	QwtPainter::drawPie(param1, *param2, static_cast<int>(a), static_cast<int>(alen));
+void QwtPainter_drawPie(QPainter* param1, struct miqt_qrectf param2, int a, int alen) {
+	QwtPainter::drawPie(param1, miqt_from_cabi<QRectF>(param2), static_cast<int>(a), static_cast<int>(alen));
 }
 
 void QwtPainter_drawLine(QPainter* param1, double x1, double y1, double x2, double y2) {
 	QwtPainter::drawLine(param1, static_cast<double>(x1), static_cast<double>(y1), static_cast<double>(x2), static_cast<double>(y2));
 }
 
-void QwtPainter_drawLine2(QPainter* param1, QPointF* p1, QPointF* p2) {
-	QwtPainter::drawLine(param1, *p1, *p2);
+void QwtPainter_drawLine2(QPainter* param1, struct miqt_qpointf p1, struct miqt_qpointf p2) {
+	QwtPainter::drawLine(param1, miqt_from_cabi<QPointF>(p1), miqt_from_cabi<QPointF>(p2));
 }
 
 void QwtPainter_drawLine3(QPainter* param1, QLineF* param2) {
@@ -110,8 +110,8 @@ void QwtPainter_drawPolyline4(QPainter* param1, QPoint* param2, int pointCount) 
 	QwtPainter::drawPolyline(param1, param2, static_cast<int>(pointCount));
 }
 
-void QwtPainter_drawPoint(QPainter* param1, QPoint* param2) {
-	QwtPainter::drawPoint(param1, *param2);
+void QwtPainter_drawPoint(QPainter* param1, struct miqt_qpoint param2) {
+	QwtPainter::drawPoint(param1, miqt_from_cabi<QPoint>(param2));
 }
 
 void QwtPainter_drawPoints2(QPainter* param1, QPoint* param2, int pointCount) {
@@ -122,8 +122,8 @@ void QwtPainter_drawPoint2(QPainter* param1, double x, double y) {
 	QwtPainter::drawPoint(param1, static_cast<double>(x), static_cast<double>(y));
 }
 
-void QwtPainter_drawPoint3(QPainter* param1, QPointF* param2) {
-	QwtPainter::drawPoint(param1, *param2);
+void QwtPainter_drawPoint3(QPainter* param1, struct miqt_qpointf param2) {
+	QwtPainter::drawPoint(param1, miqt_from_cabi<QPointF>(param2));
 }
 
 void QwtPainter_drawPoints4(QPainter* param1, QPointF* param2, int pointCount) {
@@ -134,32 +134,32 @@ void QwtPainter_drawPath(QPainter* param1, QPainterPath* param2) {
 	QwtPainter::drawPath(param1, *param2);
 }
 
-void QwtPainter_drawImage(QPainter* param1, QRectF* param2, QImage* param3) {
-	QwtPainter::drawImage(param1, *param2, *param3);
+void QwtPainter_drawImage(QPainter* param1, struct miqt_qrectf param2, QImage* param3) {
+	QwtPainter::drawImage(param1, miqt_from_cabi<QRectF>(param2), *param3);
 }
 
-void QwtPainter_drawPixmap(QPainter* param1, QRectF* param2, QPixmap* param3) {
-	QwtPainter::drawPixmap(param1, *param2, *param3);
+void QwtPainter_drawPixmap(QPainter* param1, struct miqt_qrectf param2, QPixmap* param3) {
+	QwtPainter::drawPixmap(param1, miqt_from_cabi<QRectF>(param2), *param3);
 }
 
-void QwtPainter_drawRoundFrame(QPainter* param1, QRectF* param2, QPalette* param3, int lineWidth, int frameStyle) {
-	QwtPainter::drawRoundFrame(param1, *param2, *param3, static_cast<int>(lineWidth), static_cast<int>(frameStyle));
+void QwtPainter_drawRoundFrame(QPainter* param1, struct miqt_qrectf param2, QPalette* param3, int lineWidth, int frameStyle) {
+	QwtPainter::drawRoundFrame(param1, miqt_from_cabi<QRectF>(param2), *param3, static_cast<int>(lineWidth), static_cast<int>(frameStyle));
 }
 
-void QwtPainter_drawRoundedFrame(QPainter* param1, QRectF* param2, double xRadius, double yRadius, QPalette* param5, int lineWidth, int frameStyle) {
-	QwtPainter::drawRoundedFrame(param1, *param2, static_cast<double>(xRadius), static_cast<double>(yRadius), *param5, static_cast<int>(lineWidth), static_cast<int>(frameStyle));
+void QwtPainter_drawRoundedFrame(QPainter* param1, struct miqt_qrectf param2, double xRadius, double yRadius, QPalette* param5, int lineWidth, int frameStyle) {
+	QwtPainter::drawRoundedFrame(param1, miqt_from_cabi<QRectF>(param2), static_cast<double>(xRadius), static_cast<double>(yRadius), *param5, static_cast<int>(lineWidth), static_cast<int>(frameStyle));
 }
 
-void QwtPainter_drawFrame(QPainter* param1, QRectF* rect, QPalette* palette, int foregroundRole, int frameWidth, int midLineWidth, int frameStyle) {
-	QwtPainter::drawFrame(param1, *rect, *palette, static_cast<QPalette::ColorRole>(foregroundRole), static_cast<int>(frameWidth), static_cast<int>(midLineWidth), static_cast<int>(frameStyle));
+void QwtPainter_drawFrame(QPainter* param1, struct miqt_qrectf rect, QPalette* palette, int foregroundRole, int frameWidth, int midLineWidth, int frameStyle) {
+	QwtPainter::drawFrame(param1, miqt_from_cabi<QRectF>(rect), *palette, static_cast<QPalette::ColorRole>(foregroundRole), static_cast<int>(frameWidth), static_cast<int>(midLineWidth), static_cast<int>(frameStyle));
 }
 
 void QwtPainter_drawFocusRect(QPainter* param1, QWidget* param2) {
 	QwtPainter::drawFocusRect(param1, param2);
 }
 
-void QwtPainter_drawFocusRect2(QPainter* param1, QWidget* param2, QRect* param3) {
-	QwtPainter::drawFocusRect(param1, param2, *param3);
+void QwtPainter_drawFocusRect2(QPainter* param1, QWidget* param2, struct miqt_qrect param3) {
+	QwtPainter::drawFocusRect(param1, param2, miqt_from_cabi<QRect>(param3));
 }
 
 bool QwtPainter_isAligning(QPainter* painter) {
@@ -174,16 +174,16 @@ void QwtPainter_fillPixmap(QWidget* param1, QPixmap* param2) {
 	QwtPainter::fillPixmap(param1, *param2);
 }
 
-void QwtPainter_drawBackgound(QPainter* painter, QRectF* rect, QWidget* widget) {
-	QwtPainter::drawBackgound(painter, *rect, widget);
+void QwtPainter_drawBackgound(QPainter* painter, struct miqt_qrectf rect, QWidget* widget) {
+	QwtPainter::drawBackgound(painter, miqt_from_cabi<QRectF>(rect), widget);
 }
 
-QPixmap* QwtPainter_backingStore(QWidget* param1, QSize* param2) {
-	return new QPixmap(QwtPainter::backingStore(param1, *param2));
+QPixmap* QwtPainter_backingStore(QWidget* param1, struct miqt_qsize param2) {
+	return new QPixmap(QwtPainter::backingStore(param1, miqt_from_cabi<QSize>(param2)));
 }
 
-void QwtPainter_fillPixmap2(QWidget* param1, QPixmap* param2, QPoint* offset) {
-	QwtPainter::fillPixmap(param1, *param2, *offset);
+void QwtPainter_fillPixmap2(QWidget* param1, QPixmap* param2, struct miqt_qpoint offset) {
+	QwtPainter::fillPixmap(param1, *param2, miqt_from_cabi<QPoint>(offset));
 }
 
 void QwtPainter_delete(QwtPainter* self) {

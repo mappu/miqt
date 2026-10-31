@@ -45,14 +45,14 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QPushButton_sizeHint(const QPushButton*, intptr_t);
-QSize* miqt_exec_callback_QPushButton_minimumSizeHint(const QPushButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPushButton_sizeHint(const QPushButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPushButton_minimumSizeHint(const QPushButton*, intptr_t);
 bool miqt_exec_callback_QPushButton_event(QPushButton*, intptr_t, QEvent*);
 void miqt_exec_callback_QPushButton_paintEvent(QPushButton*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QPushButton_keyPressEvent(QPushButton*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QPushButton_focusInEvent(QPushButton*, intptr_t, QFocusEvent*);
 void miqt_exec_callback_QPushButton_focusOutEvent(QPushButton*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QPushButton_hitButton(const QPushButton*, intptr_t, QPoint*);
+bool miqt_exec_callback_QPushButton_hitButton(const QPushButton*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QPushButton_checkStateSet(QPushButton*, intptr_t);
 void miqt_exec_callback_QPushButton_nextCheckState(QPushButton*, intptr_t);
 void miqt_exec_callback_QPushButton_keyReleaseEvent(QPushButton*, intptr_t, QKeyEvent*);
@@ -120,13 +120,11 @@ public:
 			return QPushButton::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPushButton_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPushButton_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPushButton_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QPushButton_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -137,13 +135,11 @@ public:
 			return QPushButton::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPushButton_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPushButton_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPushButton_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QPushButton_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -238,14 +234,12 @@ public:
 			return QPushButton::hitButton(pos);
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		bool callback_return_value = miqt_exec_callback_QPushButton_hitButton(this, handle__hitButton, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QPushButton_virtualbase_hitButton(const void* self, QPoint* pos);
+	friend bool QPushButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__checkStateSet = 0;
@@ -1035,12 +1029,12 @@ struct miqt_string QPushButton_trUtf8(const char* s) {
 	return _ms;
 }
 
-QSize* QPushButton_sizeHint(const QPushButton* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QPushButton_sizeHint(const QPushButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QPushButton_minimumSizeHint(const QPushButton* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QPushButton_minimumSizeHint(const QPushButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 bool QPushButton_autoDefault(const QPushButton* self) {
@@ -1133,8 +1127,8 @@ bool QPushButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPushButton_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPushButton*>(self)->QPushButton::sizeHint());
+struct miqt_qsize QPushButton_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPushButton*>(self)->QPushButton::sizeHint());
 }
 
 bool QPushButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1147,8 +1141,8 @@ bool QPushButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPushButton_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPushButton*>(self)->QPushButton::minimumSizeHint());
+struct miqt_qsize QPushButton_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPushButton*>(self)->QPushButton::minimumSizeHint());
 }
 
 bool QPushButton_override_virtual_event(void* self, intptr_t slot) {
@@ -1231,8 +1225,8 @@ bool QPushButton_override_virtual_hitButton(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QPushButton_virtualbase_hitButton(const void* self, QPoint* pos) {
-	return static_cast<const MiqtVirtualQPushButton*>(self)->QPushButton::hitButton(*pos);
+bool QPushButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos) {
+	return static_cast<const MiqtVirtualQPushButton*>(self)->QPushButton::hitButton(miqt_from_cabi<QPoint>(pos));
 }
 
 bool QPushButton_override_virtual_checkStateSet(void* self, intptr_t slot) {
@@ -1822,10 +1816,6 @@ bool QPushButton_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQPushButton*>(self)->QPushButton::disconnectNotify(*signal);
-}
-
-QSize* QPushButton_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QPushButton_virtualreturncopy_QVariant(QVariant* src) {

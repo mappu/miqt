@@ -23,7 +23,7 @@ int miqt_exec_callback_QsciPrinter_printRange2(QsciPrinter*, intptr_t, QsciScint
 void miqt_exec_callback_QsciPrinter_setWrapMode(QsciPrinter*, intptr_t, int);
 int miqt_exec_callback_QsciPrinter_devType(const QsciPrinter*, intptr_t);
 void miqt_exec_callback_QsciPrinter_setPageSize(QsciPrinter*, intptr_t, int);
-void miqt_exec_callback_QsciPrinter_setPageSizeMM(QsciPrinter*, intptr_t, QSizeF*);
+void miqt_exec_callback_QsciPrinter_setPageSizeMM(QsciPrinter*, intptr_t, struct miqt_qsizef);
 bool miqt_exec_callback_QsciPrinter_newPage(QsciPrinter*, intptr_t);
 QPaintEngine* miqt_exec_callback_QsciPrinter_paintEngine(const QsciPrinter*, intptr_t);
 void miqt_exec_callback_QsciPrinter_setMargins(QsciPrinter*, intptr_t, QPagedPaintDevice__Margins*);
@@ -184,14 +184,12 @@ public:
 			return;
 		}
 
-		const QSizeF& size_ret = size;
-		// Cast returned reference into pointer
-		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
+		struct miqt_qsizef sigval1 = miqt_to_cabi<struct miqt_qsizef>(size);
 		miqt_exec_callback_QsciPrinter_setPageSizeMM(this, handle__setPageSizeMM, sigval1);
 
 	}
 
-	friend void QsciPrinter_virtualbase_setPageSizeMM(void* self, QSizeF* size);
+	friend void QsciPrinter_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__newPage = 0;
@@ -461,8 +459,8 @@ bool QsciPrinter_override_virtual_setPageSizeMM(void* self, intptr_t slot) {
 	return true;
 }
 
-void QsciPrinter_virtualbase_setPageSizeMM(void* self, QSizeF* size) {
-	static_cast<MiqtVirtualQsciPrinter*>(self)->QsciPrinter::setPageSizeMM(*size);
+void QsciPrinter_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size) {
+	static_cast<MiqtVirtualQsciPrinter*>(self)->QsciPrinter::setPageSizeMM(miqt_from_cabi<QSizeF>(size));
 }
 
 bool QsciPrinter_override_virtual_newPage(void* self, intptr_t slot) {

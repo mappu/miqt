@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -72,11 +73,10 @@ func (this *QwtCompassRose) Palette() *qt.QPalette {
 	return qt.UnsafeNewQPalette(unsafe.Pointer(C.QwtCompassRose_palette(this.h)))
 }
 
-func (this *QwtCompassRose) Draw(painter *qt.QPainter, center *qt.QPointF, radius float64, north float64, colorGroup qt.QPalette__ColorGroup) {
+func (this *QwtCompassRose) Draw(painter *qt.QPainter, center qt.QPointF, radius float64, north float64, colorGroup qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(center)
-	C.QwtCompassRose_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius), (C.double)(north), (C.int)(colorGroup))
+	C.QwtCompassRose_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(radius), (C.double)(north), (C.int)(colorGroup))
 }
 
 func (this *QwtCompassRose) OperatorAssign(param1 *QwtCompassRose) {
@@ -112,7 +112,7 @@ func miqt_exec_callback_QwtCompassRose_setPalette(self *C.QwtCompassRose, cb C.i
 	gofunc((&QwtCompassRose{h: self}).callVirtualBase_SetPalette, slotval1)
 
 }
-func (this *QwtCompassRose) OnDraw(slot func(painter *qt.QPainter, center *qt.QPointF, radius float64, north float64, colorGroup qt.QPalette__ColorGroup)) {
+func (this *QwtCompassRose) OnDraw(slot func(painter *qt.QPainter, center qt.QPointF, radius float64, north float64, colorGroup qt.QPalette__ColorGroup)) {
 	ok := C.QwtCompassRose_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -120,8 +120,8 @@ func (this *QwtCompassRose) OnDraw(slot func(painter *qt.QPainter, center *qt.QP
 }
 
 //export miqt_exec_callback_QwtCompassRose_draw
-func miqt_exec_callback_QwtCompassRose_draw(self *C.QwtCompassRose, cb C.intptr_t, painter *C.QPainter, center *C.QPointF, radius C.double, north C.double, colorGroup C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(painter *qt.QPainter, center *qt.QPointF, radius float64, north float64, colorGroup qt.QPalette__ColorGroup))
+func miqt_exec_callback_QwtCompassRose_draw(self *C.QwtCompassRose, cb C.intptr_t, painter *C.QPainter, center C.struct_miqt_qpointf, radius C.double, north C.double, colorGroup C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(painter *qt.QPainter, center qt.QPointF, radius float64, north float64, colorGroup qt.QPalette__ColorGroup))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -129,7 +129,7 @@ func miqt_exec_callback_QwtCompassRose_draw(self *C.QwtCompassRose, cb C.intptr_
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(center))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](center)
 
 	slotval3 := (float64)(radius)
 
@@ -269,18 +269,16 @@ func (this *QwtSimpleCompassRose) ShrinkFactor() float64 {
 	return (float64)(C.QwtSimpleCompassRose_shrinkFactor(this.h))
 }
 
-func (this *QwtSimpleCompassRose) Draw(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup) {
+func (this *QwtSimpleCompassRose) Draw(param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(center)
-	C.QwtSimpleCompassRose_draw(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius), (C.double)(north), (C.int)(param5))
+	C.QwtSimpleCompassRose_draw(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(radius), (C.double)(north), (C.int)(param5))
 }
 
-func QwtSimpleCompassRose_DrawRose(param1 *qt.QPainter, param2 *qt.QPalette, center *qt.QPointF, radius float64, north float64, width float64, numThorns int, numThornLevels int, shrinkFactor float64) {
+func QwtSimpleCompassRose_DrawRose(param1 *qt.QPainter, param2 *qt.QPalette, center qt.QPointF, radius float64, north float64, width float64, numThorns int, numThornLevels int, shrinkFactor float64) {
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(center)
-	C.QwtSimpleCompassRose_drawRose((*C.QPainter)(param1.UnsafePointer()), (*C.QPalette)(param2.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius), (C.double)(north), (C.double)(width), (C.int)(numThorns), (C.int)(numThornLevels), (C.double)(shrinkFactor))
+	C.QwtSimpleCompassRose_drawRose((*C.QPainter)(param1.UnsafePointer()), (*C.QPalette)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(radius), (C.double)(north), (C.double)(width), (C.int)(numThorns), (C.int)(numThornLevels), (C.double)(shrinkFactor))
 }
 
 func (this *QwtSimpleCompassRose) OperatorAssign(param1 *QwtSimpleCompassRose) {
@@ -289,15 +287,14 @@ func (this *QwtSimpleCompassRose) OperatorAssign(param1 *QwtSimpleCompassRose) {
 	C.QwtSimpleCompassRose_operatorAssign(this.h, param1.cPointer())
 }
 
-func (this *QwtSimpleCompassRose) callVirtualBase_Draw(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup) {
+func (this *QwtSimpleCompassRose) callVirtualBase_Draw(param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(center)
 
-	C.QwtSimpleCompassRose_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(radius), (C.double)(north), (C.int)(param5))
+	C.QwtSimpleCompassRose_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(radius), (C.double)(north), (C.int)(param5))
 
 }
-func (this *QwtSimpleCompassRose) OnDraw(slot func(super func(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup)) {
+func (this *QwtSimpleCompassRose) OnDraw(slot func(super func(param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup)) {
 	ok := C.QwtSimpleCompassRose_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -305,8 +302,8 @@ func (this *QwtSimpleCompassRose) OnDraw(slot func(super func(param1 *qt.QPainte
 }
 
 //export miqt_exec_callback_QwtSimpleCompassRose_draw
-func miqt_exec_callback_QwtSimpleCompassRose_draw(self *C.QwtSimpleCompassRose, cb C.intptr_t, param1 *C.QPainter, center *C.QPointF, radius C.double, north C.double, param5 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup))
+func miqt_exec_callback_QwtSimpleCompassRose_draw(self *C.QwtSimpleCompassRose, cb C.intptr_t, param1 *C.QPainter, center C.struct_miqt_qpointf, radius C.double, north C.double, param5 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup), param1 *qt.QPainter, center qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -314,7 +311,7 @@ func miqt_exec_callback_QwtSimpleCompassRose_draw(self *C.QwtSimpleCompassRose, 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(center))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](center)
 
 	slotval3 := (float64)(radius)
 

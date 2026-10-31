@@ -34,19 +34,19 @@ extern "C" {
 
 void miqt_exec_callback_QAbstractTextDocumentLayout_update(intptr_t);
 void miqt_exec_callback_QAbstractTextDocumentLayout_updateBlock(intptr_t, QTextBlock*);
-void miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged(intptr_t, QSizeF*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged(intptr_t, struct miqt_qsizef);
 void miqt_exec_callback_QAbstractTextDocumentLayout_pageCountChanged(intptr_t, int);
-void miqt_exec_callback_QAbstractTextDocumentLayout_updateWithQRectF(intptr_t, QRectF*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_updateWithQRectF(intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QAbstractTextDocumentLayout_draw(QAbstractTextDocumentLayout*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
-int miqt_exec_callback_QAbstractTextDocumentLayout_hitTest(const QAbstractTextDocumentLayout*, intptr_t, QPointF*, int);
+int miqt_exec_callback_QAbstractTextDocumentLayout_hitTest(const QAbstractTextDocumentLayout*, intptr_t, struct miqt_qpointf, int);
 int miqt_exec_callback_QAbstractTextDocumentLayout_pageCount(const QAbstractTextDocumentLayout*, intptr_t);
-QSizeF* miqt_exec_callback_QAbstractTextDocumentLayout_documentSize(const QAbstractTextDocumentLayout*, intptr_t);
-QRectF* miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect(const QAbstractTextDocumentLayout*, intptr_t, QTextFrame*);
-QRectF* miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect(const QAbstractTextDocumentLayout*, intptr_t, QTextBlock*);
+struct miqt_qsizef miqt_exec_callback_QAbstractTextDocumentLayout_documentSize(const QAbstractTextDocumentLayout*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect(const QAbstractTextDocumentLayout*, intptr_t, QTextFrame*);
+struct miqt_qrectf miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect(const QAbstractTextDocumentLayout*, intptr_t, QTextBlock*);
 void miqt_exec_callback_QAbstractTextDocumentLayout_documentChanged(QAbstractTextDocumentLayout*, intptr_t, int, int, int);
 void miqt_exec_callback_QAbstractTextDocumentLayout_resizeInlineObject(QAbstractTextDocumentLayout*, intptr_t, QTextInlineObject*, int, QTextFormat*);
 void miqt_exec_callback_QAbstractTextDocumentLayout_positionInlineObject(QAbstractTextDocumentLayout*, intptr_t, QTextInlineObject*, int, QTextFormat*);
-void miqt_exec_callback_QAbstractTextDocumentLayout_drawInlineObject(QAbstractTextDocumentLayout*, intptr_t, QPainter*, QRectF*, QTextInlineObject*, int, QTextFormat*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_drawInlineObject(QAbstractTextDocumentLayout*, intptr_t, QPainter*, struct miqt_qrectf, QTextInlineObject*, int, QTextFormat*);
 bool miqt_exec_callback_QAbstractTextDocumentLayout_event(QAbstractTextDocumentLayout*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAbstractTextDocumentLayout_eventFilter(QAbstractTextDocumentLayout*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QAbstractTextDocumentLayout_timerEvent(QAbstractTextDocumentLayout*, intptr_t, QTimerEvent*);
@@ -91,9 +91,7 @@ public:
 			return 0; // Pure virtual, there is no base we can call
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		Qt::HitTestAccuracy accuracy_ret = accuracy;
 		int sigval2 = static_cast<int>(accuracy_ret);
 		int callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_hitTest(this, handle__hitTest, sigval1, sigval2);
@@ -122,10 +120,8 @@ public:
 			return QSizeF(); // Pure virtual, there is no base we can call
 		}
 
-		QSizeF* callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_documentSize(this, handle__documentSize);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_documentSize(this, handle__documentSize);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -138,10 +134,8 @@ public:
 		}
 
 		QTextFrame* sigval1 = frame;
-		QRectF* callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect(this, handle__frameBoundingRect, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect(this, handle__frameBoundingRect, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -156,10 +150,8 @@ public:
 		const QTextBlock& block_ret = block;
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
-		QRectF* callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect(this, handle__blockBoundingRect, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect(this, handle__blockBoundingRect, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -231,9 +223,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		QTextInlineObject* sigval3 = new QTextInlineObject(object);
 		int sigval4 = posInDocument;
 		const QTextFormat& format_ret = format;
@@ -243,7 +233,7 @@ public:
 
 	}
 
-	friend void QAbstractTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format);
+	friend void QAbstractTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, struct miqt_qrectf rect, QTextInlineObject* object, int posInDocument, QTextFormat* format);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -407,12 +397,12 @@ void QAbstractTextDocumentLayout_draw(QAbstractTextDocumentLayout* self, QPainte
 	self->draw(painter, *context);
 }
 
-int QAbstractTextDocumentLayout_hitTest(const QAbstractTextDocumentLayout* self, QPointF* point, int accuracy) {
-	return self->hitTest(*point, static_cast<Qt::HitTestAccuracy>(accuracy));
+int QAbstractTextDocumentLayout_hitTest(const QAbstractTextDocumentLayout* self, struct miqt_qpointf point, int accuracy) {
+	return self->hitTest(miqt_from_cabi<QPointF>(point), static_cast<Qt::HitTestAccuracy>(accuracy));
 }
 
-struct miqt_string QAbstractTextDocumentLayout_anchorAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	QString _ret = self->anchorAt(*pos);
+struct miqt_string QAbstractTextDocumentLayout_anchorAt(const QAbstractTextDocumentLayout* self, struct miqt_qpointf pos) {
+	QString _ret = self->anchorAt(miqt_from_cabi<QPointF>(pos));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -422,8 +412,8 @@ struct miqt_string QAbstractTextDocumentLayout_anchorAt(const QAbstractTextDocum
 	return _ms;
 }
 
-struct miqt_string QAbstractTextDocumentLayout_imageAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	QString _ret = self->imageAt(*pos);
+struct miqt_string QAbstractTextDocumentLayout_imageAt(const QAbstractTextDocumentLayout* self, struct miqt_qpointf pos) {
+	QString _ret = self->imageAt(miqt_from_cabi<QPointF>(pos));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -433,28 +423,28 @@ struct miqt_string QAbstractTextDocumentLayout_imageAt(const QAbstractTextDocume
 	return _ms;
 }
 
-QTextFormat* QAbstractTextDocumentLayout_formatAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	return new QTextFormat(self->formatAt(*pos));
+QTextFormat* QAbstractTextDocumentLayout_formatAt(const QAbstractTextDocumentLayout* self, struct miqt_qpointf pos) {
+	return new QTextFormat(self->formatAt(miqt_from_cabi<QPointF>(pos)));
 }
 
-QTextBlock* QAbstractTextDocumentLayout_blockWithMarkerAt(const QAbstractTextDocumentLayout* self, QPointF* pos) {
-	return new QTextBlock(self->blockWithMarkerAt(*pos));
+QTextBlock* QAbstractTextDocumentLayout_blockWithMarkerAt(const QAbstractTextDocumentLayout* self, struct miqt_qpointf pos) {
+	return new QTextBlock(self->blockWithMarkerAt(miqt_from_cabi<QPointF>(pos)));
 }
 
 int QAbstractTextDocumentLayout_pageCount(const QAbstractTextDocumentLayout* self) {
 	return self->pageCount();
 }
 
-QSizeF* QAbstractTextDocumentLayout_documentSize(const QAbstractTextDocumentLayout* self) {
-	return new QSizeF(self->documentSize());
+struct miqt_qsizef QAbstractTextDocumentLayout_documentSize(const QAbstractTextDocumentLayout* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->documentSize());
 }
 
-QRectF* QAbstractTextDocumentLayout_frameBoundingRect(const QAbstractTextDocumentLayout* self, QTextFrame* frame) {
-	return new QRectF(self->frameBoundingRect(frame));
+struct miqt_qrectf QAbstractTextDocumentLayout_frameBoundingRect(const QAbstractTextDocumentLayout* self, QTextFrame* frame) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->frameBoundingRect(frame));
 }
 
-QRectF* QAbstractTextDocumentLayout_blockBoundingRect(const QAbstractTextDocumentLayout* self, QTextBlock* block) {
-	return new QRectF(self->blockBoundingRect(*block));
+struct miqt_qrectf QAbstractTextDocumentLayout_blockBoundingRect(const QAbstractTextDocumentLayout* self, QTextBlock* block) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->blockBoundingRect(*block));
 }
 
 void QAbstractTextDocumentLayout_setPaintDevice(QAbstractTextDocumentLayout* self, QPaintDevice* device) {
@@ -504,15 +494,13 @@ void QAbstractTextDocumentLayout_connect_updateBlock(QAbstractTextDocumentLayout
 	});
 }
 
-void QAbstractTextDocumentLayout_documentSizeChanged(QAbstractTextDocumentLayout* self, QSizeF* newSize) {
-	self->documentSizeChanged(*newSize);
+void QAbstractTextDocumentLayout_documentSizeChanged(QAbstractTextDocumentLayout* self, struct miqt_qsizef newSize) {
+	self->documentSizeChanged(miqt_from_cabi<QSizeF>(newSize));
 }
 
 void QAbstractTextDocumentLayout_connect_documentSizeChanged(QAbstractTextDocumentLayout* self, intptr_t slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QSizeF&)>(&QAbstractTextDocumentLayout::documentSizeChanged), self, [=](const QSizeF& newSize) {
-		const QSizeF& newSize_ret = newSize;
-		// Cast returned reference into pointer
-		QSizeF* sigval1 = const_cast<QSizeF*>(&newSize_ret);
+		struct miqt_qsizef sigval1 = miqt_to_cabi<struct miqt_qsizef>(newSize);
 		miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged(slot, sigval1);
 	});
 }
@@ -554,15 +542,13 @@ void QAbstractTextDocumentLayout_unregisterHandler2(QAbstractTextDocumentLayout*
 	self->unregisterHandler(static_cast<int>(objectType), component);
 }
 
-void QAbstractTextDocumentLayout_updateWithQRectF(QAbstractTextDocumentLayout* self, QRectF* param1) {
-	self->update(*param1);
+void QAbstractTextDocumentLayout_updateWithQRectF(QAbstractTextDocumentLayout* self, struct miqt_qrectf param1) {
+	self->update(miqt_from_cabi<QRectF>(param1));
 }
 
 void QAbstractTextDocumentLayout_connect_updateWithQRectF(QAbstractTextDocumentLayout* self, intptr_t slot) {
 	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=](const QRectF& param1) {
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		miqt_exec_callback_QAbstractTextDocumentLayout_updateWithQRectF(slot, sigval1);
 	});
 }
@@ -675,8 +661,8 @@ bool QAbstractTextDocumentLayout_override_virtual_drawInlineObject(void* self, i
 	return true;
 }
 
-void QAbstractTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format) {
-	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::drawInlineObject(painter, *rect, *object, static_cast<int>(posInDocument), *format);
+void QAbstractTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, struct miqt_qrectf rect, QTextInlineObject* object, int posInDocument, QTextFormat* format) {
+	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::drawInlineObject(painter, miqt_from_cabi<QRectF>(rect), *object, static_cast<int>(posInDocument), *format);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_event(void* self, intptr_t slot) {
@@ -777,14 +763,6 @@ void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaM
 	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::disconnectNotify(*signal);
 }
 
-QSizeF* QAbstractTextDocumentLayout_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
-}
-
-QRectF* QAbstractTextDocumentLayout_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 int QAbstractTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos) {
 	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -855,12 +833,12 @@ void QAbstractTextDocumentLayout_delete(QAbstractTextDocumentLayout* self) {
 	delete self;
 }
 
-QSizeF* QTextObjectInterface_intrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format) {
-	return new QSizeF(self->intrinsicSize(doc, static_cast<int>(posInDocument), *format));
+struct miqt_qsizef QTextObjectInterface_intrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->intrinsicSize(doc, static_cast<int>(posInDocument), *format));
 }
 
-void QTextObjectInterface_drawObject(QTextObjectInterface* self, QPainter* painter, QRectF* rect, QTextDocument* doc, int posInDocument, QTextFormat* format) {
-	self->drawObject(painter, *rect, doc, static_cast<int>(posInDocument), *format);
+void QTextObjectInterface_drawObject(QTextObjectInterface* self, QPainter* painter, struct miqt_qrectf rect, QTextDocument* doc, int posInDocument, QTextFormat* format) {
+	self->drawObject(painter, miqt_from_cabi<QRectF>(rect), doc, static_cast<int>(posInDocument), *format);
 }
 
 void QTextObjectInterface_operatorAssign(QTextObjectInterface* self, QTextObjectInterface* param1) {
@@ -927,12 +905,12 @@ void QAbstractTextDocumentLayout__PaintContext_setPalette(QAbstractTextDocumentL
 	self->palette = *palette;
 }
 
-QRectF* QAbstractTextDocumentLayout__PaintContext_clip(const QAbstractTextDocumentLayout__PaintContext* self) {
-	return new QRectF(self->clip);
+struct miqt_qrectf QAbstractTextDocumentLayout__PaintContext_clip(const QAbstractTextDocumentLayout__PaintContext* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->clip);
 }
 
-void QAbstractTextDocumentLayout__PaintContext_setClip(QAbstractTextDocumentLayout__PaintContext* self, QRectF* clip) {
-	self->clip = *clip;
+void QAbstractTextDocumentLayout__PaintContext_setClip(QAbstractTextDocumentLayout__PaintContext* self, struct miqt_qrectf clip) {
+	self->clip = miqt_from_cabi<QRectF>(clip);
 }
 
 struct miqt_array /* of QAbstractTextDocumentLayout__Selection* */  QAbstractTextDocumentLayout__PaintContext_selections(const QAbstractTextDocumentLayout__PaintContext* self) {

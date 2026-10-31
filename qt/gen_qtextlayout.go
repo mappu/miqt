@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -84,11 +85,9 @@ func (this *QTextInlineObject) IsValid() bool {
 	return (bool)(C.QTextInlineObject_isValid(this.h))
 }
 
-func (this *QTextInlineObject) Rect() *QRectF {
+func (this *QTextInlineObject) Rect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QTextInlineObject_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QTextInlineObject_rect(this.h))
 }
 
 func (this *QTextInlineObject) Width() float64 {
@@ -471,45 +470,37 @@ func (this *QTextLayout) RightCursorPosition(oldPos int) int {
 	return (int)(C.QTextLayout_rightCursorPosition(this.h, (C.int)(oldPos)))
 }
 
-func (this *QTextLayout) Draw(p *QPainter, pos *QPointF) {
+func (this *QTextLayout) Draw(p *QPainter, pos QPointF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(pos)
-	C.QTextLayout_draw(this.h, p.cPointer(), pos.cPointer())
+	C.QTextLayout_draw(this.h, p.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QTextLayout) DrawCursor(p *QPainter, pos *QPointF, cursorPosition int) {
+func (this *QTextLayout) DrawCursor(p *QPainter, pos QPointF, cursorPosition int) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(pos)
-	C.QTextLayout_drawCursor(this.h, p.cPointer(), pos.cPointer(), (C.int)(cursorPosition))
+	C.QTextLayout_drawCursor(this.h, p.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](pos), (C.int)(cursorPosition))
 }
 
-func (this *QTextLayout) DrawCursor2(p *QPainter, pos *QPointF, cursorPosition int, width int) {
+func (this *QTextLayout) DrawCursor2(p *QPainter, pos QPointF, cursorPosition int, width int) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(pos)
-	C.QTextLayout_drawCursor2(this.h, p.cPointer(), pos.cPointer(), (C.int)(cursorPosition), (C.int)(width))
+	C.QTextLayout_drawCursor2(this.h, p.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](pos), (C.int)(cursorPosition), (C.int)(width))
 }
 
-func (this *QTextLayout) Position() *QPointF {
+func (this *QTextLayout) Position() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QTextLayout_position(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QTextLayout_position(this.h))
 }
 
-func (this *QTextLayout) SetPosition(p *QPointF) {
+func (this *QTextLayout) SetPosition(p QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QTextLayout_setPosition(this.h, p.cPointer())
+	C.QTextLayout_setPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
-func (this *QTextLayout) BoundingRect() *QRectF {
+func (this *QTextLayout) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QTextLayout_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QTextLayout_boundingRect(this.h))
 }
 
 func (this *QTextLayout) MinimumWidth() float64 {
@@ -550,10 +541,9 @@ func (this *QTextLayout) PreviousCursorPosition2(oldPos int, mode QTextLayout__C
 	return (int)(C.QTextLayout_previousCursorPosition2(this.h, (C.int)(oldPos), (C.int)(mode)))
 }
 
-func (this *QTextLayout) Draw2(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange) {
+func (this *QTextLayout) Draw2(p *QPainter, pos QPointF, selections []QTextLayout__FormatRange) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(pos)
 	defer runtime.KeepAlive(selections)
 	selections_CArray_ptr := (**C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray_ptr))
@@ -562,15 +552,13 @@ func (this *QTextLayout) Draw2(p *QPainter, pos *QPointF, selections []QTextLayo
 		selections_CArray[i] = selections[i].cPointer()
 	}
 	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray_ptr)}
-	C.QTextLayout_draw2(this.h, p.cPointer(), pos.cPointer(), selections_ma)
+	C.QTextLayout_draw2(this.h, p.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](pos), selections_ma)
 }
 
-func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange, clip *QRectF) {
+func (this *QTextLayout) Draw3(p *QPainter, pos QPointF, selections []QTextLayout__FormatRange, clip QRectF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(pos)
 	defer runtime.KeepAlive(selections)
-	defer runtime.KeepAlive(clip)
 	selections_CArray_ptr := (**C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray_ptr))
 	selections_CArray := unsafe.Slice(selections_CArray_ptr, len(selections))
@@ -578,7 +566,7 @@ func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayo
 		selections_CArray[i] = selections[i].cPointer()
 	}
 	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray_ptr)}
-	C.QTextLayout_draw3(this.h, p.cPointer(), pos.cPointer(), selections_ma, clip.cPointer())
+	C.QTextLayout_draw3(this.h, p.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](pos), selections_ma, libmiqt.ValueCast[C.struct_miqt_qrectf](clip))
 }
 
 func (this *QTextLayout) GlyphRunsWithFrom(from int) []QGlyphRun {
@@ -676,11 +664,9 @@ func (this *QTextLine) IsValid() bool {
 	return (bool)(C.QTextLine_isValid(this.h))
 }
 
-func (this *QTextLine) Rect() *QRectF {
+func (this *QTextLine) Rect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QTextLine_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QTextLine_rect(this.h))
 }
 
 func (this *QTextLine) X() float64 {
@@ -738,11 +724,9 @@ func (this *QTextLine) HorizontalAdvance() float64 {
 	return (float64)(C.QTextLine_horizontalAdvance(this.h))
 }
 
-func (this *QTextLine) NaturalTextRect() *QRectF {
+func (this *QTextLine) NaturalTextRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QTextLine_naturalTextRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QTextLine_naturalTextRect(this.h))
 }
 
 func (this *QTextLine) CursorToX(cursorPos *int) float64 {
@@ -775,17 +759,14 @@ func (this *QTextLine) SetNumColumns2(columns int, alignmentWidth float64) {
 	C.QTextLine_setNumColumns2(this.h, (C.int)(columns), (C.double)(alignmentWidth))
 }
 
-func (this *QTextLine) SetPosition(pos *QPointF) {
+func (this *QTextLine) SetPosition(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QTextLine_setPosition(this.h, pos.cPointer())
+	C.QTextLine_setPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QTextLine) Position() *QPointF {
+func (this *QTextLine) Position() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QTextLine_position(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QTextLine_position(this.h))
 }
 
 func (this *QTextLine) TextStart() int {
@@ -803,11 +784,10 @@ func (this *QTextLine) LineNumber() int {
 	return (int)(C.QTextLine_lineNumber(this.h))
 }
 
-func (this *QTextLine) Draw(p *QPainter, point *QPointF) {
+func (this *QTextLine) Draw(p *QPainter, point QPointF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(point)
-	C.QTextLine_draw(this.h, p.cPointer(), point.cPointer())
+	C.QTextLine_draw(this.h, p.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
 
 func (this *QTextLine) GlyphRuns() []QGlyphRun {
@@ -838,12 +818,11 @@ func (this *QTextLine) XToCursor2(x float64, param2 QTextLine__CursorPosition) i
 	return (int)(C.QTextLine_xToCursor2(this.h, (C.double)(x), (C.int)(param2)))
 }
 
-func (this *QTextLine) Draw2(p *QPainter, point *QPointF, selection *QTextLayout__FormatRange) {
+func (this *QTextLine) Draw2(p *QPainter, point QPointF, selection *QTextLayout__FormatRange) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(point)
 	defer runtime.KeepAlive(selection)
-	C.QTextLine_draw2(this.h, p.cPointer(), point.cPointer(), selection.cPointer())
+	C.QTextLine_draw2(this.h, p.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](point), selection.cPointer())
 }
 
 func (this *QTextLine) GlyphRunsWithFrom(from int) []QGlyphRun {

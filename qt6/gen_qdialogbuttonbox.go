@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -570,14 +571,12 @@ func miqt_exec_callback_QDialogButtonBox_setVisible(self *C.QDialogButtonBox, cb
 
 }
 
-func (this *QDialogButtonBox) callVirtualBase_SizeHint() *QSize {
+func (this *QDialogButtonBox) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QDialogButtonBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QDialogButtonBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDialogButtonBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDialogButtonBox) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDialogButtonBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -585,27 +584,24 @@ func (this *QDialogButtonBox) OnSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QDialogButtonBox_sizeHint
-func miqt_exec_callback_QDialogButtonBox_sizeHint(self *C.QDialogButtonBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDialogButtonBox_sizeHint(self *C.QDialogButtonBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDialogButtonBox_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QDialogButtonBox) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QDialogButtonBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QDialogButtonBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QDialogButtonBox) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QDialogButtonBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QDialogButtonBox) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDialogButtonBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -613,16 +609,15 @@ func (this *QDialogButtonBox) OnMinimumSizeHint(slot func(super func() *QSize) *
 }
 
 //export miqt_exec_callback_QDialogButtonBox_minimumSizeHint
-func miqt_exec_callback_QDialogButtonBox_minimumSizeHint(self *C.QDialogButtonBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDialogButtonBox_minimumSizeHint(self *C.QDialogButtonBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDialogButtonBox{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDialogButtonBox_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1450,7 +1445,6 @@ func miqt_exec_callback_QDialogButtonBox_initPainter(self *C.QDialogButtonBox, c
 }
 
 func (this *QDialogButtonBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDialogButtonBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

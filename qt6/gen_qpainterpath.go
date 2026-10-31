@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -68,10 +69,9 @@ func NewQPainterPath() *QPainterPath {
 }
 
 // NewQPainterPath2 constructs a new QPainterPath object.
-func NewQPainterPath2(startPoint *QPointF) *QPainterPath {
-	defer runtime.KeepAlive(startPoint)
+func NewQPainterPath2(startPoint QPointF) *QPainterPath {
 
-	return newQPainterPath(C.QPainterPath_new2(startPoint.cPointer()))
+	return newQPainterPath(C.QPainterPath_new2(libmiqt.ValueCast[C.struct_miqt_qpointf](startPoint)))
 }
 
 // NewQPainterPath3 constructs a new QPainterPath object.
@@ -113,10 +113,9 @@ func (this *QPainterPath) CloseSubpath() {
 	C.QPainterPath_closeSubpath(this.h)
 }
 
-func (this *QPainterPath) MoveTo(p *QPointF) {
+func (this *QPainterPath) MoveTo(p QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QPainterPath_moveTo(this.h, p.cPointer())
+	C.QPainterPath_moveTo(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
 func (this *QPainterPath) MoveTo2(x float64, y float64) {
@@ -124,10 +123,9 @@ func (this *QPainterPath) MoveTo2(x float64, y float64) {
 	C.QPainterPath_moveTo2(this.h, (C.double)(x), (C.double)(y))
 }
 
-func (this *QPainterPath) LineTo(p *QPointF) {
+func (this *QPainterPath) LineTo(p QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QPainterPath_lineTo(this.h, p.cPointer())
+	C.QPainterPath_lineTo(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p))
 }
 
 func (this *QPainterPath) LineTo2(x float64, y float64) {
@@ -135,10 +133,9 @@ func (this *QPainterPath) LineTo2(x float64, y float64) {
 	C.QPainterPath_lineTo2(this.h, (C.double)(x), (C.double)(y))
 }
 
-func (this *QPainterPath) ArcMoveTo(rect *QRectF, angle float64) {
+func (this *QPainterPath) ArcMoveTo(rect QRectF, angle float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QPainterPath_arcMoveTo(this.h, rect.cPointer(), (C.double)(angle))
+	C.QPainterPath_arcMoveTo(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.double)(angle))
 }
 
 func (this *QPainterPath) ArcMoveTo2(x float64, y float64, w float64, h float64, angle float64) {
@@ -146,10 +143,9 @@ func (this *QPainterPath) ArcMoveTo2(x float64, y float64, w float64, h float64,
 	C.QPainterPath_arcMoveTo2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.double)(angle))
 }
 
-func (this *QPainterPath) ArcTo(rect *QRectF, startAngle float64, arcLength float64) {
+func (this *QPainterPath) ArcTo(rect QRectF, startAngle float64, arcLength float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QPainterPath_arcTo(this.h, rect.cPointer(), (C.double)(startAngle), (C.double)(arcLength))
+	C.QPainterPath_arcTo(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.double)(startAngle), (C.double)(arcLength))
 }
 
 func (this *QPainterPath) ArcTo2(x float64, y float64, w float64, h float64, startAngle float64, arcLength float64) {
@@ -157,12 +153,9 @@ func (this *QPainterPath) ArcTo2(x float64, y float64, w float64, h float64, sta
 	C.QPainterPath_arcTo2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.double)(startAngle), (C.double)(arcLength))
 }
 
-func (this *QPainterPath) CubicTo(ctrlPt1 *QPointF, ctrlPt2 *QPointF, endPt *QPointF) {
+func (this *QPainterPath) CubicTo(ctrlPt1 QPointF, ctrlPt2 QPointF, endPt QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(ctrlPt1)
-	defer runtime.KeepAlive(ctrlPt2)
-	defer runtime.KeepAlive(endPt)
-	C.QPainterPath_cubicTo(this.h, ctrlPt1.cPointer(), ctrlPt2.cPointer(), endPt.cPointer())
+	C.QPainterPath_cubicTo(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](ctrlPt1), libmiqt.ValueCast[C.struct_miqt_qpointf](ctrlPt2), libmiqt.ValueCast[C.struct_miqt_qpointf](endPt))
 }
 
 func (this *QPainterPath) CubicTo2(ctrlPt1x float64, ctrlPt1y float64, ctrlPt2x float64, ctrlPt2y float64, endPtx float64, endPty float64) {
@@ -170,11 +163,9 @@ func (this *QPainterPath) CubicTo2(ctrlPt1x float64, ctrlPt1y float64, ctrlPt2x 
 	C.QPainterPath_cubicTo2(this.h, (C.double)(ctrlPt1x), (C.double)(ctrlPt1y), (C.double)(ctrlPt2x), (C.double)(ctrlPt2y), (C.double)(endPtx), (C.double)(endPty))
 }
 
-func (this *QPainterPath) QuadTo(ctrlPt *QPointF, endPt *QPointF) {
+func (this *QPainterPath) QuadTo(ctrlPt QPointF, endPt QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(ctrlPt)
-	defer runtime.KeepAlive(endPt)
-	C.QPainterPath_quadTo(this.h, ctrlPt.cPointer(), endPt.cPointer())
+	C.QPainterPath_quadTo(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](ctrlPt), libmiqt.ValueCast[C.struct_miqt_qpointf](endPt))
 }
 
 func (this *QPainterPath) QuadTo2(ctrlPtx float64, ctrlPty float64, endPtx float64, endPty float64) {
@@ -182,17 +173,14 @@ func (this *QPainterPath) QuadTo2(ctrlPtx float64, ctrlPty float64, endPtx float
 	C.QPainterPath_quadTo2(this.h, (C.double)(ctrlPtx), (C.double)(ctrlPty), (C.double)(endPtx), (C.double)(endPty))
 }
 
-func (this *QPainterPath) CurrentPosition() *QPointF {
+func (this *QPainterPath) CurrentPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QPainterPath_currentPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QPainterPath_currentPosition(this.h))
 }
 
-func (this *QPainterPath) AddRect(rect *QRectF) {
+func (this *QPainterPath) AddRect(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QPainterPath_addRect(this.h, rect.cPointer())
+	C.QPainterPath_addRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QPainterPath) AddRect2(x float64, y float64, w float64, h float64) {
@@ -200,10 +188,9 @@ func (this *QPainterPath) AddRect2(x float64, y float64, w float64, h float64) {
 	C.QPainterPath_addRect2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
 }
 
-func (this *QPainterPath) AddEllipse(rect *QRectF) {
+func (this *QPainterPath) AddEllipse(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QPainterPath_addEllipse(this.h, rect.cPointer())
+	C.QPainterPath_addEllipse(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QPainterPath) AddEllipse2(x float64, y float64, w float64, h float64) {
@@ -211,21 +198,19 @@ func (this *QPainterPath) AddEllipse2(x float64, y float64, w float64, h float64
 	C.QPainterPath_addEllipse2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
 }
 
-func (this *QPainterPath) AddEllipse3(center *QPointF, rx float64, ry float64) {
+func (this *QPainterPath) AddEllipse3(center QPointF, rx float64, ry float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(center)
-	C.QPainterPath_addEllipse3(this.h, center.cPointer(), (C.double)(rx), (C.double)(ry))
+	C.QPainterPath_addEllipse3(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(rx), (C.double)(ry))
 }
 
-func (this *QPainterPath) AddText(point *QPointF, f *QFont, text string) {
+func (this *QPainterPath) AddText(point QPointF, f *QFont, text string) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 	defer runtime.KeepAlive(f)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QPainterPath_addText(this.h, point.cPointer(), f.cPointer(), text_ms)
+	C.QPainterPath_addText(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point), f.cPointer(), text_ms)
 }
 
 func (this *QPainterPath) AddText2(x float64, y float64, f *QFont, text string) {
@@ -250,10 +235,9 @@ func (this *QPainterPath) AddRegion(region *QRegion) {
 	C.QPainterPath_addRegion(this.h, region.cPointer())
 }
 
-func (this *QPainterPath) AddRoundedRect(rect *QRectF, xRadius float64, yRadius float64) {
+func (this *QPainterPath) AddRoundedRect(rect QRectF, xRadius float64, yRadius float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QPainterPath_addRoundedRect(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius))
+	C.QPainterPath_addRoundedRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.double)(xRadius), (C.double)(yRadius))
 }
 
 func (this *QPainterPath) AddRoundedRect2(x float64, y float64, w float64, h float64, xRadius float64, yRadius float64) {
@@ -267,22 +251,19 @@ func (this *QPainterPath) ConnectPath(path *QPainterPath) {
 	C.QPainterPath_connectPath(this.h, path.cPointer())
 }
 
-func (this *QPainterPath) Contains(pt *QPointF) bool {
+func (this *QPainterPath) Contains(pt QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	return (bool)(C.QPainterPath_contains(this.h, pt.cPointer()))
+	return (bool)(C.QPainterPath_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pt)))
 }
 
-func (this *QPainterPath) ContainsWithRect(rect *QRectF) bool {
+func (this *QPainterPath) ContainsWithRect(rect QRectF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	return (bool)(C.QPainterPath_containsWithRect(this.h, rect.cPointer()))
+	return (bool)(C.QPainterPath_containsWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
-func (this *QPainterPath) Intersects(rect *QRectF) bool {
+func (this *QPainterPath) Intersects(rect QRectF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	return (bool)(C.QPainterPath_intersects(this.h, rect.cPointer()))
+	return (bool)(C.QPainterPath_intersects(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 func (this *QPainterPath) Translate(dx float64, dy float64) {
@@ -290,10 +271,9 @@ func (this *QPainterPath) Translate(dx float64, dy float64) {
 	C.QPainterPath_translate(this.h, (C.double)(dx), (C.double)(dy))
 }
 
-func (this *QPainterPath) TranslateWithOffset(offset *QPointF) {
+func (this *QPainterPath) TranslateWithOffset(offset QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
-	C.QPainterPath_translateWithOffset(this.h, offset.cPointer())
+	C.QPainterPath_translateWithOffset(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](offset))
 }
 
 func (this *QPainterPath) Translated(dx float64, dy float64) *QPainterPath {
@@ -303,26 +283,21 @@ func (this *QPainterPath) Translated(dx float64, dy float64) *QPainterPath {
 	return _goptr
 }
 
-func (this *QPainterPath) TranslatedWithOffset(offset *QPointF) *QPainterPath {
+func (this *QPainterPath) TranslatedWithOffset(offset QPointF) *QPainterPath {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
-	_goptr := newQPainterPath(C.QPainterPath_translatedWithOffset(this.h, offset.cPointer()))
+	_goptr := newQPainterPath(C.QPainterPath_translatedWithOffset(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](offset)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QPainterPath) BoundingRect() *QRectF {
+func (this *QPainterPath) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QPainterPath_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QPainterPath_boundingRect(this.h))
 }
 
-func (this *QPainterPath) ControlPointRect() *QRectF {
+func (this *QPainterPath) ControlPointRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QPainterPath_controlPointRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QPainterPath_controlPointRect(this.h))
 }
 
 func (this *QPainterPath) FillRule() FillRule {
@@ -374,11 +349,9 @@ func (this *QPainterPath) PercentAtLength(t float64) float64 {
 	return (float64)(C.QPainterPath_percentAtLength(this.h, (C.double)(t)))
 }
 
-func (this *QPainterPath) PointAtPercent(t float64) *QPointF {
+func (this *QPainterPath) PointAtPercent(t float64) QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QPainterPath_pointAtPercent(this.h, (C.double)(t)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QPainterPath_pointAtPercent(this.h, (C.double)(t)))
 }
 
 func (this *QPainterPath) AngleAtPercent(t float64) float64 {
@@ -506,10 +479,9 @@ func (this *QPainterPath) OperatorMinusAssign(other *QPainterPath) *QPainterPath
 	return _ret
 }
 
-func (this *QPainterPath) AddRoundedRect3(rect *QRectF, xRadius float64, yRadius float64, mode SizeMode) {
+func (this *QPainterPath) AddRoundedRect3(rect QRectF, xRadius float64, yRadius float64, mode SizeMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QPainterPath_addRoundedRect3(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
+	C.QPainterPath_addRoundedRect3(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
 func (this *QPainterPath) AddRoundedRect4(x float64, y float64, w float64, h float64, xRadius float64, yRadius float64, mode SizeMode) {
@@ -787,11 +759,9 @@ func (this *QPainterPath__Element) IsCurveTo() bool {
 	return (bool)(C.QPainterPath__Element_isCurveTo(this.h))
 }
 
-func (this *QPainterPath__Element) ToQPointF() *QPointF {
+func (this *QPainterPath__Element) ToQPointF() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QPainterPath__Element_ToQPointF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QPainterPath__Element_ToQPointF(this.h))
 }
 
 func (this *QPainterPath__Element) OperatorEqual(e *QPainterPath__Element) bool {

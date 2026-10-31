@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -221,121 +222,94 @@ func NewQGraphicsSceneMouseEvent2(typeVal QEvent__Type) *QGraphicsSceneMouseEven
 	return newQGraphicsSceneMouseEvent(C.QGraphicsSceneMouseEvent_new2((C.int)(typeVal)))
 }
 
-func (this *QGraphicsSceneMouseEvent) Pos() *QPointF {
+func (this *QGraphicsSceneMouseEvent) Pos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneMouseEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneMouseEvent_pos(this.h))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetPos(pos *QPointF) {
+func (this *QGraphicsSceneMouseEvent) SetPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMouseEvent_setPos(this.h, pos.cPointer())
+	C.QGraphicsSceneMouseEvent_setPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneMouseEvent) ScenePos() *QPointF {
+func (this *QGraphicsSceneMouseEvent) ScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneMouseEvent_scenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneMouseEvent_scenePos(this.h))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetScenePos(pos *QPointF) {
+func (this *QGraphicsSceneMouseEvent) SetScenePos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMouseEvent_setScenePos(this.h, pos.cPointer())
+	C.QGraphicsSceneMouseEvent_setScenePos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneMouseEvent) ScreenPos() *QPoint {
+func (this *QGraphicsSceneMouseEvent) ScreenPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneMouseEvent_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneMouseEvent_screenPos(this.h))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetScreenPos(pos *QPoint) {
+func (this *QGraphicsSceneMouseEvent) SetScreenPos(pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMouseEvent_setScreenPos(this.h, pos.cPointer())
+	C.QGraphicsSceneMouseEvent_setScreenPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
-func (this *QGraphicsSceneMouseEvent) ButtonDownPos(button MouseButton) *QPointF {
+func (this *QGraphicsSceneMouseEvent) ButtonDownPos(button MouseButton) QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneMouseEvent_buttonDownPos(this.h, (C.int)(button)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneMouseEvent_buttonDownPos(this.h, (C.int)(button)))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetButtonDownPos(button MouseButton, pos *QPointF) {
+func (this *QGraphicsSceneMouseEvent) SetButtonDownPos(button MouseButton, pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMouseEvent_setButtonDownPos(this.h, (C.int)(button), pos.cPointer())
+	C.QGraphicsSceneMouseEvent_setButtonDownPos(this.h, (C.int)(button), libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneMouseEvent) ButtonDownScenePos(button MouseButton) *QPointF {
+func (this *QGraphicsSceneMouseEvent) ButtonDownScenePos(button MouseButton) QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneMouseEvent_buttonDownScenePos(this.h, (C.int)(button)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneMouseEvent_buttonDownScenePos(this.h, (C.int)(button)))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetButtonDownScenePos(button MouseButton, pos *QPointF) {
+func (this *QGraphicsSceneMouseEvent) SetButtonDownScenePos(button MouseButton, pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMouseEvent_setButtonDownScenePos(this.h, (C.int)(button), pos.cPointer())
+	C.QGraphicsSceneMouseEvent_setButtonDownScenePos(this.h, (C.int)(button), libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneMouseEvent) ButtonDownScreenPos(button MouseButton) *QPoint {
+func (this *QGraphicsSceneMouseEvent) ButtonDownScreenPos(button MouseButton) QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneMouseEvent_buttonDownScreenPos(this.h, (C.int)(button)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneMouseEvent_buttonDownScreenPos(this.h, (C.int)(button)))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetButtonDownScreenPos(button MouseButton, pos *QPoint) {
+func (this *QGraphicsSceneMouseEvent) SetButtonDownScreenPos(button MouseButton, pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMouseEvent_setButtonDownScreenPos(this.h, (C.int)(button), pos.cPointer())
+	C.QGraphicsSceneMouseEvent_setButtonDownScreenPos(this.h, (C.int)(button), libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
-func (this *QGraphicsSceneMouseEvent) LastPos() *QPointF {
+func (this *QGraphicsSceneMouseEvent) LastPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneMouseEvent_lastPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneMouseEvent_lastPos(this.h))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetLastPos(pos *QPointF) {
+func (this *QGraphicsSceneMouseEvent) SetLastPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMouseEvent_setLastPos(this.h, pos.cPointer())
+	C.QGraphicsSceneMouseEvent_setLastPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneMouseEvent) LastScenePos() *QPointF {
+func (this *QGraphicsSceneMouseEvent) LastScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneMouseEvent_lastScenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneMouseEvent_lastScenePos(this.h))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetLastScenePos(pos *QPointF) {
+func (this *QGraphicsSceneMouseEvent) SetLastScenePos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMouseEvent_setLastScenePos(this.h, pos.cPointer())
+	C.QGraphicsSceneMouseEvent_setLastScenePos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneMouseEvent) LastScreenPos() *QPoint {
+func (this *QGraphicsSceneMouseEvent) LastScreenPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneMouseEvent_lastScreenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneMouseEvent_lastScreenPos(this.h))
 }
 
-func (this *QGraphicsSceneMouseEvent) SetLastScreenPos(pos *QPoint) {
+func (this *QGraphicsSceneMouseEvent) SetLastScreenPos(pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMouseEvent_setLastScreenPos(this.h, pos.cPointer())
+	C.QGraphicsSceneMouseEvent_setLastScreenPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QGraphicsSceneMouseEvent) Buttons() MouseButton {
@@ -517,43 +491,34 @@ func NewQGraphicsSceneWheelEvent2(typeVal QEvent__Type) *QGraphicsSceneWheelEven
 	return newQGraphicsSceneWheelEvent(C.QGraphicsSceneWheelEvent_new2((C.int)(typeVal)))
 }
 
-func (this *QGraphicsSceneWheelEvent) Pos() *QPointF {
+func (this *QGraphicsSceneWheelEvent) Pos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneWheelEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneWheelEvent_pos(this.h))
 }
 
-func (this *QGraphicsSceneWheelEvent) SetPos(pos *QPointF) {
+func (this *QGraphicsSceneWheelEvent) SetPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneWheelEvent_setPos(this.h, pos.cPointer())
+	C.QGraphicsSceneWheelEvent_setPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneWheelEvent) ScenePos() *QPointF {
+func (this *QGraphicsSceneWheelEvent) ScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneWheelEvent_scenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneWheelEvent_scenePos(this.h))
 }
 
-func (this *QGraphicsSceneWheelEvent) SetScenePos(pos *QPointF) {
+func (this *QGraphicsSceneWheelEvent) SetScenePos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneWheelEvent_setScenePos(this.h, pos.cPointer())
+	C.QGraphicsSceneWheelEvent_setScenePos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneWheelEvent) ScreenPos() *QPoint {
+func (this *QGraphicsSceneWheelEvent) ScreenPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneWheelEvent_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneWheelEvent_screenPos(this.h))
 }
 
-func (this *QGraphicsSceneWheelEvent) SetScreenPos(pos *QPoint) {
+func (this *QGraphicsSceneWheelEvent) SetScreenPos(pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneWheelEvent_setScreenPos(this.h, pos.cPointer())
+	C.QGraphicsSceneWheelEvent_setScreenPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QGraphicsSceneWheelEvent) Buttons() MouseButton {
@@ -606,17 +571,14 @@ func (this *QGraphicsSceneWheelEvent) SetPhase(scrollPhase ScrollPhase) {
 	C.QGraphicsSceneWheelEvent_setPhase(this.h, (C.int)(scrollPhase))
 }
 
-func (this *QGraphicsSceneWheelEvent) PixelDelta() *QPoint {
+func (this *QGraphicsSceneWheelEvent) PixelDelta() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneWheelEvent_pixelDelta(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneWheelEvent_pixelDelta(this.h))
 }
 
 func (this *QGraphicsSceneWheelEvent) SetPixelDelta(delta QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(delta)
-	C.QGraphicsSceneWheelEvent_setPixelDelta(this.h, delta.cPointer())
+	C.QGraphicsSceneWheelEvent_setPixelDelta(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](delta))
 }
 
 func (this *QGraphicsSceneWheelEvent) IsInverted() bool {
@@ -758,43 +720,34 @@ func NewQGraphicsSceneContextMenuEvent2(typeVal QEvent__Type) *QGraphicsSceneCon
 	return newQGraphicsSceneContextMenuEvent(C.QGraphicsSceneContextMenuEvent_new2((C.int)(typeVal)))
 }
 
-func (this *QGraphicsSceneContextMenuEvent) Pos() *QPointF {
+func (this *QGraphicsSceneContextMenuEvent) Pos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneContextMenuEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneContextMenuEvent_pos(this.h))
 }
 
-func (this *QGraphicsSceneContextMenuEvent) SetPos(pos *QPointF) {
+func (this *QGraphicsSceneContextMenuEvent) SetPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneContextMenuEvent_setPos(this.h, pos.cPointer())
+	C.QGraphicsSceneContextMenuEvent_setPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneContextMenuEvent) ScenePos() *QPointF {
+func (this *QGraphicsSceneContextMenuEvent) ScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneContextMenuEvent_scenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneContextMenuEvent_scenePos(this.h))
 }
 
-func (this *QGraphicsSceneContextMenuEvent) SetScenePos(pos *QPointF) {
+func (this *QGraphicsSceneContextMenuEvent) SetScenePos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneContextMenuEvent_setScenePos(this.h, pos.cPointer())
+	C.QGraphicsSceneContextMenuEvent_setScenePos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneContextMenuEvent) ScreenPos() *QPoint {
+func (this *QGraphicsSceneContextMenuEvent) ScreenPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneContextMenuEvent_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneContextMenuEvent_screenPos(this.h))
 }
 
-func (this *QGraphicsSceneContextMenuEvent) SetScreenPos(pos *QPoint) {
+func (this *QGraphicsSceneContextMenuEvent) SetScreenPos(pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneContextMenuEvent_setScreenPos(this.h, pos.cPointer())
+	C.QGraphicsSceneContextMenuEvent_setScreenPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QGraphicsSceneContextMenuEvent) Modifiers() KeyboardModifier {
@@ -946,82 +899,64 @@ func NewQGraphicsSceneHoverEvent2(typeVal QEvent__Type) *QGraphicsSceneHoverEven
 	return newQGraphicsSceneHoverEvent(C.QGraphicsSceneHoverEvent_new2((C.int)(typeVal)))
 }
 
-func (this *QGraphicsSceneHoverEvent) Pos() *QPointF {
+func (this *QGraphicsSceneHoverEvent) Pos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneHoverEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneHoverEvent_pos(this.h))
 }
 
-func (this *QGraphicsSceneHoverEvent) SetPos(pos *QPointF) {
+func (this *QGraphicsSceneHoverEvent) SetPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneHoverEvent_setPos(this.h, pos.cPointer())
+	C.QGraphicsSceneHoverEvent_setPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneHoverEvent) ScenePos() *QPointF {
+func (this *QGraphicsSceneHoverEvent) ScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneHoverEvent_scenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneHoverEvent_scenePos(this.h))
 }
 
-func (this *QGraphicsSceneHoverEvent) SetScenePos(pos *QPointF) {
+func (this *QGraphicsSceneHoverEvent) SetScenePos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneHoverEvent_setScenePos(this.h, pos.cPointer())
+	C.QGraphicsSceneHoverEvent_setScenePos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneHoverEvent) ScreenPos() *QPoint {
+func (this *QGraphicsSceneHoverEvent) ScreenPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneHoverEvent_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneHoverEvent_screenPos(this.h))
 }
 
-func (this *QGraphicsSceneHoverEvent) SetScreenPos(pos *QPoint) {
+func (this *QGraphicsSceneHoverEvent) SetScreenPos(pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneHoverEvent_setScreenPos(this.h, pos.cPointer())
+	C.QGraphicsSceneHoverEvent_setScreenPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
-func (this *QGraphicsSceneHoverEvent) LastPos() *QPointF {
+func (this *QGraphicsSceneHoverEvent) LastPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneHoverEvent_lastPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneHoverEvent_lastPos(this.h))
 }
 
-func (this *QGraphicsSceneHoverEvent) SetLastPos(pos *QPointF) {
+func (this *QGraphicsSceneHoverEvent) SetLastPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneHoverEvent_setLastPos(this.h, pos.cPointer())
+	C.QGraphicsSceneHoverEvent_setLastPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneHoverEvent) LastScenePos() *QPointF {
+func (this *QGraphicsSceneHoverEvent) LastScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneHoverEvent_lastScenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneHoverEvent_lastScenePos(this.h))
 }
 
-func (this *QGraphicsSceneHoverEvent) SetLastScenePos(pos *QPointF) {
+func (this *QGraphicsSceneHoverEvent) SetLastScenePos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneHoverEvent_setLastScenePos(this.h, pos.cPointer())
+	C.QGraphicsSceneHoverEvent_setLastScenePos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneHoverEvent) LastScreenPos() *QPoint {
+func (this *QGraphicsSceneHoverEvent) LastScreenPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneHoverEvent_lastScreenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneHoverEvent_lastScreenPos(this.h))
 }
 
-func (this *QGraphicsSceneHoverEvent) SetLastScreenPos(pos *QPoint) {
+func (this *QGraphicsSceneHoverEvent) SetLastScreenPos(pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneHoverEvent_setLastScreenPos(this.h, pos.cPointer())
+	C.QGraphicsSceneHoverEvent_setLastScreenPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QGraphicsSceneHoverEvent) Modifiers() KeyboardModifier {
@@ -1163,30 +1098,24 @@ func NewQGraphicsSceneHelpEvent2(typeVal QEvent__Type) *QGraphicsSceneHelpEvent 
 	return newQGraphicsSceneHelpEvent(C.QGraphicsSceneHelpEvent_new2((C.int)(typeVal)))
 }
 
-func (this *QGraphicsSceneHelpEvent) ScenePos() *QPointF {
+func (this *QGraphicsSceneHelpEvent) ScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneHelpEvent_scenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneHelpEvent_scenePos(this.h))
 }
 
-func (this *QGraphicsSceneHelpEvent) SetScenePos(pos *QPointF) {
+func (this *QGraphicsSceneHelpEvent) SetScenePos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneHelpEvent_setScenePos(this.h, pos.cPointer())
+	C.QGraphicsSceneHelpEvent_setScenePos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneHelpEvent) ScreenPos() *QPoint {
+func (this *QGraphicsSceneHelpEvent) ScreenPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneHelpEvent_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneHelpEvent_screenPos(this.h))
 }
 
-func (this *QGraphicsSceneHelpEvent) SetScreenPos(pos *QPoint) {
+func (this *QGraphicsSceneHelpEvent) SetScreenPos(pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneHelpEvent_setScreenPos(this.h, pos.cPointer())
+	C.QGraphicsSceneHelpEvent_setScreenPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QGraphicsSceneHelpEvent) callVirtualBase_SetAccepted(accepted bool) {
@@ -1318,43 +1247,34 @@ func NewQGraphicsSceneDragDropEvent2(typeVal QEvent__Type) *QGraphicsSceneDragDr
 	return newQGraphicsSceneDragDropEvent(C.QGraphicsSceneDragDropEvent_new2((C.int)(typeVal)))
 }
 
-func (this *QGraphicsSceneDragDropEvent) Pos() *QPointF {
+func (this *QGraphicsSceneDragDropEvent) Pos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneDragDropEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneDragDropEvent_pos(this.h))
 }
 
-func (this *QGraphicsSceneDragDropEvent) SetPos(pos *QPointF) {
+func (this *QGraphicsSceneDragDropEvent) SetPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneDragDropEvent_setPos(this.h, pos.cPointer())
+	C.QGraphicsSceneDragDropEvent_setPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneDragDropEvent) ScenePos() *QPointF {
+func (this *QGraphicsSceneDragDropEvent) ScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneDragDropEvent_scenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneDragDropEvent_scenePos(this.h))
 }
 
-func (this *QGraphicsSceneDragDropEvent) SetScenePos(pos *QPointF) {
+func (this *QGraphicsSceneDragDropEvent) SetScenePos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneDragDropEvent_setScenePos(this.h, pos.cPointer())
+	C.QGraphicsSceneDragDropEvent_setScenePos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneDragDropEvent) ScreenPos() *QPoint {
+func (this *QGraphicsSceneDragDropEvent) ScreenPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QGraphicsSceneDragDropEvent_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QGraphicsSceneDragDropEvent_screenPos(this.h))
 }
 
-func (this *QGraphicsSceneDragDropEvent) SetScreenPos(pos *QPoint) {
+func (this *QGraphicsSceneDragDropEvent) SetScreenPos(pos QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneDragDropEvent_setScreenPos(this.h, pos.cPointer())
+	C.QGraphicsSceneDragDropEvent_setScreenPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QGraphicsSceneDragDropEvent) Buttons() MouseButton {
@@ -1555,30 +1475,24 @@ func NewQGraphicsSceneResizeEvent() *QGraphicsSceneResizeEvent {
 	return newQGraphicsSceneResizeEvent(C.QGraphicsSceneResizeEvent_new())
 }
 
-func (this *QGraphicsSceneResizeEvent) OldSize() *QSizeF {
+func (this *QGraphicsSceneResizeEvent) OldSize() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QGraphicsSceneResizeEvent_oldSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsSceneResizeEvent_oldSize(this.h))
 }
 
-func (this *QGraphicsSceneResizeEvent) SetOldSize(size *QSizeF) {
+func (this *QGraphicsSceneResizeEvent) SetOldSize(size QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QGraphicsSceneResizeEvent_setOldSize(this.h, size.cPointer())
+	C.QGraphicsSceneResizeEvent_setOldSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
-func (this *QGraphicsSceneResizeEvent) NewSize() *QSizeF {
+func (this *QGraphicsSceneResizeEvent) NewSize() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QGraphicsSceneResizeEvent_newSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsSceneResizeEvent_newSize(this.h))
 }
 
-func (this *QGraphicsSceneResizeEvent) SetNewSize(size *QSizeF) {
+func (this *QGraphicsSceneResizeEvent) SetNewSize(size QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QGraphicsSceneResizeEvent_setNewSize(this.h, size.cPointer())
+	C.QGraphicsSceneResizeEvent_setNewSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
 func (this *QGraphicsSceneResizeEvent) callVirtualBase_SetAccepted(accepted bool) {
@@ -1704,30 +1618,24 @@ func NewQGraphicsSceneMoveEvent() *QGraphicsSceneMoveEvent {
 	return newQGraphicsSceneMoveEvent(C.QGraphicsSceneMoveEvent_new())
 }
 
-func (this *QGraphicsSceneMoveEvent) OldPos() *QPointF {
+func (this *QGraphicsSceneMoveEvent) OldPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneMoveEvent_oldPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneMoveEvent_oldPos(this.h))
 }
 
-func (this *QGraphicsSceneMoveEvent) SetOldPos(pos *QPointF) {
+func (this *QGraphicsSceneMoveEvent) SetOldPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMoveEvent_setOldPos(this.h, pos.cPointer())
+	C.QGraphicsSceneMoveEvent_setOldPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QGraphicsSceneMoveEvent) NewPos() *QPointF {
+func (this *QGraphicsSceneMoveEvent) NewPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsSceneMoveEvent_newPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsSceneMoveEvent_newPos(this.h))
 }
 
-func (this *QGraphicsSceneMoveEvent) SetNewPos(pos *QPointF) {
+func (this *QGraphicsSceneMoveEvent) SetNewPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsSceneMoveEvent_setNewPos(this.h, pos.cPointer())
+	C.QGraphicsSceneMoveEvent_setNewPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
 func (this *QGraphicsSceneMoveEvent) callVirtualBase_SetAccepted(accepted bool) {

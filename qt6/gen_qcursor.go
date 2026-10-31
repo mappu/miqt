@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -180,23 +181,17 @@ func (this *QCursor) Pixmap() *QPixmap {
 	return _goptr
 }
 
-func (this *QCursor) HotSpot() *QPoint {
+func (this *QCursor) HotSpot() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QCursor_hotSpot(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QCursor_hotSpot(this.h))
 }
 
-func QCursor_Pos() *QPoint {
-	_goptr := newQPoint(C.QCursor_pos())
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QCursor_Pos() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QCursor_pos())
 }
 
-func QCursor_PosWithScreen(screen *QScreen) *QPoint {
-	_goptr := newQPoint(C.QCursor_posWithScreen(screen.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QCursor_PosWithScreen(screen *QScreen) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QCursor_posWithScreen(screen.cPointer()))
 }
 
 func QCursor_SetPos(x int, y int) {
@@ -207,14 +202,12 @@ func QCursor_SetPos2(screen *QScreen, x int, y int) {
 	C.QCursor_setPos2(screen.cPointer(), (C.int)(x), (C.int)(y))
 }
 
-func QCursor_SetPosWithQPoint(p *QPoint) {
-	defer runtime.KeepAlive(p)
-	C.QCursor_setPosWithQPoint(p.cPointer())
+func QCursor_SetPosWithQPoint(p QPoint) {
+	C.QCursor_setPosWithQPoint(libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
-func QCursor_SetPos3(screen *QScreen, p *QPoint) {
-	defer runtime.KeepAlive(p)
-	C.QCursor_setPos3(screen.cPointer(), p.cPointer())
+func QCursor_SetPos3(screen *QScreen, p QPoint) {
+	C.QCursor_setPos3(screen.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
 // Delete this object from C++ memory.

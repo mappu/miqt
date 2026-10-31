@@ -62,7 +62,7 @@ void miqt_exec_callback_QWindow_opacityChanged(intptr_t, double);
 void miqt_exec_callback_QWindow_transientParentChanged(intptr_t, QWindow*);
 int miqt_exec_callback_QWindow_surfaceType(const QWindow*, intptr_t);
 QSurfaceFormat* miqt_exec_callback_QWindow_format(const QWindow*, intptr_t);
-QSize* miqt_exec_callback_QWindow_size(const QWindow*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWindow_size(const QWindow*, intptr_t);
 QAccessibleInterface* miqt_exec_callback_QWindow_accessibleRoot(const QWindow*, intptr_t);
 QObject* miqt_exec_callback_QWindow_focusObject(const QWindow*, intptr_t);
 void miqt_exec_callback_QWindow_exposeEvent(QWindow*, intptr_t, QExposeEvent*);
@@ -145,13 +145,11 @@ public:
 			return QWindow::size();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWindow_size(this, handle__size);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWindow_size(this, handle__size);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWindow_virtualbase_size(const void* self);
+	friend struct miqt_qsize QWindow_virtualbase_size(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__accessibleRoot = 0;
@@ -861,56 +859,56 @@ int QWindow_maximumHeight(const QWindow* self) {
 	return self->maximumHeight();
 }
 
-QSize* QWindow_minimumSize(const QWindow* self) {
-	return new QSize(self->minimumSize());
+struct miqt_qsize QWindow_minimumSize(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSize());
 }
 
-QSize* QWindow_maximumSize(const QWindow* self) {
-	return new QSize(self->maximumSize());
+struct miqt_qsize QWindow_maximumSize(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->maximumSize());
 }
 
-QSize* QWindow_baseSize(const QWindow* self) {
-	return new QSize(self->baseSize());
+struct miqt_qsize QWindow_baseSize(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->baseSize());
 }
 
-QSize* QWindow_sizeIncrement(const QWindow* self) {
-	return new QSize(self->sizeIncrement());
+struct miqt_qsize QWindow_sizeIncrement(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeIncrement());
 }
 
-void QWindow_setMinimumSize(QWindow* self, QSize* size) {
-	self->setMinimumSize(*size);
+void QWindow_setMinimumSize(QWindow* self, struct miqt_qsize size) {
+	self->setMinimumSize(miqt_from_cabi<QSize>(size));
 }
 
-void QWindow_setMaximumSize(QWindow* self, QSize* size) {
-	self->setMaximumSize(*size);
+void QWindow_setMaximumSize(QWindow* self, struct miqt_qsize size) {
+	self->setMaximumSize(miqt_from_cabi<QSize>(size));
 }
 
-void QWindow_setBaseSize(QWindow* self, QSize* size) {
-	self->setBaseSize(*size);
+void QWindow_setBaseSize(QWindow* self, struct miqt_qsize size) {
+	self->setBaseSize(miqt_from_cabi<QSize>(size));
 }
 
-void QWindow_setSizeIncrement(QWindow* self, QSize* size) {
-	self->setSizeIncrement(*size);
+void QWindow_setSizeIncrement(QWindow* self, struct miqt_qsize size) {
+	self->setSizeIncrement(miqt_from_cabi<QSize>(size));
 }
 
-QRect* QWindow_geometry(const QWindow* self) {
-	return new QRect(self->geometry());
+struct miqt_qrect QWindow_geometry(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->geometry());
 }
 
-QMargins* QWindow_frameMargins(const QWindow* self) {
-	return new QMargins(self->frameMargins());
+struct miqt_qmargins QWindow_frameMargins(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qmargins>(self->frameMargins());
 }
 
-QRect* QWindow_frameGeometry(const QWindow* self) {
-	return new QRect(self->frameGeometry());
+struct miqt_qrect QWindow_frameGeometry(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->frameGeometry());
 }
 
-QPoint* QWindow_framePosition(const QWindow* self) {
-	return new QPoint(self->framePosition());
+struct miqt_qpoint QWindow_framePosition(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->framePosition());
 }
 
-void QWindow_setFramePosition(QWindow* self, QPoint* point) {
-	self->setFramePosition(*point);
+void QWindow_setFramePosition(QWindow* self, struct miqt_qpoint point) {
+	self->setFramePosition(miqt_from_cabi<QPoint>(point));
 }
 
 int QWindow_width(const QWindow* self) {
@@ -929,24 +927,24 @@ int QWindow_y(const QWindow* self) {
 	return self->y();
 }
 
-QSize* QWindow_size(const QWindow* self) {
-	return new QSize(self->size());
+struct miqt_qsize QWindow_size(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
-QPoint* QWindow_position(const QWindow* self) {
-	return new QPoint(self->position());
+struct miqt_qpoint QWindow_position(const QWindow* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->position());
 }
 
-void QWindow_setPosition(QWindow* self, QPoint* pt) {
-	self->setPosition(*pt);
+void QWindow_setPosition(QWindow* self, struct miqt_qpoint pt) {
+	self->setPosition(miqt_from_cabi<QPoint>(pt));
 }
 
 void QWindow_setPosition2(QWindow* self, int posx, int posy) {
 	self->setPosition(static_cast<int>(posx), static_cast<int>(posy));
 }
 
-void QWindow_resize(QWindow* self, QSize* newSize) {
-	self->resize(*newSize);
+void QWindow_resize(QWindow* self, struct miqt_qsize newSize) {
+	self->resize(miqt_from_cabi<QSize>(newSize));
 }
 
 void QWindow_resize2(QWindow* self, int w, int h) {
@@ -1005,20 +1003,20 @@ QObject* QWindow_focusObject(const QWindow* self) {
 	return self->focusObject();
 }
 
-QPointF* QWindow_mapToGlobal(const QWindow* self, QPointF* pos) {
-	return new QPointF(self->mapToGlobal(*pos));
+struct miqt_qpointf QWindow_mapToGlobal(const QWindow* self, struct miqt_qpointf pos) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToGlobal(miqt_from_cabi<QPointF>(pos)));
 }
 
-QPointF* QWindow_mapFromGlobal(const QWindow* self, QPointF* pos) {
-	return new QPointF(self->mapFromGlobal(*pos));
+struct miqt_qpointf QWindow_mapFromGlobal(const QWindow* self, struct miqt_qpointf pos) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFromGlobal(miqt_from_cabi<QPointF>(pos)));
 }
 
-QPoint* QWindow_mapToGlobalWithPos(const QWindow* self, QPoint* pos) {
-	return new QPoint(self->mapToGlobal(*pos));
+struct miqt_qpoint QWindow_mapToGlobalWithPos(const QWindow* self, struct miqt_qpoint pos) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapToGlobal(miqt_from_cabi<QPoint>(pos)));
 }
 
-QPoint* QWindow_mapFromGlobalWithPos(const QWindow* self, QPoint* pos) {
-	return new QPoint(self->mapFromGlobal(*pos));
+struct miqt_qpoint QWindow_mapFromGlobalWithPos(const QWindow* self, struct miqt_qpoint pos) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapFromGlobal(miqt_from_cabi<QPoint>(pos)));
 }
 
 QCursor* QWindow_cursor(const QWindow* self) {
@@ -1114,8 +1112,8 @@ void QWindow_setGeometry(QWindow* self, int posx, int posy, int w, int h) {
 	self->setGeometry(static_cast<int>(posx), static_cast<int>(posy), static_cast<int>(w), static_cast<int>(h));
 }
 
-void QWindow_setGeometryWithRect(QWindow* self, QRect* rect) {
-	self->setGeometry(*rect);
+void QWindow_setGeometryWithRect(QWindow* self, struct miqt_qrect rect) {
+	self->setGeometry(miqt_from_cabi<QRect>(rect));
 }
 
 void QWindow_setMinimumWidth(QWindow* self, int w) {
@@ -1436,8 +1434,8 @@ bool QWindow_override_virtual_size(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWindow_virtualbase_size(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWindow*>(self)->QWindow::size());
+struct miqt_qsize QWindow_virtualbase_size(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWindow*>(self)->QWindow::size());
 }
 
 bool QWindow_override_virtual_accessibleRoot(void* self, intptr_t slot) {
@@ -1835,10 +1833,6 @@ void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 QSurfaceFormat* QWindow_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src) {
 	return new QSurfaceFormat(*src);
-}
-
-QSize* QWindow_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 void* QWindow_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {

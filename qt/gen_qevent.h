@@ -158,84 +158,84 @@ void QInputEvent_operatorAssign(QInputEvent* self, QInputEvent* param1);
 
 void QInputEvent_delete(QInputEvent* self);
 
-QEnterEvent* QEnterEvent_new(QPointF* localPos, QPointF* windowPos, QPointF* screenPos);
+QEnterEvent* QEnterEvent_new(struct miqt_qpointf localPos, struct miqt_qpointf windowPos, struct miqt_qpointf screenPos);
 QEnterEvent* QEnterEvent_new2(QEnterEvent* param1);
 void QEnterEvent_virtbase(QEnterEvent* src, QEvent** outptr_QEvent);
-QPoint* QEnterEvent_pos(const QEnterEvent* self);
-QPoint* QEnterEvent_globalPos(const QEnterEvent* self);
+struct miqt_qpoint QEnterEvent_pos(const QEnterEvent* self);
+struct miqt_qpoint QEnterEvent_globalPos(const QEnterEvent* self);
 int QEnterEvent_x(const QEnterEvent* self);
 int QEnterEvent_y(const QEnterEvent* self);
 int QEnterEvent_globalX(const QEnterEvent* self);
 int QEnterEvent_globalY(const QEnterEvent* self);
-QPointF* QEnterEvent_localPos(const QEnterEvent* self);
-QPointF* QEnterEvent_windowPos(const QEnterEvent* self);
-QPointF* QEnterEvent_screenPos(const QEnterEvent* self);
+struct miqt_qpointf QEnterEvent_localPos(const QEnterEvent* self);
+struct miqt_qpointf QEnterEvent_windowPos(const QEnterEvent* self);
+struct miqt_qpointf QEnterEvent_screenPos(const QEnterEvent* self);
 void QEnterEvent_operatorAssign(QEnterEvent* self, QEnterEvent* param1);
 
 void QEnterEvent_delete(QEnterEvent* self);
 
-QMouseEvent* QMouseEvent_new(int type, QPointF* localPos, int button, int buttons, int modifiers);
-QMouseEvent* QMouseEvent_new2(int type, QPointF* localPos, QPointF* screenPos, int button, int buttons, int modifiers);
-QMouseEvent* QMouseEvent_new3(int type, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, int button, int buttons, int modifiers);
-QMouseEvent* QMouseEvent_new4(int type, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, int button, int buttons, int modifiers, int source);
+QMouseEvent* QMouseEvent_new(int type, struct miqt_qpointf localPos, int button, int buttons, int modifiers);
+QMouseEvent* QMouseEvent_new2(int type, struct miqt_qpointf localPos, struct miqt_qpointf screenPos, int button, int buttons, int modifiers);
+QMouseEvent* QMouseEvent_new3(int type, struct miqt_qpointf localPos, struct miqt_qpointf windowPos, struct miqt_qpointf screenPos, int button, int buttons, int modifiers);
+QMouseEvent* QMouseEvent_new4(int type, struct miqt_qpointf localPos, struct miqt_qpointf windowPos, struct miqt_qpointf screenPos, int button, int buttons, int modifiers, int source);
 QMouseEvent* QMouseEvent_new5(QMouseEvent* param1);
 void QMouseEvent_virtbase(QMouseEvent* src, QInputEvent** outptr_QInputEvent);
-QPoint* QMouseEvent_pos(const QMouseEvent* self);
-QPoint* QMouseEvent_globalPos(const QMouseEvent* self);
+struct miqt_qpoint QMouseEvent_pos(const QMouseEvent* self);
+struct miqt_qpoint QMouseEvent_globalPos(const QMouseEvent* self);
 int QMouseEvent_x(const QMouseEvent* self);
 int QMouseEvent_y(const QMouseEvent* self);
 int QMouseEvent_globalX(const QMouseEvent* self);
 int QMouseEvent_globalY(const QMouseEvent* self);
-QPointF* QMouseEvent_localPos(const QMouseEvent* self);
-QPointF* QMouseEvent_windowPos(const QMouseEvent* self);
-QPointF* QMouseEvent_screenPos(const QMouseEvent* self);
+struct miqt_qpointf QMouseEvent_localPos(const QMouseEvent* self);
+struct miqt_qpointf QMouseEvent_windowPos(const QMouseEvent* self);
+struct miqt_qpointf QMouseEvent_screenPos(const QMouseEvent* self);
 int QMouseEvent_button(const QMouseEvent* self);
 int QMouseEvent_buttons(const QMouseEvent* self);
-void QMouseEvent_setLocalPos(QMouseEvent* self, QPointF* localPosition);
+void QMouseEvent_setLocalPos(QMouseEvent* self, struct miqt_qpointf localPosition);
 int QMouseEvent_source(const QMouseEvent* self);
 int QMouseEvent_flags(const QMouseEvent* self);
 void QMouseEvent_operatorAssign(QMouseEvent* self, QMouseEvent* param1);
 
 void QMouseEvent_delete(QMouseEvent* self);
 
-QHoverEvent* QHoverEvent_new(int type, QPointF* pos, QPointF* oldPos);
+QHoverEvent* QHoverEvent_new(int type, struct miqt_qpointf pos, struct miqt_qpointf oldPos);
 QHoverEvent* QHoverEvent_new2(QHoverEvent* param1);
-QHoverEvent* QHoverEvent_new3(int type, QPointF* pos, QPointF* oldPos, int modifiers);
+QHoverEvent* QHoverEvent_new3(int type, struct miqt_qpointf pos, struct miqt_qpointf oldPos, int modifiers);
 void QHoverEvent_virtbase(QHoverEvent* src, QInputEvent** outptr_QInputEvent);
-QPoint* QHoverEvent_pos(const QHoverEvent* self);
-QPoint* QHoverEvent_oldPos(const QHoverEvent* self);
-QPointF* QHoverEvent_posF(const QHoverEvent* self);
-QPointF* QHoverEvent_oldPosF(const QHoverEvent* self);
+struct miqt_qpoint QHoverEvent_pos(const QHoverEvent* self);
+struct miqt_qpoint QHoverEvent_oldPos(const QHoverEvent* self);
+struct miqt_qpointf QHoverEvent_posF(const QHoverEvent* self);
+struct miqt_qpointf QHoverEvent_oldPosF(const QHoverEvent* self);
 void QHoverEvent_operatorAssign(QHoverEvent* self, QHoverEvent* param1);
 
 void QHoverEvent_delete(QHoverEvent* self);
 
-QWheelEvent* QWheelEvent_new(QPointF* pos, int delta, int buttons, int modifiers);
-QWheelEvent* QWheelEvent_new2(QPointF* pos, QPointF* globalPos, int delta, int buttons, int modifiers);
-QWheelEvent* QWheelEvent_new3(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers);
-QWheelEvent* QWheelEvent_new4(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase);
-QWheelEvent* QWheelEvent_new5(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase, int source);
-QWheelEvent* QWheelEvent_new6(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase, int source, bool inverted);
-QWheelEvent* QWheelEvent_new7(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted);
+QWheelEvent* QWheelEvent_new(struct miqt_qpointf pos, int delta, int buttons, int modifiers);
+QWheelEvent* QWheelEvent_new2(struct miqt_qpointf pos, struct miqt_qpointf globalPos, int delta, int buttons, int modifiers);
+QWheelEvent* QWheelEvent_new3(struct miqt_qpointf pos, struct miqt_qpointf globalPos, struct miqt_qpoint pixelDelta, struct miqt_qpoint angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers);
+QWheelEvent* QWheelEvent_new4(struct miqt_qpointf pos, struct miqt_qpointf globalPos, struct miqt_qpoint pixelDelta, struct miqt_qpoint angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase);
+QWheelEvent* QWheelEvent_new5(struct miqt_qpointf pos, struct miqt_qpointf globalPos, struct miqt_qpoint pixelDelta, struct miqt_qpoint angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase, int source);
+QWheelEvent* QWheelEvent_new6(struct miqt_qpointf pos, struct miqt_qpointf globalPos, struct miqt_qpoint pixelDelta, struct miqt_qpoint angleDelta, int qt4Delta, int qt4Orientation, int buttons, int modifiers, int phase, int source, bool inverted);
+QWheelEvent* QWheelEvent_new7(struct miqt_qpointf pos, struct miqt_qpointf globalPos, struct miqt_qpoint pixelDelta, struct miqt_qpoint angleDelta, int buttons, int modifiers, int phase, bool inverted);
 QWheelEvent* QWheelEvent_new8(QWheelEvent* param1);
-QWheelEvent* QWheelEvent_new9(QPointF* pos, int delta, int buttons, int modifiers, int orient);
-QWheelEvent* QWheelEvent_new10(QPointF* pos, QPointF* globalPos, int delta, int buttons, int modifiers, int orient);
-QWheelEvent* QWheelEvent_new11(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source);
+QWheelEvent* QWheelEvent_new9(struct miqt_qpointf pos, int delta, int buttons, int modifiers, int orient);
+QWheelEvent* QWheelEvent_new10(struct miqt_qpointf pos, struct miqt_qpointf globalPos, int delta, int buttons, int modifiers, int orient);
+QWheelEvent* QWheelEvent_new11(struct miqt_qpointf pos, struct miqt_qpointf globalPos, struct miqt_qpoint pixelDelta, struct miqt_qpoint angleDelta, int buttons, int modifiers, int phase, bool inverted, int source);
 void QWheelEvent_virtbase(QWheelEvent* src, QInputEvent** outptr_QInputEvent);
-QPoint* QWheelEvent_pixelDelta(const QWheelEvent* self);
-QPoint* QWheelEvent_angleDelta(const QWheelEvent* self);
+struct miqt_qpoint QWheelEvent_pixelDelta(const QWheelEvent* self);
+struct miqt_qpoint QWheelEvent_angleDelta(const QWheelEvent* self);
 int QWheelEvent_delta(const QWheelEvent* self);
 int QWheelEvent_orientation(const QWheelEvent* self);
-QPoint* QWheelEvent_pos(const QWheelEvent* self);
-QPoint* QWheelEvent_globalPos(const QWheelEvent* self);
+struct miqt_qpoint QWheelEvent_pos(const QWheelEvent* self);
+struct miqt_qpoint QWheelEvent_globalPos(const QWheelEvent* self);
 int QWheelEvent_x(const QWheelEvent* self);
 int QWheelEvent_y(const QWheelEvent* self);
 int QWheelEvent_globalX(const QWheelEvent* self);
 int QWheelEvent_globalY(const QWheelEvent* self);
-QPointF* QWheelEvent_posF(const QWheelEvent* self);
-QPointF* QWheelEvent_globalPosF(const QWheelEvent* self);
-QPointF* QWheelEvent_position(const QWheelEvent* self);
-QPointF* QWheelEvent_globalPosition(const QWheelEvent* self);
+struct miqt_qpointf QWheelEvent_posF(const QWheelEvent* self);
+struct miqt_qpointf QWheelEvent_globalPosF(const QWheelEvent* self);
+struct miqt_qpointf QWheelEvent_position(const QWheelEvent* self);
+struct miqt_qpointf QWheelEvent_globalPosition(const QWheelEvent* self);
 int QWheelEvent_buttons(const QWheelEvent* self);
 int QWheelEvent_phase(const QWheelEvent* self);
 bool QWheelEvent_inverted(const QWheelEvent* self);
@@ -244,14 +244,14 @@ void QWheelEvent_operatorAssign(QWheelEvent* self, QWheelEvent* param1);
 
 void QWheelEvent_delete(QWheelEvent* self);
 
-QTabletEvent* QTabletEvent_new(int t, QPointF* pos, QPointF* globalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long long uniqueID);
-QTabletEvent* QTabletEvent_new2(int t, QPointF* pos, QPointF* globalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long long uniqueID, int button, int buttons);
+QTabletEvent* QTabletEvent_new(int t, struct miqt_qpointf pos, struct miqt_qpointf globalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long long uniqueID);
+QTabletEvent* QTabletEvent_new2(int t, struct miqt_qpointf pos, struct miqt_qpointf globalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long long uniqueID, int button, int buttons);
 QTabletEvent* QTabletEvent_new3(QTabletEvent* param1);
 void QTabletEvent_virtbase(QTabletEvent* src, QInputEvent** outptr_QInputEvent);
-QPoint* QTabletEvent_pos(const QTabletEvent* self);
-QPoint* QTabletEvent_globalPos(const QTabletEvent* self);
-QPointF* QTabletEvent_posF(const QTabletEvent* self);
-QPointF* QTabletEvent_globalPosF(const QTabletEvent* self);
+struct miqt_qpoint QTabletEvent_pos(const QTabletEvent* self);
+struct miqt_qpoint QTabletEvent_globalPos(const QTabletEvent* self);
+struct miqt_qpointf QTabletEvent_posF(const QTabletEvent* self);
+struct miqt_qpointf QTabletEvent_globalPosF(const QTabletEvent* self);
 int QTabletEvent_x(const QTabletEvent* self);
 int QTabletEvent_y(const QTabletEvent* self);
 int QTabletEvent_globalX(const QTabletEvent* self);
@@ -274,17 +274,17 @@ void QTabletEvent_operatorAssign(QTabletEvent* self, QTabletEvent* param1);
 
 void QTabletEvent_delete(QTabletEvent* self);
 
-QNativeGestureEvent* QNativeGestureEvent_new(int type, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, double value, unsigned long sequenceId, unsigned long long intArgument);
-QNativeGestureEvent* QNativeGestureEvent_new2(int type, QTouchDevice* dev, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, double value, unsigned long sequenceId, unsigned long long intArgument);
+QNativeGestureEvent* QNativeGestureEvent_new(int type, struct miqt_qpointf localPos, struct miqt_qpointf windowPos, struct miqt_qpointf screenPos, double value, unsigned long sequenceId, unsigned long long intArgument);
+QNativeGestureEvent* QNativeGestureEvent_new2(int type, QTouchDevice* dev, struct miqt_qpointf localPos, struct miqt_qpointf windowPos, struct miqt_qpointf screenPos, double value, unsigned long sequenceId, unsigned long long intArgument);
 QNativeGestureEvent* QNativeGestureEvent_new3(QNativeGestureEvent* param1);
 void QNativeGestureEvent_virtbase(QNativeGestureEvent* src, QInputEvent** outptr_QInputEvent);
 int QNativeGestureEvent_gestureType(const QNativeGestureEvent* self);
 double QNativeGestureEvent_value(const QNativeGestureEvent* self);
-QPoint* QNativeGestureEvent_pos(const QNativeGestureEvent* self);
-QPoint* QNativeGestureEvent_globalPos(const QNativeGestureEvent* self);
-QPointF* QNativeGestureEvent_localPos(const QNativeGestureEvent* self);
-QPointF* QNativeGestureEvent_windowPos(const QNativeGestureEvent* self);
-QPointF* QNativeGestureEvent_screenPos(const QNativeGestureEvent* self);
+struct miqt_qpoint QNativeGestureEvent_pos(const QNativeGestureEvent* self);
+struct miqt_qpoint QNativeGestureEvent_globalPos(const QNativeGestureEvent* self);
+struct miqt_qpointf QNativeGestureEvent_localPos(const QNativeGestureEvent* self);
+struct miqt_qpointf QNativeGestureEvent_windowPos(const QNativeGestureEvent* self);
+struct miqt_qpointf QNativeGestureEvent_screenPos(const QNativeGestureEvent* self);
 QTouchDevice* QNativeGestureEvent_device(const QNativeGestureEvent* self);
 void QNativeGestureEvent_operatorAssign(QNativeGestureEvent* self, QNativeGestureEvent* param1);
 
@@ -325,20 +325,20 @@ void QFocusEvent_operatorAssign(QFocusEvent* self, QFocusEvent* param1);
 void QFocusEvent_delete(QFocusEvent* self);
 
 QPaintEvent* QPaintEvent_new(QRegion* paintRegion);
-QPaintEvent* QPaintEvent_new2(QRect* paintRect);
+QPaintEvent* QPaintEvent_new2(struct miqt_qrect paintRect);
 QPaintEvent* QPaintEvent_new3(QPaintEvent* param1);
 void QPaintEvent_virtbase(QPaintEvent* src, QEvent** outptr_QEvent);
-QRect* QPaintEvent_rect(const QPaintEvent* self);
+struct miqt_qrect QPaintEvent_rect(const QPaintEvent* self);
 QRegion* QPaintEvent_region(const QPaintEvent* self);
 void QPaintEvent_operatorAssign(QPaintEvent* self, QPaintEvent* param1);
 
 void QPaintEvent_delete(QPaintEvent* self);
 
-QMoveEvent* QMoveEvent_new(QPoint* pos, QPoint* oldPos);
+QMoveEvent* QMoveEvent_new(struct miqt_qpoint pos, struct miqt_qpoint oldPos);
 QMoveEvent* QMoveEvent_new2(QMoveEvent* param1);
 void QMoveEvent_virtbase(QMoveEvent* src, QEvent** outptr_QEvent);
-QPoint* QMoveEvent_pos(const QMoveEvent* self);
-QPoint* QMoveEvent_oldPos(const QMoveEvent* self);
+struct miqt_qpoint QMoveEvent_pos(const QMoveEvent* self);
+struct miqt_qpoint QMoveEvent_oldPos(const QMoveEvent* self);
 void QMoveEvent_operatorAssign(QMoveEvent* self, QMoveEvent* param1);
 
 void QMoveEvent_delete(QMoveEvent* self);
@@ -359,11 +359,11 @@ void QPlatformSurfaceEvent_operatorAssign(QPlatformSurfaceEvent* self, QPlatform
 
 void QPlatformSurfaceEvent_delete(QPlatformSurfaceEvent* self);
 
-QResizeEvent* QResizeEvent_new(QSize* size, QSize* oldSize);
+QResizeEvent* QResizeEvent_new(struct miqt_qsize size, struct miqt_qsize oldSize);
 QResizeEvent* QResizeEvent_new2(QResizeEvent* param1);
 void QResizeEvent_virtbase(QResizeEvent* src, QEvent** outptr_QEvent);
-QSize* QResizeEvent_size(const QResizeEvent* self);
-QSize* QResizeEvent_oldSize(const QResizeEvent* self);
+struct miqt_qsize QResizeEvent_size(const QResizeEvent* self);
+struct miqt_qsize QResizeEvent_oldSize(const QResizeEvent* self);
 void QResizeEvent_operatorAssign(QResizeEvent* self, QResizeEvent* param1);
 
 void QResizeEvent_delete(QResizeEvent* self);
@@ -396,17 +396,17 @@ void QHideEvent_operatorAssign(QHideEvent* self, QHideEvent* param1);
 
 void QHideEvent_delete(QHideEvent* self);
 
-QContextMenuEvent* QContextMenuEvent_new(int reason, QPoint* pos, QPoint* globalPos, int modifiers);
-QContextMenuEvent* QContextMenuEvent_new2(int reason, QPoint* pos, QPoint* globalPos);
-QContextMenuEvent* QContextMenuEvent_new3(int reason, QPoint* pos);
+QContextMenuEvent* QContextMenuEvent_new(int reason, struct miqt_qpoint pos, struct miqt_qpoint globalPos, int modifiers);
+QContextMenuEvent* QContextMenuEvent_new2(int reason, struct miqt_qpoint pos, struct miqt_qpoint globalPos);
+QContextMenuEvent* QContextMenuEvent_new3(int reason, struct miqt_qpoint pos);
 QContextMenuEvent* QContextMenuEvent_new4(QContextMenuEvent* param1);
 void QContextMenuEvent_virtbase(QContextMenuEvent* src, QInputEvent** outptr_QInputEvent);
 int QContextMenuEvent_x(const QContextMenuEvent* self);
 int QContextMenuEvent_y(const QContextMenuEvent* self);
 int QContextMenuEvent_globalX(const QContextMenuEvent* self);
 int QContextMenuEvent_globalY(const QContextMenuEvent* self);
-QPoint* QContextMenuEvent_pos(const QContextMenuEvent* self);
-QPoint* QContextMenuEvent_globalPos(const QContextMenuEvent* self);
+struct miqt_qpoint QContextMenuEvent_pos(const QContextMenuEvent* self);
+struct miqt_qpoint QContextMenuEvent_globalPos(const QContextMenuEvent* self);
 int QContextMenuEvent_reason(const QContextMenuEvent* self);
 void QContextMenuEvent_operatorAssign(QContextMenuEvent* self, QContextMenuEvent* param1);
 
@@ -438,12 +438,12 @@ void QInputMethodQueryEvent_operatorAssign(QInputMethodQueryEvent* self, QInputM
 
 void QInputMethodQueryEvent_delete(QInputMethodQueryEvent* self);
 
-QDropEvent* QDropEvent_new(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers);
+QDropEvent* QDropEvent_new(struct miqt_qpointf pos, int actions, QMimeData* data, int buttons, int modifiers);
 QDropEvent* QDropEvent_new2(QDropEvent* param1);
-QDropEvent* QDropEvent_new3(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, int type);
+QDropEvent* QDropEvent_new3(struct miqt_qpointf pos, int actions, QMimeData* data, int buttons, int modifiers, int type);
 void QDropEvent_virtbase(QDropEvent* src, QEvent** outptr_QEvent);
-QPoint* QDropEvent_pos(const QDropEvent* self);
-QPointF* QDropEvent_posF(const QDropEvent* self);
+struct miqt_qpoint QDropEvent_pos(const QDropEvent* self);
+struct miqt_qpointf QDropEvent_posF(const QDropEvent* self);
 int QDropEvent_mouseButtons(const QDropEvent* self);
 int QDropEvent_keyboardModifiers(const QDropEvent* self);
 int QDropEvent_possibleActions(const QDropEvent* self);
@@ -457,20 +457,20 @@ void QDropEvent_operatorAssign(QDropEvent* self, QDropEvent* param1);
 
 void QDropEvent_delete(QDropEvent* self);
 
-QDragMoveEvent* QDragMoveEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers);
+QDragMoveEvent* QDragMoveEvent_new(struct miqt_qpoint pos, int actions, QMimeData* data, int buttons, int modifiers);
 QDragMoveEvent* QDragMoveEvent_new2(QDragMoveEvent* param1);
-QDragMoveEvent* QDragMoveEvent_new3(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, int type);
+QDragMoveEvent* QDragMoveEvent_new3(struct miqt_qpoint pos, int actions, QMimeData* data, int buttons, int modifiers, int type);
 void QDragMoveEvent_virtbase(QDragMoveEvent* src, QDropEvent** outptr_QDropEvent);
-QRect* QDragMoveEvent_answerRect(const QDragMoveEvent* self);
+struct miqt_qrect QDragMoveEvent_answerRect(const QDragMoveEvent* self);
 void QDragMoveEvent_accept(QDragMoveEvent* self);
 void QDragMoveEvent_ignore(QDragMoveEvent* self);
-void QDragMoveEvent_acceptWithQRect(QDragMoveEvent* self, QRect* r);
-void QDragMoveEvent_ignoreWithQRect(QDragMoveEvent* self, QRect* r);
+void QDragMoveEvent_acceptWithQRect(QDragMoveEvent* self, struct miqt_qrect r);
+void QDragMoveEvent_ignoreWithQRect(QDragMoveEvent* self, struct miqt_qrect r);
 void QDragMoveEvent_operatorAssign(QDragMoveEvent* self, QDragMoveEvent* param1);
 
 void QDragMoveEvent_delete(QDragMoveEvent* self);
 
-QDragEnterEvent* QDragEnterEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers);
+QDragEnterEvent* QDragEnterEvent_new(struct miqt_qpoint pos, int actions, QMimeData* data, int buttons, int modifiers);
 QDragEnterEvent* QDragEnterEvent_new2(QDragEnterEvent* param1);
 void QDragEnterEvent_virtbase(QDragEnterEvent* src, QDragMoveEvent** outptr_QDragMoveEvent);
 void QDragEnterEvent_operatorAssign(QDragEnterEvent* self, QDragEnterEvent* param1);
@@ -484,15 +484,15 @@ void QDragLeaveEvent_operatorAssign(QDragLeaveEvent* self, QDragLeaveEvent* para
 
 void QDragLeaveEvent_delete(QDragLeaveEvent* self);
 
-QHelpEvent* QHelpEvent_new(int type, QPoint* pos, QPoint* globalPos);
+QHelpEvent* QHelpEvent_new(int type, struct miqt_qpoint pos, struct miqt_qpoint globalPos);
 QHelpEvent* QHelpEvent_new2(QHelpEvent* param1);
 void QHelpEvent_virtbase(QHelpEvent* src, QEvent** outptr_QEvent);
 int QHelpEvent_x(const QHelpEvent* self);
 int QHelpEvent_y(const QHelpEvent* self);
 int QHelpEvent_globalX(const QHelpEvent* self);
 int QHelpEvent_globalY(const QHelpEvent* self);
-QPoint* QHelpEvent_pos(const QHelpEvent* self);
-QPoint* QHelpEvent_globalPos(const QHelpEvent* self);
+struct miqt_qpoint QHelpEvent_pos(const QHelpEvent* self);
+struct miqt_qpoint QHelpEvent_globalPos(const QHelpEvent* self);
 void QHelpEvent_operatorAssign(QHelpEvent* self, QHelpEvent* param1);
 
 void QHelpEvent_delete(QHelpEvent* self);
@@ -592,25 +592,25 @@ void QTouchEvent_operatorAssign(QTouchEvent* self, QTouchEvent* param1);
 
 void QTouchEvent_delete(QTouchEvent* self);
 
-QScrollPrepareEvent* QScrollPrepareEvent_new(QPointF* startPos);
+QScrollPrepareEvent* QScrollPrepareEvent_new(struct miqt_qpointf startPos);
 QScrollPrepareEvent* QScrollPrepareEvent_new2(QScrollPrepareEvent* param1);
 void QScrollPrepareEvent_virtbase(QScrollPrepareEvent* src, QEvent** outptr_QEvent);
-QPointF* QScrollPrepareEvent_startPos(const QScrollPrepareEvent* self);
-QSizeF* QScrollPrepareEvent_viewportSize(const QScrollPrepareEvent* self);
-QRectF* QScrollPrepareEvent_contentPosRange(const QScrollPrepareEvent* self);
-QPointF* QScrollPrepareEvent_contentPos(const QScrollPrepareEvent* self);
-void QScrollPrepareEvent_setViewportSize(QScrollPrepareEvent* self, QSizeF* size);
-void QScrollPrepareEvent_setContentPosRange(QScrollPrepareEvent* self, QRectF* rect);
-void QScrollPrepareEvent_setContentPos(QScrollPrepareEvent* self, QPointF* pos);
+struct miqt_qpointf QScrollPrepareEvent_startPos(const QScrollPrepareEvent* self);
+struct miqt_qsizef QScrollPrepareEvent_viewportSize(const QScrollPrepareEvent* self);
+struct miqt_qrectf QScrollPrepareEvent_contentPosRange(const QScrollPrepareEvent* self);
+struct miqt_qpointf QScrollPrepareEvent_contentPos(const QScrollPrepareEvent* self);
+void QScrollPrepareEvent_setViewportSize(QScrollPrepareEvent* self, struct miqt_qsizef size);
+void QScrollPrepareEvent_setContentPosRange(QScrollPrepareEvent* self, struct miqt_qrectf rect);
+void QScrollPrepareEvent_setContentPos(QScrollPrepareEvent* self, struct miqt_qpointf pos);
 void QScrollPrepareEvent_operatorAssign(QScrollPrepareEvent* self, QScrollPrepareEvent* param1);
 
 void QScrollPrepareEvent_delete(QScrollPrepareEvent* self);
 
-QScrollEvent* QScrollEvent_new(QPointF* contentPos, QPointF* overshoot, int scrollState);
+QScrollEvent* QScrollEvent_new(struct miqt_qpointf contentPos, struct miqt_qpointf overshoot, int scrollState);
 QScrollEvent* QScrollEvent_new2(QScrollEvent* param1);
 void QScrollEvent_virtbase(QScrollEvent* src, QEvent** outptr_QEvent);
-QPointF* QScrollEvent_contentPos(const QScrollEvent* self);
-QPointF* QScrollEvent_overshootDistance(const QScrollEvent* self);
+struct miqt_qpointf QScrollEvent_contentPos(const QScrollEvent* self);
+struct miqt_qpointf QScrollEvent_overshootDistance(const QScrollEvent* self);
 int QScrollEvent_scrollState(const QScrollEvent* self);
 void QScrollEvent_operatorAssign(QScrollEvent* self, QScrollEvent* param1);
 
@@ -656,51 +656,51 @@ void QTouchEvent__TouchPoint_swap(QTouchEvent__TouchPoint* self, QTouchEvent__To
 int QTouchEvent__TouchPoint_id(const QTouchEvent__TouchPoint* self);
 QPointingDeviceUniqueId* QTouchEvent__TouchPoint_uniqueId(const QTouchEvent__TouchPoint* self);
 int QTouchEvent__TouchPoint_state(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_pos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_startPos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_lastPos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_scenePos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_startScenePos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_lastScenePos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_screenPos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_startScreenPos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_lastScreenPos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_normalizedPos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_startNormalizedPos(const QTouchEvent__TouchPoint* self);
-QPointF* QTouchEvent__TouchPoint_lastNormalizedPos(const QTouchEvent__TouchPoint* self);
-QRectF* QTouchEvent__TouchPoint_rect(const QTouchEvent__TouchPoint* self);
-QRectF* QTouchEvent__TouchPoint_sceneRect(const QTouchEvent__TouchPoint* self);
-QRectF* QTouchEvent__TouchPoint_screenRect(const QTouchEvent__TouchPoint* self);
-void QTouchEvent__TouchPoint_setRect(QTouchEvent__TouchPoint* self, QRectF* rect);
-void QTouchEvent__TouchPoint_setSceneRect(QTouchEvent__TouchPoint* self, QRectF* sceneRect);
-void QTouchEvent__TouchPoint_setScreenRect(QTouchEvent__TouchPoint* self, QRectF* screenRect);
+struct miqt_qpointf QTouchEvent__TouchPoint_pos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_startPos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_lastPos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_scenePos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_startScenePos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_lastScenePos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_screenPos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_startScreenPos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_lastScreenPos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_normalizedPos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_startNormalizedPos(const QTouchEvent__TouchPoint* self);
+struct miqt_qpointf QTouchEvent__TouchPoint_lastNormalizedPos(const QTouchEvent__TouchPoint* self);
+struct miqt_qrectf QTouchEvent__TouchPoint_rect(const QTouchEvent__TouchPoint* self);
+struct miqt_qrectf QTouchEvent__TouchPoint_sceneRect(const QTouchEvent__TouchPoint* self);
+struct miqt_qrectf QTouchEvent__TouchPoint_screenRect(const QTouchEvent__TouchPoint* self);
+void QTouchEvent__TouchPoint_setRect(QTouchEvent__TouchPoint* self, struct miqt_qrectf rect);
+void QTouchEvent__TouchPoint_setSceneRect(QTouchEvent__TouchPoint* self, struct miqt_qrectf sceneRect);
+void QTouchEvent__TouchPoint_setScreenRect(QTouchEvent__TouchPoint* self, struct miqt_qrectf screenRect);
 double QTouchEvent__TouchPoint_pressure(const QTouchEvent__TouchPoint* self);
 double QTouchEvent__TouchPoint_rotation(const QTouchEvent__TouchPoint* self);
-QSizeF* QTouchEvent__TouchPoint_ellipseDiameters(const QTouchEvent__TouchPoint* self);
+struct miqt_qsizef QTouchEvent__TouchPoint_ellipseDiameters(const QTouchEvent__TouchPoint* self);
 QVector2D* QTouchEvent__TouchPoint_velocity(const QTouchEvent__TouchPoint* self);
 int QTouchEvent__TouchPoint_flags(const QTouchEvent__TouchPoint* self);
-struct miqt_array /* of QPointF* */  QTouchEvent__TouchPoint_rawScreenPositions(const QTouchEvent__TouchPoint* self);
+struct miqt_array /* of struct miqt_qpointf */  QTouchEvent__TouchPoint_rawScreenPositions(const QTouchEvent__TouchPoint* self);
 void QTouchEvent__TouchPoint_setId(QTouchEvent__TouchPoint* self, int id);
 void QTouchEvent__TouchPoint_setUniqueId(QTouchEvent__TouchPoint* self, long long uid);
 void QTouchEvent__TouchPoint_setState(QTouchEvent__TouchPoint* self, int state);
-void QTouchEvent__TouchPoint_setPos(QTouchEvent__TouchPoint* self, QPointF* pos);
-void QTouchEvent__TouchPoint_setScenePos(QTouchEvent__TouchPoint* self, QPointF* scenePos);
-void QTouchEvent__TouchPoint_setScreenPos(QTouchEvent__TouchPoint* self, QPointF* screenPos);
-void QTouchEvent__TouchPoint_setNormalizedPos(QTouchEvent__TouchPoint* self, QPointF* normalizedPos);
-void QTouchEvent__TouchPoint_setStartPos(QTouchEvent__TouchPoint* self, QPointF* startPos);
-void QTouchEvent__TouchPoint_setStartScenePos(QTouchEvent__TouchPoint* self, QPointF* startScenePos);
-void QTouchEvent__TouchPoint_setStartScreenPos(QTouchEvent__TouchPoint* self, QPointF* startScreenPos);
-void QTouchEvent__TouchPoint_setStartNormalizedPos(QTouchEvent__TouchPoint* self, QPointF* startNormalizedPos);
-void QTouchEvent__TouchPoint_setLastPos(QTouchEvent__TouchPoint* self, QPointF* lastPos);
-void QTouchEvent__TouchPoint_setLastScenePos(QTouchEvent__TouchPoint* self, QPointF* lastScenePos);
-void QTouchEvent__TouchPoint_setLastScreenPos(QTouchEvent__TouchPoint* self, QPointF* lastScreenPos);
-void QTouchEvent__TouchPoint_setLastNormalizedPos(QTouchEvent__TouchPoint* self, QPointF* lastNormalizedPos);
+void QTouchEvent__TouchPoint_setPos(QTouchEvent__TouchPoint* self, struct miqt_qpointf pos);
+void QTouchEvent__TouchPoint_setScenePos(QTouchEvent__TouchPoint* self, struct miqt_qpointf scenePos);
+void QTouchEvent__TouchPoint_setScreenPos(QTouchEvent__TouchPoint* self, struct miqt_qpointf screenPos);
+void QTouchEvent__TouchPoint_setNormalizedPos(QTouchEvent__TouchPoint* self, struct miqt_qpointf normalizedPos);
+void QTouchEvent__TouchPoint_setStartPos(QTouchEvent__TouchPoint* self, struct miqt_qpointf startPos);
+void QTouchEvent__TouchPoint_setStartScenePos(QTouchEvent__TouchPoint* self, struct miqt_qpointf startScenePos);
+void QTouchEvent__TouchPoint_setStartScreenPos(QTouchEvent__TouchPoint* self, struct miqt_qpointf startScreenPos);
+void QTouchEvent__TouchPoint_setStartNormalizedPos(QTouchEvent__TouchPoint* self, struct miqt_qpointf startNormalizedPos);
+void QTouchEvent__TouchPoint_setLastPos(QTouchEvent__TouchPoint* self, struct miqt_qpointf lastPos);
+void QTouchEvent__TouchPoint_setLastScenePos(QTouchEvent__TouchPoint* self, struct miqt_qpointf lastScenePos);
+void QTouchEvent__TouchPoint_setLastScreenPos(QTouchEvent__TouchPoint* self, struct miqt_qpointf lastScreenPos);
+void QTouchEvent__TouchPoint_setLastNormalizedPos(QTouchEvent__TouchPoint* self, struct miqt_qpointf lastNormalizedPos);
 void QTouchEvent__TouchPoint_setPressure(QTouchEvent__TouchPoint* self, double pressure);
 void QTouchEvent__TouchPoint_setRotation(QTouchEvent__TouchPoint* self, double angle);
-void QTouchEvent__TouchPoint_setEllipseDiameters(QTouchEvent__TouchPoint* self, QSizeF* dia);
+void QTouchEvent__TouchPoint_setEllipseDiameters(QTouchEvent__TouchPoint* self, struct miqt_qsizef dia);
 void QTouchEvent__TouchPoint_setVelocity(QTouchEvent__TouchPoint* self, QVector2D* v);
 void QTouchEvent__TouchPoint_setFlags(QTouchEvent__TouchPoint* self, int flags);
-void QTouchEvent__TouchPoint_setRawScreenPositions(QTouchEvent__TouchPoint* self, struct miqt_array /* of QPointF* */  positions);
+void QTouchEvent__TouchPoint_setRawScreenPositions(QTouchEvent__TouchPoint* self, struct miqt_array /* of struct miqt_qpointf */  positions);
 
 void QTouchEvent__TouchPoint_delete(QTouchEvent__TouchPoint* self);
 

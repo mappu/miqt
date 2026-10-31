@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -226,16 +227,14 @@ func (this *QPagedPaintDevice) SetPageOrientation(orientation QPageLayout__Orien
 	return (bool)(C.QPagedPaintDevice_setPageOrientation(this.h, (C.int)(orientation)))
 }
 
-func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF) bool {
+func (this *QPagedPaintDevice) SetPageMargins(margins QMarginsF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	return (bool)(C.QPagedPaintDevice_setPageMargins(this.h, margins.cPointer()))
+	return (bool)(C.QPagedPaintDevice_setPageMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins)))
 }
 
-func (this *QPagedPaintDevice) SetPageMargins2(margins *QMarginsF, units QPageLayout__Unit) bool {
+func (this *QPagedPaintDevice) SetPageMargins2(margins QMarginsF, units QPageLayout__Unit) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	return (bool)(C.QPagedPaintDevice_setPageMargins2(this.h, margins.cPointer(), (C.int)(units)))
+	return (bool)(C.QPagedPaintDevice_setPageMargins2(this.h, libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins), (C.int)(units)))
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
@@ -255,17 +254,14 @@ func (this *QPagedPaintDevice) PageSize() QPagedPaintDevice__PageSize {
 	return (QPagedPaintDevice__PageSize)(C.QPagedPaintDevice_pageSize(this.h))
 }
 
-func (this *QPagedPaintDevice) SetPageSizeMM(size *QSizeF) {
+func (this *QPagedPaintDevice) SetPageSizeMM(size QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QPagedPaintDevice_setPageSizeMM(this.h, size.cPointer())
+	C.QPagedPaintDevice_setPageSizeMM(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
-func (this *QPagedPaintDevice) PageSizeMM() *QSizeF {
+func (this *QPagedPaintDevice) PageSizeMM() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QPagedPaintDevice_pageSizeMM(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QPagedPaintDevice_pageSizeMM(this.h))
 }
 
 func (this *QPagedPaintDevice) SetMargins(margins *QPagedPaintDevice__Margins) {
@@ -359,14 +355,13 @@ func miqt_exec_callback_QPagedPaintDevice_setPageSizeWithSize(self *C.QPagedPain
 
 }
 
-func (this *QPagedPaintDevice) callVirtualBase_SetPageSizeMM(size *QSizeF) {
+func (this *QPagedPaintDevice) callVirtualBase_SetPageSizeMM(size QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
 
-	C.QPagedPaintDevice_virtualbase_setPageSizeMM(unsafe.Pointer(this.h), size.cPointer())
+	C.QPagedPaintDevice_virtualbase_setPageSizeMM(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 
 }
-func (this *QPagedPaintDevice) OnSetPageSizeMM(slot func(super func(size *QSizeF), size *QSizeF)) {
+func (this *QPagedPaintDevice) OnSetPageSizeMM(slot func(super func(size QSizeF), size QSizeF)) {
 	ok := C.QPagedPaintDevice_override_virtual_setPageSizeMM(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -374,14 +369,14 @@ func (this *QPagedPaintDevice) OnSetPageSizeMM(slot func(super func(size *QSizeF
 }
 
 //export miqt_exec_callback_QPagedPaintDevice_setPageSizeMM
-func miqt_exec_callback_QPagedPaintDevice_setPageSizeMM(self *C.QPagedPaintDevice, cb C.intptr_t, size *C.QSizeF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size *QSizeF), size *QSizeF))
+func miqt_exec_callback_QPagedPaintDevice_setPageSizeMM(self *C.QPagedPaintDevice, cb C.intptr_t, size C.struct_miqt_qsizef) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size QSizeF), size QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSizeF(size)
+	slotval1 := libmiqt.ValueCast[QSizeF](size)
 
 	gofunc((&QPagedPaintDevice{h: self}).callVirtualBase_SetPageSizeMM, slotval1)
 
@@ -520,7 +515,6 @@ func miqt_exec_callback_QPagedPaintDevice_initPainter(self *C.QPagedPaintDevice,
 
 func (this *QPagedPaintDevice) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPagedPaintDevice_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

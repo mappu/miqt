@@ -161,8 +161,8 @@ struct miqt_string QTextFormat_stringProperty(const QTextFormat* self, int prope
 	return _ms;
 }
 
-QColor* QTextFormat_colorProperty(const QTextFormat* self, int propertyId) {
-	return new QColor(self->colorProperty(static_cast<int>(propertyId)));
+struct miqt_qcolor QTextFormat_colorProperty(const QTextFormat* self, int propertyId) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->colorProperty(static_cast<int>(propertyId)));
 }
 
 QPen* QTextFormat_penProperty(const QTextFormat* self, int propertyId) {
@@ -488,12 +488,12 @@ bool QTextCharFormat_fontStrikeOut(const QTextCharFormat* self) {
 	return self->fontStrikeOut();
 }
 
-void QTextCharFormat_setUnderlineColor(QTextCharFormat* self, QColor* color) {
-	self->setUnderlineColor(*color);
+void QTextCharFormat_setUnderlineColor(QTextCharFormat* self, struct miqt_qcolor color) {
+	self->setUnderlineColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QTextCharFormat_underlineColor(const QTextCharFormat* self) {
-	return new QColor(self->underlineColor());
+struct miqt_qcolor QTextCharFormat_underlineColor(const QTextCharFormat* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->underlineColor());
 }
 
 void QTextCharFormat_setFontFixedPitch(QTextCharFormat* self, bool fixedPitch) {

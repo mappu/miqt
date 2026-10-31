@@ -9,6 +9,7 @@ package pdf
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -93,10 +94,8 @@ func (this *QPdfPageNavigator) CurrentPage() int {
 	return (int)(C.QPdfPageNavigator_currentPage(this.h))
 }
 
-func (this *QPdfPageNavigator) CurrentLocation() *qt6.QPointF {
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QPdfPageNavigator_currentLocation(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPdfPageNavigator) CurrentLocation() qt6.QPointF {
+	return libmiqt.ValueCast[qt6.QPointF](C.QPdfPageNavigator_currentLocation(this.h))
 }
 
 func (this *QPdfPageNavigator) CurrentZoom() float64 {
@@ -120,14 +119,12 @@ func (this *QPdfPageNavigator) Jump(destination QPdfLink) {
 	C.QPdfPageNavigator_jump(this.h, destination.cPointer())
 }
 
-func (this *QPdfPageNavigator) Jump2(page int, location *qt6.QPointF) {
-	defer runtime.KeepAlive(location)
-	C.QPdfPageNavigator_jump2(this.h, (C.int)(page), (*C.QPointF)(location.UnsafePointer()))
+func (this *QPdfPageNavigator) Jump2(page int, location qt6.QPointF) {
+	C.QPdfPageNavigator_jump2(this.h, (C.int)(page), libmiqt.ValueCast[C.struct_miqt_qpointf](location))
 }
 
-func (this *QPdfPageNavigator) Update(page int, location *qt6.QPointF, zoom float64) {
-	defer runtime.KeepAlive(location)
-	C.QPdfPageNavigator_update(this.h, (C.int)(page), (*C.QPointF)(location.UnsafePointer()), (C.double)(zoom))
+func (this *QPdfPageNavigator) Update(page int, location qt6.QPointF, zoom float64) {
+	C.QPdfPageNavigator_update(this.h, (C.int)(page), libmiqt.ValueCast[C.struct_miqt_qpointf](location), (C.double)(zoom))
 }
 
 func (this *QPdfPageNavigator) Forward() {
@@ -159,24 +156,21 @@ func miqt_exec_callback_QPdfPageNavigator_currentPageChanged(cb C.intptr_t, page
 }
 
 func (this *QPdfPageNavigator) CurrentLocationChanged(location qt6.QPointF) {
-	defer runtime.KeepAlive(location)
-	C.QPdfPageNavigator_currentLocationChanged(this.h, (*C.QPointF)(location.UnsafePointer()))
+	C.QPdfPageNavigator_currentLocationChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](location))
 }
 func (this *QPdfPageNavigator) OnCurrentLocationChanged(slot func(location qt6.QPointF)) {
 	C.QPdfPageNavigator_connect_currentLocationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfPageNavigator_currentLocationChanged
-func miqt_exec_callback_QPdfPageNavigator_currentLocationChanged(cb C.intptr_t, location *C.QPointF) {
+func miqt_exec_callback_QPdfPageNavigator_currentLocationChanged(cb C.intptr_t, location C.struct_miqt_qpointf) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(location qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	location_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(location))
-	location_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *location_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](location)
 
 	gofunc(slotval1)
 }
@@ -286,9 +280,8 @@ func QPdfPageNavigator_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QPdfPageNavigator) Jump3(page int, location *qt6.QPointF, zoom float64) {
-	defer runtime.KeepAlive(location)
-	C.QPdfPageNavigator_jump3(this.h, (C.int)(page), (*C.QPointF)(location.UnsafePointer()), (C.double)(zoom))
+func (this *QPdfPageNavigator) Jump3(page int, location qt6.QPointF, zoom float64) {
+	C.QPdfPageNavigator_jump3(this.h, (C.int)(page), libmiqt.ValueCast[C.struct_miqt_qpointf](location), (C.double)(zoom))
 }
 
 // CurrentLink can only be called from a QPdfPageNavigator that was directly constructed.

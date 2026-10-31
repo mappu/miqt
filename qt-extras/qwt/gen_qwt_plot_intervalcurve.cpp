@@ -57,8 +57,8 @@ void QwtPlotIntervalCurve_setSamples(QwtPlotIntervalCurve* self, struct miqt_arr
 	self->setSamples(samples_QList);
 }
 
-void QwtPlotIntervalCurve_setPen(QwtPlotIntervalCurve* self, QColor* param1) {
-	self->setPen(*param1);
+void QwtPlotIntervalCurve_setPen(QwtPlotIntervalCurve* self, struct miqt_qcolor param1) {
+	self->setPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotIntervalCurve_setPenWithPen(QwtPlotIntervalCurve* self, QPen* pen) {
@@ -98,24 +98,24 @@ QwtIntervalSymbol* QwtPlotIntervalCurve_symbol(const QwtPlotIntervalCurve* self)
 	return (QwtIntervalSymbol*) self->symbol();
 }
 
-QRectF* QwtPlotIntervalCurve_boundingRect(const QwtPlotIntervalCurve* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotIntervalCurve_boundingRect(const QwtPlotIntervalCurve* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
-QwtGraphic* QwtPlotIntervalCurve_legendIcon(const QwtPlotIntervalCurve* self, int index, QSizeF* param2) {
-	return new QwtGraphic(self->legendIcon(static_cast<int>(index), *param2));
+QwtGraphic* QwtPlotIntervalCurve_legendIcon(const QwtPlotIntervalCurve* self, int index, struct miqt_qsizef param2) {
+	return new QwtGraphic(self->legendIcon(static_cast<int>(index), miqt_from_cabi<QSizeF>(param2)));
 }
 
 void QwtPlotIntervalCurve_setPaintAttribute2(QwtPlotIntervalCurve* self, int param1, bool on) {
 	self->setPaintAttribute(static_cast<QwtPlotIntervalCurve::PaintAttribute>(param1), on);
 }
 
-void QwtPlotIntervalCurve_setPen2(QwtPlotIntervalCurve* self, QColor* param1, double width) {
-	self->setPen(*param1, static_cast<qreal>(width));
+void QwtPlotIntervalCurve_setPen2(QwtPlotIntervalCurve* self, struct miqt_qcolor param1, double width) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotIntervalCurve_setPen3(QwtPlotIntervalCurve* self, QColor* param1, double width, int param3) {
-	self->setPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotIntervalCurve_setPen3(QwtPlotIntervalCurve* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 void QwtPlotIntervalCurve_delete(QwtPlotIntervalCurve* self) {

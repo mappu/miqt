@@ -32,7 +32,7 @@ typedef struct QWidget QWidget;
 
 QDesignerLayoutDecorationExtension* QDesignerLayoutDecorationExtension_new();
 struct miqt_array /* of QWidget* */  QDesignerLayoutDecorationExtension_widgets(const QDesignerLayoutDecorationExtension* self, QLayout* layout);
-QRect* QDesignerLayoutDecorationExtension_itemInfo(const QDesignerLayoutDecorationExtension* self, int index);
+struct miqt_qrect QDesignerLayoutDecorationExtension_itemInfo(const QDesignerLayoutDecorationExtension* self, int index);
 int QDesignerLayoutDecorationExtension_indexOf(const QDesignerLayoutDecorationExtension* self, QWidget* widget);
 int QDesignerLayoutDecorationExtension_indexOfWithItem(const QDesignerLayoutDecorationExtension* self, QLayoutItem* item);
 int QDesignerLayoutDecorationExtension_currentInsertMode(const QDesignerLayoutDecorationExtension* self);
@@ -43,14 +43,14 @@ void QDesignerLayoutDecorationExtension_removeWidget(QDesignerLayoutDecorationEx
 void QDesignerLayoutDecorationExtension_insertRow(QDesignerLayoutDecorationExtension* self, int row);
 void QDesignerLayoutDecorationExtension_insertColumn(QDesignerLayoutDecorationExtension* self, int column);
 void QDesignerLayoutDecorationExtension_simplify(QDesignerLayoutDecorationExtension* self);
-int QDesignerLayoutDecorationExtension_findItemAt(const QDesignerLayoutDecorationExtension* self, QPoint* pos);
+int QDesignerLayoutDecorationExtension_findItemAt(const QDesignerLayoutDecorationExtension* self, struct miqt_qpoint pos);
 int QDesignerLayoutDecorationExtension_findItemAt2(const QDesignerLayoutDecorationExtension* self, int row, int column);
-void QDesignerLayoutDecorationExtension_adjustIndicator(QDesignerLayoutDecorationExtension* self, QPoint* pos, int index);
+void QDesignerLayoutDecorationExtension_adjustIndicator(QDesignerLayoutDecorationExtension* self, struct miqt_qpoint pos, int index);
 
 bool QDesignerLayoutDecorationExtension_override_virtual_widgets(void* self, intptr_t slot);
 struct miqt_array /* of QWidget* */  QDesignerLayoutDecorationExtension_virtualbase_widgets(const void* self, QLayout* layout);
 bool QDesignerLayoutDecorationExtension_override_virtual_itemInfo(void* self, intptr_t slot);
-QRect* QDesignerLayoutDecorationExtension_virtualbase_itemInfo(const void* self, int index);
+struct miqt_qrect QDesignerLayoutDecorationExtension_virtualbase_itemInfo(const void* self, int index);
 bool QDesignerLayoutDecorationExtension_override_virtual_indexOf(void* self, intptr_t slot);
 int QDesignerLayoutDecorationExtension_virtualbase_indexOf(const void* self, QWidget* widget);
 bool QDesignerLayoutDecorationExtension_override_virtual_indexOfWithItem(void* self, intptr_t slot);
@@ -72,12 +72,11 @@ void QDesignerLayoutDecorationExtension_virtualbase_insertColumn(void* self, int
 bool QDesignerLayoutDecorationExtension_override_virtual_simplify(void* self, intptr_t slot);
 void QDesignerLayoutDecorationExtension_virtualbase_simplify(void* self);
 bool QDesignerLayoutDecorationExtension_override_virtual_findItemAt(void* self, intptr_t slot);
-int QDesignerLayoutDecorationExtension_virtualbase_findItemAt(const void* self, QPoint* pos);
+int QDesignerLayoutDecorationExtension_virtualbase_findItemAt(const void* self, struct miqt_qpoint pos);
 bool QDesignerLayoutDecorationExtension_override_virtual_findItemAt2(void* self, intptr_t slot);
 int QDesignerLayoutDecorationExtension_virtualbase_findItemAt2(const void* self, int row, int column);
 bool QDesignerLayoutDecorationExtension_override_virtual_adjustIndicator(void* self, intptr_t slot);
-void QDesignerLayoutDecorationExtension_virtualbase_adjustIndicator(void* self, QPoint* pos, int index);
-QRect* QDesignerLayoutDecorationExtension_virtualreturncopy_QRect(QRect* src);
+void QDesignerLayoutDecorationExtension_virtualbase_adjustIndicator(void* self, struct miqt_qpoint pos, int index);
 
 void QDesignerLayoutDecorationExtension_delete(QDesignerLayoutDecorationExtension* self);
 

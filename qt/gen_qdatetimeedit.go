@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -371,10 +372,8 @@ func (this *QDateTimeEdit) SetTimeSpec(spec TimeSpec) {
 	C.QDateTimeEdit_setTimeSpec(this.h, (C.int)(spec))
 }
 
-func (this *QDateTimeEdit) SizeHint() *QSize {
-	_goptr := newQSize(C.QDateTimeEdit_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDateTimeEdit) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QDateTimeEdit_sizeHint(this.h))
 }
 
 func (this *QDateTimeEdit) Clear() {
@@ -674,14 +673,12 @@ func (this *QDateTimeEdit) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QDateTimeEdit) callVirtualBase_SizeHint() *QSize {
+func (this *QDateTimeEdit) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QDateTimeEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QDateTimeEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDateTimeEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDateTimeEdit) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDateTimeEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -689,16 +686,15 @@ func (this *QDateTimeEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QDateTimeEdit_sizeHint
-func miqt_exec_callback_QDateTimeEdit_sizeHint(self *C.QDateTimeEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDateTimeEdit_sizeHint(self *C.QDateTimeEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDateTimeEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1109,14 +1105,12 @@ func miqt_exec_callback_QDateTimeEdit_paintEvent(self *C.QDateTimeEdit, cb C.int
 
 }
 
-func (this *QDateTimeEdit) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QDateTimeEdit) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QDateTimeEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QDateTimeEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDateTimeEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDateTimeEdit) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDateTimeEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1124,16 +1118,15 @@ func (this *QDateTimeEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSi
 }
 
 //export miqt_exec_callback_QDateTimeEdit_minimumSizeHint
-func miqt_exec_callback_QDateTimeEdit_minimumSizeHint(self *C.QDateTimeEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDateTimeEdit_minimumSizeHint(self *C.QDateTimeEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDateTimeEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1962,7 +1955,6 @@ func miqt_exec_callback_QDateTimeEdit_initPainter(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDateTimeEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -2529,14 +2521,12 @@ func (this *QTimeEdit) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QTimeEdit) callVirtualBase_SizeHint() *QSize {
+func (this *QTimeEdit) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QTimeEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTimeEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTimeEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTimeEdit) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTimeEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2544,16 +2534,15 @@ func (this *QTimeEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QTimeEdit_sizeHint
-func miqt_exec_callback_QTimeEdit_sizeHint(self *C.QTimeEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTimeEdit_sizeHint(self *C.QTimeEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTimeEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2964,14 +2953,12 @@ func miqt_exec_callback_QTimeEdit_paintEvent(self *C.QTimeEdit, cb C.intptr_t, e
 
 }
 
-func (this *QTimeEdit) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QTimeEdit) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QTimeEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTimeEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTimeEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTimeEdit) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTimeEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2979,16 +2966,15 @@ func (this *QTimeEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QTimeEdit_minimumSizeHint
-func miqt_exec_callback_QTimeEdit_minimumSizeHint(self *C.QTimeEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTimeEdit_minimumSizeHint(self *C.QTimeEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTimeEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -3817,7 +3803,6 @@ func miqt_exec_callback_QTimeEdit_initPainter(self *C.QTimeEdit, cb C.intptr_t, 
 }
 
 func (this *QTimeEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTimeEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -4384,14 +4369,12 @@ func (this *QDateEdit) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QDateEdit) callVirtualBase_SizeHint() *QSize {
+func (this *QDateEdit) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QDateEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QDateEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDateEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDateEdit) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDateEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -4399,16 +4382,15 @@ func (this *QDateEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QDateEdit_sizeHint
-func miqt_exec_callback_QDateEdit_sizeHint(self *C.QDateEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDateEdit_sizeHint(self *C.QDateEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDateEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -4819,14 +4801,12 @@ func miqt_exec_callback_QDateEdit_paintEvent(self *C.QDateEdit, cb C.intptr_t, e
 
 }
 
-func (this *QDateEdit) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QDateEdit) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QDateEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QDateEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDateEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDateEdit) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDateEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -4834,16 +4814,15 @@ func (this *QDateEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QDateEdit_minimumSizeHint
-func miqt_exec_callback_QDateEdit_minimumSizeHint(self *C.QDateEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDateEdit_minimumSizeHint(self *C.QDateEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDateEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -5672,7 +5651,6 @@ func miqt_exec_callback_QDateEdit_initPainter(self *C.QDateEdit, cb C.intptr_t, 
 }
 
 func (this *QDateEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDateEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

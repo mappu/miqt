@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -92,11 +93,9 @@ func (this *QSurface) SupportsOpenGL() bool {
 	return (bool)(C.QSurface_supportsOpenGL(this.h))
 }
 
-func (this *QSurface) Size() *QSize {
+func (this *QSurface) Size() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QSurface_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QSurface_size(this.h))
 }
 
 func (this *QSurface) OperatorAssign(param1 *QSurface) {

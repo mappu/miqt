@@ -9,8 +9,8 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
-	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -172,15 +172,12 @@ func (this *QCameraExposure) IsMeteringModeSupported(mode QCameraExposure__Meter
 	return (bool)(C.QCameraExposure_isMeteringModeSupported(this.h, (C.int)(mode)))
 }
 
-func (this *QCameraExposure) SpotMeteringPoint() *qt.QPointF {
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraExposure_spotMeteringPoint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCameraExposure) SpotMeteringPoint() qt.QPointF {
+	return libmiqt.ValueCast[qt.QPointF](C.QCameraExposure_spotMeteringPoint(this.h))
 }
 
-func (this *QCameraExposure) SetSpotMeteringPoint(point *qt.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QCameraExposure_setSpotMeteringPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QCameraExposure) SetSpotMeteringPoint(point qt.QPointF) {
+	C.QCameraExposure_setSpotMeteringPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
 
 func (this *QCameraExposure) IsoSensitivity() int {

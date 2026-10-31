@@ -29,7 +29,7 @@ QPdfSearchResult* QPdfSearchResult_new2(QPdfSearchResult* param1);
 void QPdfSearchResult_virtbase(QPdfSearchResult* src, QPdfDestination** outptr_QPdfDestination);
 struct miqt_string QPdfSearchResult_contextBefore(const QPdfSearchResult* self);
 struct miqt_string QPdfSearchResult_contextAfter(const QPdfSearchResult* self);
-struct miqt_array /* of QRectF* */  QPdfSearchResult_rectangles(const QPdfSearchResult* self);
+struct miqt_array /* of struct miqt_qrectf */  QPdfSearchResult_rectangles(const QPdfSearchResult* self);
 void QPdfSearchResult_operatorAssign(QPdfSearchResult* self, QPdfSearchResult* param1);
 
 void QPdfSearchResult_delete(QPdfSearchResult* self);

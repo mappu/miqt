@@ -52,8 +52,8 @@ void miqt_exec_callback_QDialogButtonBox_changeEvent(QDialogButtonBox*, intptr_t
 bool miqt_exec_callback_QDialogButtonBox_event(QDialogButtonBox*, intptr_t, QEvent*);
 int miqt_exec_callback_QDialogButtonBox_devType(const QDialogButtonBox*, intptr_t);
 void miqt_exec_callback_QDialogButtonBox_setVisible(QDialogButtonBox*, intptr_t, bool);
-QSize* miqt_exec_callback_QDialogButtonBox_sizeHint(const QDialogButtonBox*, intptr_t);
-QSize* miqt_exec_callback_QDialogButtonBox_minimumSizeHint(const QDialogButtonBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDialogButtonBox_sizeHint(const QDialogButtonBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDialogButtonBox_minimumSizeHint(const QDialogButtonBox*, intptr_t);
 int miqt_exec_callback_QDialogButtonBox_heightForWidth(const QDialogButtonBox*, intptr_t, int);
 bool miqt_exec_callback_QDialogButtonBox_hasHeightForWidth(const QDialogButtonBox*, intptr_t);
 QPaintEngine* miqt_exec_callback_QDialogButtonBox_paintEngine(const QDialogButtonBox*, intptr_t);
@@ -187,13 +187,11 @@ public:
 			return QDialogButtonBox::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDialogButtonBox_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDialogButtonBox_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDialogButtonBox_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDialogButtonBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -204,13 +202,11 @@ public:
 			return QDialogButtonBox::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDialogButtonBox_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDialogButtonBox_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDialogButtonBox_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDialogButtonBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1215,8 +1211,8 @@ bool QDialogButtonBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDialogButtonBox_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDialogButtonBox*>(self)->QDialogButtonBox::sizeHint());
+struct miqt_qsize QDialogButtonBox_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDialogButtonBox*>(self)->QDialogButtonBox::sizeHint());
 }
 
 bool QDialogButtonBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1229,8 +1225,8 @@ bool QDialogButtonBox_override_virtual_minimumSizeHint(void* self, intptr_t slot
 	return true;
 }
 
-QSize* QDialogButtonBox_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDialogButtonBox*>(self)->QDialogButtonBox::minimumSizeHint());
+struct miqt_qsize QDialogButtonBox_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDialogButtonBox*>(self)->QDialogButtonBox::minimumSizeHint());
 }
 
 bool QDialogButtonBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1806,10 +1802,6 @@ bool QDialogButtonBox_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QDialogButtonBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDialogButtonBox*>(self)->QDialogButtonBox::disconnectNotify(*signal);
-}
-
-QSize* QDialogButtonBox_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QDialogButtonBox_virtualreturncopy_QVariant(QVariant* src) {

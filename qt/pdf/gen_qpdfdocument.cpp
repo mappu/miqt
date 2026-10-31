@@ -265,16 +265,16 @@ int QPdfDocument_pageCount(const QPdfDocument* self) {
 	return self->pageCount();
 }
 
-QSizeF* QPdfDocument_pageSize(const QPdfDocument* self, int page) {
-	return new QSizeF(self->pageSize(static_cast<int>(page)));
+struct miqt_qsizef QPdfDocument_pageSize(const QPdfDocument* self, int page) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->pageSize(static_cast<int>(page)));
 }
 
-QImage* QPdfDocument_render(QPdfDocument* self, int page, QSize* imageSize) {
-	return new QImage(self->render(static_cast<int>(page), *imageSize));
+QImage* QPdfDocument_render(QPdfDocument* self, int page, struct miqt_qsize imageSize) {
+	return new QImage(self->render(static_cast<int>(page), miqt_from_cabi<QSize>(imageSize)));
 }
 
-QPdfSelection* QPdfDocument_getSelection(QPdfDocument* self, int page, QPointF* start, QPointF* end) {
-	return new QPdfSelection(self->getSelection(static_cast<int>(page), *start, *end));
+QPdfSelection* QPdfDocument_getSelection(QPdfDocument* self, int page, struct miqt_qpointf start, struct miqt_qpointf end) {
+	return new QPdfSelection(self->getSelection(static_cast<int>(page), miqt_from_cabi<QPointF>(start), miqt_from_cabi<QPointF>(end)));
 }
 
 QPdfSelection* QPdfDocument_getSelectionAtIndex(QPdfDocument* self, int page, int startIndex, int maxLength) {
@@ -372,8 +372,8 @@ struct miqt_string QPdfDocument_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QImage* QPdfDocument_render2(QPdfDocument* self, int page, QSize* imageSize, QPdfDocumentRenderOptions* options) {
-	return new QImage(self->render(static_cast<int>(page), *imageSize, *options));
+QImage* QPdfDocument_render2(QPdfDocument* self, int page, struct miqt_qsize imageSize, QPdfDocumentRenderOptions* options) {
+	return new QImage(self->render(static_cast<int>(page), miqt_from_cabi<QSize>(imageSize), *options));
 }
 
 bool QPdfDocument_override_virtual_event(void* self, intptr_t slot) {

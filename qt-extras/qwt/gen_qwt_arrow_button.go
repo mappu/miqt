@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -78,16 +79,12 @@ func (this *QwtArrowButton) Num() int {
 	return (int)(C.QwtArrowButton_num(this.h))
 }
 
-func (this *QwtArrowButton) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtArrowButton) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtArrowButton_sizeHint(this.h))
 }
 
-func (this *QwtArrowButton) MinimumSizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_minimumSizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtArrowButton) MinimumSizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtArrowButton_minimumSizeHint(this.h))
 }
 
 // InitStyleOption can only be called from a QwtArrowButton that was directly constructed.
@@ -226,14 +223,12 @@ func (this *QwtArrowButton) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 
-func (this *QwtArrowButton) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QwtArrowButton) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtArrowButton_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtArrowButton) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtArrowButton) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtArrowButton_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -241,27 +236,24 @@ func (this *QwtArrowButton) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSi
 }
 
 //export miqt_exec_callback_QwtArrowButton_sizeHint
-func miqt_exec_callback_QwtArrowButton_sizeHint(self *C.QwtArrowButton, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtArrowButton_sizeHint(self *C.QwtArrowButton, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtArrowButton_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtArrowButton) callVirtualBase_MinimumSizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QwtArrowButton) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtArrowButton) callVirtualBase_MinimumSizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtArrowButton_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtArrowButton) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtArrowButton_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -269,16 +261,15 @@ func (this *QwtArrowButton) OnMinimumSizeHint(slot func(super func() *qt.QSize) 
 }
 
 //export miqt_exec_callback_QwtArrowButton_minimumSizeHint
-func miqt_exec_callback_QwtArrowButton_minimumSizeHint(self *C.QwtArrowButton, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtArrowButton_minimumSizeHint(self *C.QwtArrowButton, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtArrowButton_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -336,14 +327,13 @@ func miqt_exec_callback_QwtArrowButton_drawButtonLabel(self *C.QwtArrowButton, c
 
 }
 
-func (this *QwtArrowButton) callVirtualBase_DrawArrow(param1 *qt.QPainter, param2 *qt.QRect, param3 qt.ArrowType) {
+func (this *QwtArrowButton) callVirtualBase_DrawArrow(param1 *qt.QPainter, param2 qt.QRect, param3 qt.ArrowType) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
-	C.QwtArrowButton_virtualbase_drawArrow(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRect)(param2.UnsafePointer()), (C.int)(param3))
+	C.QwtArrowButton_virtualbase_drawArrow(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrect](param2), (C.int)(param3))
 
 }
-func (this *QwtArrowButton) OnDrawArrow(slot func(super func(param1 *qt.QPainter, param2 *qt.QRect, param3 qt.ArrowType), param1 *qt.QPainter, param2 *qt.QRect, param3 qt.ArrowType)) {
+func (this *QwtArrowButton) OnDrawArrow(slot func(super func(param1 *qt.QPainter, param2 qt.QRect, param3 qt.ArrowType), param1 *qt.QPainter, param2 qt.QRect, param3 qt.ArrowType)) {
 	ok := C.QwtArrowButton_override_virtual_drawArrow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -351,8 +341,8 @@ func (this *QwtArrowButton) OnDrawArrow(slot func(super func(param1 *qt.QPainter
 }
 
 //export miqt_exec_callback_QwtArrowButton_drawArrow
-func miqt_exec_callback_QwtArrowButton_drawArrow(self *C.QwtArrowButton, cb C.intptr_t, param1 *C.QPainter, param2 *C.QRect, param3 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 *qt.QRect, param3 qt.ArrowType), param1 *qt.QPainter, param2 *qt.QRect, param3 qt.ArrowType))
+func miqt_exec_callback_QwtArrowButton_drawArrow(self *C.QwtArrowButton, cb C.intptr_t, param1 *C.QPainter, param2 C.struct_miqt_qrect, param3 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.QRect, param3 qt.ArrowType), param1 *qt.QPainter, param2 qt.QRect, param3 qt.ArrowType))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -360,7 +350,7 @@ func miqt_exec_callback_QwtArrowButton_drawArrow(self *C.QwtArrowButton, cb C.in
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQRect(unsafe.Pointer(param2))
+	slotval2 := libmiqt.ValueCast[qt.QRect](param2)
 
 	slotval3 := (qt.ArrowType)(param3)
 
@@ -368,14 +358,12 @@ func miqt_exec_callback_QwtArrowButton_drawArrow(self *C.QwtArrowButton, cb C.in
 
 }
 
-func (this *QwtArrowButton) callVirtualBase_LabelRect() *qt.QRect {
+func (this *QwtArrowButton) callVirtualBase_LabelRect() qt.QRect {
 
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtArrowButton_virtualbase_labelRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtArrowButton_virtualbase_labelRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtArrowButton) OnLabelRect(slot func(super func() *qt.QRect) *qt.QRect) {
+func (this *QwtArrowButton) OnLabelRect(slot func(super func() qt.QRect) qt.QRect) {
 	ok := C.QwtArrowButton_override_virtual_labelRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -383,28 +371,24 @@ func (this *QwtArrowButton) OnLabelRect(slot func(super func() *qt.QRect) *qt.QR
 }
 
 //export miqt_exec_callback_QwtArrowButton_labelRect
-func miqt_exec_callback_QwtArrowButton_labelRect(self *C.QwtArrowButton, cb C.intptr_t) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRect) *qt.QRect)
+func miqt_exec_callback_QwtArrowButton_labelRect(self *C.QwtArrowButton, cb C.intptr_t) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRect) qt.QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_LabelRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtArrowButton_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtArrowButton) callVirtualBase_ArrowSize(param1 qt.ArrowType, boundingSize *qt.QSize) *qt.QSize {
-	defer runtime.KeepAlive(boundingSize)
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtArrowButton_virtualbase_arrowSize(unsafe.Pointer(this.h), (C.int)(param1), (*C.QSize)(boundingSize.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
-func (this *QwtArrowButton) OnArrowSize(slot func(super func(param1 qt.ArrowType, boundingSize *qt.QSize) *qt.QSize, param1 qt.ArrowType, boundingSize *qt.QSize) *qt.QSize) {
+
+func (this *QwtArrowButton) callVirtualBase_ArrowSize(param1 qt.ArrowType, boundingSize qt.QSize) qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtArrowButton_virtualbase_arrowSize(unsafe.Pointer(this.h), (C.int)(param1), libmiqt.ValueCast[C.struct_miqt_qsize](boundingSize)))
+
+}
+func (this *QwtArrowButton) OnArrowSize(slot func(super func(param1 qt.ArrowType, boundingSize qt.QSize) qt.QSize, param1 qt.ArrowType, boundingSize qt.QSize) qt.QSize) {
 	ok := C.QwtArrowButton_override_virtual_arrowSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -412,8 +396,8 @@ func (this *QwtArrowButton) OnArrowSize(slot func(super func(param1 qt.ArrowType
 }
 
 //export miqt_exec_callback_QwtArrowButton_arrowSize
-func miqt_exec_callback_QwtArrowButton_arrowSize(self *C.QwtArrowButton, cb C.intptr_t, param1 C.int, boundingSize *C.QSize) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.ArrowType, boundingSize *qt.QSize) *qt.QSize, param1 qt.ArrowType, boundingSize *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtArrowButton_arrowSize(self *C.QwtArrowButton, cb C.intptr_t, param1 C.int, boundingSize C.struct_miqt_qsize) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.ArrowType, boundingSize qt.QSize) qt.QSize, param1 qt.ArrowType, boundingSize qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -421,12 +405,11 @@ func miqt_exec_callback_QwtArrowButton_arrowSize(self *C.QwtArrowButton, cb C.in
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (qt.ArrowType)(param1)
 
-	slotval2 := qt.UnsafeNewQSize(unsafe.Pointer(boundingSize))
+	slotval2 := libmiqt.ValueCast[qt.QSize](boundingSize)
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_ArrowSize, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtArrowButton_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -540,13 +523,12 @@ func miqt_exec_callback_QwtArrowButton_focusOutEvent(self *C.QwtArrowButton, cb 
 
 }
 
-func (this *QwtArrowButton) callVirtualBase_HitButton(pos *qt.QPoint) bool {
-	defer runtime.KeepAlive(pos)
+func (this *QwtArrowButton) callVirtualBase_HitButton(pos qt.QPoint) bool {
 
-	return (bool)(C.QwtArrowButton_virtualbase_hitButton(unsafe.Pointer(this.h), (*C.QPoint)(pos.UnsafePointer())))
+	return (bool)(C.QwtArrowButton_virtualbase_hitButton(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 
 }
-func (this *QwtArrowButton) OnHitButton(slot func(super func(pos *qt.QPoint) bool, pos *qt.QPoint) bool) {
+func (this *QwtArrowButton) OnHitButton(slot func(super func(pos qt.QPoint) bool, pos qt.QPoint) bool) {
 	ok := C.QwtArrowButton_override_virtual_hitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -554,14 +536,14 @@ func (this *QwtArrowButton) OnHitButton(slot func(super func(pos *qt.QPoint) boo
 }
 
 //export miqt_exec_callback_QwtArrowButton_hitButton
-func miqt_exec_callback_QwtArrowButton_hitButton(self *C.QwtArrowButton, cb C.intptr_t, pos *C.QPoint) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos *qt.QPoint) bool, pos *qt.QPoint) bool)
+func miqt_exec_callback_QwtArrowButton_hitButton(self *C.QwtArrowButton, cb C.intptr_t, pos C.struct_miqt_qpoint) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos qt.QPoint) bool, pos qt.QPoint) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(pos))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](pos)
 
 	virtualReturn := gofunc((&QwtArrowButton{h: self}).callVirtualBase_HitButton, slotval1)
 
@@ -1436,7 +1418,6 @@ func miqt_exec_callback_QwtArrowButton_initPainter(self *C.QwtArrowButton, cb C.
 }
 
 func (this *QwtArrowButton) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtArrowButton_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

@@ -13,35 +13,45 @@ extern "C" {
 } /* extern C */
 #endif
 
-QSize* QSize_new() {
-	return new (std::nothrow) QSize();
+struct miqt_qsize QSize_new() {
+	return miqt_to_cabi<struct miqt_qsize>(QSize());
 }
 
-QSize* QSize_new2(int w, int h) {
-	return new (std::nothrow) QSize(static_cast<int>(w), static_cast<int>(h));
+struct miqt_qsize QSize_new2(int w, int h) {
+	return miqt_to_cabi<struct miqt_qsize>(QSize(static_cast<int>(w), static_cast<int>(h)));
 }
 
-QSize* QSize_new3(QSize* param1) {
-	return new (std::nothrow) QSize(*param1);
+struct miqt_qsize QSize_new3(struct miqt_qsize param1) {
+	return miqt_to_cabi<struct miqt_qsize>(QSize(miqt_from_cabi<QSize>(param1)));
 }
 
-bool QSize_isNull(const QSize* self) {
+bool QSize_isNull(struct miqt_qsize self_cabi) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
 	return self->isNull();
 }
 
-bool QSize_isEmpty(const QSize* self) {
+bool QSize_isEmpty(struct miqt_qsize self_cabi) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
 	return self->isEmpty();
 }
 
-bool QSize_isValid(const QSize* self) {
+bool QSize_isValid(struct miqt_qsize self_cabi) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
 	return self->isValid();
 }
 
-int QSize_width(const QSize* self) {
+int QSize_width(struct miqt_qsize self_cabi) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
 	return self->width();
 }
 
-int QSize_height(const QSize* self) {
+int QSize_height(struct miqt_qsize self_cabi) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
 	return self->height();
 }
 
@@ -57,50 +67,64 @@ void QSize_transpose(QSize* self) {
 	self->transpose();
 }
 
-QSize* QSize_transposed(const QSize* self) {
-	return new QSize(self->transposed());
+struct miqt_qsize QSize_transposed(struct miqt_qsize self_cabi) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsize>(self->transposed());
 }
 
 void QSize_scale(QSize* self, int w, int h, int mode) {
 	self->scale(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(mode));
 }
 
-void QSize_scale2(QSize* self, QSize* s, int mode) {
-	self->scale(*s, static_cast<Qt::AspectRatioMode>(mode));
+void QSize_scale2(QSize* self, struct miqt_qsize s, int mode) {
+	self->scale(miqt_from_cabi<QSize>(s), static_cast<Qt::AspectRatioMode>(mode));
 }
 
-QSize* QSize_scaled(const QSize* self, int w, int h, int mode) {
-	return new QSize(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(mode)));
+struct miqt_qsize QSize_scaled(struct miqt_qsize self_cabi, int w, int h, int mode) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsize>(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(mode)));
 }
 
-QSize* QSize_scaled2(const QSize* self, QSize* s, int mode) {
-	return new QSize(self->scaled(*s, static_cast<Qt::AspectRatioMode>(mode)));
+struct miqt_qsize QSize_scaled2(struct miqt_qsize self_cabi, struct miqt_qsize s, int mode) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsize>(self->scaled(miqt_from_cabi<QSize>(s), static_cast<Qt::AspectRatioMode>(mode)));
 }
 
-QSize* QSize_expandedTo(const QSize* self, QSize* param1) {
-	return new QSize(self->expandedTo(*param1));
+struct miqt_qsize QSize_expandedTo(struct miqt_qsize self_cabi, struct miqt_qsize param1) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsize>(self->expandedTo(miqt_from_cabi<QSize>(param1)));
 }
 
-QSize* QSize_boundedTo(const QSize* self, QSize* param1) {
-	return new QSize(self->boundedTo(*param1));
+struct miqt_qsize QSize_boundedTo(struct miqt_qsize self_cabi, struct miqt_qsize param1) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsize>(self->boundedTo(miqt_from_cabi<QSize>(param1)));
 }
 
-QSize* QSize_grownBy(const QSize* self, QMargins* m) {
-	return new QSize(self->grownBy(*m));
+struct miqt_qsize QSize_grownBy(struct miqt_qsize self_cabi, struct miqt_qmargins m) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsize>(self->grownBy(miqt_from_cabi<QMargins>(m)));
 }
 
-QSize* QSize_shrunkBy(const QSize* self, QMargins* m) {
-	return new QSize(self->shrunkBy(*m));
+struct miqt_qsize QSize_shrunkBy(struct miqt_qsize self_cabi, struct miqt_qmargins m) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsize>(self->shrunkBy(miqt_from_cabi<QMargins>(m)));
 }
 
-QSize* QSize_operatorPlusAssign(QSize* self, QSize* param1) {
-	QSize& _ret = self->operator+=(*param1);
+QSize* QSize_operatorPlusAssign(QSize* self, struct miqt_qsize param1) {
+	QSize& _ret = self->operator+=(miqt_from_cabi<QSize>(param1));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QSize* QSize_operatorMinusAssign(QSize* self, QSize* param1) {
-	QSize& _ret = self->operator-=(*param1);
+QSize* QSize_operatorMinusAssign(QSize* self, struct miqt_qsize param1) {
+	QSize& _ret = self->operator-=(miqt_from_cabi<QSize>(param1));
 	// Cast returned reference into pointer
 	return &_ret;
 }
@@ -117,52 +141,60 @@ QSize* QSize_operatorDivideAssign(QSize* self, double c) {
 	return &_ret;
 }
 
-QSizeF* QSize_toSizeF(const QSize* self) {
-	return new QSizeF(self->toSizeF());
+struct miqt_qsizef QSize_toSizeF(struct miqt_qsize self_cabi) {
+	const QSize self_val = miqt_from_cabi<QSize>(self_cabi);
+	const QSize* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsizef>(self->toSizeF());
 }
 
-void QSize_operatorAssign(QSize* self, QSize* param1) {
-	self->operator=(*param1);
+void QSize_operatorAssign(QSize* self, struct miqt_qsize param1) {
+	self->operator=(miqt_from_cabi<QSize>(param1));
 }
 
-void QSize_delete(QSize* self) {
-	delete self;
+struct miqt_qsizef QSizeF_new() {
+	return miqt_to_cabi<struct miqt_qsizef>(QSizeF());
 }
 
-QSizeF* QSizeF_new() {
-	return new (std::nothrow) QSizeF();
+struct miqt_qsizef QSizeF_new2(struct miqt_qsize sz) {
+	return miqt_to_cabi<struct miqt_qsizef>(QSizeF(miqt_from_cabi<QSize>(sz)));
 }
 
-QSizeF* QSizeF_new2(QSize* sz) {
-	return new (std::nothrow) QSizeF(*sz);
+struct miqt_qsizef QSizeF_new3(double w, double h) {
+	return miqt_to_cabi<struct miqt_qsizef>(QSizeF(static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
-QSizeF* QSizeF_new3(double w, double h) {
-	return new (std::nothrow) QSizeF(static_cast<qreal>(w), static_cast<qreal>(h));
+struct miqt_qsizef QSizeF_new4(struct miqt_qsizef param1) {
+	return miqt_to_cabi<struct miqt_qsizef>(QSizeF(miqt_from_cabi<QSizeF>(param1)));
 }
 
-QSizeF* QSizeF_new4(QSizeF* param1) {
-	return new (std::nothrow) QSizeF(*param1);
-}
-
-bool QSizeF_isNull(const QSizeF* self) {
+bool QSizeF_isNull(struct miqt_qsizef self_cabi) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
 	return self->isNull();
 }
 
-bool QSizeF_isEmpty(const QSizeF* self) {
+bool QSizeF_isEmpty(struct miqt_qsizef self_cabi) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
 	return self->isEmpty();
 }
 
-bool QSizeF_isValid(const QSizeF* self) {
+bool QSizeF_isValid(struct miqt_qsizef self_cabi) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
 	return self->isValid();
 }
 
-double QSizeF_width(const QSizeF* self) {
+double QSizeF_width(struct miqt_qsizef self_cabi) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
 	qreal _ret = self->width();
 	return static_cast<double>(_ret);
 }
 
-double QSizeF_height(const QSizeF* self) {
+double QSizeF_height(struct miqt_qsizef self_cabi) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
 	qreal _ret = self->height();
 	return static_cast<double>(_ret);
 }
@@ -179,50 +211,64 @@ void QSizeF_transpose(QSizeF* self) {
 	self->transpose();
 }
 
-QSizeF* QSizeF_transposed(const QSizeF* self) {
-	return new QSizeF(self->transposed());
+struct miqt_qsizef QSizeF_transposed(struct miqt_qsizef self_cabi) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsizef>(self->transposed());
 }
 
 void QSizeF_scale(QSizeF* self, double w, double h, int mode) {
 	self->scale(static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(mode));
 }
 
-void QSizeF_scale2(QSizeF* self, QSizeF* s, int mode) {
-	self->scale(*s, static_cast<Qt::AspectRatioMode>(mode));
+void QSizeF_scale2(QSizeF* self, struct miqt_qsizef s, int mode) {
+	self->scale(miqt_from_cabi<QSizeF>(s), static_cast<Qt::AspectRatioMode>(mode));
 }
 
-QSizeF* QSizeF_scaled(const QSizeF* self, double w, double h, int mode) {
-	return new QSizeF(self->scaled(static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(mode)));
+struct miqt_qsizef QSizeF_scaled(struct miqt_qsizef self_cabi, double w, double h, int mode) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsizef>(self->scaled(static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(mode)));
 }
 
-QSizeF* QSizeF_scaled2(const QSizeF* self, QSizeF* s, int mode) {
-	return new QSizeF(self->scaled(*s, static_cast<Qt::AspectRatioMode>(mode)));
+struct miqt_qsizef QSizeF_scaled2(struct miqt_qsizef self_cabi, struct miqt_qsizef s, int mode) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsizef>(self->scaled(miqt_from_cabi<QSizeF>(s), static_cast<Qt::AspectRatioMode>(mode)));
 }
 
-QSizeF* QSizeF_expandedTo(const QSizeF* self, QSizeF* param1) {
-	return new QSizeF(self->expandedTo(*param1));
+struct miqt_qsizef QSizeF_expandedTo(struct miqt_qsizef self_cabi, struct miqt_qsizef param1) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsizef>(self->expandedTo(miqt_from_cabi<QSizeF>(param1)));
 }
 
-QSizeF* QSizeF_boundedTo(const QSizeF* self, QSizeF* param1) {
-	return new QSizeF(self->boundedTo(*param1));
+struct miqt_qsizef QSizeF_boundedTo(struct miqt_qsizef self_cabi, struct miqt_qsizef param1) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsizef>(self->boundedTo(miqt_from_cabi<QSizeF>(param1)));
 }
 
-QSizeF* QSizeF_grownBy(const QSizeF* self, QMarginsF* m) {
-	return new QSizeF(self->grownBy(*m));
+struct miqt_qsizef QSizeF_grownBy(struct miqt_qsizef self_cabi, struct miqt_qmarginsf m) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsizef>(self->grownBy(miqt_from_cabi<QMarginsF>(m)));
 }
 
-QSizeF* QSizeF_shrunkBy(const QSizeF* self, QMarginsF* m) {
-	return new QSizeF(self->shrunkBy(*m));
+struct miqt_qsizef QSizeF_shrunkBy(struct miqt_qsizef self_cabi, struct miqt_qmarginsf m) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsizef>(self->shrunkBy(miqt_from_cabi<QMarginsF>(m)));
 }
 
-QSizeF* QSizeF_operatorPlusAssign(QSizeF* self, QSizeF* param1) {
-	QSizeF& _ret = self->operator+=(*param1);
+QSizeF* QSizeF_operatorPlusAssign(QSizeF* self, struct miqt_qsizef param1) {
+	QSizeF& _ret = self->operator+=(miqt_from_cabi<QSizeF>(param1));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QSizeF* QSizeF_operatorMinusAssign(QSizeF* self, QSizeF* param1) {
-	QSizeF& _ret = self->operator-=(*param1);
+QSizeF* QSizeF_operatorMinusAssign(QSizeF* self, struct miqt_qsizef param1) {
+	QSizeF& _ret = self->operator-=(miqt_from_cabi<QSizeF>(param1));
 	// Cast returned reference into pointer
 	return &_ret;
 }
@@ -239,15 +285,13 @@ QSizeF* QSizeF_operatorDivideAssign(QSizeF* self, double c) {
 	return &_ret;
 }
 
-QSize* QSizeF_toSize(const QSizeF* self) {
-	return new QSize(self->toSize());
+struct miqt_qsize QSizeF_toSize(struct miqt_qsizef self_cabi) {
+	const QSizeF self_val = miqt_from_cabi<QSizeF>(self_cabi);
+	const QSizeF* self = &self_val;
+	return miqt_to_cabi<struct miqt_qsize>(self->toSize());
 }
 
-void QSizeF_operatorAssign(QSizeF* self, QSizeF* param1) {
-	self->operator=(*param1);
-}
-
-void QSizeF_delete(QSizeF* self) {
-	delete self;
+void QSizeF_operatorAssign(QSizeF* self, struct miqt_qsizef param1) {
+	self->operator=(miqt_from_cabi<QSizeF>(param1));
 }
 

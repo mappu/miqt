@@ -17,7 +17,7 @@ extern "C" {
 
 bool miqt_exec_callback_QPagedPaintDevice_newPage(QPagedPaintDevice*, intptr_t);
 void miqt_exec_callback_QPagedPaintDevice_setPageSizeWithSize(QPagedPaintDevice*, intptr_t, int);
-void miqt_exec_callback_QPagedPaintDevice_setPageSizeMM(QPagedPaintDevice*, intptr_t, QSizeF*);
+void miqt_exec_callback_QPagedPaintDevice_setPageSizeMM(QPagedPaintDevice*, intptr_t, struct miqt_qsizef);
 void miqt_exec_callback_QPagedPaintDevice_setMargins(QPagedPaintDevice*, intptr_t, QPagedPaintDevice__Margins*);
 int miqt_exec_callback_QPagedPaintDevice_devType(const QPagedPaintDevice*, intptr_t);
 QPaintEngine* miqt_exec_callback_QPagedPaintDevice_paintEngine(const QPagedPaintDevice*, intptr_t);
@@ -77,14 +77,12 @@ public:
 			return;
 		}
 
-		const QSizeF& size_ret = size;
-		// Cast returned reference into pointer
-		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
+		struct miqt_qsizef sigval1 = miqt_to_cabi<struct miqt_qsizef>(size);
 		miqt_exec_callback_QPagedPaintDevice_setPageSizeMM(this, handle__setPageSizeMM, sigval1);
 
 	}
 
-	friend void QPagedPaintDevice_virtualbase_setPageSizeMM(void* self, QSizeF* size);
+	friend void QPagedPaintDevice_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMargins = 0;
@@ -227,12 +225,12 @@ bool QPagedPaintDevice_setPageOrientation(QPagedPaintDevice* self, int orientati
 	return self->setPageOrientation(static_cast<QPageLayout::Orientation>(orientation));
 }
 
-bool QPagedPaintDevice_setPageMargins(QPagedPaintDevice* self, QMarginsF* margins) {
-	return self->setPageMargins(*margins);
+bool QPagedPaintDevice_setPageMargins(QPagedPaintDevice* self, struct miqt_qmarginsf margins) {
+	return self->setPageMargins(miqt_from_cabi<QMarginsF>(margins));
 }
 
-bool QPagedPaintDevice_setPageMargins2(QPagedPaintDevice* self, QMarginsF* margins, int units) {
-	return self->setPageMargins(*margins, static_cast<QPageLayout::Unit>(units));
+bool QPagedPaintDevice_setPageMargins2(QPagedPaintDevice* self, struct miqt_qmarginsf margins, int units) {
+	return self->setPageMargins(miqt_from_cabi<QMarginsF>(margins), static_cast<QPageLayout::Unit>(units));
 }
 
 QPageLayout* QPagedPaintDevice_pageLayout(const QPagedPaintDevice* self) {
@@ -248,12 +246,12 @@ int QPagedPaintDevice_pageSize(const QPagedPaintDevice* self) {
 	return static_cast<int>(_ret);
 }
 
-void QPagedPaintDevice_setPageSizeMM(QPagedPaintDevice* self, QSizeF* size) {
-	self->setPageSizeMM(*size);
+void QPagedPaintDevice_setPageSizeMM(QPagedPaintDevice* self, struct miqt_qsizef size) {
+	self->setPageSizeMM(miqt_from_cabi<QSizeF>(size));
 }
 
-QSizeF* QPagedPaintDevice_pageSizeMM(const QPagedPaintDevice* self) {
-	return new QSizeF(self->pageSizeMM());
+struct miqt_qsizef QPagedPaintDevice_pageSizeMM(const QPagedPaintDevice* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->pageSizeMM());
 }
 
 void QPagedPaintDevice_setMargins(QPagedPaintDevice* self, QPagedPaintDevice__Margins* margins) {
@@ -298,8 +296,8 @@ bool QPagedPaintDevice_override_virtual_setPageSizeMM(void* self, intptr_t slot)
 	return true;
 }
 
-void QPagedPaintDevice_virtualbase_setPageSizeMM(void* self, QSizeF* size) {
-	static_cast<MiqtVirtualQPagedPaintDevice*>(self)->QPagedPaintDevice::setPageSizeMM(*size);
+void QPagedPaintDevice_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size) {
+	static_cast<MiqtVirtualQPagedPaintDevice*>(self)->QPagedPaintDevice::setPageSizeMM(miqt_from_cabi<QSizeF>(size));
 }
 
 bool QPagedPaintDevice_override_virtual_setMargins(void* self, intptr_t slot) {

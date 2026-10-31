@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -95,10 +96,9 @@ func (this *QwtPlotHistogram) Rtti() int {
 	return (int)(C.QwtPlotHistogram_rtti(this.h))
 }
 
-func (this *QwtPlotHistogram) SetPen(param1 *qt.QColor) {
+func (this *QwtPlotHistogram) SetPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotHistogram_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotHistogram_setPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotHistogram) SetPenWithPen(pen *qt.QPen) {
@@ -167,31 +167,26 @@ func (this *QwtPlotHistogram) Symbol() *QwtColumnSymbol {
 	return newQwtColumnSymbol(C.QwtPlotHistogram_symbol(this.h))
 }
 
-func (this *QwtPlotHistogram) BoundingRect() *qt.QRectF {
+func (this *QwtPlotHistogram) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotHistogram_boundingRect(this.h)))
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotHistogram_boundingRect(this.h))
+}
+
+func (this *QwtPlotHistogram) LegendIcon(index int, param2 qt.QSizeF) *QwtGraphic {
+	defer runtime.KeepAlive(this)
+	_goptr := newQwtGraphic(C.QwtPlotHistogram_legendIcon(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qsizef](param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QwtPlotHistogram) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+func (this *QwtPlotHistogram) SetPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	_goptr := newQwtGraphic(C.QwtPlotHistogram_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	C.QwtPlotHistogram_setPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotHistogram) SetPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotHistogram) SetPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotHistogram_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
-}
-
-func (this *QwtPlotHistogram) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotHistogram_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotHistogram_setPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
 // Delete this object from C++ memory.

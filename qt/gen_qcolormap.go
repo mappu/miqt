@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -102,28 +103,23 @@ func (this *QColormap) Size() int {
 	return (int)(C.QColormap_size(this.h))
 }
 
-func (this *QColormap) Pixel(color *QColor) uint {
+func (this *QColormap) Pixel(color QColor) uint {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	return (uint)(C.QColormap_pixel(this.h, color.cPointer()))
+	return (uint)(C.QColormap_pixel(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color)))
 }
 
-func (this *QColormap) ColorAt(pixel uint) *QColor {
+func (this *QColormap) ColorAt(pixel uint) QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QColormap_colorAt(this.h, (C.uint)(pixel)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QColormap_colorAt(this.h, (C.uint)(pixel)))
 }
 
 func (this *QColormap) Colormap() []QColor {
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QColormap_colormap(this.h)
 	_ret := make([]QColor, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QColor)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qcolor)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_goptr := newQColor(_outCast[i])
-		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_vv_goptr
+		_ret[i] = libmiqt.ValueCast[QColor](_outCast[i])
 	}
 	return _ret
 }

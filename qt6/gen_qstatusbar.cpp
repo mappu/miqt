@@ -49,8 +49,8 @@ void miqt_exec_callback_QStatusBar_resizeEvent(QStatusBar*, intptr_t, QResizeEve
 bool miqt_exec_callback_QStatusBar_event(QStatusBar*, intptr_t, QEvent*);
 int miqt_exec_callback_QStatusBar_devType(const QStatusBar*, intptr_t);
 void miqt_exec_callback_QStatusBar_setVisible(QStatusBar*, intptr_t, bool);
-QSize* miqt_exec_callback_QStatusBar_sizeHint(const QStatusBar*, intptr_t);
-QSize* miqt_exec_callback_QStatusBar_minimumSizeHint(const QStatusBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QStatusBar_sizeHint(const QStatusBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QStatusBar_minimumSizeHint(const QStatusBar*, intptr_t);
 int miqt_exec_callback_QStatusBar_heightForWidth(const QStatusBar*, intptr_t, int);
 bool miqt_exec_callback_QStatusBar_hasHeightForWidth(const QStatusBar*, intptr_t);
 QPaintEngine* miqt_exec_callback_QStatusBar_paintEngine(const QStatusBar*, intptr_t);
@@ -210,13 +210,11 @@ public:
 			return QStatusBar::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QStatusBar_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QStatusBar_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QStatusBar_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QStatusBar_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -227,13 +225,11 @@ public:
 			return QStatusBar::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QStatusBar_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QStatusBar_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QStatusBar_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QStatusBar_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1151,8 +1147,8 @@ bool QStatusBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QStatusBar_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQStatusBar*>(self)->QStatusBar::sizeHint());
+struct miqt_qsize QStatusBar_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQStatusBar*>(self)->QStatusBar::sizeHint());
 }
 
 bool QStatusBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1165,8 +1161,8 @@ bool QStatusBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QStatusBar_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQStatusBar*>(self)->QStatusBar::minimumSizeHint());
+struct miqt_qsize QStatusBar_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQStatusBar*>(self)->QStatusBar::minimumSizeHint());
 }
 
 bool QStatusBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1714,10 +1710,6 @@ bool QStatusBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQStatusBar*>(self)->QStatusBar::disconnectNotify(*signal);
-}
-
-QSize* QStatusBar_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QStatusBar_virtualreturncopy_QVariant(QVariant* src) {

@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -58,10 +59,9 @@ func UnsafeNewQwtPixelMatrix(h unsafe.Pointer) *QwtPixelMatrix {
 }
 
 // NewQwtPixelMatrix constructs a new QwtPixelMatrix object.
-func NewQwtPixelMatrix(rect *qt.QRect) *QwtPixelMatrix {
-	defer runtime.KeepAlive(rect)
+func NewQwtPixelMatrix(rect qt.QRect) *QwtPixelMatrix {
 
-	return newQwtPixelMatrix(C.QwtPixelMatrix_new((*C.QRect)(rect.UnsafePointer())))
+	return newQwtPixelMatrix(C.QwtPixelMatrix_new(libmiqt.ValueCast[C.struct_miqt_qrect](rect)))
 }
 
 // NewQwtPixelMatrix2 constructs a new QwtPixelMatrix object.
@@ -71,17 +71,14 @@ func NewQwtPixelMatrix2(param1 *QwtPixelMatrix) *QwtPixelMatrix {
 	return newQwtPixelMatrix(C.QwtPixelMatrix_new2(param1.cPointer()))
 }
 
-func (this *QwtPixelMatrix) SetRect(rect *qt.QRect) {
+func (this *QwtPixelMatrix) SetRect(rect qt.QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QwtPixelMatrix_setRect(this.h, (*C.QRect)(rect.UnsafePointer()))
+	C.QwtPixelMatrix_setRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
-func (this *QwtPixelMatrix) Rect() *qt.QRect {
+func (this *QwtPixelMatrix) Rect() qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPixelMatrix_rect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtPixelMatrix_rect(this.h))
 }
 
 func (this *QwtPixelMatrix) TestPixel(x int, y int) bool {

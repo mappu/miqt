@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -208,15 +209,12 @@ func (this *QComboBox) SetMinimumContentsLength(characters int) {
 	C.QComboBox_setMinimumContentsLength(this.h, (C.int)(characters))
 }
 
-func (this *QComboBox) IconSize() *QSize {
-	_goptr := newQSize(C.QComboBox_iconSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QComboBox) IconSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QComboBox_iconSize(this.h))
 }
 
-func (this *QComboBox) SetIconSize(size *QSize) {
-	defer runtime.KeepAlive(size)
-	C.QComboBox_setIconSize(this.h, size.cPointer())
+func (this *QComboBox) SetIconSize(size QSize) {
+	C.QComboBox_setIconSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
 func (this *QComboBox) SetPlaceholderText(placeholderText string) {
@@ -282,15 +280,12 @@ func (this *QComboBox) SetModel(model *QAbstractItemModel) {
 	C.QComboBox_setModel(this.h, model.cPointer())
 }
 
-func (this *QComboBox) RootModelIndex() *QModelIndex {
-	_goptr := newQModelIndex(C.QComboBox_rootModelIndex(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QComboBox) RootModelIndex() QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QComboBox_rootModelIndex(this.h))
 }
 
-func (this *QComboBox) SetRootModelIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QComboBox_setRootModelIndex(this.h, index.cPointer())
+func (this *QComboBox) SetRootModelIndex(index QModelIndex) {
+	C.QComboBox_setRootModelIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QComboBox) ModelColumn() int {
@@ -435,16 +430,12 @@ func (this *QComboBox) SetView(itemView *QAbstractItemView) {
 	C.QComboBox_setView(this.h, itemView.cPointer())
 }
 
-func (this *QComboBox) SizeHint() *QSize {
-	_goptr := newQSize(C.QComboBox_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QComboBox) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QComboBox_sizeHint(this.h))
 }
 
-func (this *QComboBox) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QComboBox_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QComboBox) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QComboBox_minimumSizeHint(this.h))
 }
 
 func (this *QComboBox) ShowPopup() {
@@ -1003,14 +994,12 @@ func (this *QComboBox) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QComboBox) callVirtualBase_SizeHint() *QSize {
+func (this *QComboBox) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QComboBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QComboBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QComboBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QComboBox) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QComboBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1018,27 +1007,24 @@ func (this *QComboBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QComboBox_sizeHint
-func miqt_exec_callback_QComboBox_sizeHint(self *C.QComboBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QComboBox_sizeHint(self *C.QComboBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QComboBox{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QComboBox_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QComboBox) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QComboBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QComboBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QComboBox) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QComboBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QComboBox) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QComboBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1046,16 +1032,15 @@ func (this *QComboBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QComboBox_minimumSizeHint
-func miqt_exec_callback_QComboBox_minimumSizeHint(self *C.QComboBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QComboBox_minimumSizeHint(self *C.QComboBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QComboBox{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QComboBox_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2094,7 +2079,6 @@ func miqt_exec_callback_QComboBox_initPainter(self *C.QComboBox, cb C.intptr_t, 
 }
 
 func (this *QComboBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QComboBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

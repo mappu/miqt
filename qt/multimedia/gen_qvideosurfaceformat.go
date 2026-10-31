@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -79,10 +80,9 @@ func NewQVideoSurfaceFormat() *QVideoSurfaceFormat {
 }
 
 // NewQVideoSurfaceFormat2 constructs a new QVideoSurfaceFormat object.
-func NewQVideoSurfaceFormat2(size *qt.QSize, pixelFormat QVideoFrame__PixelFormat) *QVideoSurfaceFormat {
-	defer runtime.KeepAlive(size)
+func NewQVideoSurfaceFormat2(size qt.QSize, pixelFormat QVideoFrame__PixelFormat) *QVideoSurfaceFormat {
 
-	return newQVideoSurfaceFormat(C.QVideoSurfaceFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat)))
+	return newQVideoSurfaceFormat(C.QVideoSurfaceFormat_new2(libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(pixelFormat)))
 }
 
 // NewQVideoSurfaceFormat3 constructs a new QVideoSurfaceFormat object.
@@ -93,10 +93,9 @@ func NewQVideoSurfaceFormat3(format *QVideoSurfaceFormat) *QVideoSurfaceFormat {
 }
 
 // NewQVideoSurfaceFormat4 constructs a new QVideoSurfaceFormat object.
-func NewQVideoSurfaceFormat4(size *qt.QSize, pixelFormat QVideoFrame__PixelFormat, handleType QAbstractVideoBuffer__HandleType) *QVideoSurfaceFormat {
-	defer runtime.KeepAlive(size)
+func NewQVideoSurfaceFormat4(size qt.QSize, pixelFormat QVideoFrame__PixelFormat, handleType QAbstractVideoBuffer__HandleType) *QVideoSurfaceFormat {
 
-	return newQVideoSurfaceFormat(C.QVideoSurfaceFormat_new4((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), (C.int)(handleType)))
+	return newQVideoSurfaceFormat(C.QVideoSurfaceFormat_new4(libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(pixelFormat), (C.int)(handleType)))
 }
 
 func (this *QVideoSurfaceFormat) OperatorAssign(format *QVideoSurfaceFormat) {
@@ -132,17 +131,14 @@ func (this *QVideoSurfaceFormat) HandleType() QAbstractVideoBuffer__HandleType {
 	return (QAbstractVideoBuffer__HandleType)(C.QVideoSurfaceFormat_handleType(this.h))
 }
 
-func (this *QVideoSurfaceFormat) FrameSize() *qt.QSize {
+func (this *QVideoSurfaceFormat) FrameSize() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoSurfaceFormat_frameSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QVideoSurfaceFormat_frameSize(this.h))
 }
 
-func (this *QVideoSurfaceFormat) SetFrameSize(size *qt.QSize) {
+func (this *QVideoSurfaceFormat) SetFrameSize(size qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QVideoSurfaceFormat_setFrameSize(this.h, (*C.QSize)(size.UnsafePointer()))
+	C.QVideoSurfaceFormat_setFrameSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
 func (this *QVideoSurfaceFormat) SetFrameSize2(width int, height int) {
@@ -160,17 +156,14 @@ func (this *QVideoSurfaceFormat) FrameHeight() int {
 	return (int)(C.QVideoSurfaceFormat_frameHeight(this.h))
 }
 
-func (this *QVideoSurfaceFormat) Viewport() *qt.QRect {
+func (this *QVideoSurfaceFormat) Viewport() qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QVideoSurfaceFormat_viewport(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QVideoSurfaceFormat_viewport(this.h))
 }
 
-func (this *QVideoSurfaceFormat) SetViewport(viewport *qt.QRect) {
+func (this *QVideoSurfaceFormat) SetViewport(viewport qt.QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewport)
-	C.QVideoSurfaceFormat_setViewport(this.h, (*C.QRect)(viewport.UnsafePointer()))
+	C.QVideoSurfaceFormat_setViewport(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](viewport))
 }
 
 func (this *QVideoSurfaceFormat) ScanLineDirection() QVideoSurfaceFormat__Direction {
@@ -193,17 +186,14 @@ func (this *QVideoSurfaceFormat) SetFrameRate(rate float64) {
 	C.QVideoSurfaceFormat_setFrameRate(this.h, (C.double)(rate))
 }
 
-func (this *QVideoSurfaceFormat) PixelAspectRatio() *qt.QSize {
+func (this *QVideoSurfaceFormat) PixelAspectRatio() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoSurfaceFormat_pixelAspectRatio(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QVideoSurfaceFormat_pixelAspectRatio(this.h))
 }
 
-func (this *QVideoSurfaceFormat) SetPixelAspectRatio(ratio *qt.QSize) {
+func (this *QVideoSurfaceFormat) SetPixelAspectRatio(ratio qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(ratio)
-	C.QVideoSurfaceFormat_setPixelAspectRatio(this.h, (*C.QSize)(ratio.UnsafePointer()))
+	C.QVideoSurfaceFormat_setPixelAspectRatio(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](ratio))
 }
 
 func (this *QVideoSurfaceFormat) SetPixelAspectRatio2(width int, height int) {
@@ -231,11 +221,9 @@ func (this *QVideoSurfaceFormat) SetMirrored(mirrored bool) {
 	C.QVideoSurfaceFormat_setMirrored(this.h, (C.bool)(mirrored))
 }
 
-func (this *QVideoSurfaceFormat) SizeHint() *qt.QSize {
+func (this *QVideoSurfaceFormat) SizeHint() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoSurfaceFormat_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QVideoSurfaceFormat_sizeHint(this.h))
 }
 
 func (this *QVideoSurfaceFormat) PropertyNames() [][]byte {

@@ -110,11 +110,11 @@ int QAccessibleInterface_childCount(const QAccessibleInterface* self);
 int QAccessibleInterface_indexOfChild(const QAccessibleInterface* self, QAccessibleInterface* param1);
 struct miqt_string QAccessibleInterface_text(const QAccessibleInterface* self, int t);
 void QAccessibleInterface_setText(QAccessibleInterface* self, int t, struct miqt_string text);
-QRect* QAccessibleInterface_rect(const QAccessibleInterface* self);
+struct miqt_qrect QAccessibleInterface_rect(const QAccessibleInterface* self);
 int QAccessibleInterface_role(const QAccessibleInterface* self);
 QAccessible__State* QAccessibleInterface_state(const QAccessibleInterface* self);
-QColor* QAccessibleInterface_foregroundColor(const QAccessibleInterface* self);
-QColor* QAccessibleInterface_backgroundColor(const QAccessibleInterface* self);
+struct miqt_qcolor QAccessibleInterface_foregroundColor(const QAccessibleInterface* self);
+struct miqt_qcolor QAccessibleInterface_backgroundColor(const QAccessibleInterface* self);
 QAccessibleTextInterface* QAccessibleInterface_textInterface(QAccessibleInterface* self);
 QAccessibleEditableTextInterface* QAccessibleInterface_editableTextInterface(QAccessibleInterface* self);
 QAccessibleValueInterface* QAccessibleInterface_valueInterface(QAccessibleInterface* self);
@@ -138,8 +138,8 @@ struct miqt_string QAccessibleTextInterface_textBeforeOffset(const QAccessibleTe
 struct miqt_string QAccessibleTextInterface_textAfterOffset(const QAccessibleTextInterface* self, int offset, int boundaryType, int* startOffset, int* endOffset);
 struct miqt_string QAccessibleTextInterface_textAtOffset(const QAccessibleTextInterface* self, int offset, int boundaryType, int* startOffset, int* endOffset);
 int QAccessibleTextInterface_characterCount(const QAccessibleTextInterface* self);
-QRect* QAccessibleTextInterface_characterRect(const QAccessibleTextInterface* self, int offset);
-int QAccessibleTextInterface_offsetAtPoint(const QAccessibleTextInterface* self, QPoint* point);
+struct miqt_qrect QAccessibleTextInterface_characterRect(const QAccessibleTextInterface* self, int offset);
+int QAccessibleTextInterface_offsetAtPoint(const QAccessibleTextInterface* self, struct miqt_qpoint point);
 void QAccessibleTextInterface_scrollToSubstring(QAccessibleTextInterface* self, int startIndex, int endIndex);
 struct miqt_string QAccessibleTextInterface_attributes(const QAccessibleTextInterface* self, int offset, int* startOffset, int* endOffset);
 
@@ -220,8 +220,8 @@ struct miqt_string QAccessibleActionInterface_trUtf83(const char* sourceText, co
 void QAccessibleActionInterface_delete(QAccessibleActionInterface* self);
 
 struct miqt_string QAccessibleImageInterface_imageDescription(const QAccessibleImageInterface* self);
-QSize* QAccessibleImageInterface_imageSize(const QAccessibleImageInterface* self);
-QPoint* QAccessibleImageInterface_imagePosition(const QAccessibleImageInterface* self);
+struct miqt_qsize QAccessibleImageInterface_imageSize(const QAccessibleImageInterface* self);
+struct miqt_qpoint QAccessibleImageInterface_imagePosition(const QAccessibleImageInterface* self);
 
 void QAccessibleImageInterface_delete(QAccessibleImageInterface* self);
 

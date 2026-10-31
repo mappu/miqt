@@ -59,7 +59,7 @@ void miqt_exec_callback_QWebView_selectionChanged(intptr_t);
 void miqt_exec_callback_QWebView_iconChanged(intptr_t);
 void miqt_exec_callback_QWebView_urlChanged(intptr_t, QUrl*);
 QVariant* miqt_exec_callback_QWebView_inputMethodQuery(const QWebView*, intptr_t, int);
-QSize* miqt_exec_callback_QWebView_sizeHint(const QWebView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWebView_sizeHint(const QWebView*, intptr_t);
 bool miqt_exec_callback_QWebView_event(QWebView*, intptr_t, QEvent*);
 void miqt_exec_callback_QWebView_resizeEvent(QWebView*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QWebView_paintEvent(QWebView*, intptr_t, QPaintEvent*);
@@ -83,7 +83,7 @@ void miqt_exec_callback_QWebView_inputMethodEvent(QWebView*, intptr_t, QInputMet
 bool miqt_exec_callback_QWebView_focusNextPrevChild(QWebView*, intptr_t, bool);
 int miqt_exec_callback_QWebView_devType(const QWebView*, intptr_t);
 void miqt_exec_callback_QWebView_setVisible(QWebView*, intptr_t, bool);
-QSize* miqt_exec_callback_QWebView_minimumSizeHint(const QWebView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWebView_minimumSizeHint(const QWebView*, intptr_t);
 int miqt_exec_callback_QWebView_heightForWidth(const QWebView*, intptr_t, int);
 bool miqt_exec_callback_QWebView_hasHeightForWidth(const QWebView*, intptr_t);
 QPaintEngine* miqt_exec_callback_QWebView_paintEngine(const QWebView*, intptr_t);
@@ -146,13 +146,11 @@ public:
 			return QWebView::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWebView_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWebView_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWebView_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QWebView_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -550,13 +548,11 @@ public:
 			return QWebView::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWebView_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWebView_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWebView_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QWebView_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1087,8 +1083,8 @@ QVariant* QWebView_inputMethodQuery(const QWebView* self, int property) {
 	return new QVariant(self->inputMethodQuery(static_cast<Qt::InputMethodQuery>(property)));
 }
 
-QSize* QWebView_sizeHint(const QWebView* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QWebView_sizeHint(const QWebView* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 double QWebView_zoomFactor(const QWebView* self) {
@@ -1374,8 +1370,8 @@ bool QWebView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWebView_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWebView*>(self)->QWebView::sizeHint());
+struct miqt_qsize QWebView_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWebView*>(self)->QWebView::sizeHint());
 }
 
 bool QWebView_override_virtual_event(void* self, intptr_t slot) {
@@ -1710,8 +1706,8 @@ bool QWebView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWebView_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWebView*>(self)->QWebView::minimumSizeHint());
+struct miqt_qsize QWebView_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWebView*>(self)->QWebView::minimumSizeHint());
 }
 
 bool QWebView_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2025,10 +2021,6 @@ void QWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
 QVariant* QWebView_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
-}
-
-QSize* QWebView_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 void QWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

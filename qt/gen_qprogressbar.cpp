@@ -44,8 +44,8 @@ extern "C" {
 
 void miqt_exec_callback_QProgressBar_valueChanged(intptr_t, int);
 struct miqt_string miqt_exec_callback_QProgressBar_text(const QProgressBar*, intptr_t);
-QSize* miqt_exec_callback_QProgressBar_sizeHint(const QProgressBar*, intptr_t);
-QSize* miqt_exec_callback_QProgressBar_minimumSizeHint(const QProgressBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QProgressBar_sizeHint(const QProgressBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QProgressBar_minimumSizeHint(const QProgressBar*, intptr_t);
 bool miqt_exec_callback_QProgressBar_event(QProgressBar*, intptr_t, QEvent*);
 void miqt_exec_callback_QProgressBar_paintEvent(QProgressBar*, intptr_t, QPaintEvent*);
 int miqt_exec_callback_QProgressBar_devType(const QProgressBar*, intptr_t);
@@ -129,13 +129,11 @@ public:
 			return QProgressBar::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QProgressBar_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QProgressBar_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QProgressBar_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QProgressBar_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -146,13 +144,11 @@ public:
 			return QProgressBar::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QProgressBar_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QProgressBar_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QProgressBar_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QProgressBar_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -1014,12 +1010,12 @@ void QProgressBar_setAlignment(QProgressBar* self, int alignment) {
 	self->setAlignment(static_cast<Qt::Alignment>(alignment));
 }
 
-QSize* QProgressBar_sizeHint(const QProgressBar* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QProgressBar_sizeHint(const QProgressBar* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QProgressBar_minimumSizeHint(const QProgressBar* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QProgressBar_minimumSizeHint(const QProgressBar* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 int QProgressBar_orientation(const QProgressBar* self) {
@@ -1174,8 +1170,8 @@ bool QProgressBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QProgressBar_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQProgressBar*>(self)->QProgressBar::sizeHint());
+struct miqt_qsize QProgressBar_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQProgressBar*>(self)->QProgressBar::sizeHint());
 }
 
 bool QProgressBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1188,8 +1184,8 @@ bool QProgressBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QProgressBar_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQProgressBar*>(self)->QProgressBar::minimumSizeHint());
+struct miqt_qsize QProgressBar_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQProgressBar*>(self)->QProgressBar::minimumSizeHint());
 }
 
 bool QProgressBar_override_virtual_event(void* self, intptr_t slot) {
@@ -1821,10 +1817,6 @@ bool QProgressBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQProgressBar*>(self)->QProgressBar::disconnectNotify(*signal);
-}
-
-QSize* QProgressBar_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QProgressBar_virtualreturncopy_QVariant(QVariant* src) {

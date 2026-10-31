@@ -49,14 +49,14 @@ void QwtPlotMarker_virtbase(QwtPlotMarker* src, QwtPlotItem** outptr_QwtPlotItem
 int QwtPlotMarker_rtti(const QwtPlotMarker* self);
 double QwtPlotMarker_xValue(const QwtPlotMarker* self);
 double QwtPlotMarker_yValue(const QwtPlotMarker* self);
-QPointF* QwtPlotMarker_value(const QwtPlotMarker* self);
+struct miqt_qpointf QwtPlotMarker_value(const QwtPlotMarker* self);
 void QwtPlotMarker_setXValue(QwtPlotMarker* self, double xValue);
 void QwtPlotMarker_setYValue(QwtPlotMarker* self, double yValue);
 void QwtPlotMarker_setValue(QwtPlotMarker* self, double param1, double param2);
-void QwtPlotMarker_setValueWithValue(QwtPlotMarker* self, QPointF* value);
+void QwtPlotMarker_setValueWithValue(QwtPlotMarker* self, struct miqt_qpointf value);
 void QwtPlotMarker_setLineStyle(QwtPlotMarker* self, int lineStyle);
 int QwtPlotMarker_lineStyle(const QwtPlotMarker* self);
-void QwtPlotMarker_setLinePen(QwtPlotMarker* self, QColor* param1);
+void QwtPlotMarker_setLinePen(QwtPlotMarker* self, struct miqt_qcolor param1);
 void QwtPlotMarker_setLinePenWithLinePen(QwtPlotMarker* self, QPen* linePen);
 QPen* QwtPlotMarker_linePen(const QwtPlotMarker* self);
 void QwtPlotMarker_setSymbol(QwtPlotMarker* self, QwtSymbol* symbol);
@@ -69,12 +69,12 @@ void QwtPlotMarker_setLabelOrientation(QwtPlotMarker* self, int labelOrientation
 int QwtPlotMarker_labelOrientation(const QwtPlotMarker* self);
 void QwtPlotMarker_setSpacing(QwtPlotMarker* self, int spacing);
 int QwtPlotMarker_spacing(const QwtPlotMarker* self);
-QRectF* QwtPlotMarker_boundingRect(const QwtPlotMarker* self);
-QwtGraphic* QwtPlotMarker_legendIcon(const QwtPlotMarker* self, int index, QSizeF* param2);
-void QwtPlotMarker_drawLines(const QwtPlotMarker* self, QPainter* param1, QRectF* param2, QPointF* param3);
-void QwtPlotMarker_drawLabel(const QwtPlotMarker* self, QPainter* param1, QRectF* param2, QPointF* param3);
-void QwtPlotMarker_setLinePen2(QwtPlotMarker* self, QColor* param1, double width);
-void QwtPlotMarker_setLinePen3(QwtPlotMarker* self, QColor* param1, double width, int param3);
+struct miqt_qrectf QwtPlotMarker_boundingRect(const QwtPlotMarker* self);
+QwtGraphic* QwtPlotMarker_legendIcon(const QwtPlotMarker* self, int index, struct miqt_qsizef param2);
+void QwtPlotMarker_drawLines(const QwtPlotMarker* self, QPainter* param1, struct miqt_qrectf param2, struct miqt_qpointf param3);
+void QwtPlotMarker_drawLabel(const QwtPlotMarker* self, QPainter* param1, struct miqt_qrectf param2, struct miqt_qpointf param3);
+void QwtPlotMarker_setLinePen2(QwtPlotMarker* self, struct miqt_qcolor param1, double width);
+void QwtPlotMarker_setLinePen3(QwtPlotMarker* self, struct miqt_qcolor param1, double width, int param3);
 
 void QwtPlotMarker_delete(QwtPlotMarker* self);
 

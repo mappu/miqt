@@ -103,7 +103,7 @@ bool QPdfWriter_virtualbase_setPageSize(void* self, QPageSize* pageSize);
 bool QPdfWriter_override_virtual_setPageOrientation(void* self, intptr_t slot);
 bool QPdfWriter_virtualbase_setPageOrientation(void* self, int orientation);
 bool QPdfWriter_override_virtual_setPageMargins(void* self, intptr_t slot);
-bool QPdfWriter_virtualbase_setPageMargins(void* self, QMarginsF* margins, int units);
+bool QPdfWriter_virtualbase_setPageMargins(void* self, struct miqt_qmarginsf margins, int units);
 bool QPdfWriter_override_virtual_setPageRanges(void* self, intptr_t slot);
 void QPdfWriter_virtualbase_setPageRanges(void* self, QPageRanges* ranges);
 bool QPdfWriter_override_virtual_devType(void* self, intptr_t slot);

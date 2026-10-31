@@ -56,8 +56,8 @@ QBitmap* miqt_exec_callback_QwtPanner_contentsMask(const QwtPanner*, intptr_t);
 QPixmap* miqt_exec_callback_QwtPanner_grab(const QwtPanner*, intptr_t);
 int miqt_exec_callback_QwtPanner_devType(const QwtPanner*, intptr_t);
 void miqt_exec_callback_QwtPanner_setVisible(QwtPanner*, intptr_t, bool);
-QSize* miqt_exec_callback_QwtPanner_sizeHint(const QwtPanner*, intptr_t);
-QSize* miqt_exec_callback_QwtPanner_minimumSizeHint(const QwtPanner*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtPanner_sizeHint(const QwtPanner*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtPanner_minimumSizeHint(const QwtPanner*, intptr_t);
 int miqt_exec_callback_QwtPanner_heightForWidth(const QwtPanner*, intptr_t, int);
 bool miqt_exec_callback_QwtPanner_hasHeightForWidth(const QwtPanner*, intptr_t);
 QPaintEngine* miqt_exec_callback_QwtPanner_paintEngine(const QwtPanner*, intptr_t);
@@ -304,13 +304,11 @@ public:
 			return QwtPanner::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtPanner_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtPanner_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtPanner_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtPanner_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -321,13 +319,11 @@ public:
 			return QwtPanner::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtPanner_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtPanner_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtPanner_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtPanner_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1367,8 +1363,8 @@ bool QwtPanner_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtPanner_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtPanner*>(self)->QwtPanner::sizeHint());
+struct miqt_qsize QwtPanner_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtPanner*>(self)->QwtPanner::sizeHint());
 }
 
 bool QwtPanner_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1381,8 +1377,8 @@ bool QwtPanner_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtPanner_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtPanner*>(self)->QwtPanner::minimumSizeHint());
+struct miqt_qsize QwtPanner_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtPanner*>(self)->QwtPanner::minimumSizeHint());
 }
 
 bool QwtPanner_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1966,10 +1962,6 @@ QBitmap* QwtPanner_virtualreturncopy_QBitmap(QBitmap* src) {
 
 QPixmap* QwtPanner_virtualreturncopy_QPixmap(QPixmap* src) {
 	return new QPixmap(*src);
-}
-
-QSize* QwtPanner_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtPanner_virtualreturncopy_QVariant(QVariant* src) {

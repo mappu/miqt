@@ -73,7 +73,7 @@ void miqt_exec_callback_QPlainTextEdit_redoAvailable(intptr_t, bool);
 void miqt_exec_callback_QPlainTextEdit_copyAvailable(intptr_t, bool);
 void miqt_exec_callback_QPlainTextEdit_selectionChanged(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_cursorPositionChanged(intptr_t);
-void miqt_exec_callback_QPlainTextEdit_updateRequest(intptr_t, QRect*, int);
+void miqt_exec_callback_QPlainTextEdit_updateRequest(intptr_t, struct miqt_qrect, int);
 void miqt_exec_callback_QPlainTextEdit_blockCountChanged(intptr_t, int);
 void miqt_exec_callback_QPlainTextEdit_modificationChanged(intptr_t, bool);
 QVariant* miqt_exec_callback_QPlainTextEdit_loadResource(QPlainTextEdit*, intptr_t, int, QUrl*);
@@ -105,12 +105,12 @@ void miqt_exec_callback_QPlainTextEdit_insertFromMimeData(QPlainTextEdit*, intpt
 void miqt_exec_callback_QPlainTextEdit_inputMethodEvent(QPlainTextEdit*, intptr_t, QInputMethodEvent*);
 void miqt_exec_callback_QPlainTextEdit_scrollContentsBy(QPlainTextEdit*, intptr_t, int, int);
 void miqt_exec_callback_QPlainTextEdit_doSetTextCursor(QPlainTextEdit*, intptr_t, QTextCursor*);
-QSize* miqt_exec_callback_QPlainTextEdit_minimumSizeHint(const QPlainTextEdit*, intptr_t);
-QSize* miqt_exec_callback_QPlainTextEdit_sizeHint(const QPlainTextEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPlainTextEdit_minimumSizeHint(const QPlainTextEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPlainTextEdit_sizeHint(const QPlainTextEdit*, intptr_t);
 void miqt_exec_callback_QPlainTextEdit_setupViewport(QPlainTextEdit*, intptr_t, QWidget*);
 bool miqt_exec_callback_QPlainTextEdit_eventFilter(QPlainTextEdit*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QPlainTextEdit_viewportEvent(QPlainTextEdit*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QPlainTextEdit_viewportSizeHint(const QPlainTextEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPlainTextEdit_viewportSizeHint(const QPlainTextEdit*, intptr_t);
 void miqt_exec_callback_QPlainTextEdit_initStyleOption(const QPlainTextEdit*, intptr_t, QStyleOptionFrame*);
 int miqt_exec_callback_QPlainTextEdit_devType(const QPlainTextEdit*, intptr_t);
 void miqt_exec_callback_QPlainTextEdit_setVisible(QPlainTextEdit*, intptr_t, bool);
@@ -134,15 +134,15 @@ void miqt_exec_callback_QPlainTextEdit_customEvent(QPlainTextEdit*, intptr_t, QE
 void miqt_exec_callback_QPlainTextEdit_connectNotify(QPlainTextEdit*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QPlainTextEdit_disconnectNotify(QPlainTextEdit*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QPlainTextDocumentLayout_draw(QPlainTextDocumentLayout*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
-int miqt_exec_callback_QPlainTextDocumentLayout_hitTest(const QPlainTextDocumentLayout*, intptr_t, QPointF*, int);
+int miqt_exec_callback_QPlainTextDocumentLayout_hitTest(const QPlainTextDocumentLayout*, intptr_t, struct miqt_qpointf, int);
 int miqt_exec_callback_QPlainTextDocumentLayout_pageCount(const QPlainTextDocumentLayout*, intptr_t);
-QSizeF* miqt_exec_callback_QPlainTextDocumentLayout_documentSize(const QPlainTextDocumentLayout*, intptr_t);
-QRectF* miqt_exec_callback_QPlainTextDocumentLayout_frameBoundingRect(const QPlainTextDocumentLayout*, intptr_t, QTextFrame*);
-QRectF* miqt_exec_callback_QPlainTextDocumentLayout_blockBoundingRect(const QPlainTextDocumentLayout*, intptr_t, QTextBlock*);
+struct miqt_qsizef miqt_exec_callback_QPlainTextDocumentLayout_documentSize(const QPlainTextDocumentLayout*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QPlainTextDocumentLayout_frameBoundingRect(const QPlainTextDocumentLayout*, intptr_t, QTextFrame*);
+struct miqt_qrectf miqt_exec_callback_QPlainTextDocumentLayout_blockBoundingRect(const QPlainTextDocumentLayout*, intptr_t, QTextBlock*);
 void miqt_exec_callback_QPlainTextDocumentLayout_documentChanged(QPlainTextDocumentLayout*, intptr_t, int, int, int);
 void miqt_exec_callback_QPlainTextDocumentLayout_resizeInlineObject(QPlainTextDocumentLayout*, intptr_t, QTextInlineObject*, int, QTextFormat*);
 void miqt_exec_callback_QPlainTextDocumentLayout_positionInlineObject(QPlainTextDocumentLayout*, intptr_t, QTextInlineObject*, int, QTextFormat*);
-void miqt_exec_callback_QPlainTextDocumentLayout_drawInlineObject(QPlainTextDocumentLayout*, intptr_t, QPainter*, QRectF*, QTextInlineObject*, int, QTextFormat*);
+void miqt_exec_callback_QPlainTextDocumentLayout_drawInlineObject(QPlainTextDocumentLayout*, intptr_t, QPainter*, struct miqt_qrectf, QTextInlineObject*, int, QTextFormat*);
 bool miqt_exec_callback_QPlainTextDocumentLayout_event(QPlainTextDocumentLayout*, intptr_t, QEvent*);
 bool miqt_exec_callback_QPlainTextDocumentLayout_eventFilter(QPlainTextDocumentLayout*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QPlainTextDocumentLayout_timerEvent(QPlainTextDocumentLayout*, intptr_t, QTimerEvent*);
@@ -670,13 +670,11 @@ public:
 			return QPlainTextEdit::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPlainTextEdit_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPlainTextEdit_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QPlainTextEdit_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -687,13 +685,11 @@ public:
 			return QPlainTextEdit::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPlainTextEdit_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPlainTextEdit_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QPlainTextEdit_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -754,13 +750,11 @@ public:
 			return QPlainTextEdit::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPlainTextEdit_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPlainTextEdit_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QPlainTextEdit_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -1139,13 +1133,13 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend QTextBlock* QPlainTextEdit_protectedbase_firstVisibleBlock(bool* _dynamic_cast_ok, const void* self);
-	friend QPointF* QPlainTextEdit_protectedbase_contentOffset(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QPlainTextEdit_protectedbase_blockBoundingRect(bool* _dynamic_cast_ok, const void* self, QTextBlock* block);
-	friend QRectF* QPlainTextEdit_protectedbase_blockBoundingGeometry(bool* _dynamic_cast_ok, const void* self, QTextBlock* block);
+	friend struct miqt_qpointf QPlainTextEdit_protectedbase_contentOffset(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrectf QPlainTextEdit_protectedbase_blockBoundingRect(bool* _dynamic_cast_ok, const void* self, QTextBlock* block);
+	friend struct miqt_qrectf QPlainTextEdit_protectedbase_blockBoundingGeometry(bool* _dynamic_cast_ok, const void* self, QTextBlock* block);
 	friend QAbstractTextDocumentLayout__PaintContext* QPlainTextEdit_protectedbase_getPaintContext(bool* _dynamic_cast_ok, const void* self);
 	friend void QPlainTextEdit_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range);
 	friend void QPlainTextEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QPlainTextEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QPlainTextEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QPlainTextEdit_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QPlainTextEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QPlainTextEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -1366,24 +1360,24 @@ QMenu* QPlainTextEdit_createStandardContextMenu(QPlainTextEdit* self) {
 	return self->createStandardContextMenu();
 }
 
-QMenu* QPlainTextEdit_createStandardContextMenuWithPosition(QPlainTextEdit* self, QPoint* position) {
-	return self->createStandardContextMenu(*position);
+QMenu* QPlainTextEdit_createStandardContextMenuWithPosition(QPlainTextEdit* self, struct miqt_qpoint position) {
+	return self->createStandardContextMenu(miqt_from_cabi<QPoint>(position));
 }
 
-QTextCursor* QPlainTextEdit_cursorForPosition(const QPlainTextEdit* self, QPoint* pos) {
-	return new QTextCursor(self->cursorForPosition(*pos));
+QTextCursor* QPlainTextEdit_cursorForPosition(const QPlainTextEdit* self, struct miqt_qpoint pos) {
+	return new QTextCursor(self->cursorForPosition(miqt_from_cabi<QPoint>(pos)));
 }
 
-QRect* QPlainTextEdit_cursorRect(const QPlainTextEdit* self, QTextCursor* cursor) {
-	return new QRect(self->cursorRect(*cursor));
+struct miqt_qrect QPlainTextEdit_cursorRect(const QPlainTextEdit* self, QTextCursor* cursor) {
+	return miqt_to_cabi<struct miqt_qrect>(self->cursorRect(*cursor));
 }
 
-QRect* QPlainTextEdit_cursorRect2(const QPlainTextEdit* self) {
-	return new QRect(self->cursorRect());
+struct miqt_qrect QPlainTextEdit_cursorRect2(const QPlainTextEdit* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->cursorRect());
 }
 
-struct miqt_string QPlainTextEdit_anchorAt(const QPlainTextEdit* self, QPoint* pos) {
-	QString _ret = self->anchorAt(*pos);
+struct miqt_string QPlainTextEdit_anchorAt(const QPlainTextEdit* self, struct miqt_qpoint pos) {
+	QString _ret = self->anchorAt(miqt_from_cabi<QPoint>(pos));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1588,15 +1582,13 @@ void QPlainTextEdit_connect_cursorPositionChanged(QPlainTextEdit* self, intptr_t
 	});
 }
 
-void QPlainTextEdit_updateRequest(QPlainTextEdit* self, QRect* rect, int dy) {
-	self->updateRequest(*rect, static_cast<int>(dy));
+void QPlainTextEdit_updateRequest(QPlainTextEdit* self, struct miqt_qrect rect, int dy) {
+	self->updateRequest(miqt_from_cabi<QRect>(rect), static_cast<int>(dy));
 }
 
 void QPlainTextEdit_connect_updateRequest(QPlainTextEdit* self, intptr_t slot) {
 	QPlainTextEdit::connect(self, static_cast<void (QPlainTextEdit::*)(const QRect&, int)>(&QPlainTextEdit::updateRequest), self, [=](const QRect& rect, int dy) {
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(rect);
 		int sigval2 = dy;
 		miqt_exec_callback_QPlainTextEdit_updateRequest(slot, sigval1, sigval2);
 	});
@@ -2083,8 +2075,8 @@ bool QPlainTextEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QPlainTextEdit_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPlainTextEdit*>(self)->QPlainTextEdit::minimumSizeHint());
+struct miqt_qsize QPlainTextEdit_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPlainTextEdit*>(self)->QPlainTextEdit::minimumSizeHint());
 }
 
 bool QPlainTextEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -2097,8 +2089,8 @@ bool QPlainTextEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPlainTextEdit_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPlainTextEdit*>(self)->QPlainTextEdit::sizeHint());
+struct miqt_qsize QPlainTextEdit_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPlainTextEdit*>(self)->QPlainTextEdit::sizeHint());
 }
 
 bool QPlainTextEdit_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -2153,8 +2145,8 @@ bool QPlainTextEdit_override_virtual_viewportSizeHint(void* self, intptr_t slot)
 	return true;
 }
 
-QSize* QPlainTextEdit_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPlainTextEdit*>(self)->QPlainTextEdit::viewportSizeHint());
+struct miqt_qsize QPlainTextEdit_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPlainTextEdit*>(self)->QPlainTextEdit::viewportSizeHint());
 }
 
 bool QPlainTextEdit_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -2470,10 +2462,6 @@ QVariant* QPlainTextEdit_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
 
-QSize* QPlainTextEdit_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QTextBlock* QPlainTextEdit_protectedbase_firstVisibleBlock(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
 	if (self_cast == nullptr) {
@@ -2485,37 +2473,37 @@ QTextBlock* QPlainTextEdit_protectedbase_firstVisibleBlock(bool* _dynamic_cast_o
 	return new QTextBlock(self_cast->firstVisibleBlock());
 }
 
-QPointF* QPlainTextEdit_protectedbase_contentOffset(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qpointf QPlainTextEdit_protectedbase_contentOffset(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qpointf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QPointF(self_cast->contentOffset());
+	return miqt_to_cabi<struct miqt_qpointf>(self_cast->contentOffset());
 }
 
-QRectF* QPlainTextEdit_protectedbase_blockBoundingRect(bool* _dynamic_cast_ok, const void* self, QTextBlock* block) {
+struct miqt_qrectf QPlainTextEdit_protectedbase_blockBoundingRect(bool* _dynamic_cast_ok, const void* self, QTextBlock* block) {
 	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->blockBoundingRect(*block));
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->blockBoundingRect(*block));
 }
 
-QRectF* QPlainTextEdit_protectedbase_blockBoundingGeometry(bool* _dynamic_cast_ok, const void* self, QTextBlock* block) {
+struct miqt_qrectf QPlainTextEdit_protectedbase_blockBoundingGeometry(bool* _dynamic_cast_ok, const void* self, QTextBlock* block) {
 	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->blockBoundingGeometry(*block));
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->blockBoundingGeometry(*block));
 }
 
 QAbstractTextDocumentLayout__PaintContext* QPlainTextEdit_protectedbase_getPaintContext(bool* _dynamic_cast_ok, const void* self) {
@@ -2551,15 +2539,15 @@ void QPlainTextEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, voi
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QPlainTextEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QPlainTextEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QPlainTextEdit_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
@@ -2712,16 +2700,14 @@ public:
 			return QPlainTextDocumentLayout::hitTest(param1, param2);
 		}
 
-		const QPointF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&param1_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(param1);
 		Qt::HitTestAccuracy param2_ret = param2;
 		int sigval2 = static_cast<int>(param2_ret);
 		int callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_hitTest(this, handle__hitTest, sigval1, sigval2);
 		return static_cast<int>(callback_return_value);
 	}
 
-	friend int QPlainTextDocumentLayout_virtualbase_hitTest(const void* self, QPointF* param1, int param2);
+	friend int QPlainTextDocumentLayout_virtualbase_hitTest(const void* self, struct miqt_qpointf param1, int param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__pageCount = 0;
@@ -2747,13 +2733,11 @@ public:
 			return QPlainTextDocumentLayout::documentSize();
 		}
 
-		QSizeF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_documentSize(this, handle__documentSize);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_documentSize(this, handle__documentSize);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
-	friend QSizeF* QPlainTextDocumentLayout_virtualbase_documentSize(const void* self);
+	friend struct miqt_qsizef QPlainTextDocumentLayout_virtualbase_documentSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__frameBoundingRect = 0;
@@ -2765,13 +2749,11 @@ public:
 		}
 
 		QTextFrame* sigval1 = param1;
-		QRectF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_frameBoundingRect(this, handle__frameBoundingRect, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_frameBoundingRect(this, handle__frameBoundingRect, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QPlainTextDocumentLayout_virtualbase_frameBoundingRect(const void* self, QTextFrame* param1);
+	friend struct miqt_qrectf QPlainTextDocumentLayout_virtualbase_frameBoundingRect(const void* self, QTextFrame* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockBoundingRect = 0;
@@ -2785,13 +2767,11 @@ public:
 		const QTextBlock& block_ret = block;
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
-		QRectF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_blockBoundingRect(this, handle__blockBoundingRect, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_blockBoundingRect(this, handle__blockBoundingRect, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QPlainTextDocumentLayout_virtualbase_blockBoundingRect(const void* self, QTextBlock* block);
+	friend struct miqt_qrectf QPlainTextDocumentLayout_virtualbase_blockBoundingRect(const void* self, QTextBlock* block);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__documentChanged = 0;
@@ -2865,9 +2845,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		QTextInlineObject* sigval3 = new QTextInlineObject(object);
 		int sigval4 = posInDocument;
 		const QTextFormat& format_ret = format;
@@ -2877,7 +2855,7 @@ public:
 
 	}
 
-	friend void QPlainTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format);
+	friend void QPlainTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, struct miqt_qrectf rect, QTextInlineObject* object, int posInDocument, QTextFormat* format);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -3041,24 +3019,24 @@ void QPlainTextDocumentLayout_draw(QPlainTextDocumentLayout* self, QPainter* par
 	self->draw(param1, *param2);
 }
 
-int QPlainTextDocumentLayout_hitTest(const QPlainTextDocumentLayout* self, QPointF* param1, int param2) {
-	return self->hitTest(*param1, static_cast<Qt::HitTestAccuracy>(param2));
+int QPlainTextDocumentLayout_hitTest(const QPlainTextDocumentLayout* self, struct miqt_qpointf param1, int param2) {
+	return self->hitTest(miqt_from_cabi<QPointF>(param1), static_cast<Qt::HitTestAccuracy>(param2));
 }
 
 int QPlainTextDocumentLayout_pageCount(const QPlainTextDocumentLayout* self) {
 	return self->pageCount();
 }
 
-QSizeF* QPlainTextDocumentLayout_documentSize(const QPlainTextDocumentLayout* self) {
-	return new QSizeF(self->documentSize());
+struct miqt_qsizef QPlainTextDocumentLayout_documentSize(const QPlainTextDocumentLayout* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->documentSize());
 }
 
-QRectF* QPlainTextDocumentLayout_frameBoundingRect(const QPlainTextDocumentLayout* self, QTextFrame* param1) {
-	return new QRectF(self->frameBoundingRect(param1));
+struct miqt_qrectf QPlainTextDocumentLayout_frameBoundingRect(const QPlainTextDocumentLayout* self, QTextFrame* param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->frameBoundingRect(param1));
 }
 
-QRectF* QPlainTextDocumentLayout_blockBoundingRect(const QPlainTextDocumentLayout* self, QTextBlock* block) {
-	return new QRectF(self->blockBoundingRect(*block));
+struct miqt_qrectf QPlainTextDocumentLayout_blockBoundingRect(const QPlainTextDocumentLayout* self, QTextBlock* block) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->blockBoundingRect(*block));
 }
 
 void QPlainTextDocumentLayout_ensureBlockLayout(const QPlainTextDocumentLayout* self, QTextBlock* block) {
@@ -3123,8 +3101,8 @@ bool QPlainTextDocumentLayout_override_virtual_hitTest(void* self, intptr_t slot
 	return true;
 }
 
-int QPlainTextDocumentLayout_virtualbase_hitTest(const void* self, QPointF* param1, int param2) {
-	return static_cast<const MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::hitTest(*param1, static_cast<Qt::HitTestAccuracy>(param2));
+int QPlainTextDocumentLayout_virtualbase_hitTest(const void* self, struct miqt_qpointf param1, int param2) {
+	return static_cast<const MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::hitTest(miqt_from_cabi<QPointF>(param1), static_cast<Qt::HitTestAccuracy>(param2));
 }
 
 bool QPlainTextDocumentLayout_override_virtual_pageCount(void* self, intptr_t slot) {
@@ -3151,8 +3129,8 @@ bool QPlainTextDocumentLayout_override_virtual_documentSize(void* self, intptr_t
 	return true;
 }
 
-QSizeF* QPlainTextDocumentLayout_virtualbase_documentSize(const void* self) {
-	return new QSizeF(static_cast<const MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::documentSize());
+struct miqt_qsizef QPlainTextDocumentLayout_virtualbase_documentSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(static_cast<const MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::documentSize());
 }
 
 bool QPlainTextDocumentLayout_override_virtual_frameBoundingRect(void* self, intptr_t slot) {
@@ -3165,8 +3143,8 @@ bool QPlainTextDocumentLayout_override_virtual_frameBoundingRect(void* self, int
 	return true;
 }
 
-QRectF* QPlainTextDocumentLayout_virtualbase_frameBoundingRect(const void* self, QTextFrame* param1) {
-	return new QRectF(static_cast<const MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::frameBoundingRect(param1));
+struct miqt_qrectf QPlainTextDocumentLayout_virtualbase_frameBoundingRect(const void* self, QTextFrame* param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::frameBoundingRect(param1));
 }
 
 bool QPlainTextDocumentLayout_override_virtual_blockBoundingRect(void* self, intptr_t slot) {
@@ -3179,8 +3157,8 @@ bool QPlainTextDocumentLayout_override_virtual_blockBoundingRect(void* self, int
 	return true;
 }
 
-QRectF* QPlainTextDocumentLayout_virtualbase_blockBoundingRect(const void* self, QTextBlock* block) {
-	return new QRectF(static_cast<const MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::blockBoundingRect(*block));
+struct miqt_qrectf QPlainTextDocumentLayout_virtualbase_blockBoundingRect(const void* self, QTextBlock* block) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::blockBoundingRect(*block));
 }
 
 bool QPlainTextDocumentLayout_override_virtual_documentChanged(void* self, intptr_t slot) {
@@ -3235,8 +3213,8 @@ bool QPlainTextDocumentLayout_override_virtual_drawInlineObject(void* self, intp
 	return true;
 }
 
-void QPlainTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format) {
-	static_cast<MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::drawInlineObject(painter, *rect, *object, static_cast<int>(posInDocument), *format);
+void QPlainTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, struct miqt_qrectf rect, QTextInlineObject* object, int posInDocument, QTextFormat* format) {
+	static_cast<MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::drawInlineObject(painter, miqt_from_cabi<QRectF>(rect), *object, static_cast<int>(posInDocument), *format);
 }
 
 bool QPlainTextDocumentLayout_override_virtual_event(void* self, intptr_t slot) {
@@ -3335,14 +3313,6 @@ bool QPlainTextDocumentLayout_override_virtual_disconnectNotify(void* self, intp
 
 void QPlainTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQPlainTextDocumentLayout*>(self)->QPlainTextDocumentLayout::disconnectNotify(*signal);
-}
-
-QSizeF* QPlainTextDocumentLayout_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
-}
-
-QRectF* QPlainTextDocumentLayout_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
 }
 
 int QPlainTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos) {

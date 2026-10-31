@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -380,9 +381,7 @@ func (this *QwtWheel) StopFlying() {
 func (this *QwtWheel) WheelRect() qt.QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtWheel_protectedbase_wheelRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRect](C.QwtWheel_protectedbase_wheelRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -704,14 +703,12 @@ func miqt_exec_callback_QwtWheel_timerEvent(self *C.QwtWheel, cb C.intptr_t, par
 
 }
 
-func (this *QwtWheel) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QwtWheel) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtWheel_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtWheel_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtWheel) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtWheel) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtWheel_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -719,27 +716,24 @@ func (this *QwtWheel) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
 }
 
 //export miqt_exec_callback_QwtWheel_sizeHint
-func miqt_exec_callback_QwtWheel_sizeHint(self *C.QwtWheel, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtWheel_sizeHint(self *C.QwtWheel, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtWheel{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtWheel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtWheel) callVirtualBase_MinimumSizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtWheel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QwtWheel) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtWheel) callVirtualBase_MinimumSizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtWheel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtWheel) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtWheel_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -747,27 +741,25 @@ func (this *QwtWheel) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QS
 }
 
 //export miqt_exec_callback_QwtWheel_minimumSizeHint
-func miqt_exec_callback_QwtWheel_minimumSizeHint(self *C.QwtWheel, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtWheel_minimumSizeHint(self *C.QwtWheel, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtWheel{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtWheel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
-func (this *QwtWheel) callVirtualBase_DrawTicks(param1 *qt.QPainter, param2 *qt.QRectF) {
+func (this *QwtWheel) callVirtualBase_DrawTicks(param1 *qt.QPainter, param2 qt.QRectF) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
-	C.QwtWheel_virtualbase_drawTicks(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
+	C.QwtWheel_virtualbase_drawTicks(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2))
 
 }
-func (this *QwtWheel) OnDrawTicks(slot func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF)) {
+func (this *QwtWheel) OnDrawTicks(slot func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF)) {
 	ok := C.QwtWheel_override_virtual_drawTicks(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -775,8 +767,8 @@ func (this *QwtWheel) OnDrawTicks(slot func(super func(param1 *qt.QPainter, para
 }
 
 //export miqt_exec_callback_QwtWheel_drawTicks
-func miqt_exec_callback_QwtWheel_drawTicks(self *C.QwtWheel, cb C.intptr_t, param1 *C.QPainter, param2 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF))
+func miqt_exec_callback_QwtWheel_drawTicks(self *C.QwtWheel, cb C.intptr_t, param1 *C.QPainter, param2 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -784,20 +776,19 @@ func miqt_exec_callback_QwtWheel_drawTicks(self *C.QwtWheel, cb C.intptr_t, para
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQRectF(unsafe.Pointer(param2))
+	slotval2 := libmiqt.ValueCast[qt.QRectF](param2)
 
 	gofunc((&QwtWheel{h: self}).callVirtualBase_DrawTicks, slotval1, slotval2)
 
 }
 
-func (this *QwtWheel) callVirtualBase_DrawWheelBackground(param1 *qt.QPainter, param2 *qt.QRectF) {
+func (this *QwtWheel) callVirtualBase_DrawWheelBackground(param1 *qt.QPainter, param2 qt.QRectF) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
-	C.QwtWheel_virtualbase_drawWheelBackground(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
+	C.QwtWheel_virtualbase_drawWheelBackground(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2))
 
 }
-func (this *QwtWheel) OnDrawWheelBackground(slot func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF)) {
+func (this *QwtWheel) OnDrawWheelBackground(slot func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF)) {
 	ok := C.QwtWheel_override_virtual_drawWheelBackground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -805,8 +796,8 @@ func (this *QwtWheel) OnDrawWheelBackground(slot func(super func(param1 *qt.QPai
 }
 
 //export miqt_exec_callback_QwtWheel_drawWheelBackground
-func miqt_exec_callback_QwtWheel_drawWheelBackground(self *C.QwtWheel, cb C.intptr_t, param1 *C.QPainter, param2 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF))
+func miqt_exec_callback_QwtWheel_drawWheelBackground(self *C.QwtWheel, cb C.intptr_t, param1 *C.QPainter, param2 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -814,19 +805,18 @@ func miqt_exec_callback_QwtWheel_drawWheelBackground(self *C.QwtWheel, cb C.intp
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQRectF(unsafe.Pointer(param2))
+	slotval2 := libmiqt.ValueCast[qt.QRectF](param2)
 
 	gofunc((&QwtWheel{h: self}).callVirtualBase_DrawWheelBackground, slotval1, slotval2)
 
 }
 
-func (this *QwtWheel) callVirtualBase_ValueAt(param1 *qt.QPoint) float64 {
-	defer runtime.KeepAlive(param1)
+func (this *QwtWheel) callVirtualBase_ValueAt(param1 qt.QPoint) float64 {
 
-	return (float64)(C.QwtWheel_virtualbase_valueAt(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
+	return (float64)(C.QwtWheel_virtualbase_valueAt(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 
 }
-func (this *QwtWheel) OnValueAt(slot func(super func(param1 *qt.QPoint) float64, param1 *qt.QPoint) float64) {
+func (this *QwtWheel) OnValueAt(slot func(super func(param1 qt.QPoint) float64, param1 qt.QPoint) float64) {
 	ok := C.QwtWheel_override_virtual_valueAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -834,14 +824,14 @@ func (this *QwtWheel) OnValueAt(slot func(super func(param1 *qt.QPoint) float64,
 }
 
 //export miqt_exec_callback_QwtWheel_valueAt
-func miqt_exec_callback_QwtWheel_valueAt(self *C.QwtWheel, cb C.intptr_t, param1 *C.QPoint) C.double {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint) float64, param1 *qt.QPoint) float64)
+func miqt_exec_callback_QwtWheel_valueAt(self *C.QwtWheel, cb C.intptr_t, param1 C.struct_miqt_qpoint) C.double {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint) float64, param1 qt.QPoint) float64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	virtualReturn := gofunc((&QwtWheel{h: self}).callVirtualBase_ValueAt, slotval1)
 
@@ -1618,7 +1608,6 @@ func miqt_exec_callback_QwtWheel_initPainter(self *C.QwtWheel, cb C.intptr_t, pa
 }
 
 func (this *QwtWheel) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtWheel_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

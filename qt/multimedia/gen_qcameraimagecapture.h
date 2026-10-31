@@ -61,7 +61,7 @@ struct miqt_string QCameraImageCapture_errorString(const QCameraImageCapture* se
 bool QCameraImageCapture_isReadyForCapture(const QCameraImageCapture* self);
 struct miqt_array /* of struct miqt_string */  QCameraImageCapture_supportedImageCodecs(const QCameraImageCapture* self);
 struct miqt_string QCameraImageCapture_imageCodecDescription(const QCameraImageCapture* self, struct miqt_string codecName);
-struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions(const QCameraImageCapture* self);
+struct miqt_array /* of struct miqt_qsize */  QCameraImageCapture_supportedResolutions(const QCameraImageCapture* self);
 QImageEncoderSettings* QCameraImageCapture_encodingSettings(const QCameraImageCapture* self);
 void QCameraImageCapture_setEncodingSettings(QCameraImageCapture* self, QImageEncoderSettings* settings);
 struct miqt_array /* of int */  QCameraImageCapture_supportedBufferFormats(const QCameraImageCapture* self);
@@ -95,8 +95,8 @@ struct miqt_string QCameraImageCapture_tr2(const char* s, const char* c);
 struct miqt_string QCameraImageCapture_tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraImageCapture_trUtf82(const char* s, const char* c);
 struct miqt_string QCameraImageCapture_trUtf83(const char* s, const char* c, int n);
-struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutionsWithSettings(const QCameraImageCapture* self, QImageEncoderSettings* settings);
-struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous);
+struct miqt_array /* of struct miqt_qsize */  QCameraImageCapture_supportedResolutionsWithSettings(const QCameraImageCapture* self, QImageEncoderSettings* settings);
+struct miqt_array /* of struct miqt_qsize */  QCameraImageCapture_supportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous);
 int QCameraImageCapture_captureWithLocation(QCameraImageCapture* self, struct miqt_string location);
 
 bool QCameraImageCapture_override_virtual_mediaObject(void* self, intptr_t slot);

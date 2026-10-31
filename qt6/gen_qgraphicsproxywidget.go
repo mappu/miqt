@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -111,15 +112,12 @@ func (this *QGraphicsProxyWidget) Widget() *QWidget {
 	return newQWidget(C.QGraphicsProxyWidget_widget(this.h))
 }
 
-func (this *QGraphicsProxyWidget) SubWidgetRect(widget *QWidget) *QRectF {
-	_goptr := newQRectF(C.QGraphicsProxyWidget_subWidgetRect(this.h, widget.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsProxyWidget) SubWidgetRect(widget *QWidget) QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsProxyWidget_subWidgetRect(this.h, widget.cPointer()))
 }
 
-func (this *QGraphicsProxyWidget) SetGeometry(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsProxyWidget_setGeometry(this.h, rect.cPointer())
+func (this *QGraphicsProxyWidget) SetGeometry(rect QRectF) {
+	C.QGraphicsProxyWidget_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsProxyWidget) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -304,13 +302,12 @@ func (this *QGraphicsProxyWidget) SetOwnedByLayout(ownedByLayout bool) {
 
 }
 
-func (this *QGraphicsProxyWidget) callVirtualBase_SetGeometry(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsProxyWidget) callVirtualBase_SetGeometry(rect QRectF) {
 
-	C.QGraphicsProxyWidget_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QGraphicsProxyWidget_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsProxyWidget) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+func (this *QGraphicsProxyWidget) OnSetGeometry(slot func(super func(rect QRectF), rect QRectF)) {
 	ok := C.QGraphicsProxyWidget_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -318,14 +315,14 @@ func (this *QGraphicsProxyWidget) OnSetGeometry(slot func(super func(rect *QRect
 }
 
 //export miqt_exec_callback_QGraphicsProxyWidget_setGeometry
-func miqt_exec_callback_QGraphicsProxyWidget_setGeometry(self *C.QGraphicsProxyWidget, cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF), rect *QRectF))
+func miqt_exec_callback_QGraphicsProxyWidget_setGeometry(self *C.QGraphicsProxyWidget, cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRectF), rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(rect)
+	slotval1 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -1135,15 +1132,12 @@ func miqt_exec_callback_QGraphicsProxyWidget_inputMethodEvent(self *C.QGraphicsP
 
 }
 
-func (this *QGraphicsProxyWidget) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
-	defer runtime.KeepAlive(constraint)
+func (this *QGraphicsProxyWidget) callVirtualBase_SizeHint(which SizeHint, constraint QSizeF) QSizeF {
 
-	_goptr := newQSizeF(C.QGraphicsProxyWidget_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsProxyWidget_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 
 }
-func (this *QGraphicsProxyWidget) OnSizeHint(slot func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF) {
+func (this *QGraphicsProxyWidget) OnSizeHint(slot func(super func(which SizeHint, constraint QSizeF) QSizeF, which SizeHint, constraint QSizeF) QSizeF) {
 	ok := C.QGraphicsProxyWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1151,8 +1145,8 @@ func (this *QGraphicsProxyWidget) OnSizeHint(slot func(super func(which SizeHint
 }
 
 //export miqt_exec_callback_QGraphicsProxyWidget_sizeHint
-func miqt_exec_callback_QGraphicsProxyWidget_sizeHint(self *C.QGraphicsProxyWidget, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF)
+func miqt_exec_callback_QGraphicsProxyWidget_sizeHint(self *C.QGraphicsProxyWidget, cb C.intptr_t, which C.int, constraint C.struct_miqt_qsizef) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint QSizeF) QSizeF, which SizeHint, constraint QSizeF) QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1160,12 +1154,11 @@ func miqt_exec_callback_QGraphicsProxyWidget_sizeHint(self *C.QGraphicsProxyWidg
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := newQSizeF(constraint)
+	slotval2 := libmiqt.ValueCast[QSizeF](constraint)
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsProxyWidget_virtualreturncopy_QSizeF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 
@@ -1260,14 +1253,12 @@ func miqt_exec_callback_QGraphicsProxyWidget_paintWindowFrame(self *C.QGraphicsP
 
 }
 
-func (this *QGraphicsProxyWidget) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsProxyWidget) callVirtualBase_BoundingRect() QRectF {
 
-	_goptr := newQRectF(C.QGraphicsProxyWidget_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsProxyWidget_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsProxyWidget) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsProxyWidget) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsProxyWidget_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1275,16 +1266,15 @@ func (this *QGraphicsProxyWidget) OnBoundingRect(slot func(super func() *QRectF)
 }
 
 //export miqt_exec_callback_QGraphicsProxyWidget_boundingRect
-func miqt_exec_callback_QGraphicsProxyWidget_boundingRect(self *C.QGraphicsProxyWidget, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsProxyWidget_boundingRect(self *C.QGraphicsProxyWidget, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsProxyWidget_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -1464,13 +1454,12 @@ func miqt_exec_callback_QGraphicsProxyWidget_windowFrameEvent(self *C.QGraphicsP
 
 }
 
-func (this *QGraphicsProxyWidget) callVirtualBase_WindowFrameSectionAt(pos *QPointF) WindowFrameSection {
-	defer runtime.KeepAlive(pos)
+func (this *QGraphicsProxyWidget) callVirtualBase_WindowFrameSectionAt(pos QPointF) WindowFrameSection {
 
-	return (WindowFrameSection)(C.QGraphicsProxyWidget_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), pos.cPointer()))
+	return (WindowFrameSection)(C.QGraphicsProxyWidget_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](pos)))
 
 }
-func (this *QGraphicsProxyWidget) OnWindowFrameSectionAt(slot func(super func(pos *QPointF) WindowFrameSection, pos *QPointF) WindowFrameSection) {
+func (this *QGraphicsProxyWidget) OnWindowFrameSectionAt(slot func(super func(pos QPointF) WindowFrameSection, pos QPointF) WindowFrameSection) {
 	ok := C.QGraphicsProxyWidget_override_virtual_windowFrameSectionAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1478,14 +1467,14 @@ func (this *QGraphicsProxyWidget) OnWindowFrameSectionAt(slot func(super func(po
 }
 
 //export miqt_exec_callback_QGraphicsProxyWidget_windowFrameSectionAt
-func miqt_exec_callback_QGraphicsProxyWidget_windowFrameSectionAt(self *C.QGraphicsProxyWidget, cb C.intptr_t, pos *C.QPointF) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos *QPointF) WindowFrameSection, pos *QPointF) WindowFrameSection)
+func miqt_exec_callback_QGraphicsProxyWidget_windowFrameSectionAt(self *C.QGraphicsProxyWidget, cb C.intptr_t, pos C.struct_miqt_qpointf) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos QPointF) WindowFrameSection, pos QPointF) WindowFrameSection)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(pos)
+	slotval1 := libmiqt.ValueCast[QPointF](pos)
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_WindowFrameSectionAt, slotval1)
 
@@ -1812,13 +1801,12 @@ func miqt_exec_callback_QGraphicsProxyWidget_advance(self *C.QGraphicsProxyWidge
 
 }
 
-func (this *QGraphicsProxyWidget) callVirtualBase_Contains(point *QPointF) bool {
-	defer runtime.KeepAlive(point)
+func (this *QGraphicsProxyWidget) callVirtualBase_Contains(point QPointF) bool {
 
-	return (bool)(C.QGraphicsProxyWidget_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsProxyWidget_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsProxyWidget) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsProxyWidget) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsProxyWidget_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1826,14 +1814,14 @@ func (this *QGraphicsProxyWidget) OnContains(slot func(super func(point *QPointF
 }
 
 //export miqt_exec_callback_QGraphicsProxyWidget_contains
-func miqt_exec_callback_QGraphicsProxyWidget_contains(self *C.QGraphicsProxyWidget, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsProxyWidget_contains(self *C.QGraphicsProxyWidget, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsProxyWidget{h: self}).callVirtualBase_Contains, slotval1)
 

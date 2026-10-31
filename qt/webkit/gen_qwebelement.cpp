@@ -235,8 +235,8 @@ void QWebElement_setFocus(QWebElement* self) {
 	self->setFocus();
 }
 
-QRect* QWebElement_geometry(const QWebElement* self) {
-	return new QRect(self->geometry());
+struct miqt_qrect QWebElement_geometry(const QWebElement* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->geometry());
 }
 
 struct miqt_string QWebElement_tagName(const QWebElement* self) {
@@ -419,8 +419,8 @@ void QWebElement_render(QWebElement* self, QPainter* painter) {
 	self->render(painter);
 }
 
-void QWebElement_render2(QWebElement* self, QPainter* painter, QRect* clipRect) {
-	self->render(painter, *clipRect);
+void QWebElement_render2(QWebElement* self, QPainter* painter, struct miqt_qrect clipRect) {
+	self->render(painter, miqt_from_cabi<QRect>(clipRect));
 }
 
 struct miqt_string QWebElement_attribute2(const QWebElement* self, struct miqt_string name, struct miqt_string defaultValue) {

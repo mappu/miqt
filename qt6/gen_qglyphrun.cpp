@@ -65,12 +65,12 @@ void QGlyphRun_setGlyphIndexes(QGlyphRun* self, struct miqt_array /* of unsigned
 	self->setGlyphIndexes(glyphIndexes_QList);
 }
 
-struct miqt_array /* of QPointF* */  QGlyphRun_positions(const QGlyphRun* self) {
+struct miqt_array /* of struct miqt_qpointf */  QGlyphRun_positions(const QGlyphRun* self) {
 	QList<QPointF> _ret = self->positions();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
+	struct miqt_qpointf* _arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QPointF(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qpointf>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -78,12 +78,12 @@ struct miqt_array /* of QPointF* */  QGlyphRun_positions(const QGlyphRun* self) 
 	return _out;
 }
 
-void QGlyphRun_setPositions(QGlyphRun* self, struct miqt_array /* of QPointF* */  positions) {
+void QGlyphRun_setPositions(QGlyphRun* self, struct miqt_array /* of struct miqt_qpointf */  positions) {
 	QList<QPointF> positions_QList;
 	positions_QList.reserve(positions.len);
-	QPointF** positions_arr = static_cast<QPointF**>(positions.data);
+	struct miqt_qpointf* positions_arr = static_cast<struct miqt_qpointf*>(positions.data);
 	for(size_t i = 0; i < positions.len; ++i) {
-		positions_QList.push_back(*(positions_arr[i]));
+		positions_QList.push_back(miqt_from_cabi<QPointF>(positions_arr[i]));
 	}
 	self->setPositions(positions_QList);
 }
@@ -145,12 +145,12 @@ int QGlyphRun_flags(const QGlyphRun* self) {
 	return static_cast<int>(_ret);
 }
 
-void QGlyphRun_setBoundingRect(QGlyphRun* self, QRectF* boundingRect) {
-	self->setBoundingRect(*boundingRect);
+void QGlyphRun_setBoundingRect(QGlyphRun* self, struct miqt_qrectf boundingRect) {
+	self->setBoundingRect(miqt_from_cabi<QRectF>(boundingRect));
 }
 
-QRectF* QGlyphRun_boundingRect(const QGlyphRun* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGlyphRun_boundingRect(const QGlyphRun* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 bool QGlyphRun_isEmpty(const QGlyphRun* self) {

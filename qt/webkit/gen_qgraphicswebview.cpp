@@ -57,12 +57,12 @@ void miqt_exec_callback_QGraphicsWebView_titleChanged(intptr_t, struct miqt_stri
 void miqt_exec_callback_QGraphicsWebView_iconChanged(intptr_t);
 void miqt_exec_callback_QGraphicsWebView_statusBarMessage(intptr_t, struct miqt_string);
 void miqt_exec_callback_QGraphicsWebView_linkClicked(intptr_t, QUrl*);
-void miqt_exec_callback_QGraphicsWebView_setGeometry(QGraphicsWebView*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsWebView_setGeometry(QGraphicsWebView*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QGraphicsWebView_updateGeometry(QGraphicsWebView*, intptr_t);
 void miqt_exec_callback_QGraphicsWebView_paint(QGraphicsWebView*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 QVariant* miqt_exec_callback_QGraphicsWebView_itemChange(QGraphicsWebView*, intptr_t, int, QVariant*);
 bool miqt_exec_callback_QGraphicsWebView_event(QGraphicsWebView*, intptr_t, QEvent*);
-QSizeF* miqt_exec_callback_QGraphicsWebView_sizeHint(const QGraphicsWebView*, intptr_t, int, QSizeF*);
+struct miqt_qsizef miqt_exec_callback_QGraphicsWebView_sizeHint(const QGraphicsWebView*, intptr_t, int, struct miqt_qsizef);
 QVariant* miqt_exec_callback_QGraphicsWebView_inputMethodQuery(const QGraphicsWebView*, intptr_t, int);
 void miqt_exec_callback_QGraphicsWebView_mousePressEvent(QGraphicsWebView*, intptr_t, QGraphicsSceneMouseEvent*);
 void miqt_exec_callback_QGraphicsWebView_mouseDoubleClickEvent(QGraphicsWebView*, intptr_t, QGraphicsSceneMouseEvent*);
@@ -86,12 +86,12 @@ bool miqt_exec_callback_QGraphicsWebView_sceneEvent(QGraphicsWebView*, intptr_t,
 void miqt_exec_callback_QGraphicsWebView_getContentsMargins(const QGraphicsWebView*, intptr_t, double*, double*, double*, double*);
 int miqt_exec_callback_QGraphicsWebView_type(const QGraphicsWebView*, intptr_t);
 void miqt_exec_callback_QGraphicsWebView_paintWindowFrame(QGraphicsWebView*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
-QRectF* miqt_exec_callback_QGraphicsWebView_boundingRect(const QGraphicsWebView*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsWebView_boundingRect(const QGraphicsWebView*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsWebView_shape(const QGraphicsWebView*, intptr_t);
 void miqt_exec_callback_QGraphicsWebView_initStyleOption(const QGraphicsWebView*, intptr_t, QStyleOption*);
 QVariant* miqt_exec_callback_QGraphicsWebView_propertyChange(QGraphicsWebView*, intptr_t, struct miqt_string, QVariant*);
 bool miqt_exec_callback_QGraphicsWebView_windowFrameEvent(QGraphicsWebView*, intptr_t, QEvent*);
-int miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt(const QGraphicsWebView*, intptr_t, QPointF*);
+int miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt(const QGraphicsWebView*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsWebView_changeEvent(QGraphicsWebView*, intptr_t, QEvent*);
 void miqt_exec_callback_QGraphicsWebView_closeEvent(QGraphicsWebView*, intptr_t, QCloseEvent*);
 void miqt_exec_callback_QGraphicsWebView_hideEvent(QGraphicsWebView*, intptr_t, QHideEvent*);
@@ -110,7 +110,7 @@ void miqt_exec_callback_QGraphicsWebView_customEvent(QGraphicsWebView*, intptr_t
 void miqt_exec_callback_QGraphicsWebView_connectNotify(QGraphicsWebView*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsWebView_disconnectNotify(QGraphicsWebView*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsWebView_advance(QGraphicsWebView*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsWebView_contains(const QGraphicsWebView*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsWebView_contains(const QGraphicsWebView*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QGraphicsWebView_collidesWithItem(const QGraphicsWebView*, intptr_t, QGraphicsItem*, int);
 bool miqt_exec_callback_QGraphicsWebView_collidesWithPath(const QGraphicsWebView*, intptr_t, QPainterPath*, int);
 bool miqt_exec_callback_QGraphicsWebView_isObscuredBy(const QGraphicsWebView*, intptr_t, QGraphicsItem*);
@@ -142,14 +142,12 @@ public:
 			return;
 		}
 
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QGraphicsWebView_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QGraphicsWebView_virtualbase_setGeometry(void* self, QRectF* rect);
+	friend void QGraphicsWebView_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateGeometry = 0;
@@ -235,16 +233,12 @@ public:
 
 		Qt::SizeHint which_ret = which;
 		int sigval1 = static_cast<int>(which_ret);
-		const QSizeF& constraint_ret = constraint;
-		// Cast returned reference into pointer
-		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
-		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsWebView_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef sigval2 = miqt_to_cabi<struct miqt_qsizef>(constraint);
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QGraphicsWebView_sizeHint(this, handle__sizeHint, sigval1, sigval2);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
-	friend QSizeF* QGraphicsWebView_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+	friend struct miqt_qsizef QGraphicsWebView_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -653,13 +647,11 @@ public:
 			return QGraphicsWebView::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsWebView_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsWebView_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsWebView_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsWebView_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -748,14 +740,12 @@ public:
 			return QGraphicsWebView::windowFrameSectionAt(pos);
 		}
 
-		const QPointF& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&pos_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(pos);
 		int callback_return_value = miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt(this, handle__windowFrameSectionAt, sigval1);
 		return static_cast<Qt::WindowFrameSection>(callback_return_value);
 	}
 
-	friend int QGraphicsWebView_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos);
+	friend int QGraphicsWebView_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -1075,14 +1065,12 @@ public:
 			return QGraphicsWebView::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsWebView_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsWebView_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsWebView_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__collidesWithItem = 0;
@@ -1401,8 +1389,8 @@ void QGraphicsWebView_setTiledBackingStoreFrozen(QGraphicsWebView* self, bool fr
 	self->setTiledBackingStoreFrozen(frozen);
 }
 
-void QGraphicsWebView_setGeometry(QGraphicsWebView* self, QRectF* rect) {
-	self->setGeometry(*rect);
+void QGraphicsWebView_setGeometry(QGraphicsWebView* self, struct miqt_qrectf rect) {
+	self->setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 void QGraphicsWebView_updateGeometry(QGraphicsWebView* self) {
@@ -1421,8 +1409,8 @@ bool QGraphicsWebView_event(QGraphicsWebView* self, QEvent* param1) {
 	return self->event(param1);
 }
 
-QSizeF* QGraphicsWebView_sizeHint(const QGraphicsWebView* self, int which, QSizeF* constraint) {
-	return new QSizeF(self->sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+struct miqt_qsizef QGraphicsWebView_sizeHint(const QGraphicsWebView* self, int which, struct miqt_qsizef constraint) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->sizeHint(static_cast<Qt::SizeHint>(which), miqt_from_cabi<QSizeF>(constraint)));
 }
 
 QVariant* QGraphicsWebView_inputMethodQuery(const QGraphicsWebView* self, int query) {
@@ -1657,8 +1645,8 @@ bool QGraphicsWebView_override_virtual_setGeometry(void* self, intptr_t slot) {
 	return true;
 }
 
-void QGraphicsWebView_virtualbase_setGeometry(void* self, QRectF* rect) {
-	static_cast<MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::setGeometry(*rect);
+void QGraphicsWebView_virtualbase_setGeometry(void* self, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 bool QGraphicsWebView_override_virtual_updateGeometry(void* self, intptr_t slot) {
@@ -1727,8 +1715,8 @@ bool QGraphicsWebView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSizeF* QGraphicsWebView_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
-	return new QSizeF(static_cast<const MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+struct miqt_qsizef QGraphicsWebView_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint) {
+	return miqt_to_cabi<struct miqt_qsizef>(static_cast<const MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::sizeHint(static_cast<Qt::SizeHint>(which), miqt_from_cabi<QSizeF>(constraint)));
 }
 
 bool QGraphicsWebView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2063,8 +2051,8 @@ bool QGraphicsWebView_override_virtual_boundingRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRectF* QGraphicsWebView_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::boundingRect());
+struct miqt_qrectf QGraphicsWebView_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::boundingRect());
 }
 
 bool QGraphicsWebView_override_virtual_shape(void* self, intptr_t slot) {
@@ -2134,8 +2122,8 @@ bool QGraphicsWebView_override_virtual_windowFrameSectionAt(void* self, intptr_t
 	return true;
 }
 
-int QGraphicsWebView_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos) {
-	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::windowFrameSectionAt(*pos);
+int QGraphicsWebView_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos) {
+	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::windowFrameSectionAt(miqt_from_cabi<QPointF>(pos));
 	return static_cast<int>(_ret);
 }
 
@@ -2401,8 +2389,8 @@ bool QGraphicsWebView_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsWebView_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::contains(*point);
+bool QGraphicsWebView_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsWebView*>(self)->QGraphicsWebView::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsWebView_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -2533,14 +2521,6 @@ QVariant* QGraphicsWebView_virtualbase_extension(const void* self, QVariant* var
 
 QVariant* QGraphicsWebView_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
-}
-
-QSizeF* QGraphicsWebView_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
-}
-
-QRectF* QGraphicsWebView_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
 }
 
 QPainterPath* QGraphicsWebView_virtualreturncopy_QPainterPath(QPainterPath* src) {

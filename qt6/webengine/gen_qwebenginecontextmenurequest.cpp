@@ -42,8 +42,8 @@ struct miqt_string QWebEngineContextMenuRequest_tr(const char* s) {
 	return _ms;
 }
 
-QPoint* QWebEngineContextMenuRequest_position(const QWebEngineContextMenuRequest* self) {
-	return new QPoint(self->position());
+struct miqt_qpoint QWebEngineContextMenuRequest_position(const QWebEngineContextMenuRequest* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->position());
 }
 
 struct miqt_string QWebEngineContextMenuRequest_selectedText(const QWebEngineContextMenuRequest* self) {

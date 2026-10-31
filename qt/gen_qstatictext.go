@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -144,11 +145,9 @@ func (this *QStaticText) TextOption() *QTextOption {
 	return _goptr
 }
 
-func (this *QStaticText) Size() *QSizeF {
+func (this *QStaticText) Size() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QStaticText_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QStaticText_size(this.h))
 }
 
 func (this *QStaticText) Prepare() {

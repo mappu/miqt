@@ -55,7 +55,7 @@ extern "C" {
 void miqt_exec_callback_QDateTimeEdit_dateTimeChanged(intptr_t, QDateTime*);
 void miqt_exec_callback_QDateTimeEdit_timeChanged(intptr_t, QTime*);
 void miqt_exec_callback_QDateTimeEdit_dateChanged(intptr_t, QDate*);
-QSize* miqt_exec_callback_QDateTimeEdit_sizeHint(const QDateTimeEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDateTimeEdit_sizeHint(const QDateTimeEdit*, intptr_t);
 void miqt_exec_callback_QDateTimeEdit_clear(QDateTimeEdit*, intptr_t);
 void miqt_exec_callback_QDateTimeEdit_stepBy(QDateTimeEdit*, intptr_t, int);
 bool miqt_exec_callback_QDateTimeEdit_event(QDateTimeEdit*, intptr_t, QEvent*);
@@ -71,7 +71,7 @@ int miqt_exec_callback_QDateTimeEdit_stepEnabled(const QDateTimeEdit*, intptr_t)
 void miqt_exec_callback_QDateTimeEdit_mousePressEvent(QDateTimeEdit*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QDateTimeEdit_paintEvent(QDateTimeEdit*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QDateTimeEdit_initStyleOption(const QDateTimeEdit*, intptr_t, QStyleOptionSpinBox*);
-QSize* miqt_exec_callback_QDateTimeEdit_minimumSizeHint(const QDateTimeEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDateTimeEdit_minimumSizeHint(const QDateTimeEdit*, intptr_t);
 QVariant* miqt_exec_callback_QDateTimeEdit_inputMethodQuery(const QDateTimeEdit*, intptr_t, int);
 void miqt_exec_callback_QDateTimeEdit_resizeEvent(QDateTimeEdit*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QDateTimeEdit_keyReleaseEvent(QDateTimeEdit*, intptr_t, QKeyEvent*);
@@ -111,7 +111,7 @@ void miqt_exec_callback_QDateTimeEdit_customEvent(QDateTimeEdit*, intptr_t, QEve
 void miqt_exec_callback_QDateTimeEdit_connectNotify(QDateTimeEdit*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QDateTimeEdit_disconnectNotify(QDateTimeEdit*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QTimeEdit_userTimeChanged(intptr_t, QTime*);
-QSize* miqt_exec_callback_QTimeEdit_sizeHint(const QTimeEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTimeEdit_sizeHint(const QTimeEdit*, intptr_t);
 void miqt_exec_callback_QTimeEdit_clear(QTimeEdit*, intptr_t);
 void miqt_exec_callback_QTimeEdit_stepBy(QTimeEdit*, intptr_t, int);
 bool miqt_exec_callback_QTimeEdit_event(QTimeEdit*, intptr_t, QEvent*);
@@ -127,7 +127,7 @@ int miqt_exec_callback_QTimeEdit_stepEnabled(const QTimeEdit*, intptr_t);
 void miqt_exec_callback_QTimeEdit_mousePressEvent(QTimeEdit*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QTimeEdit_paintEvent(QTimeEdit*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QTimeEdit_initStyleOption(const QTimeEdit*, intptr_t, QStyleOptionSpinBox*);
-QSize* miqt_exec_callback_QTimeEdit_minimumSizeHint(const QTimeEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTimeEdit_minimumSizeHint(const QTimeEdit*, intptr_t);
 QVariant* miqt_exec_callback_QTimeEdit_inputMethodQuery(const QTimeEdit*, intptr_t, int);
 void miqt_exec_callback_QTimeEdit_resizeEvent(QTimeEdit*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QTimeEdit_keyReleaseEvent(QTimeEdit*, intptr_t, QKeyEvent*);
@@ -167,7 +167,7 @@ void miqt_exec_callback_QTimeEdit_customEvent(QTimeEdit*, intptr_t, QEvent*);
 void miqt_exec_callback_QTimeEdit_connectNotify(QTimeEdit*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QTimeEdit_disconnectNotify(QTimeEdit*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QDateEdit_userDateChanged(intptr_t, QDate*);
-QSize* miqt_exec_callback_QDateEdit_sizeHint(const QDateEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDateEdit_sizeHint(const QDateEdit*, intptr_t);
 void miqt_exec_callback_QDateEdit_clear(QDateEdit*, intptr_t);
 void miqt_exec_callback_QDateEdit_stepBy(QDateEdit*, intptr_t, int);
 bool miqt_exec_callback_QDateEdit_event(QDateEdit*, intptr_t, QEvent*);
@@ -183,7 +183,7 @@ int miqt_exec_callback_QDateEdit_stepEnabled(const QDateEdit*, intptr_t);
 void miqt_exec_callback_QDateEdit_mousePressEvent(QDateEdit*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QDateEdit_paintEvent(QDateEdit*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QDateEdit_initStyleOption(const QDateEdit*, intptr_t, QStyleOptionSpinBox*);
-QSize* miqt_exec_callback_QDateEdit_minimumSizeHint(const QDateEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDateEdit_minimumSizeHint(const QDateEdit*, intptr_t);
 QVariant* miqt_exec_callback_QDateEdit_inputMethodQuery(const QDateEdit*, intptr_t, int);
 void miqt_exec_callback_QDateEdit_resizeEvent(QDateEdit*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QDateEdit_keyReleaseEvent(QDateEdit*, intptr_t, QKeyEvent*);
@@ -249,13 +249,11 @@ public:
 			return QDateTimeEdit::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDateTimeEdit_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDateTimeEdit_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDateTimeEdit_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDateTimeEdit_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__clear = 0;
@@ -541,13 +539,11 @@ public:
 			return QDateTimeEdit::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDateTimeEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDateTimeEdit_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDateTimeEdit_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDateTimeEdit_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1458,8 +1454,8 @@ void QDateTimeEdit_setTimeSpec(QDateTimeEdit* self, int spec) {
 	self->setTimeSpec(static_cast<Qt::TimeSpec>(spec));
 }
 
-QSize* QDateTimeEdit_sizeHint(const QDateTimeEdit* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QDateTimeEdit_sizeHint(const QDateTimeEdit* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QDateTimeEdit_clear(QDateTimeEdit* self) {
@@ -1553,8 +1549,8 @@ bool QDateTimeEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDateTimeEdit_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDateTimeEdit*>(self)->QDateTimeEdit::sizeHint());
+struct miqt_qsize QDateTimeEdit_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDateTimeEdit*>(self)->QDateTimeEdit::sizeHint());
 }
 
 bool QDateTimeEdit_override_virtual_clear(void* self, intptr_t slot) {
@@ -1789,8 +1785,8 @@ bool QDateTimeEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDateTimeEdit_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDateTimeEdit*>(self)->QDateTimeEdit::minimumSizeHint());
+struct miqt_qsize QDateTimeEdit_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDateTimeEdit*>(self)->QDateTimeEdit::minimumSizeHint());
 }
 
 bool QDateTimeEdit_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2326,10 +2322,6 @@ void QDateTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	static_cast<MiqtVirtualQDateTimeEdit*>(self)->QDateTimeEdit::disconnectNotify(*signal);
 }
 
-QSize* QDateTimeEdit_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QDateTime* QDateTimeEdit_virtualreturncopy_QDateTime(QDateTime* src) {
 	return new QDateTime(*src);
 }
@@ -2482,13 +2474,11 @@ public:
 			return QTimeEdit::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTimeEdit_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTimeEdit_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTimeEdit_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QTimeEdit_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__clear = 0;
@@ -2774,13 +2764,11 @@ public:
 			return QTimeEdit::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTimeEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTimeEdit_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTimeEdit_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QTimeEdit_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -3527,8 +3515,8 @@ bool QTimeEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTimeEdit_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTimeEdit*>(self)->QTimeEdit::sizeHint());
+struct miqt_qsize QTimeEdit_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTimeEdit*>(self)->QTimeEdit::sizeHint());
 }
 
 bool QTimeEdit_override_virtual_clear(void* self, intptr_t slot) {
@@ -3763,8 +3751,8 @@ bool QTimeEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTimeEdit_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTimeEdit*>(self)->QTimeEdit::minimumSizeHint());
+struct miqt_qsize QTimeEdit_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTimeEdit*>(self)->QTimeEdit::minimumSizeHint());
 }
 
 bool QTimeEdit_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -4300,10 +4288,6 @@ void QTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQTimeEdit*>(self)->QTimeEdit::disconnectNotify(*signal);
 }
 
-QSize* QTimeEdit_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QDateTime* QTimeEdit_virtualreturncopy_QDateTime(QDateTime* src) {
 	return new QDateTime(*src);
 }
@@ -4456,13 +4440,11 @@ public:
 			return QDateEdit::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDateEdit_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDateEdit_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDateEdit_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDateEdit_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__clear = 0;
@@ -4748,13 +4730,11 @@ public:
 			return QDateEdit::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDateEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDateEdit_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDateEdit_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDateEdit_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -5501,8 +5481,8 @@ bool QDateEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDateEdit_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDateEdit*>(self)->QDateEdit::sizeHint());
+struct miqt_qsize QDateEdit_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDateEdit*>(self)->QDateEdit::sizeHint());
 }
 
 bool QDateEdit_override_virtual_clear(void* self, intptr_t slot) {
@@ -5737,8 +5717,8 @@ bool QDateEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDateEdit_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDateEdit*>(self)->QDateEdit::minimumSizeHint());
+struct miqt_qsize QDateEdit_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDateEdit*>(self)->QDateEdit::minimumSizeHint());
 }
 
 bool QDateEdit_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -6272,10 +6252,6 @@ bool QDateEdit_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDateEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDateEdit*>(self)->QDateEdit::disconnectNotify(*signal);
-}
-
-QSize* QDateEdit_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QDateTime* QDateEdit_virtualreturncopy_QDateTime(QDateTime* src) {

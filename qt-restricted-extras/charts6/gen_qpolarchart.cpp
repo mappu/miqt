@@ -45,21 +45,21 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QPolarChart_setGeometry(QPolarChart*, intptr_t, QRectF*);
+void miqt_exec_callback_QPolarChart_setGeometry(QPolarChart*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QPolarChart_getContentsMargins(const QPolarChart*, intptr_t, double*, double*, double*, double*);
 int miqt_exec_callback_QPolarChart_type(const QPolarChart*, intptr_t);
 void miqt_exec_callback_QPolarChart_paint(QPolarChart*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 void miqt_exec_callback_QPolarChart_paintWindowFrame(QPolarChart*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
-QRectF* miqt_exec_callback_QPolarChart_boundingRect(const QPolarChart*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QPolarChart_boundingRect(const QPolarChart*, intptr_t);
 QPainterPath* miqt_exec_callback_QPolarChart_shape(const QPolarChart*, intptr_t);
 void miqt_exec_callback_QPolarChart_initStyleOption(const QPolarChart*, intptr_t, QStyleOption*);
-QSizeF* miqt_exec_callback_QPolarChart_sizeHint(const QPolarChart*, intptr_t, int, QSizeF*);
+struct miqt_qsizef miqt_exec_callback_QPolarChart_sizeHint(const QPolarChart*, intptr_t, int, struct miqt_qsizef);
 void miqt_exec_callback_QPolarChart_updateGeometry(QPolarChart*, intptr_t);
 QVariant* miqt_exec_callback_QPolarChart_itemChange(QPolarChart*, intptr_t, int, QVariant*);
 QVariant* miqt_exec_callback_QPolarChart_propertyChange(QPolarChart*, intptr_t, struct miqt_string, QVariant*);
 bool miqt_exec_callback_QPolarChart_sceneEvent(QPolarChart*, intptr_t, QEvent*);
 bool miqt_exec_callback_QPolarChart_windowFrameEvent(QPolarChart*, intptr_t, QEvent*);
-int miqt_exec_callback_QPolarChart_windowFrameSectionAt(const QPolarChart*, intptr_t, QPointF*);
+int miqt_exec_callback_QPolarChart_windowFrameSectionAt(const QPolarChart*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QPolarChart_event(QPolarChart*, intptr_t, QEvent*);
 void miqt_exec_callback_QPolarChart_changeEvent(QPolarChart*, intptr_t, QEvent*);
 void miqt_exec_callback_QPolarChart_closeEvent(QPolarChart*, intptr_t, QCloseEvent*);
@@ -84,7 +84,7 @@ void miqt_exec_callback_QPolarChart_customEvent(QPolarChart*, intptr_t, QEvent*)
 void miqt_exec_callback_QPolarChart_connectNotify(QPolarChart*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QPolarChart_disconnectNotify(QPolarChart*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QPolarChart_advance(QPolarChart*, intptr_t, int);
-bool miqt_exec_callback_QPolarChart_contains(const QPolarChart*, intptr_t, QPointF*);
+bool miqt_exec_callback_QPolarChart_contains(const QPolarChart*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QPolarChart_collidesWithItem(const QPolarChart*, intptr_t, QGraphicsItem*, int);
 bool miqt_exec_callback_QPolarChart_collidesWithPath(const QPolarChart*, intptr_t, QPainterPath*, int);
 bool miqt_exec_callback_QPolarChart_isObscuredBy(const QPolarChart*, intptr_t, QGraphicsItem*);
@@ -132,14 +132,12 @@ public:
 			return;
 		}
 
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QPolarChart_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QPolarChart_virtualbase_setGeometry(void* self, QRectF* rect);
+	friend void QPolarChart_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__getContentsMargins = 0;
@@ -227,13 +225,11 @@ public:
 			return QPolarChart::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QPolarChart_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QPolarChart_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QPolarChart_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QPolarChart_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -280,16 +276,12 @@ public:
 
 		Qt::SizeHint which_ret = which;
 		int sigval1 = static_cast<int>(which_ret);
-		const QSizeF& constraint_ret = constraint;
-		// Cast returned reference into pointer
-		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
-		QSizeF* callback_return_value = miqt_exec_callback_QPolarChart_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef sigval2 = miqt_to_cabi<struct miqt_qsizef>(constraint);
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QPolarChart_sizeHint(this, handle__sizeHint, sigval1, sigval2);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
-	friend QSizeF* QPolarChart_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+	friend struct miqt_qsizef QPolarChart_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateGeometry = 0;
@@ -398,14 +390,12 @@ public:
 			return QPolarChart::windowFrameSectionAt(pos);
 		}
 
-		const QPointF& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&pos_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(pos);
 		int callback_return_value = miqt_exec_callback_QPolarChart_windowFrameSectionAt(this, handle__windowFrameSectionAt, sigval1);
 		return static_cast<Qt::WindowFrameSection>(callback_return_value);
 	}
 
-	friend int QPolarChart_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos);
+	friend int QPolarChart_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -825,14 +815,12 @@ public:
 			return QPolarChart::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QPolarChart_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QPolarChart_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QPolarChart_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__collidesWithItem = 0;
@@ -1380,8 +1368,8 @@ bool QPolarChart_override_virtual_setGeometry(void* self, intptr_t slot) {
 	return true;
 }
 
-void QPolarChart_virtualbase_setGeometry(void* self, QRectF* rect) {
-	static_cast<MiqtVirtualQPolarChart*>(self)->QPolarChart::setGeometry(*rect);
+void QPolarChart_virtualbase_setGeometry(void* self, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQPolarChart*>(self)->QPolarChart::setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 bool QPolarChart_override_virtual_getContentsMargins(void* self, intptr_t slot) {
@@ -1450,8 +1438,8 @@ bool QPolarChart_override_virtual_boundingRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRectF* QPolarChart_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::boundingRect());
+struct miqt_qrectf QPolarChart_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::boundingRect());
 }
 
 bool QPolarChart_override_virtual_shape(void* self, intptr_t slot) {
@@ -1492,8 +1480,8 @@ bool QPolarChart_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSizeF* QPolarChart_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
-	return new QSizeF(static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+struct miqt_qsizef QPolarChart_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint) {
+	return miqt_to_cabi<struct miqt_qsizef>(static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::sizeHint(static_cast<Qt::SizeHint>(which), miqt_from_cabi<QSizeF>(constraint)));
 }
 
 bool QPolarChart_override_virtual_updateGeometry(void* self, intptr_t slot) {
@@ -1577,8 +1565,8 @@ bool QPolarChart_override_virtual_windowFrameSectionAt(void* self, intptr_t slot
 	return true;
 }
 
-int QPolarChart_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos) {
-	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::windowFrameSectionAt(*pos);
+int QPolarChart_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos) {
+	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::windowFrameSectionAt(miqt_from_cabi<QPointF>(pos));
 	return static_cast<int>(_ret);
 }
 
@@ -1928,8 +1916,8 @@ bool QPolarChart_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QPolarChart_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::contains(*point);
+bool QPolarChart_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QPolarChart_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -2268,16 +2256,8 @@ bool QPolarChart_virtualbase_isEmpty(const void* self) {
 	return static_cast<const MiqtVirtualQPolarChart*>(self)->QPolarChart::isEmpty();
 }
 
-QRectF* QPolarChart_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QPolarChart_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
-}
-
-QSizeF* QPolarChart_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
 }
 
 QVariant* QPolarChart_virtualreturncopy_QVariant(QVariant* src) {

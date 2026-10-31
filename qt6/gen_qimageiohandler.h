@@ -62,8 +62,8 @@ int QImageIOHandler_loopCount(const QImageIOHandler* self);
 int QImageIOHandler_imageCount(const QImageIOHandler* self);
 int QImageIOHandler_nextImageDelay(const QImageIOHandler* self);
 int QImageIOHandler_currentImageNumber(const QImageIOHandler* self);
-QRect* QImageIOHandler_currentImageRect(const QImageIOHandler* self);
-bool QImageIOHandler_allocateImage(QSize* size, int format, QImage* image);
+struct miqt_qrect QImageIOHandler_currentImageRect(const QImageIOHandler* self);
+bool QImageIOHandler_allocateImage(struct miqt_qsize size, int format, QImage* image);
 
 bool QImageIOHandler_override_virtual_canRead(void* self, intptr_t slot);
 bool QImageIOHandler_virtualbase_canRead(const void* self);
@@ -90,9 +90,8 @@ int QImageIOHandler_virtualbase_nextImageDelay(const void* self);
 bool QImageIOHandler_override_virtual_currentImageNumber(void* self, intptr_t slot);
 int QImageIOHandler_virtualbase_currentImageNumber(const void* self);
 bool QImageIOHandler_override_virtual_currentImageRect(void* self, intptr_t slot);
-QRect* QImageIOHandler_virtualbase_currentImageRect(const void* self);
+struct miqt_qrect QImageIOHandler_virtualbase_currentImageRect(const void* self);
 QVariant* QImageIOHandler_virtualreturncopy_QVariant(QVariant* src);
-QRect* QImageIOHandler_virtualreturncopy_QRect(QRect* src);
 
 void QImageIOHandler_delete(QImageIOHandler* self);
 

@@ -70,8 +70,8 @@ void miqt_exec_callback_QGLWidget_glInit(QGLWidget*, intptr_t);
 void miqt_exec_callback_QGLWidget_glDraw(QGLWidget*, intptr_t);
 int miqt_exec_callback_QGLWidget_devType(const QGLWidget*, intptr_t);
 void miqt_exec_callback_QGLWidget_setVisible(QGLWidget*, intptr_t, bool);
-QSize* miqt_exec_callback_QGLWidget_sizeHint(const QGLWidget*, intptr_t);
-QSize* miqt_exec_callback_QGLWidget_minimumSizeHint(const QGLWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QGLWidget_sizeHint(const QGLWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QGLWidget_minimumSizeHint(const QGLWidget*, intptr_t);
 int miqt_exec_callback_QGLWidget_heightForWidth(const QGLWidget*, intptr_t, int);
 bool miqt_exec_callback_QGLWidget_hasHeightForWidth(const QGLWidget*, intptr_t);
 void miqt_exec_callback_QGLWidget_mousePressEvent(QGLWidget*, intptr_t, QMouseEvent*);
@@ -459,7 +459,7 @@ public:
 	friend void QGLContext_protectedbase_setWindowCreated(bool* _dynamic_cast_ok, void* self, bool on);
 	friend bool QGLContext_protectedbase_initialized(bool* _dynamic_cast_ok, const void* self);
 	friend void QGLContext_protectedbase_setInitialized(bool* _dynamic_cast_ok, void* self, bool on);
-	friend unsigned int QGLContext_protectedbase_colorIndex(bool* _dynamic_cast_ok, const void* self, QColor* c);
+	friend unsigned int QGLContext_protectedbase_colorIndex(bool* _dynamic_cast_ok, const void* self, struct miqt_qcolor c);
 	friend void QGLContext_protectedbase_setValid(bool* _dynamic_cast_ok, void* self, bool valid);
 	friend void QGLContext_protectedbase_setDevice(bool* _dynamic_cast_ok, void* self, QPaintDevice* pDev);
 };
@@ -532,8 +532,8 @@ QPaintDevice* QGLContext_device(const QGLContext* self) {
 	return self->device();
 }
 
-QColor* QGLContext_overlayTransparentColor(const QGLContext* self) {
-	return new QColor(self->overlayTransparentColor());
+struct miqt_qcolor QGLContext_overlayTransparentColor(const QGLContext* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->overlayTransparentColor());
 }
 
 QGLContext* QGLContext_currentContext() {
@@ -665,7 +665,7 @@ void QGLContext_protectedbase_setInitialized(bool* _dynamic_cast_ok, void* self,
 	self_cast->setInitialized(on);
 }
 
-unsigned int QGLContext_protectedbase_colorIndex(bool* _dynamic_cast_ok, const void* self, QColor* c) {
+unsigned int QGLContext_protectedbase_colorIndex(bool* _dynamic_cast_ok, const void* self, struct miqt_qcolor c) {
 	MiqtVirtualQGLContext* self_cast = dynamic_cast<MiqtVirtualQGLContext*>( (QGLContext*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -673,7 +673,7 @@ unsigned int QGLContext_protectedbase_colorIndex(bool* _dynamic_cast_ok, const v
 	}
 
 	*_dynamic_cast_ok = true;
-	uint _ret = self_cast->colorIndex(*c);
+	uint _ret = self_cast->colorIndex(miqt_from_cabi<QColor>(c));
 	return static_cast<unsigned int>(_ret);
 }
 
@@ -991,13 +991,11 @@ public:
 			return QGLWidget::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGLWidget_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGLWidget_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGLWidget_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QGLWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -1008,13 +1006,11 @@ public:
 			return QGLWidget::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGLWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGLWidget_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGLWidget_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QGLWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1780,12 +1776,12 @@ struct miqt_string QGLWidget_trUtf8(const char* s) {
 	return _ms;
 }
 
-void QGLWidget_qglColor(const QGLWidget* self, QColor* c) {
-	self->qglColor(*c);
+void QGLWidget_qglColor(const QGLWidget* self, struct miqt_qcolor c) {
+	self->qglColor(miqt_from_cabi<QColor>(c));
 }
 
-void QGLWidget_qglClearColor(const QGLWidget* self, QColor* c) {
-	self->qglClearColor(*c);
+void QGLWidget_qglClearColor(const QGLWidget* self, struct miqt_qcolor c) {
+	self->qglClearColor(miqt_from_cabi<QColor>(c));
 }
 
 bool QGLWidget_isValid(const QGLWidget* self) {
@@ -2182,8 +2178,8 @@ bool QGLWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QGLWidget_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGLWidget*>(self)->QGLWidget::sizeHint());
+struct miqt_qsize QGLWidget_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGLWidget*>(self)->QGLWidget::sizeHint());
 }
 
 bool QGLWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -2196,8 +2192,8 @@ bool QGLWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QGLWidget_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGLWidget*>(self)->QGLWidget::minimumSizeHint());
+struct miqt_qsize QGLWidget_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGLWidget*>(self)->QGLWidget::minimumSizeHint());
 }
 
 bool QGLWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2745,10 +2741,6 @@ bool QGLWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QGLWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQGLWidget*>(self)->QGLWidget::disconnectNotify(*signal);
-}
-
-QSize* QGLWidget_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QGLWidget_virtualreturncopy_QVariant(QVariant* src) {

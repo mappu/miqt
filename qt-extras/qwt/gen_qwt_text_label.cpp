@@ -45,10 +45,10 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QwtTextLabel_setTextWithText(QwtTextLabel*, intptr_t, QwtText*);
-QSize* miqt_exec_callback_QwtTextLabel_sizeHint(const QwtTextLabel*, intptr_t);
-QSize* miqt_exec_callback_QwtTextLabel_minimumSizeHint(const QwtTextLabel*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtTextLabel_sizeHint(const QwtTextLabel*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtTextLabel_minimumSizeHint(const QwtTextLabel*, intptr_t);
 int miqt_exec_callback_QwtTextLabel_heightForWidth(const QwtTextLabel*, intptr_t, int);
-void miqt_exec_callback_QwtTextLabel_drawText(QwtTextLabel*, intptr_t, QPainter*, QRectF*);
+void miqt_exec_callback_QwtTextLabel_drawText(QwtTextLabel*, intptr_t, QPainter*, struct miqt_qrectf);
 void miqt_exec_callback_QwtTextLabel_paintEvent(QwtTextLabel*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtTextLabel_drawContents(QwtTextLabel*, intptr_t, QPainter*);
 bool miqt_exec_callback_QwtTextLabel_event(QwtTextLabel*, intptr_t, QEvent*);
@@ -136,13 +136,11 @@ public:
 			return QwtTextLabel::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtTextLabel_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtTextLabel_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtTextLabel_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtTextLabel_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -153,13 +151,11 @@ public:
 			return QwtTextLabel::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtTextLabel_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtTextLabel_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtTextLabel_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtTextLabel_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -188,14 +184,12 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QRectF& param2_ret = param2;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&param2_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(param2);
 		miqt_exec_callback_QwtTextLabel_drawText(this, handle__drawText, sigval1, sigval2);
 
 	}
 
-	friend void QwtTextLabel_virtualbase_drawText(void* self, QPainter* param1, QRectF* param2);
+	friend void QwtTextLabel_virtualbase_drawText(void* self, QPainter* param1, struct miqt_qrectf param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -1078,24 +1072,24 @@ void QwtTextLabel_setMargin(QwtTextLabel* self, int margin) {
 	self->setMargin(static_cast<int>(margin));
 }
 
-QSize* QwtTextLabel_sizeHint(const QwtTextLabel* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtTextLabel_sizeHint(const QwtTextLabel* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QwtTextLabel_minimumSizeHint(const QwtTextLabel* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QwtTextLabel_minimumSizeHint(const QwtTextLabel* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 int QwtTextLabel_heightForWidth(const QwtTextLabel* self, int param1) {
 	return self->heightForWidth(static_cast<int>(param1));
 }
 
-QRect* QwtTextLabel_textRect(const QwtTextLabel* self) {
-	return new QRect(self->textRect());
+struct miqt_qrect QwtTextLabel_textRect(const QwtTextLabel* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->textRect());
 }
 
-void QwtTextLabel_drawText(QwtTextLabel* self, QPainter* param1, QRectF* param2) {
-	self->drawText(param1, *param2);
+void QwtTextLabel_drawText(QwtTextLabel* self, QPainter* param1, struct miqt_qrectf param2) {
+	self->drawText(param1, miqt_from_cabi<QRectF>(param2));
 }
 
 struct miqt_string QwtTextLabel_tr2(const char* s, const char* c) {
@@ -1171,8 +1165,8 @@ bool QwtTextLabel_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtTextLabel_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtTextLabel*>(self)->QwtTextLabel::sizeHint());
+struct miqt_qsize QwtTextLabel_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtTextLabel*>(self)->QwtTextLabel::sizeHint());
 }
 
 bool QwtTextLabel_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1185,8 +1179,8 @@ bool QwtTextLabel_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtTextLabel_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtTextLabel*>(self)->QwtTextLabel::minimumSizeHint());
+struct miqt_qsize QwtTextLabel_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtTextLabel*>(self)->QwtTextLabel::minimumSizeHint());
 }
 
 bool QwtTextLabel_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1213,8 +1207,8 @@ bool QwtTextLabel_override_virtual_drawText(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtTextLabel_virtualbase_drawText(void* self, QPainter* param1, QRectF* param2) {
-	static_cast<MiqtVirtualQwtTextLabel*>(self)->QwtTextLabel::drawText(param1, *param2);
+void QwtTextLabel_virtualbase_drawText(void* self, QPainter* param1, struct miqt_qrectf param2) {
+	static_cast<MiqtVirtualQwtTextLabel*>(self)->QwtTextLabel::drawText(param1, miqt_from_cabi<QRectF>(param2));
 }
 
 bool QwtTextLabel_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1846,10 +1840,6 @@ bool QwtTextLabel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QwtTextLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtTextLabel*>(self)->QwtTextLabel::disconnectNotify(*signal);
-}
-
-QSize* QwtTextLabel_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtTextLabel_virtualreturncopy_QVariant(QVariant* src) {

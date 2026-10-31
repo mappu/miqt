@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -296,20 +297,14 @@ func (this *QTransform) Reset() {
 	C.QTransform_reset(this.h)
 }
 
-func (this *QTransform) Map(p *QPoint) *QPoint {
+func (this *QTransform) Map(p QPoint) QPoint {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_goptr := newQPoint(C.QTransform_map(this.h, p.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QTransform_map(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
-func (this *QTransform) MapWithQPointF(p *QPointF) *QPointF {
+func (this *QTransform) MapWithQPointF(p QPointF) QPointF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_goptr := newQPointF(C.QTransform_mapWithQPointF(this.h, p.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QTransform_mapWithQPointF(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](p)))
 }
 
 func (this *QTransform) MapWithQLine(l *QLine) *QLine {
@@ -344,20 +339,14 @@ func (this *QTransform) MapWithQPainterPath(p *QPainterPath) *QPainterPath {
 	return _goptr
 }
 
-func (this *QTransform) MapRect(param1 *QRect) *QRect {
+func (this *QTransform) MapRect(param1 QRect) QRect {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := newQRect(C.QTransform_mapRect(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QTransform_mapRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 }
 
-func (this *QTransform) MapRectWithQRectF(param1 *QRectF) *QRectF {
+func (this *QTransform) MapRectWithQRectF(param1 QRectF) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := newQRectF(C.QTransform_mapRectWithQRectF(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QTransform_mapRectWithQRectF(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 }
 
 func (this *QTransform) Map2(x int, y int, tx *int, ty *int) {

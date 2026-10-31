@@ -43,22 +43,22 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QwtAnalogClock_drawNeedle(const QwtAnalogClock*, intptr_t, QPainter*, QPointF*, double, double, int);
-void miqt_exec_callback_QwtAnalogClock_drawHand(const QwtAnalogClock*, intptr_t, QPainter*, int, QPointF*, double, double, int);
+void miqt_exec_callback_QwtAnalogClock_drawNeedle(const QwtAnalogClock*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
+void miqt_exec_callback_QwtAnalogClock_drawHand(const QwtAnalogClock*, intptr_t, QPainter*, int, struct miqt_qpointf, double, double, int);
 void miqt_exec_callback_QwtAnalogClock_setOrigin(QwtAnalogClock*, intptr_t, double);
-QRect* miqt_exec_callback_QwtAnalogClock_scaleInnerRect(const QwtAnalogClock*, intptr_t);
-QSize* miqt_exec_callback_QwtAnalogClock_sizeHint(const QwtAnalogClock*, intptr_t);
-QSize* miqt_exec_callback_QwtAnalogClock_minimumSizeHint(const QwtAnalogClock*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QwtAnalogClock_scaleInnerRect(const QwtAnalogClock*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtAnalogClock_sizeHint(const QwtAnalogClock*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtAnalogClock_minimumSizeHint(const QwtAnalogClock*, intptr_t);
 void miqt_exec_callback_QwtAnalogClock_wheelEvent(QwtAnalogClock*, intptr_t, QWheelEvent*);
 void miqt_exec_callback_QwtAnalogClock_paintEvent(QwtAnalogClock*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtAnalogClock_changeEvent(QwtAnalogClock*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtAnalogClock_drawFrame(QwtAnalogClock*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtAnalogClock_drawContents(const QwtAnalogClock*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtAnalogClock_drawFocusIndicator(const QwtAnalogClock*, intptr_t, QPainter*);
-void miqt_exec_callback_QwtAnalogClock_drawScale(const QwtAnalogClock*, intptr_t, QPainter*, QPointF*, double);
-void miqt_exec_callback_QwtAnalogClock_drawScaleContents(const QwtAnalogClock*, intptr_t, QPainter*, QPointF*, double);
-double miqt_exec_callback_QwtAnalogClock_scrolledTo(const QwtAnalogClock*, intptr_t, QPoint*);
-bool miqt_exec_callback_QwtAnalogClock_isScrollPosition(const QwtAnalogClock*, intptr_t, QPoint*);
+void miqt_exec_callback_QwtAnalogClock_drawScale(const QwtAnalogClock*, intptr_t, QPainter*, struct miqt_qpointf, double);
+void miqt_exec_callback_QwtAnalogClock_drawScaleContents(const QwtAnalogClock*, intptr_t, QPainter*, struct miqt_qpointf, double);
+double miqt_exec_callback_QwtAnalogClock_scrolledTo(const QwtAnalogClock*, intptr_t, struct miqt_qpoint);
+bool miqt_exec_callback_QwtAnalogClock_isScrollPosition(const QwtAnalogClock*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QwtAnalogClock_sliderChange(QwtAnalogClock*, intptr_t);
 void miqt_exec_callback_QwtAnalogClock_scaleChange(QwtAnalogClock*, intptr_t);
 void miqt_exec_callback_QwtAnalogClock_mousePressEvent(QwtAnalogClock*, intptr_t, QMouseEvent*);
@@ -126,9 +126,7 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QPointF& param2_ret = param2;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&param2_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(param2);
 		double sigval3 = radius;
 		double sigval4 = direction;
 		QPalette::ColorGroup param5_ret = param5;
@@ -137,7 +135,7 @@ public:
 
 	}
 
-	friend void QwtAnalogClock_virtualbase_drawNeedle(const void* self, QPainter* param1, QPointF* param2, double radius, double direction, int param5);
+	friend void QwtAnalogClock_virtualbase_drawNeedle(const void* self, QPainter* param1, struct miqt_qpointf param2, double radius, double direction, int param5);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawHand = 0;
@@ -152,9 +150,7 @@ public:
 		QPainter* sigval1 = param1;
 		QwtAnalogClock::Hand param2_ret = param2;
 		int sigval2 = static_cast<int>(param2_ret);
-		const QPointF& param3_ret = param3;
-		// Cast returned reference into pointer
-		QPointF* sigval3 = const_cast<QPointF*>(&param3_ret);
+		struct miqt_qpointf sigval3 = miqt_to_cabi<struct miqt_qpointf>(param3);
 		double sigval4 = radius;
 		double sigval5 = direction;
 		QPalette::ColorGroup param6_ret = param6;
@@ -163,7 +159,7 @@ public:
 
 	}
 
-	friend void QwtAnalogClock_virtualbase_drawHand(const void* self, QPainter* param1, int param2, QPointF* param3, double radius, double direction, int param6);
+	friend void QwtAnalogClock_virtualbase_drawHand(const void* self, QPainter* param1, int param2, struct miqt_qpointf param3, double radius, double direction, int param6);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setOrigin = 0;
@@ -191,13 +187,11 @@ public:
 			return QwtAnalogClock::scaleInnerRect();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QwtAnalogClock_scaleInnerRect(this, handle__scaleInnerRect);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QwtAnalogClock_scaleInnerRect(this, handle__scaleInnerRect);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QwtAnalogClock_virtualbase_scaleInnerRect(const void* self);
+	friend struct miqt_qrect QwtAnalogClock_virtualbase_scaleInnerRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -208,13 +202,11 @@ public:
 			return QwtAnalogClock::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtAnalogClock_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtAnalogClock_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtAnalogClock_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtAnalogClock_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -225,13 +217,11 @@ public:
 			return QwtAnalogClock::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtAnalogClock_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtAnalogClock_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtAnalogClock_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtAnalogClock_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -346,15 +336,13 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = radius;
 		miqt_exec_callback_QwtAnalogClock_drawScale(this, handle__drawScale, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtAnalogClock_virtualbase_drawScale(const void* self, QPainter* param1, QPointF* center, double radius);
+	friend void QwtAnalogClock_virtualbase_drawScale(const void* self, QPainter* param1, struct miqt_qpointf center, double radius);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawScaleContents = 0;
@@ -367,15 +355,13 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = radius;
 		miqt_exec_callback_QwtAnalogClock_drawScaleContents(this, handle__drawScaleContents, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtAnalogClock_virtualbase_drawScaleContents(const void* self, QPainter* painter, QPointF* center, double radius);
+	friend void QwtAnalogClock_virtualbase_drawScaleContents(const void* self, QPainter* painter, struct miqt_qpointf center, double radius);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrolledTo = 0;
@@ -386,14 +372,12 @@ public:
 			return QwtAnalogClock::scrolledTo(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		double callback_return_value = miqt_exec_callback_QwtAnalogClock_scrolledTo(this, handle__scrolledTo, sigval1);
 		return static_cast<double>(callback_return_value);
 	}
 
-	friend double QwtAnalogClock_virtualbase_scrolledTo(const void* self, QPoint* param1);
+	friend double QwtAnalogClock_virtualbase_scrolledTo(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isScrollPosition = 0;
@@ -404,14 +388,12 @@ public:
 			return QwtAnalogClock::isScrollPosition(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		bool callback_return_value = miqt_exec_callback_QwtAnalogClock_isScrollPosition(this, handle__isScrollPosition, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QwtAnalogClock_virtualbase_isScrollPosition(const void* self, QPoint* param1);
+	friend bool QwtAnalogClock_virtualbase_isScrollPosition(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sliderChange = 0;
@@ -1293,8 +1275,8 @@ bool QwtAnalogClock_override_virtual_drawNeedle(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtAnalogClock_virtualbase_drawNeedle(const void* self, QPainter* param1, QPointF* param2, double radius, double direction, int param5) {
-	static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::drawNeedle(param1, *param2, static_cast<double>(radius), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
+void QwtAnalogClock_virtualbase_drawNeedle(const void* self, QPainter* param1, struct miqt_qpointf param2, double radius, double direction, int param5) {
+	static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::drawNeedle(param1, miqt_from_cabi<QPointF>(param2), static_cast<double>(radius), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
 }
 
 bool QwtAnalogClock_override_virtual_drawHand(void* self, intptr_t slot) {
@@ -1307,8 +1289,8 @@ bool QwtAnalogClock_override_virtual_drawHand(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtAnalogClock_virtualbase_drawHand(const void* self, QPainter* param1, int param2, QPointF* param3, double radius, double direction, int param6) {
-	static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::drawHand(param1, static_cast<MiqtVirtualQwtAnalogClock::Hand>(param2), *param3, static_cast<double>(radius), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param6));
+void QwtAnalogClock_virtualbase_drawHand(const void* self, QPainter* param1, int param2, struct miqt_qpointf param3, double radius, double direction, int param6) {
+	static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::drawHand(param1, static_cast<MiqtVirtualQwtAnalogClock::Hand>(param2), miqt_from_cabi<QPointF>(param3), static_cast<double>(radius), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param6));
 }
 
 bool QwtAnalogClock_override_virtual_setOrigin(void* self, intptr_t slot) {
@@ -1335,8 +1317,8 @@ bool QwtAnalogClock_override_virtual_scaleInnerRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QwtAnalogClock_virtualbase_scaleInnerRect(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::scaleInnerRect());
+struct miqt_qrect QwtAnalogClock_virtualbase_scaleInnerRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::scaleInnerRect());
 }
 
 bool QwtAnalogClock_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1349,8 +1331,8 @@ bool QwtAnalogClock_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtAnalogClock_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::sizeHint());
+struct miqt_qsize QwtAnalogClock_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::sizeHint());
 }
 
 bool QwtAnalogClock_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1363,8 +1345,8 @@ bool QwtAnalogClock_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QwtAnalogClock_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::minimumSizeHint());
+struct miqt_qsize QwtAnalogClock_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::minimumSizeHint());
 }
 
 bool QwtAnalogClock_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1461,8 +1443,8 @@ bool QwtAnalogClock_override_virtual_drawScale(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtAnalogClock_virtualbase_drawScale(const void* self, QPainter* param1, QPointF* center, double radius) {
-	static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::drawScale(param1, *center, static_cast<double>(radius));
+void QwtAnalogClock_virtualbase_drawScale(const void* self, QPainter* param1, struct miqt_qpointf center, double radius) {
+	static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::drawScale(param1, miqt_from_cabi<QPointF>(center), static_cast<double>(radius));
 }
 
 bool QwtAnalogClock_override_virtual_drawScaleContents(void* self, intptr_t slot) {
@@ -1475,8 +1457,8 @@ bool QwtAnalogClock_override_virtual_drawScaleContents(void* self, intptr_t slot
 	return true;
 }
 
-void QwtAnalogClock_virtualbase_drawScaleContents(const void* self, QPainter* painter, QPointF* center, double radius) {
-	static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::drawScaleContents(painter, *center, static_cast<double>(radius));
+void QwtAnalogClock_virtualbase_drawScaleContents(const void* self, QPainter* painter, struct miqt_qpointf center, double radius) {
+	static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::drawScaleContents(painter, miqt_from_cabi<QPointF>(center), static_cast<double>(radius));
 }
 
 bool QwtAnalogClock_override_virtual_scrolledTo(void* self, intptr_t slot) {
@@ -1489,8 +1471,8 @@ bool QwtAnalogClock_override_virtual_scrolledTo(void* self, intptr_t slot) {
 	return true;
 }
 
-double QwtAnalogClock_virtualbase_scrolledTo(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::scrolledTo(*param1);
+double QwtAnalogClock_virtualbase_scrolledTo(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::scrolledTo(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtAnalogClock_override_virtual_isScrollPosition(void* self, intptr_t slot) {
@@ -1503,8 +1485,8 @@ bool QwtAnalogClock_override_virtual_isScrollPosition(void* self, intptr_t slot)
 	return true;
 }
 
-bool QwtAnalogClock_virtualbase_isScrollPosition(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::isScrollPosition(*param1);
+bool QwtAnalogClock_virtualbase_isScrollPosition(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::isScrollPosition(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtAnalogClock_override_virtual_sliderChange(void* self, intptr_t slot) {
@@ -2122,14 +2104,6 @@ bool QwtAnalogClock_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QwtAnalogClock_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtAnalogClock*>(self)->QwtAnalogClock::disconnectNotify(*signal);
-}
-
-QRect* QwtAnalogClock_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
-QSize* QwtAnalogClock_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtAnalogClock_virtualreturncopy_QVariant(QVariant* src) {

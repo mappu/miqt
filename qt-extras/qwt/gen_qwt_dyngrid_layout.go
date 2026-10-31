@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -161,15 +162,12 @@ func (this *QwtDynGridLayout) ExpandingDirections() qt.Orientation {
 	return (qt.Orientation)(C.QwtDynGridLayout_expandingDirections(this.h))
 }
 
-func (this *QwtDynGridLayout) LayoutItems(param1 *qt.QRect, numColumns uint) []qt.QRect {
-	defer runtime.KeepAlive(param1)
-	var _ma C.struct_miqt_array = C.QwtDynGridLayout_layoutItems(this.h, (*C.QRect)(param1.UnsafePointer()), (C.uint)(numColumns))
+func (this *QwtDynGridLayout) LayoutItems(param1 qt.QRect, numColumns uint) []qt.QRect {
+	var _ma C.struct_miqt_array = C.QwtDynGridLayout_layoutItems(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](param1), (C.uint)(numColumns))
 	_ret := make([]qt.QRect, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QRect)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qrect)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt.QRect](_outCast[i])
 	}
 	return _ret
 }
@@ -178,9 +176,8 @@ func (this *QwtDynGridLayout) MaxItemWidth() int {
 	return (int)(C.QwtDynGridLayout_maxItemWidth(this.h))
 }
 
-func (this *QwtDynGridLayout) SetGeometry(rect *qt.QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QwtDynGridLayout_setGeometry(this.h, (*C.QRect)(rect.UnsafePointer()))
+func (this *QwtDynGridLayout) SetGeometry(rect qt.QRect) {
+	C.QwtDynGridLayout_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
 func (this *QwtDynGridLayout) HasHeightForWidth() bool {
@@ -191,10 +188,8 @@ func (this *QwtDynGridLayout) HeightForWidth(param1 int) int {
 	return (int)(C.QwtDynGridLayout_heightForWidth(this.h, (C.int)(param1)))
 }
 
-func (this *QwtDynGridLayout) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtDynGridLayout_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtDynGridLayout) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtDynGridLayout_sizeHint(this.h))
 }
 
 func (this *QwtDynGridLayout) IsEmpty() bool {
@@ -280,8 +275,7 @@ func (this *QwtDynGridLayout) LayoutGrid(numColumns uint, rowHeight []int, colWi
 }
 
 // StretchGrid can only be called from a QwtDynGridLayout that was directly constructed.
-func (this *QwtDynGridLayout) StretchGrid(rect *qt.QRect, numColumns uint, rowHeight []int, colWidth []int) {
-	defer runtime.KeepAlive(rect)
+func (this *QwtDynGridLayout) StretchGrid(rect qt.QRect, numColumns uint, rowHeight []int, colWidth []int) {
 	rowHeight_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(rowHeight))))
 	defer C.free(unsafe.Pointer(rowHeight_CArray_ptr))
 	rowHeight_CArray := unsafe.Slice(rowHeight_CArray_ptr, len(rowHeight))
@@ -298,7 +292,7 @@ func (this *QwtDynGridLayout) StretchGrid(rect *qt.QRect, numColumns uint, rowHe
 	colWidth_ma := C.struct_miqt_array{len: C.size_t(len(colWidth)), data: unsafe.Pointer(colWidth_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
-	C.QwtDynGridLayout_protectedbase_stretchGrid(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(rect.UnsafePointer()), (C.uint)(numColumns), rowHeight_ma, colWidth_ma)
+	C.QwtDynGridLayout_protectedbase_stretchGrid(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](rect), (C.uint)(numColumns), rowHeight_ma, colWidth_ma)
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -358,13 +352,10 @@ func (this *QwtDynGridLayout) AdoptLayout(layout *qt.QLayout) bool {
 }
 
 // AlignmentRect can only be called from a QwtDynGridLayout that was directly constructed.
-func (this *QwtDynGridLayout) AlignmentRect(param1 *qt.QRect) qt.QRect {
-	defer runtime.KeepAlive(param1)
+func (this *QwtDynGridLayout) AlignmentRect(param1 qt.QRect) qt.QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtDynGridLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRect](C.QwtDynGridLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -616,13 +607,12 @@ func miqt_exec_callback_QwtDynGridLayout_maxItemWidth(self *C.QwtDynGridLayout, 
 
 }
 
-func (this *QwtDynGridLayout) callVirtualBase_SetGeometry(rect *qt.QRect) {
-	defer runtime.KeepAlive(rect)
+func (this *QwtDynGridLayout) callVirtualBase_SetGeometry(rect qt.QRect) {
 
-	C.QwtDynGridLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), (*C.QRect)(rect.UnsafePointer()))
+	C.QwtDynGridLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 
 }
-func (this *QwtDynGridLayout) OnSetGeometry(slot func(super func(rect *qt.QRect), rect *qt.QRect)) {
+func (this *QwtDynGridLayout) OnSetGeometry(slot func(super func(rect qt.QRect), rect qt.QRect)) {
 	ok := C.QwtDynGridLayout_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -630,14 +620,14 @@ func (this *QwtDynGridLayout) OnSetGeometry(slot func(super func(rect *qt.QRect)
 }
 
 //export miqt_exec_callback_QwtDynGridLayout_setGeometry
-func miqt_exec_callback_QwtDynGridLayout_setGeometry(self *C.QwtDynGridLayout, cb C.intptr_t, rect *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *qt.QRect), rect *qt.QRect))
+func miqt_exec_callback_QwtDynGridLayout_setGeometry(self *C.QwtDynGridLayout, cb C.intptr_t, rect C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect qt.QRect), rect qt.QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := libmiqt.ValueCast[qt.QRect](rect)
 
 	gofunc((&QwtDynGridLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -696,14 +686,12 @@ func miqt_exec_callback_QwtDynGridLayout_heightForWidth(self *C.QwtDynGridLayout
 
 }
 
-func (this *QwtDynGridLayout) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QwtDynGridLayout) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtDynGridLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtDynGridLayout) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtDynGridLayout) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtDynGridLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -711,16 +699,15 @@ func (this *QwtDynGridLayout) OnSizeHint(slot func(super func() *qt.QSize) *qt.Q
 }
 
 //export miqt_exec_callback_QwtDynGridLayout_sizeHint
-func miqt_exec_callback_QwtDynGridLayout_sizeHint(self *C.QwtDynGridLayout, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtDynGridLayout_sizeHint(self *C.QwtDynGridLayout, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtDynGridLayout{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtDynGridLayout_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -777,14 +764,12 @@ func miqt_exec_callback_QwtDynGridLayout_columnsForWidth(self *C.QwtDynGridLayou
 
 }
 
-func (this *QwtDynGridLayout) callVirtualBase_Geometry() *qt.QRect {
+func (this *QwtDynGridLayout) callVirtualBase_Geometry() qt.QRect {
 
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_geometry(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtDynGridLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtDynGridLayout) OnGeometry(slot func(super func() *qt.QRect) *qt.QRect) {
+func (this *QwtDynGridLayout) OnGeometry(slot func(super func() qt.QRect) qt.QRect) {
 	ok := C.QwtDynGridLayout_override_virtual_geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -792,27 +777,24 @@ func (this *QwtDynGridLayout) OnGeometry(slot func(super func() *qt.QRect) *qt.Q
 }
 
 //export miqt_exec_callback_QwtDynGridLayout_geometry
-func miqt_exec_callback_QwtDynGridLayout_geometry(self *C.QwtDynGridLayout, cb C.intptr_t) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRect) *qt.QRect)
+func miqt_exec_callback_QwtDynGridLayout_geometry(self *C.QwtDynGridLayout, cb C.intptr_t) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRect) qt.QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtDynGridLayout{h: self}).callVirtualBase_Geometry)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtDynGridLayout_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtDynGridLayout) callVirtualBase_MinimumSize() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_minimumSize(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
-func (this *QwtDynGridLayout) OnMinimumSize(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtDynGridLayout) callVirtualBase_MinimumSize() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtDynGridLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtDynGridLayout) OnMinimumSize(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtDynGridLayout_override_virtual_minimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -820,27 +802,24 @@ func (this *QwtDynGridLayout) OnMinimumSize(slot func(super func() *qt.QSize) *q
 }
 
 //export miqt_exec_callback_QwtDynGridLayout_minimumSize
-func miqt_exec_callback_QwtDynGridLayout_minimumSize(self *C.QwtDynGridLayout, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtDynGridLayout_minimumSize(self *C.QwtDynGridLayout, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtDynGridLayout{h: self}).callVirtualBase_MinimumSize)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtDynGridLayout_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtDynGridLayout) callVirtualBase_MaximumSize() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_maximumSize(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QwtDynGridLayout) OnMaximumSize(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtDynGridLayout) callVirtualBase_MaximumSize() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtDynGridLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtDynGridLayout) OnMaximumSize(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtDynGridLayout_override_virtual_maximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -848,16 +827,15 @@ func (this *QwtDynGridLayout) OnMaximumSize(slot func(super func() *qt.QSize) *q
 }
 
 //export miqt_exec_callback_QwtDynGridLayout_maximumSize
-func miqt_exec_callback_QwtDynGridLayout_maximumSize(self *C.QwtDynGridLayout, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtDynGridLayout_maximumSize(self *C.QwtDynGridLayout, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtDynGridLayout{h: self}).callVirtualBase_MaximumSize)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtDynGridLayout_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 

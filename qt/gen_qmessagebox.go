@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -1622,14 +1623,12 @@ func miqt_exec_callback_QMessageBox_setVisible(self *C.QMessageBox, cb C.intptr_
 
 }
 
-func (this *QMessageBox) callVirtualBase_SizeHint() *QSize {
+func (this *QMessageBox) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QMessageBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QMessageBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QMessageBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QMessageBox) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMessageBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1637,27 +1636,24 @@ func (this *QMessageBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QMessageBox_sizeHint
-func miqt_exec_callback_QMessageBox_sizeHint(self *C.QMessageBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMessageBox_sizeHint(self *C.QMessageBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMessageBox{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMessageBox_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QMessageBox) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QMessageBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QMessageBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QMessageBox) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QMessageBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QMessageBox) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMessageBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1665,16 +1661,15 @@ func (this *QMessageBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize
 }
 
 //export miqt_exec_callback_QMessageBox_minimumSizeHint
-func miqt_exec_callback_QMessageBox_minimumSizeHint(self *C.QMessageBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMessageBox_minimumSizeHint(self *C.QMessageBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMessageBox{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMessageBox_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2570,7 +2565,6 @@ func miqt_exec_callback_QMessageBox_initPainter(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QMessageBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

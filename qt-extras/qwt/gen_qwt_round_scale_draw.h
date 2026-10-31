@@ -37,8 +37,8 @@ void QwtRoundScaleDraw_virtbase(QwtRoundScaleDraw* src, QwtAbstractScaleDraw** o
 void QwtRoundScaleDraw_setRadius(QwtRoundScaleDraw* self, double radius);
 double QwtRoundScaleDraw_radius(const QwtRoundScaleDraw* self);
 void QwtRoundScaleDraw_moveCenter(QwtRoundScaleDraw* self, double x, double y);
-void QwtRoundScaleDraw_moveCenterWithQPointF(QwtRoundScaleDraw* self, QPointF* param1);
-QPointF* QwtRoundScaleDraw_center(const QwtRoundScaleDraw* self);
+void QwtRoundScaleDraw_moveCenterWithQPointF(QwtRoundScaleDraw* self, struct miqt_qpointf param1);
+struct miqt_qpointf QwtRoundScaleDraw_center(const QwtRoundScaleDraw* self);
 void QwtRoundScaleDraw_setAngleRange(QwtRoundScaleDraw* self, double angle1, double angle2);
 double QwtRoundScaleDraw_extent(const QwtRoundScaleDraw* self, QFont* param1);
 void QwtRoundScaleDraw_drawTick(const QwtRoundScaleDraw* self, QPainter* param1, double value, double len);

@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -111,15 +112,12 @@ func (this *QCameraFocusControl) IsFocusPointModeSupported(mode QCameraFocus__Fo
 	return (bool)(C.QCameraFocusControl_isFocusPointModeSupported(this.h, (C.int)(mode)))
 }
 
-func (this *QCameraFocusControl) CustomFocusPoint() *qt.QPointF {
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraFocusControl_customFocusPoint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCameraFocusControl) CustomFocusPoint() qt.QPointF {
+	return libmiqt.ValueCast[qt.QPointF](C.QCameraFocusControl_customFocusPoint(this.h))
 }
 
-func (this *QCameraFocusControl) SetCustomFocusPoint(point *qt.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QCameraFocusControl_setCustomFocusPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QCameraFocusControl) SetCustomFocusPoint(point qt.QPointF) {
+	C.QCameraFocusControl_setCustomFocusPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
 
 func (this *QCameraFocusControl) FocusZones() []QCameraFocusZone {
@@ -174,23 +172,22 @@ func miqt_exec_callback_QCameraFocusControl_focusPointModeChanged(cb C.intptr_t,
 	gofunc(slotval1)
 }
 
-func (this *QCameraFocusControl) CustomFocusPointChanged(point *qt.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QCameraFocusControl_customFocusPointChanged(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QCameraFocusControl) CustomFocusPointChanged(point qt.QPointF) {
+	C.QCameraFocusControl_customFocusPointChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
-func (this *QCameraFocusControl) OnCustomFocusPointChanged(slot func(point *qt.QPointF)) {
+func (this *QCameraFocusControl) OnCustomFocusPointChanged(slot func(point qt.QPointF)) {
 	C.QCameraFocusControl_connect_customFocusPointChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCameraFocusControl_customFocusPointChanged
-func miqt_exec_callback_QCameraFocusControl_customFocusPointChanged(cb C.intptr_t, point *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt.QPointF))
+func miqt_exec_callback_QCameraFocusControl_customFocusPointChanged(cb C.intptr_t, point C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](point)
 
 	gofunc(slotval1)
 }

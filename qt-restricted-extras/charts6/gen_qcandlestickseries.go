@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -198,26 +199,20 @@ func (this *QCandlestickSeries) CapsVisible() bool {
 	return (bool)(C.QCandlestickSeries_capsVisible(this.h))
 }
 
-func (this *QCandlestickSeries) SetIncreasingColor(increasingColor *qt6.QColor) {
-	defer runtime.KeepAlive(increasingColor)
-	C.QCandlestickSeries_setIncreasingColor(this.h, (*C.QColor)(increasingColor.UnsafePointer()))
+func (this *QCandlestickSeries) SetIncreasingColor(increasingColor qt6.QColor) {
+	C.QCandlestickSeries_setIncreasingColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](increasingColor))
 }
 
-func (this *QCandlestickSeries) IncreasingColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QCandlestickSeries_increasingColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCandlestickSeries) IncreasingColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QCandlestickSeries_increasingColor(this.h))
 }
 
-func (this *QCandlestickSeries) SetDecreasingColor(decreasingColor *qt6.QColor) {
-	defer runtime.KeepAlive(decreasingColor)
-	C.QCandlestickSeries_setDecreasingColor(this.h, (*C.QColor)(decreasingColor.UnsafePointer()))
+func (this *QCandlestickSeries) SetDecreasingColor(decreasingColor qt6.QColor) {
+	C.QCandlestickSeries_setDecreasingColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](decreasingColor))
 }
 
-func (this *QCandlestickSeries) DecreasingColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QCandlestickSeries_decreasingColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCandlestickSeries) DecreasingColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QCandlestickSeries_decreasingColor(this.h))
 }
 
 func (this *QCandlestickSeries) SetBrush(brush *qt6.QBrush) {

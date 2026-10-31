@@ -9,6 +9,7 @@ package webengine
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"github.com/mappu/miqt/qt/network"
 	"github.com/mappu/miqt/qt/webchannel"
@@ -388,16 +389,12 @@ func (this *QWebEnginePage) SetZoomFactor(factor float64) {
 	C.QWebEnginePage_setZoomFactor(this.h, (C.double)(factor))
 }
 
-func (this *QWebEnginePage) ScrollPosition() *qt.QPointF {
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QWebEnginePage_scrollPosition(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebEnginePage) ScrollPosition() qt.QPointF {
+	return libmiqt.ValueCast[qt.QPointF](C.QWebEnginePage_scrollPosition(this.h))
 }
 
-func (this *QWebEnginePage) ContentsSize() *qt.QSizeF {
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QWebEnginePage_contentsSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebEnginePage) ContentsSize() qt.QSizeF {
+	return libmiqt.ValueCast[qt.QSizeF](C.QWebEnginePage_contentsSize(this.h))
 }
 
 func (this *QWebEnginePage) RunJavaScript(scriptSource string) {
@@ -436,15 +433,12 @@ func (this *QWebEnginePage) SetWebChannel2(param1 *webchannel.QWebChannel, world
 	C.QWebEnginePage_setWebChannel2(this.h, (*C.QWebChannel)(param1.UnsafePointer()), (C.uint)(worldId))
 }
 
-func (this *QWebEnginePage) BackgroundColor() *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebEnginePage_backgroundColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebEnginePage) BackgroundColor() qt.QColor {
+	return libmiqt.ValueCast[qt.QColor](C.QWebEnginePage_backgroundColor(this.h))
 }
 
-func (this *QWebEnginePage) SetBackgroundColor(color *qt.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QWebEnginePage_setBackgroundColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QWebEnginePage) SetBackgroundColor(color qt.QColor) {
+	C.QWebEnginePage_setBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QWebEnginePage) Save(filePath string) {
@@ -624,23 +618,22 @@ func miqt_exec_callback_QWebEnginePage_selectionChanged(cb C.intptr_t) {
 	gofunc()
 }
 
-func (this *QWebEnginePage) GeometryChangeRequested(geom *qt.QRect) {
-	defer runtime.KeepAlive(geom)
-	C.QWebEnginePage_geometryChangeRequested(this.h, (*C.QRect)(geom.UnsafePointer()))
+func (this *QWebEnginePage) GeometryChangeRequested(geom qt.QRect) {
+	C.QWebEnginePage_geometryChangeRequested(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](geom))
 }
-func (this *QWebEnginePage) OnGeometryChangeRequested(slot func(geom *qt.QRect)) {
+func (this *QWebEnginePage) OnGeometryChangeRequested(slot func(geom qt.QRect)) {
 	C.QWebEnginePage_connect_geometryChangeRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_geometryChangeRequested
-func miqt_exec_callback_QWebEnginePage_geometryChangeRequested(cb C.intptr_t, geom *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(geom *qt.QRect))
+func miqt_exec_callback_QWebEnginePage_geometryChangeRequested(cb C.intptr_t, geom C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(geom qt.QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRect(unsafe.Pointer(geom))
+	slotval1 := libmiqt.ValueCast[qt.QRect](geom)
 
 	gofunc(slotval1)
 }
@@ -946,44 +939,42 @@ func miqt_exec_callback_QWebEnginePage_iconChanged(cb C.intptr_t, icon *C.QIcon)
 	gofunc(slotval1)
 }
 
-func (this *QWebEnginePage) ScrollPositionChanged(position *qt.QPointF) {
-	defer runtime.KeepAlive(position)
-	C.QWebEnginePage_scrollPositionChanged(this.h, (*C.QPointF)(position.UnsafePointer()))
+func (this *QWebEnginePage) ScrollPositionChanged(position qt.QPointF) {
+	C.QWebEnginePage_scrollPositionChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](position))
 }
-func (this *QWebEnginePage) OnScrollPositionChanged(slot func(position *qt.QPointF)) {
+func (this *QWebEnginePage) OnScrollPositionChanged(slot func(position qt.QPointF)) {
 	C.QWebEnginePage_connect_scrollPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_scrollPositionChanged
-func miqt_exec_callback_QWebEnginePage_scrollPositionChanged(cb C.intptr_t, position *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(position *qt.QPointF))
+func miqt_exec_callback_QWebEnginePage_scrollPositionChanged(cb C.intptr_t, position C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(position qt.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(position))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](position)
 
 	gofunc(slotval1)
 }
 
-func (this *QWebEnginePage) ContentsSizeChanged(size *qt.QSizeF) {
-	defer runtime.KeepAlive(size)
-	C.QWebEnginePage_contentsSizeChanged(this.h, (*C.QSizeF)(size.UnsafePointer()))
+func (this *QWebEnginePage) ContentsSizeChanged(size qt.QSizeF) {
+	C.QWebEnginePage_contentsSizeChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
-func (this *QWebEnginePage) OnContentsSizeChanged(slot func(size *qt.QSizeF)) {
+func (this *QWebEnginePage) OnContentsSizeChanged(slot func(size qt.QSizeF)) {
 	C.QWebEnginePage_connect_contentsSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_contentsSizeChanged
-func miqt_exec_callback_QWebEnginePage_contentsSizeChanged(cb C.intptr_t, size *C.QSizeF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(size *qt.QSizeF))
+func miqt_exec_callback_QWebEnginePage_contentsSizeChanged(cb C.intptr_t, size C.struct_miqt_qsizef) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(size qt.QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSizeF(unsafe.Pointer(size))
+	slotval1 := libmiqt.ValueCast[qt.QSizeF](size)
 
 	gofunc(slotval1)
 }

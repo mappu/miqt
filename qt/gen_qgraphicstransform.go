@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -538,15 +539,12 @@ func QGraphicsScale_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QGraphicsScale) Origin() *QVector3D {
-	_goptr := newQVector3D(C.QGraphicsScale_origin(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsScale) Origin() QVector3D {
+	return libmiqt.ValueCast[QVector3D](C.QGraphicsScale_origin(this.h))
 }
 
-func (this *QGraphicsScale) SetOrigin(point *QVector3D) {
-	defer runtime.KeepAlive(point)
-	C.QGraphicsScale_setOrigin(this.h, point.cPointer())
+func (this *QGraphicsScale) SetOrigin(point QVector3D) {
+	C.QGraphicsScale_setOrigin(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](point))
 }
 
 func (this *QGraphicsScale) XScale() float64 {
@@ -1105,15 +1103,12 @@ func QGraphicsRotation_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QGraphicsRotation) Origin() *QVector3D {
-	_goptr := newQVector3D(C.QGraphicsRotation_origin(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsRotation) Origin() QVector3D {
+	return libmiqt.ValueCast[QVector3D](C.QGraphicsRotation_origin(this.h))
 }
 
-func (this *QGraphicsRotation) SetOrigin(point *QVector3D) {
-	defer runtime.KeepAlive(point)
-	C.QGraphicsRotation_setOrigin(this.h, point.cPointer())
+func (this *QGraphicsRotation) SetOrigin(point QVector3D) {
+	C.QGraphicsRotation_setOrigin(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](point))
 }
 
 func (this *QGraphicsRotation) Angle() float64 {
@@ -1124,15 +1119,12 @@ func (this *QGraphicsRotation) SetAngle(angle float64) {
 	C.QGraphicsRotation_setAngle(this.h, (C.double)(angle))
 }
 
-func (this *QGraphicsRotation) Axis() *QVector3D {
-	_goptr := newQVector3D(C.QGraphicsRotation_axis(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsRotation) Axis() QVector3D {
+	return libmiqt.ValueCast[QVector3D](C.QGraphicsRotation_axis(this.h))
 }
 
-func (this *QGraphicsRotation) SetAxis(axis *QVector3D) {
-	defer runtime.KeepAlive(axis)
-	C.QGraphicsRotation_setAxis(this.h, axis.cPointer())
+func (this *QGraphicsRotation) SetAxis(axis QVector3D) {
+	C.QGraphicsRotation_setAxis(this.h, libmiqt.ValueCast[C.struct_miqt_qvector3d](axis))
 }
 
 func (this *QGraphicsRotation) SetAxisWithAxis(axis Axis) {

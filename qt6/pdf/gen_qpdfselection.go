@@ -9,6 +9,7 @@ package pdf
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
@@ -85,11 +86,9 @@ func (this *QPdfSelection) Text() string {
 	return _ret
 }
 
-func (this *QPdfSelection) BoundingRectangle() *qt6.QRectF {
+func (this *QPdfSelection) BoundingRectangle() qt6.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QPdfSelection_boundingRectangle(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QRectF](C.QPdfSelection_boundingRectangle(this.h))
 }
 
 func (this *QPdfSelection) StartIndex() int {

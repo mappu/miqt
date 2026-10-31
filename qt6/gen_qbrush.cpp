@@ -31,16 +31,16 @@ QBrush* QBrush_new2(int bs) {
 	return new (std::nothrow) QBrush(static_cast<Qt::BrushStyle>(bs));
 }
 
-QBrush* QBrush_new3(QColor* color) {
-	return new (std::nothrow) QBrush(*color);
+QBrush* QBrush_new3(struct miqt_qcolor color) {
+	return new (std::nothrow) QBrush(miqt_from_cabi<QColor>(color));
 }
 
 QBrush* QBrush_new4(int color) {
 	return new (std::nothrow) QBrush(static_cast<Qt::GlobalColor>(color));
 }
 
-QBrush* QBrush_new5(QColor* color, QPixmap* pixmap) {
-	return new (std::nothrow) QBrush(*color, *pixmap);
+QBrush* QBrush_new5(struct miqt_qcolor color, QPixmap* pixmap) {
+	return new (std::nothrow) QBrush(miqt_from_cabi<QColor>(color), *pixmap);
 }
 
 QBrush* QBrush_new6(int color, QPixmap* pixmap) {
@@ -63,8 +63,8 @@ QBrush* QBrush_new10(QGradient* gradient) {
 	return new (std::nothrow) QBrush(*gradient);
 }
 
-QBrush* QBrush_new11(QColor* color, int bs) {
-	return new (std::nothrow) QBrush(*color, static_cast<Qt::BrushStyle>(bs));
+QBrush* QBrush_new11(struct miqt_qcolor color, int bs) {
+	return new (std::nothrow) QBrush(miqt_from_cabi<QColor>(color), static_cast<Qt::BrushStyle>(bs));
 }
 
 QBrush* QBrush_new12(int color, int bs) {
@@ -116,14 +116,12 @@ void QBrush_setTextureImage(QBrush* self, QImage* image) {
 	self->setTextureImage(*image);
 }
 
-QColor* QBrush_color(const QBrush* self) {
-	const QColor& _ret = self->color();
-	// Cast returned reference into pointer
-	return const_cast<QColor*>(&_ret);
+struct miqt_qcolor QBrush_color(const QBrush* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-void QBrush_setColor(QBrush* self, QColor* color) {
-	self->setColor(*color);
+void QBrush_setColor(QBrush* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
 void QBrush_setColorWithColor(QBrush* self, int color) {
@@ -180,36 +178,36 @@ int QGradient_spread(const QGradient* self) {
 	return static_cast<int>(_ret);
 }
 
-void QGradient_setColorAt(QGradient* self, double pos, QColor* color) {
-	self->setColorAt(static_cast<qreal>(pos), *color);
+void QGradient_setColorAt(QGradient* self, double pos, struct miqt_qcolor color) {
+	self->setColorAt(static_cast<qreal>(pos), miqt_from_cabi<QColor>(color));
 }
 
-void QGradient_setStops(QGradient* self, struct miqt_array /* of struct miqt_map  tuple of double and QColor*   */  stops) {
+void QGradient_setStops(QGradient* self, struct miqt_array /* of struct miqt_map  tuple of double and struct miqt_qcolor   */  stops) {
 	QGradientStops stops_QList;
 	stops_QList.reserve(stops.len);
-	struct miqt_map /* tuple of double and QColor* */ * stops_arr = static_cast<struct miqt_map /* tuple of double and QColor* */ *>(stops.data);
+	struct miqt_map /* tuple of double and struct miqt_qcolor */ * stops_arr = static_cast<struct miqt_map /* tuple of double and struct miqt_qcolor */ *>(stops.data);
 	for(size_t i = 0; i < stops.len; ++i) {
 		QPair<double, QColor> stops_arr_i_QPair;
 		double* stops_arr_i_first_arr = static_cast<double*>(stops_arr[i].keys);
-		QColor** stops_arr_i_second_arr = static_cast<QColor**>(stops_arr[i].values);
+		struct miqt_qcolor* stops_arr_i_second_arr = static_cast<struct miqt_qcolor*>(stops_arr[i].values);
 		stops_arr_i_QPair.first = static_cast<double>(stops_arr_i_first_arr[0]);
-		stops_arr_i_QPair.second = *(stops_arr_i_second_arr[0]);
+		stops_arr_i_QPair.second = miqt_from_cabi<QColor>(stops_arr_i_second_arr[0]);
 		stops_QList.push_back(stops_arr_i_QPair);
 	}
 	self->setStops(stops_QList);
 }
 
-struct miqt_array /* of struct miqt_map  tuple of double and QColor*   */  QGradient_stops(const QGradient* self) {
+struct miqt_array /* of struct miqt_map  tuple of double and struct miqt_qcolor   */  QGradient_stops(const QGradient* self) {
 	QGradientStops _ret = self->stops();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of double and QColor* */ * _arr = static_cast<struct miqt_map /* tuple of double and QColor* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QColor* */ ) * _ret.length()));
+	struct miqt_map /* tuple of double and struct miqt_qcolor */ * _arr = static_cast<struct miqt_map /* tuple of double and struct miqt_qcolor */ *>(malloc(sizeof(struct miqt_map /* tuple of double and struct miqt_qcolor */ ) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QPair<double, QColor> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		double* _lv_first_arr = static_cast<double*>(malloc(sizeof(double)));
-		QColor** _lv_second_arr = static_cast<QColor**>(malloc(sizeof(QColor*)));
+		struct miqt_qcolor* _lv_second_arr = static_cast<struct miqt_qcolor*>(malloc(sizeof(struct miqt_qcolor)));
 		_lv_first_arr[0] = _lv_ret.first;
-		_lv_second_arr[0] = new QColor(_lv_ret.second);
+		_lv_second_arr[0] = miqt_to_cabi<struct miqt_qcolor>(_lv_ret.second);
 		struct miqt_map _lv_out;
 		_lv_out.len = 1;
 		_lv_out.keys = static_cast<void*>(_lv_first_arr);
@@ -256,8 +254,8 @@ QLinearGradient* QLinearGradient_new() {
 	return new (std::nothrow) QLinearGradient();
 }
 
-QLinearGradient* QLinearGradient_new2(QPointF* start, QPointF* finalStop) {
-	return new (std::nothrow) QLinearGradient(*start, *finalStop);
+QLinearGradient* QLinearGradient_new2(struct miqt_qpointf start, struct miqt_qpointf finalStop) {
+	return new (std::nothrow) QLinearGradient(miqt_from_cabi<QPointF>(start), miqt_from_cabi<QPointF>(finalStop));
 }
 
 QLinearGradient* QLinearGradient_new3(double xStart, double yStart, double xFinalStop, double yFinalStop) {
@@ -272,24 +270,24 @@ void QLinearGradient_virtbase(QLinearGradient* src, QGradient** outptr_QGradient
 	*outptr_QGradient = static_cast<QGradient*>(src);
 }
 
-QPointF* QLinearGradient_start(const QLinearGradient* self) {
-	return new QPointF(self->start());
+struct miqt_qpointf QLinearGradient_start(const QLinearGradient* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->start());
 }
 
-void QLinearGradient_setStart(QLinearGradient* self, QPointF* start) {
-	self->setStart(*start);
+void QLinearGradient_setStart(QLinearGradient* self, struct miqt_qpointf start) {
+	self->setStart(miqt_from_cabi<QPointF>(start));
 }
 
 void QLinearGradient_setStart2(QLinearGradient* self, double x, double y) {
 	self->setStart(static_cast<qreal>(x), static_cast<qreal>(y));
 }
 
-QPointF* QLinearGradient_finalStop(const QLinearGradient* self) {
-	return new QPointF(self->finalStop());
+struct miqt_qpointf QLinearGradient_finalStop(const QLinearGradient* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->finalStop());
 }
 
-void QLinearGradient_setFinalStop(QLinearGradient* self, QPointF* stop) {
-	self->setFinalStop(*stop);
+void QLinearGradient_setFinalStop(QLinearGradient* self, struct miqt_qpointf stop) {
+	self->setFinalStop(miqt_from_cabi<QPointF>(stop));
 }
 
 void QLinearGradient_setFinalStop2(QLinearGradient* self, double x, double y) {
@@ -304,24 +302,24 @@ QRadialGradient* QRadialGradient_new() {
 	return new (std::nothrow) QRadialGradient();
 }
 
-QRadialGradient* QRadialGradient_new2(QPointF* center, double radius, QPointF* focalPoint) {
-	return new (std::nothrow) QRadialGradient(*center, static_cast<qreal>(radius), *focalPoint);
+QRadialGradient* QRadialGradient_new2(struct miqt_qpointf center, double radius, struct miqt_qpointf focalPoint) {
+	return new (std::nothrow) QRadialGradient(miqt_from_cabi<QPointF>(center), static_cast<qreal>(radius), miqt_from_cabi<QPointF>(focalPoint));
 }
 
 QRadialGradient* QRadialGradient_new3(double cx, double cy, double radius, double fx, double fy) {
 	return new (std::nothrow) QRadialGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(radius), static_cast<qreal>(fx), static_cast<qreal>(fy));
 }
 
-QRadialGradient* QRadialGradient_new4(QPointF* center, double radius) {
-	return new (std::nothrow) QRadialGradient(*center, static_cast<qreal>(radius));
+QRadialGradient* QRadialGradient_new4(struct miqt_qpointf center, double radius) {
+	return new (std::nothrow) QRadialGradient(miqt_from_cabi<QPointF>(center), static_cast<qreal>(radius));
 }
 
 QRadialGradient* QRadialGradient_new5(double cx, double cy, double radius) {
 	return new (std::nothrow) QRadialGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(radius));
 }
 
-QRadialGradient* QRadialGradient_new6(QPointF* center, double centerRadius, QPointF* focalPoint, double focalRadius) {
-	return new (std::nothrow) QRadialGradient(*center, static_cast<qreal>(centerRadius), *focalPoint, static_cast<qreal>(focalRadius));
+QRadialGradient* QRadialGradient_new6(struct miqt_qpointf center, double centerRadius, struct miqt_qpointf focalPoint, double focalRadius) {
+	return new (std::nothrow) QRadialGradient(miqt_from_cabi<QPointF>(center), static_cast<qreal>(centerRadius), miqt_from_cabi<QPointF>(focalPoint), static_cast<qreal>(focalRadius));
 }
 
 QRadialGradient* QRadialGradient_new7(double cx, double cy, double centerRadius, double fx, double fy, double focalRadius) {
@@ -336,24 +334,24 @@ void QRadialGradient_virtbase(QRadialGradient* src, QGradient** outptr_QGradient
 	*outptr_QGradient = static_cast<QGradient*>(src);
 }
 
-QPointF* QRadialGradient_center(const QRadialGradient* self) {
-	return new QPointF(self->center());
+struct miqt_qpointf QRadialGradient_center(const QRadialGradient* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->center());
 }
 
-void QRadialGradient_setCenter(QRadialGradient* self, QPointF* center) {
-	self->setCenter(*center);
+void QRadialGradient_setCenter(QRadialGradient* self, struct miqt_qpointf center) {
+	self->setCenter(miqt_from_cabi<QPointF>(center));
 }
 
 void QRadialGradient_setCenter2(QRadialGradient* self, double x, double y) {
 	self->setCenter(static_cast<qreal>(x), static_cast<qreal>(y));
 }
 
-QPointF* QRadialGradient_focalPoint(const QRadialGradient* self) {
-	return new QPointF(self->focalPoint());
+struct miqt_qpointf QRadialGradient_focalPoint(const QRadialGradient* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->focalPoint());
 }
 
-void QRadialGradient_setFocalPoint(QRadialGradient* self, QPointF* focalPoint) {
-	self->setFocalPoint(*focalPoint);
+void QRadialGradient_setFocalPoint(QRadialGradient* self, struct miqt_qpointf focalPoint) {
+	self->setFocalPoint(miqt_from_cabi<QPointF>(focalPoint));
 }
 
 void QRadialGradient_setFocalPoint2(QRadialGradient* self, double x, double y) {
@@ -395,8 +393,8 @@ QConicalGradient* QConicalGradient_new() {
 	return new (std::nothrow) QConicalGradient();
 }
 
-QConicalGradient* QConicalGradient_new2(QPointF* center, double startAngle) {
-	return new (std::nothrow) QConicalGradient(*center, static_cast<qreal>(startAngle));
+QConicalGradient* QConicalGradient_new2(struct miqt_qpointf center, double startAngle) {
+	return new (std::nothrow) QConicalGradient(miqt_from_cabi<QPointF>(center), static_cast<qreal>(startAngle));
 }
 
 QConicalGradient* QConicalGradient_new3(double cx, double cy, double startAngle) {
@@ -411,12 +409,12 @@ void QConicalGradient_virtbase(QConicalGradient* src, QGradient** outptr_QGradie
 	*outptr_QGradient = static_cast<QGradient*>(src);
 }
 
-QPointF* QConicalGradient_center(const QConicalGradient* self) {
-	return new QPointF(self->center());
+struct miqt_qpointf QConicalGradient_center(const QConicalGradient* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->center());
 }
 
-void QConicalGradient_setCenter(QConicalGradient* self, QPointF* center) {
-	self->setCenter(*center);
+void QConicalGradient_setCenter(QConicalGradient* self, struct miqt_qpointf center) {
+	self->setCenter(miqt_from_cabi<QPointF>(center));
 }
 
 void QConicalGradient_setCenter2(QConicalGradient* self, double x, double y) {

@@ -46,8 +46,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAbstractPrintDialog_setVisible(QAbstractPrintDialog*, intptr_t, bool);
-QSize* miqt_exec_callback_QAbstractPrintDialog_sizeHint(const QAbstractPrintDialog*, intptr_t);
-QSize* miqt_exec_callback_QAbstractPrintDialog_minimumSizeHint(const QAbstractPrintDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QAbstractPrintDialog_sizeHint(const QAbstractPrintDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QAbstractPrintDialog_minimumSizeHint(const QAbstractPrintDialog*, intptr_t);
 void miqt_exec_callback_QAbstractPrintDialog_open(QAbstractPrintDialog*, intptr_t);
 int miqt_exec_callback_QAbstractPrintDialog_exec(QAbstractPrintDialog*, intptr_t);
 void miqt_exec_callback_QAbstractPrintDialog_done(QAbstractPrintDialog*, intptr_t, int);
@@ -135,13 +135,11 @@ public:
 			return QAbstractPrintDialog::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractPrintDialog_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractPrintDialog_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QAbstractPrintDialog_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QAbstractPrintDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -152,13 +150,11 @@ public:
 			return QAbstractPrintDialog::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractPrintDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractPrintDialog_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QAbstractPrintDialog_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QAbstractPrintDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1126,8 +1122,8 @@ bool QAbstractPrintDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QAbstractPrintDialog_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQAbstractPrintDialog*>(self)->QAbstractPrintDialog::sizeHint());
+struct miqt_qsize QAbstractPrintDialog_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQAbstractPrintDialog*>(self)->QAbstractPrintDialog::sizeHint());
 }
 
 bool QAbstractPrintDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1140,8 +1136,8 @@ bool QAbstractPrintDialog_override_virtual_minimumSizeHint(void* self, intptr_t 
 	return true;
 }
 
-QSize* QAbstractPrintDialog_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQAbstractPrintDialog*>(self)->QAbstractPrintDialog::minimumSizeHint());
+struct miqt_qsize QAbstractPrintDialog_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQAbstractPrintDialog*>(self)->QAbstractPrintDialog::minimumSizeHint());
 }
 
 bool QAbstractPrintDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1829,10 +1825,6 @@ bool QAbstractPrintDialog_override_virtual_disconnectNotify(void* self, intptr_t
 
 void QAbstractPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQAbstractPrintDialog*>(self)->QAbstractPrintDialog::disconnectNotify(*signal);
-}
-
-QSize* QAbstractPrintDialog_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QAbstractPrintDialog_virtualreturncopy_QVariant(QVariant* src) {

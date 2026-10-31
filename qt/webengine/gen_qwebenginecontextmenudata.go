@@ -9,6 +9,7 @@ package webengine
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -118,11 +119,9 @@ func (this *QWebEngineContextMenuData) IsValid() bool {
 	return (bool)(C.QWebEngineContextMenuData_isValid(this.h))
 }
 
-func (this *QWebEngineContextMenuData) Position() *qt.QPoint {
+func (this *QWebEngineContextMenuData) Position() qt.QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebEngineContextMenuData_position(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPoint](C.QWebEngineContextMenuData_position(this.h))
 }
 
 func (this *QWebEngineContextMenuData) SelectedText() string {

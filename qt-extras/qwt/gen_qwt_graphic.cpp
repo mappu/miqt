@@ -20,20 +20,20 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QwtGraphic_sizeMetrics(const QwtGraphic*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtGraphic_sizeMetrics(const QwtGraphic*, intptr_t);
 void miqt_exec_callback_QwtGraphic_drawPath(QwtGraphic*, intptr_t, QPainterPath*);
-void miqt_exec_callback_QwtGraphic_drawPixmap(QwtGraphic*, intptr_t, QRectF*, QPixmap*, QRectF*);
-void miqt_exec_callback_QwtGraphic_drawImage(QwtGraphic*, intptr_t, QRectF*, QImage*, QRectF*, int);
+void miqt_exec_callback_QwtGraphic_drawPixmap(QwtGraphic*, intptr_t, struct miqt_qrectf, QPixmap*, struct miqt_qrectf);
+void miqt_exec_callback_QwtGraphic_drawImage(QwtGraphic*, intptr_t, struct miqt_qrectf, QImage*, struct miqt_qrectf, int);
 void miqt_exec_callback_QwtGraphic_updateState(QwtGraphic*, intptr_t, QPaintEngineState*);
 QPaintEngine* miqt_exec_callback_QwtGraphic_paintEngine(const QwtGraphic*, intptr_t);
 int miqt_exec_callback_QwtGraphic_metric(const QwtGraphic*, intptr_t, int);
 void miqt_exec_callback_QwtGraphic_drawRects(QwtGraphic*, intptr_t, QRect*, int);
 void miqt_exec_callback_QwtGraphic_drawLines(QwtGraphic*, intptr_t, QLine*, int);
-void miqt_exec_callback_QwtGraphic_drawEllipse(QwtGraphic*, intptr_t, QRectF*);
+void miqt_exec_callback_QwtGraphic_drawEllipse(QwtGraphic*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QwtGraphic_drawPoints(QwtGraphic*, intptr_t, QPointF*, int);
 void miqt_exec_callback_QwtGraphic_drawPolygon(QwtGraphic*, intptr_t, QPointF*, int, int);
-void miqt_exec_callback_QwtGraphic_drawTextItem(QwtGraphic*, intptr_t, QPointF*, QTextItem*);
-void miqt_exec_callback_QwtGraphic_drawTiledPixmap(QwtGraphic*, intptr_t, QRectF*, QPixmap*, QPointF*);
+void miqt_exec_callback_QwtGraphic_drawTextItem(QwtGraphic*, intptr_t, struct miqt_qpointf, QTextItem*);
+void miqt_exec_callback_QwtGraphic_drawTiledPixmap(QwtGraphic*, intptr_t, struct miqt_qrectf, QPixmap*, struct miqt_qpointf);
 int miqt_exec_callback_QwtGraphic_devType(const QwtGraphic*, intptr_t);
 void miqt_exec_callback_QwtGraphic_initPainter(const QwtGraphic*, intptr_t, QPainter*);
 QPaintDevice* miqt_exec_callback_QwtGraphic_redirected(const QwtGraphic*, intptr_t, QPoint*);
@@ -59,13 +59,11 @@ public:
 			return QwtGraphic::sizeMetrics();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtGraphic_sizeMetrics(this, handle__sizeMetrics);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtGraphic_sizeMetrics(this, handle__sizeMetrics);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtGraphic_virtualbase_sizeMetrics(const void* self);
+	friend struct miqt_qsize QwtGraphic_virtualbase_sizeMetrics(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPath = 0;
@@ -96,20 +94,16 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		const QPixmap& param2_ret = param2;
 		// Cast returned reference into pointer
 		QPixmap* sigval2 = const_cast<QPixmap*>(&param2_ret);
-		const QRectF& param3_ret = param3;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&param3_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(param3);
 		miqt_exec_callback_QwtGraphic_drawPixmap(this, handle__drawPixmap, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtGraphic_virtualbase_drawPixmap(void* self, QRectF* param1, QPixmap* param2, QRectF* param3);
+	friend void QwtGraphic_virtualbase_drawPixmap(void* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qrectf param3);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawImage = 0;
@@ -121,22 +115,18 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		const QImage& param2_ret = param2;
 		// Cast returned reference into pointer
 		QImage* sigval2 = const_cast<QImage*>(&param2_ret);
-		const QRectF& param3_ret = param3;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&param3_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(param3);
 		Qt::ImageConversionFlags param4_ret = param4;
 		int sigval4 = static_cast<int>(param4_ret);
 		miqt_exec_callback_QwtGraphic_drawImage(this, handle__drawImage, sigval1, sigval2, sigval3, sigval4);
 
 	}
 
-	friend void QwtGraphic_virtualbase_drawImage(void* self, QRectF* param1, QImage* param2, QRectF* param3, int param4);
+	friend void QwtGraphic_virtualbase_drawImage(void* self, struct miqt_qrectf param1, QImage* param2, struct miqt_qrectf param3, int param4);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateState = 0;
@@ -235,14 +225,12 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		miqt_exec_callback_QwtGraphic_drawEllipse(this, handle__drawEllipse, sigval1);
 
 	}
 
-	friend void QwtGraphic_virtualbase_drawEllipse(void* self, QRectF* param1);
+	friend void QwtGraphic_virtualbase_drawEllipse(void* self, struct miqt_qrectf param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPoints = 0;
@@ -292,9 +280,7 @@ public:
 			return;
 		}
 
-		const QPointF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&param1_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(param1);
 		const QTextItem& param2_ret = param2;
 		// Cast returned reference into pointer
 		QTextItem* sigval2 = const_cast<QTextItem*>(&param2_ret);
@@ -302,7 +288,7 @@ public:
 
 	}
 
-	friend void QwtGraphic_virtualbase_drawTextItem(void* self, QPointF* param1, QTextItem* param2);
+	friend void QwtGraphic_virtualbase_drawTextItem(void* self, struct miqt_qpointf param1, QTextItem* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawTiledPixmap = 0;
@@ -314,20 +300,16 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		const QPixmap& param2_ret = param2;
 		// Cast returned reference into pointer
 		QPixmap* sigval2 = const_cast<QPixmap*>(&param2_ret);
-		const QPointF& param3_ret = param3;
-		// Cast returned reference into pointer
-		QPointF* sigval3 = const_cast<QPointF*>(&param3_ret);
+		struct miqt_qpointf sigval3 = miqt_to_cabi<struct miqt_qpointf>(param3);
 		miqt_exec_callback_QwtGraphic_drawTiledPixmap(this, handle__drawTiledPixmap, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtGraphic_virtualbase_drawTiledPixmap(void* self, QRectF* param1, QPixmap* param2, QPointF* param3);
+	friend void QwtGraphic_virtualbase_drawTiledPixmap(void* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qpointf param3);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -426,52 +408,52 @@ void QwtGraphic_render(const QwtGraphic* self, QPainter* param1) {
 	self->render(param1);
 }
 
-void QwtGraphic_render2(const QwtGraphic* self, QPainter* param1, QSizeF* param2) {
-	self->render(param1, *param2);
+void QwtGraphic_render2(const QwtGraphic* self, QPainter* param1, struct miqt_qsizef param2) {
+	self->render(param1, miqt_from_cabi<QSizeF>(param2));
 }
 
-void QwtGraphic_render3(const QwtGraphic* self, QPainter* param1, QRectF* param2) {
-	self->render(param1, *param2);
+void QwtGraphic_render3(const QwtGraphic* self, QPainter* param1, struct miqt_qrectf param2) {
+	self->render(param1, miqt_from_cabi<QRectF>(param2));
 }
 
-void QwtGraphic_render4(const QwtGraphic* self, QPainter* param1, QPointF* param2) {
-	self->render(param1, *param2);
+void QwtGraphic_render4(const QwtGraphic* self, QPainter* param1, struct miqt_qpointf param2) {
+	self->render(param1, miqt_from_cabi<QPointF>(param2));
 }
 
 QPixmap* QwtGraphic_toPixmap(const QwtGraphic* self) {
 	return new QPixmap(self->toPixmap());
 }
 
-QPixmap* QwtGraphic_toPixmapWithQSize(const QwtGraphic* self, QSize* param1) {
-	return new QPixmap(self->toPixmap(*param1));
+QPixmap* QwtGraphic_toPixmapWithQSize(const QwtGraphic* self, struct miqt_qsize param1) {
+	return new QPixmap(self->toPixmap(miqt_from_cabi<QSize>(param1)));
 }
 
 QImage* QwtGraphic_toImage(const QwtGraphic* self) {
 	return new QImage(self->toImage());
 }
 
-QImage* QwtGraphic_toImageWithQSize(const QwtGraphic* self, QSize* param1) {
-	return new QImage(self->toImage(*param1));
+QImage* QwtGraphic_toImageWithQSize(const QwtGraphic* self, struct miqt_qsize param1) {
+	return new QImage(self->toImage(miqt_from_cabi<QSize>(param1)));
 }
 
-QRectF* QwtGraphic_scaledBoundingRect(const QwtGraphic* self, double sx, double sy) {
-	return new QRectF(self->scaledBoundingRect(static_cast<double>(sx), static_cast<double>(sy)));
+struct miqt_qrectf QwtGraphic_scaledBoundingRect(const QwtGraphic* self, double sx, double sy) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->scaledBoundingRect(static_cast<double>(sx), static_cast<double>(sy)));
 }
 
-QRectF* QwtGraphic_boundingRect(const QwtGraphic* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtGraphic_boundingRect(const QwtGraphic* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
-QRectF* QwtGraphic_controlPointRect(const QwtGraphic* self) {
-	return new QRectF(self->controlPointRect());
+struct miqt_qrectf QwtGraphic_controlPointRect(const QwtGraphic* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->controlPointRect());
 }
 
-void QwtGraphic_setDefaultSize(QwtGraphic* self, QSizeF* defaultSize) {
-	self->setDefaultSize(*defaultSize);
+void QwtGraphic_setDefaultSize(QwtGraphic* self, struct miqt_qsizef defaultSize) {
+	self->setDefaultSize(miqt_from_cabi<QSizeF>(defaultSize));
 }
 
-QSizeF* QwtGraphic_defaultSize(const QwtGraphic* self) {
-	return new QSizeF(self->defaultSize());
+struct miqt_qsizef QwtGraphic_defaultSize(const QwtGraphic* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->defaultSize());
 }
 
 void QwtGraphic_setRenderHint(QwtGraphic* self, int param1) {
@@ -482,24 +464,24 @@ bool QwtGraphic_testRenderHint(const QwtGraphic* self, int param1) {
 	return self->testRenderHint(static_cast<QwtGraphic::RenderHint>(param1));
 }
 
-void QwtGraphic_render5(const QwtGraphic* self, QPainter* param1, QSizeF* param2, int param3) {
-	self->render(param1, *param2, static_cast<Qt::AspectRatioMode>(param3));
+void QwtGraphic_render5(const QwtGraphic* self, QPainter* param1, struct miqt_qsizef param2, int param3) {
+	self->render(param1, miqt_from_cabi<QSizeF>(param2), static_cast<Qt::AspectRatioMode>(param3));
 }
 
-void QwtGraphic_render6(const QwtGraphic* self, QPainter* param1, QRectF* param2, int param3) {
-	self->render(param1, *param2, static_cast<Qt::AspectRatioMode>(param3));
+void QwtGraphic_render6(const QwtGraphic* self, QPainter* param1, struct miqt_qrectf param2, int param3) {
+	self->render(param1, miqt_from_cabi<QRectF>(param2), static_cast<Qt::AspectRatioMode>(param3));
 }
 
-void QwtGraphic_render7(const QwtGraphic* self, QPainter* param1, QPointF* param2, int param3) {
-	self->render(param1, *param2, static_cast<Qt::Alignment>(param3));
+void QwtGraphic_render7(const QwtGraphic* self, QPainter* param1, struct miqt_qpointf param2, int param3) {
+	self->render(param1, miqt_from_cabi<QPointF>(param2), static_cast<Qt::Alignment>(param3));
 }
 
-QPixmap* QwtGraphic_toPixmap2(const QwtGraphic* self, QSize* param1, int param2) {
-	return new QPixmap(self->toPixmap(*param1, static_cast<Qt::AspectRatioMode>(param2)));
+QPixmap* QwtGraphic_toPixmap2(const QwtGraphic* self, struct miqt_qsize param1, int param2) {
+	return new QPixmap(self->toPixmap(miqt_from_cabi<QSize>(param1), static_cast<Qt::AspectRatioMode>(param2)));
 }
 
-QImage* QwtGraphic_toImage2(const QwtGraphic* self, QSize* param1, int param2) {
-	return new QImage(self->toImage(*param1, static_cast<Qt::AspectRatioMode>(param2)));
+QImage* QwtGraphic_toImage2(const QwtGraphic* self, struct miqt_qsize param1, int param2) {
+	return new QImage(self->toImage(miqt_from_cabi<QSize>(param1), static_cast<Qt::AspectRatioMode>(param2)));
 }
 
 void QwtGraphic_setRenderHint2(QwtGraphic* self, int param1, bool on) {
@@ -516,8 +498,8 @@ bool QwtGraphic_override_virtual_sizeMetrics(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtGraphic_virtualbase_sizeMetrics(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtGraphic*>(self)->QwtGraphic::sizeMetrics());
+struct miqt_qsize QwtGraphic_virtualbase_sizeMetrics(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtGraphic*>(self)->QwtGraphic::sizeMetrics());
 }
 
 bool QwtGraphic_override_virtual_drawPath(void* self, intptr_t slot) {
@@ -544,8 +526,8 @@ bool QwtGraphic_override_virtual_drawPixmap(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtGraphic_virtualbase_drawPixmap(void* self, QRectF* param1, QPixmap* param2, QRectF* param3) {
-	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawPixmap(*param1, *param2, *param3);
+void QwtGraphic_virtualbase_drawPixmap(void* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qrectf param3) {
+	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawPixmap(miqt_from_cabi<QRectF>(param1), *param2, miqt_from_cabi<QRectF>(param3));
 }
 
 bool QwtGraphic_override_virtual_drawImage(void* self, intptr_t slot) {
@@ -558,8 +540,8 @@ bool QwtGraphic_override_virtual_drawImage(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtGraphic_virtualbase_drawImage(void* self, QRectF* param1, QImage* param2, QRectF* param3, int param4) {
-	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawImage(*param1, *param2, *param3, static_cast<Qt::ImageConversionFlags>(param4));
+void QwtGraphic_virtualbase_drawImage(void* self, struct miqt_qrectf param1, QImage* param2, struct miqt_qrectf param3, int param4) {
+	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawImage(miqt_from_cabi<QRectF>(param1), *param2, miqt_from_cabi<QRectF>(param3), static_cast<Qt::ImageConversionFlags>(param4));
 }
 
 bool QwtGraphic_override_virtual_updateState(void* self, intptr_t slot) {
@@ -642,8 +624,8 @@ bool QwtGraphic_override_virtual_drawEllipse(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtGraphic_virtualbase_drawEllipse(void* self, QRectF* param1) {
-	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawEllipse(*param1);
+void QwtGraphic_virtualbase_drawEllipse(void* self, struct miqt_qrectf param1) {
+	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawEllipse(miqt_from_cabi<QRectF>(param1));
 }
 
 bool QwtGraphic_override_virtual_drawPoints(void* self, intptr_t slot) {
@@ -684,8 +666,8 @@ bool QwtGraphic_override_virtual_drawTextItem(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtGraphic_virtualbase_drawTextItem(void* self, QPointF* param1, QTextItem* param2) {
-	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawTextItem(*param1, *param2);
+void QwtGraphic_virtualbase_drawTextItem(void* self, struct miqt_qpointf param1, QTextItem* param2) {
+	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawTextItem(miqt_from_cabi<QPointF>(param1), *param2);
 }
 
 bool QwtGraphic_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
@@ -698,8 +680,8 @@ bool QwtGraphic_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtGraphic_virtualbase_drawTiledPixmap(void* self, QRectF* param1, QPixmap* param2, QPointF* param3) {
-	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawTiledPixmap(*param1, *param2, *param3);
+void QwtGraphic_virtualbase_drawTiledPixmap(void* self, struct miqt_qrectf param1, QPixmap* param2, struct miqt_qpointf param3) {
+	static_cast<MiqtVirtualQwtGraphic*>(self)->QwtGraphic::drawTiledPixmap(miqt_from_cabi<QRectF>(param1), *param2, miqt_from_cabi<QPointF>(param3));
 }
 
 bool QwtGraphic_override_virtual_devType(void* self, intptr_t slot) {
@@ -756,10 +738,6 @@ bool QwtGraphic_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QwtGraphic_virtualbase_sharedPainter(const void* self) {
 	return static_cast<const MiqtVirtualQwtGraphic*>(self)->QwtGraphic::sharedPainter();
-}
-
-QSize* QwtGraphic_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 void QwtGraphic_delete(QwtGraphic* self) {

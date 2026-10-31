@@ -81,8 +81,8 @@ void QGraphicsScale_virtbase(QGraphicsScale* src, QGraphicsTransform** outptr_QG
 QMetaObject* QGraphicsScale_metaObject(const QGraphicsScale* self);
 void* QGraphicsScale_metacast(QGraphicsScale* self, const char* param1);
 struct miqt_string QGraphicsScale_tr(const char* s);
-QVector3D* QGraphicsScale_origin(const QGraphicsScale* self);
-void QGraphicsScale_setOrigin(QGraphicsScale* self, QVector3D* point);
+struct miqt_qvector3d QGraphicsScale_origin(const QGraphicsScale* self);
+void QGraphicsScale_setOrigin(QGraphicsScale* self, struct miqt_qvector3d point);
 double QGraphicsScale_xScale(const QGraphicsScale* self);
 void QGraphicsScale_setXScale(QGraphicsScale* self, double xScale);
 double QGraphicsScale_yScale(const QGraphicsScale* self);
@@ -134,12 +134,12 @@ void QGraphicsRotation_virtbase(QGraphicsRotation* src, QGraphicsTransform** out
 QMetaObject* QGraphicsRotation_metaObject(const QGraphicsRotation* self);
 void* QGraphicsRotation_metacast(QGraphicsRotation* self, const char* param1);
 struct miqt_string QGraphicsRotation_tr(const char* s);
-QVector3D* QGraphicsRotation_origin(const QGraphicsRotation* self);
-void QGraphicsRotation_setOrigin(QGraphicsRotation* self, QVector3D* point);
+struct miqt_qvector3d QGraphicsRotation_origin(const QGraphicsRotation* self);
+void QGraphicsRotation_setOrigin(QGraphicsRotation* self, struct miqt_qvector3d point);
 double QGraphicsRotation_angle(const QGraphicsRotation* self);
 void QGraphicsRotation_setAngle(QGraphicsRotation* self, double angle);
-QVector3D* QGraphicsRotation_axis(const QGraphicsRotation* self);
-void QGraphicsRotation_setAxis(QGraphicsRotation* self, QVector3D* axis);
+struct miqt_qvector3d QGraphicsRotation_axis(const QGraphicsRotation* self);
+void QGraphicsRotation_setAxis(QGraphicsRotation* self, struct miqt_qvector3d axis);
 void QGraphicsRotation_setAxisWithAxis(QGraphicsRotation* self, int axis);
 void QGraphicsRotation_applyTo(const QGraphicsRotation* self, QMatrix4x4* matrix);
 void QGraphicsRotation_originChanged(QGraphicsRotation* self);

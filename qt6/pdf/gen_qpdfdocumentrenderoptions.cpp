@@ -38,20 +38,20 @@ void QPdfDocumentRenderOptions_setRenderFlags(QPdfDocumentRenderOptions* self, i
 	self->setRenderFlags(static_cast<QPdfDocumentRenderOptions::RenderFlags>(r));
 }
 
-QRect* QPdfDocumentRenderOptions_scaledClipRect(const QPdfDocumentRenderOptions* self) {
-	return new QRect(self->scaledClipRect());
+struct miqt_qrect QPdfDocumentRenderOptions_scaledClipRect(const QPdfDocumentRenderOptions* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->scaledClipRect());
 }
 
-void QPdfDocumentRenderOptions_setScaledClipRect(QPdfDocumentRenderOptions* self, QRect* r) {
-	self->setScaledClipRect(*r);
+void QPdfDocumentRenderOptions_setScaledClipRect(QPdfDocumentRenderOptions* self, struct miqt_qrect r) {
+	self->setScaledClipRect(miqt_from_cabi<QRect>(r));
 }
 
-QSize* QPdfDocumentRenderOptions_scaledSize(const QPdfDocumentRenderOptions* self) {
-	return new QSize(self->scaledSize());
+struct miqt_qsize QPdfDocumentRenderOptions_scaledSize(const QPdfDocumentRenderOptions* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->scaledSize());
 }
 
-void QPdfDocumentRenderOptions_setScaledSize(QPdfDocumentRenderOptions* self, QSize* s) {
-	self->setScaledSize(*s);
+void QPdfDocumentRenderOptions_setScaledSize(QPdfDocumentRenderOptions* self, struct miqt_qsize s) {
+	self->setScaledSize(miqt_from_cabi<QSize>(s));
 }
 
 void QPdfDocumentRenderOptions_delete(QPdfDocumentRenderOptions* self) {

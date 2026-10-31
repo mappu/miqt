@@ -27,7 +27,7 @@ void QPdfSelection_operatorAssign(QPdfSelection* self, QPdfSelection* other);
 void QPdfSelection_swap(QPdfSelection* self, QPdfSelection* other);
 bool QPdfSelection_isValid(const QPdfSelection* self);
 struct miqt_string QPdfSelection_text(const QPdfSelection* self);
-QRectF* QPdfSelection_boundingRectangle(const QPdfSelection* self);
+struct miqt_qrectf QPdfSelection_boundingRectangle(const QPdfSelection* self);
 int QPdfSelection_startIndex(const QPdfSelection* self);
 int QPdfSelection_endIndex(const QPdfSelection* self);
 void QPdfSelection_copyToClipboard(const QPdfSelection* self);

@@ -200,20 +200,20 @@ struct miqt_string QAudioRoom_tr(const char* s) {
 	return _ms;
 }
 
-void QAudioRoom_setPosition(QAudioRoom* self, QVector3D* pos) {
-	self->setPosition(*pos);
+void QAudioRoom_setPosition(QAudioRoom* self, struct miqt_qvector3d pos) {
+	self->setPosition(miqt_from_cabi<QVector3D>(pos));
 }
 
-QVector3D* QAudioRoom_position(const QAudioRoom* self) {
-	return new QVector3D(self->position());
+struct miqt_qvector3d QAudioRoom_position(const QAudioRoom* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->position());
 }
 
-void QAudioRoom_setDimensions(QAudioRoom* self, QVector3D* dim) {
-	self->setDimensions(*dim);
+void QAudioRoom_setDimensions(QAudioRoom* self, struct miqt_qvector3d dim) {
+	self->setDimensions(miqt_from_cabi<QVector3D>(dim));
 }
 
-QVector3D* QAudioRoom_dimensions(const QAudioRoom* self) {
-	return new QVector3D(self->dimensions());
+struct miqt_qvector3d QAudioRoom_dimensions(const QAudioRoom* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->dimensions());
 }
 
 void QAudioRoom_setRotation(QAudioRoom* self, QQuaternion* q) {

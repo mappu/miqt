@@ -23,8 +23,8 @@ QRegion* QRegion_new2(int x, int y, int w, int h) {
 	return new (std::nothrow) QRegion(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
 }
 
-QRegion* QRegion_new3(QRect* r) {
-	return new (std::nothrow) QRegion(*r);
+QRegion* QRegion_new3(struct miqt_qrect r) {
+	return new (std::nothrow) QRegion(miqt_from_cabi<QRect>(r));
 }
 
 QRegion* QRegion_new4(QRegion* region) {
@@ -39,8 +39,8 @@ QRegion* QRegion_new6(int x, int y, int w, int h, int t) {
 	return new (std::nothrow) QRegion(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<QRegion::RegionType>(t));
 }
 
-QRegion* QRegion_new7(QRect* r, int t) {
-	return new (std::nothrow) QRegion(*r, static_cast<QRegion::RegionType>(t));
+QRegion* QRegion_new7(struct miqt_qrect r, int t) {
+	return new (std::nothrow) QRegion(miqt_from_cabi<QRect>(r), static_cast<QRegion::RegionType>(t));
 }
 
 void QRegion_operatorAssign(QRegion* self, QRegion* param1) {
@@ -79,44 +79,44 @@ QRect* QRegion_cend(const QRegion* self) {
 	return const_cast<QRect*>(static_cast<const QRect*>(_ret));
 }
 
-bool QRegion_contains(const QRegion* self, QPoint* p) {
-	return self->contains(*p);
+bool QRegion_contains(const QRegion* self, struct miqt_qpoint p) {
+	return self->contains(miqt_from_cabi<QPoint>(p));
 }
 
-bool QRegion_containsWithQRect(const QRegion* self, QRect* r) {
-	return self->contains(*r);
+bool QRegion_containsWithQRect(const QRegion* self, struct miqt_qrect r) {
+	return self->contains(miqt_from_cabi<QRect>(r));
 }
 
 void QRegion_translate(QRegion* self, int dx, int dy) {
 	self->translate(static_cast<int>(dx), static_cast<int>(dy));
 }
 
-void QRegion_translateWithQPoint(QRegion* self, QPoint* p) {
-	self->translate(*p);
+void QRegion_translateWithQPoint(QRegion* self, struct miqt_qpoint p) {
+	self->translate(miqt_from_cabi<QPoint>(p));
 }
 
 QRegion* QRegion_translated(const QRegion* self, int dx, int dy) {
 	return new QRegion(self->translated(static_cast<int>(dx), static_cast<int>(dy)));
 }
 
-QRegion* QRegion_translatedWithQPoint(const QRegion* self, QPoint* p) {
-	return new QRegion(self->translated(*p));
+QRegion* QRegion_translatedWithQPoint(const QRegion* self, struct miqt_qpoint p) {
+	return new QRegion(self->translated(miqt_from_cabi<QPoint>(p)));
 }
 
 QRegion* QRegion_united(const QRegion* self, QRegion* r) {
 	return new QRegion(self->united(*r));
 }
 
-QRegion* QRegion_unitedWithQRect(const QRegion* self, QRect* r) {
-	return new QRegion(self->united(*r));
+QRegion* QRegion_unitedWithQRect(const QRegion* self, struct miqt_qrect r) {
+	return new QRegion(self->united(miqt_from_cabi<QRect>(r)));
 }
 
 QRegion* QRegion_intersected(const QRegion* self, QRegion* r) {
 	return new QRegion(self->intersected(*r));
 }
 
-QRegion* QRegion_intersectedWithQRect(const QRegion* self, QRect* r) {
-	return new QRegion(self->intersected(*r));
+QRegion* QRegion_intersectedWithQRect(const QRegion* self, struct miqt_qrect r) {
+	return new QRegion(self->intersected(miqt_from_cabi<QRect>(r)));
 }
 
 QRegion* QRegion_subtracted(const QRegion* self, QRegion* r) {
@@ -131,20 +131,20 @@ bool QRegion_intersects(const QRegion* self, QRegion* r) {
 	return self->intersects(*r);
 }
 
-bool QRegion_intersectsWithQRect(const QRegion* self, QRect* r) {
-	return self->intersects(*r);
+bool QRegion_intersectsWithQRect(const QRegion* self, struct miqt_qrect r) {
+	return self->intersects(miqt_from_cabi<QRect>(r));
 }
 
-QRect* QRegion_boundingRect(const QRegion* self) {
-	return new QRect(self->boundingRect());
+struct miqt_qrect QRegion_boundingRect(const QRegion* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->boundingRect());
 }
 
-struct miqt_array /* of QRect* */  QRegion_rects(const QRegion* self) {
+struct miqt_array /* of struct miqt_qrect */  QRegion_rects(const QRegion* self) {
 	QVector<QRect> _ret = self->rects();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QRect** _arr = static_cast<QRect**>(malloc(sizeof(QRect*) * _ret.length()));
+	struct miqt_qrect* _arr = static_cast<struct miqt_qrect*>(malloc(sizeof(struct miqt_qrect) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QRect(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qrect>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -168,16 +168,16 @@ QRegion* QRegion_operatorPlus(const QRegion* self, QRegion* r) {
 	return new QRegion(self->operator+(*r));
 }
 
-QRegion* QRegion_operatorPlusWithQRect(const QRegion* self, QRect* r) {
-	return new QRegion(self->operator+(*r));
+QRegion* QRegion_operatorPlusWithQRect(const QRegion* self, struct miqt_qrect r) {
+	return new QRegion(self->operator+(miqt_from_cabi<QRect>(r)));
 }
 
 QRegion* QRegion_operatorBitwiseAnd(const QRegion* self, QRegion* r) {
 	return new QRegion(self->operator&(*r));
 }
 
-QRegion* QRegion_operatorBitwiseAndWithQRect(const QRegion* self, QRect* r) {
-	return new QRegion(self->operator&(*r));
+QRegion* QRegion_operatorBitwiseAndWithQRect(const QRegion* self, struct miqt_qrect r) {
+	return new QRegion(self->operator&(miqt_from_cabi<QRect>(r)));
 }
 
 QRegion* QRegion_operatorMinus(const QRegion* self, QRegion* r) {
@@ -198,8 +198,8 @@ QRegion* QRegion_operatorPlusAssign(QRegion* self, QRegion* r) {
 	return &_ret;
 }
 
-QRegion* QRegion_operatorPlusAssignWithQRect(QRegion* self, QRect* r) {
-	QRegion& _ret = self->operator+=(*r);
+QRegion* QRegion_operatorPlusAssignWithQRect(QRegion* self, struct miqt_qrect r) {
+	QRegion& _ret = self->operator+=(miqt_from_cabi<QRect>(r));
 	// Cast returned reference into pointer
 	return &_ret;
 }
@@ -208,8 +208,8 @@ void QRegion_operatorBitwiseAndAssign(QRegion* self, QRegion* r) {
 	self->operator&=(*r);
 }
 
-void QRegion_operatorBitwiseAndAssignWithQRect(QRegion* self, QRect* r) {
-	self->operator&=(*r);
+void QRegion_operatorBitwiseAndAssignWithQRect(QRegion* self, struct miqt_qrect r) {
+	self->operator&=(miqt_from_cabi<QRect>(r));
 }
 
 QRegion* QRegion_operatorMinusAssign(QRegion* self, QRegion* r) {

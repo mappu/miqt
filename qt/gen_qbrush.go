@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -272,10 +273,9 @@ func NewQBrush2(bs BrushStyle) *QBrush {
 }
 
 // NewQBrush3 constructs a new QBrush object.
-func NewQBrush3(color *QColor) *QBrush {
-	defer runtime.KeepAlive(color)
+func NewQBrush3(color QColor) *QBrush {
 
-	return newQBrush(C.QBrush_new3(color.cPointer()))
+	return newQBrush(C.QBrush_new3(libmiqt.ValueCast[C.struct_miqt_qcolor](color)))
 }
 
 // NewQBrush4 constructs a new QBrush object.
@@ -285,11 +285,10 @@ func NewQBrush4(color GlobalColor) *QBrush {
 }
 
 // NewQBrush5 constructs a new QBrush object.
-func NewQBrush5(color *QColor, pixmap *QPixmap) *QBrush {
-	defer runtime.KeepAlive(color)
+func NewQBrush5(color QColor, pixmap *QPixmap) *QBrush {
 	defer runtime.KeepAlive(pixmap)
 
-	return newQBrush(C.QBrush_new5(color.cPointer(), pixmap.cPointer()))
+	return newQBrush(C.QBrush_new5(libmiqt.ValueCast[C.struct_miqt_qcolor](color), pixmap.cPointer()))
 }
 
 // NewQBrush6 constructs a new QBrush object.
@@ -328,10 +327,9 @@ func NewQBrush10(gradient *QGradient) *QBrush {
 }
 
 // NewQBrush11 constructs a new QBrush object.
-func NewQBrush11(color *QColor, bs BrushStyle) *QBrush {
-	defer runtime.KeepAlive(color)
+func NewQBrush11(color QColor, bs BrushStyle) *QBrush {
 
-	return newQBrush(C.QBrush_new11(color.cPointer(), (C.int)(bs)))
+	return newQBrush(C.QBrush_new11(libmiqt.ValueCast[C.struct_miqt_qcolor](color), (C.int)(bs)))
 }
 
 // NewQBrush12 constructs a new QBrush object.
@@ -421,17 +419,14 @@ func (this *QBrush) SetTextureImage(image *QImage) {
 	C.QBrush_setTextureImage(this.h, image.cPointer())
 }
 
-func (this *QBrush) Color() *QColor {
+func (this *QBrush) Color() QColor {
 	defer runtime.KeepAlive(this)
-	_ret := newQColor(C.QBrush_color(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QColor](C.QBrush_color(this.h))
 }
 
-func (this *QBrush) SetColor(color *QColor) {
+func (this *QBrush) SetColor(color QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QBrush_setColor(this.h, color.cPointer())
+	C.QBrush_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QBrush) SetColorWithColor(color GlobalColor) {
@@ -558,10 +553,9 @@ func (this *QGradient) Spread() QGradient__Spread {
 	return (QGradient__Spread)(C.QGradient_spread(this.h))
 }
 
-func (this *QGradient) SetColorAt(pos float64, color *QColor) {
+func (this *QGradient) SetColorAt(pos float64, color QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QGradient_setColorAt(this.h, (C.double)(pos), color.cPointer())
+	C.QGradient_setColorAt(this.h, (C.double)(pos), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QGradient) SetStops(stops []struct {
@@ -569,17 +563,16 @@ func (this *QGradient) SetStops(stops []struct {
 	Second QColor
 }) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(stops)
 	stops_CArray_ptr := (*C.struct_miqt_map)(C.malloc(C.size_t(8 * len(stops))))
 	defer C.free(unsafe.Pointer(stops_CArray_ptr))
 	stops_CArray := unsafe.Slice(stops_CArray_ptr, len(stops))
 	for i := range stops {
 		stops_i_First_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8)))
 		defer C.free(unsafe.Pointer(stops_i_First_CArray))
-		stops_i_Second_CArray := (*[0xffff]*C.QColor)(C.malloc(C.size_t(8)))
+		stops_i_Second_CArray := (*[0xffff]C.struct_miqt_qcolor)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qcolor{})))))
 		defer C.free(unsafe.Pointer(stops_i_Second_CArray))
 		stops_i_First_CArray[0] = (C.double)(stops[i].First)
-		stops_i_Second_CArray[0] = stops[i].Second.cPointer()
+		stops_i_Second_CArray[0] = libmiqt.ValueCast[C.struct_miqt_qcolor](stops[i].Second)
 		stops_i_pair := C.struct_miqt_map{
 			len:    1,
 			keys:   unsafe.Pointer(stops_i_First_CArray),
@@ -605,12 +598,10 @@ func (this *QGradient) Stops() []struct {
 	for i := 0; i < int(_ma.len); i++ {
 		var _vv_mm C.struct_miqt_map = _outCast[i]
 		_vv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_vv_mm.keys))
-		_vv_Second_CArray := (*[0xffff]*C.QColor)(unsafe.Pointer(_vv_mm.values))
+		_vv_Second_CArray := (*[0xffff]C.struct_miqt_qcolor)(unsafe.Pointer(_vv_mm.values))
 		_vv_entry_First := (float64)(_vv_First_CArray[0])
 
-		_vv_second_goptr := newQColor(_vv_Second_CArray[0])
-		_vv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_vv_entry_Second := *_vv_second_goptr
+		_vv_entry_Second := libmiqt.ValueCast[QColor](_vv_Second_CArray[0])
 
 		_ret[i] = struct {
 			First  float64
@@ -728,11 +719,9 @@ func NewQLinearGradient() *QLinearGradient {
 }
 
 // NewQLinearGradient2 constructs a new QLinearGradient object.
-func NewQLinearGradient2(start *QPointF, finalStop *QPointF) *QLinearGradient {
-	defer runtime.KeepAlive(start)
-	defer runtime.KeepAlive(finalStop)
+func NewQLinearGradient2(start QPointF, finalStop QPointF) *QLinearGradient {
 
-	return newQLinearGradient(C.QLinearGradient_new2(start.cPointer(), finalStop.cPointer()))
+	return newQLinearGradient(C.QLinearGradient_new2(libmiqt.ValueCast[C.struct_miqt_qpointf](start), libmiqt.ValueCast[C.struct_miqt_qpointf](finalStop)))
 }
 
 // NewQLinearGradient3 constructs a new QLinearGradient object.
@@ -748,17 +737,14 @@ func NewQLinearGradient4(param1 *QLinearGradient) *QLinearGradient {
 	return newQLinearGradient(C.QLinearGradient_new4(param1.cPointer()))
 }
 
-func (this *QLinearGradient) Start() *QPointF {
+func (this *QLinearGradient) Start() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QLinearGradient_start(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QLinearGradient_start(this.h))
 }
 
-func (this *QLinearGradient) SetStart(start *QPointF) {
+func (this *QLinearGradient) SetStart(start QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(start)
-	C.QLinearGradient_setStart(this.h, start.cPointer())
+	C.QLinearGradient_setStart(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](start))
 }
 
 func (this *QLinearGradient) SetStart2(x float64, y float64) {
@@ -766,17 +752,14 @@ func (this *QLinearGradient) SetStart2(x float64, y float64) {
 	C.QLinearGradient_setStart2(this.h, (C.double)(x), (C.double)(y))
 }
 
-func (this *QLinearGradient) FinalStop() *QPointF {
+func (this *QLinearGradient) FinalStop() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QLinearGradient_finalStop(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QLinearGradient_finalStop(this.h))
 }
 
-func (this *QLinearGradient) SetFinalStop(stop *QPointF) {
+func (this *QLinearGradient) SetFinalStop(stop QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(stop)
-	C.QLinearGradient_setFinalStop(this.h, stop.cPointer())
+	C.QLinearGradient_setFinalStop(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](stop))
 }
 
 func (this *QLinearGradient) SetFinalStop2(x float64, y float64) {
@@ -854,11 +837,9 @@ func NewQRadialGradient() *QRadialGradient {
 }
 
 // NewQRadialGradient2 constructs a new QRadialGradient object.
-func NewQRadialGradient2(center *QPointF, radius float64, focalPoint *QPointF) *QRadialGradient {
-	defer runtime.KeepAlive(center)
-	defer runtime.KeepAlive(focalPoint)
+func NewQRadialGradient2(center QPointF, radius float64, focalPoint QPointF) *QRadialGradient {
 
-	return newQRadialGradient(C.QRadialGradient_new2(center.cPointer(), (C.double)(radius), focalPoint.cPointer()))
+	return newQRadialGradient(C.QRadialGradient_new2(libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(radius), libmiqt.ValueCast[C.struct_miqt_qpointf](focalPoint)))
 }
 
 // NewQRadialGradient3 constructs a new QRadialGradient object.
@@ -868,10 +849,9 @@ func NewQRadialGradient3(cx float64, cy float64, radius float64, fx float64, fy 
 }
 
 // NewQRadialGradient4 constructs a new QRadialGradient object.
-func NewQRadialGradient4(center *QPointF, radius float64) *QRadialGradient {
-	defer runtime.KeepAlive(center)
+func NewQRadialGradient4(center QPointF, radius float64) *QRadialGradient {
 
-	return newQRadialGradient(C.QRadialGradient_new4(center.cPointer(), (C.double)(radius)))
+	return newQRadialGradient(C.QRadialGradient_new4(libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(radius)))
 }
 
 // NewQRadialGradient5 constructs a new QRadialGradient object.
@@ -881,11 +861,9 @@ func NewQRadialGradient5(cx float64, cy float64, radius float64) *QRadialGradien
 }
 
 // NewQRadialGradient6 constructs a new QRadialGradient object.
-func NewQRadialGradient6(center *QPointF, centerRadius float64, focalPoint *QPointF, focalRadius float64) *QRadialGradient {
-	defer runtime.KeepAlive(center)
-	defer runtime.KeepAlive(focalPoint)
+func NewQRadialGradient6(center QPointF, centerRadius float64, focalPoint QPointF, focalRadius float64) *QRadialGradient {
 
-	return newQRadialGradient(C.QRadialGradient_new6(center.cPointer(), (C.double)(centerRadius), focalPoint.cPointer(), (C.double)(focalRadius)))
+	return newQRadialGradient(C.QRadialGradient_new6(libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(centerRadius), libmiqt.ValueCast[C.struct_miqt_qpointf](focalPoint), (C.double)(focalRadius)))
 }
 
 // NewQRadialGradient7 constructs a new QRadialGradient object.
@@ -901,17 +879,14 @@ func NewQRadialGradient8(param1 *QRadialGradient) *QRadialGradient {
 	return newQRadialGradient(C.QRadialGradient_new8(param1.cPointer()))
 }
 
-func (this *QRadialGradient) Center() *QPointF {
+func (this *QRadialGradient) Center() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QRadialGradient_center(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QRadialGradient_center(this.h))
 }
 
-func (this *QRadialGradient) SetCenter(center *QPointF) {
+func (this *QRadialGradient) SetCenter(center QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(center)
-	C.QRadialGradient_setCenter(this.h, center.cPointer())
+	C.QRadialGradient_setCenter(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](center))
 }
 
 func (this *QRadialGradient) SetCenter2(x float64, y float64) {
@@ -919,17 +894,14 @@ func (this *QRadialGradient) SetCenter2(x float64, y float64) {
 	C.QRadialGradient_setCenter2(this.h, (C.double)(x), (C.double)(y))
 }
 
-func (this *QRadialGradient) FocalPoint() *QPointF {
+func (this *QRadialGradient) FocalPoint() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QRadialGradient_focalPoint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QRadialGradient_focalPoint(this.h))
 }
 
-func (this *QRadialGradient) SetFocalPoint(focalPoint *QPointF) {
+func (this *QRadialGradient) SetFocalPoint(focalPoint QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(focalPoint)
-	C.QRadialGradient_setFocalPoint(this.h, focalPoint.cPointer())
+	C.QRadialGradient_setFocalPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](focalPoint))
 }
 
 func (this *QRadialGradient) SetFocalPoint2(x float64, y float64) {
@@ -1037,10 +1009,9 @@ func NewQConicalGradient() *QConicalGradient {
 }
 
 // NewQConicalGradient2 constructs a new QConicalGradient object.
-func NewQConicalGradient2(center *QPointF, startAngle float64) *QConicalGradient {
-	defer runtime.KeepAlive(center)
+func NewQConicalGradient2(center QPointF, startAngle float64) *QConicalGradient {
 
-	return newQConicalGradient(C.QConicalGradient_new2(center.cPointer(), (C.double)(startAngle)))
+	return newQConicalGradient(C.QConicalGradient_new2(libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(startAngle)))
 }
 
 // NewQConicalGradient3 constructs a new QConicalGradient object.
@@ -1056,17 +1027,14 @@ func NewQConicalGradient4(param1 *QConicalGradient) *QConicalGradient {
 	return newQConicalGradient(C.QConicalGradient_new4(param1.cPointer()))
 }
 
-func (this *QConicalGradient) Center() *QPointF {
+func (this *QConicalGradient) Center() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QConicalGradient_center(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QConicalGradient_center(this.h))
 }
 
-func (this *QConicalGradient) SetCenter(center *QPointF) {
+func (this *QConicalGradient) SetCenter(center QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(center)
-	C.QConicalGradient_setCenter(this.h, center.cPointer())
+	C.QConicalGradient_setCenter(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](center))
 }
 
 func (this *QConicalGradient) SetCenter2(x float64, y float64) {

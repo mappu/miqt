@@ -26,8 +26,8 @@ int QwtPlotSeriesItem_orientation(const QwtPlotSeriesItem* self) {
 	return static_cast<int>(_ret);
 }
 
-QRectF* QwtPlotSeriesItem_boundingRect(const QwtPlotSeriesItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotSeriesItem_boundingRect(const QwtPlotSeriesItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 void QwtPlotSeriesItem_updateScaleDiv(QwtPlotSeriesItem* self, QwtScaleDiv* param1, QwtScaleDiv* param2) {

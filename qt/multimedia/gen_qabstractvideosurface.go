@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -136,10 +137,8 @@ func (this *QAbstractVideoSurface) SurfaceFormat() *QVideoSurfaceFormat {
 	return _goptr
 }
 
-func (this *QAbstractVideoSurface) NativeResolution() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QAbstractVideoSurface_nativeResolution(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAbstractVideoSurface) NativeResolution() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QAbstractVideoSurface_nativeResolution(this.h))
 }
 
 func (this *QAbstractVideoSurface) Start(format *QVideoSurfaceFormat) bool {
@@ -222,23 +221,22 @@ func miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged(cb C.intpt
 	gofunc()
 }
 
-func (this *QAbstractVideoSurface) NativeResolutionChanged(resolution *qt.QSize) {
-	defer runtime.KeepAlive(resolution)
-	C.QAbstractVideoSurface_nativeResolutionChanged(this.h, (*C.QSize)(resolution.UnsafePointer()))
+func (this *QAbstractVideoSurface) NativeResolutionChanged(resolution qt.QSize) {
+	C.QAbstractVideoSurface_nativeResolutionChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](resolution))
 }
-func (this *QAbstractVideoSurface) OnNativeResolutionChanged(slot func(resolution *qt.QSize)) {
+func (this *QAbstractVideoSurface) OnNativeResolutionChanged(slot func(resolution qt.QSize)) {
 	C.QAbstractVideoSurface_connect_nativeResolutionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged
-func miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged(cb C.intptr_t, resolution *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(resolution *qt.QSize))
+func miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged(cb C.intptr_t, resolution C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(resolution qt.QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSize(unsafe.Pointer(resolution))
+	slotval1 := libmiqt.ValueCast[qt.QSize](resolution)
 
 	gofunc(slotval1)
 }
@@ -300,11 +298,10 @@ func (this *QAbstractVideoSurface) SetError(error QAbstractVideoSurface__Error) 
 }
 
 // SetNativeResolution can only be called from a QAbstractVideoSurface that was directly constructed.
-func (this *QAbstractVideoSurface) SetNativeResolution(resolution *qt.QSize) {
-	defer runtime.KeepAlive(resolution)
+func (this *QAbstractVideoSurface) SetNativeResolution(resolution qt.QSize) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QAbstractVideoSurface_protectedbase_setNativeResolution(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QSize)(resolution.UnsafePointer()))
+	C.QAbstractVideoSurface_protectedbase_setNativeResolution(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsize](resolution))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")

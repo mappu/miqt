@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -165,10 +166,8 @@ func (this *QProgressDialog) Value() int {
 	return (int)(C.QProgressDialog_value(this.h))
 }
 
-func (this *QProgressDialog) SizeHint() *QSize {
-	_goptr := newQSize(C.QProgressDialog_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QProgressDialog) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QProgressDialog_sizeHint(this.h))
 }
 
 func (this *QProgressDialog) LabelText() string {
@@ -428,14 +427,12 @@ func (this *QProgressDialog) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QProgressDialog) callVirtualBase_SizeHint() *QSize {
+func (this *QProgressDialog) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QProgressDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QProgressDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QProgressDialog) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QProgressDialog_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -443,16 +440,15 @@ func (this *QProgressDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QProgressDialog_sizeHint
-func miqt_exec_callback_QProgressDialog_sizeHint(self *C.QProgressDialog, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QProgressDialog_sizeHint(self *C.QProgressDialog, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QProgressDialog{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QProgressDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -590,14 +586,12 @@ func miqt_exec_callback_QProgressDialog_setVisible(self *C.QProgressDialog, cb C
 
 }
 
-func (this *QProgressDialog) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QProgressDialog) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QProgressDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QProgressDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QProgressDialog) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QProgressDialog_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -605,16 +599,15 @@ func (this *QProgressDialog) OnMinimumSizeHint(slot func(super func() *QSize) *Q
 }
 
 //export miqt_exec_callback_QProgressDialog_minimumSizeHint
-func miqt_exec_callback_QProgressDialog_minimumSizeHint(self *C.QProgressDialog, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QProgressDialog_minimumSizeHint(self *C.QProgressDialog, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QProgressDialog{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QProgressDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1566,7 +1559,6 @@ func miqt_exec_callback_QProgressDialog_initPainter(self *C.QProgressDialog, cb 
 }
 
 func (this *QProgressDialog) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QProgressDialog_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

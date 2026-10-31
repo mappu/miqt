@@ -27,7 +27,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsEffect_enabledChanged(intptr_t, bool);
-QRectF* miqt_exec_callback_QGraphicsEffect_boundingRectFor(const QGraphicsEffect*, intptr_t, QRectF*);
+struct miqt_qrectf miqt_exec_callback_QGraphicsEffect_boundingRectFor(const QGraphicsEffect*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QGraphicsEffect_draw(QGraphicsEffect*, intptr_t, QPainter*);
 void miqt_exec_callback_QGraphicsEffect_sourceChanged(QGraphicsEffect*, intptr_t, int);
 bool miqt_exec_callback_QGraphicsEffect_event(QGraphicsEffect*, intptr_t, QEvent*);
@@ -37,10 +37,10 @@ void miqt_exec_callback_QGraphicsEffect_childEvent(QGraphicsEffect*, intptr_t, Q
 void miqt_exec_callback_QGraphicsEffect_customEvent(QGraphicsEffect*, intptr_t, QEvent*);
 void miqt_exec_callback_QGraphicsEffect_connectNotify(QGraphicsEffect*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsEffect_disconnectNotify(QGraphicsEffect*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsColorizeEffect_colorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QGraphicsColorizeEffect_colorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QGraphicsColorizeEffect_strengthChanged(intptr_t, double);
 void miqt_exec_callback_QGraphicsColorizeEffect_draw(QGraphicsColorizeEffect*, intptr_t, QPainter*);
-QRectF* miqt_exec_callback_QGraphicsColorizeEffect_boundingRectFor(const QGraphicsColorizeEffect*, intptr_t, QRectF*);
+struct miqt_qrectf miqt_exec_callback_QGraphicsColorizeEffect_boundingRectFor(const QGraphicsColorizeEffect*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QGraphicsColorizeEffect_sourceChanged(QGraphicsColorizeEffect*, intptr_t, int);
 bool miqt_exec_callback_QGraphicsColorizeEffect_event(QGraphicsColorizeEffect*, intptr_t, QEvent*);
 bool miqt_exec_callback_QGraphicsColorizeEffect_eventFilter(QGraphicsColorizeEffect*, intptr_t, QObject*, QEvent*);
@@ -51,7 +51,7 @@ void miqt_exec_callback_QGraphicsColorizeEffect_connectNotify(QGraphicsColorizeE
 void miqt_exec_callback_QGraphicsColorizeEffect_disconnectNotify(QGraphicsColorizeEffect*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsBlurEffect_blurRadiusChanged(intptr_t, double);
 void miqt_exec_callback_QGraphicsBlurEffect_blurHintsChanged(intptr_t, int);
-QRectF* miqt_exec_callback_QGraphicsBlurEffect_boundingRectFor(const QGraphicsBlurEffect*, intptr_t, QRectF*);
+struct miqt_qrectf miqt_exec_callback_QGraphicsBlurEffect_boundingRectFor(const QGraphicsBlurEffect*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QGraphicsBlurEffect_draw(QGraphicsBlurEffect*, intptr_t, QPainter*);
 void miqt_exec_callback_QGraphicsBlurEffect_sourceChanged(QGraphicsBlurEffect*, intptr_t, int);
 bool miqt_exec_callback_QGraphicsBlurEffect_event(QGraphicsBlurEffect*, intptr_t, QEvent*);
@@ -61,10 +61,10 @@ void miqt_exec_callback_QGraphicsBlurEffect_childEvent(QGraphicsBlurEffect*, int
 void miqt_exec_callback_QGraphicsBlurEffect_customEvent(QGraphicsBlurEffect*, intptr_t, QEvent*);
 void miqt_exec_callback_QGraphicsBlurEffect_connectNotify(QGraphicsBlurEffect*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsBlurEffect_disconnectNotify(QGraphicsBlurEffect*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsDropShadowEffect_offsetChanged(intptr_t, QPointF*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_offsetChanged(intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsDropShadowEffect_blurRadiusChanged(intptr_t, double);
-void miqt_exec_callback_QGraphicsDropShadowEffect_colorChanged(intptr_t, QColor*);
-QRectF* miqt_exec_callback_QGraphicsDropShadowEffect_boundingRectFor(const QGraphicsDropShadowEffect*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_colorChanged(intptr_t, struct miqt_qcolor);
+struct miqt_qrectf miqt_exec_callback_QGraphicsDropShadowEffect_boundingRectFor(const QGraphicsDropShadowEffect*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QGraphicsDropShadowEffect_draw(QGraphicsDropShadowEffect*, intptr_t, QPainter*);
 void miqt_exec_callback_QGraphicsDropShadowEffect_sourceChanged(QGraphicsDropShadowEffect*, intptr_t, int);
 bool miqt_exec_callback_QGraphicsDropShadowEffect_event(QGraphicsDropShadowEffect*, intptr_t, QEvent*);
@@ -77,7 +77,7 @@ void miqt_exec_callback_QGraphicsDropShadowEffect_disconnectNotify(QGraphicsDrop
 void miqt_exec_callback_QGraphicsOpacityEffect_opacityChanged(intptr_t, double);
 void miqt_exec_callback_QGraphicsOpacityEffect_opacityMaskChanged(intptr_t, QBrush*);
 void miqt_exec_callback_QGraphicsOpacityEffect_draw(QGraphicsOpacityEffect*, intptr_t, QPainter*);
-QRectF* miqt_exec_callback_QGraphicsOpacityEffect_boundingRectFor(const QGraphicsOpacityEffect*, intptr_t, QRectF*);
+struct miqt_qrectf miqt_exec_callback_QGraphicsOpacityEffect_boundingRectFor(const QGraphicsOpacityEffect*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QGraphicsOpacityEffect_sourceChanged(QGraphicsOpacityEffect*, intptr_t, int);
 bool miqt_exec_callback_QGraphicsOpacityEffect_event(QGraphicsOpacityEffect*, intptr_t, QEvent*);
 bool miqt_exec_callback_QGraphicsOpacityEffect_eventFilter(QGraphicsOpacityEffect*, intptr_t, QObject*, QEvent*);
@@ -107,16 +107,12 @@ public:
 			return QGraphicsEffect::boundingRectFor(sourceRect);
 		}
 
-		const QRectF& sourceRect_ret = sourceRect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(sourceRect);
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
+	friend struct miqt_qrectf QGraphicsEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf sourceRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__draw = 0;
@@ -275,10 +271,10 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 	friend bool QGraphicsEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrectf QGraphicsEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
 	friend void QGraphicsEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
 	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsEffect_protectedbase_sourceBoundingRectWithSystem(bool* _dynamic_cast_ok, const void* self, int system);
+	friend struct miqt_qrectf QGraphicsEffect_protectedbase_sourceBoundingRectWithSystem(bool* _dynamic_cast_ok, const void* self, int system);
 	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmapWithSystem(bool* _dynamic_cast_ok, const void* self, int system);
 	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap2(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset);
 	friend QPixmap* QGraphicsEffect_protectedbase_sourcePixmap3(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset, int mode);
@@ -319,12 +315,12 @@ struct miqt_string QGraphicsEffect_tr(const char* s) {
 	return _ms;
 }
 
-QRectF* QGraphicsEffect_boundingRectFor(const QGraphicsEffect* self, QRectF* sourceRect) {
-	return new QRectF(self->boundingRectFor(*sourceRect));
+struct miqt_qrectf QGraphicsEffect_boundingRectFor(const QGraphicsEffect* self, struct miqt_qrectf sourceRect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRectFor(miqt_from_cabi<QRectF>(sourceRect)));
 }
 
-QRectF* QGraphicsEffect_boundingRect(const QGraphicsEffect* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsEffect_boundingRect(const QGraphicsEffect* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 bool QGraphicsEffect_isEnabled(const QGraphicsEffect* self) {
@@ -382,8 +378,8 @@ bool QGraphicsEffect_override_virtual_boundingRectFor(void* self, intptr_t slot)
 	return true;
 }
 
-QRectF* QGraphicsEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsEffect*>(self)->QGraphicsEffect::boundingRectFor(*sourceRect));
+struct miqt_qrectf QGraphicsEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf sourceRect) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsEffect*>(self)->QGraphicsEffect::boundingRectFor(miqt_from_cabi<QRectF>(sourceRect)));
 }
 
 bool QGraphicsEffect_override_virtual_draw(void* self, intptr_t slot) {
@@ -508,10 +504,6 @@ void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	static_cast<MiqtVirtualQGraphicsEffect*>(self)->QGraphicsEffect::disconnectNotify(*signal);
 }
 
-QRectF* QGraphicsEffect_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 void QGraphicsEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	if (self_cast == nullptr) {
@@ -534,15 +526,15 @@ bool QGraphicsEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const 
 	return self_cast->sourceIsPixmap();
 }
 
-QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrectf QGraphicsEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->sourceBoundingRect());
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->sourceBoundingRect());
 }
 
 void QGraphicsEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {
@@ -567,15 +559,15 @@ QPixmap* QGraphicsEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, cons
 	return new QPixmap(self_cast->sourcePixmap());
 }
 
-QRectF* QGraphicsEffect_protectedbase_sourceBoundingRectWithSystem(bool* _dynamic_cast_ok, const void* self, int system) {
+struct miqt_qrectf QGraphicsEffect_protectedbase_sourceBoundingRectWithSystem(bool* _dynamic_cast_ok, const void* self, int system) {
 	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->sourceBoundingRect(static_cast<Qt::CoordinateSystem>(system)));
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->sourceBoundingRect(static_cast<Qt::CoordinateSystem>(system)));
 }
 
 QPixmap* QGraphicsEffect_protectedbase_sourcePixmapWithSystem(bool* _dynamic_cast_ok, const void* self, int system) {
@@ -693,16 +685,12 @@ public:
 			return QGraphicsColorizeEffect::boundingRectFor(sourceRect);
 		}
 
-		const QRectF& sourceRect_ret = sourceRect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsColorizeEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(sourceRect);
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsColorizeEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsColorizeEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
+	friend struct miqt_qrectf QGraphicsColorizeEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf sourceRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sourceChanged = 0;
@@ -847,7 +835,7 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 	friend bool QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrectf QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
 	friend void QGraphicsColorizeEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
 	friend QPixmap* QGraphicsColorizeEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
 	friend QObject* QGraphicsColorizeEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -887,8 +875,8 @@ struct miqt_string QGraphicsColorizeEffect_tr(const char* s) {
 	return _ms;
 }
 
-QColor* QGraphicsColorizeEffect_color(const QGraphicsColorizeEffect* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QGraphicsColorizeEffect_color(const QGraphicsColorizeEffect* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
 double QGraphicsColorizeEffect_strength(const QGraphicsColorizeEffect* self) {
@@ -896,23 +884,21 @@ double QGraphicsColorizeEffect_strength(const QGraphicsColorizeEffect* self) {
 	return static_cast<double>(_ret);
 }
 
-void QGraphicsColorizeEffect_setColor(QGraphicsColorizeEffect* self, QColor* c) {
-	self->setColor(*c);
+void QGraphicsColorizeEffect_setColor(QGraphicsColorizeEffect* self, struct miqt_qcolor c) {
+	self->setColor(miqt_from_cabi<QColor>(c));
 }
 
 void QGraphicsColorizeEffect_setStrength(QGraphicsColorizeEffect* self, double strength) {
 	self->setStrength(static_cast<qreal>(strength));
 }
 
-void QGraphicsColorizeEffect_colorChanged(QGraphicsColorizeEffect* self, QColor* color) {
-	self->colorChanged(*color);
+void QGraphicsColorizeEffect_colorChanged(QGraphicsColorizeEffect* self, struct miqt_qcolor color) {
+	self->colorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QGraphicsColorizeEffect_connect_colorChanged(QGraphicsColorizeEffect* self, intptr_t slot) {
 	QGraphicsColorizeEffect::connect(self, static_cast<void (QGraphicsColorizeEffect::*)(const QColor&)>(&QGraphicsColorizeEffect::colorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QGraphicsColorizeEffect_colorChanged(slot, sigval1);
 	});
 }
@@ -975,8 +961,8 @@ bool QGraphicsColorizeEffect_override_virtual_boundingRectFor(void* self, intptr
 	return true;
 }
 
-QRectF* QGraphicsColorizeEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsColorizeEffect*>(self)->QGraphicsColorizeEffect::boundingRectFor(*sourceRect));
+struct miqt_qrectf QGraphicsColorizeEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf sourceRect) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsColorizeEffect*>(self)->QGraphicsColorizeEffect::boundingRectFor(miqt_from_cabi<QRectF>(sourceRect)));
 }
 
 bool QGraphicsColorizeEffect_override_virtual_sourceChanged(void* self, intptr_t slot) {
@@ -1091,10 +1077,6 @@ void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMetho
 	static_cast<MiqtVirtualQGraphicsColorizeEffect*>(self)->QGraphicsColorizeEffect::disconnectNotify(*signal);
 }
 
-QRectF* QGraphicsColorizeEffect_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	if (self_cast == nullptr) {
@@ -1117,15 +1099,15 @@ bool QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok
 	return self_cast->sourceIsPixmap();
 }
 
-QRectF* QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrectf QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->sourceBoundingRect());
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->sourceBoundingRect());
 }
 
 void QGraphicsColorizeEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {
@@ -1215,16 +1197,12 @@ public:
 			return QGraphicsBlurEffect::boundingRectFor(rect);
 		}
 
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsBlurEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsBlurEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsBlurEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect);
+	friend struct miqt_qrectf QGraphicsBlurEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__draw = 0;
@@ -1386,7 +1364,7 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsBlurEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 	friend bool QGraphicsBlurEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsBlurEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrectf QGraphicsBlurEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
 	friend void QGraphicsBlurEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
 	friend QPixmap* QGraphicsBlurEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
 	friend QObject* QGraphicsBlurEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -1426,8 +1404,8 @@ struct miqt_string QGraphicsBlurEffect_tr(const char* s) {
 	return _ms;
 }
 
-QRectF* QGraphicsBlurEffect_boundingRectFor(const QGraphicsBlurEffect* self, QRectF* rect) {
-	return new QRectF(self->boundingRectFor(*rect));
+struct miqt_qrectf QGraphicsBlurEffect_boundingRectFor(const QGraphicsBlurEffect* self, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRectFor(miqt_from_cabi<QRectF>(rect)));
 }
 
 double QGraphicsBlurEffect_blurRadius(const QGraphicsBlurEffect* self) {
@@ -1504,8 +1482,8 @@ bool QGraphicsBlurEffect_override_virtual_boundingRectFor(void* self, intptr_t s
 	return true;
 }
 
-QRectF* QGraphicsBlurEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsBlurEffect*>(self)->QGraphicsBlurEffect::boundingRectFor(*rect));
+struct miqt_qrectf QGraphicsBlurEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsBlurEffect*>(self)->QGraphicsBlurEffect::boundingRectFor(miqt_from_cabi<QRectF>(rect)));
 }
 
 bool QGraphicsBlurEffect_override_virtual_draw(void* self, intptr_t slot) {
@@ -1634,10 +1612,6 @@ void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	static_cast<MiqtVirtualQGraphicsBlurEffect*>(self)->QGraphicsBlurEffect::disconnectNotify(*signal);
 }
 
-QRectF* QGraphicsBlurEffect_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 void QGraphicsBlurEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	if (self_cast == nullptr) {
@@ -1660,15 +1634,15 @@ bool QGraphicsBlurEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, co
 	return self_cast->sourceIsPixmap();
 }
 
-QRectF* QGraphicsBlurEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrectf QGraphicsBlurEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->sourceBoundingRect());
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->sourceBoundingRect());
 }
 
 void QGraphicsBlurEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {
@@ -1758,16 +1732,12 @@ public:
 			return QGraphicsDropShadowEffect::boundingRectFor(rect);
 		}
 
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsDropShadowEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsDropShadowEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsDropShadowEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect);
+	friend struct miqt_qrectf QGraphicsDropShadowEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__draw = 0;
@@ -1929,7 +1899,7 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 	friend bool QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrectf QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
 	friend void QGraphicsDropShadowEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
 	friend QPixmap* QGraphicsDropShadowEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
 	friend QObject* QGraphicsDropShadowEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -1969,12 +1939,12 @@ struct miqt_string QGraphicsDropShadowEffect_tr(const char* s) {
 	return _ms;
 }
 
-QRectF* QGraphicsDropShadowEffect_boundingRectFor(const QGraphicsDropShadowEffect* self, QRectF* rect) {
-	return new QRectF(self->boundingRectFor(*rect));
+struct miqt_qrectf QGraphicsDropShadowEffect_boundingRectFor(const QGraphicsDropShadowEffect* self, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRectFor(miqt_from_cabi<QRectF>(rect)));
 }
 
-QPointF* QGraphicsDropShadowEffect_offset(const QGraphicsDropShadowEffect* self) {
-	return new QPointF(self->offset());
+struct miqt_qpointf QGraphicsDropShadowEffect_offset(const QGraphicsDropShadowEffect* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->offset());
 }
 
 double QGraphicsDropShadowEffect_xOffset(const QGraphicsDropShadowEffect* self) {
@@ -1992,12 +1962,12 @@ double QGraphicsDropShadowEffect_blurRadius(const QGraphicsDropShadowEffect* sel
 	return static_cast<double>(_ret);
 }
 
-QColor* QGraphicsDropShadowEffect_color(const QGraphicsDropShadowEffect* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QGraphicsDropShadowEffect_color(const QGraphicsDropShadowEffect* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-void QGraphicsDropShadowEffect_setOffset(QGraphicsDropShadowEffect* self, QPointF* ofs) {
-	self->setOffset(*ofs);
+void QGraphicsDropShadowEffect_setOffset(QGraphicsDropShadowEffect* self, struct miqt_qpointf ofs) {
+	self->setOffset(miqt_from_cabi<QPointF>(ofs));
 }
 
 void QGraphicsDropShadowEffect_setOffset2(QGraphicsDropShadowEffect* self, double dx, double dy) {
@@ -2020,19 +1990,17 @@ void QGraphicsDropShadowEffect_setBlurRadius(QGraphicsDropShadowEffect* self, do
 	self->setBlurRadius(static_cast<qreal>(blurRadius));
 }
 
-void QGraphicsDropShadowEffect_setColor(QGraphicsDropShadowEffect* self, QColor* color) {
-	self->setColor(*color);
+void QGraphicsDropShadowEffect_setColor(QGraphicsDropShadowEffect* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
-void QGraphicsDropShadowEffect_offsetChanged(QGraphicsDropShadowEffect* self, QPointF* offset) {
-	self->offsetChanged(*offset);
+void QGraphicsDropShadowEffect_offsetChanged(QGraphicsDropShadowEffect* self, struct miqt_qpointf offset) {
+	self->offsetChanged(miqt_from_cabi<QPointF>(offset));
 }
 
 void QGraphicsDropShadowEffect_connect_offsetChanged(QGraphicsDropShadowEffect* self, intptr_t slot) {
 	QGraphicsDropShadowEffect::connect(self, static_cast<void (QGraphicsDropShadowEffect::*)(const QPointF&)>(&QGraphicsDropShadowEffect::offsetChanged), self, [=](const QPointF& offset) {
-		const QPointF& offset_ret = offset;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&offset_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(offset);
 		miqt_exec_callback_QGraphicsDropShadowEffect_offsetChanged(slot, sigval1);
 	});
 }
@@ -2049,15 +2017,13 @@ void QGraphicsDropShadowEffect_connect_blurRadiusChanged(QGraphicsDropShadowEffe
 	});
 }
 
-void QGraphicsDropShadowEffect_colorChanged(QGraphicsDropShadowEffect* self, QColor* color) {
-	self->colorChanged(*color);
+void QGraphicsDropShadowEffect_colorChanged(QGraphicsDropShadowEffect* self, struct miqt_qcolor color) {
+	self->colorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QGraphicsDropShadowEffect_connect_colorChanged(QGraphicsDropShadowEffect* self, intptr_t slot) {
 	QGraphicsDropShadowEffect::connect(self, static_cast<void (QGraphicsDropShadowEffect::*)(const QColor&)>(&QGraphicsDropShadowEffect::colorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QGraphicsDropShadowEffect_colorChanged(slot, sigval1);
 	});
 }
@@ -2094,8 +2060,8 @@ bool QGraphicsDropShadowEffect_override_virtual_boundingRectFor(void* self, intp
 	return true;
 }
 
-QRectF* QGraphicsDropShadowEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsDropShadowEffect*>(self)->QGraphicsDropShadowEffect::boundingRectFor(*rect));
+struct miqt_qrectf QGraphicsDropShadowEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsDropShadowEffect*>(self)->QGraphicsDropShadowEffect::boundingRectFor(miqt_from_cabi<QRectF>(rect)));
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_draw(void* self, intptr_t slot) {
@@ -2224,10 +2190,6 @@ void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMet
 	static_cast<MiqtVirtualQGraphicsDropShadowEffect*>(self)->QGraphicsDropShadowEffect::disconnectNotify(*signal);
 }
 
-QRectF* QGraphicsDropShadowEffect_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	if (self_cast == nullptr) {
@@ -2250,15 +2212,15 @@ bool QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_
 	return self_cast->sourceIsPixmap();
 }
 
-QRectF* QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrectf QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->sourceBoundingRect());
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->sourceBoundingRect());
 }
 
 void QGraphicsDropShadowEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {
@@ -2365,16 +2327,12 @@ public:
 			return QGraphicsOpacityEffect::boundingRectFor(sourceRect);
 		}
 
-		const QRectF& sourceRect_ret = sourceRect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsOpacityEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(sourceRect);
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsOpacityEffect_boundingRectFor(this, handle__boundingRectFor, sigval1);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsOpacityEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
+	friend struct miqt_qrectf QGraphicsOpacityEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf sourceRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sourceChanged = 0;
@@ -2519,7 +2477,7 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
 	friend bool QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrectf QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
 	friend void QGraphicsOpacityEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
 	friend QPixmap* QGraphicsOpacityEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
 	friend QObject* QGraphicsOpacityEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -2647,8 +2605,8 @@ bool QGraphicsOpacityEffect_override_virtual_boundingRectFor(void* self, intptr_
 	return true;
 }
 
-QRectF* QGraphicsOpacityEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsOpacityEffect*>(self)->QGraphicsOpacityEffect::boundingRectFor(*sourceRect));
+struct miqt_qrectf QGraphicsOpacityEffect_virtualbase_boundingRectFor(const void* self, struct miqt_qrectf sourceRect) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsOpacityEffect*>(self)->QGraphicsOpacityEffect::boundingRectFor(miqt_from_cabi<QRectF>(sourceRect)));
 }
 
 bool QGraphicsOpacityEffect_override_virtual_sourceChanged(void* self, intptr_t slot) {
@@ -2763,10 +2721,6 @@ void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod
 	static_cast<MiqtVirtualQGraphicsOpacityEffect*>(self)->QGraphicsOpacityEffect::disconnectNotify(*signal);
 }
 
-QRectF* QGraphicsOpacityEffect_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	if (self_cast == nullptr) {
@@ -2789,15 +2743,15 @@ bool QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok,
 	return self_cast->sourceIsPixmap();
 }
 
-QRectF* QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrectf QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->sourceBoundingRect());
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->sourceBoundingRect());
 }
 
 void QGraphicsOpacityEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter) {

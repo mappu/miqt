@@ -9,6 +9,7 @@ package svg
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -153,32 +154,24 @@ func (this *QSvgRenderer) IsValid() bool {
 	return (bool)(C.QSvgRenderer_isValid(this.h))
 }
 
-func (this *QSvgRenderer) DefaultSize() *qt6.QSize {
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QSvgRenderer_defaultSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QSvgRenderer) DefaultSize() qt6.QSize {
+	return libmiqt.ValueCast[qt6.QSize](C.QSvgRenderer_defaultSize(this.h))
 }
 
-func (this *QSvgRenderer) ViewBox() *qt6.QRect {
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QSvgRenderer_viewBox(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QSvgRenderer) ViewBox() qt6.QRect {
+	return libmiqt.ValueCast[qt6.QRect](C.QSvgRenderer_viewBox(this.h))
 }
 
-func (this *QSvgRenderer) ViewBoxF() *qt6.QRectF {
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QSvgRenderer_viewBoxF(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QSvgRenderer) ViewBoxF() qt6.QRectF {
+	return libmiqt.ValueCast[qt6.QRectF](C.QSvgRenderer_viewBoxF(this.h))
 }
 
-func (this *QSvgRenderer) SetViewBox(viewbox *qt6.QRect) {
-	defer runtime.KeepAlive(viewbox)
-	C.QSvgRenderer_setViewBox(this.h, (*C.QRect)(viewbox.UnsafePointer()))
+func (this *QSvgRenderer) SetViewBox(viewbox qt6.QRect) {
+	C.QSvgRenderer_setViewBox(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](viewbox))
 }
 
-func (this *QSvgRenderer) SetViewBoxWithViewbox(viewbox *qt6.QRectF) {
-	defer runtime.KeepAlive(viewbox)
-	C.QSvgRenderer_setViewBoxWithViewbox(this.h, (*C.QRectF)(viewbox.UnsafePointer()))
+func (this *QSvgRenderer) SetViewBoxWithViewbox(viewbox qt6.QRectF) {
+	C.QSvgRenderer_setViewBoxWithViewbox(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](viewbox))
 }
 
 func (this *QSvgRenderer) AspectRatioMode() qt6.AspectRatioMode {
@@ -213,14 +206,12 @@ func (this *QSvgRenderer) AnimationDuration() int {
 	return (int)(C.QSvgRenderer_animationDuration(this.h))
 }
 
-func (this *QSvgRenderer) BoundsOnElement(id string) *qt6.QRectF {
+func (this *QSvgRenderer) BoundsOnElement(id string) qt6.QRectF {
 	id_ms := C.struct_miqt_string{}
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
 	defer C.free(unsafe.Pointer(id_ms.data))
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QSvgRenderer_boundsOnElement(this.h, id_ms)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QRectF](C.QSvgRenderer_boundsOnElement(this.h, id_ms))
 }
 
 func (this *QSvgRenderer) ElementExists(id string) bool {
@@ -270,10 +261,9 @@ func (this *QSvgRenderer) Render(p *qt6.QPainter) {
 	C.QSvgRenderer_render(this.h, (*C.QPainter)(p.UnsafePointer()))
 }
 
-func (this *QSvgRenderer) Render2(p *qt6.QPainter, bounds *qt6.QRectF) {
+func (this *QSvgRenderer) Render2(p *qt6.QPainter, bounds qt6.QRectF) {
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(bounds)
-	C.QSvgRenderer_render2(this.h, (*C.QPainter)(p.UnsafePointer()), (*C.QRectF)(bounds.UnsafePointer()))
+	C.QSvgRenderer_render2(this.h, (*C.QPainter)(p.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](bounds))
 }
 
 func (this *QSvgRenderer) Render3(p *qt6.QPainter, elementId string) {
@@ -324,14 +314,13 @@ func QSvgRenderer_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QSvgRenderer) Render4(p *qt6.QPainter, elementId string, bounds *qt6.QRectF) {
+func (this *QSvgRenderer) Render4(p *qt6.QPainter, elementId string, bounds qt6.QRectF) {
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(bounds)
 	elementId_ms := C.struct_miqt_string{}
 	elementId_ms.data = C.CString(elementId)
 	elementId_ms.len = C.size_t(len(elementId))
 	defer C.free(unsafe.Pointer(elementId_ms.data))
-	C.QSvgRenderer_render4(this.h, (*C.QPainter)(p.UnsafePointer()), elementId_ms, (*C.QRectF)(bounds.UnsafePointer()))
+	C.QSvgRenderer_render4(this.h, (*C.QPainter)(p.UnsafePointer()), elementId_ms, libmiqt.ValueCast[C.struct_miqt_qrectf](bounds))
 }
 
 // Sender can only be called from a QSvgRenderer that was directly constructed.

@@ -31,13 +31,13 @@ typedef struct QwtSimpleCompassRose QwtSimpleCompassRose;
 QwtCompassRose* QwtCompassRose_new(QwtCompassRose* param1);
 void QwtCompassRose_setPalette(QwtCompassRose* self, QPalette* p);
 QPalette* QwtCompassRose_palette(const QwtCompassRose* self);
-void QwtCompassRose_draw(const QwtCompassRose* self, QPainter* painter, QPointF* center, double radius, double north, int colorGroup);
+void QwtCompassRose_draw(const QwtCompassRose* self, QPainter* painter, struct miqt_qpointf center, double radius, double north, int colorGroup);
 void QwtCompassRose_operatorAssign(QwtCompassRose* self, QwtCompassRose* param1);
 
 bool QwtCompassRose_override_virtual_setPalette(void* self, intptr_t slot);
 void QwtCompassRose_virtualbase_setPalette(void* self, QPalette* p);
 bool QwtCompassRose_override_virtual_draw(void* self, intptr_t slot);
-void QwtCompassRose_virtualbase_draw(const void* self, QPainter* painter, QPointF* center, double radius, double north, int colorGroup);
+void QwtCompassRose_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qpointf center, double radius, double north, int colorGroup);
 
 void QwtCompassRose_delete(QwtCompassRose* self);
 
@@ -54,12 +54,12 @@ void QwtSimpleCompassRose_setNumThornLevels(QwtSimpleCompassRose* self, int numT
 int QwtSimpleCompassRose_numThornLevels(const QwtSimpleCompassRose* self);
 void QwtSimpleCompassRose_setShrinkFactor(QwtSimpleCompassRose* self, double factor);
 double QwtSimpleCompassRose_shrinkFactor(const QwtSimpleCompassRose* self);
-void QwtSimpleCompassRose_draw(const QwtSimpleCompassRose* self, QPainter* param1, QPointF* center, double radius, double north, int param5);
-void QwtSimpleCompassRose_drawRose(QPainter* param1, QPalette* param2, QPointF* center, double radius, double north, double width, int numThorns, int numThornLevels, double shrinkFactor);
+void QwtSimpleCompassRose_draw(const QwtSimpleCompassRose* self, QPainter* param1, struct miqt_qpointf center, double radius, double north, int param5);
+void QwtSimpleCompassRose_drawRose(QPainter* param1, QPalette* param2, struct miqt_qpointf center, double radius, double north, double width, int numThorns, int numThornLevels, double shrinkFactor);
 void QwtSimpleCompassRose_operatorAssign(QwtSimpleCompassRose* self, QwtSimpleCompassRose* param1);
 
 bool QwtSimpleCompassRose_override_virtual_draw(void* self, intptr_t slot);
-void QwtSimpleCompassRose_virtualbase_draw(const void* self, QPainter* param1, QPointF* center, double radius, double north, int param5);
+void QwtSimpleCompassRose_virtualbase_draw(const void* self, QPainter* param1, struct miqt_qpointf center, double radius, double north, int param5);
 bool QwtSimpleCompassRose_override_virtual_setPalette(void* self, intptr_t slot);
 void QwtSimpleCompassRose_virtualbase_setPalette(void* self, QPalette* p);
 

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -132,10 +133,8 @@ func (this *QGroupBox) SetAlignment(alignment int) {
 	C.QGroupBox_setAlignment(this.h, (C.int)(alignment))
 }
 
-func (this *QGroupBox) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QGroupBox_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGroupBox) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QGroupBox_minimumSizeHint(this.h))
 }
 
 func (this *QGroupBox) IsFlat() bool {
@@ -364,14 +363,12 @@ func (this *QGroupBox) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QGroupBox) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QGroupBox) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QGroupBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QGroupBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QGroupBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QGroupBox) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QGroupBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -379,16 +376,15 @@ func (this *QGroupBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QGroupBox_minimumSizeHint
-func miqt_exec_callback_QGroupBox_minimumSizeHint(self *C.QGroupBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QGroupBox_minimumSizeHint(self *C.QGroupBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGroupBox{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGroupBox_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -715,14 +711,12 @@ func miqt_exec_callback_QGroupBox_setVisible(self *C.QGroupBox, cb C.intptr_t, v
 
 }
 
-func (this *QGroupBox) callVirtualBase_SizeHint() *QSize {
+func (this *QGroupBox) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QGroupBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QGroupBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QGroupBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QGroupBox) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QGroupBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -730,16 +724,15 @@ func (this *QGroupBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QGroupBox_sizeHint
-func miqt_exec_callback_QGroupBox_sizeHint(self *C.QGroupBox, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QGroupBox_sizeHint(self *C.QGroupBox, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGroupBox{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGroupBox_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1405,7 +1398,6 @@ func miqt_exec_callback_QGroupBox_initPainter(self *C.QGroupBox, cb C.intptr_t, 
 }
 
 func (this *QGroupBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QGroupBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

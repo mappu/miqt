@@ -96,10 +96,10 @@ void QRadioButton_virtbase(QRadioButton* src, QAbstractButton** outptr_QAbstract
 QMetaObject* QRadioButton_metaObject(const QRadioButton* self);
 void* QRadioButton_metacast(QRadioButton* self, const char* param1);
 struct miqt_string QRadioButton_tr(const char* s);
-QSize* QRadioButton_sizeHint(const QRadioButton* self);
-QSize* QRadioButton_minimumSizeHint(const QRadioButton* self);
+struct miqt_qsize QRadioButton_sizeHint(const QRadioButton* self);
+struct miqt_qsize QRadioButton_minimumSizeHint(const QRadioButton* self);
 bool QRadioButton_event(QRadioButton* self, QEvent* e);
-bool QRadioButton_hitButton(const QRadioButton* self, QPoint* param1);
+bool QRadioButton_hitButton(const QRadioButton* self, struct miqt_qpoint param1);
 void QRadioButton_paintEvent(QRadioButton* self, QPaintEvent* param1);
 void QRadioButton_mouseMoveEvent(QRadioButton* self, QMouseEvent* param1);
 void QRadioButton_initStyleOption(const QRadioButton* self, QStyleOptionButton* button);
@@ -107,13 +107,13 @@ struct miqt_string QRadioButton_tr2(const char* s, const char* c);
 struct miqt_string QRadioButton_tr3(const char* s, const char* c, int n);
 
 bool QRadioButton_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QRadioButton_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QRadioButton_virtualbase_sizeHint(const void* self);
 bool QRadioButton_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QRadioButton_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QRadioButton_virtualbase_minimumSizeHint(const void* self);
 bool QRadioButton_override_virtual_event(void* self, intptr_t slot);
 bool QRadioButton_virtualbase_event(void* self, QEvent* e);
 bool QRadioButton_override_virtual_hitButton(void* self, intptr_t slot);
-bool QRadioButton_virtualbase_hitButton(const void* self, QPoint* param1);
+bool QRadioButton_virtualbase_hitButton(const void* self, struct miqt_qpoint param1);
 bool QRadioButton_override_virtual_paintEvent(void* self, intptr_t slot);
 void QRadioButton_virtualbase_paintEvent(void* self, QPaintEvent* param1);
 bool QRadioButton_override_virtual_mouseMoveEvent(void* self, intptr_t slot);
@@ -208,7 +208,6 @@ bool QRadioButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QRadioButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QRadioButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QRadioButton_virtualreturncopy_QSize(QSize* src);
 QVariant* QRadioButton_virtualreturncopy_QVariant(QVariant* src);
 
 void QRadioButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

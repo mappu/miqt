@@ -76,7 +76,7 @@ int QDesignerFormWindowInterface_currentTool(const QDesignerFormWindowInterface*
 void QDesignerFormWindowInterface_setCurrentTool(QDesignerFormWindowInterface* self, int index);
 QDesignerFormWindowToolInterface* QDesignerFormWindowInterface_tool(const QDesignerFormWindowInterface* self, int index);
 void QDesignerFormWindowInterface_registerTool(QDesignerFormWindowInterface* self, QDesignerFormWindowToolInterface* tool);
-QPoint* QDesignerFormWindowInterface_grid(const QDesignerFormWindowInterface* self);
+struct miqt_qpoint QDesignerFormWindowInterface_grid(const QDesignerFormWindowInterface* self);
 QWidget* QDesignerFormWindowInterface_mainContainer(const QDesignerFormWindowInterface* self);
 void QDesignerFormWindowInterface_setMainContainer(QDesignerFormWindowInterface* self, QWidget* mainContainer);
 QWidget* QDesignerFormWindowInterface_formContainer(const QDesignerFormWindowInterface* self);
@@ -99,7 +99,7 @@ void QDesignerFormWindowInterface_setFeatures(QDesignerFormWindowInterface* self
 void QDesignerFormWindowInterface_setDirty(QDesignerFormWindowInterface* self, bool dirty);
 void QDesignerFormWindowInterface_clearSelection(QDesignerFormWindowInterface* self, bool changePropertyDisplay);
 void QDesignerFormWindowInterface_selectWidget(QDesignerFormWindowInterface* self, QWidget* w, bool select);
-void QDesignerFormWindowInterface_setGrid(QDesignerFormWindowInterface* self, QPoint* grid);
+void QDesignerFormWindowInterface_setGrid(QDesignerFormWindowInterface* self, struct miqt_qpoint grid);
 void QDesignerFormWindowInterface_setFileName(QDesignerFormWindowInterface* self, struct miqt_string fileName);
 bool QDesignerFormWindowInterface_setContentsWithContents(QDesignerFormWindowInterface* self, struct miqt_string contents);
 void QDesignerFormWindowInterface_editWidgets(QDesignerFormWindowInterface* self);

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -102,9 +103,8 @@ func (this *QTreeView) SetModel(model *QAbstractItemModel) {
 	C.QTreeView_setModel(this.h, model.cPointer())
 }
 
-func (this *QTreeView) SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QTreeView_setRootIndex(this.h, index.cPointer())
+func (this *QTreeView) SetRootIndex(index QModelIndex) {
+	C.QTreeView_setRootIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QTreeView) SetSelectionModel(selectionModel *QItemSelectionModel) {
@@ -203,34 +203,28 @@ func (this *QTreeView) SetHeaderHidden(hide bool) {
 	C.QTreeView_setHeaderHidden(this.h, (C.bool)(hide))
 }
 
-func (this *QTreeView) IsRowHidden(row int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QTreeView_isRowHidden(this.h, (C.int)(row), parent.cPointer()))
+func (this *QTreeView) IsRowHidden(row int, parent QModelIndex) bool {
+	return (bool)(C.QTreeView_isRowHidden(this.h, (C.int)(row), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QTreeView) SetRowHidden(row int, parent *QModelIndex, hide bool) {
-	defer runtime.KeepAlive(parent)
-	C.QTreeView_setRowHidden(this.h, (C.int)(row), parent.cPointer(), (C.bool)(hide))
+func (this *QTreeView) SetRowHidden(row int, parent QModelIndex, hide bool) {
+	C.QTreeView_setRowHidden(this.h, (C.int)(row), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.bool)(hide))
 }
 
-func (this *QTreeView) IsFirstColumnSpanned(row int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QTreeView_isFirstColumnSpanned(this.h, (C.int)(row), parent.cPointer()))
+func (this *QTreeView) IsFirstColumnSpanned(row int, parent QModelIndex) bool {
+	return (bool)(C.QTreeView_isFirstColumnSpanned(this.h, (C.int)(row), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QTreeView) SetFirstColumnSpanned(row int, parent *QModelIndex, span bool) {
-	defer runtime.KeepAlive(parent)
-	C.QTreeView_setFirstColumnSpanned(this.h, (C.int)(row), parent.cPointer(), (C.bool)(span))
+func (this *QTreeView) SetFirstColumnSpanned(row int, parent QModelIndex, span bool) {
+	C.QTreeView_setFirstColumnSpanned(this.h, (C.int)(row), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.bool)(span))
 }
 
-func (this *QTreeView) IsExpanded(index *QModelIndex) bool {
-	defer runtime.KeepAlive(index)
-	return (bool)(C.QTreeView_isExpanded(this.h, index.cPointer()))
+func (this *QTreeView) IsExpanded(index QModelIndex) bool {
+	return (bool)(C.QTreeView_isExpanded(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QTreeView) SetExpanded(index *QModelIndex, expand bool) {
-	defer runtime.KeepAlive(index)
-	C.QTreeView_setExpanded(this.h, index.cPointer(), (C.bool)(expand))
+func (this *QTreeView) SetExpanded(index QModelIndex, expand bool) {
+	C.QTreeView_setExpanded(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.bool)(expand))
 }
 
 func (this *QTreeView) SetSortingEnabled(enable bool) {
@@ -281,37 +275,24 @@ func (this *QTreeView) KeyboardSearch(search string) {
 	C.QTreeView_keyboardSearch(this.h, search_ms)
 }
 
-func (this *QTreeView) VisualRect(index *QModelIndex) *QRect {
-	defer runtime.KeepAlive(index)
-	_goptr := newQRect(C.QTreeView_visualRect(this.h, index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTreeView) VisualRect(index QModelIndex) QRect {
+	return libmiqt.ValueCast[QRect](C.QTreeView_visualRect(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QTreeView) ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	defer runtime.KeepAlive(index)
-	C.QTreeView_scrollTo(this.h, index.cPointer(), (C.int)(hint))
+func (this *QTreeView) ScrollTo(index QModelIndex, hint QAbstractItemView__ScrollHint) {
+	C.QTreeView_scrollTo(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(hint))
 }
 
-func (this *QTreeView) IndexAt(p *QPoint) *QModelIndex {
-	defer runtime.KeepAlive(p)
-	_goptr := newQModelIndex(C.QTreeView_indexAt(this.h, p.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTreeView) IndexAt(p QPoint) QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QTreeView_indexAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
-func (this *QTreeView) IndexAbove(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(index)
-	_goptr := newQModelIndex(C.QTreeView_indexAbove(this.h, index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTreeView) IndexAbove(index QModelIndex) QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QTreeView_indexAbove(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
-func (this *QTreeView) IndexBelow(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(index)
-	_goptr := newQModelIndex(C.QTreeView_indexBelow(this.h, index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTreeView) IndexBelow(index QModelIndex) QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QTreeView_indexBelow(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QTreeView) DoItemsLayout() {
@@ -322,9 +303,7 @@ func (this *QTreeView) Reset() {
 	C.QTreeView_reset(this.h)
 }
 
-func (this *QTreeView) DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	defer runtime.KeepAlive(topLeft)
-	defer runtime.KeepAlive(bottomRight)
+func (this *QTreeView) DataChanged(topLeft QModelIndex, bottomRight QModelIndex, roles []int) {
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray_ptr))
 	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
@@ -332,51 +311,49 @@ func (this *QTreeView) DataChanged(topLeft *QModelIndex, bottomRight *QModelInde
 		roles_CArray[i] = (C.int)(roles[i])
 	}
 	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray_ptr)}
-	C.QTreeView_dataChanged(this.h, topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
+	C.QTreeView_dataChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](topLeft), libmiqt.ValueCast[C.struct_miqt_qmodelindex](bottomRight), roles_ma)
 }
 
 func (this *QTreeView) SelectAll() {
 	C.QTreeView_selectAll(this.h)
 }
 
-func (this *QTreeView) Expanded(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QTreeView_expanded(this.h, index.cPointer())
+func (this *QTreeView) Expanded(index QModelIndex) {
+	C.QTreeView_expanded(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
-func (this *QTreeView) OnExpanded(slot func(index *QModelIndex)) {
+func (this *QTreeView) OnExpanded(slot func(index QModelIndex)) {
 	C.QTreeView_connect_expanded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeView_expanded
-func miqt_exec_callback_QTreeView_expanded(cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
+func miqt_exec_callback_QTreeView_expanded(cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc(slotval1)
 }
 
-func (this *QTreeView) Collapsed(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QTreeView_collapsed(this.h, index.cPointer())
+func (this *QTreeView) Collapsed(index QModelIndex) {
+	C.QTreeView_collapsed(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
-func (this *QTreeView) OnCollapsed(slot func(index *QModelIndex)) {
+func (this *QTreeView) OnCollapsed(slot func(index QModelIndex)) {
 	C.QTreeView_connect_collapsed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTreeView_collapsed
-func miqt_exec_callback_QTreeView_collapsed(cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
+func miqt_exec_callback_QTreeView_collapsed(cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc(slotval1)
 }
@@ -389,14 +366,12 @@ func (this *QTreeView) ShowColumn(column int) {
 	C.QTreeView_showColumn(this.h, (C.int)(column))
 }
 
-func (this *QTreeView) Expand(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QTreeView_expand(this.h, index.cPointer())
+func (this *QTreeView) Expand(index QModelIndex) {
+	C.QTreeView_expand(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
-func (this *QTreeView) Collapse(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QTreeView_collapse(this.h, index.cPointer())
+func (this *QTreeView) Collapse(index QModelIndex) {
+	C.QTreeView_collapse(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QTreeView) ResizeColumnToContents(column int) {
@@ -415,9 +390,8 @@ func (this *QTreeView) ExpandAll() {
 	C.QTreeView_expandAll(this.h)
 }
 
-func (this *QTreeView) ExpandRecursively(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QTreeView_expandRecursively(this.h, index.cPointer())
+func (this *QTreeView) ExpandRecursively(index QModelIndex) {
+	C.QTreeView_expandRecursively(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QTreeView) CollapseAll() {
@@ -472,9 +446,8 @@ func QTreeView_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QTreeView) ExpandRecursively2(index *QModelIndex, depth int) {
-	defer runtime.KeepAlive(index)
-	C.QTreeView_expandRecursively2(this.h, index.cPointer(), (C.int)(depth))
+func (this *QTreeView) ExpandRecursively2(index QModelIndex, depth int) {
+	C.QTreeView_expandRecursively2(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(depth))
 }
 
 // ColumnResized can only be called from a QTreeView that was directly constructed.
@@ -526,11 +499,10 @@ func (this *QTreeView) Reexpand() {
 }
 
 // RowsRemoved can only be called from a QTreeView that was directly constructed.
-func (this *QTreeView) RowsRemoved(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(parent)
+func (this *QTreeView) RowsRemoved(parent QModelIndex, first int, last int) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QTreeView_protectedbase_rowsRemoved(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+	C.QTreeView_protectedbase_rowsRemoved(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(first), (C.int)(last))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -553,11 +525,10 @@ func (this *QTreeView) DrawTree(painter *QPainter, region *QRegion) {
 }
 
 // IndexRowSizeHint can only be called from a QTreeView that was directly constructed.
-func (this *QTreeView) IndexRowSizeHint(index *QModelIndex) int {
-	defer runtime.KeepAlive(index)
+func (this *QTreeView) IndexRowSizeHint(index QModelIndex) int {
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := (int)(C.QTreeView_protectedbase_indexRowSizeHint(&_dynamic_cast_ok, unsafe.Pointer(this.h), index.cPointer()))
+	_method_ret := (int)(C.QTreeView_protectedbase_indexRowSizeHint(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -568,11 +539,10 @@ func (this *QTreeView) IndexRowSizeHint(index *QModelIndex) int {
 }
 
 // RowHeight can only be called from a QTreeView that was directly constructed.
-func (this *QTreeView) RowHeight(index *QModelIndex) int {
-	defer runtime.KeepAlive(index)
+func (this *QTreeView) RowHeight(index QModelIndex) int {
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := (int)(C.QTreeView_protectedbase_rowHeight(&_dynamic_cast_ok, unsafe.Pointer(this.h), index.cPointer()))
+	_method_ret := (int)(C.QTreeView_protectedbase_rowHeight(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -713,9 +683,7 @@ func (this *QTreeView) ScrollDirtyRegion(dx int, dy int) {
 func (this *QTreeView) DirtyRegionOffset() QPoint {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQPoint(C.QTreeView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QPoint](C.QTreeView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -791,9 +759,7 @@ func (this *QTreeView) SetViewportMargins(left int, top int, right int, bottom i
 func (this *QTreeView) ViewportMargins() QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQMargins(C.QTreeView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QMargins](C.QTreeView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -978,13 +944,12 @@ func miqt_exec_callback_QTreeView_setModel(self *C.QTreeView, cb C.intptr_t, mod
 
 }
 
-func (this *QTreeView) callVirtualBase_SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
+func (this *QTreeView) callVirtualBase_SetRootIndex(index QModelIndex) {
 
-	C.QTreeView_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
+	C.QTreeView_virtualbase_setRootIndex(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QTreeView) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
+func (this *QTreeView) OnSetRootIndex(slot func(super func(index QModelIndex), index QModelIndex)) {
 	ok := C.QTreeView_override_virtual_setRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -992,14 +957,14 @@ func (this *QTreeView) OnSetRootIndex(slot func(super func(index *QModelIndex), 
 }
 
 //export miqt_exec_callback_QTreeView_setRootIndex
-func miqt_exec_callback_QTreeView_setRootIndex(self *C.QTreeView, cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex), index *QModelIndex))
+func miqt_exec_callback_QTreeView_setRootIndex(self *C.QTreeView, cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex), index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_SetRootIndex, slotval1)
 
@@ -1064,15 +1029,12 @@ func miqt_exec_callback_QTreeView_keyboardSearch(self *C.QTreeView, cb C.intptr_
 
 }
 
-func (this *QTreeView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
-	defer runtime.KeepAlive(index)
+func (this *QTreeView) callVirtualBase_VisualRect(index QModelIndex) QRect {
 
-	_goptr := newQRect(C.QTreeView_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QTreeView_virtualbase_visualRect(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QTreeView) OnVisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
+func (this *QTreeView) OnVisualRect(slot func(super func(index QModelIndex) QRect, index QModelIndex) QRect) {
 	ok := C.QTreeView_override_virtual_visualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1080,29 +1042,27 @@ func (this *QTreeView) OnVisualRect(slot func(super func(index *QModelIndex) *QR
 }
 
 //export miqt_exec_callback_QTreeView_visualRect
-func miqt_exec_callback_QTreeView_visualRect(self *C.QTreeView, cb C.intptr_t, index *C.QModelIndex) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect)
+func miqt_exec_callback_QTreeView_visualRect(self *C.QTreeView, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) QRect, index QModelIndex) QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_VisualRect, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTreeView_virtualreturncopy_QRect(virtualReturn.cPointer())
-
-}
-
-func (this *QTreeView) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	defer runtime.KeepAlive(index)
-
-	C.QTreeView_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
-func (this *QTreeView) OnScrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
+
+func (this *QTreeView) callVirtualBase_ScrollTo(index QModelIndex, hint QAbstractItemView__ScrollHint) {
+
+	C.QTreeView_virtualbase_scrollTo(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(hint))
+
+}
+func (this *QTreeView) OnScrollTo(slot func(super func(index QModelIndex, hint QAbstractItemView__ScrollHint), index QModelIndex, hint QAbstractItemView__ScrollHint)) {
 	ok := C.QTreeView_override_virtual_scrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1110,14 +1070,14 @@ func (this *QTreeView) OnScrollTo(slot func(super func(index *QModelIndex, hint 
 }
 
 //export miqt_exec_callback_QTreeView_scrollTo
-func miqt_exec_callback_QTreeView_scrollTo(self *C.QTreeView, cb C.intptr_t, index *C.QModelIndex, hint C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint))
+func miqt_exec_callback_QTreeView_scrollTo(self *C.QTreeView, cb C.intptr_t, index C.struct_miqt_qmodelindex, hint C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, hint QAbstractItemView__ScrollHint), index QModelIndex, hint QAbstractItemView__ScrollHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := (QAbstractItemView__ScrollHint)(hint)
 
@@ -1125,15 +1085,12 @@ func miqt_exec_callback_QTreeView_scrollTo(self *C.QTreeView, cb C.intptr_t, ind
 
 }
 
-func (this *QTreeView) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
-	defer runtime.KeepAlive(p)
+func (this *QTreeView) callVirtualBase_IndexAt(p QPoint) QModelIndex {
 
-	_goptr := newQModelIndex(C.QTreeView_virtualbase_indexAt(unsafe.Pointer(this.h), p.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QModelIndex](C.QTreeView_virtualbase_indexAt(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 
 }
-func (this *QTreeView) OnIndexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
+func (this *QTreeView) OnIndexAt(slot func(super func(p QPoint) QModelIndex, p QPoint) QModelIndex) {
 	ok := C.QTreeView_override_virtual_indexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1141,19 +1098,18 @@ func (this *QTreeView) OnIndexAt(slot func(super func(p *QPoint) *QModelIndex, p
 }
 
 //export miqt_exec_callback_QTreeView_indexAt
-func miqt_exec_callback_QTreeView_indexAt(self *C.QTreeView, cb C.intptr_t, p *C.QPoint) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex)
+func miqt_exec_callback_QTreeView_indexAt(self *C.QTreeView, cb C.intptr_t, p C.struct_miqt_qpoint) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p QPoint) QModelIndex, p QPoint) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPoint(p)
+	slotval1 := libmiqt.ValueCast[QPoint](p)
 
 	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_IndexAt, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTreeView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
 
@@ -1203,9 +1159,7 @@ func miqt_exec_callback_QTreeView_reset(self *C.QTreeView, cb C.intptr_t) {
 
 }
 
-func (this *QTreeView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	defer runtime.KeepAlive(topLeft)
-	defer runtime.KeepAlive(bottomRight)
+func (this *QTreeView) callVirtualBase_DataChanged(topLeft QModelIndex, bottomRight QModelIndex, roles []int) {
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray_ptr))
 	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
@@ -1214,10 +1168,10 @@ func (this *QTreeView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomR
 	}
 	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray_ptr)}
 
-	C.QTreeView_virtualbase_dataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
+	C.QTreeView_virtualbase_dataChanged(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](topLeft), libmiqt.ValueCast[C.struct_miqt_qmodelindex](bottomRight), roles_ma)
 
 }
-func (this *QTreeView) OnDataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
+func (this *QTreeView) OnDataChanged(slot func(super func(topLeft QModelIndex, bottomRight QModelIndex, roles []int), topLeft QModelIndex, bottomRight QModelIndex, roles []int)) {
 	ok := C.QTreeView_override_virtual_dataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1225,16 +1179,16 @@ func (this *QTreeView) OnDataChanged(slot func(super func(topLeft *QModelIndex, 
 }
 
 //export miqt_exec_callback_QTreeView_dataChanged
-func miqt_exec_callback_QTreeView_dataChanged(self *C.QTreeView, cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles C.struct_miqt_array) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int))
+func miqt_exec_callback_QTreeView_dataChanged(self *C.QTreeView, cb C.intptr_t, topLeft C.struct_miqt_qmodelindex, bottomRight C.struct_miqt_qmodelindex, roles C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(topLeft QModelIndex, bottomRight QModelIndex, roles []int), topLeft QModelIndex, bottomRight QModelIndex, roles []int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(topLeft)
+	slotval1 := libmiqt.ValueCast[QModelIndex](topLeft)
 
-	slotval2 := newQModelIndex(bottomRight)
+	slotval2 := libmiqt.ValueCast[QModelIndex](bottomRight)
 
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
@@ -1325,13 +1279,12 @@ func miqt_exec_callback_QTreeView_scrollContentsBy(self *C.QTreeView, cb C.intpt
 
 }
 
-func (this *QTreeView) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(parent)
+func (this *QTreeView) callVirtualBase_RowsInserted(parent QModelIndex, start int, end int) {
 
-	C.QTreeView_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+	C.QTreeView_virtualbase_rowsInserted(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(start), (C.int)(end))
 
 }
-func (this *QTreeView) OnRowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QTreeView) OnRowsInserted(slot func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int)) {
 	ok := C.QTreeView_override_virtual_rowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1339,14 +1292,14 @@ func (this *QTreeView) OnRowsInserted(slot func(super func(parent *QModelIndex, 
 }
 
 //export miqt_exec_callback_QTreeView_rowsInserted
-func miqt_exec_callback_QTreeView_rowsInserted(self *C.QTreeView, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
+func miqt_exec_callback_QTreeView_rowsInserted(self *C.QTreeView, cb C.intptr_t, parent C.struct_miqt_qmodelindex, start C.int, end C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	slotval2 := (int)(start)
 
@@ -1356,13 +1309,12 @@ func miqt_exec_callback_QTreeView_rowsInserted(self *C.QTreeView, cb C.intptr_t,
 
 }
 
-func (this *QTreeView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(parent)
+func (this *QTreeView) callVirtualBase_RowsAboutToBeRemoved(parent QModelIndex, start int, end int) {
 
-	C.QTreeView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+	C.QTreeView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(start), (C.int)(end))
 
 }
-func (this *QTreeView) OnRowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QTreeView) OnRowsAboutToBeRemoved(slot func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int)) {
 	ok := C.QTreeView_override_virtual_rowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1370,14 +1322,14 @@ func (this *QTreeView) OnRowsAboutToBeRemoved(slot func(super func(parent *QMode
 }
 
 //export miqt_exec_callback_QTreeView_rowsAboutToBeRemoved
-func miqt_exec_callback_QTreeView_rowsAboutToBeRemoved(self *C.QTreeView, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
+func miqt_exec_callback_QTreeView_rowsAboutToBeRemoved(self *C.QTreeView, cb C.intptr_t, parent C.struct_miqt_qmodelindex, start C.int, end C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	slotval2 := (int)(start)
 
@@ -1387,14 +1339,12 @@ func miqt_exec_callback_QTreeView_rowsAboutToBeRemoved(self *C.QTreeView, cb C.i
 
 }
 
-func (this *QTreeView) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
+func (this *QTreeView) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex {
 
-	_goptr := newQModelIndex(C.QTreeView_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QModelIndex](C.QTreeView_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 
 }
-func (this *QTreeView) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
+func (this *QTreeView) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex) {
 	ok := C.QTreeView_override_virtual_moveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1402,8 +1352,8 @@ func (this *QTreeView) OnMoveCursor(slot func(super func(cursorAction QAbstractI
 }
 
 //export miqt_exec_callback_QTreeView_moveCursor
-func miqt_exec_callback_QTreeView_moveCursor(self *C.QTreeView, cb C.intptr_t, cursorAction C.int, modifiers C.int) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex)
+func miqt_exec_callback_QTreeView_moveCursor(self *C.QTreeView, cb C.intptr_t, cursorAction C.int, modifiers C.int) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1414,9 +1364,8 @@ func miqt_exec_callback_QTreeView_moveCursor(self *C.QTreeView, cb C.intptr_t, c
 	slotval2 := (KeyboardModifier)(modifiers)
 
 	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_MoveCursor, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTreeView_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
 
@@ -1470,13 +1419,12 @@ func miqt_exec_callback_QTreeView_verticalOffset(self *C.QTreeView, cb C.intptr_
 
 }
 
-func (this *QTreeView) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
-	defer runtime.KeepAlive(rect)
+func (this *QTreeView) callVirtualBase_SetSelection(rect QRect, command QItemSelectionModel__SelectionFlag) {
 
-	C.QTreeView_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
+	C.QTreeView_virtualbase_setSelection(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](rect), (C.int)(command))
 
 }
-func (this *QTreeView) OnSetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
+func (this *QTreeView) OnSetSelection(slot func(super func(rect QRect, command QItemSelectionModel__SelectionFlag), rect QRect, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QTreeView_override_virtual_setSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1484,14 +1432,14 @@ func (this *QTreeView) OnSetSelection(slot func(super func(rect *QRect, command 
 }
 
 //export miqt_exec_callback_QTreeView_setSelection
-func miqt_exec_callback_QTreeView_setSelection(self *C.QTreeView, cb C.intptr_t, rect *C.QRect, command C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag))
+func miqt_exec_callback_QTreeView_setSelection(self *C.QTreeView, cb C.intptr_t, rect C.struct_miqt_qrect, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRect, command QItemSelectionModel__SelectionFlag), rect QRect, command QItemSelectionModel__SelectionFlag))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(rect)
+	slotval1 := libmiqt.ValueCast[QRect](rect)
 
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
@@ -1535,11 +1483,9 @@ func (this *QTreeView) callVirtualBase_SelectedIndexes() []QModelIndex {
 
 	var _ma C.struct_miqt_array = C.QTreeView_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 
@@ -1559,11 +1505,10 @@ func miqt_exec_callback_QTreeView_selectedIndexes(self *C.QTreeView, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_SelectedIndexes)
-	defer runtime.KeepAlive(virtualReturn)
-	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = C.QTreeView_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
+		virtualReturn_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn[i])
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -1625,15 +1570,14 @@ func miqt_exec_callback_QTreeView_paintEvent(self *C.QTreeView, cb C.intptr_t, e
 
 }
 
-func (this *QTreeView) callVirtualBase_DrawRow(painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex) {
+func (this *QTreeView) callVirtualBase_DrawRow(painter *QPainter, options *QStyleOptionViewItem, index QModelIndex) {
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(options)
-	defer runtime.KeepAlive(index)
 
-	C.QTreeView_virtualbase_drawRow(unsafe.Pointer(this.h), painter.cPointer(), options.cPointer(), index.cPointer())
+	C.QTreeView_virtualbase_drawRow(unsafe.Pointer(this.h), painter.cPointer(), options.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QTreeView) OnDrawRow(slot func(super func(painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex), painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex)) {
+func (this *QTreeView) OnDrawRow(slot func(super func(painter *QPainter, options *QStyleOptionViewItem, index QModelIndex), painter *QPainter, options *QStyleOptionViewItem, index QModelIndex)) {
 	ok := C.QTreeView_override_virtual_drawRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1641,8 +1585,8 @@ func (this *QTreeView) OnDrawRow(slot func(super func(painter *QPainter, options
 }
 
 //export miqt_exec_callback_QTreeView_drawRow
-func miqt_exec_callback_QTreeView_drawRow(self *C.QTreeView, cb C.intptr_t, painter *C.QPainter, options *C.QStyleOptionViewItem, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex), painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex))
+func miqt_exec_callback_QTreeView_drawRow(self *C.QTreeView, cb C.intptr_t, painter *C.QPainter, options *C.QStyleOptionViewItem, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, options *QStyleOptionViewItem, index QModelIndex), painter *QPainter, options *QStyleOptionViewItem, index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1652,21 +1596,19 @@ func miqt_exec_callback_QTreeView_drawRow(self *C.QTreeView, cb C.intptr_t, pain
 
 	slotval2 := newQStyleOptionViewItem(options)
 
-	slotval3 := newQModelIndex(index)
+	slotval3 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_DrawRow, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QTreeView) callVirtualBase_DrawBranches(painter *QPainter, rect *QRect, index *QModelIndex) {
+func (this *QTreeView) callVirtualBase_DrawBranches(painter *QPainter, rect QRect, index QModelIndex) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
-	defer runtime.KeepAlive(index)
 
-	C.QTreeView_virtualbase_drawBranches(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), index.cPointer())
+	C.QTreeView_virtualbase_drawBranches(unsafe.Pointer(this.h), painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrect](rect), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QTreeView) OnDrawBranches(slot func(super func(painter *QPainter, rect *QRect, index *QModelIndex), painter *QPainter, rect *QRect, index *QModelIndex)) {
+func (this *QTreeView) OnDrawBranches(slot func(super func(painter *QPainter, rect QRect, index QModelIndex), painter *QPainter, rect QRect, index QModelIndex)) {
 	ok := C.QTreeView_override_virtual_drawBranches(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1674,8 +1616,8 @@ func (this *QTreeView) OnDrawBranches(slot func(super func(painter *QPainter, re
 }
 
 //export miqt_exec_callback_QTreeView_drawBranches
-func miqt_exec_callback_QTreeView_drawBranches(self *C.QTreeView, cb C.intptr_t, painter *C.QPainter, rect *C.QRect, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRect, index *QModelIndex), painter *QPainter, rect *QRect, index *QModelIndex))
+func miqt_exec_callback_QTreeView_drawBranches(self *C.QTreeView, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrect, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect QRect, index QModelIndex), painter *QPainter, rect QRect, index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1683,9 +1625,9 @@ func miqt_exec_callback_QTreeView_drawBranches(self *C.QTreeView, cb C.intptr_t,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQRect(rect)
+	slotval2 := libmiqt.ValueCast[QRect](rect)
 
-	slotval3 := newQModelIndex(index)
+	slotval3 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_DrawBranches, slotval1, slotval2, slotval3)
 
@@ -1905,14 +1847,12 @@ func miqt_exec_callback_QTreeView_updateGeometries(self *C.QTreeView, cb C.intpt
 
 }
 
-func (this *QTreeView) callVirtualBase_ViewportSizeHint() *QSize {
+func (this *QTreeView) callVirtualBase_ViewportSizeHint() QSize {
 
-	_goptr := newQSize(C.QTreeView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTreeView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeView) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTreeView) OnViewportSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTreeView_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1920,16 +1860,15 @@ func (this *QTreeView) OnViewportSizeHint(slot func(super func() *QSize) *QSize)
 }
 
 //export miqt_exec_callback_QTreeView_viewportSizeHint
-func miqt_exec_callback_QTreeView_viewportSizeHint(self *C.QTreeView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTreeView_viewportSizeHint(self *C.QTreeView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTreeView_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1987,13 +1926,12 @@ func miqt_exec_callback_QTreeView_horizontalScrollbarAction(self *C.QTreeView, c
 
 }
 
-func (this *QTreeView) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
-	defer runtime.KeepAlive(index)
+func (this *QTreeView) callVirtualBase_IsIndexHidden(index QModelIndex) bool {
 
-	return (bool)(C.QTreeView_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
+	return (bool)(C.QTreeView_virtualbase_isIndexHidden(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QTreeView) OnIsIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+func (this *QTreeView) OnIsIndexHidden(slot func(super func(index QModelIndex) bool, index QModelIndex) bool) {
 	ok := C.QTreeView_override_virtual_isIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2001,14 +1939,14 @@ func (this *QTreeView) OnIsIndexHidden(slot func(super func(index *QModelIndex) 
 }
 
 //export miqt_exec_callback_QTreeView_isIndexHidden
-func miqt_exec_callback_QTreeView_isIndexHidden(self *C.QTreeView, cb C.intptr_t, index *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) bool, index *QModelIndex) bool)
+func miqt_exec_callback_QTreeView_isIndexHidden(self *C.QTreeView, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) bool, index QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_IsIndexHidden, slotval1)
 
@@ -2046,14 +1984,12 @@ func miqt_exec_callback_QTreeView_selectionChanged(self *C.QTreeView, cb C.intpt
 
 }
 
-func (this *QTreeView) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
-	defer runtime.KeepAlive(current)
-	defer runtime.KeepAlive(previous)
+func (this *QTreeView) callVirtualBase_CurrentChanged(current QModelIndex, previous QModelIndex) {
 
-	C.QTreeView_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
+	C.QTreeView_virtualbase_currentChanged(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](current), libmiqt.ValueCast[C.struct_miqt_qmodelindex](previous))
 
 }
-func (this *QTreeView) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
+func (this *QTreeView) OnCurrentChanged(slot func(super func(current QModelIndex, previous QModelIndex), current QModelIndex, previous QModelIndex)) {
 	ok := C.QTreeView_override_virtual_currentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2061,16 +1997,16 @@ func (this *QTreeView) OnCurrentChanged(slot func(super func(current *QModelInde
 }
 
 //export miqt_exec_callback_QTreeView_currentChanged
-func miqt_exec_callback_QTreeView_currentChanged(self *C.QTreeView, cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex))
+func miqt_exec_callback_QTreeView_currentChanged(self *C.QTreeView, cb C.intptr_t, current C.struct_miqt_qmodelindex, previous C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(current QModelIndex, previous QModelIndex), current QModelIndex, previous QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(current)
+	slotval1 := libmiqt.ValueCast[QModelIndex](current)
 
-	slotval2 := newQModelIndex(previous)
+	slotval2 := libmiqt.ValueCast[QModelIndex](previous)
 
 	gofunc((&QTreeView{h: self}).callVirtualBase_CurrentChanged, slotval1, slotval2)
 
@@ -2313,14 +2249,13 @@ func miqt_exec_callback_QTreeView_editorDestroyed(self *C.QTreeView, cb C.intptr
 
 }
 
-func (this *QTreeView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
-	defer runtime.KeepAlive(index)
+func (this *QTreeView) callVirtualBase_Edit2(index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
 	defer runtime.KeepAlive(event)
 
-	return (bool)(C.QTreeView_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
+	return (bool)(C.QTreeView_virtualbase_edit2(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(trigger), event.cPointer()))
 
 }
-func (this *QTreeView) OnEdit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
+func (this *QTreeView) OnEdit2(slot func(super func(index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
 	ok := C.QTreeView_override_virtual_edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2328,14 +2263,14 @@ func (this *QTreeView) OnEdit2(slot func(super func(index *QModelIndex, trigger 
 }
 
 //export miqt_exec_callback_QTreeView_edit2
-func miqt_exec_callback_QTreeView_edit2(self *C.QTreeView, cb C.intptr_t, index *C.QModelIndex, trigger C.int, event *C.QEvent) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool)
+func miqt_exec_callback_QTreeView_edit2(self *C.QTreeView, cb C.intptr_t, index C.struct_miqt_qmodelindex, trigger C.int, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := (QAbstractItemView__EditTrigger)(trigger)
 
@@ -2347,14 +2282,13 @@ func miqt_exec_callback_QTreeView_edit2(self *C.QTreeView, cb C.intptr_t, index 
 
 }
 
-func (this *QTreeView) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
-	defer runtime.KeepAlive(index)
+func (this *QTreeView) callVirtualBase_SelectionCommand(index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
 	defer runtime.KeepAlive(event)
 
-	return (QItemSelectionModel__SelectionFlag)(C.QTreeView_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
+	return (QItemSelectionModel__SelectionFlag)(C.QTreeView_virtualbase_selectionCommand(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), event.cPointer()))
 
 }
-func (this *QTreeView) OnSelectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
+func (this *QTreeView) OnSelectionCommand(slot func(super func(index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
 	ok := C.QTreeView_override_virtual_selectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2362,14 +2296,14 @@ func (this *QTreeView) OnSelectionCommand(slot func(super func(index *QModelInde
 }
 
 //export miqt_exec_callback_QTreeView_selectionCommand
-func miqt_exec_callback_QTreeView_selectionCommand(self *C.QTreeView, cb C.intptr_t, index *C.QModelIndex, event *C.QEvent) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag)
+func miqt_exec_callback_QTreeView_selectionCommand(self *C.QTreeView, cb C.intptr_t, index C.struct_miqt_qmodelindex, event *C.QEvent) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := newQEvent(event)
 
@@ -2710,14 +2644,12 @@ func miqt_exec_callback_QTreeView_eventFilter(self *C.QTreeView, cb C.intptr_t, 
 
 }
 
-func (this *QTreeView) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QTreeView) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QTreeView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTreeView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeView) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTreeView) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTreeView_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2725,27 +2657,24 @@ func (this *QTreeView) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QTreeView_minimumSizeHint
-func miqt_exec_callback_QTreeView_minimumSizeHint(self *C.QTreeView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTreeView_minimumSizeHint(self *C.QTreeView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTreeView_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QTreeView) callVirtualBase_SizeHint() *QSize {
-
-	_goptr := newQSize(C.QTreeView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QTreeView) OnSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QTreeView) callVirtualBase_SizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QTreeView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QTreeView) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTreeView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2753,16 +2682,15 @@ func (this *QTreeView) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QTreeView_sizeHint
-func miqt_exec_callback_QTreeView_sizeHint(self *C.QTreeView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTreeView_sizeHint(self *C.QTreeView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTreeView{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTreeView_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -3343,7 +3271,6 @@ func miqt_exec_callback_QTreeView_initPainter(self *C.QTreeView, cb C.intptr_t, 
 }
 
 func (this *QTreeView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTreeView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

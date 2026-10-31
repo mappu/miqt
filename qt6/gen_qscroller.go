@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -145,31 +146,24 @@ func (this *QScroller) State() QScroller__State {
 	return (QScroller__State)(C.QScroller_state(this.h))
 }
 
-func (this *QScroller) HandleInput(input QScroller__Input, position *QPointF) bool {
-	defer runtime.KeepAlive(position)
-	return (bool)(C.QScroller_handleInput(this.h, (C.int)(input), position.cPointer()))
+func (this *QScroller) HandleInput(input QScroller__Input, position QPointF) bool {
+	return (bool)(C.QScroller_handleInput(this.h, (C.int)(input), libmiqt.ValueCast[C.struct_miqt_qpointf](position)))
 }
 
 func (this *QScroller) Stop() {
 	C.QScroller_stop(this.h)
 }
 
-func (this *QScroller) Velocity() *QPointF {
-	_goptr := newQPointF(C.QScroller_velocity(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScroller) Velocity() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QScroller_velocity(this.h))
 }
 
-func (this *QScroller) FinalPosition() *QPointF {
-	_goptr := newQPointF(C.QScroller_finalPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScroller) FinalPosition() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QScroller_finalPosition(this.h))
 }
 
-func (this *QScroller) PixelPerMeter() *QPointF {
-	_goptr := newQPointF(C.QScroller_pixelPerMeter(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScroller) PixelPerMeter() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QScroller_pixelPerMeter(this.h))
 }
 
 func (this *QScroller) ScrollerProperties() *QScrollerProperties {
@@ -213,24 +207,20 @@ func (this *QScroller) SetScrollerProperties(prop *QScrollerProperties) {
 	C.QScroller_setScrollerProperties(this.h, prop.cPointer())
 }
 
-func (this *QScroller) ScrollTo(pos *QPointF) {
-	defer runtime.KeepAlive(pos)
-	C.QScroller_scrollTo(this.h, pos.cPointer())
+func (this *QScroller) ScrollTo(pos QPointF) {
+	C.QScroller_scrollTo(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
-func (this *QScroller) ScrollTo2(pos *QPointF, scrollTime int) {
-	defer runtime.KeepAlive(pos)
-	C.QScroller_scrollTo2(this.h, pos.cPointer(), (C.int)(scrollTime))
+func (this *QScroller) ScrollTo2(pos QPointF, scrollTime int) {
+	C.QScroller_scrollTo2(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos), (C.int)(scrollTime))
 }
 
-func (this *QScroller) EnsureVisible(rect *QRectF, xmargin float64, ymargin float64) {
-	defer runtime.KeepAlive(rect)
-	C.QScroller_ensureVisible(this.h, rect.cPointer(), (C.double)(xmargin), (C.double)(ymargin))
+func (this *QScroller) EnsureVisible(rect QRectF, xmargin float64, ymargin float64) {
+	C.QScroller_ensureVisible(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.double)(xmargin), (C.double)(ymargin))
 }
 
-func (this *QScroller) EnsureVisible2(rect *QRectF, xmargin float64, ymargin float64, scrollTime int) {
-	defer runtime.KeepAlive(rect)
-	C.QScroller_ensureVisible2(this.h, rect.cPointer(), (C.double)(xmargin), (C.double)(ymargin), (C.int)(scrollTime))
+func (this *QScroller) EnsureVisible2(rect QRectF, xmargin float64, ymargin float64, scrollTime int) {
+	C.QScroller_ensureVisible2(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.double)(xmargin), (C.double)(ymargin), (C.int)(scrollTime))
 }
 
 func (this *QScroller) ResendPrepareEvent() {
@@ -304,7 +294,6 @@ func QScroller_GrabGesture2(target *QObject, gestureType QScroller__ScrollerGest
 	return (GestureType)(C.QScroller_grabGesture2(target.cPointer(), (C.int)(gestureType)))
 }
 
-func (this *QScroller) HandleInput2(input QScroller__Input, position *QPointF, timestamp int64) bool {
-	defer runtime.KeepAlive(position)
-	return (bool)(C.QScroller_handleInput2(this.h, (C.int)(input), position.cPointer(), (C.longlong)(timestamp)))
+func (this *QScroller) HandleInput2(input QScroller__Input, position QPointF, timestamp int64) bool {
+	return (bool)(C.QScroller_handleInput2(this.h, (C.int)(input), libmiqt.ValueCast[C.struct_miqt_qpointf](position), (C.longlong)(timestamp)))
 }

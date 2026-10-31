@@ -186,7 +186,7 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QSyntaxHighlighter_protectedbase_setFormat(bool* _dynamic_cast_ok, void* self, int start, int count, QTextCharFormat* format);
-	friend void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* self, int start, int count, QColor* color);
+	friend void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* self, int start, int count, struct miqt_qcolor color);
 	friend void QSyntaxHighlighter_protectedbase_setFormat3(bool* _dynamic_cast_ok, void* self, int start, int count, QFont* font);
 	friend QTextCharFormat* QSyntaxHighlighter_protectedbase_format(bool* _dynamic_cast_ok, const void* self, int pos);
 	friend int QSyntaxHighlighter_protectedbase_previousBlockState(bool* _dynamic_cast_ok, const void* self);
@@ -389,7 +389,7 @@ void QSyntaxHighlighter_protectedbase_setFormat(bool* _dynamic_cast_ok, void* se
 	self_cast->setFormat(static_cast<int>(start), static_cast<int>(count), *format);
 }
 
-void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* self, int start, int count, QColor* color) {
+void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* self, int start, int count, struct miqt_qcolor color) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -397,7 +397,7 @@ void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* s
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->setFormat(static_cast<int>(start), static_cast<int>(count), *color);
+	self_cast->setFormat(static_cast<int>(start), static_cast<int>(count), miqt_from_cabi<QColor>(color));
 }
 
 void QSyntaxHighlighter_protectedbase_setFormat3(bool* _dynamic_cast_ok, void* self, int start, int count, QFont* font) {

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -179,29 +180,23 @@ func (this *QEasingCurve) SetOvershoot(overshoot float64) {
 	C.QEasingCurve_setOvershoot(this.h, (C.double)(overshoot))
 }
 
-func (this *QEasingCurve) AddCubicBezierSegment(c1 *QPointF, c2 *QPointF, endPoint *QPointF) {
+func (this *QEasingCurve) AddCubicBezierSegment(c1 QPointF, c2 QPointF, endPoint QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(c1)
-	defer runtime.KeepAlive(c2)
-	defer runtime.KeepAlive(endPoint)
-	C.QEasingCurve_addCubicBezierSegment(this.h, c1.cPointer(), c2.cPointer(), endPoint.cPointer())
+	C.QEasingCurve_addCubicBezierSegment(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](c1), libmiqt.ValueCast[C.struct_miqt_qpointf](c2), libmiqt.ValueCast[C.struct_miqt_qpointf](endPoint))
 }
 
-func (this *QEasingCurve) AddTCBSegment(nextPoint *QPointF, t float64, c float64, b float64) {
+func (this *QEasingCurve) AddTCBSegment(nextPoint QPointF, t float64, c float64, b float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(nextPoint)
-	C.QEasingCurve_addTCBSegment(this.h, nextPoint.cPointer(), (C.double)(t), (C.double)(c), (C.double)(b))
+	C.QEasingCurve_addTCBSegment(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](nextPoint), (C.double)(t), (C.double)(c), (C.double)(b))
 }
 
 func (this *QEasingCurve) ToCubicSpline() []QPointF {
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QEasingCurve_toCubicSpline(this.h)
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qpointf)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_goptr := newQPointF(_outCast[i])
-		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_vv_goptr
+		_ret[i] = libmiqt.ValueCast[QPointF](_outCast[i])
 	}
 	return _ret
 }

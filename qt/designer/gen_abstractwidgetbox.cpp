@@ -53,15 +53,15 @@ int miqt_exec_callback_QDesignerWidgetBoxInterface_widgetCount(const QDesignerWi
 QDesignerWidgetBoxInterface__Widget* miqt_exec_callback_QDesignerWidgetBoxInterface_widget(const QDesignerWidgetBoxInterface*, intptr_t, int, int);
 void miqt_exec_callback_QDesignerWidgetBoxInterface_addWidget(QDesignerWidgetBoxInterface*, intptr_t, int, QDesignerWidgetBoxInterface__Widget*);
 void miqt_exec_callback_QDesignerWidgetBoxInterface_removeWidget(QDesignerWidgetBoxInterface*, intptr_t, int, int);
-void miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets(QDesignerWidgetBoxInterface*, intptr_t, struct miqt_array /* of QDesignerDnDItemInterface* */ , QPoint*);
+void miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets(QDesignerWidgetBoxInterface*, intptr_t, struct miqt_array /* of QDesignerDnDItemInterface* */ , struct miqt_qpoint);
 void miqt_exec_callback_QDesignerWidgetBoxInterface_setFileName(QDesignerWidgetBoxInterface*, intptr_t, struct miqt_string);
 struct miqt_string miqt_exec_callback_QDesignerWidgetBoxInterface_fileName(const QDesignerWidgetBoxInterface*, intptr_t);
 bool miqt_exec_callback_QDesignerWidgetBoxInterface_load(QDesignerWidgetBoxInterface*, intptr_t);
 bool miqt_exec_callback_QDesignerWidgetBoxInterface_save(QDesignerWidgetBoxInterface*, intptr_t);
 int miqt_exec_callback_QDesignerWidgetBoxInterface_devType(const QDesignerWidgetBoxInterface*, intptr_t);
 void miqt_exec_callback_QDesignerWidgetBoxInterface_setVisible(QDesignerWidgetBoxInterface*, intptr_t, bool);
-QSize* miqt_exec_callback_QDesignerWidgetBoxInterface_sizeHint(const QDesignerWidgetBoxInterface*, intptr_t);
-QSize* miqt_exec_callback_QDesignerWidgetBoxInterface_minimumSizeHint(const QDesignerWidgetBoxInterface*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDesignerWidgetBoxInterface_sizeHint(const QDesignerWidgetBoxInterface*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDesignerWidgetBoxInterface_minimumSizeHint(const QDesignerWidgetBoxInterface*, intptr_t);
 int miqt_exec_callback_QDesignerWidgetBoxInterface_heightForWidth(const QDesignerWidgetBoxInterface*, intptr_t, int);
 bool miqt_exec_callback_QDesignerWidgetBoxInterface_hasHeightForWidth(const QDesignerWidgetBoxInterface*, intptr_t);
 QPaintEngine* miqt_exec_callback_QDesignerWidgetBoxInterface_paintEngine(const QDesignerWidgetBoxInterface*, intptr_t);
@@ -259,9 +259,7 @@ public:
 		item_list_out.len = item_list_ret.length();
 		item_list_out.data = static_cast<void*>(item_list_arr);
 		struct miqt_array /* of QDesignerDnDItemInterface* */  sigval1 = item_list_out;
-		const QPoint& global_mouse_pos_ret = global_mouse_pos;
-		// Cast returned reference into pointer
-		QPoint* sigval2 = const_cast<QPoint*>(&global_mouse_pos_ret);
+		struct miqt_qpoint sigval2 = miqt_to_cabi<struct miqt_qpoint>(global_mouse_pos);
 		miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets(this, handle__dropWidgets, sigval1, sigval2);
 
 	}
@@ -369,13 +367,11 @@ public:
 			return QDesignerWidgetBoxInterface::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDesignerWidgetBoxInterface_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDesignerWidgetBoxInterface_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDesignerWidgetBoxInterface_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDesignerWidgetBoxInterface_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -386,13 +382,11 @@ public:
 			return QDesignerWidgetBoxInterface::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDesignerWidgetBoxInterface_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDesignerWidgetBoxInterface_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1222,14 +1216,14 @@ int QDesignerWidgetBoxInterface_findOrInsertCategory(QDesignerWidgetBoxInterface
 	return self->findOrInsertCategory(categoryName_QString);
 }
 
-void QDesignerWidgetBoxInterface_dropWidgets(QDesignerWidgetBoxInterface* self, struct miqt_array /* of QDesignerDnDItemInterface* */  item_list, QPoint* global_mouse_pos) {
+void QDesignerWidgetBoxInterface_dropWidgets(QDesignerWidgetBoxInterface* self, struct miqt_array /* of QDesignerDnDItemInterface* */  item_list, struct miqt_qpoint global_mouse_pos) {
 	QList<QDesignerDnDItemInterface *> item_list_QList;
 	item_list_QList.reserve(item_list.len);
 	QDesignerDnDItemInterface** item_list_arr = static_cast<QDesignerDnDItemInterface**>(item_list.data);
 	for(size_t i = 0; i < item_list.len; ++i) {
 		item_list_QList.push_back(item_list_arr[i]);
 	}
-	self->dropWidgets(item_list_QList, *global_mouse_pos);
+	self->dropWidgets(item_list_QList, miqt_from_cabi<QPoint>(global_mouse_pos));
 }
 
 void QDesignerWidgetBoxInterface_setFileName(QDesignerWidgetBoxInterface* self, struct miqt_string file_name) {
@@ -1468,8 +1462,8 @@ bool QDesignerWidgetBoxInterface_override_virtual_sizeHint(void* self, intptr_t 
 	return true;
 }
 
-QSize* QDesignerWidgetBoxInterface_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDesignerWidgetBoxInterface*>(self)->QDesignerWidgetBoxInterface::sizeHint());
+struct miqt_qsize QDesignerWidgetBoxInterface_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDesignerWidgetBoxInterface*>(self)->QDesignerWidgetBoxInterface::sizeHint());
 }
 
 bool QDesignerWidgetBoxInterface_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1482,8 +1476,8 @@ bool QDesignerWidgetBoxInterface_override_virtual_minimumSizeHint(void* self, in
 	return true;
 }
 
-QSize* QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDesignerWidgetBoxInterface*>(self)->QDesignerWidgetBoxInterface::minimumSizeHint());
+struct miqt_qsize QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDesignerWidgetBoxInterface*>(self)->QDesignerWidgetBoxInterface::minimumSizeHint());
 }
 
 bool QDesignerWidgetBoxInterface_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2095,10 +2089,6 @@ QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface_virtualreturn
 
 QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface_virtualreturncopy_QDesignerWidgetBoxInterface__Widget(QDesignerWidgetBoxInterface__Widget* src) {
 	return new QDesignerWidgetBoxInterface__Widget(*src);
-}
-
-QSize* QDesignerWidgetBoxInterface_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QDesignerWidgetBoxInterface_virtualreturncopy_QVariant(QVariant* src) {

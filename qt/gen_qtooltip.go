@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -52,33 +53,28 @@ func UnsafeNewQToolTip(h unsafe.Pointer) *QToolTip {
 	return newQToolTip((*C.QToolTip)(h))
 }
 
-func QToolTip_ShowText(pos *QPoint, text string) {
-	defer runtime.KeepAlive(pos)
+func QToolTip_ShowText(pos QPoint, text string) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_showText(pos.cPointer(), text_ms)
+	C.QToolTip_showText(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), text_ms)
 }
 
-func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget, rect *QRect) {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(rect)
+func QToolTip_ShowText2(pos QPoint, text string, w *QWidget, rect QRect) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_showText2(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer())
+	C.QToolTip_showText2(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), text_ms, w.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
-func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget, rect *QRect, msecShowTime int) {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(rect)
+func QToolTip_ShowText3(pos QPoint, text string, w *QWidget, rect QRect, msecShowTime int) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_showText3(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer(), (C.int)(msecShowTime))
+	C.QToolTip_showText3(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), text_ms, w.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrect](rect), (C.int)(msecShowTime))
 }
 
 func QToolTip_HideText() {
@@ -118,13 +114,12 @@ func QToolTip_SetFont(font *QFont) {
 	C.QToolTip_setFont(font.cPointer())
 }
 
-func QToolTip_ShowText4(pos *QPoint, text string, w *QWidget) {
-	defer runtime.KeepAlive(pos)
+func QToolTip_ShowText4(pos QPoint, text string, w *QWidget) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_showText4(pos.cPointer(), text_ms, w.cPointer())
+	C.QToolTip_showText4(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), text_ms, w.cPointer())
 }
 
 // Delete this object from C++ memory.

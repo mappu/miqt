@@ -9,6 +9,7 @@ package webkit
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -351,11 +352,9 @@ func (this *QWebElement) SetFocus() {
 	C.QWebElement_setFocus(this.h)
 }
 
-func (this *QWebElement) Geometry() *qt.QRect {
+func (this *QWebElement) Geometry() qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebElement_geometry(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QWebElement_geometry(this.h))
 }
 
 func (this *QWebElement) TagName() string {
@@ -608,11 +607,10 @@ func (this *QWebElement) Render(painter *qt.QPainter) {
 	C.QWebElement_render(this.h, (*C.QPainter)(painter.UnsafePointer()))
 }
 
-func (this *QWebElement) Render2(painter *qt.QPainter, clipRect *qt.QRect) {
+func (this *QWebElement) Render2(painter *qt.QPainter, clipRect qt.QRect) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(clipRect)
-	C.QWebElement_render2(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRect)(clipRect.UnsafePointer()))
+	C.QWebElement_render2(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrect](clipRect))
 }
 
 func (this *QWebElement) Attribute2(name string, defaultValue string) string {

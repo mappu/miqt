@@ -9,6 +9,7 @@ package designer
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -70,11 +71,9 @@ func (this *QDesignerDnDItemInterface) Decoration() *qt.QWidget {
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerDnDItemInterface_decoration(this.h)))
 }
 
-func (this *QDesignerDnDItemInterface) HotSpot() *qt.QPoint {
+func (this *QDesignerDnDItemInterface) HotSpot() qt.QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QDesignerDnDItemInterface_hotSpot(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPoint](C.QDesignerDnDItemInterface_hotSpot(this.h))
 }
 
 func (this *QDesignerDnDItemInterface) Type() QDesignerDnDItemInterface__DropType {

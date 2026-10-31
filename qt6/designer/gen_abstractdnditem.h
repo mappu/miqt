@@ -26,7 +26,7 @@ typedef struct QWidget QWidget;
 
 QWidget* QDesignerDnDItemInterface_widget(const QDesignerDnDItemInterface* self);
 QWidget* QDesignerDnDItemInterface_decoration(const QDesignerDnDItemInterface* self);
-QPoint* QDesignerDnDItemInterface_hotSpot(const QDesignerDnDItemInterface* self);
+struct miqt_qpoint QDesignerDnDItemInterface_hotSpot(const QDesignerDnDItemInterface* self);
 int QDesignerDnDItemInterface_type(const QDesignerDnDItemInterface* self);
 QWidget* QDesignerDnDItemInterface_source(const QDesignerDnDItemInterface* self);
 

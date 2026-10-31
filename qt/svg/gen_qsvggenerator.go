@@ -9,6 +9,7 @@ package svg
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -98,43 +99,34 @@ func (this *QSvgGenerator) SetDescription(description string) {
 	C.QSvgGenerator_setDescription(this.h, description_ms)
 }
 
-func (this *QSvgGenerator) Size() *qt.QSize {
+func (this *QSvgGenerator) Size() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QSvgGenerator_size(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QSvgGenerator_size(this.h))
 }
 
-func (this *QSvgGenerator) SetSize(size *qt.QSize) {
+func (this *QSvgGenerator) SetSize(size qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QSvgGenerator_setSize(this.h, (*C.QSize)(size.UnsafePointer()))
+	C.QSvgGenerator_setSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QSvgGenerator) ViewBox() *qt.QRect {
+func (this *QSvgGenerator) ViewBox() qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QSvgGenerator_viewBox(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QSvgGenerator_viewBox(this.h))
 }
 
-func (this *QSvgGenerator) ViewBoxF() *qt.QRectF {
+func (this *QSvgGenerator) ViewBoxF() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QSvgGenerator_viewBoxF(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QSvgGenerator_viewBoxF(this.h))
 }
 
-func (this *QSvgGenerator) SetViewBox(viewBox *qt.QRect) {
+func (this *QSvgGenerator) SetViewBox(viewBox qt.QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewBox)
-	C.QSvgGenerator_setViewBox(this.h, (*C.QRect)(viewBox.UnsafePointer()))
+	C.QSvgGenerator_setViewBox(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](viewBox))
 }
 
-func (this *QSvgGenerator) SetViewBoxWithViewBox(viewBox *qt.QRectF) {
+func (this *QSvgGenerator) SetViewBoxWithViewBox(viewBox qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewBox)
-	C.QSvgGenerator_setViewBoxWithViewBox(this.h, (*C.QRectF)(viewBox.UnsafePointer()))
+	C.QSvgGenerator_setViewBoxWithViewBox(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](viewBox))
 }
 
 func (this *QSvgGenerator) FileName() string {
@@ -286,7 +278,6 @@ func miqt_exec_callback_QSvgGenerator_initPainter(self *C.QSvgGenerator, cb C.in
 
 func (this *QSvgGenerator) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QSvgGenerator_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

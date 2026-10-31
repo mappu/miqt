@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -69,11 +70,9 @@ func NewQEventPoint() *QEventPoint {
 }
 
 // NewQEventPoint2 constructs a new QEventPoint object.
-func NewQEventPoint2(pointId int, state QEventPoint__State, scenePosition *QPointF, globalPosition *QPointF) *QEventPoint {
-	defer runtime.KeepAlive(scenePosition)
-	defer runtime.KeepAlive(globalPosition)
+func NewQEventPoint2(pointId int, state QEventPoint__State, scenePosition QPointF, globalPosition QPointF) *QEventPoint {
 
-	return newQEventPoint(C.QEventPoint_new2((C.int)(pointId), (C.uint8_t)(state), scenePosition.cPointer(), globalPosition.cPointer()))
+	return newQEventPoint(C.QEventPoint_new2((C.int)(pointId), (C.uint8_t)(state), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePosition), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPosition)))
 }
 
 // NewQEventPoint3 constructs a new QEventPoint object.
@@ -119,179 +118,129 @@ func (this *QEventPoint) Swap(other *QEventPoint) {
 	C.QEventPoint_swap(this.h, other.cPointer())
 }
 
-func (this *QEventPoint) Position() *QPointF {
+func (this *QEventPoint) Position() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_position(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_position(this.h))
 }
 
-func (this *QEventPoint) PressPosition() *QPointF {
+func (this *QEventPoint) PressPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_pressPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_pressPosition(this.h))
 }
 
-func (this *QEventPoint) GrabPosition() *QPointF {
+func (this *QEventPoint) GrabPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_grabPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_grabPosition(this.h))
 }
 
-func (this *QEventPoint) LastPosition() *QPointF {
+func (this *QEventPoint) LastPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_lastPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_lastPosition(this.h))
 }
 
-func (this *QEventPoint) ScenePosition() *QPointF {
+func (this *QEventPoint) ScenePosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_scenePosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_scenePosition(this.h))
 }
 
-func (this *QEventPoint) ScenePressPosition() *QPointF {
+func (this *QEventPoint) ScenePressPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_scenePressPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_scenePressPosition(this.h))
 }
 
-func (this *QEventPoint) SceneGrabPosition() *QPointF {
+func (this *QEventPoint) SceneGrabPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_sceneGrabPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_sceneGrabPosition(this.h))
 }
 
-func (this *QEventPoint) SceneLastPosition() *QPointF {
+func (this *QEventPoint) SceneLastPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_sceneLastPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_sceneLastPosition(this.h))
 }
 
-func (this *QEventPoint) GlobalPosition() *QPointF {
+func (this *QEventPoint) GlobalPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_globalPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_globalPosition(this.h))
 }
 
-func (this *QEventPoint) GlobalPressPosition() *QPointF {
+func (this *QEventPoint) GlobalPressPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_globalPressPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_globalPressPosition(this.h))
 }
 
-func (this *QEventPoint) GlobalGrabPosition() *QPointF {
+func (this *QEventPoint) GlobalGrabPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_globalGrabPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_globalGrabPosition(this.h))
 }
 
-func (this *QEventPoint) GlobalLastPosition() *QPointF {
+func (this *QEventPoint) GlobalLastPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_globalLastPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_globalLastPosition(this.h))
 }
 
-func (this *QEventPoint) NormalizedPosition() *QPointF {
+func (this *QEventPoint) NormalizedPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_normalizedPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_normalizedPosition(this.h))
 }
 
-func (this *QEventPoint) Pos() *QPointF {
+func (this *QEventPoint) Pos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_pos(this.h))
 }
 
-func (this *QEventPoint) StartPos() *QPointF {
+func (this *QEventPoint) StartPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_startPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_startPos(this.h))
 }
 
-func (this *QEventPoint) ScenePos() *QPointF {
+func (this *QEventPoint) ScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_scenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_scenePos(this.h))
 }
 
-func (this *QEventPoint) StartScenePos() *QPointF {
+func (this *QEventPoint) StartScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_startScenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_startScenePos(this.h))
 }
 
-func (this *QEventPoint) ScreenPos() *QPointF {
+func (this *QEventPoint) ScreenPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_screenPos(this.h))
 }
 
-func (this *QEventPoint) StartScreenPos() *QPointF {
+func (this *QEventPoint) StartScreenPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_startScreenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_startScreenPos(this.h))
 }
 
-func (this *QEventPoint) StartNormalizedPos() *QPointF {
+func (this *QEventPoint) StartNormalizedPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_startNormalizedPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_startNormalizedPos(this.h))
 }
 
-func (this *QEventPoint) NormalizedPos() *QPointF {
+func (this *QEventPoint) NormalizedPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_normalizedPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_normalizedPos(this.h))
 }
 
-func (this *QEventPoint) LastPos() *QPointF {
+func (this *QEventPoint) LastPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_lastPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_lastPos(this.h))
 }
 
-func (this *QEventPoint) LastScenePos() *QPointF {
+func (this *QEventPoint) LastScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_lastScenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_lastScenePos(this.h))
 }
 
-func (this *QEventPoint) LastScreenPos() *QPointF {
+func (this *QEventPoint) LastScreenPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_lastScreenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_lastScreenPos(this.h))
 }
 
-func (this *QEventPoint) LastNormalizedPos() *QPointF {
+func (this *QEventPoint) LastNormalizedPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEventPoint_lastNormalizedPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEventPoint_lastNormalizedPos(this.h))
 }
 
 func (this *QEventPoint) Velocity() *QVector2D {
@@ -353,11 +302,9 @@ func (this *QEventPoint) Rotation() float64 {
 	return (float64)(C.QEventPoint_rotation(this.h))
 }
 
-func (this *QEventPoint) EllipseDiameters() *QSizeF {
+func (this *QEventPoint) EllipseDiameters() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QEventPoint_ellipseDiameters(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QEventPoint_ellipseDiameters(this.h))
 }
 
 func (this *QEventPoint) IsAccepted() bool {

@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -144,26 +145,20 @@ func (this *QAreaSeries) Brush() *qt6.QBrush {
 	return _goptr
 }
 
-func (this *QAreaSeries) SetColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAreaSeries_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QAreaSeries) SetColor(color qt6.QColor) {
+	C.QAreaSeries_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QAreaSeries) Color() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAreaSeries_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAreaSeries) Color() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QAreaSeries_color(this.h))
 }
 
-func (this *QAreaSeries) SetBorderColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAreaSeries_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QAreaSeries) SetBorderColor(color qt6.QColor) {
+	C.QAreaSeries_setBorderColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QAreaSeries) BorderColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAreaSeries_borderColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAreaSeries) BorderColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QAreaSeries_borderColor(this.h))
 }
 
 func (this *QAreaSeries) SetPointsVisible() {
@@ -208,15 +203,12 @@ func (this *QAreaSeries) PointLabelsFont() *qt6.QFont {
 	return _goptr
 }
 
-func (this *QAreaSeries) SetPointLabelsColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAreaSeries_setPointLabelsColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QAreaSeries) SetPointLabelsColor(color qt6.QColor) {
+	C.QAreaSeries_setPointLabelsColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QAreaSeries) PointLabelsColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QAreaSeries_pointLabelsColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QAreaSeries) PointLabelsColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QAreaSeries_pointLabelsColor(this.h))
 }
 
 func (this *QAreaSeries) SetPointLabelsClipping() {
@@ -227,109 +219,104 @@ func (this *QAreaSeries) PointLabelsClipping() bool {
 	return (bool)(C.QAreaSeries_pointLabelsClipping(this.h))
 }
 
-func (this *QAreaSeries) Clicked(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QAreaSeries_clicked(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QAreaSeries) Clicked(point qt6.QPointF) {
+	C.QAreaSeries_clicked(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
-func (this *QAreaSeries) OnClicked(slot func(point *qt6.QPointF)) {
+func (this *QAreaSeries) OnClicked(slot func(point qt6.QPointF)) {
 	C.QAreaSeries_connect_clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAreaSeries_clicked
-func miqt_exec_callback_QAreaSeries_clicked(cb C.intptr_t, point *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF))
+func miqt_exec_callback_QAreaSeries_clicked(cb C.intptr_t, point C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	gofunc(slotval1)
 }
 
-func (this *QAreaSeries) Hovered(point *qt6.QPointF, state bool) {
-	defer runtime.KeepAlive(point)
-	C.QAreaSeries_hovered(this.h, (*C.QPointF)(point.UnsafePointer()), (C.bool)(state))
+func (this *QAreaSeries) Hovered(point qt6.QPointF, state bool) {
+	C.QAreaSeries_hovered(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point), (C.bool)(state))
 }
-func (this *QAreaSeries) OnHovered(slot func(point *qt6.QPointF, state bool)) {
+func (this *QAreaSeries) OnHovered(slot func(point qt6.QPointF, state bool)) {
 	C.QAreaSeries_connect_hovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAreaSeries_hovered
-func miqt_exec_callback_QAreaSeries_hovered(cb C.intptr_t, point *C.QPointF, state C.bool) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF, state bool))
+func miqt_exec_callback_QAreaSeries_hovered(cb C.intptr_t, point C.struct_miqt_qpointf, state C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF, state bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	slotval2 := (bool)(state)
 
 	gofunc(slotval1, slotval2)
 }
 
-func (this *QAreaSeries) Pressed(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QAreaSeries_pressed(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QAreaSeries) Pressed(point qt6.QPointF) {
+	C.QAreaSeries_pressed(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
-func (this *QAreaSeries) OnPressed(slot func(point *qt6.QPointF)) {
+func (this *QAreaSeries) OnPressed(slot func(point qt6.QPointF)) {
 	C.QAreaSeries_connect_pressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAreaSeries_pressed
-func miqt_exec_callback_QAreaSeries_pressed(cb C.intptr_t, point *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF))
+func miqt_exec_callback_QAreaSeries_pressed(cb C.intptr_t, point C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	gofunc(slotval1)
 }
 
-func (this *QAreaSeries) Released(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QAreaSeries_released(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QAreaSeries) Released(point qt6.QPointF) {
+	C.QAreaSeries_released(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
-func (this *QAreaSeries) OnReleased(slot func(point *qt6.QPointF)) {
+func (this *QAreaSeries) OnReleased(slot func(point qt6.QPointF)) {
 	C.QAreaSeries_connect_released(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAreaSeries_released
-func miqt_exec_callback_QAreaSeries_released(cb C.intptr_t, point *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF))
+func miqt_exec_callback_QAreaSeries_released(cb C.intptr_t, point C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	gofunc(slotval1)
 }
 
-func (this *QAreaSeries) DoubleClicked(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QAreaSeries_doubleClicked(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QAreaSeries) DoubleClicked(point qt6.QPointF) {
+	C.QAreaSeries_doubleClicked(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
-func (this *QAreaSeries) OnDoubleClicked(slot func(point *qt6.QPointF)) {
+func (this *QAreaSeries) OnDoubleClicked(slot func(point qt6.QPointF)) {
 	C.QAreaSeries_connect_doubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAreaSeries_doubleClicked
-func miqt_exec_callback_QAreaSeries_doubleClicked(cb C.intptr_t, point *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF))
+func miqt_exec_callback_QAreaSeries_doubleClicked(cb C.intptr_t, point C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	gofunc(slotval1)
 }
@@ -352,47 +339,41 @@ func miqt_exec_callback_QAreaSeries_selected(cb C.intptr_t) {
 }
 
 func (this *QAreaSeries) ColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAreaSeries_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAreaSeries_colorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QAreaSeries) OnColorChanged(slot func(color qt6.QColor)) {
 	C.QAreaSeries_connect_colorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAreaSeries_colorChanged
-func miqt_exec_callback_QAreaSeries_colorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QAreaSeries_colorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
 func (this *QAreaSeries) BorderColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAreaSeries_borderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QAreaSeries_borderColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QAreaSeries) OnBorderColorChanged(slot func(color qt6.QColor)) {
 	C.QAreaSeries_connect_borderColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAreaSeries_borderColorChanged
-func miqt_exec_callback_QAreaSeries_borderColorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QAreaSeries_borderColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
@@ -465,23 +446,22 @@ func miqt_exec_callback_QAreaSeries_pointLabelsFontChanged(cb C.intptr_t, font *
 	gofunc(slotval1)
 }
 
-func (this *QAreaSeries) PointLabelsColorChanged(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QAreaSeries_pointLabelsColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QAreaSeries) PointLabelsColorChanged(color qt6.QColor) {
+	C.QAreaSeries_pointLabelsColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QAreaSeries) OnPointLabelsColorChanged(slot func(color *qt6.QColor)) {
+func (this *QAreaSeries) OnPointLabelsColorChanged(slot func(color qt6.QColor)) {
 	C.QAreaSeries_connect_pointLabelsColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAreaSeries_pointLabelsColorChanged
-func miqt_exec_callback_QAreaSeries_pointLabelsColorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *qt6.QColor))
+func miqt_exec_callback_QAreaSeries_pointLabelsColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }

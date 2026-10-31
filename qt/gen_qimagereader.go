@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -199,11 +200,9 @@ func (this *QImageReader) FileName() string {
 	return _ret
 }
 
-func (this *QImageReader) Size() *QSize {
+func (this *QImageReader) Size() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QImageReader_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QImageReader_size(this.h))
 }
 
 func (this *QImageReader) ImageFormat() QImage__Format {
@@ -237,30 +236,24 @@ func (this *QImageReader) Text(key string) string {
 	return _ret
 }
 
-func (this *QImageReader) SetClipRect(rect *QRect) {
+func (this *QImageReader) SetClipRect(rect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QImageReader_setClipRect(this.h, rect.cPointer())
+	C.QImageReader_setClipRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
-func (this *QImageReader) ClipRect() *QRect {
+func (this *QImageReader) ClipRect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QImageReader_clipRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QImageReader_clipRect(this.h))
 }
 
-func (this *QImageReader) SetScaledSize(size *QSize) {
+func (this *QImageReader) SetScaledSize(size QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QImageReader_setScaledSize(this.h, size.cPointer())
+	C.QImageReader_setScaledSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QImageReader) ScaledSize() *QSize {
+func (this *QImageReader) ScaledSize() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QImageReader_scaledSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QImageReader_scaledSize(this.h))
 }
 
 func (this *QImageReader) SetQuality(quality int) {
@@ -273,30 +266,24 @@ func (this *QImageReader) Quality() int {
 	return (int)(C.QImageReader_quality(this.h))
 }
 
-func (this *QImageReader) SetScaledClipRect(rect *QRect) {
+func (this *QImageReader) SetScaledClipRect(rect QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QImageReader_setScaledClipRect(this.h, rect.cPointer())
+	C.QImageReader_setScaledClipRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
-func (this *QImageReader) ScaledClipRect() *QRect {
+func (this *QImageReader) ScaledClipRect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QImageReader_scaledClipRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QImageReader_scaledClipRect(this.h))
 }
 
-func (this *QImageReader) SetBackgroundColor(color *QColor) {
+func (this *QImageReader) SetBackgroundColor(color QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QImageReader_setBackgroundColor(this.h, color.cPointer())
+	C.QImageReader_setBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QImageReader) BackgroundColor() *QColor {
+func (this *QImageReader) BackgroundColor() QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QImageReader_backgroundColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QImageReader_backgroundColor(this.h))
 }
 
 func (this *QImageReader) SupportsAnimation() bool {
@@ -399,11 +386,9 @@ func (this *QImageReader) CurrentImageNumber() int {
 	return (int)(C.QImageReader_currentImageNumber(this.h))
 }
 
-func (this *QImageReader) CurrentImageRect() *QRect {
+func (this *QImageReader) CurrentImageRect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QImageReader_currentImageRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QImageReader_currentImageRect(this.h))
 }
 
 func (this *QImageReader) Error() QImageReader__ImageReaderError {

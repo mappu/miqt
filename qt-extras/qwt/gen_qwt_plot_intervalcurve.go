@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -124,10 +125,9 @@ func (this *QwtPlotIntervalCurve) SetSamples(samples []QwtIntervalSample) {
 	C.QwtPlotIntervalCurve_setSamples(this.h, samples_ma)
 }
 
-func (this *QwtPlotIntervalCurve) SetPen(param1 *qt.QColor) {
+func (this *QwtPlotIntervalCurve) SetPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotIntervalCurve_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotIntervalCurve_setPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotIntervalCurve) SetPenWithPen(pen *qt.QPen) {
@@ -173,17 +173,14 @@ func (this *QwtPlotIntervalCurve) Symbol() *QwtIntervalSymbol {
 	return newQwtIntervalSymbol(C.QwtPlotIntervalCurve_symbol(this.h))
 }
 
-func (this *QwtPlotIntervalCurve) BoundingRect() *qt.QRectF {
+func (this *QwtPlotIntervalCurve) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotIntervalCurve_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotIntervalCurve_boundingRect(this.h))
 }
 
-func (this *QwtPlotIntervalCurve) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+func (this *QwtPlotIntervalCurve) LegendIcon(index int, param2 qt.QSizeF) *QwtGraphic {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	_goptr := newQwtGraphic(C.QwtPlotIntervalCurve_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
+	_goptr := newQwtGraphic(C.QwtPlotIntervalCurve_legendIcon(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qsizef](param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -193,16 +190,14 @@ func (this *QwtPlotIntervalCurve) SetPaintAttribute2(param1 QwtPlotIntervalCurve
 	C.QwtPlotIntervalCurve_setPaintAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
-func (this *QwtPlotIntervalCurve) SetPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotIntervalCurve) SetPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotIntervalCurve_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtPlotIntervalCurve_setPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotIntervalCurve) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtPlotIntervalCurve) SetPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotIntervalCurve_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotIntervalCurve_setPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
 // Delete this object from C++ memory.

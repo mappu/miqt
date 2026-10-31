@@ -9,6 +9,7 @@ package pdf
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -91,11 +92,9 @@ func (this *QPdfSearchResult) Rectangles() []qt.QRectF {
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPdfSearchResult_rectangles(this.h)
 	_ret := make([]qt.QRectF, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QRectF)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qrectf)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(_outCast[i]))
-		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_vv_goptr
+		_ret[i] = libmiqt.ValueCast[qt.QRectF](_outCast[i])
 	}
 	return _ret
 }

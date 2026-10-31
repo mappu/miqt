@@ -45,8 +45,8 @@ void miqt_exec_callback_QDialog_finished(intptr_t, int);
 void miqt_exec_callback_QDialog_accepted(intptr_t);
 void miqt_exec_callback_QDialog_rejected(intptr_t);
 void miqt_exec_callback_QDialog_setVisible(QDialog*, intptr_t, bool);
-QSize* miqt_exec_callback_QDialog_sizeHint(const QDialog*, intptr_t);
-QSize* miqt_exec_callback_QDialog_minimumSizeHint(const QDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDialog_sizeHint(const QDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDialog_minimumSizeHint(const QDialog*, intptr_t);
 void miqt_exec_callback_QDialog_open(QDialog*, intptr_t);
 int miqt_exec_callback_QDialog_exec(QDialog*, intptr_t);
 void miqt_exec_callback_QDialog_done(QDialog*, intptr_t, int);
@@ -135,13 +135,11 @@ public:
 			return QDialog::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDialog_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDialog_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDialog_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -152,13 +150,11 @@ public:
 			return QDialog::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDialog_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDialog_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1072,12 +1068,12 @@ QWidget* QDialog_extension(const QDialog* self) {
 	return self->extension();
 }
 
-QSize* QDialog_sizeHint(const QDialog* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QDialog_sizeHint(const QDialog* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QDialog_minimumSizeHint(const QDialog* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QDialog_minimumSizeHint(const QDialog* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QDialog_setSizeGripEnabled(QDialog* self, bool sizeGripEnabled) {
@@ -1219,8 +1215,8 @@ bool QDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDialog_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDialog*>(self)->QDialog::sizeHint());
+struct miqt_qsize QDialog_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDialog*>(self)->QDialog::sizeHint());
 }
 
 bool QDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1233,8 +1229,8 @@ bool QDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDialog_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDialog*>(self)->QDialog::minimumSizeHint());
+struct miqt_qsize QDialog_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDialog*>(self)->QDialog::minimumSizeHint());
 }
 
 bool QDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1922,10 +1918,6 @@ bool QDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDialog*>(self)->QDialog::disconnectNotify(*signal);
-}
-
-QSize* QDialog_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QDialog_virtualreturncopy_QVariant(QVariant* src) {

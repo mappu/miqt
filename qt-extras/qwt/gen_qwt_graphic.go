@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -105,25 +106,22 @@ func (this *QwtGraphic) Render(param1 *qt.QPainter) {
 	C.QwtGraphic_render(this.h, (*C.QPainter)(param1.UnsafePointer()))
 }
 
-func (this *QwtGraphic) Render2(param1 *qt.QPainter, param2 *qt.QSizeF) {
+func (this *QwtGraphic) Render2(param1 *qt.QPainter, param2 qt.QSizeF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	C.QwtGraphic_render2(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QSizeF)(param2.UnsafePointer()))
+	C.QwtGraphic_render2(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qsizef](param2))
 }
 
-func (this *QwtGraphic) Render3(param1 *qt.QPainter, param2 *qt.QRectF) {
+func (this *QwtGraphic) Render3(param1 *qt.QPainter, param2 qt.QRectF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	C.QwtGraphic_render3(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
+	C.QwtGraphic_render3(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2))
 }
 
-func (this *QwtGraphic) Render4(param1 *qt.QPainter, param2 *qt.QPointF) {
+func (this *QwtGraphic) Render4(param1 *qt.QPainter, param2 qt.QPointF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	C.QwtGraphic_render4(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()))
+	C.QwtGraphic_render4(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](param2))
 }
 
 func (this *QwtGraphic) ToPixmap() *qt.QPixmap {
@@ -133,10 +131,9 @@ func (this *QwtGraphic) ToPixmap() *qt.QPixmap {
 	return _goptr
 }
 
-func (this *QwtGraphic) ToPixmapWithQSize(param1 *qt.QSize) *qt.QPixmap {
+func (this *QwtGraphic) ToPixmapWithQSize(param1 qt.QSize) *qt.QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtGraphic_toPixmapWithQSize(this.h, (*C.QSize)(param1.UnsafePointer()))))
+	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtGraphic_toPixmapWithQSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -148,46 +145,36 @@ func (this *QwtGraphic) ToImage() *qt.QImage {
 	return _goptr
 }
 
-func (this *QwtGraphic) ToImageWithQSize(param1 *qt.QSize) *qt.QImage {
+func (this *QwtGraphic) ToImageWithQSize(param1 qt.QSize) *qt.QImage {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QwtGraphic_toImageWithQSize(this.h, (*C.QSize)(param1.UnsafePointer()))))
+	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QwtGraphic_toImageWithQSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QwtGraphic) ScaledBoundingRect(sx float64, sy float64) *qt.QRectF {
+func (this *QwtGraphic) ScaledBoundingRect(sx float64, sy float64) qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtGraphic_scaledBoundingRect(this.h, (C.double)(sx), (C.double)(sy))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtGraphic_scaledBoundingRect(this.h, (C.double)(sx), (C.double)(sy)))
 }
 
-func (this *QwtGraphic) BoundingRect() *qt.QRectF {
+func (this *QwtGraphic) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtGraphic_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtGraphic_boundingRect(this.h))
 }
 
-func (this *QwtGraphic) ControlPointRect() *qt.QRectF {
+func (this *QwtGraphic) ControlPointRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtGraphic_controlPointRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtGraphic_controlPointRect(this.h))
 }
 
-func (this *QwtGraphic) SetDefaultSize(defaultSize *qt.QSizeF) {
+func (this *QwtGraphic) SetDefaultSize(defaultSize qt.QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(defaultSize)
-	C.QwtGraphic_setDefaultSize(this.h, (*C.QSizeF)(defaultSize.UnsafePointer()))
+	C.QwtGraphic_setDefaultSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](defaultSize))
 }
 
-func (this *QwtGraphic) DefaultSize() *qt.QSizeF {
+func (this *QwtGraphic) DefaultSize() qt.QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtGraphic_defaultSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtGraphic_defaultSize(this.h))
 }
 
 func (this *QwtGraphic) SetRenderHint(param1 QwtGraphic__RenderHint) {
@@ -200,39 +187,34 @@ func (this *QwtGraphic) TestRenderHint(param1 QwtGraphic__RenderHint) bool {
 	return (bool)(C.QwtGraphic_testRenderHint(this.h, (C.int)(param1)))
 }
 
-func (this *QwtGraphic) Render5(param1 *qt.QPainter, param2 *qt.QSizeF, param3 qt.AspectRatioMode) {
+func (this *QwtGraphic) Render5(param1 *qt.QPainter, param2 qt.QSizeF, param3 qt.AspectRatioMode) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	C.QwtGraphic_render5(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QSizeF)(param2.UnsafePointer()), (C.int)(param3))
+	C.QwtGraphic_render5(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qsizef](param2), (C.int)(param3))
 }
 
-func (this *QwtGraphic) Render6(param1 *qt.QPainter, param2 *qt.QRectF, param3 qt.AspectRatioMode) {
+func (this *QwtGraphic) Render6(param1 *qt.QPainter, param2 qt.QRectF, param3 qt.AspectRatioMode) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	C.QwtGraphic_render6(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()), (C.int)(param3))
+	C.QwtGraphic_render6(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2), (C.int)(param3))
 }
 
-func (this *QwtGraphic) Render7(param1 *qt.QPainter, param2 *qt.QPointF, param3 qt.AlignmentFlag) {
+func (this *QwtGraphic) Render7(param1 *qt.QPainter, param2 qt.QPointF, param3 qt.AlignmentFlag) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	C.QwtGraphic_render7(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.int)(param3))
+	C.QwtGraphic_render7(this.h, (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](param2), (C.int)(param3))
 }
 
-func (this *QwtGraphic) ToPixmap2(param1 *qt.QSize, param2 qt.AspectRatioMode) *qt.QPixmap {
+func (this *QwtGraphic) ToPixmap2(param1 qt.QSize, param2 qt.AspectRatioMode) *qt.QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtGraphic_toPixmap2(this.h, (*C.QSize)(param1.UnsafePointer()), (C.int)(param2))))
+	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtGraphic_toPixmap2(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](param1), (C.int)(param2))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QwtGraphic) ToImage2(param1 *qt.QSize, param2 qt.AspectRatioMode) *qt.QImage {
+func (this *QwtGraphic) ToImage2(param1 qt.QSize, param2 qt.AspectRatioMode) *qt.QImage {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QwtGraphic_toImage2(this.h, (*C.QSize)(param1.UnsafePointer()), (C.int)(param2))))
+	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QwtGraphic_toImage2(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](param1), (C.int)(param2))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -242,15 +224,13 @@ func (this *QwtGraphic) SetRenderHint2(param1 QwtGraphic__RenderHint, on bool) {
 	C.QwtGraphic_setRenderHint2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
-func (this *QwtGraphic) callVirtualBase_SizeMetrics() *qt.QSize {
+func (this *QwtGraphic) callVirtualBase_SizeMetrics() qt.QSize {
 	defer runtime.KeepAlive(this)
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtGraphic_virtualbase_sizeMetrics(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtGraphic_virtualbase_sizeMetrics(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtGraphic) OnSizeMetrics(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtGraphic) OnSizeMetrics(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtGraphic_override_virtual_sizeMetrics(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -258,16 +238,15 @@ func (this *QwtGraphic) OnSizeMetrics(slot func(super func() *qt.QSize) *qt.QSiz
 }
 
 //export miqt_exec_callback_QwtGraphic_sizeMetrics
-func miqt_exec_callback_QwtGraphic_sizeMetrics(self *C.QwtGraphic, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtGraphic_sizeMetrics(self *C.QwtGraphic, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtGraphic{h: self}).callVirtualBase_SizeMetrics)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtGraphic_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -299,16 +278,14 @@ func miqt_exec_callback_QwtGraphic_drawPath(self *C.QwtGraphic, cb C.intptr_t, p
 
 }
 
-func (this *QwtGraphic) callVirtualBase_DrawPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF) {
+func (this *QwtGraphic) callVirtualBase_DrawPixmap(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param3)
 
-	C.QwtGraphic_virtualbase_drawPixmap(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()))
+	C.QwtGraphic_virtualbase_drawPixmap(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1), (*C.QPixmap)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param3))
 
 }
-func (this *QwtGraphic) OnDrawPixmap(slot func(super func(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF), param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF)) {
+func (this *QwtGraphic) OnDrawPixmap(slot func(super func(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF), param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF)) {
 	ok := C.QwtGraphic_override_virtual_drawPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -316,33 +293,31 @@ func (this *QwtGraphic) OnDrawPixmap(slot func(super func(param1 *qt.QRectF, par
 }
 
 //export miqt_exec_callback_QwtGraphic_drawPixmap
-func miqt_exec_callback_QwtGraphic_drawPixmap(self *C.QwtGraphic, cb C.intptr_t, param1 *C.QRectF, param2 *C.QPixmap, param3 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF), param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QRectF))
+func miqt_exec_callback_QwtGraphic_drawPixmap(self *C.QwtGraphic, cb C.intptr_t, param1 C.struct_miqt_qrectf, param2 *C.QPixmap, param3 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF), param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	slotval2 := qt.UnsafeNewQPixmap(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQRectF(unsafe.Pointer(param3))
+	slotval3 := libmiqt.ValueCast[qt.QRectF](param3)
 
 	gofunc((&QwtGraphic{h: self}).callVirtualBase_DrawPixmap, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QwtGraphic) callVirtualBase_DrawImage(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag) {
+func (this *QwtGraphic) callVirtualBase_DrawImage(param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param3)
 
-	C.QwtGraphic_virtualbase_drawImage(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QImage)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()), (C.int)(param4))
+	C.QwtGraphic_virtualbase_drawImage(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1), (*C.QImage)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param3), (C.int)(param4))
 
 }
-func (this *QwtGraphic) OnDrawImage(slot func(super func(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag), param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag)) {
+func (this *QwtGraphic) OnDrawImage(slot func(super func(param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag), param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag)) {
 	ok := C.QwtGraphic_override_virtual_drawImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -350,18 +325,18 @@ func (this *QwtGraphic) OnDrawImage(slot func(super func(param1 *qt.QRectF, para
 }
 
 //export miqt_exec_callback_QwtGraphic_drawImage
-func miqt_exec_callback_QwtGraphic_drawImage(self *C.QwtGraphic, cb C.intptr_t, param1 *C.QRectF, param2 *C.QImage, param3 *C.QRectF, param4 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag), param1 *qt.QRectF, param2 *qt.QImage, param3 *qt.QRectF, param4 qt.ImageConversionFlag))
+func miqt_exec_callback_QwtGraphic_drawImage(self *C.QwtGraphic, cb C.intptr_t, param1 C.struct_miqt_qrectf, param2 *C.QImage, param3 C.struct_miqt_qrectf, param4 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag), param1 qt.QRectF, param2 *qt.QImage, param3 qt.QRectF, param4 qt.ImageConversionFlag))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	slotval2 := qt.UnsafeNewQImage(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQRectF(unsafe.Pointer(param3))
+	slotval3 := libmiqt.ValueCast[qt.QRectF](param3)
 
 	slotval4 := (qt.ImageConversionFlag)(param4)
 
@@ -455,7 +430,6 @@ func miqt_exec_callback_QwtGraphic_metric(self *C.QwtGraphic, cb C.intptr_t, par
 
 func (this *QwtGraphic) callVirtualBase_DrawRects(param1 *qt.QRect, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QwtGraphic_virtualbase_drawRects(unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -513,14 +487,13 @@ func miqt_exec_callback_QwtGraphic_drawLines(self *C.QwtGraphic, cb C.intptr_t, 
 
 }
 
-func (this *QwtGraphic) callVirtualBase_DrawEllipse(param1 *qt.QRectF) {
+func (this *QwtGraphic) callVirtualBase_DrawEllipse(param1 qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
-	C.QwtGraphic_virtualbase_drawEllipse(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))
+	C.QwtGraphic_virtualbase_drawEllipse(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1))
 
 }
-func (this *QwtGraphic) OnDrawEllipse(slot func(super func(param1 *qt.QRectF), param1 *qt.QRectF)) {
+func (this *QwtGraphic) OnDrawEllipse(slot func(super func(param1 qt.QRectF), param1 qt.QRectF)) {
 	ok := C.QwtGraphic_override_virtual_drawEllipse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -528,14 +501,14 @@ func (this *QwtGraphic) OnDrawEllipse(slot func(super func(param1 *qt.QRectF), p
 }
 
 //export miqt_exec_callback_QwtGraphic_drawEllipse
-func miqt_exec_callback_QwtGraphic_drawEllipse(self *C.QwtGraphic, cb C.intptr_t, param1 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF), param1 *qt.QRectF))
+func miqt_exec_callback_QwtGraphic_drawEllipse(self *C.QwtGraphic, cb C.intptr_t, param1 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF), param1 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	gofunc((&QwtGraphic{h: self}).callVirtualBase_DrawEllipse, slotval1)
 
@@ -543,7 +516,6 @@ func miqt_exec_callback_QwtGraphic_drawEllipse(self *C.QwtGraphic, cb C.intptr_t
 
 func (this *QwtGraphic) callVirtualBase_DrawPoints(param1 *qt.QPointF, param2 int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QwtGraphic_virtualbase_drawPoints(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2))
 
@@ -573,7 +545,6 @@ func miqt_exec_callback_QwtGraphic_drawPoints(self *C.QwtGraphic, cb C.intptr_t,
 
 func (this *QwtGraphic) callVirtualBase_DrawPolygon(param1 *qt.QPointF, param2 int, param3 qt.QPaintEngine__PolygonDrawMode) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QwtGraphic_virtualbase_drawPolygon(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (C.int)(param2), (C.int)(param3))
 
@@ -603,15 +574,14 @@ func miqt_exec_callback_QwtGraphic_drawPolygon(self *C.QwtGraphic, cb C.intptr_t
 
 }
 
-func (this *QwtGraphic) callVirtualBase_DrawTextItem(param1 *qt.QPointF, param2 *qt.QTextItem) {
+func (this *QwtGraphic) callVirtualBase_DrawTextItem(param1 qt.QPointF, param2 *qt.QTextItem) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
-	C.QwtGraphic_virtualbase_drawTextItem(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (*C.QTextItem)(param2.UnsafePointer()))
+	C.QwtGraphic_virtualbase_drawTextItem(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](param1), (*C.QTextItem)(param2.UnsafePointer()))
 
 }
-func (this *QwtGraphic) OnDrawTextItem(slot func(super func(param1 *qt.QPointF, param2 *qt.QTextItem), param1 *qt.QPointF, param2 *qt.QTextItem)) {
+func (this *QwtGraphic) OnDrawTextItem(slot func(super func(param1 qt.QPointF, param2 *qt.QTextItem), param1 qt.QPointF, param2 *qt.QTextItem)) {
 	ok := C.QwtGraphic_override_virtual_drawTextItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -619,14 +589,14 @@ func (this *QwtGraphic) OnDrawTextItem(slot func(super func(param1 *qt.QPointF, 
 }
 
 //export miqt_exec_callback_QwtGraphic_drawTextItem
-func miqt_exec_callback_QwtGraphic_drawTextItem(self *C.QwtGraphic, cb C.intptr_t, param1 *C.QPointF, param2 *C.QTextItem) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPointF, param2 *qt.QTextItem), param1 *qt.QPointF, param2 *qt.QTextItem))
+func miqt_exec_callback_QwtGraphic_drawTextItem(self *C.QwtGraphic, cb C.intptr_t, param1 C.struct_miqt_qpointf, param2 *C.QTextItem) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPointF, param2 *qt.QTextItem), param1 qt.QPointF, param2 *qt.QTextItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](param1)
 
 	slotval2 := qt.UnsafeNewQTextItem(unsafe.Pointer(param2))
 
@@ -634,16 +604,14 @@ func miqt_exec_callback_QwtGraphic_drawTextItem(self *C.QwtGraphic, cb C.intptr_
 
 }
 
-func (this *QwtGraphic) callVirtualBase_DrawTiledPixmap(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF) {
+func (this *QwtGraphic) callVirtualBase_DrawTiledPixmap(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param3)
 
-	C.QwtGraphic_virtualbase_drawTiledPixmap(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QPointF)(param3.UnsafePointer()))
+	C.QwtGraphic_virtualbase_drawTiledPixmap(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1), (*C.QPixmap)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](param3))
 
 }
-func (this *QwtGraphic) OnDrawTiledPixmap(slot func(super func(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF), param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF)) {
+func (this *QwtGraphic) OnDrawTiledPixmap(slot func(super func(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF), param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF)) {
 	ok := C.QwtGraphic_override_virtual_drawTiledPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -651,18 +619,18 @@ func (this *QwtGraphic) OnDrawTiledPixmap(slot func(super func(param1 *qt.QRectF
 }
 
 //export miqt_exec_callback_QwtGraphic_drawTiledPixmap
-func miqt_exec_callback_QwtGraphic_drawTiledPixmap(self *C.QwtGraphic, cb C.intptr_t, param1 *C.QRectF, param2 *C.QPixmap, param3 *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF), param1 *qt.QRectF, param2 *qt.QPixmap, param3 *qt.QPointF))
+func miqt_exec_callback_QwtGraphic_drawTiledPixmap(self *C.QwtGraphic, cb C.intptr_t, param1 C.struct_miqt_qrectf, param2 *C.QPixmap, param3 C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF), param1 qt.QRectF, param2 *qt.QPixmap, param3 qt.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	slotval2 := qt.UnsafeNewQPixmap(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQPointF(unsafe.Pointer(param3))
+	slotval3 := libmiqt.ValueCast[qt.QPointF](param3)
 
 	gofunc((&QwtGraphic{h: self}).callVirtualBase_DrawTiledPixmap, slotval1, slotval2, slotval3)
 
@@ -724,7 +692,6 @@ func miqt_exec_callback_QwtGraphic_initPainter(self *C.QwtGraphic, cb C.intptr_t
 
 func (this *QwtGraphic) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtGraphic_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

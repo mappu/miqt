@@ -29,7 +29,7 @@ int miqt_exec_callback_QsciPrinter_metric(const QsciPrinter*, intptr_t, int);
 bool miqt_exec_callback_QsciPrinter_setPageLayout(QsciPrinter*, intptr_t, QPageLayout*);
 bool miqt_exec_callback_QsciPrinter_setPageSize(QsciPrinter*, intptr_t, QPageSize*);
 bool miqt_exec_callback_QsciPrinter_setPageOrientation(QsciPrinter*, intptr_t, int);
-bool miqt_exec_callback_QsciPrinter_setPageMargins(QsciPrinter*, intptr_t, QMarginsF*, int);
+bool miqt_exec_callback_QsciPrinter_setPageMargins(QsciPrinter*, intptr_t, struct miqt_qmarginsf, int);
 void miqt_exec_callback_QsciPrinter_setPageRanges(QsciPrinter*, intptr_t, QPageRanges*);
 void miqt_exec_callback_QsciPrinter_initPainter(const QsciPrinter*, intptr_t, QPainter*);
 QPaintDevice* miqt_exec_callback_QsciPrinter_redirected(const QsciPrinter*, intptr_t, QPoint*);
@@ -268,16 +268,14 @@ public:
 			return QsciPrinter::setPageMargins(margins, units);
 		}
 
-		const QMarginsF& margins_ret = margins;
-		// Cast returned reference into pointer
-		QMarginsF* sigval1 = const_cast<QMarginsF*>(&margins_ret);
+		struct miqt_qmarginsf sigval1 = miqt_to_cabi<struct miqt_qmarginsf>(margins);
 		QPageLayout::Unit units_ret = units;
 		int sigval2 = static_cast<int>(units_ret);
 		bool callback_return_value = miqt_exec_callback_QsciPrinter_setPageMargins(this, handle__setPageMargins, sigval1, sigval2);
 		return callback_return_value;
 	}
 
-	friend bool QsciPrinter_virtualbase_setPageMargins(void* self, QMarginsF* margins, int units);
+	friend bool QsciPrinter_virtualbase_setPageMargins(void* self, struct miqt_qmarginsf margins, int units);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setPageRanges = 0;
@@ -569,8 +567,8 @@ bool QsciPrinter_override_virtual_setPageMargins(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QsciPrinter_virtualbase_setPageMargins(void* self, QMarginsF* margins, int units) {
-	return static_cast<MiqtVirtualQsciPrinter*>(self)->QsciPrinter::setPageMargins(*margins, static_cast<QPageLayout::Unit>(units));
+bool QsciPrinter_virtualbase_setPageMargins(void* self, struct miqt_qmarginsf margins, int units) {
+	return static_cast<MiqtVirtualQsciPrinter*>(self)->QsciPrinter::setPageMargins(miqt_from_cabi<QMarginsF>(margins), static_cast<QPageLayout::Unit>(units));
 }
 
 bool QsciPrinter_override_virtual_setPageRanges(void* self, intptr_t slot) {

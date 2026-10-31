@@ -49,15 +49,15 @@ void miqt_exec_callback_QwtLegendLabel_pressed(intptr_t);
 void miqt_exec_callback_QwtLegendLabel_released(intptr_t);
 void miqt_exec_callback_QwtLegendLabel_checked(intptr_t, bool);
 void miqt_exec_callback_QwtLegendLabel_setText(QwtLegendLabel*, intptr_t, QwtText*);
-QSize* miqt_exec_callback_QwtLegendLabel_sizeHint(const QwtLegendLabel*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtLegendLabel_sizeHint(const QwtLegendLabel*, intptr_t);
 void miqt_exec_callback_QwtLegendLabel_paintEvent(QwtLegendLabel*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtLegendLabel_mousePressEvent(QwtLegendLabel*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QwtLegendLabel_mouseReleaseEvent(QwtLegendLabel*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QwtLegendLabel_keyPressEvent(QwtLegendLabel*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QwtLegendLabel_keyReleaseEvent(QwtLegendLabel*, intptr_t, QKeyEvent*);
-QSize* miqt_exec_callback_QwtLegendLabel_minimumSizeHint(const QwtLegendLabel*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtLegendLabel_minimumSizeHint(const QwtLegendLabel*, intptr_t);
 int miqt_exec_callback_QwtLegendLabel_heightForWidth(const QwtLegendLabel*, intptr_t, int);
-void miqt_exec_callback_QwtLegendLabel_drawText(QwtLegendLabel*, intptr_t, QPainter*, QRectF*);
+void miqt_exec_callback_QwtLegendLabel_drawText(QwtLegendLabel*, intptr_t, QPainter*, struct miqt_qrectf);
 void miqt_exec_callback_QwtLegendLabel_drawContents(QwtLegendLabel*, intptr_t, QPainter*);
 bool miqt_exec_callback_QwtLegendLabel_event(QwtLegendLabel*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtLegendLabel_changeEvent(QwtLegendLabel*, intptr_t, QEvent*);
@@ -138,13 +138,11 @@ public:
 			return QwtLegendLabel::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtLegendLabel_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtLegendLabel_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtLegendLabel_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtLegendLabel_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -240,13 +238,11 @@ public:
 			return QwtLegendLabel::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtLegendLabel_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtLegendLabel_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtLegendLabel_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtLegendLabel_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -275,14 +271,12 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QRectF& param2_ret = param2;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&param2_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(param2);
 		miqt_exec_callback_QwtLegendLabel_drawText(this, handle__drawText, sigval1, sigval2);
 
 	}
 
-	friend void QwtLegendLabel_virtualbase_drawText(void* self, QPainter* param1, QRectF* param2);
+	friend void QwtLegendLabel_virtualbase_drawText(void* self, QPainter* param1, struct miqt_qrectf param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawContents = 0;
@@ -1062,8 +1056,8 @@ QPixmap* QwtLegendLabel_icon(const QwtLegendLabel* self) {
 	return new QPixmap(self->icon());
 }
 
-QSize* QwtLegendLabel_sizeHint(const QwtLegendLabel* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtLegendLabel_sizeHint(const QwtLegendLabel* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 bool QwtLegendLabel_isChecked(const QwtLegendLabel* self) {
@@ -1183,8 +1177,8 @@ bool QwtLegendLabel_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtLegendLabel_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtLegendLabel*>(self)->QwtLegendLabel::sizeHint());
+struct miqt_qsize QwtLegendLabel_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtLegendLabel*>(self)->QwtLegendLabel::sizeHint());
 }
 
 bool QwtLegendLabel_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1267,8 +1261,8 @@ bool QwtLegendLabel_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QwtLegendLabel_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtLegendLabel*>(self)->QwtLegendLabel::minimumSizeHint());
+struct miqt_qsize QwtLegendLabel_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtLegendLabel*>(self)->QwtLegendLabel::minimumSizeHint());
 }
 
 bool QwtLegendLabel_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1295,8 +1289,8 @@ bool QwtLegendLabel_override_virtual_drawText(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtLegendLabel_virtualbase_drawText(void* self, QPainter* param1, QRectF* param2) {
-	static_cast<MiqtVirtualQwtLegendLabel*>(self)->QwtLegendLabel::drawText(param1, *param2);
+void QwtLegendLabel_virtualbase_drawText(void* self, QPainter* param1, struct miqt_qrectf param2) {
+	static_cast<MiqtVirtualQwtLegendLabel*>(self)->QwtLegendLabel::drawText(param1, miqt_from_cabi<QRectF>(param2));
 }
 
 bool QwtLegendLabel_override_virtual_drawContents(void* self, intptr_t slot) {
@@ -1858,10 +1852,6 @@ bool QwtLegendLabel_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QwtLegendLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtLegendLabel*>(self)->QwtLegendLabel::disconnectNotify(*signal);
-}
-
-QSize* QwtLegendLabel_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtLegendLabel_virtualreturncopy_QVariant(QVariant* src) {

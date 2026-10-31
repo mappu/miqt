@@ -67,17 +67,17 @@ void QGraphicsAnchorLayout_setSpacing(QGraphicsAnchorLayout* self, double spacin
 double QGraphicsAnchorLayout_horizontalSpacing(const QGraphicsAnchorLayout* self);
 double QGraphicsAnchorLayout_verticalSpacing(const QGraphicsAnchorLayout* self);
 void QGraphicsAnchorLayout_removeAt(QGraphicsAnchorLayout* self, int index);
-void QGraphicsAnchorLayout_setGeometry(QGraphicsAnchorLayout* self, QRectF* rect);
+void QGraphicsAnchorLayout_setGeometry(QGraphicsAnchorLayout* self, struct miqt_qrectf rect);
 int QGraphicsAnchorLayout_count(const QGraphicsAnchorLayout* self);
 QGraphicsLayoutItem* QGraphicsAnchorLayout_itemAt(const QGraphicsAnchorLayout* self, int index);
 void QGraphicsAnchorLayout_invalidate(QGraphicsAnchorLayout* self);
-QSizeF* QGraphicsAnchorLayout_sizeHint(const QGraphicsAnchorLayout* self, int which, QSizeF* constraint);
+struct miqt_qsizef QGraphicsAnchorLayout_sizeHint(const QGraphicsAnchorLayout* self, int which, struct miqt_qsizef constraint);
 void QGraphicsAnchorLayout_addAnchors2(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, QGraphicsLayoutItem* secondItem, int orientations);
 
 bool QGraphicsAnchorLayout_override_virtual_removeAt(void* self, intptr_t slot);
 void QGraphicsAnchorLayout_virtualbase_removeAt(void* self, int index);
 bool QGraphicsAnchorLayout_override_virtual_setGeometry(void* self, intptr_t slot);
-void QGraphicsAnchorLayout_virtualbase_setGeometry(void* self, QRectF* rect);
+void QGraphicsAnchorLayout_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 bool QGraphicsAnchorLayout_override_virtual_count(void* self, intptr_t slot);
 int QGraphicsAnchorLayout_virtualbase_count(const void* self);
 bool QGraphicsAnchorLayout_override_virtual_itemAt(void* self, intptr_t slot);
@@ -85,7 +85,7 @@ QGraphicsLayoutItem* QGraphicsAnchorLayout_virtualbase_itemAt(const void* self, 
 bool QGraphicsAnchorLayout_override_virtual_invalidate(void* self, intptr_t slot);
 void QGraphicsAnchorLayout_virtualbase_invalidate(void* self);
 bool QGraphicsAnchorLayout_override_virtual_sizeHint(void* self, intptr_t slot);
-QSizeF* QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+struct miqt_qsizef QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint);
 bool QGraphicsAnchorLayout_override_virtual_getContentsMargins(void* self, intptr_t slot);
 void QGraphicsAnchorLayout_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
 bool QGraphicsAnchorLayout_override_virtual_updateGeometry(void* self, intptr_t slot);
@@ -94,7 +94,6 @@ bool QGraphicsAnchorLayout_override_virtual_widgetEvent(void* self, intptr_t slo
 void QGraphicsAnchorLayout_virtualbase_widgetEvent(void* self, QEvent* e);
 bool QGraphicsAnchorLayout_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsAnchorLayout_virtualbase_isEmpty(const void* self);
-QSizeF* QGraphicsAnchorLayout_virtualreturncopy_QSizeF(QSizeF* src);
 
 void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
 void QGraphicsAnchorLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);

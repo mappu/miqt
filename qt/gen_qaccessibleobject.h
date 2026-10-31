@@ -39,7 +39,7 @@ typedef struct QWindow QWindow;
 void QAccessibleObject_virtbase(QAccessibleObject* src, QAccessibleInterface** outptr_QAccessibleInterface);
 bool QAccessibleObject_isValid(const QAccessibleObject* self);
 QObject* QAccessibleObject_object(const QAccessibleObject* self);
-QRect* QAccessibleObject_rect(const QAccessibleObject* self);
+struct miqt_qrect QAccessibleObject_rect(const QAccessibleObject* self);
 void QAccessibleObject_setText(QAccessibleObject* self, int t, struct miqt_string text);
 QAccessibleInterface* QAccessibleObject_childAt(const QAccessibleObject* self, int x, int y);
 

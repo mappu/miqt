@@ -54,9 +54,9 @@ void miqt_exec_callback_QWebPage_linkHovered(intptr_t, struct miqt_string, struc
 void miqt_exec_callback_QWebPage_statusBarMessage(intptr_t, struct miqt_string);
 void miqt_exec_callback_QWebPage_selectionChanged(intptr_t);
 void miqt_exec_callback_QWebPage_frameCreated(intptr_t, QWebFrame*);
-void miqt_exec_callback_QWebPage_geometryChangeRequested(intptr_t, QRect*);
-void miqt_exec_callback_QWebPage_repaintRequested(intptr_t, QRect*);
-void miqt_exec_callback_QWebPage_scrollRequested(intptr_t, int, int, QRect*);
+void miqt_exec_callback_QWebPage_geometryChangeRequested(intptr_t, struct miqt_qrect);
+void miqt_exec_callback_QWebPage_repaintRequested(intptr_t, struct miqt_qrect);
+void miqt_exec_callback_QWebPage_scrollRequested(intptr_t, int, int, struct miqt_qrect);
 void miqt_exec_callback_QWebPage_windowCloseRequested(intptr_t);
 void miqt_exec_callback_QWebPage_printRequested(intptr_t, QWebFrame*);
 void miqt_exec_callback_QWebPage_linkClicked(intptr_t, QUrl*);
@@ -584,8 +584,8 @@ QWebFrame* QWebPage_currentFrame(const QWebPage* self) {
 	return self->currentFrame();
 }
 
-QWebFrame* QWebPage_frameAt(const QWebPage* self, QPoint* pos) {
-	return self->frameAt(*pos);
+QWebFrame* QWebPage_frameAt(const QWebPage* self, struct miqt_qpoint pos) {
+	return self->frameAt(miqt_from_cabi<QPoint>(pos));
 }
 
 QWebHistory* QWebPage_history(const QWebPage* self) {
@@ -702,28 +702,28 @@ void QWebPage_resetDevicePixelRatio(QWebPage* self) {
 	self->resetDevicePixelRatio();
 }
 
-QSize* QWebPage_viewportSize(const QWebPage* self) {
-	return new QSize(self->viewportSize());
+struct miqt_qsize QWebPage_viewportSize(const QWebPage* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->viewportSize());
 }
 
-void QWebPage_setViewportSize(const QWebPage* self, QSize* size) {
-	self->setViewportSize(*size);
+void QWebPage_setViewportSize(const QWebPage* self, struct miqt_qsize size) {
+	self->setViewportSize(miqt_from_cabi<QSize>(size));
 }
 
-QWebPage__ViewportAttributes* QWebPage_viewportAttributesForSize(const QWebPage* self, QSize* availableSize) {
-	return new QWebPage::ViewportAttributes(self->viewportAttributesForSize(*availableSize));
+QWebPage__ViewportAttributes* QWebPage_viewportAttributesForSize(const QWebPage* self, struct miqt_qsize availableSize) {
+	return new QWebPage::ViewportAttributes(self->viewportAttributesForSize(miqt_from_cabi<QSize>(availableSize)));
 }
 
-QSize* QWebPage_preferredContentsSize(const QWebPage* self) {
-	return new QSize(self->preferredContentsSize());
+struct miqt_qsize QWebPage_preferredContentsSize(const QWebPage* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->preferredContentsSize());
 }
 
-void QWebPage_setPreferredContentsSize(const QWebPage* self, QSize* size) {
-	self->setPreferredContentsSize(*size);
+void QWebPage_setPreferredContentsSize(const QWebPage* self, struct miqt_qsize size) {
+	self->setPreferredContentsSize(miqt_from_cabi<QSize>(size));
 }
 
-void QWebPage_setActualVisibleContentRect(const QWebPage* self, QRect* rect) {
-	self->setActualVisibleContentRect(*rect);
+void QWebPage_setActualVisibleContentRect(const QWebPage* self, struct miqt_qrect rect) {
+	self->setActualVisibleContentRect(miqt_from_cabi<QRect>(rect));
 }
 
 bool QWebPage_event(QWebPage* self, QEvent* param1) {
@@ -780,8 +780,8 @@ bool QWebPage_swallowContextMenuEvent(QWebPage* self, QContextMenuEvent* event) 
 	return self->swallowContextMenuEvent(event);
 }
 
-void QWebPage_updatePositionDependentActions(QWebPage* self, QPoint* pos) {
-	self->updatePositionDependentActions(*pos);
+void QWebPage_updatePositionDependentActions(QWebPage* self, struct miqt_qpoint pos) {
+	self->updatePositionDependentActions(miqt_from_cabi<QPoint>(pos));
 }
 
 QMenu* QWebPage_createStandardContextMenu(QWebPage* self) {
@@ -938,43 +938,37 @@ void QWebPage_connect_frameCreated(QWebPage* self, intptr_t slot) {
 	});
 }
 
-void QWebPage_geometryChangeRequested(QWebPage* self, QRect* geom) {
-	self->geometryChangeRequested(*geom);
+void QWebPage_geometryChangeRequested(QWebPage* self, struct miqt_qrect geom) {
+	self->geometryChangeRequested(miqt_from_cabi<QRect>(geom));
 }
 
 void QWebPage_connect_geometryChangeRequested(QWebPage* self, intptr_t slot) {
 	QWebPage::connect(self, static_cast<void (QWebPage::*)(const QRect&)>(&QWebPage::geometryChangeRequested), self, [=](const QRect& geom) {
-		const QRect& geom_ret = geom;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&geom_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(geom);
 		miqt_exec_callback_QWebPage_geometryChangeRequested(slot, sigval1);
 	});
 }
 
-void QWebPage_repaintRequested(QWebPage* self, QRect* dirtyRect) {
-	self->repaintRequested(*dirtyRect);
+void QWebPage_repaintRequested(QWebPage* self, struct miqt_qrect dirtyRect) {
+	self->repaintRequested(miqt_from_cabi<QRect>(dirtyRect));
 }
 
 void QWebPage_connect_repaintRequested(QWebPage* self, intptr_t slot) {
 	QWebPage::connect(self, static_cast<void (QWebPage::*)(const QRect&)>(&QWebPage::repaintRequested), self, [=](const QRect& dirtyRect) {
-		const QRect& dirtyRect_ret = dirtyRect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&dirtyRect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(dirtyRect);
 		miqt_exec_callback_QWebPage_repaintRequested(slot, sigval1);
 	});
 }
 
-void QWebPage_scrollRequested(QWebPage* self, int dx, int dy, QRect* scrollViewRect) {
-	self->scrollRequested(static_cast<int>(dx), static_cast<int>(dy), *scrollViewRect);
+void QWebPage_scrollRequested(QWebPage* self, int dx, int dy, struct miqt_qrect scrollViewRect) {
+	self->scrollRequested(static_cast<int>(dx), static_cast<int>(dy), miqt_from_cabi<QRect>(scrollViewRect));
 }
 
 void QWebPage_connect_scrollRequested(QWebPage* self, intptr_t slot) {
 	QWebPage::connect(self, static_cast<void (QWebPage::*)(int, int, const QRect&)>(&QWebPage::scrollRequested), self, [=](int dx, int dy, const QRect& scrollViewRect) {
 		int sigval1 = dx;
 		int sigval2 = dy;
-		const QRect& scrollViewRect_ret = scrollViewRect;
-		// Cast returned reference into pointer
-		QRect* sigval3 = const_cast<QRect*>(&scrollViewRect_ret);
+		struct miqt_qrect sigval3 = miqt_to_cabi<struct miqt_qrect>(scrollViewRect);
 		miqt_exec_callback_QWebPage_scrollRequested(slot, sigval1, sigval2, sigval3);
 	});
 }
@@ -1689,8 +1683,8 @@ bool QWebPage__ViewportAttributes_isValid(const QWebPage__ViewportAttributes* se
 	return self->isValid();
 }
 
-QSizeF* QWebPage__ViewportAttributes_size(const QWebPage__ViewportAttributes* self) {
-	return new QSizeF(self->size());
+struct miqt_qsizef QWebPage__ViewportAttributes_size(const QWebPage__ViewportAttributes* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->size());
 }
 
 void QWebPage__ViewportAttributes_delete(QWebPage__ViewportAttributes* self) {

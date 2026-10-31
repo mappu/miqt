@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -176,15 +177,12 @@ func QImageCapture_FileFormatDescription(c QImageCapture__FileFormat) string {
 	return _ret
 }
 
-func (this *QImageCapture) Resolution() *qt6.QSize {
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QImageCapture_resolution(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QImageCapture) Resolution() qt6.QSize {
+	return libmiqt.ValueCast[qt6.QSize](C.QImageCapture_resolution(this.h))
 }
 
-func (this *QImageCapture) SetResolution(resolution *qt6.QSize) {
-	defer runtime.KeepAlive(resolution)
-	C.QImageCapture_setResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
+func (this *QImageCapture) SetResolution(resolution qt6.QSize) {
+	C.QImageCapture_setResolution(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](resolution))
 }
 
 func (this *QImageCapture) SetResolution2(width int, height int) {

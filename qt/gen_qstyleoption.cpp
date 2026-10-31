@@ -108,12 +108,12 @@ void QStyleOption_setDirection(QStyleOption* self, int direction) {
 	self->direction = static_cast<Qt::LayoutDirection>(direction);
 }
 
-QRect* QStyleOption_rect(const QStyleOption* self) {
-	return new QRect(self->rect);
+struct miqt_qrect QStyleOption_rect(const QStyleOption* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rect);
 }
 
-void QStyleOption_setRect(QStyleOption* self, QRect* rect) {
-	self->rect = *rect;
+void QStyleOption_setRect(QStyleOption* self, struct miqt_qrect rect) {
+	self->rect = miqt_from_cabi<QRect>(rect);
 }
 
 QFontMetrics* QStyleOption_fontMetrics(const QStyleOption* self) {
@@ -168,12 +168,12 @@ void QStyleOptionFocusRect_virtbase(QStyleOptionFocusRect* src, QStyleOption** o
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-QColor* QStyleOptionFocusRect_backgroundColor(const QStyleOptionFocusRect* self) {
-	return new QColor(self->backgroundColor);
+struct miqt_qcolor QStyleOptionFocusRect_backgroundColor(const QStyleOptionFocusRect* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->backgroundColor);
 }
 
-void QStyleOptionFocusRect_setBackgroundColor(QStyleOptionFocusRect* self, QColor* backgroundColor) {
-	self->backgroundColor = *backgroundColor;
+void QStyleOptionFocusRect_setBackgroundColor(QStyleOptionFocusRect* self, struct miqt_qcolor backgroundColor) {
+	self->backgroundColor = miqt_from_cabi<QColor>(backgroundColor);
 }
 
 void QStyleOptionFocusRect_operatorAssign(QStyleOptionFocusRect* self, QStyleOptionFocusRect* param1) {
@@ -275,44 +275,44 @@ void QStyleOptionTabWidgetFrame_setShape(QStyleOptionTabWidgetFrame* self, int s
 	self->shape = static_cast<QTabBar::Shape>(shape);
 }
 
-QSize* QStyleOptionTabWidgetFrame_tabBarSize(const QStyleOptionTabWidgetFrame* self) {
-	return new QSize(self->tabBarSize);
+struct miqt_qsize QStyleOptionTabWidgetFrame_tabBarSize(const QStyleOptionTabWidgetFrame* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->tabBarSize);
 }
 
-void QStyleOptionTabWidgetFrame_setTabBarSize(QStyleOptionTabWidgetFrame* self, QSize* tabBarSize) {
-	self->tabBarSize = *tabBarSize;
+void QStyleOptionTabWidgetFrame_setTabBarSize(QStyleOptionTabWidgetFrame* self, struct miqt_qsize tabBarSize) {
+	self->tabBarSize = miqt_from_cabi<QSize>(tabBarSize);
 }
 
-QSize* QStyleOptionTabWidgetFrame_rightCornerWidgetSize(const QStyleOptionTabWidgetFrame* self) {
-	return new QSize(self->rightCornerWidgetSize);
+struct miqt_qsize QStyleOptionTabWidgetFrame_rightCornerWidgetSize(const QStyleOptionTabWidgetFrame* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->rightCornerWidgetSize);
 }
 
-void QStyleOptionTabWidgetFrame_setRightCornerWidgetSize(QStyleOptionTabWidgetFrame* self, QSize* rightCornerWidgetSize) {
-	self->rightCornerWidgetSize = *rightCornerWidgetSize;
+void QStyleOptionTabWidgetFrame_setRightCornerWidgetSize(QStyleOptionTabWidgetFrame* self, struct miqt_qsize rightCornerWidgetSize) {
+	self->rightCornerWidgetSize = miqt_from_cabi<QSize>(rightCornerWidgetSize);
 }
 
-QSize* QStyleOptionTabWidgetFrame_leftCornerWidgetSize(const QStyleOptionTabWidgetFrame* self) {
-	return new QSize(self->leftCornerWidgetSize);
+struct miqt_qsize QStyleOptionTabWidgetFrame_leftCornerWidgetSize(const QStyleOptionTabWidgetFrame* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->leftCornerWidgetSize);
 }
 
-void QStyleOptionTabWidgetFrame_setLeftCornerWidgetSize(QStyleOptionTabWidgetFrame* self, QSize* leftCornerWidgetSize) {
-	self->leftCornerWidgetSize = *leftCornerWidgetSize;
+void QStyleOptionTabWidgetFrame_setLeftCornerWidgetSize(QStyleOptionTabWidgetFrame* self, struct miqt_qsize leftCornerWidgetSize) {
+	self->leftCornerWidgetSize = miqt_from_cabi<QSize>(leftCornerWidgetSize);
 }
 
-QRect* QStyleOptionTabWidgetFrame_tabBarRect(const QStyleOptionTabWidgetFrame* self) {
-	return new QRect(self->tabBarRect);
+struct miqt_qrect QStyleOptionTabWidgetFrame_tabBarRect(const QStyleOptionTabWidgetFrame* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->tabBarRect);
 }
 
-void QStyleOptionTabWidgetFrame_setTabBarRect(QStyleOptionTabWidgetFrame* self, QRect* tabBarRect) {
-	self->tabBarRect = *tabBarRect;
+void QStyleOptionTabWidgetFrame_setTabBarRect(QStyleOptionTabWidgetFrame* self, struct miqt_qrect tabBarRect) {
+	self->tabBarRect = miqt_from_cabi<QRect>(tabBarRect);
 }
 
-QRect* QStyleOptionTabWidgetFrame_selectedTabRect(const QStyleOptionTabWidgetFrame* self) {
-	return new QRect(self->selectedTabRect);
+struct miqt_qrect QStyleOptionTabWidgetFrame_selectedTabRect(const QStyleOptionTabWidgetFrame* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->selectedTabRect);
 }
 
-void QStyleOptionTabWidgetFrame_setSelectedTabRect(QStyleOptionTabWidgetFrame* self, QRect* selectedTabRect) {
-	self->selectedTabRect = *selectedTabRect;
+void QStyleOptionTabWidgetFrame_setSelectedTabRect(QStyleOptionTabWidgetFrame* self, struct miqt_qrect selectedTabRect) {
+	self->selectedTabRect = miqt_from_cabi<QRect>(selectedTabRect);
 }
 
 void QStyleOptionTabWidgetFrame_operatorAssign(QStyleOptionTabWidgetFrame* self, QStyleOptionTabWidgetFrame* param1) {
@@ -344,20 +344,20 @@ void QStyleOptionTabBarBase_setShape(QStyleOptionTabBarBase* self, int shape) {
 	self->shape = static_cast<QTabBar::Shape>(shape);
 }
 
-QRect* QStyleOptionTabBarBase_tabBarRect(const QStyleOptionTabBarBase* self) {
-	return new QRect(self->tabBarRect);
+struct miqt_qrect QStyleOptionTabBarBase_tabBarRect(const QStyleOptionTabBarBase* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->tabBarRect);
 }
 
-void QStyleOptionTabBarBase_setTabBarRect(QStyleOptionTabBarBase* self, QRect* tabBarRect) {
-	self->tabBarRect = *tabBarRect;
+void QStyleOptionTabBarBase_setTabBarRect(QStyleOptionTabBarBase* self, struct miqt_qrect tabBarRect) {
+	self->tabBarRect = miqt_from_cabi<QRect>(tabBarRect);
 }
 
-QRect* QStyleOptionTabBarBase_selectedTabRect(const QStyleOptionTabBarBase* self) {
-	return new QRect(self->selectedTabRect);
+struct miqt_qrect QStyleOptionTabBarBase_selectedTabRect(const QStyleOptionTabBarBase* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->selectedTabRect);
 }
 
-void QStyleOptionTabBarBase_setSelectedTabRect(QStyleOptionTabBarBase* self, QRect* selectedTabRect) {
-	self->selectedTabRect = *selectedTabRect;
+void QStyleOptionTabBarBase_setSelectedTabRect(QStyleOptionTabBarBase* self, struct miqt_qrect selectedTabRect) {
+	self->selectedTabRect = miqt_from_cabi<QRect>(selectedTabRect);
 }
 
 bool QStyleOptionTabBarBase_documentMode(const QStyleOptionTabBarBase* self) {
@@ -527,12 +527,12 @@ void QStyleOptionButton_setIcon(QStyleOptionButton* self, QIcon* icon) {
 	self->icon = *icon;
 }
 
-QSize* QStyleOptionButton_iconSize(const QStyleOptionButton* self) {
-	return new QSize(self->iconSize);
+struct miqt_qsize QStyleOptionButton_iconSize(const QStyleOptionButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize);
 }
 
-void QStyleOptionButton_setIconSize(QStyleOptionButton* self, QSize* iconSize) {
-	self->iconSize = *iconSize;
+void QStyleOptionButton_setIconSize(QStyleOptionButton* self, struct miqt_qsize iconSize) {
+	self->iconSize = miqt_from_cabi<QSize>(iconSize);
 }
 
 void QStyleOptionButton_operatorAssign(QStyleOptionButton* self, QStyleOptionButton* param1) {
@@ -623,12 +623,12 @@ void QStyleOptionTab_setCornerWidgets(QStyleOptionTab* self, int cornerWidgets) 
 	self->cornerWidgets = static_cast<QStyleOptionTab::CornerWidgets>(cornerWidgets);
 }
 
-QSize* QStyleOptionTab_iconSize(const QStyleOptionTab* self) {
-	return new QSize(self->iconSize);
+struct miqt_qsize QStyleOptionTab_iconSize(const QStyleOptionTab* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize);
 }
 
-void QStyleOptionTab_setIconSize(QStyleOptionTab* self, QSize* iconSize) {
-	self->iconSize = *iconSize;
+void QStyleOptionTab_setIconSize(QStyleOptionTab* self, struct miqt_qsize iconSize) {
+	self->iconSize = miqt_from_cabi<QSize>(iconSize);
 }
 
 bool QStyleOptionTab_documentMode(const QStyleOptionTab* self) {
@@ -639,20 +639,20 @@ void QStyleOptionTab_setDocumentMode(QStyleOptionTab* self, bool documentMode) {
 	self->documentMode = documentMode;
 }
 
-QSize* QStyleOptionTab_leftButtonSize(const QStyleOptionTab* self) {
-	return new QSize(self->leftButtonSize);
+struct miqt_qsize QStyleOptionTab_leftButtonSize(const QStyleOptionTab* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->leftButtonSize);
 }
 
-void QStyleOptionTab_setLeftButtonSize(QStyleOptionTab* self, QSize* leftButtonSize) {
-	self->leftButtonSize = *leftButtonSize;
+void QStyleOptionTab_setLeftButtonSize(QStyleOptionTab* self, struct miqt_qsize leftButtonSize) {
+	self->leftButtonSize = miqt_from_cabi<QSize>(leftButtonSize);
 }
 
-QSize* QStyleOptionTab_rightButtonSize(const QStyleOptionTab* self) {
-	return new QSize(self->rightButtonSize);
+struct miqt_qsize QStyleOptionTab_rightButtonSize(const QStyleOptionTab* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->rightButtonSize);
 }
 
-void QStyleOptionTab_setRightButtonSize(QStyleOptionTab* self, QSize* rightButtonSize) {
-	self->rightButtonSize = *rightButtonSize;
+void QStyleOptionTab_setRightButtonSize(QStyleOptionTab* self, struct miqt_qsize rightButtonSize) {
+	self->rightButtonSize = miqt_from_cabi<QSize>(rightButtonSize);
 }
 
 int QStyleOptionTab_features(const QStyleOptionTab* self) {
@@ -920,12 +920,12 @@ void QStyleOptionMenuItem_setMenuHasCheckableItems(QStyleOptionMenuItem* self, b
 	self->menuHasCheckableItems = menuHasCheckableItems;
 }
 
-QRect* QStyleOptionMenuItem_menuRect(const QStyleOptionMenuItem* self) {
-	return new QRect(self->menuRect);
+struct miqt_qrect QStyleOptionMenuItem_menuRect(const QStyleOptionMenuItem* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->menuRect);
 }
 
-void QStyleOptionMenuItem_setMenuRect(QStyleOptionMenuItem* self, QRect* menuRect) {
-	self->menuRect = *menuRect;
+void QStyleOptionMenuItem_setMenuRect(QStyleOptionMenuItem* self, struct miqt_qrect menuRect) {
+	self->menuRect = miqt_from_cabi<QRect>(menuRect);
 }
 
 struct miqt_string QStyleOptionMenuItem_text(const QStyleOptionMenuItem* self) {
@@ -1100,12 +1100,12 @@ void QStyleOptionViewItem_setDecorationPosition(QStyleOptionViewItem* self, int 
 	self->decorationPosition = static_cast<QStyleOptionViewItem::Position>(decorationPosition);
 }
 
-QSize* QStyleOptionViewItem_decorationSize(const QStyleOptionViewItem* self) {
-	return new QSize(self->decorationSize);
+struct miqt_qsize QStyleOptionViewItem_decorationSize(const QStyleOptionViewItem* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->decorationSize);
 }
 
-void QStyleOptionViewItem_setDecorationSize(QStyleOptionViewItem* self, QSize* decorationSize) {
-	self->decorationSize = *decorationSize;
+void QStyleOptionViewItem_setDecorationSize(QStyleOptionViewItem* self, struct miqt_qsize decorationSize) {
+	self->decorationSize = miqt_from_cabi<QSize>(decorationSize);
 }
 
 QFont* QStyleOptionViewItem_font(const QStyleOptionViewItem* self) {
@@ -1149,12 +1149,12 @@ void QStyleOptionViewItem_setWidget(QStyleOptionViewItem* self, QWidget* widget)
 	self->widget = widget;
 }
 
-QModelIndex* QStyleOptionViewItem_index(const QStyleOptionViewItem* self) {
-	return new QModelIndex(self->index);
+struct miqt_qmodelindex QStyleOptionViewItem_index(const QStyleOptionViewItem* self) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->index);
 }
 
-void QStyleOptionViewItem_setIndex(QStyleOptionViewItem* self, QModelIndex* index) {
-	self->index = *index;
+void QStyleOptionViewItem_setIndex(QStyleOptionViewItem* self, struct miqt_qmodelindex index) {
+	self->index = miqt_from_cabi<QModelIndex>(index);
 }
 
 int QStyleOptionViewItem_checkState(const QStyleOptionViewItem* self) {
@@ -1554,12 +1554,12 @@ void QStyleOptionToolButton_setIcon(QStyleOptionToolButton* self, QIcon* icon) {
 	self->icon = *icon;
 }
 
-QSize* QStyleOptionToolButton_iconSize(const QStyleOptionToolButton* self) {
-	return new QSize(self->iconSize);
+struct miqt_qsize QStyleOptionToolButton_iconSize(const QStyleOptionToolButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize);
 }
 
-void QStyleOptionToolButton_setIconSize(QStyleOptionToolButton* self, QSize* iconSize) {
-	self->iconSize = *iconSize;
+void QStyleOptionToolButton_setIconSize(QStyleOptionToolButton* self, struct miqt_qsize iconSize) {
+	self->iconSize = miqt_from_cabi<QSize>(iconSize);
 }
 
 struct miqt_string QStyleOptionToolButton_text(const QStyleOptionToolButton* self) {
@@ -1596,12 +1596,12 @@ void QStyleOptionToolButton_setToolButtonStyle(QStyleOptionToolButton* self, int
 	self->toolButtonStyle = static_cast<Qt::ToolButtonStyle>(toolButtonStyle);
 }
 
-QPoint* QStyleOptionToolButton_pos(const QStyleOptionToolButton* self) {
-	return new QPoint(self->pos);
+struct miqt_qpoint QStyleOptionToolButton_pos(const QStyleOptionToolButton* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos);
 }
 
-void QStyleOptionToolButton_setPos(QStyleOptionToolButton* self, QPoint* pos) {
-	self->pos = *pos;
+void QStyleOptionToolButton_setPos(QStyleOptionToolButton* self, struct miqt_qpoint pos) {
+	self->pos = miqt_from_cabi<QPoint>(pos);
 }
 
 QFont* QStyleOptionToolButton_font(const QStyleOptionToolButton* self) {
@@ -1640,12 +1640,12 @@ void QStyleOptionComboBox_setEditable(QStyleOptionComboBox* self, bool editable)
 	self->editable = editable;
 }
 
-QRect* QStyleOptionComboBox_popupRect(const QStyleOptionComboBox* self) {
-	return new QRect(self->popupRect);
+struct miqt_qrect QStyleOptionComboBox_popupRect(const QStyleOptionComboBox* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->popupRect);
 }
 
-void QStyleOptionComboBox_setPopupRect(QStyleOptionComboBox* self, QRect* popupRect) {
-	self->popupRect = *popupRect;
+void QStyleOptionComboBox_setPopupRect(QStyleOptionComboBox* self, struct miqt_qrect popupRect) {
+	self->popupRect = miqt_from_cabi<QRect>(popupRect);
 }
 
 bool QStyleOptionComboBox_frame(const QStyleOptionComboBox* self) {
@@ -1680,12 +1680,12 @@ void QStyleOptionComboBox_setCurrentIcon(QStyleOptionComboBox* self, QIcon* curr
 	self->currentIcon = *currentIcon;
 }
 
-QSize* QStyleOptionComboBox_iconSize(const QStyleOptionComboBox* self) {
-	return new QSize(self->iconSize);
+struct miqt_qsize QStyleOptionComboBox_iconSize(const QStyleOptionComboBox* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize);
 }
 
-void QStyleOptionComboBox_setIconSize(QStyleOptionComboBox* self, QSize* iconSize) {
-	self->iconSize = *iconSize;
+void QStyleOptionComboBox_setIconSize(QStyleOptionComboBox* self, struct miqt_qsize iconSize) {
+	self->iconSize = miqt_from_cabi<QSize>(iconSize);
 }
 
 void QStyleOptionComboBox_operatorAssign(QStyleOptionComboBox* self, QStyleOptionComboBox* param1) {
@@ -1803,12 +1803,12 @@ void QStyleOptionGroupBox_setTextAlignment(QStyleOptionGroupBox* self, int textA
 	self->textAlignment = static_cast<Qt::Alignment>(textAlignment);
 }
 
-QColor* QStyleOptionGroupBox_textColor(const QStyleOptionGroupBox* self) {
-	return new QColor(self->textColor);
+struct miqt_qcolor QStyleOptionGroupBox_textColor(const QStyleOptionGroupBox* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->textColor);
 }
 
-void QStyleOptionGroupBox_setTextColor(QStyleOptionGroupBox* self, QColor* textColor) {
-	self->textColor = *textColor;
+void QStyleOptionGroupBox_setTextColor(QStyleOptionGroupBox* self, struct miqt_qcolor textColor) {
+	self->textColor = miqt_from_cabi<QColor>(textColor);
 }
 
 int QStyleOptionGroupBox_lineWidth(const QStyleOptionGroupBox* self) {
@@ -1876,12 +1876,12 @@ void QStyleOptionGraphicsItem_virtbase(QStyleOptionGraphicsItem* src, QStyleOpti
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-QRectF* QStyleOptionGraphicsItem_exposedRect(const QStyleOptionGraphicsItem* self) {
-	return new QRectF(self->exposedRect);
+struct miqt_qrectf QStyleOptionGraphicsItem_exposedRect(const QStyleOptionGraphicsItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->exposedRect);
 }
 
-void QStyleOptionGraphicsItem_setExposedRect(QStyleOptionGraphicsItem* self, QRectF* exposedRect) {
-	self->exposedRect = *exposedRect;
+void QStyleOptionGraphicsItem_setExposedRect(QStyleOptionGraphicsItem* self, struct miqt_qrectf exposedRect) {
+	self->exposedRect = miqt_from_cabi<QRectF>(exposedRect);
 }
 
 QMatrix* QStyleOptionGraphicsItem_matrix(const QStyleOptionGraphicsItem* self) {

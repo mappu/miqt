@@ -112,7 +112,8 @@ Container types:
 - The iteration order of a Qt `QMap`/`QHash` will differ from the Go map iteration order. `QMap` is iterated by key order, but Go maps and `QHash` iterate in an undefined internal order.
 
 Memory management:
-- Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
+- Where Qt returns a C++ object by value (e.g. `QFont`), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
+- Simple value types (`QColor`, `QMargins`, `QMarginsF`, `QModelIndex`, `QPoint`, `QPointF`, `QRect`, `QRectF`, `QRgba64`, `QSize`, `QSizeF`, `QVector3D`) are plain Go structs with no finalizer, and are passed by value. Use the `qt.NewQSize2(w, h)` constructors rather than a struct literal, as the zero value may differ from the Qt default constructor (e.g. `QSize()` is `-1x-1`).
 
 Events and signals:
 - The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected as `targetObject.onSourceSignal(func()...)`.

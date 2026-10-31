@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -154,11 +155,9 @@ func (this *QAccessibleInterface) SetText(t QAccessible__Text, text string) {
 	C.QAccessibleInterface_setText(this.h, (C.int)(t), text_ms)
 }
 
-func (this *QAccessibleInterface) Rect() *QRect {
+func (this *QAccessibleInterface) Rect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QAccessibleInterface_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QAccessibleInterface_rect(this.h))
 }
 
 func (this *QAccessibleInterface) Role() QAccessible__Role {
@@ -173,18 +172,14 @@ func (this *QAccessibleInterface) State() *QAccessible__State {
 	return _goptr
 }
 
-func (this *QAccessibleInterface) ForegroundColor() *QColor {
+func (this *QAccessibleInterface) ForegroundColor() QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QAccessibleInterface_foregroundColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QAccessibleInterface_foregroundColor(this.h))
 }
 
-func (this *QAccessibleInterface) BackgroundColor() *QColor {
+func (this *QAccessibleInterface) BackgroundColor() QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QAccessibleInterface_backgroundColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QAccessibleInterface_backgroundColor(this.h))
 }
 
 func (this *QAccessibleInterface) TextInterface() *QAccessibleTextInterface {
@@ -348,17 +343,14 @@ func (this *QAccessibleTextInterface) CharacterCount() int {
 	return (int)(C.QAccessibleTextInterface_characterCount(this.h))
 }
 
-func (this *QAccessibleTextInterface) CharacterRect(offset int) *QRect {
+func (this *QAccessibleTextInterface) CharacterRect(offset int) QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QAccessibleTextInterface_characterRect(this.h, (C.int)(offset)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QAccessibleTextInterface_characterRect(this.h, (C.int)(offset)))
 }
 
-func (this *QAccessibleTextInterface) OffsetAtPoint(point *QPoint) int {
+func (this *QAccessibleTextInterface) OffsetAtPoint(point QPoint) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	return (int)(C.QAccessibleTextInterface_offsetAtPoint(this.h, point.cPointer()))
+	return (int)(C.QAccessibleTextInterface_offsetAtPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
 func (this *QAccessibleTextInterface) ScrollToSubstring(startIndex int, endIndex int) {
@@ -1144,18 +1136,14 @@ func (this *QAccessibleImageInterface) ImageDescription() string {
 	return _ret
 }
 
-func (this *QAccessibleImageInterface) ImageSize() *QSize {
+func (this *QAccessibleImageInterface) ImageSize() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QAccessibleImageInterface_imageSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QAccessibleImageInterface_imageSize(this.h))
 }
 
-func (this *QAccessibleImageInterface) ImagePosition() *QPoint {
+func (this *QAccessibleImageInterface) ImagePosition() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QAccessibleImageInterface_imagePosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QAccessibleImageInterface_imagePosition(this.h))
 }
 
 // Delete this object from C++ memory.

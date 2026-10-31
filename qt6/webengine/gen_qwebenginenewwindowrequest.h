@@ -38,7 +38,7 @@ void* QWebEngineNewWindowRequest_metacast(QWebEngineNewWindowRequest* self, cons
 struct miqt_string QWebEngineNewWindowRequest_tr(const char* s);
 int QWebEngineNewWindowRequest_destination(const QWebEngineNewWindowRequest* self);
 QUrl* QWebEngineNewWindowRequest_requestedUrl(const QWebEngineNewWindowRequest* self);
-QRect* QWebEngineNewWindowRequest_requestedGeometry(const QWebEngineNewWindowRequest* self);
+struct miqt_qrect QWebEngineNewWindowRequest_requestedGeometry(const QWebEngineNewWindowRequest* self);
 bool QWebEngineNewWindowRequest_isUserInitiated(const QWebEngineNewWindowRequest* self);
 void QWebEngineNewWindowRequest_openIn(QWebEngineNewWindowRequest* self, QWebEnginePage* param1);
 struct miqt_string QWebEngineNewWindowRequest_tr2(const char* s, const char* c);

@@ -9,6 +9,7 @@ package designer
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -155,9 +156,8 @@ func (this *QDesignerWidgetBoxInterface) FindOrInsertCategory(categoryName strin
 	return (int)(C.QDesignerWidgetBoxInterface_findOrInsertCategory(this.h, categoryName_ms))
 }
 
-func (this *QDesignerWidgetBoxInterface) DropWidgets(item_list []*QDesignerDnDItemInterface, global_mouse_pos *qt6.QPoint) {
+func (this *QDesignerWidgetBoxInterface) DropWidgets(item_list []*QDesignerDnDItemInterface, global_mouse_pos qt6.QPoint) {
 	defer runtime.KeepAlive(item_list)
-	defer runtime.KeepAlive(global_mouse_pos)
 	item_list_CArray_ptr := (**C.QDesignerDnDItemInterface)(C.malloc(C.size_t(8 * len(item_list))))
 	defer C.free(unsafe.Pointer(item_list_CArray_ptr))
 	item_list_CArray := unsafe.Slice(item_list_CArray_ptr, len(item_list))
@@ -165,7 +165,7 @@ func (this *QDesignerWidgetBoxInterface) DropWidgets(item_list []*QDesignerDnDIt
 		item_list_CArray[i] = item_list[i].cPointer()
 	}
 	item_list_ma := C.struct_miqt_array{len: C.size_t(len(item_list)), data: unsafe.Pointer(item_list_CArray_ptr)}
-	C.QDesignerWidgetBoxInterface_dropWidgets(this.h, item_list_ma, (*C.QPoint)(global_mouse_pos.UnsafePointer()))
+	C.QDesignerWidgetBoxInterface_dropWidgets(this.h, item_list_ma, libmiqt.ValueCast[C.struct_miqt_qpoint](global_mouse_pos))
 }
 
 func (this *QDesignerWidgetBoxInterface) SetFileName(file_name string) {
@@ -508,7 +508,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_removeWidget(self *C.QDesign
 	gofunc(slotval1, slotval2)
 
 }
-func (this *QDesignerWidgetBoxInterface) OnDropWidgets(slot func(item_list []*QDesignerDnDItemInterface, global_mouse_pos *qt6.QPoint)) {
+func (this *QDesignerWidgetBoxInterface) OnDropWidgets(slot func(item_list []*QDesignerDnDItemInterface, global_mouse_pos qt6.QPoint)) {
 	ok := C.QDesignerWidgetBoxInterface_override_virtual_dropWidgets(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -516,8 +516,8 @@ func (this *QDesignerWidgetBoxInterface) OnDropWidgets(slot func(item_list []*QD
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets
-func miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets(self *C.QDesignerWidgetBoxInterface, cb C.intptr_t, item_list C.struct_miqt_array, global_mouse_pos *C.QPoint) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(item_list []*QDesignerDnDItemInterface, global_mouse_pos *qt6.QPoint))
+func miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets(self *C.QDesignerWidgetBoxInterface, cb C.intptr_t, item_list C.struct_miqt_array, global_mouse_pos C.struct_miqt_qpoint) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(item_list []*QDesignerDnDItemInterface, global_mouse_pos qt6.QPoint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -531,7 +531,7 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_dropWidgets(self *C.QDesigne
 	}
 	slotval1 := item_list_ret
 
-	slotval2 := qt6.UnsafeNewQPoint(unsafe.Pointer(global_mouse_pos))
+	slotval2 := libmiqt.ValueCast[qt6.QPoint](global_mouse_pos)
 
 	gofunc(slotval1, slotval2)
 
@@ -671,14 +671,12 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_setVisible(self *C.QDesigner
 
 }
 
-func (this *QDesignerWidgetBoxInterface) callVirtualBase_SizeHint() *qt6.QSize {
+func (this *QDesignerWidgetBoxInterface) callVirtualBase_SizeHint() qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QDesignerWidgetBoxInterface_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QDesignerWidgetBoxInterface_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDesignerWidgetBoxInterface) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QDesignerWidgetBoxInterface) OnSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QDesignerWidgetBoxInterface_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -686,27 +684,24 @@ func (this *QDesignerWidgetBoxInterface) OnSizeHint(slot func(super func() *qt6.
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_sizeHint
-func miqt_exec_callback_QDesignerWidgetBoxInterface_sizeHint(self *C.QDesignerWidgetBoxInterface, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QDesignerWidgetBoxInterface_sizeHint(self *C.QDesignerWidgetBoxInterface, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDesignerWidgetBoxInterface{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDesignerWidgetBoxInterface_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QDesignerWidgetBoxInterface) callVirtualBase_MinimumSizeHint() *qt6.QSize {
-
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QDesignerWidgetBoxInterface) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+
+func (this *QDesignerWidgetBoxInterface) callVirtualBase_MinimumSizeHint() qt6.QSize {
+
+	return libmiqt.ValueCast[qt6.QSize](C.QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QDesignerWidgetBoxInterface) OnMinimumSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QDesignerWidgetBoxInterface_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -714,16 +709,15 @@ func (this *QDesignerWidgetBoxInterface) OnMinimumSizeHint(slot func(super func(
 }
 
 //export miqt_exec_callback_QDesignerWidgetBoxInterface_minimumSizeHint
-func miqt_exec_callback_QDesignerWidgetBoxInterface_minimumSizeHint(self *C.QDesignerWidgetBoxInterface, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QDesignerWidgetBoxInterface_minimumSizeHint(self *C.QDesignerWidgetBoxInterface, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDesignerWidgetBoxInterface{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDesignerWidgetBoxInterface_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1607,7 +1601,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_initPainter(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QDesignerWidgetBoxInterface_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

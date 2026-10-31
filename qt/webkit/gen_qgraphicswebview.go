@@ -9,6 +9,7 @@ package webkit
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"github.com/mappu/miqt/qt/network"
 	"runtime"
@@ -213,9 +214,8 @@ func (this *QGraphicsWebView) SetTiledBackingStoreFrozen(frozen bool) {
 	C.QGraphicsWebView_setTiledBackingStoreFrozen(this.h, (C.bool)(frozen))
 }
 
-func (this *QGraphicsWebView) SetGeometry(rect *qt.QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsWebView_setGeometry(this.h, (*C.QRectF)(rect.UnsafePointer()))
+func (this *QGraphicsWebView) SetGeometry(rect qt.QRectF) {
+	C.QGraphicsWebView_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsWebView) UpdateGeometry() {
@@ -240,11 +240,8 @@ func (this *QGraphicsWebView) Event(param1 *qt.QEvent) bool {
 	return (bool)(C.QGraphicsWebView_event(this.h, (*C.QEvent)(param1.UnsafePointer())))
 }
 
-func (this *QGraphicsWebView) SizeHint(which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF {
-	defer runtime.KeepAlive(constraint)
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsWebView_sizeHint(this.h, (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsWebView) SizeHint(which qt.SizeHint, constraint qt.QSizeF) qt.QSizeF {
+	return libmiqt.ValueCast[qt.QSizeF](C.QGraphicsWebView_sizeHint(this.h, (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 }
 
 func (this *QGraphicsWebView) InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
@@ -700,13 +697,12 @@ func (this *QGraphicsWebView) SetOwnedByLayout(ownedByLayout bool) {
 
 }
 
-func (this *QGraphicsWebView) callVirtualBase_SetGeometry(rect *qt.QRectF) {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsWebView) callVirtualBase_SetGeometry(rect qt.QRectF) {
 
-	C.QGraphicsWebView_virtualbase_setGeometry(unsafe.Pointer(this.h), (*C.QRectF)(rect.UnsafePointer()))
+	C.QGraphicsWebView_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsWebView) OnSetGeometry(slot func(super func(rect *qt.QRectF), rect *qt.QRectF)) {
+func (this *QGraphicsWebView) OnSetGeometry(slot func(super func(rect qt.QRectF), rect qt.QRectF)) {
 	ok := C.QGraphicsWebView_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -714,14 +710,14 @@ func (this *QGraphicsWebView) OnSetGeometry(slot func(super func(rect *qt.QRectF
 }
 
 //export miqt_exec_callback_QGraphicsWebView_setGeometry
-func miqt_exec_callback_QGraphicsWebView_setGeometry(self *C.QGraphicsWebView, cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *qt.QRectF), rect *qt.QRectF))
+func miqt_exec_callback_QGraphicsWebView_setGeometry(self *C.QGraphicsWebView, cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect qt.QRectF), rect qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](rect)
 
 	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -845,15 +841,12 @@ func miqt_exec_callback_QGraphicsWebView_event(self *C.QGraphicsWebView, cb C.in
 
 }
 
-func (this *QGraphicsWebView) callVirtualBase_SizeHint(which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF {
-	defer runtime.KeepAlive(constraint)
+func (this *QGraphicsWebView) callVirtualBase_SizeHint(which qt.SizeHint, constraint qt.QSizeF) qt.QSizeF {
 
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsWebView_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QGraphicsWebView_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 
 }
-func (this *QGraphicsWebView) OnSizeHint(slot func(super func(which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF, which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF) {
+func (this *QGraphicsWebView) OnSizeHint(slot func(super func(which qt.SizeHint, constraint qt.QSizeF) qt.QSizeF, which qt.SizeHint, constraint qt.QSizeF) qt.QSizeF) {
 	ok := C.QGraphicsWebView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -861,8 +854,8 @@ func (this *QGraphicsWebView) OnSizeHint(slot func(super func(which qt.SizeHint,
 }
 
 //export miqt_exec_callback_QGraphicsWebView_sizeHint
-func miqt_exec_callback_QGraphicsWebView_sizeHint(self *C.QGraphicsWebView, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF, which qt.SizeHint, constraint *qt.QSizeF) *qt.QSizeF)
+func miqt_exec_callback_QGraphicsWebView_sizeHint(self *C.QGraphicsWebView, cb C.intptr_t, which C.int, constraint C.struct_miqt_qsizef) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which qt.SizeHint, constraint qt.QSizeF) qt.QSizeF, which qt.SizeHint, constraint qt.QSizeF) qt.QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -870,12 +863,11 @@ func miqt_exec_callback_QGraphicsWebView_sizeHint(self *C.QGraphicsWebView, cb C
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (qt.SizeHint)(which)
 
-	slotval2 := qt.UnsafeNewQSizeF(unsafe.Pointer(constraint))
+	slotval2 := libmiqt.ValueCast[qt.QSizeF](constraint)
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsWebView_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 
@@ -1515,14 +1507,12 @@ func miqt_exec_callback_QGraphicsWebView_paintWindowFrame(self *C.QGraphicsWebVi
 
 }
 
-func (this *QGraphicsWebView) callVirtualBase_BoundingRect() *qt.QRectF {
+func (this *QGraphicsWebView) callVirtualBase_BoundingRect() qt.QRectF {
 
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsWebView_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QGraphicsWebView_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsWebView) OnBoundingRect(slot func(super func() *qt.QRectF) *qt.QRectF) {
+func (this *QGraphicsWebView) OnBoundingRect(slot func(super func() qt.QRectF) qt.QRectF) {
 	ok := C.QGraphicsWebView_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1530,16 +1520,15 @@ func (this *QGraphicsWebView) OnBoundingRect(slot func(super func() *qt.QRectF) 
 }
 
 //export miqt_exec_callback_QGraphicsWebView_boundingRect
-func miqt_exec_callback_QGraphicsWebView_boundingRect(self *C.QGraphicsWebView, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRectF) *qt.QRectF)
+func miqt_exec_callback_QGraphicsWebView_boundingRect(self *C.QGraphicsWebView, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRectF) qt.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsWebView_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -1667,13 +1656,12 @@ func miqt_exec_callback_QGraphicsWebView_windowFrameEvent(self *C.QGraphicsWebVi
 
 }
 
-func (this *QGraphicsWebView) callVirtualBase_WindowFrameSectionAt(pos *qt.QPointF) qt.WindowFrameSection {
-	defer runtime.KeepAlive(pos)
+func (this *QGraphicsWebView) callVirtualBase_WindowFrameSectionAt(pos qt.QPointF) qt.WindowFrameSection {
 
-	return (qt.WindowFrameSection)(C.QGraphicsWebView_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), (*C.QPointF)(pos.UnsafePointer())))
+	return (qt.WindowFrameSection)(C.QGraphicsWebView_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](pos)))
 
 }
-func (this *QGraphicsWebView) OnWindowFrameSectionAt(slot func(super func(pos *qt.QPointF) qt.WindowFrameSection, pos *qt.QPointF) qt.WindowFrameSection) {
+func (this *QGraphicsWebView) OnWindowFrameSectionAt(slot func(super func(pos qt.QPointF) qt.WindowFrameSection, pos qt.QPointF) qt.WindowFrameSection) {
 	ok := C.QGraphicsWebView_override_virtual_windowFrameSectionAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1681,14 +1669,14 @@ func (this *QGraphicsWebView) OnWindowFrameSectionAt(slot func(super func(pos *q
 }
 
 //export miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt
-func miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt(self *C.QGraphicsWebView, cb C.intptr_t, pos *C.QPointF) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos *qt.QPointF) qt.WindowFrameSection, pos *qt.QPointF) qt.WindowFrameSection)
+func miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt(self *C.QGraphicsWebView, cb C.intptr_t, pos C.struct_miqt_qpointf) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos qt.QPointF) qt.WindowFrameSection, pos qt.QPointF) qt.WindowFrameSection)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(pos))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](pos)
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_WindowFrameSectionAt, slotval1)
 
@@ -2181,13 +2169,12 @@ func miqt_exec_callback_QGraphicsWebView_advance(self *C.QGraphicsWebView, cb C.
 
 }
 
-func (this *QGraphicsWebView) callVirtualBase_Contains(point *qt.QPointF) bool {
-	defer runtime.KeepAlive(point)
+func (this *QGraphicsWebView) callVirtualBase_Contains(point qt.QPointF) bool {
 
-	return (bool)(C.QGraphicsWebView_virtualbase_contains(unsafe.Pointer(this.h), (*C.QPointF)(point.UnsafePointer())))
+	return (bool)(C.QGraphicsWebView_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsWebView) OnContains(slot func(super func(point *qt.QPointF) bool, point *qt.QPointF) bool) {
+func (this *QGraphicsWebView) OnContains(slot func(super func(point qt.QPointF) bool, point qt.QPointF) bool) {
 	ok := C.QGraphicsWebView_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2195,14 +2182,14 @@ func (this *QGraphicsWebView) OnContains(slot func(super func(point *qt.QPointF)
 }
 
 //export miqt_exec_callback_QGraphicsWebView_contains
-func miqt_exec_callback_QGraphicsWebView_contains(self *C.QGraphicsWebView, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *qt.QPointF) bool, point *qt.QPointF) bool)
+func miqt_exec_callback_QGraphicsWebView_contains(self *C.QGraphicsWebView, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point qt.QPointF) bool, point qt.QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_Contains, slotval1)
 

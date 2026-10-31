@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
@@ -85,11 +86,9 @@ func (this *QCameraFormat) PixelFormat() QVideoFrameFormat__PixelFormat {
 	return (QVideoFrameFormat__PixelFormat)(C.QCameraFormat_pixelFormat(this.h))
 }
 
-func (this *QCameraFormat) Resolution() *qt6.QSize {
+func (this *QCameraFormat) Resolution() qt6.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QCameraFormat_resolution(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QCameraFormat_resolution(this.h))
 }
 
 func (this *QCameraFormat) MinFrameRate() float32 {
@@ -243,11 +242,9 @@ func (this *QCameraDevice) PhotoResolutions() []qt6.QSize {
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraDevice_photoResolutions(this.h)
 	_ret := make([]qt6.QSize, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qsize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt6.QSize](_outCast[i])
 	}
 	return _ret
 }

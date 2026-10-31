@@ -44,8 +44,8 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QSlider_sizeHint(const QSlider*, intptr_t);
-QSize* miqt_exec_callback_QSlider_minimumSizeHint(const QSlider*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSlider_sizeHint(const QSlider*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSlider_minimumSizeHint(const QSlider*, intptr_t);
 bool miqt_exec_callback_QSlider_event(QSlider*, intptr_t, QEvent*);
 void miqt_exec_callback_QSlider_paintEvent(QSlider*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QSlider_mousePressEvent(QSlider*, intptr_t, QMouseEvent*);
@@ -116,13 +116,11 @@ public:
 			return QSlider::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSlider_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSlider_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSlider_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QSlider_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -133,13 +131,11 @@ public:
 			return QSlider::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSlider_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSlider_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSlider_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QSlider_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -995,12 +991,12 @@ struct miqt_string QSlider_tr(const char* s) {
 	return _ms;
 }
 
-QSize* QSlider_sizeHint(const QSlider* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QSlider_sizeHint(const QSlider* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QSlider_minimumSizeHint(const QSlider* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QSlider_minimumSizeHint(const QSlider* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QSlider_setTickPosition(QSlider* self, int position) {
@@ -1056,8 +1052,8 @@ bool QSlider_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSlider_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSlider*>(self)->QSlider::sizeHint());
+struct miqt_qsize QSlider_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSlider*>(self)->QSlider::sizeHint());
 }
 
 bool QSlider_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1070,8 +1066,8 @@ bool QSlider_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSlider_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSlider*>(self)->QSlider::minimumSizeHint());
+struct miqt_qsize QSlider_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSlider*>(self)->QSlider::minimumSizeHint());
 }
 
 bool QSlider_override_virtual_event(void* self, intptr_t slot) {
@@ -1731,10 +1727,6 @@ bool QSlider_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSlider*>(self)->QSlider::disconnectNotify(*signal);
-}
-
-QSize* QSlider_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QSlider_virtualreturncopy_QVariant(QVariant* src) {

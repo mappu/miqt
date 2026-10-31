@@ -27,8 +27,8 @@ void QwtPointMapper_setFlags(QwtPointMapper* self, int flags);
 int QwtPointMapper_flags(const QwtPointMapper* self);
 void QwtPointMapper_setFlag(QwtPointMapper* self, int param1);
 bool QwtPointMapper_testFlag(const QwtPointMapper* self, int param1);
-void QwtPointMapper_setBoundingRect(QwtPointMapper* self, QRectF* boundingRect);
-QRectF* QwtPointMapper_boundingRect(const QwtPointMapper* self);
+void QwtPointMapper_setBoundingRect(QwtPointMapper* self, struct miqt_qrectf boundingRect);
+struct miqt_qrectf QwtPointMapper_boundingRect(const QwtPointMapper* self);
 void QwtPointMapper_setFlag2(QwtPointMapper* self, int param1, bool on);
 
 void QwtPointMapper_delete(QwtPointMapper* self);

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -98,10 +99,9 @@ func NewQPalette() *QPalette {
 }
 
 // NewQPalette2 constructs a new QPalette object.
-func NewQPalette2(button *QColor) *QPalette {
-	defer runtime.KeepAlive(button)
+func NewQPalette2(button QColor) *QPalette {
 
-	return newQPalette(C.QPalette_new2(button.cPointer()))
+	return newQPalette(C.QPalette_new2(libmiqt.ValueCast[C.struct_miqt_qcolor](button)))
 }
 
 // NewQPalette3 constructs a new QPalette object.
@@ -111,11 +111,9 @@ func NewQPalette3(button GlobalColor) *QPalette {
 }
 
 // NewQPalette4 constructs a new QPalette object.
-func NewQPalette4(button *QColor, window *QColor) *QPalette {
-	defer runtime.KeepAlive(button)
-	defer runtime.KeepAlive(window)
+func NewQPalette4(button QColor, window QColor) *QPalette {
 
-	return newQPalette(C.QPalette_new4(button.cPointer(), window.cPointer()))
+	return newQPalette(C.QPalette_new4(libmiqt.ValueCast[C.struct_miqt_qcolor](button), libmiqt.ValueCast[C.struct_miqt_qcolor](window)))
 }
 
 // NewQPalette5 constructs a new QPalette object.
@@ -134,16 +132,9 @@ func NewQPalette5(windowText *QBrush, button *QBrush, light *QBrush, dark *QBrus
 }
 
 // NewQPalette6 constructs a new QPalette object.
-func NewQPalette6(windowText *QColor, window *QColor, light *QColor, dark *QColor, mid *QColor, text *QColor, base *QColor) *QPalette {
-	defer runtime.KeepAlive(windowText)
-	defer runtime.KeepAlive(window)
-	defer runtime.KeepAlive(light)
-	defer runtime.KeepAlive(dark)
-	defer runtime.KeepAlive(mid)
-	defer runtime.KeepAlive(text)
-	defer runtime.KeepAlive(base)
+func NewQPalette6(windowText QColor, window QColor, light QColor, dark QColor, mid QColor, text QColor, base QColor) *QPalette {
 
-	return newQPalette(C.QPalette_new6(windowText.cPointer(), window.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), base.cPointer()))
+	return newQPalette(C.QPalette_new6(libmiqt.ValueCast[C.struct_miqt_qcolor](windowText), libmiqt.ValueCast[C.struct_miqt_qcolor](window), libmiqt.ValueCast[C.struct_miqt_qcolor](light), libmiqt.ValueCast[C.struct_miqt_qcolor](dark), libmiqt.ValueCast[C.struct_miqt_qcolor](mid), libmiqt.ValueCast[C.struct_miqt_qcolor](text), libmiqt.ValueCast[C.struct_miqt_qcolor](base)))
 }
 
 // NewQPalette7 constructs a new QPalette object.
@@ -182,11 +173,9 @@ func (this *QPalette) SetCurrentColorGroup(cg QPalette__ColorGroup) {
 	C.QPalette_setCurrentColorGroup(this.h, (C.int)(cg))
 }
 
-func (this *QPalette) Color(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QColor {
+func (this *QPalette) Color(cg QPalette__ColorGroup, cr QPalette__ColorRole) QColor {
 	defer runtime.KeepAlive(this)
-	_ret := newQColor(C.QPalette_color(this.h, (C.int)(cg), (C.int)(cr)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QColor](C.QPalette_color(this.h, (C.int)(cg), (C.int)(cr)))
 }
 
 func (this *QPalette) Brush(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QBrush {
@@ -196,16 +185,14 @@ func (this *QPalette) Brush(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QB
 	return _ret
 }
 
-func (this *QPalette) SetColor(cg QPalette__ColorGroup, cr QPalette__ColorRole, color *QColor) {
+func (this *QPalette) SetColor(cg QPalette__ColorGroup, cr QPalette__ColorRole, color QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QPalette_setColor(this.h, (C.int)(cg), (C.int)(cr), color.cPointer())
+	C.QPalette_setColor(this.h, (C.int)(cg), (C.int)(cr), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QPalette) SetColor2(cr QPalette__ColorRole, color *QColor) {
+func (this *QPalette) SetColor2(cr QPalette__ColorRole, color QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QPalette_setColor2(this.h, (C.int)(cr), color.cPointer())
+	C.QPalette_setColor2(this.h, (C.int)(cr), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QPalette) SetBrush(cr QPalette__ColorRole, brush *QBrush) {
@@ -244,11 +231,9 @@ func (this *QPalette) IsEqual(cr1 QPalette__ColorGroup, cr2 QPalette__ColorGroup
 	return (bool)(C.QPalette_isEqual(this.h, (C.int)(cr1), (C.int)(cr2)))
 }
 
-func (this *QPalette) ColorWithCr(cr QPalette__ColorRole) *QColor {
+func (this *QPalette) ColorWithCr(cr QPalette__ColorRole) QColor {
 	defer runtime.KeepAlive(this)
-	_ret := newQColor(C.QPalette_colorWithCr(this.h, (C.int)(cr)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QColor](C.QPalette_colorWithCr(this.h, (C.int)(cr)))
 }
 
 func (this *QPalette) BrushWithCr(cr QPalette__ColorRole) *QBrush {
