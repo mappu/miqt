@@ -89,13 +89,11 @@ func (this *QBasicTimer) TimerId() int {
 
 func (this *QBasicTimer) Start(msec int, obj *QObject) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(obj)
 	C.QBasicTimer_start(this.h, (C.int)(msec), obj.cPointer())
 }
 
 func (this *QBasicTimer) Start2(msec int, timerType TimerType, obj *QObject) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(obj)
 	C.QBasicTimer_start2(this.h, (C.int)(msec), (C.int)(timerType), obj.cPointer())
 }
 

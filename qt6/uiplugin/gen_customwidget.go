@@ -108,7 +108,6 @@ func (this *QDesignerCustomWidgetInterface) IsContainer() bool {
 
 func (this *QDesignerCustomWidgetInterface) CreateWidget(parent *qt6.QWidget) *qt6.QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerCustomWidgetInterface_createWidget(this.h, (*C.QWidget)(parent.UnsafePointer()))))
 }
 
@@ -119,7 +118,6 @@ func (this *QDesignerCustomWidgetInterface) IsInitialized() bool {
 
 func (this *QDesignerCustomWidgetInterface) Initialize(core *designer.QDesignerFormEditorInterface) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(core)
 	C.QDesignerCustomWidgetInterface_initialize(this.h, (*C.QDesignerFormEditorInterface)(core.UnsafePointer()))
 }
 

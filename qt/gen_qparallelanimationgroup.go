@@ -66,18 +66,15 @@ func NewQParallelAnimationGroup() *QParallelAnimationGroup {
 
 // NewQParallelAnimationGroup2 constructs a new QParallelAnimationGroup object.
 func NewQParallelAnimationGroup2(parent *QObject) *QParallelAnimationGroup {
-	defer runtime.KeepAlive(parent)
 
 	return newQParallelAnimationGroup(C.QParallelAnimationGroup_new2(parent.cPointer()))
 }
 
 func (this *QParallelAnimationGroup) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QParallelAnimationGroup_metaObject(this.h))
 }
 
 func (this *QParallelAnimationGroup) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QParallelAnimationGroup_metacast(this.h, param1_Cstring))
@@ -102,7 +99,6 @@ func QParallelAnimationGroup_TrUtf8(s string) string {
 }
 
 func (this *QParallelAnimationGroup) Duration() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QParallelAnimationGroup_duration(this.h))
 }
 
@@ -152,7 +148,6 @@ func QParallelAnimationGroup_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QParallelAnimationGroup that was directly constructed.
 func (this *QParallelAnimationGroup) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QParallelAnimationGroup_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -167,7 +162,6 @@ func (this *QParallelAnimationGroup) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QParallelAnimationGroup that was directly constructed.
 func (this *QParallelAnimationGroup) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QParallelAnimationGroup_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -182,7 +176,6 @@ func (this *QParallelAnimationGroup) SenderSignalIndex() int {
 
 // Receivers can only be called from a QParallelAnimationGroup that was directly constructed.
 func (this *QParallelAnimationGroup) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -199,7 +192,6 @@ func (this *QParallelAnimationGroup) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QParallelAnimationGroup that was directly constructed.
 func (this *QParallelAnimationGroup) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -214,7 +206,6 @@ func (this *QParallelAnimationGroup) IsSignalConnected(signal *QMetaMethod) bool
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_Duration() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QParallelAnimationGroup_virtualbase_duration(unsafe.Pointer(this.h)))
 
@@ -240,7 +231,6 @@ func miqt_exec_callback_QParallelAnimationGroup_duration(self *C.QParallelAnimat
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QParallelAnimationGroup_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -270,7 +260,6 @@ func miqt_exec_callback_QParallelAnimationGroup_event(self *C.QParallelAnimation
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_UpdateCurrentTime(currentTime int) {
-	defer runtime.KeepAlive(this)
 
 	C.QParallelAnimationGroup_virtualbase_updateCurrentTime(unsafe.Pointer(this.h), (C.int)(currentTime))
 
@@ -297,7 +286,6 @@ func miqt_exec_callback_QParallelAnimationGroup_updateCurrentTime(self *C.QParal
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
-	defer runtime.KeepAlive(this)
 
 	C.QParallelAnimationGroup_virtualbase_updateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
 
@@ -326,7 +314,6 @@ func miqt_exec_callback_QParallelAnimationGroup_updateState(self *C.QParallelAni
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
-	defer runtime.KeepAlive(this)
 
 	C.QParallelAnimationGroup_virtualbase_updateDirection(unsafe.Pointer(this.h), (C.int)(direction))
 
@@ -353,8 +340,6 @@ func miqt_exec_callback_QParallelAnimationGroup_updateDirection(self *C.QParalle
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QParallelAnimationGroup_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -386,7 +371,6 @@ func miqt_exec_callback_QParallelAnimationGroup_eventFilter(self *C.QParallelAni
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QParallelAnimationGroup_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -414,7 +398,6 @@ func miqt_exec_callback_QParallelAnimationGroup_timerEvent(self *C.QParallelAnim
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QParallelAnimationGroup_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -442,7 +425,6 @@ func miqt_exec_callback_QParallelAnimationGroup_childEvent(self *C.QParallelAnim
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QParallelAnimationGroup_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -470,7 +452,6 @@ func miqt_exec_callback_QParallelAnimationGroup_customEvent(self *C.QParallelAni
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QParallelAnimationGroup_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -498,7 +479,6 @@ func miqt_exec_callback_QParallelAnimationGroup_connectNotify(self *C.QParallelA
 }
 
 func (this *QParallelAnimationGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QParallelAnimationGroup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -533,6 +513,8 @@ func (this *QParallelAnimationGroup) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QParallelAnimationGroup) GoGC() {
 	if this.gc != nil {
 		return

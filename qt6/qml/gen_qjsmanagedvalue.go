@@ -74,7 +74,6 @@ func NewQJSManagedValue() *QJSManagedValue {
 // NewQJSManagedValue2 constructs a new QJSManagedValue object.
 func NewQJSManagedValue2(value QJSValue, engine *QJSEngine) *QJSManagedValue {
 	defer runtime.KeepAlive(value)
-	defer runtime.KeepAlive(engine)
 
 	return newQJSManagedValue(C.QJSManagedValue_new2(value.cPointer(), engine.cPointer()))
 }
@@ -82,7 +81,6 @@ func NewQJSManagedValue2(value QJSValue, engine *QJSEngine) *QJSManagedValue {
 // NewQJSManagedValue3 constructs a new QJSManagedValue object.
 func NewQJSManagedValue3(value *QJSPrimitiveValue, engine *QJSEngine) *QJSManagedValue {
 	defer runtime.KeepAlive(value)
-	defer runtime.KeepAlive(engine)
 
 	return newQJSManagedValue(C.QJSManagedValue_new3(value.cPointer(), engine.cPointer()))
 }
@@ -90,14 +88,12 @@ func NewQJSManagedValue3(value *QJSPrimitiveValue, engine *QJSEngine) *QJSManage
 // NewQJSManagedValue4 constructs a new QJSManagedValue object.
 func NewQJSManagedValue4(variant *qt6.QVariant, engine *QJSEngine) *QJSManagedValue {
 	defer runtime.KeepAlive(variant)
-	defer runtime.KeepAlive(engine)
 
 	return newQJSManagedValue(C.QJSManagedValue_new4((*C.QVariant)(variant.UnsafePointer()), engine.cPointer()))
 }
 
 // NewQJSManagedValue5 constructs a new QJSManagedValue object.
 func NewQJSManagedValue5(stringVal string, engine *QJSEngine) *QJSManagedValue {
-	defer runtime.KeepAlive(engine)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))

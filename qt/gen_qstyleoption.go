@@ -704,19 +704,16 @@ func (this *QStyleOption) StyleObject() *QObject {
 
 func (this *QStyleOption) SetStyleObject(styleObject *QObject) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(styleObject)
 	C.QStyleOption_setStyleObject(this.h, styleObject.cPointer())
 }
 
 func (this *QStyleOption) Init(w *QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(w)
 	C.QStyleOption_init(this.h, w.cPointer())
 }
 
 func (this *QStyleOption) InitFrom(w *QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(w)
 	C.QStyleOption_initFrom(this.h, w.cPointer())
 }
 
@@ -2718,7 +2715,6 @@ func (this *QStyleOptionViewItem) Widget() *QWidget {
 
 func (this *QStyleOptionViewItem) SetWidget(widget *QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QStyleOptionViewItem_setWidget(this.h, widget.cPointer())
 }
 

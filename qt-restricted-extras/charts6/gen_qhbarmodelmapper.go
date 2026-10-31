@@ -67,18 +67,15 @@ func NewQHBarModelMapper() *QHBarModelMapper {
 
 // NewQHBarModelMapper2 constructs a new QHBarModelMapper object.
 func NewQHBarModelMapper2(parent *qt6.QObject) *QHBarModelMapper {
-	defer runtime.KeepAlive(parent)
 
 	return newQHBarModelMapper(C.QHBarModelMapper_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QHBarModelMapper) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QHBarModelMapper_metaObject(this.h)))
 }
 
 func (this *QHBarModelMapper) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QHBarModelMapper_metacast(this.h, param1_Cstring))
@@ -94,69 +91,54 @@ func QHBarModelMapper_Tr(s string) string {
 }
 
 func (this *QHBarModelMapper) Model() *qt6.QAbstractItemModel {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QHBarModelMapper_model(this.h)))
 }
 
 func (this *QHBarModelMapper) SetModel(model *qt6.QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(model)
 	C.QHBarModelMapper_setModel(this.h, (*C.QAbstractItemModel)(model.UnsafePointer()))
 }
 
 func (this *QHBarModelMapper) Series() *QAbstractBarSeries {
-	defer runtime.KeepAlive(this)
 	return newQAbstractBarSeries(C.QHBarModelMapper_series(this.h))
 }
 
 func (this *QHBarModelMapper) SetSeries(series *QAbstractBarSeries) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(series)
 	C.QHBarModelMapper_setSeries(this.h, series.cPointer())
 }
 
 func (this *QHBarModelMapper) FirstBarSetRow() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QHBarModelMapper_firstBarSetRow(this.h))
 }
 
 func (this *QHBarModelMapper) SetFirstBarSetRow(firstBarSetRow int) {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_setFirstBarSetRow(this.h, (C.int)(firstBarSetRow))
 }
 
 func (this *QHBarModelMapper) LastBarSetRow() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QHBarModelMapper_lastBarSetRow(this.h))
 }
 
 func (this *QHBarModelMapper) SetLastBarSetRow(lastBarSetRow int) {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_setLastBarSetRow(this.h, (C.int)(lastBarSetRow))
 }
 
 func (this *QHBarModelMapper) FirstColumn() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QHBarModelMapper_firstColumn(this.h))
 }
 
 func (this *QHBarModelMapper) SetFirstColumn(firstColumn int) {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_setFirstColumn(this.h, (C.int)(firstColumn))
 }
 
 func (this *QHBarModelMapper) ColumnCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QHBarModelMapper_columnCount(this.h))
 }
 
 func (this *QHBarModelMapper) SetColumnCount(columnCount int) {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_setColumnCount(this.h, (C.int)(columnCount))
 }
 
 func (this *QHBarModelMapper) SeriesReplaced() {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_seriesReplaced(this.h)
 }
 func (this *QHBarModelMapper) OnSeriesReplaced(slot func()) {
@@ -174,7 +156,6 @@ func miqt_exec_callback_QHBarModelMapper_seriesReplaced(cb C.intptr_t) {
 }
 
 func (this *QHBarModelMapper) ModelReplaced() {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_modelReplaced(this.h)
 }
 func (this *QHBarModelMapper) OnModelReplaced(slot func()) {
@@ -192,7 +173,6 @@ func miqt_exec_callback_QHBarModelMapper_modelReplaced(cb C.intptr_t) {
 }
 
 func (this *QHBarModelMapper) FirstBarSetRowChanged() {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_firstBarSetRowChanged(this.h)
 }
 func (this *QHBarModelMapper) OnFirstBarSetRowChanged(slot func()) {
@@ -210,7 +190,6 @@ func miqt_exec_callback_QHBarModelMapper_firstBarSetRowChanged(cb C.intptr_t) {
 }
 
 func (this *QHBarModelMapper) LastBarSetRowChanged() {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_lastBarSetRowChanged(this.h)
 }
 func (this *QHBarModelMapper) OnLastBarSetRowChanged(slot func()) {
@@ -228,7 +207,6 @@ func miqt_exec_callback_QHBarModelMapper_lastBarSetRowChanged(cb C.intptr_t) {
 }
 
 func (this *QHBarModelMapper) FirstColumnChanged() {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_firstColumnChanged(this.h)
 }
 func (this *QHBarModelMapper) OnFirstColumnChanged(slot func()) {
@@ -246,7 +224,6 @@ func miqt_exec_callback_QHBarModelMapper_firstColumnChanged(cb C.intptr_t) {
 }
 
 func (this *QHBarModelMapper) ColumnCountChanged() {
-	defer runtime.KeepAlive(this)
 	C.QHBarModelMapper_columnCountChanged(this.h)
 }
 func (this *QHBarModelMapper) OnColumnCountChanged(slot func()) {
@@ -287,7 +264,6 @@ func QHBarModelMapper_Tr3(s string, c string, n int) string {
 
 // First can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) First() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHBarModelMapper_protectedbase_first(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -302,7 +278,6 @@ func (this *QHBarModelMapper) First() int {
 
 // SetFirst can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) SetFirst(first int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHBarModelMapper_protectedbase_setFirst(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(first))
@@ -315,7 +290,6 @@ func (this *QHBarModelMapper) SetFirst(first int) {
 
 // Count can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) Count() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHBarModelMapper_protectedbase_count(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -330,7 +304,6 @@ func (this *QHBarModelMapper) Count() int {
 
 // SetCount can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) SetCount(count int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHBarModelMapper_protectedbase_setCount(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(count))
@@ -343,7 +316,6 @@ func (this *QHBarModelMapper) SetCount(count int) {
 
 // FirstBarSetSection can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) FirstBarSetSection() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHBarModelMapper_protectedbase_firstBarSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -358,7 +330,6 @@ func (this *QHBarModelMapper) FirstBarSetSection() int {
 
 // SetFirstBarSetSection can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) SetFirstBarSetSection(firstBarSetSection int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHBarModelMapper_protectedbase_setFirstBarSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(firstBarSetSection))
@@ -371,7 +342,6 @@ func (this *QHBarModelMapper) SetFirstBarSetSection(firstBarSetSection int) {
 
 // LastBarSetSection can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) LastBarSetSection() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHBarModelMapper_protectedbase_lastBarSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -386,7 +356,6 @@ func (this *QHBarModelMapper) LastBarSetSection() int {
 
 // SetLastBarSetSection can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) SetLastBarSetSection(lastBarSetSection int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHBarModelMapper_protectedbase_setLastBarSetSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(lastBarSetSection))
@@ -399,7 +368,6 @@ func (this *QHBarModelMapper) SetLastBarSetSection(lastBarSetSection int) {
 
 // Orientation can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) Orientation() qt6.Orientation {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (qt6.Orientation)(C.QHBarModelMapper_protectedbase_orientation(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -414,7 +382,6 @@ func (this *QHBarModelMapper) Orientation() qt6.Orientation {
 
 // SetOrientation can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) SetOrientation(orientation qt6.Orientation) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QHBarModelMapper_protectedbase_setOrientation(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(orientation))
@@ -427,7 +394,6 @@ func (this *QHBarModelMapper) SetOrientation(orientation qt6.Orientation) {
 
 // Sender can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QHBarModelMapper_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -442,7 +408,6 @@ func (this *QHBarModelMapper) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QHBarModelMapper_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -457,7 +422,6 @@ func (this *QHBarModelMapper) SenderSignalIndex() int {
 
 // Receivers can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -474,7 +438,6 @@ func (this *QHBarModelMapper) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QHBarModelMapper that was directly constructed.
 func (this *QHBarModelMapper) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -489,7 +452,6 @@ func (this *QHBarModelMapper) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QHBarModelMapper) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHBarModelMapper_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -519,8 +481,6 @@ func miqt_exec_callback_QHBarModelMapper_event(self *C.QHBarModelMapper, cb C.in
 }
 
 func (this *QHBarModelMapper) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QHBarModelMapper_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -552,7 +512,6 @@ func miqt_exec_callback_QHBarModelMapper_eventFilter(self *C.QHBarModelMapper, c
 }
 
 func (this *QHBarModelMapper) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QHBarModelMapper_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -580,7 +539,6 @@ func miqt_exec_callback_QHBarModelMapper_timerEvent(self *C.QHBarModelMapper, cb
 }
 
 func (this *QHBarModelMapper) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QHBarModelMapper_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -608,7 +566,6 @@ func miqt_exec_callback_QHBarModelMapper_childEvent(self *C.QHBarModelMapper, cb
 }
 
 func (this *QHBarModelMapper) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QHBarModelMapper_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -636,7 +593,6 @@ func miqt_exec_callback_QHBarModelMapper_customEvent(self *C.QHBarModelMapper, c
 }
 
 func (this *QHBarModelMapper) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QHBarModelMapper_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -664,7 +620,6 @@ func miqt_exec_callback_QHBarModelMapper_connectNotify(self *C.QHBarModelMapper,
 }
 
 func (this *QHBarModelMapper) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QHBarModelMapper_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -699,6 +654,8 @@ func (this *QHBarModelMapper) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QHBarModelMapper) GoGC() {
 	if this.gc != nil {
 		return

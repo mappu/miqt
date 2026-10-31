@@ -65,12 +65,10 @@ func NewQMimeData() *QMimeData {
 }
 
 func (this *QMimeData) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QMimeData_metaObject(this.h))
 }
 
 func (this *QMimeData) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMimeData_metacast(this.h, param1_Cstring))
@@ -86,7 +84,6 @@ func QMimeData_Tr(s string) string {
 }
 
 func (this *QMimeData) Urls() []QUrl {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMimeData_urls(this.h)
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QUrl)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -99,7 +96,6 @@ func (this *QMimeData) Urls() []QUrl {
 }
 
 func (this *QMimeData) SetUrls(urls []QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(urls)
 	urls_CArray_ptr := (**C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
 	defer C.free(unsafe.Pointer(urls_CArray_ptr))
@@ -112,12 +108,10 @@ func (this *QMimeData) SetUrls(urls []QUrl) {
 }
 
 func (this *QMimeData) HasUrls() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMimeData_hasUrls(this.h))
 }
 
 func (this *QMimeData) Text() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMimeData_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -125,7 +119,6 @@ func (this *QMimeData) Text() string {
 }
 
 func (this *QMimeData) SetText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -134,12 +127,10 @@ func (this *QMimeData) SetText(text string) {
 }
 
 func (this *QMimeData) HasText() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMimeData_hasText(this.h))
 }
 
 func (this *QMimeData) Html() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMimeData_html(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -147,7 +138,6 @@ func (this *QMimeData) Html() string {
 }
 
 func (this *QMimeData) SetHtml(html string) {
-	defer runtime.KeepAlive(this)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
@@ -156,48 +146,40 @@ func (this *QMimeData) SetHtml(html string) {
 }
 
 func (this *QMimeData) HasHtml() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMimeData_hasHtml(this.h))
 }
 
 func (this *QMimeData) ImageData() *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QMimeData_imageData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMimeData) SetImageData(image *QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(image)
 	C.QMimeData_setImageData(this.h, image.cPointer())
 }
 
 func (this *QMimeData) HasImage() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMimeData_hasImage(this.h))
 }
 
 func (this *QMimeData) ColorData() *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QMimeData_colorData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMimeData) SetColorData(color *QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QMimeData_setColorData(this.h, color.cPointer())
 }
 
 func (this *QMimeData) HasColor() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMimeData_hasColor(this.h))
 }
 
 func (this *QMimeData) Data(mimetype string) []byte {
-	defer runtime.KeepAlive(this)
 	mimetype_ms := C.struct_miqt_string{}
 	mimetype_ms.data = C.CString(mimetype)
 	mimetype_ms.len = C.size_t(len(mimetype))
@@ -209,7 +191,6 @@ func (this *QMimeData) Data(mimetype string) []byte {
 }
 
 func (this *QMimeData) SetData(mimetype string, data []byte) {
-	defer runtime.KeepAlive(this)
 	mimetype_ms := C.struct_miqt_string{}
 	mimetype_ms.data = C.CString(mimetype)
 	mimetype_ms.len = C.size_t(len(mimetype))
@@ -225,7 +206,6 @@ func (this *QMimeData) SetData(mimetype string, data []byte) {
 }
 
 func (this *QMimeData) RemoveFormat(mimetype string) {
-	defer runtime.KeepAlive(this)
 	mimetype_ms := C.struct_miqt_string{}
 	mimetype_ms.data = C.CString(mimetype)
 	mimetype_ms.len = C.size_t(len(mimetype))
@@ -234,7 +214,6 @@ func (this *QMimeData) RemoveFormat(mimetype string) {
 }
 
 func (this *QMimeData) HasFormat(mimetype string) bool {
-	defer runtime.KeepAlive(this)
 	mimetype_ms := C.struct_miqt_string{}
 	mimetype_ms.data = C.CString(mimetype)
 	mimetype_ms.len = C.size_t(len(mimetype))
@@ -243,7 +222,6 @@ func (this *QMimeData) HasFormat(mimetype string) bool {
 }
 
 func (this *QMimeData) Formats() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMimeData_formats(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -257,7 +235,6 @@ func (this *QMimeData) Formats() []string {
 }
 
 func (this *QMimeData) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QMimeData_clear(this.h)
 }
 
@@ -285,7 +262,6 @@ func QMimeData_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QMimeData that was directly constructed.
 func (this *QMimeData) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QMimeData_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -300,7 +276,6 @@ func (this *QMimeData) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QMimeData that was directly constructed.
 func (this *QMimeData) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMimeData_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -315,7 +290,6 @@ func (this *QMimeData) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMimeData that was directly constructed.
 func (this *QMimeData) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -332,7 +306,6 @@ func (this *QMimeData) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMimeData that was directly constructed.
 func (this *QMimeData) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -347,7 +320,6 @@ func (this *QMimeData) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QMimeData) callVirtualBase_HasFormat(mimetype string) bool {
-	defer runtime.KeepAlive(this)
 	mimetype_ms := C.struct_miqt_string{}
 	mimetype_ms.data = C.CString(mimetype)
 	mimetype_ms.len = C.size_t(len(mimetype))
@@ -383,7 +355,6 @@ func miqt_exec_callback_QMimeData_hasFormat(self *C.QMimeData, cb C.intptr_t, mi
 }
 
 func (this *QMimeData) callVirtualBase_Formats() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QMimeData_virtualbase_formats(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -427,7 +398,6 @@ func miqt_exec_callback_QMimeData_formats(self *C.QMimeData, cb C.intptr_t) C.st
 }
 
 func (this *QMimeData) callVirtualBase_RetrieveData(mimetype string, preferredType QMetaType) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(preferredType)
 	mimetype_ms := C.struct_miqt_string{}
 	mimetype_ms.data = C.CString(mimetype)
@@ -470,7 +440,6 @@ func miqt_exec_callback_QMimeData_retrieveData(self *C.QMimeData, cb C.intptr_t,
 }
 
 func (this *QMimeData) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMimeData_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -500,8 +469,6 @@ func miqt_exec_callback_QMimeData_event(self *C.QMimeData, cb C.intptr_t, event 
 }
 
 func (this *QMimeData) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMimeData_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -533,7 +500,6 @@ func miqt_exec_callback_QMimeData_eventFilter(self *C.QMimeData, cb C.intptr_t, 
 }
 
 func (this *QMimeData) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMimeData_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -561,7 +527,6 @@ func miqt_exec_callback_QMimeData_timerEvent(self *C.QMimeData, cb C.intptr_t, e
 }
 
 func (this *QMimeData) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMimeData_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -589,7 +554,6 @@ func miqt_exec_callback_QMimeData_childEvent(self *C.QMimeData, cb C.intptr_t, e
 }
 
 func (this *QMimeData) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMimeData_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -617,7 +581,6 @@ func miqt_exec_callback_QMimeData_customEvent(self *C.QMimeData, cb C.intptr_t, 
 }
 
 func (this *QMimeData) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMimeData_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -645,7 +608,6 @@ func miqt_exec_callback_QMimeData_connectNotify(self *C.QMimeData, cb C.intptr_t
 }
 
 func (this *QMimeData) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMimeData_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -680,6 +642,8 @@ func (this *QMimeData) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMimeData) GoGC() {
 	if this.gc != nil {
 		return

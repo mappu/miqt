@@ -66,18 +66,15 @@ func NewQPictureFormatPlugin() *QPictureFormatPlugin {
 
 // NewQPictureFormatPlugin2 constructs a new QPictureFormatPlugin object.
 func NewQPictureFormatPlugin2(parent *QObject) *QPictureFormatPlugin {
-	defer runtime.KeepAlive(parent)
 
 	return newQPictureFormatPlugin(C.QPictureFormatPlugin_new2(parent.cPointer()))
 }
 
 func (this *QPictureFormatPlugin) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPictureFormatPlugin_metaObject(this.h))
 }
 
 func (this *QPictureFormatPlugin) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPictureFormatPlugin_metacast(this.h, param1_Cstring))
@@ -102,7 +99,6 @@ func QPictureFormatPlugin_TrUtf8(s string) string {
 }
 
 func (this *QPictureFormatPlugin) LoadPicture(format string, filename string, pic *QPicture) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pic)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
@@ -116,7 +112,6 @@ func (this *QPictureFormatPlugin) LoadPicture(format string, filename string, pi
 }
 
 func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pic *QPicture) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pic)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
@@ -130,7 +125,6 @@ func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pi
 }
 
 func (this *QPictureFormatPlugin) InstallIOHandler(format string) bool {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -184,7 +178,6 @@ func QPictureFormatPlugin_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QPictureFormatPlugin that was directly constructed.
 func (this *QPictureFormatPlugin) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QPictureFormatPlugin_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -199,7 +192,6 @@ func (this *QPictureFormatPlugin) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QPictureFormatPlugin that was directly constructed.
 func (this *QPictureFormatPlugin) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPictureFormatPlugin_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -214,7 +206,6 @@ func (this *QPictureFormatPlugin) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPictureFormatPlugin that was directly constructed.
 func (this *QPictureFormatPlugin) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -231,7 +222,6 @@ func (this *QPictureFormatPlugin) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPictureFormatPlugin that was directly constructed.
 func (this *QPictureFormatPlugin) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -246,7 +236,6 @@ func (this *QPictureFormatPlugin) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QPictureFormatPlugin) callVirtualBase_LoadPicture(format string, filename string, pic *QPicture) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pic)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
@@ -292,7 +281,6 @@ func miqt_exec_callback_QPictureFormatPlugin_loadPicture(self *C.QPictureFormatP
 }
 
 func (this *QPictureFormatPlugin) callVirtualBase_SavePicture(format string, filename string, pic *QPicture) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pic)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
@@ -363,7 +351,6 @@ func miqt_exec_callback_QPictureFormatPlugin_installIOHandler(self *C.QPictureFo
 }
 
 func (this *QPictureFormatPlugin) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPictureFormatPlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -393,8 +380,6 @@ func miqt_exec_callback_QPictureFormatPlugin_event(self *C.QPictureFormatPlugin,
 }
 
 func (this *QPictureFormatPlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPictureFormatPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -426,7 +411,6 @@ func miqt_exec_callback_QPictureFormatPlugin_eventFilter(self *C.QPictureFormatP
 }
 
 func (this *QPictureFormatPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPictureFormatPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -454,7 +438,6 @@ func miqt_exec_callback_QPictureFormatPlugin_timerEvent(self *C.QPictureFormatPl
 }
 
 func (this *QPictureFormatPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPictureFormatPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -482,7 +465,6 @@ func miqt_exec_callback_QPictureFormatPlugin_childEvent(self *C.QPictureFormatPl
 }
 
 func (this *QPictureFormatPlugin) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPictureFormatPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -510,7 +492,6 @@ func miqt_exec_callback_QPictureFormatPlugin_customEvent(self *C.QPictureFormatP
 }
 
 func (this *QPictureFormatPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPictureFormatPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -538,7 +519,6 @@ func miqt_exec_callback_QPictureFormatPlugin_connectNotify(self *C.QPictureForma
 }
 
 func (this *QPictureFormatPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPictureFormatPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -573,6 +553,8 @@ func (this *QPictureFormatPlugin) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPictureFormatPlugin) GoGC() {
 	if this.gc != nil {
 		return

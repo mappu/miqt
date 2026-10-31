@@ -67,18 +67,15 @@ func NewQLogValueAxis() *QLogValueAxis {
 
 // NewQLogValueAxis2 constructs a new QLogValueAxis object.
 func NewQLogValueAxis2(parent *qt6.QObject) *QLogValueAxis {
-	defer runtime.KeepAlive(parent)
 
 	return newQLogValueAxis(C.QLogValueAxis_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QLogValueAxis) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QLogValueAxis_metaObject(this.h)))
 }
 
 func (this *QLogValueAxis) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QLogValueAxis_metacast(this.h, param1_Cstring))
@@ -94,37 +91,30 @@ func QLogValueAxis_Tr(s string) string {
 }
 
 func (this *QLogValueAxis) Type() QAbstractAxis__AxisType {
-	defer runtime.KeepAlive(this)
 	return (QAbstractAxis__AxisType)(C.QLogValueAxis_type(this.h))
 }
 
 func (this *QLogValueAxis) SetMin(min float64) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_setMin(this.h, (C.double)(min))
 }
 
 func (this *QLogValueAxis) Min() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QLogValueAxis_min(this.h))
 }
 
 func (this *QLogValueAxis) SetMax(max float64) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_setMax(this.h, (C.double)(max))
 }
 
 func (this *QLogValueAxis) Max() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QLogValueAxis_max(this.h))
 }
 
 func (this *QLogValueAxis) SetRange(min float64, max float64) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_setRange(this.h, (C.double)(min), (C.double)(max))
 }
 
 func (this *QLogValueAxis) SetLabelFormat(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -133,7 +123,6 @@ func (this *QLogValueAxis) SetLabelFormat(format string) {
 }
 
 func (this *QLogValueAxis) LabelFormat() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLogValueAxis_labelFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -141,32 +130,26 @@ func (this *QLogValueAxis) LabelFormat() string {
 }
 
 func (this *QLogValueAxis) SetBase(base float64) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_setBase(this.h, (C.double)(base))
 }
 
 func (this *QLogValueAxis) Base() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QLogValueAxis_base(this.h))
 }
 
 func (this *QLogValueAxis) TickCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QLogValueAxis_tickCount(this.h))
 }
 
 func (this *QLogValueAxis) SetMinorTickCount(minorTickCount int) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_setMinorTickCount(this.h, (C.int)(minorTickCount))
 }
 
 func (this *QLogValueAxis) MinorTickCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QLogValueAxis_minorTickCount(this.h))
 }
 
 func (this *QLogValueAxis) MinChanged(min float64) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_minChanged(this.h, (C.double)(min))
 }
 func (this *QLogValueAxis) OnMinChanged(slot func(min float64)) {
@@ -187,7 +170,6 @@ func miqt_exec_callback_QLogValueAxis_minChanged(cb C.intptr_t, min C.double) {
 }
 
 func (this *QLogValueAxis) MaxChanged(max float64) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_maxChanged(this.h, (C.double)(max))
 }
 func (this *QLogValueAxis) OnMaxChanged(slot func(max float64)) {
@@ -208,7 +190,6 @@ func miqt_exec_callback_QLogValueAxis_maxChanged(cb C.intptr_t, max C.double) {
 }
 
 func (this *QLogValueAxis) RangeChanged(min float64, max float64) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_rangeChanged(this.h, (C.double)(min), (C.double)(max))
 }
 func (this *QLogValueAxis) OnRangeChanged(slot func(min float64, max float64)) {
@@ -231,7 +212,6 @@ func miqt_exec_callback_QLogValueAxis_rangeChanged(cb C.intptr_t, min C.double, 
 }
 
 func (this *QLogValueAxis) LabelFormatChanged(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -259,7 +239,6 @@ func miqt_exec_callback_QLogValueAxis_labelFormatChanged(cb C.intptr_t, format C
 }
 
 func (this *QLogValueAxis) BaseChanged(base float64) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_baseChanged(this.h, (C.double)(base))
 }
 func (this *QLogValueAxis) OnBaseChanged(slot func(base float64)) {
@@ -280,7 +259,6 @@ func miqt_exec_callback_QLogValueAxis_baseChanged(cb C.intptr_t, base C.double) 
 }
 
 func (this *QLogValueAxis) TickCountChanged(tickCount int) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_tickCountChanged(this.h, (C.int)(tickCount))
 }
 func (this *QLogValueAxis) OnTickCountChanged(slot func(tickCount int)) {
@@ -301,7 +279,6 @@ func miqt_exec_callback_QLogValueAxis_tickCountChanged(cb C.intptr_t, tickCount 
 }
 
 func (this *QLogValueAxis) MinorTickCountChanged(minorTickCount int) {
-	defer runtime.KeepAlive(this)
 	C.QLogValueAxis_minorTickCountChanged(this.h, (C.int)(minorTickCount))
 }
 func (this *QLogValueAxis) OnMinorTickCountChanged(slot func(minorTickCount int)) {
@@ -345,7 +322,6 @@ func QLogValueAxis_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QLogValueAxis that was directly constructed.
 func (this *QLogValueAxis) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QLogValueAxis_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -360,7 +336,6 @@ func (this *QLogValueAxis) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QLogValueAxis that was directly constructed.
 func (this *QLogValueAxis) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QLogValueAxis_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -375,7 +350,6 @@ func (this *QLogValueAxis) SenderSignalIndex() int {
 
 // Receivers can only be called from a QLogValueAxis that was directly constructed.
 func (this *QLogValueAxis) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -392,7 +366,6 @@ func (this *QLogValueAxis) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QLogValueAxis that was directly constructed.
 func (this *QLogValueAxis) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -407,7 +380,6 @@ func (this *QLogValueAxis) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QLogValueAxis) callVirtualBase_Type() QAbstractAxis__AxisType {
-	defer runtime.KeepAlive(this)
 
 	return (QAbstractAxis__AxisType)(C.QLogValueAxis_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -433,7 +405,6 @@ func miqt_exec_callback_QLogValueAxis_type(self *C.QLogValueAxis, cb C.intptr_t)
 }
 
 func (this *QLogValueAxis) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QLogValueAxis_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -463,8 +434,6 @@ func miqt_exec_callback_QLogValueAxis_event(self *C.QLogValueAxis, cb C.intptr_t
 }
 
 func (this *QLogValueAxis) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QLogValueAxis_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -496,7 +465,6 @@ func miqt_exec_callback_QLogValueAxis_eventFilter(self *C.QLogValueAxis, cb C.in
 }
 
 func (this *QLogValueAxis) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLogValueAxis_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -524,7 +492,6 @@ func miqt_exec_callback_QLogValueAxis_timerEvent(self *C.QLogValueAxis, cb C.int
 }
 
 func (this *QLogValueAxis) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLogValueAxis_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -552,7 +519,6 @@ func miqt_exec_callback_QLogValueAxis_childEvent(self *C.QLogValueAxis, cb C.int
 }
 
 func (this *QLogValueAxis) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLogValueAxis_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -580,7 +546,6 @@ func miqt_exec_callback_QLogValueAxis_customEvent(self *C.QLogValueAxis, cb C.in
 }
 
 func (this *QLogValueAxis) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QLogValueAxis_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -608,7 +573,6 @@ func miqt_exec_callback_QLogValueAxis_connectNotify(self *C.QLogValueAxis, cb C.
 }
 
 func (this *QLogValueAxis) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QLogValueAxis_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -643,6 +607,8 @@ func (this *QLogValueAxis) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QLogValueAxis) GoGC() {
 	if this.gc != nil {
 		return

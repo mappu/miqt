@@ -83,7 +83,6 @@ func QWhatsThis_CreateAction() *QAction {
 
 func QWhatsThis_ShowText2(pos *QPoint, text string, w *QWidget) {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(w)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -92,7 +91,6 @@ func QWhatsThis_ShowText2(pos *QPoint, text string, w *QWidget) {
 }
 
 func QWhatsThis_CreateActionWithParent(parent *QObject) *QAction {
-	defer runtime.KeepAlive(parent)
 	return newQAction(C.QWhatsThis_createActionWithParent(parent.cPointer()))
 }
 

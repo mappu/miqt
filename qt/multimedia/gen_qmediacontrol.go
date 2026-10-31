@@ -58,12 +58,10 @@ func UnsafeNewQMediaControl(h unsafe.Pointer) *QMediaControl {
 }
 
 func (this *QMediaControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaControl_metaObject(this.h)))
 }
 
 func (this *QMediaControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaControl_metacast(this.h, param1_Cstring))
@@ -139,6 +137,8 @@ func (this *QMediaControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaControl) GoGC() {
 	if this.gc != nil {
 		return

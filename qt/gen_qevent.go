@@ -2820,7 +2820,6 @@ func UnsafeNewQDropEvent(h unsafe.Pointer) *QDropEvent {
 // NewQDropEvent constructs a new QDropEvent object.
 func NewQDropEvent(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDropEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDropEvent(C.QDropEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
@@ -2835,7 +2834,6 @@ func NewQDropEvent2(param1 *QDropEvent) *QDropEvent {
 // NewQDropEvent3 constructs a new QDropEvent object.
 func NewQDropEvent3(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDropEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDropEvent(C.QDropEvent_new3(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
@@ -2971,7 +2969,6 @@ func UnsafeNewQDragMoveEvent(h unsafe.Pointer) *QDragMoveEvent {
 // NewQDragMoveEvent constructs a new QDragMoveEvent object.
 func NewQDragMoveEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragMoveEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDragMoveEvent(C.QDragMoveEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
@@ -2986,7 +2983,6 @@ func NewQDragMoveEvent2(param1 *QDragMoveEvent) *QDragMoveEvent {
 // NewQDragMoveEvent3 constructs a new QDragMoveEvent object.
 func NewQDragMoveEvent3(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDragMoveEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDragMoveEvent(C.QDragMoveEvent_new3(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
@@ -3092,7 +3088,6 @@ func UnsafeNewQDragEnterEvent(h unsafe.Pointer) *QDragEnterEvent {
 // NewQDragEnterEvent constructs a new QDragEnterEvent object.
 func NewQDragEnterEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragEnterEvent {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(data)
 
 	return newQDragEnterEvent(C.QDragEnterEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
@@ -3563,7 +3558,6 @@ func UnsafeNewQActionEvent(h unsafe.Pointer) *QActionEvent {
 
 // NewQActionEvent constructs a new QActionEvent object.
 func NewQActionEvent(typeVal int, action *QAction) *QActionEvent {
-	defer runtime.KeepAlive(action)
 
 	return newQActionEvent(C.QActionEvent_new((C.int)(typeVal), action.cPointer()))
 }
@@ -3577,8 +3571,6 @@ func NewQActionEvent2(param1 *QActionEvent) *QActionEvent {
 
 // NewQActionEvent3 constructs a new QActionEvent object.
 func NewQActionEvent3(typeVal int, action *QAction, before *QAction) *QActionEvent {
-	defer runtime.KeepAlive(action)
-	defer runtime.KeepAlive(before)
 
 	return newQActionEvent(C.QActionEvent_new3((C.int)(typeVal), action.cPointer(), before.cPointer()))
 }
@@ -3703,7 +3695,6 @@ func (this *QFileOpenEvent) Url() *QUrl {
 
 func (this *QFileOpenEvent) OpenFile(file *QFile, flags QIODevice__OpenModeFlag) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(file)
 	return (bool)(C.QFileOpenEvent_openFile(this.h, file.cPointer(), (C.int)(flags)))
 }
 
@@ -4239,13 +4230,11 @@ func (this *QTouchEvent) Device() *QTouchDevice {
 
 func (this *QTouchEvent) SetWindow(awindow *QWindow) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(awindow)
 	C.QTouchEvent_setWindow(this.h, awindow.cPointer())
 }
 
 func (this *QTouchEvent) SetTarget(atarget *QObject) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(atarget)
 	C.QTouchEvent_setTarget(this.h, atarget.cPointer())
 }
 
@@ -4576,7 +4565,6 @@ func UnsafeNewQScreenOrientationChangeEvent(h unsafe.Pointer) *QScreenOrientatio
 
 // NewQScreenOrientationChangeEvent constructs a new QScreenOrientationChangeEvent object.
 func NewQScreenOrientationChangeEvent(screen *QScreen, orientation ScreenOrientation) *QScreenOrientationChangeEvent {
-	defer runtime.KeepAlive(screen)
 
 	return newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_new(screen.cPointer(), (C.int)(orientation)))
 }

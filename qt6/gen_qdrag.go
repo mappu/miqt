@@ -60,18 +60,15 @@ func UnsafeNewQDrag(h unsafe.Pointer) *QDrag {
 
 // NewQDrag constructs a new QDrag object.
 func NewQDrag(dragSource *QObject) *QDrag {
-	defer runtime.KeepAlive(dragSource)
 
 	return newQDrag(C.QDrag_new(dragSource.cPointer()))
 }
 
 func (this *QDrag) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QDrag_metaObject(this.h))
 }
 
 func (this *QDrag) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDrag_metacast(this.h, param1_Cstring))
@@ -87,82 +84,67 @@ func QDrag_Tr(s string) string {
 }
 
 func (this *QDrag) SetMimeData(data *QMimeData) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	C.QDrag_setMimeData(this.h, data.cPointer())
 }
 
 func (this *QDrag) MimeData() *QMimeData {
-	defer runtime.KeepAlive(this)
 	return newQMimeData(C.QDrag_mimeData(this.h))
 }
 
 func (this *QDrag) SetPixmap(pixmap *QPixmap) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pixmap)
 	C.QDrag_setPixmap(this.h, pixmap.cPointer())
 }
 
 func (this *QDrag) Pixmap() *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QDrag_pixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDrag) SetHotSpot(hotspot *QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(hotspot)
 	C.QDrag_setHotSpot(this.h, hotspot.cPointer())
 }
 
 func (this *QDrag) HotSpot() *QPoint {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QDrag_hotSpot(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDrag) Source() *QObject {
-	defer runtime.KeepAlive(this)
 	return newQObject(C.QDrag_source(this.h))
 }
 
 func (this *QDrag) Target() *QObject {
-	defer runtime.KeepAlive(this)
 	return newQObject(C.QDrag_target(this.h))
 }
 
 func (this *QDrag) Exec() DropAction {
-	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QDrag_exec(this.h))
 }
 
 func (this *QDrag) Exec2(supportedActions DropAction, defaultAction DropAction) DropAction {
-	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QDrag_exec2(this.h, (C.int)(supportedActions), (C.int)(defaultAction)))
 }
 
 func (this *QDrag) SetDragCursor(cursor *QPixmap, action DropAction) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cursor)
 	C.QDrag_setDragCursor(this.h, cursor.cPointer(), (C.int)(action))
 }
 
 func (this *QDrag) DragCursor(action DropAction) *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QDrag_dragCursor(this.h, (C.int)(action)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDrag) SupportedActions() DropAction {
-	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QDrag_supportedActions(this.h))
 }
 
 func (this *QDrag) DefaultAction() DropAction {
-	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QDrag_defaultAction(this.h))
 }
 
@@ -171,7 +153,6 @@ func QDrag_Cancel() {
 }
 
 func (this *QDrag) ActionChanged(action DropAction) {
-	defer runtime.KeepAlive(this)
 	C.QDrag_actionChanged(this.h, (C.int)(action))
 }
 func (this *QDrag) OnActionChanged(slot func(action DropAction)) {
@@ -192,8 +173,6 @@ func miqt_exec_callback_QDrag_actionChanged(cb C.intptr_t, action C.int) {
 }
 
 func (this *QDrag) TargetChanged(newTarget *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(newTarget)
 	C.QDrag_targetChanged(this.h, newTarget.cPointer())
 }
 func (this *QDrag) OnTargetChanged(slot func(newTarget *QObject)) {
@@ -236,13 +215,11 @@ func QDrag_Tr3(s string, c string, n int) string {
 }
 
 func (this *QDrag) ExecWithSupportedActions(supportedActions DropAction) DropAction {
-	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QDrag_execWithSupportedActions(this.h, (C.int)(supportedActions)))
 }
 
 // Sender can only be called from a QDrag that was directly constructed.
 func (this *QDrag) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QDrag_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -257,7 +234,6 @@ func (this *QDrag) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QDrag that was directly constructed.
 func (this *QDrag) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDrag_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -272,7 +248,6 @@ func (this *QDrag) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDrag that was directly constructed.
 func (this *QDrag) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -289,7 +264,6 @@ func (this *QDrag) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDrag that was directly constructed.
 func (this *QDrag) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -304,7 +278,6 @@ func (this *QDrag) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QDrag) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDrag_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -334,8 +307,6 @@ func miqt_exec_callback_QDrag_event(self *C.QDrag, cb C.intptr_t, event *C.QEven
 }
 
 func (this *QDrag) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDrag_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -367,7 +338,6 @@ func miqt_exec_callback_QDrag_eventFilter(self *C.QDrag, cb C.intptr_t, watched 
 }
 
 func (this *QDrag) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDrag_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -395,7 +365,6 @@ func miqt_exec_callback_QDrag_timerEvent(self *C.QDrag, cb C.intptr_t, event *C.
 }
 
 func (this *QDrag) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDrag_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -423,7 +392,6 @@ func miqt_exec_callback_QDrag_childEvent(self *C.QDrag, cb C.intptr_t, event *C.
 }
 
 func (this *QDrag) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDrag_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -451,7 +419,6 @@ func miqt_exec_callback_QDrag_customEvent(self *C.QDrag, cb C.intptr_t, event *C
 }
 
 func (this *QDrag) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDrag_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -479,7 +446,6 @@ func miqt_exec_callback_QDrag_connectNotify(self *C.QDrag, cb C.intptr_t, signal
 }
 
 func (this *QDrag) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDrag_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -514,6 +480,8 @@ func (this *QDrag) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDrag) GoGC() {
 	if this.gc != nil {
 		return

@@ -61,32 +61,27 @@ func UnsafeNewQwtPlotPicker(h unsafe.Pointer) *QwtPlotPicker {
 
 // NewQwtPlotPicker constructs a new QwtPlotPicker object.
 func NewQwtPlotPicker(canvas *qt.QWidget) *QwtPlotPicker {
-	defer runtime.KeepAlive(canvas)
 
 	return newQwtPlotPicker(C.QwtPlotPicker_new((*C.QWidget)(canvas.UnsafePointer())))
 }
 
 // NewQwtPlotPicker2 constructs a new QwtPlotPicker object.
 func NewQwtPlotPicker2(xAxis int, yAxis int, param3 *qt.QWidget) *QwtPlotPicker {
-	defer runtime.KeepAlive(param3)
 
 	return newQwtPlotPicker(C.QwtPlotPicker_new2((C.int)(xAxis), (C.int)(yAxis), (*C.QWidget)(param3.UnsafePointer())))
 }
 
 // NewQwtPlotPicker3 constructs a new QwtPlotPicker object.
 func NewQwtPlotPicker3(xAxis int, yAxis int, rubberBand QwtPicker__RubberBand, trackerMode QwtPicker__DisplayMode, param5 *qt.QWidget) *QwtPlotPicker {
-	defer runtime.KeepAlive(param5)
 
 	return newQwtPlotPicker(C.QwtPlotPicker_new3((C.int)(xAxis), (C.int)(yAxis), (C.int)(rubberBand), (C.int)(trackerMode), (*C.QWidget)(param5.UnsafePointer())))
 }
 
 func (this *QwtPlotPicker) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtPlotPicker_metaObject(this.h)))
 }
 
 func (this *QwtPlotPicker) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtPlotPicker_metacast(this.h, param1_Cstring))
@@ -111,42 +106,34 @@ func QwtPlotPicker_TrUtf8(s string) string {
 }
 
 func (this *QwtPlotPicker) SetAxis(xAxis int, yAxis int) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotPicker_setAxis(this.h, (C.int)(xAxis), (C.int)(yAxis))
 }
 
 func (this *QwtPlotPicker) XAxis() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotPicker_xAxis(this.h))
 }
 
 func (this *QwtPlotPicker) YAxis() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotPicker_yAxis(this.h))
 }
 
 func (this *QwtPlotPicker) Plot() *QwtPlot {
-	defer runtime.KeepAlive(this)
 	return newQwtPlot(C.QwtPlotPicker_plot(this.h))
 }
 
 func (this *QwtPlotPicker) Plot2() *QwtPlot {
-	defer runtime.KeepAlive(this)
 	return newQwtPlot(C.QwtPlotPicker_plot2(this.h))
 }
 
 func (this *QwtPlotPicker) Canvas() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtPlotPicker_canvas(this.h)))
 }
 
 func (this *QwtPlotPicker) Canvas2() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtPlotPicker_canvas2(this.h)))
 }
 
 func (this *QwtPlotPicker) Selected(pos *qt.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QwtPlotPicker_selected(this.h, (*C.QPointF)(pos.UnsafePointer()))
 }
@@ -168,7 +155,6 @@ func miqt_exec_callback_QwtPlotPicker_selected(cb C.intptr_t, pos *C.QPointF) {
 }
 
 func (this *QwtPlotPicker) SelectedWithRect(rect *qt.QRectF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	C.QwtPlotPicker_selectedWithRect(this.h, (*C.QRectF)(rect.UnsafePointer()))
 }
@@ -190,7 +176,6 @@ func miqt_exec_callback_QwtPlotPicker_selectedWithRect(cb C.intptr_t, rect *C.QR
 }
 
 func (this *QwtPlotPicker) SelectedWithPa(pa []qt.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pa)
 	pa_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(pa))))
 	defer C.free(unsafe.Pointer(pa_CArray_ptr))
@@ -227,7 +212,6 @@ func miqt_exec_callback_QwtPlotPicker_selectedWithPa(cb C.intptr_t, pa C.struct_
 }
 
 func (this *QwtPlotPicker) Appended(pos *qt.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QwtPlotPicker_appended(this.h, (*C.QPointF)(pos.UnsafePointer()))
 }
@@ -249,7 +233,6 @@ func miqt_exec_callback_QwtPlotPicker_appended(cb C.intptr_t, pos *C.QPointF) {
 }
 
 func (this *QwtPlotPicker) Moved(pos *qt.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QwtPlotPicker_moved(this.h, (*C.QPointF)(pos.UnsafePointer()))
 }
@@ -316,7 +299,6 @@ func QwtPlotPicker_TrUtf83(s string, c string, n int) string {
 
 // ScaleRect can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) ScaleRect() qt.QRectF {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotPicker_protectedbase_scaleRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -333,7 +315,6 @@ func (this *QwtPlotPicker) ScaleRect() qt.QRectF {
 
 // InvTransform can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) InvTransform(param1 *qt.QRect) qt.QRectF {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -351,7 +332,6 @@ func (this *QwtPlotPicker) InvTransform(param1 *qt.QRect) qt.QRectF {
 
 // Transform can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) Transform(param1 *qt.QRectF) qt.QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -369,7 +349,6 @@ func (this *QwtPlotPicker) Transform(param1 *qt.QRectF) qt.QRect {
 
 // InvTransformWithQPoint can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) InvTransformWithQPoint(param1 *qt.QPoint) qt.QPointF {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -387,7 +366,6 @@ func (this *QwtPlotPicker) InvTransformWithQPoint(param1 *qt.QPoint) qt.QPointF 
 
 // TransformWithQPointF can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) TransformWithQPointF(param1 *qt.QPointF) qt.QPoint {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -405,7 +383,6 @@ func (this *QwtPlotPicker) TransformWithQPointF(param1 *qt.QPointF) qt.QPoint {
 
 // RubberBandOverlay can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) RubberBandOverlay() *QwtWidgetOverlay {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtWidgetOverlay(C.QwtPlotPicker_protectedbase_rubberBandOverlay(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -420,7 +397,6 @@ func (this *QwtPlotPicker) RubberBandOverlay() *QwtWidgetOverlay {
 
 // TrackerOverlay can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) TrackerOverlay() *QwtWidgetOverlay {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtWidgetOverlay(C.QwtPlotPicker_protectedbase_trackerOverlay(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -435,7 +411,6 @@ func (this *QwtPlotPicker) TrackerOverlay() *QwtWidgetOverlay {
 
 // Sender can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtPlotPicker_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -450,7 +425,6 @@ func (this *QwtPlotPicker) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtPlotPicker_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -465,7 +439,6 @@ func (this *QwtPlotPicker) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -482,7 +455,6 @@ func (this *QwtPlotPicker) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtPlotPicker that was directly constructed.
 func (this *QwtPlotPicker) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -497,7 +469,6 @@ func (this *QwtPlotPicker) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtPlotPicker) callVirtualBase_SetAxis(xAxis int, yAxis int) {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPlotPicker_virtualbase_setAxis(unsafe.Pointer(this.h), (C.int)(xAxis), (C.int)(yAxis))
 
@@ -526,7 +497,6 @@ func miqt_exec_callback_QwtPlotPicker_setAxis(self *C.QwtPlotPicker, cb C.intptr
 }
 
 func (this *QwtPlotPicker) callVirtualBase_TrackerText(param1 *qt.QPoint) *QwtText {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	_goptr := newQwtText(C.QwtPlotPicker_virtualbase_trackerText(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
@@ -559,7 +529,6 @@ func miqt_exec_callback_QwtPlotPicker_trackerText(self *C.QwtPlotPicker, cb C.in
 }
 
 func (this *QwtPlotPicker) callVirtualBase_TrackerTextF(param1 *qt.QPointF) *QwtText {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	_goptr := newQwtText(C.QwtPlotPicker_virtualbase_trackerTextF(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer())))
@@ -592,7 +561,6 @@ func miqt_exec_callback_QwtPlotPicker_trackerTextF(self *C.QwtPlotPicker, cb C.i
 }
 
 func (this *QwtPlotPicker) callVirtualBase_Move(param1 *qt.QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_move(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
@@ -620,7 +588,6 @@ func miqt_exec_callback_QwtPlotPicker_move(self *C.QwtPlotPicker, cb C.intptr_t,
 }
 
 func (this *QwtPlotPicker) callVirtualBase_Append(param1 *qt.QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_append(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
@@ -648,7 +615,6 @@ func miqt_exec_callback_QwtPlotPicker_append(self *C.QwtPlotPicker, cb C.intptr_
 }
 
 func (this *QwtPlotPicker) callVirtualBase_End(ok bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtPlotPicker_virtualbase_end(unsafe.Pointer(this.h), (C.bool)(ok)))
 
@@ -677,8 +643,6 @@ func miqt_exec_callback_QwtPlotPicker_end(self *C.QwtPlotPicker, cb C.intptr_t, 
 }
 
 func (this *QwtPlotPicker) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtPlotPicker_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -710,7 +674,6 @@ func miqt_exec_callback_QwtPlotPicker_eventFilter(self *C.QwtPlotPicker, cb C.in
 }
 
 func (this *QwtPlotPicker) callVirtualBase_PickArea() *qt.QPainterPath {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QwtPlotPicker_virtualbase_pickArea(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -739,7 +702,6 @@ func miqt_exec_callback_QwtPlotPicker_pickArea(self *C.QwtPlotPicker, cb C.intpt
 }
 
 func (this *QwtPlotPicker) callVirtualBase_DrawRubberBand(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_drawRubberBand(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -767,7 +729,6 @@ func miqt_exec_callback_QwtPlotPicker_drawRubberBand(self *C.QwtPlotPicker, cb C
 }
 
 func (this *QwtPlotPicker) callVirtualBase_DrawTracker(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_drawTracker(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -795,7 +756,6 @@ func miqt_exec_callback_QwtPlotPicker_drawTracker(self *C.QwtPlotPicker, cb C.in
 }
 
 func (this *QwtPlotPicker) callVirtualBase_RubberBandMask() *qt.QRegion {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRegion(unsafe.Pointer(C.QwtPlotPicker_virtualbase_rubberBandMask(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -824,7 +784,6 @@ func miqt_exec_callback_QwtPlotPicker_rubberBandMask(self *C.QwtPlotPicker, cb C
 }
 
 func (this *QwtPlotPicker) callVirtualBase_TrackerRect(param1 *qt.QFont) *qt.QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPlotPicker_virtualbase_trackerRect(unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer()))))
@@ -857,7 +816,6 @@ func miqt_exec_callback_QwtPlotPicker_trackerRect(self *C.QwtPlotPicker, cb C.in
 }
 
 func (this *QwtPlotPicker) callVirtualBase_Transition(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_transition(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -885,7 +843,6 @@ func miqt_exec_callback_QwtPlotPicker_transition(self *C.QwtPlotPicker, cb C.int
 }
 
 func (this *QwtPlotPicker) callVirtualBase_Begin() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPlotPicker_virtualbase_begin(unsafe.Pointer(this.h))
 
@@ -909,7 +866,6 @@ func miqt_exec_callback_QwtPlotPicker_begin(self *C.QwtPlotPicker, cb C.intptr_t
 }
 
 func (this *QwtPlotPicker) callVirtualBase_Remove() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPlotPicker_virtualbase_remove(unsafe.Pointer(this.h))
 
@@ -933,7 +889,6 @@ func miqt_exec_callback_QwtPlotPicker_remove(self *C.QwtPlotPicker, cb C.intptr_
 }
 
 func (this *QwtPlotPicker) callVirtualBase_Reset() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPlotPicker_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -957,7 +912,6 @@ func miqt_exec_callback_QwtPlotPicker_reset(self *C.QwtPlotPicker, cb C.intptr_t
 }
 
 func (this *QwtPlotPicker) callVirtualBase_WidgetMousePressEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_widgetMousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -985,7 +939,6 @@ func miqt_exec_callback_QwtPlotPicker_widgetMousePressEvent(self *C.QwtPlotPicke
 }
 
 func (this *QwtPlotPicker) callVirtualBase_WidgetMouseReleaseEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_widgetMouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -1013,7 +966,6 @@ func miqt_exec_callback_QwtPlotPicker_widgetMouseReleaseEvent(self *C.QwtPlotPic
 }
 
 func (this *QwtPlotPicker) callVirtualBase_WidgetMouseDoubleClickEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_widgetMouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -1041,7 +993,6 @@ func miqt_exec_callback_QwtPlotPicker_widgetMouseDoubleClickEvent(self *C.QwtPlo
 }
 
 func (this *QwtPlotPicker) callVirtualBase_WidgetMouseMoveEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_widgetMouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -1069,7 +1020,6 @@ func miqt_exec_callback_QwtPlotPicker_widgetMouseMoveEvent(self *C.QwtPlotPicker
 }
 
 func (this *QwtPlotPicker) callVirtualBase_WidgetWheelEvent(param1 *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_widgetWheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
@@ -1097,7 +1047,6 @@ func miqt_exec_callback_QwtPlotPicker_widgetWheelEvent(self *C.QwtPlotPicker, cb
 }
 
 func (this *QwtPlotPicker) callVirtualBase_WidgetKeyPressEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_widgetKeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -1125,7 +1074,6 @@ func miqt_exec_callback_QwtPlotPicker_widgetKeyPressEvent(self *C.QwtPlotPicker,
 }
 
 func (this *QwtPlotPicker) callVirtualBase_WidgetKeyReleaseEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_widgetKeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -1153,7 +1101,6 @@ func miqt_exec_callback_QwtPlotPicker_widgetKeyReleaseEvent(self *C.QwtPlotPicke
 }
 
 func (this *QwtPlotPicker) callVirtualBase_WidgetEnterEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_widgetEnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1181,7 +1128,6 @@ func miqt_exec_callback_QwtPlotPicker_widgetEnterEvent(self *C.QwtPlotPicker, cb
 }
 
 func (this *QwtPlotPicker) callVirtualBase_WidgetLeaveEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotPicker_virtualbase_widgetLeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1209,7 +1155,6 @@ func miqt_exec_callback_QwtPlotPicker_widgetLeaveEvent(self *C.QwtPlotPicker, cb
 }
 
 func (this *QwtPlotPicker) callVirtualBase_StretchSelection(oldSize *qt.QSize, newSize *qt.QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(oldSize)
 	defer runtime.KeepAlive(newSize)
 
@@ -1240,7 +1185,6 @@ func miqt_exec_callback_QwtPlotPicker_stretchSelection(self *C.QwtPlotPicker, cb
 }
 
 func (this *QwtPlotPicker) callVirtualBase_UpdateDisplay() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPlotPicker_virtualbase_updateDisplay(unsafe.Pointer(this.h))
 
@@ -1264,7 +1208,6 @@ func miqt_exec_callback_QwtPlotPicker_updateDisplay(self *C.QwtPlotPicker, cb C.
 }
 
 func (this *QwtPlotPicker) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtPlotPicker_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1294,7 +1237,6 @@ func miqt_exec_callback_QwtPlotPicker_event(self *C.QwtPlotPicker, cb C.intptr_t
 }
 
 func (this *QwtPlotPicker) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotPicker_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1322,7 +1264,6 @@ func miqt_exec_callback_QwtPlotPicker_timerEvent(self *C.QwtPlotPicker, cb C.int
 }
 
 func (this *QwtPlotPicker) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotPicker_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1350,7 +1291,6 @@ func miqt_exec_callback_QwtPlotPicker_childEvent(self *C.QwtPlotPicker, cb C.int
 }
 
 func (this *QwtPlotPicker) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotPicker_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1378,7 +1318,6 @@ func miqt_exec_callback_QwtPlotPicker_customEvent(self *C.QwtPlotPicker, cb C.in
 }
 
 func (this *QwtPlotPicker) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotPicker_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1406,7 +1345,6 @@ func miqt_exec_callback_QwtPlotPicker_connectNotify(self *C.QwtPlotPicker, cb C.
 }
 
 func (this *QwtPlotPicker) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotPicker_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1434,7 +1372,6 @@ func miqt_exec_callback_QwtPlotPicker_disconnectNotify(self *C.QwtPlotPicker, cb
 }
 
 func (this *QwtPlotPicker) callVirtualBase_MouseMatch2(param1 *QwtEventPattern__MousePattern, param2 *qt.QMouseEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -1467,7 +1404,6 @@ func miqt_exec_callback_QwtPlotPicker_mouseMatch2(self *C.QwtPlotPicker, cb C.in
 }
 
 func (this *QwtPlotPicker) callVirtualBase_KeyMatch2(param1 *QwtEventPattern__KeyPattern, param2 *qt.QKeyEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -1507,6 +1443,8 @@ func (this *QwtPlotPicker) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtPlotPicker) GoGC() {
 	if this.gc != nil {
 		return

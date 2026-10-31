@@ -236,12 +236,10 @@ func UnsafeNewQWebSelectMethod(h unsafe.Pointer) *QWebSelectMethod {
 }
 
 func (this *QWebSelectMethod) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebSelectMethod_metaObject(this.h)))
 }
 
 func (this *QWebSelectMethod) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebSelectMethod_metacast(this.h, param1_Cstring))
@@ -266,30 +264,25 @@ func QWebSelectMethod_TrUtf8(s string) string {
 }
 
 func (this *QWebSelectMethod) Show(param1 *QWebSelectData) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QWebSelectMethod_show(this.h, param1.cPointer())
 }
 
 func (this *QWebSelectMethod) Hide() {
-	defer runtime.KeepAlive(this)
 	C.QWebSelectMethod_hide(this.h)
 }
 
 func (this *QWebSelectMethod) SetGeometry(geometry *qt.QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(geometry)
 	C.QWebSelectMethod_setGeometry(this.h, (*C.QRect)(geometry.UnsafePointer()))
 }
 
 func (this *QWebSelectMethod) SetFont(font *qt.QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QWebSelectMethod_setFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QWebSelectMethod) SelectItem(index int, allowMultiplySelections bool, shift bool) {
-	defer runtime.KeepAlive(this)
 	C.QWebSelectMethod_selectItem(this.h, (C.int)(index), (C.bool)(allowMultiplySelections), (C.bool)(shift))
 }
 func (this *QWebSelectMethod) OnSelectItem(slot func(index int, allowMultiplySelections bool, shift bool)) {
@@ -314,7 +307,6 @@ func miqt_exec_callback_QWebSelectMethod_selectItem(cb C.intptr_t, index C.int, 
 }
 
 func (this *QWebSelectMethod) DidHide() {
-	defer runtime.KeepAlive(this)
 	C.QWebSelectMethod_didHide(this.h)
 }
 func (this *QWebSelectMethod) OnDidHide(slot func()) {
@@ -383,6 +375,8 @@ func (this *QWebSelectMethod) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebSelectMethod) GoGC() {
 	if this.gc != nil {
 		return
@@ -532,12 +526,10 @@ func UnsafeNewQWebNotificationPresenter(h unsafe.Pointer) *QWebNotificationPrese
 }
 
 func (this *QWebNotificationPresenter) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebNotificationPresenter_metaObject(this.h)))
 }
 
 func (this *QWebNotificationPresenter) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebNotificationPresenter_metacast(this.h, param1_Cstring))
@@ -562,13 +554,11 @@ func QWebNotificationPresenter_TrUtf8(s string) string {
 }
 
 func (this *QWebNotificationPresenter) ShowNotification(param1 *QWebNotificationData) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QWebNotificationPresenter_showNotification(this.h, param1.cPointer())
 }
 
 func (this *QWebNotificationPresenter) NotificationClosed() {
-	defer runtime.KeepAlive(this)
 	C.QWebNotificationPresenter_notificationClosed(this.h)
 }
 func (this *QWebNotificationPresenter) OnNotificationClosed(slot func()) {
@@ -586,7 +576,6 @@ func miqt_exec_callback_QWebNotificationPresenter_notificationClosed(cb C.intptr
 }
 
 func (this *QWebNotificationPresenter) NotificationClicked() {
-	defer runtime.KeepAlive(this)
 	C.QWebNotificationPresenter_notificationClicked(this.h)
 }
 func (this *QWebNotificationPresenter) OnNotificationClicked(slot func()) {
@@ -655,6 +644,8 @@ func (this *QWebNotificationPresenter) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebNotificationPresenter) GoGC() {
 	if this.gc != nil {
 		return
@@ -710,12 +701,10 @@ func UnsafeNewQWebHapticFeedbackPlayer(h unsafe.Pointer) *QWebHapticFeedbackPlay
 }
 
 func (this *QWebHapticFeedbackPlayer) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebHapticFeedbackPlayer_metaObject(this.h)))
 }
 
 func (this *QWebHapticFeedbackPlayer) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebHapticFeedbackPlayer_metacast(this.h, param1_Cstring))
@@ -740,7 +729,6 @@ func QWebHapticFeedbackPlayer_TrUtf8(s string) string {
 }
 
 func (this *QWebHapticFeedbackPlayer) PlayHapticFeedback(param1 QWebHapticFeedbackPlayer__HapticEvent, hapticType string, param3 QWebHapticFeedbackPlayer__HapticStrength) {
-	defer runtime.KeepAlive(this)
 	hapticType_ms := C.struct_miqt_string{}
 	hapticType_ms.data = C.CString(hapticType)
 	hapticType_ms.len = C.size_t(len(hapticType))
@@ -800,6 +788,8 @@ func (this *QWebHapticFeedbackPlayer) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebHapticFeedbackPlayer) GoGC() {
 	if this.gc != nil {
 		return
@@ -855,12 +845,10 @@ func UnsafeNewQWebTouchModifier(h unsafe.Pointer) *QWebTouchModifier {
 }
 
 func (this *QWebTouchModifier) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebTouchModifier_metaObject(this.h)))
 }
 
 func (this *QWebTouchModifier) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebTouchModifier_metacast(this.h, param1_Cstring))
@@ -885,7 +873,6 @@ func QWebTouchModifier_TrUtf8(s string) string {
 }
 
 func (this *QWebTouchModifier) HitTestPaddingForTouch(param1 QWebTouchModifier__PaddingDirection) uint {
-	defer runtime.KeepAlive(this)
 	return (uint)(C.QWebTouchModifier_hitTestPaddingForTouch(this.h, (C.int)(param1)))
 }
 
@@ -941,6 +928,8 @@ func (this *QWebTouchModifier) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebTouchModifier) GoGC() {
 	if this.gc != nil {
 		return
@@ -996,12 +985,10 @@ func UnsafeNewQWebSpellChecker(h unsafe.Pointer) *QWebSpellChecker {
 }
 
 func (this *QWebSpellChecker) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebSpellChecker_metaObject(this.h)))
 }
 
 func (this *QWebSpellChecker) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebSpellChecker_metacast(this.h, param1_Cstring))
@@ -1026,17 +1013,14 @@ func QWebSpellChecker_TrUtf8(s string) string {
 }
 
 func (this *QWebSpellChecker) IsContinousSpellCheckingEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSpellChecker_isContinousSpellCheckingEnabled(this.h))
 }
 
 func (this *QWebSpellChecker) ToggleContinousSpellChecking() {
-	defer runtime.KeepAlive(this)
 	C.QWebSpellChecker_toggleContinousSpellChecking(this.h)
 }
 
 func (this *QWebSpellChecker) LearnWord(word string) {
-	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -1045,7 +1029,6 @@ func (this *QWebSpellChecker) LearnWord(word string) {
 }
 
 func (this *QWebSpellChecker) IgnoreWordInSpellDocument(word string) {
-	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -1054,7 +1037,6 @@ func (this *QWebSpellChecker) IgnoreWordInSpellDocument(word string) {
 }
 
 func (this *QWebSpellChecker) CheckSpellingOfString(word string, misspellingLocation *int, misspellingLength *int) {
-	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -1063,7 +1045,6 @@ func (this *QWebSpellChecker) CheckSpellingOfString(word string, misspellingLoca
 }
 
 func (this *QWebSpellChecker) AutoCorrectSuggestionForMisspelledWord(word string) string {
-	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -1075,7 +1056,6 @@ func (this *QWebSpellChecker) AutoCorrectSuggestionForMisspelledWord(word string
 }
 
 func (this *QWebSpellChecker) GuessesForWord(word string, context string, guesses []string) {
-	defer runtime.KeepAlive(this)
 	word_ms := C.struct_miqt_string{}
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
@@ -1099,17 +1079,14 @@ func (this *QWebSpellChecker) GuessesForWord(word string, context string, guesse
 }
 
 func (this *QWebSpellChecker) IsGrammarCheckingEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebSpellChecker_isGrammarCheckingEnabled(this.h))
 }
 
 func (this *QWebSpellChecker) ToggleGrammarChecking() {
-	defer runtime.KeepAlive(this)
 	C.QWebSpellChecker_toggleGrammarChecking(this.h)
 }
 
 func (this *QWebSpellChecker) CheckGrammarOfString(param1 string, param2 []QWebSpellChecker__GrammarDetail, badGrammarLocation *int, badGrammarLength *int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param2)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
@@ -1177,6 +1154,8 @@ func (this *QWebSpellChecker) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebSpellChecker) GoGC() {
 	if this.gc != nil {
 		return

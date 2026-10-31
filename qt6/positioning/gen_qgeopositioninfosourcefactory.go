@@ -55,7 +55,6 @@ func UnsafeNewQGeoPositionInfoSourceFactory(h unsafe.Pointer) *QGeoPositionInfoS
 
 func (this *QGeoPositionInfoSourceFactory) PositionInfoSource(parent *qt6.QObject, parameters map[string]qt6.QVariant) *QGeoPositionInfoSource {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(parameters)
 	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
 	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
@@ -83,7 +82,6 @@ func (this *QGeoPositionInfoSourceFactory) PositionInfoSource(parent *qt6.QObjec
 
 func (this *QGeoPositionInfoSourceFactory) SatelliteInfoSource(parent *qt6.QObject, parameters map[string]qt6.QVariant) *QGeoSatelliteInfoSource {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(parameters)
 	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
 	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
@@ -111,7 +109,6 @@ func (this *QGeoPositionInfoSourceFactory) SatelliteInfoSource(parent *qt6.QObje
 
 func (this *QGeoPositionInfoSourceFactory) AreaMonitor(parent *qt6.QObject, parameters map[string]qt6.QVariant) *QGeoAreaMonitorSource {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(parameters)
 	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
 	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))

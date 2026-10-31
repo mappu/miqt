@@ -60,12 +60,10 @@ func UnsafeNewQRadioTunerControl(h unsafe.Pointer) *QRadioTunerControl {
 }
 
 func (this *QRadioTunerControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QRadioTunerControl_metaObject(this.h)))
 }
 
 func (this *QRadioTunerControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QRadioTunerControl_metacast(this.h, param1_Cstring))
@@ -90,32 +88,26 @@ func QRadioTunerControl_TrUtf8(s string) string {
 }
 
 func (this *QRadioTunerControl) State() QRadioTuner__State {
-	defer runtime.KeepAlive(this)
 	return (QRadioTuner__State)(C.QRadioTunerControl_state(this.h))
 }
 
 func (this *QRadioTunerControl) Band() QRadioTuner__Band {
-	defer runtime.KeepAlive(this)
 	return (QRadioTuner__Band)(C.QRadioTunerControl_band(this.h))
 }
 
 func (this *QRadioTunerControl) SetBand(b QRadioTuner__Band) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_setBand(this.h, (C.int)(b))
 }
 
 func (this *QRadioTunerControl) IsBandSupported(b QRadioTuner__Band) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTunerControl_isBandSupported(this.h, (C.int)(b)))
 }
 
 func (this *QRadioTunerControl) Frequency() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QRadioTunerControl_frequency(this.h))
 }
 
 func (this *QRadioTunerControl) FrequencyStep(b QRadioTuner__Band) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QRadioTunerControl_frequencyStep(this.h, (C.int)(b)))
 }
 
@@ -123,7 +115,6 @@ func (this *QRadioTunerControl) FrequencyRange(b QRadioTuner__Band) struct {
 	First  int
 	Second int
 } {
-	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QRadioTunerControl_frequencyRange(this.h, (C.int)(b))
 	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
@@ -138,97 +129,78 @@ func (this *QRadioTunerControl) FrequencyRange(b QRadioTuner__Band) struct {
 }
 
 func (this *QRadioTunerControl) SetFrequency(frequency int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_setFrequency(this.h, (C.int)(frequency))
 }
 
 func (this *QRadioTunerControl) IsStereo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTunerControl_isStereo(this.h))
 }
 
 func (this *QRadioTunerControl) StereoMode() QRadioTuner__StereoMode {
-	defer runtime.KeepAlive(this)
 	return (QRadioTuner__StereoMode)(C.QRadioTunerControl_stereoMode(this.h))
 }
 
 func (this *QRadioTunerControl) SetStereoMode(mode QRadioTuner__StereoMode) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_setStereoMode(this.h, (C.int)(mode))
 }
 
 func (this *QRadioTunerControl) SignalStrength() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QRadioTunerControl_signalStrength(this.h))
 }
 
 func (this *QRadioTunerControl) Volume() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QRadioTunerControl_volume(this.h))
 }
 
 func (this *QRadioTunerControl) SetVolume(volume int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_setVolume(this.h, (C.int)(volume))
 }
 
 func (this *QRadioTunerControl) IsMuted() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTunerControl_isMuted(this.h))
 }
 
 func (this *QRadioTunerControl) SetMuted(muted bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_setMuted(this.h, (C.bool)(muted))
 }
 
 func (this *QRadioTunerControl) IsSearching() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTunerControl_isSearching(this.h))
 }
 
 func (this *QRadioTunerControl) IsAntennaConnected() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTunerControl_isAntennaConnected(this.h))
 }
 
 func (this *QRadioTunerControl) SearchForward() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_searchForward(this.h)
 }
 
 func (this *QRadioTunerControl) SearchBackward() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_searchBackward(this.h)
 }
 
 func (this *QRadioTunerControl) SearchAllStations(searchMode QRadioTuner__SearchMode) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_searchAllStations(this.h, (C.int)(searchMode))
 }
 
 func (this *QRadioTunerControl) CancelSearch() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_cancelSearch(this.h)
 }
 
 func (this *QRadioTunerControl) Start() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_start(this.h)
 }
 
 func (this *QRadioTunerControl) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_stop(this.h)
 }
 
 func (this *QRadioTunerControl) Error() QRadioTuner__Error {
-	defer runtime.KeepAlive(this)
 	return (QRadioTuner__Error)(C.QRadioTunerControl_error(this.h))
 }
 
 func (this *QRadioTunerControl) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRadioTunerControl_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -236,7 +208,6 @@ func (this *QRadioTunerControl) ErrorString() string {
 }
 
 func (this *QRadioTunerControl) StateChanged(state QRadioTuner__State) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_stateChanged(this.h, (C.int)(state))
 }
 func (this *QRadioTunerControl) OnStateChanged(slot func(state QRadioTuner__State)) {
@@ -257,7 +228,6 @@ func miqt_exec_callback_QRadioTunerControl_stateChanged(cb C.intptr_t, state C.i
 }
 
 func (this *QRadioTunerControl) BandChanged(band QRadioTuner__Band) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_bandChanged(this.h, (C.int)(band))
 }
 func (this *QRadioTunerControl) OnBandChanged(slot func(band QRadioTuner__Band)) {
@@ -278,7 +248,6 @@ func miqt_exec_callback_QRadioTunerControl_bandChanged(cb C.intptr_t, band C.int
 }
 
 func (this *QRadioTunerControl) FrequencyChanged(frequency int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_frequencyChanged(this.h, (C.int)(frequency))
 }
 func (this *QRadioTunerControl) OnFrequencyChanged(slot func(frequency int)) {
@@ -299,7 +268,6 @@ func miqt_exec_callback_QRadioTunerControl_frequencyChanged(cb C.intptr_t, frequ
 }
 
 func (this *QRadioTunerControl) StereoStatusChanged(stereo bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_stereoStatusChanged(this.h, (C.bool)(stereo))
 }
 func (this *QRadioTunerControl) OnStereoStatusChanged(slot func(stereo bool)) {
@@ -320,7 +288,6 @@ func miqt_exec_callback_QRadioTunerControl_stereoStatusChanged(cb C.intptr_t, st
 }
 
 func (this *QRadioTunerControl) SearchingChanged(searching bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_searchingChanged(this.h, (C.bool)(searching))
 }
 func (this *QRadioTunerControl) OnSearchingChanged(slot func(searching bool)) {
@@ -341,7 +308,6 @@ func miqt_exec_callback_QRadioTunerControl_searchingChanged(cb C.intptr_t, searc
 }
 
 func (this *QRadioTunerControl) SignalStrengthChanged(signalStrength int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_signalStrengthChanged(this.h, (C.int)(signalStrength))
 }
 func (this *QRadioTunerControl) OnSignalStrengthChanged(slot func(signalStrength int)) {
@@ -362,7 +328,6 @@ func miqt_exec_callback_QRadioTunerControl_signalStrengthChanged(cb C.intptr_t, 
 }
 
 func (this *QRadioTunerControl) VolumeChanged(volume int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_volumeChanged(this.h, (C.int)(volume))
 }
 func (this *QRadioTunerControl) OnVolumeChanged(slot func(volume int)) {
@@ -383,7 +348,6 @@ func miqt_exec_callback_QRadioTunerControl_volumeChanged(cb C.intptr_t, volume C
 }
 
 func (this *QRadioTunerControl) MutedChanged(muted bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_mutedChanged(this.h, (C.bool)(muted))
 }
 func (this *QRadioTunerControl) OnMutedChanged(slot func(muted bool)) {
@@ -404,7 +368,6 @@ func miqt_exec_callback_QRadioTunerControl_mutedChanged(cb C.intptr_t, muted C.b
 }
 
 func (this *QRadioTunerControl) ErrorWithErr(err QRadioTuner__Error) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_errorWithErr(this.h, (C.int)(err))
 }
 func (this *QRadioTunerControl) OnErrorWithErr(slot func(err QRadioTuner__Error)) {
@@ -425,7 +388,6 @@ func miqt_exec_callback_QRadioTunerControl_errorWithErr(cb C.intptr_t, err C.int
 }
 
 func (this *QRadioTunerControl) StationFound(frequency int, stationId string) {
-	defer runtime.KeepAlive(this)
 	stationId_ms := C.struct_miqt_string{}
 	stationId_ms.data = C.CString(stationId)
 	stationId_ms.len = C.size_t(len(stationId))
@@ -455,7 +417,6 @@ func miqt_exec_callback_QRadioTunerControl_stationFound(cb C.intptr_t, frequency
 }
 
 func (this *QRadioTunerControl) AntennaConnectedChanged(connectionStatus bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTunerControl_antennaConnectedChanged(this.h, (C.bool)(connectionStatus))
 }
 func (this *QRadioTunerControl) OnAntennaConnectedChanged(slot func(connectionStatus bool)) {
@@ -527,6 +488,8 @@ func (this *QRadioTunerControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QRadioTunerControl) GoGC() {
 	if this.gc != nil {
 		return

@@ -75,13 +75,11 @@ func (this *QDesignerContainerExtension) SetCurrentIndex(index int) {
 
 func (this *QDesignerContainerExtension) AddWidget(widget *qt.QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QDesignerContainerExtension_addWidget(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 
 func (this *QDesignerContainerExtension) InsertWidget(index int, widget *qt.QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QDesignerContainerExtension_insertWidget(this.h, (C.int)(index), (*C.QWidget)(widget.UnsafePointer()))
 }
 

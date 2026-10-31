@@ -60,12 +60,10 @@ func UnsafeNewQMediaVideoProbeControl(h unsafe.Pointer) *QMediaVideoProbeControl
 }
 
 func (this *QMediaVideoProbeControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaVideoProbeControl_metaObject(this.h)))
 }
 
 func (this *QMediaVideoProbeControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaVideoProbeControl_metacast(this.h, param1_Cstring))
@@ -90,7 +88,6 @@ func QMediaVideoProbeControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaVideoProbeControl) VideoFrameProbed(frame *QVideoFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(frame)
 	C.QMediaVideoProbeControl_videoFrameProbed(this.h, frame.cPointer())
 }
@@ -112,7 +109,6 @@ func miqt_exec_callback_QMediaVideoProbeControl_videoFrameProbed(cb C.intptr_t, 
 }
 
 func (this *QMediaVideoProbeControl) Flush() {
-	defer runtime.KeepAlive(this)
 	C.QMediaVideoProbeControl_flush(this.h)
 }
 func (this *QMediaVideoProbeControl) OnFlush(slot func()) {
@@ -181,6 +177,8 @@ func (this *QMediaVideoProbeControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaVideoProbeControl) GoGC() {
 	if this.gc != nil {
 		return

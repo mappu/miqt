@@ -59,12 +59,10 @@ func UnsafeNewQAbstractState(h unsafe.Pointer) *QAbstractState {
 }
 
 func (this *QAbstractState) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractState_metaObject(this.h)))
 }
 
 func (this *QAbstractState) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractState_metacast(this.h, param1_Cstring))
@@ -80,22 +78,18 @@ func QAbstractState_Tr(s string) string {
 }
 
 func (this *QAbstractState) ParentState() *QState {
-	defer runtime.KeepAlive(this)
 	return newQState(C.QAbstractState_parentState(this.h))
 }
 
 func (this *QAbstractState) Machine() *QStateMachine {
-	defer runtime.KeepAlive(this)
 	return newQStateMachine(C.QAbstractState_machine(this.h))
 }
 
 func (this *QAbstractState) Active() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractState_active(this.h))
 }
 
 func (this *QAbstractState) ActiveChanged(active bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractState_activeChanged(this.h, (C.bool)(active))
 }
 func (this *QAbstractState) OnActiveChanged(slot func(active bool)) {
@@ -172,6 +166,8 @@ func (this *QAbstractState) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractState) GoGC() {
 	if this.gc != nil {
 		return

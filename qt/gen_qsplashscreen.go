@@ -60,7 +60,6 @@ func UnsafeNewQSplashScreen(h unsafe.Pointer) *QSplashScreen {
 
 // NewQSplashScreen constructs a new QSplashScreen object.
 func NewQSplashScreen(parent *QWidget) *QSplashScreen {
-	defer runtime.KeepAlive(parent)
 
 	return newQSplashScreen(C.QSplashScreen_new(parent.cPointer()))
 }
@@ -73,7 +72,6 @@ func NewQSplashScreen2() *QSplashScreen {
 
 // NewQSplashScreen3 constructs a new QSplashScreen object.
 func NewQSplashScreen3(screen *QScreen) *QSplashScreen {
-	defer runtime.KeepAlive(screen)
 
 	return newQSplashScreen(C.QSplashScreen_new3(screen.cPointer()))
 }
@@ -94,7 +92,6 @@ func NewQSplashScreen5(pixmap *QPixmap, f WindowType) *QSplashScreen {
 
 // NewQSplashScreen6 constructs a new QSplashScreen object.
 func NewQSplashScreen6(screen *QScreen, pixmap *QPixmap) *QSplashScreen {
-	defer runtime.KeepAlive(screen)
 	defer runtime.KeepAlive(pixmap)
 
 	return newQSplashScreen(C.QSplashScreen_new6(screen.cPointer(), pixmap.cPointer()))
@@ -102,7 +99,6 @@ func NewQSplashScreen6(screen *QScreen, pixmap *QPixmap) *QSplashScreen {
 
 // NewQSplashScreen7 constructs a new QSplashScreen object.
 func NewQSplashScreen7(screen *QScreen, pixmap *QPixmap, f WindowType) *QSplashScreen {
-	defer runtime.KeepAlive(screen)
 	defer runtime.KeepAlive(pixmap)
 
 	return newQSplashScreen(C.QSplashScreen_new7(screen.cPointer(), pixmap.cPointer(), (C.int)(f)))
@@ -110,7 +106,6 @@ func NewQSplashScreen7(screen *QScreen, pixmap *QPixmap, f WindowType) *QSplashS
 
 // NewQSplashScreen8 constructs a new QSplashScreen object.
 func NewQSplashScreen8(parent *QWidget, pixmap *QPixmap) *QSplashScreen {
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(pixmap)
 
 	return newQSplashScreen(C.QSplashScreen_new8(parent.cPointer(), pixmap.cPointer()))
@@ -118,19 +113,16 @@ func NewQSplashScreen8(parent *QWidget, pixmap *QPixmap) *QSplashScreen {
 
 // NewQSplashScreen9 constructs a new QSplashScreen object.
 func NewQSplashScreen9(parent *QWidget, pixmap *QPixmap, f WindowType) *QSplashScreen {
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(pixmap)
 
 	return newQSplashScreen(C.QSplashScreen_new9(parent.cPointer(), pixmap.cPointer(), (C.int)(f)))
 }
 
 func (this *QSplashScreen) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSplashScreen_metaObject(this.h))
 }
 
 func (this *QSplashScreen) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSplashScreen_metacast(this.h, param1_Cstring))
@@ -155,31 +147,25 @@ func QSplashScreen_TrUtf8(s string) string {
 }
 
 func (this *QSplashScreen) SetPixmap(pixmap *QPixmap) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pixmap)
 	C.QSplashScreen_setPixmap(this.h, pixmap.cPointer())
 }
 
 func (this *QSplashScreen) Pixmap() *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QSplashScreen_pixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSplashScreen) Finish(w *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(w)
 	C.QSplashScreen_finish(this.h, w.cPointer())
 }
 
 func (this *QSplashScreen) Repaint() {
-	defer runtime.KeepAlive(this)
 	C.QSplashScreen_repaint(this.h)
 }
 
 func (this *QSplashScreen) Message() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QSplashScreen_message(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -187,7 +173,6 @@ func (this *QSplashScreen) Message() string {
 }
 
 func (this *QSplashScreen) ShowMessage(message string) {
-	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -196,12 +181,10 @@ func (this *QSplashScreen) ShowMessage(message string) {
 }
 
 func (this *QSplashScreen) ClearMessage() {
-	defer runtime.KeepAlive(this)
 	C.QSplashScreen_clearMessage(this.h)
 }
 
 func (this *QSplashScreen) MessageChanged(message string) {
-	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -273,7 +256,6 @@ func QSplashScreen_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QSplashScreen) ShowMessage2(message string, alignment int) {
-	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -282,7 +264,6 @@ func (this *QSplashScreen) ShowMessage2(message string, alignment int) {
 }
 
 func (this *QSplashScreen) ShowMessage3(message string, alignment int, color *QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
@@ -293,7 +274,6 @@ func (this *QSplashScreen) ShowMessage3(message string, alignment int, color *QC
 
 // UpdateMicroFocus can only be called from a QSplashScreen that was directly constructed.
 func (this *QSplashScreen) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplashScreen_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -306,7 +286,6 @@ func (this *QSplashScreen) UpdateMicroFocus() {
 
 // Create can only be called from a QSplashScreen that was directly constructed.
 func (this *QSplashScreen) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplashScreen_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -319,7 +298,6 @@ func (this *QSplashScreen) Create() {
 
 // Destroy can only be called from a QSplashScreen that was directly constructed.
 func (this *QSplashScreen) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSplashScreen_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -332,7 +310,6 @@ func (this *QSplashScreen) Destroy() {
 
 // FocusNextChild can only be called from a QSplashScreen that was directly constructed.
 func (this *QSplashScreen) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSplashScreen_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -347,7 +324,6 @@ func (this *QSplashScreen) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QSplashScreen that was directly constructed.
 func (this *QSplashScreen) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QSplashScreen_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -362,7 +338,6 @@ func (this *QSplashScreen) FocusPreviousChild() bool {
 
 // Sender can only be called from a QSplashScreen that was directly constructed.
 func (this *QSplashScreen) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSplashScreen_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -377,7 +352,6 @@ func (this *QSplashScreen) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSplashScreen that was directly constructed.
 func (this *QSplashScreen) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSplashScreen_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -392,7 +366,6 @@ func (this *QSplashScreen) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSplashScreen that was directly constructed.
 func (this *QSplashScreen) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -409,7 +382,6 @@ func (this *QSplashScreen) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSplashScreen that was directly constructed.
 func (this *QSplashScreen) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -424,7 +396,6 @@ func (this *QSplashScreen) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSplashScreen) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QSplashScreen_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -454,7 +425,6 @@ func miqt_exec_callback_QSplashScreen_event(self *C.QSplashScreen, cb C.intptr_t
 }
 
 func (this *QSplashScreen) callVirtualBase_DrawContents(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QSplashScreen_virtualbase_drawContents(unsafe.Pointer(this.h), painter.cPointer())
@@ -482,7 +452,6 @@ func miqt_exec_callback_QSplashScreen_drawContents(self *C.QSplashScreen, cb C.i
 }
 
 func (this *QSplashScreen) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QSplashScreen_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -510,7 +479,6 @@ func miqt_exec_callback_QSplashScreen_mousePressEvent(self *C.QSplashScreen, cb 
 }
 
 func (this *QSplashScreen) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSplashScreen_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -536,7 +504,6 @@ func miqt_exec_callback_QSplashScreen_devType(self *C.QSplashScreen, cb C.intptr
 }
 
 func (this *QSplashScreen) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QSplashScreen_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -563,7 +530,6 @@ func miqt_exec_callback_QSplashScreen_setVisible(self *C.QSplashScreen, cb C.int
 }
 
 func (this *QSplashScreen) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSplashScreen_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -592,7 +558,6 @@ func miqt_exec_callback_QSplashScreen_sizeHint(self *C.QSplashScreen, cb C.intpt
 }
 
 func (this *QSplashScreen) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QSplashScreen_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -621,7 +586,6 @@ func miqt_exec_callback_QSplashScreen_minimumSizeHint(self *C.QSplashScreen, cb 
 }
 
 func (this *QSplashScreen) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSplashScreen_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -650,7 +614,6 @@ func miqt_exec_callback_QSplashScreen_heightForWidth(self *C.QSplashScreen, cb C
 }
 
 func (this *QSplashScreen) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSplashScreen_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -676,7 +639,6 @@ func miqt_exec_callback_QSplashScreen_hasHeightForWidth(self *C.QSplashScreen, c
 }
 
 func (this *QSplashScreen) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QSplashScreen_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -703,7 +665,6 @@ func miqt_exec_callback_QSplashScreen_paintEngine(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -731,7 +692,6 @@ func miqt_exec_callback_QSplashScreen_mouseReleaseEvent(self *C.QSplashScreen, c
 }
 
 func (this *QSplashScreen) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -759,7 +719,6 @@ func miqt_exec_callback_QSplashScreen_mouseDoubleClickEvent(self *C.QSplashScree
 }
 
 func (this *QSplashScreen) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -787,7 +746,6 @@ func miqt_exec_callback_QSplashScreen_mouseMoveEvent(self *C.QSplashScreen, cb C
 }
 
 func (this *QSplashScreen) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -815,7 +773,6 @@ func miqt_exec_callback_QSplashScreen_wheelEvent(self *C.QSplashScreen, cb C.int
 }
 
 func (this *QSplashScreen) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -843,7 +800,6 @@ func miqt_exec_callback_QSplashScreen_keyPressEvent(self *C.QSplashScreen, cb C.
 }
 
 func (this *QSplashScreen) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -871,7 +827,6 @@ func miqt_exec_callback_QSplashScreen_keyReleaseEvent(self *C.QSplashScreen, cb 
 }
 
 func (this *QSplashScreen) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -899,7 +854,6 @@ func miqt_exec_callback_QSplashScreen_focusInEvent(self *C.QSplashScreen, cb C.i
 }
 
 func (this *QSplashScreen) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -927,7 +881,6 @@ func miqt_exec_callback_QSplashScreen_focusOutEvent(self *C.QSplashScreen, cb C.
 }
 
 func (this *QSplashScreen) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -955,7 +908,6 @@ func miqt_exec_callback_QSplashScreen_enterEvent(self *C.QSplashScreen, cb C.int
 }
 
 func (this *QSplashScreen) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -983,7 +935,6 @@ func miqt_exec_callback_QSplashScreen_leaveEvent(self *C.QSplashScreen, cb C.int
 }
 
 func (this *QSplashScreen) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1011,7 +962,6 @@ func miqt_exec_callback_QSplashScreen_paintEvent(self *C.QSplashScreen, cb C.int
 }
 
 func (this *QSplashScreen) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1039,7 +989,6 @@ func miqt_exec_callback_QSplashScreen_moveEvent(self *C.QSplashScreen, cb C.intp
 }
 
 func (this *QSplashScreen) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1067,7 +1016,6 @@ func miqt_exec_callback_QSplashScreen_resizeEvent(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1095,7 +1043,6 @@ func miqt_exec_callback_QSplashScreen_closeEvent(self *C.QSplashScreen, cb C.int
 }
 
 func (this *QSplashScreen) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1123,7 +1070,6 @@ func miqt_exec_callback_QSplashScreen_contextMenuEvent(self *C.QSplashScreen, cb
 }
 
 func (this *QSplashScreen) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1151,7 +1097,6 @@ func miqt_exec_callback_QSplashScreen_tabletEvent(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1179,7 +1124,6 @@ func miqt_exec_callback_QSplashScreen_actionEvent(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1207,7 +1151,6 @@ func miqt_exec_callback_QSplashScreen_dragEnterEvent(self *C.QSplashScreen, cb C
 }
 
 func (this *QSplashScreen) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1235,7 +1178,6 @@ func miqt_exec_callback_QSplashScreen_dragMoveEvent(self *C.QSplashScreen, cb C.
 }
 
 func (this *QSplashScreen) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1263,7 +1205,6 @@ func miqt_exec_callback_QSplashScreen_dragLeaveEvent(self *C.QSplashScreen, cb C
 }
 
 func (this *QSplashScreen) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1291,7 +1232,6 @@ func miqt_exec_callback_QSplashScreen_dropEvent(self *C.QSplashScreen, cb C.intp
 }
 
 func (this *QSplashScreen) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1319,7 +1259,6 @@ func miqt_exec_callback_QSplashScreen_showEvent(self *C.QSplashScreen, cb C.intp
 }
 
 func (this *QSplashScreen) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1347,7 +1286,6 @@ func miqt_exec_callback_QSplashScreen_hideEvent(self *C.QSplashScreen, cb C.intp
 }
 
 func (this *QSplashScreen) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1389,7 +1327,6 @@ func miqt_exec_callback_QSplashScreen_nativeEvent(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_ChangeEvent(param1 *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QSplashScreen_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1417,7 +1354,6 @@ func miqt_exec_callback_QSplashScreen_changeEvent(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSplashScreen_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1446,7 +1382,6 @@ func miqt_exec_callback_QSplashScreen_metric(self *C.QSplashScreen, cb C.intptr_
 }
 
 func (this *QSplashScreen) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QSplashScreen_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1474,7 +1409,6 @@ func miqt_exec_callback_QSplashScreen_initPainter(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QSplashScreen_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1505,7 +1439,6 @@ func miqt_exec_callback_QSplashScreen_redirected(self *C.QSplashScreen, cb C.int
 }
 
 func (this *QSplashScreen) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QSplashScreen_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1532,7 +1465,6 @@ func miqt_exec_callback_QSplashScreen_sharedPainter(self *C.QSplashScreen, cb C.
 }
 
 func (this *QSplashScreen) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QSplashScreen_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1560,7 +1492,6 @@ func miqt_exec_callback_QSplashScreen_inputMethodEvent(self *C.QSplashScreen, cb
 }
 
 func (this *QSplashScreen) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QSplashScreen_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1592,7 +1523,6 @@ func miqt_exec_callback_QSplashScreen_inputMethodQuery(self *C.QSplashScreen, cb
 }
 
 func (this *QSplashScreen) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSplashScreen_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1621,8 +1551,6 @@ func miqt_exec_callback_QSplashScreen_focusNextPrevChild(self *C.QSplashScreen, 
 }
 
 func (this *QSplashScreen) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSplashScreen_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1654,7 +1582,6 @@ func miqt_exec_callback_QSplashScreen_eventFilter(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1682,7 +1609,6 @@ func miqt_exec_callback_QSplashScreen_timerEvent(self *C.QSplashScreen, cb C.int
 }
 
 func (this *QSplashScreen) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1710,7 +1636,6 @@ func miqt_exec_callback_QSplashScreen_childEvent(self *C.QSplashScreen, cb C.int
 }
 
 func (this *QSplashScreen) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSplashScreen_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1738,7 +1663,6 @@ func miqt_exec_callback_QSplashScreen_customEvent(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSplashScreen_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1766,7 +1690,6 @@ func miqt_exec_callback_QSplashScreen_connectNotify(self *C.QSplashScreen, cb C.
 }
 
 func (this *QSplashScreen) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSplashScreen_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1801,6 +1724,8 @@ func (this *QSplashScreen) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QSplashScreen) GoGC() {
 	if this.gc != nil {
 		return

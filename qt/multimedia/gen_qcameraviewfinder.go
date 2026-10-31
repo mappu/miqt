@@ -61,7 +61,6 @@ func UnsafeNewQCameraViewfinder(h unsafe.Pointer) *QCameraViewfinder {
 
 // NewQCameraViewfinder constructs a new QCameraViewfinder object.
 func NewQCameraViewfinder(parent *qt.QWidget) *QCameraViewfinder {
-	defer runtime.KeepAlive(parent)
 
 	return newQCameraViewfinder(C.QCameraViewfinder_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -73,12 +72,10 @@ func NewQCameraViewfinder2() *QCameraViewfinder {
 }
 
 func (this *QCameraViewfinder) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinder_metaObject(this.h)))
 }
 
 func (this *QCameraViewfinder) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraViewfinder_metacast(this.h, param1_Cstring))
@@ -103,7 +100,6 @@ func QCameraViewfinder_TrUtf8(s string) string {
 }
 
 func (this *QCameraViewfinder) MediaObject() *QMediaObject {
-	defer runtime.KeepAlive(this)
 	return newQMediaObject(C.QCameraViewfinder_mediaObject(this.h))
 }
 
@@ -153,7 +149,6 @@ func QCameraViewfinder_TrUtf83(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QCameraViewfinder that was directly constructed.
 func (this *QCameraViewfinder) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCameraViewfinder_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -166,7 +161,6 @@ func (this *QCameraViewfinder) UpdateMicroFocus() {
 
 // Create can only be called from a QCameraViewfinder that was directly constructed.
 func (this *QCameraViewfinder) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCameraViewfinder_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -179,7 +173,6 @@ func (this *QCameraViewfinder) Create() {
 
 // Destroy can only be called from a QCameraViewfinder that was directly constructed.
 func (this *QCameraViewfinder) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCameraViewfinder_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -192,7 +185,6 @@ func (this *QCameraViewfinder) Destroy() {
 
 // FocusNextChild can only be called from a QCameraViewfinder that was directly constructed.
 func (this *QCameraViewfinder) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCameraViewfinder_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -207,7 +199,6 @@ func (this *QCameraViewfinder) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QCameraViewfinder that was directly constructed.
 func (this *QCameraViewfinder) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCameraViewfinder_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -222,7 +213,6 @@ func (this *QCameraViewfinder) FocusPreviousChild() bool {
 
 // Sender can only be called from a QCameraViewfinder that was directly constructed.
 func (this *QCameraViewfinder) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QCameraViewfinder_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -237,7 +227,6 @@ func (this *QCameraViewfinder) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QCameraViewfinder that was directly constructed.
 func (this *QCameraViewfinder) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCameraViewfinder_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -252,7 +241,6 @@ func (this *QCameraViewfinder) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCameraViewfinder that was directly constructed.
 func (this *QCameraViewfinder) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -269,7 +257,6 @@ func (this *QCameraViewfinder) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCameraViewfinder that was directly constructed.
 func (this *QCameraViewfinder) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -284,7 +271,6 @@ func (this *QCameraViewfinder) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QCameraViewfinder) callVirtualBase_MediaObject() *QMediaObject {
-	defer runtime.KeepAlive(this)
 
 	return newQMediaObject(C.QCameraViewfinder_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
@@ -304,15 +290,12 @@ func miqt_exec_callback_QCameraViewfinder_mediaObject(self *C.QCameraViewfinder,
 	}
 
 	virtualReturn := gofunc((&QCameraViewfinder{h: self}).callVirtualBase_MediaObject)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_SetMediaObject(object *QMediaObject) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 
 	return (bool)(C.QCameraViewfinder_virtualbase_setMediaObject(unsafe.Pointer(this.h), object.cPointer()))
 
@@ -341,7 +324,6 @@ func miqt_exec_callback_QCameraViewfinder_setMediaObject(self *C.QCameraViewfind
 }
 
 func (this *QCameraViewfinder) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinder_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -370,7 +352,6 @@ func miqt_exec_callback_QCameraViewfinder_sizeHint(self *C.QCameraViewfinder, cb
 }
 
 func (this *QCameraViewfinder) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCameraViewfinder_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -400,7 +381,6 @@ func miqt_exec_callback_QCameraViewfinder_event(self *C.QCameraViewfinder, cb C.
 }
 
 func (this *QCameraViewfinder) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -428,7 +408,6 @@ func miqt_exec_callback_QCameraViewfinder_showEvent(self *C.QCameraViewfinder, c
 }
 
 func (this *QCameraViewfinder) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -456,7 +435,6 @@ func miqt_exec_callback_QCameraViewfinder_hideEvent(self *C.QCameraViewfinder, c
 }
 
 func (this *QCameraViewfinder) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -484,7 +462,6 @@ func miqt_exec_callback_QCameraViewfinder_resizeEvent(self *C.QCameraViewfinder,
 }
 
 func (this *QCameraViewfinder) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -512,7 +489,6 @@ func miqt_exec_callback_QCameraViewfinder_moveEvent(self *C.QCameraViewfinder, c
 }
 
 func (this *QCameraViewfinder) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
@@ -540,7 +516,6 @@ func miqt_exec_callback_QCameraViewfinder_paintEvent(self *C.QCameraViewfinder, 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QCameraViewfinder_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -566,7 +541,6 @@ func miqt_exec_callback_QCameraViewfinder_devType(self *C.QCameraViewfinder, cb 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QCameraViewfinder_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -593,7 +567,6 @@ func miqt_exec_callback_QCameraViewfinder_setVisible(self *C.QCameraViewfinder, 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinder_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -622,7 +595,6 @@ func miqt_exec_callback_QCameraViewfinder_minimumSizeHint(self *C.QCameraViewfin
 }
 
 func (this *QCameraViewfinder) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QCameraViewfinder_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -651,7 +623,6 @@ func miqt_exec_callback_QCameraViewfinder_heightForWidth(self *C.QCameraViewfind
 }
 
 func (this *QCameraViewfinder) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QCameraViewfinder_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -677,7 +648,6 @@ func miqt_exec_callback_QCameraViewfinder_hasHeightForWidth(self *C.QCameraViewf
 }
 
 func (this *QCameraViewfinder) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QCameraViewfinder_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -704,7 +674,6 @@ func miqt_exec_callback_QCameraViewfinder_paintEngine(self *C.QCameraViewfinder,
 }
 
 func (this *QCameraViewfinder) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -732,7 +701,6 @@ func miqt_exec_callback_QCameraViewfinder_mousePressEvent(self *C.QCameraViewfin
 }
 
 func (this *QCameraViewfinder) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -760,7 +728,6 @@ func miqt_exec_callback_QCameraViewfinder_mouseReleaseEvent(self *C.QCameraViewf
 }
 
 func (this *QCameraViewfinder) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -788,7 +755,6 @@ func miqt_exec_callback_QCameraViewfinder_mouseDoubleClickEvent(self *C.QCameraV
 }
 
 func (this *QCameraViewfinder) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -816,7 +782,6 @@ func miqt_exec_callback_QCameraViewfinder_mouseMoveEvent(self *C.QCameraViewfind
 }
 
 func (this *QCameraViewfinder) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -844,7 +809,6 @@ func miqt_exec_callback_QCameraViewfinder_wheelEvent(self *C.QCameraViewfinder, 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -872,7 +836,6 @@ func miqt_exec_callback_QCameraViewfinder_keyPressEvent(self *C.QCameraViewfinde
 }
 
 func (this *QCameraViewfinder) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -900,7 +863,6 @@ func miqt_exec_callback_QCameraViewfinder_keyReleaseEvent(self *C.QCameraViewfin
 }
 
 func (this *QCameraViewfinder) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -928,7 +890,6 @@ func miqt_exec_callback_QCameraViewfinder_focusInEvent(self *C.QCameraViewfinder
 }
 
 func (this *QCameraViewfinder) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -956,7 +917,6 @@ func miqt_exec_callback_QCameraViewfinder_focusOutEvent(self *C.QCameraViewfinde
 }
 
 func (this *QCameraViewfinder) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -984,7 +944,6 @@ func miqt_exec_callback_QCameraViewfinder_enterEvent(self *C.QCameraViewfinder, 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1012,7 +971,6 @@ func miqt_exec_callback_QCameraViewfinder_leaveEvent(self *C.QCameraViewfinder, 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -1040,7 +998,6 @@ func miqt_exec_callback_QCameraViewfinder_closeEvent(self *C.QCameraViewfinder, 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -1068,7 +1025,6 @@ func miqt_exec_callback_QCameraViewfinder_contextMenuEvent(self *C.QCameraViewfi
 }
 
 func (this *QCameraViewfinder) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1096,7 +1052,6 @@ func miqt_exec_callback_QCameraViewfinder_tabletEvent(self *C.QCameraViewfinder,
 }
 
 func (this *QCameraViewfinder) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1124,7 +1079,6 @@ func miqt_exec_callback_QCameraViewfinder_actionEvent(self *C.QCameraViewfinder,
 }
 
 func (this *QCameraViewfinder) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1152,7 +1106,6 @@ func miqt_exec_callback_QCameraViewfinder_dragEnterEvent(self *C.QCameraViewfind
 }
 
 func (this *QCameraViewfinder) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1180,7 +1133,6 @@ func miqt_exec_callback_QCameraViewfinder_dragMoveEvent(self *C.QCameraViewfinde
 }
 
 func (this *QCameraViewfinder) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1208,7 +1160,6 @@ func miqt_exec_callback_QCameraViewfinder_dragLeaveEvent(self *C.QCameraViewfind
 }
 
 func (this *QCameraViewfinder) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1236,7 +1187,6 @@ func miqt_exec_callback_QCameraViewfinder_dropEvent(self *C.QCameraViewfinder, c
 }
 
 func (this *QCameraViewfinder) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1278,7 +1228,6 @@ func miqt_exec_callback_QCameraViewfinder_nativeEvent(self *C.QCameraViewfinder,
 }
 
 func (this *QCameraViewfinder) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QCameraViewfinder_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1306,7 +1255,6 @@ func miqt_exec_callback_QCameraViewfinder_changeEvent(self *C.QCameraViewfinder,
 }
 
 func (this *QCameraViewfinder) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QCameraViewfinder_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1335,7 +1283,6 @@ func miqt_exec_callback_QCameraViewfinder_metric(self *C.QCameraViewfinder, cb C
 }
 
 func (this *QCameraViewfinder) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QCameraViewfinder_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1363,7 +1310,6 @@ func miqt_exec_callback_QCameraViewfinder_initPainter(self *C.QCameraViewfinder,
 }
 
 func (this *QCameraViewfinder) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QCameraViewfinder_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1394,7 +1340,6 @@ func miqt_exec_callback_QCameraViewfinder_redirected(self *C.QCameraViewfinder, 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QCameraViewfinder_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1421,7 +1366,6 @@ func miqt_exec_callback_QCameraViewfinder_sharedPainter(self *C.QCameraViewfinde
 }
 
 func (this *QCameraViewfinder) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QCameraViewfinder_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1449,7 +1393,6 @@ func miqt_exec_callback_QCameraViewfinder_inputMethodEvent(self *C.QCameraViewfi
 }
 
 func (this *QCameraViewfinder) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraViewfinder_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1481,7 +1424,6 @@ func miqt_exec_callback_QCameraViewfinder_inputMethodQuery(self *C.QCameraViewfi
 }
 
 func (this *QCameraViewfinder) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QCameraViewfinder_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1510,8 +1452,6 @@ func miqt_exec_callback_QCameraViewfinder_focusNextPrevChild(self *C.QCameraView
 }
 
 func (this *QCameraViewfinder) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCameraViewfinder_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1543,7 +1483,6 @@ func miqt_exec_callback_QCameraViewfinder_eventFilter(self *C.QCameraViewfinder,
 }
 
 func (this *QCameraViewfinder) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1571,7 +1510,6 @@ func miqt_exec_callback_QCameraViewfinder_timerEvent(self *C.QCameraViewfinder, 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1599,7 +1537,6 @@ func miqt_exec_callback_QCameraViewfinder_childEvent(self *C.QCameraViewfinder, 
 }
 
 func (this *QCameraViewfinder) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCameraViewfinder_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1627,7 +1564,6 @@ func miqt_exec_callback_QCameraViewfinder_customEvent(self *C.QCameraViewfinder,
 }
 
 func (this *QCameraViewfinder) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCameraViewfinder_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1655,7 +1591,6 @@ func miqt_exec_callback_QCameraViewfinder_connectNotify(self *C.QCameraViewfinde
 }
 
 func (this *QCameraViewfinder) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCameraViewfinder_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1690,6 +1625,8 @@ func (this *QCameraViewfinder) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCameraViewfinder) GoGC() {
 	if this.gc != nil {
 		return

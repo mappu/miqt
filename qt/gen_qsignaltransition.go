@@ -66,7 +66,6 @@ func NewQSignalTransition() *QSignalTransition {
 
 // NewQSignalTransition2 constructs a new QSignalTransition object.
 func NewQSignalTransition2(sender *QObject, signal string) *QSignalTransition {
-	defer runtime.KeepAlive(sender)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -75,15 +74,12 @@ func NewQSignalTransition2(sender *QObject, signal string) *QSignalTransition {
 
 // NewQSignalTransition3 constructs a new QSignalTransition object.
 func NewQSignalTransition3(sourceState *QState) *QSignalTransition {
-	defer runtime.KeepAlive(sourceState)
 
 	return newQSignalTransition(C.QSignalTransition_new3(sourceState.cPointer()))
 }
 
 // NewQSignalTransition4 constructs a new QSignalTransition object.
 func NewQSignalTransition4(sender *QObject, signal string, sourceState *QState) *QSignalTransition {
-	defer runtime.KeepAlive(sender)
-	defer runtime.KeepAlive(sourceState)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -91,12 +87,10 @@ func NewQSignalTransition4(sender *QObject, signal string, sourceState *QState) 
 }
 
 func (this *QSignalTransition) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSignalTransition_metaObject(this.h))
 }
 
 func (this *QSignalTransition) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSignalTransition_metacast(this.h, param1_Cstring))
@@ -121,18 +115,14 @@ func QSignalTransition_TrUtf8(s string) string {
 }
 
 func (this *QSignalTransition) SenderObject() *QObject {
-	defer runtime.KeepAlive(this)
 	return newQObject(C.QSignalTransition_senderObject(this.h))
 }
 
 func (this *QSignalTransition) SetSenderObject(sender *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sender)
 	C.QSignalTransition_setSenderObject(this.h, sender.cPointer())
 }
 
 func (this *QSignalTransition) Signal() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QSignalTransition_signal(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -140,7 +130,6 @@ func (this *QSignalTransition) Signal() []byte {
 }
 
 func (this *QSignalTransition) SetSignal(signal []byte) {
-	defer runtime.KeepAlive(this)
 	signal_alias := C.struct_miqt_string{}
 	if len(signal) > 0 {
 		signal_alias.data = (*C.char)(unsafe.Pointer(&signal[0]))
@@ -197,7 +186,6 @@ func QSignalTransition_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QSignalTransition that was directly constructed.
 func (this *QSignalTransition) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSignalTransition_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -212,7 +200,6 @@ func (this *QSignalTransition) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSignalTransition that was directly constructed.
 func (this *QSignalTransition) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSignalTransition_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -227,7 +214,6 @@ func (this *QSignalTransition) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSignalTransition that was directly constructed.
 func (this *QSignalTransition) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -244,7 +230,6 @@ func (this *QSignalTransition) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSignalTransition that was directly constructed.
 func (this *QSignalTransition) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -259,7 +244,6 @@ func (this *QSignalTransition) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSignalTransition) callVirtualBase_EventTest(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSignalTransition_virtualbase_eventTest(unsafe.Pointer(this.h), event.cPointer()))
@@ -289,7 +273,6 @@ func miqt_exec_callback_QSignalTransition_eventTest(self *C.QSignalTransition, c
 }
 
 func (this *QSignalTransition) callVirtualBase_OnTransition(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSignalTransition_virtualbase_onTransition(unsafe.Pointer(this.h), event.cPointer())
@@ -317,7 +300,6 @@ func miqt_exec_callback_QSignalTransition_onTransition(self *C.QSignalTransition
 }
 
 func (this *QSignalTransition) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QSignalTransition_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -347,8 +329,6 @@ func miqt_exec_callback_QSignalTransition_event(self *C.QSignalTransition, cb C.
 }
 
 func (this *QSignalTransition) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSignalTransition_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -380,7 +360,6 @@ func miqt_exec_callback_QSignalTransition_eventFilter(self *C.QSignalTransition,
 }
 
 func (this *QSignalTransition) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSignalTransition_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -408,7 +387,6 @@ func miqt_exec_callback_QSignalTransition_timerEvent(self *C.QSignalTransition, 
 }
 
 func (this *QSignalTransition) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSignalTransition_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -436,7 +414,6 @@ func miqt_exec_callback_QSignalTransition_childEvent(self *C.QSignalTransition, 
 }
 
 func (this *QSignalTransition) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSignalTransition_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -464,7 +441,6 @@ func miqt_exec_callback_QSignalTransition_customEvent(self *C.QSignalTransition,
 }
 
 func (this *QSignalTransition) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSignalTransition_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -492,7 +468,6 @@ func miqt_exec_callback_QSignalTransition_connectNotify(self *C.QSignalTransitio
 }
 
 func (this *QSignalTransition) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSignalTransition_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -554,6 +529,8 @@ func (this *QSignalTransition) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QSignalTransition) GoGC() {
 	if this.gc != nil {
 		return

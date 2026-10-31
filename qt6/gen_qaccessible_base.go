@@ -266,7 +266,6 @@ func QAccessible_RemoveActivationObserver(param1 *QAccessible__ActivationObserve
 }
 
 func QAccessible_QueryAccessibleInterface(param1 *QObject) *QAccessibleInterface {
-	defer runtime.KeepAlive(param1)
 	return newQAccessibleInterface(C.QAccessible_queryAccessibleInterface(param1.cPointer()))
 }
 
@@ -302,7 +301,6 @@ func QAccessible_SetActive(active bool) {
 }
 
 func QAccessible_SetRootObject(object *QObject) {
-	defer runtime.KeepAlive(object)
 	C.QAccessible_setRootObject(object.cPointer())
 }
 

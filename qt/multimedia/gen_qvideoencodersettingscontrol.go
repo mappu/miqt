@@ -59,12 +59,10 @@ func UnsafeNewQVideoEncoderSettingsControl(h unsafe.Pointer) *QVideoEncoderSetti
 }
 
 func (this *QVideoEncoderSettingsControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QVideoEncoderSettingsControl_metaObject(this.h)))
 }
 
 func (this *QVideoEncoderSettingsControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVideoEncoderSettingsControl_metacast(this.h, param1_Cstring))
@@ -89,7 +87,6 @@ func QVideoEncoderSettingsControl_TrUtf8(s string) string {
 }
 
 func (this *QVideoEncoderSettingsControl) SupportedResolutions(settings *QVideoEncoderSettings, continuous *bool) []qt.QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QVideoEncoderSettingsControl_supportedResolutions(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QSize, int(_ma.len))
@@ -103,7 +100,6 @@ func (this *QVideoEncoderSettingsControl) SupportedResolutions(settings *QVideoE
 }
 
 func (this *QVideoEncoderSettingsControl) SupportedFrameRates(settings *QVideoEncoderSettings, continuous *bool) []float64 {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QVideoEncoderSettingsControl_supportedFrameRates(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
@@ -115,7 +111,6 @@ func (this *QVideoEncoderSettingsControl) SupportedFrameRates(settings *QVideoEn
 }
 
 func (this *QVideoEncoderSettingsControl) SupportedVideoCodecs() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QVideoEncoderSettingsControl_supportedVideoCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -129,7 +124,6 @@ func (this *QVideoEncoderSettingsControl) SupportedVideoCodecs() []string {
 }
 
 func (this *QVideoEncoderSettingsControl) VideoCodecDescription(codec string) string {
-	defer runtime.KeepAlive(this)
 	codec_ms := C.struct_miqt_string{}
 	codec_ms.data = C.CString(codec)
 	codec_ms.len = C.size_t(len(codec))
@@ -141,14 +135,12 @@ func (this *QVideoEncoderSettingsControl) VideoCodecDescription(codec string) st
 }
 
 func (this *QVideoEncoderSettingsControl) VideoSettings() *QVideoEncoderSettings {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVideoEncoderSettings(C.QVideoEncoderSettingsControl_videoSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoEncoderSettingsControl) SetVideoSettings(settings *QVideoEncoderSettings) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(settings)
 	C.QVideoEncoderSettingsControl_setVideoSettings(this.h, settings.cPointer())
 }
@@ -205,6 +197,8 @@ func (this *QVideoEncoderSettingsControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QVideoEncoderSettingsControl) GoGC() {
 	if this.gc != nil {
 		return

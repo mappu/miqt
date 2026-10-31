@@ -61,28 +61,21 @@ func UnsafeNewQCandlestickLegendMarker(h unsafe.Pointer) *QCandlestickLegendMark
 
 // NewQCandlestickLegendMarker constructs a new QCandlestickLegendMarker object.
 func NewQCandlestickLegendMarker(series *QCandlestickSeries, legend *QLegend) *QCandlestickLegendMarker {
-	defer runtime.KeepAlive(series)
-	defer runtime.KeepAlive(legend)
 
 	return newQCandlestickLegendMarker(C.QCandlestickLegendMarker_new(series.cPointer(), legend.cPointer()))
 }
 
 // NewQCandlestickLegendMarker2 constructs a new QCandlestickLegendMarker object.
 func NewQCandlestickLegendMarker2(series *QCandlestickSeries, legend *QLegend, parent *qt6.QObject) *QCandlestickLegendMarker {
-	defer runtime.KeepAlive(series)
-	defer runtime.KeepAlive(legend)
-	defer runtime.KeepAlive(parent)
 
 	return newQCandlestickLegendMarker(C.QCandlestickLegendMarker_new2(series.cPointer(), legend.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QCandlestickLegendMarker) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QCandlestickLegendMarker_metaObject(this.h)))
 }
 
 func (this *QCandlestickLegendMarker) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCandlestickLegendMarker_metacast(this.h, param1_Cstring))
@@ -98,12 +91,10 @@ func QCandlestickLegendMarker_Tr(s string) string {
 }
 
 func (this *QCandlestickLegendMarker) Type() QLegendMarker__LegendMarkerType {
-	defer runtime.KeepAlive(this)
 	return (QLegendMarker__LegendMarkerType)(C.QCandlestickLegendMarker_type(this.h))
 }
 
 func (this *QCandlestickLegendMarker) Series() *QCandlestickSeries {
-	defer runtime.KeepAlive(this)
 	return newQCandlestickSeries(C.QCandlestickLegendMarker_series(this.h))
 }
 
@@ -131,7 +122,6 @@ func QCandlestickLegendMarker_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QCandlestickLegendMarker that was directly constructed.
 func (this *QCandlestickLegendMarker) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QCandlestickLegendMarker_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -146,7 +136,6 @@ func (this *QCandlestickLegendMarker) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QCandlestickLegendMarker that was directly constructed.
 func (this *QCandlestickLegendMarker) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCandlestickLegendMarker_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -161,7 +150,6 @@ func (this *QCandlestickLegendMarker) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCandlestickLegendMarker that was directly constructed.
 func (this *QCandlestickLegendMarker) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -178,7 +166,6 @@ func (this *QCandlestickLegendMarker) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCandlestickLegendMarker that was directly constructed.
 func (this *QCandlestickLegendMarker) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -193,7 +180,6 @@ func (this *QCandlestickLegendMarker) IsSignalConnected(signal *qt6.QMetaMethod)
 }
 
 func (this *QCandlestickLegendMarker) callVirtualBase_Type() QLegendMarker__LegendMarkerType {
-	defer runtime.KeepAlive(this)
 
 	return (QLegendMarker__LegendMarkerType)(C.QCandlestickLegendMarker_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -219,7 +205,6 @@ func miqt_exec_callback_QCandlestickLegendMarker_type(self *C.QCandlestickLegend
 }
 
 func (this *QCandlestickLegendMarker) callVirtualBase_Series() *QCandlestickSeries {
-	defer runtime.KeepAlive(this)
 
 	return newQCandlestickSeries(C.QCandlestickLegendMarker_virtualbase_series(unsafe.Pointer(this.h)))
 
@@ -239,14 +224,12 @@ func miqt_exec_callback_QCandlestickLegendMarker_series(self *C.QCandlestickLege
 	}
 
 	virtualReturn := gofunc((&QCandlestickLegendMarker{h: self}).callVirtualBase_Series)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QCandlestickLegendMarker) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCandlestickLegendMarker_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -276,8 +259,6 @@ func miqt_exec_callback_QCandlestickLegendMarker_event(self *C.QCandlestickLegen
 }
 
 func (this *QCandlestickLegendMarker) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCandlestickLegendMarker_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -309,7 +290,6 @@ func miqt_exec_callback_QCandlestickLegendMarker_eventFilter(self *C.QCandlestic
 }
 
 func (this *QCandlestickLegendMarker) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCandlestickLegendMarker_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -337,7 +317,6 @@ func miqt_exec_callback_QCandlestickLegendMarker_timerEvent(self *C.QCandlestick
 }
 
 func (this *QCandlestickLegendMarker) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCandlestickLegendMarker_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -365,7 +344,6 @@ func miqt_exec_callback_QCandlestickLegendMarker_childEvent(self *C.QCandlestick
 }
 
 func (this *QCandlestickLegendMarker) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCandlestickLegendMarker_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -393,7 +371,6 @@ func miqt_exec_callback_QCandlestickLegendMarker_customEvent(self *C.QCandlestic
 }
 
 func (this *QCandlestickLegendMarker) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCandlestickLegendMarker_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -421,7 +398,6 @@ func miqt_exec_callback_QCandlestickLegendMarker_connectNotify(self *C.QCandlest
 }
 
 func (this *QCandlestickLegendMarker) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCandlestickLegendMarker_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -456,6 +432,8 @@ func (this *QCandlestickLegendMarker) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCandlestickLegendMarker) GoGC() {
 	if this.gc != nil {
 		return

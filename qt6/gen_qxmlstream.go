@@ -580,7 +580,6 @@ func NewQXmlStreamReader() *QXmlStreamReader {
 
 // NewQXmlStreamReader2 constructs a new QXmlStreamReader object.
 func NewQXmlStreamReader2(device *QIODevice) *QXmlStreamReader {
-	defer runtime.KeepAlive(device)
 
 	return newQXmlStreamReader(C.QXmlStreamReader_new2(device.cPointer()))
 }
@@ -618,7 +617,6 @@ func NewQXmlStreamReader5(data string) *QXmlStreamReader {
 
 func (this *QXmlStreamReader) SetDevice(device *QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QXmlStreamReader_setDevice(this.h, device.cPointer())
 }
 
@@ -971,14 +969,12 @@ func NewQXmlStreamWriter() *QXmlStreamWriter {
 
 // NewQXmlStreamWriter2 constructs a new QXmlStreamWriter object.
 func NewQXmlStreamWriter2(device *QIODevice) *QXmlStreamWriter {
-	defer runtime.KeepAlive(device)
 
 	return newQXmlStreamWriter(C.QXmlStreamWriter_new2(device.cPointer()))
 }
 
 func (this *QXmlStreamWriter) SetDevice(device *QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QXmlStreamWriter_setDevice(this.h, device.cPointer())
 }
 

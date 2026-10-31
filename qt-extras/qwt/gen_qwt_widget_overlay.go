@@ -76,46 +76,37 @@ func UnsafeNewQwtWidgetOverlay(h unsafe.Pointer) *QwtWidgetOverlay {
 
 // NewQwtWidgetOverlay constructs a new QwtWidgetOverlay object.
 func NewQwtWidgetOverlay(param1 *qt.QWidget) *QwtWidgetOverlay {
-	defer runtime.KeepAlive(param1)
 
 	return newQwtWidgetOverlay(C.QwtWidgetOverlay_new((*C.QWidget)(param1.UnsafePointer())))
 }
 
 func (this *QwtWidgetOverlay) SetMaskMode(maskMode QwtWidgetOverlay__MaskMode) {
-	defer runtime.KeepAlive(this)
 	C.QwtWidgetOverlay_setMaskMode(this.h, (C.int)(maskMode))
 }
 
 func (this *QwtWidgetOverlay) MaskMode() QwtWidgetOverlay__MaskMode {
-	defer runtime.KeepAlive(this)
 	return (QwtWidgetOverlay__MaskMode)(C.QwtWidgetOverlay_maskMode(this.h))
 }
 
 func (this *QwtWidgetOverlay) SetRenderMode(renderMode QwtWidgetOverlay__RenderMode) {
-	defer runtime.KeepAlive(this)
 	C.QwtWidgetOverlay_setRenderMode(this.h, (C.int)(renderMode))
 }
 
 func (this *QwtWidgetOverlay) RenderMode() QwtWidgetOverlay__RenderMode {
-	defer runtime.KeepAlive(this)
 	return (QwtWidgetOverlay__RenderMode)(C.QwtWidgetOverlay_renderMode(this.h))
 }
 
 func (this *QwtWidgetOverlay) UpdateOverlay() {
-	defer runtime.KeepAlive(this)
 	C.QwtWidgetOverlay_updateOverlay(this.h)
 }
 
 func (this *QwtWidgetOverlay) EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	return (bool)(C.QwtWidgetOverlay_eventFilter(this.h, (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 }
 
 // UpdateMicroFocus can only be called from a QwtWidgetOverlay that was directly constructed.
 func (this *QwtWidgetOverlay) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtWidgetOverlay_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -128,7 +119,6 @@ func (this *QwtWidgetOverlay) UpdateMicroFocus() {
 
 // Create can only be called from a QwtWidgetOverlay that was directly constructed.
 func (this *QwtWidgetOverlay) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtWidgetOverlay_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -141,7 +131,6 @@ func (this *QwtWidgetOverlay) Create() {
 
 // Destroy can only be called from a QwtWidgetOverlay that was directly constructed.
 func (this *QwtWidgetOverlay) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtWidgetOverlay_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -154,7 +143,6 @@ func (this *QwtWidgetOverlay) Destroy() {
 
 // FocusNextChild can only be called from a QwtWidgetOverlay that was directly constructed.
 func (this *QwtWidgetOverlay) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtWidgetOverlay_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -169,7 +157,6 @@ func (this *QwtWidgetOverlay) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtWidgetOverlay that was directly constructed.
 func (this *QwtWidgetOverlay) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtWidgetOverlay_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -184,7 +171,6 @@ func (this *QwtWidgetOverlay) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtWidgetOverlay that was directly constructed.
 func (this *QwtWidgetOverlay) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtWidgetOverlay_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -199,7 +185,6 @@ func (this *QwtWidgetOverlay) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtWidgetOverlay that was directly constructed.
 func (this *QwtWidgetOverlay) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtWidgetOverlay_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -214,7 +199,6 @@ func (this *QwtWidgetOverlay) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtWidgetOverlay that was directly constructed.
 func (this *QwtWidgetOverlay) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -231,7 +215,6 @@ func (this *QwtWidgetOverlay) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtWidgetOverlay that was directly constructed.
 func (this *QwtWidgetOverlay) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -246,8 +229,6 @@ func (this *QwtWidgetOverlay) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtWidgetOverlay_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -279,7 +260,6 @@ func miqt_exec_callback_QwtWidgetOverlay_eventFilter(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
@@ -307,7 +287,6 @@ func miqt_exec_callback_QwtWidgetOverlay_paintEvent(self *C.QwtWidgetOverlay, cb
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -335,7 +314,6 @@ func miqt_exec_callback_QwtWidgetOverlay_resizeEvent(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_MaskHint() *qt.QRegion {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRegion(unsafe.Pointer(C.QwtWidgetOverlay_virtualbase_maskHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -384,7 +362,6 @@ func miqt_exec_callback_QwtWidgetOverlay_drawOverlay(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtWidgetOverlay_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -410,7 +387,6 @@ func miqt_exec_callback_QwtWidgetOverlay_devType(self *C.QwtWidgetOverlay, cb C.
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QwtWidgetOverlay_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -437,7 +413,6 @@ func miqt_exec_callback_QwtWidgetOverlay_setVisible(self *C.QwtWidgetOverlay, cb
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtWidgetOverlay_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -466,7 +441,6 @@ func miqt_exec_callback_QwtWidgetOverlay_sizeHint(self *C.QwtWidgetOverlay, cb C
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtWidgetOverlay_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -495,7 +469,6 @@ func miqt_exec_callback_QwtWidgetOverlay_minimumSizeHint(self *C.QwtWidgetOverla
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtWidgetOverlay_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -524,7 +497,6 @@ func miqt_exec_callback_QwtWidgetOverlay_heightForWidth(self *C.QwtWidgetOverlay
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtWidgetOverlay_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -550,7 +522,6 @@ func miqt_exec_callback_QwtWidgetOverlay_hasHeightForWidth(self *C.QwtWidgetOver
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtWidgetOverlay_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -577,7 +548,6 @@ func miqt_exec_callback_QwtWidgetOverlay_paintEngine(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtWidgetOverlay_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -607,7 +577,6 @@ func miqt_exec_callback_QwtWidgetOverlay_event(self *C.QwtWidgetOverlay, cb C.in
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -635,7 +604,6 @@ func miqt_exec_callback_QwtWidgetOverlay_mousePressEvent(self *C.QwtWidgetOverla
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -663,7 +631,6 @@ func miqt_exec_callback_QwtWidgetOverlay_mouseReleaseEvent(self *C.QwtWidgetOver
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -691,7 +658,6 @@ func miqt_exec_callback_QwtWidgetOverlay_mouseDoubleClickEvent(self *C.QwtWidget
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -719,7 +685,6 @@ func miqt_exec_callback_QwtWidgetOverlay_mouseMoveEvent(self *C.QwtWidgetOverlay
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -747,7 +712,6 @@ func miqt_exec_callback_QwtWidgetOverlay_wheelEvent(self *C.QwtWidgetOverlay, cb
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -775,7 +739,6 @@ func miqt_exec_callback_QwtWidgetOverlay_keyPressEvent(self *C.QwtWidgetOverlay,
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -803,7 +766,6 @@ func miqt_exec_callback_QwtWidgetOverlay_keyReleaseEvent(self *C.QwtWidgetOverla
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -831,7 +793,6 @@ func miqt_exec_callback_QwtWidgetOverlay_focusInEvent(self *C.QwtWidgetOverlay, 
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -859,7 +820,6 @@ func miqt_exec_callback_QwtWidgetOverlay_focusOutEvent(self *C.QwtWidgetOverlay,
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -887,7 +847,6 @@ func miqt_exec_callback_QwtWidgetOverlay_enterEvent(self *C.QwtWidgetOverlay, cb
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -915,7 +874,6 @@ func miqt_exec_callback_QwtWidgetOverlay_leaveEvent(self *C.QwtWidgetOverlay, cb
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -943,7 +901,6 @@ func miqt_exec_callback_QwtWidgetOverlay_moveEvent(self *C.QwtWidgetOverlay, cb 
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -971,7 +928,6 @@ func miqt_exec_callback_QwtWidgetOverlay_closeEvent(self *C.QwtWidgetOverlay, cb
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -999,7 +955,6 @@ func miqt_exec_callback_QwtWidgetOverlay_contextMenuEvent(self *C.QwtWidgetOverl
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1027,7 +982,6 @@ func miqt_exec_callback_QwtWidgetOverlay_tabletEvent(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1055,7 +1009,6 @@ func miqt_exec_callback_QwtWidgetOverlay_actionEvent(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1083,7 +1036,6 @@ func miqt_exec_callback_QwtWidgetOverlay_dragEnterEvent(self *C.QwtWidgetOverlay
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1111,7 +1063,6 @@ func miqt_exec_callback_QwtWidgetOverlay_dragMoveEvent(self *C.QwtWidgetOverlay,
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1139,7 +1090,6 @@ func miqt_exec_callback_QwtWidgetOverlay_dragLeaveEvent(self *C.QwtWidgetOverlay
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1167,7 +1117,6 @@ func miqt_exec_callback_QwtWidgetOverlay_dropEvent(self *C.QwtWidgetOverlay, cb 
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -1195,7 +1144,6 @@ func miqt_exec_callback_QwtWidgetOverlay_showEvent(self *C.QwtWidgetOverlay, cb 
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -1223,7 +1171,6 @@ func miqt_exec_callback_QwtWidgetOverlay_hideEvent(self *C.QwtWidgetOverlay, cb 
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1265,7 +1212,6 @@ func miqt_exec_callback_QwtWidgetOverlay_nativeEvent(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWidgetOverlay_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1293,7 +1239,6 @@ func miqt_exec_callback_QwtWidgetOverlay_changeEvent(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtWidgetOverlay_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1322,7 +1267,6 @@ func miqt_exec_callback_QwtWidgetOverlay_metric(self *C.QwtWidgetOverlay, cb C.i
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QwtWidgetOverlay_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1350,7 +1294,6 @@ func miqt_exec_callback_QwtWidgetOverlay_initPainter(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtWidgetOverlay_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1381,7 +1324,6 @@ func miqt_exec_callback_QwtWidgetOverlay_redirected(self *C.QwtWidgetOverlay, cb
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtWidgetOverlay_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1408,7 +1350,6 @@ func miqt_exec_callback_QwtWidgetOverlay_sharedPainter(self *C.QwtWidgetOverlay,
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWidgetOverlay_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1436,7 +1377,6 @@ func miqt_exec_callback_QwtWidgetOverlay_inputMethodEvent(self *C.QwtWidgetOverl
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtWidgetOverlay_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1468,7 +1408,6 @@ func miqt_exec_callback_QwtWidgetOverlay_inputMethodQuery(self *C.QwtWidgetOverl
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtWidgetOverlay_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1497,7 +1436,6 @@ func miqt_exec_callback_QwtWidgetOverlay_focusNextPrevChild(self *C.QwtWidgetOve
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1525,7 +1463,6 @@ func miqt_exec_callback_QwtWidgetOverlay_timerEvent(self *C.QwtWidgetOverlay, cb
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1553,7 +1490,6 @@ func miqt_exec_callback_QwtWidgetOverlay_childEvent(self *C.QwtWidgetOverlay, cb
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWidgetOverlay_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1581,7 +1517,6 @@ func miqt_exec_callback_QwtWidgetOverlay_customEvent(self *C.QwtWidgetOverlay, c
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtWidgetOverlay_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1609,7 +1544,6 @@ func miqt_exec_callback_QwtWidgetOverlay_connectNotify(self *C.QwtWidgetOverlay,
 }
 
 func (this *QwtWidgetOverlay) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtWidgetOverlay_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1644,6 +1578,8 @@ func (this *QwtWidgetOverlay) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtWidgetOverlay) GoGC() {
 	if this.gc != nil {
 		return

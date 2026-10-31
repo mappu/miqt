@@ -126,7 +126,6 @@ func (this *QFutureInterfaceBase) SetRunnable(runnable *QRunnable) {
 
 func (this *QFutureInterfaceBase) SetThreadPool(pool *QThreadPool) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pool)
 	C.QFutureInterfaceBase_setThreadPool(this.h, pool.cPointer())
 }
 

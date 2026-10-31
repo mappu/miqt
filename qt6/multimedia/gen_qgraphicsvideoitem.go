@@ -78,12 +78,10 @@ func NewQGraphicsVideoItem2(parent *qt6.QGraphicsItem) *QGraphicsVideoItem {
 }
 
 func (this *QGraphicsVideoItem) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsVideoItem_metaObject(this.h)))
 }
 
 func (this *QGraphicsVideoItem) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsVideoItem_metacast(this.h, param1_Cstring))
@@ -99,75 +97,62 @@ func QGraphicsVideoItem_Tr(s string) string {
 }
 
 func (this *QGraphicsVideoItem) VideoSink() *QVideoSink {
-	defer runtime.KeepAlive(this)
 	return newQVideoSink(C.QGraphicsVideoItem_videoSink(this.h))
 }
 
 func (this *QGraphicsVideoItem) AspectRatioMode() qt6.AspectRatioMode {
-	defer runtime.KeepAlive(this)
 	return (qt6.AspectRatioMode)(C.QGraphicsVideoItem_aspectRatioMode(this.h))
 }
 
 func (this *QGraphicsVideoItem) SetAspectRatioMode(mode qt6.AspectRatioMode) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsVideoItem_setAspectRatioMode(this.h, (C.int)(mode))
 }
 
 func (this *QGraphicsVideoItem) Offset() *qt6.QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QGraphicsVideoItem_offset(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsVideoItem) SetOffset(offset *qt6.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 	C.QGraphicsVideoItem_setOffset(this.h, (*C.QPointF)(offset.UnsafePointer()))
 }
 
 func (this *QGraphicsVideoItem) Size() *qt6.QSizeF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsVideoItem_size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsVideoItem) SetSize(size *qt6.QSizeF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QGraphicsVideoItem_setSize(this.h, (*C.QSizeF)(size.UnsafePointer()))
 }
 
 func (this *QGraphicsVideoItem) NativeSize() *qt6.QSizeF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsVideoItem_nativeSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsVideoItem) BoundingRect() *qt6.QRectF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsVideoItem_boundingRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsVideoItem) Paint(painter *qt6.QPainter, option *qt6.QStyleOptionGraphicsItem, widget *qt6.QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QGraphicsVideoItem_paint(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QStyleOptionGraphicsItem)(option.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 }
 
 func (this *QGraphicsVideoItem) Type() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QGraphicsVideoItem_type(this.h))
 }
 
 func (this *QGraphicsVideoItem) NativeSizeChanged(size *qt6.QSizeF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QGraphicsVideoItem_nativeSizeChanged(this.h, (*C.QSizeF)(size.UnsafePointer()))
 }
@@ -212,7 +197,6 @@ func QGraphicsVideoItem_Tr3(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QGraphicsVideoItem that was directly constructed.
 func (this *QGraphicsVideoItem) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsVideoItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -225,7 +209,6 @@ func (this *QGraphicsVideoItem) UpdateMicroFocus() {
 
 // Sender can only be called from a QGraphicsVideoItem that was directly constructed.
 func (this *QGraphicsVideoItem) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QGraphicsVideoItem_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -240,7 +223,6 @@ func (this *QGraphicsVideoItem) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsVideoItem that was directly constructed.
 func (this *QGraphicsVideoItem) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsVideoItem_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -255,7 +237,6 @@ func (this *QGraphicsVideoItem) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsVideoItem that was directly constructed.
 func (this *QGraphicsVideoItem) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -272,7 +253,6 @@ func (this *QGraphicsVideoItem) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsVideoItem that was directly constructed.
 func (this *QGraphicsVideoItem) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -288,7 +268,6 @@ func (this *QGraphicsVideoItem) IsSignalConnected(signal *qt6.QMetaMethod) bool 
 
 // AddToIndex can only be called from a QGraphicsVideoItem that was directly constructed.
 func (this *QGraphicsVideoItem) AddToIndex() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsVideoItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -301,7 +280,6 @@ func (this *QGraphicsVideoItem) AddToIndex() {
 
 // RemoveFromIndex can only be called from a QGraphicsVideoItem that was directly constructed.
 func (this *QGraphicsVideoItem) RemoveFromIndex() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsVideoItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -314,7 +292,6 @@ func (this *QGraphicsVideoItem) RemoveFromIndex() {
 
 // PrepareGeometryChange can only be called from a QGraphicsVideoItem that was directly constructed.
 func (this *QGraphicsVideoItem) PrepareGeometryChange() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsVideoItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -326,7 +303,6 @@ func (this *QGraphicsVideoItem) PrepareGeometryChange() {
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_BoundingRect() *qt6.QRectF {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsVideoItem_virtualbase_boundingRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -355,10 +331,8 @@ func miqt_exec_callback_QGraphicsVideoItem_boundingRect(self *C.QGraphicsVideoIt
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_Paint(painter *qt6.QPainter, option *qt6.QStyleOptionGraphicsItem, widget *qt6.QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 
 	C.QGraphicsVideoItem_virtualbase_paint(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QStyleOptionGraphicsItem)(option.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 
@@ -389,7 +363,6 @@ func miqt_exec_callback_QGraphicsVideoItem_paint(self *C.QGraphicsVideoItem, cb 
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_Type() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QGraphicsVideoItem_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -415,7 +388,6 @@ func miqt_exec_callback_QGraphicsVideoItem_type(self *C.QGraphicsVideoItem, cb C
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -443,7 +415,6 @@ func miqt_exec_callback_QGraphicsVideoItem_timerEvent(self *C.QGraphicsVideoItem
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_ItemChange(change qt6.QGraphicsItem__GraphicsItemChange, value *qt6.QVariant) *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsVideoItem_virtualbase_itemChange(unsafe.Pointer(this.h), (C.int)(change), (*C.QVariant)(value.UnsafePointer()))))
@@ -478,7 +449,6 @@ func miqt_exec_callback_QGraphicsVideoItem_itemChange(self *C.QGraphicsVideoItem
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_Event(ev *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(ev)
 
 	return (bool)(C.QGraphicsVideoItem_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(ev.UnsafePointer())))
@@ -508,8 +478,6 @@ func miqt_exec_callback_QGraphicsVideoItem_event(self *C.QGraphicsVideoItem, cb 
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsVideoItem_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -541,7 +509,6 @@ func miqt_exec_callback_QGraphicsVideoItem_eventFilter(self *C.QGraphicsVideoIte
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -569,7 +536,6 @@ func miqt_exec_callback_QGraphicsVideoItem_childEvent(self *C.QGraphicsVideoItem
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -597,7 +563,6 @@ func miqt_exec_callback_QGraphicsVideoItem_customEvent(self *C.QGraphicsVideoIte
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsVideoItem_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -625,7 +590,6 @@ func miqt_exec_callback_QGraphicsVideoItem_connectNotify(self *C.QGraphicsVideoI
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsVideoItem_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -653,7 +617,6 @@ func miqt_exec_callback_QGraphicsVideoItem_disconnectNotify(self *C.QGraphicsVid
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_Advance(phase int) {
-	defer runtime.KeepAlive(this)
 
 	C.QGraphicsVideoItem_virtualbase_advance(unsafe.Pointer(this.h), (C.int)(phase))
 
@@ -680,7 +643,6 @@ func miqt_exec_callback_QGraphicsVideoItem_advance(self *C.QGraphicsVideoItem, c
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_Shape() *qt6.QPainterPath {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQPainterPath(unsafe.Pointer(C.QGraphicsVideoItem_virtualbase_shape(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -709,7 +671,6 @@ func miqt_exec_callback_QGraphicsVideoItem_shape(self *C.QGraphicsVideoItem, cb 
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_Contains(point *qt6.QPointF) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 
 	return (bool)(C.QGraphicsVideoItem_virtualbase_contains(unsafe.Pointer(this.h), (*C.QPointF)(point.UnsafePointer())))
@@ -739,7 +700,6 @@ func miqt_exec_callback_QGraphicsVideoItem_contains(self *C.QGraphicsVideoItem, 
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_CollidesWithItem(other *qt6.QGraphicsItem, mode qt6.ItemSelectionMode) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(other)
 
 	return (bool)(C.QGraphicsVideoItem_virtualbase_collidesWithItem(unsafe.Pointer(this.h), (*C.QGraphicsItem)(other.UnsafePointer()), (C.int)(mode)))
@@ -771,7 +731,6 @@ func miqt_exec_callback_QGraphicsVideoItem_collidesWithItem(self *C.QGraphicsVid
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_CollidesWithPath(path *qt6.QPainterPath, mode qt6.ItemSelectionMode) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(path)
 
 	return (bool)(C.QGraphicsVideoItem_virtualbase_collidesWithPath(unsafe.Pointer(this.h), (*C.QPainterPath)(path.UnsafePointer()), (C.int)(mode)))
@@ -803,7 +762,6 @@ func miqt_exec_callback_QGraphicsVideoItem_collidesWithPath(self *C.QGraphicsVid
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_IsObscuredBy(item *qt6.QGraphicsItem) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 
 	return (bool)(C.QGraphicsVideoItem_virtualbase_isObscuredBy(unsafe.Pointer(this.h), (*C.QGraphicsItem)(item.UnsafePointer())))
@@ -833,7 +791,6 @@ func miqt_exec_callback_QGraphicsVideoItem_isObscuredBy(self *C.QGraphicsVideoIt
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_OpaqueArea() *qt6.QPainterPath {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQPainterPath(unsafe.Pointer(C.QGraphicsVideoItem_virtualbase_opaqueArea(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -862,7 +819,6 @@ func miqt_exec_callback_QGraphicsVideoItem_opaqueArea(self *C.QGraphicsVideoItem
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_SceneEventFilter(watched *qt6.QGraphicsItem, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
@@ -895,7 +851,6 @@ func miqt_exec_callback_QGraphicsVideoItem_sceneEventFilter(self *C.QGraphicsVid
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_SceneEvent(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsVideoItem_virtualbase_sceneEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -925,7 +880,6 @@ func miqt_exec_callback_QGraphicsVideoItem_sceneEvent(self *C.QGraphicsVideoItem
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_ContextMenuEvent(event *qt6.QGraphicsSceneContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneContextMenuEvent)(event.UnsafePointer()))
@@ -953,7 +907,6 @@ func miqt_exec_callback_QGraphicsVideoItem_contextMenuEvent(self *C.QGraphicsVid
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_DragEnterEvent(event *qt6.QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneDragDropEvent)(event.UnsafePointer()))
@@ -981,7 +934,6 @@ func miqt_exec_callback_QGraphicsVideoItem_dragEnterEvent(self *C.QGraphicsVideo
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_DragLeaveEvent(event *qt6.QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneDragDropEvent)(event.UnsafePointer()))
@@ -1009,7 +961,6 @@ func miqt_exec_callback_QGraphicsVideoItem_dragLeaveEvent(self *C.QGraphicsVideo
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_DragMoveEvent(event *qt6.QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneDragDropEvent)(event.UnsafePointer()))
@@ -1037,7 +988,6 @@ func miqt_exec_callback_QGraphicsVideoItem_dragMoveEvent(self *C.QGraphicsVideoI
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_DropEvent(event *qt6.QGraphicsSceneDragDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneDragDropEvent)(event.UnsafePointer()))
@@ -1065,7 +1015,6 @@ func miqt_exec_callback_QGraphicsVideoItem_dropEvent(self *C.QGraphicsVideoItem,
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_FocusInEvent(event *qt6.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1093,7 +1042,6 @@ func miqt_exec_callback_QGraphicsVideoItem_focusInEvent(self *C.QGraphicsVideoIt
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_FocusOutEvent(event *qt6.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1121,7 +1069,6 @@ func miqt_exec_callback_QGraphicsVideoItem_focusOutEvent(self *C.QGraphicsVideoI
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_HoverEnterEvent(event *qt6.QGraphicsSceneHoverEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_hoverEnterEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneHoverEvent)(event.UnsafePointer()))
@@ -1149,7 +1096,6 @@ func miqt_exec_callback_QGraphicsVideoItem_hoverEnterEvent(self *C.QGraphicsVide
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_HoverMoveEvent(event *qt6.QGraphicsSceneHoverEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_hoverMoveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneHoverEvent)(event.UnsafePointer()))
@@ -1177,7 +1123,6 @@ func miqt_exec_callback_QGraphicsVideoItem_hoverMoveEvent(self *C.QGraphicsVideo
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_HoverLeaveEvent(event *qt6.QGraphicsSceneHoverEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_hoverLeaveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneHoverEvent)(event.UnsafePointer()))
@@ -1205,7 +1150,6 @@ func miqt_exec_callback_QGraphicsVideoItem_hoverLeaveEvent(self *C.QGraphicsVide
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_KeyPressEvent(event *qt6.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1233,7 +1177,6 @@ func miqt_exec_callback_QGraphicsVideoItem_keyPressEvent(self *C.QGraphicsVideoI
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_KeyReleaseEvent(event *qt6.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1261,7 +1204,6 @@ func miqt_exec_callback_QGraphicsVideoItem_keyReleaseEvent(self *C.QGraphicsVide
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_MousePressEvent(event *qt6.QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneMouseEvent)(event.UnsafePointer()))
@@ -1289,7 +1231,6 @@ func miqt_exec_callback_QGraphicsVideoItem_mousePressEvent(self *C.QGraphicsVide
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_MouseMoveEvent(event *qt6.QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneMouseEvent)(event.UnsafePointer()))
@@ -1317,7 +1258,6 @@ func miqt_exec_callback_QGraphicsVideoItem_mouseMoveEvent(self *C.QGraphicsVideo
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_MouseReleaseEvent(event *qt6.QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneMouseEvent)(event.UnsafePointer()))
@@ -1345,7 +1285,6 @@ func miqt_exec_callback_QGraphicsVideoItem_mouseReleaseEvent(self *C.QGraphicsVi
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_MouseDoubleClickEvent(event *qt6.QGraphicsSceneMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneMouseEvent)(event.UnsafePointer()))
@@ -1373,7 +1312,6 @@ func miqt_exec_callback_QGraphicsVideoItem_mouseDoubleClickEvent(self *C.QGraphi
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_WheelEvent(event *qt6.QGraphicsSceneWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneWheelEvent)(event.UnsafePointer()))
@@ -1401,7 +1339,6 @@ func miqt_exec_callback_QGraphicsVideoItem_wheelEvent(self *C.QGraphicsVideoItem
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_InputMethodEvent(event *qt6.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsVideoItem_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
@@ -1429,7 +1366,6 @@ func miqt_exec_callback_QGraphicsVideoItem_inputMethodEvent(self *C.QGraphicsVid
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_InputMethodQuery(query qt6.InputMethodQuery) *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsVideoItem_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1461,7 +1397,6 @@ func miqt_exec_callback_QGraphicsVideoItem_inputMethodQuery(self *C.QGraphicsVid
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_SupportsExtension(extension qt6.QGraphicsItem__Extension) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QGraphicsVideoItem_virtualbase_supportsExtension(unsafe.Pointer(this.h), (C.int)(extension)))
 
@@ -1490,7 +1425,6 @@ func miqt_exec_callback_QGraphicsVideoItem_supportsExtension(self *C.QGraphicsVi
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_SetExtension(extension qt6.QGraphicsItem__Extension, variant *qt6.QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(variant)
 
 	C.QGraphicsVideoItem_virtualbase_setExtension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(variant.UnsafePointer()))
@@ -1520,7 +1454,6 @@ func miqt_exec_callback_QGraphicsVideoItem_setExtension(self *C.QGraphicsVideoIt
 }
 
 func (this *QGraphicsVideoItem) callVirtualBase_Extension(variant *qt6.QVariant) *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(variant)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsVideoItem_virtualbase_extension(unsafe.Pointer(this.h), (*C.QVariant)(variant.UnsafePointer()))))
@@ -1560,6 +1493,8 @@ func (this *QGraphicsVideoItem) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QGraphicsVideoItem) GoGC() {
 	if this.gc != nil {
 		return

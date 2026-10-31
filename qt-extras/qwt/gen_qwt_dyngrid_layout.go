@@ -60,7 +60,6 @@ func UnsafeNewQwtDynGridLayout(h unsafe.Pointer) *QwtDynGridLayout {
 
 // NewQwtDynGridLayout constructs a new QwtDynGridLayout object.
 func NewQwtDynGridLayout(param1 *qt.QWidget) *QwtDynGridLayout {
-	defer runtime.KeepAlive(param1)
 
 	return newQwtDynGridLayout(C.QwtDynGridLayout_new((*C.QWidget)(param1.UnsafePointer())))
 }
@@ -73,14 +72,12 @@ func NewQwtDynGridLayout2() *QwtDynGridLayout {
 
 // NewQwtDynGridLayout3 constructs a new QwtDynGridLayout object.
 func NewQwtDynGridLayout3(param1 *qt.QWidget, margin int) *QwtDynGridLayout {
-	defer runtime.KeepAlive(param1)
 
 	return newQwtDynGridLayout(C.QwtDynGridLayout_new3((*C.QWidget)(param1.UnsafePointer()), (C.int)(margin)))
 }
 
 // NewQwtDynGridLayout4 constructs a new QwtDynGridLayout object.
 func NewQwtDynGridLayout4(param1 *qt.QWidget, margin int, spacing int) *QwtDynGridLayout {
-	defer runtime.KeepAlive(param1)
 
 	return newQwtDynGridLayout(C.QwtDynGridLayout_new4((*C.QWidget)(param1.UnsafePointer()), (C.int)(margin), (C.int)(spacing)))
 }
@@ -92,12 +89,10 @@ func NewQwtDynGridLayout5(spacing int) *QwtDynGridLayout {
 }
 
 func (this *QwtDynGridLayout) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtDynGridLayout_metaObject(this.h)))
 }
 
 func (this *QwtDynGridLayout) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtDynGridLayout_metacast(this.h, param1_Cstring))
@@ -122,63 +117,51 @@ func QwtDynGridLayout_TrUtf8(s string) string {
 }
 
 func (this *QwtDynGridLayout) Invalidate() {
-	defer runtime.KeepAlive(this)
 	C.QwtDynGridLayout_invalidate(this.h)
 }
 
 func (this *QwtDynGridLayout) SetMaxColumns(maxColumns uint) {
-	defer runtime.KeepAlive(this)
 	C.QwtDynGridLayout_setMaxColumns(this.h, (C.uint)(maxColumns))
 }
 
 func (this *QwtDynGridLayout) MaxColumns() uint {
-	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtDynGridLayout_maxColumns(this.h))
 }
 
 func (this *QwtDynGridLayout) NumRows() uint {
-	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtDynGridLayout_numRows(this.h))
 }
 
 func (this *QwtDynGridLayout) NumColumns() uint {
-	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtDynGridLayout_numColumns(this.h))
 }
 
 func (this *QwtDynGridLayout) AddItem(param1 *qt.QLayoutItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QwtDynGridLayout_addItem(this.h, (*C.QLayoutItem)(param1.UnsafePointer()))
 }
 
 func (this *QwtDynGridLayout) ItemAt(index int) *qt.QLayoutItem {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQLayoutItem(unsafe.Pointer(C.QwtDynGridLayout_itemAt(this.h, (C.int)(index))))
 }
 
 func (this *QwtDynGridLayout) TakeAt(index int) *qt.QLayoutItem {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQLayoutItem(unsafe.Pointer(C.QwtDynGridLayout_takeAt(this.h, (C.int)(index))))
 }
 
 func (this *QwtDynGridLayout) Count() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtDynGridLayout_count(this.h))
 }
 
 func (this *QwtDynGridLayout) SetExpandingDirections(expandingDirections qt.Orientation) {
-	defer runtime.KeepAlive(this)
 	C.QwtDynGridLayout_setExpandingDirections(this.h, (C.int)(expandingDirections))
 }
 
 func (this *QwtDynGridLayout) ExpandingDirections() qt.Orientation {
-	defer runtime.KeepAlive(this)
 	return (qt.Orientation)(C.QwtDynGridLayout_expandingDirections(this.h))
 }
 
 func (this *QwtDynGridLayout) LayoutItems(param1 *qt.QRect, numColumns uint) []qt.QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	var _ma C.struct_miqt_array = C.QwtDynGridLayout_layoutItems(this.h, (*C.QRect)(param1.UnsafePointer()), (C.uint)(numColumns))
 	_ret := make([]qt.QRect, int(_ma.len))
@@ -192,45 +175,37 @@ func (this *QwtDynGridLayout) LayoutItems(param1 *qt.QRect, numColumns uint) []q
 }
 
 func (this *QwtDynGridLayout) MaxItemWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtDynGridLayout_maxItemWidth(this.h))
 }
 
 func (this *QwtDynGridLayout) SetGeometry(rect *qt.QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	C.QwtDynGridLayout_setGeometry(this.h, (*C.QRect)(rect.UnsafePointer()))
 }
 
 func (this *QwtDynGridLayout) HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtDynGridLayout_hasHeightForWidth(this.h))
 }
 
 func (this *QwtDynGridLayout) HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtDynGridLayout_heightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QwtDynGridLayout) SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtDynGridLayout_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtDynGridLayout) IsEmpty() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtDynGridLayout_isEmpty(this.h))
 }
 
 func (this *QwtDynGridLayout) ItemCount() uint {
-	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtDynGridLayout_itemCount(this.h))
 }
 
 func (this *QwtDynGridLayout) ColumnsForWidth(width int) uint {
-	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtDynGridLayout_columnsForWidth(this.h, (C.int)(width)))
 }
 
@@ -280,7 +255,6 @@ func QwtDynGridLayout_TrUtf83(s string, c string, n int) string {
 
 // LayoutGrid can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) LayoutGrid(numColumns uint, rowHeight []int, colWidth []int) {
-	defer runtime.KeepAlive(this)
 	rowHeight_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(rowHeight))))
 	defer C.free(unsafe.Pointer(rowHeight_CArray_ptr))
 	rowHeight_CArray := unsafe.Slice(rowHeight_CArray_ptr, len(rowHeight))
@@ -307,7 +281,6 @@ func (this *QwtDynGridLayout) LayoutGrid(numColumns uint, rowHeight []int, colWi
 
 // StretchGrid can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) StretchGrid(rect *qt.QRect, numColumns uint, rowHeight []int, colWidth []int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	rowHeight_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(rowHeight))))
 	defer C.free(unsafe.Pointer(rowHeight_CArray_ptr))
@@ -335,7 +308,6 @@ func (this *QwtDynGridLayout) StretchGrid(rect *qt.QRect, numColumns uint, rowHe
 
 // WidgetEvent can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) WidgetEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -349,8 +321,6 @@ func (this *QwtDynGridLayout) WidgetEvent(param1 *qt.QEvent) {
 
 // AddChildLayout can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) AddChildLayout(l *qt.QLayout) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(l)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtDynGridLayout_protectedbase_addChildLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QLayout)(l.UnsafePointer()))
@@ -363,8 +333,6 @@ func (this *QwtDynGridLayout) AddChildLayout(l *qt.QLayout) {
 
 // AddChildWidget can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) AddChildWidget(w *qt.QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(w)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtDynGridLayout_protectedbase_addChildWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QWidget)(w.UnsafePointer()))
@@ -377,8 +345,6 @@ func (this *QwtDynGridLayout) AddChildWidget(w *qt.QWidget) {
 
 // AdoptLayout can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) AdoptLayout(layout *qt.QLayout) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(layout)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtDynGridLayout_protectedbase_adoptLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QLayout)(layout.UnsafePointer())))
@@ -393,7 +359,6 @@ func (this *QwtDynGridLayout) AdoptLayout(layout *qt.QLayout) bool {
 
 // AlignmentRect can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) AlignmentRect(param1 *qt.QRect) qt.QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -411,7 +376,6 @@ func (this *QwtDynGridLayout) AlignmentRect(param1 *qt.QRect) qt.QRect {
 
 // Sender can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtDynGridLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -426,7 +390,6 @@ func (this *QwtDynGridLayout) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtDynGridLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -441,7 +404,6 @@ func (this *QwtDynGridLayout) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -458,7 +420,6 @@ func (this *QwtDynGridLayout) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -473,7 +434,6 @@ func (this *QwtDynGridLayout) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_Invalidate() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtDynGridLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
@@ -497,7 +457,6 @@ func miqt_exec_callback_QwtDynGridLayout_invalidate(self *C.QwtDynGridLayout, cb
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_AddItem(param1 *qt.QLayoutItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtDynGridLayout_virtualbase_addItem(unsafe.Pointer(this.h), (*C.QLayoutItem)(param1.UnsafePointer()))
@@ -525,7 +484,6 @@ func miqt_exec_callback_QwtDynGridLayout_addItem(self *C.QwtDynGridLayout, cb C.
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_ItemAt(index int) *qt.QLayoutItem {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQLayoutItem(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_itemAt(unsafe.Pointer(this.h), (C.int)(index))))
 
@@ -555,7 +513,6 @@ func miqt_exec_callback_QwtDynGridLayout_itemAt(self *C.QwtDynGridLayout, cb C.i
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_TakeAt(index int) *qt.QLayoutItem {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQLayoutItem(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_takeAt(unsafe.Pointer(this.h), (C.int)(index))))
 
@@ -585,7 +542,6 @@ func miqt_exec_callback_QwtDynGridLayout_takeAt(self *C.QwtDynGridLayout, cb C.i
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_Count() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtDynGridLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
@@ -611,7 +567,6 @@ func miqt_exec_callback_QwtDynGridLayout_count(self *C.QwtDynGridLayout, cb C.in
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_ExpandingDirections() qt.Orientation {
-	defer runtime.KeepAlive(this)
 
 	return (qt.Orientation)(C.QwtDynGridLayout_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
@@ -637,7 +592,6 @@ func miqt_exec_callback_QwtDynGridLayout_expandingDirections(self *C.QwtDynGridL
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_MaxItemWidth() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtDynGridLayout_virtualbase_maxItemWidth(unsafe.Pointer(this.h)))
 
@@ -663,7 +617,6 @@ func miqt_exec_callback_QwtDynGridLayout_maxItemWidth(self *C.QwtDynGridLayout, 
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_SetGeometry(rect *qt.QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 
 	C.QwtDynGridLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), (*C.QRect)(rect.UnsafePointer()))
@@ -691,7 +644,6 @@ func miqt_exec_callback_QwtDynGridLayout_setGeometry(self *C.QwtDynGridLayout, c
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtDynGridLayout_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -717,7 +669,6 @@ func miqt_exec_callback_QwtDynGridLayout_hasHeightForWidth(self *C.QwtDynGridLay
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtDynGridLayout_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -746,7 +697,6 @@ func miqt_exec_callback_QwtDynGridLayout_heightForWidth(self *C.QwtDynGridLayout
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -775,7 +725,6 @@ func miqt_exec_callback_QwtDynGridLayout_sizeHint(self *C.QwtDynGridLayout, cb C
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_IsEmpty() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtDynGridLayout_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -801,7 +750,6 @@ func miqt_exec_callback_QwtDynGridLayout_isEmpty(self *C.QwtDynGridLayout, cb C.
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_ColumnsForWidth(width int) uint {
-	defer runtime.KeepAlive(this)
 
 	return (uint)(C.QwtDynGridLayout_virtualbase_columnsForWidth(unsafe.Pointer(this.h), (C.int)(width)))
 
@@ -830,7 +778,6 @@ func miqt_exec_callback_QwtDynGridLayout_columnsForWidth(self *C.QwtDynGridLayou
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_Geometry() *qt.QRect {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_geometry(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -859,7 +806,6 @@ func miqt_exec_callback_QwtDynGridLayout_geometry(self *C.QwtDynGridLayout, cb C
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_MinimumSize() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_minimumSize(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -888,7 +834,6 @@ func miqt_exec_callback_QwtDynGridLayout_minimumSize(self *C.QwtDynGridLayout, c
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_MaximumSize() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_maximumSize(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -917,8 +862,6 @@ func miqt_exec_callback_QwtDynGridLayout_maximumSize(self *C.QwtDynGridLayout, c
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_IndexOf(param1 *qt.QWidget) int {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	return (int)(C.QwtDynGridLayout_virtualbase_indexOf(unsafe.Pointer(this.h), (*C.QWidget)(param1.UnsafePointer())))
 
@@ -947,7 +890,6 @@ func miqt_exec_callback_QwtDynGridLayout_indexOf(self *C.QwtDynGridLayout, cb C.
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_ControlTypes() qt.QSizePolicy__ControlType {
-	defer runtime.KeepAlive(this)
 
 	return (qt.QSizePolicy__ControlType)(C.QwtDynGridLayout_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
@@ -973,7 +915,6 @@ func miqt_exec_callback_QwtDynGridLayout_controlTypes(self *C.QwtDynGridLayout, 
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_Layout() *qt.QLayout {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQLayout(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_layout(unsafe.Pointer(this.h))))
 
@@ -993,14 +934,12 @@ func miqt_exec_callback_QwtDynGridLayout_layout(self *C.QwtDynGridLayout, cb C.i
 	}
 
 	virtualReturn := gofunc((&QwtDynGridLayout{h: self}).callVirtualBase_Layout)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QLayout)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_ChildEvent(e *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QwtDynGridLayout_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(e.UnsafePointer()))
@@ -1028,7 +967,6 @@ func miqt_exec_callback_QwtDynGridLayout_childEvent(self *C.QwtDynGridLayout, cb
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtDynGridLayout_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1058,8 +996,6 @@ func miqt_exec_callback_QwtDynGridLayout_event(self *C.QwtDynGridLayout, cb C.in
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtDynGridLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1091,7 +1027,6 @@ func miqt_exec_callback_QwtDynGridLayout_eventFilter(self *C.QwtDynGridLayout, c
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtDynGridLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1119,7 +1054,6 @@ func miqt_exec_callback_QwtDynGridLayout_timerEvent(self *C.QwtDynGridLayout, cb
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtDynGridLayout_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1147,7 +1081,6 @@ func miqt_exec_callback_QwtDynGridLayout_customEvent(self *C.QwtDynGridLayout, c
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtDynGridLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1175,7 +1108,6 @@ func miqt_exec_callback_QwtDynGridLayout_connectNotify(self *C.QwtDynGridLayout,
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtDynGridLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1203,7 +1135,6 @@ func miqt_exec_callback_QwtDynGridLayout_disconnectNotify(self *C.QwtDynGridLayo
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_MinimumHeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtDynGridLayout_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1232,7 +1163,6 @@ func miqt_exec_callback_QwtDynGridLayout_minimumHeightForWidth(self *C.QwtDynGri
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_Widget() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_widget(unsafe.Pointer(this.h))))
 
@@ -1252,14 +1182,12 @@ func miqt_exec_callback_QwtDynGridLayout_widget(self *C.QwtDynGridLayout, cb C.i
 	}
 
 	virtualReturn := gofunc((&QwtDynGridLayout{h: self}).callVirtualBase_Widget)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtDynGridLayout) callVirtualBase_SpacerItem() *qt.QSpacerItem {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQSpacerItem(unsafe.Pointer(C.QwtDynGridLayout_virtualbase_spacerItem(unsafe.Pointer(this.h))))
 
@@ -1293,6 +1221,8 @@ func (this *QwtDynGridLayout) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtDynGridLayout) GoGC() {
 	if this.gc != nil {
 		return

@@ -143,7 +143,6 @@ func (this *QDesignerFormWindowCursorInterface) SetProperty(name string, value *
 
 func (this *QDesignerFormWindowCursorInterface) SetWidgetProperty(widget *qt6.QWidget, name string, value *qt6.QVariant) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
@@ -154,7 +153,6 @@ func (this *QDesignerFormWindowCursorInterface) SetWidgetProperty(widget *qt6.QW
 
 func (this *QDesignerFormWindowCursorInterface) ResetWidgetProperty(widget *qt6.QWidget, name string) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -164,7 +162,6 @@ func (this *QDesignerFormWindowCursorInterface) ResetWidgetProperty(widget *qt6.
 
 func (this *QDesignerFormWindowCursorInterface) IsWidgetSelected(widget *qt6.QWidget) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	return (bool)(C.QDesignerFormWindowCursorInterface_isWidgetSelected(this.h, (*C.QWidget)(widget.UnsafePointer())))
 }
 func (this *QDesignerFormWindowCursorInterface) OnFormWindow(slot func() *QDesignerFormWindowInterface) {
@@ -182,7 +179,6 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_formWindow(self *C.QD
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -267,7 +263,6 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_current(self *C.QDesi
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -309,7 +304,6 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_widget(self *C.QDesig
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -370,7 +364,6 @@ func miqt_exec_callback_QDesignerFormWindowCursorInterface_selectedWidget(self *
 	slotval1 := (int)(index)
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 

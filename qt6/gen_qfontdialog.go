@@ -71,7 +71,6 @@ func UnsafeNewQFontDialog(h unsafe.Pointer) *QFontDialog {
 
 // NewQFontDialog constructs a new QFontDialog object.
 func NewQFontDialog(parent *QWidget) *QFontDialog {
-	defer runtime.KeepAlive(parent)
 
 	return newQFontDialog(C.QFontDialog_new(parent.cPointer()))
 }
@@ -92,18 +91,15 @@ func NewQFontDialog3(initial *QFont) *QFontDialog {
 // NewQFontDialog4 constructs a new QFontDialog object.
 func NewQFontDialog4(initial *QFont, parent *QWidget) *QFontDialog {
 	defer runtime.KeepAlive(initial)
-	defer runtime.KeepAlive(parent)
 
 	return newQFontDialog(C.QFontDialog_new4(initial.cPointer(), parent.cPointer()))
 }
 
 func (this *QFontDialog) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QFontDialog_metaObject(this.h))
 }
 
 func (this *QFontDialog) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QFontDialog_metacast(this.h, param1_Cstring))
@@ -119,47 +115,39 @@ func QFontDialog_Tr(s string) string {
 }
 
 func (this *QFontDialog) SetCurrentFont(font *QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QFontDialog_setCurrentFont(this.h, font.cPointer())
 }
 
 func (this *QFontDialog) CurrentFont() *QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QFontDialog_currentFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontDialog) SelectedFont() *QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QFontDialog_selectedFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontDialog) SetOption(option QFontDialog__FontDialogOption) {
-	defer runtime.KeepAlive(this)
 	C.QFontDialog_setOption(this.h, (C.int)(option))
 }
 
 func (this *QFontDialog) TestOption(option QFontDialog__FontDialogOption) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QFontDialog_testOption(this.h, (C.int)(option)))
 }
 
 func (this *QFontDialog) SetOptions(options QFontDialog__FontDialogOption) {
-	defer runtime.KeepAlive(this)
 	C.QFontDialog_setOptions(this.h, (C.int)(options))
 }
 
 func (this *QFontDialog) Options() QFontDialog__FontDialogOption {
-	defer runtime.KeepAlive(this)
 	return (QFontDialog__FontDialogOption)(C.QFontDialog_options(this.h))
 }
 
 func (this *QFontDialog) SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QFontDialog_setVisible(this.h, (C.bool)(visible))
 }
 
@@ -177,7 +165,6 @@ func QFontDialog_GetFont2(ok *bool, initial *QFont) *QFont {
 }
 
 func (this *QFontDialog) CurrentFontChanged(font *QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QFontDialog_currentFontChanged(this.h, font.cPointer())
 }
@@ -199,7 +186,6 @@ func miqt_exec_callback_QFontDialog_currentFontChanged(cb C.intptr_t, font *C.QF
 }
 
 func (this *QFontDialog) FontSelected(font *QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QFontDialog_fontSelected(this.h, font.cPointer())
 }
@@ -243,12 +229,10 @@ func QFontDialog_Tr3(s string, c string, n int) string {
 }
 
 func (this *QFontDialog) SetOption2(option QFontDialog__FontDialogOption, on bool) {
-	defer runtime.KeepAlive(this)
 	C.QFontDialog_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
 func QFontDialog_GetFont3(ok *bool, parent *QWidget) *QFont {
-	defer runtime.KeepAlive(parent)
 	_goptr := newQFont(C.QFontDialog_getFont3((*C.bool)(unsafe.Pointer(ok)), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -256,7 +240,6 @@ func QFontDialog_GetFont3(ok *bool, parent *QWidget) *QFont {
 
 func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget) *QFont {
 	defer runtime.KeepAlive(initial)
-	defer runtime.KeepAlive(parent)
 	_goptr := newQFont(C.QFontDialog_getFont4((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -264,7 +247,6 @@ func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget) *QFont {
 
 func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string) *QFont {
 	defer runtime.KeepAlive(initial)
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -276,7 +258,6 @@ func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title strin
 
 func QFontDialog_GetFont6(ok *bool, initial *QFont, parent *QWidget, title string, options QFontDialog__FontDialogOption) *QFont {
 	defer runtime.KeepAlive(initial)
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -288,8 +269,6 @@ func QFontDialog_GetFont6(ok *bool, initial *QFont, parent *QWidget, title strin
 
 // AdjustPosition can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) AdjustPosition(param1 *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFontDialog_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -302,7 +281,6 @@ func (this *QFontDialog) AdjustPosition(param1 *QWidget) {
 
 // UpdateMicroFocus can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFontDialog_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -315,7 +293,6 @@ func (this *QFontDialog) UpdateMicroFocus() {
 
 // Create can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFontDialog_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -328,7 +305,6 @@ func (this *QFontDialog) Create() {
 
 // Destroy can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFontDialog_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -341,7 +317,6 @@ func (this *QFontDialog) Destroy() {
 
 // FocusNextChild can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFontDialog_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -356,7 +331,6 @@ func (this *QFontDialog) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFontDialog_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -371,7 +345,6 @@ func (this *QFontDialog) FocusPreviousChild() bool {
 
 // Sender can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QFontDialog_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -386,7 +359,6 @@ func (this *QFontDialog) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QFontDialog_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -401,7 +373,6 @@ func (this *QFontDialog) SenderSignalIndex() int {
 
 // Receivers can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -418,7 +389,6 @@ func (this *QFontDialog) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QFontDialog that was directly constructed.
 func (this *QFontDialog) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -433,7 +403,6 @@ func (this *QFontDialog) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QFontDialog) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QFontDialog_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -460,7 +429,6 @@ func miqt_exec_callback_QFontDialog_setVisible(self *C.QFontDialog, cb C.intptr_
 }
 
 func (this *QFontDialog) callVirtualBase_ChangeEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -488,7 +456,6 @@ func miqt_exec_callback_QFontDialog_changeEvent(self *C.QFontDialog, cb C.intptr
 }
 
 func (this *QFontDialog) callVirtualBase_Done(result int) {
-	defer runtime.KeepAlive(this)
 
 	C.QFontDialog_virtualbase_done(unsafe.Pointer(this.h), (C.int)(result))
 
@@ -515,8 +482,6 @@ func miqt_exec_callback_QFontDialog_done(self *C.QFontDialog, cb C.intptr_t, res
 }
 
 func (this *QFontDialog) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFontDialog_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
@@ -548,7 +513,6 @@ func miqt_exec_callback_QFontDialog_eventFilter(self *C.QFontDialog, cb C.intptr
 }
 
 func (this *QFontDialog) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QFontDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -577,7 +541,6 @@ func miqt_exec_callback_QFontDialog_sizeHint(self *C.QFontDialog, cb C.intptr_t)
 }
 
 func (this *QFontDialog) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QFontDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -606,7 +569,6 @@ func miqt_exec_callback_QFontDialog_minimumSizeHint(self *C.QFontDialog, cb C.in
 }
 
 func (this *QFontDialog) callVirtualBase_Open() {
-	defer runtime.KeepAlive(this)
 
 	C.QFontDialog_virtualbase_open(unsafe.Pointer(this.h))
 
@@ -630,7 +592,6 @@ func miqt_exec_callback_QFontDialog_open(self *C.QFontDialog, cb C.intptr_t) {
 }
 
 func (this *QFontDialog) callVirtualBase_Exec() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFontDialog_virtualbase_exec(unsafe.Pointer(this.h)))
 
@@ -656,7 +617,6 @@ func miqt_exec_callback_QFontDialog_exec(self *C.QFontDialog, cb C.intptr_t) C.i
 }
 
 func (this *QFontDialog) callVirtualBase_Accept() {
-	defer runtime.KeepAlive(this)
 
 	C.QFontDialog_virtualbase_accept(unsafe.Pointer(this.h))
 
@@ -680,7 +640,6 @@ func miqt_exec_callback_QFontDialog_accept(self *C.QFontDialog, cb C.intptr_t) {
 }
 
 func (this *QFontDialog) callVirtualBase_Reject() {
-	defer runtime.KeepAlive(this)
 
 	C.QFontDialog_virtualbase_reject(unsafe.Pointer(this.h))
 
@@ -704,7 +663,6 @@ func miqt_exec_callback_QFontDialog_reject(self *C.QFontDialog, cb C.intptr_t) {
 }
 
 func (this *QFontDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QFontDialog_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -732,7 +690,6 @@ func miqt_exec_callback_QFontDialog_keyPressEvent(self *C.QFontDialog, cb C.intp
 }
 
 func (this *QFontDialog) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QFontDialog_virtualbase_closeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -760,7 +717,6 @@ func miqt_exec_callback_QFontDialog_closeEvent(self *C.QFontDialog, cb C.intptr_
 }
 
 func (this *QFontDialog) callVirtualBase_ShowEvent(param1 *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QFontDialog_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -788,7 +744,6 @@ func miqt_exec_callback_QFontDialog_showEvent(self *C.QFontDialog, cb C.intptr_t
 }
 
 func (this *QFontDialog) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QFontDialog_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -816,7 +771,6 @@ func miqt_exec_callback_QFontDialog_resizeEvent(self *C.QFontDialog, cb C.intptr
 }
 
 func (this *QFontDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QFontDialog_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -844,7 +798,6 @@ func miqt_exec_callback_QFontDialog_contextMenuEvent(self *C.QFontDialog, cb C.i
 }
 
 func (this *QFontDialog) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFontDialog_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -870,7 +823,6 @@ func miqt_exec_callback_QFontDialog_devType(self *C.QFontDialog, cb C.intptr_t) 
 }
 
 func (this *QFontDialog) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFontDialog_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -899,7 +851,6 @@ func miqt_exec_callback_QFontDialog_heightForWidth(self *C.QFontDialog, cb C.int
 }
 
 func (this *QFontDialog) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QFontDialog_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -925,7 +876,6 @@ func miqt_exec_callback_QFontDialog_hasHeightForWidth(self *C.QFontDialog, cb C.
 }
 
 func (this *QFontDialog) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QFontDialog_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -952,7 +902,6 @@ func miqt_exec_callback_QFontDialog_paintEngine(self *C.QFontDialog, cb C.intptr
 }
 
 func (this *QFontDialog) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFontDialog_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -982,7 +931,6 @@ func miqt_exec_callback_QFontDialog_event(self *C.QFontDialog, cb C.intptr_t, ev
 }
 
 func (this *QFontDialog) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1010,7 +958,6 @@ func miqt_exec_callback_QFontDialog_mousePressEvent(self *C.QFontDialog, cb C.in
 }
 
 func (this *QFontDialog) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1038,7 +985,6 @@ func miqt_exec_callback_QFontDialog_mouseReleaseEvent(self *C.QFontDialog, cb C.
 }
 
 func (this *QFontDialog) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1066,7 +1012,6 @@ func miqt_exec_callback_QFontDialog_mouseDoubleClickEvent(self *C.QFontDialog, c
 }
 
 func (this *QFontDialog) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1094,7 +1039,6 @@ func miqt_exec_callback_QFontDialog_mouseMoveEvent(self *C.QFontDialog, cb C.int
 }
 
 func (this *QFontDialog) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1122,7 +1066,6 @@ func miqt_exec_callback_QFontDialog_wheelEvent(self *C.QFontDialog, cb C.intptr_
 }
 
 func (this *QFontDialog) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1150,7 +1093,6 @@ func miqt_exec_callback_QFontDialog_keyReleaseEvent(self *C.QFontDialog, cb C.in
 }
 
 func (this *QFontDialog) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1178,7 +1120,6 @@ func miqt_exec_callback_QFontDialog_focusInEvent(self *C.QFontDialog, cb C.intpt
 }
 
 func (this *QFontDialog) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1206,7 +1147,6 @@ func miqt_exec_callback_QFontDialog_focusOutEvent(self *C.QFontDialog, cb C.intp
 }
 
 func (this *QFontDialog) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1234,7 +1174,6 @@ func miqt_exec_callback_QFontDialog_enterEvent(self *C.QFontDialog, cb C.intptr_
 }
 
 func (this *QFontDialog) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1262,7 +1201,6 @@ func miqt_exec_callback_QFontDialog_leaveEvent(self *C.QFontDialog, cb C.intptr_
 }
 
 func (this *QFontDialog) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1290,7 +1228,6 @@ func miqt_exec_callback_QFontDialog_paintEvent(self *C.QFontDialog, cb C.intptr_
 }
 
 func (this *QFontDialog) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1318,7 +1255,6 @@ func miqt_exec_callback_QFontDialog_moveEvent(self *C.QFontDialog, cb C.intptr_t
 }
 
 func (this *QFontDialog) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1346,7 +1282,6 @@ func miqt_exec_callback_QFontDialog_tabletEvent(self *C.QFontDialog, cb C.intptr
 }
 
 func (this *QFontDialog) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1374,7 +1309,6 @@ func miqt_exec_callback_QFontDialog_actionEvent(self *C.QFontDialog, cb C.intptr
 }
 
 func (this *QFontDialog) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1402,7 +1336,6 @@ func miqt_exec_callback_QFontDialog_dragEnterEvent(self *C.QFontDialog, cb C.int
 }
 
 func (this *QFontDialog) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1430,7 +1363,6 @@ func miqt_exec_callback_QFontDialog_dragMoveEvent(self *C.QFontDialog, cb C.intp
 }
 
 func (this *QFontDialog) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1458,7 +1390,6 @@ func miqt_exec_callback_QFontDialog_dragLeaveEvent(self *C.QFontDialog, cb C.int
 }
 
 func (this *QFontDialog) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1486,7 +1417,6 @@ func miqt_exec_callback_QFontDialog_dropEvent(self *C.QFontDialog, cb C.intptr_t
 }
 
 func (this *QFontDialog) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1514,7 +1444,6 @@ func miqt_exec_callback_QFontDialog_hideEvent(self *C.QFontDialog, cb C.intptr_t
 }
 
 func (this *QFontDialog) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1556,7 +1485,6 @@ func miqt_exec_callback_QFontDialog_nativeEvent(self *C.QFontDialog, cb C.intptr
 }
 
 func (this *QFontDialog) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFontDialog_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1585,7 +1513,6 @@ func miqt_exec_callback_QFontDialog_metric(self *C.QFontDialog, cb C.intptr_t, p
 }
 
 func (this *QFontDialog) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QFontDialog_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1613,7 +1540,6 @@ func miqt_exec_callback_QFontDialog_initPainter(self *C.QFontDialog, cb C.intptr
 }
 
 func (this *QFontDialog) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QFontDialog_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1644,7 +1570,6 @@ func miqt_exec_callback_QFontDialog_redirected(self *C.QFontDialog, cb C.intptr_
 }
 
 func (this *QFontDialog) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QFontDialog_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1671,7 +1596,6 @@ func miqt_exec_callback_QFontDialog_sharedPainter(self *C.QFontDialog, cb C.intp
 }
 
 func (this *QFontDialog) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QFontDialog_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1699,7 +1623,6 @@ func miqt_exec_callback_QFontDialog_inputMethodEvent(self *C.QFontDialog, cb C.i
 }
 
 func (this *QFontDialog) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QFontDialog_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1731,7 +1654,6 @@ func miqt_exec_callback_QFontDialog_inputMethodQuery(self *C.QFontDialog, cb C.i
 }
 
 func (this *QFontDialog) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QFontDialog_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1760,7 +1682,6 @@ func miqt_exec_callback_QFontDialog_focusNextPrevChild(self *C.QFontDialog, cb C
 }
 
 func (this *QFontDialog) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1788,7 +1709,6 @@ func miqt_exec_callback_QFontDialog_timerEvent(self *C.QFontDialog, cb C.intptr_
 }
 
 func (this *QFontDialog) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1816,7 +1736,6 @@ func miqt_exec_callback_QFontDialog_childEvent(self *C.QFontDialog, cb C.intptr_
 }
 
 func (this *QFontDialog) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontDialog_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1844,7 +1763,6 @@ func miqt_exec_callback_QFontDialog_customEvent(self *C.QFontDialog, cb C.intptr
 }
 
 func (this *QFontDialog) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QFontDialog_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1872,7 +1790,6 @@ func miqt_exec_callback_QFontDialog_connectNotify(self *C.QFontDialog, cb C.intp
 }
 
 func (this *QFontDialog) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QFontDialog_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1907,6 +1824,8 @@ func (this *QFontDialog) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QFontDialog) GoGC() {
 	if this.gc != nil {
 		return

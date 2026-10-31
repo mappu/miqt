@@ -76,7 +76,6 @@ func UnsafeNewQDateTimeEdit(h unsafe.Pointer) *QDateTimeEdit {
 
 // NewQDateTimeEdit constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit(parent *QWidget) *QDateTimeEdit {
-	defer runtime.KeepAlive(parent)
 
 	return newQDateTimeEdit(C.QDateTimeEdit_new(parent.cPointer()))
 }
@@ -111,7 +110,6 @@ func NewQDateTimeEdit5(t QTime) *QDateTimeEdit {
 // NewQDateTimeEdit6 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit6(dt *QDateTime, parent *QWidget) *QDateTimeEdit {
 	defer runtime.KeepAlive(dt)
-	defer runtime.KeepAlive(parent)
 
 	return newQDateTimeEdit(C.QDateTimeEdit_new6(dt.cPointer(), parent.cPointer()))
 }
@@ -119,7 +117,6 @@ func NewQDateTimeEdit6(dt *QDateTime, parent *QWidget) *QDateTimeEdit {
 // NewQDateTimeEdit7 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit7(d QDate, parent *QWidget) *QDateTimeEdit {
 	defer runtime.KeepAlive(d)
-	defer runtime.KeepAlive(parent)
 
 	return newQDateTimeEdit(C.QDateTimeEdit_new7(d.cPointer(), parent.cPointer()))
 }
@@ -127,18 +124,15 @@ func NewQDateTimeEdit7(d QDate, parent *QWidget) *QDateTimeEdit {
 // NewQDateTimeEdit8 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit8(t QTime, parent *QWidget) *QDateTimeEdit {
 	defer runtime.KeepAlive(t)
-	defer runtime.KeepAlive(parent)
 
 	return newQDateTimeEdit(C.QDateTimeEdit_new8(t.cPointer(), parent.cPointer()))
 }
 
 func (this *QDateTimeEdit) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QDateTimeEdit_metaObject(this.h))
 }
 
 func (this *QDateTimeEdit) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDateTimeEdit_metacast(this.h, param1_Cstring))
@@ -154,221 +148,183 @@ func QDateTimeEdit_Tr(s string) string {
 }
 
 func (this *QDateTimeEdit) DateTime() *QDateTime {
-	defer runtime.KeepAlive(this)
 	_goptr := newQDateTime(C.QDateTimeEdit_dateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) Date() *QDate {
-	defer runtime.KeepAlive(this)
 	_goptr := newQDate(C.QDateTimeEdit_date(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) Time() *QTime {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTime(C.QDateTimeEdit_time(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) Calendar() *QCalendar {
-	defer runtime.KeepAlive(this)
 	_goptr := newQCalendar(C.QDateTimeEdit_calendar(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) SetCalendar(calendar QCalendar) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(calendar)
 	C.QDateTimeEdit_setCalendar(this.h, calendar.cPointer())
 }
 
 func (this *QDateTimeEdit) MinimumDateTime() *QDateTime {
-	defer runtime.KeepAlive(this)
 	_goptr := newQDateTime(C.QDateTimeEdit_minimumDateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) ClearMinimumDateTime() {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_clearMinimumDateTime(this.h)
 }
 
 func (this *QDateTimeEdit) SetMinimumDateTime(dt *QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(dt)
 	C.QDateTimeEdit_setMinimumDateTime(this.h, dt.cPointer())
 }
 
 func (this *QDateTimeEdit) MaximumDateTime() *QDateTime {
-	defer runtime.KeepAlive(this)
 	_goptr := newQDateTime(C.QDateTimeEdit_maximumDateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) ClearMaximumDateTime() {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_clearMaximumDateTime(this.h)
 }
 
 func (this *QDateTimeEdit) SetMaximumDateTime(dt *QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(dt)
 	C.QDateTimeEdit_setMaximumDateTime(this.h, dt.cPointer())
 }
 
 func (this *QDateTimeEdit) SetDateTimeRange(min *QDateTime, max *QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(min)
 	defer runtime.KeepAlive(max)
 	C.QDateTimeEdit_setDateTimeRange(this.h, min.cPointer(), max.cPointer())
 }
 
 func (this *QDateTimeEdit) MinimumDate() *QDate {
-	defer runtime.KeepAlive(this)
 	_goptr := newQDate(C.QDateTimeEdit_minimumDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) SetMinimumDate(min QDate) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(min)
 	C.QDateTimeEdit_setMinimumDate(this.h, min.cPointer())
 }
 
 func (this *QDateTimeEdit) ClearMinimumDate() {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_clearMinimumDate(this.h)
 }
 
 func (this *QDateTimeEdit) MaximumDate() *QDate {
-	defer runtime.KeepAlive(this)
 	_goptr := newQDate(C.QDateTimeEdit_maximumDate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) SetMaximumDate(max QDate) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(max)
 	C.QDateTimeEdit_setMaximumDate(this.h, max.cPointer())
 }
 
 func (this *QDateTimeEdit) ClearMaximumDate() {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_clearMaximumDate(this.h)
 }
 
 func (this *QDateTimeEdit) SetDateRange(min QDate, max QDate) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(min)
 	defer runtime.KeepAlive(max)
 	C.QDateTimeEdit_setDateRange(this.h, min.cPointer(), max.cPointer())
 }
 
 func (this *QDateTimeEdit) MinimumTime() *QTime {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTime(C.QDateTimeEdit_minimumTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) SetMinimumTime(min QTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(min)
 	C.QDateTimeEdit_setMinimumTime(this.h, min.cPointer())
 }
 
 func (this *QDateTimeEdit) ClearMinimumTime() {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_clearMinimumTime(this.h)
 }
 
 func (this *QDateTimeEdit) MaximumTime() *QTime {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTime(C.QDateTimeEdit_maximumTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) SetMaximumTime(max QTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(max)
 	C.QDateTimeEdit_setMaximumTime(this.h, max.cPointer())
 }
 
 func (this *QDateTimeEdit) ClearMaximumTime() {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_clearMaximumTime(this.h)
 }
 
 func (this *QDateTimeEdit) SetTimeRange(min QTime, max QTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(min)
 	defer runtime.KeepAlive(max)
 	C.QDateTimeEdit_setTimeRange(this.h, min.cPointer(), max.cPointer())
 }
 
 func (this *QDateTimeEdit) DisplayedSections() QDateTimeEdit__Section {
-	defer runtime.KeepAlive(this)
 	return (QDateTimeEdit__Section)(C.QDateTimeEdit_displayedSections(this.h))
 }
 
 func (this *QDateTimeEdit) CurrentSection() QDateTimeEdit__Section {
-	defer runtime.KeepAlive(this)
 	return (QDateTimeEdit__Section)(C.QDateTimeEdit_currentSection(this.h))
 }
 
 func (this *QDateTimeEdit) SectionAt(index int) QDateTimeEdit__Section {
-	defer runtime.KeepAlive(this)
 	return (QDateTimeEdit__Section)(C.QDateTimeEdit_sectionAt(this.h, (C.int)(index)))
 }
 
 func (this *QDateTimeEdit) SetCurrentSection(section QDateTimeEdit__Section) {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_setCurrentSection(this.h, (C.int)(section))
 }
 
 func (this *QDateTimeEdit) CurrentSectionIndex() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDateTimeEdit_currentSectionIndex(this.h))
 }
 
 func (this *QDateTimeEdit) SetCurrentSectionIndex(index int) {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_setCurrentSectionIndex(this.h, (C.int)(index))
 }
 
 func (this *QDateTimeEdit) CalendarWidget() *QCalendarWidget {
-	defer runtime.KeepAlive(this)
 	return newQCalendarWidget(C.QDateTimeEdit_calendarWidget(this.h))
 }
 
 func (this *QDateTimeEdit) SetCalendarWidget(calendarWidget *QCalendarWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(calendarWidget)
 	C.QDateTimeEdit_setCalendarWidget(this.h, calendarWidget.cPointer())
 }
 
 func (this *QDateTimeEdit) SectionCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDateTimeEdit_sectionCount(this.h))
 }
 
 func (this *QDateTimeEdit) SetSelectedSection(section QDateTimeEdit__Section) {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_setSelectedSection(this.h, (C.int)(section))
 }
 
 func (this *QDateTimeEdit) SectionText(section QDateTimeEdit__Section) string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDateTimeEdit_sectionText(this.h, (C.int)(section))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -376,7 +332,6 @@ func (this *QDateTimeEdit) SectionText(section QDateTimeEdit__Section) string {
 }
 
 func (this *QDateTimeEdit) DisplayFormat() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDateTimeEdit_displayFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -384,7 +339,6 @@ func (this *QDateTimeEdit) DisplayFormat() string {
 }
 
 func (this *QDateTimeEdit) SetDisplayFormat(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -393,50 +347,41 @@ func (this *QDateTimeEdit) SetDisplayFormat(format string) {
 }
 
 func (this *QDateTimeEdit) CalendarPopup() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QDateTimeEdit_calendarPopup(this.h))
 }
 
 func (this *QDateTimeEdit) SetCalendarPopup(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_setCalendarPopup(this.h, (C.bool)(enable))
 }
 
 func (this *QDateTimeEdit) TimeSpec() TimeSpec {
-	defer runtime.KeepAlive(this)
 	return (TimeSpec)(C.QDateTimeEdit_timeSpec(this.h))
 }
 
 func (this *QDateTimeEdit) SetTimeSpec(spec TimeSpec) {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_setTimeSpec(this.h, (C.int)(spec))
 }
 
 func (this *QDateTimeEdit) SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QDateTimeEdit_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeEdit) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_clear(this.h)
 }
 
 func (this *QDateTimeEdit) StepBy(steps int) {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeEdit_stepBy(this.h, (C.int)(steps))
 }
 
 func (this *QDateTimeEdit) Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 	return (bool)(C.QDateTimeEdit_event(this.h, event.cPointer()))
 }
 
 func (this *QDateTimeEdit) DateTimeChanged(dateTime *QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(dateTime)
 	C.QDateTimeEdit_dateTimeChanged(this.h, dateTime.cPointer())
 }
@@ -458,7 +403,6 @@ func miqt_exec_callback_QDateTimeEdit_dateTimeChanged(cb C.intptr_t, dateTime *C
 }
 
 func (this *QDateTimeEdit) TimeChanged(time QTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(time)
 	C.QDateTimeEdit_timeChanged(this.h, time.cPointer())
 }
@@ -482,7 +426,6 @@ func miqt_exec_callback_QDateTimeEdit_timeChanged(cb C.intptr_t, time *C.QTime) 
 }
 
 func (this *QDateTimeEdit) DateChanged(date QDate) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(date)
 	C.QDateTimeEdit_dateChanged(this.h, date.cPointer())
 }
@@ -506,19 +449,16 @@ func miqt_exec_callback_QDateTimeEdit_dateChanged(cb C.intptr_t, date *C.QDate) 
 }
 
 func (this *QDateTimeEdit) SetDateTime(dateTime *QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(dateTime)
 	C.QDateTimeEdit_setDateTime(this.h, dateTime.cPointer())
 }
 
 func (this *QDateTimeEdit) SetDate(date QDate) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(date)
 	C.QDateTimeEdit_setDate(this.h, date.cPointer())
 }
 
 func (this *QDateTimeEdit) SetTime(time QTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(time)
 	C.QDateTimeEdit_setTime(this.h, time.cPointer())
 }
@@ -547,7 +487,6 @@ func QDateTimeEdit_Tr3(s string, c string, n int) string {
 
 // LineEdit can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) LineEdit() *QLineEdit {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQLineEdit(C.QDateTimeEdit_protectedbase_lineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -562,8 +501,6 @@ func (this *QDateTimeEdit) LineEdit() *QLineEdit {
 
 // SetLineEdit can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) SetLineEdit(edit *QLineEdit) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(edit)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDateTimeEdit_protectedbase_setLineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h), edit.cPointer())
@@ -576,7 +513,6 @@ func (this *QDateTimeEdit) SetLineEdit(edit *QLineEdit) {
 
 // UpdateMicroFocus can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDateTimeEdit_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -589,7 +525,6 @@ func (this *QDateTimeEdit) UpdateMicroFocus() {
 
 // Create can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDateTimeEdit_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -602,7 +537,6 @@ func (this *QDateTimeEdit) Create() {
 
 // Destroy can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDateTimeEdit_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -615,7 +549,6 @@ func (this *QDateTimeEdit) Destroy() {
 
 // FocusNextChild can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDateTimeEdit_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -630,7 +563,6 @@ func (this *QDateTimeEdit) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDateTimeEdit_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -645,7 +577,6 @@ func (this *QDateTimeEdit) FocusPreviousChild() bool {
 
 // Sender can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QDateTimeEdit_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -660,7 +591,6 @@ func (this *QDateTimeEdit) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDateTimeEdit_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -675,7 +605,6 @@ func (this *QDateTimeEdit) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -692,7 +621,6 @@ func (this *QDateTimeEdit) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDateTimeEdit that was directly constructed.
 func (this *QDateTimeEdit) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -707,7 +635,6 @@ func (this *QDateTimeEdit) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QDateTimeEdit) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDateTimeEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -736,7 +663,6 @@ func miqt_exec_callback_QDateTimeEdit_sizeHint(self *C.QDateTimeEdit, cb C.intpt
 }
 
 func (this *QDateTimeEdit) callVirtualBase_Clear() {
-	defer runtime.KeepAlive(this)
 
 	C.QDateTimeEdit_virtualbase_clear(unsafe.Pointer(this.h))
 
@@ -760,7 +686,6 @@ func miqt_exec_callback_QDateTimeEdit_clear(self *C.QDateTimeEdit, cb C.intptr_t
 }
 
 func (this *QDateTimeEdit) callVirtualBase_StepBy(steps int) {
-	defer runtime.KeepAlive(this)
 
 	C.QDateTimeEdit_virtualbase_stepBy(unsafe.Pointer(this.h), (C.int)(steps))
 
@@ -787,7 +712,6 @@ func miqt_exec_callback_QDateTimeEdit_stepBy(self *C.QDateTimeEdit, cb C.intptr_
 }
 
 func (this *QDateTimeEdit) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDateTimeEdit_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -817,7 +741,6 @@ func miqt_exec_callback_QDateTimeEdit_event(self *C.QDateTimeEdit, cb C.intptr_t
 }
 
 func (this *QDateTimeEdit) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -845,7 +768,6 @@ func miqt_exec_callback_QDateTimeEdit_keyPressEvent(self *C.QDateTimeEdit, cb C.
 }
 
 func (this *QDateTimeEdit) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -873,7 +795,6 @@ func miqt_exec_callback_QDateTimeEdit_wheelEvent(self *C.QDateTimeEdit, cb C.int
 }
 
 func (this *QDateTimeEdit) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -901,7 +822,6 @@ func miqt_exec_callback_QDateTimeEdit_focusInEvent(self *C.QDateTimeEdit, cb C.i
 }
 
 func (this *QDateTimeEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDateTimeEdit_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -930,7 +850,6 @@ func miqt_exec_callback_QDateTimeEdit_focusNextPrevChild(self *C.QDateTimeEdit, 
 }
 
 func (this *QDateTimeEdit) callVirtualBase_Validate(input string, pos *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -967,7 +886,6 @@ func miqt_exec_callback_QDateTimeEdit_validate(self *C.QDateTimeEdit, cb C.intpt
 }
 
 func (this *QDateTimeEdit) callVirtualBase_Fixup(input string) {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -1001,7 +919,6 @@ func miqt_exec_callback_QDateTimeEdit_fixup(self *C.QDateTimeEdit, cb C.intptr_t
 }
 
 func (this *QDateTimeEdit) callVirtualBase_DateTimeFromText(text string) *QDateTime {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1040,7 +957,6 @@ func miqt_exec_callback_QDateTimeEdit_dateTimeFromText(self *C.QDateTimeEdit, cb
 }
 
 func (this *QDateTimeEdit) callVirtualBase_TextFromDateTime(dt *QDateTime) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(dt)
 
 	var _ms C.struct_miqt_string = C.QDateTimeEdit_virtualbase_textFromDateTime(unsafe.Pointer(this.h), dt.cPointer())
@@ -1075,7 +991,6 @@ func miqt_exec_callback_QDateTimeEdit_textFromDateTime(self *C.QDateTimeEdit, cb
 }
 
 func (this *QDateTimeEdit) callVirtualBase_StepEnabled() QAbstractSpinBox__StepEnabledFlag {
-	defer runtime.KeepAlive(this)
 
 	return (QAbstractSpinBox__StepEnabledFlag)(C.QDateTimeEdit_virtualbase_stepEnabled(unsafe.Pointer(this.h)))
 
@@ -1101,7 +1016,6 @@ func miqt_exec_callback_QDateTimeEdit_stepEnabled(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1129,7 +1043,6 @@ func miqt_exec_callback_QDateTimeEdit_mousePressEvent(self *C.QDateTimeEdit, cb 
 }
 
 func (this *QDateTimeEdit) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1157,7 +1070,6 @@ func miqt_exec_callback_QDateTimeEdit_paintEvent(self *C.QDateTimeEdit, cb C.int
 }
 
 func (this *QDateTimeEdit) callVirtualBase_InitStyleOption(option *QStyleOptionSpinBox) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QDateTimeEdit_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
@@ -1185,7 +1097,6 @@ func miqt_exec_callback_QDateTimeEdit_initStyleOption(self *C.QDateTimeEdit, cb 
 }
 
 func (this *QDateTimeEdit) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDateTimeEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1214,7 +1125,6 @@ func miqt_exec_callback_QDateTimeEdit_minimumSizeHint(self *C.QDateTimeEdit, cb 
 }
 
 func (this *QDateTimeEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QDateTimeEdit_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1246,7 +1156,6 @@ func miqt_exec_callback_QDateTimeEdit_inputMethodQuery(self *C.QDateTimeEdit, cb
 }
 
 func (this *QDateTimeEdit) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1274,7 +1183,6 @@ func miqt_exec_callback_QDateTimeEdit_resizeEvent(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1302,7 +1210,6 @@ func miqt_exec_callback_QDateTimeEdit_keyReleaseEvent(self *C.QDateTimeEdit, cb 
 }
 
 func (this *QDateTimeEdit) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1330,7 +1237,6 @@ func miqt_exec_callback_QDateTimeEdit_focusOutEvent(self *C.QDateTimeEdit, cb C.
 }
 
 func (this *QDateTimeEdit) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1358,7 +1264,6 @@ func miqt_exec_callback_QDateTimeEdit_contextMenuEvent(self *C.QDateTimeEdit, cb
 }
 
 func (this *QDateTimeEdit) callVirtualBase_ChangeEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1386,7 +1291,6 @@ func miqt_exec_callback_QDateTimeEdit_changeEvent(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1414,7 +1318,6 @@ func miqt_exec_callback_QDateTimeEdit_closeEvent(self *C.QDateTimeEdit, cb C.int
 }
 
 func (this *QDateTimeEdit) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1442,7 +1345,6 @@ func miqt_exec_callback_QDateTimeEdit_hideEvent(self *C.QDateTimeEdit, cb C.intp
 }
 
 func (this *QDateTimeEdit) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1470,7 +1372,6 @@ func miqt_exec_callback_QDateTimeEdit_mouseReleaseEvent(self *C.QDateTimeEdit, c
 }
 
 func (this *QDateTimeEdit) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1498,7 +1399,6 @@ func miqt_exec_callback_QDateTimeEdit_mouseMoveEvent(self *C.QDateTimeEdit, cb C
 }
 
 func (this *QDateTimeEdit) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1526,7 +1426,6 @@ func miqt_exec_callback_QDateTimeEdit_timerEvent(self *C.QDateTimeEdit, cb C.int
 }
 
 func (this *QDateTimeEdit) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1554,7 +1453,6 @@ func miqt_exec_callback_QDateTimeEdit_showEvent(self *C.QDateTimeEdit, cb C.intp
 }
 
 func (this *QDateTimeEdit) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDateTimeEdit_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1580,7 +1478,6 @@ func miqt_exec_callback_QDateTimeEdit_devType(self *C.QDateTimeEdit, cb C.intptr
 }
 
 func (this *QDateTimeEdit) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QDateTimeEdit_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1607,7 +1504,6 @@ func miqt_exec_callback_QDateTimeEdit_setVisible(self *C.QDateTimeEdit, cb C.int
 }
 
 func (this *QDateTimeEdit) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDateTimeEdit_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1636,7 +1532,6 @@ func miqt_exec_callback_QDateTimeEdit_heightForWidth(self *C.QDateTimeEdit, cb C
 }
 
 func (this *QDateTimeEdit) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDateTimeEdit_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1662,7 +1557,6 @@ func miqt_exec_callback_QDateTimeEdit_hasHeightForWidth(self *C.QDateTimeEdit, c
 }
 
 func (this *QDateTimeEdit) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QDateTimeEdit_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1689,7 +1583,6 @@ func miqt_exec_callback_QDateTimeEdit_paintEngine(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1717,7 +1610,6 @@ func miqt_exec_callback_QDateTimeEdit_mouseDoubleClickEvent(self *C.QDateTimeEdi
 }
 
 func (this *QDateTimeEdit) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1745,7 +1637,6 @@ func miqt_exec_callback_QDateTimeEdit_enterEvent(self *C.QDateTimeEdit, cb C.int
 }
 
 func (this *QDateTimeEdit) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1773,7 +1664,6 @@ func miqt_exec_callback_QDateTimeEdit_leaveEvent(self *C.QDateTimeEdit, cb C.int
 }
 
 func (this *QDateTimeEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1801,7 +1691,6 @@ func miqt_exec_callback_QDateTimeEdit_moveEvent(self *C.QDateTimeEdit, cb C.intp
 }
 
 func (this *QDateTimeEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1829,7 +1718,6 @@ func miqt_exec_callback_QDateTimeEdit_tabletEvent(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1857,7 +1745,6 @@ func miqt_exec_callback_QDateTimeEdit_actionEvent(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1885,7 +1772,6 @@ func miqt_exec_callback_QDateTimeEdit_dragEnterEvent(self *C.QDateTimeEdit, cb C
 }
 
 func (this *QDateTimeEdit) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1913,7 +1799,6 @@ func miqt_exec_callback_QDateTimeEdit_dragMoveEvent(self *C.QDateTimeEdit, cb C.
 }
 
 func (this *QDateTimeEdit) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1941,7 +1826,6 @@ func miqt_exec_callback_QDateTimeEdit_dragLeaveEvent(self *C.QDateTimeEdit, cb C
 }
 
 func (this *QDateTimeEdit) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1969,7 +1853,6 @@ func miqt_exec_callback_QDateTimeEdit_dropEvent(self *C.QDateTimeEdit, cb C.intp
 }
 
 func (this *QDateTimeEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2011,7 +1894,6 @@ func miqt_exec_callback_QDateTimeEdit_nativeEvent(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDateTimeEdit_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2040,7 +1922,6 @@ func miqt_exec_callback_QDateTimeEdit_metric(self *C.QDateTimeEdit, cb C.intptr_
 }
 
 func (this *QDateTimeEdit) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QDateTimeEdit_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -2068,7 +1949,6 @@ func miqt_exec_callback_QDateTimeEdit_initPainter(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDateTimeEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -2099,7 +1979,6 @@ func miqt_exec_callback_QDateTimeEdit_redirected(self *C.QDateTimeEdit, cb C.int
 }
 
 func (this *QDateTimeEdit) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QDateTimeEdit_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -2126,7 +2005,6 @@ func miqt_exec_callback_QDateTimeEdit_sharedPainter(self *C.QDateTimeEdit, cb C.
 }
 
 func (this *QDateTimeEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDateTimeEdit_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -2154,8 +2032,6 @@ func miqt_exec_callback_QDateTimeEdit_inputMethodEvent(self *C.QDateTimeEdit, cb
 }
 
 func (this *QDateTimeEdit) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDateTimeEdit_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -2187,7 +2063,6 @@ func miqt_exec_callback_QDateTimeEdit_eventFilter(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2215,7 +2090,6 @@ func miqt_exec_callback_QDateTimeEdit_childEvent(self *C.QDateTimeEdit, cb C.int
 }
 
 func (this *QDateTimeEdit) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeEdit_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2243,7 +2117,6 @@ func miqt_exec_callback_QDateTimeEdit_customEvent(self *C.QDateTimeEdit, cb C.in
 }
 
 func (this *QDateTimeEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDateTimeEdit_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2271,7 +2144,6 @@ func miqt_exec_callback_QDateTimeEdit_connectNotify(self *C.QDateTimeEdit, cb C.
 }
 
 func (this *QDateTimeEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDateTimeEdit_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2306,6 +2178,8 @@ func (this *QDateTimeEdit) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDateTimeEdit) GoGC() {
 	if this.gc != nil {
 		return
@@ -2363,7 +2237,6 @@ func UnsafeNewQTimeEdit(h unsafe.Pointer) *QTimeEdit {
 
 // NewQTimeEdit constructs a new QTimeEdit object.
 func NewQTimeEdit(parent *QWidget) *QTimeEdit {
-	defer runtime.KeepAlive(parent)
 
 	return newQTimeEdit(C.QTimeEdit_new(parent.cPointer()))
 }
@@ -2384,18 +2257,15 @@ func NewQTimeEdit3(time QTime) *QTimeEdit {
 // NewQTimeEdit4 constructs a new QTimeEdit object.
 func NewQTimeEdit4(time QTime, parent *QWidget) *QTimeEdit {
 	defer runtime.KeepAlive(time)
-	defer runtime.KeepAlive(parent)
 
 	return newQTimeEdit(C.QTimeEdit_new4(time.cPointer(), parent.cPointer()))
 }
 
 func (this *QTimeEdit) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTimeEdit_metaObject(this.h))
 }
 
 func (this *QTimeEdit) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTimeEdit_metacast(this.h, param1_Cstring))
@@ -2411,7 +2281,6 @@ func QTimeEdit_Tr(s string) string {
 }
 
 func (this *QTimeEdit) UserTimeChanged(time QTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(time)
 	C.QTimeEdit_userTimeChanged(this.h, time.cPointer())
 }
@@ -2458,7 +2327,6 @@ func QTimeEdit_Tr3(s string, c string, n int) string {
 
 // LineEdit can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) LineEdit() *QLineEdit {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQLineEdit(C.QTimeEdit_protectedbase_lineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2473,8 +2341,6 @@ func (this *QTimeEdit) LineEdit() *QLineEdit {
 
 // SetLineEdit can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) SetLineEdit(edit *QLineEdit) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(edit)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTimeEdit_protectedbase_setLineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h), edit.cPointer())
@@ -2487,7 +2353,6 @@ func (this *QTimeEdit) SetLineEdit(edit *QLineEdit) {
 
 // UpdateMicroFocus can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTimeEdit_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2500,7 +2365,6 @@ func (this *QTimeEdit) UpdateMicroFocus() {
 
 // Create can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTimeEdit_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2513,7 +2377,6 @@ func (this *QTimeEdit) Create() {
 
 // Destroy can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTimeEdit_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -2526,7 +2389,6 @@ func (this *QTimeEdit) Destroy() {
 
 // FocusNextChild can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTimeEdit_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2541,7 +2403,6 @@ func (this *QTimeEdit) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTimeEdit_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2556,7 +2417,6 @@ func (this *QTimeEdit) FocusPreviousChild() bool {
 
 // Sender can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTimeEdit_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2571,7 +2431,6 @@ func (this *QTimeEdit) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTimeEdit_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2586,7 +2445,6 @@ func (this *QTimeEdit) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -2603,7 +2461,6 @@ func (this *QTimeEdit) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTimeEdit that was directly constructed.
 func (this *QTimeEdit) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -2618,7 +2475,6 @@ func (this *QTimeEdit) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTimeEdit) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTimeEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2647,7 +2503,6 @@ func miqt_exec_callback_QTimeEdit_sizeHint(self *C.QTimeEdit, cb C.intptr_t) *C.
 }
 
 func (this *QTimeEdit) callVirtualBase_Clear() {
-	defer runtime.KeepAlive(this)
 
 	C.QTimeEdit_virtualbase_clear(unsafe.Pointer(this.h))
 
@@ -2671,7 +2526,6 @@ func miqt_exec_callback_QTimeEdit_clear(self *C.QTimeEdit, cb C.intptr_t) {
 }
 
 func (this *QTimeEdit) callVirtualBase_StepBy(steps int) {
-	defer runtime.KeepAlive(this)
 
 	C.QTimeEdit_virtualbase_stepBy(unsafe.Pointer(this.h), (C.int)(steps))
 
@@ -2698,7 +2552,6 @@ func miqt_exec_callback_QTimeEdit_stepBy(self *C.QTimeEdit, cb C.intptr_t, steps
 }
 
 func (this *QTimeEdit) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTimeEdit_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -2728,7 +2581,6 @@ func miqt_exec_callback_QTimeEdit_event(self *C.QTimeEdit, cb C.intptr_t, event 
 }
 
 func (this *QTimeEdit) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2756,7 +2608,6 @@ func miqt_exec_callback_QTimeEdit_keyPressEvent(self *C.QTimeEdit, cb C.intptr_t
 }
 
 func (this *QTimeEdit) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2784,7 +2635,6 @@ func miqt_exec_callback_QTimeEdit_wheelEvent(self *C.QTimeEdit, cb C.intptr_t, e
 }
 
 func (this *QTimeEdit) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2812,7 +2662,6 @@ func miqt_exec_callback_QTimeEdit_focusInEvent(self *C.QTimeEdit, cb C.intptr_t,
 }
 
 func (this *QTimeEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTimeEdit_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2841,7 +2690,6 @@ func miqt_exec_callback_QTimeEdit_focusNextPrevChild(self *C.QTimeEdit, cb C.int
 }
 
 func (this *QTimeEdit) callVirtualBase_Validate(input string, pos *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -2878,7 +2726,6 @@ func miqt_exec_callback_QTimeEdit_validate(self *C.QTimeEdit, cb C.intptr_t, inp
 }
 
 func (this *QTimeEdit) callVirtualBase_Fixup(input string) {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -2912,7 +2759,6 @@ func miqt_exec_callback_QTimeEdit_fixup(self *C.QTimeEdit, cb C.intptr_t, input 
 }
 
 func (this *QTimeEdit) callVirtualBase_DateTimeFromText(text string) *QDateTime {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2951,7 +2797,6 @@ func miqt_exec_callback_QTimeEdit_dateTimeFromText(self *C.QTimeEdit, cb C.intpt
 }
 
 func (this *QTimeEdit) callVirtualBase_TextFromDateTime(dt *QDateTime) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(dt)
 
 	var _ms C.struct_miqt_string = C.QTimeEdit_virtualbase_textFromDateTime(unsafe.Pointer(this.h), dt.cPointer())
@@ -2986,7 +2831,6 @@ func miqt_exec_callback_QTimeEdit_textFromDateTime(self *C.QTimeEdit, cb C.intpt
 }
 
 func (this *QTimeEdit) callVirtualBase_StepEnabled() QAbstractSpinBox__StepEnabledFlag {
-	defer runtime.KeepAlive(this)
 
 	return (QAbstractSpinBox__StepEnabledFlag)(C.QTimeEdit_virtualbase_stepEnabled(unsafe.Pointer(this.h)))
 
@@ -3012,7 +2856,6 @@ func miqt_exec_callback_QTimeEdit_stepEnabled(self *C.QTimeEdit, cb C.intptr_t) 
 }
 
 func (this *QTimeEdit) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3040,7 +2883,6 @@ func miqt_exec_callback_QTimeEdit_mousePressEvent(self *C.QTimeEdit, cb C.intptr
 }
 
 func (this *QTimeEdit) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3068,7 +2910,6 @@ func miqt_exec_callback_QTimeEdit_paintEvent(self *C.QTimeEdit, cb C.intptr_t, e
 }
 
 func (this *QTimeEdit) callVirtualBase_InitStyleOption(option *QStyleOptionSpinBox) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QTimeEdit_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
@@ -3096,7 +2937,6 @@ func miqt_exec_callback_QTimeEdit_initStyleOption(self *C.QTimeEdit, cb C.intptr
 }
 
 func (this *QTimeEdit) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTimeEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3125,7 +2965,6 @@ func miqt_exec_callback_QTimeEdit_minimumSizeHint(self *C.QTimeEdit, cb C.intptr
 }
 
 func (this *QTimeEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QTimeEdit_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3157,7 +2996,6 @@ func miqt_exec_callback_QTimeEdit_inputMethodQuery(self *C.QTimeEdit, cb C.intpt
 }
 
 func (this *QTimeEdit) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3185,7 +3023,6 @@ func miqt_exec_callback_QTimeEdit_resizeEvent(self *C.QTimeEdit, cb C.intptr_t, 
 }
 
 func (this *QTimeEdit) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3213,7 +3050,6 @@ func miqt_exec_callback_QTimeEdit_keyReleaseEvent(self *C.QTimeEdit, cb C.intptr
 }
 
 func (this *QTimeEdit) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3241,7 +3077,6 @@ func miqt_exec_callback_QTimeEdit_focusOutEvent(self *C.QTimeEdit, cb C.intptr_t
 }
 
 func (this *QTimeEdit) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3269,7 +3104,6 @@ func miqt_exec_callback_QTimeEdit_contextMenuEvent(self *C.QTimeEdit, cb C.intpt
 }
 
 func (this *QTimeEdit) callVirtualBase_ChangeEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3297,7 +3131,6 @@ func miqt_exec_callback_QTimeEdit_changeEvent(self *C.QTimeEdit, cb C.intptr_t, 
 }
 
 func (this *QTimeEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3325,7 +3158,6 @@ func miqt_exec_callback_QTimeEdit_closeEvent(self *C.QTimeEdit, cb C.intptr_t, e
 }
 
 func (this *QTimeEdit) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3353,7 +3185,6 @@ func miqt_exec_callback_QTimeEdit_hideEvent(self *C.QTimeEdit, cb C.intptr_t, ev
 }
 
 func (this *QTimeEdit) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3381,7 +3212,6 @@ func miqt_exec_callback_QTimeEdit_mouseReleaseEvent(self *C.QTimeEdit, cb C.intp
 }
 
 func (this *QTimeEdit) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3409,7 +3239,6 @@ func miqt_exec_callback_QTimeEdit_mouseMoveEvent(self *C.QTimeEdit, cb C.intptr_
 }
 
 func (this *QTimeEdit) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3437,7 +3266,6 @@ func miqt_exec_callback_QTimeEdit_timerEvent(self *C.QTimeEdit, cb C.intptr_t, e
 }
 
 func (this *QTimeEdit) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3465,7 +3293,6 @@ func miqt_exec_callback_QTimeEdit_showEvent(self *C.QTimeEdit, cb C.intptr_t, ev
 }
 
 func (this *QTimeEdit) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTimeEdit_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -3491,7 +3318,6 @@ func miqt_exec_callback_QTimeEdit_devType(self *C.QTimeEdit, cb C.intptr_t) C.in
 }
 
 func (this *QTimeEdit) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QTimeEdit_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -3518,7 +3344,6 @@ func miqt_exec_callback_QTimeEdit_setVisible(self *C.QTimeEdit, cb C.intptr_t, v
 }
 
 func (this *QTimeEdit) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTimeEdit_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3547,7 +3372,6 @@ func miqt_exec_callback_QTimeEdit_heightForWidth(self *C.QTimeEdit, cb C.intptr_
 }
 
 func (this *QTimeEdit) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTimeEdit_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -3573,7 +3397,6 @@ func miqt_exec_callback_QTimeEdit_hasHeightForWidth(self *C.QTimeEdit, cb C.intp
 }
 
 func (this *QTimeEdit) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QTimeEdit_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -3600,7 +3423,6 @@ func miqt_exec_callback_QTimeEdit_paintEngine(self *C.QTimeEdit, cb C.intptr_t) 
 }
 
 func (this *QTimeEdit) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3628,7 +3450,6 @@ func miqt_exec_callback_QTimeEdit_mouseDoubleClickEvent(self *C.QTimeEdit, cb C.
 }
 
 func (this *QTimeEdit) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3656,7 +3477,6 @@ func miqt_exec_callback_QTimeEdit_enterEvent(self *C.QTimeEdit, cb C.intptr_t, e
 }
 
 func (this *QTimeEdit) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3684,7 +3504,6 @@ func miqt_exec_callback_QTimeEdit_leaveEvent(self *C.QTimeEdit, cb C.intptr_t, e
 }
 
 func (this *QTimeEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3712,7 +3531,6 @@ func miqt_exec_callback_QTimeEdit_moveEvent(self *C.QTimeEdit, cb C.intptr_t, ev
 }
 
 func (this *QTimeEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3740,7 +3558,6 @@ func miqt_exec_callback_QTimeEdit_tabletEvent(self *C.QTimeEdit, cb C.intptr_t, 
 }
 
 func (this *QTimeEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3768,7 +3585,6 @@ func miqt_exec_callback_QTimeEdit_actionEvent(self *C.QTimeEdit, cb C.intptr_t, 
 }
 
 func (this *QTimeEdit) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3796,7 +3612,6 @@ func miqt_exec_callback_QTimeEdit_dragEnterEvent(self *C.QTimeEdit, cb C.intptr_
 }
 
 func (this *QTimeEdit) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3824,7 +3639,6 @@ func miqt_exec_callback_QTimeEdit_dragMoveEvent(self *C.QTimeEdit, cb C.intptr_t
 }
 
 func (this *QTimeEdit) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3852,7 +3666,6 @@ func miqt_exec_callback_QTimeEdit_dragLeaveEvent(self *C.QTimeEdit, cb C.intptr_
 }
 
 func (this *QTimeEdit) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3880,7 +3693,6 @@ func miqt_exec_callback_QTimeEdit_dropEvent(self *C.QTimeEdit, cb C.intptr_t, ev
 }
 
 func (this *QTimeEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -3922,7 +3734,6 @@ func miqt_exec_callback_QTimeEdit_nativeEvent(self *C.QTimeEdit, cb C.intptr_t, 
 }
 
 func (this *QTimeEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTimeEdit_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3951,7 +3762,6 @@ func miqt_exec_callback_QTimeEdit_metric(self *C.QTimeEdit, cb C.intptr_t, param
 }
 
 func (this *QTimeEdit) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QTimeEdit_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -3979,7 +3789,6 @@ func miqt_exec_callback_QTimeEdit_initPainter(self *C.QTimeEdit, cb C.intptr_t, 
 }
 
 func (this *QTimeEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTimeEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -4010,7 +3819,6 @@ func miqt_exec_callback_QTimeEdit_redirected(self *C.QTimeEdit, cb C.intptr_t, o
 }
 
 func (this *QTimeEdit) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QTimeEdit_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -4037,7 +3845,6 @@ func miqt_exec_callback_QTimeEdit_sharedPainter(self *C.QTimeEdit, cb C.intptr_t
 }
 
 func (this *QTimeEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QTimeEdit_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -4065,8 +3872,6 @@ func miqt_exec_callback_QTimeEdit_inputMethodEvent(self *C.QTimeEdit, cb C.intpt
 }
 
 func (this *QTimeEdit) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTimeEdit_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -4098,7 +3903,6 @@ func miqt_exec_callback_QTimeEdit_eventFilter(self *C.QTimeEdit, cb C.intptr_t, 
 }
 
 func (this *QTimeEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4126,7 +3930,6 @@ func miqt_exec_callback_QTimeEdit_childEvent(self *C.QTimeEdit, cb C.intptr_t, e
 }
 
 func (this *QTimeEdit) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTimeEdit_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4154,7 +3957,6 @@ func miqt_exec_callback_QTimeEdit_customEvent(self *C.QTimeEdit, cb C.intptr_t, 
 }
 
 func (this *QTimeEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTimeEdit_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -4182,7 +3984,6 @@ func miqt_exec_callback_QTimeEdit_connectNotify(self *C.QTimeEdit, cb C.intptr_t
 }
 
 func (this *QTimeEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTimeEdit_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -4217,6 +4018,8 @@ func (this *QTimeEdit) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTimeEdit) GoGC() {
 	if this.gc != nil {
 		return
@@ -4274,7 +4077,6 @@ func UnsafeNewQDateEdit(h unsafe.Pointer) *QDateEdit {
 
 // NewQDateEdit constructs a new QDateEdit object.
 func NewQDateEdit(parent *QWidget) *QDateEdit {
-	defer runtime.KeepAlive(parent)
 
 	return newQDateEdit(C.QDateEdit_new(parent.cPointer()))
 }
@@ -4295,18 +4097,15 @@ func NewQDateEdit3(date QDate) *QDateEdit {
 // NewQDateEdit4 constructs a new QDateEdit object.
 func NewQDateEdit4(date QDate, parent *QWidget) *QDateEdit {
 	defer runtime.KeepAlive(date)
-	defer runtime.KeepAlive(parent)
 
 	return newQDateEdit(C.QDateEdit_new4(date.cPointer(), parent.cPointer()))
 }
 
 func (this *QDateEdit) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QDateEdit_metaObject(this.h))
 }
 
 func (this *QDateEdit) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDateEdit_metacast(this.h, param1_Cstring))
@@ -4322,7 +4121,6 @@ func QDateEdit_Tr(s string) string {
 }
 
 func (this *QDateEdit) UserDateChanged(date QDate) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(date)
 	C.QDateEdit_userDateChanged(this.h, date.cPointer())
 }
@@ -4369,7 +4167,6 @@ func QDateEdit_Tr3(s string, c string, n int) string {
 
 // LineEdit can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) LineEdit() *QLineEdit {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQLineEdit(C.QDateEdit_protectedbase_lineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -4384,8 +4181,6 @@ func (this *QDateEdit) LineEdit() *QLineEdit {
 
 // SetLineEdit can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) SetLineEdit(edit *QLineEdit) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(edit)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDateEdit_protectedbase_setLineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h), edit.cPointer())
@@ -4398,7 +4193,6 @@ func (this *QDateEdit) SetLineEdit(edit *QLineEdit) {
 
 // UpdateMicroFocus can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDateEdit_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -4411,7 +4205,6 @@ func (this *QDateEdit) UpdateMicroFocus() {
 
 // Create can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDateEdit_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -4424,7 +4217,6 @@ func (this *QDateEdit) Create() {
 
 // Destroy can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDateEdit_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -4437,7 +4229,6 @@ func (this *QDateEdit) Destroy() {
 
 // FocusNextChild can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDateEdit_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -4452,7 +4243,6 @@ func (this *QDateEdit) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDateEdit_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -4467,7 +4257,6 @@ func (this *QDateEdit) FocusPreviousChild() bool {
 
 // Sender can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QDateEdit_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -4482,7 +4271,6 @@ func (this *QDateEdit) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDateEdit_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -4497,7 +4285,6 @@ func (this *QDateEdit) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -4514,7 +4301,6 @@ func (this *QDateEdit) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDateEdit that was directly constructed.
 func (this *QDateEdit) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -4529,7 +4315,6 @@ func (this *QDateEdit) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QDateEdit) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDateEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -4558,7 +4343,6 @@ func miqt_exec_callback_QDateEdit_sizeHint(self *C.QDateEdit, cb C.intptr_t) *C.
 }
 
 func (this *QDateEdit) callVirtualBase_Clear() {
-	defer runtime.KeepAlive(this)
 
 	C.QDateEdit_virtualbase_clear(unsafe.Pointer(this.h))
 
@@ -4582,7 +4366,6 @@ func miqt_exec_callback_QDateEdit_clear(self *C.QDateEdit, cb C.intptr_t) {
 }
 
 func (this *QDateEdit) callVirtualBase_StepBy(steps int) {
-	defer runtime.KeepAlive(this)
 
 	C.QDateEdit_virtualbase_stepBy(unsafe.Pointer(this.h), (C.int)(steps))
 
@@ -4609,7 +4392,6 @@ func miqt_exec_callback_QDateEdit_stepBy(self *C.QDateEdit, cb C.intptr_t, steps
 }
 
 func (this *QDateEdit) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDateEdit_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -4639,7 +4421,6 @@ func miqt_exec_callback_QDateEdit_event(self *C.QDateEdit, cb C.intptr_t, event 
 }
 
 func (this *QDateEdit) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4667,7 +4448,6 @@ func miqt_exec_callback_QDateEdit_keyPressEvent(self *C.QDateEdit, cb C.intptr_t
 }
 
 func (this *QDateEdit) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4695,7 +4475,6 @@ func miqt_exec_callback_QDateEdit_wheelEvent(self *C.QDateEdit, cb C.intptr_t, e
 }
 
 func (this *QDateEdit) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4723,7 +4502,6 @@ func miqt_exec_callback_QDateEdit_focusInEvent(self *C.QDateEdit, cb C.intptr_t,
 }
 
 func (this *QDateEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDateEdit_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -4752,7 +4530,6 @@ func miqt_exec_callback_QDateEdit_focusNextPrevChild(self *C.QDateEdit, cb C.int
 }
 
 func (this *QDateEdit) callVirtualBase_Validate(input string, pos *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -4789,7 +4566,6 @@ func miqt_exec_callback_QDateEdit_validate(self *C.QDateEdit, cb C.intptr_t, inp
 }
 
 func (this *QDateEdit) callVirtualBase_Fixup(input string) {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -4823,7 +4599,6 @@ func miqt_exec_callback_QDateEdit_fixup(self *C.QDateEdit, cb C.intptr_t, input 
 }
 
 func (this *QDateEdit) callVirtualBase_DateTimeFromText(text string) *QDateTime {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -4862,7 +4637,6 @@ func miqt_exec_callback_QDateEdit_dateTimeFromText(self *C.QDateEdit, cb C.intpt
 }
 
 func (this *QDateEdit) callVirtualBase_TextFromDateTime(dt *QDateTime) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(dt)
 
 	var _ms C.struct_miqt_string = C.QDateEdit_virtualbase_textFromDateTime(unsafe.Pointer(this.h), dt.cPointer())
@@ -4897,7 +4671,6 @@ func miqt_exec_callback_QDateEdit_textFromDateTime(self *C.QDateEdit, cb C.intpt
 }
 
 func (this *QDateEdit) callVirtualBase_StepEnabled() QAbstractSpinBox__StepEnabledFlag {
-	defer runtime.KeepAlive(this)
 
 	return (QAbstractSpinBox__StepEnabledFlag)(C.QDateEdit_virtualbase_stepEnabled(unsafe.Pointer(this.h)))
 
@@ -4923,7 +4696,6 @@ func miqt_exec_callback_QDateEdit_stepEnabled(self *C.QDateEdit, cb C.intptr_t) 
 }
 
 func (this *QDateEdit) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4951,7 +4723,6 @@ func miqt_exec_callback_QDateEdit_mousePressEvent(self *C.QDateEdit, cb C.intptr
 }
 
 func (this *QDateEdit) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4979,7 +4750,6 @@ func miqt_exec_callback_QDateEdit_paintEvent(self *C.QDateEdit, cb C.intptr_t, e
 }
 
 func (this *QDateEdit) callVirtualBase_InitStyleOption(option *QStyleOptionSpinBox) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QDateEdit_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
@@ -5007,7 +4777,6 @@ func miqt_exec_callback_QDateEdit_initStyleOption(self *C.QDateEdit, cb C.intptr
 }
 
 func (this *QDateEdit) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDateEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -5036,7 +4805,6 @@ func miqt_exec_callback_QDateEdit_minimumSizeHint(self *C.QDateEdit, cb C.intptr
 }
 
 func (this *QDateEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QDateEdit_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -5068,7 +4836,6 @@ func miqt_exec_callback_QDateEdit_inputMethodQuery(self *C.QDateEdit, cb C.intpt
 }
 
 func (this *QDateEdit) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5096,7 +4863,6 @@ func miqt_exec_callback_QDateEdit_resizeEvent(self *C.QDateEdit, cb C.intptr_t, 
 }
 
 func (this *QDateEdit) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5124,7 +4890,6 @@ func miqt_exec_callback_QDateEdit_keyReleaseEvent(self *C.QDateEdit, cb C.intptr
 }
 
 func (this *QDateEdit) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5152,7 +4917,6 @@ func miqt_exec_callback_QDateEdit_focusOutEvent(self *C.QDateEdit, cb C.intptr_t
 }
 
 func (this *QDateEdit) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5180,7 +4944,6 @@ func miqt_exec_callback_QDateEdit_contextMenuEvent(self *C.QDateEdit, cb C.intpt
 }
 
 func (this *QDateEdit) callVirtualBase_ChangeEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5208,7 +4971,6 @@ func miqt_exec_callback_QDateEdit_changeEvent(self *C.QDateEdit, cb C.intptr_t, 
 }
 
 func (this *QDateEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5236,7 +4998,6 @@ func miqt_exec_callback_QDateEdit_closeEvent(self *C.QDateEdit, cb C.intptr_t, e
 }
 
 func (this *QDateEdit) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5264,7 +5025,6 @@ func miqt_exec_callback_QDateEdit_hideEvent(self *C.QDateEdit, cb C.intptr_t, ev
 }
 
 func (this *QDateEdit) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5292,7 +5052,6 @@ func miqt_exec_callback_QDateEdit_mouseReleaseEvent(self *C.QDateEdit, cb C.intp
 }
 
 func (this *QDateEdit) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5320,7 +5079,6 @@ func miqt_exec_callback_QDateEdit_mouseMoveEvent(self *C.QDateEdit, cb C.intptr_
 }
 
 func (this *QDateEdit) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5348,7 +5106,6 @@ func miqt_exec_callback_QDateEdit_timerEvent(self *C.QDateEdit, cb C.intptr_t, e
 }
 
 func (this *QDateEdit) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5376,7 +5133,6 @@ func miqt_exec_callback_QDateEdit_showEvent(self *C.QDateEdit, cb C.intptr_t, ev
 }
 
 func (this *QDateEdit) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDateEdit_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -5402,7 +5158,6 @@ func miqt_exec_callback_QDateEdit_devType(self *C.QDateEdit, cb C.intptr_t) C.in
 }
 
 func (this *QDateEdit) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QDateEdit_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -5429,7 +5184,6 @@ func miqt_exec_callback_QDateEdit_setVisible(self *C.QDateEdit, cb C.intptr_t, v
 }
 
 func (this *QDateEdit) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDateEdit_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -5458,7 +5212,6 @@ func miqt_exec_callback_QDateEdit_heightForWidth(self *C.QDateEdit, cb C.intptr_
 }
 
 func (this *QDateEdit) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDateEdit_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -5484,7 +5237,6 @@ func miqt_exec_callback_QDateEdit_hasHeightForWidth(self *C.QDateEdit, cb C.intp
 }
 
 func (this *QDateEdit) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QDateEdit_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -5511,7 +5263,6 @@ func miqt_exec_callback_QDateEdit_paintEngine(self *C.QDateEdit, cb C.intptr_t) 
 }
 
 func (this *QDateEdit) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5539,7 +5290,6 @@ func miqt_exec_callback_QDateEdit_mouseDoubleClickEvent(self *C.QDateEdit, cb C.
 }
 
 func (this *QDateEdit) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5567,7 +5317,6 @@ func miqt_exec_callback_QDateEdit_enterEvent(self *C.QDateEdit, cb C.intptr_t, e
 }
 
 func (this *QDateEdit) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5595,7 +5344,6 @@ func miqt_exec_callback_QDateEdit_leaveEvent(self *C.QDateEdit, cb C.intptr_t, e
 }
 
 func (this *QDateEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5623,7 +5371,6 @@ func miqt_exec_callback_QDateEdit_moveEvent(self *C.QDateEdit, cb C.intptr_t, ev
 }
 
 func (this *QDateEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5651,7 +5398,6 @@ func miqt_exec_callback_QDateEdit_tabletEvent(self *C.QDateEdit, cb C.intptr_t, 
 }
 
 func (this *QDateEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5679,7 +5425,6 @@ func miqt_exec_callback_QDateEdit_actionEvent(self *C.QDateEdit, cb C.intptr_t, 
 }
 
 func (this *QDateEdit) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5707,7 +5452,6 @@ func miqt_exec_callback_QDateEdit_dragEnterEvent(self *C.QDateEdit, cb C.intptr_
 }
 
 func (this *QDateEdit) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5735,7 +5479,6 @@ func miqt_exec_callback_QDateEdit_dragMoveEvent(self *C.QDateEdit, cb C.intptr_t
 }
 
 func (this *QDateEdit) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5763,7 +5506,6 @@ func miqt_exec_callback_QDateEdit_dragLeaveEvent(self *C.QDateEdit, cb C.intptr_
 }
 
 func (this *QDateEdit) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5791,7 +5533,6 @@ func miqt_exec_callback_QDateEdit_dropEvent(self *C.QDateEdit, cb C.intptr_t, ev
 }
 
 func (this *QDateEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -5833,7 +5574,6 @@ func miqt_exec_callback_QDateEdit_nativeEvent(self *C.QDateEdit, cb C.intptr_t, 
 }
 
 func (this *QDateEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDateEdit_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -5862,7 +5602,6 @@ func miqt_exec_callback_QDateEdit_metric(self *C.QDateEdit, cb C.intptr_t, param
 }
 
 func (this *QDateEdit) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QDateEdit_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -5890,7 +5629,6 @@ func miqt_exec_callback_QDateEdit_initPainter(self *C.QDateEdit, cb C.intptr_t, 
 }
 
 func (this *QDateEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDateEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -5921,7 +5659,6 @@ func miqt_exec_callback_QDateEdit_redirected(self *C.QDateEdit, cb C.intptr_t, o
 }
 
 func (this *QDateEdit) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QDateEdit_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -5948,7 +5685,6 @@ func miqt_exec_callback_QDateEdit_sharedPainter(self *C.QDateEdit, cb C.intptr_t
 }
 
 func (this *QDateEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDateEdit_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -5976,8 +5712,6 @@ func miqt_exec_callback_QDateEdit_inputMethodEvent(self *C.QDateEdit, cb C.intpt
 }
 
 func (this *QDateEdit) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDateEdit_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -6009,7 +5743,6 @@ func miqt_exec_callback_QDateEdit_eventFilter(self *C.QDateEdit, cb C.intptr_t, 
 }
 
 func (this *QDateEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -6037,7 +5770,6 @@ func miqt_exec_callback_QDateEdit_childEvent(self *C.QDateEdit, cb C.intptr_t, e
 }
 
 func (this *QDateEdit) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateEdit_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -6065,7 +5797,6 @@ func miqt_exec_callback_QDateEdit_customEvent(self *C.QDateEdit, cb C.intptr_t, 
 }
 
 func (this *QDateEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDateEdit_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -6093,7 +5824,6 @@ func miqt_exec_callback_QDateEdit_connectNotify(self *C.QDateEdit, cb C.intptr_t
 }
 
 func (this *QDateEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDateEdit_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -6128,6 +5858,8 @@ func (this *QDateEdit) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDateEdit) GoGC() {
 	if this.gc != nil {
 		return

@@ -66,18 +66,15 @@ func NewQStyledItemDelegate() *QStyledItemDelegate {
 
 // NewQStyledItemDelegate2 constructs a new QStyledItemDelegate object.
 func NewQStyledItemDelegate2(parent *QObject) *QStyledItemDelegate {
-	defer runtime.KeepAlive(parent)
 
 	return newQStyledItemDelegate(C.QStyledItemDelegate_new2(parent.cPointer()))
 }
 
 func (this *QStyledItemDelegate) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QStyledItemDelegate_metaObject(this.h))
 }
 
 func (this *QStyledItemDelegate) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QStyledItemDelegate_metacast(this.h, param1_Cstring))
@@ -102,7 +99,6 @@ func QStyledItemDelegate_TrUtf8(s string) string {
 }
 
 func (this *QStyledItemDelegate) Paint(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
@@ -110,7 +106,6 @@ func (this *QStyledItemDelegate) Paint(painter *QPainter, option *QStyleOptionVi
 }
 
 func (this *QStyledItemDelegate) SizeHint(option *QStyleOptionViewItem, index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 	_goptr := newQSize(C.QStyledItemDelegate_sizeHint(this.h, option.cPointer(), index.cPointer()))
@@ -119,49 +114,37 @@ func (this *QStyledItemDelegate) SizeHint(option *QStyleOptionViewItem, index *Q
 }
 
 func (this *QStyledItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 	return newQWidget(C.QStyledItemDelegate_createEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer()))
 }
 
 func (this *QStyledItemDelegate) SetEditorData(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(index)
 	C.QStyledItemDelegate_setEditorData(this.h, editor.cPointer(), index.cPointer())
 }
 
 func (this *QStyledItemDelegate) SetModelData(editor *QWidget, model *QAbstractItemModel, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
-	defer runtime.KeepAlive(model)
 	defer runtime.KeepAlive(index)
 	C.QStyledItemDelegate_setModelData(this.h, editor.cPointer(), model.cPointer(), index.cPointer())
 }
 
 func (this *QStyledItemDelegate) UpdateEditorGeometry(editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 	C.QStyledItemDelegate_updateEditorGeometry(this.h, editor.cPointer(), option.cPointer(), index.cPointer())
 }
 
 func (this *QStyledItemDelegate) ItemEditorFactory() *QItemEditorFactory {
-	defer runtime.KeepAlive(this)
 	return newQItemEditorFactory(C.QStyledItemDelegate_itemEditorFactory(this.h))
 }
 
 func (this *QStyledItemDelegate) SetItemEditorFactory(factory *QItemEditorFactory) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(factory)
 	C.QStyledItemDelegate_setItemEditorFactory(this.h, factory.cPointer())
 }
 
 func (this *QStyledItemDelegate) DisplayText(value *QVariant, locale *QLocale) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	defer runtime.KeepAlive(locale)
 	var _ms C.struct_miqt_string = C.QStyledItemDelegate_displayText(this.h, value.cPointer(), locale.cPointer())
@@ -216,7 +199,6 @@ func QStyledItemDelegate_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QStyledItemDelegate that was directly constructed.
 func (this *QStyledItemDelegate) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QStyledItemDelegate_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -231,7 +213,6 @@ func (this *QStyledItemDelegate) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QStyledItemDelegate that was directly constructed.
 func (this *QStyledItemDelegate) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QStyledItemDelegate_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -246,7 +227,6 @@ func (this *QStyledItemDelegate) SenderSignalIndex() int {
 
 // Receivers can only be called from a QStyledItemDelegate that was directly constructed.
 func (this *QStyledItemDelegate) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -263,7 +243,6 @@ func (this *QStyledItemDelegate) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QStyledItemDelegate that was directly constructed.
 func (this *QStyledItemDelegate) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -278,7 +257,6 @@ func (this *QStyledItemDelegate) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_Paint(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
@@ -312,7 +290,6 @@ func miqt_exec_callback_QStyledItemDelegate_paint(self *C.QStyledItemDelegate, c
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_SizeHint(option *QStyleOptionViewItem, index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -348,8 +325,6 @@ func miqt_exec_callback_QStyledItemDelegate_sizeHint(self *C.QStyledItemDelegate
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -378,15 +353,12 @@ func miqt_exec_callback_QStyledItemDelegate_createEditor(self *C.QStyledItemDele
 	slotval3 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_SetEditorData(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(index)
 
 	C.QStyledItemDelegate_virtualbase_setEditorData(unsafe.Pointer(this.h), editor.cPointer(), index.cPointer())
@@ -416,9 +388,6 @@ func miqt_exec_callback_QStyledItemDelegate_setEditorData(self *C.QStyledItemDel
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_SetModelData(editor *QWidget, model *QAbstractItemModel, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
-	defer runtime.KeepAlive(model)
 	defer runtime.KeepAlive(index)
 
 	C.QStyledItemDelegate_virtualbase_setModelData(unsafe.Pointer(this.h), editor.cPointer(), model.cPointer(), index.cPointer())
@@ -450,8 +419,6 @@ func miqt_exec_callback_QStyledItemDelegate_setModelData(self *C.QStyledItemDele
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_UpdateEditorGeometry(editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -484,7 +451,6 @@ func miqt_exec_callback_QStyledItemDelegate_updateEditorGeometry(self *C.QStyled
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_DisplayText(value *QVariant, locale *QLocale) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	defer runtime.KeepAlive(locale)
 
@@ -522,7 +488,6 @@ func miqt_exec_callback_QStyledItemDelegate_displayText(self *C.QStyledItemDeleg
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_InitStyleOption(option *QStyleOptionViewItem, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -553,8 +518,6 @@ func miqt_exec_callback_QStyledItemDelegate_initStyleOption(self *C.QStyledItemD
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStyledItemDelegate_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
@@ -586,9 +549,7 @@ func miqt_exec_callback_QStyledItemDelegate_eventFilter(self *C.QStyledItemDeleg
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_EditorEvent(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
-	defer runtime.KeepAlive(model)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -625,8 +586,6 @@ func miqt_exec_callback_QStyledItemDelegate_editorEvent(self *C.QStyledItemDeleg
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_DestroyEditor(editor *QWidget, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 	defer runtime.KeepAlive(index)
 
 	C.QStyledItemDelegate_virtualbase_destroyEditor(unsafe.Pointer(this.h), editor.cPointer(), index.cPointer())
@@ -656,9 +615,7 @@ func miqt_exec_callback_QStyledItemDelegate_destroyEditor(self *C.QStyledItemDel
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_HelpEvent(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
-	defer runtime.KeepAlive(view)
 	defer runtime.KeepAlive(option)
 	defer runtime.KeepAlive(index)
 
@@ -695,7 +652,6 @@ func miqt_exec_callback_QStyledItemDelegate_helpEvent(self *C.QStyledItemDelegat
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_PaintingRoles() []int {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QStyledItemDelegate_virtualbase_paintingRoles(unsafe.Pointer(this.h))
 	_ret := make([]int, int(_ma.len))
@@ -733,7 +689,6 @@ func miqt_exec_callback_QStyledItemDelegate_paintingRoles(self *C.QStyledItemDel
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStyledItemDelegate_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -763,7 +718,6 @@ func miqt_exec_callback_QStyledItemDelegate_event(self *C.QStyledItemDelegate, c
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStyledItemDelegate_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -791,7 +745,6 @@ func miqt_exec_callback_QStyledItemDelegate_timerEvent(self *C.QStyledItemDelega
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStyledItemDelegate_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -819,7 +772,6 @@ func miqt_exec_callback_QStyledItemDelegate_childEvent(self *C.QStyledItemDelega
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStyledItemDelegate_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -847,7 +799,6 @@ func miqt_exec_callback_QStyledItemDelegate_customEvent(self *C.QStyledItemDeleg
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QStyledItemDelegate_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -875,7 +826,6 @@ func miqt_exec_callback_QStyledItemDelegate_connectNotify(self *C.QStyledItemDel
 }
 
 func (this *QStyledItemDelegate) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QStyledItemDelegate_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -910,6 +860,8 @@ func (this *QStyledItemDelegate) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QStyledItemDelegate) GoGC() {
 	if this.gc != nil {
 		return

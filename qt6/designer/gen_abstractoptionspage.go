@@ -70,7 +70,6 @@ func (this *QDesignerOptionsPageInterface) Name() string {
 
 func (this *QDesignerOptionsPageInterface) CreatePage(parent *qt6.QWidget) *qt6.QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerOptionsPageInterface_createPage(this.h, (*C.QWidget)(parent.UnsafePointer()))))
 }
 
@@ -123,7 +122,6 @@ func miqt_exec_callback_QDesignerOptionsPageInterface_createPage(self *C.QDesign
 	slotval1 := qt6.UnsafeNewQWidget(unsafe.Pointer(parent))
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 

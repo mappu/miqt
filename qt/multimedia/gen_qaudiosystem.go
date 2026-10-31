@@ -59,12 +59,10 @@ func UnsafeNewQAbstractAudioDeviceInfo(h unsafe.Pointer) *QAbstractAudioDeviceIn
 }
 
 func (this *QAbstractAudioDeviceInfo) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAudioDeviceInfo_metaObject(this.h)))
 }
 
 func (this *QAbstractAudioDeviceInfo) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractAudioDeviceInfo_metacast(this.h, param1_Cstring))
@@ -89,20 +87,17 @@ func QAbstractAudioDeviceInfo_TrUtf8(s string) string {
 }
 
 func (this *QAbstractAudioDeviceInfo) PreferredFormat() *QAudioFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQAudioFormat(C.QAbstractAudioDeviceInfo_preferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAudioDeviceInfo) IsFormatSupported(format *QAudioFormat) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(format)
 	return (bool)(C.QAbstractAudioDeviceInfo_isFormatSupported(this.h, format.cPointer()))
 }
 
 func (this *QAbstractAudioDeviceInfo) DeviceName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_deviceName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -110,7 +105,6 @@ func (this *QAbstractAudioDeviceInfo) DeviceName() string {
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedCodecs() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -124,7 +118,6 @@ func (this *QAbstractAudioDeviceInfo) SupportedCodecs() []string {
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedSampleRates() []int {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedSampleRates(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -135,7 +128,6 @@ func (this *QAbstractAudioDeviceInfo) SupportedSampleRates() []int {
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedChannelCounts() []int {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedChannelCounts(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -146,7 +138,6 @@ func (this *QAbstractAudioDeviceInfo) SupportedChannelCounts() []int {
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedSampleSizes() []int {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedSampleSizes(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -157,7 +148,6 @@ func (this *QAbstractAudioDeviceInfo) SupportedSampleSizes() []int {
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endian {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedByteOrders(this.h)
 	_ret := make([]QAudioFormat__Endian, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -168,7 +158,6 @@ func (this *QAbstractAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endi
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedSampleTypes() []QAudioFormat__SampleType {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedSampleTypes(this.h)
 	_ret := make([]QAudioFormat__SampleType, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -230,6 +219,8 @@ func (this *QAbstractAudioDeviceInfo) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractAudioDeviceInfo) GoGC() {
 	if this.gc != nil {
 		return
@@ -285,12 +276,10 @@ func UnsafeNewQAbstractAudioOutput(h unsafe.Pointer) *QAbstractAudioOutput {
 }
 
 func (this *QAbstractAudioOutput) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAudioOutput_metaObject(this.h)))
 }
 
 func (this *QAbstractAudioOutput) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractAudioOutput_metacast(this.h, param1_Cstring))
@@ -315,111 +304,89 @@ func QAbstractAudioOutput_TrUtf8(s string) string {
 }
 
 func (this *QAbstractAudioOutput) Start(device *qt.QIODevice) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QAbstractAudioOutput_start(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAbstractAudioOutput) Start2() *qt.QIODevice {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioOutput_start2(this.h)))
 }
 
 func (this *QAbstractAudioOutput) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_stop(this.h)
 }
 
 func (this *QAbstractAudioOutput) Reset() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_reset(this.h)
 }
 
 func (this *QAbstractAudioOutput) Suspend() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_suspend(this.h)
 }
 
 func (this *QAbstractAudioOutput) Resume() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_resume(this.h)
 }
 
 func (this *QAbstractAudioOutput) BytesFree() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAudioOutput_bytesFree(this.h))
 }
 
 func (this *QAbstractAudioOutput) PeriodSize() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAudioOutput_periodSize(this.h))
 }
 
 func (this *QAbstractAudioOutput) SetBufferSize(value int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_setBufferSize(this.h, (C.int)(value))
 }
 
 func (this *QAbstractAudioOutput) BufferSize() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAudioOutput_bufferSize(this.h))
 }
 
 func (this *QAbstractAudioOutput) SetNotifyInterval(milliSeconds int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_setNotifyInterval(this.h, (C.int)(milliSeconds))
 }
 
 func (this *QAbstractAudioOutput) NotifyInterval() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAudioOutput_notifyInterval(this.h))
 }
 
 func (this *QAbstractAudioOutput) ProcessedUSecs() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAbstractAudioOutput_processedUSecs(this.h))
 }
 
 func (this *QAbstractAudioOutput) ElapsedUSecs() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAbstractAudioOutput_elapsedUSecs(this.h))
 }
 
 func (this *QAbstractAudioOutput) Error() QAudio__Error {
-	defer runtime.KeepAlive(this)
 	return (QAudio__Error)(C.QAbstractAudioOutput_error(this.h))
 }
 
 func (this *QAbstractAudioOutput) State() QAudio__State {
-	defer runtime.KeepAlive(this)
 	return (QAudio__State)(C.QAbstractAudioOutput_state(this.h))
 }
 
 func (this *QAbstractAudioOutput) SetFormat(fmt *QAudioFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(fmt)
 	C.QAbstractAudioOutput_setFormat(this.h, fmt.cPointer())
 }
 
 func (this *QAbstractAudioOutput) Format() *QAudioFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQAudioFormat(C.QAbstractAudioOutput_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAudioOutput) SetVolume(volume float64) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_setVolume(this.h, (C.double)(volume))
 }
 
 func (this *QAbstractAudioOutput) Volume() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QAbstractAudioOutput_volume(this.h))
 }
 
 func (this *QAbstractAudioOutput) Category() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_category(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -427,7 +394,6 @@ func (this *QAbstractAudioOutput) Category() string {
 }
 
 func (this *QAbstractAudioOutput) SetCategory(category string) {
-	defer runtime.KeepAlive(this)
 	category_ms := C.struct_miqt_string{}
 	category_ms.data = C.CString(category)
 	category_ms.len = C.size_t(len(category))
@@ -436,7 +402,6 @@ func (this *QAbstractAudioOutput) SetCategory(category string) {
 }
 
 func (this *QAbstractAudioOutput) ErrorChanged(error QAudio__Error) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_errorChanged(this.h, (C.int)(error))
 }
 func (this *QAbstractAudioOutput) OnErrorChanged(slot func(error QAudio__Error)) {
@@ -457,7 +422,6 @@ func miqt_exec_callback_QAbstractAudioOutput_errorChanged(cb C.intptr_t, error C
 }
 
 func (this *QAbstractAudioOutput) StateChanged(state QAudio__State) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_stateChanged(this.h, (C.int)(state))
 }
 func (this *QAbstractAudioOutput) OnStateChanged(slot func(state QAudio__State)) {
@@ -478,7 +442,6 @@ func miqt_exec_callback_QAbstractAudioOutput_stateChanged(cb C.intptr_t, state C
 }
 
 func (this *QAbstractAudioOutput) Notify() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioOutput_notify(this.h)
 }
 func (this *QAbstractAudioOutput) OnNotify(slot func()) {
@@ -547,6 +510,8 @@ func (this *QAbstractAudioOutput) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractAudioOutput) GoGC() {
 	if this.gc != nil {
 		return
@@ -602,12 +567,10 @@ func UnsafeNewQAbstractAudioInput(h unsafe.Pointer) *QAbstractAudioInput {
 }
 
 func (this *QAbstractAudioInput) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAudioInput_metaObject(this.h)))
 }
 
 func (this *QAbstractAudioInput) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractAudioInput_metacast(this.h, param1_Cstring))
@@ -632,111 +595,89 @@ func QAbstractAudioInput_TrUtf8(s string) string {
 }
 
 func (this *QAbstractAudioInput) Start(device *qt.QIODevice) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QAbstractAudioInput_start(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAbstractAudioInput) Start2() *qt.QIODevice {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioInput_start2(this.h)))
 }
 
 func (this *QAbstractAudioInput) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_stop(this.h)
 }
 
 func (this *QAbstractAudioInput) Reset() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_reset(this.h)
 }
 
 func (this *QAbstractAudioInput) Suspend() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_suspend(this.h)
 }
 
 func (this *QAbstractAudioInput) Resume() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_resume(this.h)
 }
 
 func (this *QAbstractAudioInput) BytesReady() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAudioInput_bytesReady(this.h))
 }
 
 func (this *QAbstractAudioInput) PeriodSize() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAudioInput_periodSize(this.h))
 }
 
 func (this *QAbstractAudioInput) SetBufferSize(value int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_setBufferSize(this.h, (C.int)(value))
 }
 
 func (this *QAbstractAudioInput) BufferSize() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAudioInput_bufferSize(this.h))
 }
 
 func (this *QAbstractAudioInput) SetNotifyInterval(milliSeconds int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_setNotifyInterval(this.h, (C.int)(milliSeconds))
 }
 
 func (this *QAbstractAudioInput) NotifyInterval() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAudioInput_notifyInterval(this.h))
 }
 
 func (this *QAbstractAudioInput) ProcessedUSecs() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAbstractAudioInput_processedUSecs(this.h))
 }
 
 func (this *QAbstractAudioInput) ElapsedUSecs() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAbstractAudioInput_elapsedUSecs(this.h))
 }
 
 func (this *QAbstractAudioInput) Error() QAudio__Error {
-	defer runtime.KeepAlive(this)
 	return (QAudio__Error)(C.QAbstractAudioInput_error(this.h))
 }
 
 func (this *QAbstractAudioInput) State() QAudio__State {
-	defer runtime.KeepAlive(this)
 	return (QAudio__State)(C.QAbstractAudioInput_state(this.h))
 }
 
 func (this *QAbstractAudioInput) SetFormat(fmt *QAudioFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(fmt)
 	C.QAbstractAudioInput_setFormat(this.h, fmt.cPointer())
 }
 
 func (this *QAbstractAudioInput) Format() *QAudioFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQAudioFormat(C.QAbstractAudioInput_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAudioInput) SetVolume(volume float64) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_setVolume(this.h, (C.double)(volume))
 }
 
 func (this *QAbstractAudioInput) Volume() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QAbstractAudioInput_volume(this.h))
 }
 
 func (this *QAbstractAudioInput) ErrorChanged(error QAudio__Error) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_errorChanged(this.h, (C.int)(error))
 }
 func (this *QAbstractAudioInput) OnErrorChanged(slot func(error QAudio__Error)) {
@@ -757,7 +698,6 @@ func miqt_exec_callback_QAbstractAudioInput_errorChanged(cb C.intptr_t, error C.
 }
 
 func (this *QAbstractAudioInput) StateChanged(state QAudio__State) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_stateChanged(this.h, (C.int)(state))
 }
 func (this *QAbstractAudioInput) OnStateChanged(slot func(state QAudio__State)) {
@@ -778,7 +718,6 @@ func miqt_exec_callback_QAbstractAudioInput_stateChanged(cb C.intptr_t, state C.
 }
 
 func (this *QAbstractAudioInput) Notify() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAudioInput_notify(this.h)
 }
 func (this *QAbstractAudioInput) OnNotify(slot func()) {
@@ -847,6 +786,8 @@ func (this *QAbstractAudioInput) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractAudioInput) GoGC() {
 	if this.gc != nil {
 		return

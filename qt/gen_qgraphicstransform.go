@@ -66,18 +66,15 @@ func NewQGraphicsTransform() *QGraphicsTransform {
 
 // NewQGraphicsTransform2 constructs a new QGraphicsTransform object.
 func NewQGraphicsTransform2(parent *QObject) *QGraphicsTransform {
-	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsTransform(C.QGraphicsTransform_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsTransform) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsTransform_metaObject(this.h))
 }
 
 func (this *QGraphicsTransform) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsTransform_metacast(this.h, param1_Cstring))
@@ -102,7 +99,6 @@ func QGraphicsTransform_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsTransform) ApplyTo(matrix *QMatrix4x4) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(matrix)
 	C.QGraphicsTransform_applyTo(this.h, matrix.cPointer())
 }
@@ -153,7 +149,6 @@ func QGraphicsTransform_TrUtf83(s string, c string, n int) string {
 
 // Update can only be called from a QGraphicsTransform that was directly constructed.
 func (this *QGraphicsTransform) Update() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsTransform_protectedbase_update(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -166,7 +161,6 @@ func (this *QGraphicsTransform) Update() {
 
 // Sender can only be called from a QGraphicsTransform that was directly constructed.
 func (this *QGraphicsTransform) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsTransform_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -181,7 +175,6 @@ func (this *QGraphicsTransform) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsTransform that was directly constructed.
 func (this *QGraphicsTransform) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsTransform_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -196,7 +189,6 @@ func (this *QGraphicsTransform) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsTransform that was directly constructed.
 func (this *QGraphicsTransform) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -213,7 +205,6 @@ func (this *QGraphicsTransform) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsTransform that was directly constructed.
 func (this *QGraphicsTransform) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -248,7 +239,6 @@ func miqt_exec_callback_QGraphicsTransform_applyTo(self *C.QGraphicsTransform, c
 }
 
 func (this *QGraphicsTransform) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsTransform_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -278,8 +268,6 @@ func miqt_exec_callback_QGraphicsTransform_event(self *C.QGraphicsTransform, cb 
 }
 
 func (this *QGraphicsTransform) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsTransform_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -311,7 +299,6 @@ func miqt_exec_callback_QGraphicsTransform_eventFilter(self *C.QGraphicsTransfor
 }
 
 func (this *QGraphicsTransform) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTransform_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -339,7 +326,6 @@ func miqt_exec_callback_QGraphicsTransform_timerEvent(self *C.QGraphicsTransform
 }
 
 func (this *QGraphicsTransform) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTransform_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -367,7 +353,6 @@ func miqt_exec_callback_QGraphicsTransform_childEvent(self *C.QGraphicsTransform
 }
 
 func (this *QGraphicsTransform) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsTransform_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -395,7 +380,6 @@ func miqt_exec_callback_QGraphicsTransform_customEvent(self *C.QGraphicsTransfor
 }
 
 func (this *QGraphicsTransform) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsTransform_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -423,7 +407,6 @@ func miqt_exec_callback_QGraphicsTransform_connectNotify(self *C.QGraphicsTransf
 }
 
 func (this *QGraphicsTransform) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsTransform_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -458,6 +441,8 @@ func (this *QGraphicsTransform) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QGraphicsTransform) GoGC() {
 	if this.gc != nil {
 		return
@@ -521,18 +506,15 @@ func NewQGraphicsScale() *QGraphicsScale {
 
 // NewQGraphicsScale2 constructs a new QGraphicsScale object.
 func NewQGraphicsScale2(parent *QObject) *QGraphicsScale {
-	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsScale(C.QGraphicsScale_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsScale) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsScale_metaObject(this.h))
 }
 
 func (this *QGraphicsScale) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsScale_metacast(this.h, param1_Cstring))
@@ -557,56 +539,46 @@ func QGraphicsScale_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsScale) Origin() *QVector3D {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVector3D(C.QGraphicsScale_origin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsScale) SetOrigin(point *QVector3D) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QGraphicsScale_setOrigin(this.h, point.cPointer())
 }
 
 func (this *QGraphicsScale) XScale() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsScale_xScale(this.h))
 }
 
 func (this *QGraphicsScale) SetXScale(xScale float64) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsScale_setXScale(this.h, (C.double)(xScale))
 }
 
 func (this *QGraphicsScale) YScale() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsScale_yScale(this.h))
 }
 
 func (this *QGraphicsScale) SetYScale(yScale float64) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsScale_setYScale(this.h, (C.double)(yScale))
 }
 
 func (this *QGraphicsScale) ZScale() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsScale_zScale(this.h))
 }
 
 func (this *QGraphicsScale) SetZScale(zScale float64) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsScale_setZScale(this.h, (C.double)(zScale))
 }
 
 func (this *QGraphicsScale) ApplyTo(matrix *QMatrix4x4) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(matrix)
 	C.QGraphicsScale_applyTo(this.h, matrix.cPointer())
 }
 
 func (this *QGraphicsScale) OriginChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsScale_originChanged(this.h)
 }
 func (this *QGraphicsScale) OnOriginChanged(slot func()) {
@@ -624,7 +596,6 @@ func miqt_exec_callback_QGraphicsScale_originChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsScale) XScaleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsScale_xScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnXScaleChanged(slot func()) {
@@ -642,7 +613,6 @@ func miqt_exec_callback_QGraphicsScale_xScaleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsScale) YScaleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsScale_yScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnYScaleChanged(slot func()) {
@@ -660,7 +630,6 @@ func miqt_exec_callback_QGraphicsScale_yScaleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsScale) ZScaleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsScale_zScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnZScaleChanged(slot func()) {
@@ -678,7 +647,6 @@ func miqt_exec_callback_QGraphicsScale_zScaleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsScale) ScaleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsScale_scaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnScaleChanged(slot func()) {
@@ -741,7 +709,6 @@ func QGraphicsScale_TrUtf83(s string, c string, n int) string {
 
 // Update can only be called from a QGraphicsScale that was directly constructed.
 func (this *QGraphicsScale) Update() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsScale_protectedbase_update(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -754,7 +721,6 @@ func (this *QGraphicsScale) Update() {
 
 // Sender can only be called from a QGraphicsScale that was directly constructed.
 func (this *QGraphicsScale) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsScale_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -769,7 +735,6 @@ func (this *QGraphicsScale) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsScale that was directly constructed.
 func (this *QGraphicsScale) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsScale_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -784,7 +749,6 @@ func (this *QGraphicsScale) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsScale that was directly constructed.
 func (this *QGraphicsScale) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -801,7 +765,6 @@ func (this *QGraphicsScale) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsScale that was directly constructed.
 func (this *QGraphicsScale) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -816,7 +779,6 @@ func (this *QGraphicsScale) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QGraphicsScale) callVirtualBase_ApplyTo(matrix *QMatrix4x4) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(matrix)
 
 	C.QGraphicsScale_virtualbase_applyTo(unsafe.Pointer(this.h), matrix.cPointer())
@@ -844,7 +806,6 @@ func miqt_exec_callback_QGraphicsScale_applyTo(self *C.QGraphicsScale, cb C.intp
 }
 
 func (this *QGraphicsScale) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsScale_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -874,8 +835,6 @@ func miqt_exec_callback_QGraphicsScale_event(self *C.QGraphicsScale, cb C.intptr
 }
 
 func (this *QGraphicsScale) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsScale_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -907,7 +866,6 @@ func miqt_exec_callback_QGraphicsScale_eventFilter(self *C.QGraphicsScale, cb C.
 }
 
 func (this *QGraphicsScale) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsScale_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -935,7 +893,6 @@ func miqt_exec_callback_QGraphicsScale_timerEvent(self *C.QGraphicsScale, cb C.i
 }
 
 func (this *QGraphicsScale) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsScale_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -963,7 +920,6 @@ func miqt_exec_callback_QGraphicsScale_childEvent(self *C.QGraphicsScale, cb C.i
 }
 
 func (this *QGraphicsScale) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsScale_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -991,7 +947,6 @@ func miqt_exec_callback_QGraphicsScale_customEvent(self *C.QGraphicsScale, cb C.
 }
 
 func (this *QGraphicsScale) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsScale_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1019,7 +974,6 @@ func miqt_exec_callback_QGraphicsScale_connectNotify(self *C.QGraphicsScale, cb 
 }
 
 func (this *QGraphicsScale) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsScale_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1054,6 +1008,8 @@ func (this *QGraphicsScale) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QGraphicsScale) GoGC() {
 	if this.gc != nil {
 		return
@@ -1117,18 +1073,15 @@ func NewQGraphicsRotation() *QGraphicsRotation {
 
 // NewQGraphicsRotation2 constructs a new QGraphicsRotation object.
 func NewQGraphicsRotation2(parent *QObject) *QGraphicsRotation {
-	defer runtime.KeepAlive(parent)
 
 	return newQGraphicsRotation(C.QGraphicsRotation_new2(parent.cPointer()))
 }
 
 func (this *QGraphicsRotation) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGraphicsRotation_metaObject(this.h))
 }
 
 func (this *QGraphicsRotation) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGraphicsRotation_metacast(this.h, param1_Cstring))
@@ -1153,54 +1106,45 @@ func QGraphicsRotation_TrUtf8(s string) string {
 }
 
 func (this *QGraphicsRotation) Origin() *QVector3D {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVector3D(C.QGraphicsRotation_origin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsRotation) SetOrigin(point *QVector3D) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QGraphicsRotation_setOrigin(this.h, point.cPointer())
 }
 
 func (this *QGraphicsRotation) Angle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QGraphicsRotation_angle(this.h))
 }
 
 func (this *QGraphicsRotation) SetAngle(angle float64) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsRotation_setAngle(this.h, (C.double)(angle))
 }
 
 func (this *QGraphicsRotation) Axis() *QVector3D {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVector3D(C.QGraphicsRotation_axis(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsRotation) SetAxis(axis *QVector3D) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(axis)
 	C.QGraphicsRotation_setAxis(this.h, axis.cPointer())
 }
 
 func (this *QGraphicsRotation) SetAxisWithAxis(axis Axis) {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsRotation_setAxisWithAxis(this.h, (C.int)(axis))
 }
 
 func (this *QGraphicsRotation) ApplyTo(matrix *QMatrix4x4) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(matrix)
 	C.QGraphicsRotation_applyTo(this.h, matrix.cPointer())
 }
 
 func (this *QGraphicsRotation) OriginChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsRotation_originChanged(this.h)
 }
 func (this *QGraphicsRotation) OnOriginChanged(slot func()) {
@@ -1218,7 +1162,6 @@ func miqt_exec_callback_QGraphicsRotation_originChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsRotation) AngleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsRotation_angleChanged(this.h)
 }
 func (this *QGraphicsRotation) OnAngleChanged(slot func()) {
@@ -1236,7 +1179,6 @@ func miqt_exec_callback_QGraphicsRotation_angleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsRotation) AxisChanged() {
-	defer runtime.KeepAlive(this)
 	C.QGraphicsRotation_axisChanged(this.h)
 }
 func (this *QGraphicsRotation) OnAxisChanged(slot func()) {
@@ -1299,7 +1241,6 @@ func QGraphicsRotation_TrUtf83(s string, c string, n int) string {
 
 // Update can only be called from a QGraphicsRotation that was directly constructed.
 func (this *QGraphicsRotation) Update() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QGraphicsRotation_protectedbase_update(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1312,7 +1253,6 @@ func (this *QGraphicsRotation) Update() {
 
 // Sender can only be called from a QGraphicsRotation that was directly constructed.
 func (this *QGraphicsRotation) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGraphicsRotation_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1327,7 +1267,6 @@ func (this *QGraphicsRotation) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGraphicsRotation that was directly constructed.
 func (this *QGraphicsRotation) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGraphicsRotation_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1342,7 +1281,6 @@ func (this *QGraphicsRotation) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGraphicsRotation that was directly constructed.
 func (this *QGraphicsRotation) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1359,7 +1297,6 @@ func (this *QGraphicsRotation) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGraphicsRotation that was directly constructed.
 func (this *QGraphicsRotation) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1374,7 +1311,6 @@ func (this *QGraphicsRotation) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QGraphicsRotation) callVirtualBase_ApplyTo(matrix *QMatrix4x4) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(matrix)
 
 	C.QGraphicsRotation_virtualbase_applyTo(unsafe.Pointer(this.h), matrix.cPointer())
@@ -1402,7 +1338,6 @@ func miqt_exec_callback_QGraphicsRotation_applyTo(self *C.QGraphicsRotation, cb 
 }
 
 func (this *QGraphicsRotation) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsRotation_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1432,8 +1367,6 @@ func miqt_exec_callback_QGraphicsRotation_event(self *C.QGraphicsRotation, cb C.
 }
 
 func (this *QGraphicsRotation) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGraphicsRotation_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1465,7 +1398,6 @@ func miqt_exec_callback_QGraphicsRotation_eventFilter(self *C.QGraphicsRotation,
 }
 
 func (this *QGraphicsRotation) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsRotation_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1493,7 +1425,6 @@ func miqt_exec_callback_QGraphicsRotation_timerEvent(self *C.QGraphicsRotation, 
 }
 
 func (this *QGraphicsRotation) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsRotation_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1521,7 +1452,6 @@ func miqt_exec_callback_QGraphicsRotation_childEvent(self *C.QGraphicsRotation, 
 }
 
 func (this *QGraphicsRotation) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGraphicsRotation_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1549,7 +1479,6 @@ func miqt_exec_callback_QGraphicsRotation_customEvent(self *C.QGraphicsRotation,
 }
 
 func (this *QGraphicsRotation) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsRotation_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1577,7 +1506,6 @@ func miqt_exec_callback_QGraphicsRotation_connectNotify(self *C.QGraphicsRotatio
 }
 
 func (this *QGraphicsRotation) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGraphicsRotation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1612,6 +1540,8 @@ func (this *QGraphicsRotation) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QGraphicsRotation) GoGC() {
 	if this.gc != nil {
 		return

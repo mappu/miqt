@@ -109,12 +109,10 @@ func UnsafeNewQCameraExposure(h unsafe.Pointer) *QCameraExposure {
 }
 
 func (this *QCameraExposure) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraExposure_metaObject(this.h)))
 }
 
 func (this *QCameraExposure) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraExposure_metacast(this.h, param1_Cstring))
@@ -139,95 +137,77 @@ func QCameraExposure_TrUtf8(s string) string {
 }
 
 func (this *QCameraExposure) IsAvailable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraExposure_isAvailable(this.h))
 }
 
 func (this *QCameraExposure) FlashMode() QCameraExposure__FlashMode {
-	defer runtime.KeepAlive(this)
 	return (QCameraExposure__FlashMode)(C.QCameraExposure_flashMode(this.h))
 }
 
 func (this *QCameraExposure) IsFlashModeSupported(mode QCameraExposure__FlashMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraExposure_isFlashModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraExposure) IsFlashReady() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraExposure_isFlashReady(this.h))
 }
 
 func (this *QCameraExposure) ExposureMode() QCameraExposure__ExposureMode {
-	defer runtime.KeepAlive(this)
 	return (QCameraExposure__ExposureMode)(C.QCameraExposure_exposureMode(this.h))
 }
 
 func (this *QCameraExposure) IsExposureModeSupported(mode QCameraExposure__ExposureMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraExposure_isExposureModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraExposure) ExposureCompensation() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraExposure_exposureCompensation(this.h))
 }
 
 func (this *QCameraExposure) MeteringMode() QCameraExposure__MeteringMode {
-	defer runtime.KeepAlive(this)
 	return (QCameraExposure__MeteringMode)(C.QCameraExposure_meteringMode(this.h))
 }
 
 func (this *QCameraExposure) IsMeteringModeSupported(mode QCameraExposure__MeteringMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraExposure_isMeteringModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraExposure) SpotMeteringPoint() *qt.QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraExposure_spotMeteringPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraExposure) SetSpotMeteringPoint(point *qt.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QCameraExposure_setSpotMeteringPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
 
 func (this *QCameraExposure) IsoSensitivity() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QCameraExposure_isoSensitivity(this.h))
 }
 
 func (this *QCameraExposure) Aperture() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraExposure_aperture(this.h))
 }
 
 func (this *QCameraExposure) ShutterSpeed() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraExposure_shutterSpeed(this.h))
 }
 
 func (this *QCameraExposure) RequestedIsoSensitivity() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QCameraExposure_requestedIsoSensitivity(this.h))
 }
 
 func (this *QCameraExposure) RequestedAperture() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraExposure_requestedAperture(this.h))
 }
 
 func (this *QCameraExposure) RequestedShutterSpeed() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCameraExposure_requestedShutterSpeed(this.h))
 }
 
 func (this *QCameraExposure) SupportedIsoSensitivities() []int {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedIsoSensitivities(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -238,7 +218,6 @@ func (this *QCameraExposure) SupportedIsoSensitivities() []int {
 }
 
 func (this *QCameraExposure) SupportedApertures() []float64 {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedApertures(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -249,7 +228,6 @@ func (this *QCameraExposure) SupportedApertures() []float64 {
 }
 
 func (this *QCameraExposure) SupportedShutterSpeeds() []float64 {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedShutterSpeeds(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -260,57 +238,46 @@ func (this *QCameraExposure) SupportedShutterSpeeds() []float64 {
 }
 
 func (this *QCameraExposure) SetFlashMode(mode QCameraExposure__FlashMode) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setFlashMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraExposure) SetExposureMode(mode QCameraExposure__ExposureMode) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setExposureMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraExposure) SetMeteringMode(mode QCameraExposure__MeteringMode) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setMeteringMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraExposure) SetExposureCompensation(ev float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setExposureCompensation(this.h, (C.double)(ev))
 }
 
 func (this *QCameraExposure) SetManualIsoSensitivity(iso int) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setManualIsoSensitivity(this.h, (C.int)(iso))
 }
 
 func (this *QCameraExposure) SetAutoIsoSensitivity() {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setAutoIsoSensitivity(this.h)
 }
 
 func (this *QCameraExposure) SetManualAperture(aperture float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setManualAperture(this.h, (C.double)(aperture))
 }
 
 func (this *QCameraExposure) SetAutoAperture() {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setAutoAperture(this.h)
 }
 
 func (this *QCameraExposure) SetManualShutterSpeed(seconds float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setManualShutterSpeed(this.h, (C.double)(seconds))
 }
 
 func (this *QCameraExposure) SetAutoShutterSpeed() {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_setAutoShutterSpeed(this.h)
 }
 
 func (this *QCameraExposure) FlashReady(param1 bool) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_flashReady(this.h, (C.bool)(param1))
 }
 func (this *QCameraExposure) OnFlashReady(slot func(param1 bool)) {
@@ -331,7 +298,6 @@ func miqt_exec_callback_QCameraExposure_flashReady(cb C.intptr_t, param1 C.bool)
 }
 
 func (this *QCameraExposure) ApertureChanged(param1 float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_apertureChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraExposure) OnApertureChanged(slot func(param1 float64)) {
@@ -352,7 +318,6 @@ func miqt_exec_callback_QCameraExposure_apertureChanged(cb C.intptr_t, param1 C.
 }
 
 func (this *QCameraExposure) ApertureRangeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_apertureRangeChanged(this.h)
 }
 func (this *QCameraExposure) OnApertureRangeChanged(slot func()) {
@@ -370,7 +335,6 @@ func miqt_exec_callback_QCameraExposure_apertureRangeChanged(cb C.intptr_t) {
 }
 
 func (this *QCameraExposure) ShutterSpeedChanged(speed float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_shutterSpeedChanged(this.h, (C.double)(speed))
 }
 func (this *QCameraExposure) OnShutterSpeedChanged(slot func(speed float64)) {
@@ -391,7 +355,6 @@ func miqt_exec_callback_QCameraExposure_shutterSpeedChanged(cb C.intptr_t, speed
 }
 
 func (this *QCameraExposure) ShutterSpeedRangeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_shutterSpeedRangeChanged(this.h)
 }
 func (this *QCameraExposure) OnShutterSpeedRangeChanged(slot func()) {
@@ -409,7 +372,6 @@ func miqt_exec_callback_QCameraExposure_shutterSpeedRangeChanged(cb C.intptr_t) 
 }
 
 func (this *QCameraExposure) IsoSensitivityChanged(param1 int) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_isoSensitivityChanged(this.h, (C.int)(param1))
 }
 func (this *QCameraExposure) OnIsoSensitivityChanged(slot func(param1 int)) {
@@ -430,7 +392,6 @@ func miqt_exec_callback_QCameraExposure_isoSensitivityChanged(cb C.intptr_t, par
 }
 
 func (this *QCameraExposure) ExposureCompensationChanged(param1 float64) {
-	defer runtime.KeepAlive(this)
 	C.QCameraExposure_exposureCompensationChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraExposure) OnExposureCompensationChanged(slot func(param1 float64)) {
@@ -495,7 +456,6 @@ func QCameraExposure_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QCameraExposure) SupportedIsoSensitivitiesWithContinuous(continuous *bool) []int {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedIsoSensitivitiesWithContinuous(this.h, (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]int, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -506,7 +466,6 @@ func (this *QCameraExposure) SupportedIsoSensitivitiesWithContinuous(continuous 
 }
 
 func (this *QCameraExposure) SupportedAperturesWithContinuous(continuous *bool) []float64 {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedAperturesWithContinuous(this.h, (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -517,7 +476,6 @@ func (this *QCameraExposure) SupportedAperturesWithContinuous(continuous *bool) 
 }
 
 func (this *QCameraExposure) SupportedShutterSpeedsWithContinuous(continuous *bool) []float64 {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedShutterSpeedsWithContinuous(this.h, (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
 	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))

@@ -55,14 +55,12 @@ func UnsafeNewQCborStreamWriter(h unsafe.Pointer) *QCborStreamWriter {
 
 // NewQCborStreamWriter constructs a new QCborStreamWriter object.
 func NewQCborStreamWriter(device *qt.QIODevice) *QCborStreamWriter {
-	defer runtime.KeepAlive(device)
 
 	return newQCborStreamWriter(C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer())))
 }
 
 func (this *QCborStreamWriter) SetDevice(device *qt.QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QCborStreamWriter_setDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 

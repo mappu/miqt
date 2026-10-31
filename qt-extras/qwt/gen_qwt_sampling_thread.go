@@ -58,12 +58,10 @@ func UnsafeNewQwtSamplingThread(h unsafe.Pointer) *QwtSamplingThread {
 }
 
 func (this *QwtSamplingThread) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtSamplingThread_metaObject(this.h)))
 }
 
 func (this *QwtSamplingThread) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtSamplingThread_metacast(this.h, param1_Cstring))
@@ -88,22 +86,18 @@ func QwtSamplingThread_TrUtf8(s string) string {
 }
 
 func (this *QwtSamplingThread) Interval() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSamplingThread_interval(this.h))
 }
 
 func (this *QwtSamplingThread) Elapsed() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtSamplingThread_elapsed(this.h))
 }
 
 func (this *QwtSamplingThread) SetInterval(interval float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtSamplingThread_setInterval(this.h, (C.double)(interval))
 }
 
 func (this *QwtSamplingThread) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QwtSamplingThread_stop(this.h)
 }
 
@@ -159,6 +153,8 @@ func (this *QwtSamplingThread) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtSamplingThread) GoGC() {
 	if this.gc != nil {
 		return

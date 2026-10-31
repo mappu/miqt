@@ -60,12 +60,10 @@ func UnsafeNewQMetaDataReaderControl(h unsafe.Pointer) *QMetaDataReaderControl {
 }
 
 func (this *QMetaDataReaderControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaDataReaderControl_metaObject(this.h)))
 }
 
 func (this *QMetaDataReaderControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMetaDataReaderControl_metacast(this.h, param1_Cstring))
@@ -90,12 +88,10 @@ func QMetaDataReaderControl_TrUtf8(s string) string {
 }
 
 func (this *QMetaDataReaderControl) IsMetaDataAvailable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMetaDataReaderControl_isMetaDataAvailable(this.h))
 }
 
 func (this *QMetaDataReaderControl) MetaData(key string) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -106,7 +102,6 @@ func (this *QMetaDataReaderControl) MetaData(key string) *qt.QVariant {
 }
 
 func (this *QMetaDataReaderControl) AvailableMetaData() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMetaDataReaderControl_availableMetaData(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -120,7 +115,6 @@ func (this *QMetaDataReaderControl) AvailableMetaData() []string {
 }
 
 func (this *QMetaDataReaderControl) MetaDataChanged() {
-	defer runtime.KeepAlive(this)
 	C.QMetaDataReaderControl_metaDataChanged(this.h)
 }
 func (this *QMetaDataReaderControl) OnMetaDataChanged(slot func()) {
@@ -138,7 +132,6 @@ func miqt_exec_callback_QMetaDataReaderControl_metaDataChanged(cb C.intptr_t) {
 }
 
 func (this *QMetaDataReaderControl) MetaDataChanged2(key string, value *qt.QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
@@ -168,7 +161,6 @@ func miqt_exec_callback_QMetaDataReaderControl_metaDataChanged2(cb C.intptr_t, k
 }
 
 func (this *QMetaDataReaderControl) MetaDataAvailableChanged(available bool) {
-	defer runtime.KeepAlive(this)
 	C.QMetaDataReaderControl_metaDataAvailableChanged(this.h, (C.bool)(available))
 }
 func (this *QMetaDataReaderControl) OnMetaDataAvailableChanged(slot func(available bool)) {
@@ -240,6 +232,8 @@ func (this *QMetaDataReaderControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMetaDataReaderControl) GoGC() {
 	if this.gc != nil {
 		return

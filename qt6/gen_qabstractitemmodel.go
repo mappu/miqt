@@ -690,18 +690,15 @@ func NewQAbstractItemModel() *QAbstractItemModel {
 
 // NewQAbstractItemModel2 constructs a new QAbstractItemModel object.
 func NewQAbstractItemModel2(parent *QObject) *QAbstractItemModel {
-	defer runtime.KeepAlive(parent)
 
 	return newQAbstractItemModel(C.QAbstractItemModel_new2(parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractItemModel_metaObject(this.h))
 }
 
 func (this *QAbstractItemModel) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractItemModel_metacast(this.h, param1_Cstring))
@@ -717,12 +714,10 @@ func QAbstractItemModel_Tr(s string) string {
 }
 
 func (this *QAbstractItemModel) HasIndex(row int, column int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemModel_hasIndex(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QAbstractItemModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	_goptr := newQModelIndex(C.QAbstractItemModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -730,7 +725,6 @@ func (this *QAbstractItemModel) Index(row int, column int, parent *QModelIndex) 
 }
 
 func (this *QAbstractItemModel) Parent(child *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(child)
 	_goptr := newQModelIndex(C.QAbstractItemModel_parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -738,7 +732,6 @@ func (this *QAbstractItemModel) Parent(child *QModelIndex) *QModelIndex {
 }
 
 func (this *QAbstractItemModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 	_goptr := newQModelIndex(C.QAbstractItemModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -746,25 +739,21 @@ func (this *QAbstractItemModel) Sibling(row int, column int, idx *QModelIndex) *
 }
 
 func (this *QAbstractItemModel) RowCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (int)(C.QAbstractItemModel_rowCount(this.h, parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) ColumnCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (int)(C.QAbstractItemModel_columnCount(this.h, parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) HasChildren(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_hasChildren(this.h, parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) Data(index *QModelIndex, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQVariant(C.QAbstractItemModel_data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -772,27 +761,23 @@ func (this *QAbstractItemModel) Data(index *QModelIndex, role int) *QVariant {
 }
 
 func (this *QAbstractItemModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 	return (bool)(C.QAbstractItemModel_setData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractItemModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QAbstractItemModel_headerData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractItemModel) SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	return (bool)(C.QAbstractItemModel_setHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractItemModel) ItemData(index *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	var _mm C.struct_miqt_map = C.QAbstractItemModel_itemData(this.h, index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
@@ -811,7 +796,6 @@ func (this *QAbstractItemModel) ItemData(index *QModelIndex) map[int]QVariant {
 }
 
 func (this *QAbstractItemModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -835,13 +819,11 @@ func (this *QAbstractItemModel) SetItemData(index *QModelIndex, roles map[int]QV
 }
 
 func (this *QAbstractItemModel) ClearItemData(index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return (bool)(C.QAbstractItemModel_clearItemData(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemModel) MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractItemModel_mimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -855,7 +837,6 @@ func (this *QAbstractItemModel) MimeTypes() []string {
 }
 
 func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -868,126 +849,103 @@ func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
 }
 
 func (this *QAbstractItemModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_canDropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) SupportedDropActions() DropAction {
-	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QAbstractItemModel_supportedDropActions(this.h))
 }
 
 func (this *QAbstractItemModel) SupportedDragActions() DropAction {
-	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QAbstractItemModel_supportedDragActions(this.h))
 }
 
 func (this *QAbstractItemModel) InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_insertRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) InsertColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_insertColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_removeRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_removeColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 	return (bool)(C.QAbstractItemModel_moveRows(this.h, sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
 func (this *QAbstractItemModel) MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 	return (bool)(C.QAbstractItemModel_moveColumns(this.h, sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
 func (this *QAbstractItemModel) InsertRow(row int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemModel_insertRow(this.h, (C.int)(row)))
 }
 
 func (this *QAbstractItemModel) InsertColumn(column int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemModel_insertColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAbstractItemModel) RemoveRow(row int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemModel_removeRow(this.h, (C.int)(row)))
 }
 
 func (this *QAbstractItemModel) RemoveColumn(column int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemModel_removeColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAbstractItemModel) MoveRow(sourceParent *QModelIndex, sourceRow int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 	return (bool)(C.QAbstractItemModel_moveRow(this.h, sourceParent.cPointer(), (C.int)(sourceRow), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
 func (this *QAbstractItemModel) MoveColumn(sourceParent *QModelIndex, sourceColumn int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 	return (bool)(C.QAbstractItemModel_moveColumn(this.h, sourceParent.cPointer(), (C.int)(sourceColumn), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
 func (this *QAbstractItemModel) FetchMore(parent *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	C.QAbstractItemModel_fetchMore(this.h, parent.cPointer())
 }
 
 func (this *QAbstractItemModel) CanFetchMore(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_canFetchMore(this.h, parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return (ItemFlag)(C.QAbstractItemModel_flags(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemModel) Sort(column int, order SortOrder) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemModel_sort(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QAbstractItemModel) Buddy(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQModelIndex(C.QAbstractItemModel_buddy(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -995,7 +953,6 @@ func (this *QAbstractItemModel) Buddy(index *QModelIndex) *QModelIndex {
 }
 
 func (this *QAbstractItemModel) Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(start)
 	defer runtime.KeepAlive(value)
 	var _ma C.struct_miqt_array = C.QAbstractItemModel_match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
@@ -1010,7 +967,6 @@ func (this *QAbstractItemModel) Match(start *QModelIndex, role int, value *QVari
 }
 
 func (this *QAbstractItemModel) Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQSize(C.QAbstractItemModel_span(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1018,7 +974,6 @@ func (this *QAbstractItemModel) Span(index *QModelIndex) *QSize {
 }
 
 func (this *QAbstractItemModel) RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QAbstractItemModel_roleNames(this.h)
 	_ret := make(map[int][]byte, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -1036,20 +991,17 @@ func (this *QAbstractItemModel) RoleNames() map[int][]byte {
 }
 
 func (this *QAbstractItemModel) CheckIndex(index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return (bool)(C.QAbstractItemModel_checkIndex(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemModel) MultiData(index *QModelIndex, roleDataSpan QModelRoleDataSpan) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roleDataSpan)
 	C.QAbstractItemModel_multiData(this.h, index.cPointer(), roleDataSpan.cPointer())
 }
 
 func (this *QAbstractItemModel) DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(topLeft)
 	defer runtime.KeepAlive(bottomRight)
 	C.QAbstractItemModel_dataChanged(this.h, topLeft.cPointer(), bottomRight.cPointer())
@@ -1074,7 +1026,6 @@ func miqt_exec_callback_QAbstractItemModel_dataChanged(cb C.intptr_t, topLeft *C
 }
 
 func (this *QAbstractItemModel) HeaderDataChanged(orientation Orientation, first int, last int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemModel_headerDataChanged(this.h, (C.int)(orientation), (C.int)(first), (C.int)(last))
 }
 func (this *QAbstractItemModel) OnHeaderDataChanged(slot func(orientation Orientation, first int, last int)) {
@@ -1099,7 +1050,6 @@ func miqt_exec_callback_QAbstractItemModel_headerDataChanged(cb C.intptr_t, orie
 }
 
 func (this *QAbstractItemModel) LayoutChanged() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemModel_layoutChanged(this.h)
 }
 func (this *QAbstractItemModel) OnLayoutChanged(slot func()) {
@@ -1117,7 +1067,6 @@ func miqt_exec_callback_QAbstractItemModel_layoutChanged(cb C.intptr_t) {
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemModel_layoutAboutToBeChanged(this.h)
 }
 func (this *QAbstractItemModel) OnLayoutAboutToBeChanged(slot func()) {
@@ -1135,12 +1084,10 @@ func miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged(cb C.intptr_t)
 }
 
 func (this *QAbstractItemModel) Submit() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemModel_submit(this.h))
 }
 
 func (this *QAbstractItemModel) Revert() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemModel_revert(this.h)
 }
 
@@ -1167,43 +1114,36 @@ func QAbstractItemModel_Tr3(s string, c string, n int) string {
 }
 
 func (this *QAbstractItemModel) HasIndex2(row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_hasIndex2(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) InsertRow2(row int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_insertRow2(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) InsertColumn2(column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_insertColumn2(this.h, (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) RemoveRow2(row int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_removeRow2(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) RemoveColumn2(column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractItemModel_removeColumn2(this.h, (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options QAbstractItemModel__CheckIndexOption) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return (bool)(C.QAbstractItemModel_checkIndex2(this.h, index.cPointer(), (C.int)(options)))
 }
 
 func (this *QAbstractItemModel) DataChanged2(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(topLeft)
 	defer runtime.KeepAlive(bottomRight)
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -1243,7 +1183,6 @@ func miqt_exec_callback_QAbstractItemModel_dataChanged2(cb C.intptr_t, topLeft *
 }
 
 func (this *QAbstractItemModel) LayoutChangedWithParents(parents []QPersistentModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parents)
 	parents_CArray_ptr := (**C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray_ptr))
@@ -1280,7 +1219,6 @@ func miqt_exec_callback_QAbstractItemModel_layoutChangedWithParents(cb C.intptr_
 }
 
 func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parents)
 	parents_CArray_ptr := (**C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray_ptr))
@@ -1319,7 +1257,6 @@ func miqt_exec_callback_QAbstractItemModel_layoutChanged2(cb C.intptr_t, parents
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChangedWithParents(parents []QPersistentModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parents)
 	parents_CArray_ptr := (**C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray_ptr))
@@ -1356,7 +1293,6 @@ func miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChangedWithParents(cb 
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parents)
 	parents_CArray_ptr := (**C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray_ptr))
@@ -1396,7 +1332,6 @@ func miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2(cb C.intptr_t
 
 // CreateIndex can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) CreateIndex(row int, column int) QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QAbstractItemModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
@@ -1413,7 +1348,6 @@ func (this *QAbstractItemModel) CreateIndex(row int, column int) QModelIndex {
 
 // CreateIndex2 can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) CreateIndex2(row int, column int, id uintptr) QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QAbstractItemModel_protectedbase_createIndex2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (C.uintptr_t)(id)))
@@ -1430,7 +1364,6 @@ func (this *QAbstractItemModel) CreateIndex2(row int, column int, id uintptr) QM
 
 // EncodeData can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
@@ -1452,7 +1385,6 @@ func (this *QAbstractItemModel) EncodeData(indexes []QModelIndex, stream *QDataS
 
 // DecodeData can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(stream)
 
@@ -1469,7 +1401,6 @@ func (this *QAbstractItemModel) DecodeData(row int, column int, parent *QModelIn
 
 // BeginInsertRows can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1483,7 +1414,6 @@ func (this *QAbstractItemModel) BeginInsertRows(parent *QModelIndex, first int, 
 
 // EndInsertRows can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) EndInsertRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1496,7 +1426,6 @@ func (this *QAbstractItemModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1510,7 +1439,6 @@ func (this *QAbstractItemModel) BeginRemoveRows(parent *QModelIndex, first int, 
 
 // EndRemoveRows can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) EndRemoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1523,7 +1451,6 @@ func (this *QAbstractItemModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -1540,7 +1467,6 @@ func (this *QAbstractItemModel) BeginMoveRows(sourceParent *QModelIndex, sourceF
 
 // EndMoveRows can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) EndMoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1553,7 +1479,6 @@ func (this *QAbstractItemModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1567,7 +1492,6 @@ func (this *QAbstractItemModel) BeginInsertColumns(parent *QModelIndex, first in
 
 // EndInsertColumns can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) EndInsertColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1580,7 +1504,6 @@ func (this *QAbstractItemModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1594,7 +1517,6 @@ func (this *QAbstractItemModel) BeginRemoveColumns(parent *QModelIndex, first in
 
 // EndRemoveColumns can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) EndRemoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1607,7 +1529,6 @@ func (this *QAbstractItemModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -1624,7 +1545,6 @@ func (this *QAbstractItemModel) BeginMoveColumns(sourceParent *QModelIndex, sour
 
 // EndMoveColumns can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) EndMoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1637,7 +1557,6 @@ func (this *QAbstractItemModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) BeginResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1650,7 +1569,6 @@ func (this *QAbstractItemModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) EndResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1663,7 +1581,6 @@ func (this *QAbstractItemModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 
@@ -1678,7 +1595,6 @@ func (this *QAbstractItemModel) ChangePersistentIndex(from *QModelIndex, to *QMo
 
 // ChangePersistentIndexList can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
@@ -1707,7 +1623,6 @@ func (this *QAbstractItemModel) ChangePersistentIndexList(from []QModelIndex, to
 
 // PersistentIndexList can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) PersistentIndexList() []QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QAbstractItemModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1730,7 +1645,6 @@ func (this *QAbstractItemModel) PersistentIndexList() []QModelIndex {
 
 // CreateIndex3 can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) CreateIndex3(row int, column int, data unsafe.Pointer) QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QAbstractItemModel_protectedbase_createIndex3(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), data))
@@ -1747,7 +1661,6 @@ func (this *QAbstractItemModel) CreateIndex3(row int, column int, data unsafe.Po
 
 // Sender can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAbstractItemModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1762,7 +1675,6 @@ func (this *QAbstractItemModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractItemModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1777,7 +1689,6 @@ func (this *QAbstractItemModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1794,7 +1705,6 @@ func (this *QAbstractItemModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1859,7 +1769,6 @@ func miqt_exec_callback_QAbstractItemModel_parent(self *C.QAbstractItemModel, cb
 }
 
 func (this *QAbstractItemModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 
 	_goptr := newQModelIndex(C.QAbstractItemModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
@@ -1940,7 +1849,6 @@ func miqt_exec_callback_QAbstractItemModel_columnCount(self *C.QAbstractItemMode
 }
 
 func (this *QAbstractItemModel) callVirtualBase_HasChildren(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_hasChildren(unsafe.Pointer(this.h), parent.cPointer()))
@@ -1995,7 +1903,6 @@ func miqt_exec_callback_QAbstractItemModel_data(self *C.QAbstractItemModel, cb C
 }
 
 func (this *QAbstractItemModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 
@@ -2030,7 +1937,6 @@ func miqt_exec_callback_QAbstractItemModel_setData(self *C.QAbstractItemModel, c
 }
 
 func (this *QAbstractItemModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QAbstractItemModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2066,7 +1972,6 @@ func miqt_exec_callback_QAbstractItemModel_headerData(self *C.QAbstractItemModel
 }
 
 func (this *QAbstractItemModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
@@ -2102,7 +2007,6 @@ func miqt_exec_callback_QAbstractItemModel_setHeaderData(self *C.QAbstractItemMo
 }
 
 func (this *QAbstractItemModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QAbstractItemModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
@@ -2161,7 +2065,6 @@ func miqt_exec_callback_QAbstractItemModel_itemData(self *C.QAbstractItemModel, 
 }
 
 func (this *QAbstractItemModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -2224,7 +2127,6 @@ func miqt_exec_callback_QAbstractItemModel_setItemData(self *C.QAbstractItemMode
 }
 
 func (this *QAbstractItemModel) callVirtualBase_ClearItemData(index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_clearItemData(unsafe.Pointer(this.h), index.cPointer()))
@@ -2254,7 +2156,6 @@ func miqt_exec_callback_QAbstractItemModel_clearItemData(self *C.QAbstractItemMo
 }
 
 func (this *QAbstractItemModel) callVirtualBase_MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QAbstractItemModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -2298,7 +2199,6 @@ func miqt_exec_callback_QAbstractItemModel_mimeTypes(self *C.QAbstractItemModel,
 }
 
 func (this *QAbstractItemModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -2337,15 +2237,12 @@ func miqt_exec_callback_QAbstractItemModel_mimeData(self *C.QAbstractItemModel, 
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QAbstractItemModel{h: self}).callVirtualBase_MimeData, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QAbstractItemModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -2383,8 +2280,6 @@ func miqt_exec_callback_QAbstractItemModel_canDropMimeData(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -2422,7 +2317,6 @@ func miqt_exec_callback_QAbstractItemModel_dropMimeData(self *C.QAbstractItemMod
 }
 
 func (this *QAbstractItemModel) callVirtualBase_SupportedDropActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QAbstractItemModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -2448,7 +2342,6 @@ func miqt_exec_callback_QAbstractItemModel_supportedDropActions(self *C.QAbstrac
 }
 
 func (this *QAbstractItemModel) callVirtualBase_SupportedDragActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QAbstractItemModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -2474,7 +2367,6 @@ func miqt_exec_callback_QAbstractItemModel_supportedDragActions(self *C.QAbstrac
 }
 
 func (this *QAbstractItemModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -2508,7 +2400,6 @@ func miqt_exec_callback_QAbstractItemModel_insertRows(self *C.QAbstractItemModel
 }
 
 func (this *QAbstractItemModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -2542,7 +2433,6 @@ func miqt_exec_callback_QAbstractItemModel_insertColumns(self *C.QAbstractItemMo
 }
 
 func (this *QAbstractItemModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -2576,7 +2466,6 @@ func miqt_exec_callback_QAbstractItemModel_removeRows(self *C.QAbstractItemModel
 }
 
 func (this *QAbstractItemModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -2610,7 +2499,6 @@ func miqt_exec_callback_QAbstractItemModel_removeColumns(self *C.QAbstractItemMo
 }
 
 func (this *QAbstractItemModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -2649,7 +2537,6 @@ func miqt_exec_callback_QAbstractItemModel_moveRows(self *C.QAbstractItemModel, 
 }
 
 func (this *QAbstractItemModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -2688,7 +2575,6 @@ func miqt_exec_callback_QAbstractItemModel_moveColumns(self *C.QAbstractItemMode
 }
 
 func (this *QAbstractItemModel) callVirtualBase_FetchMore(parent *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QAbstractItemModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
@@ -2716,7 +2602,6 @@ func miqt_exec_callback_QAbstractItemModel_fetchMore(self *C.QAbstractItemModel,
 }
 
 func (this *QAbstractItemModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
@@ -2746,7 +2631,6 @@ func miqt_exec_callback_QAbstractItemModel_canFetchMore(self *C.QAbstractItemMod
 }
 
 func (this *QAbstractItemModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (ItemFlag)(C.QAbstractItemModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
@@ -2776,7 +2660,6 @@ func miqt_exec_callback_QAbstractItemModel_flags(self *C.QAbstractItemModel, cb 
 }
 
 func (this *QAbstractItemModel) callVirtualBase_Sort(column int, order SortOrder) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -2805,7 +2688,6 @@ func miqt_exec_callback_QAbstractItemModel_sort(self *C.QAbstractItemModel, cb C
 }
 
 func (this *QAbstractItemModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QAbstractItemModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
@@ -2838,7 +2720,6 @@ func miqt_exec_callback_QAbstractItemModel_buddy(self *C.QAbstractItemModel, cb 
 }
 
 func (this *QAbstractItemModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(start)
 	defer runtime.KeepAlive(value)
 
@@ -2892,7 +2773,6 @@ func miqt_exec_callback_QAbstractItemModel_match(self *C.QAbstractItemModel, cb 
 }
 
 func (this *QAbstractItemModel) callVirtualBase_Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQSize(C.QAbstractItemModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
@@ -2925,7 +2805,6 @@ func miqt_exec_callback_QAbstractItemModel_span(self *C.QAbstractItemModel, cb C
 }
 
 func (this *QAbstractItemModel) callVirtualBase_RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QAbstractItemModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -2986,7 +2865,6 @@ func miqt_exec_callback_QAbstractItemModel_roleNames(self *C.QAbstractItemModel,
 }
 
 func (this *QAbstractItemModel) callVirtualBase_MultiData(index *QModelIndex, roleDataSpan QModelRoleDataSpan) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roleDataSpan)
 
@@ -3019,7 +2897,6 @@ func miqt_exec_callback_QAbstractItemModel_multiData(self *C.QAbstractItemModel,
 }
 
 func (this *QAbstractItemModel) callVirtualBase_Submit() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -3045,7 +2922,6 @@ func miqt_exec_callback_QAbstractItemModel_submit(self *C.QAbstractItemModel, cb
 }
 
 func (this *QAbstractItemModel) callVirtualBase_Revert() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -3069,7 +2945,6 @@ func miqt_exec_callback_QAbstractItemModel_revert(self *C.QAbstractItemModel, cb
 }
 
 func (this *QAbstractItemModel) callVirtualBase_ResetInternalData() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemModel_virtualbase_resetInternalData(unsafe.Pointer(this.h))
 
@@ -3093,7 +2968,6 @@ func miqt_exec_callback_QAbstractItemModel_resetInternalData(self *C.QAbstractIt
 }
 
 func (this *QAbstractItemModel) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -3123,8 +2997,6 @@ func miqt_exec_callback_QAbstractItemModel_event(self *C.QAbstractItemModel, cb 
 }
 
 func (this *QAbstractItemModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractItemModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -3156,7 +3028,6 @@ func miqt_exec_callback_QAbstractItemModel_eventFilter(self *C.QAbstractItemMode
 }
 
 func (this *QAbstractItemModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3184,7 +3055,6 @@ func miqt_exec_callback_QAbstractItemModel_timerEvent(self *C.QAbstractItemModel
 }
 
 func (this *QAbstractItemModel) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3212,7 +3082,6 @@ func miqt_exec_callback_QAbstractItemModel_childEvent(self *C.QAbstractItemModel
 }
 
 func (this *QAbstractItemModel) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3240,7 +3109,6 @@ func miqt_exec_callback_QAbstractItemModel_customEvent(self *C.QAbstractItemMode
 }
 
 func (this *QAbstractItemModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractItemModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3268,7 +3136,6 @@ func miqt_exec_callback_QAbstractItemModel_connectNotify(self *C.QAbstractItemMo
 }
 
 func (this *QAbstractItemModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractItemModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3598,6 +3465,8 @@ func (this *QAbstractItemModel) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractItemModel) GoGC() {
 	if this.gc != nil {
 		return
@@ -3661,18 +3530,15 @@ func NewQAbstractTableModel() *QAbstractTableModel {
 
 // NewQAbstractTableModel2 constructs a new QAbstractTableModel object.
 func NewQAbstractTableModel2(parent *QObject) *QAbstractTableModel {
-	defer runtime.KeepAlive(parent)
 
 	return newQAbstractTableModel(C.QAbstractTableModel_new2(parent.cPointer()))
 }
 
 func (this *QAbstractTableModel) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractTableModel_metaObject(this.h))
 }
 
 func (this *QAbstractTableModel) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractTableModel_metacast(this.h, param1_Cstring))
@@ -3688,7 +3554,6 @@ func QAbstractTableModel_Tr(s string) string {
 }
 
 func (this *QAbstractTableModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	_goptr := newQModelIndex(C.QAbstractTableModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3696,7 +3561,6 @@ func (this *QAbstractTableModel) Index(row int, column int, parent *QModelIndex)
 }
 
 func (this *QAbstractTableModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 	_goptr := newQModelIndex(C.QAbstractTableModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3704,14 +3568,11 @@ func (this *QAbstractTableModel) Sibling(row int, column int, idx *QModelIndex) 
 }
 
 func (this *QAbstractTableModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractTableModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractTableModel) Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return (ItemFlag)(C.QAbstractTableModel_flags(this.h, index.cPointer()))
 }
@@ -3740,7 +3601,6 @@ func QAbstractTableModel_Tr3(s string, c string, n int) string {
 
 // CreateIndex can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) CreateIndex(row int, column int) QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QAbstractTableModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
@@ -3757,7 +3617,6 @@ func (this *QAbstractTableModel) CreateIndex(row int, column int) QModelIndex {
 
 // EncodeData can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
@@ -3779,7 +3638,6 @@ func (this *QAbstractTableModel) EncodeData(indexes []QModelIndex, stream *QData
 
 // DecodeData can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(stream)
 
@@ -3796,7 +3654,6 @@ func (this *QAbstractTableModel) DecodeData(row int, column int, parent *QModelI
 
 // BeginInsertRows can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -3810,7 +3667,6 @@ func (this *QAbstractTableModel) BeginInsertRows(parent *QModelIndex, first int,
 
 // EndInsertRows can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) EndInsertRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -3823,7 +3679,6 @@ func (this *QAbstractTableModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -3837,7 +3692,6 @@ func (this *QAbstractTableModel) BeginRemoveRows(parent *QModelIndex, first int,
 
 // EndRemoveRows can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) EndRemoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -3850,7 +3704,6 @@ func (this *QAbstractTableModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -3867,7 +3720,6 @@ func (this *QAbstractTableModel) BeginMoveRows(sourceParent *QModelIndex, source
 
 // EndMoveRows can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) EndMoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -3880,7 +3732,6 @@ func (this *QAbstractTableModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -3894,7 +3745,6 @@ func (this *QAbstractTableModel) BeginInsertColumns(parent *QModelIndex, first i
 
 // EndInsertColumns can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) EndInsertColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -3907,7 +3757,6 @@ func (this *QAbstractTableModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -3921,7 +3770,6 @@ func (this *QAbstractTableModel) BeginRemoveColumns(parent *QModelIndex, first i
 
 // EndRemoveColumns can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) EndRemoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -3934,7 +3782,6 @@ func (this *QAbstractTableModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -3951,7 +3798,6 @@ func (this *QAbstractTableModel) BeginMoveColumns(sourceParent *QModelIndex, sou
 
 // EndMoveColumns can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) EndMoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -3964,7 +3810,6 @@ func (this *QAbstractTableModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) BeginResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -3977,7 +3822,6 @@ func (this *QAbstractTableModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) EndResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -3990,7 +3834,6 @@ func (this *QAbstractTableModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 
@@ -4005,7 +3848,6 @@ func (this *QAbstractTableModel) ChangePersistentIndex(from *QModelIndex, to *QM
 
 // ChangePersistentIndexList can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
@@ -4034,7 +3876,6 @@ func (this *QAbstractTableModel) ChangePersistentIndexList(from []QModelIndex, t
 
 // PersistentIndexList can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) PersistentIndexList() []QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QAbstractTableModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -4057,7 +3898,6 @@ func (this *QAbstractTableModel) PersistentIndexList() []QModelIndex {
 
 // Sender can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAbstractTableModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -4072,7 +3912,6 @@ func (this *QAbstractTableModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractTableModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -4087,7 +3926,6 @@ func (this *QAbstractTableModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -4104,7 +3942,6 @@ func (this *QAbstractTableModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -4119,7 +3956,6 @@ func (this *QAbstractTableModel) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	_goptr := newQModelIndex(C.QAbstractTableModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -4156,7 +3992,6 @@ func miqt_exec_callback_QAbstractTableModel_index(self *C.QAbstractTableModel, c
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 
 	_goptr := newQModelIndex(C.QAbstractTableModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
@@ -4193,8 +4028,6 @@ func miqt_exec_callback_QAbstractTableModel_sibling(self *C.QAbstractTableModel,
 }
 
 func (this *QAbstractTableModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -4232,7 +4065,6 @@ func miqt_exec_callback_QAbstractTableModel_dropMimeData(self *C.QAbstractTableM
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (ItemFlag)(C.QAbstractTableModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
@@ -4331,7 +4163,6 @@ func miqt_exec_callback_QAbstractTableModel_data(self *C.QAbstractTableModel, cb
 }
 
 func (this *QAbstractTableModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 
@@ -4366,7 +4197,6 @@ func miqt_exec_callback_QAbstractTableModel_setData(self *C.QAbstractTableModel,
 }
 
 func (this *QAbstractTableModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QAbstractTableModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -4402,7 +4232,6 @@ func miqt_exec_callback_QAbstractTableModel_headerData(self *C.QAbstractTableMod
 }
 
 func (this *QAbstractTableModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
@@ -4438,7 +4267,6 @@ func miqt_exec_callback_QAbstractTableModel_setHeaderData(self *C.QAbstractTable
 }
 
 func (this *QAbstractTableModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QAbstractTableModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
@@ -4497,7 +4325,6 @@ func miqt_exec_callback_QAbstractTableModel_itemData(self *C.QAbstractTableModel
 }
 
 func (this *QAbstractTableModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -4560,7 +4387,6 @@ func miqt_exec_callback_QAbstractTableModel_setItemData(self *C.QAbstractTableMo
 }
 
 func (this *QAbstractTableModel) callVirtualBase_ClearItemData(index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_clearItemData(unsafe.Pointer(this.h), index.cPointer()))
@@ -4590,7 +4416,6 @@ func miqt_exec_callback_QAbstractTableModel_clearItemData(self *C.QAbstractTable
 }
 
 func (this *QAbstractTableModel) callVirtualBase_MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QAbstractTableModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -4634,7 +4459,6 @@ func miqt_exec_callback_QAbstractTableModel_mimeTypes(self *C.QAbstractTableMode
 }
 
 func (this *QAbstractTableModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -4673,15 +4497,12 @@ func miqt_exec_callback_QAbstractTableModel_mimeData(self *C.QAbstractTableModel
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QAbstractTableModel{h: self}).callVirtualBase_MimeData, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QAbstractTableModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -4719,7 +4540,6 @@ func miqt_exec_callback_QAbstractTableModel_canDropMimeData(self *C.QAbstractTab
 }
 
 func (this *QAbstractTableModel) callVirtualBase_SupportedDropActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QAbstractTableModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -4745,7 +4565,6 @@ func miqt_exec_callback_QAbstractTableModel_supportedDropActions(self *C.QAbstra
 }
 
 func (this *QAbstractTableModel) callVirtualBase_SupportedDragActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QAbstractTableModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -4771,7 +4590,6 @@ func miqt_exec_callback_QAbstractTableModel_supportedDragActions(self *C.QAbstra
 }
 
 func (this *QAbstractTableModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -4805,7 +4623,6 @@ func miqt_exec_callback_QAbstractTableModel_insertRows(self *C.QAbstractTableMod
 }
 
 func (this *QAbstractTableModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -4839,7 +4656,6 @@ func miqt_exec_callback_QAbstractTableModel_insertColumns(self *C.QAbstractTable
 }
 
 func (this *QAbstractTableModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -4873,7 +4689,6 @@ func miqt_exec_callback_QAbstractTableModel_removeRows(self *C.QAbstractTableMod
 }
 
 func (this *QAbstractTableModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -4907,7 +4722,6 @@ func miqt_exec_callback_QAbstractTableModel_removeColumns(self *C.QAbstractTable
 }
 
 func (this *QAbstractTableModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -4946,7 +4760,6 @@ func miqt_exec_callback_QAbstractTableModel_moveRows(self *C.QAbstractTableModel
 }
 
 func (this *QAbstractTableModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -4985,7 +4798,6 @@ func miqt_exec_callback_QAbstractTableModel_moveColumns(self *C.QAbstractTableMo
 }
 
 func (this *QAbstractTableModel) callVirtualBase_FetchMore(parent *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QAbstractTableModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
@@ -5013,7 +4825,6 @@ func miqt_exec_callback_QAbstractTableModel_fetchMore(self *C.QAbstractTableMode
 }
 
 func (this *QAbstractTableModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
@@ -5043,7 +4854,6 @@ func miqt_exec_callback_QAbstractTableModel_canFetchMore(self *C.QAbstractTableM
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Sort(column int, order SortOrder) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractTableModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -5072,7 +4882,6 @@ func miqt_exec_callback_QAbstractTableModel_sort(self *C.QAbstractTableModel, cb
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QAbstractTableModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
@@ -5105,7 +4914,6 @@ func miqt_exec_callback_QAbstractTableModel_buddy(self *C.QAbstractTableModel, c
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(start)
 	defer runtime.KeepAlive(value)
 
@@ -5159,7 +4967,6 @@ func miqt_exec_callback_QAbstractTableModel_match(self *C.QAbstractTableModel, c
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQSize(C.QAbstractTableModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
@@ -5192,7 +4999,6 @@ func miqt_exec_callback_QAbstractTableModel_span(self *C.QAbstractTableModel, cb
 }
 
 func (this *QAbstractTableModel) callVirtualBase_RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QAbstractTableModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -5253,7 +5059,6 @@ func miqt_exec_callback_QAbstractTableModel_roleNames(self *C.QAbstractTableMode
 }
 
 func (this *QAbstractTableModel) callVirtualBase_MultiData(index *QModelIndex, roleDataSpan QModelRoleDataSpan) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roleDataSpan)
 
@@ -5286,7 +5091,6 @@ func miqt_exec_callback_QAbstractTableModel_multiData(self *C.QAbstractTableMode
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Submit() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -5312,7 +5116,6 @@ func miqt_exec_callback_QAbstractTableModel_submit(self *C.QAbstractTableModel, 
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Revert() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractTableModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -5336,7 +5139,6 @@ func miqt_exec_callback_QAbstractTableModel_revert(self *C.QAbstractTableModel, 
 }
 
 func (this *QAbstractTableModel) callVirtualBase_ResetInternalData() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractTableModel_virtualbase_resetInternalData(unsafe.Pointer(this.h))
 
@@ -5360,7 +5162,6 @@ func miqt_exec_callback_QAbstractTableModel_resetInternalData(self *C.QAbstractT
 }
 
 func (this *QAbstractTableModel) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -5390,8 +5191,6 @@ func miqt_exec_callback_QAbstractTableModel_event(self *C.QAbstractTableModel, c
 }
 
 func (this *QAbstractTableModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractTableModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -5423,7 +5222,6 @@ func miqt_exec_callback_QAbstractTableModel_eventFilter(self *C.QAbstractTableMo
 }
 
 func (this *QAbstractTableModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractTableModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5451,7 +5249,6 @@ func miqt_exec_callback_QAbstractTableModel_timerEvent(self *C.QAbstractTableMod
 }
 
 func (this *QAbstractTableModel) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractTableModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5479,7 +5276,6 @@ func miqt_exec_callback_QAbstractTableModel_childEvent(self *C.QAbstractTableMod
 }
 
 func (this *QAbstractTableModel) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractTableModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -5507,7 +5303,6 @@ func miqt_exec_callback_QAbstractTableModel_customEvent(self *C.QAbstractTableMo
 }
 
 func (this *QAbstractTableModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractTableModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -5535,7 +5330,6 @@ func miqt_exec_callback_QAbstractTableModel_connectNotify(self *C.QAbstractTable
 }
 
 func (this *QAbstractTableModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractTableModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -5570,6 +5364,8 @@ func (this *QAbstractTableModel) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractTableModel) GoGC() {
 	if this.gc != nil {
 		return
@@ -5633,18 +5429,15 @@ func NewQAbstractListModel() *QAbstractListModel {
 
 // NewQAbstractListModel2 constructs a new QAbstractListModel object.
 func NewQAbstractListModel2(parent *QObject) *QAbstractListModel {
-	defer runtime.KeepAlive(parent)
 
 	return newQAbstractListModel(C.QAbstractListModel_new2(parent.cPointer()))
 }
 
 func (this *QAbstractListModel) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractListModel_metaObject(this.h))
 }
 
 func (this *QAbstractListModel) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractListModel_metacast(this.h, param1_Cstring))
@@ -5660,7 +5453,6 @@ func QAbstractListModel_Tr(s string) string {
 }
 
 func (this *QAbstractListModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	_goptr := newQModelIndex(C.QAbstractListModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -5668,7 +5460,6 @@ func (this *QAbstractListModel) Index(row int, column int, parent *QModelIndex) 
 }
 
 func (this *QAbstractListModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 	_goptr := newQModelIndex(C.QAbstractListModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -5676,14 +5467,11 @@ func (this *QAbstractListModel) Sibling(row int, column int, idx *QModelIndex) *
 }
 
 func (this *QAbstractListModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QAbstractListModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractListModel) Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return (ItemFlag)(C.QAbstractListModel_flags(this.h, index.cPointer()))
 }
@@ -5712,7 +5500,6 @@ func QAbstractListModel_Tr3(s string, c string, n int) string {
 
 // CreateIndex can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) CreateIndex(row int, column int) QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QAbstractListModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
@@ -5729,7 +5516,6 @@ func (this *QAbstractListModel) CreateIndex(row int, column int) QModelIndex {
 
 // EncodeData can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
@@ -5751,7 +5537,6 @@ func (this *QAbstractListModel) EncodeData(indexes []QModelIndex, stream *QDataS
 
 // DecodeData can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(stream)
 
@@ -5768,7 +5553,6 @@ func (this *QAbstractListModel) DecodeData(row int, column int, parent *QModelIn
 
 // BeginInsertRows can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -5782,7 +5566,6 @@ func (this *QAbstractListModel) BeginInsertRows(parent *QModelIndex, first int, 
 
 // EndInsertRows can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) EndInsertRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -5795,7 +5578,6 @@ func (this *QAbstractListModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -5809,7 +5591,6 @@ func (this *QAbstractListModel) BeginRemoveRows(parent *QModelIndex, first int, 
 
 // EndRemoveRows can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) EndRemoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -5822,7 +5603,6 @@ func (this *QAbstractListModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -5839,7 +5619,6 @@ func (this *QAbstractListModel) BeginMoveRows(sourceParent *QModelIndex, sourceF
 
 // EndMoveRows can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) EndMoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -5852,7 +5631,6 @@ func (this *QAbstractListModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -5866,7 +5644,6 @@ func (this *QAbstractListModel) BeginInsertColumns(parent *QModelIndex, first in
 
 // EndInsertColumns can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) EndInsertColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -5879,7 +5656,6 @@ func (this *QAbstractListModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -5893,7 +5669,6 @@ func (this *QAbstractListModel) BeginRemoveColumns(parent *QModelIndex, first in
 
 // EndRemoveColumns can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) EndRemoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -5906,7 +5681,6 @@ func (this *QAbstractListModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -5923,7 +5697,6 @@ func (this *QAbstractListModel) BeginMoveColumns(sourceParent *QModelIndex, sour
 
 // EndMoveColumns can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) EndMoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -5936,7 +5709,6 @@ func (this *QAbstractListModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) BeginResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -5949,7 +5721,6 @@ func (this *QAbstractListModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) EndResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -5962,7 +5733,6 @@ func (this *QAbstractListModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 
@@ -5977,7 +5747,6 @@ func (this *QAbstractListModel) ChangePersistentIndex(from *QModelIndex, to *QMo
 
 // ChangePersistentIndexList can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
@@ -6006,7 +5775,6 @@ func (this *QAbstractListModel) ChangePersistentIndexList(from []QModelIndex, to
 
 // PersistentIndexList can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) PersistentIndexList() []QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QAbstractListModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -6029,7 +5797,6 @@ func (this *QAbstractListModel) PersistentIndexList() []QModelIndex {
 
 // Sender can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAbstractListModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -6044,7 +5811,6 @@ func (this *QAbstractListModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractListModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -6059,7 +5825,6 @@ func (this *QAbstractListModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -6076,7 +5841,6 @@ func (this *QAbstractListModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -6091,7 +5855,6 @@ func (this *QAbstractListModel) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QAbstractListModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	_goptr := newQModelIndex(C.QAbstractListModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -6128,7 +5891,6 @@ func miqt_exec_callback_QAbstractListModel_index(self *C.QAbstractListModel, cb 
 }
 
 func (this *QAbstractListModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 
 	_goptr := newQModelIndex(C.QAbstractListModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
@@ -6165,8 +5927,6 @@ func miqt_exec_callback_QAbstractListModel_sibling(self *C.QAbstractListModel, c
 }
 
 func (this *QAbstractListModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractListModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -6204,7 +5964,6 @@ func miqt_exec_callback_QAbstractListModel_dropMimeData(self *C.QAbstractListMod
 }
 
 func (this *QAbstractListModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (ItemFlag)(C.QAbstractListModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
@@ -6281,7 +6040,6 @@ func miqt_exec_callback_QAbstractListModel_data(self *C.QAbstractListModel, cb C
 }
 
 func (this *QAbstractListModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 
@@ -6316,7 +6074,6 @@ func miqt_exec_callback_QAbstractListModel_setData(self *C.QAbstractListModel, c
 }
 
 func (this *QAbstractListModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QAbstractListModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -6352,7 +6109,6 @@ func miqt_exec_callback_QAbstractListModel_headerData(self *C.QAbstractListModel
 }
 
 func (this *QAbstractListModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QAbstractListModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
@@ -6388,7 +6144,6 @@ func miqt_exec_callback_QAbstractListModel_setHeaderData(self *C.QAbstractListMo
 }
 
 func (this *QAbstractListModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QAbstractListModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
@@ -6447,7 +6202,6 @@ func miqt_exec_callback_QAbstractListModel_itemData(self *C.QAbstractListModel, 
 }
 
 func (this *QAbstractListModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -6510,7 +6264,6 @@ func miqt_exec_callback_QAbstractListModel_setItemData(self *C.QAbstractListMode
 }
 
 func (this *QAbstractListModel) callVirtualBase_ClearItemData(index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QAbstractListModel_virtualbase_clearItemData(unsafe.Pointer(this.h), index.cPointer()))
@@ -6540,7 +6293,6 @@ func miqt_exec_callback_QAbstractListModel_clearItemData(self *C.QAbstractListMo
 }
 
 func (this *QAbstractListModel) callVirtualBase_MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QAbstractListModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -6584,7 +6336,6 @@ func miqt_exec_callback_QAbstractListModel_mimeTypes(self *C.QAbstractListModel,
 }
 
 func (this *QAbstractListModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -6623,15 +6374,12 @@ func miqt_exec_callback_QAbstractListModel_mimeData(self *C.QAbstractListModel, 
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QAbstractListModel{h: self}).callVirtualBase_MimeData, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QAbstractListModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractListModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -6669,7 +6417,6 @@ func miqt_exec_callback_QAbstractListModel_canDropMimeData(self *C.QAbstractList
 }
 
 func (this *QAbstractListModel) callVirtualBase_SupportedDropActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QAbstractListModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -6695,7 +6442,6 @@ func miqt_exec_callback_QAbstractListModel_supportedDropActions(self *C.QAbstrac
 }
 
 func (this *QAbstractListModel) callVirtualBase_SupportedDragActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QAbstractListModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -6721,7 +6467,6 @@ func miqt_exec_callback_QAbstractListModel_supportedDragActions(self *C.QAbstrac
 }
 
 func (this *QAbstractListModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractListModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -6755,7 +6500,6 @@ func miqt_exec_callback_QAbstractListModel_insertRows(self *C.QAbstractListModel
 }
 
 func (this *QAbstractListModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractListModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -6789,7 +6533,6 @@ func miqt_exec_callback_QAbstractListModel_insertColumns(self *C.QAbstractListMo
 }
 
 func (this *QAbstractListModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractListModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -6823,7 +6566,6 @@ func miqt_exec_callback_QAbstractListModel_removeRows(self *C.QAbstractListModel
 }
 
 func (this *QAbstractListModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractListModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -6857,7 +6599,6 @@ func miqt_exec_callback_QAbstractListModel_removeColumns(self *C.QAbstractListMo
 }
 
 func (this *QAbstractListModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -6896,7 +6637,6 @@ func miqt_exec_callback_QAbstractListModel_moveRows(self *C.QAbstractListModel, 
 }
 
 func (this *QAbstractListModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -6935,7 +6675,6 @@ func miqt_exec_callback_QAbstractListModel_moveColumns(self *C.QAbstractListMode
 }
 
 func (this *QAbstractListModel) callVirtualBase_FetchMore(parent *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QAbstractListModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
@@ -6963,7 +6702,6 @@ func miqt_exec_callback_QAbstractListModel_fetchMore(self *C.QAbstractListModel,
 }
 
 func (this *QAbstractListModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QAbstractListModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
@@ -6993,7 +6731,6 @@ func miqt_exec_callback_QAbstractListModel_canFetchMore(self *C.QAbstractListMod
 }
 
 func (this *QAbstractListModel) callVirtualBase_Sort(column int, order SortOrder) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractListModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -7022,7 +6759,6 @@ func miqt_exec_callback_QAbstractListModel_sort(self *C.QAbstractListModel, cb C
 }
 
 func (this *QAbstractListModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QAbstractListModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
@@ -7055,7 +6791,6 @@ func miqt_exec_callback_QAbstractListModel_buddy(self *C.QAbstractListModel, cb 
 }
 
 func (this *QAbstractListModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(start)
 	defer runtime.KeepAlive(value)
 
@@ -7109,7 +6844,6 @@ func miqt_exec_callback_QAbstractListModel_match(self *C.QAbstractListModel, cb 
 }
 
 func (this *QAbstractListModel) callVirtualBase_Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQSize(C.QAbstractListModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
@@ -7142,7 +6876,6 @@ func miqt_exec_callback_QAbstractListModel_span(self *C.QAbstractListModel, cb C
 }
 
 func (this *QAbstractListModel) callVirtualBase_RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QAbstractListModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -7203,7 +6936,6 @@ func miqt_exec_callback_QAbstractListModel_roleNames(self *C.QAbstractListModel,
 }
 
 func (this *QAbstractListModel) callVirtualBase_MultiData(index *QModelIndex, roleDataSpan QModelRoleDataSpan) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roleDataSpan)
 
@@ -7236,7 +6968,6 @@ func miqt_exec_callback_QAbstractListModel_multiData(self *C.QAbstractListModel,
 }
 
 func (this *QAbstractListModel) callVirtualBase_Submit() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractListModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -7262,7 +6993,6 @@ func miqt_exec_callback_QAbstractListModel_submit(self *C.QAbstractListModel, cb
 }
 
 func (this *QAbstractListModel) callVirtualBase_Revert() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractListModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -7286,7 +7016,6 @@ func miqt_exec_callback_QAbstractListModel_revert(self *C.QAbstractListModel, cb
 }
 
 func (this *QAbstractListModel) callVirtualBase_ResetInternalData() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractListModel_virtualbase_resetInternalData(unsafe.Pointer(this.h))
 
@@ -7310,7 +7039,6 @@ func miqt_exec_callback_QAbstractListModel_resetInternalData(self *C.QAbstractLi
 }
 
 func (this *QAbstractListModel) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractListModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -7340,8 +7068,6 @@ func miqt_exec_callback_QAbstractListModel_event(self *C.QAbstractListModel, cb 
 }
 
 func (this *QAbstractListModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractListModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -7373,7 +7099,6 @@ func miqt_exec_callback_QAbstractListModel_eventFilter(self *C.QAbstractListMode
 }
 
 func (this *QAbstractListModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractListModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -7401,7 +7126,6 @@ func miqt_exec_callback_QAbstractListModel_timerEvent(self *C.QAbstractListModel
 }
 
 func (this *QAbstractListModel) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractListModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -7429,7 +7153,6 @@ func miqt_exec_callback_QAbstractListModel_childEvent(self *C.QAbstractListModel
 }
 
 func (this *QAbstractListModel) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractListModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -7457,7 +7180,6 @@ func miqt_exec_callback_QAbstractListModel_customEvent(self *C.QAbstractListMode
 }
 
 func (this *QAbstractListModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractListModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -7485,7 +7207,6 @@ func miqt_exec_callback_QAbstractListModel_connectNotify(self *C.QAbstractListMo
 }
 
 func (this *QAbstractListModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractListModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -7520,6 +7241,8 @@ func (this *QAbstractListModel) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractListModel) GoGC() {
 	if this.gc != nil {
 		return

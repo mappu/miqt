@@ -83,14 +83,12 @@ func NewQStringListModel2(strings []string) *QStringListModel {
 
 // NewQStringListModel3 constructs a new QStringListModel object.
 func NewQStringListModel3(parent *QObject) *QStringListModel {
-	defer runtime.KeepAlive(parent)
 
 	return newQStringListModel(C.QStringListModel_new3(parent.cPointer()))
 }
 
 // NewQStringListModel4 constructs a new QStringListModel object.
 func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
-	defer runtime.KeepAlive(parent)
 	strings_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray_ptr))
 	strings_CArray := unsafe.Slice(strings_CArray_ptr, len(strings))
@@ -107,12 +105,10 @@ func NewQStringListModel4(strings []string, parent *QObject) *QStringListModel {
 }
 
 func (this *QStringListModel) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QStringListModel_metaObject(this.h))
 }
 
 func (this *QStringListModel) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QStringListModel_metacast(this.h, param1_Cstring))
@@ -137,13 +133,11 @@ func QStringListModel_TrUtf8(s string) string {
 }
 
 func (this *QStringListModel) RowCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (int)(C.QStringListModel_rowCount(this.h, parent.cPointer()))
 }
 
 func (this *QStringListModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 	_goptr := newQModelIndex(C.QStringListModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -151,7 +145,6 @@ func (this *QStringListModel) Sibling(row int, column int, idx *QModelIndex) *QM
 }
 
 func (this *QStringListModel) Data(index *QModelIndex, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQVariant(C.QStringListModel_data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -159,39 +152,33 @@ func (this *QStringListModel) Data(index *QModelIndex, role int) *QVariant {
 }
 
 func (this *QStringListModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 	return (bool)(C.QStringListModel_setData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QStringListModel) Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return (ItemFlag)(C.QStringListModel_flags(this.h, index.cPointer()))
 }
 
 func (this *QStringListModel) InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStringListModel_insertRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QStringListModel) RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (bool)(C.QStringListModel_removeRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QStringListModel) MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 	return (bool)(C.QStringListModel_moveRows(this.h, sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 }
 
 func (this *QStringListModel) ItemData(index *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	var _mm C.struct_miqt_map = C.QStringListModel_itemData(this.h, index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
@@ -210,7 +197,6 @@ func (this *QStringListModel) ItemData(index *QModelIndex) map[int]QVariant {
 }
 
 func (this *QStringListModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -234,12 +220,10 @@ func (this *QStringListModel) SetItemData(index *QModelIndex, roles map[int]QVar
 }
 
 func (this *QStringListModel) Sort(column int, order SortOrder) {
-	defer runtime.KeepAlive(this)
 	C.QStringListModel_sort(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QStringListModel) StringList() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QStringListModel_stringList(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -253,7 +237,6 @@ func (this *QStringListModel) StringList() []string {
 }
 
 func (this *QStringListModel) SetStringList(strings []string) {
-	defer runtime.KeepAlive(this)
 	strings_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray_ptr))
 	strings_CArray := unsafe.Slice(strings_CArray_ptr, len(strings))
@@ -269,7 +252,6 @@ func (this *QStringListModel) SetStringList(strings []string) {
 }
 
 func (this *QStringListModel) SupportedDropActions() DropAction {
-	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QStringListModel_supportedDropActions(this.h))
 }
 
@@ -319,7 +301,6 @@ func QStringListModel_TrUtf83(s string, c string, n int) string {
 
 // ResetInternalData can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) ResetInternalData() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStringListModel_protectedbase_resetInternalData(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -332,7 +313,6 @@ func (this *QStringListModel) ResetInternalData() {
 
 // CreateIndex can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) CreateIndex(row int, column int) QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQModelIndex(C.QStringListModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
@@ -349,7 +329,6 @@ func (this *QStringListModel) CreateIndex(row int, column int) QModelIndex {
 
 // EncodeData can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
@@ -371,7 +350,6 @@ func (this *QStringListModel) EncodeData(indexes []QModelIndex, stream *QDataStr
 
 // DecodeData can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(stream)
 
@@ -388,7 +366,6 @@ func (this *QStringListModel) DecodeData(row int, column int, parent *QModelInde
 
 // BeginInsertRows can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -402,7 +379,6 @@ func (this *QStringListModel) BeginInsertRows(parent *QModelIndex, first int, la
 
 // EndInsertRows can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) EndInsertRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStringListModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -415,7 +391,6 @@ func (this *QStringListModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -429,7 +404,6 @@ func (this *QStringListModel) BeginRemoveRows(parent *QModelIndex, first int, la
 
 // EndRemoveRows can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) EndRemoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStringListModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -442,7 +416,6 @@ func (this *QStringListModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -459,7 +432,6 @@ func (this *QStringListModel) BeginMoveRows(sourceParent *QModelIndex, sourceFir
 
 // EndMoveRows can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) EndMoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStringListModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -472,7 +444,6 @@ func (this *QStringListModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -486,7 +457,6 @@ func (this *QStringListModel) BeginInsertColumns(parent *QModelIndex, first int,
 
 // EndInsertColumns can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) EndInsertColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStringListModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -499,7 +469,6 @@ func (this *QStringListModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -513,7 +482,6 @@ func (this *QStringListModel) BeginRemoveColumns(parent *QModelIndex, first int,
 
 // EndRemoveColumns can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) EndRemoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStringListModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -526,7 +494,6 @@ func (this *QStringListModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -543,7 +510,6 @@ func (this *QStringListModel) BeginMoveColumns(sourceParent *QModelIndex, source
 
 // EndMoveColumns can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) EndMoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStringListModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -556,7 +522,6 @@ func (this *QStringListModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) BeginResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStringListModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -569,7 +534,6 @@ func (this *QStringListModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) EndResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStringListModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -582,7 +546,6 @@ func (this *QStringListModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 
@@ -597,7 +560,6 @@ func (this *QStringListModel) ChangePersistentIndex(from *QModelIndex, to *QMode
 
 // ChangePersistentIndexList can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
@@ -626,7 +588,6 @@ func (this *QStringListModel) ChangePersistentIndexList(from []QModelIndex, to [
 
 // PersistentIndexList can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) PersistentIndexList() []QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QStringListModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -649,7 +610,6 @@ func (this *QStringListModel) PersistentIndexList() []QModelIndex {
 
 // Sender can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QStringListModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -664,7 +624,6 @@ func (this *QStringListModel) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QStringListModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -679,7 +638,6 @@ func (this *QStringListModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -696,7 +654,6 @@ func (this *QStringListModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QStringListModel that was directly constructed.
 func (this *QStringListModel) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -711,7 +668,6 @@ func (this *QStringListModel) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QStringListModel) callVirtualBase_RowCount(parent *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QStringListModel_virtualbase_rowCount(unsafe.Pointer(this.h), parent.cPointer()))
@@ -741,7 +697,6 @@ func miqt_exec_callback_QStringListModel_rowCount(self *C.QStringListModel, cb C
 }
 
 func (this *QStringListModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 
 	_goptr := newQModelIndex(C.QStringListModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
@@ -778,7 +733,6 @@ func miqt_exec_callback_QStringListModel_sibling(self *C.QStringListModel, cb C.
 }
 
 func (this *QStringListModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQVariant(C.QStringListModel_virtualbase_data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
@@ -813,7 +767,6 @@ func miqt_exec_callback_QStringListModel_data(self *C.QStringListModel, cb C.int
 }
 
 func (this *QStringListModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 
@@ -848,7 +801,6 @@ func miqt_exec_callback_QStringListModel_setData(self *C.QStringListModel, cb C.
 }
 
 func (this *QStringListModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (ItemFlag)(C.QStringListModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
@@ -878,7 +830,6 @@ func miqt_exec_callback_QStringListModel_flags(self *C.QStringListModel, cb C.in
 }
 
 func (this *QStringListModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStringListModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -912,7 +863,6 @@ func miqt_exec_callback_QStringListModel_insertRows(self *C.QStringListModel, cb
 }
 
 func (this *QStringListModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStringListModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
@@ -946,7 +896,6 @@ func miqt_exec_callback_QStringListModel_removeRows(self *C.QStringListModel, cb
 }
 
 func (this *QStringListModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -985,7 +934,6 @@ func miqt_exec_callback_QStringListModel_moveRows(self *C.QStringListModel, cb C
 }
 
 func (this *QStringListModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QStringListModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
@@ -1044,7 +992,6 @@ func miqt_exec_callback_QStringListModel_itemData(self *C.QStringListModel, cb C
 }
 
 func (this *QStringListModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -1107,7 +1054,6 @@ func miqt_exec_callback_QStringListModel_setItemData(self *C.QStringListModel, c
 }
 
 func (this *QStringListModel) callVirtualBase_Sort(column int, order SortOrder) {
-	defer runtime.KeepAlive(this)
 
 	C.QStringListModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -1136,7 +1082,6 @@ func miqt_exec_callback_QStringListModel_sort(self *C.QStringListModel, cb C.int
 }
 
 func (this *QStringListModel) callVirtualBase_SupportedDropActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QStringListModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -1162,7 +1107,6 @@ func miqt_exec_callback_QStringListModel_supportedDropActions(self *C.QStringLis
 }
 
 func (this *QStringListModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	_goptr := newQModelIndex(C.QStringListModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -1199,8 +1143,6 @@ func miqt_exec_callback_QStringListModel_index(self *C.QStringListModel, cb C.in
 }
 
 func (this *QStringListModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStringListModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -1238,7 +1180,6 @@ func miqt_exec_callback_QStringListModel_dropMimeData(self *C.QStringListModel, 
 }
 
 func (this *QStringListModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QStringListModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1274,7 +1215,6 @@ func miqt_exec_callback_QStringListModel_headerData(self *C.QStringListModel, cb
 }
 
 func (this *QStringListModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QStringListModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
@@ -1310,7 +1250,6 @@ func miqt_exec_callback_QStringListModel_setHeaderData(self *C.QStringListModel,
 }
 
 func (this *QStringListModel) callVirtualBase_MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QStringListModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1354,7 +1293,6 @@ func miqt_exec_callback_QStringListModel_mimeTypes(self *C.QStringListModel, cb 
 }
 
 func (this *QStringListModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -1393,15 +1331,12 @@ func miqt_exec_callback_QStringListModel_mimeData(self *C.QStringListModel, cb C
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QStringListModel{h: self}).callVirtualBase_MimeData, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QStringListModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStringListModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
@@ -1439,7 +1374,6 @@ func miqt_exec_callback_QStringListModel_canDropMimeData(self *C.QStringListMode
 }
 
 func (this *QStringListModel) callVirtualBase_SupportedDragActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QStringListModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -1465,7 +1399,6 @@ func miqt_exec_callback_QStringListModel_supportedDragActions(self *C.QStringLis
 }
 
 func (this *QStringListModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStringListModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -1499,7 +1432,6 @@ func miqt_exec_callback_QStringListModel_insertColumns(self *C.QStringListModel,
 }
 
 func (this *QStringListModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStringListModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
@@ -1533,7 +1465,6 @@ func miqt_exec_callback_QStringListModel_removeColumns(self *C.QStringListModel,
 }
 
 func (this *QStringListModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -1572,7 +1503,6 @@ func miqt_exec_callback_QStringListModel_moveColumns(self *C.QStringListModel, c
 }
 
 func (this *QStringListModel) callVirtualBase_FetchMore(parent *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QStringListModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
@@ -1600,7 +1530,6 @@ func miqt_exec_callback_QStringListModel_fetchMore(self *C.QStringListModel, cb 
 }
 
 func (this *QStringListModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QStringListModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
@@ -1630,7 +1559,6 @@ func miqt_exec_callback_QStringListModel_canFetchMore(self *C.QStringListModel, 
 }
 
 func (this *QStringListModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQModelIndex(C.QStringListModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
@@ -1663,7 +1591,6 @@ func miqt_exec_callback_QStringListModel_buddy(self *C.QStringListModel, cb C.in
 }
 
 func (this *QStringListModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(start)
 	defer runtime.KeepAlive(value)
 
@@ -1717,7 +1644,6 @@ func miqt_exec_callback_QStringListModel_match(self *C.QStringListModel, cb C.in
 }
 
 func (this *QStringListModel) callVirtualBase_Span(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQSize(C.QStringListModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
@@ -1750,7 +1676,6 @@ func miqt_exec_callback_QStringListModel_span(self *C.QStringListModel, cb C.int
 }
 
 func (this *QStringListModel) callVirtualBase_RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QStringListModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -1811,7 +1736,6 @@ func miqt_exec_callback_QStringListModel_roleNames(self *C.QStringListModel, cb 
 }
 
 func (this *QStringListModel) callVirtualBase_Submit() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QStringListModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -1837,7 +1761,6 @@ func miqt_exec_callback_QStringListModel_submit(self *C.QStringListModel, cb C.i
 }
 
 func (this *QStringListModel) callVirtualBase_Revert() {
-	defer runtime.KeepAlive(this)
 
 	C.QStringListModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -1861,7 +1784,6 @@ func miqt_exec_callback_QStringListModel_revert(self *C.QStringListModel, cb C.i
 }
 
 func (this *QStringListModel) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStringListModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1891,8 +1813,6 @@ func miqt_exec_callback_QStringListModel_event(self *C.QStringListModel, cb C.in
 }
 
 func (this *QStringListModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStringListModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1924,7 +1844,6 @@ func miqt_exec_callback_QStringListModel_eventFilter(self *C.QStringListModel, c
 }
 
 func (this *QStringListModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStringListModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1952,7 +1871,6 @@ func miqt_exec_callback_QStringListModel_timerEvent(self *C.QStringListModel, cb
 }
 
 func (this *QStringListModel) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStringListModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1980,7 +1898,6 @@ func miqt_exec_callback_QStringListModel_childEvent(self *C.QStringListModel, cb
 }
 
 func (this *QStringListModel) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStringListModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2008,7 +1925,6 @@ func miqt_exec_callback_QStringListModel_customEvent(self *C.QStringListModel, c
 }
 
 func (this *QStringListModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QStringListModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2036,7 +1952,6 @@ func miqt_exec_callback_QStringListModel_connectNotify(self *C.QStringListModel,
 }
 
 func (this *QStringListModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QStringListModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2071,6 +1986,8 @@ func (this *QStringListModel) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QStringListModel) GoGC() {
 	if this.gc != nil {
 		return

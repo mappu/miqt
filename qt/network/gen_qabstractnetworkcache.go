@@ -319,12 +319,10 @@ func UnsafeNewQAbstractNetworkCache(h unsafe.Pointer) *QAbstractNetworkCache {
 }
 
 func (this *QAbstractNetworkCache) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractNetworkCache_metaObject(this.h)))
 }
 
 func (this *QAbstractNetworkCache) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractNetworkCache_metacast(this.h, param1_Cstring))
@@ -349,7 +347,6 @@ func QAbstractNetworkCache_TrUtf8(s string) string {
 }
 
 func (this *QAbstractNetworkCache) MetaData(url *qt.QUrl) *QNetworkCacheMetaData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	_goptr := newQNetworkCacheMetaData(C.QAbstractNetworkCache_metaData(this.h, (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -357,42 +354,34 @@ func (this *QAbstractNetworkCache) MetaData(url *qt.QUrl) *QNetworkCacheMetaData
 }
 
 func (this *QAbstractNetworkCache) UpdateMetaData(metaData *QNetworkCacheMetaData) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(metaData)
 	C.QAbstractNetworkCache_updateMetaData(this.h, metaData.cPointer())
 }
 
 func (this *QAbstractNetworkCache) Data(url *qt.QUrl) *qt.QIODevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_data(this.h, (*C.QUrl)(url.UnsafePointer()))))
 }
 
 func (this *QAbstractNetworkCache) Remove(url *qt.QUrl) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	return (bool)(C.QAbstractNetworkCache_remove(this.h, (*C.QUrl)(url.UnsafePointer())))
 }
 
 func (this *QAbstractNetworkCache) CacheSize() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAbstractNetworkCache_cacheSize(this.h))
 }
 
 func (this *QAbstractNetworkCache) Prepare(metaData *QNetworkCacheMetaData) *qt.QIODevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(metaData)
 	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_prepare(this.h, metaData.cPointer())))
 }
 
 func (this *QAbstractNetworkCache) Insert(device *qt.QIODevice) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QAbstractNetworkCache_insert(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAbstractNetworkCache) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractNetworkCache_clear(this.h)
 }
 
@@ -448,6 +437,8 @@ func (this *QAbstractNetworkCache) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractNetworkCache) GoGC() {
 	if this.gc != nil {
 		return

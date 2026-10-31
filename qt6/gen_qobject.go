@@ -67,18 +67,15 @@ func NewQObject() *QObject {
 
 // NewQObject2 constructs a new QObject object.
 func NewQObject2(parent *QObject) *QObject {
-	defer runtime.KeepAlive(parent)
 
 	return newQObject(C.QObject_new2(parent.cPointer()))
 }
 
 func (this *QObject) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QObject_metaObject(this.h))
 }
 
 func (this *QObject) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QObject_metacast(this.h, param1_Cstring))
@@ -94,20 +91,16 @@ func QObject_Tr(s string) string {
 }
 
 func (this *QObject) Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 	return (bool)(C.QObject_event(this.h, event.cPointer()))
 }
 
 func (this *QObject) EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 	return (bool)(C.QObject_eventFilter(this.h, watched.cPointer(), event.cPointer()))
 }
 
 func (this *QObject) ObjectName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QObject_objectName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -115,7 +108,6 @@ func (this *QObject) ObjectName() string {
 }
 
 func (this *QObject) SetObjectName(name string) {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -124,58 +116,46 @@ func (this *QObject) SetObjectName(name string) {
 }
 
 func (this *QObject) IsWidgetType() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QObject_isWidgetType(this.h))
 }
 
 func (this *QObject) IsWindowType() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QObject_isWindowType(this.h))
 }
 
 func (this *QObject) IsQuickItemType() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QObject_isQuickItemType(this.h))
 }
 
 func (this *QObject) SignalsBlocked() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QObject_signalsBlocked(this.h))
 }
 
 func (this *QObject) BlockSignals(b bool) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QObject_blockSignals(this.h, (C.bool)(b)))
 }
 
 func (this *QObject) Thread() *QThread {
-	defer runtime.KeepAlive(this)
 	return newQThread(C.QObject_thread(this.h))
 }
 
 func (this *QObject) MoveToThread(thread *QThread) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(thread)
 	C.QObject_moveToThread(this.h, thread.cPointer())
 }
 
 func (this *QObject) StartTimer(interval int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QObject_startTimer(this.h, (C.int)(interval)))
 }
 
 func (this *QObject) StartTimerWithTime(time Milliseconds) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QObject_startTimerWithTime(this.h, (C.int64_t)(time)))
 }
 
 func (this *QObject) KillTimer(id int) {
-	defer runtime.KeepAlive(this)
 	C.QObject_killTimer(this.h, (C.int)(id))
 }
 
 func (this *QObject) Children() []*QObject {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QObject_children(this.h)
 	_ret := make([]*QObject, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -186,27 +166,19 @@ func (this *QObject) Children() []*QObject {
 }
 
 func (this *QObject) SetParent(parent *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	C.QObject_setParent(this.h, parent.cPointer())
 }
 
 func (this *QObject) InstallEventFilter(filterObj *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(filterObj)
 	C.QObject_installEventFilter(this.h, filterObj.cPointer())
 }
 
 func (this *QObject) RemoveEventFilter(obj *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(obj)
 	C.QObject_removeEventFilter(this.h, obj.cPointer())
 }
 
 func QObject_Connect(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod) *QMetaObject__Connection {
-	defer runtime.KeepAlive(sender)
 	defer runtime.KeepAlive(signal)
-	defer runtime.KeepAlive(receiver)
 	defer runtime.KeepAlive(method)
 	_goptr := newQMetaObject__Connection(C.QObject_connect(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -214,8 +186,6 @@ func QObject_Connect(sender *QObject, signal *QMetaMethod, receiver *QObject, me
 }
 
 func (this *QObject) Connect2(sender *QObject, signal string, member string) *QMetaObject__Connection {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sender)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 	member_Cstring := C.CString(member)
@@ -226,9 +196,7 @@ func (this *QObject) Connect2(sender *QObject, signal string, member string) *QM
 }
 
 func QObject_Disconnect(sender *QObject, signal *QMetaMethod, receiver *QObject, member *QMetaMethod) bool {
-	defer runtime.KeepAlive(sender)
 	defer runtime.KeepAlive(signal)
-	defer runtime.KeepAlive(receiver)
 	defer runtime.KeepAlive(member)
 	return (bool)(C.QObject_disconnect(sender.cPointer(), signal.cPointer(), receiver.cPointer(), member.cPointer()))
 }
@@ -239,17 +207,14 @@ func QObject_DisconnectWithQMetaObjectConnection(param1 *QMetaObject__Connection
 }
 
 func (this *QObject) DumpObjectTree() {
-	defer runtime.KeepAlive(this)
 	C.QObject_dumpObjectTree(this.h)
 }
 
 func (this *QObject) DumpObjectInfo() {
-	defer runtime.KeepAlive(this)
 	C.QObject_dumpObjectInfo(this.h)
 }
 
 func (this *QObject) SetProperty(name string, value *QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
@@ -257,7 +222,6 @@ func (this *QObject) SetProperty(name string, value *QVariant) bool {
 }
 
 func (this *QObject) Property(name string) *QVariant {
-	defer runtime.KeepAlive(this)
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	_goptr := newQVariant(C.QObject_property(this.h, name_Cstring))
@@ -266,7 +230,6 @@ func (this *QObject) Property(name string) *QVariant {
 }
 
 func (this *QObject) DynamicPropertyNames() [][]byte {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QObject_dynamicPropertyNames(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -280,17 +243,14 @@ func (this *QObject) DynamicPropertyNames() [][]byte {
 }
 
 func (this *QObject) BindingStorage() *QBindingStorage {
-	defer runtime.KeepAlive(this)
 	return newQBindingStorage(C.QObject_bindingStorage(this.h))
 }
 
 func (this *QObject) BindingStorage2() *QBindingStorage {
-	defer runtime.KeepAlive(this)
 	return newQBindingStorage(C.QObject_bindingStorage2(this.h))
 }
 
 func (this *QObject) Destroyed() {
-	defer runtime.KeepAlive(this)
 	C.QObject_destroyed(this.h)
 }
 func (this *QObject) OnDestroyed(slot func()) {
@@ -308,19 +268,16 @@ func miqt_exec_callback_QObject_destroyed(cb C.intptr_t) {
 }
 
 func (this *QObject) Parent() *QObject {
-	defer runtime.KeepAlive(this)
 	return newQObject(C.QObject_parent(this.h))
 }
 
 func (this *QObject) Inherits(classname string) bool {
-	defer runtime.KeepAlive(this)
 	classname_Cstring := C.CString(classname)
 	defer C.free(unsafe.Pointer(classname_Cstring))
 	return (bool)(C.QObject_inherits(this.h, classname_Cstring))
 }
 
 func (this *QObject) DeleteLater() {
-	defer runtime.KeepAlive(this)
 	C.QObject_deleteLater(this.h)
 }
 
@@ -347,19 +304,15 @@ func QObject_Tr3(s string, c string, n int) string {
 }
 
 func (this *QObject) StartTimer2(interval int, timerType TimerType) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QObject_startTimer2(this.h, (C.int)(interval), (C.int)(timerType)))
 }
 
 func (this *QObject) StartTimer3(time Milliseconds, timerType TimerType) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QObject_startTimer3(this.h, (C.int64_t)(time), (C.int)(timerType)))
 }
 
 func QObject_Connect3(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal ConnectionType) *QMetaObject__Connection {
-	defer runtime.KeepAlive(sender)
 	defer runtime.KeepAlive(signal)
-	defer runtime.KeepAlive(receiver)
 	defer runtime.KeepAlive(method)
 	_goptr := newQMetaObject__Connection(C.QObject_connect3(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer(), (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -367,8 +320,6 @@ func QObject_Connect3(sender *QObject, signal *QMetaMethod, receiver *QObject, m
 }
 
 func (this *QObject) Connect4(sender *QObject, signal string, member string, typeVal ConnectionType) *QMetaObject__Connection {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sender)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 	member_Cstring := C.CString(member)
@@ -379,8 +330,6 @@ func (this *QObject) Connect4(sender *QObject, signal string, member string, typ
 }
 
 func (this *QObject) DestroyedWithQObject(param1 *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QObject_destroyedWithQObject(this.h, param1.cPointer())
 }
 func (this *QObject) OnDestroyedWithQObject(slot func(param1 *QObject)) {
@@ -402,7 +351,6 @@ func miqt_exec_callback_QObject_destroyedWithQObject(cb C.intptr_t, param1 *C.QO
 
 // Sender can only be called from a QObject that was directly constructed.
 func (this *QObject) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QObject_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -417,7 +365,6 @@ func (this *QObject) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QObject that was directly constructed.
 func (this *QObject) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QObject_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -432,7 +379,6 @@ func (this *QObject) SenderSignalIndex() int {
 
 // Receivers can only be called from a QObject that was directly constructed.
 func (this *QObject) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -449,7 +395,6 @@ func (this *QObject) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QObject that was directly constructed.
 func (this *QObject) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -464,7 +409,6 @@ func (this *QObject) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QObject) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QObject_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -494,8 +438,6 @@ func miqt_exec_callback_QObject_event(self *C.QObject, cb C.intptr_t, event *C.Q
 }
 
 func (this *QObject) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QObject_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -527,7 +469,6 @@ func miqt_exec_callback_QObject_eventFilter(self *C.QObject, cb C.intptr_t, watc
 }
 
 func (this *QObject) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QObject_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -555,7 +496,6 @@ func miqt_exec_callback_QObject_timerEvent(self *C.QObject, cb C.intptr_t, event
 }
 
 func (this *QObject) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QObject_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -583,7 +523,6 @@ func miqt_exec_callback_QObject_childEvent(self *C.QObject, cb C.intptr_t, event
 }
 
 func (this *QObject) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QObject_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -611,7 +550,6 @@ func miqt_exec_callback_QObject_customEvent(self *C.QObject, cb C.intptr_t, even
 }
 
 func (this *QObject) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QObject_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -639,7 +577,6 @@ func miqt_exec_callback_QObject_connectNotify(self *C.QObject, cb C.intptr_t, si
 }
 
 func (this *QObject) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QObject_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -693,6 +630,8 @@ func (this *QObject) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QObject) GoGC() {
 	if this.gc != nil {
 		return
@@ -745,14 +684,12 @@ func UnsafeNewQSignalBlocker(h unsafe.Pointer) *QSignalBlocker {
 
 // NewQSignalBlocker constructs a new QSignalBlocker object.
 func NewQSignalBlocker(o *QObject) *QSignalBlocker {
-	defer runtime.KeepAlive(o)
 
 	return newQSignalBlocker(C.QSignalBlocker_new(o.cPointer()))
 }
 
 // NewQSignalBlocker2 constructs a new QSignalBlocker object.
 func NewQSignalBlocker2(o *QObject) *QSignalBlocker {
-	defer runtime.KeepAlive(o)
 
 	return newQSignalBlocker(C.QSignalBlocker_new2(o.cPointer()))
 }

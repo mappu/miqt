@@ -78,30 +78,24 @@ func NewQQmlProperty() *QQmlProperty {
 
 // NewQQmlProperty2 constructs a new QQmlProperty object.
 func NewQQmlProperty2(param1 *qt6.QObject) *QQmlProperty {
-	defer runtime.KeepAlive(param1)
 
 	return newQQmlProperty(C.QQmlProperty_new2((*C.QObject)(param1.UnsafePointer())))
 }
 
 // NewQQmlProperty3 constructs a new QQmlProperty object.
 func NewQQmlProperty3(param1 *qt6.QObject, param2 *QQmlContext) *QQmlProperty {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
 	return newQQmlProperty(C.QQmlProperty_new3((*C.QObject)(param1.UnsafePointer()), param2.cPointer()))
 }
 
 // NewQQmlProperty4 constructs a new QQmlProperty object.
 func NewQQmlProperty4(param1 *qt6.QObject, param2 *QQmlEngine) *QQmlProperty {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
 	return newQQmlProperty(C.QQmlProperty_new4((*C.QObject)(param1.UnsafePointer()), param2.cPointer()))
 }
 
 // NewQQmlProperty5 constructs a new QQmlProperty object.
 func NewQQmlProperty5(param1 *qt6.QObject, param2 string) *QQmlProperty {
-	defer runtime.KeepAlive(param1)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -112,8 +106,6 @@ func NewQQmlProperty5(param1 *qt6.QObject, param2 string) *QQmlProperty {
 
 // NewQQmlProperty6 constructs a new QQmlProperty object.
 func NewQQmlProperty6(param1 *qt6.QObject, param2 string, param3 *QQmlContext) *QQmlProperty {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param3)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -124,8 +116,6 @@ func NewQQmlProperty6(param1 *qt6.QObject, param2 string, param3 *QQmlContext) *
 
 // NewQQmlProperty7 constructs a new QQmlProperty object.
 func NewQQmlProperty7(param1 *qt6.QObject, param2 string, param3 *QQmlEngine) *QQmlProperty {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param3)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -218,7 +208,6 @@ func (this *QQmlProperty) Read() *qt6.QVariant {
 }
 
 func QQmlProperty_Read2(param1 *qt6.QObject, param2 string) *qt6.QVariant {
-	defer runtime.KeepAlive(param1)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -229,8 +218,6 @@ func QQmlProperty_Read2(param1 *qt6.QObject, param2 string) *qt6.QVariant {
 }
 
 func QQmlProperty_Read3(param1 *qt6.QObject, param2 string, param3 *QQmlContext) *qt6.QVariant {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param3)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -241,8 +228,6 @@ func QQmlProperty_Read3(param1 *qt6.QObject, param2 string, param3 *QQmlContext)
 }
 
 func QQmlProperty_Read4(param1 *qt6.QObject, param2 string, param3 *QQmlEngine) *qt6.QVariant {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param3)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -259,7 +244,6 @@ func (this *QQmlProperty) Write(param1 *qt6.QVariant) bool {
 }
 
 func QQmlProperty_Write2(param1 *qt6.QObject, param2 string, param3 *qt6.QVariant) bool {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param3)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
@@ -269,9 +253,7 @@ func QQmlProperty_Write2(param1 *qt6.QObject, param2 string, param3 *qt6.QVarian
 }
 
 func QQmlProperty_Write3(param1 *qt6.QObject, param2 string, param3 *qt6.QVariant, param4 *QQmlContext) bool {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param3)
-	defer runtime.KeepAlive(param4)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -280,9 +262,7 @@ func QQmlProperty_Write3(param1 *qt6.QObject, param2 string, param3 *qt6.QVarian
 }
 
 func QQmlProperty_Write4(param1 *qt6.QObject, param2 string, param3 *qt6.QVariant, param4 *QQmlEngine) bool {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param3)
-	defer runtime.KeepAlive(param4)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -307,7 +287,6 @@ func (this *QQmlProperty) NeedsNotifySignal() bool {
 
 func (this *QQmlProperty) ConnectNotifySignal(dest *qt6.QObject, slot string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dest)
 	slot_Cstring := C.CString(slot)
 	defer C.free(unsafe.Pointer(slot_Cstring))
 	return (bool)(C.QQmlProperty_connectNotifySignal(this.h, (*C.QObject)(dest.UnsafePointer()), slot_Cstring))
@@ -315,7 +294,6 @@ func (this *QQmlProperty) ConnectNotifySignal(dest *qt6.QObject, slot string) bo
 
 func (this *QQmlProperty) ConnectNotifySignal2(dest *qt6.QObject, method int) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dest)
 	return (bool)(C.QQmlProperty_connectNotifySignal2(this.h, (*C.QObject)(dest.UnsafePointer()), (C.int)(method)))
 }
 

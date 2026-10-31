@@ -82,7 +82,6 @@ func NewQsciStyledText3(param1 *QsciStyledText) *QsciStyledText {
 
 func (this *QsciStyledText) Apply(sci *QsciScintillaBase) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sci)
 	C.QsciStyledText_apply(this.h, sci.cPointer())
 }
 

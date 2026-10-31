@@ -78,7 +78,6 @@ func UnsafeNewQTextEdit(h unsafe.Pointer) *QTextEdit {
 
 // NewQTextEdit constructs a new QTextEdit object.
 func NewQTextEdit(parent *QWidget) *QTextEdit {
-	defer runtime.KeepAlive(parent)
 
 	return newQTextEdit(C.QTextEdit_new(parent.cPointer()))
 }
@@ -101,7 +100,6 @@ func NewQTextEdit3(text string) *QTextEdit {
 
 // NewQTextEdit4 constructs a new QTextEdit object.
 func NewQTextEdit4(text string, parent *QWidget) *QTextEdit {
-	defer runtime.KeepAlive(parent)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -111,12 +109,10 @@ func NewQTextEdit4(text string, parent *QWidget) *QTextEdit {
 }
 
 func (this *QTextEdit) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTextEdit_metaObject(this.h))
 }
 
 func (this *QTextEdit) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTextEdit_metacast(this.h, param1_Cstring))
@@ -141,18 +137,14 @@ func QTextEdit_TrUtf8(s string) string {
 }
 
 func (this *QTextEdit) SetDocument(document *QTextDocument) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(document)
 	C.QTextEdit_setDocument(this.h, document.cPointer())
 }
 
 func (this *QTextEdit) Document() *QTextDocument {
-	defer runtime.KeepAlive(this)
 	return newQTextDocument(C.QTextEdit_document(this.h))
 }
 
 func (this *QTextEdit) SetPlaceholderText(placeholderText string) {
-	defer runtime.KeepAlive(this)
 	placeholderText_ms := C.struct_miqt_string{}
 	placeholderText_ms.data = C.CString(placeholderText)
 	placeholderText_ms.len = C.size_t(len(placeholderText))
@@ -161,7 +153,6 @@ func (this *QTextEdit) SetPlaceholderText(placeholderText string) {
 }
 
 func (this *QTextEdit) PlaceholderText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextEdit_placeholderText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -169,45 +160,37 @@ func (this *QTextEdit) PlaceholderText() string {
 }
 
 func (this *QTextEdit) SetTextCursor(cursor *QTextCursor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cursor)
 	C.QTextEdit_setTextCursor(this.h, cursor.cPointer())
 }
 
 func (this *QTextEdit) TextCursor() *QTextCursor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextCursor(C.QTextEdit_textCursor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) IsReadOnly() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextEdit_isReadOnly(this.h))
 }
 
 func (this *QTextEdit) SetReadOnly(ro bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setReadOnly(this.h, (C.bool)(ro))
 }
 
 func (this *QTextEdit) SetTextInteractionFlags(flags TextInteractionFlag) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTextEdit) TextInteractionFlags() TextInteractionFlag {
-	defer runtime.KeepAlive(this)
 	return (TextInteractionFlag)(C.QTextEdit_textInteractionFlags(this.h))
 }
 
 func (this *QTextEdit) FontPointSize() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextEdit_fontPointSize(this.h))
 }
 
 func (this *QTextEdit) FontFamily() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextEdit_fontFamily(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -215,87 +198,72 @@ func (this *QTextEdit) FontFamily() string {
 }
 
 func (this *QTextEdit) FontWeight() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextEdit_fontWeight(this.h))
 }
 
 func (this *QTextEdit) FontUnderline() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextEdit_fontUnderline(this.h))
 }
 
 func (this *QTextEdit) FontItalic() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextEdit_fontItalic(this.h))
 }
 
 func (this *QTextEdit) TextColor() *QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QTextEdit_textColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) TextBackgroundColor() *QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QTextEdit_textBackgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) CurrentFont() *QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QTextEdit_currentFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) Alignment() AlignmentFlag {
-	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QTextEdit_alignment(this.h))
 }
 
 func (this *QTextEdit) MergeCurrentCharFormat(modifier *QTextCharFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(modifier)
 	C.QTextEdit_mergeCurrentCharFormat(this.h, modifier.cPointer())
 }
 
 func (this *QTextEdit) SetCurrentCharFormat(format *QTextCharFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(format)
 	C.QTextEdit_setCurrentCharFormat(this.h, format.cPointer())
 }
 
 func (this *QTextEdit) CurrentCharFormat() *QTextCharFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextCharFormat(C.QTextEdit_currentCharFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) AutoFormatting() QTextEdit__AutoFormattingFlag {
-	defer runtime.KeepAlive(this)
 	return (QTextEdit__AutoFormattingFlag)(C.QTextEdit_autoFormatting(this.h))
 }
 
 func (this *QTextEdit) SetAutoFormatting(features QTextEdit__AutoFormattingFlag) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setAutoFormatting(this.h, (C.int)(features))
 }
 
 func (this *QTextEdit) TabChangesFocus() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextEdit_tabChangesFocus(this.h))
 }
 
 func (this *QTextEdit) SetTabChangesFocus(b bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setTabChangesFocus(this.h, (C.bool)(b))
 }
 
 func (this *QTextEdit) SetDocumentTitle(title string) {
-	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -304,7 +272,6 @@ func (this *QTextEdit) SetDocumentTitle(title string) {
 }
 
 func (this *QTextEdit) DocumentTitle() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextEdit_documentTitle(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -312,47 +279,38 @@ func (this *QTextEdit) DocumentTitle() string {
 }
 
 func (this *QTextEdit) IsUndoRedoEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextEdit_isUndoRedoEnabled(this.h))
 }
 
 func (this *QTextEdit) SetUndoRedoEnabled(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setUndoRedoEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QTextEdit) LineWrapMode() QTextEdit__LineWrapMode {
-	defer runtime.KeepAlive(this)
 	return (QTextEdit__LineWrapMode)(C.QTextEdit_lineWrapMode(this.h))
 }
 
 func (this *QTextEdit) SetLineWrapMode(mode QTextEdit__LineWrapMode) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setLineWrapMode(this.h, (C.int)(mode))
 }
 
 func (this *QTextEdit) LineWrapColumnOrWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextEdit_lineWrapColumnOrWidth(this.h))
 }
 
 func (this *QTextEdit) SetLineWrapColumnOrWidth(w int) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setLineWrapColumnOrWidth(this.h, (C.int)(w))
 }
 
 func (this *QTextEdit) WordWrapMode() QTextOption__WrapMode {
-	defer runtime.KeepAlive(this)
 	return (QTextOption__WrapMode)(C.QTextEdit_wordWrapMode(this.h))
 }
 
 func (this *QTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setWordWrapMode(this.h, (C.int)(policy))
 }
 
 func (this *QTextEdit) Find(exp string) bool {
-	defer runtime.KeepAlive(this)
 	exp_ms := C.struct_miqt_string{}
 	exp_ms.data = C.CString(exp)
 	exp_ms.len = C.size_t(len(exp))
@@ -361,19 +319,16 @@ func (this *QTextEdit) Find(exp string) bool {
 }
 
 func (this *QTextEdit) FindWithExp(exp *QRegExp) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(exp)
 	return (bool)(C.QTextEdit_findWithExp(this.h, exp.cPointer()))
 }
 
 func (this *QTextEdit) Find2(exp *QRegularExpression) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(exp)
 	return (bool)(C.QTextEdit_find2(this.h, exp.cPointer()))
 }
 
 func (this *QTextEdit) ToPlainText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextEdit_toPlainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -381,7 +336,6 @@ func (this *QTextEdit) ToPlainText() string {
 }
 
 func (this *QTextEdit) ToHtml() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextEdit_toHtml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -389,7 +343,6 @@ func (this *QTextEdit) ToHtml() string {
 }
 
 func (this *QTextEdit) ToMarkdown() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextEdit_toMarkdown(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -397,12 +350,10 @@ func (this *QTextEdit) ToMarkdown() string {
 }
 
 func (this *QTextEdit) EnsureCursorVisible() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_ensureCursorVisible(this.h)
 }
 
 func (this *QTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(name)
 	_goptr := newQVariant(C.QTextEdit_loadResource(this.h, (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -410,18 +361,15 @@ func (this *QTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
 }
 
 func (this *QTextEdit) CreateStandardContextMenu() *QMenu {
-	defer runtime.KeepAlive(this)
 	return newQMenu(C.QTextEdit_createStandardContextMenu(this.h))
 }
 
 func (this *QTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(position)
 	return newQMenu(C.QTextEdit_createStandardContextMenuWithPosition(this.h, position.cPointer()))
 }
 
 func (this *QTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	_goptr := newQTextCursor(C.QTextEdit_cursorForPosition(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -429,7 +377,6 @@ func (this *QTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
 }
 
 func (this *QTextEdit) CursorRect(cursor *QTextCursor) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cursor)
 	_goptr := newQRect(C.QTextEdit_cursorRect(this.h, cursor.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -437,14 +384,12 @@ func (this *QTextEdit) CursorRect(cursor *QTextCursor) *QRect {
 }
 
 func (this *QTextEdit) CursorRect2() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QTextEdit_cursorRect2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) AnchorAt(pos *QPoint) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	var _ms C.struct_miqt_string = C.QTextEdit_anchorAt(this.h, pos.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -453,57 +398,46 @@ func (this *QTextEdit) AnchorAt(pos *QPoint) string {
 }
 
 func (this *QTextEdit) OverwriteMode() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextEdit_overwriteMode(this.h))
 }
 
 func (this *QTextEdit) SetOverwriteMode(overwrite bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setOverwriteMode(this.h, (C.bool)(overwrite))
 }
 
 func (this *QTextEdit) TabStopWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextEdit_tabStopWidth(this.h))
 }
 
 func (this *QTextEdit) SetTabStopWidth(width int) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setTabStopWidth(this.h, (C.int)(width))
 }
 
 func (this *QTextEdit) TabStopDistance() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QTextEdit_tabStopDistance(this.h))
 }
 
 func (this *QTextEdit) SetTabStopDistance(distance float64) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setTabStopDistance(this.h, (C.double)(distance))
 }
 
 func (this *QTextEdit) CursorWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextEdit_cursorWidth(this.h))
 }
 
 func (this *QTextEdit) SetCursorWidth(width int) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setCursorWidth(this.h, (C.int)(width))
 }
 
 func (this *QTextEdit) AcceptRichText() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextEdit_acceptRichText(this.h))
 }
 
 func (this *QTextEdit) SetAcceptRichText(accept bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setAcceptRichText(this.h, (C.bool)(accept))
 }
 
 func (this *QTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSelection) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selections)
 	selections_CArray_ptr := (**C.QTextEdit__ExtraSelection)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray_ptr))
@@ -516,7 +450,6 @@ func (this *QTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSelection
 }
 
 func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTextEdit_extraSelections(this.h)
 	_ret := make([]QTextEdit__ExtraSelection, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -529,30 +462,25 @@ func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 }
 
 func (this *QTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_moveCursor(this.h, (C.int)(operation))
 }
 
 func (this *QTextEdit) CanPaste() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextEdit_canPaste(this.h))
 }
 
 func (this *QTextEdit) Print(printer *QPagedPaintDevice) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(printer)
 	C.QTextEdit_print(this.h, printer.cPointer())
 }
 
 func (this *QTextEdit) InputMethodQuery(property InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QTextEdit_inputMethodQuery(this.h, (C.int)(property)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) InputMethodQuery2(query InputMethodQuery, argument QVariant) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(argument)
 	_goptr := newQVariant(C.QTextEdit_inputMethodQuery2(this.h, (C.int)(query), argument.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -560,12 +488,10 @@ func (this *QTextEdit) InputMethodQuery2(query InputMethodQuery, argument QVaria
 }
 
 func (this *QTextEdit) SetFontPointSize(s float64) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setFontPointSize(this.h, (C.double)(s))
 }
 
 func (this *QTextEdit) SetFontFamily(fontFamily string) {
-	defer runtime.KeepAlive(this)
 	fontFamily_ms := C.struct_miqt_string{}
 	fontFamily_ms.data = C.CString(fontFamily)
 	fontFamily_ms.len = C.size_t(len(fontFamily))
@@ -574,45 +500,37 @@ func (this *QTextEdit) SetFontFamily(fontFamily string) {
 }
 
 func (this *QTextEdit) SetFontWeight(w int) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setFontWeight(this.h, (C.int)(w))
 }
 
 func (this *QTextEdit) SetFontUnderline(b bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setFontUnderline(this.h, (C.bool)(b))
 }
 
 func (this *QTextEdit) SetFontItalic(b bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setFontItalic(this.h, (C.bool)(b))
 }
 
 func (this *QTextEdit) SetTextColor(c *QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(c)
 	C.QTextEdit_setTextColor(this.h, c.cPointer())
 }
 
 func (this *QTextEdit) SetTextBackgroundColor(c *QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(c)
 	C.QTextEdit_setTextBackgroundColor(this.h, c.cPointer())
 }
 
 func (this *QTextEdit) SetCurrentFont(f *QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(f)
 	C.QTextEdit_setCurrentFont(this.h, f.cPointer())
 }
 
 func (this *QTextEdit) SetAlignment(a AlignmentFlag) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_setAlignment(this.h, (C.int)(a))
 }
 
 func (this *QTextEdit) SetPlainText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -621,7 +539,6 @@ func (this *QTextEdit) SetPlainText(text string) {
 }
 
 func (this *QTextEdit) SetHtml(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -630,7 +547,6 @@ func (this *QTextEdit) SetHtml(text string) {
 }
 
 func (this *QTextEdit) SetMarkdown(markdown string) {
-	defer runtime.KeepAlive(this)
 	markdown_ms := C.struct_miqt_string{}
 	markdown_ms.data = C.CString(markdown)
 	markdown_ms.len = C.size_t(len(markdown))
@@ -639,7 +555,6 @@ func (this *QTextEdit) SetMarkdown(markdown string) {
 }
 
 func (this *QTextEdit) SetText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -648,42 +563,34 @@ func (this *QTextEdit) SetText(text string) {
 }
 
 func (this *QTextEdit) Cut() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_cut(this.h)
 }
 
 func (this *QTextEdit) Copy() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_copy(this.h)
 }
 
 func (this *QTextEdit) Paste() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_paste(this.h)
 }
 
 func (this *QTextEdit) Undo() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_undo(this.h)
 }
 
 func (this *QTextEdit) Redo() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_redo(this.h)
 }
 
 func (this *QTextEdit) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_clear(this.h)
 }
 
 func (this *QTextEdit) SelectAll() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_selectAll(this.h)
 }
 
 func (this *QTextEdit) InsertPlainText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -692,7 +599,6 @@ func (this *QTextEdit) InsertPlainText(text string) {
 }
 
 func (this *QTextEdit) InsertHtml(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -701,7 +607,6 @@ func (this *QTextEdit) InsertHtml(text string) {
 }
 
 func (this *QTextEdit) Append(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -710,7 +615,6 @@ func (this *QTextEdit) Append(text string) {
 }
 
 func (this *QTextEdit) ScrollToAnchor(name string) {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -719,17 +623,14 @@ func (this *QTextEdit) ScrollToAnchor(name string) {
 }
 
 func (this *QTextEdit) ZoomIn() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_zoomIn(this.h)
 }
 
 func (this *QTextEdit) ZoomOut() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_zoomOut(this.h)
 }
 
 func (this *QTextEdit) TextChanged() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_textChanged(this.h)
 }
 func (this *QTextEdit) OnTextChanged(slot func()) {
@@ -747,7 +648,6 @@ func miqt_exec_callback_QTextEdit_textChanged(cb C.intptr_t) {
 }
 
 func (this *QTextEdit) UndoAvailable(b bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_undoAvailable(this.h, (C.bool)(b))
 }
 func (this *QTextEdit) OnUndoAvailable(slot func(b bool)) {
@@ -768,7 +668,6 @@ func miqt_exec_callback_QTextEdit_undoAvailable(cb C.intptr_t, b C.bool) {
 }
 
 func (this *QTextEdit) RedoAvailable(b bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_redoAvailable(this.h, (C.bool)(b))
 }
 func (this *QTextEdit) OnRedoAvailable(slot func(b bool)) {
@@ -789,7 +688,6 @@ func miqt_exec_callback_QTextEdit_redoAvailable(cb C.intptr_t, b C.bool) {
 }
 
 func (this *QTextEdit) CurrentCharFormatChanged(format *QTextCharFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(format)
 	C.QTextEdit_currentCharFormatChanged(this.h, format.cPointer())
 }
@@ -811,7 +709,6 @@ func miqt_exec_callback_QTextEdit_currentCharFormatChanged(cb C.intptr_t, format
 }
 
 func (this *QTextEdit) CopyAvailable(b bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_copyAvailable(this.h, (C.bool)(b))
 }
 func (this *QTextEdit) OnCopyAvailable(slot func(b bool)) {
@@ -832,7 +729,6 @@ func miqt_exec_callback_QTextEdit_copyAvailable(cb C.intptr_t, b C.bool) {
 }
 
 func (this *QTextEdit) SelectionChanged() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_selectionChanged(this.h)
 }
 func (this *QTextEdit) OnSelectionChanged(slot func()) {
@@ -850,7 +746,6 @@ func miqt_exec_callback_QTextEdit_selectionChanged(cb C.intptr_t) {
 }
 
 func (this *QTextEdit) CursorPositionChanged() {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_cursorPositionChanged(this.h)
 }
 func (this *QTextEdit) OnCursorPositionChanged(slot func()) {
@@ -912,7 +807,6 @@ func QTextEdit_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTextEdit) Find3(exp string, options QTextDocument__FindFlag) bool {
-	defer runtime.KeepAlive(this)
 	exp_ms := C.struct_miqt_string{}
 	exp_ms.data = C.CString(exp)
 	exp_ms.len = C.size_t(len(exp))
@@ -921,19 +815,16 @@ func (this *QTextEdit) Find3(exp string, options QTextDocument__FindFlag) bool {
 }
 
 func (this *QTextEdit) Find4(exp *QRegExp, options QTextDocument__FindFlag) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(exp)
 	return (bool)(C.QTextEdit_find4(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QTextEdit) Find5(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(exp)
 	return (bool)(C.QTextEdit_find5(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QTextEdit) ToMarkdownWithFeatures(features QTextDocument__MarkdownFeature) string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextEdit_toMarkdownWithFeatures(this.h, (C.int)(features))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -941,23 +832,19 @@ func (this *QTextEdit) ToMarkdownWithFeatures(features QTextDocument__MarkdownFe
 }
 
 func (this *QTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_moveCursor2(this.h, (C.int)(operation), (C.int)(mode))
 }
 
 func (this *QTextEdit) ZoomInWithRange(rangeVal int) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_zoomInWithRange(this.h, (C.int)(rangeVal))
 }
 
 func (this *QTextEdit) ZoomOutWithRange(rangeVal int) {
-	defer runtime.KeepAlive(this)
 	C.QTextEdit_zoomOutWithRange(this.h, (C.int)(rangeVal))
 }
 
 // ZoomInF can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) ZoomInF(rangeVal float32) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextEdit_protectedbase_zoomInF(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.float)(rangeVal))
@@ -970,7 +857,6 @@ func (this *QTextEdit) ZoomInF(rangeVal float32) {
 
 // SetViewportMargins can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) SetViewportMargins(left int, top int, right int, bottom int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextEdit_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -983,7 +869,6 @@ func (this *QTextEdit) SetViewportMargins(left int, top int, right int, bottom i
 
 // ViewportMargins can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) ViewportMargins() QMargins {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QTextEdit_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1000,7 +885,6 @@ func (this *QTextEdit) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) DrawFrame(param1 *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1014,7 +898,6 @@ func (this *QTextEdit) DrawFrame(param1 *QPainter) {
 
 // InitStyleOption can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) InitStyleOption(option *QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1028,7 +911,6 @@ func (this *QTextEdit) InitStyleOption(option *QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextEdit_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1041,7 +923,6 @@ func (this *QTextEdit) UpdateMicroFocus() {
 
 // Create can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextEdit_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1054,7 +935,6 @@ func (this *QTextEdit) Create() {
 
 // Destroy can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextEdit_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1067,7 +947,6 @@ func (this *QTextEdit) Destroy() {
 
 // FocusNextChild can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTextEdit_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1082,7 +961,6 @@ func (this *QTextEdit) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTextEdit_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1097,7 +975,6 @@ func (this *QTextEdit) FocusPreviousChild() bool {
 
 // Sender can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTextEdit_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1112,7 +989,6 @@ func (this *QTextEdit) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTextEdit_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1127,7 +1003,6 @@ func (this *QTextEdit) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1144,7 +1019,6 @@ func (this *QTextEdit) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTextEdit that was directly constructed.
 func (this *QTextEdit) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1159,7 +1033,6 @@ func (this *QTextEdit) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTextEdit) callVirtualBase_LoadResource(typeVal int, name *QUrl) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(name)
 
 	_goptr := newQVariant(C.QTextEdit_virtualbase_loadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer()))
@@ -1194,7 +1067,6 @@ func miqt_exec_callback_QTextEdit_loadResource(self *C.QTextEdit, cb C.intptr_t,
 }
 
 func (this *QTextEdit) callVirtualBase_InputMethodQuery(property InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QTextEdit_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(property)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1226,7 +1098,6 @@ func miqt_exec_callback_QTextEdit_inputMethodQuery(self *C.QTextEdit, cb C.intpt
 }
 
 func (this *QTextEdit) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QTextEdit_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -1256,7 +1127,6 @@ func miqt_exec_callback_QTextEdit_event(self *C.QTextEdit, cb C.intptr_t, e *C.Q
 }
 
 func (this *QTextEdit) callVirtualBase_TimerEvent(e *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_timerEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1284,7 +1154,6 @@ func miqt_exec_callback_QTextEdit_timerEvent(self *C.QTextEdit, cb C.intptr_t, e
 }
 
 func (this *QTextEdit) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_keyPressEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1312,7 +1181,6 @@ func miqt_exec_callback_QTextEdit_keyPressEvent(self *C.QTextEdit, cb C.intptr_t
 }
 
 func (this *QTextEdit) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1340,7 +1208,6 @@ func miqt_exec_callback_QTextEdit_keyReleaseEvent(self *C.QTextEdit, cb C.intptr
 }
 
 func (this *QTextEdit) callVirtualBase_ResizeEvent(e *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1368,7 +1235,6 @@ func miqt_exec_callback_QTextEdit_resizeEvent(self *C.QTextEdit, cb C.intptr_t, 
 }
 
 func (this *QTextEdit) callVirtualBase_PaintEvent(e *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1396,7 +1262,6 @@ func miqt_exec_callback_QTextEdit_paintEvent(self *C.QTextEdit, cb C.intptr_t, e
 }
 
 func (this *QTextEdit) callVirtualBase_MousePressEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1424,7 +1289,6 @@ func miqt_exec_callback_QTextEdit_mousePressEvent(self *C.QTextEdit, cb C.intptr
 }
 
 func (this *QTextEdit) callVirtualBase_MouseMoveEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1452,7 +1316,6 @@ func miqt_exec_callback_QTextEdit_mouseMoveEvent(self *C.QTextEdit, cb C.intptr_
 }
 
 func (this *QTextEdit) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1480,7 +1343,6 @@ func miqt_exec_callback_QTextEdit_mouseReleaseEvent(self *C.QTextEdit, cb C.intp
 }
 
 func (this *QTextEdit) callVirtualBase_MouseDoubleClickEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1508,7 +1370,6 @@ func miqt_exec_callback_QTextEdit_mouseDoubleClickEvent(self *C.QTextEdit, cb C.
 }
 
 func (this *QTextEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTextEdit_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1537,7 +1398,6 @@ func miqt_exec_callback_QTextEdit_focusNextPrevChild(self *C.QTextEdit, cb C.int
 }
 
 func (this *QTextEdit) callVirtualBase_ContextMenuEvent(e *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1565,7 +1425,6 @@ func miqt_exec_callback_QTextEdit_contextMenuEvent(self *C.QTextEdit, cb C.intpt
 }
 
 func (this *QTextEdit) callVirtualBase_DragEnterEvent(e *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1593,7 +1452,6 @@ func miqt_exec_callback_QTextEdit_dragEnterEvent(self *C.QTextEdit, cb C.intptr_
 }
 
 func (this *QTextEdit) callVirtualBase_DragLeaveEvent(e *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1621,7 +1479,6 @@ func miqt_exec_callback_QTextEdit_dragLeaveEvent(self *C.QTextEdit, cb C.intptr_
 }
 
 func (this *QTextEdit) callVirtualBase_DragMoveEvent(e *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1649,7 +1506,6 @@ func miqt_exec_callback_QTextEdit_dragMoveEvent(self *C.QTextEdit, cb C.intptr_t
 }
 
 func (this *QTextEdit) callVirtualBase_DropEvent(e *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_dropEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1677,7 +1533,6 @@ func miqt_exec_callback_QTextEdit_dropEvent(self *C.QTextEdit, cb C.intptr_t, e 
 }
 
 func (this *QTextEdit) callVirtualBase_FocusInEvent(e *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_focusInEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1705,7 +1560,6 @@ func miqt_exec_callback_QTextEdit_focusInEvent(self *C.QTextEdit, cb C.intptr_t,
 }
 
 func (this *QTextEdit) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_focusOutEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1733,7 +1587,6 @@ func miqt_exec_callback_QTextEdit_focusOutEvent(self *C.QTextEdit, cb C.intptr_t
 }
 
 func (this *QTextEdit) callVirtualBase_ShowEvent(param1 *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QTextEdit_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1761,7 +1614,6 @@ func miqt_exec_callback_QTextEdit_showEvent(self *C.QTextEdit, cb C.intptr_t, pa
 }
 
 func (this *QTextEdit) callVirtualBase_ChangeEvent(e *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1789,7 +1641,6 @@ func miqt_exec_callback_QTextEdit_changeEvent(self *C.QTextEdit, cb C.intptr_t, 
 }
 
 func (this *QTextEdit) callVirtualBase_WheelEvent(e *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextEdit_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1817,7 +1668,6 @@ func miqt_exec_callback_QTextEdit_wheelEvent(self *C.QTextEdit, cb C.intptr_t, e
 }
 
 func (this *QTextEdit) callVirtualBase_CreateMimeDataFromSelection() *QMimeData {
-	defer runtime.KeepAlive(this)
 
 	return newQMimeData(C.QTextEdit_virtualbase_createMimeDataFromSelection(unsafe.Pointer(this.h)))
 
@@ -1837,15 +1687,12 @@ func miqt_exec_callback_QTextEdit_createMimeDataFromSelection(self *C.QTextEdit,
 	}
 
 	virtualReturn := gofunc((&QTextEdit{h: self}).callVirtualBase_CreateMimeDataFromSelection)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTextEdit) callVirtualBase_CanInsertFromMimeData(source *QMimeData) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(source)
 
 	return (bool)(C.QTextEdit_virtualbase_canInsertFromMimeData(unsafe.Pointer(this.h), source.cPointer()))
 
@@ -1874,8 +1721,6 @@ func miqt_exec_callback_QTextEdit_canInsertFromMimeData(self *C.QTextEdit, cb C.
 }
 
 func (this *QTextEdit) callVirtualBase_InsertFromMimeData(source *QMimeData) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(source)
 
 	C.QTextEdit_virtualbase_insertFromMimeData(unsafe.Pointer(this.h), source.cPointer())
 
@@ -1902,7 +1747,6 @@ func miqt_exec_callback_QTextEdit_insertFromMimeData(self *C.QTextEdit, cb C.int
 }
 
 func (this *QTextEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QTextEdit_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1930,7 +1774,6 @@ func miqt_exec_callback_QTextEdit_inputMethodEvent(self *C.QTextEdit, cb C.intpt
 }
 
 func (this *QTextEdit) callVirtualBase_ScrollContentsBy(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 
 	C.QTextEdit_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -1959,7 +1802,6 @@ func miqt_exec_callback_QTextEdit_scrollContentsBy(self *C.QTextEdit, cb C.intpt
 }
 
 func (this *QTextEdit) callVirtualBase_DoSetTextCursor(cursor *QTextCursor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cursor)
 
 	C.QTextEdit_virtualbase_doSetTextCursor(unsafe.Pointer(this.h), cursor.cPointer())
@@ -1987,7 +1829,6 @@ func miqt_exec_callback_QTextEdit_doSetTextCursor(self *C.QTextEdit, cb C.intptr
 }
 
 func (this *QTextEdit) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTextEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2016,7 +1857,6 @@ func miqt_exec_callback_QTextEdit_minimumSizeHint(self *C.QTextEdit, cb C.intptr
 }
 
 func (this *QTextEdit) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTextEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2045,8 +1885,6 @@ func miqt_exec_callback_QTextEdit_sizeHint(self *C.QTextEdit, cb C.intptr_t) *C.
 }
 
 func (this *QTextEdit) callVirtualBase_SetupViewport(viewport *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewport)
 
 	C.QTextEdit_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -2073,8 +1911,6 @@ func miqt_exec_callback_QTextEdit_setupViewport(self *C.QTextEdit, cb C.intptr_t
 }
 
 func (this *QTextEdit) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QTextEdit_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
@@ -2106,7 +1942,6 @@ func miqt_exec_callback_QTextEdit_eventFilter(self *C.QTextEdit, cb C.intptr_t, 
 }
 
 func (this *QTextEdit) callVirtualBase_ViewportEvent(param1 *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QTextEdit_virtualbase_viewportEvent(unsafe.Pointer(this.h), param1.cPointer()))
@@ -2136,7 +1971,6 @@ func miqt_exec_callback_QTextEdit_viewportEvent(self *C.QTextEdit, cb C.intptr_t
 }
 
 func (this *QTextEdit) callVirtualBase_ViewportSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTextEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2165,7 +1999,6 @@ func miqt_exec_callback_QTextEdit_viewportSizeHint(self *C.QTextEdit, cb C.intpt
 }
 
 func (this *QTextEdit) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTextEdit_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -2191,7 +2024,6 @@ func miqt_exec_callback_QTextEdit_devType(self *C.QTextEdit, cb C.intptr_t) C.in
 }
 
 func (this *QTextEdit) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QTextEdit_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -2218,7 +2050,6 @@ func miqt_exec_callback_QTextEdit_setVisible(self *C.QTextEdit, cb C.intptr_t, v
 }
 
 func (this *QTextEdit) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTextEdit_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2247,7 +2078,6 @@ func miqt_exec_callback_QTextEdit_heightForWidth(self *C.QTextEdit, cb C.intptr_
 }
 
 func (this *QTextEdit) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTextEdit_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -2273,7 +2103,6 @@ func miqt_exec_callback_QTextEdit_hasHeightForWidth(self *C.QTextEdit, cb C.intp
 }
 
 func (this *QTextEdit) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QTextEdit_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -2300,7 +2129,6 @@ func miqt_exec_callback_QTextEdit_paintEngine(self *C.QTextEdit, cb C.intptr_t) 
 }
 
 func (this *QTextEdit) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextEdit_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2328,7 +2156,6 @@ func miqt_exec_callback_QTextEdit_enterEvent(self *C.QTextEdit, cb C.intptr_t, e
 }
 
 func (this *QTextEdit) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextEdit_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2356,7 +2183,6 @@ func miqt_exec_callback_QTextEdit_leaveEvent(self *C.QTextEdit, cb C.intptr_t, e
 }
 
 func (this *QTextEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextEdit_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2384,7 +2210,6 @@ func miqt_exec_callback_QTextEdit_moveEvent(self *C.QTextEdit, cb C.intptr_t, ev
 }
 
 func (this *QTextEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextEdit_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2412,7 +2237,6 @@ func miqt_exec_callback_QTextEdit_closeEvent(self *C.QTextEdit, cb C.intptr_t, e
 }
 
 func (this *QTextEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextEdit_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2440,7 +2264,6 @@ func miqt_exec_callback_QTextEdit_tabletEvent(self *C.QTextEdit, cb C.intptr_t, 
 }
 
 func (this *QTextEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextEdit_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2468,7 +2291,6 @@ func miqt_exec_callback_QTextEdit_actionEvent(self *C.QTextEdit, cb C.intptr_t, 
 }
 
 func (this *QTextEdit) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextEdit_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2496,7 +2318,6 @@ func miqt_exec_callback_QTextEdit_hideEvent(self *C.QTextEdit, cb C.intptr_t, ev
 }
 
 func (this *QTextEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2538,7 +2359,6 @@ func miqt_exec_callback_QTextEdit_nativeEvent(self *C.QTextEdit, cb C.intptr_t, 
 }
 
 func (this *QTextEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTextEdit_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2567,7 +2387,6 @@ func miqt_exec_callback_QTextEdit_metric(self *C.QTextEdit, cb C.intptr_t, param
 }
 
 func (this *QTextEdit) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QTextEdit_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -2595,7 +2414,6 @@ func miqt_exec_callback_QTextEdit_initPainter(self *C.QTextEdit, cb C.intptr_t, 
 }
 
 func (this *QTextEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTextEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -2626,7 +2444,6 @@ func miqt_exec_callback_QTextEdit_redirected(self *C.QTextEdit, cb C.intptr_t, o
 }
 
 func (this *QTextEdit) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QTextEdit_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -2653,7 +2470,6 @@ func miqt_exec_callback_QTextEdit_sharedPainter(self *C.QTextEdit, cb C.intptr_t
 }
 
 func (this *QTextEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextEdit_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2681,7 +2497,6 @@ func miqt_exec_callback_QTextEdit_childEvent(self *C.QTextEdit, cb C.intptr_t, e
 }
 
 func (this *QTextEdit) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextEdit_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2709,7 +2524,6 @@ func miqt_exec_callback_QTextEdit_customEvent(self *C.QTextEdit, cb C.intptr_t, 
 }
 
 func (this *QTextEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTextEdit_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2737,7 +2551,6 @@ func miqt_exec_callback_QTextEdit_connectNotify(self *C.QTextEdit, cb C.intptr_t
 }
 
 func (this *QTextEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTextEdit_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2772,6 +2585,8 @@ func (this *QTextEdit) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTextEdit) GoGC() {
 	if this.gc != nil {
 		return

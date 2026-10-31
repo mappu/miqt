@@ -54,7 +54,6 @@ func UnsafeNewQBackingStore(h unsafe.Pointer) *QBackingStore {
 
 // NewQBackingStore constructs a new QBackingStore object.
 func NewQBackingStore(window *QWindow) *QBackingStore {
-	defer runtime.KeepAlive(window)
 
 	return newQBackingStore(C.QBackingStore_new(window.cPointer()))
 }
@@ -126,14 +125,12 @@ func (this *QBackingStore) HasStaticContents() bool {
 func (this *QBackingStore) Flush2(region *QRegion, window *QWindow) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(region)
-	defer runtime.KeepAlive(window)
 	C.QBackingStore_flush2(this.h, region.cPointer(), window.cPointer())
 }
 
 func (this *QBackingStore) Flush3(region *QRegion, window *QWindow, offset *QPoint) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(region)
-	defer runtime.KeepAlive(window)
 	defer runtime.KeepAlive(offset)
 	C.QBackingStore_flush3(this.h, region.cPointer(), window.cPointer(), offset.cPointer())
 }

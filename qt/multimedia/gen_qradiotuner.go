@@ -108,18 +108,15 @@ func NewQRadioTuner() *QRadioTuner {
 
 // NewQRadioTuner2 constructs a new QRadioTuner object.
 func NewQRadioTuner2(parent *qt.QObject) *QRadioTuner {
-	defer runtime.KeepAlive(parent)
 
 	return newQRadioTuner(C.QRadioTuner_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QRadioTuner) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QRadioTuner_metaObject(this.h)))
 }
 
 func (this *QRadioTuner) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QRadioTuner_metacast(this.h, param1_Cstring))
@@ -144,32 +141,26 @@ func QRadioTuner_TrUtf8(s string) string {
 }
 
 func (this *QRadioTuner) Availability() QMultimedia__AvailabilityStatus {
-	defer runtime.KeepAlive(this)
 	return (QMultimedia__AvailabilityStatus)(C.QRadioTuner_availability(this.h))
 }
 
 func (this *QRadioTuner) State() QRadioTuner__State {
-	defer runtime.KeepAlive(this)
 	return (QRadioTuner__State)(C.QRadioTuner_state(this.h))
 }
 
 func (this *QRadioTuner) Band() QRadioTuner__Band {
-	defer runtime.KeepAlive(this)
 	return (QRadioTuner__Band)(C.QRadioTuner_band(this.h))
 }
 
 func (this *QRadioTuner) IsBandSupported(b QRadioTuner__Band) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTuner_isBandSupported(this.h, (C.int)(b)))
 }
 
 func (this *QRadioTuner) Frequency() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QRadioTuner_frequency(this.h))
 }
 
 func (this *QRadioTuner) FrequencyStep(band QRadioTuner__Band) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QRadioTuner_frequencyStep(this.h, (C.int)(band)))
 }
 
@@ -177,7 +168,6 @@ func (this *QRadioTuner) FrequencyRange(band QRadioTuner__Band) struct {
 	First  int
 	Second int
 } {
-	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QRadioTuner_frequencyRange(this.h, (C.int)(band))
 	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
@@ -192,52 +182,42 @@ func (this *QRadioTuner) FrequencyRange(band QRadioTuner__Band) struct {
 }
 
 func (this *QRadioTuner) IsStereo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTuner_isStereo(this.h))
 }
 
 func (this *QRadioTuner) SetStereoMode(mode QRadioTuner__StereoMode) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_setStereoMode(this.h, (C.int)(mode))
 }
 
 func (this *QRadioTuner) StereoMode() QRadioTuner__StereoMode {
-	defer runtime.KeepAlive(this)
 	return (QRadioTuner__StereoMode)(C.QRadioTuner_stereoMode(this.h))
 }
 
 func (this *QRadioTuner) SignalStrength() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QRadioTuner_signalStrength(this.h))
 }
 
 func (this *QRadioTuner) Volume() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QRadioTuner_volume(this.h))
 }
 
 func (this *QRadioTuner) IsMuted() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTuner_isMuted(this.h))
 }
 
 func (this *QRadioTuner) IsSearching() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTuner_isSearching(this.h))
 }
 
 func (this *QRadioTuner) IsAntennaConnected() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QRadioTuner_isAntennaConnected(this.h))
 }
 
 func (this *QRadioTuner) Error() QRadioTuner__Error {
-	defer runtime.KeepAlive(this)
 	return (QRadioTuner__Error)(C.QRadioTuner_error(this.h))
 }
 
 func (this *QRadioTuner) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QRadioTuner_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -245,62 +225,50 @@ func (this *QRadioTuner) ErrorString() string {
 }
 
 func (this *QRadioTuner) RadioData() *QRadioData {
-	defer runtime.KeepAlive(this)
 	return newQRadioData(C.QRadioTuner_radioData(this.h))
 }
 
 func (this *QRadioTuner) SearchForward() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_searchForward(this.h)
 }
 
 func (this *QRadioTuner) SearchBackward() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_searchBackward(this.h)
 }
 
 func (this *QRadioTuner) SearchAllStations() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_searchAllStations(this.h)
 }
 
 func (this *QRadioTuner) CancelSearch() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_cancelSearch(this.h)
 }
 
 func (this *QRadioTuner) SetBand(band QRadioTuner__Band) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_setBand(this.h, (C.int)(band))
 }
 
 func (this *QRadioTuner) SetFrequency(frequency int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_setFrequency(this.h, (C.int)(frequency))
 }
 
 func (this *QRadioTuner) SetVolume(volume int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_setVolume(this.h, (C.int)(volume))
 }
 
 func (this *QRadioTuner) SetMuted(muted bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_setMuted(this.h, (C.bool)(muted))
 }
 
 func (this *QRadioTuner) Start() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_start(this.h)
 }
 
 func (this *QRadioTuner) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_stop(this.h)
 }
 
 func (this *QRadioTuner) StateChanged(state QRadioTuner__State) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_stateChanged(this.h, (C.int)(state))
 }
 func (this *QRadioTuner) OnStateChanged(slot func(state QRadioTuner__State)) {
@@ -321,7 +289,6 @@ func miqt_exec_callback_QRadioTuner_stateChanged(cb C.intptr_t, state C.int) {
 }
 
 func (this *QRadioTuner) BandChanged(band QRadioTuner__Band) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_bandChanged(this.h, (C.int)(band))
 }
 func (this *QRadioTuner) OnBandChanged(slot func(band QRadioTuner__Band)) {
@@ -342,7 +309,6 @@ func miqt_exec_callback_QRadioTuner_bandChanged(cb C.intptr_t, band C.int) {
 }
 
 func (this *QRadioTuner) FrequencyChanged(frequency int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_frequencyChanged(this.h, (C.int)(frequency))
 }
 func (this *QRadioTuner) OnFrequencyChanged(slot func(frequency int)) {
@@ -363,7 +329,6 @@ func miqt_exec_callback_QRadioTuner_frequencyChanged(cb C.intptr_t, frequency C.
 }
 
 func (this *QRadioTuner) StereoStatusChanged(stereo bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_stereoStatusChanged(this.h, (C.bool)(stereo))
 }
 func (this *QRadioTuner) OnStereoStatusChanged(slot func(stereo bool)) {
@@ -384,7 +349,6 @@ func miqt_exec_callback_QRadioTuner_stereoStatusChanged(cb C.intptr_t, stereo C.
 }
 
 func (this *QRadioTuner) SearchingChanged(searching bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_searchingChanged(this.h, (C.bool)(searching))
 }
 func (this *QRadioTuner) OnSearchingChanged(slot func(searching bool)) {
@@ -405,7 +369,6 @@ func miqt_exec_callback_QRadioTuner_searchingChanged(cb C.intptr_t, searching C.
 }
 
 func (this *QRadioTuner) SignalStrengthChanged(signalStrength int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_signalStrengthChanged(this.h, (C.int)(signalStrength))
 }
 func (this *QRadioTuner) OnSignalStrengthChanged(slot func(signalStrength int)) {
@@ -426,7 +389,6 @@ func miqt_exec_callback_QRadioTuner_signalStrengthChanged(cb C.intptr_t, signalS
 }
 
 func (this *QRadioTuner) VolumeChanged(volume int) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_volumeChanged(this.h, (C.int)(volume))
 }
 func (this *QRadioTuner) OnVolumeChanged(slot func(volume int)) {
@@ -447,7 +409,6 @@ func miqt_exec_callback_QRadioTuner_volumeChanged(cb C.intptr_t, volume C.int) {
 }
 
 func (this *QRadioTuner) MutedChanged(muted bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_mutedChanged(this.h, (C.bool)(muted))
 }
 func (this *QRadioTuner) OnMutedChanged(slot func(muted bool)) {
@@ -468,7 +429,6 @@ func miqt_exec_callback_QRadioTuner_mutedChanged(cb C.intptr_t, muted C.bool) {
 }
 
 func (this *QRadioTuner) StationFound(frequency int, stationId string) {
-	defer runtime.KeepAlive(this)
 	stationId_ms := C.struct_miqt_string{}
 	stationId_ms.data = C.CString(stationId)
 	stationId_ms.len = C.size_t(len(stationId))
@@ -498,7 +458,6 @@ func miqt_exec_callback_QRadioTuner_stationFound(cb C.intptr_t, frequency C.int,
 }
 
 func (this *QRadioTuner) AntennaConnectedChanged(connectionStatus bool) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_antennaConnectedChanged(this.h, (C.bool)(connectionStatus))
 }
 func (this *QRadioTuner) OnAntennaConnectedChanged(slot func(connectionStatus bool)) {
@@ -519,7 +478,6 @@ func miqt_exec_callback_QRadioTuner_antennaConnectedChanged(cb C.intptr_t, conne
 }
 
 func (this *QRadioTuner) ErrorWithError(error QRadioTuner__Error) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_errorWithError(this.h, (C.int)(error))
 }
 func (this *QRadioTuner) OnErrorWithError(slot func(error QRadioTuner__Error)) {
@@ -584,13 +542,11 @@ func QRadioTuner_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QRadioTuner) SearchAllStationsWithSearchMode(searchMode QRadioTuner__SearchMode) {
-	defer runtime.KeepAlive(this)
 	C.QRadioTuner_searchAllStationsWithSearchMode(this.h, (C.int)(searchMode))
 }
 
 // AddPropertyWatch can only be called from a QRadioTuner that was directly constructed.
 func (this *QRadioTuner) AddPropertyWatch(name []byte) {
-	defer runtime.KeepAlive(this)
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -610,7 +566,6 @@ func (this *QRadioTuner) AddPropertyWatch(name []byte) {
 
 // RemovePropertyWatch can only be called from a QRadioTuner that was directly constructed.
 func (this *QRadioTuner) RemovePropertyWatch(name []byte) {
-	defer runtime.KeepAlive(this)
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -630,7 +585,6 @@ func (this *QRadioTuner) RemovePropertyWatch(name []byte) {
 
 // Sender can only be called from a QRadioTuner that was directly constructed.
 func (this *QRadioTuner) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QRadioTuner_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -645,7 +599,6 @@ func (this *QRadioTuner) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QRadioTuner that was directly constructed.
 func (this *QRadioTuner) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QRadioTuner_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -660,7 +613,6 @@ func (this *QRadioTuner) SenderSignalIndex() int {
 
 // Receivers can only be called from a QRadioTuner that was directly constructed.
 func (this *QRadioTuner) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -677,7 +629,6 @@ func (this *QRadioTuner) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QRadioTuner that was directly constructed.
 func (this *QRadioTuner) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -692,7 +643,6 @@ func (this *QRadioTuner) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QRadioTuner) callVirtualBase_Availability() QMultimedia__AvailabilityStatus {
-	defer runtime.KeepAlive(this)
 
 	return (QMultimedia__AvailabilityStatus)(C.QRadioTuner_virtualbase_availability(unsafe.Pointer(this.h)))
 
@@ -718,7 +668,6 @@ func miqt_exec_callback_QRadioTuner_availability(self *C.QRadioTuner, cb C.intpt
 }
 
 func (this *QRadioTuner) callVirtualBase_IsAvailable() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QRadioTuner_virtualbase_isAvailable(unsafe.Pointer(this.h)))
 
@@ -744,7 +693,6 @@ func miqt_exec_callback_QRadioTuner_isAvailable(self *C.QRadioTuner, cb C.intptr
 }
 
 func (this *QRadioTuner) callVirtualBase_Service() *QMediaService {
-	defer runtime.KeepAlive(this)
 
 	return newQMediaService(C.QRadioTuner_virtualbase_service(unsafe.Pointer(this.h)))
 
@@ -764,15 +712,12 @@ func miqt_exec_callback_QRadioTuner_service(self *C.QRadioTuner, cb C.intptr_t) 
 	}
 
 	virtualReturn := gofunc((&QRadioTuner{h: self}).callVirtualBase_Service)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QRadioTuner) callVirtualBase_Bind(param1 *qt.QObject) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QRadioTuner_virtualbase_bind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer())))
 
@@ -801,8 +746,6 @@ func miqt_exec_callback_QRadioTuner_bind(self *C.QRadioTuner, cb C.intptr_t, par
 }
 
 func (this *QRadioTuner) callVirtualBase_Unbind(param1 *qt.QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QRadioTuner_virtualbase_unbind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()))
 
@@ -829,7 +772,6 @@ func miqt_exec_callback_QRadioTuner_unbind(self *C.QRadioTuner, cb C.intptr_t, p
 }
 
 func (this *QRadioTuner) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRadioTuner_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -859,8 +801,6 @@ func miqt_exec_callback_QRadioTuner_event(self *C.QRadioTuner, cb C.intptr_t, ev
 }
 
 func (this *QRadioTuner) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRadioTuner_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -892,7 +832,6 @@ func miqt_exec_callback_QRadioTuner_eventFilter(self *C.QRadioTuner, cb C.intptr
 }
 
 func (this *QRadioTuner) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRadioTuner_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -920,7 +859,6 @@ func miqt_exec_callback_QRadioTuner_timerEvent(self *C.QRadioTuner, cb C.intptr_
 }
 
 func (this *QRadioTuner) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRadioTuner_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -948,7 +886,6 @@ func miqt_exec_callback_QRadioTuner_childEvent(self *C.QRadioTuner, cb C.intptr_
 }
 
 func (this *QRadioTuner) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRadioTuner_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -976,7 +913,6 @@ func miqt_exec_callback_QRadioTuner_customEvent(self *C.QRadioTuner, cb C.intptr
 }
 
 func (this *QRadioTuner) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QRadioTuner_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1004,7 +940,6 @@ func miqt_exec_callback_QRadioTuner_connectNotify(self *C.QRadioTuner, cb C.intp
 }
 
 func (this *QRadioTuner) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QRadioTuner_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1039,6 +974,8 @@ func (this *QRadioTuner) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QRadioTuner) GoGC() {
 	if this.gc != nil {
 		return

@@ -118,7 +118,6 @@ func UnsafeNewQMessageBox(h unsafe.Pointer) *QMessageBox {
 
 // NewQMessageBox constructs a new QMessageBox object.
 func NewQMessageBox(parent *QWidget) *QMessageBox {
-	defer runtime.KeepAlive(parent)
 
 	return newQMessageBox(C.QMessageBox_new(parent.cPointer()))
 }
@@ -173,7 +172,6 @@ func NewQMessageBox5(icon QMessageBox__Icon, title string, text string, buttons 
 
 // NewQMessageBox6 constructs a new QMessageBox object.
 func NewQMessageBox6(icon QMessageBox__Icon, title string, text string, buttons QMessageBox__StandardButton, parent *QWidget) *QMessageBox {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -188,7 +186,6 @@ func NewQMessageBox6(icon QMessageBox__Icon, title string, text string, buttons 
 
 // NewQMessageBox7 constructs a new QMessageBox object.
 func NewQMessageBox7(icon QMessageBox__Icon, title string, text string, buttons QMessageBox__StandardButton, parent *QWidget, flags WindowType) *QMessageBox {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -203,7 +200,6 @@ func NewQMessageBox7(icon QMessageBox__Icon, title string, text string, buttons 
 
 // NewQMessageBox8 constructs a new QMessageBox object.
 func NewQMessageBox8(title string, text string, icon QMessageBox__Icon, button0 int, button1 int, button2 int, parent *QWidget) *QMessageBox {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -218,7 +214,6 @@ func NewQMessageBox8(title string, text string, icon QMessageBox__Icon, button0 
 
 // NewQMessageBox9 constructs a new QMessageBox object.
 func NewQMessageBox9(title string, text string, icon QMessageBox__Icon, button0 int, button1 int, button2 int, parent *QWidget, f WindowType) *QMessageBox {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -232,12 +227,10 @@ func NewQMessageBox9(title string, text string, icon QMessageBox__Icon, button0 
 }
 
 func (this *QMessageBox) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QMessageBox_metaObject(this.h))
 }
 
 func (this *QMessageBox) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMessageBox_metacast(this.h, param1_Cstring))
@@ -262,13 +255,10 @@ func QMessageBox_TrUtf8(s string) string {
 }
 
 func (this *QMessageBox) AddButton(button *QAbstractButton, role QMessageBox__ButtonRole) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(button)
 	C.QMessageBox_addButton(this.h, button.cPointer(), (C.int)(role))
 }
 
 func (this *QMessageBox) AddButton2(text string, role QMessageBox__ButtonRole) *QPushButton {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -277,18 +267,14 @@ func (this *QMessageBox) AddButton2(text string, role QMessageBox__ButtonRole) *
 }
 
 func (this *QMessageBox) AddButtonWithButton(button QMessageBox__StandardButton) *QPushButton {
-	defer runtime.KeepAlive(this)
 	return newQPushButton(C.QMessageBox_addButtonWithButton(this.h, (C.int)(button)))
 }
 
 func (this *QMessageBox) RemoveButton(button *QAbstractButton) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(button)
 	C.QMessageBox_removeButton(this.h, button.cPointer())
 }
 
 func (this *QMessageBox) Buttons() []*QAbstractButton {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMessageBox_buttons(this.h)
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractButton)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -299,71 +285,54 @@ func (this *QMessageBox) Buttons() []*QAbstractButton {
 }
 
 func (this *QMessageBox) ButtonRole(button *QAbstractButton) QMessageBox__ButtonRole {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(button)
 	return (QMessageBox__ButtonRole)(C.QMessageBox_buttonRole(this.h, button.cPointer()))
 }
 
 func (this *QMessageBox) SetStandardButtons(buttons QMessageBox__StandardButton) {
-	defer runtime.KeepAlive(this)
 	C.QMessageBox_setStandardButtons(this.h, (C.int)(buttons))
 }
 
 func (this *QMessageBox) StandardButtons() QMessageBox__StandardButton {
-	defer runtime.KeepAlive(this)
 	return (QMessageBox__StandardButton)(C.QMessageBox_standardButtons(this.h))
 }
 
 func (this *QMessageBox) StandardButton(button *QAbstractButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(button)
 	return (QMessageBox__StandardButton)(C.QMessageBox_standardButton(this.h, button.cPointer()))
 }
 
 func (this *QMessageBox) Button(which QMessageBox__StandardButton) *QAbstractButton {
-	defer runtime.KeepAlive(this)
 	return newQAbstractButton(C.QMessageBox_button(this.h, (C.int)(which)))
 }
 
 func (this *QMessageBox) DefaultButton() *QPushButton {
-	defer runtime.KeepAlive(this)
 	return newQPushButton(C.QMessageBox_defaultButton(this.h))
 }
 
 func (this *QMessageBox) SetDefaultButton(button *QPushButton) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(button)
 	C.QMessageBox_setDefaultButton(this.h, button.cPointer())
 }
 
 func (this *QMessageBox) SetDefaultButtonWithButton(button QMessageBox__StandardButton) {
-	defer runtime.KeepAlive(this)
 	C.QMessageBox_setDefaultButtonWithButton(this.h, (C.int)(button))
 }
 
 func (this *QMessageBox) EscapeButton() *QAbstractButton {
-	defer runtime.KeepAlive(this)
 	return newQAbstractButton(C.QMessageBox_escapeButton(this.h))
 }
 
 func (this *QMessageBox) SetEscapeButton(button *QAbstractButton) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(button)
 	C.QMessageBox_setEscapeButton(this.h, button.cPointer())
 }
 
 func (this *QMessageBox) SetEscapeButtonWithButton(button QMessageBox__StandardButton) {
-	defer runtime.KeepAlive(this)
 	C.QMessageBox_setEscapeButtonWithButton(this.h, (C.int)(button))
 }
 
 func (this *QMessageBox) ClickedButton() *QAbstractButton {
-	defer runtime.KeepAlive(this)
 	return newQAbstractButton(C.QMessageBox_clickedButton(this.h))
 }
 
 func (this *QMessageBox) Text() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMessageBox_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -371,7 +340,6 @@ func (this *QMessageBox) Text() string {
 }
 
 func (this *QMessageBox) SetText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -380,61 +348,49 @@ func (this *QMessageBox) SetText(text string) {
 }
 
 func (this *QMessageBox) Icon() QMessageBox__Icon {
-	defer runtime.KeepAlive(this)
 	return (QMessageBox__Icon)(C.QMessageBox_icon(this.h))
 }
 
 func (this *QMessageBox) SetIcon(icon QMessageBox__Icon) {
-	defer runtime.KeepAlive(this)
 	C.QMessageBox_setIcon(this.h, (C.int)(icon))
 }
 
 func (this *QMessageBox) IconPixmap() *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QMessageBox_iconPixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMessageBox) SetIconPixmap(pixmap *QPixmap) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pixmap)
 	C.QMessageBox_setIconPixmap(this.h, pixmap.cPointer())
 }
 
 func (this *QMessageBox) TextFormat() TextFormat {
-	defer runtime.KeepAlive(this)
 	return (TextFormat)(C.QMessageBox_textFormat(this.h))
 }
 
 func (this *QMessageBox) SetTextFormat(format TextFormat) {
-	defer runtime.KeepAlive(this)
 	C.QMessageBox_setTextFormat(this.h, (C.int)(format))
 }
 
 func (this *QMessageBox) SetTextInteractionFlags(flags TextInteractionFlag) {
-	defer runtime.KeepAlive(this)
 	C.QMessageBox_setTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QMessageBox) TextInteractionFlags() TextInteractionFlag {
-	defer runtime.KeepAlive(this)
 	return (TextInteractionFlag)(C.QMessageBox_textInteractionFlags(this.h))
 }
 
 func (this *QMessageBox) SetCheckBox(cb *QCheckBox) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(cb)
 	C.QMessageBox_setCheckBox(this.h, cb.cPointer())
 }
 
 func (this *QMessageBox) CheckBox() *QCheckBox {
-	defer runtime.KeepAlive(this)
 	return newQCheckBox(C.QMessageBox_checkBox(this.h))
 }
 
 func QMessageBox_Information(parent *QWidget, title string, text string) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -447,7 +403,6 @@ func QMessageBox_Information(parent *QWidget, title string, text string) QMessag
 }
 
 func QMessageBox_Question(parent *QWidget, title string, text string) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -460,7 +415,6 @@ func QMessageBox_Question(parent *QWidget, title string, text string) QMessageBo
 }
 
 func QMessageBox_Warning(parent *QWidget, title string, text string) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -473,7 +427,6 @@ func QMessageBox_Warning(parent *QWidget, title string, text string) QMessageBox
 }
 
 func QMessageBox_Critical(parent *QWidget, title string, text string) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -486,7 +439,6 @@ func QMessageBox_Critical(parent *QWidget, title string, text string) QMessageBo
 }
 
 func QMessageBox_About(parent *QWidget, title string, text string) {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -499,12 +451,10 @@ func QMessageBox_About(parent *QWidget, title string, text string) {
 }
 
 func QMessageBox_AboutQt(parent *QWidget) {
-	defer runtime.KeepAlive(parent)
 	C.QMessageBox_aboutQt(parent.cPointer())
 }
 
 func QMessageBox_Information2(parent *QWidget, title string, text string, button0 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -517,7 +467,6 @@ func QMessageBox_Information2(parent *QWidget, title string, text string, button
 }
 
 func QMessageBox_Information3(parent *QWidget, title string, text string, button0Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -534,7 +483,6 @@ func QMessageBox_Information3(parent *QWidget, title string, text string, button
 }
 
 func QMessageBox_Information4(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -547,7 +495,6 @@ func QMessageBox_Information4(parent *QWidget, title string, text string, button
 }
 
 func QMessageBox_Question2(parent *QWidget, title string, text string, button0 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -560,7 +507,6 @@ func QMessageBox_Question2(parent *QWidget, title string, text string, button0 i
 }
 
 func QMessageBox_Question3(parent *QWidget, title string, text string, button0Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -577,7 +523,6 @@ func QMessageBox_Question3(parent *QWidget, title string, text string, button0Te
 }
 
 func QMessageBox_Question4(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton, button1 QMessageBox__StandardButton) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -590,7 +535,6 @@ func QMessageBox_Question4(parent *QWidget, title string, text string, button0 Q
 }
 
 func QMessageBox_Warning2(parent *QWidget, title string, text string, button0 int, button1 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -603,7 +547,6 @@ func QMessageBox_Warning2(parent *QWidget, title string, text string, button0 in
 }
 
 func QMessageBox_Warning3(parent *QWidget, title string, text string, button0Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -620,7 +563,6 @@ func QMessageBox_Warning3(parent *QWidget, title string, text string, button0Tex
 }
 
 func QMessageBox_Warning4(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton, button1 QMessageBox__StandardButton) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -633,7 +575,6 @@ func QMessageBox_Warning4(parent *QWidget, title string, text string, button0 QM
 }
 
 func QMessageBox_Critical2(parent *QWidget, title string, text string, button0 int, button1 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -646,7 +587,6 @@ func QMessageBox_Critical2(parent *QWidget, title string, text string, button0 i
 }
 
 func QMessageBox_Critical3(parent *QWidget, title string, text string, button0Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -663,7 +603,6 @@ func QMessageBox_Critical3(parent *QWidget, title string, text string, button0Te
 }
 
 func QMessageBox_Critical4(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton, button1 QMessageBox__StandardButton) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -676,7 +615,6 @@ func QMessageBox_Critical4(parent *QWidget, title string, text string, button0 Q
 }
 
 func (this *QMessageBox) ButtonText(button int) string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMessageBox_buttonText(this.h, (C.int)(button))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -684,7 +622,6 @@ func (this *QMessageBox) ButtonText(button int) string {
 }
 
 func (this *QMessageBox) SetButtonText(button int, text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -693,7 +630,6 @@ func (this *QMessageBox) SetButtonText(button int, text string) {
 }
 
 func (this *QMessageBox) InformativeText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMessageBox_informativeText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -701,7 +637,6 @@ func (this *QMessageBox) InformativeText() string {
 }
 
 func (this *QMessageBox) SetInformativeText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -710,7 +645,6 @@ func (this *QMessageBox) SetInformativeText(text string) {
 }
 
 func (this *QMessageBox) DetailedText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMessageBox_detailedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -718,7 +652,6 @@ func (this *QMessageBox) DetailedText() string {
 }
 
 func (this *QMessageBox) SetDetailedText(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -727,7 +660,6 @@ func (this *QMessageBox) SetDetailedText(text string) {
 }
 
 func (this *QMessageBox) SetWindowTitle(title string) {
-	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -736,7 +668,6 @@ func (this *QMessageBox) SetWindowTitle(title string) {
 }
 
 func (this *QMessageBox) SetWindowModality(windowModality WindowModality) {
-	defer runtime.KeepAlive(this)
 	C.QMessageBox_setWindowModality(this.h, (C.int)(windowModality))
 }
 
@@ -747,8 +678,6 @@ func QMessageBox_StandardIcon(icon QMessageBox__Icon) *QPixmap {
 }
 
 func (this *QMessageBox) ButtonClicked(button *QAbstractButton) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(button)
 	C.QMessageBox_buttonClicked(this.h, button.cPointer())
 }
 func (this *QMessageBox) OnButtonClicked(slot func(button *QAbstractButton)) {
@@ -813,7 +742,6 @@ func QMessageBox_TrUtf83(s string, c string, n int) string {
 }
 
 func QMessageBox_Information5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -826,7 +754,6 @@ func QMessageBox_Information5(parent *QWidget, title string, text string, button
 }
 
 func QMessageBox_Information6(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -839,7 +766,6 @@ func QMessageBox_Information6(parent *QWidget, title string, text string, button
 }
 
 func QMessageBox_Question5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -852,7 +778,6 @@ func QMessageBox_Question5(parent *QWidget, title string, text string, buttons Q
 }
 
 func QMessageBox_Question6(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -865,7 +790,6 @@ func QMessageBox_Question6(parent *QWidget, title string, text string, buttons Q
 }
 
 func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -878,7 +802,6 @@ func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons QM
 }
 
 func QMessageBox_Warning6(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -891,7 +814,6 @@ func QMessageBox_Warning6(parent *QWidget, title string, text string, buttons QM
 }
 
 func QMessageBox_Critical5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -904,7 +826,6 @@ func QMessageBox_Critical5(parent *QWidget, title string, text string, buttons Q
 }
 
 func QMessageBox_Critical6(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -917,7 +838,6 @@ func QMessageBox_Critical6(parent *QWidget, title string, text string, buttons Q
 }
 
 func QMessageBox_AboutQt2(parent *QWidget, title string) {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -926,7 +846,6 @@ func QMessageBox_AboutQt2(parent *QWidget, title string) {
 }
 
 func QMessageBox_Information7(parent *QWidget, title string, text string, button0 int, button1 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -939,7 +858,6 @@ func QMessageBox_Information7(parent *QWidget, title string, text string, button
 }
 
 func QMessageBox_Information8(parent *QWidget, title string, text string, button0 int, button1 int, button2 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -952,7 +870,6 @@ func QMessageBox_Information8(parent *QWidget, title string, text string, button
 }
 
 func QMessageBox_Information9(parent *QWidget, title string, text string, button0Text string, button1Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -973,7 +890,6 @@ func QMessageBox_Information9(parent *QWidget, title string, text string, button
 }
 
 func QMessageBox_Information10(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -998,7 +914,6 @@ func QMessageBox_Information10(parent *QWidget, title string, text string, butto
 }
 
 func QMessageBox_Information11(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1023,7 +938,6 @@ func QMessageBox_Information11(parent *QWidget, title string, text string, butto
 }
 
 func QMessageBox_Information12(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int, escapeButtonNumber int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1048,7 +962,6 @@ func QMessageBox_Information12(parent *QWidget, title string, text string, butto
 }
 
 func QMessageBox_Information13(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton, button1 QMessageBox__StandardButton) QMessageBox__StandardButton {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1061,7 +974,6 @@ func QMessageBox_Information13(parent *QWidget, title string, text string, butto
 }
 
 func QMessageBox_Question7(parent *QWidget, title string, text string, button0 int, button1 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1074,7 +986,6 @@ func QMessageBox_Question7(parent *QWidget, title string, text string, button0 i
 }
 
 func QMessageBox_Question8(parent *QWidget, title string, text string, button0 int, button1 int, button2 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1087,7 +998,6 @@ func QMessageBox_Question8(parent *QWidget, title string, text string, button0 i
 }
 
 func QMessageBox_Question9(parent *QWidget, title string, text string, button0Text string, button1Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1108,7 +1018,6 @@ func QMessageBox_Question9(parent *QWidget, title string, text string, button0Te
 }
 
 func QMessageBox_Question10(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1133,7 +1042,6 @@ func QMessageBox_Question10(parent *QWidget, title string, text string, button0T
 }
 
 func QMessageBox_Question11(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1158,7 +1066,6 @@ func QMessageBox_Question11(parent *QWidget, title string, text string, button0T
 }
 
 func QMessageBox_Question12(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int, escapeButtonNumber int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1183,7 +1090,6 @@ func QMessageBox_Question12(parent *QWidget, title string, text string, button0T
 }
 
 func QMessageBox_Warning7(parent *QWidget, title string, text string, button0 int, button1 int, button2 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1196,7 +1102,6 @@ func QMessageBox_Warning7(parent *QWidget, title string, text string, button0 in
 }
 
 func QMessageBox_Warning8(parent *QWidget, title string, text string, button0Text string, button1Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1217,7 +1122,6 @@ func QMessageBox_Warning8(parent *QWidget, title string, text string, button0Tex
 }
 
 func QMessageBox_Warning9(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1242,7 +1146,6 @@ func QMessageBox_Warning9(parent *QWidget, title string, text string, button0Tex
 }
 
 func QMessageBox_Warning10(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1267,7 +1170,6 @@ func QMessageBox_Warning10(parent *QWidget, title string, text string, button0Te
 }
 
 func QMessageBox_Warning11(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int, escapeButtonNumber int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1292,7 +1194,6 @@ func QMessageBox_Warning11(parent *QWidget, title string, text string, button0Te
 }
 
 func QMessageBox_Critical7(parent *QWidget, title string, text string, button0 int, button1 int, button2 int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1305,7 +1206,6 @@ func QMessageBox_Critical7(parent *QWidget, title string, text string, button0 i
 }
 
 func QMessageBox_Critical8(parent *QWidget, title string, text string, button0Text string, button1Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1326,7 +1226,6 @@ func QMessageBox_Critical8(parent *QWidget, title string, text string, button0Te
 }
 
 func QMessageBox_Critical9(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1351,7 +1250,6 @@ func QMessageBox_Critical9(parent *QWidget, title string, text string, button0Te
 }
 
 func QMessageBox_Critical10(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1376,7 +1274,6 @@ func QMessageBox_Critical10(parent *QWidget, title string, text string, button0T
 }
 
 func QMessageBox_Critical11(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int, escapeButtonNumber int) int {
-	defer runtime.KeepAlive(parent)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1402,8 +1299,6 @@ func QMessageBox_Critical11(parent *QWidget, title string, text string, button0T
 
 // AdjustPosition can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) AdjustPosition(param1 *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMessageBox_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -1416,7 +1311,6 @@ func (this *QMessageBox) AdjustPosition(param1 *QWidget) {
 
 // UpdateMicroFocus can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMessageBox_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1429,7 +1323,6 @@ func (this *QMessageBox) UpdateMicroFocus() {
 
 // Create can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMessageBox_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1442,7 +1335,6 @@ func (this *QMessageBox) Create() {
 
 // Destroy can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QMessageBox_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1455,7 +1347,6 @@ func (this *QMessageBox) Destroy() {
 
 // FocusNextChild can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMessageBox_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1470,7 +1361,6 @@ func (this *QMessageBox) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QMessageBox_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1485,7 +1375,6 @@ func (this *QMessageBox) FocusPreviousChild() bool {
 
 // Sender can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QMessageBox_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1500,7 +1389,6 @@ func (this *QMessageBox) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMessageBox_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1515,7 +1403,6 @@ func (this *QMessageBox) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1532,7 +1419,6 @@ func (this *QMessageBox) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMessageBox that was directly constructed.
 func (this *QMessageBox) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1547,7 +1433,6 @@ func (this *QMessageBox) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QMessageBox) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QMessageBox_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -1577,7 +1462,6 @@ func miqt_exec_callback_QMessageBox_event(self *C.QMessageBox, cb C.intptr_t, e 
 }
 
 func (this *QMessageBox) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1605,7 +1489,6 @@ func miqt_exec_callback_QMessageBox_resizeEvent(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1633,7 +1516,6 @@ func miqt_exec_callback_QMessageBox_showEvent(self *C.QMessageBox, cb C.intptr_t
 }
 
 func (this *QMessageBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1661,7 +1543,6 @@ func miqt_exec_callback_QMessageBox_closeEvent(self *C.QMessageBox, cb C.intptr_
 }
 
 func (this *QMessageBox) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1689,7 +1570,6 @@ func miqt_exec_callback_QMessageBox_keyPressEvent(self *C.QMessageBox, cb C.intp
 }
 
 func (this *QMessageBox) callVirtualBase_ChangeEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1717,7 +1597,6 @@ func miqt_exec_callback_QMessageBox_changeEvent(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QMessageBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1744,7 +1623,6 @@ func miqt_exec_callback_QMessageBox_setVisible(self *C.QMessageBox, cb C.intptr_
 }
 
 func (this *QMessageBox) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QMessageBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1773,7 +1651,6 @@ func miqt_exec_callback_QMessageBox_sizeHint(self *C.QMessageBox, cb C.intptr_t)
 }
 
 func (this *QMessageBox) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QMessageBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1802,7 +1679,6 @@ func miqt_exec_callback_QMessageBox_minimumSizeHint(self *C.QMessageBox, cb C.in
 }
 
 func (this *QMessageBox) callVirtualBase_Open() {
-	defer runtime.KeepAlive(this)
 
 	C.QMessageBox_virtualbase_open(unsafe.Pointer(this.h))
 
@@ -1826,7 +1702,6 @@ func miqt_exec_callback_QMessageBox_open(self *C.QMessageBox, cb C.intptr_t) {
 }
 
 func (this *QMessageBox) callVirtualBase_Exec() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMessageBox_virtualbase_exec(unsafe.Pointer(this.h)))
 
@@ -1852,7 +1727,6 @@ func miqt_exec_callback_QMessageBox_exec(self *C.QMessageBox, cb C.intptr_t) C.i
 }
 
 func (this *QMessageBox) callVirtualBase_Done(param1 int) {
-	defer runtime.KeepAlive(this)
 
 	C.QMessageBox_virtualbase_done(unsafe.Pointer(this.h), (C.int)(param1))
 
@@ -1879,7 +1753,6 @@ func miqt_exec_callback_QMessageBox_done(self *C.QMessageBox, cb C.intptr_t, par
 }
 
 func (this *QMessageBox) callVirtualBase_Accept() {
-	defer runtime.KeepAlive(this)
 
 	C.QMessageBox_virtualbase_accept(unsafe.Pointer(this.h))
 
@@ -1903,7 +1776,6 @@ func miqt_exec_callback_QMessageBox_accept(self *C.QMessageBox, cb C.intptr_t) {
 }
 
 func (this *QMessageBox) callVirtualBase_Reject() {
-	defer runtime.KeepAlive(this)
 
 	C.QMessageBox_virtualbase_reject(unsafe.Pointer(this.h))
 
@@ -1927,7 +1799,6 @@ func miqt_exec_callback_QMessageBox_reject(self *C.QMessageBox, cb C.intptr_t) {
 }
 
 func (this *QMessageBox) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMessageBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1955,8 +1826,6 @@ func miqt_exec_callback_QMessageBox_contextMenuEvent(self *C.QMessageBox, cb C.i
 }
 
 func (this *QMessageBox) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QMessageBox_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
@@ -1988,7 +1857,6 @@ func miqt_exec_callback_QMessageBox_eventFilter(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMessageBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -2014,7 +1882,6 @@ func miqt_exec_callback_QMessageBox_devType(self *C.QMessageBox, cb C.intptr_t) 
 }
 
 func (this *QMessageBox) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMessageBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2043,7 +1910,6 @@ func miqt_exec_callback_QMessageBox_heightForWidth(self *C.QMessageBox, cb C.int
 }
 
 func (this *QMessageBox) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMessageBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -2069,7 +1935,6 @@ func miqt_exec_callback_QMessageBox_hasHeightForWidth(self *C.QMessageBox, cb C.
 }
 
 func (this *QMessageBox) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QMessageBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -2096,7 +1961,6 @@ func miqt_exec_callback_QMessageBox_paintEngine(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2124,7 +1988,6 @@ func miqt_exec_callback_QMessageBox_mousePressEvent(self *C.QMessageBox, cb C.in
 }
 
 func (this *QMessageBox) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2152,7 +2015,6 @@ func miqt_exec_callback_QMessageBox_mouseReleaseEvent(self *C.QMessageBox, cb C.
 }
 
 func (this *QMessageBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2180,7 +2042,6 @@ func miqt_exec_callback_QMessageBox_mouseDoubleClickEvent(self *C.QMessageBox, c
 }
 
 func (this *QMessageBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2208,7 +2069,6 @@ func miqt_exec_callback_QMessageBox_mouseMoveEvent(self *C.QMessageBox, cb C.int
 }
 
 func (this *QMessageBox) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2236,7 +2096,6 @@ func miqt_exec_callback_QMessageBox_wheelEvent(self *C.QMessageBox, cb C.intptr_
 }
 
 func (this *QMessageBox) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2264,7 +2123,6 @@ func miqt_exec_callback_QMessageBox_keyReleaseEvent(self *C.QMessageBox, cb C.in
 }
 
 func (this *QMessageBox) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2292,7 +2150,6 @@ func miqt_exec_callback_QMessageBox_focusInEvent(self *C.QMessageBox, cb C.intpt
 }
 
 func (this *QMessageBox) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2320,7 +2177,6 @@ func miqt_exec_callback_QMessageBox_focusOutEvent(self *C.QMessageBox, cb C.intp
 }
 
 func (this *QMessageBox) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2348,7 +2204,6 @@ func miqt_exec_callback_QMessageBox_enterEvent(self *C.QMessageBox, cb C.intptr_
 }
 
 func (this *QMessageBox) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2376,7 +2231,6 @@ func miqt_exec_callback_QMessageBox_leaveEvent(self *C.QMessageBox, cb C.intptr_
 }
 
 func (this *QMessageBox) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2404,7 +2258,6 @@ func miqt_exec_callback_QMessageBox_paintEvent(self *C.QMessageBox, cb C.intptr_
 }
 
 func (this *QMessageBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2432,7 +2285,6 @@ func miqt_exec_callback_QMessageBox_moveEvent(self *C.QMessageBox, cb C.intptr_t
 }
 
 func (this *QMessageBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2460,7 +2312,6 @@ func miqt_exec_callback_QMessageBox_tabletEvent(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2488,7 +2339,6 @@ func miqt_exec_callback_QMessageBox_actionEvent(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2516,7 +2366,6 @@ func miqt_exec_callback_QMessageBox_dragEnterEvent(self *C.QMessageBox, cb C.int
 }
 
 func (this *QMessageBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2544,7 +2393,6 @@ func miqt_exec_callback_QMessageBox_dragMoveEvent(self *C.QMessageBox, cb C.intp
 }
 
 func (this *QMessageBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2572,7 +2420,6 @@ func miqt_exec_callback_QMessageBox_dragLeaveEvent(self *C.QMessageBox, cb C.int
 }
 
 func (this *QMessageBox) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2600,7 +2447,6 @@ func miqt_exec_callback_QMessageBox_dropEvent(self *C.QMessageBox, cb C.intptr_t
 }
 
 func (this *QMessageBox) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2628,7 +2474,6 @@ func miqt_exec_callback_QMessageBox_hideEvent(self *C.QMessageBox, cb C.intptr_t
 }
 
 func (this *QMessageBox) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2670,7 +2515,6 @@ func miqt_exec_callback_QMessageBox_nativeEvent(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QMessageBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2699,7 +2543,6 @@ func miqt_exec_callback_QMessageBox_metric(self *C.QMessageBox, cb C.intptr_t, p
 }
 
 func (this *QMessageBox) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QMessageBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -2727,7 +2570,6 @@ func miqt_exec_callback_QMessageBox_initPainter(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QMessageBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -2758,7 +2600,6 @@ func miqt_exec_callback_QMessageBox_redirected(self *C.QMessageBox, cb C.intptr_
 }
 
 func (this *QMessageBox) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QMessageBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -2785,7 +2626,6 @@ func miqt_exec_callback_QMessageBox_sharedPainter(self *C.QMessageBox, cb C.intp
 }
 
 func (this *QMessageBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QMessageBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -2813,7 +2653,6 @@ func miqt_exec_callback_QMessageBox_inputMethodEvent(self *C.QMessageBox, cb C.i
 }
 
 func (this *QMessageBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QMessageBox_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2845,7 +2684,6 @@ func miqt_exec_callback_QMessageBox_inputMethodQuery(self *C.QMessageBox, cb C.i
 }
 
 func (this *QMessageBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QMessageBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2874,7 +2712,6 @@ func miqt_exec_callback_QMessageBox_focusNextPrevChild(self *C.QMessageBox, cb C
 }
 
 func (this *QMessageBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2902,7 +2739,6 @@ func miqt_exec_callback_QMessageBox_timerEvent(self *C.QMessageBox, cb C.intptr_
 }
 
 func (this *QMessageBox) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2930,7 +2766,6 @@ func miqt_exec_callback_QMessageBox_childEvent(self *C.QMessageBox, cb C.intptr_
 }
 
 func (this *QMessageBox) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMessageBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2958,7 +2793,6 @@ func miqt_exec_callback_QMessageBox_customEvent(self *C.QMessageBox, cb C.intptr
 }
 
 func (this *QMessageBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMessageBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2986,7 +2820,6 @@ func miqt_exec_callback_QMessageBox_connectNotify(self *C.QMessageBox, cb C.intp
 }
 
 func (this *QMessageBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMessageBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3021,6 +2854,8 @@ func (this *QMessageBox) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMessageBox) GoGC() {
 	if this.gc != nil {
 		return

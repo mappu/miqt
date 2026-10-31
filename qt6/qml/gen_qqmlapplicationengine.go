@@ -84,7 +84,6 @@ func NewQQmlApplicationEngine3(filePath string) *QQmlApplicationEngine {
 
 // NewQQmlApplicationEngine4 constructs a new QQmlApplicationEngine object.
 func NewQQmlApplicationEngine4(parent *qt6.QObject) *QQmlApplicationEngine {
-	defer runtime.KeepAlive(parent)
 
 	return newQQmlApplicationEngine(C.QQmlApplicationEngine_new4((*C.QObject)(parent.UnsafePointer())))
 }
@@ -92,14 +91,12 @@ func NewQQmlApplicationEngine4(parent *qt6.QObject) *QQmlApplicationEngine {
 // NewQQmlApplicationEngine5 constructs a new QQmlApplicationEngine object.
 func NewQQmlApplicationEngine5(url *qt6.QUrl, parent *qt6.QObject) *QQmlApplicationEngine {
 	defer runtime.KeepAlive(url)
-	defer runtime.KeepAlive(parent)
 
 	return newQQmlApplicationEngine(C.QQmlApplicationEngine_new5((*C.QUrl)(url.UnsafePointer()), (*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQQmlApplicationEngine6 constructs a new QQmlApplicationEngine object.
 func NewQQmlApplicationEngine6(filePath string, parent *qt6.QObject) *QQmlApplicationEngine {
-	defer runtime.KeepAlive(parent)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -109,12 +106,10 @@ func NewQQmlApplicationEngine6(filePath string, parent *qt6.QObject) *QQmlApplic
 }
 
 func (this *QQmlApplicationEngine) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlApplicationEngine_metaObject(this.h)))
 }
 
 func (this *QQmlApplicationEngine) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QQmlApplicationEngine_metacast(this.h, param1_Cstring))
@@ -130,7 +125,6 @@ func QQmlApplicationEngine_Tr(s string) string {
 }
 
 func (this *QQmlApplicationEngine) RootObjects() []*qt6.QObject {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QQmlApplicationEngine_rootObjects(this.h)
 	_ret := make([]*qt6.QObject, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -141,13 +135,11 @@ func (this *QQmlApplicationEngine) RootObjects() []*qt6.QObject {
 }
 
 func (this *QQmlApplicationEngine) Load(url *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QQmlApplicationEngine_load(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QQmlApplicationEngine) LoadWithFilePath(filePath string) {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -156,7 +148,6 @@ func (this *QQmlApplicationEngine) LoadWithFilePath(filePath string) {
 }
 
 func (this *QQmlApplicationEngine) SetInitialProperties(initialProperties map[string]qt6.QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(initialProperties)
 	initialProperties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
 	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray_ptr))
@@ -183,7 +174,6 @@ func (this *QQmlApplicationEngine) SetInitialProperties(initialProperties map[st
 }
 
 func (this *QQmlApplicationEngine) SetExtraFileSelectors(extraFileSelectors []string) {
-	defer runtime.KeepAlive(this)
 	extraFileSelectors_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(extraFileSelectors))))
 	defer C.free(unsafe.Pointer(extraFileSelectors_CArray_ptr))
 	extraFileSelectors_CArray := unsafe.Slice(extraFileSelectors_CArray_ptr, len(extraFileSelectors))
@@ -199,7 +189,6 @@ func (this *QQmlApplicationEngine) SetExtraFileSelectors(extraFileSelectors []st
 }
 
 func (this *QQmlApplicationEngine) LoadData(data []byte) {
-	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -211,8 +200,6 @@ func (this *QQmlApplicationEngine) LoadData(data []byte) {
 }
 
 func (this *QQmlApplicationEngine) ObjectCreated(object *qt6.QObject, url *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	defer runtime.KeepAlive(url)
 	C.QQmlApplicationEngine_objectCreated(this.h, (*C.QObject)(object.UnsafePointer()), (*C.QUrl)(url.UnsafePointer()))
 }
@@ -236,7 +223,6 @@ func miqt_exec_callback_QQmlApplicationEngine_objectCreated(cb C.intptr_t, objec
 }
 
 func (this *QQmlApplicationEngine) ObjectCreationFailed(url *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QQmlApplicationEngine_objectCreationFailed(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
@@ -280,7 +266,6 @@ func QQmlApplicationEngine_Tr3(s string, c string, n int) string {
 }
 
 func (this *QQmlApplicationEngine) LoadData2(data []byte, url *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
@@ -294,7 +279,6 @@ func (this *QQmlApplicationEngine) LoadData2(data []byte, url *qt6.QUrl) {
 
 // Sender can only be called from a QQmlApplicationEngine that was directly constructed.
 func (this *QQmlApplicationEngine) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlApplicationEngine_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -309,7 +293,6 @@ func (this *QQmlApplicationEngine) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QQmlApplicationEngine that was directly constructed.
 func (this *QQmlApplicationEngine) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QQmlApplicationEngine_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -324,7 +307,6 @@ func (this *QQmlApplicationEngine) SenderSignalIndex() int {
 
 // Receivers can only be called from a QQmlApplicationEngine that was directly constructed.
 func (this *QQmlApplicationEngine) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -341,7 +323,6 @@ func (this *QQmlApplicationEngine) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QQmlApplicationEngine that was directly constructed.
 func (this *QQmlApplicationEngine) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -356,7 +337,6 @@ func (this *QQmlApplicationEngine) IsSignalConnected(signal *qt6.QMetaMethod) bo
 }
 
 func (this *QQmlApplicationEngine) callVirtualBase_Event(param1 *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QQmlApplicationEngine_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
@@ -386,8 +366,6 @@ func miqt_exec_callback_QQmlApplicationEngine_event(self *C.QQmlApplicationEngin
 }
 
 func (this *QQmlApplicationEngine) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlApplicationEngine_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -419,7 +397,6 @@ func miqt_exec_callback_QQmlApplicationEngine_eventFilter(self *C.QQmlApplicatio
 }
 
 func (this *QQmlApplicationEngine) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlApplicationEngine_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -447,7 +424,6 @@ func miqt_exec_callback_QQmlApplicationEngine_timerEvent(self *C.QQmlApplication
 }
 
 func (this *QQmlApplicationEngine) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlApplicationEngine_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -475,7 +451,6 @@ func miqt_exec_callback_QQmlApplicationEngine_childEvent(self *C.QQmlApplication
 }
 
 func (this *QQmlApplicationEngine) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlApplicationEngine_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -503,7 +478,6 @@ func miqt_exec_callback_QQmlApplicationEngine_customEvent(self *C.QQmlApplicatio
 }
 
 func (this *QQmlApplicationEngine) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QQmlApplicationEngine_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -531,7 +505,6 @@ func miqt_exec_callback_QQmlApplicationEngine_connectNotify(self *C.QQmlApplicat
 }
 
 func (this *QQmlApplicationEngine) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QQmlApplicationEngine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -566,6 +539,8 @@ func (this *QQmlApplicationEngine) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QQmlApplicationEngine) GoGC() {
 	if this.gc != nil {
 		return

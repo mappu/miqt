@@ -79,18 +79,15 @@ func NewQThread() *QThread {
 
 // NewQThread2 constructs a new QThread object.
 func NewQThread2(parent *QObject) *QThread {
-	defer runtime.KeepAlive(parent)
 
 	return newQThread(C.QThread_new2(parent.cPointer()))
 }
 
 func (this *QThread) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QThread_metaObject(this.h))
 }
 
 func (this *QThread) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QThread_metacast(this.h, param1_Cstring))
@@ -131,94 +128,75 @@ func QThread_YieldCurrentThread() {
 }
 
 func (this *QThread) SetPriority(priority QThread__Priority) {
-	defer runtime.KeepAlive(this)
 	C.QThread_setPriority(this.h, (C.int)(priority))
 }
 
 func (this *QThread) Priority() QThread__Priority {
-	defer runtime.KeepAlive(this)
 	return (QThread__Priority)(C.QThread_priority(this.h))
 }
 
 func (this *QThread) IsFinished() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QThread_isFinished(this.h))
 }
 
 func (this *QThread) IsRunning() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QThread_isRunning(this.h))
 }
 
 func (this *QThread) RequestInterruption() {
-	defer runtime.KeepAlive(this)
 	C.QThread_requestInterruption(this.h)
 }
 
 func (this *QThread) IsInterruptionRequested() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QThread_isInterruptionRequested(this.h))
 }
 
 func (this *QThread) SetStackSize(stackSize uint) {
-	defer runtime.KeepAlive(this)
 	C.QThread_setStackSize(this.h, (C.uint)(stackSize))
 }
 
 func (this *QThread) StackSize() uint {
-	defer runtime.KeepAlive(this)
 	return (uint)(C.QThread_stackSize(this.h))
 }
 
 func (this *QThread) Exit() {
-	defer runtime.KeepAlive(this)
 	C.QThread_exit(this.h)
 }
 
 func (this *QThread) EventDispatcher() *QAbstractEventDispatcher {
-	defer runtime.KeepAlive(this)
 	return newQAbstractEventDispatcher(C.QThread_eventDispatcher(this.h))
 }
 
 func (this *QThread) SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(eventDispatcher)
 	C.QThread_setEventDispatcher(this.h, eventDispatcher.cPointer())
 }
 
 func (this *QThread) Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 	return (bool)(C.QThread_event(this.h, event.cPointer()))
 }
 
 func (this *QThread) LoopLevel() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QThread_loopLevel(this.h))
 }
 
 func (this *QThread) Start() {
-	defer runtime.KeepAlive(this)
 	C.QThread_start(this.h)
 }
 
 func (this *QThread) Terminate() {
-	defer runtime.KeepAlive(this)
 	C.QThread_terminate(this.h)
 }
 
 func (this *QThread) Quit() {
-	defer runtime.KeepAlive(this)
 	C.QThread_quit(this.h)
 }
 
 func (this *QThread) Wait() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QThread_wait(this.h))
 }
 
 func (this *QThread) WaitWithTime(time uint64) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QThread_waitWithTime(this.h, (C.ulong)(time)))
 }
 
@@ -279,24 +257,20 @@ func QThread_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QThread) ExitWithRetcode(retcode int) {
-	defer runtime.KeepAlive(this)
 	C.QThread_exitWithRetcode(this.h, (C.int)(retcode))
 }
 
 func (this *QThread) StartWithQThreadPriority(param1 QThread__Priority) {
-	defer runtime.KeepAlive(this)
 	C.QThread_startWithQThreadPriority(this.h, (C.int)(param1))
 }
 
 func (this *QThread) WaitWithDeadline(deadline QDeadlineTimer) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(deadline)
 	return (bool)(C.QThread_waitWithDeadline(this.h, deadline.cPointer()))
 }
 
 // Exec can only be called from a QThread that was directly constructed.
 func (this *QThread) Exec() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QThread_protectedbase_exec(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -311,7 +285,6 @@ func (this *QThread) Exec() int {
 
 // Sender can only be called from a QThread that was directly constructed.
 func (this *QThread) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QThread_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -326,7 +299,6 @@ func (this *QThread) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QThread that was directly constructed.
 func (this *QThread) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QThread_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -341,7 +313,6 @@ func (this *QThread) SenderSignalIndex() int {
 
 // Receivers can only be called from a QThread that was directly constructed.
 func (this *QThread) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -358,7 +329,6 @@ func (this *QThread) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QThread that was directly constructed.
 func (this *QThread) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -373,7 +343,6 @@ func (this *QThread) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QThread) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QThread_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -403,7 +372,6 @@ func miqt_exec_callback_QThread_event(self *C.QThread, cb C.intptr_t, event *C.Q
 }
 
 func (this *QThread) callVirtualBase_Run() {
-	defer runtime.KeepAlive(this)
 
 	C.QThread_virtualbase_run(unsafe.Pointer(this.h))
 
@@ -427,8 +395,6 @@ func miqt_exec_callback_QThread_run(self *C.QThread, cb C.intptr_t) {
 }
 
 func (this *QThread) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QThread_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -460,7 +426,6 @@ func miqt_exec_callback_QThread_eventFilter(self *C.QThread, cb C.intptr_t, watc
 }
 
 func (this *QThread) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QThread_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -488,7 +453,6 @@ func miqt_exec_callback_QThread_timerEvent(self *C.QThread, cb C.intptr_t, event
 }
 
 func (this *QThread) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QThread_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -516,7 +480,6 @@ func miqt_exec_callback_QThread_childEvent(self *C.QThread, cb C.intptr_t, event
 }
 
 func (this *QThread) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QThread_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -544,7 +507,6 @@ func miqt_exec_callback_QThread_customEvent(self *C.QThread, cb C.intptr_t, even
 }
 
 func (this *QThread) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QThread_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -572,7 +534,6 @@ func miqt_exec_callback_QThread_connectNotify(self *C.QThread, cb C.intptr_t, si
 }
 
 func (this *QThread) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QThread_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -634,6 +595,8 @@ func (this *QThread) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QThread) GoGC() {
 	if this.gc != nil {
 		return

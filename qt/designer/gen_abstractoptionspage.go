@@ -63,7 +63,6 @@ func (this *QDesignerOptionsPageInterface) Name() string {
 
 func (this *QDesignerOptionsPageInterface) CreatePage(parent *qt.QWidget) *qt.QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerOptionsPageInterface_createPage(this.h, (*C.QWidget)(parent.UnsafePointer()))))
 }
 

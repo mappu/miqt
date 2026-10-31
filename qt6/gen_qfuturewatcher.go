@@ -59,12 +59,10 @@ func UnsafeNewQFutureWatcherBase(h unsafe.Pointer) *QFutureWatcherBase {
 }
 
 func (this *QFutureWatcherBase) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QFutureWatcherBase_metaObject(this.h))
 }
 
 func (this *QFutureWatcherBase) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QFutureWatcherBase_metacast(this.h, param1_Cstring))
@@ -80,22 +78,18 @@ func QFutureWatcherBase_Tr(s string) string {
 }
 
 func (this *QFutureWatcherBase) ProgressValue() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QFutureWatcherBase_progressValue(this.h))
 }
 
 func (this *QFutureWatcherBase) ProgressMinimum() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QFutureWatcherBase_progressMinimum(this.h))
 }
 
 func (this *QFutureWatcherBase) ProgressMaximum() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QFutureWatcherBase_progressMaximum(this.h))
 }
 
 func (this *QFutureWatcherBase) ProgressText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QFutureWatcherBase_progressText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -103,58 +97,47 @@ func (this *QFutureWatcherBase) ProgressText() string {
 }
 
 func (this *QFutureWatcherBase) IsStarted() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureWatcherBase_isStarted(this.h))
 }
 
 func (this *QFutureWatcherBase) IsFinished() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureWatcherBase_isFinished(this.h))
 }
 
 func (this *QFutureWatcherBase) IsRunning() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureWatcherBase_isRunning(this.h))
 }
 
 func (this *QFutureWatcherBase) IsCanceled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureWatcherBase_isCanceled(this.h))
 }
 
 func (this *QFutureWatcherBase) IsPaused() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureWatcherBase_isPaused(this.h))
 }
 
 func (this *QFutureWatcherBase) IsSuspending() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureWatcherBase_isSuspending(this.h))
 }
 
 func (this *QFutureWatcherBase) IsSuspended() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QFutureWatcherBase_isSuspended(this.h))
 }
 
 func (this *QFutureWatcherBase) WaitForFinished() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_waitForFinished(this.h)
 }
 
 func (this *QFutureWatcherBase) SetPendingResultsLimit(limit int) {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_setPendingResultsLimit(this.h, (C.int)(limit))
 }
 
 func (this *QFutureWatcherBase) Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 	return (bool)(C.QFutureWatcherBase_event(this.h, event.cPointer()))
 }
 
 func (this *QFutureWatcherBase) Started() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_started(this.h)
 }
 func (this *QFutureWatcherBase) OnStarted(slot func()) {
@@ -172,7 +155,6 @@ func miqt_exec_callback_QFutureWatcherBase_started(cb C.intptr_t) {
 }
 
 func (this *QFutureWatcherBase) Finished() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_finished(this.h)
 }
 func (this *QFutureWatcherBase) OnFinished(slot func()) {
@@ -190,7 +172,6 @@ func miqt_exec_callback_QFutureWatcherBase_finished(cb C.intptr_t) {
 }
 
 func (this *QFutureWatcherBase) Canceled() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_canceled(this.h)
 }
 func (this *QFutureWatcherBase) OnCanceled(slot func()) {
@@ -208,7 +189,6 @@ func miqt_exec_callback_QFutureWatcherBase_canceled(cb C.intptr_t) {
 }
 
 func (this *QFutureWatcherBase) Paused() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_paused(this.h)
 }
 func (this *QFutureWatcherBase) OnPaused(slot func()) {
@@ -226,7 +206,6 @@ func miqt_exec_callback_QFutureWatcherBase_paused(cb C.intptr_t) {
 }
 
 func (this *QFutureWatcherBase) Suspending() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_suspending(this.h)
 }
 func (this *QFutureWatcherBase) OnSuspending(slot func()) {
@@ -244,7 +223,6 @@ func miqt_exec_callback_QFutureWatcherBase_suspending(cb C.intptr_t) {
 }
 
 func (this *QFutureWatcherBase) Suspended() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_suspended(this.h)
 }
 func (this *QFutureWatcherBase) OnSuspended(slot func()) {
@@ -262,7 +240,6 @@ func miqt_exec_callback_QFutureWatcherBase_suspended(cb C.intptr_t) {
 }
 
 func (this *QFutureWatcherBase) Resumed() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_resumed(this.h)
 }
 func (this *QFutureWatcherBase) OnResumed(slot func()) {
@@ -280,7 +257,6 @@ func miqt_exec_callback_QFutureWatcherBase_resumed(cb C.intptr_t) {
 }
 
 func (this *QFutureWatcherBase) ResultReadyAt(resultIndex int) {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_resultReadyAt(this.h, (C.int)(resultIndex))
 }
 func (this *QFutureWatcherBase) OnResultReadyAt(slot func(resultIndex int)) {
@@ -301,7 +277,6 @@ func miqt_exec_callback_QFutureWatcherBase_resultReadyAt(cb C.intptr_t, resultIn
 }
 
 func (this *QFutureWatcherBase) ResultsReadyAt(beginIndex int, endIndex int) {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_resultsReadyAt(this.h, (C.int)(beginIndex), (C.int)(endIndex))
 }
 func (this *QFutureWatcherBase) OnResultsReadyAt(slot func(beginIndex int, endIndex int)) {
@@ -324,7 +299,6 @@ func miqt_exec_callback_QFutureWatcherBase_resultsReadyAt(cb C.intptr_t, beginIn
 }
 
 func (this *QFutureWatcherBase) ProgressRangeChanged(minimum int, maximum int) {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_progressRangeChanged(this.h, (C.int)(minimum), (C.int)(maximum))
 }
 func (this *QFutureWatcherBase) OnProgressRangeChanged(slot func(minimum int, maximum int)) {
@@ -347,7 +321,6 @@ func miqt_exec_callback_QFutureWatcherBase_progressRangeChanged(cb C.intptr_t, m
 }
 
 func (this *QFutureWatcherBase) ProgressValueChanged(progressValue int) {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_progressValueChanged(this.h, (C.int)(progressValue))
 }
 func (this *QFutureWatcherBase) OnProgressValueChanged(slot func(progressValue int)) {
@@ -368,7 +341,6 @@ func miqt_exec_callback_QFutureWatcherBase_progressValueChanged(cb C.intptr_t, p
 }
 
 func (this *QFutureWatcherBase) ProgressTextChanged(progressText string) {
-	defer runtime.KeepAlive(this)
 	progressText_ms := C.struct_miqt_string{}
 	progressText_ms.data = C.CString(progressText)
 	progressText_ms.len = C.size_t(len(progressText))
@@ -396,42 +368,34 @@ func miqt_exec_callback_QFutureWatcherBase_progressTextChanged(cb C.intptr_t, pr
 }
 
 func (this *QFutureWatcherBase) Cancel() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_cancel(this.h)
 }
 
 func (this *QFutureWatcherBase) SetSuspended(suspend bool) {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_setSuspended(this.h, (C.bool)(suspend))
 }
 
 func (this *QFutureWatcherBase) Suspend() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_suspend(this.h)
 }
 
 func (this *QFutureWatcherBase) Resume() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_resume(this.h)
 }
 
 func (this *QFutureWatcherBase) ToggleSuspended() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_toggleSuspended(this.h)
 }
 
 func (this *QFutureWatcherBase) SetPaused(paused bool) {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_setPaused(this.h, (C.bool)(paused))
 }
 
 func (this *QFutureWatcherBase) Pause() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_pause(this.h)
 }
 
 func (this *QFutureWatcherBase) TogglePaused() {
-	defer runtime.KeepAlive(this)
 	C.QFutureWatcherBase_togglePaused(this.h)
 }
 
@@ -465,6 +429,8 @@ func (this *QFutureWatcherBase) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QFutureWatcherBase) GoGC() {
 	if this.gc != nil {
 		return

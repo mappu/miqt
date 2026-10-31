@@ -70,7 +70,6 @@ func NewQDesignerLayoutDecorationExtension() *QDesignerLayoutDecorationExtension
 
 func (this *QDesignerLayoutDecorationExtension) Widgets(layout *qt6.QLayout) []*qt6.QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(layout)
 	var _ma C.struct_miqt_array = C.QDesignerLayoutDecorationExtension_widgets(this.h, (*C.QLayout)(layout.UnsafePointer()))
 	_ret := make([]*qt6.QWidget, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -89,7 +88,6 @@ func (this *QDesignerLayoutDecorationExtension) ItemInfo(index int) *qt6.QRect {
 
 func (this *QDesignerLayoutDecorationExtension) IndexOf(widget *qt6.QWidget) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	return (int)(C.QDesignerLayoutDecorationExtension_indexOf(this.h, (*C.QWidget)(widget.UnsafePointer())))
 }
 
@@ -132,7 +130,6 @@ func (this *QDesignerLayoutDecorationExtension) InsertWidget(widget *qt6.QWidget
 	Second int
 }) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	cell_First_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8)))
 	defer C.free(unsafe.Pointer(cell_First_CArray))
 	cell_Second_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8)))
@@ -149,7 +146,6 @@ func (this *QDesignerLayoutDecorationExtension) InsertWidget(widget *qt6.QWidget
 
 func (this *QDesignerLayoutDecorationExtension) RemoveWidget(widget *qt6.QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QDesignerLayoutDecorationExtension_removeWidget(this.h, (*C.QWidget)(widget.UnsafePointer()))
 }
 
@@ -202,7 +198,6 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_widgets(self *C.QDesi
 	slotval1 := qt6.UnsafeNewQLayout(unsafe.Pointer(layout))
 
 	virtualReturn := gofunc(slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QWidget)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {

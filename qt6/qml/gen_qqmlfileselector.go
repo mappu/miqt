@@ -60,26 +60,21 @@ func UnsafeNewQQmlFileSelector(h unsafe.Pointer) *QQmlFileSelector {
 
 // NewQQmlFileSelector constructs a new QQmlFileSelector object.
 func NewQQmlFileSelector(engine *QQmlEngine) *QQmlFileSelector {
-	defer runtime.KeepAlive(engine)
 
 	return newQQmlFileSelector(C.QQmlFileSelector_new(engine.cPointer()))
 }
 
 // NewQQmlFileSelector2 constructs a new QQmlFileSelector object.
 func NewQQmlFileSelector2(engine *QQmlEngine, parent *qt6.QObject) *QQmlFileSelector {
-	defer runtime.KeepAlive(engine)
-	defer runtime.KeepAlive(parent)
 
 	return newQQmlFileSelector(C.QQmlFileSelector_new2(engine.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QQmlFileSelector) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlFileSelector_metaObject(this.h)))
 }
 
 func (this *QQmlFileSelector) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QQmlFileSelector_metacast(this.h, param1_Cstring))
@@ -95,18 +90,14 @@ func QQmlFileSelector_Tr(s string) string {
 }
 
 func (this *QQmlFileSelector) Selector() *qt6.QFileSelector {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQFileSelector(unsafe.Pointer(C.QQmlFileSelector_selector(this.h)))
 }
 
 func (this *QQmlFileSelector) SetSelector(selector *qt6.QFileSelector) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(selector)
 	C.QQmlFileSelector_setSelector(this.h, (*C.QFileSelector)(selector.UnsafePointer()))
 }
 
 func (this *QQmlFileSelector) SetExtraSelectors(strings []string) {
-	defer runtime.KeepAlive(this)
 	strings_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray_ptr))
 	strings_CArray := unsafe.Slice(strings_CArray_ptr, len(strings))
@@ -122,7 +113,6 @@ func (this *QQmlFileSelector) SetExtraSelectors(strings []string) {
 }
 
 func QQmlFileSelector_Get(param1 *QQmlEngine) *QQmlFileSelector {
-	defer runtime.KeepAlive(param1)
 	return newQQmlFileSelector(C.QQmlFileSelector_get(param1.cPointer()))
 }
 
@@ -150,7 +140,6 @@ func QQmlFileSelector_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QQmlFileSelector that was directly constructed.
 func (this *QQmlFileSelector) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlFileSelector_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -165,7 +154,6 @@ func (this *QQmlFileSelector) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QQmlFileSelector that was directly constructed.
 func (this *QQmlFileSelector) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QQmlFileSelector_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -180,7 +168,6 @@ func (this *QQmlFileSelector) SenderSignalIndex() int {
 
 // Receivers can only be called from a QQmlFileSelector that was directly constructed.
 func (this *QQmlFileSelector) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -197,7 +184,6 @@ func (this *QQmlFileSelector) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QQmlFileSelector that was directly constructed.
 func (this *QQmlFileSelector) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -212,7 +198,6 @@ func (this *QQmlFileSelector) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QQmlFileSelector) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlFileSelector_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -242,8 +227,6 @@ func miqt_exec_callback_QQmlFileSelector_event(self *C.QQmlFileSelector, cb C.in
 }
 
 func (this *QQmlFileSelector) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QQmlFileSelector_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -275,7 +258,6 @@ func miqt_exec_callback_QQmlFileSelector_eventFilter(self *C.QQmlFileSelector, c
 }
 
 func (this *QQmlFileSelector) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlFileSelector_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -303,7 +285,6 @@ func miqt_exec_callback_QQmlFileSelector_timerEvent(self *C.QQmlFileSelector, cb
 }
 
 func (this *QQmlFileSelector) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlFileSelector_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -331,7 +312,6 @@ func miqt_exec_callback_QQmlFileSelector_childEvent(self *C.QQmlFileSelector, cb
 }
 
 func (this *QQmlFileSelector) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QQmlFileSelector_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -359,7 +339,6 @@ func miqt_exec_callback_QQmlFileSelector_customEvent(self *C.QQmlFileSelector, c
 }
 
 func (this *QQmlFileSelector) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QQmlFileSelector_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -387,7 +366,6 @@ func miqt_exec_callback_QQmlFileSelector_connectNotify(self *C.QQmlFileSelector,
 }
 
 func (this *QQmlFileSelector) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QQmlFileSelector_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -422,6 +400,8 @@ func (this *QQmlFileSelector) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QQmlFileSelector) GoGC() {
 	if this.gc != nil {
 		return

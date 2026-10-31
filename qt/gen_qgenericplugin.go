@@ -66,18 +66,15 @@ func NewQGenericPlugin() *QGenericPlugin {
 
 // NewQGenericPlugin2 constructs a new QGenericPlugin object.
 func NewQGenericPlugin2(parent *QObject) *QGenericPlugin {
-	defer runtime.KeepAlive(parent)
 
 	return newQGenericPlugin(C.QGenericPlugin_new2(parent.cPointer()))
 }
 
 func (this *QGenericPlugin) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGenericPlugin_metaObject(this.h))
 }
 
 func (this *QGenericPlugin) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGenericPlugin_metacast(this.h, param1_Cstring))
@@ -102,7 +99,6 @@ func QGenericPlugin_TrUtf8(s string) string {
 }
 
 func (this *QGenericPlugin) Create(name string, spec string) *QObject {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -160,7 +156,6 @@ func QGenericPlugin_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QGenericPlugin that was directly constructed.
 func (this *QGenericPlugin) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGenericPlugin_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -175,7 +170,6 @@ func (this *QGenericPlugin) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGenericPlugin that was directly constructed.
 func (this *QGenericPlugin) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGenericPlugin_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -190,7 +184,6 @@ func (this *QGenericPlugin) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGenericPlugin that was directly constructed.
 func (this *QGenericPlugin) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -207,7 +200,6 @@ func (this *QGenericPlugin) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGenericPlugin that was directly constructed.
 func (this *QGenericPlugin) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -245,14 +237,12 @@ func miqt_exec_callback_QGenericPlugin_create(self *C.QGenericPlugin, cb C.intpt
 	slotval2 := spec_ret
 
 	virtualReturn := gofunc(slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QGenericPlugin) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGenericPlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -282,8 +272,6 @@ func miqt_exec_callback_QGenericPlugin_event(self *C.QGenericPlugin, cb C.intptr
 }
 
 func (this *QGenericPlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGenericPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -315,7 +303,6 @@ func miqt_exec_callback_QGenericPlugin_eventFilter(self *C.QGenericPlugin, cb C.
 }
 
 func (this *QGenericPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGenericPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -343,7 +330,6 @@ func miqt_exec_callback_QGenericPlugin_timerEvent(self *C.QGenericPlugin, cb C.i
 }
 
 func (this *QGenericPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGenericPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -371,7 +357,6 @@ func miqt_exec_callback_QGenericPlugin_childEvent(self *C.QGenericPlugin, cb C.i
 }
 
 func (this *QGenericPlugin) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGenericPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -399,7 +384,6 @@ func miqt_exec_callback_QGenericPlugin_customEvent(self *C.QGenericPlugin, cb C.
 }
 
 func (this *QGenericPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGenericPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -427,7 +411,6 @@ func miqt_exec_callback_QGenericPlugin_connectNotify(self *C.QGenericPlugin, cb 
 }
 
 func (this *QGenericPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGenericPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -462,6 +445,8 @@ func (this *QGenericPlugin) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QGenericPlugin) GoGC() {
 	if this.gc != nil {
 		return

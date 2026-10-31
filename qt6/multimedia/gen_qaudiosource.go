@@ -81,7 +81,6 @@ func NewQAudioSource3(format *QAudioFormat) *QAudioSource {
 // NewQAudioSource4 constructs a new QAudioSource object.
 func NewQAudioSource4(format *QAudioFormat, parent *qt6.QObject) *QAudioSource {
 	defer runtime.KeepAlive(format)
-	defer runtime.KeepAlive(parent)
 
 	return newQAudioSource(C.QAudioSource_new4(format.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
@@ -98,18 +97,15 @@ func NewQAudioSource5(audioDeviceInfo *QAudioDevice, format *QAudioFormat) *QAud
 func NewQAudioSource6(audioDeviceInfo *QAudioDevice, format *QAudioFormat, parent *qt6.QObject) *QAudioSource {
 	defer runtime.KeepAlive(audioDeviceInfo)
 	defer runtime.KeepAlive(format)
-	defer runtime.KeepAlive(parent)
 
 	return newQAudioSource(C.QAudioSource_new6(audioDeviceInfo.cPointer(), format.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAudioSource) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioSource_metaObject(this.h)))
 }
 
 func (this *QAudioSource) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAudioSource_metacast(this.h, param1_Cstring))
@@ -125,95 +121,76 @@ func QAudioSource_Tr(s string) string {
 }
 
 func (this *QAudioSource) IsNull() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAudioSource_isNull(this.h))
 }
 
 func (this *QAudioSource) Format() *QAudioFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQAudioFormat(C.QAudioSource_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioSource) Start(device *qt6.QIODevice) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QAudioSource_start(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAudioSource) Start2() *qt6.QIODevice {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioSource_start2(this.h)))
 }
 
 func (this *QAudioSource) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QAudioSource_stop(this.h)
 }
 
 func (this *QAudioSource) Reset() {
-	defer runtime.KeepAlive(this)
 	C.QAudioSource_reset(this.h)
 }
 
 func (this *QAudioSource) Suspend() {
-	defer runtime.KeepAlive(this)
 	C.QAudioSource_suspend(this.h)
 }
 
 func (this *QAudioSource) Resume() {
-	defer runtime.KeepAlive(this)
 	C.QAudioSource_resume(this.h)
 }
 
 func (this *QAudioSource) SetBufferSize(bytes int64) {
-	defer runtime.KeepAlive(this)
 	C.QAudioSource_setBufferSize(this.h, (C.ptrdiff_t)(bytes))
 }
 
 func (this *QAudioSource) BufferSize() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioSource_bufferSize(this.h))
 }
 
 func (this *QAudioSource) BytesAvailable() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioSource_bytesAvailable(this.h))
 }
 
 func (this *QAudioSource) SetVolume(volume float64) {
-	defer runtime.KeepAlive(this)
 	C.QAudioSource_setVolume(this.h, (C.double)(volume))
 }
 
 func (this *QAudioSource) Volume() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QAudioSource_volume(this.h))
 }
 
 func (this *QAudioSource) ProcessedUSecs() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioSource_processedUSecs(this.h))
 }
 
 func (this *QAudioSource) ElapsedUSecs() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioSource_elapsedUSecs(this.h))
 }
 
 func (this *QAudioSource) Error() QAudio__Error {
-	defer runtime.KeepAlive(this)
 	return (QAudio__Error)(C.QAudioSource_error(this.h))
 }
 
 func (this *QAudioSource) State() QAudio__State {
-	defer runtime.KeepAlive(this)
 	return (QAudio__State)(C.QAudioSource_state(this.h))
 }
 
 func (this *QAudioSource) StateChanged(state QAudio__State) {
-	defer runtime.KeepAlive(this)
 	C.QAudioSource_stateChanged(this.h, (C.int)(state))
 }
 func (this *QAudioSource) OnStateChanged(slot func(state QAudio__State)) {
@@ -257,7 +234,6 @@ func QAudioSource_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QAudioSource that was directly constructed.
 func (this *QAudioSource) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QAudioSource_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -272,7 +248,6 @@ func (this *QAudioSource) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QAudioSource that was directly constructed.
 func (this *QAudioSource) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAudioSource_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -287,7 +262,6 @@ func (this *QAudioSource) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAudioSource that was directly constructed.
 func (this *QAudioSource) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -304,7 +278,6 @@ func (this *QAudioSource) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAudioSource that was directly constructed.
 func (this *QAudioSource) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -319,7 +292,6 @@ func (this *QAudioSource) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QAudioSource) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioSource_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -349,8 +321,6 @@ func miqt_exec_callback_QAudioSource_event(self *C.QAudioSource, cb C.intptr_t, 
 }
 
 func (this *QAudioSource) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioSource_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -382,7 +352,6 @@ func miqt_exec_callback_QAudioSource_eventFilter(self *C.QAudioSource, cb C.intp
 }
 
 func (this *QAudioSource) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAudioSource_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -410,7 +379,6 @@ func miqt_exec_callback_QAudioSource_timerEvent(self *C.QAudioSource, cb C.intpt
 }
 
 func (this *QAudioSource) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAudioSource_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -438,7 +406,6 @@ func miqt_exec_callback_QAudioSource_childEvent(self *C.QAudioSource, cb C.intpt
 }
 
 func (this *QAudioSource) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAudioSource_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -466,7 +433,6 @@ func miqt_exec_callback_QAudioSource_customEvent(self *C.QAudioSource, cb C.intp
 }
 
 func (this *QAudioSource) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAudioSource_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -494,7 +460,6 @@ func miqt_exec_callback_QAudioSource_connectNotify(self *C.QAudioSource, cb C.in
 }
 
 func (this *QAudioSource) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAudioSource_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -529,6 +494,8 @@ func (this *QAudioSource) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAudioSource) GoGC() {
 	if this.gc != nil {
 		return

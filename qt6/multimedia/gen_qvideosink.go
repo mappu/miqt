@@ -66,18 +66,15 @@ func NewQVideoSink() *QVideoSink {
 
 // NewQVideoSink2 constructs a new QVideoSink object.
 func NewQVideoSink2(parent *qt6.QObject) *QVideoSink {
-	defer runtime.KeepAlive(parent)
 
 	return newQVideoSink(C.QVideoSink_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QVideoSink) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QVideoSink_metaObject(this.h)))
 }
 
 func (this *QVideoSink) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVideoSink_metacast(this.h, param1_Cstring))
@@ -93,14 +90,12 @@ func QVideoSink_Tr(s string) string {
 }
 
 func (this *QVideoSink) VideoSize() *qt6.QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QVideoSink_videoSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoSink) SubtitleText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QVideoSink_subtitleText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -108,7 +103,6 @@ func (this *QVideoSink) SubtitleText() string {
 }
 
 func (this *QVideoSink) SetSubtitleText(subtitle string) {
-	defer runtime.KeepAlive(this)
 	subtitle_ms := C.struct_miqt_string{}
 	subtitle_ms.data = C.CString(subtitle)
 	subtitle_ms.len = C.size_t(len(subtitle))
@@ -117,20 +111,17 @@ func (this *QVideoSink) SetSubtitleText(subtitle string) {
 }
 
 func (this *QVideoSink) SetVideoFrame(frame *QVideoFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(frame)
 	C.QVideoSink_setVideoFrame(this.h, frame.cPointer())
 }
 
 func (this *QVideoSink) VideoFrame() *QVideoFrame {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVideoFrame(C.QVideoSink_videoFrame(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoSink) VideoFrameChanged(frame *QVideoFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(frame)
 	C.QVideoSink_videoFrameChanged(this.h, frame.cPointer())
 }
@@ -152,7 +143,6 @@ func miqt_exec_callback_QVideoSink_videoFrameChanged(cb C.intptr_t, frame *C.QVi
 }
 
 func (this *QVideoSink) SubtitleTextChanged(subtitleText string) {
-	defer runtime.KeepAlive(this)
 	subtitleText_ms := C.struct_miqt_string{}
 	subtitleText_ms.data = C.CString(subtitleText)
 	subtitleText_ms.len = C.size_t(len(subtitleText))
@@ -180,7 +170,6 @@ func miqt_exec_callback_QVideoSink_subtitleTextChanged(cb C.intptr_t, subtitleTe
 }
 
 func (this *QVideoSink) VideoSizeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QVideoSink_videoSizeChanged(this.h)
 }
 func (this *QVideoSink) OnVideoSizeChanged(slot func()) {
@@ -221,7 +210,6 @@ func QVideoSink_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QVideoSink that was directly constructed.
 func (this *QVideoSink) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QVideoSink_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -236,7 +224,6 @@ func (this *QVideoSink) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QVideoSink that was directly constructed.
 func (this *QVideoSink) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QVideoSink_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -251,7 +238,6 @@ func (this *QVideoSink) SenderSignalIndex() int {
 
 // Receivers can only be called from a QVideoSink that was directly constructed.
 func (this *QVideoSink) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -268,7 +254,6 @@ func (this *QVideoSink) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QVideoSink that was directly constructed.
 func (this *QVideoSink) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -283,7 +268,6 @@ func (this *QVideoSink) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QVideoSink) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVideoSink_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -313,8 +297,6 @@ func miqt_exec_callback_QVideoSink_event(self *C.QVideoSink, cb C.intptr_t, even
 }
 
 func (this *QVideoSink) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QVideoSink_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -346,7 +328,6 @@ func miqt_exec_callback_QVideoSink_eventFilter(self *C.QVideoSink, cb C.intptr_t
 }
 
 func (this *QVideoSink) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QVideoSink_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -374,7 +355,6 @@ func miqt_exec_callback_QVideoSink_timerEvent(self *C.QVideoSink, cb C.intptr_t,
 }
 
 func (this *QVideoSink) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QVideoSink_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -402,7 +382,6 @@ func miqt_exec_callback_QVideoSink_childEvent(self *C.QVideoSink, cb C.intptr_t,
 }
 
 func (this *QVideoSink) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QVideoSink_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -430,7 +409,6 @@ func miqt_exec_callback_QVideoSink_customEvent(self *C.QVideoSink, cb C.intptr_t
 }
 
 func (this *QVideoSink) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QVideoSink_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -458,7 +436,6 @@ func miqt_exec_callback_QVideoSink_connectNotify(self *C.QVideoSink, cb C.intptr
 }
 
 func (this *QVideoSink) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QVideoSink_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -493,6 +470,8 @@ func (this *QVideoSink) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QVideoSink) GoGC() {
 	if this.gc != nil {
 		return

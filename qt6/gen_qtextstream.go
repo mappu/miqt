@@ -101,7 +101,6 @@ func NewQTextStream() *QTextStream {
 
 // NewQTextStream2 constructs a new QTextStream object.
 func NewQTextStream2(device *QIODevice) *QTextStream {
-	defer runtime.KeepAlive(device)
 
 	return newQTextStream(C.QTextStream_new2(device.cPointer()))
 }
@@ -177,7 +176,6 @@ func (this *QTextStream) Locale() *QLocale {
 
 func (this *QTextStream) SetDevice(device *QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QTextStream_setDevice(this.h, device.cPointer())
 }
 

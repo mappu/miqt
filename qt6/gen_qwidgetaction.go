@@ -60,18 +60,15 @@ func UnsafeNewQWidgetAction(h unsafe.Pointer) *QWidgetAction {
 
 // NewQWidgetAction constructs a new QWidgetAction object.
 func NewQWidgetAction(parent *QObject) *QWidgetAction {
-	defer runtime.KeepAlive(parent)
 
 	return newQWidgetAction(C.QWidgetAction_new(parent.cPointer()))
 }
 
 func (this *QWidgetAction) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QWidgetAction_metaObject(this.h))
 }
 
 func (this *QWidgetAction) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWidgetAction_metacast(this.h, param1_Cstring))
@@ -87,25 +84,18 @@ func QWidgetAction_Tr(s string) string {
 }
 
 func (this *QWidgetAction) SetDefaultWidget(w *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(w)
 	C.QWidgetAction_setDefaultWidget(this.h, w.cPointer())
 }
 
 func (this *QWidgetAction) DefaultWidget() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidgetAction_defaultWidget(this.h))
 }
 
 func (this *QWidgetAction) RequestWidget(parent *QWidget) *QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQWidget(C.QWidgetAction_requestWidget(this.h, parent.cPointer()))
 }
 
 func (this *QWidgetAction) ReleaseWidget(widget *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QWidgetAction_releaseWidget(this.h, widget.cPointer())
 }
 
@@ -133,7 +123,6 @@ func QWidgetAction_Tr3(s string, c string, n int) string {
 
 // CreatedWidgets can only be called from a QWidgetAction that was directly constructed.
 func (this *QWidgetAction) CreatedWidgets() []*QWidget {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QWidgetAction_protectedbase_createdWidgets(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -154,7 +143,6 @@ func (this *QWidgetAction) CreatedWidgets() []*QWidget {
 
 // Sender can only be called from a QWidgetAction that was directly constructed.
 func (this *QWidgetAction) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QWidgetAction_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -169,7 +157,6 @@ func (this *QWidgetAction) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QWidgetAction that was directly constructed.
 func (this *QWidgetAction) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWidgetAction_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -184,7 +171,6 @@ func (this *QWidgetAction) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWidgetAction that was directly constructed.
 func (this *QWidgetAction) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -201,7 +187,6 @@ func (this *QWidgetAction) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWidgetAction that was directly constructed.
 func (this *QWidgetAction) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -216,7 +201,6 @@ func (this *QWidgetAction) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QWidgetAction) callVirtualBase_Event(param1 *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QWidgetAction_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
@@ -246,8 +230,6 @@ func miqt_exec_callback_QWidgetAction_event(self *C.QWidgetAction, cb C.intptr_t
 }
 
 func (this *QWidgetAction) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QWidgetAction_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
@@ -279,8 +261,6 @@ func miqt_exec_callback_QWidgetAction_eventFilter(self *C.QWidgetAction, cb C.in
 }
 
 func (this *QWidgetAction) callVirtualBase_CreateWidget(parent *QWidget) *QWidget {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 
 	return newQWidget(C.QWidgetAction_virtualbase_createWidget(unsafe.Pointer(this.h), parent.cPointer()))
 
@@ -303,15 +283,12 @@ func miqt_exec_callback_QWidgetAction_createWidget(self *C.QWidgetAction, cb C.i
 	slotval1 := newQWidget(parent)
 
 	virtualReturn := gofunc((&QWidgetAction{h: self}).callVirtualBase_CreateWidget, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWidgetAction) callVirtualBase_DeleteWidget(widget *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 
 	C.QWidgetAction_virtualbase_deleteWidget(unsafe.Pointer(this.h), widget.cPointer())
 
@@ -338,7 +315,6 @@ func miqt_exec_callback_QWidgetAction_deleteWidget(self *C.QWidgetAction, cb C.i
 }
 
 func (this *QWidgetAction) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidgetAction_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -366,7 +342,6 @@ func miqt_exec_callback_QWidgetAction_timerEvent(self *C.QWidgetAction, cb C.int
 }
 
 func (this *QWidgetAction) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidgetAction_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -394,7 +369,6 @@ func miqt_exec_callback_QWidgetAction_childEvent(self *C.QWidgetAction, cb C.int
 }
 
 func (this *QWidgetAction) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidgetAction_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -422,7 +396,6 @@ func miqt_exec_callback_QWidgetAction_customEvent(self *C.QWidgetAction, cb C.in
 }
 
 func (this *QWidgetAction) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWidgetAction_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -450,7 +423,6 @@ func miqt_exec_callback_QWidgetAction_connectNotify(self *C.QWidgetAction, cb C.
 }
 
 func (this *QWidgetAction) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWidgetAction_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -485,6 +457,8 @@ func (this *QWidgetAction) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWidgetAction) GoGC() {
 	if this.gc != nil {
 		return

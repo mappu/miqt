@@ -67,18 +67,15 @@ func NewQDateTimeAxis() *QDateTimeAxis {
 
 // NewQDateTimeAxis2 constructs a new QDateTimeAxis object.
 func NewQDateTimeAxis2(parent *qt6.QObject) *QDateTimeAxis {
-	defer runtime.KeepAlive(parent)
 
 	return newQDateTimeAxis(C.QDateTimeAxis_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDateTimeAxis) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QDateTimeAxis_metaObject(this.h)))
 }
 
 func (this *QDateTimeAxis) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDateTimeAxis_metacast(this.h, param1_Cstring))
@@ -94,45 +91,38 @@ func QDateTimeAxis_Tr(s string) string {
 }
 
 func (this *QDateTimeAxis) Type() QAbstractAxis__AxisType {
-	defer runtime.KeepAlive(this)
 	return (QAbstractAxis__AxisType)(C.QDateTimeAxis_type(this.h))
 }
 
 func (this *QDateTimeAxis) SetMin(min qt6.QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(min)
 	C.QDateTimeAxis_setMin(this.h, (*C.QDateTime)(min.UnsafePointer()))
 }
 
 func (this *QDateTimeAxis) Min() *qt6.QDateTime {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QDateTimeAxis_min(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeAxis) SetMax(max qt6.QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(max)
 	C.QDateTimeAxis_setMax(this.h, (*C.QDateTime)(max.UnsafePointer()))
 }
 
 func (this *QDateTimeAxis) Max() *qt6.QDateTime {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QDateTimeAxis_max(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDateTimeAxis) SetRange(min qt6.QDateTime, max qt6.QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(min)
 	defer runtime.KeepAlive(max)
 	C.QDateTimeAxis_setRange(this.h, (*C.QDateTime)(min.UnsafePointer()), (*C.QDateTime)(max.UnsafePointer()))
 }
 
 func (this *QDateTimeAxis) SetFormat(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -141,7 +131,6 @@ func (this *QDateTimeAxis) SetFormat(format string) {
 }
 
 func (this *QDateTimeAxis) Format() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDateTimeAxis_format(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -149,17 +138,14 @@ func (this *QDateTimeAxis) Format() string {
 }
 
 func (this *QDateTimeAxis) SetTickCount(count int) {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeAxis_setTickCount(this.h, (C.int)(count))
 }
 
 func (this *QDateTimeAxis) TickCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDateTimeAxis_tickCount(this.h))
 }
 
 func (this *QDateTimeAxis) MinChanged(min qt6.QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(min)
 	C.QDateTimeAxis_minChanged(this.h, (*C.QDateTime)(min.UnsafePointer()))
 }
@@ -183,7 +169,6 @@ func miqt_exec_callback_QDateTimeAxis_minChanged(cb C.intptr_t, min *C.QDateTime
 }
 
 func (this *QDateTimeAxis) MaxChanged(max qt6.QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(max)
 	C.QDateTimeAxis_maxChanged(this.h, (*C.QDateTime)(max.UnsafePointer()))
 }
@@ -207,7 +192,6 @@ func miqt_exec_callback_QDateTimeAxis_maxChanged(cb C.intptr_t, max *C.QDateTime
 }
 
 func (this *QDateTimeAxis) RangeChanged(min qt6.QDateTime, max qt6.QDateTime) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(min)
 	defer runtime.KeepAlive(max)
 	C.QDateTimeAxis_rangeChanged(this.h, (*C.QDateTime)(min.UnsafePointer()), (*C.QDateTime)(max.UnsafePointer()))
@@ -236,7 +220,6 @@ func miqt_exec_callback_QDateTimeAxis_rangeChanged(cb C.intptr_t, min *C.QDateTi
 }
 
 func (this *QDateTimeAxis) FormatChanged(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -264,7 +247,6 @@ func miqt_exec_callback_QDateTimeAxis_formatChanged(cb C.intptr_t, format C.stru
 }
 
 func (this *QDateTimeAxis) TickCountChanged(tick int) {
-	defer runtime.KeepAlive(this)
 	C.QDateTimeAxis_tickCountChanged(this.h, (C.int)(tick))
 }
 func (this *QDateTimeAxis) OnTickCountChanged(slot func(tick int)) {
@@ -308,7 +290,6 @@ func QDateTimeAxis_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QDateTimeAxis that was directly constructed.
 func (this *QDateTimeAxis) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QDateTimeAxis_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -323,7 +304,6 @@ func (this *QDateTimeAxis) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QDateTimeAxis that was directly constructed.
 func (this *QDateTimeAxis) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDateTimeAxis_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -338,7 +318,6 @@ func (this *QDateTimeAxis) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDateTimeAxis that was directly constructed.
 func (this *QDateTimeAxis) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -355,7 +334,6 @@ func (this *QDateTimeAxis) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDateTimeAxis that was directly constructed.
 func (this *QDateTimeAxis) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -370,7 +348,6 @@ func (this *QDateTimeAxis) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QDateTimeAxis) callVirtualBase_Type() QAbstractAxis__AxisType {
-	defer runtime.KeepAlive(this)
 
 	return (QAbstractAxis__AxisType)(C.QDateTimeAxis_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -396,7 +373,6 @@ func miqt_exec_callback_QDateTimeAxis_type(self *C.QDateTimeAxis, cb C.intptr_t)
 }
 
 func (this *QDateTimeAxis) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDateTimeAxis_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -426,8 +402,6 @@ func miqt_exec_callback_QDateTimeAxis_event(self *C.QDateTimeAxis, cb C.intptr_t
 }
 
 func (this *QDateTimeAxis) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDateTimeAxis_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -459,7 +433,6 @@ func miqt_exec_callback_QDateTimeAxis_eventFilter(self *C.QDateTimeAxis, cb C.in
 }
 
 func (this *QDateTimeAxis) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeAxis_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -487,7 +460,6 @@ func miqt_exec_callback_QDateTimeAxis_timerEvent(self *C.QDateTimeAxis, cb C.int
 }
 
 func (this *QDateTimeAxis) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeAxis_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -515,7 +487,6 @@ func miqt_exec_callback_QDateTimeAxis_childEvent(self *C.QDateTimeAxis, cb C.int
 }
 
 func (this *QDateTimeAxis) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDateTimeAxis_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -543,7 +514,6 @@ func miqt_exec_callback_QDateTimeAxis_customEvent(self *C.QDateTimeAxis, cb C.in
 }
 
 func (this *QDateTimeAxis) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDateTimeAxis_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -571,7 +541,6 @@ func miqt_exec_callback_QDateTimeAxis_connectNotify(self *C.QDateTimeAxis, cb C.
 }
 
 func (this *QDateTimeAxis) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDateTimeAxis_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -606,6 +575,8 @@ func (this *QDateTimeAxis) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDateTimeAxis) GoGC() {
 	if this.gc != nil {
 		return

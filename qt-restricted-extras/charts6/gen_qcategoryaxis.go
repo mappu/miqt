@@ -74,18 +74,15 @@ func NewQCategoryAxis() *QCategoryAxis {
 
 // NewQCategoryAxis2 constructs a new QCategoryAxis object.
 func NewQCategoryAxis2(parent *qt6.QObject) *QCategoryAxis {
-	defer runtime.KeepAlive(parent)
 
 	return newQCategoryAxis(C.QCategoryAxis_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QCategoryAxis) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QCategoryAxis_metaObject(this.h)))
 }
 
 func (this *QCategoryAxis) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCategoryAxis_metacast(this.h, param1_Cstring))
@@ -101,12 +98,10 @@ func QCategoryAxis_Tr(s string) string {
 }
 
 func (this *QCategoryAxis) Type() QAbstractAxis__AxisType {
-	defer runtime.KeepAlive(this)
 	return (QAbstractAxis__AxisType)(C.QCategoryAxis_type(this.h))
 }
 
 func (this *QCategoryAxis) Append(label string, categoryEndValue float64) {
-	defer runtime.KeepAlive(this)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -115,7 +110,6 @@ func (this *QCategoryAxis) Append(label string, categoryEndValue float64) {
 }
 
 func (this *QCategoryAxis) Remove(label string) {
-	defer runtime.KeepAlive(this)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -124,7 +118,6 @@ func (this *QCategoryAxis) Remove(label string) {
 }
 
 func (this *QCategoryAxis) ReplaceLabel(oldLabel string, newLabel string) {
-	defer runtime.KeepAlive(this)
 	oldLabel_ms := C.struct_miqt_string{}
 	oldLabel_ms.data = C.CString(oldLabel)
 	oldLabel_ms.len = C.size_t(len(oldLabel))
@@ -137,17 +130,14 @@ func (this *QCategoryAxis) ReplaceLabel(oldLabel string, newLabel string) {
 }
 
 func (this *QCategoryAxis) StartValue() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QCategoryAxis_startValue(this.h))
 }
 
 func (this *QCategoryAxis) SetStartValue(min float64) {
-	defer runtime.KeepAlive(this)
 	C.QCategoryAxis_setStartValue(this.h, (C.double)(min))
 }
 
 func (this *QCategoryAxis) EndValue(categoryLabel string) float64 {
-	defer runtime.KeepAlive(this)
 	categoryLabel_ms := C.struct_miqt_string{}
 	categoryLabel_ms.data = C.CString(categoryLabel)
 	categoryLabel_ms.len = C.size_t(len(categoryLabel))
@@ -156,7 +146,6 @@ func (this *QCategoryAxis) EndValue(categoryLabel string) float64 {
 }
 
 func (this *QCategoryAxis) CategoriesLabels() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCategoryAxis_categoriesLabels(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -170,22 +159,18 @@ func (this *QCategoryAxis) CategoriesLabels() []string {
 }
 
 func (this *QCategoryAxis) Count() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QCategoryAxis_count(this.h))
 }
 
 func (this *QCategoryAxis) LabelsPosition() QCategoryAxis__AxisLabelsPosition {
-	defer runtime.KeepAlive(this)
 	return (QCategoryAxis__AxisLabelsPosition)(C.QCategoryAxis_labelsPosition(this.h))
 }
 
 func (this *QCategoryAxis) SetLabelsPosition(position QCategoryAxis__AxisLabelsPosition) {
-	defer runtime.KeepAlive(this)
 	C.QCategoryAxis_setLabelsPosition(this.h, (C.int)(position))
 }
 
 func (this *QCategoryAxis) CategoriesChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCategoryAxis_categoriesChanged(this.h)
 }
 func (this *QCategoryAxis) OnCategoriesChanged(slot func()) {
@@ -203,7 +188,6 @@ func miqt_exec_callback_QCategoryAxis_categoriesChanged(cb C.intptr_t) {
 }
 
 func (this *QCategoryAxis) LabelsPositionChanged(position QCategoryAxis__AxisLabelsPosition) {
-	defer runtime.KeepAlive(this)
 	C.QCategoryAxis_labelsPositionChanged(this.h, (C.int)(position))
 }
 func (this *QCategoryAxis) OnLabelsPositionChanged(slot func(position QCategoryAxis__AxisLabelsPosition)) {
@@ -246,7 +230,6 @@ func QCategoryAxis_Tr3(s string, c string, n int) string {
 }
 
 func (this *QCategoryAxis) StartValueWithCategoryLabel(categoryLabel string) float64 {
-	defer runtime.KeepAlive(this)
 	categoryLabel_ms := C.struct_miqt_string{}
 	categoryLabel_ms.data = C.CString(categoryLabel)
 	categoryLabel_ms.len = C.size_t(len(categoryLabel))
@@ -256,7 +239,6 @@ func (this *QCategoryAxis) StartValueWithCategoryLabel(categoryLabel string) flo
 
 // Sender can only be called from a QCategoryAxis that was directly constructed.
 func (this *QCategoryAxis) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QCategoryAxis_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -271,7 +253,6 @@ func (this *QCategoryAxis) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QCategoryAxis that was directly constructed.
 func (this *QCategoryAxis) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCategoryAxis_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -286,7 +267,6 @@ func (this *QCategoryAxis) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCategoryAxis that was directly constructed.
 func (this *QCategoryAxis) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -303,7 +283,6 @@ func (this *QCategoryAxis) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCategoryAxis that was directly constructed.
 func (this *QCategoryAxis) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -318,7 +297,6 @@ func (this *QCategoryAxis) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QCategoryAxis) callVirtualBase_Type() QAbstractAxis__AxisType {
-	defer runtime.KeepAlive(this)
 
 	return (QAbstractAxis__AxisType)(C.QCategoryAxis_virtualbase_type(unsafe.Pointer(this.h)))
 
@@ -344,7 +322,6 @@ func miqt_exec_callback_QCategoryAxis_type(self *C.QCategoryAxis, cb C.intptr_t)
 }
 
 func (this *QCategoryAxis) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCategoryAxis_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -374,8 +351,6 @@ func miqt_exec_callback_QCategoryAxis_event(self *C.QCategoryAxis, cb C.intptr_t
 }
 
 func (this *QCategoryAxis) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCategoryAxis_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -407,7 +382,6 @@ func miqt_exec_callback_QCategoryAxis_eventFilter(self *C.QCategoryAxis, cb C.in
 }
 
 func (this *QCategoryAxis) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCategoryAxis_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -435,7 +409,6 @@ func miqt_exec_callback_QCategoryAxis_timerEvent(self *C.QCategoryAxis, cb C.int
 }
 
 func (this *QCategoryAxis) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCategoryAxis_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -463,7 +436,6 @@ func miqt_exec_callback_QCategoryAxis_childEvent(self *C.QCategoryAxis, cb C.int
 }
 
 func (this *QCategoryAxis) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCategoryAxis_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -491,7 +463,6 @@ func miqt_exec_callback_QCategoryAxis_customEvent(self *C.QCategoryAxis, cb C.in
 }
 
 func (this *QCategoryAxis) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCategoryAxis_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -519,7 +490,6 @@ func miqt_exec_callback_QCategoryAxis_connectNotify(self *C.QCategoryAxis, cb C.
 }
 
 func (this *QCategoryAxis) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCategoryAxis_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -554,6 +524,8 @@ func (this *QCategoryAxis) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCategoryAxis) GoGC() {
 	if this.gc != nil {
 		return

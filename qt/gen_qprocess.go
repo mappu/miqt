@@ -320,18 +320,15 @@ func NewQProcess() *QProcess {
 
 // NewQProcess2 constructs a new QProcess object.
 func NewQProcess2(parent *QObject) *QProcess {
-	defer runtime.KeepAlive(parent)
 
 	return newQProcess(C.QProcess_new2(parent.cPointer()))
 }
 
 func (this *QProcess) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QProcess_metaObject(this.h))
 }
 
 func (this *QProcess) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QProcess_metacast(this.h, param1_Cstring))
@@ -356,7 +353,6 @@ func QProcess_TrUtf8(s string) string {
 }
 
 func (this *QProcess) Start(program string, arguments []string) {
-	defer runtime.KeepAlive(this)
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -376,7 +372,6 @@ func (this *QProcess) Start(program string, arguments []string) {
 }
 
 func (this *QProcess) StartWithCommand(command string) {
-	defer runtime.KeepAlive(this)
 	command_ms := C.struct_miqt_string{}
 	command_ms.data = C.CString(command)
 	command_ms.len = C.size_t(len(command))
@@ -385,22 +380,18 @@ func (this *QProcess) StartWithCommand(command string) {
 }
 
 func (this *QProcess) Start2() {
-	defer runtime.KeepAlive(this)
 	C.QProcess_start2(this.h)
 }
 
 func (this *QProcess) StartDetached() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_startDetached(this.h))
 }
 
 func (this *QProcess) Open(mode QIODevice__OpenModeFlag) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_open(this.h, (C.int)(mode)))
 }
 
 func (this *QProcess) Program() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QProcess_program(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -408,7 +399,6 @@ func (this *QProcess) Program() string {
 }
 
 func (this *QProcess) SetProgram(program string) {
-	defer runtime.KeepAlive(this)
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -417,7 +407,6 @@ func (this *QProcess) SetProgram(program string) {
 }
 
 func (this *QProcess) Arguments() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QProcess_arguments(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -431,7 +420,6 @@ func (this *QProcess) Arguments() []string {
 }
 
 func (this *QProcess) SetArguments(arguments []string) {
-	defer runtime.KeepAlive(this)
 	arguments_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray_ptr))
 	arguments_CArray := unsafe.Slice(arguments_CArray_ptr, len(arguments))
@@ -447,57 +435,46 @@ func (this *QProcess) SetArguments(arguments []string) {
 }
 
 func (this *QProcess) ReadChannelMode() QProcess__ProcessChannelMode {
-	defer runtime.KeepAlive(this)
 	return (QProcess__ProcessChannelMode)(C.QProcess_readChannelMode(this.h))
 }
 
 func (this *QProcess) SetReadChannelMode(mode QProcess__ProcessChannelMode) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_setReadChannelMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) ProcessChannelMode() QProcess__ProcessChannelMode {
-	defer runtime.KeepAlive(this)
 	return (QProcess__ProcessChannelMode)(C.QProcess_processChannelMode(this.h))
 }
 
 func (this *QProcess) SetProcessChannelMode(mode QProcess__ProcessChannelMode) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_setProcessChannelMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) InputChannelMode() QProcess__InputChannelMode {
-	defer runtime.KeepAlive(this)
 	return (QProcess__InputChannelMode)(C.QProcess_inputChannelMode(this.h))
 }
 
 func (this *QProcess) SetInputChannelMode(mode QProcess__InputChannelMode) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_setInputChannelMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) ReadChannel() QProcess__ProcessChannel {
-	defer runtime.KeepAlive(this)
 	return (QProcess__ProcessChannel)(C.QProcess_readChannel(this.h))
 }
 
 func (this *QProcess) SetReadChannel(channel QProcess__ProcessChannel) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_setReadChannel(this.h, (C.int)(channel))
 }
 
 func (this *QProcess) CloseReadChannel(channel QProcess__ProcessChannel) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_closeReadChannel(this.h, (C.int)(channel))
 }
 
 func (this *QProcess) CloseWriteChannel() {
-	defer runtime.KeepAlive(this)
 	C.QProcess_closeWriteChannel(this.h)
 }
 
 func (this *QProcess) SetStandardInputFile(fileName string) {
-	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -506,7 +483,6 @@ func (this *QProcess) SetStandardInputFile(fileName string) {
 }
 
 func (this *QProcess) SetStandardOutputFile(fileName string) {
-	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -515,7 +491,6 @@ func (this *QProcess) SetStandardOutputFile(fileName string) {
 }
 
 func (this *QProcess) SetStandardErrorFile(fileName string) {
-	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -524,13 +499,10 @@ func (this *QProcess) SetStandardErrorFile(fileName string) {
 }
 
 func (this *QProcess) SetStandardOutputProcess(destination *QProcess) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(destination)
 	C.QProcess_setStandardOutputProcess(this.h, destination.cPointer())
 }
 
 func (this *QProcess) WorkingDirectory() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QProcess_workingDirectory(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -538,7 +510,6 @@ func (this *QProcess) WorkingDirectory() string {
 }
 
 func (this *QProcess) SetWorkingDirectory(dir string) {
-	defer runtime.KeepAlive(this)
 	dir_ms := C.struct_miqt_string{}
 	dir_ms.data = C.CString(dir)
 	dir_ms.len = C.size_t(len(dir))
@@ -547,7 +518,6 @@ func (this *QProcess) SetWorkingDirectory(dir string) {
 }
 
 func (this *QProcess) SetEnvironment(environment []string) {
-	defer runtime.KeepAlive(this)
 	environment_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(environment))))
 	defer C.free(unsafe.Pointer(environment_CArray_ptr))
 	environment_CArray := unsafe.Slice(environment_CArray_ptr, len(environment))
@@ -563,7 +533,6 @@ func (this *QProcess) SetEnvironment(environment []string) {
 }
 
 func (this *QProcess) Environment() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QProcess_environment(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -577,25 +546,21 @@ func (this *QProcess) Environment() []string {
 }
 
 func (this *QProcess) SetProcessEnvironment(environment *QProcessEnvironment) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(environment)
 	C.QProcess_setProcessEnvironment(this.h, environment.cPointer())
 }
 
 func (this *QProcess) ProcessEnvironment() *QProcessEnvironment {
-	defer runtime.KeepAlive(this)
 	_goptr := newQProcessEnvironment(C.QProcess_processEnvironment(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProcess) Error() QProcess__ProcessError {
-	defer runtime.KeepAlive(this)
 	return (QProcess__ProcessError)(C.QProcess_error(this.h))
 }
 
 func (this *QProcess) State() QProcess__ProcessState {
-	defer runtime.KeepAlive(this)
 	return (QProcess__ProcessState)(C.QProcess_state(this.h))
 }
 
@@ -604,37 +569,30 @@ func (this *QProcess) Pid() int64 {
 		panic("Unsupported OS")
 	}
 
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QProcess_pid(this.h))
 }
 
 func (this *QProcess) ProcessId() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QProcess_processId(this.h))
 }
 
 func (this *QProcess) WaitForStarted() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_waitForStarted(this.h))
 }
 
 func (this *QProcess) WaitForReadyRead(msecs int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_waitForReadyRead(this.h, (C.int)(msecs)))
 }
 
 func (this *QProcess) WaitForBytesWritten(msecs int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_waitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
 func (this *QProcess) WaitForFinished() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_waitForFinished(this.h))
 }
 
 func (this *QProcess) ReadAllStandardOutput() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QProcess_readAllStandardOutput(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -642,7 +600,6 @@ func (this *QProcess) ReadAllStandardOutput() []byte {
 }
 
 func (this *QProcess) ReadAllStandardError() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QProcess_readAllStandardError(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -650,42 +607,34 @@ func (this *QProcess) ReadAllStandardError() []byte {
 }
 
 func (this *QProcess) ExitCode() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QProcess_exitCode(this.h))
 }
 
 func (this *QProcess) ExitStatus() QProcess__ExitStatus {
-	defer runtime.KeepAlive(this)
 	return (QProcess__ExitStatus)(C.QProcess_exitStatus(this.h))
 }
 
 func (this *QProcess) BytesAvailable() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QProcess_bytesAvailable(this.h))
 }
 
 func (this *QProcess) BytesToWrite() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QProcess_bytesToWrite(this.h))
 }
 
 func (this *QProcess) IsSequential() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_isSequential(this.h))
 }
 
 func (this *QProcess) CanReadLine() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_canReadLine(this.h))
 }
 
 func (this *QProcess) Close() {
-	defer runtime.KeepAlive(this)
 	C.QProcess_close(this.h)
 }
 
 func (this *QProcess) AtEnd() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_atEnd(this.h))
 }
 
@@ -787,17 +736,14 @@ func QProcess_NullDevice() string {
 }
 
 func (this *QProcess) Terminate() {
-	defer runtime.KeepAlive(this)
 	C.QProcess_terminate(this.h)
 }
 
 func (this *QProcess) Kill() {
-	defer runtime.KeepAlive(this)
 	C.QProcess_kill(this.h)
 }
 
 func (this *QProcess) Finished(exitCode int) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_finished(this.h, (C.int)(exitCode))
 }
 func (this *QProcess) OnFinished(slot func(exitCode int)) {
@@ -818,7 +764,6 @@ func miqt_exec_callback_QProcess_finished(cb C.intptr_t, exitCode C.int) {
 }
 
 func (this *QProcess) Finished2(exitCode int, exitStatus QProcess__ExitStatus) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_finished2(this.h, (C.int)(exitCode), (C.int)(exitStatus))
 }
 func (this *QProcess) OnFinished2(slot func(exitCode int, exitStatus QProcess__ExitStatus)) {
@@ -841,7 +786,6 @@ func miqt_exec_callback_QProcess_finished2(cb C.intptr_t, exitCode C.int, exitSt
 }
 
 func (this *QProcess) ErrorWithError(error QProcess__ProcessError) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_errorWithError(this.h, (C.int)(error))
 }
 func (this *QProcess) OnErrorWithError(slot func(error QProcess__ProcessError)) {
@@ -862,7 +806,6 @@ func miqt_exec_callback_QProcess_errorWithError(cb C.intptr_t, error C.int) {
 }
 
 func (this *QProcess) ErrorOccurred(error QProcess__ProcessError) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_errorOccurred(this.h, (C.int)(error))
 }
 func (this *QProcess) OnErrorOccurred(slot func(error QProcess__ProcessError)) {
@@ -927,7 +870,6 @@ func QProcess_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QProcess) Start3(program string, arguments []string, mode QIODevice__OpenModeFlag) {
-	defer runtime.KeepAlive(this)
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -947,7 +889,6 @@ func (this *QProcess) Start3(program string, arguments []string, mode QIODevice_
 }
 
 func (this *QProcess) Start4(command string, mode QIODevice__OpenModeFlag) {
-	defer runtime.KeepAlive(this)
 	command_ms := C.struct_miqt_string{}
 	command_ms.data = C.CString(command)
 	command_ms.len = C.size_t(len(command))
@@ -956,17 +897,14 @@ func (this *QProcess) Start4(command string, mode QIODevice__OpenModeFlag) {
 }
 
 func (this *QProcess) StartWithMode(mode QIODevice__OpenModeFlag) {
-	defer runtime.KeepAlive(this)
 	C.QProcess_startWithMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) StartDetachedWithPid(pid *int64) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_startDetachedWithPid(this.h, (*C.longlong)(unsafe.Pointer(pid))))
 }
 
 func (this *QProcess) SetStandardOutputFile2(fileName string, mode QIODevice__OpenModeFlag) {
-	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -975,7 +913,6 @@ func (this *QProcess) SetStandardOutputFile2(fileName string, mode QIODevice__Op
 }
 
 func (this *QProcess) SetStandardErrorFile2(fileName string, mode QIODevice__OpenModeFlag) {
-	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -984,12 +921,10 @@ func (this *QProcess) SetStandardErrorFile2(fileName string, mode QIODevice__Ope
 }
 
 func (this *QProcess) WaitForStartedWithMsecs(msecs int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_waitForStartedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 func (this *QProcess) WaitForFinishedWithMsecs(msecs int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QProcess_waitForFinishedWithMsecs(this.h, (C.int)(msecs)))
 }
 
@@ -1018,7 +953,6 @@ func QProcess_StartDetached4(program string, arguments []string, workingDirector
 
 // SetProcessState can only be called from a QProcess that was directly constructed.
 func (this *QProcess) SetProcessState(state QProcess__ProcessState) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProcess_protectedbase_setProcessState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -1031,7 +965,6 @@ func (this *QProcess) SetProcessState(state QProcess__ProcessState) {
 
 // SetOpenMode can only be called from a QProcess that was directly constructed.
 func (this *QProcess) SetOpenMode(openMode QIODevice__OpenModeFlag) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QProcess_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
@@ -1044,7 +977,6 @@ func (this *QProcess) SetOpenMode(openMode QIODevice__OpenModeFlag) {
 
 // SetErrorString can only be called from a QProcess that was directly constructed.
 func (this *QProcess) SetErrorString(errorString string) {
-	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -1061,7 +993,6 @@ func (this *QProcess) SetErrorString(errorString string) {
 
 // Sender can only be called from a QProcess that was directly constructed.
 func (this *QProcess) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QProcess_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1076,7 +1007,6 @@ func (this *QProcess) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QProcess that was directly constructed.
 func (this *QProcess) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QProcess_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1091,7 +1021,6 @@ func (this *QProcess) SenderSignalIndex() int {
 
 // Receivers can only be called from a QProcess that was directly constructed.
 func (this *QProcess) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1108,7 +1037,6 @@ func (this *QProcess) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QProcess that was directly constructed.
 func (this *QProcess) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1123,7 +1051,6 @@ func (this *QProcess) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QProcess) callVirtualBase_Open(mode QIODevice__OpenModeFlag) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProcess_virtualbase_open(unsafe.Pointer(this.h), (C.int)(mode)))
 
@@ -1152,7 +1079,6 @@ func miqt_exec_callback_QProcess_open(self *C.QProcess, cb C.intptr_t, mode C.in
 }
 
 func (this *QProcess) callVirtualBase_WaitForReadyRead(msecs int) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProcess_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1181,7 +1107,6 @@ func miqt_exec_callback_QProcess_waitForReadyRead(self *C.QProcess, cb C.intptr_
 }
 
 func (this *QProcess) callVirtualBase_WaitForBytesWritten(msecs int) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProcess_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
@@ -1210,7 +1135,6 @@ func miqt_exec_callback_QProcess_waitForBytesWritten(self *C.QProcess, cb C.intp
 }
 
 func (this *QProcess) callVirtualBase_BytesAvailable() int64 {
-	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QProcess_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
@@ -1236,7 +1160,6 @@ func miqt_exec_callback_QProcess_bytesAvailable(self *C.QProcess, cb C.intptr_t)
 }
 
 func (this *QProcess) callVirtualBase_BytesToWrite() int64 {
-	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QProcess_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
@@ -1262,7 +1185,6 @@ func miqt_exec_callback_QProcess_bytesToWrite(self *C.QProcess, cb C.intptr_t) C
 }
 
 func (this *QProcess) callVirtualBase_IsSequential() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProcess_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
@@ -1288,7 +1210,6 @@ func miqt_exec_callback_QProcess_isSequential(self *C.QProcess, cb C.intptr_t) C
 }
 
 func (this *QProcess) callVirtualBase_CanReadLine() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProcess_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
@@ -1314,7 +1235,6 @@ func miqt_exec_callback_QProcess_canReadLine(self *C.QProcess, cb C.intptr_t) C.
 }
 
 func (this *QProcess) callVirtualBase_Close() {
-	defer runtime.KeepAlive(this)
 
 	C.QProcess_virtualbase_close(unsafe.Pointer(this.h))
 
@@ -1338,7 +1258,6 @@ func miqt_exec_callback_QProcess_close(self *C.QProcess, cb C.intptr_t) {
 }
 
 func (this *QProcess) callVirtualBase_AtEnd() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProcess_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
@@ -1364,7 +1283,6 @@ func miqt_exec_callback_QProcess_atEnd(self *C.QProcess, cb C.intptr_t) C.bool {
 }
 
 func (this *QProcess) callVirtualBase_SetupChildProcess() {
-	defer runtime.KeepAlive(this)
 
 	C.QProcess_virtualbase_setupChildProcess(unsafe.Pointer(this.h))
 
@@ -1388,7 +1306,6 @@ func miqt_exec_callback_QProcess_setupChildProcess(self *C.QProcess, cb C.intptr
 }
 
 func (this *QProcess) callVirtualBase_ReadData(data string, maxlen int64) int64 {
-	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -1422,7 +1339,6 @@ func miqt_exec_callback_QProcess_readData(self *C.QProcess, cb C.intptr_t, data 
 }
 
 func (this *QProcess) callVirtualBase_WriteData(data string, lenVal int64) int64 {
-	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -1455,7 +1371,6 @@ func miqt_exec_callback_QProcess_writeData(self *C.QProcess, cb C.intptr_t, data
 }
 
 func (this *QProcess) callVirtualBase_Pos() int64 {
-	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QProcess_virtualbase_pos(unsafe.Pointer(this.h)))
 
@@ -1481,7 +1396,6 @@ func miqt_exec_callback_QProcess_pos(self *C.QProcess, cb C.intptr_t) C.longlong
 }
 
 func (this *QProcess) callVirtualBase_Size() int64 {
-	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QProcess_virtualbase_size(unsafe.Pointer(this.h)))
 
@@ -1507,7 +1421,6 @@ func miqt_exec_callback_QProcess_size(self *C.QProcess, cb C.intptr_t) C.longlon
 }
 
 func (this *QProcess) callVirtualBase_Seek(pos int64) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProcess_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
 
@@ -1536,7 +1449,6 @@ func miqt_exec_callback_QProcess_seek(self *C.QProcess, cb C.intptr_t, pos C.lon
 }
 
 func (this *QProcess) callVirtualBase_Reset() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QProcess_virtualbase_reset(unsafe.Pointer(this.h)))
 
@@ -1562,7 +1474,6 @@ func miqt_exec_callback_QProcess_reset(self *C.QProcess, cb C.intptr_t) C.bool {
 }
 
 func (this *QProcess) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
-	defer runtime.KeepAlive(this)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
@@ -1596,7 +1507,6 @@ func miqt_exec_callback_QProcess_readLineData(self *C.QProcess, cb C.intptr_t, d
 }
 
 func (this *QProcess) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QProcess_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1626,8 +1536,6 @@ func miqt_exec_callback_QProcess_event(self *C.QProcess, cb C.intptr_t, event *C
 }
 
 func (this *QProcess) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QProcess_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1659,7 +1567,6 @@ func miqt_exec_callback_QProcess_eventFilter(self *C.QProcess, cb C.intptr_t, wa
 }
 
 func (this *QProcess) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QProcess_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1687,7 +1594,6 @@ func miqt_exec_callback_QProcess_timerEvent(self *C.QProcess, cb C.intptr_t, eve
 }
 
 func (this *QProcess) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QProcess_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1715,7 +1621,6 @@ func miqt_exec_callback_QProcess_childEvent(self *C.QProcess, cb C.intptr_t, eve
 }
 
 func (this *QProcess) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QProcess_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1743,7 +1648,6 @@ func miqt_exec_callback_QProcess_customEvent(self *C.QProcess, cb C.intptr_t, ev
 }
 
 func (this *QProcess) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QProcess_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1771,7 +1675,6 @@ func miqt_exec_callback_QProcess_connectNotify(self *C.QProcess, cb C.intptr_t, 
 }
 
 func (this *QProcess) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QProcess_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1864,6 +1767,8 @@ func (this *QProcess) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QProcess) GoGC() {
 	if this.gc != nil {
 		return

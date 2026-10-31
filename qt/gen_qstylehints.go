@@ -59,12 +59,10 @@ func UnsafeNewQStyleHints(h unsafe.Pointer) *QStyleHints {
 }
 
 func (this *QStyleHints) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QStyleHints_metaObject(this.h))
 }
 
 func (this *QStyleHints) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QStyleHints_metacast(this.h, param1_Cstring))
@@ -89,179 +87,144 @@ func QStyleHints_TrUtf8(s string) string {
 }
 
 func (this *QStyleHints) SetMouseDoubleClickInterval(mouseDoubleClickInterval int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setMouseDoubleClickInterval(this.h, (C.int)(mouseDoubleClickInterval))
 }
 
 func (this *QStyleHints) MouseDoubleClickInterval() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_mouseDoubleClickInterval(this.h))
 }
 
 func (this *QStyleHints) MouseDoubleClickDistance() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_mouseDoubleClickDistance(this.h))
 }
 
 func (this *QStyleHints) TouchDoubleTapDistance() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_touchDoubleTapDistance(this.h))
 }
 
 func (this *QStyleHints) SetMousePressAndHoldInterval(mousePressAndHoldInterval int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setMousePressAndHoldInterval(this.h, (C.int)(mousePressAndHoldInterval))
 }
 
 func (this *QStyleHints) MousePressAndHoldInterval() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_mousePressAndHoldInterval(this.h))
 }
 
 func (this *QStyleHints) SetStartDragDistance(startDragDistance int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setStartDragDistance(this.h, (C.int)(startDragDistance))
 }
 
 func (this *QStyleHints) StartDragDistance() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_startDragDistance(this.h))
 }
 
 func (this *QStyleHints) SetStartDragTime(startDragTime int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setStartDragTime(this.h, (C.int)(startDragTime))
 }
 
 func (this *QStyleHints) StartDragTime() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_startDragTime(this.h))
 }
 
 func (this *QStyleHints) StartDragVelocity() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_startDragVelocity(this.h))
 }
 
 func (this *QStyleHints) SetKeyboardInputInterval(keyboardInputInterval int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setKeyboardInputInterval(this.h, (C.int)(keyboardInputInterval))
 }
 
 func (this *QStyleHints) KeyboardInputInterval() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_keyboardInputInterval(this.h))
 }
 
 func (this *QStyleHints) KeyboardAutoRepeatRate() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_keyboardAutoRepeatRate(this.h))
 }
 
 func (this *QStyleHints) SetCursorFlashTime(cursorFlashTime int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setCursorFlashTime(this.h, (C.int)(cursorFlashTime))
 }
 
 func (this *QStyleHints) CursorFlashTime() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_cursorFlashTime(this.h))
 }
 
 func (this *QStyleHints) ShowIsFullScreen() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleHints_showIsFullScreen(this.h))
 }
 
 func (this *QStyleHints) ShowIsMaximized() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleHints_showIsMaximized(this.h))
 }
 
 func (this *QStyleHints) ShowShortcutsInContextMenus() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleHints_showShortcutsInContextMenus(this.h))
 }
 
 func (this *QStyleHints) SetShowShortcutsInContextMenus(showShortcutsInContextMenus bool) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setShowShortcutsInContextMenus(this.h, (C.bool)(showShortcutsInContextMenus))
 }
 
 func (this *QStyleHints) PasswordMaskDelay() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_passwordMaskDelay(this.h))
 }
 
 func (this *QStyleHints) PasswordMaskCharacter() *QChar {
-	defer runtime.KeepAlive(this)
 	_goptr := newQChar(C.QStyleHints_passwordMaskCharacter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyleHints) FontSmoothingGamma() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QStyleHints_fontSmoothingGamma(this.h))
 }
 
 func (this *QStyleHints) UseRtlExtensions() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleHints_useRtlExtensions(this.h))
 }
 
 func (this *QStyleHints) SetFocusOnTouchRelease() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleHints_setFocusOnTouchRelease(this.h))
 }
 
 func (this *QStyleHints) TabFocusBehavior() TabFocusBehavior {
-	defer runtime.KeepAlive(this)
 	return (TabFocusBehavior)(C.QStyleHints_tabFocusBehavior(this.h))
 }
 
 func (this *QStyleHints) SetTabFocusBehavior(tabFocusBehavior TabFocusBehavior) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setTabFocusBehavior(this.h, (C.int)(tabFocusBehavior))
 }
 
 func (this *QStyleHints) SingleClickActivation() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleHints_singleClickActivation(this.h))
 }
 
 func (this *QStyleHints) UseHoverEffects() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QStyleHints_useHoverEffects(this.h))
 }
 
 func (this *QStyleHints) SetUseHoverEffects(useHoverEffects bool) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setUseHoverEffects(this.h, (C.bool)(useHoverEffects))
 }
 
 func (this *QStyleHints) WheelScrollLines() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_wheelScrollLines(this.h))
 }
 
 func (this *QStyleHints) SetWheelScrollLines(scrollLines int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setWheelScrollLines(this.h, (C.int)(scrollLines))
 }
 
 func (this *QStyleHints) SetMouseQuickSelectionThreshold(threshold int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_setMouseQuickSelectionThreshold(this.h, (C.int)(threshold))
 }
 
 func (this *QStyleHints) MouseQuickSelectionThreshold() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyleHints_mouseQuickSelectionThreshold(this.h))
 }
 
 func (this *QStyleHints) CursorFlashTimeChanged(cursorFlashTime int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_cursorFlashTimeChanged(this.h, (C.int)(cursorFlashTime))
 }
 func (this *QStyleHints) OnCursorFlashTimeChanged(slot func(cursorFlashTime int)) {
@@ -282,7 +245,6 @@ func miqt_exec_callback_QStyleHints_cursorFlashTimeChanged(cb C.intptr_t, cursor
 }
 
 func (this *QStyleHints) KeyboardInputIntervalChanged(keyboardInputInterval int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_keyboardInputIntervalChanged(this.h, (C.int)(keyboardInputInterval))
 }
 func (this *QStyleHints) OnKeyboardInputIntervalChanged(slot func(keyboardInputInterval int)) {
@@ -303,7 +265,6 @@ func miqt_exec_callback_QStyleHints_keyboardInputIntervalChanged(cb C.intptr_t, 
 }
 
 func (this *QStyleHints) MouseDoubleClickIntervalChanged(mouseDoubleClickInterval int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_mouseDoubleClickIntervalChanged(this.h, (C.int)(mouseDoubleClickInterval))
 }
 func (this *QStyleHints) OnMouseDoubleClickIntervalChanged(slot func(mouseDoubleClickInterval int)) {
@@ -324,7 +285,6 @@ func miqt_exec_callback_QStyleHints_mouseDoubleClickIntervalChanged(cb C.intptr_
 }
 
 func (this *QStyleHints) MousePressAndHoldIntervalChanged(mousePressAndHoldInterval int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_mousePressAndHoldIntervalChanged(this.h, (C.int)(mousePressAndHoldInterval))
 }
 func (this *QStyleHints) OnMousePressAndHoldIntervalChanged(slot func(mousePressAndHoldInterval int)) {
@@ -345,7 +305,6 @@ func miqt_exec_callback_QStyleHints_mousePressAndHoldIntervalChanged(cb C.intptr
 }
 
 func (this *QStyleHints) StartDragDistanceChanged(startDragDistance int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_startDragDistanceChanged(this.h, (C.int)(startDragDistance))
 }
 func (this *QStyleHints) OnStartDragDistanceChanged(slot func(startDragDistance int)) {
@@ -366,7 +325,6 @@ func miqt_exec_callback_QStyleHints_startDragDistanceChanged(cb C.intptr_t, star
 }
 
 func (this *QStyleHints) StartDragTimeChanged(startDragTime int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_startDragTimeChanged(this.h, (C.int)(startDragTime))
 }
 func (this *QStyleHints) OnStartDragTimeChanged(slot func(startDragTime int)) {
@@ -387,7 +345,6 @@ func miqt_exec_callback_QStyleHints_startDragTimeChanged(cb C.intptr_t, startDra
 }
 
 func (this *QStyleHints) TabFocusBehaviorChanged(tabFocusBehavior TabFocusBehavior) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_tabFocusBehaviorChanged(this.h, (C.int)(tabFocusBehavior))
 }
 func (this *QStyleHints) OnTabFocusBehaviorChanged(slot func(tabFocusBehavior TabFocusBehavior)) {
@@ -408,7 +365,6 @@ func miqt_exec_callback_QStyleHints_tabFocusBehaviorChanged(cb C.intptr_t, tabFo
 }
 
 func (this *QStyleHints) UseHoverEffectsChanged(useHoverEffects bool) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_useHoverEffectsChanged(this.h, (C.bool)(useHoverEffects))
 }
 func (this *QStyleHints) OnUseHoverEffectsChanged(slot func(useHoverEffects bool)) {
@@ -429,7 +385,6 @@ func miqt_exec_callback_QStyleHints_useHoverEffectsChanged(cb C.intptr_t, useHov
 }
 
 func (this *QStyleHints) ShowShortcutsInContextMenusChanged(param1 bool) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_showShortcutsInContextMenusChanged(this.h, (C.bool)(param1))
 }
 func (this *QStyleHints) OnShowShortcutsInContextMenusChanged(slot func(param1 bool)) {
@@ -450,7 +405,6 @@ func miqt_exec_callback_QStyleHints_showShortcutsInContextMenusChanged(cb C.intp
 }
 
 func (this *QStyleHints) WheelScrollLinesChanged(scrollLines int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_wheelScrollLinesChanged(this.h, (C.int)(scrollLines))
 }
 func (this *QStyleHints) OnWheelScrollLinesChanged(slot func(scrollLines int)) {
@@ -471,7 +425,6 @@ func miqt_exec_callback_QStyleHints_wheelScrollLinesChanged(cb C.intptr_t, scrol
 }
 
 func (this *QStyleHints) MouseQuickSelectionThresholdChanged(threshold int) {
-	defer runtime.KeepAlive(this)
 	C.QStyleHints_mouseQuickSelectionThresholdChanged(this.h, (C.int)(threshold))
 }
 func (this *QStyleHints) OnMouseQuickSelectionThresholdChanged(slot func(threshold int)) {
@@ -543,6 +496,8 @@ func (this *QStyleHints) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QStyleHints) GoGC() {
 	if this.gc != nil {
 		return

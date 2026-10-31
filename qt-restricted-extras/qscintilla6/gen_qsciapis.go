@@ -61,18 +61,15 @@ func UnsafeNewQsciAPIs(h unsafe.Pointer) *QsciAPIs {
 
 // NewQsciAPIs constructs a new QsciAPIs object.
 func NewQsciAPIs(lexer *QsciLexer) *QsciAPIs {
-	defer runtime.KeepAlive(lexer)
 
 	return newQsciAPIs(C.QsciAPIs_new(lexer.cPointer()))
 }
 
 func (this *QsciAPIs) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciAPIs_metaObject(this.h)))
 }
 
 func (this *QsciAPIs) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QsciAPIs_metacast(this.h, param1_Cstring))
@@ -88,7 +85,6 @@ func QsciAPIs_Tr(s string) string {
 }
 
 func (this *QsciAPIs) Add(entry string) {
-	defer runtime.KeepAlive(this)
 	entry_ms := C.struct_miqt_string{}
 	entry_ms.data = C.CString(entry)
 	entry_ms.len = C.size_t(len(entry))
@@ -97,12 +93,10 @@ func (this *QsciAPIs) Add(entry string) {
 }
 
 func (this *QsciAPIs) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QsciAPIs_clear(this.h)
 }
 
 func (this *QsciAPIs) Load(filename string) bool {
-	defer runtime.KeepAlive(this)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -111,7 +105,6 @@ func (this *QsciAPIs) Load(filename string) bool {
 }
 
 func (this *QsciAPIs) Remove(entry string) {
-	defer runtime.KeepAlive(this)
 	entry_ms := C.struct_miqt_string{}
 	entry_ms.data = C.CString(entry)
 	entry_ms.len = C.size_t(len(entry))
@@ -120,17 +113,14 @@ func (this *QsciAPIs) Remove(entry string) {
 }
 
 func (this *QsciAPIs) Prepare() {
-	defer runtime.KeepAlive(this)
 	C.QsciAPIs_prepare(this.h)
 }
 
 func (this *QsciAPIs) CancelPreparation() {
-	defer runtime.KeepAlive(this)
 	C.QsciAPIs_cancelPreparation(this.h)
 }
 
 func (this *QsciAPIs) DefaultPreparedName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciAPIs_defaultPreparedName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -138,22 +128,18 @@ func (this *QsciAPIs) DefaultPreparedName() string {
 }
 
 func (this *QsciAPIs) IsPrepared() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciAPIs_isPrepared(this.h))
 }
 
 func (this *QsciAPIs) LoadPrepared() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciAPIs_loadPrepared(this.h))
 }
 
 func (this *QsciAPIs) SavePrepared() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciAPIs_savePrepared(this.h))
 }
 
 func (this *QsciAPIs) UpdateAutoCompletionList(context []string, list []string) {
-	defer runtime.KeepAlive(this)
 	context_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray_ptr))
 	context_CArray := unsafe.Slice(context_CArray_ptr, len(context))
@@ -180,7 +166,6 @@ func (this *QsciAPIs) UpdateAutoCompletionList(context []string, list []string) 
 }
 
 func (this *QsciAPIs) AutoCompletionSelected(sel string) {
-	defer runtime.KeepAlive(this)
 	sel_ms := C.struct_miqt_string{}
 	sel_ms.data = C.CString(sel)
 	sel_ms.len = C.size_t(len(sel))
@@ -189,7 +174,6 @@ func (this *QsciAPIs) AutoCompletionSelected(sel string) {
 }
 
 func (this *QsciAPIs) CallTips(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string {
-	defer runtime.KeepAlive(this)
 	context_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray_ptr))
 	context_CArray := unsafe.Slice(context_CArray_ptr, len(context))
@@ -221,13 +205,11 @@ func (this *QsciAPIs) CallTips(context []string, commas int, style QsciScintilla
 }
 
 func (this *QsciAPIs) Event(e *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 	return (bool)(C.QsciAPIs_event(this.h, (*C.QEvent)(e.UnsafePointer())))
 }
 
 func (this *QsciAPIs) InstalledAPIFiles() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QsciAPIs_installedAPIFiles(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -241,7 +223,6 @@ func (this *QsciAPIs) InstalledAPIFiles() []string {
 }
 
 func (this *QsciAPIs) ApiPreparationCancelled() {
-	defer runtime.KeepAlive(this)
 	C.QsciAPIs_apiPreparationCancelled(this.h)
 }
 func (this *QsciAPIs) OnApiPreparationCancelled(slot func()) {
@@ -259,7 +240,6 @@ func miqt_exec_callback_QsciAPIs_apiPreparationCancelled(cb C.intptr_t) {
 }
 
 func (this *QsciAPIs) ApiPreparationStarted() {
-	defer runtime.KeepAlive(this)
 	C.QsciAPIs_apiPreparationStarted(this.h)
 }
 func (this *QsciAPIs) OnApiPreparationStarted(slot func()) {
@@ -277,7 +257,6 @@ func miqt_exec_callback_QsciAPIs_apiPreparationStarted(cb C.intptr_t) {
 }
 
 func (this *QsciAPIs) ApiPreparationFinished() {
-	defer runtime.KeepAlive(this)
 	C.QsciAPIs_apiPreparationFinished(this.h)
 }
 func (this *QsciAPIs) OnApiPreparationFinished(slot func()) {
@@ -317,7 +296,6 @@ func QsciAPIs_Tr3(s string, c string, n int) string {
 }
 
 func (this *QsciAPIs) IsPreparedWithFilename(filename string) bool {
-	defer runtime.KeepAlive(this)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -326,7 +304,6 @@ func (this *QsciAPIs) IsPreparedWithFilename(filename string) bool {
 }
 
 func (this *QsciAPIs) LoadPreparedWithFilename(filename string) bool {
-	defer runtime.KeepAlive(this)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -335,7 +312,6 @@ func (this *QsciAPIs) LoadPreparedWithFilename(filename string) bool {
 }
 
 func (this *QsciAPIs) SavePreparedWithFilename(filename string) bool {
-	defer runtime.KeepAlive(this)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -345,7 +321,6 @@ func (this *QsciAPIs) SavePreparedWithFilename(filename string) bool {
 
 // Sender can only be called from a QsciAPIs that was directly constructed.
 func (this *QsciAPIs) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QsciAPIs_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -360,7 +335,6 @@ func (this *QsciAPIs) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QsciAPIs that was directly constructed.
 func (this *QsciAPIs) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QsciAPIs_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -375,7 +349,6 @@ func (this *QsciAPIs) SenderSignalIndex() int {
 
 // Receivers can only be called from a QsciAPIs that was directly constructed.
 func (this *QsciAPIs) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -392,7 +365,6 @@ func (this *QsciAPIs) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QsciAPIs that was directly constructed.
 func (this *QsciAPIs) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -407,7 +379,6 @@ func (this *QsciAPIs) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QsciAPIs) callVirtualBase_UpdateAutoCompletionList(context []string, list []string) {
-	defer runtime.KeepAlive(this)
 	context_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray_ptr))
 	context_CArray := unsafe.Slice(context_CArray_ptr, len(context))
@@ -476,7 +447,6 @@ func miqt_exec_callback_QsciAPIs_updateAutoCompletionList(self *C.QsciAPIs, cb C
 }
 
 func (this *QsciAPIs) callVirtualBase_AutoCompletionSelected(sel string) {
-	defer runtime.KeepAlive(this)
 	sel_ms := C.struct_miqt_string{}
 	sel_ms.data = C.CString(sel)
 	sel_ms.len = C.size_t(len(sel))
@@ -510,7 +480,6 @@ func miqt_exec_callback_QsciAPIs_autoCompletionSelected(self *C.QsciAPIs, cb C.i
 }
 
 func (this *QsciAPIs) callVirtualBase_CallTips(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string {
-	defer runtime.KeepAlive(this)
 	context_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
 	defer C.free(unsafe.Pointer(context_CArray_ptr))
 	context_CArray := unsafe.Slice(context_CArray_ptr, len(context))
@@ -596,7 +565,6 @@ func miqt_exec_callback_QsciAPIs_callTips(self *C.QsciAPIs, cb C.intptr_t, conte
 }
 
 func (this *QsciAPIs) callVirtualBase_Event(e *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QsciAPIs_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
@@ -626,8 +594,6 @@ func miqt_exec_callback_QsciAPIs_event(self *C.QsciAPIs, cb C.intptr_t, e *C.QEv
 }
 
 func (this *QsciAPIs) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciAPIs_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -659,7 +625,6 @@ func miqt_exec_callback_QsciAPIs_eventFilter(self *C.QsciAPIs, cb C.intptr_t, wa
 }
 
 func (this *QsciAPIs) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QsciAPIs_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -687,7 +652,6 @@ func miqt_exec_callback_QsciAPIs_timerEvent(self *C.QsciAPIs, cb C.intptr_t, eve
 }
 
 func (this *QsciAPIs) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QsciAPIs_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -715,7 +679,6 @@ func miqt_exec_callback_QsciAPIs_childEvent(self *C.QsciAPIs, cb C.intptr_t, eve
 }
 
 func (this *QsciAPIs) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QsciAPIs_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -743,7 +706,6 @@ func miqt_exec_callback_QsciAPIs_customEvent(self *C.QsciAPIs, cb C.intptr_t, ev
 }
 
 func (this *QsciAPIs) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QsciAPIs_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -771,7 +733,6 @@ func miqt_exec_callback_QsciAPIs_connectNotify(self *C.QsciAPIs, cb C.intptr_t, 
 }
 
 func (this *QsciAPIs) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QsciAPIs_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -806,6 +767,8 @@ func (this *QsciAPIs) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QsciAPIs) GoGC() {
 	if this.gc != nil {
 		return

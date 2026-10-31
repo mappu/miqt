@@ -75,15 +75,11 @@ func (this *QAbstractFormBuilder) SetWorkingDirectory(directory *qt.QDir) {
 
 func (this *QAbstractFormBuilder) Load(dev *qt.QIODevice, parentWidget *qt.QWidget) *qt.QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
-	defer runtime.KeepAlive(parentWidget)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QAbstractFormBuilder_load(this.h, (*C.QIODevice)(dev.UnsafePointer()), (*C.QWidget)(parentWidget.UnsafePointer()))))
 }
 
 func (this *QAbstractFormBuilder) Save(dev *qt.QIODevice, widget *qt.QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
-	defer runtime.KeepAlive(widget)
 	C.QAbstractFormBuilder_save(this.h, (*C.QIODevice)(dev.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 }
 
@@ -98,7 +94,6 @@ func (this *QAbstractFormBuilder) ErrorString() string {
 // ApplyPropertyInternally can only be called from a QAbstractFormBuilder that was directly constructed.
 func (this *QAbstractFormBuilder) ApplyPropertyInternally(o *qt.QObject, propertyName string, value *qt.QVariant) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(o)
 	defer runtime.KeepAlive(value)
 	propertyName_ms := C.struct_miqt_string{}
 	propertyName_ms.data = C.CString(propertyName)
@@ -197,8 +192,6 @@ func (this *QAbstractFormBuilder) PixmapPaths(param1 *qt.QPixmap) struct {
 
 func (this *QAbstractFormBuilder) callVirtualBase_Load(dev *qt.QIODevice, parentWidget *qt.QWidget) *qt.QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
-	defer runtime.KeepAlive(parentWidget)
 
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QAbstractFormBuilder_virtualbase_load(unsafe.Pointer(this.h), (*C.QIODevice)(dev.UnsafePointer()), (*C.QWidget)(parentWidget.UnsafePointer()))))
 
@@ -223,7 +216,6 @@ func miqt_exec_callback_QAbstractFormBuilder_load(self *C.QAbstractFormBuilder, 
 	slotval2 := qt.UnsafeNewQWidget(unsafe.Pointer(parentWidget))
 
 	virtualReturn := gofunc((&QAbstractFormBuilder{h: self}).callVirtualBase_Load, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -231,8 +223,6 @@ func miqt_exec_callback_QAbstractFormBuilder_load(self *C.QAbstractFormBuilder, 
 
 func (this *QAbstractFormBuilder) callVirtualBase_Save(dev *qt.QIODevice, widget *qt.QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
-	defer runtime.KeepAlive(widget)
 
 	C.QAbstractFormBuilder_virtualbase_save(unsafe.Pointer(this.h), (*C.QIODevice)(dev.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 
@@ -262,7 +252,6 @@ func miqt_exec_callback_QAbstractFormBuilder_save(self *C.QAbstractFormBuilder, 
 
 func (this *QAbstractFormBuilder) callVirtualBase_AddMenuAction(action *qt.QAction) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 
 	C.QAbstractFormBuilder_virtualbase_addMenuAction(unsafe.Pointer(this.h), (*C.QAction)(action.UnsafePointer()))
 
@@ -290,7 +279,6 @@ func miqt_exec_callback_QAbstractFormBuilder_addMenuAction(self *C.QAbstractForm
 
 func (this *QAbstractFormBuilder) callVirtualBase_CreateWidget(widgetName string, parentWidget *qt.QWidget, name string) *qt.QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parentWidget)
 	widgetName_ms := C.struct_miqt_string{}
 	widgetName_ms.data = C.CString(widgetName)
 	widgetName_ms.len = C.size_t(len(widgetName))
@@ -330,7 +318,6 @@ func miqt_exec_callback_QAbstractFormBuilder_createWidget(self *C.QAbstractFormB
 	slotval3 := name_ret
 
 	virtualReturn := gofunc((&QAbstractFormBuilder{h: self}).callVirtualBase_CreateWidget, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -338,7 +325,6 @@ func miqt_exec_callback_QAbstractFormBuilder_createWidget(self *C.QAbstractFormB
 
 func (this *QAbstractFormBuilder) callVirtualBase_CreateLayout(layoutName string, parent *qt.QObject, name string) *qt.QLayout {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	layoutName_ms := C.struct_miqt_string{}
 	layoutName_ms.data = C.CString(layoutName)
 	layoutName_ms.len = C.size_t(len(layoutName))
@@ -378,7 +364,6 @@ func miqt_exec_callback_QAbstractFormBuilder_createLayout(self *C.QAbstractFormB
 	slotval3 := name_ret
 
 	virtualReturn := gofunc((&QAbstractFormBuilder{h: self}).callVirtualBase_CreateLayout, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QLayout)(virtualReturn.UnsafePointer())
 
@@ -386,7 +371,6 @@ func miqt_exec_callback_QAbstractFormBuilder_createLayout(self *C.QAbstractFormB
 
 func (this *QAbstractFormBuilder) callVirtualBase_CreateAction(parent *qt.QObject, name string) *qt.QAction {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -418,7 +402,6 @@ func miqt_exec_callback_QAbstractFormBuilder_createAction(self *C.QAbstractFormB
 	slotval2 := name_ret
 
 	virtualReturn := gofunc((&QAbstractFormBuilder{h: self}).callVirtualBase_CreateAction, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QAction)(virtualReturn.UnsafePointer())
 
@@ -426,7 +409,6 @@ func miqt_exec_callback_QAbstractFormBuilder_createAction(self *C.QAbstractFormB
 
 func (this *QAbstractFormBuilder) callVirtualBase_CreateActionGroup(parent *qt.QObject, name string) *qt.QActionGroup {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -458,7 +440,6 @@ func miqt_exec_callback_QAbstractFormBuilder_createActionGroup(self *C.QAbstract
 	slotval2 := name_ret
 
 	virtualReturn := gofunc((&QAbstractFormBuilder{h: self}).callVirtualBase_CreateActionGroup, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QActionGroup)(virtualReturn.UnsafePointer())
 
@@ -466,7 +447,6 @@ func miqt_exec_callback_QAbstractFormBuilder_createActionGroup(self *C.QAbstract
 
 func (this *QAbstractFormBuilder) callVirtualBase_CheckProperty(obj *qt.QObject, prop string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(obj)
 	prop_ms := C.struct_miqt_string{}
 	prop_ms.data = C.CString(prop)
 	prop_ms.len = C.size_t(len(prop))

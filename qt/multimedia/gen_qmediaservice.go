@@ -58,12 +58,10 @@ func UnsafeNewQMediaService(h unsafe.Pointer) *QMediaService {
 }
 
 func (this *QMediaService) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaService_metaObject(this.h)))
 }
 
 func (this *QMediaService) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaService_metacast(this.h, param1_Cstring))
@@ -88,15 +86,12 @@ func QMediaService_TrUtf8(s string) string {
 }
 
 func (this *QMediaService) RequestControl(name string) *QMediaControl {
-	defer runtime.KeepAlive(this)
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 	return newQMediaControl(C.QMediaService_requestControl(this.h, name_Cstring))
 }
 
 func (this *QMediaService) ReleaseControl(control *QMediaControl) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(control)
 	C.QMediaService_releaseControl(this.h, control.cPointer())
 }
 
@@ -152,6 +147,8 @@ func (this *QMediaService) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaService) GoGC() {
 	if this.gc != nil {
 		return

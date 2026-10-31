@@ -97,12 +97,10 @@ func NewQApplication2(args []string, param3 int) *QApplication {
 }
 
 func (this *QApplication) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QApplication_metaObject(this.h))
 }
 
 func (this *QApplication) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QApplication_metacast(this.h, param1_Cstring))
@@ -131,7 +129,6 @@ func QApplication_Style() *QStyle {
 }
 
 func QApplication_SetStyle(style *QStyle) {
-	defer runtime.KeepAlive(style)
 	C.QApplication_setStyle(style.cPointer())
 }
 
@@ -152,7 +149,6 @@ func QApplication_SetColorSpec(colorSpec int) {
 }
 
 func QApplication_Palette(param1 *QWidget) *QPalette {
-	defer runtime.KeepAlive(param1)
 	_goptr := newQPalette(C.QApplication_palette(param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -178,7 +174,6 @@ func QApplication_Font() *QFont {
 }
 
 func QApplication_FontWithQWidget(param1 *QWidget) *QFont {
-	defer runtime.KeepAlive(param1)
 	_goptr := newQFont(C.QApplication_fontWithQWidget(param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -255,7 +250,6 @@ func QApplication_ActiveWindow() *QWidget {
 }
 
 func QApplication_SetActiveWindow(act *QWidget) {
-	defer runtime.KeepAlive(act)
 	C.QApplication_setActiveWindow(act.cPointer())
 }
 
@@ -282,7 +276,6 @@ func QApplication_Beep() {
 }
 
 func QApplication_Alert(widget *QWidget) {
-	defer runtime.KeepAlive(widget)
 	C.QApplication_alert(widget.cPointer())
 }
 
@@ -358,16 +351,11 @@ func QApplication_Exec() int {
 }
 
 func (this *QApplication) Notify(param1 *QObject, param2 *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	return (bool)(C.QApplication_notify(this.h, param1.cPointer(), param2.cPointer()))
 }
 
 func (this *QApplication) FocusChanged(old *QWidget, now *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(old)
-	defer runtime.KeepAlive(now)
 	C.QApplication_focusChanged(this.h, old.cPointer(), now.cPointer())
 }
 func (this *QApplication) OnFocusChanged(slot func(old *QWidget, now *QWidget)) {
@@ -390,7 +378,6 @@ func miqt_exec_callback_QApplication_focusChanged(cb C.intptr_t, old *C.QWidget,
 }
 
 func (this *QApplication) StyleSheet() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QApplication_styleSheet(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -398,7 +385,6 @@ func (this *QApplication) StyleSheet() string {
 }
 
 func (this *QApplication) SetStyleSheet(sheet string) {
-	defer runtime.KeepAlive(this)
 	sheet_ms := C.struct_miqt_string{}
 	sheet_ms.data = C.CString(sheet)
 	sheet_ms.len = C.size_t(len(sheet))
@@ -407,12 +393,10 @@ func (this *QApplication) SetStyleSheet(sheet string) {
 }
 
 func (this *QApplication) SetAutoSipEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QApplication_setAutoSipEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QApplication) AutoSipEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QApplication_autoSipEnabled(this.h))
 }
 
@@ -483,7 +467,6 @@ func QApplication_SetFont2(param1 *QFont, className string) {
 }
 
 func QApplication_Alert2(widget *QWidget, duration int) {
-	defer runtime.KeepAlive(widget)
 	C.QApplication_alert2(widget.cPointer(), (C.int)(duration))
 }
 
@@ -493,7 +476,6 @@ func QApplication_SetEffectEnabled2(param1 UIEffect, enable bool) {
 
 // Sender can only be called from a QApplication that was directly constructed.
 func (this *QApplication) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QApplication_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -508,7 +490,6 @@ func (this *QApplication) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QApplication that was directly constructed.
 func (this *QApplication) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QApplication_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -523,7 +504,6 @@ func (this *QApplication) SenderSignalIndex() int {
 
 // Receivers can only be called from a QApplication that was directly constructed.
 func (this *QApplication) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -540,7 +520,6 @@ func (this *QApplication) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QApplication that was directly constructed.
 func (this *QApplication) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -555,8 +534,6 @@ func (this *QApplication) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QApplication) callVirtualBase_Notify(param1 *QObject, param2 *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QApplication_virtualbase_notify(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
@@ -588,7 +565,6 @@ func miqt_exec_callback_QApplication_notify(self *C.QApplication, cb C.intptr_t,
 }
 
 func (this *QApplication) callVirtualBase_Event(param1 *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QApplication_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
@@ -618,8 +594,6 @@ func miqt_exec_callback_QApplication_event(self *C.QApplication, cb C.intptr_t, 
 }
 
 func (this *QApplication) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QApplication_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -651,7 +625,6 @@ func miqt_exec_callback_QApplication_eventFilter(self *C.QApplication, cb C.intp
 }
 
 func (this *QApplication) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QApplication_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -679,7 +652,6 @@ func miqt_exec_callback_QApplication_timerEvent(self *C.QApplication, cb C.intpt
 }
 
 func (this *QApplication) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QApplication_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -707,7 +679,6 @@ func miqt_exec_callback_QApplication_childEvent(self *C.QApplication, cb C.intpt
 }
 
 func (this *QApplication) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QApplication_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -735,7 +706,6 @@ func miqt_exec_callback_QApplication_customEvent(self *C.QApplication, cb C.intp
 }
 
 func (this *QApplication) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QApplication_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -763,7 +733,6 @@ func miqt_exec_callback_QApplication_connectNotify(self *C.QApplication, cb C.in
 }
 
 func (this *QApplication) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QApplication_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -798,6 +767,8 @@ func (this *QApplication) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QApplication) GoGC() {
 	if this.gc != nil {
 		return

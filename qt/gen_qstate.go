@@ -86,25 +86,21 @@ func NewQState2(childMode QState__ChildMode) *QState {
 
 // NewQState3 constructs a new QState object.
 func NewQState3(parent *QState) *QState {
-	defer runtime.KeepAlive(parent)
 
 	return newQState(C.QState_new3(parent.cPointer()))
 }
 
 // NewQState4 constructs a new QState object.
 func NewQState4(childMode QState__ChildMode, parent *QState) *QState {
-	defer runtime.KeepAlive(parent)
 
 	return newQState(C.QState_new4((C.int)(childMode), parent.cPointer()))
 }
 
 func (this *QState) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QState_metaObject(this.h))
 }
 
 func (this *QState) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QState_metacast(this.h, param1_Cstring))
@@ -129,45 +125,32 @@ func QState_TrUtf8(s string) string {
 }
 
 func (this *QState) ErrorState() *QAbstractState {
-	defer runtime.KeepAlive(this)
 	return newQAbstractState(C.QState_errorState(this.h))
 }
 
 func (this *QState) SetErrorState(state *QAbstractState) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(state)
 	C.QState_setErrorState(this.h, state.cPointer())
 }
 
 func (this *QState) AddTransition(transition *QAbstractTransition) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(transition)
 	C.QState_addTransition(this.h, transition.cPointer())
 }
 
 func (this *QState) AddTransition2(sender *QObject, signal string, target *QAbstractState) *QSignalTransition {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sender)
-	defer runtime.KeepAlive(target)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 	return newQSignalTransition(C.QState_addTransition2(this.h, sender.cPointer(), signal_Cstring, target.cPointer()))
 }
 
 func (this *QState) AddTransitionWithTarget(target *QAbstractState) *QAbstractTransition {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(target)
 	return newQAbstractTransition(C.QState_addTransitionWithTarget(this.h, target.cPointer()))
 }
 
 func (this *QState) RemoveTransition(transition *QAbstractTransition) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(transition)
 	C.QState_removeTransition(this.h, transition.cPointer())
 }
 
 func (this *QState) Transitions() []*QAbstractTransition {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QState_transitions(this.h)
 	_ret := make([]*QAbstractTransition, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAbstractTransition)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -178,29 +161,22 @@ func (this *QState) Transitions() []*QAbstractTransition {
 }
 
 func (this *QState) InitialState() *QAbstractState {
-	defer runtime.KeepAlive(this)
 	return newQAbstractState(C.QState_initialState(this.h))
 }
 
 func (this *QState) SetInitialState(state *QAbstractState) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(state)
 	C.QState_setInitialState(this.h, state.cPointer())
 }
 
 func (this *QState) ChildMode() QState__ChildMode {
-	defer runtime.KeepAlive(this)
 	return (QState__ChildMode)(C.QState_childMode(this.h))
 }
 
 func (this *QState) SetChildMode(mode QState__ChildMode) {
-	defer runtime.KeepAlive(this)
 	C.QState_setChildMode(this.h, (C.int)(mode))
 }
 
 func (this *QState) AssignProperty(object *QObject, name string, value *QVariant) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	defer runtime.KeepAlive(value)
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
@@ -253,7 +229,6 @@ func QState_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QState that was directly constructed.
 func (this *QState) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QState_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -268,7 +243,6 @@ func (this *QState) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QState that was directly constructed.
 func (this *QState) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QState_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -283,7 +257,6 @@ func (this *QState) SenderSignalIndex() int {
 
 // Receivers can only be called from a QState that was directly constructed.
 func (this *QState) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -300,7 +273,6 @@ func (this *QState) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QState that was directly constructed.
 func (this *QState) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -315,7 +287,6 @@ func (this *QState) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QState) callVirtualBase_OnEntry(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QState_virtualbase_onEntry(unsafe.Pointer(this.h), event.cPointer())
@@ -343,7 +314,6 @@ func miqt_exec_callback_QState_onEntry(self *C.QState, cb C.intptr_t, event *C.Q
 }
 
 func (this *QState) callVirtualBase_OnExit(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QState_virtualbase_onExit(unsafe.Pointer(this.h), event.cPointer())
@@ -371,7 +341,6 @@ func miqt_exec_callback_QState_onExit(self *C.QState, cb C.intptr_t, event *C.QE
 }
 
 func (this *QState) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QState_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -401,8 +370,6 @@ func miqt_exec_callback_QState_event(self *C.QState, cb C.intptr_t, e *C.QEvent)
 }
 
 func (this *QState) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QState_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -434,7 +401,6 @@ func miqt_exec_callback_QState_eventFilter(self *C.QState, cb C.intptr_t, watche
 }
 
 func (this *QState) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QState_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -462,7 +428,6 @@ func miqt_exec_callback_QState_timerEvent(self *C.QState, cb C.intptr_t, event *
 }
 
 func (this *QState) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QState_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -490,7 +455,6 @@ func miqt_exec_callback_QState_childEvent(self *C.QState, cb C.intptr_t, event *
 }
 
 func (this *QState) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QState_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -518,7 +482,6 @@ func miqt_exec_callback_QState_customEvent(self *C.QState, cb C.intptr_t, event 
 }
 
 func (this *QState) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QState_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -546,7 +509,6 @@ func miqt_exec_callback_QState_connectNotify(self *C.QState, cb C.intptr_t, sign
 }
 
 func (this *QState) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QState_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -650,6 +612,8 @@ func (this *QState) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QState) GoGC() {
 	if this.gc != nil {
 		return

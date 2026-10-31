@@ -60,7 +60,6 @@ func UnsafeNewQStatusBar(h unsafe.Pointer) *QStatusBar {
 
 // NewQStatusBar constructs a new QStatusBar object.
 func NewQStatusBar(parent *QWidget) *QStatusBar {
-	defer runtime.KeepAlive(parent)
 
 	return newQStatusBar(C.QStatusBar_new(parent.cPointer()))
 }
@@ -72,12 +71,10 @@ func NewQStatusBar2() *QStatusBar {
 }
 
 func (this *QStatusBar) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QStatusBar_metaObject(this.h))
 }
 
 func (this *QStatusBar) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QStatusBar_metacast(this.h, param1_Cstring))
@@ -93,47 +90,34 @@ func QStatusBar_Tr(s string) string {
 }
 
 func (this *QStatusBar) AddWidget(widget *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QStatusBar_addWidget(this.h, widget.cPointer())
 }
 
 func (this *QStatusBar) InsertWidget(index int, widget *QWidget) int {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	return (int)(C.QStatusBar_insertWidget(this.h, (C.int)(index), widget.cPointer()))
 }
 
 func (this *QStatusBar) AddPermanentWidget(widget *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QStatusBar_addPermanentWidget(this.h, widget.cPointer())
 }
 
 func (this *QStatusBar) InsertPermanentWidget(index int, widget *QWidget) int {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	return (int)(C.QStatusBar_insertPermanentWidget(this.h, (C.int)(index), widget.cPointer()))
 }
 
 func (this *QStatusBar) RemoveWidget(widget *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QStatusBar_removeWidget(this.h, widget.cPointer())
 }
 
 func (this *QStatusBar) SetSizeGripEnabled(sizeGripEnabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QStatusBar_setSizeGripEnabled(this.h, (C.bool)(sizeGripEnabled))
 }
 
 func (this *QStatusBar) IsSizeGripEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QStatusBar_isSizeGripEnabled(this.h))
 }
 
 func (this *QStatusBar) CurrentMessage() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QStatusBar_currentMessage(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -141,7 +125,6 @@ func (this *QStatusBar) CurrentMessage() string {
 }
 
 func (this *QStatusBar) ShowMessage(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -150,12 +133,10 @@ func (this *QStatusBar) ShowMessage(text string) {
 }
 
 func (this *QStatusBar) ClearMessage() {
-	defer runtime.KeepAlive(this)
 	C.QStatusBar_clearMessage(this.h)
 }
 
 func (this *QStatusBar) MessageChanged(text string) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -205,31 +186,22 @@ func QStatusBar_Tr3(s string, c string, n int) string {
 }
 
 func (this *QStatusBar) AddWidget2(widget *QWidget, stretch int) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QStatusBar_addWidget2(this.h, widget.cPointer(), (C.int)(stretch))
 }
 
 func (this *QStatusBar) InsertWidget2(index int, widget *QWidget, stretch int) int {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	return (int)(C.QStatusBar_insertWidget2(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QStatusBar) AddPermanentWidget2(widget *QWidget, stretch int) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QStatusBar_addPermanentWidget2(this.h, widget.cPointer(), (C.int)(stretch))
 }
 
 func (this *QStatusBar) InsertPermanentWidget2(index int, widget *QWidget, stretch int) int {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	return (int)(C.QStatusBar_insertPermanentWidget2(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QStatusBar) ShowMessage2(text string, timeout int) {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -239,7 +211,6 @@ func (this *QStatusBar) ShowMessage2(text string, timeout int) {
 
 // Reformat can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) Reformat() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStatusBar_protectedbase_reformat(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -252,7 +223,6 @@ func (this *QStatusBar) Reformat() {
 
 // HideOrShow can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) HideOrShow() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStatusBar_protectedbase_hideOrShow(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -265,7 +235,6 @@ func (this *QStatusBar) HideOrShow() {
 
 // UpdateMicroFocus can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStatusBar_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -278,7 +247,6 @@ func (this *QStatusBar) UpdateMicroFocus() {
 
 // Create can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStatusBar_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -291,7 +259,6 @@ func (this *QStatusBar) Create() {
 
 // Destroy can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStatusBar_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -304,7 +271,6 @@ func (this *QStatusBar) Destroy() {
 
 // FocusNextChild can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QStatusBar_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -319,7 +285,6 @@ func (this *QStatusBar) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QStatusBar_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -334,7 +299,6 @@ func (this *QStatusBar) FocusPreviousChild() bool {
 
 // Sender can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QStatusBar_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -349,7 +313,6 @@ func (this *QStatusBar) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QStatusBar_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -364,7 +327,6 @@ func (this *QStatusBar) SenderSignalIndex() int {
 
 // Receivers can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -381,7 +343,6 @@ func (this *QStatusBar) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QStatusBar that was directly constructed.
 func (this *QStatusBar) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -396,7 +357,6 @@ func (this *QStatusBar) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QStatusBar) callVirtualBase_ShowEvent(param1 *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QStatusBar_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -424,7 +384,6 @@ func miqt_exec_callback_QStatusBar_showEvent(self *C.QStatusBar, cb C.intptr_t, 
 }
 
 func (this *QStatusBar) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QStatusBar_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -452,7 +411,6 @@ func miqt_exec_callback_QStatusBar_paintEvent(self *C.QStatusBar, cb C.intptr_t,
 }
 
 func (this *QStatusBar) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QStatusBar_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -480,7 +438,6 @@ func miqt_exec_callback_QStatusBar_resizeEvent(self *C.QStatusBar, cb C.intptr_t
 }
 
 func (this *QStatusBar) callVirtualBase_Event(param1 *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QStatusBar_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
@@ -510,7 +467,6 @@ func miqt_exec_callback_QStatusBar_event(self *C.QStatusBar, cb C.intptr_t, para
 }
 
 func (this *QStatusBar) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QStatusBar_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -536,7 +492,6 @@ func miqt_exec_callback_QStatusBar_devType(self *C.QStatusBar, cb C.intptr_t) C.
 }
 
 func (this *QStatusBar) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QStatusBar_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -563,7 +518,6 @@ func miqt_exec_callback_QStatusBar_setVisible(self *C.QStatusBar, cb C.intptr_t,
 }
 
 func (this *QStatusBar) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QStatusBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -592,7 +546,6 @@ func miqt_exec_callback_QStatusBar_sizeHint(self *C.QStatusBar, cb C.intptr_t) *
 }
 
 func (this *QStatusBar) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QStatusBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -621,7 +574,6 @@ func miqt_exec_callback_QStatusBar_minimumSizeHint(self *C.QStatusBar, cb C.intp
 }
 
 func (this *QStatusBar) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QStatusBar_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -650,7 +602,6 @@ func miqt_exec_callback_QStatusBar_heightForWidth(self *C.QStatusBar, cb C.intpt
 }
 
 func (this *QStatusBar) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QStatusBar_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -676,7 +627,6 @@ func miqt_exec_callback_QStatusBar_hasHeightForWidth(self *C.QStatusBar, cb C.in
 }
 
 func (this *QStatusBar) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QStatusBar_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -703,7 +653,6 @@ func miqt_exec_callback_QStatusBar_paintEngine(self *C.QStatusBar, cb C.intptr_t
 }
 
 func (this *QStatusBar) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -731,7 +680,6 @@ func miqt_exec_callback_QStatusBar_mousePressEvent(self *C.QStatusBar, cb C.intp
 }
 
 func (this *QStatusBar) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -759,7 +707,6 @@ func miqt_exec_callback_QStatusBar_mouseReleaseEvent(self *C.QStatusBar, cb C.in
 }
 
 func (this *QStatusBar) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -787,7 +734,6 @@ func miqt_exec_callback_QStatusBar_mouseDoubleClickEvent(self *C.QStatusBar, cb 
 }
 
 func (this *QStatusBar) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -815,7 +761,6 @@ func miqt_exec_callback_QStatusBar_mouseMoveEvent(self *C.QStatusBar, cb C.intpt
 }
 
 func (this *QStatusBar) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -843,7 +788,6 @@ func miqt_exec_callback_QStatusBar_wheelEvent(self *C.QStatusBar, cb C.intptr_t,
 }
 
 func (this *QStatusBar) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -871,7 +815,6 @@ func miqt_exec_callback_QStatusBar_keyPressEvent(self *C.QStatusBar, cb C.intptr
 }
 
 func (this *QStatusBar) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -899,7 +842,6 @@ func miqt_exec_callback_QStatusBar_keyReleaseEvent(self *C.QStatusBar, cb C.intp
 }
 
 func (this *QStatusBar) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -927,7 +869,6 @@ func miqt_exec_callback_QStatusBar_focusInEvent(self *C.QStatusBar, cb C.intptr_
 }
 
 func (this *QStatusBar) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -955,7 +896,6 @@ func miqt_exec_callback_QStatusBar_focusOutEvent(self *C.QStatusBar, cb C.intptr
 }
 
 func (this *QStatusBar) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -983,7 +923,6 @@ func miqt_exec_callback_QStatusBar_enterEvent(self *C.QStatusBar, cb C.intptr_t,
 }
 
 func (this *QStatusBar) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1011,7 +950,6 @@ func miqt_exec_callback_QStatusBar_leaveEvent(self *C.QStatusBar, cb C.intptr_t,
 }
 
 func (this *QStatusBar) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1039,7 +977,6 @@ func miqt_exec_callback_QStatusBar_moveEvent(self *C.QStatusBar, cb C.intptr_t, 
 }
 
 func (this *QStatusBar) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1067,7 +1004,6 @@ func miqt_exec_callback_QStatusBar_closeEvent(self *C.QStatusBar, cb C.intptr_t,
 }
 
 func (this *QStatusBar) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1095,7 +1031,6 @@ func miqt_exec_callback_QStatusBar_contextMenuEvent(self *C.QStatusBar, cb C.int
 }
 
 func (this *QStatusBar) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1123,7 +1058,6 @@ func miqt_exec_callback_QStatusBar_tabletEvent(self *C.QStatusBar, cb C.intptr_t
 }
 
 func (this *QStatusBar) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1151,7 +1085,6 @@ func miqt_exec_callback_QStatusBar_actionEvent(self *C.QStatusBar, cb C.intptr_t
 }
 
 func (this *QStatusBar) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1179,7 +1112,6 @@ func miqt_exec_callback_QStatusBar_dragEnterEvent(self *C.QStatusBar, cb C.intpt
 }
 
 func (this *QStatusBar) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1207,7 +1139,6 @@ func miqt_exec_callback_QStatusBar_dragMoveEvent(self *C.QStatusBar, cb C.intptr
 }
 
 func (this *QStatusBar) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1235,7 +1166,6 @@ func miqt_exec_callback_QStatusBar_dragLeaveEvent(self *C.QStatusBar, cb C.intpt
 }
 
 func (this *QStatusBar) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1263,7 +1193,6 @@ func miqt_exec_callback_QStatusBar_dropEvent(self *C.QStatusBar, cb C.intptr_t, 
 }
 
 func (this *QStatusBar) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1291,7 +1220,6 @@ func miqt_exec_callback_QStatusBar_hideEvent(self *C.QStatusBar, cb C.intptr_t, 
 }
 
 func (this *QStatusBar) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1333,7 +1261,6 @@ func miqt_exec_callback_QStatusBar_nativeEvent(self *C.QStatusBar, cb C.intptr_t
 }
 
 func (this *QStatusBar) callVirtualBase_ChangeEvent(param1 *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QStatusBar_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1361,7 +1288,6 @@ func miqt_exec_callback_QStatusBar_changeEvent(self *C.QStatusBar, cb C.intptr_t
 }
 
 func (this *QStatusBar) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QStatusBar_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1390,7 +1316,6 @@ func miqt_exec_callback_QStatusBar_metric(self *C.QStatusBar, cb C.intptr_t, par
 }
 
 func (this *QStatusBar) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QStatusBar_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1418,7 +1343,6 @@ func miqt_exec_callback_QStatusBar_initPainter(self *C.QStatusBar, cb C.intptr_t
 }
 
 func (this *QStatusBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QStatusBar_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1449,7 +1373,6 @@ func miqt_exec_callback_QStatusBar_redirected(self *C.QStatusBar, cb C.intptr_t,
 }
 
 func (this *QStatusBar) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QStatusBar_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1476,7 +1399,6 @@ func miqt_exec_callback_QStatusBar_sharedPainter(self *C.QStatusBar, cb C.intptr
 }
 
 func (this *QStatusBar) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QStatusBar_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1504,7 +1426,6 @@ func miqt_exec_callback_QStatusBar_inputMethodEvent(self *C.QStatusBar, cb C.int
 }
 
 func (this *QStatusBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QStatusBar_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1536,7 +1457,6 @@ func miqt_exec_callback_QStatusBar_inputMethodQuery(self *C.QStatusBar, cb C.int
 }
 
 func (this *QStatusBar) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QStatusBar_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1565,8 +1485,6 @@ func miqt_exec_callback_QStatusBar_focusNextPrevChild(self *C.QStatusBar, cb C.i
 }
 
 func (this *QStatusBar) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStatusBar_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1598,7 +1516,6 @@ func miqt_exec_callback_QStatusBar_eventFilter(self *C.QStatusBar, cb C.intptr_t
 }
 
 func (this *QStatusBar) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1626,7 +1543,6 @@ func miqt_exec_callback_QStatusBar_timerEvent(self *C.QStatusBar, cb C.intptr_t,
 }
 
 func (this *QStatusBar) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1654,7 +1570,6 @@ func miqt_exec_callback_QStatusBar_childEvent(self *C.QStatusBar, cb C.intptr_t,
 }
 
 func (this *QStatusBar) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStatusBar_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1682,7 +1597,6 @@ func miqt_exec_callback_QStatusBar_customEvent(self *C.QStatusBar, cb C.intptr_t
 }
 
 func (this *QStatusBar) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QStatusBar_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1710,7 +1624,6 @@ func miqt_exec_callback_QStatusBar_connectNotify(self *C.QStatusBar, cb C.intptr
 }
 
 func (this *QStatusBar) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QStatusBar_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1745,6 +1658,8 @@ func (this *QStatusBar) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QStatusBar) GoGC() {
 	if this.gc != nil {
 		return

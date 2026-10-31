@@ -59,12 +59,10 @@ func UnsafeNewQMediaContainerControl(h unsafe.Pointer) *QMediaContainerControl {
 }
 
 func (this *QMediaContainerControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaContainerControl_metaObject(this.h)))
 }
 
 func (this *QMediaContainerControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaContainerControl_metacast(this.h, param1_Cstring))
@@ -89,7 +87,6 @@ func QMediaContainerControl_TrUtf8(s string) string {
 }
 
 func (this *QMediaContainerControl) SupportedContainers() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaContainerControl_supportedContainers(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -103,7 +100,6 @@ func (this *QMediaContainerControl) SupportedContainers() []string {
 }
 
 func (this *QMediaContainerControl) ContainerFormat() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMediaContainerControl_containerFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -111,7 +107,6 @@ func (this *QMediaContainerControl) ContainerFormat() string {
 }
 
 func (this *QMediaContainerControl) SetContainerFormat(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -120,7 +115,6 @@ func (this *QMediaContainerControl) SetContainerFormat(format string) {
 }
 
 func (this *QMediaContainerControl) ContainerDescription(formatMimeType string) string {
-	defer runtime.KeepAlive(this)
 	formatMimeType_ms := C.struct_miqt_string{}
 	formatMimeType_ms.data = C.CString(formatMimeType)
 	formatMimeType_ms.len = C.size_t(len(formatMimeType))
@@ -183,6 +177,8 @@ func (this *QMediaContainerControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaContainerControl) GoGC() {
 	if this.gc != nil {
 		return

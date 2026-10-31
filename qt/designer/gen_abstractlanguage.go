@@ -63,21 +63,16 @@ func (this *QDesignerLanguageExtension) Name() string {
 
 func (this *QDesignerLanguageExtension) CreateFormWindowSettingsDialog(formWindow *QDesignerFormWindowInterface, parentWidget *qt.QWidget) *qt.QDialog {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(formWindow)
-	defer runtime.KeepAlive(parentWidget)
 	return qt.UnsafeNewQDialog(unsafe.Pointer(C.QDesignerLanguageExtension_createFormWindowSettingsDialog(this.h, formWindow.cPointer(), (*C.QWidget)(parentWidget.UnsafePointer()))))
 }
 
 func (this *QDesignerLanguageExtension) CreateResourceBrowser(parentWidget *qt.QWidget) *QDesignerResourceBrowserInterface {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parentWidget)
 	return newQDesignerResourceBrowserInterface(C.QDesignerLanguageExtension_createResourceBrowser(this.h, (*C.QWidget)(parentWidget.UnsafePointer())))
 }
 
 func (this *QDesignerLanguageExtension) CreatePromotionDialog(formEditor *QDesignerFormEditorInterface, parentWidget *qt.QWidget) *qt.QDialog {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(formEditor)
-	defer runtime.KeepAlive(parentWidget)
 	return qt.UnsafeNewQDialog(unsafe.Pointer(C.QDesignerLanguageExtension_createPromotionDialog(this.h, formEditor.cPointer(), (*C.QWidget)(parentWidget.UnsafePointer()))))
 }
 
@@ -92,7 +87,6 @@ func (this *QDesignerLanguageExtension) IsLanguageResource(path string) bool {
 
 func (this *QDesignerLanguageExtension) ClassNameOf(object *qt.QObject) string {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	var _ms C.struct_miqt_string = C.QDesignerLanguageExtension_classNameOf(this.h, (*C.QObject)(object.UnsafePointer()))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))

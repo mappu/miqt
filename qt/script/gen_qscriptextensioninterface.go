@@ -67,7 +67,6 @@ func NewQScriptExtensionInterface(param1 *QScriptExtensionInterface) *QScriptExt
 
 func (this *QScriptExtensionInterface) Initialize(key string, engine *QScriptEngine) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(engine)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))

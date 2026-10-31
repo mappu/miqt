@@ -70,7 +70,6 @@ func NewQFileInfo2(file string) *QFileInfo {
 
 // NewQFileInfo3 constructs a new QFileInfo object.
 func NewQFileInfo3(file *QFile) *QFileInfo {
-	defer runtime.KeepAlive(file)
 
 	return newQFileInfo(C.QFileInfo_new3(file.cPointer()))
 }
@@ -128,7 +127,6 @@ func (this *QFileInfo) SetFile(file string) {
 
 func (this *QFileInfo) SetFileWithFile(file *QFile) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(file)
 	C.QFileInfo_setFileWithFile(this.h, file.cPointer())
 }
 

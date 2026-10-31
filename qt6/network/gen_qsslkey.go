@@ -74,7 +74,6 @@ func NewQSslKey2(encoded []byte, algorithm QSsl__KeyAlgorithm) *QSslKey {
 
 // NewQSslKey3 constructs a new QSslKey object.
 func NewQSslKey3(device *qt6.QIODevice, algorithm QSsl__KeyAlgorithm) *QSslKey {
-	defer runtime.KeepAlive(device)
 
 	return newQSslKey(C.QSslKey_new3((*C.QIODevice)(device.UnsafePointer()), (C.int)(algorithm)))
 }
@@ -140,21 +139,18 @@ func NewQSslKey8(encoded []byte, algorithm QSsl__KeyAlgorithm, format QSsl__Enco
 
 // NewQSslKey9 constructs a new QSslKey object.
 func NewQSslKey9(device *qt6.QIODevice, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat) *QSslKey {
-	defer runtime.KeepAlive(device)
 
 	return newQSslKey(C.QSslKey_new9((*C.QIODevice)(device.UnsafePointer()), (C.int)(algorithm), (C.int)(format)))
 }
 
 // NewQSslKey10 constructs a new QSslKey object.
 func NewQSslKey10(device *qt6.QIODevice, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat, typeVal QSsl__KeyType) *QSslKey {
-	defer runtime.KeepAlive(device)
 
 	return newQSslKey(C.QSslKey_new10((*C.QIODevice)(device.UnsafePointer()), (C.int)(algorithm), (C.int)(format), (C.int)(typeVal)))
 }
 
 // NewQSslKey11 constructs a new QSslKey object.
 func NewQSslKey11(device *qt6.QIODevice, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat, typeVal QSsl__KeyType, passPhrase []byte) *QSslKey {
-	defer runtime.KeepAlive(device)
 	passPhrase_alias := C.struct_miqt_string{}
 	if len(passPhrase) > 0 {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))

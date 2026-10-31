@@ -66,33 +66,27 @@ func NewQMouseEventTransition() *QMouseEventTransition {
 
 // NewQMouseEventTransition2 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition2(object *QObject, typeVal QEvent__Type, button MouseButton) *QMouseEventTransition {
-	defer runtime.KeepAlive(object)
 
 	return newQMouseEventTransition(C.QMouseEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(button)))
 }
 
 // NewQMouseEventTransition3 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition3(sourceState *QState) *QMouseEventTransition {
-	defer runtime.KeepAlive(sourceState)
 
 	return newQMouseEventTransition(C.QMouseEventTransition_new3(sourceState.cPointer()))
 }
 
 // NewQMouseEventTransition4 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition4(object *QObject, typeVal QEvent__Type, button MouseButton, sourceState *QState) *QMouseEventTransition {
-	defer runtime.KeepAlive(object)
-	defer runtime.KeepAlive(sourceState)
 
 	return newQMouseEventTransition(C.QMouseEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(button), sourceState.cPointer()))
 }
 
 func (this *QMouseEventTransition) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QMouseEventTransition_metaObject(this.h))
 }
 
 func (this *QMouseEventTransition) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMouseEventTransition_metacast(this.h, param1_Cstring))
@@ -117,34 +111,28 @@ func QMouseEventTransition_TrUtf8(s string) string {
 }
 
 func (this *QMouseEventTransition) Button() MouseButton {
-	defer runtime.KeepAlive(this)
 	return (MouseButton)(C.QMouseEventTransition_button(this.h))
 }
 
 func (this *QMouseEventTransition) SetButton(button MouseButton) {
-	defer runtime.KeepAlive(this)
 	C.QMouseEventTransition_setButton(this.h, (C.int)(button))
 }
 
 func (this *QMouseEventTransition) ModifierMask() KeyboardModifier {
-	defer runtime.KeepAlive(this)
 	return (KeyboardModifier)(C.QMouseEventTransition_modifierMask(this.h))
 }
 
 func (this *QMouseEventTransition) SetModifierMask(modifiers KeyboardModifier) {
-	defer runtime.KeepAlive(this)
 	C.QMouseEventTransition_setModifierMask(this.h, (C.int)(modifiers))
 }
 
 func (this *QMouseEventTransition) HitTestPath() *QPainterPath {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPainterPath(C.QMouseEventTransition_hitTestPath(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEventTransition) SetHitTestPath(path *QPainterPath) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(path)
 	C.QMouseEventTransition_setHitTestPath(this.h, path.cPointer())
 }
@@ -195,7 +183,6 @@ func QMouseEventTransition_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QMouseEventTransition that was directly constructed.
 func (this *QMouseEventTransition) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QMouseEventTransition_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -210,7 +197,6 @@ func (this *QMouseEventTransition) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QMouseEventTransition that was directly constructed.
 func (this *QMouseEventTransition) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMouseEventTransition_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -225,7 +211,6 @@ func (this *QMouseEventTransition) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMouseEventTransition that was directly constructed.
 func (this *QMouseEventTransition) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -242,7 +227,6 @@ func (this *QMouseEventTransition) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMouseEventTransition that was directly constructed.
 func (this *QMouseEventTransition) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -257,7 +241,6 @@ func (this *QMouseEventTransition) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QMouseEventTransition) callVirtualBase_OnTransition(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMouseEventTransition_virtualbase_onTransition(unsafe.Pointer(this.h), event.cPointer())
@@ -285,7 +268,6 @@ func miqt_exec_callback_QMouseEventTransition_onTransition(self *C.QMouseEventTr
 }
 
 func (this *QMouseEventTransition) callVirtualBase_EventTest(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMouseEventTransition_virtualbase_eventTest(unsafe.Pointer(this.h), event.cPointer()))
@@ -315,7 +297,6 @@ func miqt_exec_callback_QMouseEventTransition_eventTest(self *C.QMouseEventTrans
 }
 
 func (this *QMouseEventTransition) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QMouseEventTransition_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -345,8 +326,6 @@ func miqt_exec_callback_QMouseEventTransition_event(self *C.QMouseEventTransitio
 }
 
 func (this *QMouseEventTransition) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMouseEventTransition_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -378,7 +357,6 @@ func miqt_exec_callback_QMouseEventTransition_eventFilter(self *C.QMouseEventTra
 }
 
 func (this *QMouseEventTransition) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMouseEventTransition_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -406,7 +384,6 @@ func miqt_exec_callback_QMouseEventTransition_timerEvent(self *C.QMouseEventTran
 }
 
 func (this *QMouseEventTransition) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMouseEventTransition_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -434,7 +411,6 @@ func miqt_exec_callback_QMouseEventTransition_childEvent(self *C.QMouseEventTran
 }
 
 func (this *QMouseEventTransition) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMouseEventTransition_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -462,7 +438,6 @@ func miqt_exec_callback_QMouseEventTransition_customEvent(self *C.QMouseEventTra
 }
 
 func (this *QMouseEventTransition) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMouseEventTransition_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -490,7 +465,6 @@ func miqt_exec_callback_QMouseEventTransition_connectNotify(self *C.QMouseEventT
 }
 
 func (this *QMouseEventTransition) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMouseEventTransition_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -525,6 +499,8 @@ func (this *QMouseEventTransition) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMouseEventTransition) GoGC() {
 	if this.gc != nil {
 		return

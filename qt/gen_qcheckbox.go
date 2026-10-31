@@ -60,7 +60,6 @@ func UnsafeNewQCheckBox(h unsafe.Pointer) *QCheckBox {
 
 // NewQCheckBox constructs a new QCheckBox object.
 func NewQCheckBox(parent *QWidget) *QCheckBox {
-	defer runtime.KeepAlive(parent)
 
 	return newQCheckBox(C.QCheckBox_new(parent.cPointer()))
 }
@@ -83,7 +82,6 @@ func NewQCheckBox3(text string) *QCheckBox {
 
 // NewQCheckBox4 constructs a new QCheckBox object.
 func NewQCheckBox4(text string, parent *QWidget) *QCheckBox {
-	defer runtime.KeepAlive(parent)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -93,12 +91,10 @@ func NewQCheckBox4(text string, parent *QWidget) *QCheckBox {
 }
 
 func (this *QCheckBox) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QCheckBox_metaObject(this.h))
 }
 
 func (this *QCheckBox) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCheckBox_metacast(this.h, param1_Cstring))
@@ -123,41 +119,34 @@ func QCheckBox_TrUtf8(s string) string {
 }
 
 func (this *QCheckBox) SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QCheckBox_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCheckBox) MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QCheckBox_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCheckBox) SetTristate() {
-	defer runtime.KeepAlive(this)
 	C.QCheckBox_setTristate(this.h)
 }
 
 func (this *QCheckBox) IsTristate() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCheckBox_isTristate(this.h))
 }
 
 func (this *QCheckBox) CheckState() CheckState {
-	defer runtime.KeepAlive(this)
 	return (CheckState)(C.QCheckBox_checkState(this.h))
 }
 
 func (this *QCheckBox) SetCheckState(state CheckState) {
-	defer runtime.KeepAlive(this)
 	C.QCheckBox_setCheckState(this.h, (C.int)(state))
 }
 
 func (this *QCheckBox) StateChanged(param1 int) {
-	defer runtime.KeepAlive(this)
 	C.QCheckBox_stateChanged(this.h, (C.int)(param1))
 }
 func (this *QCheckBox) OnStateChanged(slot func(param1 int)) {
@@ -222,13 +211,11 @@ func QCheckBox_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QCheckBox) SetTristateWithBool(y bool) {
-	defer runtime.KeepAlive(this)
 	C.QCheckBox_setTristateWithBool(this.h, (C.bool)(y))
 }
 
 // InitStyleOption can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) InitStyleOption(option *QStyleOptionButton) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -242,7 +229,6 @@ func (this *QCheckBox) InitStyleOption(option *QStyleOptionButton) {
 
 // UpdateMicroFocus can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCheckBox_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -255,7 +241,6 @@ func (this *QCheckBox) UpdateMicroFocus() {
 
 // Create can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCheckBox_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -268,7 +253,6 @@ func (this *QCheckBox) Create() {
 
 // Destroy can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QCheckBox_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -281,7 +265,6 @@ func (this *QCheckBox) Destroy() {
 
 // FocusNextChild can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCheckBox_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -296,7 +279,6 @@ func (this *QCheckBox) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QCheckBox_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -311,7 +293,6 @@ func (this *QCheckBox) FocusPreviousChild() bool {
 
 // Sender can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QCheckBox_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -326,7 +307,6 @@ func (this *QCheckBox) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCheckBox_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -341,7 +321,6 @@ func (this *QCheckBox) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -358,7 +337,6 @@ func (this *QCheckBox) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCheckBox that was directly constructed.
 func (this *QCheckBox) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -373,7 +351,6 @@ func (this *QCheckBox) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QCheckBox) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QCheckBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -402,7 +379,6 @@ func miqt_exec_callback_QCheckBox_sizeHint(self *C.QCheckBox, cb C.intptr_t) *C.
 }
 
 func (this *QCheckBox) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QCheckBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -431,7 +407,6 @@ func miqt_exec_callback_QCheckBox_minimumSizeHint(self *C.QCheckBox, cb C.intptr
 }
 
 func (this *QCheckBox) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QCheckBox_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -461,7 +436,6 @@ func miqt_exec_callback_QCheckBox_event(self *C.QCheckBox, cb C.intptr_t, e *C.Q
 }
 
 func (this *QCheckBox) callVirtualBase_HitButton(pos *QPoint) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 
 	return (bool)(C.QCheckBox_virtualbase_hitButton(unsafe.Pointer(this.h), pos.cPointer()))
@@ -491,7 +465,6 @@ func miqt_exec_callback_QCheckBox_hitButton(self *C.QCheckBox, cb C.intptr_t, po
 }
 
 func (this *QCheckBox) callVirtualBase_CheckStateSet() {
-	defer runtime.KeepAlive(this)
 
 	C.QCheckBox_virtualbase_checkStateSet(unsafe.Pointer(this.h))
 
@@ -515,7 +488,6 @@ func miqt_exec_callback_QCheckBox_checkStateSet(self *C.QCheckBox, cb C.intptr_t
 }
 
 func (this *QCheckBox) callVirtualBase_NextCheckState() {
-	defer runtime.KeepAlive(this)
 
 	C.QCheckBox_virtualbase_nextCheckState(unsafe.Pointer(this.h))
 
@@ -539,7 +511,6 @@ func miqt_exec_callback_QCheckBox_nextCheckState(self *C.QCheckBox, cb C.intptr_
 }
 
 func (this *QCheckBox) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QCheckBox_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -567,7 +538,6 @@ func miqt_exec_callback_QCheckBox_paintEvent(self *C.QCheckBox, cb C.intptr_t, p
 }
 
 func (this *QCheckBox) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QCheckBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -595,7 +565,6 @@ func miqt_exec_callback_QCheckBox_mouseMoveEvent(self *C.QCheckBox, cb C.intptr_
 }
 
 func (this *QCheckBox) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QCheckBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -623,7 +592,6 @@ func miqt_exec_callback_QCheckBox_keyPressEvent(self *C.QCheckBox, cb C.intptr_t
 }
 
 func (this *QCheckBox) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QCheckBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -651,7 +619,6 @@ func miqt_exec_callback_QCheckBox_keyReleaseEvent(self *C.QCheckBox, cb C.intptr
 }
 
 func (this *QCheckBox) callVirtualBase_MousePressEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QCheckBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -679,7 +646,6 @@ func miqt_exec_callback_QCheckBox_mousePressEvent(self *C.QCheckBox, cb C.intptr
 }
 
 func (this *QCheckBox) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QCheckBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -707,7 +673,6 @@ func miqt_exec_callback_QCheckBox_mouseReleaseEvent(self *C.QCheckBox, cb C.intp
 }
 
 func (this *QCheckBox) callVirtualBase_FocusInEvent(e *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QCheckBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -735,7 +700,6 @@ func miqt_exec_callback_QCheckBox_focusInEvent(self *C.QCheckBox, cb C.intptr_t,
 }
 
 func (this *QCheckBox) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QCheckBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -763,7 +727,6 @@ func miqt_exec_callback_QCheckBox_focusOutEvent(self *C.QCheckBox, cb C.intptr_t
 }
 
 func (this *QCheckBox) callVirtualBase_ChangeEvent(e *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QCheckBox_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -791,7 +754,6 @@ func miqt_exec_callback_QCheckBox_changeEvent(self *C.QCheckBox, cb C.intptr_t, 
 }
 
 func (this *QCheckBox) callVirtualBase_TimerEvent(e *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QCheckBox_virtualbase_timerEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -819,7 +781,6 @@ func miqt_exec_callback_QCheckBox_timerEvent(self *C.QCheckBox, cb C.intptr_t, e
 }
 
 func (this *QCheckBox) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QCheckBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -845,7 +806,6 @@ func miqt_exec_callback_QCheckBox_devType(self *C.QCheckBox, cb C.intptr_t) C.in
 }
 
 func (this *QCheckBox) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QCheckBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -872,7 +832,6 @@ func miqt_exec_callback_QCheckBox_setVisible(self *C.QCheckBox, cb C.intptr_t, v
 }
 
 func (this *QCheckBox) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QCheckBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -901,7 +860,6 @@ func miqt_exec_callback_QCheckBox_heightForWidth(self *C.QCheckBox, cb C.intptr_
 }
 
 func (this *QCheckBox) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QCheckBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -927,7 +885,6 @@ func miqt_exec_callback_QCheckBox_hasHeightForWidth(self *C.QCheckBox, cb C.intp
 }
 
 func (this *QCheckBox) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QCheckBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -954,7 +911,6 @@ func miqt_exec_callback_QCheckBox_paintEngine(self *C.QCheckBox, cb C.intptr_t) 
 }
 
 func (this *QCheckBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -982,7 +938,6 @@ func miqt_exec_callback_QCheckBox_mouseDoubleClickEvent(self *C.QCheckBox, cb C.
 }
 
 func (this *QCheckBox) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1010,7 +965,6 @@ func miqt_exec_callback_QCheckBox_wheelEvent(self *C.QCheckBox, cb C.intptr_t, e
 }
 
 func (this *QCheckBox) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1038,7 +992,6 @@ func miqt_exec_callback_QCheckBox_enterEvent(self *C.QCheckBox, cb C.intptr_t, e
 }
 
 func (this *QCheckBox) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1066,7 +1019,6 @@ func miqt_exec_callback_QCheckBox_leaveEvent(self *C.QCheckBox, cb C.intptr_t, e
 }
 
 func (this *QCheckBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1094,7 +1046,6 @@ func miqt_exec_callback_QCheckBox_moveEvent(self *C.QCheckBox, cb C.intptr_t, ev
 }
 
 func (this *QCheckBox) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1122,7 +1073,6 @@ func miqt_exec_callback_QCheckBox_resizeEvent(self *C.QCheckBox, cb C.intptr_t, 
 }
 
 func (this *QCheckBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1150,7 +1100,6 @@ func miqt_exec_callback_QCheckBox_closeEvent(self *C.QCheckBox, cb C.intptr_t, e
 }
 
 func (this *QCheckBox) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1178,7 +1127,6 @@ func miqt_exec_callback_QCheckBox_contextMenuEvent(self *C.QCheckBox, cb C.intpt
 }
 
 func (this *QCheckBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1206,7 +1154,6 @@ func miqt_exec_callback_QCheckBox_tabletEvent(self *C.QCheckBox, cb C.intptr_t, 
 }
 
 func (this *QCheckBox) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1234,7 +1181,6 @@ func miqt_exec_callback_QCheckBox_actionEvent(self *C.QCheckBox, cb C.intptr_t, 
 }
 
 func (this *QCheckBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1262,7 +1208,6 @@ func miqt_exec_callback_QCheckBox_dragEnterEvent(self *C.QCheckBox, cb C.intptr_
 }
 
 func (this *QCheckBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1290,7 +1235,6 @@ func miqt_exec_callback_QCheckBox_dragMoveEvent(self *C.QCheckBox, cb C.intptr_t
 }
 
 func (this *QCheckBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1318,7 +1262,6 @@ func miqt_exec_callback_QCheckBox_dragLeaveEvent(self *C.QCheckBox, cb C.intptr_
 }
 
 func (this *QCheckBox) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1346,7 +1289,6 @@ func miqt_exec_callback_QCheckBox_dropEvent(self *C.QCheckBox, cb C.intptr_t, ev
 }
 
 func (this *QCheckBox) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1374,7 +1316,6 @@ func miqt_exec_callback_QCheckBox_showEvent(self *C.QCheckBox, cb C.intptr_t, ev
 }
 
 func (this *QCheckBox) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1402,7 +1343,6 @@ func miqt_exec_callback_QCheckBox_hideEvent(self *C.QCheckBox, cb C.intptr_t, ev
 }
 
 func (this *QCheckBox) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1444,7 +1384,6 @@ func miqt_exec_callback_QCheckBox_nativeEvent(self *C.QCheckBox, cb C.intptr_t, 
 }
 
 func (this *QCheckBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QCheckBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1473,7 +1412,6 @@ func miqt_exec_callback_QCheckBox_metric(self *C.QCheckBox, cb C.intptr_t, param
 }
 
 func (this *QCheckBox) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QCheckBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1501,7 +1439,6 @@ func miqt_exec_callback_QCheckBox_initPainter(self *C.QCheckBox, cb C.intptr_t, 
 }
 
 func (this *QCheckBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QCheckBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1532,7 +1469,6 @@ func miqt_exec_callback_QCheckBox_redirected(self *C.QCheckBox, cb C.intptr_t, o
 }
 
 func (this *QCheckBox) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QCheckBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1559,7 +1495,6 @@ func miqt_exec_callback_QCheckBox_sharedPainter(self *C.QCheckBox, cb C.intptr_t
 }
 
 func (this *QCheckBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QCheckBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1587,7 +1522,6 @@ func miqt_exec_callback_QCheckBox_inputMethodEvent(self *C.QCheckBox, cb C.intpt
 }
 
 func (this *QCheckBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QCheckBox_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1619,7 +1553,6 @@ func miqt_exec_callback_QCheckBox_inputMethodQuery(self *C.QCheckBox, cb C.intpt
 }
 
 func (this *QCheckBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QCheckBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1648,8 +1581,6 @@ func miqt_exec_callback_QCheckBox_focusNextPrevChild(self *C.QCheckBox, cb C.int
 }
 
 func (this *QCheckBox) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCheckBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1681,7 +1612,6 @@ func miqt_exec_callback_QCheckBox_eventFilter(self *C.QCheckBox, cb C.intptr_t, 
 }
 
 func (this *QCheckBox) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1709,7 +1639,6 @@ func miqt_exec_callback_QCheckBox_childEvent(self *C.QCheckBox, cb C.intptr_t, e
 }
 
 func (this *QCheckBox) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCheckBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1737,7 +1666,6 @@ func miqt_exec_callback_QCheckBox_customEvent(self *C.QCheckBox, cb C.intptr_t, 
 }
 
 func (this *QCheckBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCheckBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1765,7 +1693,6 @@ func miqt_exec_callback_QCheckBox_connectNotify(self *C.QCheckBox, cb C.intptr_t
 }
 
 func (this *QCheckBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCheckBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1800,6 +1727,8 @@ func (this *QCheckBox) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCheckBox) GoGC() {
 	if this.gc != nil {
 		return
