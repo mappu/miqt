@@ -26,7 +26,7 @@ func withKnownClass(t *testing.T, className, packageName string, inherits ...str
 // their finalizers can delete the C++ objects while C++ is still using them.
 func TestEmitKeepAlive(t *testing.T) {
 	withKnownClass(t, "QFont", "qt6")
-	withKnownClass(t, "QModelIndex", "qt6")
+	withKnownClass(t, "QBrush", "qt6")
 	withKnownClass(t, "QObject", "qt6")
 	withKnownClass(t, "QWidget", "qt6", "QObject")
 
@@ -37,7 +37,7 @@ func TestEmitKeepAlive(t *testing.T) {
 		MethodName: "setFont",
 		Parameters: []CppParameter{
 			{ParameterType: "QFont", ParameterName: "font", Const: true, ByRef: true},
-			{ParameterType: "QList<QModelIndex>", ParameterName: "indexes"},
+			{ParameterType: "QList<QBrush>", ParameterName: "indexes"},
 			{ParameterType: "QString", ParameterName: "name"},
 			{ParameterType: "int", ParameterName: "role"},
 			{ParameterType: "QWidget", ParameterName: "widget", Pointer: true},
@@ -81,7 +81,7 @@ func TestEmitKeepAlive(t *testing.T) {
 // the callback returns, and the C++ side must delete that copy.
 func TestVirtualReturnCopy(t *testing.T) {
 	withKnownClass(t, "QVariant", "qt6")
-	withKnownClass(t, "QModelIndex", "qt6")
+	withKnownClass(t, "QBrush", "qt6")
 
 	c := CppClass{ClassName: "QAbstractTableModel"}
 	gfs := goFileState{imports: map[string]struct{}{}, currentPackageName: "qt6", virtualReturnCopyClass: &c}
@@ -92,9 +92,9 @@ func TestVirtualReturnCopy(t *testing.T) {
 		t.Fatalf("value return is not copied: %s", rvalue)
 	}
 
-	list := CppParameter{ParameterType: "QList<QModelIndex>", ParameterName: "virtualReturn"}
+	list := CppParameter{ParameterType: "QList<QBrush>", ParameterName: "virtualReturn"}
 	preamble, _ := gfs.emitParameterGo2CABIForwarding(list, true)
-	if !strings.Contains(preamble, "C.QAbstractTableModel_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())") {
+	if !strings.Contains(preamble, "C.QAbstractTableModel_virtualreturncopy_QBrush(virtualReturn[i].cPointer())") {
 		t.Fatalf("list element is not copied:\n%s", preamble)
 	}
 
