@@ -1208,8 +1208,7 @@ func miqt_exec_callback_QProcess_writeData(self *C.QProcess, cb C.intptr_t, data
 	}
 
 	// Convert all CABI parameters to Go parameters
-	data_ret := data
-	slotval1 := C.GoString(data_ret)
+	slotval1 := string(unsafe.Slice((*byte)(unsafe.Pointer(data)), int(lenVal)))
 
 	slotval2 := (int64)(lenVal)
 
