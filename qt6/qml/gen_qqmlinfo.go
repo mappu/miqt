@@ -229,3 +229,93 @@ func (this *QQmlInfo) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QmlDebugWithMe(me *qt6.QObject) *QQmlInfo {
+	defer runtime.KeepAlive(me)
+	_goptr := newQQmlInfo(C.miqt_QmlDebugWithMe((*C.QObject)(me.UnsafePointer())))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QmlDebug2(me *qt6.QObject, error *QQmlError) *QQmlInfo {
+	defer runtime.KeepAlive(me)
+	defer runtime.KeepAlive(error)
+	_goptr := newQQmlInfo(C.miqt_QmlDebug2((*C.QObject)(me.UnsafePointer()), error.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QmlDebug3(me *qt6.QObject, errors []QQmlError) *QQmlInfo {
+	defer runtime.KeepAlive(me)
+	defer runtime.KeepAlive(errors)
+	errors_CArray_ptr := (**C.QQmlError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
+	for i := range errors {
+		errors_CArray[i] = errors[i].cPointer()
+	}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
+	_goptr := newQQmlInfo(C.miqt_QmlDebug3((*C.QObject)(me.UnsafePointer()), errors_ma))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QmlInfoWithMe(me *qt6.QObject) *QQmlInfo {
+	defer runtime.KeepAlive(me)
+	_goptr := newQQmlInfo(C.miqt_QmlInfoWithMe((*C.QObject)(me.UnsafePointer())))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QmlInfo2(me *qt6.QObject, error *QQmlError) *QQmlInfo {
+	defer runtime.KeepAlive(me)
+	defer runtime.KeepAlive(error)
+	_goptr := newQQmlInfo(C.miqt_QmlInfo2((*C.QObject)(me.UnsafePointer()), error.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QmlInfo3(me *qt6.QObject, errors []QQmlError) *QQmlInfo {
+	defer runtime.KeepAlive(me)
+	defer runtime.KeepAlive(errors)
+	errors_CArray_ptr := (**C.QQmlError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
+	for i := range errors {
+		errors_CArray[i] = errors[i].cPointer()
+	}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
+	_goptr := newQQmlInfo(C.miqt_QmlInfo3((*C.QObject)(me.UnsafePointer()), errors_ma))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QmlWarningWithMe(me *qt6.QObject) *QQmlInfo {
+	defer runtime.KeepAlive(me)
+	_goptr := newQQmlInfo(C.miqt_QmlWarningWithMe((*C.QObject)(me.UnsafePointer())))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QmlWarning2(me *qt6.QObject, error *QQmlError) *QQmlInfo {
+	defer runtime.KeepAlive(me)
+	defer runtime.KeepAlive(error)
+	_goptr := newQQmlInfo(C.miqt_QmlWarning2((*C.QObject)(me.UnsafePointer()), error.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QmlWarning3(me *qt6.QObject, errors []QQmlError) *QQmlInfo {
+	defer runtime.KeepAlive(me)
+	defer runtime.KeepAlive(errors)
+	errors_CArray_ptr := (**C.QQmlError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
+	for i := range errors {
+		errors_CArray[i] = errors[i].cPointer()
+	}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
+	_goptr := newQQmlInfo(C.miqt_QmlWarning3((*C.QObject)(me.UnsafePointer()), errors_ma))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}

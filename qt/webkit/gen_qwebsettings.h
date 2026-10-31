@@ -70,6 +70,8 @@ struct miqt_string QWebSettings_cssMediaType(const QWebSettings* self);
 void QWebSettings_enablePersistentStorageWithPath(struct miqt_string path);
 
 
+void miqt_NetworkAccessAllowedWithIsAllowed(bool isAllowed);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

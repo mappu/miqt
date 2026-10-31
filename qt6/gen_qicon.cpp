@@ -390,3 +390,16 @@ void QIcon_delete(QIcon* self) {
 	delete self;
 }
 
+struct miqt_string miqt_FindAtNxFile2(struct miqt_string baseFileName, double targetDevicePixelRatio, double* sourceDevicePixelRatio) {
+	QString baseFileName_QString = QString::fromUtf8(baseFileName.data, baseFileName.len);
+
+	QString _ret = qt_findAtNxFile(baseFileName_QString, static_cast<qreal>(targetDevicePixelRatio), static_cast<qreal*>(sourceDevicePixelRatio));
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+}
+

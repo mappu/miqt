@@ -19,3 +19,13 @@ void QStaticPlugin_delete(QStaticPlugin* self) {
 	delete self;
 }
 
+unsigned char miqt_QPluginArchRequirements2() {
+
+	return qPluginArchRequirements();
+}
+
+void miqt_QRegisterStaticPluginFunctionWithStaticPlugin(QStaticPlugin* staticPlugin) {
+
+	qRegisterStaticPluginFunction(*staticPlugin);
+}
+

@@ -224,3 +224,9 @@ func (this *QGeoAreaMonitorInfo) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QTest_ToStringWithInfo(info *QGeoAreaMonitorInfo) string {
+	defer runtime.KeepAlive(info)
+	_ret := C.miqt_QTest_ToStringWithInfo(info.cPointer())
+	return C.GoString(_ret)
+}

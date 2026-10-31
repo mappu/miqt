@@ -77,3 +77,12 @@ func (this *QStaticPlugin) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QPluginArchRequirements2() byte {
+	return (byte)(C.miqt_QPluginArchRequirements2())
+}
+
+func QRegisterStaticPluginFunctionWithStaticPlugin(staticPlugin QStaticPlugin) {
+	defer runtime.KeepAlive(staticPlugin)
+	C.miqt_QRegisterStaticPluginFunctionWithStaticPlugin(staticPlugin.cPointer())
+}

@@ -201,3 +201,8 @@ void QVector3D_delete(QVector3D* self) {
 	delete self;
 }
 
+bool miqt_QFuzzyCompare10(QVector3D* v1, QVector3D* v2) {
+
+	return qFuzzyCompare(*v1, *v2);
+}
+

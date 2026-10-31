@@ -15,8 +15,15 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMetaObject;
 #else
+typedef struct QMetaObject QMetaObject;
 #endif
+
+QMetaObject* miqt_QPdf_QtGetEnumMetaObjectWithQPdfRotation(int param1);
+const char* miqt_QPdf_QtGetEnumNameWithQPdfRotation(int param1);
+QMetaObject* miqt_QPdf_QtGetEnumMetaObjectWithQPdfRenderFlag(int param1);
+const char* miqt_QPdf_QtGetEnumNameWithQPdfRenderFlag(int param1);
 
 #ifdef __cplusplus
 } /* extern C */

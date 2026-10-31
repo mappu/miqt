@@ -170,3 +170,9 @@ func (this *QGeoSatelliteInfo) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QTest_ToString3(info *QGeoSatelliteInfo) string {
+	defer runtime.KeepAlive(info)
+	_ret := C.miqt_QTest_ToString3(info.cPointer())
+	return C.GoString(_ret)
+}

@@ -608,3 +608,243 @@ func (this *QTextStream) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func BinWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_BinWithQTextStream(s.cPointer()))
+}
+
+func OctWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_OctWithQTextStream(s.cPointer()))
+}
+
+func DecWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_DecWithQTextStream(s.cPointer()))
+}
+
+func HexWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_HexWithQTextStream(s.cPointer()))
+}
+
+func ShowbaseWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_ShowbaseWithQTextStream(s.cPointer()))
+}
+
+func ForcesignWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_ForcesignWithQTextStream(s.cPointer()))
+}
+
+func ForcepointWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_ForcepointWithQTextStream(s.cPointer()))
+}
+
+func NoshowbaseWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_NoshowbaseWithQTextStream(s.cPointer()))
+}
+
+func NoforcesignWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_NoforcesignWithQTextStream(s.cPointer()))
+}
+
+func NoforcepointWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_NoforcepointWithQTextStream(s.cPointer()))
+}
+
+func UppercasebaseWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_UppercasebaseWithQTextStream(s.cPointer()))
+}
+
+func UppercasedigitsWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_UppercasedigitsWithQTextStream(s.cPointer()))
+}
+
+func LowercasebaseWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_LowercasebaseWithQTextStream(s.cPointer()))
+}
+
+func LowercasedigitsWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_LowercasedigitsWithQTextStream(s.cPointer()))
+}
+
+func FixedWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_FixedWithQTextStream(s.cPointer()))
+}
+
+func ScientificWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_ScientificWithQTextStream(s.cPointer()))
+}
+
+func LeftWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_LeftWithQTextStream(s.cPointer()))
+}
+
+func RightWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_RightWithQTextStream(s.cPointer()))
+}
+
+func CenterWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_CenterWithQTextStream(s.cPointer()))
+}
+
+func EndlWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_EndlWithQTextStream(s.cPointer()))
+}
+
+func FlushWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_FlushWithQTextStream(s.cPointer()))
+}
+
+func ResetWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_ResetWithQTextStream(s.cPointer()))
+}
+
+func BomWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_BomWithQTextStream(s.cPointer()))
+}
+
+func WsWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_WsWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_BinWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_BinWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_OctWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_OctWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_DecWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_DecWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_HexWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_HexWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_ShowbaseWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_ShowbaseWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_ForcesignWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_ForcesignWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_ForcepointWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_ForcepointWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_NoshowbaseWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_NoshowbaseWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_NoforcesignWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_NoforcesignWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_NoforcepointWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_NoforcepointWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_UppercasebaseWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_UppercasebaseWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_UppercasedigitsWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_UppercasedigitsWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_LowercasebaseWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_LowercasebaseWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_LowercasedigitsWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_LowercasedigitsWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_FixedWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_FixedWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_ScientificWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_ScientificWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_LeftWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_LeftWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_RightWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_RightWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_CenterWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_CenterWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_EndlWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_EndlWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_FlushWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_FlushWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_ResetWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_ResetWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_BomWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_BomWithQTextStream(s.cPointer()))
+}
+
+func QTextStreamFunctions_WsWithQTextStream(s *QTextStream) *QTextStream {
+	defer runtime.KeepAlive(s)
+	return newQTextStream(C.miqt_QTextStreamFunctions_WsWithQTextStream(s.cPointer()))
+}

@@ -105,6 +105,31 @@ struct miqt_string QTextStream_readLineWithMaxlen(QTextStream* self, long long m
 
 void QTextStream_delete(QTextStream* self);
 
+QTextStream* miqt_BinWithQTextStream(QTextStream* s);
+QTextStream* miqt_OctWithQTextStream(QTextStream* s);
+QTextStream* miqt_DecWithQTextStream(QTextStream* s);
+QTextStream* miqt_HexWithQTextStream(QTextStream* s);
+QTextStream* miqt_ShowbaseWithQTextStream(QTextStream* s);
+QTextStream* miqt_ForcesignWithQTextStream(QTextStream* s);
+QTextStream* miqt_ForcepointWithQTextStream(QTextStream* s);
+QTextStream* miqt_NoshowbaseWithQTextStream(QTextStream* s);
+QTextStream* miqt_NoforcesignWithQTextStream(QTextStream* s);
+QTextStream* miqt_NoforcepointWithQTextStream(QTextStream* s);
+QTextStream* miqt_UppercasebaseWithQTextStream(QTextStream* s);
+QTextStream* miqt_UppercasedigitsWithQTextStream(QTextStream* s);
+QTextStream* miqt_LowercasebaseWithQTextStream(QTextStream* s);
+QTextStream* miqt_LowercasedigitsWithQTextStream(QTextStream* s);
+QTextStream* miqt_FixedWithQTextStream(QTextStream* s);
+QTextStream* miqt_ScientificWithQTextStream(QTextStream* s);
+QTextStream* miqt_LeftWithQTextStream(QTextStream* s);
+QTextStream* miqt_RightWithQTextStream(QTextStream* s);
+QTextStream* miqt_CenterWithQTextStream(QTextStream* s);
+QTextStream* miqt_EndlWithQTextStream(QTextStream* s);
+QTextStream* miqt_FlushWithQTextStream(QTextStream* s);
+QTextStream* miqt_ResetWithQTextStream(QTextStream* s);
+QTextStream* miqt_BomWithQTextStream(QTextStream* s);
+QTextStream* miqt_WsWithQTextStream(QTextStream* s);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

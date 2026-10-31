@@ -188,3 +188,8 @@ void QMatrix_delete(QMatrix* self) {
 	delete self;
 }
 
+bool miqt_QFuzzyCompare5(QMatrix* m1, QMatrix* m2) {
+
+	return qFuzzyCompare(*m1, *m2);
+}
+

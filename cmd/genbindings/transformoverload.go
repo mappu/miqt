@@ -9,68 +9,83 @@ func (p CppParameter) renderTypeForMethod() string {
 	return strings.NewReplacer(" ", "", "::", "").Replace(p.ParameterType)
 }
 
-// astTransformOverloads renames methods if another method exists with the same
-// name.
-func astTransformOverloads(parsed *CppParsedHeader) {
-	for i, c := range parsed.Classes {
+// overloadable is the interface shared by CppMethod and CppFunction for
+// overload renaming. Overload transforms happen at the CABI level, so names
+// are compared using CabiMethodName().
+type overloadable interface {
+	CabiMethodName() string
+	Rename(string)
+	OverloadParams() []CppParameter
+}
 
-		anyChange := false
-		existing := map[string]struct{}{}
-		for j, m := range c.Methods {
+// transformOverloadsGeneric handles renaming a single overloaded item.
+// If its proposal name collides with an existing name, it renames the item
+// and records the new name in existing. existing is a map of already-seen
+// names used to detect collisions.
+// T must be a pointer type (*CppMethod or *CppFunction) because Rename has a
+// pointer receiver.
+func transformOverloadsGeneric[T overloadable](item T, existing map[string]struct{}, originalProposal string) {
+	if _, ok := existing[originalProposal]; !ok {
+		existing[originalProposal] = struct{}{}
+		return // No collision
+	}
 
-			originalProposal := m.SafeMethodName()
-			proposedName := originalProposal
-
-			if _, ok := existing[proposedName]; !ok {
-				existing[proposedName] = struct{}{}
-				continue // No collision
-			}
-
-			// Collision - rename
-			anyChange = true
-
-			proposedName = (func() (proposedName string) {
-
-				// Fake special-case check
-				// If this is a 1-argument function, try and name it FooFrom{Type}
-				// e.g. NewVariantFromFloat
-				if len(m.Parameters) == 1 {
-
-					// If the parameter has a proper name (i.e. not 'l' or 'param1')
-					// then go with that
-					if len(m.Parameters[0].ParameterName) > 1 && !strings.HasPrefix(m.Parameters[0].ParameterName, "param") {
-						proposedName = originalProposal + "With" + titleCase(m.Parameters[0].ParameterName)
-					} else {
-						// Try the type instead
-						proposedName = originalProposal + "With" + titleCase(m.Parameters[0].renderTypeForMethod())
-					}
-					if _, ok := existing[proposedName]; !ok {
-						return proposedName
-					}
-
-				}
-
-				// No special naming, have to use a numeric overload
-				// Numbers start with 2 since the "original" is the first
-				ctr := 2
-				for {
-					proposedName = fmt.Sprintf("%s%d", originalProposal, ctr)
-					if _, ok := existing[proposedName]; !ok {
-						return proposedName
-					}
-
-					ctr++ // Loop until we have a non-colliding name available
-				}
-			})()
-
-			// We have identified a final replacement name
+	// Collision - rename
+	// Try "With{Type}" naming for single-parameter items
+	if params := item.OverloadParams(); len(params) == 1 {
+		p := params[0]
+		var proposedName string
+		if len(p.ParameterName) > 1 && !strings.HasPrefix(p.ParameterName, "param") {
+			proposedName = originalProposal + "With" + titleCase(p.ParameterName)
+		} else {
+			proposedName = originalProposal + "With" + titleCase(p.renderTypeForMethod())
+		}
+		if _, ok := existing[proposedName]; !ok {
 			existing[proposedName] = struct{}{}
-			m.Rename(proposedName)
-			c.Methods[j] = m
+			item.Rename(proposedName)
+			return
 		}
+	}
 
-		if anyChange {
-			parsed.Classes[i] = c
+	// Fall back to numeric suffix
+	ctr := 2
+	for {
+		proposedName := fmt.Sprintf("%s%d", originalProposal, ctr)
+		if _, ok := existing[proposedName]; !ok {
+			existing[proposedName] = struct{}{}
+			item.Rename(proposedName)
+			return
 		}
+		ctr++
+	}
+}
+
+// astTransformOverloads renames methods if another method exists with the same
+// CABI name.
+func astTransformOverloads(parsed *CppParsedHeader) {
+	for i := range parsed.Classes {
+		c := &parsed.Classes[i]
+		existing := map[string]struct{}{}
+
+		ptrs := make([]*CppMethod, len(c.Methods))
+		for j := range c.Methods {
+			ptrs[j] = &c.Methods[j]
+		}
+		for _, m := range ptrs {
+			transformOverloadsGeneric(m, existing, m.CabiMethodName())
+		}
+	}
+}
+
+// astTransformOverloadFunctions renames free functions if another function
+// exists with the same Go-safe name.
+// Have to use the Go method name for disambiguation to block struct<-->function collisions
+func astTransformOverloadFunctions(parsed *CppParsedHeader, existingNames map[string]struct{}) {
+	ptrs := make([]*CppFunction, len(parsed.Functions))
+	for j := range parsed.Functions {
+		ptrs[j] = &parsed.Functions[j]
+	}
+	for _, fn := range ptrs {
+		transformOverloadsGeneric(fn, existingNames, fn.goMethodName())
 	}
 }

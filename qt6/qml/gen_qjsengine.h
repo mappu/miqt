@@ -97,6 +97,8 @@ bool QJSEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 
 void QJSEngine_delete(QJSEngine* self);
 
+QJSEngine* miqt_QjsEngineWithQObject(QObject* param1);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

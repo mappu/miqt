@@ -234,6 +234,9 @@ bool QTextDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const
 
 void QTextDocument_delete(QTextDocument* self);
 
+bool miqt_MightBeRichTextWithQString(struct miqt_string param1);
+struct miqt_string miqt_ConvertFromPlainText2(struct miqt_string plain, int mode);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

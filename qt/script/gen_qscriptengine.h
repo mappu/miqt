@@ -154,6 +154,11 @@ bool QScriptEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const
 
 void QScriptEngine_delete(QScriptEngine* self);
 
+QScriptValue* miqt_QScriptValueFromValueHelper2(QScriptEngine* engine, int type, const void* ptr);
+bool miqt_QscriptvalueCastHelper2(QScriptValue* value, int type, void* ptr);
+bool miqt_QScriptConnect2(QObject* sender, const char* signal, QScriptValue* receiver, QScriptValue* function);
+bool miqt_QScriptDisconnect2(QObject* sender, const char* signal, QScriptValue* receiver, QScriptValue* function);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

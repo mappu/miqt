@@ -2114,6 +2114,32 @@ bool ScintillaEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const
 
 void ScintillaEdit_delete(ScintillaEdit* self);
 
+void miqt_Scintilla__Internal__Platform__DebugDisplayWithChar(const char* s);
+bool miqt_Scintilla__Internal__Platform__ShowAssertionPopUpsWithAssertionPopUps_(bool assertionPopUps_);
+void miqt_Scintilla__Internal__Platform__Assert2(const char* c, const char* file, int line);
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__Clamp2(Scintilla__Internal__PRectangle* rc, int edge, double position);
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__Side2(Scintilla__Internal__PRectangle* rc, int edge, double size);
+Scintilla__Internal__Interval* miqt_Scintilla__Internal__Intersection2(Scintilla__Internal__Interval* a, Scintilla__Internal__Interval* b);
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__Intersection3(Scintilla__Internal__PRectangle* rc, Scintilla__Internal__Interval* horizontalBounds);
+Scintilla__Internal__Interval* miqt_Scintilla__Internal__HorizontalBoundsWithRc(Scintilla__Internal__PRectangle* rc);
+double miqt_Scintilla__Internal__PixelAlign2(double xy, int pixelDivisions);
+double miqt_Scintilla__Internal__PixelAlignFloor2(double xy, int pixelDivisions);
+double miqt_Scintilla__Internal__PixelAlignCeil2(double xy, int pixelDivisions);
+Scintilla__Internal__Point* miqt_Scintilla__Internal__PixelAlign3(Scintilla__Internal__Point* pt, int pixelDivisions);
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__PixelAlign4(Scintilla__Internal__PRectangle* rc, int pixelDivisions);
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__PixelAlignOutside2(Scintilla__Internal__PRectangle* rc, int pixelDivisions);
+int miqt_Scintilla__LevelNumberPartWithLevel(int level);
+int miqt_Scintilla__LevelNumberWithLevel(int level);
+bool miqt_Scintilla__LevelIsHeaderWithLevel(int level);
+bool miqt_Scintilla__LevelIsWhitespaceWithLevel(int level);
+int miqt_Scintilla__ModifierFlags2(bool shift, bool ctrl, bool alt, bool meta, bool super);
+Scintilla__Internal__ColourRGBA* miqt_Scintilla__Internal__Platform__Chrome2();
+Scintilla__Internal__ColourRGBA* miqt_Scintilla__Internal__Platform__ChromeHighlight2();
+const char* miqt_Scintilla__Internal__Platform__DefaultFont2();
+int miqt_Scintilla__Internal__Platform__DefaultFontSize2();
+unsigned int miqt_Scintilla__Internal__Platform__DoubleClickTime2();
+long miqt_Scintilla__Internal__Platform__LongFromTwoShorts2(short a, short b);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

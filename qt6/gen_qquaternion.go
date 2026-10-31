@@ -383,3 +383,9 @@ func (this *QQuaternion) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QFuzzyCompare5(q1 *QQuaternion, q2 *QQuaternion) bool {
+	defer runtime.KeepAlive(q1)
+	defer runtime.KeepAlive(q2)
+	return (bool)(C.miqt_QFuzzyCompare5(q1.cPointer(), q2.cPointer()))
+}

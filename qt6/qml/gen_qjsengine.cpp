@@ -524,3 +524,8 @@ void QJSEngine_delete(QJSEngine* self) {
 	delete self;
 }
 
+QJSEngine* miqt_QjsEngineWithQObject(QObject* param1) {
+
+	return qjsEngine(param1);
+}
+

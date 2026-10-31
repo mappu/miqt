@@ -1344,3 +1344,10 @@ func (this *QMetaObject__SuperData) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QFlagLocationWithMethod(method string) string {
+	method_Cstring := C.CString(method)
+	defer C.free(unsafe.Pointer(method_Cstring))
+	_ret := C.miqt_QFlagLocationWithMethod(method_Cstring)
+	return C.GoString(_ret)
+}

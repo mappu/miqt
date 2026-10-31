@@ -96,3 +96,15 @@ func (this *QHashSeed) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QGlobalQHashSeed2() int {
+	return (int)(C.miqt_QGlobalQHashSeed2())
+}
+
+func QSetGlobalQHashSeedWithNewSeed(newSeed int) {
+	C.miqt_QSetGlobalQHashSeedWithNewSeed((C.int)(newSeed))
+}
+
+func QHashBits2(p unsafe.Pointer, size uint64, seed uint64) uint64 {
+	return (uint64)(C.miqt_QHashBits2(p, (C.size_t)(size), (C.size_t)(seed)))
+}

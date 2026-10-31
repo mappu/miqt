@@ -408,3 +408,7 @@ func QWebSettings_EnablePersistentStorageWithPath(path string) {
 	defer C.free(unsafe.Pointer(path_ms.data))
 	C.QWebSettings_enablePersistentStorageWithPath(path_ms)
 }
+
+func NetworkAccessAllowedWithIsAllowed(isAllowed bool) {
+	C.miqt_NetworkAccessAllowedWithIsAllowed((C.bool)(isAllowed))
+}

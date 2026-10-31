@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QEventPoint;
 class QPoint;
+class QPointingDevice;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QTest__QTouchEventSequence)
 typedef QTest::QTouchEventSequence QTest__QTouchEventSequence;
 #else
@@ -26,6 +27,7 @@ class QWindow;
 #else
 typedef struct QEventPoint QEventPoint;
 typedef struct QPoint QPoint;
+typedef struct QPointingDevice QPointingDevice;
 typedef struct QTest__QTouchEventSequence QTest__QTouchEventSequence;
 typedef struct QWindow QWindow;
 #endif
@@ -41,6 +43,12 @@ QTest__QTouchEventSequence* QTest__QTouchEventSequence_move2(QTest__QTouchEventS
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_release2(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window);
 
 void QTest__QTouchEventSequence_delete(QTest__QTouchEventSequence* self);
+
+void miqt_HandleTouchEvent2(QWindow* w, QPointingDevice* device, struct miqt_array /* of QEventPoint* */  points, int mods);
+bool miqt_HandleTouchEventv22(QWindow* w, QPointingDevice* device, struct miqt_array /* of QEventPoint* */  points, int mods);
+bool miqt_QTest_QWaitForWindowActive2(QWindow* window, int timeout);
+bool miqt_QTest_QWaitForWindowExposed2(QWindow* window, int timeout);
+QPointingDevice* miqt_QTest_CreateTouchDevice2(int devType, int caps);
 
 #ifdef __cplusplus
 } /* extern C */

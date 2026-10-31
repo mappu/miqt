@@ -317,9 +317,11 @@ func (nm CppMethod) IsReceiverMethod() bool {
 	return false
 }
 
-func (nm CppMethod) SafeMethodName() string {
+func generateSafeCabiMethodName(methodName string) string {
+
 	// Strip redundant Qt prefix, we know these are all Qt functions
-	tmp := strings.TrimPrefix(nm.MethodName, "qt_")
+	tmp := strings.TrimPrefix(methodName, "qt_")
+	tmp = strings.TrimPrefix(tmp, "Qt::")
 
 	// Operator-overload methods have names not representable in binding
 	// languages. Replace more specific cases first
@@ -370,6 +372,14 @@ func (nm CppMethod) SafeMethodName() string {
 	tmp = regexp.MustCompile(`_([a-z])`).ReplaceAllStringFunc(tmp, func(match string) string { return strings.ToUpper(match[1:]) })
 
 	return tmp
+}
+
+func (nm CppMethod) CabiMethodName() string {
+	return generateSafeCabiMethodName(nm.MethodName)
+}
+
+func (nm CppMethod) OverloadParams() []CppParameter {
+	return nm.Parameters
 }
 
 func (nm CppMethod) IsReadonlyOperator() bool {
@@ -678,11 +688,48 @@ type CppTypedef struct {
 	UnderlyingType CppParameter
 }
 
+type CppFunction struct {
+	FunctionName         string       // C++ function name, unless OverrideFunctionName is set
+	OverrideFunctionName string       // C++ function name, present only if we changed the target
+	ReturnType           CppParameter // Name not used
+	Parameters           []CppParameter
+	IsStatic             bool
+	IsVariable           bool
+	VariableFieldName    string
+
+	// Special quirks
+	RequireGOOS *string // constructs a `if runtime.GOOS = {foo}` block in the Go side, no effect on CABI / C++ sides
+	RequireCpp  *string // constructs a `#if {foo}` preprocessor block in the C++ side, no effect on Go / CABI sides
+}
+
+func (fn CppFunction) CppCallTarget() string {
+	if fn.OverrideFunctionName != "" {
+		return fn.OverrideFunctionName
+	}
+	return fn.FunctionName
+}
+
+func (fn CppFunction) CabiMethodName() string {
+	return generateSafeCabiMethodName(fn.FunctionName)
+}
+
+func (fn CppFunction) OverloadParams() []CppParameter {
+	return fn.Parameters
+}
+
+func (fn *CppFunction) Rename(newName string) {
+	if fn.OverrideFunctionName == "" {
+		fn.OverrideFunctionName = fn.FunctionName
+	}
+	fn.FunctionName = newName
+}
+
 type CppParsedHeader struct {
-	Filename string
-	Typedefs []CppTypedef
-	Enums    []CppEnum
-	Classes  []CppClass
+	Filename  string
+	Typedefs  []CppTypedef
+	Enums     []CppEnum
+	Classes   []CppClass
+	Functions []CppFunction
 }
 
 func (c CppParsedHeader) Empty() bool {
@@ -694,7 +741,7 @@ func (c CppParsedHeader) Empty() bool {
 			return false
 		}
 	}
-	return len(c.Classes) == 0
+	return len(c.Classes) == 0 && len(c.Functions) == 0
 }
 
 func (c *CppParsedHeader) AddContentFrom(other *CppParsedHeader) {

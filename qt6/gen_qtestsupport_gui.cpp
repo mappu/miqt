@@ -1,5 +1,7 @@
 #include <QEventPoint>
+#include <QList>
 #include <QPoint>
+#include <QPointingDevice>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTest__QTouchEventSequence
 #include <QWindow>
 #include <qtestsupport_gui.h>
@@ -65,5 +67,42 @@ QTest__QTouchEventSequence* QTest__QTouchEventSequence_release2(QTest__QTouchEve
 
 void QTest__QTouchEventSequence_delete(QTest__QTouchEventSequence* self) {
 	delete self;
+}
+
+void miqt_HandleTouchEvent2(QWindow* w, QPointingDevice* device, struct miqt_array /* of QEventPoint* */  points, int mods) {
+	QList<QEventPoint> points_QList;
+	points_QList.reserve(points.len);
+	QEventPoint** points_arr = static_cast<QEventPoint**>(points.data);
+	for(size_t i = 0; i < points.len; ++i) {
+		points_QList.push_back(*(points_arr[i]));
+	}
+
+	qt_handleTouchEvent(w, device, points_QList, static_cast<Qt::KeyboardModifiers>(mods));
+}
+
+bool miqt_HandleTouchEventv22(QWindow* w, QPointingDevice* device, struct miqt_array /* of QEventPoint* */  points, int mods) {
+	QList<QEventPoint> points_QList;
+	points_QList.reserve(points.len);
+	QEventPoint** points_arr = static_cast<QEventPoint**>(points.data);
+	for(size_t i = 0; i < points.len; ++i) {
+		points_QList.push_back(*(points_arr[i]));
+	}
+
+	return qt_handleTouchEventv2(w, device, points_QList, static_cast<Qt::KeyboardModifiers>(mods));
+}
+
+bool miqt_QTest_QWaitForWindowActive2(QWindow* window, int timeout) {
+
+	return QTest::qWaitForWindowActive(window, static_cast<int>(timeout));
+}
+
+bool miqt_QTest_QWaitForWindowExposed2(QWindow* window, int timeout) {
+
+	return QTest::qWaitForWindowExposed(window, static_cast<int>(timeout));
+}
+
+QPointingDevice* miqt_QTest_CreateTouchDevice2(int devType, int caps) {
+
+	return QTest::createTouchDevice(static_cast<QInputDevice::DeviceType>(devType), static_cast<QInputDevice::Capabilities>(caps));
 }
 

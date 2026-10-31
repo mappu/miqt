@@ -159,3 +159,8 @@ void QVector2D_delete(QVector2D* self) {
 	delete self;
 }
 
+bool miqt_QFuzzyCompare9(QVector2D* v1, QVector2D* v2) {
+
+	return qFuzzyCompare(*v1, *v2);
+}
+

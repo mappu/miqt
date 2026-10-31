@@ -133,3 +133,111 @@ func (this *QTileRules) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QDrawShadeLine2(p *QPainter, x1 int, y1 int, x2 int, y2 int, pal *QPalette, sunken bool, lineWidth int, midLineWidth int) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(pal)
+	C.miqt_QDrawShadeLine2(p.cPointer(), (C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2), pal.cPointer(), (C.bool)(sunken), (C.int)(lineWidth), (C.int)(midLineWidth))
+}
+
+func QDrawShadeLine3(p *QPainter, p1 *QPoint, p2 *QPoint, pal *QPalette, sunken bool, lineWidth int, midLineWidth int) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(p1)
+	defer runtime.KeepAlive(p2)
+	defer runtime.KeepAlive(pal)
+	C.miqt_QDrawShadeLine3(p.cPointer(), p1.cPointer(), p2.cPointer(), pal.cPointer(), (C.bool)(sunken), (C.int)(lineWidth), (C.int)(midLineWidth))
+}
+
+func QDrawShadeRect2(p *QPainter, x int, y int, w int, h int, pal *QPalette, sunken bool, lineWidth int, midLineWidth int, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(pal)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawShadeRect2(p.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), pal.cPointer(), (C.bool)(sunken), (C.int)(lineWidth), (C.int)(midLineWidth), fill.cPointer())
+}
+
+func QDrawShadeRect3(p *QPainter, r *QRect, pal *QPalette, sunken bool, lineWidth int, midLineWidth int, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pal)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawShadeRect3(p.cPointer(), r.cPointer(), pal.cPointer(), (C.bool)(sunken), (C.int)(lineWidth), (C.int)(midLineWidth), fill.cPointer())
+}
+
+func QDrawShadePanel2(p *QPainter, x int, y int, w int, h int, pal *QPalette, sunken bool, lineWidth int, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(pal)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawShadePanel2(p.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), pal.cPointer(), (C.bool)(sunken), (C.int)(lineWidth), fill.cPointer())
+}
+
+func QDrawShadePanel3(p *QPainter, r *QRect, pal *QPalette, sunken bool, lineWidth int, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pal)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawShadePanel3(p.cPointer(), r.cPointer(), pal.cPointer(), (C.bool)(sunken), (C.int)(lineWidth), fill.cPointer())
+}
+
+func QDrawWinButton2(p *QPainter, x int, y int, w int, h int, pal *QPalette, sunken bool, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(pal)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawWinButton2(p.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), pal.cPointer(), (C.bool)(sunken), fill.cPointer())
+}
+
+func QDrawWinButton3(p *QPainter, r *QRect, pal *QPalette, sunken bool, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pal)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawWinButton3(p.cPointer(), r.cPointer(), pal.cPointer(), (C.bool)(sunken), fill.cPointer())
+}
+
+func QDrawWinPanel2(p *QPainter, x int, y int, w int, h int, pal *QPalette, sunken bool, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(pal)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawWinPanel2(p.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), pal.cPointer(), (C.bool)(sunken), fill.cPointer())
+}
+
+func QDrawWinPanel3(p *QPainter, r *QRect, pal *QPalette, sunken bool, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(pal)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawWinPanel3(p.cPointer(), r.cPointer(), pal.cPointer(), (C.bool)(sunken), fill.cPointer())
+}
+
+func QDrawPlainRect2(p *QPainter, x int, y int, w int, h int, param6 *QColor, lineWidth int, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(param6)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawPlainRect2(p.cPointer(), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), param6.cPointer(), (C.int)(lineWidth), fill.cPointer())
+}
+
+func QDrawPlainRect3(p *QPainter, r *QRect, param3 *QColor, lineWidth int, fill *QBrush) {
+	defer runtime.KeepAlive(p)
+	defer runtime.KeepAlive(r)
+	defer runtime.KeepAlive(param3)
+	defer runtime.KeepAlive(fill)
+	C.miqt_QDrawPlainRect3(p.cPointer(), r.cPointer(), param3.cPointer(), (C.int)(lineWidth), fill.cPointer())
+}
+
+func QDrawBorderPixmap2(painter *QPainter, targetRect *QRect, targetMargins *QMargins, pixmap *QPixmap, sourceRect *QRect, sourceMargins *QMargins, rules *QTileRules, hints QDrawBorderPixmap__DrawingHint) {
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(targetRect)
+	defer runtime.KeepAlive(targetMargins)
+	defer runtime.KeepAlive(pixmap)
+	defer runtime.KeepAlive(sourceRect)
+	defer runtime.KeepAlive(sourceMargins)
+	defer runtime.KeepAlive(rules)
+	C.miqt_QDrawBorderPixmap2(painter.cPointer(), targetRect.cPointer(), targetMargins.cPointer(), pixmap.cPointer(), sourceRect.cPointer(), sourceMargins.cPointer(), rules.cPointer(), (C.int)(hints))
+}
+
+func QDrawBorderPixmap3(painter *QPainter, target *QRect, margins *QMargins, pixmap *QPixmap) {
+	defer runtime.KeepAlive(painter)
+	defer runtime.KeepAlive(target)
+	defer runtime.KeepAlive(margins)
+	defer runtime.KeepAlive(pixmap)
+	C.miqt_QDrawBorderPixmap3(painter.cPointer(), target.cPointer(), margins.cPointer(), pixmap.cPointer())
+}
