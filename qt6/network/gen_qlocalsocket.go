@@ -777,8 +777,7 @@ func miqt_exec_callback_QLocalSocket_writeData(self *C.QLocalSocket, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	param1_ret := param1
-	slotval1 := C.GoString(param1_ret)
+	slotval1 := string(unsafe.Slice((*byte)(unsafe.Pointer(param1)), int(param2)))
 
 	slotval2 := (int64)(param2)
 

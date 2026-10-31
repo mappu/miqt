@@ -18,6 +18,7 @@ type CppParameter struct {
 
 	QtCppOriginalType     *CppParameter // If we rewrote QStringList->QList<String>, this field contains the original QStringList. Otherwise, it's blank
 	BecomesConstInVersion *string       // "6,9"
+	ByteLengthParameter   string        // Go name of the parameter giving a char* buffer's byte length
 }
 
 func (p CppParameter) String() string {
