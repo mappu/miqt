@@ -606,6 +606,19 @@ func (c *CppClass) ProtectedMethods() []CppMethod {
 	return ret
 }
 
+// IsQObject reports whether c is QObject or inherits from it.
+func (c *CppClass) IsQObject() bool {
+	if c.ClassName == "QObject" {
+		return true
+	}
+	for _, base := range c.AllInheritsClassInfo() {
+		if base.Class.ClassName == "QObject" {
+			return true
+		}
+	}
+	return false
+}
+
 // AllInheritsClassInfo recursively finds and lists all the parent classes of this class.
 // It returns closest-ancestor-first.
 func (c *CppClass) AllInheritsClassInfo() []lookupResultClass {

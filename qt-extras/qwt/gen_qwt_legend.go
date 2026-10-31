@@ -61,7 +61,6 @@ func UnsafeNewQwtLegend(h unsafe.Pointer) *QwtLegend {
 
 // NewQwtLegend constructs a new QwtLegend object.
 func NewQwtLegend(parent *qt.QWidget) *QwtLegend {
-	defer runtime.KeepAlive(parent)
 
 	return newQwtLegend(C.QwtLegend_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -73,12 +72,10 @@ func NewQwtLegend2() *QwtLegend {
 }
 
 func (this *QwtLegend) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtLegend_metaObject(this.h)))
 }
 
 func (this *QwtLegend) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtLegend_metacast(this.h, param1_Cstring))
@@ -103,43 +100,35 @@ func QwtLegend_TrUtf8(s string) string {
 }
 
 func (this *QwtLegend) SetMaxColumns(numColums uint) {
-	defer runtime.KeepAlive(this)
 	C.QwtLegend_setMaxColumns(this.h, (C.uint)(numColums))
 }
 
 func (this *QwtLegend) MaxColumns() uint {
-	defer runtime.KeepAlive(this)
 	return (uint)(C.QwtLegend_maxColumns(this.h))
 }
 
 func (this *QwtLegend) SetDefaultItemMode(defaultItemMode QwtLegendData__Mode) {
-	defer runtime.KeepAlive(this)
 	C.QwtLegend_setDefaultItemMode(this.h, (C.int)(defaultItemMode))
 }
 
 func (this *QwtLegend) DefaultItemMode() QwtLegendData__Mode {
-	defer runtime.KeepAlive(this)
 	return (QwtLegendData__Mode)(C.QwtLegend_defaultItemMode(this.h))
 }
 
 func (this *QwtLegend) ContentsWidget() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtLegend_contentsWidget(this.h)))
 }
 
 func (this *QwtLegend) ContentsWidget2() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtLegend_contentsWidget2(this.h)))
 }
 
 func (this *QwtLegend) LegendWidget(param1 *qt.QVariant) *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtLegend_legendWidget(this.h, (*C.QVariant)(param1.UnsafePointer()))))
 }
 
 func (this *QwtLegend) LegendWidgets(param1 *qt.QVariant) []*qt.QWidget {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	var _ma C.struct_miqt_array = C.QwtLegend_legendWidgets(this.h, (*C.QVariant)(param1.UnsafePointer()))
 	_ret := make([]*qt.QWidget, int(_ma.len))
@@ -151,69 +140,55 @@ func (this *QwtLegend) LegendWidgets(param1 *qt.QVariant) []*qt.QWidget {
 }
 
 func (this *QwtLegend) ItemInfo(param1 *qt.QWidget) *qt.QVariant {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtLegend_itemInfo(this.h, (*C.QWidget)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtLegend) EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	return (bool)(C.QwtLegend_eventFilter(this.h, (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 }
 
 func (this *QwtLegend) SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtLegend_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtLegend) HeightForWidth(width int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtLegend_heightForWidth(this.h, (C.int)(width)))
 }
 
 func (this *QwtLegend) HorizontalScrollBar() *qt.QScrollBar {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQScrollBar(unsafe.Pointer(C.QwtLegend_horizontalScrollBar(this.h)))
 }
 
 func (this *QwtLegend) VerticalScrollBar() *qt.QScrollBar {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQScrollBar(unsafe.Pointer(C.QwtLegend_verticalScrollBar(this.h)))
 }
 
 func (this *QwtLegend) RenderLegend(param1 *qt.QPainter, param2 *qt.QRectF, fillBackground bool) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	C.QwtLegend_renderLegend(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()), (C.bool)(fillBackground))
 }
 
 func (this *QwtLegend) RenderItem(param1 *qt.QPainter, param2 *qt.QWidget, param3 *qt.QRectF, fillBackground bool) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 	defer runtime.KeepAlive(param3)
 	C.QwtLegend_renderItem(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QWidget)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()), (C.bool)(fillBackground))
 }
 
 func (this *QwtLegend) IsEmpty() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtLegend_isEmpty(this.h))
 }
 
 func (this *QwtLegend) ScrollExtent(param1 qt.Orientation) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtLegend_scrollExtent(this.h, (C.int)(param1)))
 }
 
 func (this *QwtLegend) Clicked(itemInfo *qt.QVariant, index int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(itemInfo)
 	C.QwtLegend_clicked(this.h, (*C.QVariant)(itemInfo.UnsafePointer()), (C.int)(index))
 }
@@ -237,7 +212,6 @@ func miqt_exec_callback_QwtLegend_clicked(cb C.intptr_t, itemInfo *C.QVariant, i
 }
 
 func (this *QwtLegend) Checked(itemInfo *qt.QVariant, on bool, index int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(itemInfo)
 	C.QwtLegend_checked(this.h, (*C.QVariant)(itemInfo.UnsafePointer()), (C.bool)(on), (C.int)(index))
 }
@@ -263,7 +237,6 @@ func miqt_exec_callback_QwtLegend_checked(cb C.intptr_t, itemInfo *C.QVariant, o
 }
 
 func (this *QwtLegend) UpdateLegend(param1 *qt.QVariant, param2 []QwtLegendData) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	param2_CArray_ptr := (**C.QwtLegendData)(C.malloc(C.size_t(8 * len(param2))))
@@ -322,7 +295,6 @@ func QwtLegend_TrUtf83(s string, c string, n int) string {
 
 // ItemClicked can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) ItemClicked() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtLegend_protectedbase_itemClicked(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -335,7 +307,6 @@ func (this *QwtLegend) ItemClicked() {
 
 // ItemChecked can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) ItemChecked(param1 bool) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtLegend_protectedbase_itemChecked(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(param1))
@@ -348,7 +319,6 @@ func (this *QwtLegend) ItemChecked(param1 bool) {
 
 // DrawFrame can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) DrawFrame(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -362,7 +332,6 @@ func (this *QwtLegend) DrawFrame(param1 *qt.QPainter) {
 
 // InitStyleOption can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) InitStyleOption(option *qt.QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -376,7 +345,6 @@ func (this *QwtLegend) InitStyleOption(option *qt.QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtLegend_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -389,7 +357,6 @@ func (this *QwtLegend) UpdateMicroFocus() {
 
 // Create can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtLegend_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -402,7 +369,6 @@ func (this *QwtLegend) Create() {
 
 // Destroy can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtLegend_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -415,7 +381,6 @@ func (this *QwtLegend) Destroy() {
 
 // FocusNextChild can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtLegend_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -430,7 +395,6 @@ func (this *QwtLegend) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtLegend_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -445,7 +409,6 @@ func (this *QwtLegend) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtLegend_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -460,7 +423,6 @@ func (this *QwtLegend) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtLegend_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -475,7 +437,6 @@ func (this *QwtLegend) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -492,7 +453,6 @@ func (this *QwtLegend) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtLegend that was directly constructed.
 func (this *QwtLegend) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -507,8 +467,6 @@ func (this *QwtLegend) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtLegend) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtLegend_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -540,7 +498,6 @@ func miqt_exec_callback_QwtLegend_eventFilter(self *C.QwtLegend, cb C.intptr_t, 
 }
 
 func (this *QwtLegend) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtLegend_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -569,7 +526,6 @@ func miqt_exec_callback_QwtLegend_sizeHint(self *C.QwtLegend, cb C.intptr_t) *C.
 }
 
 func (this *QwtLegend) callVirtualBase_HeightForWidth(width int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtLegend_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(width)))
 
@@ -598,7 +554,6 @@ func miqt_exec_callback_QwtLegend_heightForWidth(self *C.QwtLegend, cb C.intptr_
 }
 
 func (this *QwtLegend) callVirtualBase_RenderLegend(param1 *qt.QPainter, param2 *qt.QRectF, fillBackground bool) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -631,9 +586,7 @@ func miqt_exec_callback_QwtLegend_renderLegend(self *C.QwtLegend, cb C.intptr_t,
 }
 
 func (this *QwtLegend) callVirtualBase_RenderItem(param1 *qt.QPainter, param2 *qt.QWidget, param3 *qt.QRectF, fillBackground bool) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 	defer runtime.KeepAlive(param3)
 
 	C.QwtLegend_virtualbase_renderItem(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QWidget)(param2.UnsafePointer()), (*C.QRectF)(param3.UnsafePointer()), (C.bool)(fillBackground))
@@ -667,7 +620,6 @@ func miqt_exec_callback_QwtLegend_renderItem(self *C.QwtLegend, cb C.intptr_t, p
 }
 
 func (this *QwtLegend) callVirtualBase_IsEmpty() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtLegend_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
@@ -693,7 +645,6 @@ func miqt_exec_callback_QwtLegend_isEmpty(self *C.QwtLegend, cb C.intptr_t) C.bo
 }
 
 func (this *QwtLegend) callVirtualBase_ScrollExtent(param1 qt.Orientation) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtLegend_virtualbase_scrollExtent(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -722,7 +673,6 @@ func miqt_exec_callback_QwtLegend_scrollExtent(self *C.QwtLegend, cb C.intptr_t,
 }
 
 func (this *QwtLegend) callVirtualBase_UpdateLegend(param1 *qt.QVariant, param2 []QwtLegendData) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	param2_CArray_ptr := (**C.QwtLegendData)(C.malloc(C.size_t(8 * len(param2))))
@@ -768,7 +718,6 @@ func miqt_exec_callback_QwtLegend_updateLegend(self *C.QwtLegend, cb C.intptr_t,
 }
 
 func (this *QwtLegend) callVirtualBase_CreateWidget(param1 *QwtLegendData) *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtLegend_virtualbase_createWidget(unsafe.Pointer(this.h), param1.cPointer())))
@@ -792,15 +741,12 @@ func miqt_exec_callback_QwtLegend_createWidget(self *C.QwtLegend, cb C.intptr_t,
 	slotval1 := newQwtLegendData(param1)
 
 	virtualReturn := gofunc((&QwtLegend{h: self}).callVirtualBase_CreateWidget, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QwtLegend) callVirtualBase_UpdateWidget(widget *qt.QWidget, param2 *QwtLegendData) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	defer runtime.KeepAlive(param2)
 
 	C.QwtLegend_virtualbase_updateWidget(unsafe.Pointer(this.h), (*C.QWidget)(widget.UnsafePointer()), param2.cPointer())
@@ -830,7 +776,6 @@ func miqt_exec_callback_QwtLegend_updateWidget(self *C.QwtLegend, cb C.intptr_t,
 }
 
 func (this *QwtLegend) callVirtualBase_Event(e *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QwtLegend_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
@@ -860,7 +805,6 @@ func miqt_exec_callback_QwtLegend_event(self *C.QwtLegend, cb C.intptr_t, e *C.Q
 }
 
 func (this *QwtLegend) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtLegend_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(param1.UnsafePointer()))
@@ -888,7 +832,6 @@ func miqt_exec_callback_QwtLegend_paintEvent(self *C.QwtLegend, cb C.intptr_t, p
 }
 
 func (this *QwtLegend) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtLegend_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -916,7 +859,6 @@ func miqt_exec_callback_QwtLegend_changeEvent(self *C.QwtLegend, cb C.intptr_t, 
 }
 
 func (this *QwtLegend) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtLegend_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -942,7 +884,6 @@ func miqt_exec_callback_QwtLegend_devType(self *C.QwtLegend, cb C.intptr_t) C.in
 }
 
 func (this *QwtLegend) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QwtLegend_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -969,7 +910,6 @@ func miqt_exec_callback_QwtLegend_setVisible(self *C.QwtLegend, cb C.intptr_t, v
 }
 
 func (this *QwtLegend) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtLegend_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -998,7 +938,6 @@ func miqt_exec_callback_QwtLegend_minimumSizeHint(self *C.QwtLegend, cb C.intptr
 }
 
 func (this *QwtLegend) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtLegend_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1024,7 +963,6 @@ func miqt_exec_callback_QwtLegend_hasHeightForWidth(self *C.QwtLegend, cb C.intp
 }
 
 func (this *QwtLegend) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtLegend_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -1051,7 +989,6 @@ func miqt_exec_callback_QwtLegend_paintEngine(self *C.QwtLegend, cb C.intptr_t) 
 }
 
 func (this *QwtLegend) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -1079,7 +1016,6 @@ func miqt_exec_callback_QwtLegend_mousePressEvent(self *C.QwtLegend, cb C.intptr
 }
 
 func (this *QwtLegend) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -1107,7 +1043,6 @@ func miqt_exec_callback_QwtLegend_mouseReleaseEvent(self *C.QwtLegend, cb C.intp
 }
 
 func (this *QwtLegend) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -1135,7 +1070,6 @@ func miqt_exec_callback_QwtLegend_mouseDoubleClickEvent(self *C.QwtLegend, cb C.
 }
 
 func (this *QwtLegend) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -1163,7 +1097,6 @@ func miqt_exec_callback_QwtLegend_mouseMoveEvent(self *C.QwtLegend, cb C.intptr_
 }
 
 func (this *QwtLegend) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -1191,7 +1124,6 @@ func miqt_exec_callback_QwtLegend_wheelEvent(self *C.QwtLegend, cb C.intptr_t, e
 }
 
 func (this *QwtLegend) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1219,7 +1151,6 @@ func miqt_exec_callback_QwtLegend_keyPressEvent(self *C.QwtLegend, cb C.intptr_t
 }
 
 func (this *QwtLegend) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1247,7 +1178,6 @@ func miqt_exec_callback_QwtLegend_keyReleaseEvent(self *C.QwtLegend, cb C.intptr
 }
 
 func (this *QwtLegend) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1275,7 +1205,6 @@ func miqt_exec_callback_QwtLegend_focusInEvent(self *C.QwtLegend, cb C.intptr_t,
 }
 
 func (this *QwtLegend) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1303,7 +1232,6 @@ func miqt_exec_callback_QwtLegend_focusOutEvent(self *C.QwtLegend, cb C.intptr_t
 }
 
 func (this *QwtLegend) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1331,7 +1259,6 @@ func miqt_exec_callback_QwtLegend_enterEvent(self *C.QwtLegend, cb C.intptr_t, e
 }
 
 func (this *QwtLegend) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1359,7 +1286,6 @@ func miqt_exec_callback_QwtLegend_leaveEvent(self *C.QwtLegend, cb C.intptr_t, e
 }
 
 func (this *QwtLegend) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -1387,7 +1313,6 @@ func miqt_exec_callback_QwtLegend_moveEvent(self *C.QwtLegend, cb C.intptr_t, ev
 }
 
 func (this *QwtLegend) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -1415,7 +1340,6 @@ func miqt_exec_callback_QwtLegend_resizeEvent(self *C.QwtLegend, cb C.intptr_t, 
 }
 
 func (this *QwtLegend) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -1443,7 +1367,6 @@ func miqt_exec_callback_QwtLegend_closeEvent(self *C.QwtLegend, cb C.intptr_t, e
 }
 
 func (this *QwtLegend) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -1471,7 +1394,6 @@ func miqt_exec_callback_QwtLegend_contextMenuEvent(self *C.QwtLegend, cb C.intpt
 }
 
 func (this *QwtLegend) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1499,7 +1421,6 @@ func miqt_exec_callback_QwtLegend_tabletEvent(self *C.QwtLegend, cb C.intptr_t, 
 }
 
 func (this *QwtLegend) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1527,7 +1448,6 @@ func miqt_exec_callback_QwtLegend_actionEvent(self *C.QwtLegend, cb C.intptr_t, 
 }
 
 func (this *QwtLegend) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1555,7 +1475,6 @@ func miqt_exec_callback_QwtLegend_dragEnterEvent(self *C.QwtLegend, cb C.intptr_
 }
 
 func (this *QwtLegend) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1583,7 +1502,6 @@ func miqt_exec_callback_QwtLegend_dragMoveEvent(self *C.QwtLegend, cb C.intptr_t
 }
 
 func (this *QwtLegend) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1611,7 +1529,6 @@ func miqt_exec_callback_QwtLegend_dragLeaveEvent(self *C.QwtLegend, cb C.intptr_
 }
 
 func (this *QwtLegend) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1639,7 +1556,6 @@ func miqt_exec_callback_QwtLegend_dropEvent(self *C.QwtLegend, cb C.intptr_t, ev
 }
 
 func (this *QwtLegend) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -1667,7 +1583,6 @@ func miqt_exec_callback_QwtLegend_showEvent(self *C.QwtLegend, cb C.intptr_t, ev
 }
 
 func (this *QwtLegend) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -1695,7 +1610,6 @@ func miqt_exec_callback_QwtLegend_hideEvent(self *C.QwtLegend, cb C.intptr_t, ev
 }
 
 func (this *QwtLegend) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1737,7 +1651,6 @@ func miqt_exec_callback_QwtLegend_nativeEvent(self *C.QwtLegend, cb C.intptr_t, 
 }
 
 func (this *QwtLegend) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtLegend_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1766,7 +1679,6 @@ func miqt_exec_callback_QwtLegend_metric(self *C.QwtLegend, cb C.intptr_t, param
 }
 
 func (this *QwtLegend) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QwtLegend_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1794,7 +1706,6 @@ func miqt_exec_callback_QwtLegend_initPainter(self *C.QwtLegend, cb C.intptr_t, 
 }
 
 func (this *QwtLegend) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtLegend_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1825,7 +1736,6 @@ func miqt_exec_callback_QwtLegend_redirected(self *C.QwtLegend, cb C.intptr_t, o
 }
 
 func (this *QwtLegend) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtLegend_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1852,7 +1762,6 @@ func miqt_exec_callback_QwtLegend_sharedPainter(self *C.QwtLegend, cb C.intptr_t
 }
 
 func (this *QwtLegend) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtLegend_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1880,7 +1789,6 @@ func miqt_exec_callback_QwtLegend_inputMethodEvent(self *C.QwtLegend, cb C.intpt
 }
 
 func (this *QwtLegend) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtLegend_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1912,7 +1820,6 @@ func miqt_exec_callback_QwtLegend_inputMethodQuery(self *C.QwtLegend, cb C.intpt
 }
 
 func (this *QwtLegend) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtLegend_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1941,7 +1848,6 @@ func miqt_exec_callback_QwtLegend_focusNextPrevChild(self *C.QwtLegend, cb C.int
 }
 
 func (this *QwtLegend) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1969,7 +1875,6 @@ func miqt_exec_callback_QwtLegend_timerEvent(self *C.QwtLegend, cb C.intptr_t, e
 }
 
 func (this *QwtLegend) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1997,7 +1902,6 @@ func miqt_exec_callback_QwtLegend_childEvent(self *C.QwtLegend, cb C.intptr_t, e
 }
 
 func (this *QwtLegend) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtLegend_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -2025,7 +1929,6 @@ func miqt_exec_callback_QwtLegend_customEvent(self *C.QwtLegend, cb C.intptr_t, 
 }
 
 func (this *QwtLegend) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtLegend_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2053,7 +1956,6 @@ func miqt_exec_callback_QwtLegend_connectNotify(self *C.QwtLegend, cb C.intptr_t
 }
 
 func (this *QwtLegend) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtLegend_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2088,6 +1990,8 @@ func (this *QwtLegend) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtLegend) GoGC() {
 	if this.gc != nil {
 		return

@@ -81,7 +81,6 @@ func NewQMovie() *QMovie {
 
 // NewQMovie2 constructs a new QMovie object.
 func NewQMovie2(device *QIODevice) *QMovie {
-	defer runtime.KeepAlive(device)
 
 	return newQMovie(C.QMovie_new2(device.cPointer()))
 }
@@ -98,14 +97,12 @@ func NewQMovie3(fileName string) *QMovie {
 
 // NewQMovie4 constructs a new QMovie object.
 func NewQMovie4(parent *QObject) *QMovie {
-	defer runtime.KeepAlive(parent)
 
 	return newQMovie(C.QMovie_new4(parent.cPointer()))
 }
 
 // NewQMovie5 constructs a new QMovie object.
 func NewQMovie5(device *QIODevice, format []byte) *QMovie {
-	defer runtime.KeepAlive(device)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -119,8 +116,6 @@ func NewQMovie5(device *QIODevice, format []byte) *QMovie {
 
 // NewQMovie6 constructs a new QMovie object.
 func NewQMovie6(device *QIODevice, format []byte, parent *QObject) *QMovie {
-	defer runtime.KeepAlive(device)
-	defer runtime.KeepAlive(parent)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -151,7 +146,6 @@ func NewQMovie7(fileName string, format []byte) *QMovie {
 
 // NewQMovie8 constructs a new QMovie object.
 func NewQMovie8(fileName string, format []byte, parent *QObject) *QMovie {
-	defer runtime.KeepAlive(parent)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -168,12 +162,10 @@ func NewQMovie8(fileName string, format []byte, parent *QObject) *QMovie {
 }
 
 func (this *QMovie) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QMovie_metaObject(this.h))
 }
 
 func (this *QMovie) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMovie_metacast(this.h, param1_Cstring))
@@ -202,18 +194,14 @@ func QMovie_SupportedFormats() [][]byte {
 }
 
 func (this *QMovie) SetDevice(device *QIODevice) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QMovie_setDevice(this.h, device.cPointer())
 }
 
 func (this *QMovie) Device() *QIODevice {
-	defer runtime.KeepAlive(this)
 	return newQIODevice(C.QMovie_device(this.h))
 }
 
 func (this *QMovie) SetFileName(fileName string) {
-	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -222,7 +210,6 @@ func (this *QMovie) SetFileName(fileName string) {
 }
 
 func (this *QMovie) FileName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMovie_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -230,7 +217,6 @@ func (this *QMovie) FileName() string {
 }
 
 func (this *QMovie) SetFormat(format []byte) {
-	defer runtime.KeepAlive(this)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -242,7 +228,6 @@ func (this *QMovie) SetFormat(format []byte) {
 }
 
 func (this *QMovie) Format() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QMovie_format(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -250,56 +235,47 @@ func (this *QMovie) Format() []byte {
 }
 
 func (this *QMovie) SetBackgroundColor(color *QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QMovie_setBackgroundColor(this.h, color.cPointer())
 }
 
 func (this *QMovie) BackgroundColor() *QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQColor(C.QMovie_backgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) State() QMovie__MovieState {
-	defer runtime.KeepAlive(this)
 	return (QMovie__MovieState)(C.QMovie_state(this.h))
 }
 
 func (this *QMovie) FrameRect() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QMovie_frameRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) CurrentImage() *QImage {
-	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QMovie_currentImage(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) CurrentPixmap() *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QMovie_currentPixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) IsValid() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMovie_isValid(this.h))
 }
 
 func (this *QMovie) LastError() QImageReader__ImageReaderError {
-	defer runtime.KeepAlive(this)
 	return (QImageReader__ImageReaderError)(C.QMovie_lastError(this.h))
 }
 
 func (this *QMovie) LastErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QMovie_lastErrorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -307,60 +283,49 @@ func (this *QMovie) LastErrorString() string {
 }
 
 func (this *QMovie) JumpToFrame(frameNumber int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMovie_jumpToFrame(this.h, (C.int)(frameNumber)))
 }
 
 func (this *QMovie) LoopCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMovie_loopCount(this.h))
 }
 
 func (this *QMovie) FrameCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMovie_frameCount(this.h))
 }
 
 func (this *QMovie) NextFrameDelay() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMovie_nextFrameDelay(this.h))
 }
 
 func (this *QMovie) CurrentFrameNumber() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMovie_currentFrameNumber(this.h))
 }
 
 func (this *QMovie) Speed() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMovie_speed(this.h))
 }
 
 func (this *QMovie) ScaledSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QMovie_scaledSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) SetScaledSize(size *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QMovie_setScaledSize(this.h, size.cPointer())
 }
 
 func (this *QMovie) CacheMode() QMovie__CacheMode {
-	defer runtime.KeepAlive(this)
 	return (QMovie__CacheMode)(C.QMovie_cacheMode(this.h))
 }
 
 func (this *QMovie) SetCacheMode(mode QMovie__CacheMode) {
-	defer runtime.KeepAlive(this)
 	C.QMovie_setCacheMode(this.h, (C.int)(mode))
 }
 
 func (this *QMovie) Started() {
-	defer runtime.KeepAlive(this)
 	C.QMovie_started(this.h)
 }
 func (this *QMovie) OnStarted(slot func()) {
@@ -378,7 +343,6 @@ func miqt_exec_callback_QMovie_started(cb C.intptr_t) {
 }
 
 func (this *QMovie) Resized(size *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QMovie_resized(this.h, size.cPointer())
 }
@@ -400,7 +364,6 @@ func miqt_exec_callback_QMovie_resized(cb C.intptr_t, size *C.QSize) {
 }
 
 func (this *QMovie) Updated(rect *QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	C.QMovie_updated(this.h, rect.cPointer())
 }
@@ -422,7 +385,6 @@ func miqt_exec_callback_QMovie_updated(cb C.intptr_t, rect *C.QRect) {
 }
 
 func (this *QMovie) StateChanged(state QMovie__MovieState) {
-	defer runtime.KeepAlive(this)
 	C.QMovie_stateChanged(this.h, (C.int)(state))
 }
 func (this *QMovie) OnStateChanged(slot func(state QMovie__MovieState)) {
@@ -443,7 +405,6 @@ func miqt_exec_callback_QMovie_stateChanged(cb C.intptr_t, state C.int) {
 }
 
 func (this *QMovie) Error(error QImageReader__ImageReaderError) {
-	defer runtime.KeepAlive(this)
 	C.QMovie_error(this.h, (C.int)(error))
 }
 func (this *QMovie) OnError(slot func(error QImageReader__ImageReaderError)) {
@@ -464,7 +425,6 @@ func miqt_exec_callback_QMovie_error(cb C.intptr_t, error C.int) {
 }
 
 func (this *QMovie) Finished() {
-	defer runtime.KeepAlive(this)
 	C.QMovie_finished(this.h)
 }
 func (this *QMovie) OnFinished(slot func()) {
@@ -482,7 +442,6 @@ func miqt_exec_callback_QMovie_finished(cb C.intptr_t) {
 }
 
 func (this *QMovie) FrameChanged(frameNumber int) {
-	defer runtime.KeepAlive(this)
 	C.QMovie_frameChanged(this.h, (C.int)(frameNumber))
 }
 func (this *QMovie) OnFrameChanged(slot func(frameNumber int)) {
@@ -503,27 +462,22 @@ func miqt_exec_callback_QMovie_frameChanged(cb C.intptr_t, frameNumber C.int) {
 }
 
 func (this *QMovie) Start() {
-	defer runtime.KeepAlive(this)
 	C.QMovie_start(this.h)
 }
 
 func (this *QMovie) JumpToNextFrame() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMovie_jumpToNextFrame(this.h))
 }
 
 func (this *QMovie) SetPaused(paused bool) {
-	defer runtime.KeepAlive(this)
 	C.QMovie_setPaused(this.h, (C.bool)(paused))
 }
 
 func (this *QMovie) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QMovie_stop(this.h)
 }
 
 func (this *QMovie) SetSpeed(percentSpeed int) {
-	defer runtime.KeepAlive(this)
 	C.QMovie_setSpeed(this.h, (C.int)(percentSpeed))
 }
 
@@ -551,7 +505,6 @@ func QMovie_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QMovie that was directly constructed.
 func (this *QMovie) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QMovie_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -566,7 +519,6 @@ func (this *QMovie) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QMovie that was directly constructed.
 func (this *QMovie) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QMovie_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -581,7 +533,6 @@ func (this *QMovie) SenderSignalIndex() int {
 
 // Receivers can only be called from a QMovie that was directly constructed.
 func (this *QMovie) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -598,7 +549,6 @@ func (this *QMovie) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QMovie that was directly constructed.
 func (this *QMovie) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -613,7 +563,6 @@ func (this *QMovie) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QMovie) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMovie_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -643,8 +592,6 @@ func miqt_exec_callback_QMovie_event(self *C.QMovie, cb C.intptr_t, event *C.QEv
 }
 
 func (this *QMovie) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QMovie_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -676,7 +623,6 @@ func miqt_exec_callback_QMovie_eventFilter(self *C.QMovie, cb C.intptr_t, watche
 }
 
 func (this *QMovie) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMovie_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -704,7 +650,6 @@ func miqt_exec_callback_QMovie_timerEvent(self *C.QMovie, cb C.intptr_t, event *
 }
 
 func (this *QMovie) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMovie_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -732,7 +677,6 @@ func miqt_exec_callback_QMovie_childEvent(self *C.QMovie, cb C.intptr_t, event *
 }
 
 func (this *QMovie) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QMovie_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -760,7 +704,6 @@ func miqt_exec_callback_QMovie_customEvent(self *C.QMovie, cb C.intptr_t, event 
 }
 
 func (this *QMovie) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMovie_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -788,7 +731,6 @@ func miqt_exec_callback_QMovie_connectNotify(self *C.QMovie, cb C.intptr_t, sign
 }
 
 func (this *QMovie) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QMovie_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -823,6 +765,8 @@ func (this *QMovie) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMovie) GoGC() {
 	if this.gc != nil {
 		return

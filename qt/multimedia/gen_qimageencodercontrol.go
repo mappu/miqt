@@ -59,12 +59,10 @@ func UnsafeNewQImageEncoderControl(h unsafe.Pointer) *QImageEncoderControl {
 }
 
 func (this *QImageEncoderControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QImageEncoderControl_metaObject(this.h)))
 }
 
 func (this *QImageEncoderControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QImageEncoderControl_metacast(this.h, param1_Cstring))
@@ -89,7 +87,6 @@ func QImageEncoderControl_TrUtf8(s string) string {
 }
 
 func (this *QImageEncoderControl) SupportedImageCodecs() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QImageEncoderControl_supportedImageCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -103,7 +100,6 @@ func (this *QImageEncoderControl) SupportedImageCodecs() []string {
 }
 
 func (this *QImageEncoderControl) ImageCodecDescription(codec string) string {
-	defer runtime.KeepAlive(this)
 	codec_ms := C.struct_miqt_string{}
 	codec_ms.data = C.CString(codec)
 	codec_ms.len = C.size_t(len(codec))
@@ -115,7 +111,6 @@ func (this *QImageEncoderControl) ImageCodecDescription(codec string) string {
 }
 
 func (this *QImageEncoderControl) SupportedResolutions(settings *QImageEncoderSettings, continuous *bool) []qt.QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QImageEncoderControl_supportedResolutions(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QSize, int(_ma.len))
@@ -129,14 +124,12 @@ func (this *QImageEncoderControl) SupportedResolutions(settings *QImageEncoderSe
 }
 
 func (this *QImageEncoderControl) ImageSettings() *QImageEncoderSettings {
-	defer runtime.KeepAlive(this)
 	_goptr := newQImageEncoderSettings(C.QImageEncoderControl_imageSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImageEncoderControl) SetImageSettings(settings *QImageEncoderSettings) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(settings)
 	C.QImageEncoderControl_setImageSettings(this.h, settings.cPointer())
 }
@@ -193,6 +186,8 @@ func (this *QImageEncoderControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QImageEncoderControl) GoGC() {
 	if this.gc != nil {
 		return

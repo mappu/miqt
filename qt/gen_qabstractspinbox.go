@@ -90,7 +90,6 @@ func UnsafeNewQAbstractSpinBox(h unsafe.Pointer) *QAbstractSpinBox {
 
 // NewQAbstractSpinBox constructs a new QAbstractSpinBox object.
 func NewQAbstractSpinBox(parent *QWidget) *QAbstractSpinBox {
-	defer runtime.KeepAlive(parent)
 
 	return newQAbstractSpinBox(C.QAbstractSpinBox_new(parent.cPointer()))
 }
@@ -102,12 +101,10 @@ func NewQAbstractSpinBox2() *QAbstractSpinBox {
 }
 
 func (this *QAbstractSpinBox) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractSpinBox_metaObject(this.h))
 }
 
 func (this *QAbstractSpinBox) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractSpinBox_metacast(this.h, param1_Cstring))
@@ -132,32 +129,26 @@ func QAbstractSpinBox_TrUtf8(s string) string {
 }
 
 func (this *QAbstractSpinBox) ButtonSymbols() QAbstractSpinBox__ButtonSymbols {
-	defer runtime.KeepAlive(this)
 	return (QAbstractSpinBox__ButtonSymbols)(C.QAbstractSpinBox_buttonSymbols(this.h))
 }
 
 func (this *QAbstractSpinBox) SetButtonSymbols(bs QAbstractSpinBox__ButtonSymbols) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_setButtonSymbols(this.h, (C.int)(bs))
 }
 
 func (this *QAbstractSpinBox) SetCorrectionMode(cm QAbstractSpinBox__CorrectionMode) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_setCorrectionMode(this.h, (C.int)(cm))
 }
 
 func (this *QAbstractSpinBox) CorrectionMode() QAbstractSpinBox__CorrectionMode {
-	defer runtime.KeepAlive(this)
 	return (QAbstractSpinBox__CorrectionMode)(C.QAbstractSpinBox_correctionMode(this.h))
 }
 
 func (this *QAbstractSpinBox) HasAcceptableInput() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSpinBox_hasAcceptableInput(this.h))
 }
 
 func (this *QAbstractSpinBox) Text() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAbstractSpinBox_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -165,7 +156,6 @@ func (this *QAbstractSpinBox) Text() string {
 }
 
 func (this *QAbstractSpinBox) SpecialValueText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAbstractSpinBox_specialValueText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -173,7 +163,6 @@ func (this *QAbstractSpinBox) SpecialValueText() string {
 }
 
 func (this *QAbstractSpinBox) SetSpecialValueText(txt string) {
-	defer runtime.KeepAlive(this)
 	txt_ms := C.struct_miqt_string{}
 	txt_ms.data = C.CString(txt)
 	txt_ms.len = C.size_t(len(txt))
@@ -182,109 +171,89 @@ func (this *QAbstractSpinBox) SetSpecialValueText(txt string) {
 }
 
 func (this *QAbstractSpinBox) Wrapping() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSpinBox_wrapping(this.h))
 }
 
 func (this *QAbstractSpinBox) SetWrapping(w bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_setWrapping(this.h, (C.bool)(w))
 }
 
 func (this *QAbstractSpinBox) SetReadOnly(r bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_setReadOnly(this.h, (C.bool)(r))
 }
 
 func (this *QAbstractSpinBox) IsReadOnly() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSpinBox_isReadOnly(this.h))
 }
 
 func (this *QAbstractSpinBox) SetKeyboardTracking(kt bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_setKeyboardTracking(this.h, (C.bool)(kt))
 }
 
 func (this *QAbstractSpinBox) KeyboardTracking() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSpinBox_keyboardTracking(this.h))
 }
 
 func (this *QAbstractSpinBox) SetAlignment(flag AlignmentFlag) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_setAlignment(this.h, (C.int)(flag))
 }
 
 func (this *QAbstractSpinBox) Alignment() AlignmentFlag {
-	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QAbstractSpinBox_alignment(this.h))
 }
 
 func (this *QAbstractSpinBox) SetFrame(frame bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_setFrame(this.h, (C.bool)(frame))
 }
 
 func (this *QAbstractSpinBox) HasFrame() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSpinBox_hasFrame(this.h))
 }
 
 func (this *QAbstractSpinBox) SetAccelerated(on bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_setAccelerated(this.h, (C.bool)(on))
 }
 
 func (this *QAbstractSpinBox) IsAccelerated() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSpinBox_isAccelerated(this.h))
 }
 
 func (this *QAbstractSpinBox) SetGroupSeparatorShown(shown bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_setGroupSeparatorShown(this.h, (C.bool)(shown))
 }
 
 func (this *QAbstractSpinBox) IsGroupSeparatorShown() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractSpinBox_isGroupSeparatorShown(this.h))
 }
 
 func (this *QAbstractSpinBox) SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QAbstractSpinBox_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSpinBox) MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QAbstractSpinBox_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSpinBox) InterpretText() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_interpretText(this.h)
 }
 
 func (this *QAbstractSpinBox) Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 	return (bool)(C.QAbstractSpinBox_event(this.h, event.cPointer()))
 }
 
 func (this *QAbstractSpinBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QAbstractSpinBox_inputMethodQuery(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSpinBox) Validate(input string, pos *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -293,7 +262,6 @@ func (this *QAbstractSpinBox) Validate(input string, pos *int) QValidator__State
 }
 
 func (this *QAbstractSpinBox) Fixup(input string) {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -302,32 +270,26 @@ func (this *QAbstractSpinBox) Fixup(input string) {
 }
 
 func (this *QAbstractSpinBox) StepBy(steps int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_stepBy(this.h, (C.int)(steps))
 }
 
 func (this *QAbstractSpinBox) StepUp() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_stepUp(this.h)
 }
 
 func (this *QAbstractSpinBox) StepDown() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_stepDown(this.h)
 }
 
 func (this *QAbstractSpinBox) SelectAll() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_selectAll(this.h)
 }
 
 func (this *QAbstractSpinBox) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_clear(this.h)
 }
 
 func (this *QAbstractSpinBox) EditingFinished() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractSpinBox_editingFinished(this.h)
 }
 func (this *QAbstractSpinBox) OnEditingFinished(slot func()) {
@@ -390,7 +352,6 @@ func QAbstractSpinBox_TrUtf83(s string, c string, n int) string {
 
 // InitStyleOption can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) InitStyleOption(option *QStyleOptionSpinBox) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -404,7 +365,6 @@ func (this *QAbstractSpinBox) InitStyleOption(option *QStyleOptionSpinBox) {
 
 // LineEdit can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) LineEdit() *QLineEdit {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQLineEdit(C.QAbstractSpinBox_protectedbase_lineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -419,8 +379,6 @@ func (this *QAbstractSpinBox) LineEdit() *QLineEdit {
 
 // SetLineEdit can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) SetLineEdit(edit *QLineEdit) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(edit)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSpinBox_protectedbase_setLineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h), edit.cPointer())
@@ -433,7 +391,6 @@ func (this *QAbstractSpinBox) SetLineEdit(edit *QLineEdit) {
 
 // UpdateMicroFocus can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSpinBox_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -446,7 +403,6 @@ func (this *QAbstractSpinBox) UpdateMicroFocus() {
 
 // Create can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSpinBox_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -459,7 +415,6 @@ func (this *QAbstractSpinBox) Create() {
 
 // Destroy can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractSpinBox_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -472,7 +427,6 @@ func (this *QAbstractSpinBox) Destroy() {
 
 // FocusNextChild can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAbstractSpinBox_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -487,7 +441,6 @@ func (this *QAbstractSpinBox) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAbstractSpinBox_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -502,7 +455,6 @@ func (this *QAbstractSpinBox) FocusPreviousChild() bool {
 
 // Sender can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAbstractSpinBox_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -517,7 +469,6 @@ func (this *QAbstractSpinBox) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractSpinBox_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -532,7 +483,6 @@ func (this *QAbstractSpinBox) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -549,7 +499,6 @@ func (this *QAbstractSpinBox) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractSpinBox that was directly constructed.
 func (this *QAbstractSpinBox) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -564,7 +513,6 @@ func (this *QAbstractSpinBox) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QAbstractSpinBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -593,7 +541,6 @@ func miqt_exec_callback_QAbstractSpinBox_sizeHint(self *C.QAbstractSpinBox, cb C
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QAbstractSpinBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -622,7 +569,6 @@ func miqt_exec_callback_QAbstractSpinBox_minimumSizeHint(self *C.QAbstractSpinBo
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractSpinBox_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -652,7 +598,6 @@ func miqt_exec_callback_QAbstractSpinBox_event(self *C.QAbstractSpinBox, cb C.in
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QAbstractSpinBox_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -684,7 +629,6 @@ func miqt_exec_callback_QAbstractSpinBox_inputMethodQuery(self *C.QAbstractSpinB
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_Validate(input string, pos *int) QValidator__State {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -721,7 +665,6 @@ func miqt_exec_callback_QAbstractSpinBox_validate(self *C.QAbstractSpinBox, cb C
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_Fixup(input string) {
-	defer runtime.KeepAlive(this)
 	input_ms := C.struct_miqt_string{}
 	input_ms.data = C.CString(input)
 	input_ms.len = C.size_t(len(input))
@@ -755,7 +698,6 @@ func miqt_exec_callback_QAbstractSpinBox_fixup(self *C.QAbstractSpinBox, cb C.in
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_StepBy(steps int) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractSpinBox_virtualbase_stepBy(unsafe.Pointer(this.h), (C.int)(steps))
 
@@ -782,7 +724,6 @@ func miqt_exec_callback_QAbstractSpinBox_stepBy(self *C.QAbstractSpinBox, cb C.i
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_Clear() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractSpinBox_virtualbase_clear(unsafe.Pointer(this.h))
 
@@ -806,7 +747,6 @@ func miqt_exec_callback_QAbstractSpinBox_clear(self *C.QAbstractSpinBox, cb C.in
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -834,7 +774,6 @@ func miqt_exec_callback_QAbstractSpinBox_resizeEvent(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -862,7 +801,6 @@ func miqt_exec_callback_QAbstractSpinBox_keyPressEvent(self *C.QAbstractSpinBox,
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -890,7 +828,6 @@ func miqt_exec_callback_QAbstractSpinBox_keyReleaseEvent(self *C.QAbstractSpinBo
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -918,7 +855,6 @@ func miqt_exec_callback_QAbstractSpinBox_wheelEvent(self *C.QAbstractSpinBox, cb
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -946,7 +882,6 @@ func miqt_exec_callback_QAbstractSpinBox_focusInEvent(self *C.QAbstractSpinBox, 
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -974,7 +909,6 @@ func miqt_exec_callback_QAbstractSpinBox_focusOutEvent(self *C.QAbstractSpinBox,
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1002,7 +936,6 @@ func miqt_exec_callback_QAbstractSpinBox_contextMenuEvent(self *C.QAbstractSpinB
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_ChangeEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1030,7 +963,6 @@ func miqt_exec_callback_QAbstractSpinBox_changeEvent(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1058,7 +990,6 @@ func miqt_exec_callback_QAbstractSpinBox_closeEvent(self *C.QAbstractSpinBox, cb
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1086,7 +1017,6 @@ func miqt_exec_callback_QAbstractSpinBox_hideEvent(self *C.QAbstractSpinBox, cb 
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1114,7 +1044,6 @@ func miqt_exec_callback_QAbstractSpinBox_mousePressEvent(self *C.QAbstractSpinBo
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1142,7 +1071,6 @@ func miqt_exec_callback_QAbstractSpinBox_mouseReleaseEvent(self *C.QAbstractSpin
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1170,7 +1098,6 @@ func miqt_exec_callback_QAbstractSpinBox_mouseMoveEvent(self *C.QAbstractSpinBox
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1198,7 +1125,6 @@ func miqt_exec_callback_QAbstractSpinBox_timerEvent(self *C.QAbstractSpinBox, cb
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1226,7 +1152,6 @@ func miqt_exec_callback_QAbstractSpinBox_paintEvent(self *C.QAbstractSpinBox, cb
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1254,7 +1179,6 @@ func miqt_exec_callback_QAbstractSpinBox_showEvent(self *C.QAbstractSpinBox, cb 
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_StepEnabled() QAbstractSpinBox__StepEnabledFlag {
-	defer runtime.KeepAlive(this)
 
 	return (QAbstractSpinBox__StepEnabledFlag)(C.QAbstractSpinBox_virtualbase_stepEnabled(unsafe.Pointer(this.h)))
 
@@ -1280,7 +1204,6 @@ func miqt_exec_callback_QAbstractSpinBox_stepEnabled(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QAbstractSpinBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1306,7 +1229,6 @@ func miqt_exec_callback_QAbstractSpinBox_devType(self *C.QAbstractSpinBox, cb C.
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractSpinBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1333,7 +1255,6 @@ func miqt_exec_callback_QAbstractSpinBox_setVisible(self *C.QAbstractSpinBox, cb
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QAbstractSpinBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1362,7 +1283,6 @@ func miqt_exec_callback_QAbstractSpinBox_heightForWidth(self *C.QAbstractSpinBox
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSpinBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1388,7 +1308,6 @@ func miqt_exec_callback_QAbstractSpinBox_hasHeightForWidth(self *C.QAbstractSpin
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QAbstractSpinBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1415,7 +1334,6 @@ func miqt_exec_callback_QAbstractSpinBox_paintEngine(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1443,7 +1361,6 @@ func miqt_exec_callback_QAbstractSpinBox_mouseDoubleClickEvent(self *C.QAbstract
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1471,7 +1388,6 @@ func miqt_exec_callback_QAbstractSpinBox_enterEvent(self *C.QAbstractSpinBox, cb
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1499,7 +1415,6 @@ func miqt_exec_callback_QAbstractSpinBox_leaveEvent(self *C.QAbstractSpinBox, cb
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1527,7 +1442,6 @@ func miqt_exec_callback_QAbstractSpinBox_moveEvent(self *C.QAbstractSpinBox, cb 
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1555,7 +1469,6 @@ func miqt_exec_callback_QAbstractSpinBox_tabletEvent(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1583,7 +1496,6 @@ func miqt_exec_callback_QAbstractSpinBox_actionEvent(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1611,7 +1523,6 @@ func miqt_exec_callback_QAbstractSpinBox_dragEnterEvent(self *C.QAbstractSpinBox
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1639,7 +1550,6 @@ func miqt_exec_callback_QAbstractSpinBox_dragMoveEvent(self *C.QAbstractSpinBox,
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1667,7 +1577,6 @@ func miqt_exec_callback_QAbstractSpinBox_dragLeaveEvent(self *C.QAbstractSpinBox
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1695,7 +1604,6 @@ func miqt_exec_callback_QAbstractSpinBox_dropEvent(self *C.QAbstractSpinBox, cb 
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1737,7 +1645,6 @@ func miqt_exec_callback_QAbstractSpinBox_nativeEvent(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QAbstractSpinBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1766,7 +1673,6 @@ func miqt_exec_callback_QAbstractSpinBox_metric(self *C.QAbstractSpinBox, cb C.i
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QAbstractSpinBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1794,7 +1700,6 @@ func miqt_exec_callback_QAbstractSpinBox_initPainter(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QAbstractSpinBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1825,7 +1730,6 @@ func miqt_exec_callback_QAbstractSpinBox_redirected(self *C.QAbstractSpinBox, cb
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QAbstractSpinBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1852,7 +1756,6 @@ func miqt_exec_callback_QAbstractSpinBox_sharedPainter(self *C.QAbstractSpinBox,
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QAbstractSpinBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1880,7 +1783,6 @@ func miqt_exec_callback_QAbstractSpinBox_inputMethodEvent(self *C.QAbstractSpinB
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractSpinBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1909,8 +1811,6 @@ func miqt_exec_callback_QAbstractSpinBox_focusNextPrevChild(self *C.QAbstractSpi
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractSpinBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1942,7 +1842,6 @@ func miqt_exec_callback_QAbstractSpinBox_eventFilter(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1970,7 +1869,6 @@ func miqt_exec_callback_QAbstractSpinBox_childEvent(self *C.QAbstractSpinBox, cb
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractSpinBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1998,7 +1896,6 @@ func miqt_exec_callback_QAbstractSpinBox_customEvent(self *C.QAbstractSpinBox, c
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractSpinBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2026,7 +1923,6 @@ func miqt_exec_callback_QAbstractSpinBox_connectNotify(self *C.QAbstractSpinBox,
 }
 
 func (this *QAbstractSpinBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractSpinBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2061,6 +1957,8 @@ func (this *QAbstractSpinBox) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractSpinBox) GoGC() {
 	if this.gc != nil {
 		return

@@ -74,18 +74,15 @@ func NewQNmeaPositionInfoSource(updateMode QNmeaPositionInfoSource__UpdateMode) 
 
 // NewQNmeaPositionInfoSource2 constructs a new QNmeaPositionInfoSource object.
 func NewQNmeaPositionInfoSource2(updateMode QNmeaPositionInfoSource__UpdateMode, parent *qt.QObject) *QNmeaPositionInfoSource {
-	defer runtime.KeepAlive(parent)
 
 	return newQNmeaPositionInfoSource(C.QNmeaPositionInfoSource_new2((C.int)(updateMode), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QNmeaPositionInfoSource) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QNmeaPositionInfoSource_metaObject(this.h)))
 }
 
 func (this *QNmeaPositionInfoSource) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QNmeaPositionInfoSource_metacast(this.h, param1_Cstring))
@@ -110,70 +107,56 @@ func QNmeaPositionInfoSource_TrUtf8(s string) string {
 }
 
 func (this *QNmeaPositionInfoSource) SetUserEquivalentRangeError(uere float64) {
-	defer runtime.KeepAlive(this)
 	C.QNmeaPositionInfoSource_setUserEquivalentRangeError(this.h, (C.double)(uere))
 }
 
 func (this *QNmeaPositionInfoSource) UserEquivalentRangeError() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QNmeaPositionInfoSource_userEquivalentRangeError(this.h))
 }
 
 func (this *QNmeaPositionInfoSource) UpdateMode() QNmeaPositionInfoSource__UpdateMode {
-	defer runtime.KeepAlive(this)
 	return (QNmeaPositionInfoSource__UpdateMode)(C.QNmeaPositionInfoSource_updateMode(this.h))
 }
 
 func (this *QNmeaPositionInfoSource) SetDevice(source *qt.QIODevice) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(source)
 	C.QNmeaPositionInfoSource_setDevice(this.h, (*C.QIODevice)(source.UnsafePointer()))
 }
 
 func (this *QNmeaPositionInfoSource) Device() *qt.QIODevice {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QNmeaPositionInfoSource_device(this.h)))
 }
 
 func (this *QNmeaPositionInfoSource) SetUpdateInterval(msec int) {
-	defer runtime.KeepAlive(this)
 	C.QNmeaPositionInfoSource_setUpdateInterval(this.h, (C.int)(msec))
 }
 
 func (this *QNmeaPositionInfoSource) LastKnownPosition() *QGeoPositionInfo {
-	defer runtime.KeepAlive(this)
 	_goptr := newQGeoPositionInfo(C.QNmeaPositionInfoSource_lastKnownPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNmeaPositionInfoSource) SupportedPositioningMethods() QGeoPositionInfoSource__PositioningMethod {
-	defer runtime.KeepAlive(this)
 	return (QGeoPositionInfoSource__PositioningMethod)(C.QNmeaPositionInfoSource_supportedPositioningMethods(this.h))
 }
 
 func (this *QNmeaPositionInfoSource) MinimumUpdateInterval() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QNmeaPositionInfoSource_minimumUpdateInterval(this.h))
 }
 
 func (this *QNmeaPositionInfoSource) Error() QGeoPositionInfoSource__Error {
-	defer runtime.KeepAlive(this)
 	return (QGeoPositionInfoSource__Error)(C.QNmeaPositionInfoSource_error(this.h))
 }
 
 func (this *QNmeaPositionInfoSource) StartUpdates() {
-	defer runtime.KeepAlive(this)
 	C.QNmeaPositionInfoSource_startUpdates(this.h)
 }
 
 func (this *QNmeaPositionInfoSource) StopUpdates() {
-	defer runtime.KeepAlive(this)
 	C.QNmeaPositionInfoSource_stopUpdates(this.h)
 }
 
 func (this *QNmeaPositionInfoSource) RequestUpdate() {
-	defer runtime.KeepAlive(this)
 	C.QNmeaPositionInfoSource_requestUpdate(this.h)
 }
 
@@ -222,20 +205,17 @@ func QNmeaPositionInfoSource_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QNmeaPositionInfoSource) LastKnownPositionWithFromSatellitePositioningMethodsOnly(fromSatellitePositioningMethodsOnly bool) *QGeoPositionInfo {
-	defer runtime.KeepAlive(this)
 	_goptr := newQGeoPositionInfo(C.QNmeaPositionInfoSource_lastKnownPositionWithFromSatellitePositioningMethodsOnly(this.h, (C.bool)(fromSatellitePositioningMethodsOnly)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNmeaPositionInfoSource) RequestUpdateWithTimeout(timeout int) {
-	defer runtime.KeepAlive(this)
 	C.QNmeaPositionInfoSource_requestUpdateWithTimeout(this.h, (C.int)(timeout))
 }
 
 // Sender can only be called from a QNmeaPositionInfoSource that was directly constructed.
 func (this *QNmeaPositionInfoSource) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QNmeaPositionInfoSource_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -250,7 +230,6 @@ func (this *QNmeaPositionInfoSource) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QNmeaPositionInfoSource that was directly constructed.
 func (this *QNmeaPositionInfoSource) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QNmeaPositionInfoSource_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -265,7 +244,6 @@ func (this *QNmeaPositionInfoSource) SenderSignalIndex() int {
 
 // Receivers can only be called from a QNmeaPositionInfoSource that was directly constructed.
 func (this *QNmeaPositionInfoSource) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -282,7 +260,6 @@ func (this *QNmeaPositionInfoSource) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QNmeaPositionInfoSource that was directly constructed.
 func (this *QNmeaPositionInfoSource) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -297,7 +274,6 @@ func (this *QNmeaPositionInfoSource) IsSignalConnected(signal *qt.QMetaMethod) b
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_ParsePosInfoFromNmeaData(data string, size int, posInfo *QGeoPositionInfo, hasFix *bool) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(posInfo)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
@@ -336,7 +312,6 @@ func miqt_exec_callback_QNmeaPositionInfoSource_parsePosInfoFromNmeaData(self *C
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_SetUpdateInterval(msec int) {
-	defer runtime.KeepAlive(this)
 
 	C.QNmeaPositionInfoSource_virtualbase_setUpdateInterval(unsafe.Pointer(this.h), (C.int)(msec))
 
@@ -363,7 +338,6 @@ func miqt_exec_callback_QNmeaPositionInfoSource_setUpdateInterval(self *C.QNmeaP
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_SetPreferredPositioningMethods(methods QGeoPositionInfoSource__PositioningMethod) {
-	defer runtime.KeepAlive(this)
 
 	C.QNmeaPositionInfoSource_virtualbase_setPreferredPositioningMethods(unsafe.Pointer(this.h), (C.int)(methods))
 
@@ -524,7 +498,6 @@ func miqt_exec_callback_QNmeaPositionInfoSource_requestUpdate(self *C.QNmeaPosit
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNmeaPositionInfoSource_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -554,8 +527,6 @@ func miqt_exec_callback_QNmeaPositionInfoSource_event(self *C.QNmeaPositionInfoS
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNmeaPositionInfoSource_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -587,7 +558,6 @@ func miqt_exec_callback_QNmeaPositionInfoSource_eventFilter(self *C.QNmeaPositio
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNmeaPositionInfoSource_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -615,7 +585,6 @@ func miqt_exec_callback_QNmeaPositionInfoSource_timerEvent(self *C.QNmeaPosition
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNmeaPositionInfoSource_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -643,7 +612,6 @@ func miqt_exec_callback_QNmeaPositionInfoSource_childEvent(self *C.QNmeaPosition
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNmeaPositionInfoSource_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -671,7 +639,6 @@ func miqt_exec_callback_QNmeaPositionInfoSource_customEvent(self *C.QNmeaPositio
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QNmeaPositionInfoSource_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -699,7 +666,6 @@ func miqt_exec_callback_QNmeaPositionInfoSource_connectNotify(self *C.QNmeaPosit
 }
 
 func (this *QNmeaPositionInfoSource) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QNmeaPositionInfoSource_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -734,6 +700,8 @@ func (this *QNmeaPositionInfoSource) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QNmeaPositionInfoSource) GoGC() {
 	if this.gc != nil {
 		return

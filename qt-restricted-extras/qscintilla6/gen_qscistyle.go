@@ -108,7 +108,6 @@ func NewQsciStyle5(style int, description string, color *qt6.QColor, paper *qt6.
 
 func (this *QsciStyle) Apply(sci *QsciScintillaBase) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sci)
 	C.QsciStyle_apply(this.h, sci.cPointer())
 }
 

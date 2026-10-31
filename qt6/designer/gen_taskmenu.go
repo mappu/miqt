@@ -97,7 +97,6 @@ func miqt_exec_callback_QDesignerTaskMenuExtension_preferredEditAction(self *C.Q
 	}
 
 	virtualReturn := gofunc((&QDesignerTaskMenuExtension{h: self}).callVirtualBase_PreferredEditAction)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QAction)(virtualReturn.UnsafePointer())
 
@@ -117,7 +116,6 @@ func miqt_exec_callback_QDesignerTaskMenuExtension_taskActions(self *C.QDesigner
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 	virtualReturn_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {

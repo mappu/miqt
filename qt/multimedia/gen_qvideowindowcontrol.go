@@ -60,12 +60,10 @@ func UnsafeNewQVideoWindowControl(h unsafe.Pointer) *QVideoWindowControl {
 }
 
 func (this *QVideoWindowControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QVideoWindowControl_metaObject(this.h)))
 }
 
 func (this *QVideoWindowControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QVideoWindowControl_metacast(this.h, param1_Cstring))
@@ -90,102 +88,83 @@ func QVideoWindowControl_TrUtf8(s string) string {
 }
 
 func (this *QVideoWindowControl) WinId() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QVideoWindowControl_winId(this.h))
 }
 
 func (this *QVideoWindowControl) SetWinId(id uintptr) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_setWinId(this.h, (C.uintptr_t)(id))
 }
 
 func (this *QVideoWindowControl) DisplayRect() *qt.QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QVideoWindowControl_displayRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoWindowControl) SetDisplayRect(rect *qt.QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	C.QVideoWindowControl_setDisplayRect(this.h, (*C.QRect)(rect.UnsafePointer()))
 }
 
 func (this *QVideoWindowControl) IsFullScreen() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QVideoWindowControl_isFullScreen(this.h))
 }
 
 func (this *QVideoWindowControl) SetFullScreen(fullScreen bool) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_setFullScreen(this.h, (C.bool)(fullScreen))
 }
 
 func (this *QVideoWindowControl) Repaint() {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_repaint(this.h)
 }
 
 func (this *QVideoWindowControl) NativeSize() *qt.QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWindowControl_nativeSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoWindowControl) AspectRatioMode() qt.AspectRatioMode {
-	defer runtime.KeepAlive(this)
 	return (qt.AspectRatioMode)(C.QVideoWindowControl_aspectRatioMode(this.h))
 }
 
 func (this *QVideoWindowControl) SetAspectRatioMode(mode qt.AspectRatioMode) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_setAspectRatioMode(this.h, (C.int)(mode))
 }
 
 func (this *QVideoWindowControl) Brightness() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWindowControl_brightness(this.h))
 }
 
 func (this *QVideoWindowControl) SetBrightness(brightness int) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_setBrightness(this.h, (C.int)(brightness))
 }
 
 func (this *QVideoWindowControl) Contrast() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWindowControl_contrast(this.h))
 }
 
 func (this *QVideoWindowControl) SetContrast(contrast int) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_setContrast(this.h, (C.int)(contrast))
 }
 
 func (this *QVideoWindowControl) Hue() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWindowControl_hue(this.h))
 }
 
 func (this *QVideoWindowControl) SetHue(hue int) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_setHue(this.h, (C.int)(hue))
 }
 
 func (this *QVideoWindowControl) Saturation() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QVideoWindowControl_saturation(this.h))
 }
 
 func (this *QVideoWindowControl) SetSaturation(saturation int) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_setSaturation(this.h, (C.int)(saturation))
 }
 
 func (this *QVideoWindowControl) FullScreenChanged(fullScreen bool) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_fullScreenChanged(this.h, (C.bool)(fullScreen))
 }
 func (this *QVideoWindowControl) OnFullScreenChanged(slot func(fullScreen bool)) {
@@ -206,7 +185,6 @@ func miqt_exec_callback_QVideoWindowControl_fullScreenChanged(cb C.intptr_t, ful
 }
 
 func (this *QVideoWindowControl) BrightnessChanged(brightness int) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_brightnessChanged(this.h, (C.int)(brightness))
 }
 func (this *QVideoWindowControl) OnBrightnessChanged(slot func(brightness int)) {
@@ -227,7 +205,6 @@ func miqt_exec_callback_QVideoWindowControl_brightnessChanged(cb C.intptr_t, bri
 }
 
 func (this *QVideoWindowControl) ContrastChanged(contrast int) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_contrastChanged(this.h, (C.int)(contrast))
 }
 func (this *QVideoWindowControl) OnContrastChanged(slot func(contrast int)) {
@@ -248,7 +225,6 @@ func miqt_exec_callback_QVideoWindowControl_contrastChanged(cb C.intptr_t, contr
 }
 
 func (this *QVideoWindowControl) HueChanged(hue int) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_hueChanged(this.h, (C.int)(hue))
 }
 func (this *QVideoWindowControl) OnHueChanged(slot func(hue int)) {
@@ -269,7 +245,6 @@ func miqt_exec_callback_QVideoWindowControl_hueChanged(cb C.intptr_t, hue C.int)
 }
 
 func (this *QVideoWindowControl) SaturationChanged(saturation int) {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_saturationChanged(this.h, (C.int)(saturation))
 }
 func (this *QVideoWindowControl) OnSaturationChanged(slot func(saturation int)) {
@@ -290,7 +265,6 @@ func miqt_exec_callback_QVideoWindowControl_saturationChanged(cb C.intptr_t, sat
 }
 
 func (this *QVideoWindowControl) NativeSizeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QVideoWindowControl_nativeSizeChanged(this.h)
 }
 func (this *QVideoWindowControl) OnNativeSizeChanged(slot func()) {
@@ -359,6 +333,8 @@ func (this *QVideoWindowControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QVideoWindowControl) GoGC() {
 	if this.gc != nil {
 		return

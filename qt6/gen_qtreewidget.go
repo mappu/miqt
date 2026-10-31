@@ -93,14 +93,12 @@ func NewQTreeWidgetItem2(strings []string) *QTreeWidgetItem {
 
 // NewQTreeWidgetItem3 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem3(treeview *QTreeWidget) *QTreeWidgetItem {
-	defer runtime.KeepAlive(treeview)
 
 	return newQTreeWidgetItem(C.QTreeWidgetItem_new3(treeview.cPointer()))
 }
 
 // NewQTreeWidgetItem4 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem4(treeview *QTreeWidget, strings []string) *QTreeWidgetItem {
-	defer runtime.KeepAlive(treeview)
 	strings_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray_ptr))
 	strings_CArray := unsafe.Slice(strings_CArray_ptr, len(strings))
@@ -118,7 +116,6 @@ func NewQTreeWidgetItem4(treeview *QTreeWidget, strings []string) *QTreeWidgetIt
 
 // NewQTreeWidgetItem5 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem5(treeview *QTreeWidget, after *QTreeWidgetItem) *QTreeWidgetItem {
-	defer runtime.KeepAlive(treeview)
 	defer runtime.KeepAlive(after)
 
 	return newQTreeWidgetItem(C.QTreeWidgetItem_new5(treeview.cPointer(), after.cPointer()))
@@ -189,14 +186,12 @@ func NewQTreeWidgetItem11(strings []string, typeVal int) *QTreeWidgetItem {
 
 // NewQTreeWidgetItem12 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem12(treeview *QTreeWidget, typeVal int) *QTreeWidgetItem {
-	defer runtime.KeepAlive(treeview)
 
 	return newQTreeWidgetItem(C.QTreeWidgetItem_new12(treeview.cPointer(), (C.int)(typeVal)))
 }
 
 // NewQTreeWidgetItem13 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem13(treeview *QTreeWidget, strings []string, typeVal int) *QTreeWidgetItem {
-	defer runtime.KeepAlive(treeview)
 	strings_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray_ptr))
 	strings_CArray := unsafe.Slice(strings_CArray_ptr, len(strings))
@@ -214,7 +209,6 @@ func NewQTreeWidgetItem13(treeview *QTreeWidget, strings []string, typeVal int) 
 
 // NewQTreeWidgetItem14 constructs a new QTreeWidgetItem object.
 func NewQTreeWidgetItem14(treeview *QTreeWidget, after *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
-	defer runtime.KeepAlive(treeview)
 	defer runtime.KeepAlive(after)
 
 	return newQTreeWidgetItem(C.QTreeWidgetItem_new14(treeview.cPointer(), after.cPointer(), (C.int)(typeVal)))
@@ -886,7 +880,6 @@ func UnsafeNewQTreeWidget(h unsafe.Pointer) *QTreeWidget {
 
 // NewQTreeWidget constructs a new QTreeWidget object.
 func NewQTreeWidget(parent *QWidget) *QTreeWidget {
-	defer runtime.KeepAlive(parent)
 
 	return newQTreeWidget(C.QTreeWidget_new(parent.cPointer()))
 }
@@ -898,12 +891,10 @@ func NewQTreeWidget2() *QTreeWidget {
 }
 
 func (this *QTreeWidget) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTreeWidget_metaObject(this.h))
 }
 
 func (this *QTreeWidget) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTreeWidget_metacast(this.h, param1_Cstring))
@@ -919,55 +910,45 @@ func QTreeWidget_Tr(s string) string {
 }
 
 func (this *QTreeWidget) ColumnCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTreeWidget_columnCount(this.h))
 }
 
 func (this *QTreeWidget) SetColumnCount(columns int) {
-	defer runtime.KeepAlive(this)
 	C.QTreeWidget_setColumnCount(this.h, (C.int)(columns))
 }
 
 func (this *QTreeWidget) InvisibleRootItem() *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	return newQTreeWidgetItem(C.QTreeWidget_invisibleRootItem(this.h))
 }
 
 func (this *QTreeWidget) TopLevelItem(index int) *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	return newQTreeWidgetItem(C.QTreeWidget_topLevelItem(this.h, (C.int)(index)))
 }
 
 func (this *QTreeWidget) TopLevelItemCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTreeWidget_topLevelItemCount(this.h))
 }
 
 func (this *QTreeWidget) InsertTopLevelItem(index int, item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_insertTopLevelItem(this.h, (C.int)(index), item.cPointer())
 }
 
 func (this *QTreeWidget) AddTopLevelItem(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_addTopLevelItem(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) TakeTopLevelItem(index int) *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	return newQTreeWidgetItem(C.QTreeWidget_takeTopLevelItem(this.h, (C.int)(index)))
 }
 
 func (this *QTreeWidget) IndexOfTopLevelItem(item *QTreeWidgetItem) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	return (int)(C.QTreeWidget_indexOfTopLevelItem(this.h, item.cPointer()))
 }
 
 func (this *QTreeWidget) InsertTopLevelItems(index int, items []*QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QTreeWidgetItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
@@ -980,7 +961,6 @@ func (this *QTreeWidget) InsertTopLevelItems(index int, items []*QTreeWidgetItem
 }
 
 func (this *QTreeWidget) AddTopLevelItems(items []*QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QTreeWidgetItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
@@ -993,18 +973,15 @@ func (this *QTreeWidget) AddTopLevelItems(items []*QTreeWidgetItem) {
 }
 
 func (this *QTreeWidget) HeaderItem() *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	return newQTreeWidgetItem(C.QTreeWidget_headerItem(this.h))
 }
 
 func (this *QTreeWidget) SetHeaderItem(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_setHeaderItem(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) SetHeaderLabels(labels []string) {
-	defer runtime.KeepAlive(this)
 	labels_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
 	defer C.free(unsafe.Pointer(labels_CArray_ptr))
 	labels_CArray := unsafe.Slice(labels_CArray_ptr, len(labels))
@@ -1020,7 +997,6 @@ func (this *QTreeWidget) SetHeaderLabels(labels []string) {
 }
 
 func (this *QTreeWidget) SetHeaderLabel(label string) {
-	defer runtime.KeepAlive(this)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -1029,46 +1005,38 @@ func (this *QTreeWidget) SetHeaderLabel(label string) {
 }
 
 func (this *QTreeWidget) CurrentItem() *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	return newQTreeWidgetItem(C.QTreeWidget_currentItem(this.h))
 }
 
 func (this *QTreeWidget) CurrentColumn() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTreeWidget_currentColumn(this.h))
 }
 
 func (this *QTreeWidget) SetCurrentItem(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_setCurrentItem(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) SetCurrentItem2(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_setCurrentItem2(this.h, item.cPointer(), (C.int)(column))
 }
 
 func (this *QTreeWidget) SetCurrentItem3(item *QTreeWidgetItem, column int, command QItemSelectionModel__SelectionFlag) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_setCurrentItem3(this.h, item.cPointer(), (C.int)(column), (C.int)(command))
 }
 
 func (this *QTreeWidget) ItemAt(p *QPoint) *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
 	return newQTreeWidgetItem(C.QTreeWidget_itemAt(this.h, p.cPointer()))
 }
 
 func (this *QTreeWidget) ItemAt2(x int, y int) *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	return newQTreeWidgetItem(C.QTreeWidget_itemAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QTreeWidget) VisualItemRect(item *QTreeWidgetItem) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	_goptr := newQRect(C.QTreeWidget_visualItemRect(this.h, item.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1076,60 +1044,49 @@ func (this *QTreeWidget) VisualItemRect(item *QTreeWidgetItem) *QRect {
 }
 
 func (this *QTreeWidget) SortColumn() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTreeWidget_sortColumn(this.h))
 }
 
 func (this *QTreeWidget) SortItems(column int, order SortOrder) {
-	defer runtime.KeepAlive(this)
 	C.QTreeWidget_sortItems(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QTreeWidget) EditItem(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_editItem(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) OpenPersistentEditor(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_openPersistentEditor(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) ClosePersistentEditor(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_closePersistentEditor(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) IsPersistentEditorOpen(item *QTreeWidgetItem) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	return (bool)(C.QTreeWidget_isPersistentEditorOpen(this.h, item.cPointer()))
 }
 
 func (this *QTreeWidget) ItemWidget(item *QTreeWidgetItem, column int) *QWidget {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	return newQWidget(C.QTreeWidget_itemWidget(this.h, item.cPointer(), (C.int)(column)))
 }
 
 func (this *QTreeWidget) SetItemWidget(item *QTreeWidgetItem, column int, widget *QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
-	defer runtime.KeepAlive(widget)
 	C.QTreeWidget_setItemWidget(this.h, item.cPointer(), (C.int)(column), widget.cPointer())
 }
 
 func (this *QTreeWidget) RemoveItemWidget(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_removeItemWidget(this.h, item.cPointer(), (C.int)(column))
 }
 
 func (this *QTreeWidget) SelectedItems() []*QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTreeWidget_selectedItems(this.h)
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -1140,7 +1097,6 @@ func (this *QTreeWidget) SelectedItems() []*QTreeWidgetItem {
 }
 
 func (this *QTreeWidget) FindItems(text string, flags MatchFlag) []*QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1155,19 +1111,16 @@ func (this *QTreeWidget) FindItems(text string, flags MatchFlag) []*QTreeWidgetI
 }
 
 func (this *QTreeWidget) ItemAbove(item *QTreeWidgetItem) *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	return newQTreeWidgetItem(C.QTreeWidget_itemAbove(this.h, item.cPointer()))
 }
 
 func (this *QTreeWidget) ItemBelow(item *QTreeWidgetItem) *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	return newQTreeWidgetItem(C.QTreeWidget_itemBelow(this.h, item.cPointer()))
 }
 
 func (this *QTreeWidget) IndexFromItem(item *QTreeWidgetItem) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	_goptr := newQModelIndex(C.QTreeWidget_indexFromItem(this.h, item.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1175,42 +1128,34 @@ func (this *QTreeWidget) IndexFromItem(item *QTreeWidgetItem) *QModelIndex {
 }
 
 func (this *QTreeWidget) ItemFromIndex(index *QModelIndex) *QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return newQTreeWidgetItem(C.QTreeWidget_itemFromIndex(this.h, index.cPointer()))
 }
 
 func (this *QTreeWidget) SetSelectionModel(selectionModel *QItemSelectionModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(selectionModel)
 	C.QTreeWidget_setSelectionModel(this.h, selectionModel.cPointer())
 }
 
 func (this *QTreeWidget) ScrollToItem(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_scrollToItem(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) ExpandItem(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_expandItem(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) CollapseItem(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_collapseItem(this.h, item.cPointer())
 }
 
 func (this *QTreeWidget) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QTreeWidget_clear(this.h)
 }
 
 func (this *QTreeWidget) ItemPressed(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_itemPressed(this.h, item.cPointer(), (C.int)(column))
 }
@@ -1234,7 +1179,6 @@ func miqt_exec_callback_QTreeWidget_itemPressed(cb C.intptr_t, item *C.QTreeWidg
 }
 
 func (this *QTreeWidget) ItemClicked(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_itemClicked(this.h, item.cPointer(), (C.int)(column))
 }
@@ -1258,7 +1202,6 @@ func miqt_exec_callback_QTreeWidget_itemClicked(cb C.intptr_t, item *C.QTreeWidg
 }
 
 func (this *QTreeWidget) ItemDoubleClicked(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_itemDoubleClicked(this.h, item.cPointer(), (C.int)(column))
 }
@@ -1282,7 +1225,6 @@ func miqt_exec_callback_QTreeWidget_itemDoubleClicked(cb C.intptr_t, item *C.QTr
 }
 
 func (this *QTreeWidget) ItemActivated(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_itemActivated(this.h, item.cPointer(), (C.int)(column))
 }
@@ -1306,7 +1248,6 @@ func miqt_exec_callback_QTreeWidget_itemActivated(cb C.intptr_t, item *C.QTreeWi
 }
 
 func (this *QTreeWidget) ItemEntered(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_itemEntered(this.h, item.cPointer(), (C.int)(column))
 }
@@ -1330,7 +1271,6 @@ func miqt_exec_callback_QTreeWidget_itemEntered(cb C.intptr_t, item *C.QTreeWidg
 }
 
 func (this *QTreeWidget) ItemChanged(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_itemChanged(this.h, item.cPointer(), (C.int)(column))
 }
@@ -1354,7 +1294,6 @@ func miqt_exec_callback_QTreeWidget_itemChanged(cb C.intptr_t, item *C.QTreeWidg
 }
 
 func (this *QTreeWidget) ItemExpanded(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_itemExpanded(this.h, item.cPointer())
 }
@@ -1376,7 +1315,6 @@ func miqt_exec_callback_QTreeWidget_itemExpanded(cb C.intptr_t, item *C.QTreeWid
 }
 
 func (this *QTreeWidget) ItemCollapsed(item *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_itemCollapsed(this.h, item.cPointer())
 }
@@ -1398,7 +1336,6 @@ func miqt_exec_callback_QTreeWidget_itemCollapsed(cb C.intptr_t, item *C.QTreeWi
 }
 
 func (this *QTreeWidget) CurrentItemChanged(current *QTreeWidgetItem, previous *QTreeWidgetItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(current)
 	defer runtime.KeepAlive(previous)
 	C.QTreeWidget_currentItemChanged(this.h, current.cPointer(), previous.cPointer())
@@ -1423,7 +1360,6 @@ func miqt_exec_callback_QTreeWidget_currentItemChanged(cb C.intptr_t, current *C
 }
 
 func (this *QTreeWidget) ItemSelectionChanged() {
-	defer runtime.KeepAlive(this)
 	C.QTreeWidget_itemSelectionChanged(this.h)
 }
 func (this *QTreeWidget) OnItemSelectionChanged(slot func()) {
@@ -1463,31 +1399,26 @@ func QTreeWidget_Tr3(s string, c string, n int) string {
 }
 
 func (this *QTreeWidget) EditItem2(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_editItem2(this.h, item.cPointer(), (C.int)(column))
 }
 
 func (this *QTreeWidget) OpenPersistentEditor2(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_openPersistentEditor2(this.h, item.cPointer(), (C.int)(column))
 }
 
 func (this *QTreeWidget) ClosePersistentEditor2(item *QTreeWidgetItem, column int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_closePersistentEditor2(this.h, item.cPointer(), (C.int)(column))
 }
 
 func (this *QTreeWidget) IsPersistentEditorOpen2(item *QTreeWidgetItem, column int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	return (bool)(C.QTreeWidget_isPersistentEditorOpen2(this.h, item.cPointer(), (C.int)(column)))
 }
 
 func (this *QTreeWidget) FindItems2(text string, flags MatchFlag, column int) []*QTreeWidgetItem {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1502,7 +1433,6 @@ func (this *QTreeWidget) FindItems2(text string, flags MatchFlag, column int) []
 }
 
 func (this *QTreeWidget) IndexFromItem2(item *QTreeWidgetItem, column int) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	_goptr := newQModelIndex(C.QTreeWidget_indexFromItem2(this.h, item.cPointer(), (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1510,14 +1440,12 @@ func (this *QTreeWidget) IndexFromItem2(item *QTreeWidgetItem, column int) *QMod
 }
 
 func (this *QTreeWidget) ScrollToItem2(item *QTreeWidgetItem, hint QAbstractItemView__ScrollHint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QTreeWidget_scrollToItem2(this.h, item.cPointer(), (C.int)(hint))
 }
 
 // ColumnResized can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) ColumnResized(column int, oldSize int, newSize int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_columnResized(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(column), (C.int)(oldSize), (C.int)(newSize))
@@ -1530,7 +1458,6 @@ func (this *QTreeWidget) ColumnResized(column int, oldSize int, newSize int) {
 
 // ColumnCountChanged can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) ColumnCountChanged(oldCount int, newCount int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_columnCountChanged(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(oldCount), (C.int)(newCount))
@@ -1543,7 +1470,6 @@ func (this *QTreeWidget) ColumnCountChanged(oldCount int, newCount int) {
 
 // ColumnMoved can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) ColumnMoved() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_columnMoved(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1556,7 +1482,6 @@ func (this *QTreeWidget) ColumnMoved() {
 
 // Reexpand can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) Reexpand() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_reexpand(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1569,7 +1494,6 @@ func (this *QTreeWidget) Reexpand() {
 
 // RowsRemoved can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) RowsRemoved(parent *QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1583,7 +1507,6 @@ func (this *QTreeWidget) RowsRemoved(parent *QModelIndex, first int, last int) {
 
 // DrawTree can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) DrawTree(painter *QPainter, region *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(region)
 
@@ -1598,7 +1521,6 @@ func (this *QTreeWidget) DrawTree(painter *QPainter, region *QRegion) {
 
 // IndexRowSizeHint can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) IndexRowSizeHint(index *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1614,7 +1536,6 @@ func (this *QTreeWidget) IndexRowSizeHint(index *QModelIndex) int {
 
 // RowHeight can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) RowHeight(index *QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1630,7 +1551,6 @@ func (this *QTreeWidget) RowHeight(index *QModelIndex) int {
 
 // State can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) State() QAbstractItemView__State {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__State)(C.QTreeWidget_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1645,7 +1565,6 @@ func (this *QTreeWidget) State() QAbstractItemView__State {
 
 // SetState can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) SetState(state QAbstractItemView__State) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -1658,7 +1577,6 @@ func (this *QTreeWidget) SetState(state QAbstractItemView__State) {
 
 // ScheduleDelayedItemsLayout can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) ScheduleDelayedItemsLayout() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1671,7 +1589,6 @@ func (this *QTreeWidget) ScheduleDelayedItemsLayout() {
 
 // ExecuteDelayedItemsLayout can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) ExecuteDelayedItemsLayout() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1684,7 +1601,6 @@ func (this *QTreeWidget) ExecuteDelayedItemsLayout() {
 
 // SetDirtyRegion can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) SetDirtyRegion(region *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(region)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1698,7 +1614,6 @@ func (this *QTreeWidget) SetDirtyRegion(region *QRegion) {
 
 // ScrollDirtyRegion can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) ScrollDirtyRegion(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
@@ -1711,7 +1626,6 @@ func (this *QTreeWidget) ScrollDirtyRegion(dx int, dy int) {
 
 // DirtyRegionOffset can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) DirtyRegionOffset() QPoint {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPoint(C.QTreeWidget_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1728,7 +1642,6 @@ func (this *QTreeWidget) DirtyRegionOffset() QPoint {
 
 // StartAutoScroll can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) StartAutoScroll() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1741,7 +1654,6 @@ func (this *QTreeWidget) StartAutoScroll() {
 
 // StopAutoScroll can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) StopAutoScroll() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1754,7 +1666,6 @@ func (this *QTreeWidget) StopAutoScroll() {
 
 // DoAutoScroll can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) DoAutoScroll() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1767,7 +1678,6 @@ func (this *QTreeWidget) DoAutoScroll() {
 
 // DropIndicatorPosition can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QTreeWidget_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1782,7 +1692,6 @@ func (this *QTreeWidget) DropIndicatorPosition() QAbstractItemView__DropIndicato
 
 // SetViewportMargins can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) SetViewportMargins(left int, top int, right int, bottom int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -1795,7 +1704,6 @@ func (this *QTreeWidget) SetViewportMargins(left int, top int, right int, bottom
 
 // ViewportMargins can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) ViewportMargins() QMargins {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QTreeWidget_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1812,7 +1720,6 @@ func (this *QTreeWidget) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) DrawFrame(param1 *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1826,7 +1733,6 @@ func (this *QTreeWidget) DrawFrame(param1 *QPainter) {
 
 // UpdateMicroFocus can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1839,7 +1745,6 @@ func (this *QTreeWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1852,7 +1757,6 @@ func (this *QTreeWidget) Create() {
 
 // Destroy can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTreeWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1865,7 +1769,6 @@ func (this *QTreeWidget) Destroy() {
 
 // FocusNextChild can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTreeWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1880,7 +1783,6 @@ func (this *QTreeWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTreeWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1895,7 +1797,6 @@ func (this *QTreeWidget) FocusPreviousChild() bool {
 
 // Sender can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTreeWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1910,7 +1811,6 @@ func (this *QTreeWidget) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTreeWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1925,7 +1825,6 @@ func (this *QTreeWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1942,7 +1841,6 @@ func (this *QTreeWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTreeWidget that was directly constructed.
 func (this *QTreeWidget) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1957,8 +1855,6 @@ func (this *QTreeWidget) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTreeWidget) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(selectionModel)
 
 	C.QTreeWidget_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
@@ -1985,7 +1881,6 @@ func miqt_exec_callback_QTreeWidget_setSelectionModel(self *C.QTreeWidget, cb C.
 }
 
 func (this *QTreeWidget) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QTreeWidget_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -2015,7 +1910,6 @@ func miqt_exec_callback_QTreeWidget_event(self *C.QTreeWidget, cb C.intptr_t, e 
 }
 
 func (this *QTreeWidget) callVirtualBase_MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QTreeWidget_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -2059,7 +1953,6 @@ func miqt_exec_callback_QTreeWidget_mimeTypes(self *C.QTreeWidget, cb C.intptr_t
 }
 
 func (this *QTreeWidget) callVirtualBase_MimeData(items []*QTreeWidgetItem) *QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(items)
 	items_CArray_ptr := (**C.QTreeWidgetItem)(C.malloc(C.size_t(8 * len(items))))
 	defer C.free(unsafe.Pointer(items_CArray_ptr))
@@ -2096,16 +1989,13 @@ func miqt_exec_callback_QTreeWidget_mimeData(self *C.QTreeWidget, cb C.intptr_t,
 	slotval1 := items_ret
 
 	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_MimeData, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTreeWidget) callVirtualBase_DropMimeData(parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
-	defer runtime.KeepAlive(data)
 
 	return (bool)(C.QTreeWidget_virtualbase_dropMimeData(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(index), data.cPointer(), (C.int)(action)))
 
@@ -2140,7 +2030,6 @@ func miqt_exec_callback_QTreeWidget_dropMimeData(self *C.QTreeWidget, cb C.intpt
 }
 
 func (this *QTreeWidget) callVirtualBase_SupportedDropActions() DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (DropAction)(C.QTreeWidget_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -2166,7 +2055,6 @@ func miqt_exec_callback_QTreeWidget_supportedDropActions(self *C.QTreeWidget, cb
 }
 
 func (this *QTreeWidget) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2194,7 +2082,6 @@ func miqt_exec_callback_QTreeWidget_dropEvent(self *C.QTreeWidget, cb C.intptr_t
 }
 
 func (this *QTreeWidget) callVirtualBase_SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	C.QTreeWidget_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
@@ -2222,7 +2109,6 @@ func miqt_exec_callback_QTreeWidget_setRootIndex(self *C.QTreeWidget, cb C.intpt
 }
 
 func (this *QTreeWidget) callVirtualBase_KeyboardSearch(search string) {
-	defer runtime.KeepAlive(this)
 	search_ms := C.struct_miqt_string{}
 	search_ms.data = C.CString(search)
 	search_ms.len = C.size_t(len(search))
@@ -2256,7 +2142,6 @@ func miqt_exec_callback_QTreeWidget_keyboardSearch(self *C.QTreeWidget, cb C.int
 }
 
 func (this *QTreeWidget) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQRect(C.QTreeWidget_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))
@@ -2289,7 +2174,6 @@ func miqt_exec_callback_QTreeWidget_visualRect(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	C.QTreeWidget_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
@@ -2319,7 +2203,6 @@ func miqt_exec_callback_QTreeWidget_scrollTo(self *C.QTreeWidget, cb C.intptr_t,
 }
 
 func (this *QTreeWidget) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
 
 	_goptr := newQModelIndex(C.QTreeWidget_virtualbase_indexAt(unsafe.Pointer(this.h), p.cPointer()))
@@ -2352,7 +2235,6 @@ func miqt_exec_callback_QTreeWidget_indexAt(self *C.QTreeWidget, cb C.intptr_t, 
 }
 
 func (this *QTreeWidget) callVirtualBase_DoItemsLayout() {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
@@ -2376,7 +2258,6 @@ func miqt_exec_callback_QTreeWidget_doItemsLayout(self *C.QTreeWidget, cb C.intp
 }
 
 func (this *QTreeWidget) callVirtualBase_Reset() {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -2400,7 +2281,6 @@ func miqt_exec_callback_QTreeWidget_reset(self *C.QTreeWidget, cb C.intptr_t) {
 }
 
 func (this *QTreeWidget) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(topLeft)
 	defer runtime.KeepAlive(bottomRight)
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -2446,7 +2326,6 @@ func miqt_exec_callback_QTreeWidget_dataChanged(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_SelectAll() {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_selectAll(unsafe.Pointer(this.h))
 
@@ -2470,7 +2349,6 @@ func miqt_exec_callback_QTreeWidget_selectAll(self *C.QTreeWidget, cb C.intptr_t
 }
 
 func (this *QTreeWidget) callVirtualBase_VerticalScrollbarValueChanged(value int) {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -2497,7 +2375,6 @@ func miqt_exec_callback_QTreeWidget_verticalScrollbarValueChanged(self *C.QTreeW
 }
 
 func (this *QTreeWidget) callVirtualBase_ScrollContentsBy(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -2526,7 +2403,6 @@ func miqt_exec_callback_QTreeWidget_scrollContentsBy(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QTreeWidget_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
@@ -2558,7 +2434,6 @@ func miqt_exec_callback_QTreeWidget_rowsInserted(self *C.QTreeWidget, cb C.intpt
 }
 
 func (this *QTreeWidget) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QTreeWidget_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
@@ -2590,7 +2465,6 @@ func miqt_exec_callback_QTreeWidget_rowsAboutToBeRemoved(self *C.QTreeWidget, cb
 }
 
 func (this *QTreeWidget) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQModelIndex(C.QTreeWidget_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2624,7 +2498,6 @@ func miqt_exec_callback_QTreeWidget_moveCursor(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_HorizontalOffset() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTreeWidget_virtualbase_horizontalOffset(unsafe.Pointer(this.h)))
 
@@ -2650,7 +2523,6 @@ func miqt_exec_callback_QTreeWidget_horizontalOffset(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_VerticalOffset() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTreeWidget_virtualbase_verticalOffset(unsafe.Pointer(this.h)))
 
@@ -2676,7 +2548,6 @@ func miqt_exec_callback_QTreeWidget_verticalOffset(self *C.QTreeWidget, cb C.int
 }
 
 func (this *QTreeWidget) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 
 	C.QTreeWidget_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
@@ -2706,7 +2577,6 @@ func miqt_exec_callback_QTreeWidget_setSelection(self *C.QTreeWidget, cb C.intpt
 }
 
 func (this *QTreeWidget) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selection)
 
 	_goptr := newQRegion(C.QTreeWidget_virtualbase_visualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
@@ -2739,7 +2609,6 @@ func miqt_exec_callback_QTreeWidget_visualRegionForSelection(self *C.QTreeWidget
 }
 
 func (this *QTreeWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QTreeWidget_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -2780,7 +2649,6 @@ func miqt_exec_callback_QTreeWidget_selectedIndexes(self *C.QTreeWidget, cb C.in
 }
 
 func (this *QTreeWidget) callVirtualBase_ChangeEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2808,7 +2676,6 @@ func miqt_exec_callback_QTreeWidget_changeEvent(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2836,7 +2703,6 @@ func miqt_exec_callback_QTreeWidget_timerEvent(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2864,7 +2730,6 @@ func miqt_exec_callback_QTreeWidget_paintEvent(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_DrawRow(painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(options)
 	defer runtime.KeepAlive(index)
@@ -2898,7 +2763,6 @@ func miqt_exec_callback_QTreeWidget_drawRow(self *C.QTreeWidget, cb C.intptr_t, 
 }
 
 func (this *QTreeWidget) callVirtualBase_DrawBranches(painter *QPainter, rect *QRect, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(rect)
 	defer runtime.KeepAlive(index)
@@ -2932,7 +2796,6 @@ func miqt_exec_callback_QTreeWidget_drawBranches(self *C.QTreeWidget, cb C.intpt
 }
 
 func (this *QTreeWidget) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2960,7 +2823,6 @@ func miqt_exec_callback_QTreeWidget_mousePressEvent(self *C.QTreeWidget, cb C.in
 }
 
 func (this *QTreeWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2988,7 +2850,6 @@ func miqt_exec_callback_QTreeWidget_mouseReleaseEvent(self *C.QTreeWidget, cb C.
 }
 
 func (this *QTreeWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3016,7 +2877,6 @@ func miqt_exec_callback_QTreeWidget_mouseDoubleClickEvent(self *C.QTreeWidget, c
 }
 
 func (this *QTreeWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3044,7 +2904,6 @@ func miqt_exec_callback_QTreeWidget_mouseMoveEvent(self *C.QTreeWidget, cb C.int
 }
 
 func (this *QTreeWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3072,7 +2931,6 @@ func miqt_exec_callback_QTreeWidget_keyPressEvent(self *C.QTreeWidget, cb C.intp
 }
 
 func (this *QTreeWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3100,7 +2958,6 @@ func miqt_exec_callback_QTreeWidget_dragMoveEvent(self *C.QTreeWidget, cb C.intp
 }
 
 func (this *QTreeWidget) callVirtualBase_ViewportEvent(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTreeWidget_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
@@ -3130,7 +2987,6 @@ func miqt_exec_callback_QTreeWidget_viewportEvent(self *C.QTreeWidget, cb C.intp
 }
 
 func (this *QTreeWidget) callVirtualBase_UpdateGeometries() {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
@@ -3154,7 +3010,6 @@ func miqt_exec_callback_QTreeWidget_updateGeometries(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_ViewportSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTreeWidget_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3183,7 +3038,6 @@ func miqt_exec_callback_QTreeWidget_viewportSizeHint(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_SizeHintForColumn(column int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTreeWidget_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
@@ -3212,7 +3066,6 @@ func miqt_exec_callback_QTreeWidget_sizeHintForColumn(self *C.QTreeWidget, cb C.
 }
 
 func (this *QTreeWidget) callVirtualBase_HorizontalScrollbarAction(action int) {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -3239,7 +3092,6 @@ func miqt_exec_callback_QTreeWidget_horizontalScrollbarAction(self *C.QTreeWidge
 }
 
 func (this *QTreeWidget) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QTreeWidget_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
@@ -3269,7 +3121,6 @@ func miqt_exec_callback_QTreeWidget_isIndexHidden(self *C.QTreeWidget, cb C.intp
 }
 
 func (this *QTreeWidget) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selected)
 	defer runtime.KeepAlive(deselected)
 
@@ -3300,7 +3151,6 @@ func miqt_exec_callback_QTreeWidget_selectionChanged(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(current)
 	defer runtime.KeepAlive(previous)
 
@@ -3331,7 +3181,6 @@ func miqt_exec_callback_QTreeWidget_currentChanged(self *C.QTreeWidget, cb C.int
 }
 
 func (this *QTreeWidget) callVirtualBase_SizeHintForRow(row int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTreeWidget_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
@@ -3360,7 +3209,6 @@ func miqt_exec_callback_QTreeWidget_sizeHintForRow(self *C.QTreeWidget, cb C.int
 }
 
 func (this *QTreeWidget) callVirtualBase_ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return newQAbstractItemDelegate(C.QTreeWidget_virtualbase_itemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
@@ -3384,14 +3232,12 @@ func miqt_exec_callback_QTreeWidget_itemDelegateForIndex(self *C.QTreeWidget, cb
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QTreeWidget{h: self}).callVirtualBase_ItemDelegateForIndex, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTreeWidget) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QTreeWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3423,7 +3269,6 @@ func miqt_exec_callback_QTreeWidget_inputMethodQuery(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_UpdateEditorData() {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
@@ -3447,7 +3292,6 @@ func miqt_exec_callback_QTreeWidget_updateEditorData(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_UpdateEditorGeometries() {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
@@ -3471,7 +3315,6 @@ func miqt_exec_callback_QTreeWidget_updateEditorGeometries(self *C.QTreeWidget, 
 }
 
 func (this *QTreeWidget) callVirtualBase_VerticalScrollbarAction(action int) {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -3498,7 +3341,6 @@ func miqt_exec_callback_QTreeWidget_verticalScrollbarAction(self *C.QTreeWidget,
 }
 
 func (this *QTreeWidget) callVirtualBase_HorizontalScrollbarValueChanged(value int) {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -3525,8 +3367,6 @@ func miqt_exec_callback_QTreeWidget_horizontalScrollbarValueChanged(self *C.QTre
 }
 
 func (this *QTreeWidget) callVirtualBase_CloseEditor(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QTreeWidget_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
@@ -3555,8 +3395,6 @@ func miqt_exec_callback_QTreeWidget_closeEditor(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_CommitData(editor *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QTreeWidget_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -3583,8 +3421,6 @@ func miqt_exec_callback_QTreeWidget_commitData(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_EditorDestroyed(editor *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QTreeWidget_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -3611,7 +3447,6 @@ func miqt_exec_callback_QTreeWidget_editorDestroyed(self *C.QTreeWidget, cb C.in
 }
 
 func (this *QTreeWidget) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(event)
 
@@ -3646,7 +3481,6 @@ func miqt_exec_callback_QTreeWidget_edit2(self *C.QTreeWidget, cb C.intptr_t, in
 }
 
 func (this *QTreeWidget) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(event)
 
@@ -3679,7 +3513,6 @@ func miqt_exec_callback_QTreeWidget_selectionCommand(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_StartDrag(supportedActions DropAction) {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
@@ -3706,7 +3539,6 @@ func miqt_exec_callback_QTreeWidget_startDrag(self *C.QTreeWidget, cb C.intptr_t
 }
 
 func (this *QTreeWidget) callVirtualBase_InitViewItemOption(option *QStyleOptionViewItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QTreeWidget_virtualbase_initViewItemOption(unsafe.Pointer(this.h), option.cPointer())
@@ -3734,7 +3566,6 @@ func miqt_exec_callback_QTreeWidget_initViewItemOption(self *C.QTreeWidget, cb C
 }
 
 func (this *QTreeWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTreeWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -3763,7 +3594,6 @@ func miqt_exec_callback_QTreeWidget_focusNextPrevChild(self *C.QTreeWidget, cb C
 }
 
 func (this *QTreeWidget) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3791,7 +3621,6 @@ func miqt_exec_callback_QTreeWidget_dragEnterEvent(self *C.QTreeWidget, cb C.int
 }
 
 func (this *QTreeWidget) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3819,7 +3648,6 @@ func miqt_exec_callback_QTreeWidget_dragLeaveEvent(self *C.QTreeWidget, cb C.int
 }
 
 func (this *QTreeWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3847,7 +3675,6 @@ func miqt_exec_callback_QTreeWidget_focusInEvent(self *C.QTreeWidget, cb C.intpt
 }
 
 func (this *QTreeWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3875,7 +3702,6 @@ func miqt_exec_callback_QTreeWidget_focusOutEvent(self *C.QTreeWidget, cb C.intp
 }
 
 func (this *QTreeWidget) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3903,7 +3729,6 @@ func miqt_exec_callback_QTreeWidget_resizeEvent(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3931,8 +3756,6 @@ func miqt_exec_callback_QTreeWidget_inputMethodEvent(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTreeWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
@@ -3964,7 +3787,6 @@ func miqt_exec_callback_QTreeWidget_eventFilter(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTreeWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3993,7 +3815,6 @@ func miqt_exec_callback_QTreeWidget_minimumSizeHint(self *C.QTreeWidget, cb C.in
 }
 
 func (this *QTreeWidget) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTreeWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -4022,8 +3843,6 @@ func miqt_exec_callback_QTreeWidget_sizeHint(self *C.QTreeWidget, cb C.intptr_t)
 }
 
 func (this *QTreeWidget) callVirtualBase_SetupViewport(viewport *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewport)
 
 	C.QTreeWidget_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -4050,7 +3869,6 @@ func miqt_exec_callback_QTreeWidget_setupViewport(self *C.QTreeWidget, cb C.intp
 }
 
 func (this *QTreeWidget) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QTreeWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -4078,7 +3896,6 @@ func miqt_exec_callback_QTreeWidget_wheelEvent(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QTreeWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -4106,7 +3923,6 @@ func miqt_exec_callback_QTreeWidget_contextMenuEvent(self *C.QTreeWidget, cb C.i
 }
 
 func (this *QTreeWidget) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QTreeWidget_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
@@ -4134,7 +3950,6 @@ func miqt_exec_callback_QTreeWidget_initStyleOption(self *C.QTreeWidget, cb C.in
 }
 
 func (this *QTreeWidget) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTreeWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -4160,7 +3975,6 @@ func miqt_exec_callback_QTreeWidget_devType(self *C.QTreeWidget, cb C.intptr_t) 
 }
 
 func (this *QTreeWidget) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QTreeWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -4187,7 +4001,6 @@ func miqt_exec_callback_QTreeWidget_setVisible(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTreeWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -4216,7 +4029,6 @@ func miqt_exec_callback_QTreeWidget_heightForWidth(self *C.QTreeWidget, cb C.int
 }
 
 func (this *QTreeWidget) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTreeWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -4242,7 +4054,6 @@ func miqt_exec_callback_QTreeWidget_hasHeightForWidth(self *C.QTreeWidget, cb C.
 }
 
 func (this *QTreeWidget) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QTreeWidget_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -4269,7 +4080,6 @@ func miqt_exec_callback_QTreeWidget_paintEngine(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4297,7 +4107,6 @@ func miqt_exec_callback_QTreeWidget_keyReleaseEvent(self *C.QTreeWidget, cb C.in
 }
 
 func (this *QTreeWidget) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4325,7 +4134,6 @@ func miqt_exec_callback_QTreeWidget_enterEvent(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4353,7 +4161,6 @@ func miqt_exec_callback_QTreeWidget_leaveEvent(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4381,7 +4188,6 @@ func miqt_exec_callback_QTreeWidget_moveEvent(self *C.QTreeWidget, cb C.intptr_t
 }
 
 func (this *QTreeWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4409,7 +4215,6 @@ func miqt_exec_callback_QTreeWidget_closeEvent(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4437,7 +4242,6 @@ func miqt_exec_callback_QTreeWidget_tabletEvent(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4465,7 +4269,6 @@ func miqt_exec_callback_QTreeWidget_actionEvent(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4493,7 +4296,6 @@ func miqt_exec_callback_QTreeWidget_showEvent(self *C.QTreeWidget, cb C.intptr_t
 }
 
 func (this *QTreeWidget) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4521,7 +4323,6 @@ func miqt_exec_callback_QTreeWidget_hideEvent(self *C.QTreeWidget, cb C.intptr_t
 }
 
 func (this *QTreeWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -4563,7 +4364,6 @@ func miqt_exec_callback_QTreeWidget_nativeEvent(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTreeWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -4592,7 +4392,6 @@ func miqt_exec_callback_QTreeWidget_metric(self *C.QTreeWidget, cb C.intptr_t, p
 }
 
 func (this *QTreeWidget) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QTreeWidget_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -4620,7 +4419,6 @@ func miqt_exec_callback_QTreeWidget_initPainter(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTreeWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -4651,7 +4449,6 @@ func miqt_exec_callback_QTreeWidget_redirected(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QTreeWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -4678,7 +4475,6 @@ func miqt_exec_callback_QTreeWidget_sharedPainter(self *C.QTreeWidget, cb C.intp
 }
 
 func (this *QTreeWidget) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4706,7 +4502,6 @@ func miqt_exec_callback_QTreeWidget_childEvent(self *C.QTreeWidget, cb C.intptr_
 }
 
 func (this *QTreeWidget) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTreeWidget_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -4734,7 +4529,6 @@ func miqt_exec_callback_QTreeWidget_customEvent(self *C.QTreeWidget, cb C.intptr
 }
 
 func (this *QTreeWidget) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTreeWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -4762,7 +4556,6 @@ func miqt_exec_callback_QTreeWidget_connectNotify(self *C.QTreeWidget, cb C.intp
 }
 
 func (this *QTreeWidget) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTreeWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -4797,6 +4590,8 @@ func (this *QTreeWidget) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTreeWidget) GoGC() {
 	if this.gc != nil {
 		return

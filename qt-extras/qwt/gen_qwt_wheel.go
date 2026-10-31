@@ -60,7 +60,6 @@ func UnsafeNewQwtWheel(h unsafe.Pointer) *QwtWheel {
 
 // NewQwtWheel constructs a new QwtWheel object.
 func NewQwtWheel(parent *qt.QWidget) *QwtWheel {
-	defer runtime.KeepAlive(parent)
 
 	return newQwtWheel(C.QwtWheel_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -72,12 +71,10 @@ func NewQwtWheel2() *QwtWheel {
 }
 
 func (this *QwtWheel) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtWheel_metaObject(this.h)))
 }
 
 func (this *QwtWheel) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtWheel_metacast(this.h, param1_Cstring))
@@ -102,192 +99,154 @@ func QwtWheel_TrUtf8(s string) string {
 }
 
 func (this *QwtWheel) Value() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtWheel_value(this.h))
 }
 
 func (this *QwtWheel) SetOrientation(orientation qt.Orientation) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QwtWheel) Orientation() qt.Orientation {
-	defer runtime.KeepAlive(this)
 	return (qt.Orientation)(C.QwtWheel_orientation(this.h))
 }
 
 func (this *QwtWheel) TotalAngle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtWheel_totalAngle(this.h))
 }
 
 func (this *QwtWheel) ViewAngle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtWheel_viewAngle(this.h))
 }
 
 func (this *QwtWheel) SetTickCount(tickCount int) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setTickCount(this.h, (C.int)(tickCount))
 }
 
 func (this *QwtWheel) TickCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtWheel_tickCount(this.h))
 }
 
 func (this *QwtWheel) SetWheelWidth(wheelWidth int) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setWheelWidth(this.h, (C.int)(wheelWidth))
 }
 
 func (this *QwtWheel) WheelWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtWheel_wheelWidth(this.h))
 }
 
 func (this *QwtWheel) SetWheelBorderWidth(wheelBorderWidth int) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setWheelBorderWidth(this.h, (C.int)(wheelBorderWidth))
 }
 
 func (this *QwtWheel) WheelBorderWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtWheel_wheelBorderWidth(this.h))
 }
 
 func (this *QwtWheel) SetBorderWidth(borderWidth int) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setBorderWidth(this.h, (C.int)(borderWidth))
 }
 
 func (this *QwtWheel) BorderWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtWheel_borderWidth(this.h))
 }
 
 func (this *QwtWheel) SetInverted(inverted bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setInverted(this.h, (C.bool)(inverted))
 }
 
 func (this *QwtWheel) IsInverted() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtWheel_isInverted(this.h))
 }
 
 func (this *QwtWheel) SetWrapping(wrapping bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setWrapping(this.h, (C.bool)(wrapping))
 }
 
 func (this *QwtWheel) Wrapping() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtWheel_wrapping(this.h))
 }
 
 func (this *QwtWheel) SetSingleStep(singleStep float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setSingleStep(this.h, (C.double)(singleStep))
 }
 
 func (this *QwtWheel) SingleStep() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtWheel_singleStep(this.h))
 }
 
 func (this *QwtWheel) SetPageStepCount(pageStepCount int) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setPageStepCount(this.h, (C.int)(pageStepCount))
 }
 
 func (this *QwtWheel) PageStepCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtWheel_pageStepCount(this.h))
 }
 
 func (this *QwtWheel) SetStepAlignment(on bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setStepAlignment(this.h, (C.bool)(on))
 }
 
 func (this *QwtWheel) StepAlignment() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtWheel_stepAlignment(this.h))
 }
 
 func (this *QwtWheel) SetRange(min float64, max float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setRange(this.h, (C.double)(min), (C.double)(max))
 }
 
 func (this *QwtWheel) SetMinimum(minimum float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setMinimum(this.h, (C.double)(minimum))
 }
 
 func (this *QwtWheel) Minimum() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtWheel_minimum(this.h))
 }
 
 func (this *QwtWheel) SetMaximum(maximum float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setMaximum(this.h, (C.double)(maximum))
 }
 
 func (this *QwtWheel) Maximum() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtWheel_maximum(this.h))
 }
 
 func (this *QwtWheel) SetUpdateInterval(updateInterval int) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setUpdateInterval(this.h, (C.int)(updateInterval))
 }
 
 func (this *QwtWheel) UpdateInterval() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtWheel_updateInterval(this.h))
 }
 
 func (this *QwtWheel) SetTracking(tracking bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setTracking(this.h, (C.bool)(tracking))
 }
 
 func (this *QwtWheel) IsTracking() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtWheel_isTracking(this.h))
 }
 
 func (this *QwtWheel) Mass() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtWheel_mass(this.h))
 }
 
 func (this *QwtWheel) SetValue(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setValue(this.h, (C.double)(value))
 }
 
 func (this *QwtWheel) SetTotalAngle(totalAngle float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setTotalAngle(this.h, (C.double)(totalAngle))
 }
 
 func (this *QwtWheel) SetViewAngle(viewAngle float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setViewAngle(this.h, (C.double)(viewAngle))
 }
 
 func (this *QwtWheel) SetMass(mass float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_setMass(this.h, (C.double)(mass))
 }
 
 func (this *QwtWheel) ValueChanged(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_valueChanged(this.h, (C.double)(value))
 }
 func (this *QwtWheel) OnValueChanged(slot func(value float64)) {
@@ -308,7 +267,6 @@ func miqt_exec_callback_QwtWheel_valueChanged(cb C.intptr_t, value C.double) {
 }
 
 func (this *QwtWheel) WheelPressed() {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_wheelPressed(this.h)
 }
 func (this *QwtWheel) OnWheelPressed(slot func()) {
@@ -326,7 +284,6 @@ func miqt_exec_callback_QwtWheel_wheelPressed(cb C.intptr_t) {
 }
 
 func (this *QwtWheel) WheelReleased() {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_wheelReleased(this.h)
 }
 func (this *QwtWheel) OnWheelReleased(slot func()) {
@@ -344,7 +301,6 @@ func miqt_exec_callback_QwtWheel_wheelReleased(cb C.intptr_t) {
 }
 
 func (this *QwtWheel) WheelMoved(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtWheel_wheelMoved(this.h, (C.double)(value))
 }
 func (this *QwtWheel) OnWheelMoved(slot func(value float64)) {
@@ -410,7 +366,6 @@ func QwtWheel_TrUtf83(s string, c string, n int) string {
 
 // StopFlying can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) StopFlying() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtWheel_protectedbase_stopFlying(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -423,7 +378,6 @@ func (this *QwtWheel) StopFlying() {
 
 // WheelRect can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) WheelRect() qt.QRect {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtWheel_protectedbase_wheelRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -440,7 +394,6 @@ func (this *QwtWheel) WheelRect() qt.QRect {
 
 // UpdateMicroFocus can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtWheel_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -453,7 +406,6 @@ func (this *QwtWheel) UpdateMicroFocus() {
 
 // Create can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtWheel_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -466,7 +418,6 @@ func (this *QwtWheel) Create() {
 
 // Destroy can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtWheel_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -479,7 +430,6 @@ func (this *QwtWheel) Destroy() {
 
 // FocusNextChild can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtWheel_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -494,7 +444,6 @@ func (this *QwtWheel) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtWheel_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -509,7 +458,6 @@ func (this *QwtWheel) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtWheel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -524,7 +472,6 @@ func (this *QwtWheel) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtWheel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -539,7 +486,6 @@ func (this *QwtWheel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -556,7 +502,6 @@ func (this *QwtWheel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtWheel that was directly constructed.
 func (this *QwtWheel) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -571,7 +516,6 @@ func (this *QwtWheel) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtWheel) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWheel_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(param1.UnsafePointer()))
@@ -599,7 +543,6 @@ func miqt_exec_callback_QwtWheel_paintEvent(self *C.QwtWheel, cb C.intptr_t, par
 }
 
 func (this *QwtWheel) callVirtualBase_MousePressEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWheel_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -627,7 +570,6 @@ func miqt_exec_callback_QwtWheel_mousePressEvent(self *C.QwtWheel, cb C.intptr_t
 }
 
 func (this *QwtWheel) callVirtualBase_MouseReleaseEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWheel_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -655,7 +597,6 @@ func miqt_exec_callback_QwtWheel_mouseReleaseEvent(self *C.QwtWheel, cb C.intptr
 }
 
 func (this *QwtWheel) callVirtualBase_MouseMoveEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWheel_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -683,7 +624,6 @@ func miqt_exec_callback_QwtWheel_mouseMoveEvent(self *C.QwtWheel, cb C.intptr_t,
 }
 
 func (this *QwtWheel) callVirtualBase_KeyPressEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWheel_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -711,7 +651,6 @@ func miqt_exec_callback_QwtWheel_keyPressEvent(self *C.QwtWheel, cb C.intptr_t, 
 }
 
 func (this *QwtWheel) callVirtualBase_WheelEvent(param1 *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWheel_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
@@ -739,7 +678,6 @@ func miqt_exec_callback_QwtWheel_wheelEvent(self *C.QwtWheel, cb C.intptr_t, par
 }
 
 func (this *QwtWheel) callVirtualBase_TimerEvent(param1 *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWheel_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(param1.UnsafePointer()))
@@ -767,7 +705,6 @@ func miqt_exec_callback_QwtWheel_timerEvent(self *C.QwtWheel, cb C.intptr_t, par
 }
 
 func (this *QwtWheel) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtWheel_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -796,7 +733,6 @@ func miqt_exec_callback_QwtWheel_sizeHint(self *C.QwtWheel, cb C.intptr_t) *C.QS
 }
 
 func (this *QwtWheel) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtWheel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -825,7 +761,6 @@ func miqt_exec_callback_QwtWheel_minimumSizeHint(self *C.QwtWheel, cb C.intptr_t
 }
 
 func (this *QwtWheel) callVirtualBase_DrawTicks(param1 *qt.QPainter, param2 *qt.QRectF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -856,7 +791,6 @@ func miqt_exec_callback_QwtWheel_drawTicks(self *C.QwtWheel, cb C.intptr_t, para
 }
 
 func (this *QwtWheel) callVirtualBase_DrawWheelBackground(param1 *qt.QPainter, param2 *qt.QRectF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -887,7 +821,6 @@ func miqt_exec_callback_QwtWheel_drawWheelBackground(self *C.QwtWheel, cb C.intp
 }
 
 func (this *QwtWheel) callVirtualBase_ValueAt(param1 *qt.QPoint) float64 {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (float64)(C.QwtWheel_virtualbase_valueAt(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
@@ -917,7 +850,6 @@ func miqt_exec_callback_QwtWheel_valueAt(self *C.QwtWheel, cb C.intptr_t, param1
 }
 
 func (this *QwtWheel) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtWheel_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -943,7 +875,6 @@ func miqt_exec_callback_QwtWheel_devType(self *C.QwtWheel, cb C.intptr_t) C.int 
 }
 
 func (this *QwtWheel) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QwtWheel_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -970,7 +901,6 @@ func miqt_exec_callback_QwtWheel_setVisible(self *C.QwtWheel, cb C.intptr_t, vis
 }
 
 func (this *QwtWheel) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtWheel_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -999,7 +929,6 @@ func miqt_exec_callback_QwtWheel_heightForWidth(self *C.QwtWheel, cb C.intptr_t,
 }
 
 func (this *QwtWheel) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtWheel_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1025,7 +954,6 @@ func miqt_exec_callback_QwtWheel_hasHeightForWidth(self *C.QwtWheel, cb C.intptr
 }
 
 func (this *QwtWheel) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtWheel_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -1052,7 +980,6 @@ func miqt_exec_callback_QwtWheel_paintEngine(self *C.QwtWheel, cb C.intptr_t) *C
 }
 
 func (this *QwtWheel) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtWheel_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1082,7 +1009,6 @@ func miqt_exec_callback_QwtWheel_event(self *C.QwtWheel, cb C.intptr_t, event *C
 }
 
 func (this *QwtWheel) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -1110,7 +1036,6 @@ func miqt_exec_callback_QwtWheel_mouseDoubleClickEvent(self *C.QwtWheel, cb C.in
 }
 
 func (this *QwtWheel) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1138,7 +1063,6 @@ func miqt_exec_callback_QwtWheel_keyReleaseEvent(self *C.QwtWheel, cb C.intptr_t
 }
 
 func (this *QwtWheel) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1166,7 +1090,6 @@ func miqt_exec_callback_QwtWheel_focusInEvent(self *C.QwtWheel, cb C.intptr_t, e
 }
 
 func (this *QwtWheel) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1194,7 +1117,6 @@ func miqt_exec_callback_QwtWheel_focusOutEvent(self *C.QwtWheel, cb C.intptr_t, 
 }
 
 func (this *QwtWheel) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1222,7 +1144,6 @@ func miqt_exec_callback_QwtWheel_enterEvent(self *C.QwtWheel, cb C.intptr_t, eve
 }
 
 func (this *QwtWheel) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1250,7 +1171,6 @@ func miqt_exec_callback_QwtWheel_leaveEvent(self *C.QwtWheel, cb C.intptr_t, eve
 }
 
 func (this *QwtWheel) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -1278,7 +1198,6 @@ func miqt_exec_callback_QwtWheel_moveEvent(self *C.QwtWheel, cb C.intptr_t, even
 }
 
 func (this *QwtWheel) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -1306,7 +1225,6 @@ func miqt_exec_callback_QwtWheel_resizeEvent(self *C.QwtWheel, cb C.intptr_t, ev
 }
 
 func (this *QwtWheel) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -1334,7 +1252,6 @@ func miqt_exec_callback_QwtWheel_closeEvent(self *C.QwtWheel, cb C.intptr_t, eve
 }
 
 func (this *QwtWheel) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -1362,7 +1279,6 @@ func miqt_exec_callback_QwtWheel_contextMenuEvent(self *C.QwtWheel, cb C.intptr_
 }
 
 func (this *QwtWheel) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1390,7 +1306,6 @@ func miqt_exec_callback_QwtWheel_tabletEvent(self *C.QwtWheel, cb C.intptr_t, ev
 }
 
 func (this *QwtWheel) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1418,7 +1333,6 @@ func miqt_exec_callback_QwtWheel_actionEvent(self *C.QwtWheel, cb C.intptr_t, ev
 }
 
 func (this *QwtWheel) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1446,7 +1360,6 @@ func miqt_exec_callback_QwtWheel_dragEnterEvent(self *C.QwtWheel, cb C.intptr_t,
 }
 
 func (this *QwtWheel) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1474,7 +1387,6 @@ func miqt_exec_callback_QwtWheel_dragMoveEvent(self *C.QwtWheel, cb C.intptr_t, 
 }
 
 func (this *QwtWheel) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1502,7 +1414,6 @@ func miqt_exec_callback_QwtWheel_dragLeaveEvent(self *C.QwtWheel, cb C.intptr_t,
 }
 
 func (this *QwtWheel) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1530,7 +1441,6 @@ func miqt_exec_callback_QwtWheel_dropEvent(self *C.QwtWheel, cb C.intptr_t, even
 }
 
 func (this *QwtWheel) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -1558,7 +1468,6 @@ func miqt_exec_callback_QwtWheel_showEvent(self *C.QwtWheel, cb C.intptr_t, even
 }
 
 func (this *QwtWheel) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -1586,7 +1495,6 @@ func miqt_exec_callback_QwtWheel_hideEvent(self *C.QwtWheel, cb C.intptr_t, even
 }
 
 func (this *QwtWheel) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1628,7 +1536,6 @@ func miqt_exec_callback_QwtWheel_nativeEvent(self *C.QwtWheel, cb C.intptr_t, ev
 }
 
 func (this *QwtWheel) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWheel_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1656,7 +1563,6 @@ func miqt_exec_callback_QwtWheel_changeEvent(self *C.QwtWheel, cb C.intptr_t, pa
 }
 
 func (this *QwtWheel) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtWheel_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1685,7 +1591,6 @@ func miqt_exec_callback_QwtWheel_metric(self *C.QwtWheel, cb C.intptr_t, param1 
 }
 
 func (this *QwtWheel) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QwtWheel_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1713,7 +1618,6 @@ func miqt_exec_callback_QwtWheel_initPainter(self *C.QwtWheel, cb C.intptr_t, pa
 }
 
 func (this *QwtWheel) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtWheel_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1744,7 +1648,6 @@ func miqt_exec_callback_QwtWheel_redirected(self *C.QwtWheel, cb C.intptr_t, off
 }
 
 func (this *QwtWheel) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtWheel_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1771,7 +1674,6 @@ func miqt_exec_callback_QwtWheel_sharedPainter(self *C.QwtWheel, cb C.intptr_t) 
 }
 
 func (this *QwtWheel) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtWheel_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1799,7 +1701,6 @@ func miqt_exec_callback_QwtWheel_inputMethodEvent(self *C.QwtWheel, cb C.intptr_
 }
 
 func (this *QwtWheel) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtWheel_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1831,7 +1732,6 @@ func miqt_exec_callback_QwtWheel_inputMethodQuery(self *C.QwtWheel, cb C.intptr_
 }
 
 func (this *QwtWheel) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtWheel_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1860,8 +1760,6 @@ func miqt_exec_callback_QwtWheel_focusNextPrevChild(self *C.QwtWheel, cb C.intpt
 }
 
 func (this *QwtWheel) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtWheel_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1893,7 +1791,6 @@ func miqt_exec_callback_QwtWheel_eventFilter(self *C.QwtWheel, cb C.intptr_t, wa
 }
 
 func (this *QwtWheel) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1921,7 +1818,6 @@ func miqt_exec_callback_QwtWheel_childEvent(self *C.QwtWheel, cb C.intptr_t, eve
 }
 
 func (this *QwtWheel) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtWheel_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1949,7 +1845,6 @@ func miqt_exec_callback_QwtWheel_customEvent(self *C.QwtWheel, cb C.intptr_t, ev
 }
 
 func (this *QwtWheel) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtWheel_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1977,7 +1872,6 @@ func miqt_exec_callback_QwtWheel_connectNotify(self *C.QwtWheel, cb C.intptr_t, 
 }
 
 func (this *QwtWheel) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtWheel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2012,6 +1906,8 @@ func (this *QwtWheel) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtWheel) GoGC() {
 	if this.gc != nil {
 		return

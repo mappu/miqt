@@ -112,7 +112,6 @@ func (this *QFormBuilder) SetPluginPath(pluginPaths []string) {
 // ApplyPropertyInternally can only be called from a QFormBuilder that was directly constructed.
 func (this *QFormBuilder) ApplyPropertyInternally(o *qt6.QObject, propertyName string, value *qt6.QVariant) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(o)
 	defer runtime.KeepAlive(value)
 	propertyName_ms := C.struct_miqt_string{}
 	propertyName_ms.data = C.CString(propertyName)
@@ -145,7 +144,6 @@ func (this *QFormBuilder) Reset() {
 
 func (this *QFormBuilder) callVirtualBase_CreateWidget(widgetName string, parentWidget *qt6.QWidget, name string) *qt6.QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parentWidget)
 	widgetName_ms := C.struct_miqt_string{}
 	widgetName_ms.data = C.CString(widgetName)
 	widgetName_ms.len = C.size_t(len(widgetName))
@@ -185,7 +183,6 @@ func miqt_exec_callback_QFormBuilder_createWidget(self *C.QFormBuilder, cb C.int
 	slotval3 := name_ret
 
 	virtualReturn := gofunc((&QFormBuilder{h: self}).callVirtualBase_CreateWidget, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -193,7 +190,6 @@ func miqt_exec_callback_QFormBuilder_createWidget(self *C.QFormBuilder, cb C.int
 
 func (this *QFormBuilder) callVirtualBase_CreateLayout(layoutName string, parent *qt6.QObject, name string) *qt6.QLayout {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	layoutName_ms := C.struct_miqt_string{}
 	layoutName_ms.data = C.CString(layoutName)
 	layoutName_ms.len = C.size_t(len(layoutName))
@@ -233,7 +229,6 @@ func miqt_exec_callback_QFormBuilder_createLayout(self *C.QFormBuilder, cb C.int
 	slotval3 := name_ret
 
 	virtualReturn := gofunc((&QFormBuilder{h: self}).callVirtualBase_CreateLayout, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QLayout)(virtualReturn.UnsafePointer())
 
@@ -265,8 +260,6 @@ func miqt_exec_callback_QFormBuilder_updateCustomWidgets(self *C.QFormBuilder, c
 
 func (this *QFormBuilder) callVirtualBase_Load(dev *qt6.QIODevice, parentWidget *qt6.QWidget) *qt6.QWidget {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
-	defer runtime.KeepAlive(parentWidget)
 
 	return qt6.UnsafeNewQWidget(unsafe.Pointer(C.QFormBuilder_virtualbase_load(unsafe.Pointer(this.h), (*C.QIODevice)(dev.UnsafePointer()), (*C.QWidget)(parentWidget.UnsafePointer()))))
 
@@ -291,7 +284,6 @@ func miqt_exec_callback_QFormBuilder_load(self *C.QFormBuilder, cb C.intptr_t, d
 	slotval2 := qt6.UnsafeNewQWidget(unsafe.Pointer(parentWidget))
 
 	virtualReturn := gofunc((&QFormBuilder{h: self}).callVirtualBase_Load, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -299,8 +291,6 @@ func miqt_exec_callback_QFormBuilder_load(self *C.QFormBuilder, cb C.intptr_t, d
 
 func (this *QFormBuilder) callVirtualBase_Save(dev *qt6.QIODevice, widget *qt6.QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(dev)
-	defer runtime.KeepAlive(widget)
 
 	C.QFormBuilder_virtualbase_save(unsafe.Pointer(this.h), (*C.QIODevice)(dev.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 
@@ -330,7 +320,6 @@ func miqt_exec_callback_QFormBuilder_save(self *C.QFormBuilder, cb C.intptr_t, d
 
 func (this *QFormBuilder) callVirtualBase_AddMenuAction(action *qt6.QAction) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 
 	C.QFormBuilder_virtualbase_addMenuAction(unsafe.Pointer(this.h), (*C.QAction)(action.UnsafePointer()))
 
@@ -358,7 +347,6 @@ func miqt_exec_callback_QFormBuilder_addMenuAction(self *C.QFormBuilder, cb C.in
 
 func (this *QFormBuilder) callVirtualBase_CreateAction(parent *qt6.QObject, name string) *qt6.QAction {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -390,7 +378,6 @@ func miqt_exec_callback_QFormBuilder_createAction(self *C.QFormBuilder, cb C.int
 	slotval2 := name_ret
 
 	virtualReturn := gofunc((&QFormBuilder{h: self}).callVirtualBase_CreateAction, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QAction)(virtualReturn.UnsafePointer())
 
@@ -398,7 +385,6 @@ func miqt_exec_callback_QFormBuilder_createAction(self *C.QFormBuilder, cb C.int
 
 func (this *QFormBuilder) callVirtualBase_CreateActionGroup(parent *qt6.QObject, name string) *qt6.QActionGroup {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -430,7 +416,6 @@ func miqt_exec_callback_QFormBuilder_createActionGroup(self *C.QFormBuilder, cb 
 	slotval2 := name_ret
 
 	virtualReturn := gofunc((&QFormBuilder{h: self}).callVirtualBase_CreateActionGroup, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QActionGroup)(virtualReturn.UnsafePointer())
 
@@ -438,7 +423,6 @@ func miqt_exec_callback_QFormBuilder_createActionGroup(self *C.QFormBuilder, cb 
 
 func (this *QFormBuilder) callVirtualBase_CheckProperty(obj *qt6.QObject, prop string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(obj)
 	prop_ms := C.struct_miqt_string{}
 	prop_ms.data = C.CString(prop)
 	prop_ms.len = C.size_t(len(prop))

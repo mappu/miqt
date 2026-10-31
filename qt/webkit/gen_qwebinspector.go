@@ -60,7 +60,6 @@ func UnsafeNewQWebInspector(h unsafe.Pointer) *QWebInspector {
 
 // NewQWebInspector constructs a new QWebInspector object.
 func NewQWebInspector(parent *qt.QWidget) *QWebInspector {
-	defer runtime.KeepAlive(parent)
 
 	return newQWebInspector(C.QWebInspector_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -72,12 +71,10 @@ func NewQWebInspector2() *QWebInspector {
 }
 
 func (this *QWebInspector) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebInspector_metaObject(this.h)))
 }
 
 func (this *QWebInspector) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebInspector_metacast(this.h, param1_Cstring))
@@ -102,25 +99,20 @@ func QWebInspector_TrUtf8(s string) string {
 }
 
 func (this *QWebInspector) SetPage(page *QWebPage) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(page)
 	C.QWebInspector_setPage(this.h, page.cPointer())
 }
 
 func (this *QWebInspector) Page() *QWebPage {
-	defer runtime.KeepAlive(this)
 	return newQWebPage(C.QWebInspector_page(this.h))
 }
 
 func (this *QWebInspector) SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebInspector_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebInspector) Event(param1 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	return (bool)(C.QWebInspector_event(this.h, (*C.QEvent)(param1.UnsafePointer())))
 }
@@ -171,7 +163,6 @@ func QWebInspector_TrUtf83(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QWebInspector that was directly constructed.
 func (this *QWebInspector) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWebInspector_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -184,7 +175,6 @@ func (this *QWebInspector) UpdateMicroFocus() {
 
 // Create can only be called from a QWebInspector that was directly constructed.
 func (this *QWebInspector) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWebInspector_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -197,7 +187,6 @@ func (this *QWebInspector) Create() {
 
 // Destroy can only be called from a QWebInspector that was directly constructed.
 func (this *QWebInspector) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWebInspector_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -210,7 +199,6 @@ func (this *QWebInspector) Destroy() {
 
 // FocusNextChild can only be called from a QWebInspector that was directly constructed.
 func (this *QWebInspector) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWebInspector_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -225,7 +213,6 @@ func (this *QWebInspector) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QWebInspector that was directly constructed.
 func (this *QWebInspector) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWebInspector_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -240,7 +227,6 @@ func (this *QWebInspector) FocusPreviousChild() bool {
 
 // Sender can only be called from a QWebInspector that was directly constructed.
 func (this *QWebInspector) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QWebInspector_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -255,7 +241,6 @@ func (this *QWebInspector) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QWebInspector that was directly constructed.
 func (this *QWebInspector) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWebInspector_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -270,7 +255,6 @@ func (this *QWebInspector) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWebInspector that was directly constructed.
 func (this *QWebInspector) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -287,7 +271,6 @@ func (this *QWebInspector) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWebInspector that was directly constructed.
 func (this *QWebInspector) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -302,7 +285,6 @@ func (this *QWebInspector) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QWebInspector) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebInspector_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -331,7 +313,6 @@ func miqt_exec_callback_QWebInspector_sizeHint(self *C.QWebInspector, cb C.intpt
 }
 
 func (this *QWebInspector) callVirtualBase_Event(param1 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QWebInspector_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
@@ -361,7 +342,6 @@ func miqt_exec_callback_QWebInspector_event(self *C.QWebInspector, cb C.intptr_t
 }
 
 func (this *QWebInspector) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -389,7 +369,6 @@ func miqt_exec_callback_QWebInspector_resizeEvent(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -417,7 +396,6 @@ func miqt_exec_callback_QWebInspector_showEvent(self *C.QWebInspector, cb C.intp
 }
 
 func (this *QWebInspector) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -445,7 +423,6 @@ func miqt_exec_callback_QWebInspector_hideEvent(self *C.QWebInspector, cb C.intp
 }
 
 func (this *QWebInspector) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -473,7 +450,6 @@ func miqt_exec_callback_QWebInspector_closeEvent(self *C.QWebInspector, cb C.int
 }
 
 func (this *QWebInspector) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWebInspector_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -499,7 +475,6 @@ func miqt_exec_callback_QWebInspector_devType(self *C.QWebInspector, cb C.intptr
 }
 
 func (this *QWebInspector) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QWebInspector_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -526,7 +501,6 @@ func miqt_exec_callback_QWebInspector_setVisible(self *C.QWebInspector, cb C.int
 }
 
 func (this *QWebInspector) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebInspector_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -555,7 +529,6 @@ func miqt_exec_callback_QWebInspector_minimumSizeHint(self *C.QWebInspector, cb 
 }
 
 func (this *QWebInspector) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWebInspector_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -584,7 +557,6 @@ func miqt_exec_callback_QWebInspector_heightForWidth(self *C.QWebInspector, cb C
 }
 
 func (this *QWebInspector) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWebInspector_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -610,7 +582,6 @@ func miqt_exec_callback_QWebInspector_hasHeightForWidth(self *C.QWebInspector, c
 }
 
 func (this *QWebInspector) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QWebInspector_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -637,7 +608,6 @@ func miqt_exec_callback_QWebInspector_paintEngine(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -665,7 +635,6 @@ func miqt_exec_callback_QWebInspector_mousePressEvent(self *C.QWebInspector, cb 
 }
 
 func (this *QWebInspector) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -693,7 +662,6 @@ func miqt_exec_callback_QWebInspector_mouseReleaseEvent(self *C.QWebInspector, c
 }
 
 func (this *QWebInspector) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -721,7 +689,6 @@ func miqt_exec_callback_QWebInspector_mouseDoubleClickEvent(self *C.QWebInspecto
 }
 
 func (this *QWebInspector) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -749,7 +716,6 @@ func miqt_exec_callback_QWebInspector_mouseMoveEvent(self *C.QWebInspector, cb C
 }
 
 func (this *QWebInspector) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -777,7 +743,6 @@ func miqt_exec_callback_QWebInspector_wheelEvent(self *C.QWebInspector, cb C.int
 }
 
 func (this *QWebInspector) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -805,7 +770,6 @@ func miqt_exec_callback_QWebInspector_keyPressEvent(self *C.QWebInspector, cb C.
 }
 
 func (this *QWebInspector) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -833,7 +797,6 @@ func miqt_exec_callback_QWebInspector_keyReleaseEvent(self *C.QWebInspector, cb 
 }
 
 func (this *QWebInspector) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -861,7 +824,6 @@ func miqt_exec_callback_QWebInspector_focusInEvent(self *C.QWebInspector, cb C.i
 }
 
 func (this *QWebInspector) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -889,7 +851,6 @@ func miqt_exec_callback_QWebInspector_focusOutEvent(self *C.QWebInspector, cb C.
 }
 
 func (this *QWebInspector) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -917,7 +878,6 @@ func miqt_exec_callback_QWebInspector_enterEvent(self *C.QWebInspector, cb C.int
 }
 
 func (this *QWebInspector) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -945,7 +905,6 @@ func miqt_exec_callback_QWebInspector_leaveEvent(self *C.QWebInspector, cb C.int
 }
 
 func (this *QWebInspector) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
@@ -973,7 +932,6 @@ func miqt_exec_callback_QWebInspector_paintEvent(self *C.QWebInspector, cb C.int
 }
 
 func (this *QWebInspector) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -1001,7 +959,6 @@ func miqt_exec_callback_QWebInspector_moveEvent(self *C.QWebInspector, cb C.intp
 }
 
 func (this *QWebInspector) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -1029,7 +986,6 @@ func miqt_exec_callback_QWebInspector_contextMenuEvent(self *C.QWebInspector, cb
 }
 
 func (this *QWebInspector) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1057,7 +1013,6 @@ func miqt_exec_callback_QWebInspector_tabletEvent(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1085,7 +1040,6 @@ func miqt_exec_callback_QWebInspector_actionEvent(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1113,7 +1067,6 @@ func miqt_exec_callback_QWebInspector_dragEnterEvent(self *C.QWebInspector, cb C
 }
 
 func (this *QWebInspector) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1141,7 +1094,6 @@ func miqt_exec_callback_QWebInspector_dragMoveEvent(self *C.QWebInspector, cb C.
 }
 
 func (this *QWebInspector) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1169,7 +1121,6 @@ func miqt_exec_callback_QWebInspector_dragLeaveEvent(self *C.QWebInspector, cb C
 }
 
 func (this *QWebInspector) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1197,7 +1148,6 @@ func miqt_exec_callback_QWebInspector_dropEvent(self *C.QWebInspector, cb C.intp
 }
 
 func (this *QWebInspector) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1239,7 +1189,6 @@ func miqt_exec_callback_QWebInspector_nativeEvent(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QWebInspector_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1267,7 +1216,6 @@ func miqt_exec_callback_QWebInspector_changeEvent(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWebInspector_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1296,7 +1244,6 @@ func miqt_exec_callback_QWebInspector_metric(self *C.QWebInspector, cb C.intptr_
 }
 
 func (this *QWebInspector) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QWebInspector_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1324,7 +1271,6 @@ func miqt_exec_callback_QWebInspector_initPainter(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QWebInspector_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1355,7 +1301,6 @@ func miqt_exec_callback_QWebInspector_redirected(self *C.QWebInspector, cb C.int
 }
 
 func (this *QWebInspector) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QWebInspector_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1382,7 +1327,6 @@ func miqt_exec_callback_QWebInspector_sharedPainter(self *C.QWebInspector, cb C.
 }
 
 func (this *QWebInspector) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QWebInspector_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1410,7 +1354,6 @@ func miqt_exec_callback_QWebInspector_inputMethodEvent(self *C.QWebInspector, cb
 }
 
 func (this *QWebInspector) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebInspector_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1442,7 +1385,6 @@ func miqt_exec_callback_QWebInspector_inputMethodQuery(self *C.QWebInspector, cb
 }
 
 func (this *QWebInspector) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWebInspector_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1471,8 +1413,6 @@ func miqt_exec_callback_QWebInspector_focusNextPrevChild(self *C.QWebInspector, 
 }
 
 func (this *QWebInspector) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebInspector_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1504,7 +1444,6 @@ func miqt_exec_callback_QWebInspector_eventFilter(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1532,7 +1471,6 @@ func miqt_exec_callback_QWebInspector_timerEvent(self *C.QWebInspector, cb C.int
 }
 
 func (this *QWebInspector) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1560,7 +1498,6 @@ func miqt_exec_callback_QWebInspector_childEvent(self *C.QWebInspector, cb C.int
 }
 
 func (this *QWebInspector) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebInspector_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1588,7 +1525,6 @@ func miqt_exec_callback_QWebInspector_customEvent(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWebInspector_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1616,7 +1552,6 @@ func miqt_exec_callback_QWebInspector_connectNotify(self *C.QWebInspector, cb C.
 }
 
 func (this *QWebInspector) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWebInspector_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1651,6 +1586,8 @@ func (this *QWebInspector) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebInspector) GoGC() {
 	if this.gc != nil {
 		return

@@ -60,7 +60,6 @@ func (this *QDesignerFormEditorPluginInterface) IsInitialized() bool {
 
 func (this *QDesignerFormEditorPluginInterface) Initialize(core *QDesignerFormEditorInterface) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(core)
 	C.QDesignerFormEditorPluginInterface_initialize(this.h, core.cPointer())
 }
 

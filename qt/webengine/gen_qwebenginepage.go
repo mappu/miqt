@@ -201,33 +201,27 @@ func NewQWebEnginePage() *QWebEnginePage {
 
 // NewQWebEnginePage2 constructs a new QWebEnginePage object.
 func NewQWebEnginePage2(profile *QWebEngineProfile) *QWebEnginePage {
-	defer runtime.KeepAlive(profile)
 
 	return newQWebEnginePage(C.QWebEnginePage_new2(profile.cPointer()))
 }
 
 // NewQWebEnginePage3 constructs a new QWebEnginePage object.
 func NewQWebEnginePage3(parent *qt.QObject) *QWebEnginePage {
-	defer runtime.KeepAlive(parent)
 
 	return newQWebEnginePage(C.QWebEnginePage_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQWebEnginePage4 constructs a new QWebEnginePage object.
 func NewQWebEnginePage4(profile *QWebEngineProfile, parent *qt.QObject) *QWebEnginePage {
-	defer runtime.KeepAlive(profile)
-	defer runtime.KeepAlive(parent)
 
 	return newQWebEnginePage(C.QWebEnginePage_new4(profile.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebEnginePage) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEnginePage_metaObject(this.h)))
 }
 
 func (this *QWebEnginePage) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEnginePage_metacast(this.h, param1_Cstring))
@@ -252,28 +246,22 @@ func QWebEnginePage_TrUtf8(s string) string {
 }
 
 func (this *QWebEnginePage) History() *QWebEngineHistory {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineHistory(C.QWebEnginePage_history(this.h))
 }
 
 func (this *QWebEnginePage) SetView(view *qt.QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(view)
 	C.QWebEnginePage_setView(this.h, (*C.QWidget)(view.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) View() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QWebEnginePage_view(this.h)))
 }
 
 func (this *QWebEnginePage) HasSelection() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEnginePage_hasSelection(this.h))
 }
 
 func (this *QWebEnginePage) SelectedText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEnginePage_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -281,22 +269,18 @@ func (this *QWebEnginePage) SelectedText() string {
 }
 
 func (this *QWebEnginePage) Profile() *QWebEngineProfile {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineProfile(C.QWebEnginePage_profile(this.h))
 }
 
 func (this *QWebEnginePage) Action(action QWebEnginePage__WebAction) *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebEnginePage_action(this.h, (C.int)(action))))
 }
 
 func (this *QWebEnginePage) TriggerAction(action QWebEnginePage__WebAction, checked bool) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_triggerAction(this.h, (C.int)(action), (C.bool)(checked))
 }
 
 func (this *QWebEnginePage) ReplaceMisspelledWord(replacement string) {
-	defer runtime.KeepAlive(this)
 	replacement_ms := C.struct_miqt_string{}
 	replacement_ms.data = C.CString(replacement)
 	replacement_ms.len = C.size_t(len(replacement))
@@ -305,13 +289,11 @@ func (this *QWebEnginePage) ReplaceMisspelledWord(replacement string) {
 }
 
 func (this *QWebEnginePage) Event(param1 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	return (bool)(C.QWebEnginePage_event(this.h, (*C.QEvent)(param1.UnsafePointer())))
 }
 
 func (this *QWebEnginePage) FindText(subString string) {
-	defer runtime.KeepAlive(this)
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
@@ -320,36 +302,30 @@ func (this *QWebEnginePage) FindText(subString string) {
 }
 
 func (this *QWebEnginePage) CreateStandardContextMenu() *qt.QMenu {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMenu(unsafe.Pointer(C.QWebEnginePage_createStandardContextMenu(this.h)))
 }
 
 func (this *QWebEnginePage) SetFeaturePermission(securityOrigin *qt.QUrl, feature QWebEnginePage__Feature, policy QWebEnginePage__PermissionPolicy) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(securityOrigin)
 	C.QWebEnginePage_setFeaturePermission(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature), (C.int)(policy))
 }
 
 func (this *QWebEnginePage) Load(url *qt.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QWebEnginePage_load(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) LoadWithRequest(request *QWebEngineHttpRequest) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	C.QWebEnginePage_loadWithRequest(this.h, request.cPointer())
 }
 
 func (this *QWebEnginePage) Download(url *qt.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QWebEnginePage_download(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) SetHtml(html string) {
-	defer runtime.KeepAlive(this)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
@@ -358,7 +334,6 @@ func (this *QWebEnginePage) SetHtml(html string) {
 }
 
 func (this *QWebEnginePage) SetContent(data []byte) {
-	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -370,7 +345,6 @@ func (this *QWebEnginePage) SetContent(data []byte) {
 }
 
 func (this *QWebEnginePage) Title() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEnginePage_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -378,65 +352,55 @@ func (this *QWebEnginePage) Title() string {
 }
 
 func (this *QWebEnginePage) SetUrl(url *qt.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QWebEnginePage_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) Url() *qt.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) RequestedUrl() *qt.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_requestedUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) IconUrl() *qt.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_iconUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) Icon() *qt.QIcon {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebEnginePage_icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) ZoomFactor() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QWebEnginePage_zoomFactor(this.h))
 }
 
 func (this *QWebEnginePage) SetZoomFactor(factor float64) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_setZoomFactor(this.h, (C.double)(factor))
 }
 
 func (this *QWebEnginePage) ScrollPosition() *qt.QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QWebEnginePage_scrollPosition(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) ContentsSize() *qt.QSizeF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QWebEnginePage_contentsSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) RunJavaScript(scriptSource string) {
-	defer runtime.KeepAlive(this)
 	scriptSource_ms := C.struct_miqt_string{}
 	scriptSource_ms.data = C.CString(scriptSource)
 	scriptSource_ms.len = C.size_t(len(scriptSource))
@@ -445,7 +409,6 @@ func (this *QWebEnginePage) RunJavaScript(scriptSource string) {
 }
 
 func (this *QWebEnginePage) RunJavaScript2(scriptSource string, worldId uint) {
-	defer runtime.KeepAlive(this)
 	scriptSource_ms := C.struct_miqt_string{}
 	scriptSource_ms.data = C.CString(scriptSource)
 	scriptSource_ms.len = C.size_t(len(scriptSource))
@@ -454,49 +417,37 @@ func (this *QWebEnginePage) RunJavaScript2(scriptSource string, worldId uint) {
 }
 
 func (this *QWebEnginePage) Scripts() *QWebEngineScriptCollection {
-	defer runtime.KeepAlive(this)
-	_ret := newQWebEngineScriptCollection(C.QWebEnginePage_scripts(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQWebEngineScriptCollection(C.QWebEnginePage_scripts(this.h))
 }
 
 func (this *QWebEnginePage) Settings() *QWebEngineSettings {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineSettings(C.QWebEnginePage_settings(this.h))
 }
 
 func (this *QWebEnginePage) WebChannel() *webchannel.QWebChannel {
-	defer runtime.KeepAlive(this)
 	return webchannel.UnsafeNewQWebChannel(unsafe.Pointer(C.QWebEnginePage_webChannel(this.h)))
 }
 
 func (this *QWebEnginePage) SetWebChannel(webChannel *webchannel.QWebChannel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(webChannel)
 	C.QWebEnginePage_setWebChannel(this.h, (*C.QWebChannel)(webChannel.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) SetWebChannel2(param1 *webchannel.QWebChannel, worldId uint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QWebEnginePage_setWebChannel2(this.h, (*C.QWebChannel)(param1.UnsafePointer()), (C.uint)(worldId))
 }
 
 func (this *QWebEnginePage) BackgroundColor() *qt.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebEnginePage_backgroundColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) SetBackgroundColor(color *qt.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QWebEnginePage_setBackgroundColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) Save(filePath string) {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -505,27 +456,22 @@ func (this *QWebEnginePage) Save(filePath string) {
 }
 
 func (this *QWebEnginePage) IsAudioMuted() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEnginePage_isAudioMuted(this.h))
 }
 
 func (this *QWebEnginePage) SetAudioMuted(muted bool) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_setAudioMuted(this.h, (C.bool)(muted))
 }
 
 func (this *QWebEnginePage) RecentlyAudible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEnginePage_recentlyAudible(this.h))
 }
 
 func (this *QWebEnginePage) RenderProcessPid() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QWebEnginePage_renderProcessPid(this.h))
 }
 
 func (this *QWebEnginePage) PrintToPdf(filePath string) {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -534,67 +480,50 @@ func (this *QWebEnginePage) PrintToPdf(filePath string) {
 }
 
 func (this *QWebEnginePage) SetInspectedPage(page *QWebEnginePage) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(page)
 	C.QWebEnginePage_setInspectedPage(this.h, page.cPointer())
 }
 
 func (this *QWebEnginePage) InspectedPage() *QWebEnginePage {
-	defer runtime.KeepAlive(this)
 	return newQWebEnginePage(C.QWebEnginePage_inspectedPage(this.h))
 }
 
 func (this *QWebEnginePage) SetDevToolsPage(page *QWebEnginePage) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(page)
 	C.QWebEnginePage_setDevToolsPage(this.h, page.cPointer())
 }
 
 func (this *QWebEnginePage) DevToolsPage() *QWebEnginePage {
-	defer runtime.KeepAlive(this)
 	return newQWebEnginePage(C.QWebEnginePage_devToolsPage(this.h))
 }
 
 func (this *QWebEnginePage) SetUrlRequestInterceptor(interceptor *QWebEngineUrlRequestInterceptor) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(interceptor)
 	C.QWebEnginePage_setUrlRequestInterceptor(this.h, interceptor.cPointer())
 }
 
 func (this *QWebEnginePage) ContextMenuData() *QWebEngineContextMenuData {
-	defer runtime.KeepAlive(this)
-	_ret := newQWebEngineContextMenuData(C.QWebEnginePage_contextMenuData(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQWebEngineContextMenuData(C.QWebEnginePage_contextMenuData(this.h))
 }
 
 func (this *QWebEnginePage) LifecycleState() QWebEnginePage__LifecycleState {
-	defer runtime.KeepAlive(this)
 	return (QWebEnginePage__LifecycleState)(C.QWebEnginePage_lifecycleState(this.h))
 }
 
 func (this *QWebEnginePage) SetLifecycleState(state QWebEnginePage__LifecycleState) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_setLifecycleState(this.h, (C.int)(state))
 }
 
 func (this *QWebEnginePage) RecommendedState() QWebEnginePage__LifecycleState {
-	defer runtime.KeepAlive(this)
 	return (QWebEnginePage__LifecycleState)(C.QWebEnginePage_recommendedState(this.h))
 }
 
 func (this *QWebEnginePage) IsVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEnginePage_isVisible(this.h))
 }
 
 func (this *QWebEnginePage) SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QWebEnginePage) LoadStarted() {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_loadStarted(this.h)
 }
 func (this *QWebEnginePage) OnLoadStarted(slot func()) {
@@ -612,7 +541,6 @@ func miqt_exec_callback_QWebEnginePage_loadStarted(cb C.intptr_t) {
 }
 
 func (this *QWebEnginePage) LoadProgress(progress int) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_loadProgress(this.h, (C.int)(progress))
 }
 func (this *QWebEnginePage) OnLoadProgress(slot func(progress int)) {
@@ -633,7 +561,6 @@ func miqt_exec_callback_QWebEnginePage_loadProgress(cb C.intptr_t, progress C.in
 }
 
 func (this *QWebEnginePage) LoadFinished(ok bool) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_loadFinished(this.h, (C.bool)(ok))
 }
 func (this *QWebEnginePage) OnLoadFinished(slot func(ok bool)) {
@@ -654,7 +581,6 @@ func miqt_exec_callback_QWebEnginePage_loadFinished(cb C.intptr_t, ok C.bool) {
 }
 
 func (this *QWebEnginePage) LinkHovered(url string) {
-	defer runtime.KeepAlive(this)
 	url_ms := C.struct_miqt_string{}
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
@@ -682,7 +608,6 @@ func miqt_exec_callback_QWebEnginePage_linkHovered(cb C.intptr_t, url C.struct_m
 }
 
 func (this *QWebEnginePage) SelectionChanged() {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_selectionChanged(this.h)
 }
 func (this *QWebEnginePage) OnSelectionChanged(slot func()) {
@@ -700,7 +625,6 @@ func miqt_exec_callback_QWebEnginePage_selectionChanged(cb C.intptr_t) {
 }
 
 func (this *QWebEnginePage) GeometryChangeRequested(geom *qt.QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(geom)
 	C.QWebEnginePage_geometryChangeRequested(this.h, (*C.QRect)(geom.UnsafePointer()))
 }
@@ -722,7 +646,6 @@ func miqt_exec_callback_QWebEnginePage_geometryChangeRequested(cb C.intptr_t, ge
 }
 
 func (this *QWebEnginePage) WindowCloseRequested() {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_windowCloseRequested(this.h)
 }
 func (this *QWebEnginePage) OnWindowCloseRequested(slot func()) {
@@ -740,7 +663,6 @@ func miqt_exec_callback_QWebEnginePage_windowCloseRequested(cb C.intptr_t) {
 }
 
 func (this *QWebEnginePage) FeaturePermissionRequested(securityOrigin *qt.QUrl, feature QWebEnginePage__Feature) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(securityOrigin)
 	C.QWebEnginePage_featurePermissionRequested(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature))
 }
@@ -764,7 +686,6 @@ func miqt_exec_callback_QWebEnginePage_featurePermissionRequested(cb C.intptr_t,
 }
 
 func (this *QWebEnginePage) FeaturePermissionRequestCanceled(securityOrigin *qt.QUrl, feature QWebEnginePage__Feature) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(securityOrigin)
 	C.QWebEnginePage_featurePermissionRequestCanceled(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature))
 }
@@ -788,7 +709,6 @@ func miqt_exec_callback_QWebEnginePage_featurePermissionRequestCanceled(cb C.int
 }
 
 func (this *QWebEnginePage) FullScreenRequested(fullScreenRequest QWebEngineFullScreenRequest) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(fullScreenRequest)
 	C.QWebEnginePage_fullScreenRequested(this.h, fullScreenRequest.cPointer())
 }
@@ -812,7 +732,6 @@ func miqt_exec_callback_QWebEnginePage_fullScreenRequested(cb C.intptr_t, fullSc
 }
 
 func (this *QWebEnginePage) RegisterProtocolHandlerRequested(request QWebEngineRegisterProtocolHandlerRequest) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(request)
 	C.QWebEnginePage_registerProtocolHandlerRequested(this.h, request.cPointer())
 }
@@ -836,7 +755,6 @@ func miqt_exec_callback_QWebEnginePage_registerProtocolHandlerRequested(cb C.int
 }
 
 func (this *QWebEnginePage) SelectClientCertificate(clientCertSelection QWebEngineClientCertificateSelection) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(clientCertSelection)
 	C.QWebEnginePage_selectClientCertificate(this.h, clientCertSelection.cPointer())
 }
@@ -860,7 +778,6 @@ func miqt_exec_callback_QWebEnginePage_selectClientCertificate(cb C.intptr_t, cl
 }
 
 func (this *QWebEnginePage) AuthenticationRequired(requestUrl *qt.QUrl, authenticator *network.QAuthenticator) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(requestUrl)
 	defer runtime.KeepAlive(authenticator)
 	C.QWebEnginePage_authenticationRequired(this.h, (*C.QUrl)(requestUrl.UnsafePointer()), (*C.QAuthenticator)(authenticator.UnsafePointer()))
@@ -885,7 +802,6 @@ func miqt_exec_callback_QWebEnginePage_authenticationRequired(cb C.intptr_t, req
 }
 
 func (this *QWebEnginePage) ProxyAuthenticationRequired(requestUrl *qt.QUrl, authenticator *network.QAuthenticator, proxyHost string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(requestUrl)
 	defer runtime.KeepAlive(authenticator)
 	proxyHost_ms := C.struct_miqt_string{}
@@ -919,7 +835,6 @@ func miqt_exec_callback_QWebEnginePage_proxyAuthenticationRequired(cb C.intptr_t
 }
 
 func (this *QWebEnginePage) RenderProcessTerminated(terminationStatus QWebEnginePage__RenderProcessTerminationStatus, exitCode int) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_renderProcessTerminated(this.h, (C.int)(terminationStatus), (C.int)(exitCode))
 }
 func (this *QWebEnginePage) OnRenderProcessTerminated(slot func(terminationStatus QWebEnginePage__RenderProcessTerminationStatus, exitCode int)) {
@@ -942,7 +857,6 @@ func miqt_exec_callback_QWebEnginePage_renderProcessTerminated(cb C.intptr_t, te
 }
 
 func (this *QWebEnginePage) TitleChanged(title string) {
-	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -970,7 +884,6 @@ func miqt_exec_callback_QWebEnginePage_titleChanged(cb C.intptr_t, title C.struc
 }
 
 func (this *QWebEnginePage) UrlChanged(url *qt.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QWebEnginePage_urlChanged(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
@@ -992,7 +905,6 @@ func miqt_exec_callback_QWebEnginePage_urlChanged(cb C.intptr_t, url *C.QUrl) {
 }
 
 func (this *QWebEnginePage) IconUrlChanged(url *qt.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QWebEnginePage_iconUrlChanged(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
@@ -1014,7 +926,6 @@ func miqt_exec_callback_QWebEnginePage_iconUrlChanged(cb C.intptr_t, url *C.QUrl
 }
 
 func (this *QWebEnginePage) IconChanged(icon *qt.QIcon) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	C.QWebEnginePage_iconChanged(this.h, (*C.QIcon)(icon.UnsafePointer()))
 }
@@ -1036,7 +947,6 @@ func miqt_exec_callback_QWebEnginePage_iconChanged(cb C.intptr_t, icon *C.QIcon)
 }
 
 func (this *QWebEnginePage) ScrollPositionChanged(position *qt.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(position)
 	C.QWebEnginePage_scrollPositionChanged(this.h, (*C.QPointF)(position.UnsafePointer()))
 }
@@ -1058,7 +968,6 @@ func miqt_exec_callback_QWebEnginePage_scrollPositionChanged(cb C.intptr_t, posi
 }
 
 func (this *QWebEnginePage) ContentsSizeChanged(size *qt.QSizeF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QWebEnginePage_contentsSizeChanged(this.h, (*C.QSizeF)(size.UnsafePointer()))
 }
@@ -1080,7 +989,6 @@ func miqt_exec_callback_QWebEnginePage_contentsSizeChanged(cb C.intptr_t, size *
 }
 
 func (this *QWebEnginePage) AudioMutedChanged(muted bool) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_audioMutedChanged(this.h, (C.bool)(muted))
 }
 func (this *QWebEnginePage) OnAudioMutedChanged(slot func(muted bool)) {
@@ -1101,7 +1009,6 @@ func miqt_exec_callback_QWebEnginePage_audioMutedChanged(cb C.intptr_t, muted C.
 }
 
 func (this *QWebEnginePage) RecentlyAudibleChanged(recentlyAudible bool) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_recentlyAudibleChanged(this.h, (C.bool)(recentlyAudible))
 }
 func (this *QWebEnginePage) OnRecentlyAudibleChanged(slot func(recentlyAudible bool)) {
@@ -1122,7 +1029,6 @@ func miqt_exec_callback_QWebEnginePage_recentlyAudibleChanged(cb C.intptr_t, rec
 }
 
 func (this *QWebEnginePage) RenderProcessPidChanged(pid int64) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_renderProcessPidChanged(this.h, (C.longlong)(pid))
 }
 func (this *QWebEnginePage) OnRenderProcessPidChanged(slot func(pid int64)) {
@@ -1143,7 +1049,6 @@ func miqt_exec_callback_QWebEnginePage_renderProcessPidChanged(cb C.intptr_t, pi
 }
 
 func (this *QWebEnginePage) PdfPrintingFinished(filePath string, success bool) {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -1172,7 +1077,6 @@ func miqt_exec_callback_QWebEnginePage_pdfPrintingFinished(cb C.intptr_t, filePa
 }
 
 func (this *QWebEnginePage) PrintRequested() {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_printRequested(this.h)
 }
 func (this *QWebEnginePage) OnPrintRequested(slot func()) {
@@ -1190,7 +1094,6 @@ func miqt_exec_callback_QWebEnginePage_printRequested(cb C.intptr_t) {
 }
 
 func (this *QWebEnginePage) VisibleChanged(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_visibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QWebEnginePage) OnVisibleChanged(slot func(visible bool)) {
@@ -1211,7 +1114,6 @@ func miqt_exec_callback_QWebEnginePage_visibleChanged(cb C.intptr_t, visible C.b
 }
 
 func (this *QWebEnginePage) LifecycleStateChanged(state QWebEnginePage__LifecycleState) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_lifecycleStateChanged(this.h, (C.int)(state))
 }
 func (this *QWebEnginePage) OnLifecycleStateChanged(slot func(state QWebEnginePage__LifecycleState)) {
@@ -1232,7 +1134,6 @@ func miqt_exec_callback_QWebEnginePage_lifecycleStateChanged(cb C.intptr_t, stat
 }
 
 func (this *QWebEnginePage) RecommendedStateChanged(state QWebEnginePage__LifecycleState) {
-	defer runtime.KeepAlive(this)
 	C.QWebEnginePage_recommendedStateChanged(this.h, (C.int)(state))
 }
 func (this *QWebEnginePage) OnRecommendedStateChanged(slot func(state QWebEnginePage__LifecycleState)) {
@@ -1253,7 +1154,6 @@ func miqt_exec_callback_QWebEnginePage_recommendedStateChanged(cb C.intptr_t, st
 }
 
 func (this *QWebEnginePage) FindTextFinished(result *QWebEngineFindTextResult) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(result)
 	C.QWebEnginePage_findTextFinished(this.h, result.cPointer())
 }
@@ -1319,7 +1219,6 @@ func QWebEnginePage_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QWebEnginePage) FindText2(subString string, options QWebEnginePage__FindFlag) {
-	defer runtime.KeepAlive(this)
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
@@ -1328,7 +1227,6 @@ func (this *QWebEnginePage) FindText2(subString string, options QWebEnginePage__
 }
 
 func (this *QWebEnginePage) Download2(url *qt.QUrl, filename string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
@@ -1338,7 +1236,6 @@ func (this *QWebEnginePage) Download2(url *qt.QUrl, filename string) {
 }
 
 func (this *QWebEnginePage) SetHtml2(html string, baseUrl *qt.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(baseUrl)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
@@ -1348,7 +1245,6 @@ func (this *QWebEnginePage) SetHtml2(html string, baseUrl *qt.QUrl) {
 }
 
 func (this *QWebEnginePage) SetContent2(data []byte, mimeType string) {
-	defer runtime.KeepAlive(this)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -1364,7 +1260,6 @@ func (this *QWebEnginePage) SetContent2(data []byte, mimeType string) {
 }
 
 func (this *QWebEnginePage) SetContent3(data []byte, mimeType string, baseUrl *qt.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(baseUrl)
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
@@ -1381,7 +1276,6 @@ func (this *QWebEnginePage) SetContent3(data []byte, mimeType string, baseUrl *q
 }
 
 func (this *QWebEnginePage) Save2(filePath string, format QWebEngineDownloadItem__SavePageFormat) {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -1390,7 +1284,6 @@ func (this *QWebEnginePage) Save2(filePath string, format QWebEngineDownloadItem
 }
 
 func (this *QWebEnginePage) PrintToPdf2(filePath string, layout *qt.QPageLayout) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(layout)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
@@ -1401,7 +1294,6 @@ func (this *QWebEnginePage) PrintToPdf2(filePath string, layout *qt.QPageLayout)
 
 // Sender can only be called from a QWebEnginePage that was directly constructed.
 func (this *QWebEnginePage) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QWebEnginePage_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -1416,7 +1308,6 @@ func (this *QWebEnginePage) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QWebEnginePage that was directly constructed.
 func (this *QWebEnginePage) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWebEnginePage_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1431,7 +1322,6 @@ func (this *QWebEnginePage) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWebEnginePage that was directly constructed.
 func (this *QWebEnginePage) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1448,7 +1338,6 @@ func (this *QWebEnginePage) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWebEnginePage that was directly constructed.
 func (this *QWebEnginePage) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1463,7 +1352,6 @@ func (this *QWebEnginePage) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QWebEnginePage) callVirtualBase_TriggerAction(action QWebEnginePage__WebAction, checked bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QWebEnginePage_virtualbase_triggerAction(unsafe.Pointer(this.h), (C.int)(action), (C.bool)(checked))
 
@@ -1492,7 +1380,6 @@ func miqt_exec_callback_QWebEnginePage_triggerAction(self *C.QWebEnginePage, cb 
 }
 
 func (this *QWebEnginePage) callVirtualBase_Event(param1 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QWebEnginePage_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
@@ -1522,7 +1409,6 @@ func miqt_exec_callback_QWebEnginePage_event(self *C.QWebEnginePage, cb C.intptr
 }
 
 func (this *QWebEnginePage) callVirtualBase_CreateWindow(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage {
-	defer runtime.KeepAlive(this)
 
 	return newQWebEnginePage(C.QWebEnginePage_virtualbase_createWindow(unsafe.Pointer(this.h), (C.int)(typeVal)))
 
@@ -1545,14 +1431,12 @@ func miqt_exec_callback_QWebEnginePage_createWindow(self *C.QWebEnginePage, cb C
 	slotval1 := (QWebEnginePage__WebWindowType)(typeVal)
 
 	virtualReturn := gofunc((&QWebEnginePage{h: self}).callVirtualBase_CreateWindow, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QWebEnginePage) callVirtualBase_ChooseFiles(mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string {
-	defer runtime.KeepAlive(this)
 	oldFiles_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(oldFiles))))
 	defer C.free(unsafe.Pointer(oldFiles_CArray_ptr))
 	oldFiles_CArray := unsafe.Slice(oldFiles_CArray_ptr, len(oldFiles))
@@ -1643,7 +1527,6 @@ func miqt_exec_callback_QWebEnginePage_chooseFiles(self *C.QWebEnginePage, cb C.
 }
 
 func (this *QWebEnginePage) callVirtualBase_JavaScriptAlert(securityOrigin *qt.QUrl, msg string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(securityOrigin)
 	msg_ms := C.struct_miqt_string{}
 	msg_ms.data = C.CString(msg)
@@ -1680,7 +1563,6 @@ func miqt_exec_callback_QWebEnginePage_javaScriptAlert(self *C.QWebEnginePage, c
 }
 
 func (this *QWebEnginePage) callVirtualBase_JavaScriptConfirm(securityOrigin *qt.QUrl, msg string) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(securityOrigin)
 	msg_ms := C.struct_miqt_string{}
 	msg_ms.data = C.CString(msg)
@@ -1719,7 +1601,6 @@ func miqt_exec_callback_QWebEnginePage_javaScriptConfirm(self *C.QWebEnginePage,
 }
 
 func (this *QWebEnginePage) callVirtualBase_JavaScriptConsoleMessage(level QWebEnginePage__JavaScriptConsoleMessageLevel, message string, lineNumber int, sourceID string) {
-	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -1765,7 +1646,6 @@ func miqt_exec_callback_QWebEnginePage_javaScriptConsoleMessage(self *C.QWebEngi
 }
 
 func (this *QWebEnginePage) callVirtualBase_CertificateError(certificateError *QWebEngineCertificateError) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(certificateError)
 
 	return (bool)(C.QWebEnginePage_virtualbase_certificateError(unsafe.Pointer(this.h), certificateError.cPointer()))
@@ -1795,7 +1675,6 @@ func miqt_exec_callback_QWebEnginePage_certificateError(self *C.QWebEnginePage, 
 }
 
 func (this *QWebEnginePage) callVirtualBase_AcceptNavigationRequest(url *qt.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 
 	return (bool)(C.QWebEnginePage_virtualbase_acceptNavigationRequest(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()), (C.int)(typeVal), (C.bool)(isMainFrame)))
@@ -1829,8 +1708,6 @@ func miqt_exec_callback_QWebEnginePage_acceptNavigationRequest(self *C.QWebEngin
 }
 
 func (this *QWebEnginePage) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebEnginePage_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1862,7 +1739,6 @@ func miqt_exec_callback_QWebEnginePage_eventFilter(self *C.QWebEnginePage, cb C.
 }
 
 func (this *QWebEnginePage) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebEnginePage_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1890,7 +1766,6 @@ func miqt_exec_callback_QWebEnginePage_timerEvent(self *C.QWebEnginePage, cb C.i
 }
 
 func (this *QWebEnginePage) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebEnginePage_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1918,7 +1793,6 @@ func miqt_exec_callback_QWebEnginePage_childEvent(self *C.QWebEnginePage, cb C.i
 }
 
 func (this *QWebEnginePage) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebEnginePage_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1946,7 +1820,6 @@ func miqt_exec_callback_QWebEnginePage_customEvent(self *C.QWebEnginePage, cb C.
 }
 
 func (this *QWebEnginePage) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWebEnginePage_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1974,7 +1847,6 @@ func miqt_exec_callback_QWebEnginePage_connectNotify(self *C.QWebEnginePage, cb 
 }
 
 func (this *QWebEnginePage) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWebEnginePage_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2009,6 +1881,8 @@ func (this *QWebEnginePage) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebEnginePage) GoGC() {
 	if this.gc != nil {
 		return

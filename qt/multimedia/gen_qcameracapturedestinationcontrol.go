@@ -60,12 +60,10 @@ func UnsafeNewQCameraCaptureDestinationControl(h unsafe.Pointer) *QCameraCapture
 }
 
 func (this *QCameraCaptureDestinationControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraCaptureDestinationControl_metaObject(this.h)))
 }
 
 func (this *QCameraCaptureDestinationControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraCaptureDestinationControl_metacast(this.h, param1_Cstring))
@@ -90,22 +88,18 @@ func QCameraCaptureDestinationControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraCaptureDestinationControl) IsCaptureDestinationSupported(destination QCameraImageCapture__CaptureDestination) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraCaptureDestinationControl_isCaptureDestinationSupported(this.h, (C.int)(destination)))
 }
 
 func (this *QCameraCaptureDestinationControl) CaptureDestination() QCameraImageCapture__CaptureDestination {
-	defer runtime.KeepAlive(this)
 	return (QCameraImageCapture__CaptureDestination)(C.QCameraCaptureDestinationControl_captureDestination(this.h))
 }
 
 func (this *QCameraCaptureDestinationControl) SetCaptureDestination(destination QCameraImageCapture__CaptureDestination) {
-	defer runtime.KeepAlive(this)
 	C.QCameraCaptureDestinationControl_setCaptureDestination(this.h, (C.int)(destination))
 }
 
 func (this *QCameraCaptureDestinationControl) CaptureDestinationChanged(destination QCameraImageCapture__CaptureDestination) {
-	defer runtime.KeepAlive(this)
 	C.QCameraCaptureDestinationControl_captureDestinationChanged(this.h, (C.int)(destination))
 }
 func (this *QCameraCaptureDestinationControl) OnCaptureDestinationChanged(slot func(destination QCameraImageCapture__CaptureDestination)) {
@@ -177,6 +171,8 @@ func (this *QCameraCaptureDestinationControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCameraCaptureDestinationControl) GoGC() {
 	if this.gc != nil {
 		return

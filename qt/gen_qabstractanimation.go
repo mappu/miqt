@@ -88,18 +88,15 @@ func NewQAbstractAnimation() *QAbstractAnimation {
 
 // NewQAbstractAnimation2 constructs a new QAbstractAnimation object.
 func NewQAbstractAnimation2(parent *QObject) *QAbstractAnimation {
-	defer runtime.KeepAlive(parent)
 
 	return newQAbstractAnimation(C.QAbstractAnimation_new2(parent.cPointer()))
 }
 
 func (this *QAbstractAnimation) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractAnimation_metaObject(this.h))
 }
 
 func (this *QAbstractAnimation) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractAnimation_metacast(this.h, param1_Cstring))
@@ -124,62 +121,50 @@ func QAbstractAnimation_TrUtf8(s string) string {
 }
 
 func (this *QAbstractAnimation) State() QAbstractAnimation__State {
-	defer runtime.KeepAlive(this)
 	return (QAbstractAnimation__State)(C.QAbstractAnimation_state(this.h))
 }
 
 func (this *QAbstractAnimation) Group() *QAnimationGroup {
-	defer runtime.KeepAlive(this)
 	return newQAnimationGroup(C.QAbstractAnimation_group(this.h))
 }
 
 func (this *QAbstractAnimation) Direction() QAbstractAnimation__Direction {
-	defer runtime.KeepAlive(this)
 	return (QAbstractAnimation__Direction)(C.QAbstractAnimation_direction(this.h))
 }
 
 func (this *QAbstractAnimation) SetDirection(direction QAbstractAnimation__Direction) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_setDirection(this.h, (C.int)(direction))
 }
 
 func (this *QAbstractAnimation) CurrentTime() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAnimation_currentTime(this.h))
 }
 
 func (this *QAbstractAnimation) CurrentLoopTime() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAnimation_currentLoopTime(this.h))
 }
 
 func (this *QAbstractAnimation) LoopCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAnimation_loopCount(this.h))
 }
 
 func (this *QAbstractAnimation) SetLoopCount(loopCount int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_setLoopCount(this.h, (C.int)(loopCount))
 }
 
 func (this *QAbstractAnimation) CurrentLoop() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAnimation_currentLoop(this.h))
 }
 
 func (this *QAbstractAnimation) Duration() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAnimation_duration(this.h))
 }
 
 func (this *QAbstractAnimation) TotalDuration() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractAnimation_totalDuration(this.h))
 }
 
 func (this *QAbstractAnimation) Finished() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_finished(this.h)
 }
 func (this *QAbstractAnimation) OnFinished(slot func()) {
@@ -197,7 +182,6 @@ func miqt_exec_callback_QAbstractAnimation_finished(cb C.intptr_t) {
 }
 
 func (this *QAbstractAnimation) StateChanged(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_stateChanged(this.h, (C.int)(newState), (C.int)(oldState))
 }
 func (this *QAbstractAnimation) OnStateChanged(slot func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
@@ -220,7 +204,6 @@ func miqt_exec_callback_QAbstractAnimation_stateChanged(cb C.intptr_t, newState 
 }
 
 func (this *QAbstractAnimation) CurrentLoopChanged(currentLoop int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_currentLoopChanged(this.h, (C.int)(currentLoop))
 }
 func (this *QAbstractAnimation) OnCurrentLoopChanged(slot func(currentLoop int)) {
@@ -241,7 +224,6 @@ func miqt_exec_callback_QAbstractAnimation_currentLoopChanged(cb C.intptr_t, cur
 }
 
 func (this *QAbstractAnimation) DirectionChanged(param1 QAbstractAnimation__Direction) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_directionChanged(this.h, (C.int)(param1))
 }
 func (this *QAbstractAnimation) OnDirectionChanged(slot func(param1 QAbstractAnimation__Direction)) {
@@ -262,32 +244,26 @@ func miqt_exec_callback_QAbstractAnimation_directionChanged(cb C.intptr_t, param
 }
 
 func (this *QAbstractAnimation) Start() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_start(this.h)
 }
 
 func (this *QAbstractAnimation) Pause() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_pause(this.h)
 }
 
 func (this *QAbstractAnimation) Resume() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_resume(this.h)
 }
 
 func (this *QAbstractAnimation) SetPaused(paused bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_setPaused(this.h, (C.bool)(paused))
 }
 
 func (this *QAbstractAnimation) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_stop(this.h)
 }
 
 func (this *QAbstractAnimation) SetCurrentTime(msecs int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_setCurrentTime(this.h, (C.int)(msecs))
 }
 
@@ -336,13 +312,11 @@ func QAbstractAnimation_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QAbstractAnimation) StartWithPolicy(policy QAbstractAnimation__DeletionPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractAnimation_startWithPolicy(this.h, (C.int)(policy))
 }
 
 // Sender can only be called from a QAbstractAnimation that was directly constructed.
 func (this *QAbstractAnimation) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAbstractAnimation_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -357,7 +331,6 @@ func (this *QAbstractAnimation) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAbstractAnimation that was directly constructed.
 func (this *QAbstractAnimation) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractAnimation_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -372,7 +345,6 @@ func (this *QAbstractAnimation) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractAnimation that was directly constructed.
 func (this *QAbstractAnimation) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -389,7 +361,6 @@ func (this *QAbstractAnimation) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractAnimation that was directly constructed.
 func (this *QAbstractAnimation) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -423,7 +394,6 @@ func miqt_exec_callback_QAbstractAnimation_duration(self *C.QAbstractAnimation, 
 }
 
 func (this *QAbstractAnimation) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractAnimation_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -473,7 +443,6 @@ func miqt_exec_callback_QAbstractAnimation_updateCurrentTime(self *C.QAbstractAn
 }
 
 func (this *QAbstractAnimation) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractAnimation_virtualbase_updateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
 
@@ -502,7 +471,6 @@ func miqt_exec_callback_QAbstractAnimation_updateState(self *C.QAbstractAnimatio
 }
 
 func (this *QAbstractAnimation) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractAnimation_virtualbase_updateDirection(unsafe.Pointer(this.h), (C.int)(direction))
 
@@ -529,8 +497,6 @@ func miqt_exec_callback_QAbstractAnimation_updateDirection(self *C.QAbstractAnim
 }
 
 func (this *QAbstractAnimation) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractAnimation_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -562,7 +528,6 @@ func miqt_exec_callback_QAbstractAnimation_eventFilter(self *C.QAbstractAnimatio
 }
 
 func (this *QAbstractAnimation) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractAnimation_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -590,7 +555,6 @@ func miqt_exec_callback_QAbstractAnimation_timerEvent(self *C.QAbstractAnimation
 }
 
 func (this *QAbstractAnimation) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractAnimation_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -618,7 +582,6 @@ func miqt_exec_callback_QAbstractAnimation_childEvent(self *C.QAbstractAnimation
 }
 
 func (this *QAbstractAnimation) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractAnimation_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -646,7 +609,6 @@ func miqt_exec_callback_QAbstractAnimation_customEvent(self *C.QAbstractAnimatio
 }
 
 func (this *QAbstractAnimation) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractAnimation_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -674,7 +636,6 @@ func miqt_exec_callback_QAbstractAnimation_connectNotify(self *C.QAbstractAnimat
 }
 
 func (this *QAbstractAnimation) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractAnimation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -709,6 +670,8 @@ func (this *QAbstractAnimation) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractAnimation) GoGC() {
 	if this.gc != nil {
 		return
@@ -772,18 +735,15 @@ func NewQAnimationDriver() *QAnimationDriver {
 
 // NewQAnimationDriver2 constructs a new QAnimationDriver object.
 func NewQAnimationDriver2(parent *QObject) *QAnimationDriver {
-	defer runtime.KeepAlive(parent)
 
 	return newQAnimationDriver(C.QAnimationDriver_new2(parent.cPointer()))
 }
 
 func (this *QAnimationDriver) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAnimationDriver_metaObject(this.h))
 }
 
 func (this *QAnimationDriver) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAnimationDriver_metacast(this.h, param1_Cstring))
@@ -808,42 +768,34 @@ func QAnimationDriver_TrUtf8(s string) string {
 }
 
 func (this *QAnimationDriver) Advance() {
-	defer runtime.KeepAlive(this)
 	C.QAnimationDriver_advance(this.h)
 }
 
 func (this *QAnimationDriver) Install() {
-	defer runtime.KeepAlive(this)
 	C.QAnimationDriver_install(this.h)
 }
 
 func (this *QAnimationDriver) Uninstall() {
-	defer runtime.KeepAlive(this)
 	C.QAnimationDriver_uninstall(this.h)
 }
 
 func (this *QAnimationDriver) IsRunning() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAnimationDriver_isRunning(this.h))
 }
 
 func (this *QAnimationDriver) Elapsed() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAnimationDriver_elapsed(this.h))
 }
 
 func (this *QAnimationDriver) SetStartTime(startTime int64) {
-	defer runtime.KeepAlive(this)
 	C.QAnimationDriver_setStartTime(this.h, (C.longlong)(startTime))
 }
 
 func (this *QAnimationDriver) StartTime() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAnimationDriver_startTime(this.h))
 }
 
 func (this *QAnimationDriver) Started() {
-	defer runtime.KeepAlive(this)
 	C.QAnimationDriver_started(this.h)
 }
 func (this *QAnimationDriver) OnStarted(slot func()) {
@@ -861,7 +813,6 @@ func miqt_exec_callback_QAnimationDriver_started(cb C.intptr_t) {
 }
 
 func (this *QAnimationDriver) Stopped() {
-	defer runtime.KeepAlive(this)
 	C.QAnimationDriver_stopped(this.h)
 }
 func (this *QAnimationDriver) OnStopped(slot func()) {
@@ -924,7 +875,6 @@ func QAnimationDriver_TrUtf83(s string, c string, n int) string {
 
 // AdvanceAnimation can only be called from a QAnimationDriver that was directly constructed.
 func (this *QAnimationDriver) AdvanceAnimation() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAnimationDriver_protectedbase_advanceAnimation(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -937,7 +887,6 @@ func (this *QAnimationDriver) AdvanceAnimation() {
 
 // AdvanceAnimationWithTimeStep can only be called from a QAnimationDriver that was directly constructed.
 func (this *QAnimationDriver) AdvanceAnimationWithTimeStep(timeStep int64) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAnimationDriver_protectedbase_advanceAnimationWithTimeStep(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.longlong)(timeStep))
@@ -950,7 +899,6 @@ func (this *QAnimationDriver) AdvanceAnimationWithTimeStep(timeStep int64) {
 
 // Sender can only be called from a QAnimationDriver that was directly constructed.
 func (this *QAnimationDriver) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAnimationDriver_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -965,7 +913,6 @@ func (this *QAnimationDriver) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAnimationDriver that was directly constructed.
 func (this *QAnimationDriver) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAnimationDriver_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -980,7 +927,6 @@ func (this *QAnimationDriver) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAnimationDriver that was directly constructed.
 func (this *QAnimationDriver) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -997,7 +943,6 @@ func (this *QAnimationDriver) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAnimationDriver that was directly constructed.
 func (this *QAnimationDriver) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1012,7 +957,6 @@ func (this *QAnimationDriver) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QAnimationDriver) callVirtualBase_Advance() {
-	defer runtime.KeepAlive(this)
 
 	C.QAnimationDriver_virtualbase_advance(unsafe.Pointer(this.h))
 
@@ -1036,7 +980,6 @@ func miqt_exec_callback_QAnimationDriver_advance(self *C.QAnimationDriver, cb C.
 }
 
 func (this *QAnimationDriver) callVirtualBase_Elapsed() int64 {
-	defer runtime.KeepAlive(this)
 
 	return (int64)(C.QAnimationDriver_virtualbase_elapsed(unsafe.Pointer(this.h)))
 
@@ -1062,7 +1005,6 @@ func miqt_exec_callback_QAnimationDriver_elapsed(self *C.QAnimationDriver, cb C.
 }
 
 func (this *QAnimationDriver) callVirtualBase_Start() {
-	defer runtime.KeepAlive(this)
 
 	C.QAnimationDriver_virtualbase_start(unsafe.Pointer(this.h))
 
@@ -1086,7 +1028,6 @@ func miqt_exec_callback_QAnimationDriver_start(self *C.QAnimationDriver, cb C.in
 }
 
 func (this *QAnimationDriver) callVirtualBase_Stop() {
-	defer runtime.KeepAlive(this)
 
 	C.QAnimationDriver_virtualbase_stop(unsafe.Pointer(this.h))
 
@@ -1110,7 +1051,6 @@ func miqt_exec_callback_QAnimationDriver_stop(self *C.QAnimationDriver, cb C.int
 }
 
 func (this *QAnimationDriver) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAnimationDriver_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1140,8 +1080,6 @@ func miqt_exec_callback_QAnimationDriver_event(self *C.QAnimationDriver, cb C.in
 }
 
 func (this *QAnimationDriver) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAnimationDriver_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1173,7 +1111,6 @@ func miqt_exec_callback_QAnimationDriver_eventFilter(self *C.QAnimationDriver, c
 }
 
 func (this *QAnimationDriver) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAnimationDriver_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1201,7 +1138,6 @@ func miqt_exec_callback_QAnimationDriver_timerEvent(self *C.QAnimationDriver, cb
 }
 
 func (this *QAnimationDriver) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAnimationDriver_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1229,7 +1165,6 @@ func miqt_exec_callback_QAnimationDriver_childEvent(self *C.QAnimationDriver, cb
 }
 
 func (this *QAnimationDriver) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAnimationDriver_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1257,7 +1192,6 @@ func miqt_exec_callback_QAnimationDriver_customEvent(self *C.QAnimationDriver, c
 }
 
 func (this *QAnimationDriver) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAnimationDriver_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1285,7 +1219,6 @@ func miqt_exec_callback_QAnimationDriver_connectNotify(self *C.QAnimationDriver,
 }
 
 func (this *QAnimationDriver) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAnimationDriver_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1320,6 +1253,8 @@ func (this *QAnimationDriver) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAnimationDriver) GoGC() {
 	if this.gc != nil {
 		return

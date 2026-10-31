@@ -76,14 +76,12 @@ func NewQPluginLoader2(fileName string) *QPluginLoader {
 
 // NewQPluginLoader3 constructs a new QPluginLoader object.
 func NewQPluginLoader3(parent *QObject) *QPluginLoader {
-	defer runtime.KeepAlive(parent)
 
 	return newQPluginLoader(C.QPluginLoader_new3(parent.cPointer()))
 }
 
 // NewQPluginLoader4 constructs a new QPluginLoader object.
 func NewQPluginLoader4(fileName string, parent *QObject) *QPluginLoader {
-	defer runtime.KeepAlive(parent)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -93,12 +91,10 @@ func NewQPluginLoader4(fileName string, parent *QObject) *QPluginLoader {
 }
 
 func (this *QPluginLoader) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPluginLoader_metaObject(this.h))
 }
 
 func (this *QPluginLoader) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPluginLoader_metacast(this.h, param1_Cstring))
@@ -114,12 +110,10 @@ func QPluginLoader_Tr(s string) string {
 }
 
 func (this *QPluginLoader) Instance() *QObject {
-	defer runtime.KeepAlive(this)
 	return newQObject(C.QPluginLoader_instance(this.h))
 }
 
 func (this *QPluginLoader) MetaData() *QJsonObject {
-	defer runtime.KeepAlive(this)
 	_goptr := newQJsonObject(C.QPluginLoader_metaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -148,22 +142,18 @@ func QPluginLoader_StaticPlugins() []QStaticPlugin {
 }
 
 func (this *QPluginLoader) Load() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QPluginLoader_load(this.h))
 }
 
 func (this *QPluginLoader) Unload() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QPluginLoader_unload(this.h))
 }
 
 func (this *QPluginLoader) IsLoaded() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QPluginLoader_isLoaded(this.h))
 }
 
 func (this *QPluginLoader) SetFileName(fileName string) {
-	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -172,7 +162,6 @@ func (this *QPluginLoader) SetFileName(fileName string) {
 }
 
 func (this *QPluginLoader) FileName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPluginLoader_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -180,7 +169,6 @@ func (this *QPluginLoader) FileName() string {
 }
 
 func (this *QPluginLoader) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPluginLoader_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -188,12 +176,10 @@ func (this *QPluginLoader) ErrorString() string {
 }
 
 func (this *QPluginLoader) SetLoadHints(loadHints QLibrary__LoadHint) {
-	defer runtime.KeepAlive(this)
 	C.QPluginLoader_setLoadHints(this.h, (C.int)(loadHints))
 }
 
 func (this *QPluginLoader) LoadHints() QLibrary__LoadHint {
-	defer runtime.KeepAlive(this)
 	return (QLibrary__LoadHint)(C.QPluginLoader_loadHints(this.h))
 }
 
@@ -221,7 +207,6 @@ func QPluginLoader_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QPluginLoader that was directly constructed.
 func (this *QPluginLoader) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QPluginLoader_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -236,7 +221,6 @@ func (this *QPluginLoader) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QPluginLoader that was directly constructed.
 func (this *QPluginLoader) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPluginLoader_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -251,7 +235,6 @@ func (this *QPluginLoader) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPluginLoader that was directly constructed.
 func (this *QPluginLoader) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -268,7 +251,6 @@ func (this *QPluginLoader) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPluginLoader that was directly constructed.
 func (this *QPluginLoader) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -283,7 +265,6 @@ func (this *QPluginLoader) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QPluginLoader) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPluginLoader_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -313,8 +294,6 @@ func miqt_exec_callback_QPluginLoader_event(self *C.QPluginLoader, cb C.intptr_t
 }
 
 func (this *QPluginLoader) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPluginLoader_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -346,7 +325,6 @@ func miqt_exec_callback_QPluginLoader_eventFilter(self *C.QPluginLoader, cb C.in
 }
 
 func (this *QPluginLoader) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPluginLoader_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -374,7 +352,6 @@ func miqt_exec_callback_QPluginLoader_timerEvent(self *C.QPluginLoader, cb C.int
 }
 
 func (this *QPluginLoader) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPluginLoader_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -402,7 +379,6 @@ func miqt_exec_callback_QPluginLoader_childEvent(self *C.QPluginLoader, cb C.int
 }
 
 func (this *QPluginLoader) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPluginLoader_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -430,7 +406,6 @@ func miqt_exec_callback_QPluginLoader_customEvent(self *C.QPluginLoader, cb C.in
 }
 
 func (this *QPluginLoader) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPluginLoader_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -458,7 +433,6 @@ func miqt_exec_callback_QPluginLoader_connectNotify(self *C.QPluginLoader, cb C.
 }
 
 func (this *QPluginLoader) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPluginLoader_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -493,6 +467,8 @@ func (this *QPluginLoader) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPluginLoader) GoGC() {
 	if this.gc != nil {
 		return

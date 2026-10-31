@@ -92,14 +92,12 @@ func NewQWebEngineProfile2(name string) *QWebEngineProfile {
 
 // NewQWebEngineProfile3 constructs a new QWebEngineProfile object.
 func NewQWebEngineProfile3(parent *qt6.QObject) *QWebEngineProfile {
-	defer runtime.KeepAlive(parent)
 
 	return newQWebEngineProfile(C.QWebEngineProfile_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQWebEngineProfile4 constructs a new QWebEngineProfile object.
 func NewQWebEngineProfile4(name string, parent *qt6.QObject) *QWebEngineProfile {
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -109,12 +107,10 @@ func NewQWebEngineProfile4(name string, parent *qt6.QObject) *QWebEngineProfile 
 }
 
 func (this *QWebEngineProfile) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineProfile_metaObject(this.h)))
 }
 
 func (this *QWebEngineProfile) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineProfile_metacast(this.h, param1_Cstring))
@@ -130,7 +126,6 @@ func QWebEngineProfile_Tr(s string) string {
 }
 
 func (this *QWebEngineProfile) StorageName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineProfile_storageName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -138,12 +133,10 @@ func (this *QWebEngineProfile) StorageName() string {
 }
 
 func (this *QWebEngineProfile) IsOffTheRecord() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineProfile_isOffTheRecord(this.h))
 }
 
 func (this *QWebEngineProfile) PersistentStoragePath() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineProfile_persistentStoragePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -151,7 +144,6 @@ func (this *QWebEngineProfile) PersistentStoragePath() string {
 }
 
 func (this *QWebEngineProfile) SetPersistentStoragePath(path string) {
-	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -160,7 +152,6 @@ func (this *QWebEngineProfile) SetPersistentStoragePath(path string) {
 }
 
 func (this *QWebEngineProfile) CachePath() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineProfile_cachePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -168,7 +159,6 @@ func (this *QWebEngineProfile) CachePath() string {
 }
 
 func (this *QWebEngineProfile) SetCachePath(path string) {
-	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -177,7 +167,6 @@ func (this *QWebEngineProfile) SetCachePath(path string) {
 }
 
 func (this *QWebEngineProfile) HttpUserAgent() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineProfile_httpUserAgent(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -185,7 +174,6 @@ func (this *QWebEngineProfile) HttpUserAgent() string {
 }
 
 func (this *QWebEngineProfile) SetHttpUserAgent(userAgent string) {
-	defer runtime.KeepAlive(this)
 	userAgent_ms := C.struct_miqt_string{}
 	userAgent_ms.data = C.CString(userAgent)
 	userAgent_ms.len = C.size_t(len(userAgent))
@@ -194,17 +182,14 @@ func (this *QWebEngineProfile) SetHttpUserAgent(userAgent string) {
 }
 
 func (this *QWebEngineProfile) HttpCacheType() QWebEngineProfile__HttpCacheType {
-	defer runtime.KeepAlive(this)
 	return (QWebEngineProfile__HttpCacheType)(C.QWebEngineProfile_httpCacheType(this.h))
 }
 
 func (this *QWebEngineProfile) SetHttpCacheType(httpCacheType QWebEngineProfile__HttpCacheType) {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineProfile_setHttpCacheType(this.h, (C.int)(httpCacheType))
 }
 
 func (this *QWebEngineProfile) SetHttpAcceptLanguage(httpAcceptLanguage string) {
-	defer runtime.KeepAlive(this)
 	httpAcceptLanguage_ms := C.struct_miqt_string{}
 	httpAcceptLanguage_ms.data = C.CString(httpAcceptLanguage)
 	httpAcceptLanguage_ms.len = C.size_t(len(httpAcceptLanguage))
@@ -213,7 +198,6 @@ func (this *QWebEngineProfile) SetHttpAcceptLanguage(httpAcceptLanguage string) 
 }
 
 func (this *QWebEngineProfile) HttpAcceptLanguage() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineProfile_httpAcceptLanguage(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -221,43 +205,34 @@ func (this *QWebEngineProfile) HttpAcceptLanguage() string {
 }
 
 func (this *QWebEngineProfile) PersistentCookiesPolicy() QWebEngineProfile__PersistentCookiesPolicy {
-	defer runtime.KeepAlive(this)
 	return (QWebEngineProfile__PersistentCookiesPolicy)(C.QWebEngineProfile_persistentCookiesPolicy(this.h))
 }
 
 func (this *QWebEngineProfile) SetPersistentCookiesPolicy(persistentCookiesPolicy QWebEngineProfile__PersistentCookiesPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineProfile_setPersistentCookiesPolicy(this.h, (C.int)(persistentCookiesPolicy))
 }
 
 func (this *QWebEngineProfile) HttpCacheMaximumSize() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWebEngineProfile_httpCacheMaximumSize(this.h))
 }
 
 func (this *QWebEngineProfile) SetHttpCacheMaximumSize(maxSize int) {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineProfile_setHttpCacheMaximumSize(this.h, (C.int)(maxSize))
 }
 
 func (this *QWebEngineProfile) CookieStore() *QWebEngineCookieStore {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineCookieStore(C.QWebEngineProfile_cookieStore(this.h))
 }
 
 func (this *QWebEngineProfile) SetUrlRequestInterceptor(interceptor *QWebEngineUrlRequestInterceptor) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(interceptor)
 	C.QWebEngineProfile_setUrlRequestInterceptor(this.h, interceptor.cPointer())
 }
 
 func (this *QWebEngineProfile) ClearAllVisitedLinks() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineProfile_clearAllVisitedLinks(this.h)
 }
 
 func (this *QWebEngineProfile) ClearVisitedLinks(urls []qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(urls)
 	urls_CArray_ptr := (**C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
 	defer C.free(unsafe.Pointer(urls_CArray_ptr))
@@ -270,23 +245,19 @@ func (this *QWebEngineProfile) ClearVisitedLinks(urls []qt6.QUrl) {
 }
 
 func (this *QWebEngineProfile) VisitedLinksContainsUrl(url *qt6.QUrl) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	return (bool)(C.QWebEngineProfile_visitedLinksContainsUrl(this.h, (*C.QUrl)(url.UnsafePointer())))
 }
 
 func (this *QWebEngineProfile) Settings() *QWebEngineSettings {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineSettings(C.QWebEngineProfile_settings(this.h))
 }
 
 func (this *QWebEngineProfile) Scripts() *QWebEngineScriptCollection {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineScriptCollection(C.QWebEngineProfile_scripts(this.h))
 }
 
 func (this *QWebEngineProfile) UrlSchemeHandler(param1 []byte) *QWebEngineUrlSchemeHandler {
-	defer runtime.KeepAlive(this)
 	param1_alias := C.struct_miqt_string{}
 	if len(param1) > 0 {
 		param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
@@ -298,8 +269,6 @@ func (this *QWebEngineProfile) UrlSchemeHandler(param1 []byte) *QWebEngineUrlSch
 }
 
 func (this *QWebEngineProfile) InstallUrlSchemeHandler(scheme []byte, param2 *QWebEngineUrlSchemeHandler) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
 	scheme_alias := C.struct_miqt_string{}
 	if len(scheme) > 0 {
 		scheme_alias.data = (*C.char)(unsafe.Pointer(&scheme[0]))
@@ -311,7 +280,6 @@ func (this *QWebEngineProfile) InstallUrlSchemeHandler(scheme []byte, param2 *QW
 }
 
 func (this *QWebEngineProfile) RemoveUrlScheme(scheme []byte) {
-	defer runtime.KeepAlive(this)
 	scheme_alias := C.struct_miqt_string{}
 	if len(scheme) > 0 {
 		scheme_alias.data = (*C.char)(unsafe.Pointer(&scheme[0]))
@@ -323,23 +291,18 @@ func (this *QWebEngineProfile) RemoveUrlScheme(scheme []byte) {
 }
 
 func (this *QWebEngineProfile) RemoveUrlSchemeHandler(param1 *QWebEngineUrlSchemeHandler) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QWebEngineProfile_removeUrlSchemeHandler(this.h, param1.cPointer())
 }
 
 func (this *QWebEngineProfile) RemoveAllUrlSchemeHandlers() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineProfile_removeAllUrlSchemeHandlers(this.h)
 }
 
 func (this *QWebEngineProfile) ClearHttpCache() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineProfile_clearHttpCache(this.h)
 }
 
 func (this *QWebEngineProfile) SetSpellCheckLanguages(languages []string) {
-	defer runtime.KeepAlive(this)
 	languages_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(languages))))
 	defer C.free(unsafe.Pointer(languages_CArray_ptr))
 	languages_CArray := unsafe.Slice(languages_CArray_ptr, len(languages))
@@ -355,7 +318,6 @@ func (this *QWebEngineProfile) SetSpellCheckLanguages(languages []string) {
 }
 
 func (this *QWebEngineProfile) SpellCheckLanguages() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWebEngineProfile_spellCheckLanguages(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -369,17 +331,14 @@ func (this *QWebEngineProfile) SpellCheckLanguages() []string {
 }
 
 func (this *QWebEngineProfile) SetSpellCheckEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineProfile_setSpellCheckEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QWebEngineProfile) IsSpellCheckEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineProfile_isSpellCheckEnabled(this.h))
 }
 
 func (this *QWebEngineProfile) DownloadPath() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWebEngineProfile_downloadPath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -387,7 +346,6 @@ func (this *QWebEngineProfile) DownloadPath() string {
 }
 
 func (this *QWebEngineProfile) SetDownloadPath(path string) {
-	defer runtime.KeepAlive(this)
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -396,7 +354,6 @@ func (this *QWebEngineProfile) SetDownloadPath(path string) {
 }
 
 func (this *QWebEngineProfile) ClientCertificateStore() *QWebEngineClientCertificateStore {
-	defer runtime.KeepAlive(this)
 	return newQWebEngineClientCertificateStore(C.QWebEngineProfile_clientCertificateStore(this.h))
 }
 
@@ -405,8 +362,6 @@ func QWebEngineProfile_DefaultProfile() *QWebEngineProfile {
 }
 
 func (this *QWebEngineProfile) DownloadRequested(download *QWebEngineDownloadRequest) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(download)
 	C.QWebEngineProfile_downloadRequested(this.h, download.cPointer())
 }
 func (this *QWebEngineProfile) OnDownloadRequested(slot func(download *QWebEngineDownloadRequest)) {
@@ -450,7 +405,6 @@ func QWebEngineProfile_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QWebEngineProfile that was directly constructed.
 func (this *QWebEngineProfile) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QWebEngineProfile_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -465,7 +419,6 @@ func (this *QWebEngineProfile) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QWebEngineProfile that was directly constructed.
 func (this *QWebEngineProfile) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWebEngineProfile_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -480,7 +433,6 @@ func (this *QWebEngineProfile) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWebEngineProfile that was directly constructed.
 func (this *QWebEngineProfile) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -497,7 +449,6 @@ func (this *QWebEngineProfile) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWebEngineProfile that was directly constructed.
 func (this *QWebEngineProfile) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -512,7 +463,6 @@ func (this *QWebEngineProfile) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QWebEngineProfile) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebEngineProfile_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -542,8 +492,6 @@ func miqt_exec_callback_QWebEngineProfile_event(self *C.QWebEngineProfile, cb C.
 }
 
 func (this *QWebEngineProfile) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWebEngineProfile_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -575,7 +523,6 @@ func miqt_exec_callback_QWebEngineProfile_eventFilter(self *C.QWebEngineProfile,
 }
 
 func (this *QWebEngineProfile) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebEngineProfile_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -603,7 +550,6 @@ func miqt_exec_callback_QWebEngineProfile_timerEvent(self *C.QWebEngineProfile, 
 }
 
 func (this *QWebEngineProfile) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebEngineProfile_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -631,7 +577,6 @@ func miqt_exec_callback_QWebEngineProfile_childEvent(self *C.QWebEngineProfile, 
 }
 
 func (this *QWebEngineProfile) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWebEngineProfile_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -659,7 +604,6 @@ func miqt_exec_callback_QWebEngineProfile_customEvent(self *C.QWebEngineProfile,
 }
 
 func (this *QWebEngineProfile) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWebEngineProfile_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -687,7 +631,6 @@ func miqt_exec_callback_QWebEngineProfile_connectNotify(self *C.QWebEngineProfil
 }
 
 func (this *QWebEngineProfile) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWebEngineProfile_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -722,6 +665,8 @@ func (this *QWebEngineProfile) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebEngineProfile) GoGC() {
 	if this.gc != nil {
 		return

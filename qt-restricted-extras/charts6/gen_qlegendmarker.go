@@ -70,12 +70,10 @@ func UnsafeNewQLegendMarker(h unsafe.Pointer) *QLegendMarker {
 }
 
 func (this *QLegendMarker) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QLegendMarker_metaObject(this.h)))
 }
 
 func (this *QLegendMarker) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QLegendMarker_metacast(this.h, param1_Cstring))
@@ -91,12 +89,10 @@ func QLegendMarker_Tr(s string) string {
 }
 
 func (this *QLegendMarker) Type() QLegendMarker__LegendMarkerType {
-	defer runtime.KeepAlive(this)
 	return (QLegendMarker__LegendMarkerType)(C.QLegendMarker_type(this.h))
 }
 
 func (this *QLegendMarker) Label() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QLegendMarker_label(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -104,7 +100,6 @@ func (this *QLegendMarker) Label() string {
 }
 
 func (this *QLegendMarker) SetLabel(label string) {
-	defer runtime.KeepAlive(this)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -113,84 +108,70 @@ func (this *QLegendMarker) SetLabel(label string) {
 }
 
 func (this *QLegendMarker) LabelBrush() *qt6.QBrush {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QLegendMarker_labelBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegendMarker) SetLabelBrush(brush *qt6.QBrush) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(brush)
 	C.QLegendMarker_setLabelBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QLegendMarker) Font() *qt6.QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QLegendMarker_font(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegendMarker) SetFont(font *qt6.QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QLegendMarker_setFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QLegendMarker) Pen() *qt6.QPen {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QLegendMarker_pen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegendMarker) SetPen(pen *qt6.QPen) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pen)
 	C.QLegendMarker_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QLegendMarker) Brush() *qt6.QBrush {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QLegendMarker_brush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegendMarker) SetBrush(brush *qt6.QBrush) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(brush)
 	C.QLegendMarker_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QLegendMarker) IsVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QLegendMarker_isVisible(this.h))
 }
 
 func (this *QLegendMarker) SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QLegendMarker) Shape() QLegend__MarkerShape {
-	defer runtime.KeepAlive(this)
 	return (QLegend__MarkerShape)(C.QLegendMarker_shape(this.h))
 }
 
 func (this *QLegendMarker) SetShape(shape QLegend__MarkerShape) {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_setShape(this.h, (C.int)(shape))
 }
 
 func (this *QLegendMarker) Series() *QAbstractSeries {
-	defer runtime.KeepAlive(this)
 	return newQAbstractSeries(C.QLegendMarker_series(this.h))
 }
 
 func (this *QLegendMarker) Clicked() {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_clicked(this.h)
 }
 func (this *QLegendMarker) OnClicked(slot func()) {
@@ -208,7 +189,6 @@ func miqt_exec_callback_QLegendMarker_clicked(cb C.intptr_t) {
 }
 
 func (this *QLegendMarker) Hovered(status bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_hovered(this.h, (C.bool)(status))
 }
 func (this *QLegendMarker) OnHovered(slot func(status bool)) {
@@ -229,7 +209,6 @@ func miqt_exec_callback_QLegendMarker_hovered(cb C.intptr_t, status C.bool) {
 }
 
 func (this *QLegendMarker) LabelChanged() {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_labelChanged(this.h)
 }
 func (this *QLegendMarker) OnLabelChanged(slot func()) {
@@ -247,7 +226,6 @@ func miqt_exec_callback_QLegendMarker_labelChanged(cb C.intptr_t) {
 }
 
 func (this *QLegendMarker) LabelBrushChanged() {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_labelBrushChanged(this.h)
 }
 func (this *QLegendMarker) OnLabelBrushChanged(slot func()) {
@@ -265,7 +243,6 @@ func miqt_exec_callback_QLegendMarker_labelBrushChanged(cb C.intptr_t) {
 }
 
 func (this *QLegendMarker) FontChanged() {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_fontChanged(this.h)
 }
 func (this *QLegendMarker) OnFontChanged(slot func()) {
@@ -283,7 +260,6 @@ func miqt_exec_callback_QLegendMarker_fontChanged(cb C.intptr_t) {
 }
 
 func (this *QLegendMarker) PenChanged() {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_penChanged(this.h)
 }
 func (this *QLegendMarker) OnPenChanged(slot func()) {
@@ -301,7 +277,6 @@ func miqt_exec_callback_QLegendMarker_penChanged(cb C.intptr_t) {
 }
 
 func (this *QLegendMarker) BrushChanged() {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_brushChanged(this.h)
 }
 func (this *QLegendMarker) OnBrushChanged(slot func()) {
@@ -319,7 +294,6 @@ func miqt_exec_callback_QLegendMarker_brushChanged(cb C.intptr_t) {
 }
 
 func (this *QLegendMarker) VisibleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_visibleChanged(this.h)
 }
 func (this *QLegendMarker) OnVisibleChanged(slot func()) {
@@ -337,7 +311,6 @@ func miqt_exec_callback_QLegendMarker_visibleChanged(cb C.intptr_t) {
 }
 
 func (this *QLegendMarker) ShapeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QLegendMarker_shapeChanged(this.h)
 }
 func (this *QLegendMarker) OnShapeChanged(slot func()) {
@@ -384,6 +357,8 @@ func (this *QLegendMarker) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QLegendMarker) GoGC() {
 	if this.gc != nil {
 		return

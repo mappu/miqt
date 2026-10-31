@@ -10,7 +10,6 @@ import "C"
 
 import (
 	"github.com/mappu/miqt/qt6"
-	"runtime"
 	"runtime/cgo"
 	"unsafe"
 )
@@ -88,12 +87,10 @@ func UnsafeNewQNetworkInformation(h unsafe.Pointer) *QNetworkInformation {
 }
 
 func (this *QNetworkInformation) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkInformation_metaObject(this.h)))
 }
 
 func (this *QNetworkInformation) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QNetworkInformation_metacast(this.h, param1_Cstring))
@@ -109,27 +106,22 @@ func QNetworkInformation_Tr(s string) string {
 }
 
 func (this *QNetworkInformation) Reachability() QNetworkInformation__Reachability {
-	defer runtime.KeepAlive(this)
 	return (QNetworkInformation__Reachability)(C.QNetworkInformation_reachability(this.h))
 }
 
 func (this *QNetworkInformation) IsBehindCaptivePortal() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkInformation_isBehindCaptivePortal(this.h))
 }
 
 func (this *QNetworkInformation) TransportMedium() QNetworkInformation__TransportMedium {
-	defer runtime.KeepAlive(this)
 	return (QNetworkInformation__TransportMedium)(C.QNetworkInformation_transportMedium(this.h))
 }
 
 func (this *QNetworkInformation) IsMetered() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkInformation_isMetered(this.h))
 }
 
 func (this *QNetworkInformation) BackendName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QNetworkInformation_backendName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -137,12 +129,10 @@ func (this *QNetworkInformation) BackendName() string {
 }
 
 func (this *QNetworkInformation) Supports(features QNetworkInformation__Feature) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkInformation_supports(this.h, (C.int)(features)))
 }
 
 func (this *QNetworkInformation) SupportedFeatures() QNetworkInformation__Feature {
-	defer runtime.KeepAlive(this)
 	return (QNetworkInformation__Feature)(C.QNetworkInformation_supportedFeatures(this.h))
 }
 
@@ -176,7 +166,6 @@ func QNetworkInformation_Instance() *QNetworkInformation {
 }
 
 func (this *QNetworkInformation) ReachabilityChanged(newReachability QNetworkInformation__Reachability) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkInformation_reachabilityChanged(this.h, (C.int)(newReachability))
 }
 func (this *QNetworkInformation) OnReachabilityChanged(slot func(newReachability QNetworkInformation__Reachability)) {
@@ -197,7 +186,6 @@ func miqt_exec_callback_QNetworkInformation_reachabilityChanged(cb C.intptr_t, n
 }
 
 func (this *QNetworkInformation) IsBehindCaptivePortalChanged(state bool) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkInformation_isBehindCaptivePortalChanged(this.h, (C.bool)(state))
 }
 func (this *QNetworkInformation) OnIsBehindCaptivePortalChanged(slot func(state bool)) {
@@ -218,7 +206,6 @@ func miqt_exec_callback_QNetworkInformation_isBehindCaptivePortalChanged(cb C.in
 }
 
 func (this *QNetworkInformation) TransportMediumChanged(current QNetworkInformation__TransportMedium) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkInformation_transportMediumChanged(this.h, (C.int)(current))
 }
 func (this *QNetworkInformation) OnTransportMediumChanged(slot func(current QNetworkInformation__TransportMedium)) {
@@ -239,7 +226,6 @@ func miqt_exec_callback_QNetworkInformation_transportMediumChanged(cb C.intptr_t
 }
 
 func (this *QNetworkInformation) IsMeteredChanged(isMetered bool) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkInformation_isMeteredChanged(this.h, (C.bool)(isMetered))
 }
 func (this *QNetworkInformation) OnIsMeteredChanged(slot func(isMetered bool)) {

@@ -70,7 +70,6 @@ func NewQQmlFile() *QQmlFile {
 
 // NewQQmlFile2 constructs a new QQmlFile object.
 func NewQQmlFile2(param1 *QQmlEngine, param2 *qt6.QUrl) *QQmlFile {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return newQQmlFile(C.QQmlFile_new2(param1.cPointer(), (*C.QUrl)(param2.UnsafePointer())))
@@ -78,7 +77,6 @@ func NewQQmlFile2(param1 *QQmlEngine, param2 *qt6.QUrl) *QQmlFile {
 
 // NewQQmlFile3 constructs a new QQmlFile object.
 func NewQQmlFile3(param1 *QQmlEngine, param2 string) *QQmlFile {
-	defer runtime.KeepAlive(param1)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -148,14 +146,12 @@ func (this *QQmlFile) DataByteArray() []byte {
 
 func (this *QQmlFile) Load(param1 *QQmlEngine, param2 *qt6.QUrl) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	C.QQmlFile_load(this.h, param1.cPointer(), (*C.QUrl)(param2.UnsafePointer()))
 }
 
 func (this *QQmlFile) Load2(param1 *QQmlEngine, param2 string) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	param2_ms := C.struct_miqt_string{}
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
@@ -170,13 +166,11 @@ func (this *QQmlFile) Clear() {
 
 func (this *QQmlFile) ClearWithQObject(param1 *qt6.QObject) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QQmlFile_clearWithQObject(this.h, (*C.QObject)(param1.UnsafePointer()))
 }
 
 func (this *QQmlFile) ConnectFinished(param1 *qt6.QObject, param2 string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	param2_Cstring := C.CString(param2)
 	defer C.free(unsafe.Pointer(param2_Cstring))
 	return (bool)(C.QQmlFile_connectFinished(this.h, (*C.QObject)(param1.UnsafePointer()), param2_Cstring))
@@ -184,13 +178,11 @@ func (this *QQmlFile) ConnectFinished(param1 *qt6.QObject, param2 string) bool {
 
 func (this *QQmlFile) ConnectFinished2(param1 *qt6.QObject, param2 int) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	return (bool)(C.QQmlFile_connectFinished2(this.h, (*C.QObject)(param1.UnsafePointer()), (C.int)(param2)))
 }
 
 func (this *QQmlFile) ConnectDownloadProgress(param1 *qt6.QObject, param2 string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	param2_Cstring := C.CString(param2)
 	defer C.free(unsafe.Pointer(param2_Cstring))
 	return (bool)(C.QQmlFile_connectDownloadProgress(this.h, (*C.QObject)(param1.UnsafePointer()), param2_Cstring))
@@ -198,7 +190,6 @@ func (this *QQmlFile) ConnectDownloadProgress(param1 *qt6.QObject, param2 string
 
 func (this *QQmlFile) ConnectDownloadProgress2(param1 *qt6.QObject, param2 int) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	return (bool)(C.QQmlFile_connectDownloadProgress2(this.h, (*C.QObject)(param1.UnsafePointer()), (C.int)(param2)))
 }
 

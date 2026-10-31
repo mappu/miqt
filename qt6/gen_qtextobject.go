@@ -59,12 +59,10 @@ func UnsafeNewQTextObject(h unsafe.Pointer) *QTextObject {
 }
 
 func (this *QTextObject) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTextObject_metaObject(this.h))
 }
 
 func (this *QTextObject) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTextObject_metacast(this.h, param1_Cstring))
@@ -80,24 +78,20 @@ func QTextObject_Tr(s string) string {
 }
 
 func (this *QTextObject) Format() *QTextFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextFormat(C.QTextObject_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextObject) FormatIndex() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextObject_formatIndex(this.h))
 }
 
 func (this *QTextObject) Document() *QTextDocument {
-	defer runtime.KeepAlive(this)
 	return newQTextDocument(C.QTextObject_document(this.h))
 }
 
 func (this *QTextObject) ObjectIndex() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextObject_objectIndex(this.h))
 }
 
@@ -168,12 +162,10 @@ func UnsafeNewQTextBlockGroup(h unsafe.Pointer) *QTextBlockGroup {
 }
 
 func (this *QTextBlockGroup) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTextBlockGroup_metaObject(this.h))
 }
 
 func (this *QTextBlockGroup) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTextBlockGroup_metacast(this.h, param1_Cstring))
@@ -256,18 +248,15 @@ func UnsafeNewQTextFrame(h unsafe.Pointer) *QTextFrame {
 
 // NewQTextFrame constructs a new QTextFrame object.
 func NewQTextFrame(doc *QTextDocument) *QTextFrame {
-	defer runtime.KeepAlive(doc)
 
 	return newQTextFrame(C.QTextFrame_new(doc.cPointer()))
 }
 
 func (this *QTextFrame) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTextFrame_metaObject(this.h))
 }
 
 func (this *QTextFrame) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTextFrame_metacast(this.h, param1_Cstring))
@@ -283,44 +272,37 @@ func QTextFrame_Tr(s string) string {
 }
 
 func (this *QTextFrame) SetFrameFormat(format *QTextFrameFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(format)
 	C.QTextFrame_setFrameFormat(this.h, format.cPointer())
 }
 
 func (this *QTextFrame) FrameFormat() *QTextFrameFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextFrameFormat(C.QTextFrame_frameFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame) FirstCursorPosition() *QTextCursor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextCursor(C.QTextFrame_firstCursorPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame) LastCursorPosition() *QTextCursor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextCursor(C.QTextFrame_lastCursorPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame) FirstPosition() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextFrame_firstPosition(this.h))
 }
 
 func (this *QTextFrame) LastPosition() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextFrame_lastPosition(this.h))
 }
 
 func (this *QTextFrame) ChildFrames() []*QTextFrame {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTextFrame_childFrames(this.h)
 	_ret := make([]*QTextFrame, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QTextFrame)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -331,19 +313,16 @@ func (this *QTextFrame) ChildFrames() []*QTextFrame {
 }
 
 func (this *QTextFrame) ParentFrame() *QTextFrame {
-	defer runtime.KeepAlive(this)
 	return newQTextFrame(C.QTextFrame_parentFrame(this.h))
 }
 
 func (this *QTextFrame) Begin() *QTextFrame__iterator {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextFrame__iterator(C.QTextFrame_begin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame) End() *QTextFrame__iterator {
-	defer runtime.KeepAlive(this)
 	_goptr := newQTextFrame__iterator(C.QTextFrame_end(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -373,7 +352,6 @@ func QTextFrame_Tr3(s string, c string, n int) string {
 
 // SetFormat can only be called from a QTextFrame that was directly constructed.
 func (this *QTextFrame) SetFormat(format *QTextFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(format)
 
 	var _dynamic_cast_ok C.bool = false
@@ -387,7 +365,6 @@ func (this *QTextFrame) SetFormat(format *QTextFormat) {
 
 // Sender can only be called from a QTextFrame that was directly constructed.
 func (this *QTextFrame) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTextFrame_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -402,7 +379,6 @@ func (this *QTextFrame) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTextFrame that was directly constructed.
 func (this *QTextFrame) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTextFrame_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -417,7 +393,6 @@ func (this *QTextFrame) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTextFrame that was directly constructed.
 func (this *QTextFrame) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -434,7 +409,6 @@ func (this *QTextFrame) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTextFrame that was directly constructed.
 func (this *QTextFrame) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -449,7 +423,6 @@ func (this *QTextFrame) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTextFrame) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTextFrame_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -479,8 +452,6 @@ func miqt_exec_callback_QTextFrame_event(self *C.QTextFrame, cb C.intptr_t, even
 }
 
 func (this *QTextFrame) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTextFrame_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -512,7 +483,6 @@ func miqt_exec_callback_QTextFrame_eventFilter(self *C.QTextFrame, cb C.intptr_t
 }
 
 func (this *QTextFrame) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextFrame_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -540,7 +510,6 @@ func miqt_exec_callback_QTextFrame_timerEvent(self *C.QTextFrame, cb C.intptr_t,
 }
 
 func (this *QTextFrame) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextFrame_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -568,7 +537,6 @@ func miqt_exec_callback_QTextFrame_childEvent(self *C.QTextFrame, cb C.intptr_t,
 }
 
 func (this *QTextFrame) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextFrame_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -596,7 +564,6 @@ func miqt_exec_callback_QTextFrame_customEvent(self *C.QTextFrame, cb C.intptr_t
 }
 
 func (this *QTextFrame) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTextFrame_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -624,7 +591,6 @@ func miqt_exec_callback_QTextFrame_connectNotify(self *C.QTextFrame, cb C.intptr
 }
 
 func (this *QTextFrame) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTextFrame_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -659,6 +625,8 @@ func (this *QTextFrame) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTextFrame) GoGC() {
 	if this.gc != nil {
 		return

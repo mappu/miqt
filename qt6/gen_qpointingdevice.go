@@ -187,7 +187,6 @@ func NewQPointingDevice2(name string, systemId int64, devType QInputDevice__Devi
 
 // NewQPointingDevice3 constructs a new QPointingDevice object.
 func NewQPointingDevice3(parent *QObject) *QPointingDevice {
-	defer runtime.KeepAlive(parent)
 
 	return newQPointingDevice(C.QPointingDevice_new3(parent.cPointer()))
 }
@@ -224,7 +223,6 @@ func NewQPointingDevice5(name string, systemId int64, devType QInputDevice__Devi
 // NewQPointingDevice6 constructs a new QPointingDevice object.
 func NewQPointingDevice6(name string, systemId int64, devType QInputDevice__DeviceType, pType QPointingDevice__PointerType, caps QInputDevice__Capability, maxPoints int, buttonCount int, seatName string, uniqueId QPointingDeviceUniqueId, parent *QObject) *QPointingDevice {
 	defer runtime.KeepAlive(uniqueId)
-	defer runtime.KeepAlive(parent)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -238,12 +236,10 @@ func NewQPointingDevice6(name string, systemId int64, devType QInputDevice__Devi
 }
 
 func (this *QPointingDevice) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPointingDevice_metaObject(this.h))
 }
 
 func (this *QPointingDevice) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPointingDevice_metacast(this.h, param1_Cstring))
@@ -259,37 +255,30 @@ func QPointingDevice_Tr(s string) string {
 }
 
 func (this *QPointingDevice) SetType(devType QInputDevice__DeviceType) {
-	defer runtime.KeepAlive(this)
 	C.QPointingDevice_setType(this.h, (C.int)(devType))
 }
 
 func (this *QPointingDevice) SetCapabilities(caps QInputDevice__Capability) {
-	defer runtime.KeepAlive(this)
 	C.QPointingDevice_setCapabilities(this.h, (C.int)(caps))
 }
 
 func (this *QPointingDevice) SetMaximumTouchPoints(c int) {
-	defer runtime.KeepAlive(this)
 	C.QPointingDevice_setMaximumTouchPoints(this.h, (C.int)(c))
 }
 
 func (this *QPointingDevice) PointerType() QPointingDevice__PointerType {
-	defer runtime.KeepAlive(this)
 	return (QPointingDevice__PointerType)(C.QPointingDevice_pointerType(this.h))
 }
 
 func (this *QPointingDevice) MaximumPoints() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QPointingDevice_maximumPoints(this.h))
 }
 
 func (this *QPointingDevice) ButtonCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QPointingDevice_buttonCount(this.h))
 }
 
 func (this *QPointingDevice) UniqueId() *QPointingDeviceUniqueId {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointingDeviceUniqueId(C.QPointingDevice_uniqueId(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -300,14 +289,10 @@ func QPointingDevice_PrimaryPointingDevice() *QPointingDevice {
 }
 
 func (this *QPointingDevice) OperatorEqual(other *QPointingDevice) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(other)
 	return (bool)(C.QPointingDevice_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QPointingDevice) GrabChanged(grabber *QObject, transition QPointingDevice__GrabTransition, event *QPointerEvent, point *QEventPoint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(grabber)
 	defer runtime.KeepAlive(event)
 	defer runtime.KeepAlive(point)
 	C.QPointingDevice_grabChanged(this.h, grabber.cPointer(), (C.int)(transition), event.cPointer(), point.cPointer())
@@ -367,7 +352,6 @@ func QPointingDevice_PrimaryPointingDeviceWithSeatName(seatName string) *QPointi
 
 // Sender can only be called from a QPointingDevice that was directly constructed.
 func (this *QPointingDevice) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QPointingDevice_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -382,7 +366,6 @@ func (this *QPointingDevice) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QPointingDevice that was directly constructed.
 func (this *QPointingDevice) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPointingDevice_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -397,7 +380,6 @@ func (this *QPointingDevice) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPointingDevice that was directly constructed.
 func (this *QPointingDevice) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -414,7 +396,6 @@ func (this *QPointingDevice) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPointingDevice that was directly constructed.
 func (this *QPointingDevice) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -429,7 +410,6 @@ func (this *QPointingDevice) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QPointingDevice) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPointingDevice_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -459,8 +439,6 @@ func miqt_exec_callback_QPointingDevice_event(self *C.QPointingDevice, cb C.intp
 }
 
 func (this *QPointingDevice) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPointingDevice_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -492,7 +470,6 @@ func miqt_exec_callback_QPointingDevice_eventFilter(self *C.QPointingDevice, cb 
 }
 
 func (this *QPointingDevice) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPointingDevice_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -520,7 +497,6 @@ func miqt_exec_callback_QPointingDevice_timerEvent(self *C.QPointingDevice, cb C
 }
 
 func (this *QPointingDevice) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPointingDevice_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -548,7 +524,6 @@ func miqt_exec_callback_QPointingDevice_childEvent(self *C.QPointingDevice, cb C
 }
 
 func (this *QPointingDevice) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPointingDevice_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -576,7 +551,6 @@ func miqt_exec_callback_QPointingDevice_customEvent(self *C.QPointingDevice, cb 
 }
 
 func (this *QPointingDevice) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPointingDevice_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -604,7 +578,6 @@ func miqt_exec_callback_QPointingDevice_connectNotify(self *C.QPointingDevice, c
 }
 
 func (this *QPointingDevice) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPointingDevice_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -639,6 +612,8 @@ func (this *QPointingDevice) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPointingDevice) GoGC() {
 	if this.gc != nil {
 		return

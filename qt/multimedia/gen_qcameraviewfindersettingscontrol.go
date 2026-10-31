@@ -70,12 +70,10 @@ func UnsafeNewQCameraViewfinderSettingsControl(h unsafe.Pointer) *QCameraViewfin
 }
 
 func (this *QCameraViewfinderSettingsControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinderSettingsControl_metaObject(this.h)))
 }
 
 func (this *QCameraViewfinderSettingsControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl_metacast(this.h, param1_Cstring))
@@ -100,19 +98,16 @@ func QCameraViewfinderSettingsControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraViewfinderSettingsControl) IsViewfinderParameterSupported(parameter QCameraViewfinderSettingsControl__ViewfinderParameter) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCameraViewfinderSettingsControl_isViewfinderParameterSupported(this.h, (C.int)(parameter)))
 }
 
 func (this *QCameraViewfinderSettingsControl) ViewfinderParameter(parameter QCameraViewfinderSettingsControl__ViewfinderParameter) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraViewfinderSettingsControl_viewfinderParameter(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraViewfinderSettingsControl) SetViewfinderParameter(parameter QCameraViewfinderSettingsControl__ViewfinderParameter, value *qt.QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	C.QCameraViewfinderSettingsControl_setViewfinderParameter(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer()))
 }
@@ -169,6 +164,8 @@ func (this *QCameraViewfinderSettingsControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCameraViewfinderSettingsControl) GoGC() {
 	if this.gc != nil {
 		return
@@ -225,12 +222,10 @@ func UnsafeNewQCameraViewfinderSettingsControl2(h unsafe.Pointer) *QCameraViewfi
 }
 
 func (this *QCameraViewfinderSettingsControl2) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinderSettingsControl2_metaObject(this.h)))
 }
 
 func (this *QCameraViewfinderSettingsControl2) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl2_metacast(this.h, param1_Cstring))
@@ -255,7 +250,6 @@ func QCameraViewfinderSettingsControl2_TrUtf8(s string) string {
 }
 
 func (this *QCameraViewfinderSettingsControl2) SupportedViewfinderSettings() []QCameraViewfinderSettings {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraViewfinderSettingsControl2_supportedViewfinderSettings(this.h)
 	_ret := make([]QCameraViewfinderSettings, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -268,14 +262,12 @@ func (this *QCameraViewfinderSettingsControl2) SupportedViewfinderSettings() []Q
 }
 
 func (this *QCameraViewfinderSettingsControl2) ViewfinderSettings() *QCameraViewfinderSettings {
-	defer runtime.KeepAlive(this)
 	_goptr := newQCameraViewfinderSettings(C.QCameraViewfinderSettingsControl2_viewfinderSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraViewfinderSettingsControl2) SetViewfinderSettings(settings *QCameraViewfinderSettings) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(settings)
 	C.QCameraViewfinderSettingsControl2_setViewfinderSettings(this.h, settings.cPointer())
 }
@@ -332,6 +324,8 @@ func (this *QCameraViewfinderSettingsControl2) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCameraViewfinderSettingsControl2) GoGC() {
 	if this.gc != nil {
 		return

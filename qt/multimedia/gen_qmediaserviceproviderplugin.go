@@ -268,7 +268,6 @@ func (this *QMediaServiceProviderFactoryInterface) Create(key string) *QMediaSer
 
 func (this *QMediaServiceProviderFactoryInterface) Release(service *QMediaService) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(service)
 	C.QMediaServiceProviderFactoryInterface_release(this.h, service.cPointer())
 }
 
@@ -793,12 +792,10 @@ func UnsafeNewQMediaServiceProviderPlugin(h unsafe.Pointer) *QMediaServiceProvid
 }
 
 func (this *QMediaServiceProviderPlugin) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaServiceProviderPlugin_metaObject(this.h)))
 }
 
 func (this *QMediaServiceProviderPlugin) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaServiceProviderPlugin_metacast(this.h, param1_Cstring))
@@ -823,7 +820,6 @@ func QMediaServiceProviderPlugin_TrUtf8(s string) string {
 }
 
 func (this *QMediaServiceProviderPlugin) Create(key string) *QMediaService {
-	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -832,8 +828,6 @@ func (this *QMediaServiceProviderPlugin) Create(key string) *QMediaService {
 }
 
 func (this *QMediaServiceProviderPlugin) Release(service *QMediaService) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(service)
 	C.QMediaServiceProviderPlugin_release(this.h, service.cPointer())
 }
 
@@ -889,6 +883,8 @@ func (this *QMediaServiceProviderPlugin) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaServiceProviderPlugin) GoGC() {
 	if this.gc != nil {
 		return

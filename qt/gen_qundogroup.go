@@ -66,18 +66,15 @@ func NewQUndoGroup() *QUndoGroup {
 
 // NewQUndoGroup2 constructs a new QUndoGroup object.
 func NewQUndoGroup2(parent *QObject) *QUndoGroup {
-	defer runtime.KeepAlive(parent)
 
 	return newQUndoGroup(C.QUndoGroup_new2(parent.cPointer()))
 }
 
 func (this *QUndoGroup) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QUndoGroup_metaObject(this.h))
 }
 
 func (this *QUndoGroup) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QUndoGroup_metacast(this.h, param1_Cstring))
@@ -102,19 +99,14 @@ func QUndoGroup_TrUtf8(s string) string {
 }
 
 func (this *QUndoGroup) AddStack(stack *QUndoStack) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(stack)
 	C.QUndoGroup_addStack(this.h, stack.cPointer())
 }
 
 func (this *QUndoGroup) RemoveStack(stack *QUndoStack) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(stack)
 	C.QUndoGroup_removeStack(this.h, stack.cPointer())
 }
 
 func (this *QUndoGroup) Stacks() []*QUndoStack {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QUndoGroup_stacks(this.h)
 	_ret := make([]*QUndoStack, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QUndoStack)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -125,34 +117,26 @@ func (this *QUndoGroup) Stacks() []*QUndoStack {
 }
 
 func (this *QUndoGroup) ActiveStack() *QUndoStack {
-	defer runtime.KeepAlive(this)
 	return newQUndoStack(C.QUndoGroup_activeStack(this.h))
 }
 
 func (this *QUndoGroup) CreateUndoAction(parent *QObject) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQAction(C.QUndoGroup_createUndoAction(this.h, parent.cPointer()))
 }
 
 func (this *QUndoGroup) CreateRedoAction(parent *QObject) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	return newQAction(C.QUndoGroup_createRedoAction(this.h, parent.cPointer()))
 }
 
 func (this *QUndoGroup) CanUndo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QUndoGroup_canUndo(this.h))
 }
 
 func (this *QUndoGroup) CanRedo() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QUndoGroup_canRedo(this.h))
 }
 
 func (this *QUndoGroup) UndoText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUndoGroup_undoText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -160,7 +144,6 @@ func (this *QUndoGroup) UndoText() string {
 }
 
 func (this *QUndoGroup) RedoText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QUndoGroup_redoText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -168,29 +151,22 @@ func (this *QUndoGroup) RedoText() string {
 }
 
 func (this *QUndoGroup) IsClean() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QUndoGroup_isClean(this.h))
 }
 
 func (this *QUndoGroup) Undo() {
-	defer runtime.KeepAlive(this)
 	C.QUndoGroup_undo(this.h)
 }
 
 func (this *QUndoGroup) Redo() {
-	defer runtime.KeepAlive(this)
 	C.QUndoGroup_redo(this.h)
 }
 
 func (this *QUndoGroup) SetActiveStack(stack *QUndoStack) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(stack)
 	C.QUndoGroup_setActiveStack(this.h, stack.cPointer())
 }
 
 func (this *QUndoGroup) ActiveStackChanged(stack *QUndoStack) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(stack)
 	C.QUndoGroup_activeStackChanged(this.h, stack.cPointer())
 }
 func (this *QUndoGroup) OnActiveStackChanged(slot func(stack *QUndoStack)) {
@@ -211,7 +187,6 @@ func miqt_exec_callback_QUndoGroup_activeStackChanged(cb C.intptr_t, stack *C.QU
 }
 
 func (this *QUndoGroup) IndexChanged(idx int) {
-	defer runtime.KeepAlive(this)
 	C.QUndoGroup_indexChanged(this.h, (C.int)(idx))
 }
 func (this *QUndoGroup) OnIndexChanged(slot func(idx int)) {
@@ -232,7 +207,6 @@ func miqt_exec_callback_QUndoGroup_indexChanged(cb C.intptr_t, idx C.int) {
 }
 
 func (this *QUndoGroup) CleanChanged(clean bool) {
-	defer runtime.KeepAlive(this)
 	C.QUndoGroup_cleanChanged(this.h, (C.bool)(clean))
 }
 func (this *QUndoGroup) OnCleanChanged(slot func(clean bool)) {
@@ -253,7 +227,6 @@ func miqt_exec_callback_QUndoGroup_cleanChanged(cb C.intptr_t, clean C.bool) {
 }
 
 func (this *QUndoGroup) CanUndoChanged(canUndo bool) {
-	defer runtime.KeepAlive(this)
 	C.QUndoGroup_canUndoChanged(this.h, (C.bool)(canUndo))
 }
 func (this *QUndoGroup) OnCanUndoChanged(slot func(canUndo bool)) {
@@ -274,7 +247,6 @@ func miqt_exec_callback_QUndoGroup_canUndoChanged(cb C.intptr_t, canUndo C.bool)
 }
 
 func (this *QUndoGroup) CanRedoChanged(canRedo bool) {
-	defer runtime.KeepAlive(this)
 	C.QUndoGroup_canRedoChanged(this.h, (C.bool)(canRedo))
 }
 func (this *QUndoGroup) OnCanRedoChanged(slot func(canRedo bool)) {
@@ -295,7 +267,6 @@ func miqt_exec_callback_QUndoGroup_canRedoChanged(cb C.intptr_t, canRedo C.bool)
 }
 
 func (this *QUndoGroup) UndoTextChanged(undoText string) {
-	defer runtime.KeepAlive(this)
 	undoText_ms := C.struct_miqt_string{}
 	undoText_ms.data = C.CString(undoText)
 	undoText_ms.len = C.size_t(len(undoText))
@@ -323,7 +294,6 @@ func miqt_exec_callback_QUndoGroup_undoTextChanged(cb C.intptr_t, undoText C.str
 }
 
 func (this *QUndoGroup) RedoTextChanged(redoText string) {
-	defer runtime.KeepAlive(this)
 	redoText_ms := C.struct_miqt_string{}
 	redoText_ms.data = C.CString(redoText)
 	redoText_ms.len = C.size_t(len(redoText))
@@ -395,8 +365,6 @@ func QUndoGroup_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QUndoGroup) CreateUndoAction2(parent *QObject, prefix string) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -405,8 +373,6 @@ func (this *QUndoGroup) CreateUndoAction2(parent *QObject, prefix string) *QActi
 }
 
 func (this *QUndoGroup) CreateRedoAction2(parent *QObject, prefix string) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -416,7 +382,6 @@ func (this *QUndoGroup) CreateRedoAction2(parent *QObject, prefix string) *QActi
 
 // Sender can only be called from a QUndoGroup that was directly constructed.
 func (this *QUndoGroup) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QUndoGroup_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -431,7 +396,6 @@ func (this *QUndoGroup) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QUndoGroup that was directly constructed.
 func (this *QUndoGroup) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QUndoGroup_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -446,7 +410,6 @@ func (this *QUndoGroup) SenderSignalIndex() int {
 
 // Receivers can only be called from a QUndoGroup that was directly constructed.
 func (this *QUndoGroup) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -463,7 +426,6 @@ func (this *QUndoGroup) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QUndoGroup that was directly constructed.
 func (this *QUndoGroup) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -478,7 +440,6 @@ func (this *QUndoGroup) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QUndoGroup) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUndoGroup_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -508,8 +469,6 @@ func miqt_exec_callback_QUndoGroup_event(self *C.QUndoGroup, cb C.intptr_t, even
 }
 
 func (this *QUndoGroup) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QUndoGroup_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -541,7 +500,6 @@ func miqt_exec_callback_QUndoGroup_eventFilter(self *C.QUndoGroup, cb C.intptr_t
 }
 
 func (this *QUndoGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QUndoGroup_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -569,7 +527,6 @@ func miqt_exec_callback_QUndoGroup_timerEvent(self *C.QUndoGroup, cb C.intptr_t,
 }
 
 func (this *QUndoGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QUndoGroup_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -597,7 +554,6 @@ func miqt_exec_callback_QUndoGroup_childEvent(self *C.QUndoGroup, cb C.intptr_t,
 }
 
 func (this *QUndoGroup) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QUndoGroup_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -625,7 +581,6 @@ func miqt_exec_callback_QUndoGroup_customEvent(self *C.QUndoGroup, cb C.intptr_t
 }
 
 func (this *QUndoGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QUndoGroup_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -653,7 +608,6 @@ func miqt_exec_callback_QUndoGroup_connectNotify(self *C.QUndoGroup, cb C.intptr
 }
 
 func (this *QUndoGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QUndoGroup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -688,6 +642,8 @@ func (this *QUndoGroup) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QUndoGroup) GoGC() {
 	if this.gc != nil {
 		return

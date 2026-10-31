@@ -420,7 +420,6 @@ func UnsafeNewQwtCompass(h unsafe.Pointer) *QwtCompass {
 
 // NewQwtCompass constructs a new QwtCompass object.
 func NewQwtCompass(parent *qt.QWidget) *QwtCompass {
-	defer runtime.KeepAlive(parent)
 
 	return newQwtCompass(C.QwtCompass_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -432,12 +431,10 @@ func NewQwtCompass2() *QwtCompass {
 }
 
 func (this *QwtCompass) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtCompass_metaObject(this.h)))
 }
 
 func (this *QwtCompass) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtCompass_metacast(this.h, param1_Cstring))
@@ -462,18 +459,15 @@ func QwtCompass_TrUtf8(s string) string {
 }
 
 func (this *QwtCompass) SetRose(rose *QwtCompassRose) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rose)
 	C.QwtCompass_setRose(this.h, rose.cPointer())
 }
 
 func (this *QwtCompass) Rose() *QwtCompassRose {
-	defer runtime.KeepAlive(this)
 	return newQwtCompassRose(C.QwtCompass_rose(this.h))
 }
 
 func (this *QwtCompass) Rose2() *QwtCompassRose {
-	defer runtime.KeepAlive(this)
 	return newQwtCompassRose(C.QwtCompass_rose2(this.h))
 }
 
@@ -523,7 +517,6 @@ func QwtCompass_TrUtf83(s string, c string, n int) string {
 
 // InvalidateCache can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) InvalidateCache() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtCompass_protectedbase_invalidateCache(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -536,7 +529,6 @@ func (this *QwtCompass) InvalidateCache() {
 
 // IncrementValue can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) IncrementValue(stepCount int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtCompass_protectedbase_incrementValue(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(stepCount))
@@ -549,7 +541,6 @@ func (this *QwtCompass) IncrementValue(stepCount int) {
 
 // IncrementedValue can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) IncrementedValue(value float64, stepCount int) float64 {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (float64)(C.QwtCompass_protectedbase_incrementedValue(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(value), (C.int)(stepCount)))
@@ -564,7 +555,6 @@ func (this *QwtCompass) IncrementedValue(value float64, stepCount int) float64 {
 
 // Rescale can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) Rescale(lowerBound float64, upperBound float64, stepSize float64) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtCompass_protectedbase_rescale(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.double)(lowerBound), (C.double)(upperBound), (C.double)(stepSize))
@@ -577,7 +567,6 @@ func (this *QwtCompass) Rescale(lowerBound float64, upperBound float64, stepSize
 
 // SetAbstractScaleDraw can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) SetAbstractScaleDraw(abstractScaleDraw *QwtAbstractScaleDraw) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(abstractScaleDraw)
 
 	var _dynamic_cast_ok C.bool = false
@@ -591,7 +580,6 @@ func (this *QwtCompass) SetAbstractScaleDraw(abstractScaleDraw *QwtAbstractScale
 
 // AbstractScaleDraw can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) AbstractScaleDraw() *QwtAbstractScaleDraw {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtAbstractScaleDraw(C.QwtCompass_protectedbase_abstractScaleDraw(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -606,7 +594,6 @@ func (this *QwtCompass) AbstractScaleDraw() *QwtAbstractScaleDraw {
 
 // UpdateMicroFocus can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtCompass_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -619,7 +606,6 @@ func (this *QwtCompass) UpdateMicroFocus() {
 
 // Create can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtCompass_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -632,7 +618,6 @@ func (this *QwtCompass) Create() {
 
 // Destroy can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtCompass_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -645,7 +630,6 @@ func (this *QwtCompass) Destroy() {
 
 // FocusNextChild can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtCompass_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -660,7 +644,6 @@ func (this *QwtCompass) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtCompass_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -675,7 +658,6 @@ func (this *QwtCompass) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtCompass_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -690,7 +672,6 @@ func (this *QwtCompass) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtCompass_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -705,7 +686,6 @@ func (this *QwtCompass) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -722,7 +702,6 @@ func (this *QwtCompass) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtCompass that was directly constructed.
 func (this *QwtCompass) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -737,7 +716,6 @@ func (this *QwtCompass) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtCompass) callVirtualBase_DrawRose(param1 *qt.QPainter, center *qt.QPointF, radius float64, north float64, param5 qt.QPalette__ColorGroup) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(center)
 
@@ -774,7 +752,6 @@ func miqt_exec_callback_QwtCompass_drawRose(self *C.QwtCompass, cb C.intptr_t, p
 }
 
 func (this *QwtCompass) callVirtualBase_DrawScaleContents(param1 *qt.QPainter, center *qt.QPointF, radius float64) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(center)
 
@@ -807,7 +784,6 @@ func miqt_exec_callback_QwtCompass_drawScaleContents(self *C.QwtCompass, cb C.in
 }
 
 func (this *QwtCompass) callVirtualBase_KeyPressEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -835,7 +811,6 @@ func miqt_exec_callback_QwtCompass_keyPressEvent(self *C.QwtCompass, cb C.intptr
 }
 
 func (this *QwtCompass) callVirtualBase_SetOrigin(origin float64) {
-	defer runtime.KeepAlive(this)
 
 	C.QwtCompass_virtualbase_setOrigin(unsafe.Pointer(this.h), (C.double)(origin))
 
@@ -862,7 +837,6 @@ func miqt_exec_callback_QwtCompass_setOrigin(self *C.QwtCompass, cb C.intptr_t, 
 }
 
 func (this *QwtCompass) callVirtualBase_ScaleInnerRect() *qt.QRect {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtCompass_virtualbase_scaleInnerRect(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -891,7 +865,6 @@ func miqt_exec_callback_QwtCompass_scaleInnerRect(self *C.QwtCompass, cb C.intpt
 }
 
 func (this *QwtCompass) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCompass_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -920,7 +893,6 @@ func miqt_exec_callback_QwtCompass_sizeHint(self *C.QwtCompass, cb C.intptr_t) *
 }
 
 func (this *QwtCompass) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCompass_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -949,7 +921,6 @@ func miqt_exec_callback_QwtCompass_minimumSizeHint(self *C.QwtCompass, cb C.intp
 }
 
 func (this *QwtCompass) callVirtualBase_WheelEvent(param1 *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
@@ -977,7 +948,6 @@ func miqt_exec_callback_QwtCompass_wheelEvent(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(param1.UnsafePointer()))
@@ -1005,7 +975,6 @@ func miqt_exec_callback_QwtCompass_paintEvent(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1033,7 +1002,6 @@ func miqt_exec_callback_QwtCompass_changeEvent(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_DrawFrame(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_drawFrame(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -1061,7 +1029,6 @@ func miqt_exec_callback_QwtCompass_drawFrame(self *C.QwtCompass, cb C.intptr_t, 
 }
 
 func (this *QwtCompass) callVirtualBase_DrawContents(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_drawContents(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -1089,7 +1056,6 @@ func miqt_exec_callback_QwtCompass_drawContents(self *C.QwtCompass, cb C.intptr_
 }
 
 func (this *QwtCompass) callVirtualBase_DrawFocusIndicator(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_drawFocusIndicator(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -1117,7 +1083,6 @@ func miqt_exec_callback_QwtCompass_drawFocusIndicator(self *C.QwtCompass, cb C.i
 }
 
 func (this *QwtCompass) callVirtualBase_DrawScale(param1 *qt.QPainter, center *qt.QPointF, radius float64) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(center)
 
@@ -1150,7 +1115,6 @@ func miqt_exec_callback_QwtCompass_drawScale(self *C.QwtCompass, cb C.intptr_t, 
 }
 
 func (this *QwtCompass) callVirtualBase_DrawNeedle(param1 *qt.QPainter, param2 *qt.QPointF, radius float64, direction float64, param5 qt.QPalette__ColorGroup) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -1187,7 +1151,6 @@ func miqt_exec_callback_QwtCompass_drawNeedle(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_ScrolledTo(param1 *qt.QPoint) float64 {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (float64)(C.QwtCompass_virtualbase_scrolledTo(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
@@ -1217,7 +1180,6 @@ func miqt_exec_callback_QwtCompass_scrolledTo(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_IsScrollPosition(param1 *qt.QPoint) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QwtCompass_virtualbase_isScrollPosition(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
@@ -1247,7 +1209,6 @@ func miqt_exec_callback_QwtCompass_isScrollPosition(self *C.QwtCompass, cb C.int
 }
 
 func (this *QwtCompass) callVirtualBase_SliderChange() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtCompass_virtualbase_sliderChange(unsafe.Pointer(this.h))
 
@@ -1271,7 +1232,6 @@ func miqt_exec_callback_QwtCompass_sliderChange(self *C.QwtCompass, cb C.intptr_
 }
 
 func (this *QwtCompass) callVirtualBase_ScaleChange() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtCompass_virtualbase_scaleChange(unsafe.Pointer(this.h))
 
@@ -1295,7 +1255,6 @@ func miqt_exec_callback_QwtCompass_scaleChange(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_MousePressEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -1323,7 +1282,6 @@ func miqt_exec_callback_QwtCompass_mousePressEvent(self *C.QwtCompass, cb C.intp
 }
 
 func (this *QwtCompass) callVirtualBase_MouseReleaseEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -1351,7 +1309,6 @@ func miqt_exec_callback_QwtCompass_mouseReleaseEvent(self *C.QwtCompass, cb C.in
 }
 
 func (this *QwtCompass) callVirtualBase_MouseMoveEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -1379,7 +1336,6 @@ func miqt_exec_callback_QwtCompass_mouseMoveEvent(self *C.QwtCompass, cb C.intpt
 }
 
 func (this *QwtCompass) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtCompass_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1405,7 +1361,6 @@ func miqt_exec_callback_QwtCompass_devType(self *C.QwtCompass, cb C.intptr_t) C.
 }
 
 func (this *QwtCompass) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QwtCompass_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1432,7 +1387,6 @@ func miqt_exec_callback_QwtCompass_setVisible(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtCompass_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1461,7 +1415,6 @@ func miqt_exec_callback_QwtCompass_heightForWidth(self *C.QwtCompass, cb C.intpt
 }
 
 func (this *QwtCompass) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtCompass_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1487,7 +1440,6 @@ func miqt_exec_callback_QwtCompass_hasHeightForWidth(self *C.QwtCompass, cb C.in
 }
 
 func (this *QwtCompass) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtCompass_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -1514,7 +1466,6 @@ func miqt_exec_callback_QwtCompass_paintEngine(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtCompass_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1544,7 +1495,6 @@ func miqt_exec_callback_QwtCompass_event(self *C.QwtCompass, cb C.intptr_t, even
 }
 
 func (this *QwtCompass) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -1572,7 +1522,6 @@ func miqt_exec_callback_QwtCompass_mouseDoubleClickEvent(self *C.QwtCompass, cb 
 }
 
 func (this *QwtCompass) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1600,7 +1549,6 @@ func miqt_exec_callback_QwtCompass_keyReleaseEvent(self *C.QwtCompass, cb C.intp
 }
 
 func (this *QwtCompass) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1628,7 +1576,6 @@ func miqt_exec_callback_QwtCompass_focusInEvent(self *C.QwtCompass, cb C.intptr_
 }
 
 func (this *QwtCompass) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1656,7 +1603,6 @@ func miqt_exec_callback_QwtCompass_focusOutEvent(self *C.QwtCompass, cb C.intptr
 }
 
 func (this *QwtCompass) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1684,7 +1630,6 @@ func miqt_exec_callback_QwtCompass_enterEvent(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1712,7 +1657,6 @@ func miqt_exec_callback_QwtCompass_leaveEvent(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -1740,7 +1684,6 @@ func miqt_exec_callback_QwtCompass_moveEvent(self *C.QwtCompass, cb C.intptr_t, 
 }
 
 func (this *QwtCompass) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -1768,7 +1711,6 @@ func miqt_exec_callback_QwtCompass_resizeEvent(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -1796,7 +1738,6 @@ func miqt_exec_callback_QwtCompass_closeEvent(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -1824,7 +1765,6 @@ func miqt_exec_callback_QwtCompass_contextMenuEvent(self *C.QwtCompass, cb C.int
 }
 
 func (this *QwtCompass) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1852,7 +1792,6 @@ func miqt_exec_callback_QwtCompass_tabletEvent(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1880,7 +1819,6 @@ func miqt_exec_callback_QwtCompass_actionEvent(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1908,7 +1846,6 @@ func miqt_exec_callback_QwtCompass_dragEnterEvent(self *C.QwtCompass, cb C.intpt
 }
 
 func (this *QwtCompass) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1936,7 +1873,6 @@ func miqt_exec_callback_QwtCompass_dragMoveEvent(self *C.QwtCompass, cb C.intptr
 }
 
 func (this *QwtCompass) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1964,7 +1900,6 @@ func miqt_exec_callback_QwtCompass_dragLeaveEvent(self *C.QwtCompass, cb C.intpt
 }
 
 func (this *QwtCompass) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1992,7 +1927,6 @@ func miqt_exec_callback_QwtCompass_dropEvent(self *C.QwtCompass, cb C.intptr_t, 
 }
 
 func (this *QwtCompass) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -2020,7 +1954,6 @@ func miqt_exec_callback_QwtCompass_showEvent(self *C.QwtCompass, cb C.intptr_t, 
 }
 
 func (this *QwtCompass) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -2048,7 +1981,6 @@ func miqt_exec_callback_QwtCompass_hideEvent(self *C.QwtCompass, cb C.intptr_t, 
 }
 
 func (this *QwtCompass) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2090,7 +2022,6 @@ func miqt_exec_callback_QwtCompass_nativeEvent(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtCompass_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2119,7 +2050,6 @@ func miqt_exec_callback_QwtCompass_metric(self *C.QwtCompass, cb C.intptr_t, par
 }
 
 func (this *QwtCompass) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QwtCompass_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -2147,7 +2077,6 @@ func miqt_exec_callback_QwtCompass_initPainter(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtCompass_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -2178,7 +2107,6 @@ func miqt_exec_callback_QwtCompass_redirected(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtCompass_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -2205,7 +2133,6 @@ func miqt_exec_callback_QwtCompass_sharedPainter(self *C.QwtCompass, cb C.intptr
 }
 
 func (this *QwtCompass) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtCompass_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -2233,7 +2160,6 @@ func miqt_exec_callback_QwtCompass_inputMethodEvent(self *C.QwtCompass, cb C.int
 }
 
 func (this *QwtCompass) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtCompass_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2265,7 +2191,6 @@ func miqt_exec_callback_QwtCompass_inputMethodQuery(self *C.QwtCompass, cb C.int
 }
 
 func (this *QwtCompass) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtCompass_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2294,8 +2219,6 @@ func miqt_exec_callback_QwtCompass_focusNextPrevChild(self *C.QwtCompass, cb C.i
 }
 
 func (this *QwtCompass) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtCompass_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -2327,7 +2250,6 @@ func miqt_exec_callback_QwtCompass_eventFilter(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -2355,7 +2277,6 @@ func miqt_exec_callback_QwtCompass_timerEvent(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -2383,7 +2304,6 @@ func miqt_exec_callback_QwtCompass_childEvent(self *C.QwtCompass, cb C.intptr_t,
 }
 
 func (this *QwtCompass) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtCompass_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -2411,7 +2331,6 @@ func miqt_exec_callback_QwtCompass_customEvent(self *C.QwtCompass, cb C.intptr_t
 }
 
 func (this *QwtCompass) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtCompass_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2439,7 +2358,6 @@ func miqt_exec_callback_QwtCompass_connectNotify(self *C.QwtCompass, cb C.intptr
 }
 
 func (this *QwtCompass) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtCompass_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2474,6 +2392,8 @@ func (this *QwtCompass) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtCompass) GoGC() {
 	if this.gc != nil {
 		return

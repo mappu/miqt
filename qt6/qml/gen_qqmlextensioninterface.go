@@ -166,7 +166,6 @@ func NewQQmlExtensionInterface(param1 *QQmlExtensionInterface) *QQmlExtensionInt
 
 func (this *QQmlExtensionInterface) InitializeEngine(engine *QQmlEngine, uri string) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(engine)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 	C.QQmlExtensionInterface_initializeEngine(this.h, engine.cPointer(), uri_Cstring)
@@ -282,7 +281,6 @@ func UnsafeNewQQmlEngineExtensionInterface(h unsafe.Pointer) *QQmlEngineExtensio
 
 func (this *QQmlEngineExtensionInterface) InitializeEngine(engine *QQmlEngine, uri string) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(engine)
 	uri_Cstring := C.CString(uri)
 	defer C.free(unsafe.Pointer(uri_Cstring))
 	C.QQmlEngineExtensionInterface_initializeEngine(this.h, engine.cPointer(), uri_Cstring)

@@ -88,18 +88,15 @@ func NewQsciLexerPostScript() *QsciLexerPostScript {
 
 // NewQsciLexerPostScript2 constructs a new QsciLexerPostScript object.
 func NewQsciLexerPostScript2(parent *qt.QObject) *QsciLexerPostScript {
-	defer runtime.KeepAlive(parent)
 
 	return newQsciLexerPostScript(C.QsciLexerPostScript_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerPostScript) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciLexerPostScript_metaObject(this.h)))
 }
 
 func (this *QsciLexerPostScript) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QsciLexerPostScript_metacast(this.h, param1_Cstring))
@@ -124,51 +121,43 @@ func QsciLexerPostScript_TrUtf8(s string) string {
 }
 
 func (this *QsciLexerPostScript) Language() string {
-	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerPostScript_language(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerPostScript) Lexer() string {
-	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerPostScript_lexer(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerPostScript) BraceStyle() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QsciLexerPostScript_braceStyle(this.h))
 }
 
 func (this *QsciLexerPostScript) DefaultColor(style int) *qt.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerPostScript_defaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerPostScript) DefaultFont(style int) *qt.QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerPostScript_defaultFont(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerPostScript) DefaultPaper(style int) *qt.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerPostScript_defaultPaper(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerPostScript) Keywords(set int) string {
-	defer runtime.KeepAlive(this)
 	_ret := C.QsciLexerPostScript_keywords(this.h, (C.int)(set))
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerPostScript) Description(style int) string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QsciLexerPostScript_description(this.h, (C.int)(style))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -176,47 +165,38 @@ func (this *QsciLexerPostScript) Description(style int) string {
 }
 
 func (this *QsciLexerPostScript) RefreshProperties() {
-	defer runtime.KeepAlive(this)
 	C.QsciLexerPostScript_refreshProperties(this.h)
 }
 
 func (this *QsciLexerPostScript) Tokenize() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerPostScript_tokenize(this.h))
 }
 
 func (this *QsciLexerPostScript) Level() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QsciLexerPostScript_level(this.h))
 }
 
 func (this *QsciLexerPostScript) FoldCompact() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerPostScript_foldCompact(this.h))
 }
 
 func (this *QsciLexerPostScript) FoldAtElse() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QsciLexerPostScript_foldAtElse(this.h))
 }
 
 func (this *QsciLexerPostScript) SetTokenize(tokenize bool) {
-	defer runtime.KeepAlive(this)
 	C.QsciLexerPostScript_setTokenize(this.h, (C.bool)(tokenize))
 }
 
 func (this *QsciLexerPostScript) SetLevel(level int) {
-	defer runtime.KeepAlive(this)
 	C.QsciLexerPostScript_setLevel(this.h, (C.int)(level))
 }
 
 func (this *QsciLexerPostScript) SetFoldCompact(fold bool) {
-	defer runtime.KeepAlive(this)
 	C.QsciLexerPostScript_setFoldCompact(this.h, (C.bool)(fold))
 }
 
 func (this *QsciLexerPostScript) SetFoldAtElse(fold bool) {
-	defer runtime.KeepAlive(this)
 	C.QsciLexerPostScript_setFoldAtElse(this.h, (C.bool)(fold))
 }
 
@@ -266,8 +246,6 @@ func QsciLexerPostScript_TrUtf83(s string, c string, n int) string {
 
 // ReadProperties can only be called from a QsciLexerPostScript that was directly constructed.
 func (this *QsciLexerPostScript) ReadProperties(qs *qt.QSettings, prefix string) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -286,8 +264,6 @@ func (this *QsciLexerPostScript) ReadProperties(qs *qt.QSettings, prefix string)
 
 // WriteProperties can only be called from a QsciLexerPostScript that was directly constructed.
 func (this *QsciLexerPostScript) WriteProperties(qs *qt.QSettings, prefix string) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -306,7 +282,6 @@ func (this *QsciLexerPostScript) WriteProperties(qs *qt.QSettings, prefix string
 
 // Sender can only be called from a QsciLexerPostScript that was directly constructed.
 func (this *QsciLexerPostScript) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QsciLexerPostScript_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -321,7 +296,6 @@ func (this *QsciLexerPostScript) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QsciLexerPostScript that was directly constructed.
 func (this *QsciLexerPostScript) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QsciLexerPostScript_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -336,7 +310,6 @@ func (this *QsciLexerPostScript) SenderSignalIndex() int {
 
 // Receivers can only be called from a QsciLexerPostScript that was directly constructed.
 func (this *QsciLexerPostScript) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -353,7 +326,6 @@ func (this *QsciLexerPostScript) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QsciLexerPostScript that was directly constructed.
 func (this *QsciLexerPostScript) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -368,7 +340,6 @@ func (this *QsciLexerPostScript) IsSignalConnected(signal *qt.QMetaMethod) bool 
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetTokenize(tokenize bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QsciLexerPostScript_virtualbase_setTokenize(unsafe.Pointer(this.h), (C.bool)(tokenize))
 
@@ -395,7 +366,6 @@ func miqt_exec_callback_QsciLexerPostScript_setTokenize(self *C.QsciLexerPostScr
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetLevel(level int) {
-	defer runtime.KeepAlive(this)
 
 	C.QsciLexerPostScript_virtualbase_setLevel(unsafe.Pointer(this.h), (C.int)(level))
 
@@ -422,7 +392,6 @@ func miqt_exec_callback_QsciLexerPostScript_setLevel(self *C.QsciLexerPostScript
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetFoldCompact(fold bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QsciLexerPostScript_virtualbase_setFoldCompact(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -449,7 +418,6 @@ func miqt_exec_callback_QsciLexerPostScript_setFoldCompact(self *C.QsciLexerPost
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetFoldAtElse(fold bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QsciLexerPostScript_virtualbase_setFoldAtElse(unsafe.Pointer(this.h), (C.bool)(fold))
 
@@ -496,7 +464,6 @@ func miqt_exec_callback_QsciLexerPostScript_language(self *C.QsciLexerPostScript
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_Lexer() string {
-	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerPostScript_virtualbase_lexer(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -524,7 +491,6 @@ func miqt_exec_callback_QsciLexerPostScript_lexer(self *C.QsciLexerPostScript, c
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_LexerId() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerPostScript_virtualbase_lexerId(unsafe.Pointer(this.h)))
 
@@ -550,7 +516,6 @@ func miqt_exec_callback_QsciLexerPostScript_lexerId(self *C.QsciLexerPostScript,
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_AutoCompletionFillups() string {
-	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerPostScript_virtualbase_autoCompletionFillups(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -578,7 +543,6 @@ func miqt_exec_callback_QsciLexerPostScript_autoCompletionFillups(self *C.QsciLe
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_AutoCompletionWordSeparators() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QsciLexerPostScript_virtualbase_autoCompletionWordSeparators(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -622,7 +586,6 @@ func miqt_exec_callback_QsciLexerPostScript_autoCompletionWordSeparators(self *C
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_BlockEnd(style *int) string {
-	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerPostScript_virtualbase_blockEnd(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -653,7 +616,6 @@ func miqt_exec_callback_QsciLexerPostScript_blockEnd(self *C.QsciLexerPostScript
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_BlockLookback() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerPostScript_virtualbase_blockLookback(unsafe.Pointer(this.h)))
 
@@ -679,7 +641,6 @@ func miqt_exec_callback_QsciLexerPostScript_blockLookback(self *C.QsciLexerPostS
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_BlockStart(style *int) string {
-	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerPostScript_virtualbase_blockStart(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -710,7 +671,6 @@ func miqt_exec_callback_QsciLexerPostScript_blockStart(self *C.QsciLexerPostScri
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_BlockStartKeyword(style *int) string {
-	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerPostScript_virtualbase_blockStartKeyword(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
@@ -741,7 +701,6 @@ func miqt_exec_callback_QsciLexerPostScript_blockStartKeyword(self *C.QsciLexerP
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_BraceStyle() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerPostScript_virtualbase_braceStyle(unsafe.Pointer(this.h)))
 
@@ -767,7 +726,6 @@ func miqt_exec_callback_QsciLexerPostScript_braceStyle(self *C.QsciLexerPostScri
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_CaseSensitive() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerPostScript_virtualbase_caseSensitive(unsafe.Pointer(this.h)))
 
@@ -793,7 +751,6 @@ func miqt_exec_callback_QsciLexerPostScript_caseSensitive(self *C.QsciLexerPostS
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_Color(style int) *qt.QColor {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerPostScript_virtualbase_color(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -825,7 +782,6 @@ func miqt_exec_callback_QsciLexerPostScript_color(self *C.QsciLexerPostScript, c
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_EolFill(style int) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerPostScript_virtualbase_eolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
@@ -854,7 +810,6 @@ func miqt_exec_callback_QsciLexerPostScript_eolFill(self *C.QsciLexerPostScript,
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_Font(style int) *qt.QFont {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerPostScript_virtualbase_font(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -886,7 +841,6 @@ func miqt_exec_callback_QsciLexerPostScript_font(self *C.QsciLexerPostScript, cb
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_IndentationGuideView() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerPostScript_virtualbase_indentationGuideView(unsafe.Pointer(this.h)))
 
@@ -912,7 +866,6 @@ func miqt_exec_callback_QsciLexerPostScript_indentationGuideView(self *C.QsciLex
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_Keywords(set int) string {
-	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerPostScript_virtualbase_keywords(unsafe.Pointer(this.h), (C.int)(set))
 	return C.GoString(_ret)
@@ -943,7 +896,6 @@ func miqt_exec_callback_QsciLexerPostScript_keywords(self *C.QsciLexerPostScript
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_DefaultStyle() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerPostScript_virtualbase_defaultStyle(unsafe.Pointer(this.h)))
 
@@ -994,7 +946,6 @@ func miqt_exec_callback_QsciLexerPostScript_description(self *C.QsciLexerPostScr
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_Paper(style int) *qt.QColor {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerPostScript_virtualbase_paper(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1026,7 +977,6 @@ func miqt_exec_callback_QsciLexerPostScript_paper(self *C.QsciLexerPostScript, c
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_DefaultColorWithStyle(style int) *qt.QColor {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerPostScript_virtualbase_defaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1058,7 +1008,6 @@ func miqt_exec_callback_QsciLexerPostScript_defaultColorWithStyle(self *C.QsciLe
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_DefaultEolFill(style int) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QsciLexerPostScript_virtualbase_defaultEolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
@@ -1087,7 +1036,6 @@ func miqt_exec_callback_QsciLexerPostScript_defaultEolFill(self *C.QsciLexerPost
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_DefaultFontWithStyle(style int) *qt.QFont {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerPostScript_virtualbase_defaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1119,7 +1067,6 @@ func miqt_exec_callback_QsciLexerPostScript_defaultFontWithStyle(self *C.QsciLex
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_DefaultPaperWithStyle(style int) *qt.QColor {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerPostScript_virtualbase_defaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1151,8 +1098,6 @@ func miqt_exec_callback_QsciLexerPostScript_defaultPaperWithStyle(self *C.QsciLe
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetEditor(editor *QsciScintilla) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QsciLexerPostScript_virtualbase_setEditor(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -1179,7 +1124,6 @@ func miqt_exec_callback_QsciLexerPostScript_setEditor(self *C.QsciLexerPostScrip
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_RefreshProperties() {
-	defer runtime.KeepAlive(this)
 
 	C.QsciLexerPostScript_virtualbase_refreshProperties(unsafe.Pointer(this.h))
 
@@ -1203,7 +1147,6 @@ func miqt_exec_callback_QsciLexerPostScript_refreshProperties(self *C.QsciLexerP
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_StyleBitsNeeded() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QsciLexerPostScript_virtualbase_styleBitsNeeded(unsafe.Pointer(this.h)))
 
@@ -1229,7 +1172,6 @@ func miqt_exec_callback_QsciLexerPostScript_styleBitsNeeded(self *C.QsciLexerPos
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_WordCharacters() string {
-	defer runtime.KeepAlive(this)
 
 	_ret := C.QsciLexerPostScript_virtualbase_wordCharacters(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
@@ -1257,7 +1199,6 @@ func miqt_exec_callback_QsciLexerPostScript_wordCharacters(self *C.QsciLexerPost
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetAutoIndentStyle(autoindentstyle int) {
-	defer runtime.KeepAlive(this)
 
 	C.QsciLexerPostScript_virtualbase_setAutoIndentStyle(unsafe.Pointer(this.h), (C.int)(autoindentstyle))
 
@@ -1284,7 +1225,6 @@ func miqt_exec_callback_QsciLexerPostScript_setAutoIndentStyle(self *C.QsciLexer
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetColor(c *qt.QColor, style int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(c)
 
 	C.QsciLexerPostScript_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
@@ -1314,7 +1254,6 @@ func miqt_exec_callback_QsciLexerPostScript_setColor(self *C.QsciLexerPostScript
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetEolFill(eoffill bool, style int) {
-	defer runtime.KeepAlive(this)
 
 	C.QsciLexerPostScript_virtualbase_setEolFill(unsafe.Pointer(this.h), (C.bool)(eoffill), (C.int)(style))
 
@@ -1343,7 +1282,6 @@ func miqt_exec_callback_QsciLexerPostScript_setEolFill(self *C.QsciLexerPostScri
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetFont(f *qt.QFont, style int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(f)
 
 	C.QsciLexerPostScript_virtualbase_setFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()), (C.int)(style))
@@ -1373,7 +1311,6 @@ func miqt_exec_callback_QsciLexerPostScript_setFont(self *C.QsciLexerPostScript,
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_SetPaper(c *qt.QColor, style int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(c)
 
 	C.QsciLexerPostScript_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
@@ -1403,8 +1340,6 @@ func miqt_exec_callback_QsciLexerPostScript_setPaper(self *C.QsciLexerPostScript
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_ReadProperties(qs *qt.QSettings, prefix string) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -1442,8 +1377,6 @@ func miqt_exec_callback_QsciLexerPostScript_readProperties(self *C.QsciLexerPost
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_WriteProperties(qs *qt.QSettings, prefix string) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qs)
 	prefix_ms := C.struct_miqt_string{}
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
@@ -1481,7 +1414,6 @@ func miqt_exec_callback_QsciLexerPostScript_writeProperties(self *C.QsciLexerPos
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciLexerPostScript_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1511,8 +1443,6 @@ func miqt_exec_callback_QsciLexerPostScript_event(self *C.QsciLexerPostScript, c
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QsciLexerPostScript_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1544,7 +1474,6 @@ func miqt_exec_callback_QsciLexerPostScript_eventFilter(self *C.QsciLexerPostScr
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QsciLexerPostScript_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1572,7 +1501,6 @@ func miqt_exec_callback_QsciLexerPostScript_timerEvent(self *C.QsciLexerPostScri
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QsciLexerPostScript_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1600,7 +1528,6 @@ func miqt_exec_callback_QsciLexerPostScript_childEvent(self *C.QsciLexerPostScri
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QsciLexerPostScript_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1628,7 +1555,6 @@ func miqt_exec_callback_QsciLexerPostScript_customEvent(self *C.QsciLexerPostScr
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QsciLexerPostScript_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1656,7 +1582,6 @@ func miqt_exec_callback_QsciLexerPostScript_connectNotify(self *C.QsciLexerPostS
 }
 
 func (this *QsciLexerPostScript) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QsciLexerPostScript_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1691,6 +1616,8 @@ func (this *QsciLexerPostScript) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QsciLexerPostScript) GoGC() {
 	if this.gc != nil {
 		return

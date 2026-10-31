@@ -90,14 +90,12 @@ func (this *QsciPrinter) SetMagnification(magnification int) {
 
 func (this *QsciPrinter) PrintRange(qsb *QsciScintillaBase, painter *qt6.QPainter, from int, to int) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qsb)
 	defer runtime.KeepAlive(painter)
 	return (int)(C.QsciPrinter_printRange(this.h, qsb.cPointer(), (*C.QPainter)(painter.UnsafePointer()), (C.int)(from), (C.int)(to)))
 }
 
 func (this *QsciPrinter) PrintRange2(qsb *QsciScintillaBase, from int, to int) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qsb)
 	return (int)(C.QsciPrinter_printRange2(this.h, qsb.cPointer(), (C.int)(from), (C.int)(to)))
 }
 
@@ -190,7 +188,6 @@ func miqt_exec_callback_QsciPrinter_setMagnification(self *C.QsciPrinter, cb C.i
 
 func (this *QsciPrinter) callVirtualBase_PrintRange(qsb *QsciScintillaBase, painter *qt6.QPainter, from int, to int) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qsb)
 	defer runtime.KeepAlive(painter)
 
 	return (int)(C.QsciPrinter_virtualbase_printRange(unsafe.Pointer(this.h), qsb.cPointer(), (*C.QPainter)(painter.UnsafePointer()), (C.int)(from), (C.int)(to)))
@@ -227,7 +224,6 @@ func miqt_exec_callback_QsciPrinter_printRange(self *C.QsciPrinter, cb C.intptr_
 
 func (this *QsciPrinter) callVirtualBase_PrintRange2(qsb *QsciScintillaBase, from int, to int) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(qsb)
 
 	return (int)(C.QsciPrinter_virtualbase_printRange2(unsafe.Pointer(this.h), qsb.cPointer(), (C.int)(from), (C.int)(to)))
 

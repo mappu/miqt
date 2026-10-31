@@ -58,12 +58,10 @@ func UnsafeNewQXYModelMapper(h unsafe.Pointer) *QXYModelMapper {
 }
 
 func (this *QXYModelMapper) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QXYModelMapper_metaObject(this.h)))
 }
 
 func (this *QXYModelMapper) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QXYModelMapper_metacast(this.h, param1_Cstring))
@@ -108,6 +106,8 @@ func (this *QXYModelMapper) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QXYModelMapper) GoGC() {
 	if this.gc != nil {
 		return

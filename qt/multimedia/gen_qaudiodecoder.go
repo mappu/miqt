@@ -84,18 +84,15 @@ func NewQAudioDecoder() *QAudioDecoder {
 
 // NewQAudioDecoder2 constructs a new QAudioDecoder object.
 func NewQAudioDecoder2(parent *qt.QObject) *QAudioDecoder {
-	defer runtime.KeepAlive(parent)
 
 	return newQAudioDecoder(C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAudioDecoder) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioDecoder_metaObject(this.h)))
 }
 
 func (this *QAudioDecoder) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAudioDecoder_metacast(this.h, param1_Cstring))
@@ -128,12 +125,10 @@ func QAudioDecoder_HasSupport(mimeType string) QMultimedia__SupportEstimate {
 }
 
 func (this *QAudioDecoder) State() QAudioDecoder__State {
-	defer runtime.KeepAlive(this)
 	return (QAudioDecoder__State)(C.QAudioDecoder_state(this.h))
 }
 
 func (this *QAudioDecoder) SourceFilename() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAudioDecoder_sourceFilename(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -141,7 +136,6 @@ func (this *QAudioDecoder) SourceFilename() string {
 }
 
 func (this *QAudioDecoder) SetSourceFilename(fileName string) {
-	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -150,36 +144,29 @@ func (this *QAudioDecoder) SetSourceFilename(fileName string) {
 }
 
 func (this *QAudioDecoder) SourceDevice() *qt.QIODevice {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoder_sourceDevice(this.h)))
 }
 
 func (this *QAudioDecoder) SetSourceDevice(device *qt.QIODevice) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QAudioDecoder_setSourceDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAudioDecoder) AudioFormat() *QAudioFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQAudioFormat(C.QAudioDecoder_audioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDecoder) SetAudioFormat(format *QAudioFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(format)
 	C.QAudioDecoder_setAudioFormat(this.h, format.cPointer())
 }
 
 func (this *QAudioDecoder) Error() QAudioDecoder__Error {
-	defer runtime.KeepAlive(this)
 	return (QAudioDecoder__Error)(C.QAudioDecoder_error(this.h))
 }
 
 func (this *QAudioDecoder) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAudioDecoder_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -187,39 +174,32 @@ func (this *QAudioDecoder) ErrorString() string {
 }
 
 func (this *QAudioDecoder) Read() *QAudioBuffer {
-	defer runtime.KeepAlive(this)
 	_goptr := newQAudioBuffer(C.QAudioDecoder_read(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDecoder) BufferAvailable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAudioDecoder_bufferAvailable(this.h))
 }
 
 func (this *QAudioDecoder) Position() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioDecoder_position(this.h))
 }
 
 func (this *QAudioDecoder) Duration() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QAudioDecoder_duration(this.h))
 }
 
 func (this *QAudioDecoder) Start() {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_start(this.h)
 }
 
 func (this *QAudioDecoder) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_stop(this.h)
 }
 
 func (this *QAudioDecoder) BufferAvailableChanged(param1 bool) {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_bufferAvailableChanged(this.h, (C.bool)(param1))
 }
 func (this *QAudioDecoder) OnBufferAvailableChanged(slot func(param1 bool)) {
@@ -240,7 +220,6 @@ func miqt_exec_callback_QAudioDecoder_bufferAvailableChanged(cb C.intptr_t, para
 }
 
 func (this *QAudioDecoder) BufferReady() {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_bufferReady(this.h)
 }
 func (this *QAudioDecoder) OnBufferReady(slot func()) {
@@ -258,7 +237,6 @@ func miqt_exec_callback_QAudioDecoder_bufferReady(cb C.intptr_t) {
 }
 
 func (this *QAudioDecoder) Finished() {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_finished(this.h)
 }
 func (this *QAudioDecoder) OnFinished(slot func()) {
@@ -276,7 +254,6 @@ func miqt_exec_callback_QAudioDecoder_finished(cb C.intptr_t) {
 }
 
 func (this *QAudioDecoder) StateChanged(newState QAudioDecoder__State) {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_stateChanged(this.h, (C.int)(newState))
 }
 func (this *QAudioDecoder) OnStateChanged(slot func(newState QAudioDecoder__State)) {
@@ -297,7 +274,6 @@ func miqt_exec_callback_QAudioDecoder_stateChanged(cb C.intptr_t, newState C.int
 }
 
 func (this *QAudioDecoder) FormatChanged(format *QAudioFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(format)
 	C.QAudioDecoder_formatChanged(this.h, format.cPointer())
 }
@@ -319,7 +295,6 @@ func miqt_exec_callback_QAudioDecoder_formatChanged(cb C.intptr_t, format *C.QAu
 }
 
 func (this *QAudioDecoder) ErrorWithError(error QAudioDecoder__Error) {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_errorWithError(this.h, (C.int)(error))
 }
 func (this *QAudioDecoder) OnErrorWithError(slot func(error QAudioDecoder__Error)) {
@@ -340,7 +315,6 @@ func miqt_exec_callback_QAudioDecoder_errorWithError(cb C.intptr_t, error C.int)
 }
 
 func (this *QAudioDecoder) SourceChanged() {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_sourceChanged(this.h)
 }
 func (this *QAudioDecoder) OnSourceChanged(slot func()) {
@@ -358,7 +332,6 @@ func miqt_exec_callback_QAudioDecoder_sourceChanged(cb C.intptr_t) {
 }
 
 func (this *QAudioDecoder) PositionChanged(position int64) {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_positionChanged(this.h, (C.longlong)(position))
 }
 func (this *QAudioDecoder) OnPositionChanged(slot func(position int64)) {
@@ -379,7 +352,6 @@ func miqt_exec_callback_QAudioDecoder_positionChanged(cb C.intptr_t, position C.
 }
 
 func (this *QAudioDecoder) DurationChanged(duration int64) {
-	defer runtime.KeepAlive(this)
 	C.QAudioDecoder_durationChanged(this.h, (C.longlong)(duration))
 }
 func (this *QAudioDecoder) OnDurationChanged(slot func(duration int64)) {
@@ -400,14 +372,10 @@ func miqt_exec_callback_QAudioDecoder_durationChanged(cb C.intptr_t, duration C.
 }
 
 func (this *QAudioDecoder) Bind(param1 *qt.QObject) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	return (bool)(C.QAudioDecoder_bind(this.h, (*C.QObject)(param1.UnsafePointer())))
 }
 
 func (this *QAudioDecoder) Unbind(param1 *qt.QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QAudioDecoder_unbind(this.h, (*C.QObject)(param1.UnsafePointer()))
 }
 
@@ -476,7 +444,6 @@ func QAudioDecoder_HasSupport2(mimeType string, codecs []string) QMultimedia__Su
 
 // AddPropertyWatch can only be called from a QAudioDecoder that was directly constructed.
 func (this *QAudioDecoder) AddPropertyWatch(name []byte) {
-	defer runtime.KeepAlive(this)
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -496,7 +463,6 @@ func (this *QAudioDecoder) AddPropertyWatch(name []byte) {
 
 // RemovePropertyWatch can only be called from a QAudioDecoder that was directly constructed.
 func (this *QAudioDecoder) RemovePropertyWatch(name []byte) {
-	defer runtime.KeepAlive(this)
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -516,7 +482,6 @@ func (this *QAudioDecoder) RemovePropertyWatch(name []byte) {
 
 // Sender can only be called from a QAudioDecoder that was directly constructed.
 func (this *QAudioDecoder) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QAudioDecoder_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -531,7 +496,6 @@ func (this *QAudioDecoder) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QAudioDecoder that was directly constructed.
 func (this *QAudioDecoder) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAudioDecoder_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -546,7 +510,6 @@ func (this *QAudioDecoder) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAudioDecoder that was directly constructed.
 func (this *QAudioDecoder) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -563,7 +526,6 @@ func (this *QAudioDecoder) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAudioDecoder that was directly constructed.
 func (this *QAudioDecoder) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -578,8 +540,6 @@ func (this *QAudioDecoder) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QAudioDecoder) callVirtualBase_Bind(param1 *qt.QObject) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QAudioDecoder_virtualbase_bind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer())))
 
@@ -608,8 +568,6 @@ func miqt_exec_callback_QAudioDecoder_bind(self *C.QAudioDecoder, cb C.intptr_t,
 }
 
 func (this *QAudioDecoder) callVirtualBase_Unbind(param1 *qt.QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	C.QAudioDecoder_virtualbase_unbind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()))
 
@@ -636,7 +594,6 @@ func miqt_exec_callback_QAudioDecoder_unbind(self *C.QAudioDecoder, cb C.intptr_
 }
 
 func (this *QAudioDecoder) callVirtualBase_IsAvailable() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAudioDecoder_virtualbase_isAvailable(unsafe.Pointer(this.h)))
 
@@ -662,7 +619,6 @@ func miqt_exec_callback_QAudioDecoder_isAvailable(self *C.QAudioDecoder, cb C.in
 }
 
 func (this *QAudioDecoder) callVirtualBase_Availability() QMultimedia__AvailabilityStatus {
-	defer runtime.KeepAlive(this)
 
 	return (QMultimedia__AvailabilityStatus)(C.QAudioDecoder_virtualbase_availability(unsafe.Pointer(this.h)))
 
@@ -688,7 +644,6 @@ func miqt_exec_callback_QAudioDecoder_availability(self *C.QAudioDecoder, cb C.i
 }
 
 func (this *QAudioDecoder) callVirtualBase_Service() *QMediaService {
-	defer runtime.KeepAlive(this)
 
 	return newQMediaService(C.QAudioDecoder_virtualbase_service(unsafe.Pointer(this.h)))
 
@@ -708,14 +663,12 @@ func miqt_exec_callback_QAudioDecoder_service(self *C.QAudioDecoder, cb C.intptr
 	}
 
 	virtualReturn := gofunc((&QAudioDecoder{h: self}).callVirtualBase_Service)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QAudioDecoder) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioDecoder_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -745,8 +698,6 @@ func miqt_exec_callback_QAudioDecoder_event(self *C.QAudioDecoder, cb C.intptr_t
 }
 
 func (this *QAudioDecoder) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAudioDecoder_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -778,7 +729,6 @@ func miqt_exec_callback_QAudioDecoder_eventFilter(self *C.QAudioDecoder, cb C.in
 }
 
 func (this *QAudioDecoder) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAudioDecoder_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -806,7 +756,6 @@ func miqt_exec_callback_QAudioDecoder_timerEvent(self *C.QAudioDecoder, cb C.int
 }
 
 func (this *QAudioDecoder) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAudioDecoder_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -834,7 +783,6 @@ func miqt_exec_callback_QAudioDecoder_childEvent(self *C.QAudioDecoder, cb C.int
 }
 
 func (this *QAudioDecoder) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAudioDecoder_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -862,7 +810,6 @@ func miqt_exec_callback_QAudioDecoder_customEvent(self *C.QAudioDecoder, cb C.in
 }
 
 func (this *QAudioDecoder) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAudioDecoder_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -890,7 +837,6 @@ func miqt_exec_callback_QAudioDecoder_connectNotify(self *C.QAudioDecoder, cb C.
 }
 
 func (this *QAudioDecoder) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAudioDecoder_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -925,6 +871,8 @@ func (this *QAudioDecoder) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAudioDecoder) GoGC() {
 	if this.gc != nil {
 		return

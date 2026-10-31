@@ -125,18 +125,15 @@ func NewQSqlDriver() *QSqlDriver {
 
 // NewQSqlDriver2 constructs a new QSqlDriver object.
 func NewQSqlDriver2(parent *qt6.QObject) *QSqlDriver {
-	defer runtime.KeepAlive(parent)
 
 	return newQSqlDriver(C.QSqlDriver_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QSqlDriver) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QSqlDriver_metaObject(this.h)))
 }
 
 func (this *QSqlDriver) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSqlDriver_metacast(this.h, param1_Cstring))
@@ -152,32 +149,26 @@ func QSqlDriver_Tr(s string) string {
 }
 
 func (this *QSqlDriver) IsOpen() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDriver_isOpen(this.h))
 }
 
 func (this *QSqlDriver) IsOpenError() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDriver_isOpenError(this.h))
 }
 
 func (this *QSqlDriver) BeginTransaction() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDriver_beginTransaction(this.h))
 }
 
 func (this *QSqlDriver) CommitTransaction() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDriver_commitTransaction(this.h))
 }
 
 func (this *QSqlDriver) RollbackTransaction() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDriver_rollbackTransaction(this.h))
 }
 
 func (this *QSqlDriver) Tables(tableType QSql__TableType) []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSqlDriver_tables(this.h, (C.int)(tableType))
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -191,7 +182,6 @@ func (this *QSqlDriver) Tables(tableType QSql__TableType) []string {
 }
 
 func (this *QSqlDriver) PrimaryIndex(tableName string) *QSqlIndex {
-	defer runtime.KeepAlive(this)
 	tableName_ms := C.struct_miqt_string{}
 	tableName_ms.data = C.CString(tableName)
 	tableName_ms.len = C.size_t(len(tableName))
@@ -202,7 +192,6 @@ func (this *QSqlDriver) PrimaryIndex(tableName string) *QSqlIndex {
 }
 
 func (this *QSqlDriver) Record(tableName string) *QSqlRecord {
-	defer runtime.KeepAlive(this)
 	tableName_ms := C.struct_miqt_string{}
 	tableName_ms.data = C.CString(tableName)
 	tableName_ms.len = C.size_t(len(tableName))
@@ -213,7 +202,6 @@ func (this *QSqlDriver) Record(tableName string) *QSqlRecord {
 }
 
 func (this *QSqlDriver) FormatValue(field *QSqlField, trimStrings bool) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(field)
 	var _ms C.struct_miqt_string = C.QSqlDriver_formatValue(this.h, field.cPointer(), (C.bool)(trimStrings))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -222,7 +210,6 @@ func (this *QSqlDriver) FormatValue(field *QSqlField, trimStrings bool) string {
 }
 
 func (this *QSqlDriver) EscapeIdentifier(identifier string, typeVal QSqlDriver__IdentifierType) string {
-	defer runtime.KeepAlive(this)
 	identifier_ms := C.struct_miqt_string{}
 	identifier_ms.data = C.CString(identifier)
 	identifier_ms.len = C.size_t(len(identifier))
@@ -234,7 +221,6 @@ func (this *QSqlDriver) EscapeIdentifier(identifier string, typeVal QSqlDriver__
 }
 
 func (this *QSqlDriver) SqlStatement(typeVal QSqlDriver__StatementType, tableName string, rec *QSqlRecord, preparedStatement bool) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rec)
 	tableName_ms := C.struct_miqt_string{}
 	tableName_ms.data = C.CString(tableName)
@@ -247,36 +233,30 @@ func (this *QSqlDriver) SqlStatement(typeVal QSqlDriver__StatementType, tableNam
 }
 
 func (this *QSqlDriver) LastError() *QSqlError {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSqlError(C.QSqlDriver_lastError(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSqlDriver) Handle() *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSqlDriver_handle(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSqlDriver) HasFeature(f QSqlDriver__DriverFeature) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDriver_hasFeature(this.h, (C.int)(f)))
 }
 
 func (this *QSqlDriver) Close() {
-	defer runtime.KeepAlive(this)
 	C.QSqlDriver_close(this.h)
 }
 
 func (this *QSqlDriver) CreateResult() *QSqlResult {
-	defer runtime.KeepAlive(this)
 	return newQSqlResult(C.QSqlDriver_createResult(this.h))
 }
 
 func (this *QSqlDriver) Open(db string, user string, password string, host string, port int, connOpts string) bool {
-	defer runtime.KeepAlive(this)
 	db_ms := C.struct_miqt_string{}
 	db_ms.data = C.CString(db)
 	db_ms.len = C.size_t(len(db))
@@ -301,7 +281,6 @@ func (this *QSqlDriver) Open(db string, user string, password string, host strin
 }
 
 func (this *QSqlDriver) SubscribeToNotification(name string) bool {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -310,7 +289,6 @@ func (this *QSqlDriver) SubscribeToNotification(name string) bool {
 }
 
 func (this *QSqlDriver) UnsubscribeFromNotification(name string) bool {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -319,7 +297,6 @@ func (this *QSqlDriver) UnsubscribeFromNotification(name string) bool {
 }
 
 func (this *QSqlDriver) SubscribedToNotifications() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QSqlDriver_subscribedToNotifications(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -333,7 +310,6 @@ func (this *QSqlDriver) SubscribedToNotifications() []string {
 }
 
 func (this *QSqlDriver) IsIdentifierEscaped(identifier string, typeVal QSqlDriver__IdentifierType) bool {
-	defer runtime.KeepAlive(this)
 	identifier_ms := C.struct_miqt_string{}
 	identifier_ms.data = C.CString(identifier)
 	identifier_ms.len = C.size_t(len(identifier))
@@ -342,7 +318,6 @@ func (this *QSqlDriver) IsIdentifierEscaped(identifier string, typeVal QSqlDrive
 }
 
 func (this *QSqlDriver) StripDelimiters(identifier string, typeVal QSqlDriver__IdentifierType) string {
-	defer runtime.KeepAlive(this)
 	identifier_ms := C.struct_miqt_string{}
 	identifier_ms.data = C.CString(identifier)
 	identifier_ms.len = C.size_t(len(identifier))
@@ -354,32 +329,26 @@ func (this *QSqlDriver) StripDelimiters(identifier string, typeVal QSqlDriver__I
 }
 
 func (this *QSqlDriver) SetNumericalPrecisionPolicy(precisionPolicy QSql__NumericalPrecisionPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QSqlDriver_setNumericalPrecisionPolicy(this.h, (C.int)(precisionPolicy))
 }
 
 func (this *QSqlDriver) NumericalPrecisionPolicy() QSql__NumericalPrecisionPolicy {
-	defer runtime.KeepAlive(this)
 	return (QSql__NumericalPrecisionPolicy)(C.QSqlDriver_numericalPrecisionPolicy(this.h))
 }
 
 func (this *QSqlDriver) DbmsType() QSqlDriver__DbmsType {
-	defer runtime.KeepAlive(this)
 	return (QSqlDriver__DbmsType)(C.QSqlDriver_dbmsType(this.h))
 }
 
 func (this *QSqlDriver) MaximumIdentifierLength(typeVal QSqlDriver__IdentifierType) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QSqlDriver_maximumIdentifierLength(this.h, (C.int)(typeVal)))
 }
 
 func (this *QSqlDriver) CancelQuery() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QSqlDriver_cancelQuery(this.h))
 }
 
 func (this *QSqlDriver) Notification(name string, source QSqlDriver__NotificationSource, payload *qt6.QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(payload)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
@@ -434,7 +403,6 @@ func QSqlDriver_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QSqlDriver that was directly constructed.
 func (this *QSqlDriver) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QSqlDriver_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -449,7 +417,6 @@ func (this *QSqlDriver) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QSqlDriver that was directly constructed.
 func (this *QSqlDriver) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSqlDriver_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -464,7 +431,6 @@ func (this *QSqlDriver) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSqlDriver that was directly constructed.
 func (this *QSqlDriver) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -481,7 +447,6 @@ func (this *QSqlDriver) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSqlDriver that was directly constructed.
 func (this *QSqlDriver) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -496,7 +461,6 @@ func (this *QSqlDriver) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QSqlDriver) callVirtualBase_IsOpen() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSqlDriver_virtualbase_isOpen(unsafe.Pointer(this.h)))
 
@@ -522,7 +486,6 @@ func miqt_exec_callback_QSqlDriver_isOpen(self *C.QSqlDriver, cb C.intptr_t) C.b
 }
 
 func (this *QSqlDriver) callVirtualBase_BeginTransaction() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSqlDriver_virtualbase_beginTransaction(unsafe.Pointer(this.h)))
 
@@ -548,7 +511,6 @@ func miqt_exec_callback_QSqlDriver_beginTransaction(self *C.QSqlDriver, cb C.int
 }
 
 func (this *QSqlDriver) callVirtualBase_CommitTransaction() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSqlDriver_virtualbase_commitTransaction(unsafe.Pointer(this.h)))
 
@@ -574,7 +536,6 @@ func miqt_exec_callback_QSqlDriver_commitTransaction(self *C.QSqlDriver, cb C.in
 }
 
 func (this *QSqlDriver) callVirtualBase_RollbackTransaction() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSqlDriver_virtualbase_rollbackTransaction(unsafe.Pointer(this.h)))
 
@@ -600,7 +561,6 @@ func miqt_exec_callback_QSqlDriver_rollbackTransaction(self *C.QSqlDriver, cb C.
 }
 
 func (this *QSqlDriver) callVirtualBase_Tables(tableType QSql__TableType) []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QSqlDriver_virtualbase_tables(unsafe.Pointer(this.h), (C.int)(tableType))
 	_ret := make([]string, int(_ma.len))
@@ -647,7 +607,6 @@ func miqt_exec_callback_QSqlDriver_tables(self *C.QSqlDriver, cb C.intptr_t, tab
 }
 
 func (this *QSqlDriver) callVirtualBase_PrimaryIndex(tableName string) *QSqlIndex {
-	defer runtime.KeepAlive(this)
 	tableName_ms := C.struct_miqt_string{}
 	tableName_ms.data = C.CString(tableName)
 	tableName_ms.len = C.size_t(len(tableName))
@@ -686,7 +645,6 @@ func miqt_exec_callback_QSqlDriver_primaryIndex(self *C.QSqlDriver, cb C.intptr_
 }
 
 func (this *QSqlDriver) callVirtualBase_Record(tableName string) *QSqlRecord {
-	defer runtime.KeepAlive(this)
 	tableName_ms := C.struct_miqt_string{}
 	tableName_ms.data = C.CString(tableName)
 	tableName_ms.len = C.size_t(len(tableName))
@@ -725,7 +683,6 @@ func miqt_exec_callback_QSqlDriver_record(self *C.QSqlDriver, cb C.intptr_t, tab
 }
 
 func (this *QSqlDriver) callVirtualBase_FormatValue(field *QSqlField, trimStrings bool) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(field)
 
 	var _ms C.struct_miqt_string = C.QSqlDriver_virtualbase_formatValue(unsafe.Pointer(this.h), field.cPointer(), (C.bool)(trimStrings))
@@ -762,7 +719,6 @@ func miqt_exec_callback_QSqlDriver_formatValue(self *C.QSqlDriver, cb C.intptr_t
 }
 
 func (this *QSqlDriver) callVirtualBase_EscapeIdentifier(identifier string, typeVal QSqlDriver__IdentifierType) string {
-	defer runtime.KeepAlive(this)
 	identifier_ms := C.struct_miqt_string{}
 	identifier_ms.data = C.CString(identifier)
 	identifier_ms.len = C.size_t(len(identifier))
@@ -804,7 +760,6 @@ func miqt_exec_callback_QSqlDriver_escapeIdentifier(self *C.QSqlDriver, cb C.int
 }
 
 func (this *QSqlDriver) callVirtualBase_SqlStatement(typeVal QSqlDriver__StatementType, tableName string, rec *QSqlRecord, preparedStatement bool) string {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rec)
 	tableName_ms := C.struct_miqt_string{}
 	tableName_ms.data = C.CString(tableName)
@@ -851,7 +806,6 @@ func miqt_exec_callback_QSqlDriver_sqlStatement(self *C.QSqlDriver, cb C.intptr_
 }
 
 func (this *QSqlDriver) callVirtualBase_Handle() *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSqlDriver_virtualbase_handle(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -982,7 +936,6 @@ func miqt_exec_callback_QSqlDriver_open(self *C.QSqlDriver, cb C.intptr_t, db C.
 }
 
 func (this *QSqlDriver) callVirtualBase_SubscribeToNotification(name string) bool {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1018,7 +971,6 @@ func miqt_exec_callback_QSqlDriver_subscribeToNotification(self *C.QSqlDriver, c
 }
 
 func (this *QSqlDriver) callVirtualBase_UnsubscribeFromNotification(name string) bool {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -1054,7 +1006,6 @@ func miqt_exec_callback_QSqlDriver_unsubscribeFromNotification(self *C.QSqlDrive
 }
 
 func (this *QSqlDriver) callVirtualBase_SubscribedToNotifications() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QSqlDriver_virtualbase_subscribedToNotifications(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1098,7 +1049,6 @@ func miqt_exec_callback_QSqlDriver_subscribedToNotifications(self *C.QSqlDriver,
 }
 
 func (this *QSqlDriver) callVirtualBase_IsIdentifierEscaped(identifier string, typeVal QSqlDriver__IdentifierType) bool {
-	defer runtime.KeepAlive(this)
 	identifier_ms := C.struct_miqt_string{}
 	identifier_ms.data = C.CString(identifier)
 	identifier_ms.len = C.size_t(len(identifier))
@@ -1135,7 +1085,6 @@ func miqt_exec_callback_QSqlDriver_isIdentifierEscaped(self *C.QSqlDriver, cb C.
 }
 
 func (this *QSqlDriver) callVirtualBase_StripDelimiters(identifier string, typeVal QSqlDriver__IdentifierType) string {
-	defer runtime.KeepAlive(this)
 	identifier_ms := C.struct_miqt_string{}
 	identifier_ms.data = C.CString(identifier)
 	identifier_ms.len = C.size_t(len(identifier))
@@ -1177,7 +1126,6 @@ func miqt_exec_callback_QSqlDriver_stripDelimiters(self *C.QSqlDriver, cb C.intp
 }
 
 func (this *QSqlDriver) callVirtualBase_MaximumIdentifierLength(typeVal QSqlDriver__IdentifierType) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QSqlDriver_virtualbase_maximumIdentifierLength(unsafe.Pointer(this.h), (C.int)(typeVal)))
 
@@ -1206,7 +1154,6 @@ func miqt_exec_callback_QSqlDriver_maximumIdentifierLength(self *C.QSqlDriver, c
 }
 
 func (this *QSqlDriver) callVirtualBase_CancelQuery() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QSqlDriver_virtualbase_cancelQuery(unsafe.Pointer(this.h)))
 
@@ -1232,7 +1179,6 @@ func miqt_exec_callback_QSqlDriver_cancelQuery(self *C.QSqlDriver, cb C.intptr_t
 }
 
 func (this *QSqlDriver) callVirtualBase_SetOpen(o bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QSqlDriver_virtualbase_setOpen(unsafe.Pointer(this.h), (C.bool)(o))
 
@@ -1259,7 +1205,6 @@ func miqt_exec_callback_QSqlDriver_setOpen(self *C.QSqlDriver, cb C.intptr_t, o 
 }
 
 func (this *QSqlDriver) callVirtualBase_SetOpenError(e bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QSqlDriver_virtualbase_setOpenError(unsafe.Pointer(this.h), (C.bool)(e))
 
@@ -1286,7 +1231,6 @@ func miqt_exec_callback_QSqlDriver_setOpenError(self *C.QSqlDriver, cb C.intptr_
 }
 
 func (this *QSqlDriver) callVirtualBase_SetLastError(e *QSqlError) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QSqlDriver_virtualbase_setLastError(unsafe.Pointer(this.h), e.cPointer())
@@ -1314,7 +1258,6 @@ func miqt_exec_callback_QSqlDriver_setLastError(self *C.QSqlDriver, cb C.intptr_
 }
 
 func (this *QSqlDriver) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSqlDriver_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1344,8 +1287,6 @@ func miqt_exec_callback_QSqlDriver_event(self *C.QSqlDriver, cb C.intptr_t, even
 }
 
 func (this *QSqlDriver) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSqlDriver_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1377,7 +1318,6 @@ func miqt_exec_callback_QSqlDriver_eventFilter(self *C.QSqlDriver, cb C.intptr_t
 }
 
 func (this *QSqlDriver) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSqlDriver_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1405,7 +1345,6 @@ func miqt_exec_callback_QSqlDriver_timerEvent(self *C.QSqlDriver, cb C.intptr_t,
 }
 
 func (this *QSqlDriver) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSqlDriver_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1433,7 +1372,6 @@ func miqt_exec_callback_QSqlDriver_childEvent(self *C.QSqlDriver, cb C.intptr_t,
 }
 
 func (this *QSqlDriver) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSqlDriver_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1461,7 +1399,6 @@ func miqt_exec_callback_QSqlDriver_customEvent(self *C.QSqlDriver, cb C.intptr_t
 }
 
 func (this *QSqlDriver) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSqlDriver_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1489,7 +1426,6 @@ func miqt_exec_callback_QSqlDriver_connectNotify(self *C.QSqlDriver, cb C.intptr
 }
 
 func (this *QSqlDriver) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSqlDriver_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1524,6 +1460,8 @@ func (this *QSqlDriver) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QSqlDriver) GoGC() {
 	if this.gc != nil {
 		return

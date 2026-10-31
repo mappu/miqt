@@ -439,7 +439,6 @@ func miqt_exec_callback_QLayoutItem_widget(self *C.QLayoutItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_Widget)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -466,7 +465,6 @@ func miqt_exec_callback_QLayoutItem_layout(self *C.QLayoutItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QLayoutItem{h: self}).callVirtualBase_Layout)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1042,7 +1040,6 @@ func miqt_exec_callback_QSpacerItem_widget(self *C.QSpacerItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QSpacerItem{h: self}).callVirtualBase_Widget)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1069,7 +1066,6 @@ func miqt_exec_callback_QSpacerItem_layout(self *C.QSpacerItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QSpacerItem{h: self}).callVirtualBase_Layout)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1166,7 +1162,6 @@ func UnsafeNewQWidgetItem(h unsafe.Pointer) *QWidgetItem {
 
 // NewQWidgetItem constructs a new QWidgetItem object.
 func NewQWidgetItem(w *QWidget) *QWidgetItem {
-	defer runtime.KeepAlive(w)
 
 	return newQWidgetItem(C.QWidgetItem_new(w.cPointer()))
 }
@@ -1452,7 +1447,6 @@ func miqt_exec_callback_QWidgetItem_widget(self *C.QWidgetItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QWidgetItem{h: self}).callVirtualBase_Widget)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1613,7 +1607,6 @@ func miqt_exec_callback_QWidgetItem_layout(self *C.QWidgetItem, cb C.intptr_t) *
 	}
 
 	virtualReturn := gofunc((&QWidgetItem{h: self}).callVirtualBase_Layout)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -1711,7 +1704,6 @@ func UnsafeNewQWidgetItemV2(h unsafe.Pointer) *QWidgetItemV2 {
 
 // NewQWidgetItemV2 constructs a new QWidgetItemV2 object.
 func NewQWidgetItemV2(widget *QWidget) *QWidgetItemV2 {
-	defer runtime.KeepAlive(widget)
 
 	return newQWidgetItemV2(C.QWidgetItemV2_new(widget.cPointer()))
 }
@@ -1988,7 +1980,6 @@ func miqt_exec_callback_QWidgetItemV2_widget(self *C.QWidgetItemV2, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_Widget)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -2120,7 +2111,6 @@ func miqt_exec_callback_QWidgetItemV2_layout(self *C.QWidgetItemV2, cb C.intptr_
 	}
 
 	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_Layout)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 

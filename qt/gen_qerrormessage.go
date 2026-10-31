@@ -60,7 +60,6 @@ func UnsafeNewQErrorMessage(h unsafe.Pointer) *QErrorMessage {
 
 // NewQErrorMessage constructs a new QErrorMessage object.
 func NewQErrorMessage(parent *QWidget) *QErrorMessage {
-	defer runtime.KeepAlive(parent)
 
 	return newQErrorMessage(C.QErrorMessage_new(parent.cPointer()))
 }
@@ -72,12 +71,10 @@ func NewQErrorMessage2() *QErrorMessage {
 }
 
 func (this *QErrorMessage) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QErrorMessage_metaObject(this.h))
 }
 
 func (this *QErrorMessage) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QErrorMessage_metacast(this.h, param1_Cstring))
@@ -106,7 +103,6 @@ func QErrorMessage_QtHandler() *QErrorMessage {
 }
 
 func (this *QErrorMessage) ShowMessage(message string) {
-	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -115,7 +111,6 @@ func (this *QErrorMessage) ShowMessage(message string) {
 }
 
 func (this *QErrorMessage) ShowMessage2(message string, typeVal string) {
-	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -173,8 +168,6 @@ func QErrorMessage_TrUtf83(s string, c string, n int) string {
 
 // AdjustPosition can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) AdjustPosition(param1 *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QErrorMessage_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
@@ -187,7 +180,6 @@ func (this *QErrorMessage) AdjustPosition(param1 *QWidget) {
 
 // UpdateMicroFocus can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QErrorMessage_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -200,7 +192,6 @@ func (this *QErrorMessage) UpdateMicroFocus() {
 
 // Create can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QErrorMessage_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -213,7 +204,6 @@ func (this *QErrorMessage) Create() {
 
 // Destroy can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QErrorMessage_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -226,7 +216,6 @@ func (this *QErrorMessage) Destroy() {
 
 // FocusNextChild can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QErrorMessage_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -241,7 +230,6 @@ func (this *QErrorMessage) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QErrorMessage_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -256,7 +244,6 @@ func (this *QErrorMessage) FocusPreviousChild() bool {
 
 // Sender can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QErrorMessage_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -271,7 +258,6 @@ func (this *QErrorMessage) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QErrorMessage_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -286,7 +272,6 @@ func (this *QErrorMessage) SenderSignalIndex() int {
 
 // Receivers can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -303,7 +288,6 @@ func (this *QErrorMessage) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QErrorMessage that was directly constructed.
 func (this *QErrorMessage) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -318,7 +302,6 @@ func (this *QErrorMessage) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QErrorMessage) callVirtualBase_Done(param1 int) {
-	defer runtime.KeepAlive(this)
 
 	C.QErrorMessage_virtualbase_done(unsafe.Pointer(this.h), (C.int)(param1))
 
@@ -345,7 +328,6 @@ func miqt_exec_callback_QErrorMessage_done(self *C.QErrorMessage, cb C.intptr_t,
 }
 
 func (this *QErrorMessage) callVirtualBase_ChangeEvent(e *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QErrorMessage_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -373,7 +355,6 @@ func miqt_exec_callback_QErrorMessage_changeEvent(self *C.QErrorMessage, cb C.in
 }
 
 func (this *QErrorMessage) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QErrorMessage_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -400,7 +381,6 @@ func miqt_exec_callback_QErrorMessage_setVisible(self *C.QErrorMessage, cb C.int
 }
 
 func (this *QErrorMessage) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QErrorMessage_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -429,7 +409,6 @@ func miqt_exec_callback_QErrorMessage_sizeHint(self *C.QErrorMessage, cb C.intpt
 }
 
 func (this *QErrorMessage) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QErrorMessage_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -458,7 +437,6 @@ func miqt_exec_callback_QErrorMessage_minimumSizeHint(self *C.QErrorMessage, cb 
 }
 
 func (this *QErrorMessage) callVirtualBase_Open() {
-	defer runtime.KeepAlive(this)
 
 	C.QErrorMessage_virtualbase_open(unsafe.Pointer(this.h))
 
@@ -482,7 +460,6 @@ func miqt_exec_callback_QErrorMessage_open(self *C.QErrorMessage, cb C.intptr_t)
 }
 
 func (this *QErrorMessage) callVirtualBase_Exec() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QErrorMessage_virtualbase_exec(unsafe.Pointer(this.h)))
 
@@ -508,7 +485,6 @@ func miqt_exec_callback_QErrorMessage_exec(self *C.QErrorMessage, cb C.intptr_t)
 }
 
 func (this *QErrorMessage) callVirtualBase_Accept() {
-	defer runtime.KeepAlive(this)
 
 	C.QErrorMessage_virtualbase_accept(unsafe.Pointer(this.h))
 
@@ -532,7 +508,6 @@ func miqt_exec_callback_QErrorMessage_accept(self *C.QErrorMessage, cb C.intptr_
 }
 
 func (this *QErrorMessage) callVirtualBase_Reject() {
-	defer runtime.KeepAlive(this)
 
 	C.QErrorMessage_virtualbase_reject(unsafe.Pointer(this.h))
 
@@ -556,7 +531,6 @@ func miqt_exec_callback_QErrorMessage_reject(self *C.QErrorMessage, cb C.intptr_
 }
 
 func (this *QErrorMessage) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QErrorMessage_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -584,7 +558,6 @@ func miqt_exec_callback_QErrorMessage_keyPressEvent(self *C.QErrorMessage, cb C.
 }
 
 func (this *QErrorMessage) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QErrorMessage_virtualbase_closeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -612,7 +585,6 @@ func miqt_exec_callback_QErrorMessage_closeEvent(self *C.QErrorMessage, cb C.int
 }
 
 func (this *QErrorMessage) callVirtualBase_ShowEvent(param1 *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QErrorMessage_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -640,7 +612,6 @@ func miqt_exec_callback_QErrorMessage_showEvent(self *C.QErrorMessage, cb C.intp
 }
 
 func (this *QErrorMessage) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QErrorMessage_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -668,7 +639,6 @@ func miqt_exec_callback_QErrorMessage_resizeEvent(self *C.QErrorMessage, cb C.in
 }
 
 func (this *QErrorMessage) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QErrorMessage_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -696,8 +666,6 @@ func miqt_exec_callback_QErrorMessage_contextMenuEvent(self *C.QErrorMessage, cb
 }
 
 func (this *QErrorMessage) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QErrorMessage_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
@@ -729,7 +697,6 @@ func miqt_exec_callback_QErrorMessage_eventFilter(self *C.QErrorMessage, cb C.in
 }
 
 func (this *QErrorMessage) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QErrorMessage_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -755,7 +722,6 @@ func miqt_exec_callback_QErrorMessage_devType(self *C.QErrorMessage, cb C.intptr
 }
 
 func (this *QErrorMessage) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QErrorMessage_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -784,7 +750,6 @@ func miqt_exec_callback_QErrorMessage_heightForWidth(self *C.QErrorMessage, cb C
 }
 
 func (this *QErrorMessage) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QErrorMessage_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -810,7 +775,6 @@ func miqt_exec_callback_QErrorMessage_hasHeightForWidth(self *C.QErrorMessage, c
 }
 
 func (this *QErrorMessage) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QErrorMessage_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -837,7 +801,6 @@ func miqt_exec_callback_QErrorMessage_paintEngine(self *C.QErrorMessage, cb C.in
 }
 
 func (this *QErrorMessage) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QErrorMessage_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -867,7 +830,6 @@ func miqt_exec_callback_QErrorMessage_event(self *C.QErrorMessage, cb C.intptr_t
 }
 
 func (this *QErrorMessage) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -895,7 +857,6 @@ func miqt_exec_callback_QErrorMessage_mousePressEvent(self *C.QErrorMessage, cb 
 }
 
 func (this *QErrorMessage) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -923,7 +884,6 @@ func miqt_exec_callback_QErrorMessage_mouseReleaseEvent(self *C.QErrorMessage, c
 }
 
 func (this *QErrorMessage) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -951,7 +911,6 @@ func miqt_exec_callback_QErrorMessage_mouseDoubleClickEvent(self *C.QErrorMessag
 }
 
 func (this *QErrorMessage) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -979,7 +938,6 @@ func miqt_exec_callback_QErrorMessage_mouseMoveEvent(self *C.QErrorMessage, cb C
 }
 
 func (this *QErrorMessage) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1007,7 +965,6 @@ func miqt_exec_callback_QErrorMessage_wheelEvent(self *C.QErrorMessage, cb C.int
 }
 
 func (this *QErrorMessage) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1035,7 +992,6 @@ func miqt_exec_callback_QErrorMessage_keyReleaseEvent(self *C.QErrorMessage, cb 
 }
 
 func (this *QErrorMessage) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1063,7 +1019,6 @@ func miqt_exec_callback_QErrorMessage_focusInEvent(self *C.QErrorMessage, cb C.i
 }
 
 func (this *QErrorMessage) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1091,7 +1046,6 @@ func miqt_exec_callback_QErrorMessage_focusOutEvent(self *C.QErrorMessage, cb C.
 }
 
 func (this *QErrorMessage) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1119,7 +1073,6 @@ func miqt_exec_callback_QErrorMessage_enterEvent(self *C.QErrorMessage, cb C.int
 }
 
 func (this *QErrorMessage) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1147,7 +1100,6 @@ func miqt_exec_callback_QErrorMessage_leaveEvent(self *C.QErrorMessage, cb C.int
 }
 
 func (this *QErrorMessage) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1175,7 +1127,6 @@ func miqt_exec_callback_QErrorMessage_paintEvent(self *C.QErrorMessage, cb C.int
 }
 
 func (this *QErrorMessage) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1203,7 +1154,6 @@ func miqt_exec_callback_QErrorMessage_moveEvent(self *C.QErrorMessage, cb C.intp
 }
 
 func (this *QErrorMessage) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1231,7 +1181,6 @@ func miqt_exec_callback_QErrorMessage_tabletEvent(self *C.QErrorMessage, cb C.in
 }
 
 func (this *QErrorMessage) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1259,7 +1208,6 @@ func miqt_exec_callback_QErrorMessage_actionEvent(self *C.QErrorMessage, cb C.in
 }
 
 func (this *QErrorMessage) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1287,7 +1235,6 @@ func miqt_exec_callback_QErrorMessage_dragEnterEvent(self *C.QErrorMessage, cb C
 }
 
 func (this *QErrorMessage) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1315,7 +1262,6 @@ func miqt_exec_callback_QErrorMessage_dragMoveEvent(self *C.QErrorMessage, cb C.
 }
 
 func (this *QErrorMessage) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1343,7 +1289,6 @@ func miqt_exec_callback_QErrorMessage_dragLeaveEvent(self *C.QErrorMessage, cb C
 }
 
 func (this *QErrorMessage) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1371,7 +1316,6 @@ func miqt_exec_callback_QErrorMessage_dropEvent(self *C.QErrorMessage, cb C.intp
 }
 
 func (this *QErrorMessage) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1399,7 +1343,6 @@ func miqt_exec_callback_QErrorMessage_hideEvent(self *C.QErrorMessage, cb C.intp
 }
 
 func (this *QErrorMessage) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1441,7 +1384,6 @@ func miqt_exec_callback_QErrorMessage_nativeEvent(self *C.QErrorMessage, cb C.in
 }
 
 func (this *QErrorMessage) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QErrorMessage_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1470,7 +1412,6 @@ func miqt_exec_callback_QErrorMessage_metric(self *C.QErrorMessage, cb C.intptr_
 }
 
 func (this *QErrorMessage) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QErrorMessage_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1498,7 +1439,6 @@ func miqt_exec_callback_QErrorMessage_initPainter(self *C.QErrorMessage, cb C.in
 }
 
 func (this *QErrorMessage) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QErrorMessage_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1529,7 +1469,6 @@ func miqt_exec_callback_QErrorMessage_redirected(self *C.QErrorMessage, cb C.int
 }
 
 func (this *QErrorMessage) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QErrorMessage_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1556,7 +1495,6 @@ func miqt_exec_callback_QErrorMessage_sharedPainter(self *C.QErrorMessage, cb C.
 }
 
 func (this *QErrorMessage) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QErrorMessage_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1584,7 +1522,6 @@ func miqt_exec_callback_QErrorMessage_inputMethodEvent(self *C.QErrorMessage, cb
 }
 
 func (this *QErrorMessage) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QErrorMessage_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1616,7 +1553,6 @@ func miqt_exec_callback_QErrorMessage_inputMethodQuery(self *C.QErrorMessage, cb
 }
 
 func (this *QErrorMessage) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QErrorMessage_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1645,7 +1581,6 @@ func miqt_exec_callback_QErrorMessage_focusNextPrevChild(self *C.QErrorMessage, 
 }
 
 func (this *QErrorMessage) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1673,7 +1608,6 @@ func miqt_exec_callback_QErrorMessage_timerEvent(self *C.QErrorMessage, cb C.int
 }
 
 func (this *QErrorMessage) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1701,7 +1635,6 @@ func miqt_exec_callback_QErrorMessage_childEvent(self *C.QErrorMessage, cb C.int
 }
 
 func (this *QErrorMessage) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QErrorMessage_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1729,7 +1662,6 @@ func miqt_exec_callback_QErrorMessage_customEvent(self *C.QErrorMessage, cb C.in
 }
 
 func (this *QErrorMessage) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QErrorMessage_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1757,7 +1689,6 @@ func miqt_exec_callback_QErrorMessage_connectNotify(self *C.QErrorMessage, cb C.
 }
 
 func (this *QErrorMessage) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QErrorMessage_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1792,6 +1723,8 @@ func (this *QErrorMessage) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QErrorMessage) GoGC() {
 	if this.gc != nil {
 		return

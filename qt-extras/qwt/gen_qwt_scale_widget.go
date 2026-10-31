@@ -66,7 +66,6 @@ func UnsafeNewQwtScaleWidget(h unsafe.Pointer) *QwtScaleWidget {
 
 // NewQwtScaleWidget constructs a new QwtScaleWidget object.
 func NewQwtScaleWidget(parent *qt.QWidget) *QwtScaleWidget {
-	defer runtime.KeepAlive(parent)
 
 	return newQwtScaleWidget(C.QwtScaleWidget_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -85,18 +84,15 @@ func NewQwtScaleWidget3(param1 QwtScaleDraw__Alignment) *QwtScaleWidget {
 
 // NewQwtScaleWidget4 constructs a new QwtScaleWidget object.
 func NewQwtScaleWidget4(param1 QwtScaleDraw__Alignment, parent *qt.QWidget) *QwtScaleWidget {
-	defer runtime.KeepAlive(parent)
 
 	return newQwtScaleWidget(C.QwtScaleWidget_new4((C.int)(param1), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QwtScaleWidget) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtScaleWidget_metaObject(this.h)))
 }
 
 func (this *QwtScaleWidget) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtScaleWidget_metacast(this.h, param1_Cstring))
@@ -121,7 +117,6 @@ func QwtScaleWidget_TrUtf8(s string) string {
 }
 
 func (this *QwtScaleWidget) ScaleDivChanged() {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_scaleDivChanged(this.h)
 }
 func (this *QwtScaleWidget) OnScaleDivChanged(slot func()) {
@@ -139,7 +134,6 @@ func miqt_exec_callback_QwtScaleWidget_scaleDivChanged(cb C.intptr_t) {
 }
 
 func (this *QwtScaleWidget) SetTitle(title string) {
-	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -148,206 +142,169 @@ func (this *QwtScaleWidget) SetTitle(title string) {
 }
 
 func (this *QwtScaleWidget) SetTitleWithTitle(title *QwtText) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(title)
 	C.QwtScaleWidget_setTitleWithTitle(this.h, title.cPointer())
 }
 
 func (this *QwtScaleWidget) Title() *QwtText {
-	defer runtime.KeepAlive(this)
 	_goptr := newQwtText(C.QwtScaleWidget_title(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleWidget) SetLayoutFlag(param1 QwtScaleWidget__LayoutFlag, on bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setLayoutFlag(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QwtScaleWidget) TestLayoutFlag(param1 QwtScaleWidget__LayoutFlag) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtScaleWidget_testLayoutFlag(this.h, (C.int)(param1)))
 }
 
 func (this *QwtScaleWidget) SetBorderDist(dist1 int, dist2 int) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setBorderDist(this.h, (C.int)(dist1), (C.int)(dist2))
 }
 
 func (this *QwtScaleWidget) StartBorderDist() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtScaleWidget_startBorderDist(this.h))
 }
 
 func (this *QwtScaleWidget) EndBorderDist() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtScaleWidget_endBorderDist(this.h))
 }
 
 func (this *QwtScaleWidget) GetBorderDistHint(start *int, end *int) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_getBorderDistHint(this.h, (*C.int)(unsafe.Pointer(start)), (*C.int)(unsafe.Pointer(end)))
 }
 
 func (this *QwtScaleWidget) GetMinBorderDist(start *int, end *int) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_getMinBorderDist(this.h, (*C.int)(unsafe.Pointer(start)), (*C.int)(unsafe.Pointer(end)))
 }
 
 func (this *QwtScaleWidget) SetMinBorderDist(start int, end int) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setMinBorderDist(this.h, (C.int)(start), (C.int)(end))
 }
 
 func (this *QwtScaleWidget) SetMargin(margin int) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setMargin(this.h, (C.int)(margin))
 }
 
 func (this *QwtScaleWidget) Margin() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtScaleWidget_margin(this.h))
 }
 
 func (this *QwtScaleWidget) SetSpacing(spacing int) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QwtScaleWidget) Spacing() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtScaleWidget_spacing(this.h))
 }
 
 func (this *QwtScaleWidget) SetScaleDiv(scaleDiv *QwtScaleDiv) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(scaleDiv)
 	C.QwtScaleWidget_setScaleDiv(this.h, scaleDiv.cPointer())
 }
 
 func (this *QwtScaleWidget) SetTransformation(transformation *QwtTransform) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(transformation)
 	C.QwtScaleWidget_setTransformation(this.h, transformation.cPointer())
 }
 
 func (this *QwtScaleWidget) SetScaleDraw(scaleDraw *QwtScaleDraw) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(scaleDraw)
 	C.QwtScaleWidget_setScaleDraw(this.h, scaleDraw.cPointer())
 }
 
 func (this *QwtScaleWidget) ScaleDraw() *QwtScaleDraw {
-	defer runtime.KeepAlive(this)
 	return newQwtScaleDraw(C.QwtScaleWidget_scaleDraw(this.h))
 }
 
 func (this *QwtScaleWidget) ScaleDraw2() *QwtScaleDraw {
-	defer runtime.KeepAlive(this)
 	return newQwtScaleDraw(C.QwtScaleWidget_scaleDraw2(this.h))
 }
 
 func (this *QwtScaleWidget) SetLabelAlignment(labelAlignment qt.AlignmentFlag) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setLabelAlignment(this.h, (C.int)(labelAlignment))
 }
 
 func (this *QwtScaleWidget) SetLabelRotation(rotation float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setLabelRotation(this.h, (C.double)(rotation))
 }
 
 func (this *QwtScaleWidget) SetColorBarEnabled(colorBarEnabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setColorBarEnabled(this.h, (C.bool)(colorBarEnabled))
 }
 
 func (this *QwtScaleWidget) IsColorBarEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtScaleWidget_isColorBarEnabled(this.h))
 }
 
 func (this *QwtScaleWidget) SetColorBarWidth(colorBarWidth int) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setColorBarWidth(this.h, (C.int)(colorBarWidth))
 }
 
 func (this *QwtScaleWidget) ColorBarWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtScaleWidget_colorBarWidth(this.h))
 }
 
 func (this *QwtScaleWidget) SetColorMap(param1 *QwtInterval, param2 *QwtColorMap) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	C.QwtScaleWidget_setColorMap(this.h, param1.cPointer(), param2.cPointer())
 }
 
 func (this *QwtScaleWidget) ColorBarInterval() *QwtInterval {
-	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtScaleWidget_colorBarInterval(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleWidget) ColorMap() *QwtColorMap {
-	defer runtime.KeepAlive(this)
 	return newQwtColorMap(C.QwtScaleWidget_colorMap(this.h))
 }
 
 func (this *QwtScaleWidget) SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtScaleWidget_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleWidget) MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtScaleWidget_minimumSizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtScaleWidget) TitleHeightForWidth(width int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtScaleWidget_titleHeightForWidth(this.h, (C.int)(width)))
 }
 
 func (this *QwtScaleWidget) DimForLength(length int, scaleFont *qt.QFont) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(scaleFont)
 	return (int)(C.QwtScaleWidget_dimForLength(this.h, (C.int)(length), (*C.QFont)(scaleFont.UnsafePointer())))
 }
 
 func (this *QwtScaleWidget) DrawColorBar(painter *qt.QPainter, param2 *qt.QRectF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(param2)
 	C.QwtScaleWidget_drawColorBar(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
 }
 
 func (this *QwtScaleWidget) DrawTitle(painter *qt.QPainter, param2 QwtScaleDraw__Alignment, rect *qt.QRectF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(rect)
 	C.QwtScaleWidget_drawTitle(this.h, (*C.QPainter)(painter.UnsafePointer()), (C.int)(param2), (*C.QRectF)(rect.UnsafePointer()))
 }
 
 func (this *QwtScaleWidget) SetAlignment(alignment QwtScaleDraw__Alignment) {
-	defer runtime.KeepAlive(this)
 	C.QwtScaleWidget_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QwtScaleWidget) Alignment() QwtScaleDraw__Alignment {
-	defer runtime.KeepAlive(this)
 	return (QwtScaleDraw__Alignment)(C.QwtScaleWidget_alignment(this.h))
 }
 
 func (this *QwtScaleWidget) ColorBarRect(param1 *qt.QRectF) *qt.QRectF {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtScaleWidget_colorBarRect(this.h, (*C.QRectF)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -400,7 +357,6 @@ func QwtScaleWidget_TrUtf83(s string, c string, n int) string {
 
 // Draw can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) Draw(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -414,7 +370,6 @@ func (this *QwtScaleWidget) Draw(param1 *qt.QPainter) {
 
 // ScaleChange can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) ScaleChange() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtScaleWidget_protectedbase_scaleChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -427,7 +382,6 @@ func (this *QwtScaleWidget) ScaleChange() {
 
 // LayoutScale can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) LayoutScale() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtScaleWidget_protectedbase_layoutScale(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -440,7 +394,6 @@ func (this *QwtScaleWidget) LayoutScale() {
 
 // LayoutScaleWithUpdateGeometry can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) LayoutScaleWithUpdateGeometry(update_geometry bool) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtScaleWidget_protectedbase_layoutScaleWithUpdateGeometry(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(update_geometry))
@@ -453,7 +406,6 @@ func (this *QwtScaleWidget) LayoutScaleWithUpdateGeometry(update_geometry bool) 
 
 // UpdateMicroFocus can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtScaleWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -466,7 +418,6 @@ func (this *QwtScaleWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtScaleWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -479,7 +430,6 @@ func (this *QwtScaleWidget) Create() {
 
 // Destroy can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtScaleWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -492,7 +442,6 @@ func (this *QwtScaleWidget) Destroy() {
 
 // FocusNextChild can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtScaleWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -507,7 +456,6 @@ func (this *QwtScaleWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QwtScaleWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -522,7 +470,6 @@ func (this *QwtScaleWidget) FocusPreviousChild() bool {
 
 // Sender can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtScaleWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -537,7 +484,6 @@ func (this *QwtScaleWidget) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtScaleWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -552,7 +498,6 @@ func (this *QwtScaleWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -569,7 +514,6 @@ func (this *QwtScaleWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtScaleWidget that was directly constructed.
 func (this *QwtScaleWidget) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -584,7 +528,6 @@ func (this *QwtScaleWidget) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtScaleWidget) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtScaleWidget_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -613,7 +556,6 @@ func miqt_exec_callback_QwtScaleWidget_sizeHint(self *C.QwtScaleWidget, cb C.int
 }
 
 func (this *QwtScaleWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtScaleWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -642,7 +584,6 @@ func miqt_exec_callback_QwtScaleWidget_minimumSizeHint(self *C.QwtScaleWidget, c
 }
 
 func (this *QwtScaleWidget) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtScaleWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(param1.UnsafePointer()))
@@ -670,7 +611,6 @@ func miqt_exec_callback_QwtScaleWidget_paintEvent(self *C.QwtScaleWidget, cb C.i
 }
 
 func (this *QwtScaleWidget) callVirtualBase_ResizeEvent(param1 *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtScaleWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(param1.UnsafePointer()))
@@ -698,7 +638,6 @@ func miqt_exec_callback_QwtScaleWidget_resizeEvent(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtScaleWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -724,7 +663,6 @@ func miqt_exec_callback_QwtScaleWidget_devType(self *C.QwtScaleWidget, cb C.intp
 }
 
 func (this *QwtScaleWidget) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QwtScaleWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -751,7 +689,6 @@ func miqt_exec_callback_QwtScaleWidget_setVisible(self *C.QwtScaleWidget, cb C.i
 }
 
 func (this *QwtScaleWidget) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtScaleWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -780,7 +717,6 @@ func miqt_exec_callback_QwtScaleWidget_heightForWidth(self *C.QwtScaleWidget, cb
 }
 
 func (this *QwtScaleWidget) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtScaleWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -806,7 +742,6 @@ func miqt_exec_callback_QwtScaleWidget_hasHeightForWidth(self *C.QwtScaleWidget,
 }
 
 func (this *QwtScaleWidget) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QwtScaleWidget_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -833,7 +768,6 @@ func miqt_exec_callback_QwtScaleWidget_paintEngine(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtScaleWidget_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -863,7 +797,6 @@ func miqt_exec_callback_QwtScaleWidget_event(self *C.QwtScaleWidget, cb C.intptr
 }
 
 func (this *QwtScaleWidget) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -891,7 +824,6 @@ func miqt_exec_callback_QwtScaleWidget_mousePressEvent(self *C.QwtScaleWidget, c
 }
 
 func (this *QwtScaleWidget) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -919,7 +851,6 @@ func miqt_exec_callback_QwtScaleWidget_mouseReleaseEvent(self *C.QwtScaleWidget,
 }
 
 func (this *QwtScaleWidget) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -947,7 +878,6 @@ func miqt_exec_callback_QwtScaleWidget_mouseDoubleClickEvent(self *C.QwtScaleWid
 }
 
 func (this *QwtScaleWidget) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -975,7 +905,6 @@ func miqt_exec_callback_QwtScaleWidget_mouseMoveEvent(self *C.QwtScaleWidget, cb
 }
 
 func (this *QwtScaleWidget) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -1003,7 +932,6 @@ func miqt_exec_callback_QwtScaleWidget_wheelEvent(self *C.QwtScaleWidget, cb C.i
 }
 
 func (this *QwtScaleWidget) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1031,7 +959,6 @@ func miqt_exec_callback_QwtScaleWidget_keyPressEvent(self *C.QwtScaleWidget, cb 
 }
 
 func (this *QwtScaleWidget) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1059,7 +986,6 @@ func miqt_exec_callback_QwtScaleWidget_keyReleaseEvent(self *C.QwtScaleWidget, c
 }
 
 func (this *QwtScaleWidget) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1087,7 +1013,6 @@ func miqt_exec_callback_QwtScaleWidget_focusInEvent(self *C.QwtScaleWidget, cb C
 }
 
 func (this *QwtScaleWidget) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1115,7 +1040,6 @@ func miqt_exec_callback_QwtScaleWidget_focusOutEvent(self *C.QwtScaleWidget, cb 
 }
 
 func (this *QwtScaleWidget) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1143,7 +1067,6 @@ func miqt_exec_callback_QwtScaleWidget_enterEvent(self *C.QwtScaleWidget, cb C.i
 }
 
 func (this *QwtScaleWidget) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1171,7 +1094,6 @@ func miqt_exec_callback_QwtScaleWidget_leaveEvent(self *C.QwtScaleWidget, cb C.i
 }
 
 func (this *QwtScaleWidget) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -1199,7 +1121,6 @@ func miqt_exec_callback_QwtScaleWidget_moveEvent(self *C.QwtScaleWidget, cb C.in
 }
 
 func (this *QwtScaleWidget) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -1227,7 +1148,6 @@ func miqt_exec_callback_QwtScaleWidget_closeEvent(self *C.QwtScaleWidget, cb C.i
 }
 
 func (this *QwtScaleWidget) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -1255,7 +1175,6 @@ func miqt_exec_callback_QwtScaleWidget_contextMenuEvent(self *C.QwtScaleWidget, 
 }
 
 func (this *QwtScaleWidget) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1283,7 +1202,6 @@ func miqt_exec_callback_QwtScaleWidget_tabletEvent(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1311,7 +1229,6 @@ func miqt_exec_callback_QwtScaleWidget_actionEvent(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1339,7 +1256,6 @@ func miqt_exec_callback_QwtScaleWidget_dragEnterEvent(self *C.QwtScaleWidget, cb
 }
 
 func (this *QwtScaleWidget) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1367,7 +1283,6 @@ func miqt_exec_callback_QwtScaleWidget_dragMoveEvent(self *C.QwtScaleWidget, cb 
 }
 
 func (this *QwtScaleWidget) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1395,7 +1310,6 @@ func miqt_exec_callback_QwtScaleWidget_dragLeaveEvent(self *C.QwtScaleWidget, cb
 }
 
 func (this *QwtScaleWidget) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1423,7 +1337,6 @@ func miqt_exec_callback_QwtScaleWidget_dropEvent(self *C.QwtScaleWidget, cb C.in
 }
 
 func (this *QwtScaleWidget) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -1451,7 +1364,6 @@ func miqt_exec_callback_QwtScaleWidget_showEvent(self *C.QwtScaleWidget, cb C.in
 }
 
 func (this *QwtScaleWidget) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -1479,7 +1391,6 @@ func miqt_exec_callback_QwtScaleWidget_hideEvent(self *C.QwtScaleWidget, cb C.in
 }
 
 func (this *QwtScaleWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1521,7 +1432,6 @@ func miqt_exec_callback_QwtScaleWidget_nativeEvent(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtScaleWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1549,7 +1459,6 @@ func miqt_exec_callback_QwtScaleWidget_changeEvent(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QwtScaleWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1578,7 +1487,6 @@ func miqt_exec_callback_QwtScaleWidget_metric(self *C.QwtScaleWidget, cb C.intpt
 }
 
 func (this *QwtScaleWidget) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QwtScaleWidget_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1606,7 +1514,6 @@ func miqt_exec_callback_QwtScaleWidget_initPainter(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtScaleWidget_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1637,7 +1544,6 @@ func miqt_exec_callback_QwtScaleWidget_redirected(self *C.QwtScaleWidget, cb C.i
 }
 
 func (this *QwtScaleWidget) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QwtScaleWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1664,7 +1570,6 @@ func miqt_exec_callback_QwtScaleWidget_sharedPainter(self *C.QwtScaleWidget, cb 
 }
 
 func (this *QwtScaleWidget) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtScaleWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1692,7 +1597,6 @@ func miqt_exec_callback_QwtScaleWidget_inputMethodEvent(self *C.QwtScaleWidget, 
 }
 
 func (this *QwtScaleWidget) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QwtScaleWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1724,7 +1628,6 @@ func miqt_exec_callback_QwtScaleWidget_inputMethodQuery(self *C.QwtScaleWidget, 
 }
 
 func (this *QwtScaleWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtScaleWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1753,8 +1656,6 @@ func miqt_exec_callback_QwtScaleWidget_focusNextPrevChild(self *C.QwtScaleWidget
 }
 
 func (this *QwtScaleWidget) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtScaleWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1786,7 +1687,6 @@ func miqt_exec_callback_QwtScaleWidget_eventFilter(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1814,7 +1714,6 @@ func miqt_exec_callback_QwtScaleWidget_timerEvent(self *C.QwtScaleWidget, cb C.i
 }
 
 func (this *QwtScaleWidget) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1842,7 +1741,6 @@ func miqt_exec_callback_QwtScaleWidget_childEvent(self *C.QwtScaleWidget, cb C.i
 }
 
 func (this *QwtScaleWidget) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtScaleWidget_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1870,7 +1768,6 @@ func miqt_exec_callback_QwtScaleWidget_customEvent(self *C.QwtScaleWidget, cb C.
 }
 
 func (this *QwtScaleWidget) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtScaleWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1898,7 +1795,6 @@ func miqt_exec_callback_QwtScaleWidget_connectNotify(self *C.QwtScaleWidget, cb 
 }
 
 func (this *QwtScaleWidget) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtScaleWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1933,6 +1829,8 @@ func (this *QwtScaleWidget) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtScaleWidget) GoGC() {
 	if this.gc != nil {
 		return

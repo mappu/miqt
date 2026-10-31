@@ -59,12 +59,10 @@ func UnsafeNewQMediaObject(h unsafe.Pointer) *QMediaObject {
 }
 
 func (this *QMediaObject) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaObject_metaObject(this.h)))
 }
 
 func (this *QMediaObject) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QMediaObject_metacast(this.h, param1_Cstring))
@@ -89,49 +87,38 @@ func QMediaObject_TrUtf8(s string) string {
 }
 
 func (this *QMediaObject) IsAvailable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaObject_isAvailable(this.h))
 }
 
 func (this *QMediaObject) Availability() QMultimedia__AvailabilityStatus {
-	defer runtime.KeepAlive(this)
 	return (QMultimedia__AvailabilityStatus)(C.QMediaObject_availability(this.h))
 }
 
 func (this *QMediaObject) Service() *QMediaService {
-	defer runtime.KeepAlive(this)
 	return newQMediaService(C.QMediaObject_service(this.h))
 }
 
 func (this *QMediaObject) NotifyInterval() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QMediaObject_notifyInterval(this.h))
 }
 
 func (this *QMediaObject) SetNotifyInterval(milliSeconds int) {
-	defer runtime.KeepAlive(this)
 	C.QMediaObject_setNotifyInterval(this.h, (C.int)(milliSeconds))
 }
 
 func (this *QMediaObject) Bind(param1 *qt.QObject) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	return (bool)(C.QMediaObject_bind(this.h, (*C.QObject)(param1.UnsafePointer())))
 }
 
 func (this *QMediaObject) Unbind(param1 *qt.QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QMediaObject_unbind(this.h, (*C.QObject)(param1.UnsafePointer()))
 }
 
 func (this *QMediaObject) IsMetaDataAvailable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QMediaObject_isMetaDataAvailable(this.h))
 }
 
 func (this *QMediaObject) MetaData(key string) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
@@ -142,7 +129,6 @@ func (this *QMediaObject) MetaData(key string) *qt.QVariant {
 }
 
 func (this *QMediaObject) AvailableMetaData() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QMediaObject_availableMetaData(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -156,7 +142,6 @@ func (this *QMediaObject) AvailableMetaData() []string {
 }
 
 func (this *QMediaObject) NotifyIntervalChanged(milliSeconds int) {
-	defer runtime.KeepAlive(this)
 	C.QMediaObject_notifyIntervalChanged(this.h, (C.int)(milliSeconds))
 }
 func (this *QMediaObject) OnNotifyIntervalChanged(slot func(milliSeconds int)) {
@@ -177,7 +162,6 @@ func miqt_exec_callback_QMediaObject_notifyIntervalChanged(cb C.intptr_t, milliS
 }
 
 func (this *QMediaObject) MetaDataAvailableChanged(available bool) {
-	defer runtime.KeepAlive(this)
 	C.QMediaObject_metaDataAvailableChanged(this.h, (C.bool)(available))
 }
 func (this *QMediaObject) OnMetaDataAvailableChanged(slot func(available bool)) {
@@ -198,7 +182,6 @@ func miqt_exec_callback_QMediaObject_metaDataAvailableChanged(cb C.intptr_t, ava
 }
 
 func (this *QMediaObject) MetaDataChanged() {
-	defer runtime.KeepAlive(this)
 	C.QMediaObject_metaDataChanged(this.h)
 }
 func (this *QMediaObject) OnMetaDataChanged(slot func()) {
@@ -216,7 +199,6 @@ func miqt_exec_callback_QMediaObject_metaDataChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaObject) MetaDataChanged2(key string, value *qt.QVariant) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	key_ms := C.struct_miqt_string{}
 	key_ms.data = C.CString(key)
@@ -246,7 +228,6 @@ func miqt_exec_callback_QMediaObject_metaDataChanged2(cb C.intptr_t, key C.struc
 }
 
 func (this *QMediaObject) AvailabilityChanged(available bool) {
-	defer runtime.KeepAlive(this)
 	C.QMediaObject_availabilityChanged(this.h, (C.bool)(available))
 }
 func (this *QMediaObject) OnAvailabilityChanged(slot func(available bool)) {
@@ -267,7 +248,6 @@ func miqt_exec_callback_QMediaObject_availabilityChanged(cb C.intptr_t, availabl
 }
 
 func (this *QMediaObject) AvailabilityChangedWithAvailability(availability QMultimedia__AvailabilityStatus) {
-	defer runtime.KeepAlive(this)
 	C.QMediaObject_availabilityChangedWithAvailability(this.h, (C.int)(availability))
 }
 func (this *QMediaObject) OnAvailabilityChangedWithAvailability(slot func(availability QMultimedia__AvailabilityStatus)) {
@@ -339,6 +319,8 @@ func (this *QMediaObject) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QMediaObject) GoGC() {
 	if this.gc != nil {
 		return

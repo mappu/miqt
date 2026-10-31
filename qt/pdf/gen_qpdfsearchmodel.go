@@ -77,18 +77,15 @@ func NewQPdfSearchModel() *QPdfSearchModel {
 
 // NewQPdfSearchModel2 constructs a new QPdfSearchModel object.
 func NewQPdfSearchModel2(parent *qt.QObject) *QPdfSearchModel {
-	defer runtime.KeepAlive(parent)
 
 	return newQPdfSearchModel(C.QPdfSearchModel_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QPdfSearchModel) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QPdfSearchModel_metaObject(this.h)))
 }
 
 func (this *QPdfSearchModel) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPdfSearchModel_metacast(this.h, param1_Cstring))
@@ -113,7 +110,6 @@ func QPdfSearchModel_TrUtf8(s string) string {
 }
 
 func (this *QPdfSearchModel) ResultsOnPage(page int) []QPdfSearchResult {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QPdfSearchModel_resultsOnPage(this.h, (C.int)(page))
 	_ret := make([]QPdfSearchResult, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QPdfSearchResult)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -126,19 +122,16 @@ func (this *QPdfSearchModel) ResultsOnPage(page int) []QPdfSearchResult {
 }
 
 func (this *QPdfSearchModel) ResultAtIndex(index int) *QPdfSearchResult {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPdfSearchResult(C.QPdfSearchModel_resultAtIndex(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPdfSearchModel) Document() *QPdfDocument {
-	defer runtime.KeepAlive(this)
 	return newQPdfDocument(C.QPdfSearchModel_document(this.h))
 }
 
 func (this *QPdfSearchModel) SearchString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPdfSearchModel_searchString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -146,7 +139,6 @@ func (this *QPdfSearchModel) SearchString() string {
 }
 
 func (this *QPdfSearchModel) RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 	var _mm C.struct_miqt_map = C.QPdfSearchModel_roleNames(this.h)
 	_ret := make(map[int][]byte, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
@@ -164,13 +156,11 @@ func (this *QPdfSearchModel) RoleNames() map[int][]byte {
 }
 
 func (this *QPdfSearchModel) RowCount(parent *qt.QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	return (int)(C.QPdfSearchModel_rowCount(this.h, (*C.QModelIndex)(parent.UnsafePointer())))
 }
 
 func (this *QPdfSearchModel) Data(index *qt.QModelIndex, role int) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPdfSearchModel_data(this.h, (*C.QModelIndex)(index.UnsafePointer()), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -178,7 +168,6 @@ func (this *QPdfSearchModel) Data(index *qt.QModelIndex, role int) *qt.QVariant 
 }
 
 func (this *QPdfSearchModel) SetSearchString(searchString string) {
-	defer runtime.KeepAlive(this)
 	searchString_ms := C.struct_miqt_string{}
 	searchString_ms.data = C.CString(searchString)
 	searchString_ms.len = C.size_t(len(searchString))
@@ -187,13 +176,10 @@ func (this *QPdfSearchModel) SetSearchString(searchString string) {
 }
 
 func (this *QPdfSearchModel) SetDocument(document *QPdfDocument) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(document)
 	C.QPdfSearchModel_setDocument(this.h, document.cPointer())
 }
 
 func (this *QPdfSearchModel) DocumentChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPdfSearchModel_documentChanged(this.h)
 }
 func (this *QPdfSearchModel) OnDocumentChanged(slot func()) {
@@ -211,7 +197,6 @@ func miqt_exec_callback_QPdfSearchModel_documentChanged(cb C.intptr_t) {
 }
 
 func (this *QPdfSearchModel) SearchStringChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPdfSearchModel_searchStringChanged(this.h)
 }
 func (this *QPdfSearchModel) OnSearchStringChanged(slot func()) {
@@ -274,7 +259,6 @@ func QPdfSearchModel_TrUtf83(s string, c string, n int) string {
 
 // UpdatePage can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) UpdatePage(page int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_updatePage(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(page))
@@ -287,7 +271,6 @@ func (this *QPdfSearchModel) UpdatePage(page int) {
 
 // ResetInternalData can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) ResetInternalData() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_resetInternalData(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -300,7 +283,6 @@ func (this *QPdfSearchModel) ResetInternalData() {
 
 // CreateIndex can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) CreateIndex(row int, column int) qt.QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfSearchModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column))))
@@ -317,7 +299,6 @@ func (this *QPdfSearchModel) CreateIndex(row int, column int) qt.QModelIndex {
 
 // EncodeData can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) EncodeData(indexes []qt.QModelIndex, stream *qt.QDataStream) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	defer runtime.KeepAlive(stream)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
@@ -339,7 +320,6 @@ func (this *QPdfSearchModel) EncodeData(indexes []qt.QModelIndex, stream *qt.QDa
 
 // DecodeData can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) DecodeData(row int, column int, parent *qt.QModelIndex, stream *qt.QDataStream) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 	defer runtime.KeepAlive(stream)
 
@@ -356,7 +336,6 @@ func (this *QPdfSearchModel) DecodeData(row int, column int, parent *qt.QModelIn
 
 // BeginInsertRows can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) BeginInsertRows(parent *qt.QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -370,7 +349,6 @@ func (this *QPdfSearchModel) BeginInsertRows(parent *qt.QModelIndex, first int, 
 
 // EndInsertRows can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) EndInsertRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -383,7 +361,6 @@ func (this *QPdfSearchModel) EndInsertRows() {
 
 // BeginRemoveRows can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) BeginRemoveRows(parent *qt.QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -397,7 +374,6 @@ func (this *QPdfSearchModel) BeginRemoveRows(parent *qt.QModelIndex, first int, 
 
 // EndRemoveRows can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) EndRemoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -410,7 +386,6 @@ func (this *QPdfSearchModel) EndRemoveRows() {
 
 // BeginMoveRows can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) BeginMoveRows(sourceParent *qt.QModelIndex, sourceFirst int, sourceLast int, destinationParent *qt.QModelIndex, destinationRow int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -427,7 +402,6 @@ func (this *QPdfSearchModel) BeginMoveRows(sourceParent *qt.QModelIndex, sourceF
 
 // EndMoveRows can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) EndMoveRows() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -440,7 +414,6 @@ func (this *QPdfSearchModel) EndMoveRows() {
 
 // BeginInsertColumns can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) BeginInsertColumns(parent *qt.QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -454,7 +427,6 @@ func (this *QPdfSearchModel) BeginInsertColumns(parent *qt.QModelIndex, first in
 
 // EndInsertColumns can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) EndInsertColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -467,7 +439,6 @@ func (this *QPdfSearchModel) EndInsertColumns() {
 
 // BeginRemoveColumns can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) BeginRemoveColumns(parent *qt.QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	var _dynamic_cast_ok C.bool = false
@@ -481,7 +452,6 @@ func (this *QPdfSearchModel) BeginRemoveColumns(parent *qt.QModelIndex, first in
 
 // EndRemoveColumns can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) EndRemoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -494,7 +464,6 @@ func (this *QPdfSearchModel) EndRemoveColumns() {
 
 // BeginMoveColumns can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) BeginMoveColumns(sourceParent *qt.QModelIndex, sourceFirst int, sourceLast int, destinationParent *qt.QModelIndex, destinationColumn int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -511,7 +480,6 @@ func (this *QPdfSearchModel) BeginMoveColumns(sourceParent *qt.QModelIndex, sour
 
 // EndMoveColumns can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) EndMoveColumns() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -524,7 +492,6 @@ func (this *QPdfSearchModel) EndMoveColumns() {
 
 // BeginResetModel can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) BeginResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -537,7 +504,6 @@ func (this *QPdfSearchModel) BeginResetModel() {
 
 // EndResetModel can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) EndResetModel() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QPdfSearchModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -550,7 +516,6 @@ func (this *QPdfSearchModel) EndResetModel() {
 
 // ChangePersistentIndex can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) ChangePersistentIndex(from *qt.QModelIndex, to *qt.QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 
@@ -565,7 +530,6 @@ func (this *QPdfSearchModel) ChangePersistentIndex(from *qt.QModelIndex, to *qt.
 
 // ChangePersistentIndexList can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) ChangePersistentIndexList(from []qt.QModelIndex, to []qt.QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(from)
 	defer runtime.KeepAlive(to)
 	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
@@ -594,7 +558,6 @@ func (this *QPdfSearchModel) ChangePersistentIndexList(from []qt.QModelIndex, to
 
 // PersistentIndexList can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) PersistentIndexList() []qt.QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QPdfSearchModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -617,7 +580,6 @@ func (this *QPdfSearchModel) PersistentIndexList() []qt.QModelIndex {
 
 // Sender can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QPdfSearchModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -632,7 +594,6 @@ func (this *QPdfSearchModel) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPdfSearchModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -647,7 +608,6 @@ func (this *QPdfSearchModel) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -664,7 +624,6 @@ func (this *QPdfSearchModel) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPdfSearchModel that was directly constructed.
 func (this *QPdfSearchModel) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -679,7 +638,6 @@ func (this *QPdfSearchModel) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QPdfSearchModel) callVirtualBase_RoleNames() map[int][]byte {
-	defer runtime.KeepAlive(this)
 
 	var _mm C.struct_miqt_map = C.QPdfSearchModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
@@ -740,7 +698,6 @@ func miqt_exec_callback_QPdfSearchModel_roleNames(self *C.QPdfSearchModel, cb C.
 }
 
 func (this *QPdfSearchModel) callVirtualBase_RowCount(parent *qt.QModelIndex) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (int)(C.QPdfSearchModel_virtualbase_rowCount(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
@@ -770,7 +727,6 @@ func miqt_exec_callback_QPdfSearchModel_rowCount(self *C.QPdfSearchModel, cb C.i
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Data(index *qt.QModelIndex, role int) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPdfSearchModel_virtualbase_data(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()), (C.int)(role))))
@@ -805,7 +761,6 @@ func miqt_exec_callback_QPdfSearchModel_data(self *C.QPdfSearchModel, cb C.intpt
 }
 
 func (this *QPdfSearchModel) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPdfSearchModel_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -833,7 +788,6 @@ func miqt_exec_callback_QPdfSearchModel_timerEvent(self *C.QPdfSearchModel, cb C
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Index(row int, column int, parent *qt.QModelIndex) *qt.QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfSearchModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer()))))
@@ -870,7 +824,6 @@ func miqt_exec_callback_QPdfSearchModel_index(self *C.QPdfSearchModel, cb C.intp
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Sibling(row int, column int, idx *qt.QModelIndex) *qt.QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(idx)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfSearchModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(idx.UnsafePointer()))))
@@ -907,8 +860,6 @@ func miqt_exec_callback_QPdfSearchModel_sibling(self *C.QPdfSearchModel, cb C.in
 }
 
 func (this *QPdfSearchModel) callVirtualBase_DropMimeData(data *qt.QMimeData, action qt.DropAction, row int, column int, parent *qt.QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer())))
@@ -946,7 +897,6 @@ func miqt_exec_callback_QPdfSearchModel_dropMimeData(self *C.QPdfSearchModel, cb
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Flags(index *qt.QModelIndex) qt.ItemFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (qt.ItemFlag)(C.QPdfSearchModel_virtualbase_flags(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer())))
@@ -976,7 +926,6 @@ func miqt_exec_callback_QPdfSearchModel_flags(self *C.QPdfSearchModel, cb C.intp
 }
 
 func (this *QPdfSearchModel) callVirtualBase_SetData(index *qt.QModelIndex, value *qt.QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(value)
 
@@ -1011,7 +960,6 @@ func miqt_exec_callback_QPdfSearchModel_setData(self *C.QPdfSearchModel, cb C.in
 }
 
 func (this *QPdfSearchModel) callVirtualBase_HeaderData(section int, orientation qt.Orientation, role int) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPdfSearchModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1047,7 +995,6 @@ func miqt_exec_callback_QPdfSearchModel_headerData(self *C.QPdfSearchModel, cb C
 }
 
 func (this *QPdfSearchModel) callVirtualBase_SetHeaderData(section int, orientation qt.Orientation, value *qt.QVariant, role int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
@@ -1083,7 +1030,6 @@ func miqt_exec_callback_QPdfSearchModel_setHeaderData(self *C.QPdfSearchModel, c
 }
 
 func (this *QPdfSearchModel) callVirtualBase_ItemData(index *qt.QModelIndex) map[int]qt.QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	var _mm C.struct_miqt_map = C.QPdfSearchModel_virtualbase_itemData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))
@@ -1142,7 +1088,6 @@ func miqt_exec_callback_QPdfSearchModel_itemData(self *C.QPdfSearchModel, cb C.i
 }
 
 func (this *QPdfSearchModel) callVirtualBase_SetItemData(index *qt.QModelIndex, roles map[int]qt.QVariant) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -1205,7 +1150,6 @@ func miqt_exec_callback_QPdfSearchModel_setItemData(self *C.QPdfSearchModel, cb 
 }
 
 func (this *QPdfSearchModel) callVirtualBase_MimeTypes() []string {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QPdfSearchModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
@@ -1249,7 +1193,6 @@ func miqt_exec_callback_QPdfSearchModel_mimeTypes(self *C.QPdfSearchModel, cb C.
 }
 
 func (this *QPdfSearchModel) callVirtualBase_MimeData(indexes []qt.QModelIndex) *qt.QMimeData {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -1288,15 +1231,12 @@ func miqt_exec_callback_QPdfSearchModel_mimeData(self *C.QPdfSearchModel, cb C.i
 	slotval1 := indexes_ret
 
 	virtualReturn := gofunc((&QPdfSearchModel{h: self}).callVirtualBase_MimeData, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QMimeData)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QPdfSearchModel) callVirtualBase_CanDropMimeData(data *qt.QMimeData, action qt.DropAction, row int, column int, parent *qt.QModelIndex) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer())))
@@ -1334,7 +1274,6 @@ func miqt_exec_callback_QPdfSearchModel_canDropMimeData(self *C.QPdfSearchModel,
 }
 
 func (this *QPdfSearchModel) callVirtualBase_SupportedDropActions() qt.DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (qt.DropAction)(C.QPdfSearchModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
@@ -1360,7 +1299,6 @@ func miqt_exec_callback_QPdfSearchModel_supportedDropActions(self *C.QPdfSearchM
 }
 
 func (this *QPdfSearchModel) callVirtualBase_SupportedDragActions() qt.DropAction {
-	defer runtime.KeepAlive(this)
 
 	return (qt.DropAction)(C.QPdfSearchModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
@@ -1386,7 +1324,6 @@ func miqt_exec_callback_QPdfSearchModel_supportedDragActions(self *C.QPdfSearchM
 }
 
 func (this *QPdfSearchModel) callVirtualBase_InsertRows(row int, count int, parent *qt.QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
@@ -1420,7 +1357,6 @@ func miqt_exec_callback_QPdfSearchModel_insertRows(self *C.QPdfSearchModel, cb C
 }
 
 func (this *QPdfSearchModel) callVirtualBase_InsertColumns(column int, count int, parent *qt.QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
@@ -1454,7 +1390,6 @@ func miqt_exec_callback_QPdfSearchModel_insertColumns(self *C.QPdfSearchModel, c
 }
 
 func (this *QPdfSearchModel) callVirtualBase_RemoveRows(row int, count int, parent *qt.QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
@@ -1488,7 +1423,6 @@ func miqt_exec_callback_QPdfSearchModel_removeRows(self *C.QPdfSearchModel, cb C
 }
 
 func (this *QPdfSearchModel) callVirtualBase_RemoveColumns(column int, count int, parent *qt.QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
@@ -1522,7 +1456,6 @@ func miqt_exec_callback_QPdfSearchModel_removeColumns(self *C.QPdfSearchModel, c
 }
 
 func (this *QPdfSearchModel) callVirtualBase_MoveRows(sourceParent *qt.QModelIndex, sourceRow int, count int, destinationParent *qt.QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -1561,7 +1494,6 @@ func miqt_exec_callback_QPdfSearchModel_moveRows(self *C.QPdfSearchModel, cb C.i
 }
 
 func (this *QPdfSearchModel) callVirtualBase_MoveColumns(sourceParent *qt.QModelIndex, sourceColumn int, count int, destinationParent *qt.QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sourceParent)
 	defer runtime.KeepAlive(destinationParent)
 
@@ -1600,7 +1532,6 @@ func miqt_exec_callback_QPdfSearchModel_moveColumns(self *C.QPdfSearchModel, cb 
 }
 
 func (this *QPdfSearchModel) callVirtualBase_FetchMore(parent *qt.QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QPdfSearchModel_virtualbase_fetchMore(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()))
@@ -1628,7 +1559,6 @@ func miqt_exec_callback_QPdfSearchModel_fetchMore(self *C.QPdfSearchModel, cb C.
 }
 
 func (this *QPdfSearchModel) callVirtualBase_CanFetchMore(parent *qt.QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
@@ -1658,7 +1588,6 @@ func miqt_exec_callback_QPdfSearchModel_canFetchMore(self *C.QPdfSearchModel, cb
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Sort(column int, order qt.SortOrder) {
-	defer runtime.KeepAlive(this)
 
 	C.QPdfSearchModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
@@ -1687,7 +1616,6 @@ func miqt_exec_callback_QPdfSearchModel_sort(self *C.QPdfSearchModel, cb C.intpt
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Buddy(index *qt.QModelIndex) *qt.QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := qt.UnsafeNewQModelIndex(unsafe.Pointer(C.QPdfSearchModel_virtualbase_buddy(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))))
@@ -1720,7 +1648,6 @@ func miqt_exec_callback_QPdfSearchModel_buddy(self *C.QPdfSearchModel, cb C.intp
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Match(start *qt.QModelIndex, role int, value *qt.QVariant, hits int, flags qt.MatchFlag) []qt.QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(start)
 	defer runtime.KeepAlive(value)
 
@@ -1774,7 +1701,6 @@ func miqt_exec_callback_QPdfSearchModel_match(self *C.QPdfSearchModel, cb C.intp
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Span(index *qt.QModelIndex) *qt.QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPdfSearchModel_virtualbase_span(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))))
@@ -1807,7 +1733,6 @@ func miqt_exec_callback_QPdfSearchModel_span(self *C.QPdfSearchModel, cb C.intpt
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Submit() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
@@ -1833,7 +1758,6 @@ func miqt_exec_callback_QPdfSearchModel_submit(self *C.QPdfSearchModel, cb C.int
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Revert() {
-	defer runtime.KeepAlive(this)
 
 	C.QPdfSearchModel_virtualbase_revert(unsafe.Pointer(this.h))
 
@@ -1857,7 +1781,6 @@ func miqt_exec_callback_QPdfSearchModel_revert(self *C.QPdfSearchModel, cb C.int
 }
 
 func (this *QPdfSearchModel) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1887,8 +1810,6 @@ func miqt_exec_callback_QPdfSearchModel_event(self *C.QPdfSearchModel, cb C.intp
 }
 
 func (this *QPdfSearchModel) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPdfSearchModel_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1920,7 +1841,6 @@ func miqt_exec_callback_QPdfSearchModel_eventFilter(self *C.QPdfSearchModel, cb 
 }
 
 func (this *QPdfSearchModel) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPdfSearchModel_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1948,7 +1868,6 @@ func miqt_exec_callback_QPdfSearchModel_childEvent(self *C.QPdfSearchModel, cb C
 }
 
 func (this *QPdfSearchModel) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPdfSearchModel_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1976,7 +1895,6 @@ func miqt_exec_callback_QPdfSearchModel_customEvent(self *C.QPdfSearchModel, cb 
 }
 
 func (this *QPdfSearchModel) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPdfSearchModel_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2004,7 +1922,6 @@ func miqt_exec_callback_QPdfSearchModel_connectNotify(self *C.QPdfSearchModel, c
 }
 
 func (this *QPdfSearchModel) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPdfSearchModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2039,6 +1956,8 @@ func (this *QPdfSearchModel) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPdfSearchModel) GoGC() {
 	if this.gc != nil {
 		return

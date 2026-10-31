@@ -59,7 +59,6 @@ func UnsafeNewQStylePainter(h unsafe.Pointer) *QStylePainter {
 
 // NewQStylePainter constructs a new QStylePainter object.
 func NewQStylePainter(w *QWidget) *QStylePainter {
-	defer runtime.KeepAlive(w)
 
 	return newQStylePainter(C.QStylePainter_new(w.cPointer()))
 }
@@ -73,21 +72,18 @@ func NewQStylePainter2() *QStylePainter {
 // NewQStylePainter3 constructs a new QStylePainter object.
 func NewQStylePainter3(pd *QPaintDevice, w *QWidget) *QStylePainter {
 	defer runtime.KeepAlive(pd)
-	defer runtime.KeepAlive(w)
 
 	return newQStylePainter(C.QStylePainter_new3(pd.cPointer(), w.cPointer()))
 }
 
 func (this *QStylePainter) Begin(w *QWidget) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(w)
 	return (bool)(C.QStylePainter_begin(this.h, w.cPointer()))
 }
 
 func (this *QStylePainter) Begin2(pd *QPaintDevice, w *QWidget) bool {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pd)
-	defer runtime.KeepAlive(w)
 	return (bool)(C.QStylePainter_begin2(this.h, pd.cPointer(), w.cPointer()))
 }
 

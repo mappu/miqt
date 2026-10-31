@@ -69,12 +69,10 @@ func UnsafeNewQAbstractBarSeries(h unsafe.Pointer) *QAbstractBarSeries {
 }
 
 func (this *QAbstractBarSeries) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractBarSeries_metaObject(this.h)))
 }
 
 func (this *QAbstractBarSeries) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractBarSeries_metacast(this.h, param1_Cstring))
@@ -90,36 +88,26 @@ func QAbstractBarSeries_Tr(s string) string {
 }
 
 func (this *QAbstractBarSeries) SetBarWidth(width float64) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_setBarWidth(this.h, (C.double)(width))
 }
 
 func (this *QAbstractBarSeries) BarWidth() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QAbstractBarSeries_barWidth(this.h))
 }
 
 func (this *QAbstractBarSeries) Append(set *QBarSet) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(set)
 	return (bool)(C.QAbstractBarSeries_append(this.h, set.cPointer()))
 }
 
 func (this *QAbstractBarSeries) Remove(set *QBarSet) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(set)
 	return (bool)(C.QAbstractBarSeries_remove(this.h, set.cPointer()))
 }
 
 func (this *QAbstractBarSeries) Take(set *QBarSet) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(set)
 	return (bool)(C.QAbstractBarSeries_take(this.h, set.cPointer()))
 }
 
 func (this *QAbstractBarSeries) AppendWithSets(sets []*QBarSet) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sets)
 	sets_CArray_ptr := (**C.QBarSet)(C.malloc(C.size_t(8 * len(sets))))
 	defer C.free(unsafe.Pointer(sets_CArray_ptr))
 	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
@@ -131,18 +119,14 @@ func (this *QAbstractBarSeries) AppendWithSets(sets []*QBarSet) bool {
 }
 
 func (this *QAbstractBarSeries) Insert(index int, set *QBarSet) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(set)
 	return (bool)(C.QAbstractBarSeries_insert(this.h, (C.int)(index), set.cPointer()))
 }
 
 func (this *QAbstractBarSeries) Count() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractBarSeries_count(this.h))
 }
 
 func (this *QAbstractBarSeries) BarSets() []*QBarSet {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QAbstractBarSeries_barSets(this.h)
 	_ret := make([]*QBarSet, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QBarSet)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -153,22 +137,18 @@ func (this *QAbstractBarSeries) BarSets() []*QBarSet {
 }
 
 func (this *QAbstractBarSeries) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_clear(this.h)
 }
 
 func (this *QAbstractBarSeries) SetLabelsVisible() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_setLabelsVisible(this.h)
 }
 
 func (this *QAbstractBarSeries) IsLabelsVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractBarSeries_isLabelsVisible(this.h))
 }
 
 func (this *QAbstractBarSeries) SetLabelsFormat(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -177,7 +157,6 @@ func (this *QAbstractBarSeries) SetLabelsFormat(format string) {
 }
 
 func (this *QAbstractBarSeries) LabelsFormat() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QAbstractBarSeries_labelsFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -185,38 +164,30 @@ func (this *QAbstractBarSeries) LabelsFormat() string {
 }
 
 func (this *QAbstractBarSeries) SetLabelsAngle(angle float64) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_setLabelsAngle(this.h, (C.double)(angle))
 }
 
 func (this *QAbstractBarSeries) LabelsAngle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QAbstractBarSeries_labelsAngle(this.h))
 }
 
 func (this *QAbstractBarSeries) SetLabelsPosition(position QAbstractBarSeries__LabelsPosition) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_setLabelsPosition(this.h, (C.int)(position))
 }
 
 func (this *QAbstractBarSeries) LabelsPosition() QAbstractBarSeries__LabelsPosition {
-	defer runtime.KeepAlive(this)
 	return (QAbstractBarSeries__LabelsPosition)(C.QAbstractBarSeries_labelsPosition(this.h))
 }
 
 func (this *QAbstractBarSeries) SetLabelsPrecision(precision int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_setLabelsPrecision(this.h, (C.int)(precision))
 }
 
 func (this *QAbstractBarSeries) LabelsPrecision() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractBarSeries_labelsPrecision(this.h))
 }
 
 func (this *QAbstractBarSeries) Clicked(index int, barset *QBarSet) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(barset)
 	C.QAbstractBarSeries_clicked(this.h, (C.int)(index), barset.cPointer())
 }
 func (this *QAbstractBarSeries) OnClicked(slot func(index int, barset *QBarSet)) {
@@ -239,8 +210,6 @@ func miqt_exec_callback_QAbstractBarSeries_clicked(cb C.intptr_t, index C.int, b
 }
 
 func (this *QAbstractBarSeries) Hovered(status bool, index int, barset *QBarSet) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(barset)
 	C.QAbstractBarSeries_hovered(this.h, (C.bool)(status), (C.int)(index), barset.cPointer())
 }
 func (this *QAbstractBarSeries) OnHovered(slot func(status bool, index int, barset *QBarSet)) {
@@ -265,8 +234,6 @@ func miqt_exec_callback_QAbstractBarSeries_hovered(cb C.intptr_t, status C.bool,
 }
 
 func (this *QAbstractBarSeries) Pressed(index int, barset *QBarSet) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(barset)
 	C.QAbstractBarSeries_pressed(this.h, (C.int)(index), barset.cPointer())
 }
 func (this *QAbstractBarSeries) OnPressed(slot func(index int, barset *QBarSet)) {
@@ -289,8 +256,6 @@ func miqt_exec_callback_QAbstractBarSeries_pressed(cb C.intptr_t, index C.int, b
 }
 
 func (this *QAbstractBarSeries) Released(index int, barset *QBarSet) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(barset)
 	C.QAbstractBarSeries_released(this.h, (C.int)(index), barset.cPointer())
 }
 func (this *QAbstractBarSeries) OnReleased(slot func(index int, barset *QBarSet)) {
@@ -313,8 +278,6 @@ func miqt_exec_callback_QAbstractBarSeries_released(cb C.intptr_t, index C.int, 
 }
 
 func (this *QAbstractBarSeries) DoubleClicked(index int, barset *QBarSet) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(barset)
 	C.QAbstractBarSeries_doubleClicked(this.h, (C.int)(index), barset.cPointer())
 }
 func (this *QAbstractBarSeries) OnDoubleClicked(slot func(index int, barset *QBarSet)) {
@@ -337,7 +300,6 @@ func miqt_exec_callback_QAbstractBarSeries_doubleClicked(cb C.intptr_t, index C.
 }
 
 func (this *QAbstractBarSeries) CountChanged() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_countChanged(this.h)
 }
 func (this *QAbstractBarSeries) OnCountChanged(slot func()) {
@@ -355,7 +317,6 @@ func miqt_exec_callback_QAbstractBarSeries_countChanged(cb C.intptr_t) {
 }
 
 func (this *QAbstractBarSeries) LabelsVisibleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_labelsVisibleChanged(this.h)
 }
 func (this *QAbstractBarSeries) OnLabelsVisibleChanged(slot func()) {
@@ -373,7 +334,6 @@ func miqt_exec_callback_QAbstractBarSeries_labelsVisibleChanged(cb C.intptr_t) {
 }
 
 func (this *QAbstractBarSeries) LabelsFormatChanged(format string) {
-	defer runtime.KeepAlive(this)
 	format_ms := C.struct_miqt_string{}
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
@@ -401,7 +361,6 @@ func miqt_exec_callback_QAbstractBarSeries_labelsFormatChanged(cb C.intptr_t, fo
 }
 
 func (this *QAbstractBarSeries) LabelsPositionChanged(position QAbstractBarSeries__LabelsPosition) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_labelsPositionChanged(this.h, (C.int)(position))
 }
 func (this *QAbstractBarSeries) OnLabelsPositionChanged(slot func(position QAbstractBarSeries__LabelsPosition)) {
@@ -422,7 +381,6 @@ func miqt_exec_callback_QAbstractBarSeries_labelsPositionChanged(cb C.intptr_t, 
 }
 
 func (this *QAbstractBarSeries) LabelsAngleChanged(angle float64) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_labelsAngleChanged(this.h, (C.double)(angle))
 }
 func (this *QAbstractBarSeries) OnLabelsAngleChanged(slot func(angle float64)) {
@@ -443,7 +401,6 @@ func miqt_exec_callback_QAbstractBarSeries_labelsAngleChanged(cb C.intptr_t, ang
 }
 
 func (this *QAbstractBarSeries) LabelsPrecisionChanged(precision int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_labelsPrecisionChanged(this.h, (C.int)(precision))
 }
 func (this *QAbstractBarSeries) OnLabelsPrecisionChanged(slot func(precision int)) {
@@ -464,8 +421,6 @@ func miqt_exec_callback_QAbstractBarSeries_labelsPrecisionChanged(cb C.intptr_t,
 }
 
 func (this *QAbstractBarSeries) BarsetsAdded(sets []*QBarSet) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sets)
 	sets_CArray_ptr := (**C.QBarSet)(C.malloc(C.size_t(8 * len(sets))))
 	defer C.free(unsafe.Pointer(sets_CArray_ptr))
 	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
@@ -499,8 +454,6 @@ func miqt_exec_callback_QAbstractBarSeries_barsetsAdded(cb C.intptr_t, sets C.st
 }
 
 func (this *QAbstractBarSeries) BarsetsRemoved(sets []*QBarSet) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sets)
 	sets_CArray_ptr := (**C.QBarSet)(C.malloc(C.size_t(8 * len(sets))))
 	defer C.free(unsafe.Pointer(sets_CArray_ptr))
 	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
@@ -556,7 +509,6 @@ func QAbstractBarSeries_Tr3(s string, c string, n int) string {
 }
 
 func (this *QAbstractBarSeries) SetLabelsVisibleWithVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractBarSeries_setLabelsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
@@ -568,6 +520,8 @@ func (this *QAbstractBarSeries) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractBarSeries) GoGC() {
 	if this.gc != nil {
 		return

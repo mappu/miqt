@@ -92,25 +92,21 @@ func UnsafeNewQwtPicker(h unsafe.Pointer) *QwtPicker {
 
 // NewQwtPicker constructs a new QwtPicker object.
 func NewQwtPicker(parent *qt.QWidget) *QwtPicker {
-	defer runtime.KeepAlive(parent)
 
 	return newQwtPicker(C.QwtPicker_new((*C.QWidget)(parent.UnsafePointer())))
 }
 
 // NewQwtPicker2 constructs a new QwtPicker object.
 func NewQwtPicker2(rubberBand QwtPicker__RubberBand, trackerMode QwtPicker__DisplayMode, param3 *qt.QWidget) *QwtPicker {
-	defer runtime.KeepAlive(param3)
 
 	return newQwtPicker(C.QwtPicker_new2((C.int)(rubberBand), (C.int)(trackerMode), (*C.QWidget)(param3.UnsafePointer())))
 }
 
 func (this *QwtPicker) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QwtPicker_metaObject(this.h)))
 }
 
 func (this *QwtPicker) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QwtPicker_metacast(this.h, param1_Cstring))
@@ -135,145 +131,119 @@ func QwtPicker_TrUtf8(s string) string {
 }
 
 func (this *QwtPicker) SetStateMachine(stateMachine *QwtPickerMachine) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(stateMachine)
 	C.QwtPicker_setStateMachine(this.h, stateMachine.cPointer())
 }
 
 func (this *QwtPicker) StateMachine() *QwtPickerMachine {
-	defer runtime.KeepAlive(this)
 	return newQwtPickerMachine(C.QwtPicker_stateMachine(this.h))
 }
 
 func (this *QwtPicker) StateMachine2() *QwtPickerMachine {
-	defer runtime.KeepAlive(this)
 	return newQwtPickerMachine(C.QwtPicker_stateMachine2(this.h))
 }
 
 func (this *QwtPicker) SetRubberBand(rubberBand QwtPicker__RubberBand) {
-	defer runtime.KeepAlive(this)
 	C.QwtPicker_setRubberBand(this.h, (C.int)(rubberBand))
 }
 
 func (this *QwtPicker) RubberBand() QwtPicker__RubberBand {
-	defer runtime.KeepAlive(this)
 	return (QwtPicker__RubberBand)(C.QwtPicker_rubberBand(this.h))
 }
 
 func (this *QwtPicker) SetTrackerMode(trackerMode QwtPicker__DisplayMode) {
-	defer runtime.KeepAlive(this)
 	C.QwtPicker_setTrackerMode(this.h, (C.int)(trackerMode))
 }
 
 func (this *QwtPicker) TrackerMode() QwtPicker__DisplayMode {
-	defer runtime.KeepAlive(this)
 	return (QwtPicker__DisplayMode)(C.QwtPicker_trackerMode(this.h))
 }
 
 func (this *QwtPicker) SetResizeMode(resizeMode QwtPicker__ResizeMode) {
-	defer runtime.KeepAlive(this)
 	C.QwtPicker_setResizeMode(this.h, (C.int)(resizeMode))
 }
 
 func (this *QwtPicker) ResizeMode() QwtPicker__ResizeMode {
-	defer runtime.KeepAlive(this)
 	return (QwtPicker__ResizeMode)(C.QwtPicker_resizeMode(this.h))
 }
 
 func (this *QwtPicker) SetRubberBandPen(rubberBandPen *qt.QPen) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rubberBandPen)
 	C.QwtPicker_setRubberBandPen(this.h, (*C.QPen)(rubberBandPen.UnsafePointer()))
 }
 
 func (this *QwtPicker) RubberBandPen() *qt.QPen {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPen(unsafe.Pointer(C.QwtPicker_rubberBandPen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPicker) SetTrackerPen(trackerPen *qt.QPen) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(trackerPen)
 	C.QwtPicker_setTrackerPen(this.h, (*C.QPen)(trackerPen.UnsafePointer()))
 }
 
 func (this *QwtPicker) TrackerPen() *qt.QPen {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPen(unsafe.Pointer(C.QwtPicker_trackerPen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPicker) SetTrackerFont(trackerFont *qt.QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(trackerFont)
 	C.QwtPicker_setTrackerFont(this.h, (*C.QFont)(trackerFont.UnsafePointer()))
 }
 
 func (this *QwtPicker) TrackerFont() *qt.QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QwtPicker_trackerFont(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPicker) IsEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPicker_isEnabled(this.h))
 }
 
 func (this *QwtPicker) IsActive() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPicker_isActive(this.h))
 }
 
 func (this *QwtPicker) EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	return (bool)(C.QwtPicker_eventFilter(this.h, (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 }
 
 func (this *QwtPicker) ParentWidget() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtPicker_parentWidget(this.h)))
 }
 
 func (this *QwtPicker) ParentWidget2() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtPicker_parentWidget2(this.h)))
 }
 
 func (this *QwtPicker) PickArea() *qt.QPainterPath {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QwtPicker_pickArea(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPicker) DrawRubberBand(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QwtPicker_drawRubberBand(this.h, (*C.QPainter)(param1.UnsafePointer()))
 }
 
 func (this *QwtPicker) DrawTracker(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QwtPicker_drawTracker(this.h, (*C.QPainter)(param1.UnsafePointer()))
 }
 
 func (this *QwtPicker) RubberBandMask() *qt.QRegion {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQRegion(unsafe.Pointer(C.QwtPicker_rubberBandMask(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPicker) TrackerText(pos *qt.QPoint) *QwtText {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	_goptr := newQwtText(C.QwtPicker_trackerText(this.h, (*C.QPoint)(pos.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -281,14 +251,12 @@ func (this *QwtPicker) TrackerText(pos *qt.QPoint) *QwtText {
 }
 
 func (this *QwtPicker) TrackerPosition() *qt.QPoint {
-	defer runtime.KeepAlive(this)
 	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QwtPicker_trackerPosition(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPicker) TrackerRect(param1 *qt.QFont) *qt.QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPicker_trackerRect(this.h, (*C.QFont)(param1.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -296,12 +264,10 @@ func (this *QwtPicker) TrackerRect(param1 *qt.QFont) *qt.QRect {
 }
 
 func (this *QwtPicker) SetEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtPicker_setEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QwtPicker) Activated(on bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtPicker_activated(this.h, (C.bool)(on))
 }
 func (this *QwtPicker) OnActivated(slot func(on bool)) {
@@ -322,7 +288,6 @@ func miqt_exec_callback_QwtPicker_activated(cb C.intptr_t, on C.bool) {
 }
 
 func (this *QwtPicker) Appended(pos *qt.QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QwtPicker_appended(this.h, (*C.QPoint)(pos.UnsafePointer()))
 }
@@ -344,7 +309,6 @@ func miqt_exec_callback_QwtPicker_appended(cb C.intptr_t, pos *C.QPoint) {
 }
 
 func (this *QwtPicker) Moved(pos *qt.QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QwtPicker_moved(this.h, (*C.QPoint)(pos.UnsafePointer()))
 }
@@ -366,7 +330,6 @@ func miqt_exec_callback_QwtPicker_moved(cb C.intptr_t, pos *C.QPoint) {
 }
 
 func (this *QwtPicker) Removed(pos *qt.QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QwtPicker_removed(this.h, (*C.QPoint)(pos.UnsafePointer()))
 }
@@ -433,7 +396,6 @@ func QwtPicker_TrUtf83(s string, c string, n int) string {
 
 // RubberBandOverlay can only be called from a QwtPicker that was directly constructed.
 func (this *QwtPicker) RubberBandOverlay() *QwtWidgetOverlay {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtWidgetOverlay(C.QwtPicker_protectedbase_rubberBandOverlay(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -448,7 +410,6 @@ func (this *QwtPicker) RubberBandOverlay() *QwtWidgetOverlay {
 
 // TrackerOverlay can only be called from a QwtPicker that was directly constructed.
 func (this *QwtPicker) TrackerOverlay() *QwtWidgetOverlay {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQwtWidgetOverlay(C.QwtPicker_protectedbase_trackerOverlay(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -463,7 +424,6 @@ func (this *QwtPicker) TrackerOverlay() *QwtWidgetOverlay {
 
 // Sender can only be called from a QwtPicker that was directly constructed.
 func (this *QwtPicker) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtPicker_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -478,7 +438,6 @@ func (this *QwtPicker) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtPicker that was directly constructed.
 func (this *QwtPicker) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtPicker_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -493,7 +452,6 @@ func (this *QwtPicker) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtPicker that was directly constructed.
 func (this *QwtPicker) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -510,7 +468,6 @@ func (this *QwtPicker) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtPicker that was directly constructed.
 func (this *QwtPicker) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -525,8 +482,6 @@ func (this *QwtPicker) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtPicker) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtPicker_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -558,7 +513,6 @@ func miqt_exec_callback_QwtPicker_eventFilter(self *C.QwtPicker, cb C.intptr_t, 
 }
 
 func (this *QwtPicker) callVirtualBase_PickArea() *qt.QPainterPath {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QwtPicker_virtualbase_pickArea(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -587,7 +541,6 @@ func miqt_exec_callback_QwtPicker_pickArea(self *C.QwtPicker, cb C.intptr_t) *C.
 }
 
 func (this *QwtPicker) callVirtualBase_DrawRubberBand(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_drawRubberBand(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -615,7 +568,6 @@ func miqt_exec_callback_QwtPicker_drawRubberBand(self *C.QwtPicker, cb C.intptr_
 }
 
 func (this *QwtPicker) callVirtualBase_DrawTracker(param1 *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_drawTracker(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
@@ -643,7 +595,6 @@ func miqt_exec_callback_QwtPicker_drawTracker(self *C.QwtPicker, cb C.intptr_t, 
 }
 
 func (this *QwtPicker) callVirtualBase_RubberBandMask() *qt.QRegion {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQRegion(unsafe.Pointer(C.QwtPicker_virtualbase_rubberBandMask(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -672,7 +623,6 @@ func miqt_exec_callback_QwtPicker_rubberBandMask(self *C.QwtPicker, cb C.intptr_
 }
 
 func (this *QwtPicker) callVirtualBase_TrackerText(pos *qt.QPoint) *QwtText {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 
 	_goptr := newQwtText(C.QwtPicker_virtualbase_trackerText(unsafe.Pointer(this.h), (*C.QPoint)(pos.UnsafePointer())))
@@ -705,7 +655,6 @@ func miqt_exec_callback_QwtPicker_trackerText(self *C.QwtPicker, cb C.intptr_t, 
 }
 
 func (this *QwtPicker) callVirtualBase_TrackerRect(param1 *qt.QFont) *qt.QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPicker_virtualbase_trackerRect(unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer()))))
@@ -738,7 +687,6 @@ func miqt_exec_callback_QwtPicker_trackerRect(self *C.QwtPicker, cb C.intptr_t, 
 }
 
 func (this *QwtPicker) callVirtualBase_Transition(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_transition(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -766,7 +714,6 @@ func miqt_exec_callback_QwtPicker_transition(self *C.QwtPicker, cb C.intptr_t, p
 }
 
 func (this *QwtPicker) callVirtualBase_Begin() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPicker_virtualbase_begin(unsafe.Pointer(this.h))
 
@@ -790,7 +737,6 @@ func miqt_exec_callback_QwtPicker_begin(self *C.QwtPicker, cb C.intptr_t) {
 }
 
 func (this *QwtPicker) callVirtualBase_Append(param1 *qt.QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_append(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
@@ -818,7 +764,6 @@ func miqt_exec_callback_QwtPicker_append(self *C.QwtPicker, cb C.intptr_t, param
 }
 
 func (this *QwtPicker) callVirtualBase_Move(param1 *qt.QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_move(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
@@ -846,7 +791,6 @@ func miqt_exec_callback_QwtPicker_move(self *C.QwtPicker, cb C.intptr_t, param1 
 }
 
 func (this *QwtPicker) callVirtualBase_Remove() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPicker_virtualbase_remove(unsafe.Pointer(this.h))
 
@@ -870,7 +814,6 @@ func miqt_exec_callback_QwtPicker_remove(self *C.QwtPicker, cb C.intptr_t) {
 }
 
 func (this *QwtPicker) callVirtualBase_End(ok bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QwtPicker_virtualbase_end(unsafe.Pointer(this.h), (C.bool)(ok)))
 
@@ -899,7 +842,6 @@ func miqt_exec_callback_QwtPicker_end(self *C.QwtPicker, cb C.intptr_t, ok C.boo
 }
 
 func (this *QwtPicker) callVirtualBase_Reset() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPicker_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -923,7 +865,6 @@ func miqt_exec_callback_QwtPicker_reset(self *C.QwtPicker, cb C.intptr_t) {
 }
 
 func (this *QwtPicker) callVirtualBase_WidgetMousePressEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_widgetMousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -951,7 +892,6 @@ func miqt_exec_callback_QwtPicker_widgetMousePressEvent(self *C.QwtPicker, cb C.
 }
 
 func (this *QwtPicker) callVirtualBase_WidgetMouseReleaseEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_widgetMouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -979,7 +919,6 @@ func miqt_exec_callback_QwtPicker_widgetMouseReleaseEvent(self *C.QwtPicker, cb 
 }
 
 func (this *QwtPicker) callVirtualBase_WidgetMouseDoubleClickEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_widgetMouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -1007,7 +946,6 @@ func miqt_exec_callback_QwtPicker_widgetMouseDoubleClickEvent(self *C.QwtPicker,
 }
 
 func (this *QwtPicker) callVirtualBase_WidgetMouseMoveEvent(param1 *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_widgetMouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(param1.UnsafePointer()))
@@ -1035,7 +973,6 @@ func miqt_exec_callback_QwtPicker_widgetMouseMoveEvent(self *C.QwtPicker, cb C.i
 }
 
 func (this *QwtPicker) callVirtualBase_WidgetWheelEvent(param1 *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_widgetWheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(param1.UnsafePointer()))
@@ -1063,7 +1000,6 @@ func miqt_exec_callback_QwtPicker_widgetWheelEvent(self *C.QwtPicker, cb C.intpt
 }
 
 func (this *QwtPicker) callVirtualBase_WidgetKeyPressEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_widgetKeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -1091,7 +1027,6 @@ func miqt_exec_callback_QwtPicker_widgetKeyPressEvent(self *C.QwtPicker, cb C.in
 }
 
 func (this *QwtPicker) callVirtualBase_WidgetKeyReleaseEvent(param1 *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_widgetKeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(param1.UnsafePointer()))
@@ -1119,7 +1054,6 @@ func miqt_exec_callback_QwtPicker_widgetKeyReleaseEvent(self *C.QwtPicker, cb C.
 }
 
 func (this *QwtPicker) callVirtualBase_WidgetEnterEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_widgetEnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1147,7 +1081,6 @@ func miqt_exec_callback_QwtPicker_widgetEnterEvent(self *C.QwtPicker, cb C.intpt
 }
 
 func (this *QwtPicker) callVirtualBase_WidgetLeaveEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPicker_virtualbase_widgetLeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1175,7 +1108,6 @@ func miqt_exec_callback_QwtPicker_widgetLeaveEvent(self *C.QwtPicker, cb C.intpt
 }
 
 func (this *QwtPicker) callVirtualBase_StretchSelection(oldSize *qt.QSize, newSize *qt.QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(oldSize)
 	defer runtime.KeepAlive(newSize)
 
@@ -1206,7 +1138,6 @@ func miqt_exec_callback_QwtPicker_stretchSelection(self *C.QwtPicker, cb C.intpt
 }
 
 func (this *QwtPicker) callVirtualBase_UpdateDisplay() {
-	defer runtime.KeepAlive(this)
 
 	C.QwtPicker_virtualbase_updateDisplay(unsafe.Pointer(this.h))
 
@@ -1230,7 +1161,6 @@ func miqt_exec_callback_QwtPicker_updateDisplay(self *C.QwtPicker, cb C.intptr_t
 }
 
 func (this *QwtPicker) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtPicker_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1260,7 +1190,6 @@ func miqt_exec_callback_QwtPicker_event(self *C.QwtPicker, cb C.intptr_t, event 
 }
 
 func (this *QwtPicker) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPicker_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1288,7 +1217,6 @@ func miqt_exec_callback_QwtPicker_timerEvent(self *C.QwtPicker, cb C.intptr_t, e
 }
 
 func (this *QwtPicker) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPicker_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1316,7 +1244,6 @@ func miqt_exec_callback_QwtPicker_childEvent(self *C.QwtPicker, cb C.intptr_t, e
 }
 
 func (this *QwtPicker) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPicker_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1344,7 +1271,6 @@ func miqt_exec_callback_QwtPicker_customEvent(self *C.QwtPicker, cb C.intptr_t, 
 }
 
 func (this *QwtPicker) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPicker_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1372,7 +1298,6 @@ func miqt_exec_callback_QwtPicker_connectNotify(self *C.QwtPicker, cb C.intptr_t
 }
 
 func (this *QwtPicker) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPicker_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1400,7 +1325,6 @@ func miqt_exec_callback_QwtPicker_disconnectNotify(self *C.QwtPicker, cb C.intpt
 }
 
 func (this *QwtPicker) callVirtualBase_MouseMatch2(param1 *QwtEventPattern__MousePattern, param2 *qt.QMouseEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -1433,7 +1357,6 @@ func miqt_exec_callback_QwtPicker_mouseMatch2(self *C.QwtPicker, cb C.intptr_t, 
 }
 
 func (this *QwtPicker) callVirtualBase_KeyMatch2(param1 *QwtEventPattern__KeyPattern, param2 *qt.QKeyEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
@@ -1473,6 +1396,8 @@ func (this *QwtPicker) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtPicker) GoGC() {
 	if this.gc != nil {
 		return

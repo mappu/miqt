@@ -328,18 +328,15 @@ func NewQDesignerWidgetDataBaseInterface() *QDesignerWidgetDataBaseInterface {
 
 // NewQDesignerWidgetDataBaseInterface2 constructs a new QDesignerWidgetDataBaseInterface object.
 func NewQDesignerWidgetDataBaseInterface2(parent *qt.QObject) *QDesignerWidgetDataBaseInterface {
-	defer runtime.KeepAlive(parent)
 
 	return newQDesignerWidgetDataBaseInterface(C.QDesignerWidgetDataBaseInterface_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerWidgetDataBaseInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerWidgetDataBaseInterface_metacast(this.h, param1_Cstring))
@@ -364,41 +361,33 @@ func QDesignerWidgetDataBaseInterface_TrUtf8(s string) string {
 }
 
 func (this *QDesignerWidgetDataBaseInterface) Count() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerWidgetDataBaseInterface_count(this.h))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) Item(index int) *QDesignerWidgetDataBaseItemInterface {
-	defer runtime.KeepAlive(this)
 	return newQDesignerWidgetDataBaseItemInterface(C.QDesignerWidgetDataBaseInterface_item(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) IndexOf(item *QDesignerWidgetDataBaseItemInterface) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	return (int)(C.QDesignerWidgetDataBaseInterface_indexOf(this.h, item.cPointer()))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) Insert(index int, item *QDesignerWidgetDataBaseItemInterface) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QDesignerWidgetDataBaseInterface_insert(this.h, (C.int)(index), item.cPointer())
 }
 
 func (this *QDesignerWidgetDataBaseInterface) Append(item *QDesignerWidgetDataBaseItemInterface) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 	C.QDesignerWidgetDataBaseInterface_append(this.h, item.cPointer())
 }
 
 func (this *QDesignerWidgetDataBaseInterface) IndexOfObject(object *qt.QObject, resolveName bool) int {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	return (int)(C.QDesignerWidgetDataBaseInterface_indexOfObject(this.h, (*C.QObject)(object.UnsafePointer()), (C.bool)(resolveName)))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) IndexOfClassName(className string, resolveName bool) int {
-	defer runtime.KeepAlive(this)
 	className_ms := C.struct_miqt_string{}
 	className_ms.data = C.CString(className)
 	className_ms.len = C.size_t(len(className))
@@ -407,24 +396,18 @@ func (this *QDesignerWidgetDataBaseInterface) IndexOfClassName(className string,
 }
 
 func (this *QDesignerWidgetDataBaseInterface) Core() *QDesignerFormEditorInterface {
-	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerWidgetDataBaseInterface_core(this.h))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) IsContainer(object *qt.QObject) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	return (bool)(C.QDesignerWidgetDataBaseInterface_isContainer(this.h, (*C.QObject)(object.UnsafePointer())))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) IsCustom(object *qt.QObject) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	return (bool)(C.QDesignerWidgetDataBaseInterface_isCustom(this.h, (*C.QObject)(object.UnsafePointer())))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) Changed() {
-	defer runtime.KeepAlive(this)
 	C.QDesignerWidgetDataBaseInterface_changed(this.h)
 }
 func (this *QDesignerWidgetDataBaseInterface) OnChanged(slot func()) {
@@ -486,20 +469,15 @@ func QDesignerWidgetDataBaseInterface_TrUtf83(s string, c string, n int) string 
 }
 
 func (this *QDesignerWidgetDataBaseInterface) IsContainer2(object *qt.QObject, resolveName bool) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	return (bool)(C.QDesignerWidgetDataBaseInterface_isContainer2(this.h, (*C.QObject)(object.UnsafePointer()), (C.bool)(resolveName)))
 }
 
 func (this *QDesignerWidgetDataBaseInterface) IsCustom2(object *qt.QObject, resolveName bool) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	return (bool)(C.QDesignerWidgetDataBaseInterface_isCustom2(this.h, (*C.QObject)(object.UnsafePointer()), (C.bool)(resolveName)))
 }
 
 // Sender can only be called from a QDesignerWidgetDataBaseInterface that was directly constructed.
 func (this *QDesignerWidgetDataBaseInterface) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QDesignerWidgetDataBaseInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -514,7 +492,6 @@ func (this *QDesignerWidgetDataBaseInterface) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerWidgetDataBaseInterface that was directly constructed.
 func (this *QDesignerWidgetDataBaseInterface) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerWidgetDataBaseInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -529,7 +506,6 @@ func (this *QDesignerWidgetDataBaseInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerWidgetDataBaseInterface that was directly constructed.
 func (this *QDesignerWidgetDataBaseInterface) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -546,7 +522,6 @@ func (this *QDesignerWidgetDataBaseInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerWidgetDataBaseInterface that was directly constructed.
 func (this *QDesignerWidgetDataBaseInterface) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -561,7 +536,6 @@ func (this *QDesignerWidgetDataBaseInterface) IsSignalConnected(signal *qt.QMeta
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_Count() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerWidgetDataBaseInterface_virtualbase_count(unsafe.Pointer(this.h)))
 
@@ -587,7 +561,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_count(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_Item(index int) *QDesignerWidgetDataBaseItemInterface {
-	defer runtime.KeepAlive(this)
 
 	return newQDesignerWidgetDataBaseItemInterface(C.QDesignerWidgetDataBaseInterface_virtualbase_item(unsafe.Pointer(this.h), (C.int)(index)))
 
@@ -617,7 +590,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_item(self *C.QDesignerW
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_IndexOf(item *QDesignerWidgetDataBaseItemInterface) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 
 	return (int)(C.QDesignerWidgetDataBaseInterface_virtualbase_indexOf(unsafe.Pointer(this.h), item.cPointer()))
@@ -647,7 +619,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_indexOf(self *C.QDesign
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_Insert(index int, item *QDesignerWidgetDataBaseItemInterface) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 
 	C.QDesignerWidgetDataBaseInterface_virtualbase_insert(unsafe.Pointer(this.h), (C.int)(index), item.cPointer())
@@ -677,7 +648,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_insert(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_Append(item *QDesignerWidgetDataBaseItemInterface) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
 
 	C.QDesignerWidgetDataBaseInterface_virtualbase_append(unsafe.Pointer(this.h), item.cPointer())
@@ -705,8 +675,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_append(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_IndexOfObject(object *qt.QObject, resolveName bool) int {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 
 	return (int)(C.QDesignerWidgetDataBaseInterface_virtualbase_indexOfObject(unsafe.Pointer(this.h), (*C.QObject)(object.UnsafePointer()), (C.bool)(resolveName)))
 
@@ -737,7 +705,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_indexOfObject(self *C.Q
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_IndexOfClassName(className string, resolveName bool) int {
-	defer runtime.KeepAlive(this)
 	className_ms := C.struct_miqt_string{}
 	className_ms.data = C.CString(className)
 	className_ms.len = C.size_t(len(className))
@@ -774,7 +741,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_indexOfClassName(self *
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_Core() *QDesignerFormEditorInterface {
-	defer runtime.KeepAlive(this)
 
 	return newQDesignerFormEditorInterface(C.QDesignerWidgetDataBaseInterface_virtualbase_core(unsafe.Pointer(this.h)))
 
@@ -794,14 +760,12 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_core(self *C.QDesignerW
 	}
 
 	virtualReturn := gofunc((&QDesignerWidgetDataBaseInterface{h: self}).callVirtualBase_Core)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerWidgetDataBaseInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -831,8 +795,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_event(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerWidgetDataBaseInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -864,7 +826,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_eventFilter(self *C.QDe
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetDataBaseInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -892,7 +853,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_timerEvent(self *C.QDes
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetDataBaseInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -920,7 +880,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_childEvent(self *C.QDes
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetDataBaseInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -948,7 +907,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_customEvent(self *C.QDe
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerWidgetDataBaseInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -976,7 +934,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseInterface_connectNotify(self *C.Q
 }
 
 func (this *QDesignerWidgetDataBaseInterface) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerWidgetDataBaseInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1011,6 +968,8 @@ func (this *QDesignerWidgetDataBaseInterface) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDesignerWidgetDataBaseInterface) GoGC() {
 	if this.gc != nil {
 		return

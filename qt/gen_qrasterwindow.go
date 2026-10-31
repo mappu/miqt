@@ -66,18 +66,15 @@ func NewQRasterWindow() *QRasterWindow {
 
 // NewQRasterWindow2 constructs a new QRasterWindow object.
 func NewQRasterWindow2(parent *QWindow) *QRasterWindow {
-	defer runtime.KeepAlive(parent)
 
 	return newQRasterWindow(C.QRasterWindow_new2(parent.cPointer()))
 }
 
 func (this *QRasterWindow) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QRasterWindow_metaObject(this.h))
 }
 
 func (this *QRasterWindow) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QRasterWindow_metacast(this.h, param1_Cstring))
@@ -147,7 +144,6 @@ func QRasterWindow_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QRasterWindow that was directly constructed.
 func (this *QRasterWindow) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QRasterWindow_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -162,7 +158,6 @@ func (this *QRasterWindow) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QRasterWindow that was directly constructed.
 func (this *QRasterWindow) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QRasterWindow_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -177,7 +172,6 @@ func (this *QRasterWindow) SenderSignalIndex() int {
 
 // Receivers can only be called from a QRasterWindow that was directly constructed.
 func (this *QRasterWindow) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -194,7 +188,6 @@ func (this *QRasterWindow) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QRasterWindow that was directly constructed.
 func (this *QRasterWindow) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -209,7 +202,6 @@ func (this *QRasterWindow) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QRasterWindow) callVirtualBase_Metric(metric QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QRasterWindow_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(metric)))
 
@@ -238,7 +230,6 @@ func miqt_exec_callback_QRasterWindow_metric(self *C.QRasterWindow, cb C.intptr_
 }
 
 func (this *QRasterWindow) callVirtualBase_Redirected(param1 *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return newQPaintDevice(C.QRasterWindow_virtualbase_redirected(unsafe.Pointer(this.h), param1.cPointer()))
@@ -269,7 +260,6 @@ func miqt_exec_callback_QRasterWindow_redirected(self *C.QRasterWindow, cb C.int
 }
 
 func (this *QRasterWindow) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRasterWindow_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -297,7 +287,6 @@ func miqt_exec_callback_QRasterWindow_paintEvent(self *C.QRasterWindow, cb C.int
 }
 
 func (this *QRasterWindow) callVirtualBase_ExposeEvent(param1 *QExposeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_exposeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -325,7 +314,6 @@ func miqt_exec_callback_QRasterWindow_exposeEvent(self *C.QRasterWindow, cb C.in
 }
 
 func (this *QRasterWindow) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRasterWindow_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -355,7 +343,6 @@ func miqt_exec_callback_QRasterWindow_event(self *C.QRasterWindow, cb C.intptr_t
 }
 
 func (this *QRasterWindow) callVirtualBase_SurfaceType() QSurface__SurfaceType {
-	defer runtime.KeepAlive(this)
 
 	return (QSurface__SurfaceType)(C.QRasterWindow_virtualbase_surfaceType(unsafe.Pointer(this.h)))
 
@@ -381,7 +368,6 @@ func miqt_exec_callback_QRasterWindow_surfaceType(self *C.QRasterWindow, cb C.in
 }
 
 func (this *QRasterWindow) callVirtualBase_Format() *QSurfaceFormat {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSurfaceFormat(C.QRasterWindow_virtualbase_format(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -410,7 +396,6 @@ func miqt_exec_callback_QRasterWindow_format(self *C.QRasterWindow, cb C.intptr_
 }
 
 func (this *QRasterWindow) callVirtualBase_Size() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QRasterWindow_virtualbase_size(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -439,7 +424,6 @@ func miqt_exec_callback_QRasterWindow_size(self *C.QRasterWindow, cb C.intptr_t)
 }
 
 func (this *QRasterWindow) callVirtualBase_AccessibleRoot() *QAccessibleInterface {
-	defer runtime.KeepAlive(this)
 
 	return newQAccessibleInterface(C.QRasterWindow_virtualbase_accessibleRoot(unsafe.Pointer(this.h)))
 
@@ -466,7 +450,6 @@ func miqt_exec_callback_QRasterWindow_accessibleRoot(self *C.QRasterWindow, cb C
 }
 
 func (this *QRasterWindow) callVirtualBase_FocusObject() *QObject {
-	defer runtime.KeepAlive(this)
 
 	return newQObject(C.QRasterWindow_virtualbase_focusObject(unsafe.Pointer(this.h)))
 
@@ -486,14 +469,12 @@ func miqt_exec_callback_QRasterWindow_focusObject(self *C.QRasterWindow, cb C.in
 	}
 
 	virtualReturn := gofunc((&QRasterWindow{h: self}).callVirtualBase_FocusObject)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QRasterWindow) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -521,7 +502,6 @@ func miqt_exec_callback_QRasterWindow_resizeEvent(self *C.QRasterWindow, cb C.in
 }
 
 func (this *QRasterWindow) callVirtualBase_MoveEvent(param1 *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_moveEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -549,7 +529,6 @@ func miqt_exec_callback_QRasterWindow_moveEvent(self *C.QRasterWindow, cb C.intp
 }
 
 func (this *QRasterWindow) callVirtualBase_FocusInEvent(param1 *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_focusInEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -577,7 +556,6 @@ func miqt_exec_callback_QRasterWindow_focusInEvent(self *C.QRasterWindow, cb C.i
 }
 
 func (this *QRasterWindow) callVirtualBase_FocusOutEvent(param1 *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_focusOutEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -605,7 +583,6 @@ func miqt_exec_callback_QRasterWindow_focusOutEvent(self *C.QRasterWindow, cb C.
 }
 
 func (this *QRasterWindow) callVirtualBase_ShowEvent(param1 *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -633,7 +610,6 @@ func miqt_exec_callback_QRasterWindow_showEvent(self *C.QRasterWindow, cb C.intp
 }
 
 func (this *QRasterWindow) callVirtualBase_HideEvent(param1 *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_hideEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -661,7 +637,6 @@ func miqt_exec_callback_QRasterWindow_hideEvent(self *C.QRasterWindow, cb C.intp
 }
 
 func (this *QRasterWindow) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -689,7 +664,6 @@ func miqt_exec_callback_QRasterWindow_keyPressEvent(self *C.QRasterWindow, cb C.
 }
 
 func (this *QRasterWindow) callVirtualBase_KeyReleaseEvent(param1 *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -717,7 +691,6 @@ func miqt_exec_callback_QRasterWindow_keyReleaseEvent(self *C.QRasterWindow, cb 
 }
 
 func (this *QRasterWindow) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -745,7 +718,6 @@ func miqt_exec_callback_QRasterWindow_mousePressEvent(self *C.QRasterWindow, cb 
 }
 
 func (this *QRasterWindow) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -773,7 +745,6 @@ func miqt_exec_callback_QRasterWindow_mouseReleaseEvent(self *C.QRasterWindow, c
 }
 
 func (this *QRasterWindow) callVirtualBase_MouseDoubleClickEvent(param1 *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -801,7 +772,6 @@ func miqt_exec_callback_QRasterWindow_mouseDoubleClickEvent(self *C.QRasterWindo
 }
 
 func (this *QRasterWindow) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -829,7 +799,6 @@ func miqt_exec_callback_QRasterWindow_mouseMoveEvent(self *C.QRasterWindow, cb C
 }
 
 func (this *QRasterWindow) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -857,7 +826,6 @@ func miqt_exec_callback_QRasterWindow_wheelEvent(self *C.QRasterWindow, cb C.int
 }
 
 func (this *QRasterWindow) callVirtualBase_TouchEvent(param1 *QTouchEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_touchEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -885,7 +853,6 @@ func miqt_exec_callback_QRasterWindow_touchEvent(self *C.QRasterWindow, cb C.int
 }
 
 func (this *QRasterWindow) callVirtualBase_TabletEvent(param1 *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QRasterWindow_virtualbase_tabletEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -913,7 +880,6 @@ func miqt_exec_callback_QRasterWindow_tabletEvent(self *C.QRasterWindow, cb C.in
 }
 
 func (this *QRasterWindow) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -955,8 +921,6 @@ func miqt_exec_callback_QRasterWindow_nativeEvent(self *C.QRasterWindow, cb C.in
 }
 
 func (this *QRasterWindow) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QRasterWindow_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -988,7 +952,6 @@ func miqt_exec_callback_QRasterWindow_eventFilter(self *C.QRasterWindow, cb C.in
 }
 
 func (this *QRasterWindow) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRasterWindow_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1016,7 +979,6 @@ func miqt_exec_callback_QRasterWindow_timerEvent(self *C.QRasterWindow, cb C.int
 }
 
 func (this *QRasterWindow) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRasterWindow_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1044,7 +1006,6 @@ func miqt_exec_callback_QRasterWindow_childEvent(self *C.QRasterWindow, cb C.int
 }
 
 func (this *QRasterWindow) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QRasterWindow_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1072,7 +1033,6 @@ func miqt_exec_callback_QRasterWindow_customEvent(self *C.QRasterWindow, cb C.in
 }
 
 func (this *QRasterWindow) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QRasterWindow_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1100,7 +1060,6 @@ func miqt_exec_callback_QRasterWindow_connectNotify(self *C.QRasterWindow, cb C.
 }
 
 func (this *QRasterWindow) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QRasterWindow_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1128,7 +1087,6 @@ func miqt_exec_callback_QRasterWindow_disconnectNotify(self *C.QRasterWindow, cb
 }
 
 func (this *QRasterWindow) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QRasterWindow_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1154,7 +1112,6 @@ func miqt_exec_callback_QRasterWindow_devType(self *C.QRasterWindow, cb C.intptr
 }
 
 func (this *QRasterWindow) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QRasterWindow_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1182,7 +1139,6 @@ func miqt_exec_callback_QRasterWindow_initPainter(self *C.QRasterWindow, cb C.in
 }
 
 func (this *QRasterWindow) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QRasterWindow_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1216,6 +1172,8 @@ func (this *QRasterWindow) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QRasterWindow) GoGC() {
 	if this.gc != nil {
 		return

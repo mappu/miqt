@@ -60,7 +60,6 @@ func NewQTextDocumentFragment() *QTextDocumentFragment {
 
 // NewQTextDocumentFragment2 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment2(document *QTextDocument) *QTextDocumentFragment {
-	defer runtime.KeepAlive(document)
 
 	return newQTextDocumentFragment(C.QTextDocumentFragment_new2(document.cPointer()))
 }
@@ -161,7 +160,6 @@ func (this *QTextDocumentFragment) ToMarkdownWithFeatures(features QTextDocument
 }
 
 func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocument) *QTextDocumentFragment {
-	defer runtime.KeepAlive(resourceProvider)
 	html_ms := C.struct_miqt_string{}
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))

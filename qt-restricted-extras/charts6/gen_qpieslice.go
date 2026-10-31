@@ -85,14 +85,12 @@ func NewQPieSlice2(label string, value float64) *QPieSlice {
 
 // NewQPieSlice3 constructs a new QPieSlice object.
 func NewQPieSlice3(parent *qt6.QObject) *QPieSlice {
-	defer runtime.KeepAlive(parent)
 
 	return newQPieSlice(C.QPieSlice_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQPieSlice4 constructs a new QPieSlice object.
 func NewQPieSlice4(label string, value float64, parent *qt6.QObject) *QPieSlice {
-	defer runtime.KeepAlive(parent)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -102,12 +100,10 @@ func NewQPieSlice4(label string, value float64, parent *qt6.QObject) *QPieSlice 
 }
 
 func (this *QPieSlice) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QPieSlice_metaObject(this.h)))
 }
 
 func (this *QPieSlice) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPieSlice_metacast(this.h, param1_Cstring))
@@ -123,7 +119,6 @@ func QPieSlice_Tr(s string) string {
 }
 
 func (this *QPieSlice) SetLabel(label string) {
-	defer runtime.KeepAlive(this)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -132,7 +127,6 @@ func (this *QPieSlice) SetLabel(label string) {
 }
 
 func (this *QPieSlice) Label() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QPieSlice_label(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -140,188 +134,155 @@ func (this *QPieSlice) Label() string {
 }
 
 func (this *QPieSlice) SetValue(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_setValue(this.h, (C.double)(value))
 }
 
 func (this *QPieSlice) Value() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSlice_value(this.h))
 }
 
 func (this *QPieSlice) SetLabelVisible() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_setLabelVisible(this.h)
 }
 
 func (this *QPieSlice) IsLabelVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QPieSlice_isLabelVisible(this.h))
 }
 
 func (this *QPieSlice) LabelPosition() QPieSlice__LabelPosition {
-	defer runtime.KeepAlive(this)
 	return (QPieSlice__LabelPosition)(C.QPieSlice_labelPosition(this.h))
 }
 
 func (this *QPieSlice) SetLabelPosition(position QPieSlice__LabelPosition) {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_setLabelPosition(this.h, (C.int)(position))
 }
 
 func (this *QPieSlice) SetExploded() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_setExploded(this.h)
 }
 
 func (this *QPieSlice) IsExploded() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QPieSlice_isExploded(this.h))
 }
 
 func (this *QPieSlice) SetPen(pen *qt6.QPen) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pen)
 	C.QPieSlice_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QPieSlice) Pen() *qt6.QPen {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QPieSlice_pen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPieSlice) BorderColor() *qt6.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QPieSlice_borderColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPieSlice) SetBorderColor(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QPieSlice_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QPieSlice) BorderWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QPieSlice_borderWidth(this.h))
 }
 
 func (this *QPieSlice) SetBorderWidth(width int) {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_setBorderWidth(this.h, (C.int)(width))
 }
 
 func (this *QPieSlice) SetBrush(brush *qt6.QBrush) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(brush)
 	C.QPieSlice_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QPieSlice) Brush() *qt6.QBrush {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QPieSlice_brush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPieSlice) Color() *qt6.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QPieSlice_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPieSlice) SetColor(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QPieSlice_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QPieSlice) SetLabelBrush(brush *qt6.QBrush) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(brush)
 	C.QPieSlice_setLabelBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QPieSlice) LabelBrush() *qt6.QBrush {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QPieSlice_labelBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPieSlice) LabelColor() *qt6.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QPieSlice_labelColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPieSlice) SetLabelColor(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QPieSlice_setLabelColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QPieSlice) SetLabelFont(font *qt6.QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QPieSlice_setLabelFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QPieSlice) LabelFont() *qt6.QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QPieSlice_labelFont(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPieSlice) SetLabelArmLengthFactor(factor float64) {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_setLabelArmLengthFactor(this.h, (C.double)(factor))
 }
 
 func (this *QPieSlice) LabelArmLengthFactor() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSlice_labelArmLengthFactor(this.h))
 }
 
 func (this *QPieSlice) SetExplodeDistanceFactor(factor float64) {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_setExplodeDistanceFactor(this.h, (C.double)(factor))
 }
 
 func (this *QPieSlice) ExplodeDistanceFactor() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSlice_explodeDistanceFactor(this.h))
 }
 
 func (this *QPieSlice) Percentage() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSlice_percentage(this.h))
 }
 
 func (this *QPieSlice) StartAngle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSlice_startAngle(this.h))
 }
 
 func (this *QPieSlice) AngleSpan() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPieSlice_angleSpan(this.h))
 }
 
 func (this *QPieSlice) Series() *QPieSeries {
-	defer runtime.KeepAlive(this)
 	return newQPieSeries(C.QPieSlice_series(this.h))
 }
 
 func (this *QPieSlice) Clicked() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_clicked(this.h)
 }
 func (this *QPieSlice) OnClicked(slot func()) {
@@ -339,7 +300,6 @@ func miqt_exec_callback_QPieSlice_clicked(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) Hovered(state bool) {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_hovered(this.h, (C.bool)(state))
 }
 func (this *QPieSlice) OnHovered(slot func(state bool)) {
@@ -360,7 +320,6 @@ func miqt_exec_callback_QPieSlice_hovered(cb C.intptr_t, state C.bool) {
 }
 
 func (this *QPieSlice) Pressed() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_pressed(this.h)
 }
 func (this *QPieSlice) OnPressed(slot func()) {
@@ -378,7 +337,6 @@ func miqt_exec_callback_QPieSlice_pressed(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) Released() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_released(this.h)
 }
 func (this *QPieSlice) OnReleased(slot func()) {
@@ -396,7 +354,6 @@ func miqt_exec_callback_QPieSlice_released(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) DoubleClicked() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_doubleClicked(this.h)
 }
 func (this *QPieSlice) OnDoubleClicked(slot func()) {
@@ -414,7 +371,6 @@ func miqt_exec_callback_QPieSlice_doubleClicked(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) LabelChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_labelChanged(this.h)
 }
 func (this *QPieSlice) OnLabelChanged(slot func()) {
@@ -432,7 +388,6 @@ func miqt_exec_callback_QPieSlice_labelChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) ValueChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_valueChanged(this.h)
 }
 func (this *QPieSlice) OnValueChanged(slot func()) {
@@ -450,7 +405,6 @@ func miqt_exec_callback_QPieSlice_valueChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) LabelVisibleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_labelVisibleChanged(this.h)
 }
 func (this *QPieSlice) OnLabelVisibleChanged(slot func()) {
@@ -468,7 +422,6 @@ func miqt_exec_callback_QPieSlice_labelVisibleChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) PenChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_penChanged(this.h)
 }
 func (this *QPieSlice) OnPenChanged(slot func()) {
@@ -486,7 +439,6 @@ func miqt_exec_callback_QPieSlice_penChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) BrushChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_brushChanged(this.h)
 }
 func (this *QPieSlice) OnBrushChanged(slot func()) {
@@ -504,7 +456,6 @@ func miqt_exec_callback_QPieSlice_brushChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) LabelBrushChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_labelBrushChanged(this.h)
 }
 func (this *QPieSlice) OnLabelBrushChanged(slot func()) {
@@ -522,7 +473,6 @@ func miqt_exec_callback_QPieSlice_labelBrushChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) LabelFontChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_labelFontChanged(this.h)
 }
 func (this *QPieSlice) OnLabelFontChanged(slot func()) {
@@ -540,7 +490,6 @@ func miqt_exec_callback_QPieSlice_labelFontChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) PercentageChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_percentageChanged(this.h)
 }
 func (this *QPieSlice) OnPercentageChanged(slot func()) {
@@ -558,7 +507,6 @@ func miqt_exec_callback_QPieSlice_percentageChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) StartAngleChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_startAngleChanged(this.h)
 }
 func (this *QPieSlice) OnStartAngleChanged(slot func()) {
@@ -576,7 +524,6 @@ func miqt_exec_callback_QPieSlice_startAngleChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) AngleSpanChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_angleSpanChanged(this.h)
 }
 func (this *QPieSlice) OnAngleSpanChanged(slot func()) {
@@ -594,7 +541,6 @@ func miqt_exec_callback_QPieSlice_angleSpanChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) ColorChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_colorChanged(this.h)
 }
 func (this *QPieSlice) OnColorChanged(slot func()) {
@@ -612,7 +558,6 @@ func miqt_exec_callback_QPieSlice_colorChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) BorderColorChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_borderColorChanged(this.h)
 }
 func (this *QPieSlice) OnBorderColorChanged(slot func()) {
@@ -630,7 +575,6 @@ func miqt_exec_callback_QPieSlice_borderColorChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) BorderWidthChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_borderWidthChanged(this.h)
 }
 func (this *QPieSlice) OnBorderWidthChanged(slot func()) {
@@ -648,7 +592,6 @@ func miqt_exec_callback_QPieSlice_borderWidthChanged(cb C.intptr_t) {
 }
 
 func (this *QPieSlice) LabelColorChanged() {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_labelColorChanged(this.h)
 }
 func (this *QPieSlice) OnLabelColorChanged(slot func()) {
@@ -688,18 +631,15 @@ func QPieSlice_Tr3(s string, c string, n int) string {
 }
 
 func (this *QPieSlice) SetLabelVisibleWithVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_setLabelVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QPieSlice) SetExplodedWithExploded(exploded bool) {
-	defer runtime.KeepAlive(this)
 	C.QPieSlice_setExplodedWithExploded(this.h, (C.bool)(exploded))
 }
 
 // Sender can only be called from a QPieSlice that was directly constructed.
 func (this *QPieSlice) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QPieSlice_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -714,7 +654,6 @@ func (this *QPieSlice) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QPieSlice that was directly constructed.
 func (this *QPieSlice) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPieSlice_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -729,7 +668,6 @@ func (this *QPieSlice) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPieSlice that was directly constructed.
 func (this *QPieSlice) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -746,7 +684,6 @@ func (this *QPieSlice) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPieSlice that was directly constructed.
 func (this *QPieSlice) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -761,7 +698,6 @@ func (this *QPieSlice) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QPieSlice) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPieSlice_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -791,8 +727,6 @@ func miqt_exec_callback_QPieSlice_event(self *C.QPieSlice, cb C.intptr_t, event 
 }
 
 func (this *QPieSlice) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPieSlice_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -824,7 +758,6 @@ func miqt_exec_callback_QPieSlice_eventFilter(self *C.QPieSlice, cb C.intptr_t, 
 }
 
 func (this *QPieSlice) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPieSlice_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -852,7 +785,6 @@ func miqt_exec_callback_QPieSlice_timerEvent(self *C.QPieSlice, cb C.intptr_t, e
 }
 
 func (this *QPieSlice) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPieSlice_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -880,7 +812,6 @@ func miqt_exec_callback_QPieSlice_childEvent(self *C.QPieSlice, cb C.intptr_t, e
 }
 
 func (this *QPieSlice) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPieSlice_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -908,7 +839,6 @@ func miqt_exec_callback_QPieSlice_customEvent(self *C.QPieSlice, cb C.intptr_t, 
 }
 
 func (this *QPieSlice) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPieSlice_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -936,7 +866,6 @@ func miqt_exec_callback_QPieSlice_connectNotify(self *C.QPieSlice, cb C.intptr_t
 }
 
 func (this *QPieSlice) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPieSlice_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -971,6 +900,8 @@ func (this *QPieSlice) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPieSlice) GoGC() {
 	if this.gc != nil {
 		return

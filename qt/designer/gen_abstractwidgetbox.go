@@ -74,7 +74,6 @@ func UnsafeNewQDesignerWidgetBoxInterface(h unsafe.Pointer) *QDesignerWidgetBoxI
 
 // NewQDesignerWidgetBoxInterface constructs a new QDesignerWidgetBoxInterface object.
 func NewQDesignerWidgetBoxInterface(parent *qt.QWidget) *QDesignerWidgetBoxInterface {
-	defer runtime.KeepAlive(parent)
 
 	return newQDesignerWidgetBoxInterface(C.QDesignerWidgetBoxInterface_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -87,18 +86,15 @@ func NewQDesignerWidgetBoxInterface2() *QDesignerWidgetBoxInterface {
 
 // NewQDesignerWidgetBoxInterface3 constructs a new QDesignerWidgetBoxInterface object.
 func NewQDesignerWidgetBoxInterface3(parent *qt.QWidget, flags qt.WindowType) *QDesignerWidgetBoxInterface {
-	defer runtime.KeepAlive(parent)
 
 	return newQDesignerWidgetBoxInterface(C.QDesignerWidgetBoxInterface_new3((*C.QWidget)(parent.UnsafePointer()), (C.int)(flags)))
 }
 
 func (this *QDesignerWidgetBoxInterface) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerWidgetBoxInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerWidgetBoxInterface) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerWidgetBoxInterface_metacast(this.h, param1_Cstring))
@@ -123,53 +119,44 @@ func QDesignerWidgetBoxInterface_TrUtf8(s string) string {
 }
 
 func (this *QDesignerWidgetBoxInterface) CategoryCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerWidgetBoxInterface_categoryCount(this.h))
 }
 
 func (this *QDesignerWidgetBoxInterface) Category(cat_idx int) *QDesignerWidgetBoxInterface__Category {
-	defer runtime.KeepAlive(this)
 	_goptr := newQDesignerWidgetBoxInterface__Category(C.QDesignerWidgetBoxInterface_category(this.h, (C.int)(cat_idx)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesignerWidgetBoxInterface) AddCategory(cat *QDesignerWidgetBoxInterface__Category) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cat)
 	C.QDesignerWidgetBoxInterface_addCategory(this.h, cat.cPointer())
 }
 
 func (this *QDesignerWidgetBoxInterface) RemoveCategory(cat_idx int) {
-	defer runtime.KeepAlive(this)
 	C.QDesignerWidgetBoxInterface_removeCategory(this.h, (C.int)(cat_idx))
 }
 
 func (this *QDesignerWidgetBoxInterface) WidgetCount(cat_idx int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDesignerWidgetBoxInterface_widgetCount(this.h, (C.int)(cat_idx)))
 }
 
 func (this *QDesignerWidgetBoxInterface) Widget(cat_idx int, wgt_idx int) *QDesignerWidgetBoxInterface__Widget {
-	defer runtime.KeepAlive(this)
 	_goptr := newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface_widget(this.h, (C.int)(cat_idx), (C.int)(wgt_idx)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDesignerWidgetBoxInterface) AddWidget(cat_idx int, wgt *QDesignerWidgetBoxInterface__Widget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(wgt)
 	C.QDesignerWidgetBoxInterface_addWidget(this.h, (C.int)(cat_idx), wgt.cPointer())
 }
 
 func (this *QDesignerWidgetBoxInterface) RemoveWidget(cat_idx int, wgt_idx int) {
-	defer runtime.KeepAlive(this)
 	C.QDesignerWidgetBoxInterface_removeWidget(this.h, (C.int)(cat_idx), (C.int)(wgt_idx))
 }
 
 func (this *QDesignerWidgetBoxInterface) FindOrInsertCategory(categoryName string) int {
-	defer runtime.KeepAlive(this)
 	categoryName_ms := C.struct_miqt_string{}
 	categoryName_ms.data = C.CString(categoryName)
 	categoryName_ms.len = C.size_t(len(categoryName))
@@ -178,7 +165,6 @@ func (this *QDesignerWidgetBoxInterface) FindOrInsertCategory(categoryName strin
 }
 
 func (this *QDesignerWidgetBoxInterface) DropWidgets(item_list []*QDesignerDnDItemInterface, global_mouse_pos *qt.QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item_list)
 	defer runtime.KeepAlive(global_mouse_pos)
 	item_list_CArray_ptr := (**C.QDesignerDnDItemInterface)(C.malloc(C.size_t(8 * len(item_list))))
@@ -192,7 +178,6 @@ func (this *QDesignerWidgetBoxInterface) DropWidgets(item_list []*QDesignerDnDIt
 }
 
 func (this *QDesignerWidgetBoxInterface) SetFileName(file_name string) {
-	defer runtime.KeepAlive(this)
 	file_name_ms := C.struct_miqt_string{}
 	file_name_ms.data = C.CString(file_name)
 	file_name_ms.len = C.size_t(len(file_name))
@@ -201,7 +186,6 @@ func (this *QDesignerWidgetBoxInterface) SetFileName(file_name string) {
 }
 
 func (this *QDesignerWidgetBoxInterface) FileName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerWidgetBoxInterface_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -209,12 +193,10 @@ func (this *QDesignerWidgetBoxInterface) FileName() string {
 }
 
 func (this *QDesignerWidgetBoxInterface) Load() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerWidgetBoxInterface_load(this.h))
 }
 
 func (this *QDesignerWidgetBoxInterface) Save() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QDesignerWidgetBoxInterface_save(this.h))
 }
 
@@ -264,7 +246,6 @@ func QDesignerWidgetBoxInterface_TrUtf83(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QDesignerWidgetBoxInterface that was directly constructed.
 func (this *QDesignerWidgetBoxInterface) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerWidgetBoxInterface_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -277,7 +258,6 @@ func (this *QDesignerWidgetBoxInterface) UpdateMicroFocus() {
 
 // Create can only be called from a QDesignerWidgetBoxInterface that was directly constructed.
 func (this *QDesignerWidgetBoxInterface) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerWidgetBoxInterface_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -290,7 +270,6 @@ func (this *QDesignerWidgetBoxInterface) Create() {
 
 // Destroy can only be called from a QDesignerWidgetBoxInterface that was directly constructed.
 func (this *QDesignerWidgetBoxInterface) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerWidgetBoxInterface_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -303,7 +282,6 @@ func (this *QDesignerWidgetBoxInterface) Destroy() {
 
 // FocusNextChild can only be called from a QDesignerWidgetBoxInterface that was directly constructed.
 func (this *QDesignerWidgetBoxInterface) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerWidgetBoxInterface_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -318,7 +296,6 @@ func (this *QDesignerWidgetBoxInterface) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QDesignerWidgetBoxInterface that was directly constructed.
 func (this *QDesignerWidgetBoxInterface) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerWidgetBoxInterface_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -333,7 +310,6 @@ func (this *QDesignerWidgetBoxInterface) FocusPreviousChild() bool {
 
 // Sender can only be called from a QDesignerWidgetBoxInterface that was directly constructed.
 func (this *QDesignerWidgetBoxInterface) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QDesignerWidgetBoxInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -348,7 +324,6 @@ func (this *QDesignerWidgetBoxInterface) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerWidgetBoxInterface that was directly constructed.
 func (this *QDesignerWidgetBoxInterface) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerWidgetBoxInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -363,7 +338,6 @@ func (this *QDesignerWidgetBoxInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerWidgetBoxInterface that was directly constructed.
 func (this *QDesignerWidgetBoxInterface) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -380,7 +354,6 @@ func (this *QDesignerWidgetBoxInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerWidgetBoxInterface that was directly constructed.
 func (this *QDesignerWidgetBoxInterface) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -679,7 +652,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_save(self *C.QDesignerWidget
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerWidgetBoxInterface_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -705,7 +677,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_devType(self *C.QDesignerWid
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -732,7 +703,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_setVisible(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_SizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QDesignerWidgetBoxInterface_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -761,7 +731,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_sizeHint(self *C.QDesignerWi
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_MinimumSizeHint() *qt.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QDesignerWidgetBoxInterface_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -790,7 +759,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_minimumSizeHint(self *C.QDes
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerWidgetBoxInterface_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -819,7 +787,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_heightForWidth(self *C.QDesi
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDesignerWidgetBoxInterface_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -845,7 +812,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_hasHeightForWidth(self *C.QD
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_PaintEngine() *qt.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QDesignerWidgetBoxInterface_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -872,7 +838,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_paintEngine(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerWidgetBoxInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -902,7 +867,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_event(self *C.QDesignerWidge
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -930,7 +894,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_mousePressEvent(self *C.QDes
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -958,7 +921,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_mouseReleaseEvent(self *C.QD
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -986,7 +948,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_mouseDoubleClickEvent(self *
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -1014,7 +975,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_mouseMoveEvent(self *C.QDesi
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -1042,7 +1002,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_wheelEvent(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1070,7 +1029,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_keyPressEvent(self *C.QDesig
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -1098,7 +1056,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_keyReleaseEvent(self *C.QDes
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1126,7 +1083,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_focusInEvent(self *C.QDesign
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -1154,7 +1110,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_focusOutEvent(self *C.QDesig
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_EnterEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1182,7 +1137,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_enterEvent(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_LeaveEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1210,7 +1164,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_leaveEvent(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
@@ -1238,7 +1191,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_paintEvent(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -1266,7 +1218,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_moveEvent(self *C.QDesignerW
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -1294,7 +1245,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_resizeEvent(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -1322,7 +1272,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_closeEvent(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -1350,7 +1299,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_contextMenuEvent(self *C.QDe
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1378,7 +1326,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_tabletEvent(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1406,7 +1353,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_actionEvent(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1434,7 +1380,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_dragEnterEvent(self *C.QDesi
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1462,7 +1407,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_dragMoveEvent(self *C.QDesig
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1490,7 +1434,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_dragLeaveEvent(self *C.QDesi
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_DropEvent(event *qt.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1518,7 +1461,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_dropEvent(self *C.QDesignerW
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -1546,7 +1488,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_showEvent(self *C.QDesignerW
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_HideEvent(event *qt.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -1574,7 +1515,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_hideEvent(self *C.QDesignerW
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1616,7 +1556,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_nativeEvent(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1644,7 +1583,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_changeEvent(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerWidgetBoxInterface_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1673,7 +1611,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_metric(self *C.QDesignerWidg
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_InitPainter(painter *qt.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1701,7 +1638,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_initPainter(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QDesignerWidgetBoxInterface_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1732,7 +1668,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_redirected(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_SharedPainter() *qt.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QDesignerWidgetBoxInterface_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1759,7 +1694,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_sharedPainter(self *C.QDesig
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1787,7 +1721,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_inputMethodEvent(self *C.QDe
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QDesignerWidgetBoxInterface_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1819,7 +1752,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_inputMethodQuery(self *C.QDe
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDesignerWidgetBoxInterface_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1848,8 +1780,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_focusNextPrevChild(self *C.Q
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerWidgetBoxInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1881,7 +1811,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_eventFilter(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1909,7 +1838,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_timerEvent(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1937,7 +1865,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_childEvent(self *C.QDesigner
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1965,7 +1892,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_customEvent(self *C.QDesigne
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1993,7 +1919,6 @@ func miqt_exec_callback_QDesignerWidgetBoxInterface_connectNotify(self *C.QDesig
 }
 
 func (this *QDesignerWidgetBoxInterface) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerWidgetBoxInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -2028,6 +1953,8 @@ func (this *QDesignerWidgetBoxInterface) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDesignerWidgetBoxInterface) GoGC() {
 	if this.gc != nil {
 		return

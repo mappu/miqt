@@ -106,14 +106,12 @@ func NewQTextCursor() *QTextCursor {
 
 // NewQTextCursor2 constructs a new QTextCursor object.
 func NewQTextCursor2(document *QTextDocument) *QTextCursor {
-	defer runtime.KeepAlive(document)
 
 	return newQTextCursor(C.QTextCursor_new2(document.cPointer()))
 }
 
 // NewQTextCursor3 constructs a new QTextCursor object.
 func NewQTextCursor3(frame *QTextFrame) *QTextCursor {
-	defer runtime.KeepAlive(frame)
 
 	return newQTextCursor(C.QTextCursor_new3(frame.cPointer()))
 }

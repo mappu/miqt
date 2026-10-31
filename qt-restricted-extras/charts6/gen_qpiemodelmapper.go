@@ -58,12 +58,10 @@ func UnsafeNewQPieModelMapper(h unsafe.Pointer) *QPieModelMapper {
 }
 
 func (this *QPieModelMapper) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QPieModelMapper_metaObject(this.h)))
 }
 
 func (this *QPieModelMapper) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPieModelMapper_metacast(this.h, param1_Cstring))
@@ -108,6 +106,8 @@ func (this *QPieModelMapper) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPieModelMapper) GoGC() {
 	if this.gc != nil {
 		return

@@ -376,7 +376,6 @@ func QSqlDatabase_AddDatabase(typeVal string) *QSqlDatabase {
 }
 
 func QSqlDatabase_AddDatabaseWithDriver(driver *QSqlDriver) *QSqlDatabase {
-	defer runtime.KeepAlive(driver)
 	_goptr := newQSqlDatabase(C.QSqlDatabase_addDatabaseWithDriver(driver.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -517,7 +516,6 @@ func QSqlDatabase_AddDatabase2(typeVal string, connectionName string) *QSqlDatab
 }
 
 func QSqlDatabase_AddDatabase3(driver *QSqlDriver, connectionName string) *QSqlDatabase {
-	defer runtime.KeepAlive(driver)
 	connectionName_ms := C.struct_miqt_string{}
 	connectionName_ms.data = C.CString(connectionName)
 	connectionName_ms.len = C.size_t(len(connectionName))

@@ -70,18 +70,15 @@ func NewQExtensionManager() *QExtensionManager {
 
 // NewQExtensionManager2 constructs a new QExtensionManager object.
 func NewQExtensionManager2(parent *qt.QObject) *QExtensionManager {
-	defer runtime.KeepAlive(parent)
 
 	return newQExtensionManager(C.QExtensionManager_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QExtensionManager) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QExtensionManager_metaObject(this.h)))
 }
 
 func (this *QExtensionManager) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QExtensionManager_metacast(this.h, param1_Cstring))
@@ -106,7 +103,6 @@ func QExtensionManager_TrUtf8(s string) string {
 }
 
 func (this *QExtensionManager) RegisterExtensions(factory *QAbstractExtensionFactory, iid string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(factory)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
@@ -116,7 +112,6 @@ func (this *QExtensionManager) RegisterExtensions(factory *QAbstractExtensionFac
 }
 
 func (this *QExtensionManager) UnregisterExtensions(factory *QAbstractExtensionFactory, iid string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(factory)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
@@ -126,8 +121,6 @@ func (this *QExtensionManager) UnregisterExtensions(factory *QAbstractExtensionF
 }
 
 func (this *QExtensionManager) Extension(object *qt.QObject, iid string) *qt.QObject {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
 	iid_ms.len = C.size_t(len(iid))
@@ -181,7 +174,6 @@ func QExtensionManager_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QExtensionManager that was directly constructed.
 func (this *QExtensionManager) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QExtensionManager_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -196,7 +188,6 @@ func (this *QExtensionManager) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QExtensionManager that was directly constructed.
 func (this *QExtensionManager) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QExtensionManager_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -211,7 +202,6 @@ func (this *QExtensionManager) SenderSignalIndex() int {
 
 // Receivers can only be called from a QExtensionManager that was directly constructed.
 func (this *QExtensionManager) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -228,7 +218,6 @@ func (this *QExtensionManager) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QExtensionManager that was directly constructed.
 func (this *QExtensionManager) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -243,7 +232,6 @@ func (this *QExtensionManager) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QExtensionManager) callVirtualBase_RegisterExtensions(factory *QAbstractExtensionFactory, iid string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(factory)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
@@ -280,7 +268,6 @@ func miqt_exec_callback_QExtensionManager_registerExtensions(self *C.QExtensionM
 }
 
 func (this *QExtensionManager) callVirtualBase_UnregisterExtensions(factory *QAbstractExtensionFactory, iid string) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(factory)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
@@ -317,8 +304,6 @@ func miqt_exec_callback_QExtensionManager_unregisterExtensions(self *C.QExtensio
 }
 
 func (this *QExtensionManager) callVirtualBase_Extension(object *qt.QObject, iid string) *qt.QObject {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	iid_ms := C.struct_miqt_string{}
 	iid_ms.data = C.CString(iid)
 	iid_ms.len = C.size_t(len(iid))
@@ -350,14 +335,12 @@ func miqt_exec_callback_QExtensionManager_extension(self *C.QExtensionManager, c
 	slotval2 := iid_ret
 
 	virtualReturn := gofunc((&QExtensionManager{h: self}).callVirtualBase_Extension, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QObject)(virtualReturn.UnsafePointer())
 
 }
 
 func (this *QExtensionManager) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QExtensionManager_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -387,8 +370,6 @@ func miqt_exec_callback_QExtensionManager_event(self *C.QExtensionManager, cb C.
 }
 
 func (this *QExtensionManager) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QExtensionManager_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -420,7 +401,6 @@ func miqt_exec_callback_QExtensionManager_eventFilter(self *C.QExtensionManager,
 }
 
 func (this *QExtensionManager) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QExtensionManager_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -448,7 +428,6 @@ func miqt_exec_callback_QExtensionManager_timerEvent(self *C.QExtensionManager, 
 }
 
 func (this *QExtensionManager) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QExtensionManager_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -476,7 +455,6 @@ func miqt_exec_callback_QExtensionManager_childEvent(self *C.QExtensionManager, 
 }
 
 func (this *QExtensionManager) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QExtensionManager_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -504,7 +482,6 @@ func miqt_exec_callback_QExtensionManager_customEvent(self *C.QExtensionManager,
 }
 
 func (this *QExtensionManager) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QExtensionManager_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -532,7 +509,6 @@ func miqt_exec_callback_QExtensionManager_connectNotify(self *C.QExtensionManage
 }
 
 func (this *QExtensionManager) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QExtensionManager_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -567,6 +543,8 @@ func (this *QExtensionManager) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QExtensionManager) GoGC() {
 	if this.gc != nil {
 		return

@@ -70,7 +70,6 @@ func UnsafeNewQFontComboBox(h unsafe.Pointer) *QFontComboBox {
 
 // NewQFontComboBox constructs a new QFontComboBox object.
 func NewQFontComboBox(parent *QWidget) *QFontComboBox {
-	defer runtime.KeepAlive(parent)
 
 	return newQFontComboBox(C.QFontComboBox_new(parent.cPointer()))
 }
@@ -82,12 +81,10 @@ func NewQFontComboBox2() *QFontComboBox {
 }
 
 func (this *QFontComboBox) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QFontComboBox_metaObject(this.h))
 }
 
 func (this *QFontComboBox) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QFontComboBox_metacast(this.h, param1_Cstring))
@@ -103,41 +100,34 @@ func QFontComboBox_Tr(s string) string {
 }
 
 func (this *QFontComboBox) SetWritingSystem(writingSystem QFontDatabase__WritingSystem) {
-	defer runtime.KeepAlive(this)
 	C.QFontComboBox_setWritingSystem(this.h, (C.int)(writingSystem))
 }
 
 func (this *QFontComboBox) WritingSystem() QFontDatabase__WritingSystem {
-	defer runtime.KeepAlive(this)
 	return (QFontDatabase__WritingSystem)(C.QFontComboBox_writingSystem(this.h))
 }
 
 func (this *QFontComboBox) SetFontFilters(filters QFontComboBox__FontFilter) {
-	defer runtime.KeepAlive(this)
 	C.QFontComboBox_setFontFilters(this.h, (C.int)(filters))
 }
 
 func (this *QFontComboBox) FontFilters() QFontComboBox__FontFilter {
-	defer runtime.KeepAlive(this)
 	return (QFontComboBox__FontFilter)(C.QFontComboBox_fontFilters(this.h))
 }
 
 func (this *QFontComboBox) CurrentFont() *QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := newQFont(C.QFontComboBox_currentFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontComboBox) SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QFontComboBox_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontComboBox) SetSampleTextForSystem(writingSystem QFontDatabase__WritingSystem, sampleText string) {
-	defer runtime.KeepAlive(this)
 	sampleText_ms := C.struct_miqt_string{}
 	sampleText_ms.data = C.CString(sampleText)
 	sampleText_ms.len = C.size_t(len(sampleText))
@@ -146,7 +136,6 @@ func (this *QFontComboBox) SetSampleTextForSystem(writingSystem QFontDatabase__W
 }
 
 func (this *QFontComboBox) SampleTextForSystem(writingSystem QFontDatabase__WritingSystem) string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QFontComboBox_sampleTextForSystem(this.h, (C.int)(writingSystem))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -154,7 +143,6 @@ func (this *QFontComboBox) SampleTextForSystem(writingSystem QFontDatabase__Writ
 }
 
 func (this *QFontComboBox) SetSampleTextForFont(fontFamily string, sampleText string) {
-	defer runtime.KeepAlive(this)
 	fontFamily_ms := C.struct_miqt_string{}
 	fontFamily_ms.data = C.CString(fontFamily)
 	fontFamily_ms.len = C.size_t(len(fontFamily))
@@ -167,7 +155,6 @@ func (this *QFontComboBox) SetSampleTextForFont(fontFamily string, sampleText st
 }
 
 func (this *QFontComboBox) SampleTextForFont(fontFamily string) string {
-	defer runtime.KeepAlive(this)
 	fontFamily_ms := C.struct_miqt_string{}
 	fontFamily_ms.data = C.CString(fontFamily)
 	fontFamily_ms.len = C.size_t(len(fontFamily))
@@ -179,7 +166,6 @@ func (this *QFontComboBox) SampleTextForFont(fontFamily string) string {
 }
 
 func (this *QFontComboBox) SetDisplayFont(fontFamily string, font *QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	fontFamily_ms := C.struct_miqt_string{}
 	fontFamily_ms.data = C.CString(fontFamily)
@@ -189,13 +175,11 @@ func (this *QFontComboBox) SetDisplayFont(fontFamily string, font *QFont) {
 }
 
 func (this *QFontComboBox) SetCurrentFont(f *QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(f)
 	C.QFontComboBox_setCurrentFont(this.h, f.cPointer())
 }
 
 func (this *QFontComboBox) CurrentFontChanged(f *QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(f)
 	C.QFontComboBox_currentFontChanged(this.h, f.cPointer())
 }
@@ -240,7 +224,6 @@ func QFontComboBox_Tr3(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QFontComboBox that was directly constructed.
 func (this *QFontComboBox) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFontComboBox_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -253,7 +236,6 @@ func (this *QFontComboBox) UpdateMicroFocus() {
 
 // Create can only be called from a QFontComboBox that was directly constructed.
 func (this *QFontComboBox) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFontComboBox_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -266,7 +248,6 @@ func (this *QFontComboBox) Create() {
 
 // Destroy can only be called from a QFontComboBox that was directly constructed.
 func (this *QFontComboBox) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QFontComboBox_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -279,7 +260,6 @@ func (this *QFontComboBox) Destroy() {
 
 // FocusNextChild can only be called from a QFontComboBox that was directly constructed.
 func (this *QFontComboBox) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFontComboBox_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -294,7 +274,6 @@ func (this *QFontComboBox) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QFontComboBox that was directly constructed.
 func (this *QFontComboBox) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QFontComboBox_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -309,7 +288,6 @@ func (this *QFontComboBox) FocusPreviousChild() bool {
 
 // Sender can only be called from a QFontComboBox that was directly constructed.
 func (this *QFontComboBox) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QFontComboBox_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -324,7 +302,6 @@ func (this *QFontComboBox) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QFontComboBox that was directly constructed.
 func (this *QFontComboBox) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QFontComboBox_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -339,7 +316,6 @@ func (this *QFontComboBox) SenderSignalIndex() int {
 
 // Receivers can only be called from a QFontComboBox that was directly constructed.
 func (this *QFontComboBox) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -356,7 +332,6 @@ func (this *QFontComboBox) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QFontComboBox that was directly constructed.
 func (this *QFontComboBox) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -371,7 +346,6 @@ func (this *QFontComboBox) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QFontComboBox) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QFontComboBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -400,7 +374,6 @@ func miqt_exec_callback_QFontComboBox_sizeHint(self *C.QFontComboBox, cb C.intpt
 }
 
 func (this *QFontComboBox) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QFontComboBox_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -430,8 +403,6 @@ func miqt_exec_callback_QFontComboBox_event(self *C.QFontComboBox, cb C.intptr_t
 }
 
 func (this *QFontComboBox) callVirtualBase_SetModel(model *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(model)
 
 	C.QFontComboBox_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
@@ -458,7 +429,6 @@ func miqt_exec_callback_QFontComboBox_setModel(self *C.QFontComboBox, cb C.intpt
 }
 
 func (this *QFontComboBox) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QFontComboBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -487,7 +457,6 @@ func miqt_exec_callback_QFontComboBox_minimumSizeHint(self *C.QFontComboBox, cb 
 }
 
 func (this *QFontComboBox) callVirtualBase_ShowPopup() {
-	defer runtime.KeepAlive(this)
 
 	C.QFontComboBox_virtualbase_showPopup(unsafe.Pointer(this.h))
 
@@ -511,7 +480,6 @@ func miqt_exec_callback_QFontComboBox_showPopup(self *C.QFontComboBox, cb C.intp
 }
 
 func (this *QFontComboBox) callVirtualBase_HidePopup() {
-	defer runtime.KeepAlive(this)
 
 	C.QFontComboBox_virtualbase_hidePopup(unsafe.Pointer(this.h))
 
@@ -535,7 +503,6 @@ func miqt_exec_callback_QFontComboBox_hidePopup(self *C.QFontComboBox, cb C.intp
 }
 
 func (this *QFontComboBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QFontComboBox_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -567,7 +534,6 @@ func miqt_exec_callback_QFontComboBox_inputMethodQuery(self *C.QFontComboBox, cb
 }
 
 func (this *QFontComboBox) callVirtualBase_FocusInEvent(e *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -595,7 +561,6 @@ func miqt_exec_callback_QFontComboBox_focusInEvent(self *C.QFontComboBox, cb C.i
 }
 
 func (this *QFontComboBox) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -623,7 +588,6 @@ func miqt_exec_callback_QFontComboBox_focusOutEvent(self *C.QFontComboBox, cb C.
 }
 
 func (this *QFontComboBox) callVirtualBase_ChangeEvent(e *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -651,7 +615,6 @@ func miqt_exec_callback_QFontComboBox_changeEvent(self *C.QFontComboBox, cb C.in
 }
 
 func (this *QFontComboBox) callVirtualBase_ResizeEvent(e *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -679,7 +642,6 @@ func miqt_exec_callback_QFontComboBox_resizeEvent(self *C.QFontComboBox, cb C.in
 }
 
 func (this *QFontComboBox) callVirtualBase_PaintEvent(e *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -707,7 +669,6 @@ func miqt_exec_callback_QFontComboBox_paintEvent(self *C.QFontComboBox, cb C.int
 }
 
 func (this *QFontComboBox) callVirtualBase_ShowEvent(e *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_showEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -735,7 +696,6 @@ func miqt_exec_callback_QFontComboBox_showEvent(self *C.QFontComboBox, cb C.intp
 }
 
 func (this *QFontComboBox) callVirtualBase_HideEvent(e *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_hideEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -763,7 +723,6 @@ func miqt_exec_callback_QFontComboBox_hideEvent(self *C.QFontComboBox, cb C.intp
 }
 
 func (this *QFontComboBox) callVirtualBase_MousePressEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -791,7 +750,6 @@ func miqt_exec_callback_QFontComboBox_mousePressEvent(self *C.QFontComboBox, cb 
 }
 
 func (this *QFontComboBox) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -819,7 +777,6 @@ func miqt_exec_callback_QFontComboBox_mouseReleaseEvent(self *C.QFontComboBox, c
 }
 
 func (this *QFontComboBox) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -847,7 +804,6 @@ func miqt_exec_callback_QFontComboBox_keyPressEvent(self *C.QFontComboBox, cb C.
 }
 
 func (this *QFontComboBox) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -875,7 +831,6 @@ func miqt_exec_callback_QFontComboBox_keyReleaseEvent(self *C.QFontComboBox, cb 
 }
 
 func (this *QFontComboBox) callVirtualBase_WheelEvent(e *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -903,7 +858,6 @@ func miqt_exec_callback_QFontComboBox_wheelEvent(self *C.QFontComboBox, cb C.int
 }
 
 func (this *QFontComboBox) callVirtualBase_ContextMenuEvent(e *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QFontComboBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -931,7 +885,6 @@ func miqt_exec_callback_QFontComboBox_contextMenuEvent(self *C.QFontComboBox, cb
 }
 
 func (this *QFontComboBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QFontComboBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -959,7 +912,6 @@ func miqt_exec_callback_QFontComboBox_inputMethodEvent(self *C.QFontComboBox, cb
 }
 
 func (this *QFontComboBox) callVirtualBase_InitStyleOption(option *QStyleOptionComboBox) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QFontComboBox_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
@@ -987,7 +939,6 @@ func miqt_exec_callback_QFontComboBox_initStyleOption(self *C.QFontComboBox, cb 
 }
 
 func (this *QFontComboBox) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFontComboBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1013,7 +964,6 @@ func miqt_exec_callback_QFontComboBox_devType(self *C.QFontComboBox, cb C.intptr
 }
 
 func (this *QFontComboBox) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QFontComboBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1040,7 +990,6 @@ func miqt_exec_callback_QFontComboBox_setVisible(self *C.QFontComboBox, cb C.int
 }
 
 func (this *QFontComboBox) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFontComboBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1069,7 +1018,6 @@ func miqt_exec_callback_QFontComboBox_heightForWidth(self *C.QFontComboBox, cb C
 }
 
 func (this *QFontComboBox) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QFontComboBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1095,7 +1043,6 @@ func miqt_exec_callback_QFontComboBox_hasHeightForWidth(self *C.QFontComboBox, c
 }
 
 func (this *QFontComboBox) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QFontComboBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1122,7 +1069,6 @@ func miqt_exec_callback_QFontComboBox_paintEngine(self *C.QFontComboBox, cb C.in
 }
 
 func (this *QFontComboBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1150,7 +1096,6 @@ func miqt_exec_callback_QFontComboBox_mouseDoubleClickEvent(self *C.QFontComboBo
 }
 
 func (this *QFontComboBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1178,7 +1123,6 @@ func miqt_exec_callback_QFontComboBox_mouseMoveEvent(self *C.QFontComboBox, cb C
 }
 
 func (this *QFontComboBox) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1206,7 +1150,6 @@ func miqt_exec_callback_QFontComboBox_enterEvent(self *C.QFontComboBox, cb C.int
 }
 
 func (this *QFontComboBox) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1234,7 +1177,6 @@ func miqt_exec_callback_QFontComboBox_leaveEvent(self *C.QFontComboBox, cb C.int
 }
 
 func (this *QFontComboBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1262,7 +1204,6 @@ func miqt_exec_callback_QFontComboBox_moveEvent(self *C.QFontComboBox, cb C.intp
 }
 
 func (this *QFontComboBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1290,7 +1231,6 @@ func miqt_exec_callback_QFontComboBox_closeEvent(self *C.QFontComboBox, cb C.int
 }
 
 func (this *QFontComboBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1318,7 +1258,6 @@ func miqt_exec_callback_QFontComboBox_tabletEvent(self *C.QFontComboBox, cb C.in
 }
 
 func (this *QFontComboBox) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1346,7 +1285,6 @@ func miqt_exec_callback_QFontComboBox_actionEvent(self *C.QFontComboBox, cb C.in
 }
 
 func (this *QFontComboBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1374,7 +1312,6 @@ func miqt_exec_callback_QFontComboBox_dragEnterEvent(self *C.QFontComboBox, cb C
 }
 
 func (this *QFontComboBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1402,7 +1339,6 @@ func miqt_exec_callback_QFontComboBox_dragMoveEvent(self *C.QFontComboBox, cb C.
 }
 
 func (this *QFontComboBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1430,7 +1366,6 @@ func miqt_exec_callback_QFontComboBox_dragLeaveEvent(self *C.QFontComboBox, cb C
 }
 
 func (this *QFontComboBox) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1458,7 +1393,6 @@ func miqt_exec_callback_QFontComboBox_dropEvent(self *C.QFontComboBox, cb C.intp
 }
 
 func (this *QFontComboBox) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1500,7 +1434,6 @@ func miqt_exec_callback_QFontComboBox_nativeEvent(self *C.QFontComboBox, cb C.in
 }
 
 func (this *QFontComboBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QFontComboBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1529,7 +1462,6 @@ func miqt_exec_callback_QFontComboBox_metric(self *C.QFontComboBox, cb C.intptr_
 }
 
 func (this *QFontComboBox) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QFontComboBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1557,7 +1489,6 @@ func miqt_exec_callback_QFontComboBox_initPainter(self *C.QFontComboBox, cb C.in
 }
 
 func (this *QFontComboBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QFontComboBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1588,7 +1519,6 @@ func miqt_exec_callback_QFontComboBox_redirected(self *C.QFontComboBox, cb C.int
 }
 
 func (this *QFontComboBox) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QFontComboBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1615,7 +1545,6 @@ func miqt_exec_callback_QFontComboBox_sharedPainter(self *C.QFontComboBox, cb C.
 }
 
 func (this *QFontComboBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QFontComboBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1644,8 +1573,6 @@ func miqt_exec_callback_QFontComboBox_focusNextPrevChild(self *C.QFontComboBox, 
 }
 
 func (this *QFontComboBox) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QFontComboBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1677,7 +1604,6 @@ func miqt_exec_callback_QFontComboBox_eventFilter(self *C.QFontComboBox, cb C.in
 }
 
 func (this *QFontComboBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1705,7 +1631,6 @@ func miqt_exec_callback_QFontComboBox_timerEvent(self *C.QFontComboBox, cb C.int
 }
 
 func (this *QFontComboBox) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1733,7 +1658,6 @@ func miqt_exec_callback_QFontComboBox_childEvent(self *C.QFontComboBox, cb C.int
 }
 
 func (this *QFontComboBox) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QFontComboBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1761,7 +1685,6 @@ func miqt_exec_callback_QFontComboBox_customEvent(self *C.QFontComboBox, cb C.in
 }
 
 func (this *QFontComboBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QFontComboBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1789,7 +1712,6 @@ func miqt_exec_callback_QFontComboBox_connectNotify(self *C.QFontComboBox, cb C.
 }
 
 func (this *QFontComboBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QFontComboBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1824,6 +1746,8 @@ func (this *QFontComboBox) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QFontComboBox) GoGC() {
 	if this.gc != nil {
 		return

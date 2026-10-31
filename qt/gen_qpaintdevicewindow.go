@@ -62,12 +62,10 @@ func UnsafeNewQPaintDeviceWindow(h unsafe.Pointer) *QPaintDeviceWindow {
 }
 
 func (this *QPaintDeviceWindow) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPaintDeviceWindow_metaObject(this.h))
 }
 
 func (this *QPaintDeviceWindow) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPaintDeviceWindow_metacast(this.h, param1_Cstring))
@@ -92,19 +90,16 @@ func QPaintDeviceWindow_TrUtf8(s string) string {
 }
 
 func (this *QPaintDeviceWindow) Update(rect *QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	C.QPaintDeviceWindow_update(this.h, rect.cPointer())
 }
 
 func (this *QPaintDeviceWindow) UpdateWithRegion(region *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(region)
 	C.QPaintDeviceWindow_updateWithRegion(this.h, region.cPointer())
 }
 
 func (this *QPaintDeviceWindow) Update2() {
-	defer runtime.KeepAlive(this)
 	C.QPaintDeviceWindow_update2(this.h)
 }
 
@@ -160,6 +155,8 @@ func (this *QPaintDeviceWindow) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPaintDeviceWindow) GoGC() {
 	if this.gc != nil {
 		return

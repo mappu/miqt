@@ -68,18 +68,15 @@ func UnsafeNewQActionGroup(h unsafe.Pointer) *QActionGroup {
 
 // NewQActionGroup constructs a new QActionGroup object.
 func NewQActionGroup(parent *QObject) *QActionGroup {
-	defer runtime.KeepAlive(parent)
 
 	return newQActionGroup(C.QActionGroup_new(parent.cPointer()))
 }
 
 func (this *QActionGroup) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QActionGroup_metaObject(this.h))
 }
 
 func (this *QActionGroup) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QActionGroup_metacast(this.h, param1_Cstring))
@@ -104,13 +101,10 @@ func QActionGroup_TrUtf8(s string) string {
 }
 
 func (this *QActionGroup) AddAction(a *QAction) *QAction {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(a)
 	return newQAction(C.QActionGroup_addAction(this.h, a.cPointer()))
 }
 
 func (this *QActionGroup) AddActionWithText(text string) *QAction {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -119,7 +113,6 @@ func (this *QActionGroup) AddActionWithText(text string) *QAction {
 }
 
 func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
@@ -129,13 +122,10 @@ func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
 }
 
 func (this *QActionGroup) RemoveAction(a *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(a)
 	C.QActionGroup_removeAction(this.h, a.cPointer())
 }
 
 func (this *QActionGroup) Actions() []*QAction {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QActionGroup_actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAction)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -146,58 +136,46 @@ func (this *QActionGroup) Actions() []*QAction {
 }
 
 func (this *QActionGroup) CheckedAction() *QAction {
-	defer runtime.KeepAlive(this)
 	return newQAction(C.QActionGroup_checkedAction(this.h))
 }
 
 func (this *QActionGroup) IsExclusive() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QActionGroup_isExclusive(this.h))
 }
 
 func (this *QActionGroup) IsEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QActionGroup_isEnabled(this.h))
 }
 
 func (this *QActionGroup) IsVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QActionGroup_isVisible(this.h))
 }
 
 func (this *QActionGroup) ExclusionPolicy() QActionGroup__ExclusionPolicy {
-	defer runtime.KeepAlive(this)
 	return (QActionGroup__ExclusionPolicy)(C.QActionGroup_exclusionPolicy(this.h))
 }
 
 func (this *QActionGroup) SetEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QActionGroup_setEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QActionGroup) SetDisabled(b bool) {
-	defer runtime.KeepAlive(this)
 	C.QActionGroup_setDisabled(this.h, (C.bool)(b))
 }
 
 func (this *QActionGroup) SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QActionGroup_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QActionGroup) SetExclusive(exclusive bool) {
-	defer runtime.KeepAlive(this)
 	C.QActionGroup_setExclusive(this.h, (C.bool)(exclusive))
 }
 
 func (this *QActionGroup) SetExclusionPolicy(policy QActionGroup__ExclusionPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QActionGroup_setExclusionPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QActionGroup) Triggered(param1 *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QActionGroup_triggered(this.h, param1.cPointer())
 }
 func (this *QActionGroup) OnTriggered(slot func(param1 *QAction)) {
@@ -218,8 +196,6 @@ func miqt_exec_callback_QActionGroup_triggered(cb C.intptr_t, param1 *C.QAction)
 }
 
 func (this *QActionGroup) Hovered(param1 *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QActionGroup_hovered(this.h, param1.cPointer())
 }
 func (this *QActionGroup) OnHovered(slot func(param1 *QAction)) {
@@ -285,7 +261,6 @@ func QActionGroup_TrUtf83(s string, c string, n int) string {
 
 // Sender can only be called from a QActionGroup that was directly constructed.
 func (this *QActionGroup) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QActionGroup_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -300,7 +275,6 @@ func (this *QActionGroup) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QActionGroup that was directly constructed.
 func (this *QActionGroup) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QActionGroup_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -315,7 +289,6 @@ func (this *QActionGroup) SenderSignalIndex() int {
 
 // Receivers can only be called from a QActionGroup that was directly constructed.
 func (this *QActionGroup) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -332,7 +305,6 @@ func (this *QActionGroup) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QActionGroup that was directly constructed.
 func (this *QActionGroup) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -347,7 +319,6 @@ func (this *QActionGroup) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QActionGroup) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QActionGroup_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -377,8 +348,6 @@ func miqt_exec_callback_QActionGroup_event(self *C.QActionGroup, cb C.intptr_t, 
 }
 
 func (this *QActionGroup) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QActionGroup_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -410,7 +379,6 @@ func miqt_exec_callback_QActionGroup_eventFilter(self *C.QActionGroup, cb C.intp
 }
 
 func (this *QActionGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QActionGroup_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -438,7 +406,6 @@ func miqt_exec_callback_QActionGroup_timerEvent(self *C.QActionGroup, cb C.intpt
 }
 
 func (this *QActionGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QActionGroup_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -466,7 +433,6 @@ func miqt_exec_callback_QActionGroup_childEvent(self *C.QActionGroup, cb C.intpt
 }
 
 func (this *QActionGroup) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QActionGroup_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -494,7 +460,6 @@ func miqt_exec_callback_QActionGroup_customEvent(self *C.QActionGroup, cb C.intp
 }
 
 func (this *QActionGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QActionGroup_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -522,7 +487,6 @@ func miqt_exec_callback_QActionGroup_connectNotify(self *C.QActionGroup, cb C.in
 }
 
 func (this *QActionGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QActionGroup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -557,6 +521,8 @@ func (this *QActionGroup) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QActionGroup) GoGC() {
 	if this.gc != nil {
 		return

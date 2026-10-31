@@ -66,18 +66,15 @@ func NewQTcpServer() *QTcpServer {
 
 // NewQTcpServer2 constructs a new QTcpServer object.
 func NewQTcpServer2(parent *qt.QObject) *QTcpServer {
-	defer runtime.KeepAlive(parent)
 
 	return newQTcpServer(C.QTcpServer_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QTcpServer) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QTcpServer_metaObject(this.h)))
 }
 
 func (this *QTcpServer) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTcpServer_metacast(this.h, param1_Cstring))
@@ -102,74 +99,60 @@ func QTcpServer_TrUtf8(s string) string {
 }
 
 func (this *QTcpServer) Listen() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTcpServer_listen(this.h))
 }
 
 func (this *QTcpServer) Close() {
-	defer runtime.KeepAlive(this)
 	C.QTcpServer_close(this.h)
 }
 
 func (this *QTcpServer) IsListening() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTcpServer_isListening(this.h))
 }
 
 func (this *QTcpServer) SetMaxPendingConnections(numConnections int) {
-	defer runtime.KeepAlive(this)
 	C.QTcpServer_setMaxPendingConnections(this.h, (C.int)(numConnections))
 }
 
 func (this *QTcpServer) MaxPendingConnections() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTcpServer_maxPendingConnections(this.h))
 }
 
 func (this *QTcpServer) ServerPort() uint16 {
-	defer runtime.KeepAlive(this)
 	return (uint16)(C.QTcpServer_serverPort(this.h))
 }
 
 func (this *QTcpServer) ServerAddress() *QHostAddress {
-	defer runtime.KeepAlive(this)
 	_goptr := newQHostAddress(C.QTcpServer_serverAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTcpServer) SocketDescriptor() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QTcpServer_socketDescriptor(this.h))
 }
 
 func (this *QTcpServer) SetSocketDescriptor(socketDescriptor uintptr) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTcpServer_setSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor)))
 }
 
 func (this *QTcpServer) WaitForNewConnection() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTcpServer_waitForNewConnection(this.h))
 }
 
 func (this *QTcpServer) HasPendingConnections() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTcpServer_hasPendingConnections(this.h))
 }
 
 func (this *QTcpServer) NextPendingConnection() *QTcpSocket {
-	defer runtime.KeepAlive(this)
 	return newQTcpSocket(C.QTcpServer_nextPendingConnection(this.h))
 }
 
 func (this *QTcpServer) ServerError() QAbstractSocket__SocketError {
-	defer runtime.KeepAlive(this)
 	return (QAbstractSocket__SocketError)(C.QTcpServer_serverError(this.h))
 }
 
 func (this *QTcpServer) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTcpServer_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -177,30 +160,25 @@ func (this *QTcpServer) ErrorString() string {
 }
 
 func (this *QTcpServer) PauseAccepting() {
-	defer runtime.KeepAlive(this)
 	C.QTcpServer_pauseAccepting(this.h)
 }
 
 func (this *QTcpServer) ResumeAccepting() {
-	defer runtime.KeepAlive(this)
 	C.QTcpServer_resumeAccepting(this.h)
 }
 
 func (this *QTcpServer) SetProxy(networkProxy *QNetworkProxy) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(networkProxy)
 	C.QTcpServer_setProxy(this.h, networkProxy.cPointer())
 }
 
 func (this *QTcpServer) Proxy() *QNetworkProxy {
-	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkProxy(C.QTcpServer_proxy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTcpServer) NewConnection() {
-	defer runtime.KeepAlive(this)
 	C.QTcpServer_newConnection(this.h)
 }
 func (this *QTcpServer) OnNewConnection(slot func()) {
@@ -218,7 +196,6 @@ func miqt_exec_callback_QTcpServer_newConnection(cb C.intptr_t) {
 }
 
 func (this *QTcpServer) AcceptError(socketError QAbstractSocket__SocketError) {
-	defer runtime.KeepAlive(this)
 	C.QTcpServer_acceptError(this.h, (C.int)(socketError))
 }
 func (this *QTcpServer) OnAcceptError(slot func(socketError QAbstractSocket__SocketError)) {
@@ -283,31 +260,25 @@ func QTcpServer_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QTcpServer) ListenWithAddress(address *QHostAddress) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(address)
 	return (bool)(C.QTcpServer_listenWithAddress(this.h, address.cPointer()))
 }
 
 func (this *QTcpServer) Listen2(address *QHostAddress, port uint16) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(address)
 	return (bool)(C.QTcpServer_listen2(this.h, address.cPointer(), (C.ushort)(port)))
 }
 
 func (this *QTcpServer) WaitForNewConnectionWithMsec(msec int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTcpServer_waitForNewConnectionWithMsec(this.h, (C.int)(msec)))
 }
 
 func (this *QTcpServer) WaitForNewConnection2(msec int, timedOut *bool) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTcpServer_waitForNewConnection2(this.h, (C.int)(msec), (*C.bool)(unsafe.Pointer(timedOut))))
 }
 
 // AddPendingConnection can only be called from a QTcpServer that was directly constructed.
 func (this *QTcpServer) AddPendingConnection(socket *QTcpSocket) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(socket)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTcpServer_protectedbase_addPendingConnection(&_dynamic_cast_ok, unsafe.Pointer(this.h), socket.cPointer())
@@ -320,7 +291,6 @@ func (this *QTcpServer) AddPendingConnection(socket *QTcpSocket) {
 
 // Sender can only be called from a QTcpServer that was directly constructed.
 func (this *QTcpServer) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QTcpServer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -335,7 +305,6 @@ func (this *QTcpServer) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QTcpServer that was directly constructed.
 func (this *QTcpServer) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTcpServer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -350,7 +319,6 @@ func (this *QTcpServer) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTcpServer that was directly constructed.
 func (this *QTcpServer) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -367,7 +335,6 @@ func (this *QTcpServer) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTcpServer that was directly constructed.
 func (this *QTcpServer) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -382,7 +349,6 @@ func (this *QTcpServer) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QTcpServer) callVirtualBase_HasPendingConnections() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTcpServer_virtualbase_hasPendingConnections(unsafe.Pointer(this.h)))
 
@@ -408,7 +374,6 @@ func miqt_exec_callback_QTcpServer_hasPendingConnections(self *C.QTcpServer, cb 
 }
 
 func (this *QTcpServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
-	defer runtime.KeepAlive(this)
 
 	return newQTcpSocket(C.QTcpServer_virtualbase_nextPendingConnection(unsafe.Pointer(this.h)))
 
@@ -428,14 +393,12 @@ func miqt_exec_callback_QTcpServer_nextPendingConnection(self *C.QTcpServer, cb 
 	}
 
 	virtualReturn := gofunc((&QTcpServer{h: self}).callVirtualBase_NextPendingConnection)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTcpServer) callVirtualBase_IncomingConnection(handle uintptr) {
-	defer runtime.KeepAlive(this)
 
 	C.QTcpServer_virtualbase_incomingConnection(unsafe.Pointer(this.h), (C.intptr_t)(handle))
 
@@ -462,7 +425,6 @@ func miqt_exec_callback_QTcpServer_incomingConnection(self *C.QTcpServer, cb C.i
 }
 
 func (this *QTcpServer) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTcpServer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -492,8 +454,6 @@ func miqt_exec_callback_QTcpServer_event(self *C.QTcpServer, cb C.intptr_t, even
 }
 
 func (this *QTcpServer) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTcpServer_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -525,7 +485,6 @@ func miqt_exec_callback_QTcpServer_eventFilter(self *C.QTcpServer, cb C.intptr_t
 }
 
 func (this *QTcpServer) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTcpServer_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -553,7 +512,6 @@ func miqt_exec_callback_QTcpServer_timerEvent(self *C.QTcpServer, cb C.intptr_t,
 }
 
 func (this *QTcpServer) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTcpServer_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -581,7 +539,6 @@ func miqt_exec_callback_QTcpServer_childEvent(self *C.QTcpServer, cb C.intptr_t,
 }
 
 func (this *QTcpServer) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTcpServer_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -609,7 +566,6 @@ func miqt_exec_callback_QTcpServer_customEvent(self *C.QTcpServer, cb C.intptr_t
 }
 
 func (this *QTcpServer) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTcpServer_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -637,7 +593,6 @@ func miqt_exec_callback_QTcpServer_connectNotify(self *C.QTcpServer, cb C.intptr
 }
 
 func (this *QTcpServer) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTcpServer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -672,6 +627,8 @@ func (this *QTcpServer) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTcpServer) GoGC() {
 	if this.gc != nil {
 		return

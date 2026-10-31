@@ -66,18 +66,15 @@ func NewQSignalMapper() *QSignalMapper {
 
 // NewQSignalMapper2 constructs a new QSignalMapper object.
 func NewQSignalMapper2(parent *QObject) *QSignalMapper {
-	defer runtime.KeepAlive(parent)
 
 	return newQSignalMapper(C.QSignalMapper_new2(parent.cPointer()))
 }
 
 func (this *QSignalMapper) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSignalMapper_metaObject(this.h))
 }
 
 func (this *QSignalMapper) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSignalMapper_metacast(this.h, param1_Cstring))
@@ -93,14 +90,10 @@ func QSignalMapper_Tr(s string) string {
 }
 
 func (this *QSignalMapper) SetMapping(sender *QObject, id int) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sender)
 	C.QSignalMapper_setMapping(this.h, sender.cPointer(), (C.int)(id))
 }
 
 func (this *QSignalMapper) SetMapping2(sender *QObject, text string) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sender)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -109,25 +102,18 @@ func (this *QSignalMapper) SetMapping2(sender *QObject, text string) {
 }
 
 func (this *QSignalMapper) SetMapping3(sender *QObject, object *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sender)
-	defer runtime.KeepAlive(object)
 	C.QSignalMapper_setMapping3(this.h, sender.cPointer(), object.cPointer())
 }
 
 func (this *QSignalMapper) RemoveMappings(sender *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sender)
 	C.QSignalMapper_removeMappings(this.h, sender.cPointer())
 }
 
 func (this *QSignalMapper) Mapping(id int) *QObject {
-	defer runtime.KeepAlive(this)
 	return newQObject(C.QSignalMapper_mapping(this.h, (C.int)(id)))
 }
 
 func (this *QSignalMapper) MappingWithText(text string) *QObject {
-	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -136,13 +122,10 @@ func (this *QSignalMapper) MappingWithText(text string) *QObject {
 }
 
 func (this *QSignalMapper) MappingWithObject(object *QObject) *QObject {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	return newQObject(C.QSignalMapper_mappingWithObject(this.h, object.cPointer()))
 }
 
 func (this *QSignalMapper) MappedInt(param1 int) {
-	defer runtime.KeepAlive(this)
 	C.QSignalMapper_mappedInt(this.h, (C.int)(param1))
 }
 func (this *QSignalMapper) OnMappedInt(slot func(param1 int)) {
@@ -163,7 +146,6 @@ func miqt_exec_callback_QSignalMapper_mappedInt(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QSignalMapper) MappedString(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -191,8 +173,6 @@ func miqt_exec_callback_QSignalMapper_mappedString(cb C.intptr_t, param1 C.struc
 }
 
 func (this *QSignalMapper) MappedObject(param1 *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QSignalMapper_mappedObject(this.h, param1.cPointer())
 }
 func (this *QSignalMapper) OnMappedObject(slot func(param1 *QObject)) {
@@ -213,13 +193,10 @@ func miqt_exec_callback_QSignalMapper_mappedObject(cb C.intptr_t, param1 *C.QObj
 }
 
 func (this *QSignalMapper) Map() {
-	defer runtime.KeepAlive(this)
 	C.QSignalMapper_map(this.h)
 }
 
 func (this *QSignalMapper) MapWithSender(sender *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(sender)
 	C.QSignalMapper_mapWithSender(this.h, sender.cPointer())
 }
 
@@ -247,7 +224,6 @@ func QSignalMapper_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QSignalMapper that was directly constructed.
 func (this *QSignalMapper) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSignalMapper_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -262,7 +238,6 @@ func (this *QSignalMapper) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSignalMapper that was directly constructed.
 func (this *QSignalMapper) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSignalMapper_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -277,7 +252,6 @@ func (this *QSignalMapper) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSignalMapper that was directly constructed.
 func (this *QSignalMapper) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -294,7 +268,6 @@ func (this *QSignalMapper) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSignalMapper that was directly constructed.
 func (this *QSignalMapper) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -309,7 +282,6 @@ func (this *QSignalMapper) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSignalMapper) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSignalMapper_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -339,8 +311,6 @@ func miqt_exec_callback_QSignalMapper_event(self *C.QSignalMapper, cb C.intptr_t
 }
 
 func (this *QSignalMapper) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSignalMapper_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -372,7 +342,6 @@ func miqt_exec_callback_QSignalMapper_eventFilter(self *C.QSignalMapper, cb C.in
 }
 
 func (this *QSignalMapper) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSignalMapper_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -400,7 +369,6 @@ func miqt_exec_callback_QSignalMapper_timerEvent(self *C.QSignalMapper, cb C.int
 }
 
 func (this *QSignalMapper) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSignalMapper_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -428,7 +396,6 @@ func miqt_exec_callback_QSignalMapper_childEvent(self *C.QSignalMapper, cb C.int
 }
 
 func (this *QSignalMapper) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSignalMapper_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -456,7 +423,6 @@ func miqt_exec_callback_QSignalMapper_customEvent(self *C.QSignalMapper, cb C.in
 }
 
 func (this *QSignalMapper) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSignalMapper_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -484,7 +450,6 @@ func miqt_exec_callback_QSignalMapper_connectNotify(self *C.QSignalMapper, cb C.
 }
 
 func (this *QSignalMapper) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSignalMapper_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -519,6 +484,8 @@ func (this *QSignalMapper) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QSignalMapper) GoGC() {
 	if this.gc != nil {
 		return

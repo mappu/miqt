@@ -67,7 +67,6 @@ func (this *QDesignerFormEditorPluginInterface) IsInitialized() bool {
 
 func (this *QDesignerFormEditorPluginInterface) Initialize(core *QDesignerFormEditorInterface) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(core)
 	C.QDesignerFormEditorPluginInterface_initialize(this.h, core.cPointer())
 }
 
@@ -134,7 +133,6 @@ func miqt_exec_callback_QDesignerFormEditorPluginInterface_action(self *C.QDesig
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QAction)(virtualReturn.UnsafePointer())
 
@@ -154,7 +152,6 @@ func miqt_exec_callback_QDesignerFormEditorPluginInterface_core(self *C.QDesigne
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 

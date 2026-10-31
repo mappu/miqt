@@ -63,21 +63,18 @@ func UnsafeNewQAccessibleWidget(h unsafe.Pointer) *QAccessibleWidget {
 
 // NewQAccessibleWidget constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget(o *QWidget) *QAccessibleWidget {
-	defer runtime.KeepAlive(o)
 
 	return newQAccessibleWidget(C.QAccessibleWidget_new(o.cPointer()))
 }
 
 // NewQAccessibleWidget2 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
-	defer runtime.KeepAlive(o)
 
 	return newQAccessibleWidget(C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r)))
 }
 
 // NewQAccessibleWidget3 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAccessibleWidget {
-	defer runtime.KeepAlive(o)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))

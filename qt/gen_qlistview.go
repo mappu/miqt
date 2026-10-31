@@ -96,7 +96,6 @@ func UnsafeNewQListView(h unsafe.Pointer) *QListView {
 
 // NewQListView constructs a new QListView object.
 func NewQListView(parent *QWidget) *QListView {
-	defer runtime.KeepAlive(parent)
 
 	return newQListView(C.QListView_new(parent.cPointer()))
 }
@@ -108,12 +107,10 @@ func NewQListView2() *QListView {
 }
 
 func (this *QListView) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QListView_metaObject(this.h))
 }
 
 func (this *QListView) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QListView_metacast(this.h, param1_Cstring))
@@ -138,165 +135,133 @@ func QListView_TrUtf8(s string) string {
 }
 
 func (this *QListView) SetMovement(movement QListView__Movement) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setMovement(this.h, (C.int)(movement))
 }
 
 func (this *QListView) Movement() QListView__Movement {
-	defer runtime.KeepAlive(this)
 	return (QListView__Movement)(C.QListView_movement(this.h))
 }
 
 func (this *QListView) SetFlow(flow QListView__Flow) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setFlow(this.h, (C.int)(flow))
 }
 
 func (this *QListView) Flow() QListView__Flow {
-	defer runtime.KeepAlive(this)
 	return (QListView__Flow)(C.QListView_flow(this.h))
 }
 
 func (this *QListView) SetWrapping(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setWrapping(this.h, (C.bool)(enable))
 }
 
 func (this *QListView) IsWrapping() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QListView_isWrapping(this.h))
 }
 
 func (this *QListView) SetResizeMode(mode QListView__ResizeMode) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setResizeMode(this.h, (C.int)(mode))
 }
 
 func (this *QListView) ResizeMode() QListView__ResizeMode {
-	defer runtime.KeepAlive(this)
 	return (QListView__ResizeMode)(C.QListView_resizeMode(this.h))
 }
 
 func (this *QListView) SetLayoutMode(mode QListView__LayoutMode) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setLayoutMode(this.h, (C.int)(mode))
 }
 
 func (this *QListView) LayoutMode() QListView__LayoutMode {
-	defer runtime.KeepAlive(this)
 	return (QListView__LayoutMode)(C.QListView_layoutMode(this.h))
 }
 
 func (this *QListView) SetSpacing(space int) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setSpacing(this.h, (C.int)(space))
 }
 
 func (this *QListView) Spacing() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QListView_spacing(this.h))
 }
 
 func (this *QListView) SetBatchSize(batchSize int) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setBatchSize(this.h, (C.int)(batchSize))
 }
 
 func (this *QListView) BatchSize() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QListView_batchSize(this.h))
 }
 
 func (this *QListView) SetGridSize(size *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QListView_setGridSize(this.h, size.cPointer())
 }
 
 func (this *QListView) GridSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QListView_gridSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QListView) SetViewMode(mode QListView__ViewMode) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setViewMode(this.h, (C.int)(mode))
 }
 
 func (this *QListView) ViewMode() QListView__ViewMode {
-	defer runtime.KeepAlive(this)
 	return (QListView__ViewMode)(C.QListView_viewMode(this.h))
 }
 
 func (this *QListView) ClearPropertyFlags() {
-	defer runtime.KeepAlive(this)
 	C.QListView_clearPropertyFlags(this.h)
 }
 
 func (this *QListView) IsRowHidden(row int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QListView_isRowHidden(this.h, (C.int)(row)))
 }
 
 func (this *QListView) SetRowHidden(row int, hide bool) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setRowHidden(this.h, (C.int)(row), (C.bool)(hide))
 }
 
 func (this *QListView) SetModelColumn(column int) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setModelColumn(this.h, (C.int)(column))
 }
 
 func (this *QListView) ModelColumn() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QListView_modelColumn(this.h))
 }
 
 func (this *QListView) SetUniformItemSizes(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setUniformItemSizes(this.h, (C.bool)(enable))
 }
 
 func (this *QListView) UniformItemSizes() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QListView_uniformItemSizes(this.h))
 }
 
 func (this *QListView) SetWordWrap(on bool) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setWordWrap(this.h, (C.bool)(on))
 }
 
 func (this *QListView) WordWrap() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QListView_wordWrap(this.h))
 }
 
 func (this *QListView) SetSelectionRectVisible(show bool) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setSelectionRectVisible(this.h, (C.bool)(show))
 }
 
 func (this *QListView) IsSelectionRectVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QListView_isSelectionRectVisible(this.h))
 }
 
 func (this *QListView) SetItemAlignment(alignment AlignmentFlag) {
-	defer runtime.KeepAlive(this)
 	C.QListView_setItemAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QListView) ItemAlignment() AlignmentFlag {
-	defer runtime.KeepAlive(this)
 	return (AlignmentFlag)(C.QListView_itemAlignment(this.h))
 }
 
 func (this *QListView) VisualRect(index *QModelIndex) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQRect(C.QListView_visualRect(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -304,13 +269,11 @@ func (this *QListView) VisualRect(index *QModelIndex) *QRect {
 }
 
 func (this *QListView) ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QListView_scrollTo(this.h, index.cPointer(), (C.int)(hint))
 }
 
 func (this *QListView) IndexAt(p *QPoint) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
 	_goptr := newQModelIndex(C.QListView_indexAt(this.h, p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -318,23 +281,19 @@ func (this *QListView) IndexAt(p *QPoint) *QModelIndex {
 }
 
 func (this *QListView) DoItemsLayout() {
-	defer runtime.KeepAlive(this)
 	C.QListView_doItemsLayout(this.h)
 }
 
 func (this *QListView) Reset() {
-	defer runtime.KeepAlive(this)
 	C.QListView_reset(this.h)
 }
 
 func (this *QListView) SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QListView_setRootIndex(this.h, index.cPointer())
 }
 
 func (this *QListView) IndexesMoved(indexes []QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(indexes)
 	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
@@ -416,7 +375,6 @@ func QListView_TrUtf83(s string, c string, n int) string {
 
 // ResizeContents can only be called from a QListView that was directly constructed.
 func (this *QListView) ResizeContents(width int, height int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_resizeContents(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(width), (C.int)(height))
@@ -429,7 +387,6 @@ func (this *QListView) ResizeContents(width int, height int) {
 
 // ContentsSize can only be called from a QListView that was directly constructed.
 func (this *QListView) ContentsSize() QSize {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQSize(C.QListView_protectedbase_contentsSize(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -446,7 +403,6 @@ func (this *QListView) ContentsSize() QSize {
 
 // RectForIndex can only be called from a QListView that was directly constructed.
 func (this *QListView) RectForIndex(index *QModelIndex) QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	var _dynamic_cast_ok C.bool = false
@@ -464,7 +420,6 @@ func (this *QListView) RectForIndex(index *QModelIndex) QRect {
 
 // SetPositionForIndex can only be called from a QListView that was directly constructed.
 func (this *QListView) SetPositionForIndex(position *QPoint, index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(position)
 	defer runtime.KeepAlive(index)
 
@@ -479,7 +434,6 @@ func (this *QListView) SetPositionForIndex(position *QPoint, index *QModelIndex)
 
 // SetHorizontalStepsPerItem can only be called from a QListView that was directly constructed.
 func (this *QListView) SetHorizontalStepsPerItem(steps int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_setHorizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
@@ -492,7 +446,6 @@ func (this *QListView) SetHorizontalStepsPerItem(steps int) {
 
 // HorizontalStepsPerItem can only be called from a QListView that was directly constructed.
 func (this *QListView) HorizontalStepsPerItem() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QListView_protectedbase_horizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -507,7 +460,6 @@ func (this *QListView) HorizontalStepsPerItem() int {
 
 // SetVerticalStepsPerItem can only be called from a QListView that was directly constructed.
 func (this *QListView) SetVerticalStepsPerItem(steps int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_setVerticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
@@ -520,7 +472,6 @@ func (this *QListView) SetVerticalStepsPerItem(steps int) {
 
 // VerticalStepsPerItem can only be called from a QListView that was directly constructed.
 func (this *QListView) VerticalStepsPerItem() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QListView_protectedbase_verticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -535,7 +486,6 @@ func (this *QListView) VerticalStepsPerItem() int {
 
 // State can only be called from a QListView that was directly constructed.
 func (this *QListView) State() QAbstractItemView__State {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__State)(C.QListView_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -550,7 +500,6 @@ func (this *QListView) State() QAbstractItemView__State {
 
 // SetState can only be called from a QListView that was directly constructed.
 func (this *QListView) SetState(state QAbstractItemView__State) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -563,7 +512,6 @@ func (this *QListView) SetState(state QAbstractItemView__State) {
 
 // ScheduleDelayedItemsLayout can only be called from a QListView that was directly constructed.
 func (this *QListView) ScheduleDelayedItemsLayout() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -576,7 +524,6 @@ func (this *QListView) ScheduleDelayedItemsLayout() {
 
 // ExecuteDelayedItemsLayout can only be called from a QListView that was directly constructed.
 func (this *QListView) ExecuteDelayedItemsLayout() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -589,7 +536,6 @@ func (this *QListView) ExecuteDelayedItemsLayout() {
 
 // SetDirtyRegion can only be called from a QListView that was directly constructed.
 func (this *QListView) SetDirtyRegion(region *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(region)
 
 	var _dynamic_cast_ok C.bool = false
@@ -603,7 +549,6 @@ func (this *QListView) SetDirtyRegion(region *QRegion) {
 
 // ScrollDirtyRegion can only be called from a QListView that was directly constructed.
 func (this *QListView) ScrollDirtyRegion(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
@@ -616,7 +561,6 @@ func (this *QListView) ScrollDirtyRegion(dx int, dy int) {
 
 // DirtyRegionOffset can only be called from a QListView that was directly constructed.
 func (this *QListView) DirtyRegionOffset() QPoint {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPoint(C.QListView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -633,7 +577,6 @@ func (this *QListView) DirtyRegionOffset() QPoint {
 
 // StartAutoScroll can only be called from a QListView that was directly constructed.
 func (this *QListView) StartAutoScroll() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -646,7 +589,6 @@ func (this *QListView) StartAutoScroll() {
 
 // StopAutoScroll can only be called from a QListView that was directly constructed.
 func (this *QListView) StopAutoScroll() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -659,7 +601,6 @@ func (this *QListView) StopAutoScroll() {
 
 // DoAutoScroll can only be called from a QListView that was directly constructed.
 func (this *QListView) DoAutoScroll() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -672,7 +613,6 @@ func (this *QListView) DoAutoScroll() {
 
 // DropIndicatorPosition can only be called from a QListView that was directly constructed.
 func (this *QListView) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QListView_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -687,7 +627,6 @@ func (this *QListView) DropIndicatorPosition() QAbstractItemView__DropIndicatorP
 
 // SetViewportMargins can only be called from a QListView that was directly constructed.
 func (this *QListView) SetViewportMargins(left int, top int, right int, bottom int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -700,7 +639,6 @@ func (this *QListView) SetViewportMargins(left int, top int, right int, bottom i
 
 // ViewportMargins can only be called from a QListView that was directly constructed.
 func (this *QListView) ViewportMargins() QMargins {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QListView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -717,7 +655,6 @@ func (this *QListView) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QListView that was directly constructed.
 func (this *QListView) DrawFrame(param1 *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -731,7 +668,6 @@ func (this *QListView) DrawFrame(param1 *QPainter) {
 
 // InitStyleOption can only be called from a QListView that was directly constructed.
 func (this *QListView) InitStyleOption(option *QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -745,7 +681,6 @@ func (this *QListView) InitStyleOption(option *QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a QListView that was directly constructed.
 func (this *QListView) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -758,7 +693,6 @@ func (this *QListView) UpdateMicroFocus() {
 
 // Create can only be called from a QListView that was directly constructed.
 func (this *QListView) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -771,7 +705,6 @@ func (this *QListView) Create() {
 
 // Destroy can only be called from a QListView that was directly constructed.
 func (this *QListView) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QListView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -784,7 +717,6 @@ func (this *QListView) Destroy() {
 
 // FocusNextChild can only be called from a QListView that was directly constructed.
 func (this *QListView) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QListView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -799,7 +731,6 @@ func (this *QListView) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QListView that was directly constructed.
 func (this *QListView) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QListView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -814,7 +745,6 @@ func (this *QListView) FocusPreviousChild() bool {
 
 // Sender can only be called from a QListView that was directly constructed.
 func (this *QListView) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QListView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -829,7 +759,6 @@ func (this *QListView) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QListView that was directly constructed.
 func (this *QListView) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QListView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -844,7 +773,6 @@ func (this *QListView) SenderSignalIndex() int {
 
 // Receivers can only be called from a QListView that was directly constructed.
 func (this *QListView) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -861,7 +789,6 @@ func (this *QListView) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QListView that was directly constructed.
 func (this *QListView) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -876,7 +803,6 @@ func (this *QListView) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QListView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	_goptr := newQRect(C.QListView_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))
@@ -909,7 +835,6 @@ func miqt_exec_callback_QListView_visualRect(self *C.QListView, cb C.intptr_t, i
 }
 
 func (this *QListView) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	C.QListView_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
@@ -939,7 +864,6 @@ func miqt_exec_callback_QListView_scrollTo(self *C.QListView, cb C.intptr_t, ind
 }
 
 func (this *QListView) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
 
 	_goptr := newQModelIndex(C.QListView_virtualbase_indexAt(unsafe.Pointer(this.h), p.cPointer()))
@@ -972,7 +896,6 @@ func miqt_exec_callback_QListView_indexAt(self *C.QListView, cb C.intptr_t, p *C
 }
 
 func (this *QListView) callVirtualBase_DoItemsLayout() {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
@@ -996,7 +919,6 @@ func miqt_exec_callback_QListView_doItemsLayout(self *C.QListView, cb C.intptr_t
 }
 
 func (this *QListView) callVirtualBase_Reset() {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -1020,7 +942,6 @@ func miqt_exec_callback_QListView_reset(self *C.QListView, cb C.intptr_t) {
 }
 
 func (this *QListView) callVirtualBase_SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	C.QListView_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
@@ -1048,7 +969,6 @@ func miqt_exec_callback_QListView_setRootIndex(self *C.QListView, cb C.intptr_t,
 }
 
 func (this *QListView) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QListView_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -1078,7 +998,6 @@ func miqt_exec_callback_QListView_event(self *C.QListView, cb C.intptr_t, e *C.Q
 }
 
 func (this *QListView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -1107,7 +1026,6 @@ func miqt_exec_callback_QListView_scrollContentsBy(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(topLeft)
 	defer runtime.KeepAlive(bottomRight)
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -1153,7 +1071,6 @@ func miqt_exec_callback_QListView_dataChanged(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QListView_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
@@ -1185,7 +1102,6 @@ func miqt_exec_callback_QListView_rowsInserted(self *C.QListView, cb C.intptr_t,
 }
 
 func (this *QListView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QListView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
@@ -1217,7 +1133,6 @@ func miqt_exec_callback_QListView_rowsAboutToBeRemoved(self *C.QListView, cb C.i
 }
 
 func (this *QListView) callVirtualBase_MouseMoveEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QListView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1245,7 +1160,6 @@ func miqt_exec_callback_QListView_mouseMoveEvent(self *C.QListView, cb C.intptr_
 }
 
 func (this *QListView) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QListView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1273,7 +1187,6 @@ func miqt_exec_callback_QListView_mouseReleaseEvent(self *C.QListView, cb C.intp
 }
 
 func (this *QListView) callVirtualBase_WheelEvent(e *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QListView_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1301,7 +1214,6 @@ func miqt_exec_callback_QListView_wheelEvent(self *C.QListView, cb C.intptr_t, e
 }
 
 func (this *QListView) callVirtualBase_TimerEvent(e *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QListView_virtualbase_timerEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1329,7 +1241,6 @@ func miqt_exec_callback_QListView_timerEvent(self *C.QListView, cb C.intptr_t, e
 }
 
 func (this *QListView) callVirtualBase_ResizeEvent(e *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QListView_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1357,7 +1268,6 @@ func miqt_exec_callback_QListView_resizeEvent(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_DragMoveEvent(e *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QListView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1385,7 +1295,6 @@ func miqt_exec_callback_QListView_dragMoveEvent(self *C.QListView, cb C.intptr_t
 }
 
 func (this *QListView) callVirtualBase_DragLeaveEvent(e *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QListView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1413,7 +1322,6 @@ func miqt_exec_callback_QListView_dragLeaveEvent(self *C.QListView, cb C.intptr_
 }
 
 func (this *QListView) callVirtualBase_DropEvent(e *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QListView_virtualbase_dropEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1441,7 +1349,6 @@ func miqt_exec_callback_QListView_dropEvent(self *C.QListView, cb C.intptr_t, e 
 }
 
 func (this *QListView) callVirtualBase_StartDrag(supportedActions DropAction) {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
@@ -1468,7 +1375,6 @@ func miqt_exec_callback_QListView_startDrag(self *C.QListView, cb C.intptr_t, su
 }
 
 func (this *QListView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQStyleOptionViewItem(C.QListView_virtualbase_viewOptions(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1497,7 +1403,6 @@ func miqt_exec_callback_QListView_viewOptions(self *C.QListView, cb C.intptr_t) 
 }
 
 func (this *QListView) callVirtualBase_PaintEvent(e *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QListView_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1525,7 +1430,6 @@ func miqt_exec_callback_QListView_paintEvent(self *C.QListView, cb C.intptr_t, e
 }
 
 func (this *QListView) callVirtualBase_HorizontalOffset() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QListView_virtualbase_horizontalOffset(unsafe.Pointer(this.h)))
 
@@ -1551,7 +1455,6 @@ func miqt_exec_callback_QListView_horizontalOffset(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_VerticalOffset() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QListView_virtualbase_verticalOffset(unsafe.Pointer(this.h)))
 
@@ -1577,7 +1480,6 @@ func miqt_exec_callback_QListView_verticalOffset(self *C.QListView, cb C.intptr_
 }
 
 func (this *QListView) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQModelIndex(C.QListView_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1611,7 +1513,6 @@ func miqt_exec_callback_QListView_moveCursor(self *C.QListView, cb C.intptr_t, c
 }
 
 func (this *QListView) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 
 	C.QListView_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
@@ -1641,7 +1542,6 @@ func miqt_exec_callback_QListView_setSelection(self *C.QListView, cb C.intptr_t,
 }
 
 func (this *QListView) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selection)
 
 	_goptr := newQRegion(C.QListView_virtualbase_visualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
@@ -1674,7 +1574,6 @@ func miqt_exec_callback_QListView_visualRegionForSelection(self *C.QListView, cb
 }
 
 func (this *QListView) callVirtualBase_SelectedIndexes() []QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QListView_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -1715,7 +1614,6 @@ func miqt_exec_callback_QListView_selectedIndexes(self *C.QListView, cb C.intptr
 }
 
 func (this *QListView) callVirtualBase_UpdateGeometries() {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
@@ -1739,7 +1637,6 @@ func miqt_exec_callback_QListView_updateGeometries(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return (bool)(C.QListView_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
@@ -1769,7 +1666,6 @@ func miqt_exec_callback_QListView_isIndexHidden(self *C.QListView, cb C.intptr_t
 }
 
 func (this *QListView) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selected)
 	defer runtime.KeepAlive(deselected)
 
@@ -1800,7 +1696,6 @@ func miqt_exec_callback_QListView_selectionChanged(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(current)
 	defer runtime.KeepAlive(previous)
 
@@ -1831,7 +1726,6 @@ func miqt_exec_callback_QListView_currentChanged(self *C.QListView, cb C.intptr_
 }
 
 func (this *QListView) callVirtualBase_ViewportSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QListView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1860,8 +1754,6 @@ func miqt_exec_callback_QListView_viewportSizeHint(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_SetModel(model *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(model)
 
 	C.QListView_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
@@ -1888,8 +1780,6 @@ func miqt_exec_callback_QListView_setModel(self *C.QListView, cb C.intptr_t, mod
 }
 
 func (this *QListView) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(selectionModel)
 
 	C.QListView_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
@@ -1916,7 +1806,6 @@ func miqt_exec_callback_QListView_setSelectionModel(self *C.QListView, cb C.intp
 }
 
 func (this *QListView) callVirtualBase_KeyboardSearch(search string) {
-	defer runtime.KeepAlive(this)
 	search_ms := C.struct_miqt_string{}
 	search_ms.data = C.CString(search)
 	search_ms.len = C.size_t(len(search))
@@ -1950,7 +1839,6 @@ func miqt_exec_callback_QListView_keyboardSearch(self *C.QListView, cb C.intptr_
 }
 
 func (this *QListView) callVirtualBase_SizeHintForRow(row int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QListView_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
@@ -1979,7 +1867,6 @@ func miqt_exec_callback_QListView_sizeHintForRow(self *C.QListView, cb C.intptr_
 }
 
 func (this *QListView) callVirtualBase_SizeHintForColumn(column int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QListView_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
@@ -2008,7 +1895,6 @@ func miqt_exec_callback_QListView_sizeHintForColumn(self *C.QListView, cb C.intp
 }
 
 func (this *QListView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QListView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2040,7 +1926,6 @@ func miqt_exec_callback_QListView_inputMethodQuery(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_SelectAll() {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_selectAll(unsafe.Pointer(this.h))
 
@@ -2064,7 +1949,6 @@ func miqt_exec_callback_QListView_selectAll(self *C.QListView, cb C.intptr_t) {
 }
 
 func (this *QListView) callVirtualBase_UpdateEditorData() {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
@@ -2088,7 +1972,6 @@ func miqt_exec_callback_QListView_updateEditorData(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_UpdateEditorGeometries() {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
@@ -2112,7 +1995,6 @@ func miqt_exec_callback_QListView_updateEditorGeometries(self *C.QListView, cb C
 }
 
 func (this *QListView) callVirtualBase_VerticalScrollbarAction(action int) {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -2139,7 +2021,6 @@ func miqt_exec_callback_QListView_verticalScrollbarAction(self *C.QListView, cb 
 }
 
 func (this *QListView) callVirtualBase_HorizontalScrollbarAction(action int) {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -2166,7 +2047,6 @@ func miqt_exec_callback_QListView_horizontalScrollbarAction(self *C.QListView, c
 }
 
 func (this *QListView) callVirtualBase_VerticalScrollbarValueChanged(value int) {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -2193,7 +2073,6 @@ func miqt_exec_callback_QListView_verticalScrollbarValueChanged(self *C.QListVie
 }
 
 func (this *QListView) callVirtualBase_HorizontalScrollbarValueChanged(value int) {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -2220,8 +2099,6 @@ func miqt_exec_callback_QListView_horizontalScrollbarValueChanged(self *C.QListV
 }
 
 func (this *QListView) callVirtualBase_CloseEditor(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QListView_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
@@ -2250,8 +2127,6 @@ func miqt_exec_callback_QListView_closeEditor(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_CommitData(editor *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QListView_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -2278,8 +2153,6 @@ func miqt_exec_callback_QListView_commitData(self *C.QListView, cb C.intptr_t, e
 }
 
 func (this *QListView) callVirtualBase_EditorDestroyed(editor *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QListView_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -2306,7 +2179,6 @@ func miqt_exec_callback_QListView_editorDestroyed(self *C.QListView, cb C.intptr
 }
 
 func (this *QListView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(event)
 
@@ -2341,7 +2213,6 @@ func miqt_exec_callback_QListView_edit2(self *C.QListView, cb C.intptr_t, index 
 }
 
 func (this *QListView) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(event)
 
@@ -2374,7 +2245,6 @@ func miqt_exec_callback_QListView_selectionCommand(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QListView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2403,7 +2273,6 @@ func miqt_exec_callback_QListView_focusNextPrevChild(self *C.QListView, cb C.int
 }
 
 func (this *QListView) callVirtualBase_ViewportEvent(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QListView_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
@@ -2433,7 +2302,6 @@ func miqt_exec_callback_QListView_viewportEvent(self *C.QListView, cb C.intptr_t
 }
 
 func (this *QListView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2461,7 +2329,6 @@ func miqt_exec_callback_QListView_mousePressEvent(self *C.QListView, cb C.intptr
 }
 
 func (this *QListView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2489,7 +2356,6 @@ func miqt_exec_callback_QListView_mouseDoubleClickEvent(self *C.QListView, cb C.
 }
 
 func (this *QListView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2517,7 +2383,6 @@ func miqt_exec_callback_QListView_dragEnterEvent(self *C.QListView, cb C.intptr_
 }
 
 func (this *QListView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2545,7 +2410,6 @@ func miqt_exec_callback_QListView_focusInEvent(self *C.QListView, cb C.intptr_t,
 }
 
 func (this *QListView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2573,7 +2437,6 @@ func miqt_exec_callback_QListView_focusOutEvent(self *C.QListView, cb C.intptr_t
 }
 
 func (this *QListView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2601,7 +2464,6 @@ func miqt_exec_callback_QListView_keyPressEvent(self *C.QListView, cb C.intptr_t
 }
 
 func (this *QListView) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2629,8 +2491,6 @@ func miqt_exec_callback_QListView_inputMethodEvent(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QListView_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
@@ -2662,7 +2522,6 @@ func miqt_exec_callback_QListView_eventFilter(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QListView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2691,7 +2550,6 @@ func miqt_exec_callback_QListView_minimumSizeHint(self *C.QListView, cb C.intptr
 }
 
 func (this *QListView) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QListView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2720,8 +2578,6 @@ func miqt_exec_callback_QListView_sizeHint(self *C.QListView, cb C.intptr_t) *C.
 }
 
 func (this *QListView) callVirtualBase_SetupViewport(viewport *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewport)
 
 	C.QListView_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -2748,7 +2604,6 @@ func miqt_exec_callback_QListView_setupViewport(self *C.QListView, cb C.intptr_t
 }
 
 func (this *QListView) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QListView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -2776,7 +2631,6 @@ func miqt_exec_callback_QListView_contextMenuEvent(self *C.QListView, cb C.intpt
 }
 
 func (this *QListView) callVirtualBase_ChangeEvent(param1 *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QListView_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -2804,7 +2658,6 @@ func miqt_exec_callback_QListView_changeEvent(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QListView_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -2830,7 +2683,6 @@ func miqt_exec_callback_QListView_devType(self *C.QListView, cb C.intptr_t) C.in
 }
 
 func (this *QListView) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QListView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -2857,7 +2709,6 @@ func miqt_exec_callback_QListView_setVisible(self *C.QListView, cb C.intptr_t, v
 }
 
 func (this *QListView) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QListView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2886,7 +2737,6 @@ func miqt_exec_callback_QListView_heightForWidth(self *C.QListView, cb C.intptr_
 }
 
 func (this *QListView) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QListView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -2912,7 +2762,6 @@ func miqt_exec_callback_QListView_hasHeightForWidth(self *C.QListView, cb C.intp
 }
 
 func (this *QListView) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QListView_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -2939,7 +2788,6 @@ func miqt_exec_callback_QListView_paintEngine(self *C.QListView, cb C.intptr_t) 
 }
 
 func (this *QListView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2967,7 +2815,6 @@ func miqt_exec_callback_QListView_keyReleaseEvent(self *C.QListView, cb C.intptr
 }
 
 func (this *QListView) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2995,7 +2842,6 @@ func miqt_exec_callback_QListView_enterEvent(self *C.QListView, cb C.intptr_t, e
 }
 
 func (this *QListView) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3023,7 +2869,6 @@ func miqt_exec_callback_QListView_leaveEvent(self *C.QListView, cb C.intptr_t, e
 }
 
 func (this *QListView) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3051,7 +2896,6 @@ func miqt_exec_callback_QListView_moveEvent(self *C.QListView, cb C.intptr_t, ev
 }
 
 func (this *QListView) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3079,7 +2923,6 @@ func miqt_exec_callback_QListView_closeEvent(self *C.QListView, cb C.intptr_t, e
 }
 
 func (this *QListView) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3107,7 +2950,6 @@ func miqt_exec_callback_QListView_tabletEvent(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3135,7 +2977,6 @@ func miqt_exec_callback_QListView_actionEvent(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3163,7 +3004,6 @@ func miqt_exec_callback_QListView_showEvent(self *C.QListView, cb C.intptr_t, ev
 }
 
 func (this *QListView) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3191,7 +3031,6 @@ func miqt_exec_callback_QListView_hideEvent(self *C.QListView, cb C.intptr_t, ev
 }
 
 func (this *QListView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -3233,7 +3072,6 @@ func miqt_exec_callback_QListView_nativeEvent(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QListView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3262,7 +3100,6 @@ func miqt_exec_callback_QListView_metric(self *C.QListView, cb C.intptr_t, param
 }
 
 func (this *QListView) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QListView_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -3290,7 +3127,6 @@ func miqt_exec_callback_QListView_initPainter(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QListView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -3321,7 +3157,6 @@ func miqt_exec_callback_QListView_redirected(self *C.QListView, cb C.intptr_t, o
 }
 
 func (this *QListView) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QListView_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -3348,7 +3183,6 @@ func miqt_exec_callback_QListView_sharedPainter(self *C.QListView, cb C.intptr_t
 }
 
 func (this *QListView) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3376,7 +3210,6 @@ func miqt_exec_callback_QListView_childEvent(self *C.QListView, cb C.intptr_t, e
 }
 
 func (this *QListView) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QListView_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3404,7 +3237,6 @@ func miqt_exec_callback_QListView_customEvent(self *C.QListView, cb C.intptr_t, 
 }
 
 func (this *QListView) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QListView_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3432,7 +3264,6 @@ func miqt_exec_callback_QListView_connectNotify(self *C.QListView, cb C.intptr_t
 }
 
 func (this *QListView) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QListView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3467,6 +3298,8 @@ func (this *QListView) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QListView) GoGC() {
 	if this.gc != nil {
 		return

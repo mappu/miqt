@@ -60,7 +60,6 @@ func UnsafeNewQDial(h unsafe.Pointer) *QDial {
 
 // NewQDial constructs a new QDial object.
 func NewQDial(parent *QWidget) *QDial {
-	defer runtime.KeepAlive(parent)
 
 	return newQDial(C.QDial_new(parent.cPointer()))
 }
@@ -72,12 +71,10 @@ func NewQDial2() *QDial {
 }
 
 func (this *QDial) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QDial_metaObject(this.h))
 }
 
 func (this *QDial) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDial_metacast(this.h, param1_Cstring))
@@ -102,51 +99,42 @@ func QDial_TrUtf8(s string) string {
 }
 
 func (this *QDial) Wrapping() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QDial_wrapping(this.h))
 }
 
 func (this *QDial) NotchSize() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QDial_notchSize(this.h))
 }
 
 func (this *QDial) SetNotchTarget(target float64) {
-	defer runtime.KeepAlive(this)
 	C.QDial_setNotchTarget(this.h, (C.double)(target))
 }
 
 func (this *QDial) NotchTarget() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QDial_notchTarget(this.h))
 }
 
 func (this *QDial) NotchesVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QDial_notchesVisible(this.h))
 }
 
 func (this *QDial) SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QDial_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDial) MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QDial_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDial) SetNotchesVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QDial_setNotchesVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QDial) SetWrapping(on bool) {
-	defer runtime.KeepAlive(this)
 	C.QDial_setWrapping(this.h, (C.bool)(on))
 }
 
@@ -196,7 +184,6 @@ func QDial_TrUtf83(s string, c string, n int) string {
 
 // InitStyleOption can only be called from a QDial that was directly constructed.
 func (this *QDial) InitStyleOption(option *QStyleOptionSlider) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -210,7 +197,6 @@ func (this *QDial) InitStyleOption(option *QStyleOptionSlider) {
 
 // SetRepeatAction can only be called from a QDial that was directly constructed.
 func (this *QDial) SetRepeatAction(action QAbstractSlider__SliderAction) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDial_protectedbase_setRepeatAction(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(action))
@@ -223,7 +209,6 @@ func (this *QDial) SetRepeatAction(action QAbstractSlider__SliderAction) {
 
 // RepeatAction can only be called from a QDial that was directly constructed.
 func (this *QDial) RepeatAction() QAbstractSlider__SliderAction {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractSlider__SliderAction)(C.QDial_protectedbase_repeatAction(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -238,7 +223,6 @@ func (this *QDial) RepeatAction() QAbstractSlider__SliderAction {
 
 // UpdateMicroFocus can only be called from a QDial that was directly constructed.
 func (this *QDial) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDial_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -251,7 +235,6 @@ func (this *QDial) UpdateMicroFocus() {
 
 // Create can only be called from a QDial that was directly constructed.
 func (this *QDial) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDial_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -264,7 +247,6 @@ func (this *QDial) Create() {
 
 // Destroy can only be called from a QDial that was directly constructed.
 func (this *QDial) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDial_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -277,7 +259,6 @@ func (this *QDial) Destroy() {
 
 // FocusNextChild can only be called from a QDial that was directly constructed.
 func (this *QDial) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDial_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -292,7 +273,6 @@ func (this *QDial) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QDial that was directly constructed.
 func (this *QDial) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDial_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -307,7 +287,6 @@ func (this *QDial) FocusPreviousChild() bool {
 
 // Sender can only be called from a QDial that was directly constructed.
 func (this *QDial) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QDial_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -322,7 +301,6 @@ func (this *QDial) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QDial that was directly constructed.
 func (this *QDial) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDial_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -337,7 +315,6 @@ func (this *QDial) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDial that was directly constructed.
 func (this *QDial) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -354,7 +331,6 @@ func (this *QDial) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDial that was directly constructed.
 func (this *QDial) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -369,7 +345,6 @@ func (this *QDial) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QDial) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDial_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -398,7 +373,6 @@ func miqt_exec_callback_QDial_sizeHint(self *C.QDial, cb C.intptr_t) *C.QSize {
 }
 
 func (this *QDial) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QDial_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -427,7 +401,6 @@ func miqt_exec_callback_QDial_minimumSizeHint(self *C.QDial, cb C.intptr_t) *C.Q
 }
 
 func (this *QDial) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QDial_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -457,7 +430,6 @@ func miqt_exec_callback_QDial_event(self *C.QDial, cb C.intptr_t, e *C.QEvent) C
 }
 
 func (this *QDial) callVirtualBase_ResizeEvent(re *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(re)
 
 	C.QDial_virtualbase_resizeEvent(unsafe.Pointer(this.h), re.cPointer())
@@ -485,7 +457,6 @@ func miqt_exec_callback_QDial_resizeEvent(self *C.QDial, cb C.intptr_t, re *C.QR
 }
 
 func (this *QDial) callVirtualBase_PaintEvent(pe *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pe)
 
 	C.QDial_virtualbase_paintEvent(unsafe.Pointer(this.h), pe.cPointer())
@@ -513,7 +484,6 @@ func miqt_exec_callback_QDial_paintEvent(self *C.QDial, cb C.intptr_t, pe *C.QPa
 }
 
 func (this *QDial) callVirtualBase_MousePressEvent(me *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(me)
 
 	C.QDial_virtualbase_mousePressEvent(unsafe.Pointer(this.h), me.cPointer())
@@ -541,7 +511,6 @@ func miqt_exec_callback_QDial_mousePressEvent(self *C.QDial, cb C.intptr_t, me *
 }
 
 func (this *QDial) callVirtualBase_MouseReleaseEvent(me *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(me)
 
 	C.QDial_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), me.cPointer())
@@ -569,7 +538,6 @@ func miqt_exec_callback_QDial_mouseReleaseEvent(self *C.QDial, cb C.intptr_t, me
 }
 
 func (this *QDial) callVirtualBase_MouseMoveEvent(me *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(me)
 
 	C.QDial_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), me.cPointer())
@@ -597,7 +565,6 @@ func miqt_exec_callback_QDial_mouseMoveEvent(self *C.QDial, cb C.intptr_t, me *C
 }
 
 func (this *QDial) callVirtualBase_SliderChange(change QAbstractSlider__SliderChange) {
-	defer runtime.KeepAlive(this)
 
 	C.QDial_virtualbase_sliderChange(unsafe.Pointer(this.h), (C.int)(change))
 
@@ -624,7 +591,6 @@ func miqt_exec_callback_QDial_sliderChange(self *C.QDial, cb C.intptr_t, change 
 }
 
 func (this *QDial) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(ev)
 
 	C.QDial_virtualbase_keyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
@@ -652,7 +618,6 @@ func miqt_exec_callback_QDial_keyPressEvent(self *C.QDial, cb C.intptr_t, ev *C.
 }
 
 func (this *QDial) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDial_virtualbase_timerEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -680,7 +645,6 @@ func miqt_exec_callback_QDial_timerEvent(self *C.QDial, cb C.intptr_t, param1 *C
 }
 
 func (this *QDial) callVirtualBase_WheelEvent(e *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QDial_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -708,7 +672,6 @@ func miqt_exec_callback_QDial_wheelEvent(self *C.QDial, cb C.intptr_t, e *C.QWhe
 }
 
 func (this *QDial) callVirtualBase_ChangeEvent(e *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QDial_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -736,7 +699,6 @@ func miqt_exec_callback_QDial_changeEvent(self *C.QDial, cb C.intptr_t, e *C.QEv
 }
 
 func (this *QDial) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDial_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -762,7 +724,6 @@ func miqt_exec_callback_QDial_devType(self *C.QDial, cb C.intptr_t) C.int {
 }
 
 func (this *QDial) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QDial_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -789,7 +750,6 @@ func miqt_exec_callback_QDial_setVisible(self *C.QDial, cb C.intptr_t, visible C
 }
 
 func (this *QDial) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDial_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -818,7 +778,6 @@ func miqt_exec_callback_QDial_heightForWidth(self *C.QDial, cb C.intptr_t, param
 }
 
 func (this *QDial) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDial_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -844,7 +803,6 @@ func miqt_exec_callback_QDial_hasHeightForWidth(self *C.QDial, cb C.intptr_t) C.
 }
 
 func (this *QDial) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QDial_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -871,7 +829,6 @@ func miqt_exec_callback_QDial_paintEngine(self *C.QDial, cb C.intptr_t) *C.QPain
 }
 
 func (this *QDial) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -899,7 +856,6 @@ func miqt_exec_callback_QDial_mouseDoubleClickEvent(self *C.QDial, cb C.intptr_t
 }
 
 func (this *QDial) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -927,7 +883,6 @@ func miqt_exec_callback_QDial_keyReleaseEvent(self *C.QDial, cb C.intptr_t, even
 }
 
 func (this *QDial) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -955,7 +910,6 @@ func miqt_exec_callback_QDial_focusInEvent(self *C.QDial, cb C.intptr_t, event *
 }
 
 func (this *QDial) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -983,7 +937,6 @@ func miqt_exec_callback_QDial_focusOutEvent(self *C.QDial, cb C.intptr_t, event 
 }
 
 func (this *QDial) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1011,7 +964,6 @@ func miqt_exec_callback_QDial_enterEvent(self *C.QDial, cb C.intptr_t, event *C.
 }
 
 func (this *QDial) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1039,7 +991,6 @@ func miqt_exec_callback_QDial_leaveEvent(self *C.QDial, cb C.intptr_t, event *C.
 }
 
 func (this *QDial) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1067,7 +1018,6 @@ func miqt_exec_callback_QDial_moveEvent(self *C.QDial, cb C.intptr_t, event *C.Q
 }
 
 func (this *QDial) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1095,7 +1045,6 @@ func miqt_exec_callback_QDial_closeEvent(self *C.QDial, cb C.intptr_t, event *C.
 }
 
 func (this *QDial) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1123,7 +1072,6 @@ func miqt_exec_callback_QDial_contextMenuEvent(self *C.QDial, cb C.intptr_t, eve
 }
 
 func (this *QDial) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1151,7 +1099,6 @@ func miqt_exec_callback_QDial_tabletEvent(self *C.QDial, cb C.intptr_t, event *C
 }
 
 func (this *QDial) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1179,7 +1126,6 @@ func miqt_exec_callback_QDial_actionEvent(self *C.QDial, cb C.intptr_t, event *C
 }
 
 func (this *QDial) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1207,7 +1153,6 @@ func miqt_exec_callback_QDial_dragEnterEvent(self *C.QDial, cb C.intptr_t, event
 }
 
 func (this *QDial) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1235,7 +1180,6 @@ func miqt_exec_callback_QDial_dragMoveEvent(self *C.QDial, cb C.intptr_t, event 
 }
 
 func (this *QDial) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1263,7 +1207,6 @@ func miqt_exec_callback_QDial_dragLeaveEvent(self *C.QDial, cb C.intptr_t, event
 }
 
 func (this *QDial) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1291,7 +1234,6 @@ func miqt_exec_callback_QDial_dropEvent(self *C.QDial, cb C.intptr_t, event *C.Q
 }
 
 func (this *QDial) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1319,7 +1261,6 @@ func miqt_exec_callback_QDial_showEvent(self *C.QDial, cb C.intptr_t, event *C.Q
 }
 
 func (this *QDial) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1347,7 +1288,6 @@ func miqt_exec_callback_QDial_hideEvent(self *C.QDial, cb C.intptr_t, event *C.Q
 }
 
 func (this *QDial) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1389,7 +1329,6 @@ func miqt_exec_callback_QDial_nativeEvent(self *C.QDial, cb C.intptr_t, eventTyp
 }
 
 func (this *QDial) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDial_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1418,7 +1357,6 @@ func miqt_exec_callback_QDial_metric(self *C.QDial, cb C.intptr_t, param1 C.int)
 }
 
 func (this *QDial) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QDial_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1446,7 +1384,6 @@ func miqt_exec_callback_QDial_initPainter(self *C.QDial, cb C.intptr_t, painter 
 }
 
 func (this *QDial) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDial_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1477,7 +1414,6 @@ func miqt_exec_callback_QDial_redirected(self *C.QDial, cb C.intptr_t, offset *C
 }
 
 func (this *QDial) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QDial_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1504,7 +1440,6 @@ func miqt_exec_callback_QDial_sharedPainter(self *C.QDial, cb C.intptr_t) *C.QPa
 }
 
 func (this *QDial) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDial_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1532,7 +1467,6 @@ func miqt_exec_callback_QDial_inputMethodEvent(self *C.QDial, cb C.intptr_t, par
 }
 
 func (this *QDial) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QDial_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1564,7 +1498,6 @@ func miqt_exec_callback_QDial_inputMethodQuery(self *C.QDial, cb C.intptr_t, par
 }
 
 func (this *QDial) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDial_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1593,8 +1526,6 @@ func miqt_exec_callback_QDial_focusNextPrevChild(self *C.QDial, cb C.intptr_t, n
 }
 
 func (this *QDial) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDial_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1626,7 +1557,6 @@ func miqt_exec_callback_QDial_eventFilter(self *C.QDial, cb C.intptr_t, watched 
 }
 
 func (this *QDial) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1654,7 +1584,6 @@ func miqt_exec_callback_QDial_childEvent(self *C.QDial, cb C.intptr_t, event *C.
 }
 
 func (this *QDial) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDial_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1682,7 +1611,6 @@ func miqt_exec_callback_QDial_customEvent(self *C.QDial, cb C.intptr_t, event *C
 }
 
 func (this *QDial) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDial_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1710,7 +1638,6 @@ func miqt_exec_callback_QDial_connectNotify(self *C.QDial, cb C.intptr_t, signal
 }
 
 func (this *QDial) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDial_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1745,6 +1672,8 @@ func (this *QDial) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDial) GoGC() {
 	if this.gc != nil {
 		return

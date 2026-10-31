@@ -1307,7 +1307,6 @@ func UnsafeNewQAccessibleEvent(h unsafe.Pointer) *QAccessibleEvent {
 
 // NewQAccessibleEvent constructs a new QAccessibleEvent object.
 func NewQAccessibleEvent(obj *QObject, typ QAccessible__Event) *QAccessibleEvent {
-	defer runtime.KeepAlive(obj)
 
 	return newQAccessibleEvent(C.QAccessibleEvent_new(obj.cPointer(), (C.int)(typ)))
 }
@@ -1441,7 +1440,6 @@ func UnsafeNewQAccessibleStateChangeEvent(h unsafe.Pointer) *QAccessibleStateCha
 
 // NewQAccessibleStateChangeEvent constructs a new QAccessibleStateChangeEvent object.
 func NewQAccessibleStateChangeEvent(obj *QObject, state QAccessible__State) *QAccessibleStateChangeEvent {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(state)
 
 	return newQAccessibleStateChangeEvent(C.QAccessibleStateChangeEvent_new(obj.cPointer(), state.cPointer()))
@@ -1554,7 +1552,6 @@ func UnsafeNewQAccessibleTextCursorEvent(h unsafe.Pointer) *QAccessibleTextCurso
 
 // NewQAccessibleTextCursorEvent constructs a new QAccessibleTextCursorEvent object.
 func NewQAccessibleTextCursorEvent(obj *QObject, cursorPos int) *QAccessibleTextCursorEvent {
-	defer runtime.KeepAlive(obj)
 
 	return newQAccessibleTextCursorEvent(C.QAccessibleTextCursorEvent_new(obj.cPointer(), (C.int)(cursorPos)))
 }
@@ -1668,7 +1665,6 @@ func UnsafeNewQAccessibleTextSelectionEvent(h unsafe.Pointer) *QAccessibleTextSe
 
 // NewQAccessibleTextSelectionEvent constructs a new QAccessibleTextSelectionEvent object.
 func NewQAccessibleTextSelectionEvent(obj *QObject, start int, end int) *QAccessibleTextSelectionEvent {
-	defer runtime.KeepAlive(obj)
 
 	return newQAccessibleTextSelectionEvent(C.QAccessibleTextSelectionEvent_new(obj.cPointer(), (C.int)(start), (C.int)(end)))
 }
@@ -1787,7 +1783,6 @@ func UnsafeNewQAccessibleTextInsertEvent(h unsafe.Pointer) *QAccessibleTextInser
 
 // NewQAccessibleTextInsertEvent constructs a new QAccessibleTextInsertEvent object.
 func NewQAccessibleTextInsertEvent(obj *QObject, position int, text string) *QAccessibleTextInsertEvent {
-	defer runtime.KeepAlive(obj)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -1912,7 +1907,6 @@ func UnsafeNewQAccessibleTextRemoveEvent(h unsafe.Pointer) *QAccessibleTextRemov
 
 // NewQAccessibleTextRemoveEvent constructs a new QAccessibleTextRemoveEvent object.
 func NewQAccessibleTextRemoveEvent(obj *QObject, position int, text string) *QAccessibleTextRemoveEvent {
-	defer runtime.KeepAlive(obj)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -2037,7 +2031,6 @@ func UnsafeNewQAccessibleTextUpdateEvent(h unsafe.Pointer) *QAccessibleTextUpdat
 
 // NewQAccessibleTextUpdateEvent constructs a new QAccessibleTextUpdateEvent object.
 func NewQAccessibleTextUpdateEvent(obj *QObject, position int, oldText string, text string) *QAccessibleTextUpdateEvent {
-	defer runtime.KeepAlive(obj)
 	oldText_ms := C.struct_miqt_string{}
 	oldText_ms.data = C.CString(oldText)
 	oldText_ms.len = C.size_t(len(oldText))
@@ -2178,7 +2171,6 @@ func UnsafeNewQAccessibleValueChangeEvent(h unsafe.Pointer) *QAccessibleValueCha
 
 // NewQAccessibleValueChangeEvent constructs a new QAccessibleValueChangeEvent object.
 func NewQAccessibleValueChangeEvent(obj *QObject, val *QVariant) *QAccessibleValueChangeEvent {
-	defer runtime.KeepAlive(obj)
 	defer runtime.KeepAlive(val)
 
 	return newQAccessibleValueChangeEvent(C.QAccessibleValueChangeEvent_new(obj.cPointer(), val.cPointer()))
@@ -2297,7 +2289,6 @@ func UnsafeNewQAccessibleTableModelChangeEvent(h unsafe.Pointer) *QAccessibleTab
 
 // NewQAccessibleTableModelChangeEvent constructs a new QAccessibleTableModelChangeEvent object.
 func NewQAccessibleTableModelChangeEvent(obj *QObject, changeType QAccessibleTableModelChangeEvent__ModelChangeType) *QAccessibleTableModelChangeEvent {
-	defer runtime.KeepAlive(obj)
 
 	return newQAccessibleTableModelChangeEvent(C.QAccessibleTableModelChangeEvent_new(obj.cPointer(), (C.int)(changeType)))
 }

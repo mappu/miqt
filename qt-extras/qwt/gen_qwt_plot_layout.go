@@ -133,7 +133,6 @@ func (this *QwtPlotLayout) LegendRatio() float64 {
 
 func (this *QwtPlotLayout) MinimumSizeHint(param1 *QwtPlot) *qt.QSize {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtPlotLayout_minimumSizeHint(this.h, param1.cPointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -141,7 +140,6 @@ func (this *QwtPlotLayout) MinimumSizeHint(param1 *QwtPlot) *qt.QSize {
 
 func (this *QwtPlotLayout) Activate(param1 *QwtPlot, plotRect *qt.QRectF, options QwtPlotLayout__Option) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(plotRect)
 	C.QwtPlotLayout_activate(this.h, param1.cPointer(), (*C.QRectF)(plotRect.UnsafePointer()), (C.int)(options))
 }
@@ -335,7 +333,6 @@ func (this *QwtPlotLayout) AlignScales(options QwtPlotLayout__Option, canvasRect
 
 func (this *QwtPlotLayout) callVirtualBase_MinimumSizeHint(param1 *QwtPlot) *qt.QSize {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
 	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtPlotLayout_virtualbase_minimumSizeHint(unsafe.Pointer(this.h), param1.cPointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -368,7 +365,6 @@ func miqt_exec_callback_QwtPlotLayout_minimumSizeHint(self *C.QwtPlotLayout, cb 
 
 func (this *QwtPlotLayout) callVirtualBase_Activate(param1 *QwtPlot, plotRect *qt.QRectF, options QwtPlotLayout__Option) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(plotRect)
 
 	C.QwtPlotLayout_virtualbase_activate(unsafe.Pointer(this.h), param1.cPointer(), (*C.QRectF)(plotRect.UnsafePointer()), (C.int)(options))

@@ -152,7 +152,6 @@ func UnsafeNewQAbstractItemView(h unsafe.Pointer) *QAbstractItemView {
 
 // NewQAbstractItemView constructs a new QAbstractItemView object.
 func NewQAbstractItemView(parent *QWidget) *QAbstractItemView {
-	defer runtime.KeepAlive(parent)
 
 	return newQAbstractItemView(C.QAbstractItemView_new(parent.cPointer()))
 }
@@ -164,12 +163,10 @@ func NewQAbstractItemView2() *QAbstractItemView {
 }
 
 func (this *QAbstractItemView) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QAbstractItemView_metaObject(this.h))
 }
 
 func (this *QAbstractItemView) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QAbstractItemView_metacast(this.h, param1_Cstring))
@@ -185,227 +182,181 @@ func QAbstractItemView_Tr(s string) string {
 }
 
 func (this *QAbstractItemView) SetModel(model *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(model)
 	C.QAbstractItemView_setModel(this.h, model.cPointer())
 }
 
 func (this *QAbstractItemView) Model() *QAbstractItemModel {
-	defer runtime.KeepAlive(this)
 	return newQAbstractItemModel(C.QAbstractItemView_model(this.h))
 }
 
 func (this *QAbstractItemView) SetSelectionModel(selectionModel *QItemSelectionModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(selectionModel)
 	C.QAbstractItemView_setSelectionModel(this.h, selectionModel.cPointer())
 }
 
 func (this *QAbstractItemView) SelectionModel() *QItemSelectionModel {
-	defer runtime.KeepAlive(this)
 	return newQItemSelectionModel(C.QAbstractItemView_selectionModel(this.h))
 }
 
 func (this *QAbstractItemView) SetItemDelegate(delegate *QAbstractItemDelegate) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(delegate)
 	C.QAbstractItemView_setItemDelegate(this.h, delegate.cPointer())
 }
 
 func (this *QAbstractItemView) ItemDelegate() *QAbstractItemDelegate {
-	defer runtime.KeepAlive(this)
 	return newQAbstractItemDelegate(C.QAbstractItemView_itemDelegate(this.h))
 }
 
 func (this *QAbstractItemView) SetSelectionMode(mode QAbstractItemView__SelectionMode) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setSelectionMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) SelectionMode() QAbstractItemView__SelectionMode {
-	defer runtime.KeepAlive(this)
 	return (QAbstractItemView__SelectionMode)(C.QAbstractItemView_selectionMode(this.h))
 }
 
 func (this *QAbstractItemView) SetSelectionBehavior(behavior QAbstractItemView__SelectionBehavior) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setSelectionBehavior(this.h, (C.int)(behavior))
 }
 
 func (this *QAbstractItemView) SelectionBehavior() QAbstractItemView__SelectionBehavior {
-	defer runtime.KeepAlive(this)
 	return (QAbstractItemView__SelectionBehavior)(C.QAbstractItemView_selectionBehavior(this.h))
 }
 
 func (this *QAbstractItemView) CurrentIndex() *QModelIndex {
-	defer runtime.KeepAlive(this)
 	_goptr := newQModelIndex(C.QAbstractItemView_currentIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractItemView) RootIndex() *QModelIndex {
-	defer runtime.KeepAlive(this)
 	_goptr := newQModelIndex(C.QAbstractItemView_rootIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractItemView) SetEditTriggers(triggers QAbstractItemView__EditTrigger) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setEditTriggers(this.h, (C.int)(triggers))
 }
 
 func (this *QAbstractItemView) EditTriggers() QAbstractItemView__EditTrigger {
-	defer runtime.KeepAlive(this)
 	return (QAbstractItemView__EditTrigger)(C.QAbstractItemView_editTriggers(this.h))
 }
 
 func (this *QAbstractItemView) SetVerticalScrollMode(mode QAbstractItemView__ScrollMode) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setVerticalScrollMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) VerticalScrollMode() QAbstractItemView__ScrollMode {
-	defer runtime.KeepAlive(this)
 	return (QAbstractItemView__ScrollMode)(C.QAbstractItemView_verticalScrollMode(this.h))
 }
 
 func (this *QAbstractItemView) ResetVerticalScrollMode() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_resetVerticalScrollMode(this.h)
 }
 
 func (this *QAbstractItemView) SetHorizontalScrollMode(mode QAbstractItemView__ScrollMode) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setHorizontalScrollMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) HorizontalScrollMode() QAbstractItemView__ScrollMode {
-	defer runtime.KeepAlive(this)
 	return (QAbstractItemView__ScrollMode)(C.QAbstractItemView_horizontalScrollMode(this.h))
 }
 
 func (this *QAbstractItemView) ResetHorizontalScrollMode() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_resetHorizontalScrollMode(this.h)
 }
 
 func (this *QAbstractItemView) SetAutoScroll(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setAutoScroll(this.h, (C.bool)(enable))
 }
 
 func (this *QAbstractItemView) HasAutoScroll() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemView_hasAutoScroll(this.h))
 }
 
 func (this *QAbstractItemView) SetAutoScrollMargin(margin int) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setAutoScrollMargin(this.h, (C.int)(margin))
 }
 
 func (this *QAbstractItemView) AutoScrollMargin() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractItemView_autoScrollMargin(this.h))
 }
 
 func (this *QAbstractItemView) SetTabKeyNavigation(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setTabKeyNavigation(this.h, (C.bool)(enable))
 }
 
 func (this *QAbstractItemView) TabKeyNavigation() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemView_tabKeyNavigation(this.h))
 }
 
 func (this *QAbstractItemView) SetDropIndicatorShown(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setDropIndicatorShown(this.h, (C.bool)(enable))
 }
 
 func (this *QAbstractItemView) ShowDropIndicator() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemView_showDropIndicator(this.h))
 }
 
 func (this *QAbstractItemView) SetDragEnabled(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setDragEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QAbstractItemView) DragEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemView_dragEnabled(this.h))
 }
 
 func (this *QAbstractItemView) SetDragDropOverwriteMode(overwrite bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setDragDropOverwriteMode(this.h, (C.bool)(overwrite))
 }
 
 func (this *QAbstractItemView) DragDropOverwriteMode() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemView_dragDropOverwriteMode(this.h))
 }
 
 func (this *QAbstractItemView) SetDragDropMode(behavior QAbstractItemView__DragDropMode) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setDragDropMode(this.h, (C.int)(behavior))
 }
 
 func (this *QAbstractItemView) DragDropMode() QAbstractItemView__DragDropMode {
-	defer runtime.KeepAlive(this)
 	return (QAbstractItemView__DragDropMode)(C.QAbstractItemView_dragDropMode(this.h))
 }
 
 func (this *QAbstractItemView) SetDefaultDropAction(dropAction DropAction) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setDefaultDropAction(this.h, (C.int)(dropAction))
 }
 
 func (this *QAbstractItemView) DefaultDropAction() DropAction {
-	defer runtime.KeepAlive(this)
 	return (DropAction)(C.QAbstractItemView_defaultDropAction(this.h))
 }
 
 func (this *QAbstractItemView) SetAlternatingRowColors(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setAlternatingRowColors(this.h, (C.bool)(enable))
 }
 
 func (this *QAbstractItemView) AlternatingRowColors() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QAbstractItemView_alternatingRowColors(this.h))
 }
 
 func (this *QAbstractItemView) SetIconSize(size *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QAbstractItemView_setIconSize(this.h, size.cPointer())
 }
 
 func (this *QAbstractItemView) IconSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QAbstractItemView_iconSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractItemView) SetTextElideMode(mode TextElideMode) {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_setTextElideMode(this.h, (C.int)(mode))
 }
 
 func (this *QAbstractItemView) TextElideMode() TextElideMode {
-	defer runtime.KeepAlive(this)
 	return (TextElideMode)(C.QAbstractItemView_textElideMode(this.h))
 }
 
 func (this *QAbstractItemView) KeyboardSearch(search string) {
-	defer runtime.KeepAlive(this)
 	search_ms := C.struct_miqt_string{}
 	search_ms.data = C.CString(search)
 	search_ms.len = C.size_t(len(search))
@@ -414,7 +365,6 @@ func (this *QAbstractItemView) KeyboardSearch(search string) {
 }
 
 func (this *QAbstractItemView) VisualRect(index *QModelIndex) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQRect(C.QAbstractItemView_visualRect(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -422,13 +372,11 @@ func (this *QAbstractItemView) VisualRect(index *QModelIndex) *QRect {
 }
 
 func (this *QAbstractItemView) ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_scrollTo(this.h, index.cPointer(), (C.int)(hint))
 }
 
 func (this *QAbstractItemView) IndexAt(point *QPoint) *QModelIndex {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	_goptr := newQModelIndex(C.QAbstractItemView_indexAt(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -436,7 +384,6 @@ func (this *QAbstractItemView) IndexAt(point *QPoint) *QModelIndex {
 }
 
 func (this *QAbstractItemView) SizeHintForIndex(index *QModelIndex) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	_goptr := newQSize(C.QAbstractItemView_sizeHintForIndex(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -444,143 +391,115 @@ func (this *QAbstractItemView) SizeHintForIndex(index *QModelIndex) *QSize {
 }
 
 func (this *QAbstractItemView) SizeHintForRow(row int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractItemView_sizeHintForRow(this.h, (C.int)(row)))
 }
 
 func (this *QAbstractItemView) SizeHintForColumn(column int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QAbstractItemView_sizeHintForColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAbstractItemView) OpenPersistentEditor(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_openPersistentEditor(this.h, index.cPointer())
 }
 
 func (this *QAbstractItemView) ClosePersistentEditor(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_closePersistentEditor(this.h, index.cPointer())
 }
 
 func (this *QAbstractItemView) IsPersistentEditorOpen(index *QModelIndex) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return (bool)(C.QAbstractItemView_isPersistentEditorOpen(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemView) SetIndexWidget(index *QModelIndex, widget *QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
-	defer runtime.KeepAlive(widget)
 	C.QAbstractItemView_setIndexWidget(this.h, index.cPointer(), widget.cPointer())
 }
 
 func (this *QAbstractItemView) IndexWidget(index *QModelIndex) *QWidget {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return newQWidget(C.QAbstractItemView_indexWidget(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemView) SetItemDelegateForRow(row int, delegate *QAbstractItemDelegate) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(delegate)
 	C.QAbstractItemView_setItemDelegateForRow(this.h, (C.int)(row), delegate.cPointer())
 }
 
 func (this *QAbstractItemView) ItemDelegateForRow(row int) *QAbstractItemDelegate {
-	defer runtime.KeepAlive(this)
 	return newQAbstractItemDelegate(C.QAbstractItemView_itemDelegateForRow(this.h, (C.int)(row)))
 }
 
 func (this *QAbstractItemView) SetItemDelegateForColumn(column int, delegate *QAbstractItemDelegate) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(delegate)
 	C.QAbstractItemView_setItemDelegateForColumn(this.h, (C.int)(column), delegate.cPointer())
 }
 
 func (this *QAbstractItemView) ItemDelegateForColumn(column int) *QAbstractItemDelegate {
-	defer runtime.KeepAlive(this)
 	return newQAbstractItemDelegate(C.QAbstractItemView_itemDelegateForColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAbstractItemView) ItemDelegateWithIndex(index *QModelIndex) *QAbstractItemDelegate {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return newQAbstractItemDelegate(C.QAbstractItemView_itemDelegateWithIndex(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemView) ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	return newQAbstractItemDelegate(C.QAbstractItemView_itemDelegateForIndex(this.h, index.cPointer()))
 }
 
 func (this *QAbstractItemView) InputMethodQuery(query InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QAbstractItemView_inputMethodQuery(this.h, (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractItemView) Reset() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_reset(this.h)
 }
 
 func (this *QAbstractItemView) SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_setRootIndex(this.h, index.cPointer())
 }
 
 func (this *QAbstractItemView) DoItemsLayout() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_doItemsLayout(this.h)
 }
 
 func (this *QAbstractItemView) SelectAll() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_selectAll(this.h)
 }
 
 func (this *QAbstractItemView) Edit(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_edit(this.h, index.cPointer())
 }
 
 func (this *QAbstractItemView) ClearSelection() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_clearSelection(this.h)
 }
 
 func (this *QAbstractItemView) SetCurrentIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_setCurrentIndex(this.h, index.cPointer())
 }
 
 func (this *QAbstractItemView) ScrollToTop() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_scrollToTop(this.h)
 }
 
 func (this *QAbstractItemView) ScrollToBottom() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_scrollToBottom(this.h)
 }
 
 func (this *QAbstractItemView) Update(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_update(this.h, index.cPointer())
 }
 
 func (this *QAbstractItemView) Pressed(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_pressed(this.h, index.cPointer())
 }
@@ -602,7 +521,6 @@ func miqt_exec_callback_QAbstractItemView_pressed(cb C.intptr_t, index *C.QModel
 }
 
 func (this *QAbstractItemView) Clicked(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_clicked(this.h, index.cPointer())
 }
@@ -624,7 +542,6 @@ func miqt_exec_callback_QAbstractItemView_clicked(cb C.intptr_t, index *C.QModel
 }
 
 func (this *QAbstractItemView) DoubleClicked(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_doubleClicked(this.h, index.cPointer())
 }
@@ -646,7 +563,6 @@ func miqt_exec_callback_QAbstractItemView_doubleClicked(cb C.intptr_t, index *C.
 }
 
 func (this *QAbstractItemView) Activated(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_activated(this.h, index.cPointer())
 }
@@ -668,7 +584,6 @@ func miqt_exec_callback_QAbstractItemView_activated(cb C.intptr_t, index *C.QMod
 }
 
 func (this *QAbstractItemView) Entered(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	C.QAbstractItemView_entered(this.h, index.cPointer())
 }
@@ -690,7 +605,6 @@ func miqt_exec_callback_QAbstractItemView_entered(cb C.intptr_t, index *C.QModel
 }
 
 func (this *QAbstractItemView) ViewportEntered() {
-	defer runtime.KeepAlive(this)
 	C.QAbstractItemView_viewportEntered(this.h)
 }
 func (this *QAbstractItemView) OnViewportEntered(slot func()) {
@@ -708,7 +622,6 @@ func miqt_exec_callback_QAbstractItemView_viewportEntered(cb C.intptr_t) {
 }
 
 func (this *QAbstractItemView) IconSizeChanged(size *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(size)
 	C.QAbstractItemView_iconSizeChanged(this.h, size.cPointer())
 }
@@ -753,7 +666,6 @@ func QAbstractItemView_Tr3(s string, c string, n int) string {
 
 // State can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) State() QAbstractItemView__State {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__State)(C.QAbstractItemView_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -768,7 +680,6 @@ func (this *QAbstractItemView) State() QAbstractItemView__State {
 
 // SetState can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) SetState(state QAbstractItemView__State) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
@@ -781,7 +692,6 @@ func (this *QAbstractItemView) SetState(state QAbstractItemView__State) {
 
 // ScheduleDelayedItemsLayout can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) ScheduleDelayedItemsLayout() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -794,7 +704,6 @@ func (this *QAbstractItemView) ScheduleDelayedItemsLayout() {
 
 // ExecuteDelayedItemsLayout can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) ExecuteDelayedItemsLayout() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -807,7 +716,6 @@ func (this *QAbstractItemView) ExecuteDelayedItemsLayout() {
 
 // SetDirtyRegion can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) SetDirtyRegion(region *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(region)
 
 	var _dynamic_cast_ok C.bool = false
@@ -821,7 +729,6 @@ func (this *QAbstractItemView) SetDirtyRegion(region *QRegion) {
 
 // ScrollDirtyRegion can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) ScrollDirtyRegion(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
@@ -834,7 +741,6 @@ func (this *QAbstractItemView) ScrollDirtyRegion(dx int, dy int) {
 
 // DirtyRegionOffset can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) DirtyRegionOffset() QPoint {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQPoint(C.QAbstractItemView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -851,7 +757,6 @@ func (this *QAbstractItemView) DirtyRegionOffset() QPoint {
 
 // StartAutoScroll can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) StartAutoScroll() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -864,7 +769,6 @@ func (this *QAbstractItemView) StartAutoScroll() {
 
 // StopAutoScroll can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) StopAutoScroll() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -877,7 +781,6 @@ func (this *QAbstractItemView) StopAutoScroll() {
 
 // DoAutoScroll can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) DoAutoScroll() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -890,7 +793,6 @@ func (this *QAbstractItemView) DoAutoScroll() {
 
 // DropIndicatorPosition can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QAbstractItemView_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -905,7 +807,6 @@ func (this *QAbstractItemView) DropIndicatorPosition() QAbstractItemView__DropIn
 
 // SetViewportMargins can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) SetViewportMargins(left int, top int, right int, bottom int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -918,7 +819,6 @@ func (this *QAbstractItemView) SetViewportMargins(left int, top int, right int, 
 
 // ViewportMargins can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) ViewportMargins() QMargins {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QAbstractItemView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -935,7 +835,6 @@ func (this *QAbstractItemView) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) DrawFrame(param1 *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -949,7 +848,6 @@ func (this *QAbstractItemView) DrawFrame(param1 *QPainter) {
 
 // UpdateMicroFocus can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -962,7 +860,6 @@ func (this *QAbstractItemView) UpdateMicroFocus() {
 
 // Create can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -975,7 +872,6 @@ func (this *QAbstractItemView) Create() {
 
 // Destroy can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -988,7 +884,6 @@ func (this *QAbstractItemView) Destroy() {
 
 // FocusNextChild can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAbstractItemView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1003,7 +898,6 @@ func (this *QAbstractItemView) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QAbstractItemView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1018,7 +912,6 @@ func (this *QAbstractItemView) FocusPreviousChild() bool {
 
 // Sender can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QAbstractItemView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1033,7 +926,6 @@ func (this *QAbstractItemView) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QAbstractItemView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1048,7 +940,6 @@ func (this *QAbstractItemView) SenderSignalIndex() int {
 
 // Receivers can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1065,7 +956,6 @@ func (this *QAbstractItemView) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QAbstractItemView that was directly constructed.
 func (this *QAbstractItemView) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1080,8 +970,6 @@ func (this *QAbstractItemView) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QAbstractItemView) callVirtualBase_SetModel(model *QAbstractItemModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(model)
 
 	C.QAbstractItemView_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
@@ -1108,8 +996,6 @@ func miqt_exec_callback_QAbstractItemView_setModel(self *C.QAbstractItemView, cb
 }
 
 func (this *QAbstractItemView) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(selectionModel)
 
 	C.QAbstractItemView_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
@@ -1136,7 +1022,6 @@ func miqt_exec_callback_QAbstractItemView_setSelectionModel(self *C.QAbstractIte
 }
 
 func (this *QAbstractItemView) callVirtualBase_KeyboardSearch(search string) {
-	defer runtime.KeepAlive(this)
 	search_ms := C.struct_miqt_string{}
 	search_ms.data = C.CString(search)
 	search_ms.len = C.size_t(len(search))
@@ -1238,7 +1123,6 @@ func miqt_exec_callback_QAbstractItemView_indexAt(self *C.QAbstractItemView, cb 
 }
 
 func (this *QAbstractItemView) callVirtualBase_SizeHintForRow(row int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QAbstractItemView_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
@@ -1267,7 +1151,6 @@ func miqt_exec_callback_QAbstractItemView_sizeHintForRow(self *C.QAbstractItemVi
 }
 
 func (this *QAbstractItemView) callVirtualBase_SizeHintForColumn(column int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QAbstractItemView_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
@@ -1296,7 +1179,6 @@ func miqt_exec_callback_QAbstractItemView_sizeHintForColumn(self *C.QAbstractIte
 }
 
 func (this *QAbstractItemView) callVirtualBase_ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	return newQAbstractItemDelegate(C.QAbstractItemView_virtualbase_itemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
@@ -1320,14 +1202,12 @@ func miqt_exec_callback_QAbstractItemView_itemDelegateForIndex(self *C.QAbstract
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractItemView{h: self}).callVirtualBase_ItemDelegateForIndex, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QAbstractItemView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QAbstractItemView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1359,7 +1239,6 @@ func miqt_exec_callback_QAbstractItemView_inputMethodQuery(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemView) callVirtualBase_Reset() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_reset(unsafe.Pointer(this.h))
 
@@ -1383,7 +1262,6 @@ func miqt_exec_callback_QAbstractItemView_reset(self *C.QAbstractItemView, cb C.
 }
 
 func (this *QAbstractItemView) callVirtualBase_SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 
 	C.QAbstractItemView_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
@@ -1411,7 +1289,6 @@ func miqt_exec_callback_QAbstractItemView_setRootIndex(self *C.QAbstractItemView
 }
 
 func (this *QAbstractItemView) callVirtualBase_DoItemsLayout() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
@@ -1435,7 +1312,6 @@ func miqt_exec_callback_QAbstractItemView_doItemsLayout(self *C.QAbstractItemVie
 }
 
 func (this *QAbstractItemView) callVirtualBase_SelectAll() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_selectAll(unsafe.Pointer(this.h))
 
@@ -1459,7 +1335,6 @@ func miqt_exec_callback_QAbstractItemView_selectAll(self *C.QAbstractItemView, c
 }
 
 func (this *QAbstractItemView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(topLeft)
 	defer runtime.KeepAlive(bottomRight)
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
@@ -1505,7 +1380,6 @@ func miqt_exec_callback_QAbstractItemView_dataChanged(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QAbstractItemView_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
@@ -1537,7 +1411,6 @@ func miqt_exec_callback_QAbstractItemView_rowsInserted(self *C.QAbstractItemView
 }
 
 func (this *QAbstractItemView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(parent)
 
 	C.QAbstractItemView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
@@ -1569,7 +1442,6 @@ func miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved(self *C.QAbstract
 }
 
 func (this *QAbstractItemView) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(selected)
 	defer runtime.KeepAlive(deselected)
 
@@ -1600,7 +1472,6 @@ func miqt_exec_callback_QAbstractItemView_selectionChanged(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemView) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(current)
 	defer runtime.KeepAlive(previous)
 
@@ -1631,7 +1502,6 @@ func miqt_exec_callback_QAbstractItemView_currentChanged(self *C.QAbstractItemVi
 }
 
 func (this *QAbstractItemView) callVirtualBase_UpdateEditorData() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
@@ -1655,7 +1525,6 @@ func miqt_exec_callback_QAbstractItemView_updateEditorData(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemView) callVirtualBase_UpdateEditorGeometries() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
@@ -1679,7 +1548,6 @@ func miqt_exec_callback_QAbstractItemView_updateEditorGeometries(self *C.QAbstra
 }
 
 func (this *QAbstractItemView) callVirtualBase_UpdateGeometries() {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
@@ -1703,7 +1571,6 @@ func miqt_exec_callback_QAbstractItemView_updateGeometries(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemView) callVirtualBase_VerticalScrollbarAction(action int) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -1730,7 +1597,6 @@ func miqt_exec_callback_QAbstractItemView_verticalScrollbarAction(self *C.QAbstr
 }
 
 func (this *QAbstractItemView) callVirtualBase_HorizontalScrollbarAction(action int) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
@@ -1757,7 +1623,6 @@ func miqt_exec_callback_QAbstractItemView_horizontalScrollbarAction(self *C.QAbs
 }
 
 func (this *QAbstractItemView) callVirtualBase_VerticalScrollbarValueChanged(value int) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -1784,7 +1649,6 @@ func miqt_exec_callback_QAbstractItemView_verticalScrollbarValueChanged(self *C.
 }
 
 func (this *QAbstractItemView) callVirtualBase_HorizontalScrollbarValueChanged(value int) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
@@ -1811,8 +1675,6 @@ func miqt_exec_callback_QAbstractItemView_horizontalScrollbarValueChanged(self *
 }
 
 func (this *QAbstractItemView) callVirtualBase_CloseEditor(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QAbstractItemView_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
@@ -1841,8 +1703,6 @@ func miqt_exec_callback_QAbstractItemView_closeEditor(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_CommitData(editor *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QAbstractItemView_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -1869,8 +1729,6 @@ func miqt_exec_callback_QAbstractItemView_commitData(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_EditorDestroyed(editor *QObject) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(editor)
 
 	C.QAbstractItemView_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
@@ -2027,7 +1885,6 @@ func miqt_exec_callback_QAbstractItemView_visualRegionForSelection(self *C.QAbst
 }
 
 func (this *QAbstractItemView) callVirtualBase_SelectedIndexes() []QModelIndex {
-	defer runtime.KeepAlive(this)
 
 	var _ma C.struct_miqt_array = C.QAbstractItemView_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
@@ -2068,7 +1925,6 @@ func miqt_exec_callback_QAbstractItemView_selectedIndexes(self *C.QAbstractItemV
 }
 
 func (this *QAbstractItemView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(event)
 
@@ -2103,7 +1959,6 @@ func miqt_exec_callback_QAbstractItemView_edit2(self *C.QAbstractItemView, cb C.
 }
 
 func (this *QAbstractItemView) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(index)
 	defer runtime.KeepAlive(event)
 
@@ -2136,7 +1991,6 @@ func miqt_exec_callback_QAbstractItemView_selectionCommand(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemView) callVirtualBase_StartDrag(supportedActions DropAction) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
@@ -2163,7 +2017,6 @@ func miqt_exec_callback_QAbstractItemView_startDrag(self *C.QAbstractItemView, c
 }
 
 func (this *QAbstractItemView) callVirtualBase_InitViewItemOption(option *QStyleOptionViewItem) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QAbstractItemView_virtualbase_initViewItemOption(unsafe.Pointer(this.h), option.cPointer())
@@ -2191,7 +2044,6 @@ func miqt_exec_callback_QAbstractItemView_initViewItemOption(self *C.QAbstractIt
 }
 
 func (this *QAbstractItemView) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractItemView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -2220,7 +2072,6 @@ func miqt_exec_callback_QAbstractItemView_focusNextPrevChild(self *C.QAbstractIt
 }
 
 func (this *QAbstractItemView) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractItemView_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -2250,7 +2101,6 @@ func miqt_exec_callback_QAbstractItemView_event(self *C.QAbstractItemView, cb C.
 }
 
 func (this *QAbstractItemView) callVirtualBase_ViewportEvent(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractItemView_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
@@ -2280,7 +2130,6 @@ func miqt_exec_callback_QAbstractItemView_viewportEvent(self *C.QAbstractItemVie
 }
 
 func (this *QAbstractItemView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2308,7 +2157,6 @@ func miqt_exec_callback_QAbstractItemView_mousePressEvent(self *C.QAbstractItemV
 }
 
 func (this *QAbstractItemView) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2336,7 +2184,6 @@ func miqt_exec_callback_QAbstractItemView_mouseMoveEvent(self *C.QAbstractItemVi
 }
 
 func (this *QAbstractItemView) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2364,7 +2211,6 @@ func miqt_exec_callback_QAbstractItemView_mouseReleaseEvent(self *C.QAbstractIte
 }
 
 func (this *QAbstractItemView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2392,7 +2238,6 @@ func miqt_exec_callback_QAbstractItemView_mouseDoubleClickEvent(self *C.QAbstrac
 }
 
 func (this *QAbstractItemView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2420,7 +2265,6 @@ func miqt_exec_callback_QAbstractItemView_dragEnterEvent(self *C.QAbstractItemVi
 }
 
 func (this *QAbstractItemView) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2448,7 +2292,6 @@ func miqt_exec_callback_QAbstractItemView_dragMoveEvent(self *C.QAbstractItemVie
 }
 
 func (this *QAbstractItemView) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2476,7 +2319,6 @@ func miqt_exec_callback_QAbstractItemView_dragLeaveEvent(self *C.QAbstractItemVi
 }
 
 func (this *QAbstractItemView) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2504,7 +2346,6 @@ func miqt_exec_callback_QAbstractItemView_dropEvent(self *C.QAbstractItemView, c
 }
 
 func (this *QAbstractItemView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2532,7 +2373,6 @@ func miqt_exec_callback_QAbstractItemView_focusInEvent(self *C.QAbstractItemView
 }
 
 func (this *QAbstractItemView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2560,7 +2400,6 @@ func miqt_exec_callback_QAbstractItemView_focusOutEvent(self *C.QAbstractItemVie
 }
 
 func (this *QAbstractItemView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2588,7 +2427,6 @@ func miqt_exec_callback_QAbstractItemView_keyPressEvent(self *C.QAbstractItemVie
 }
 
 func (this *QAbstractItemView) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2616,7 +2454,6 @@ func miqt_exec_callback_QAbstractItemView_resizeEvent(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2644,7 +2481,6 @@ func miqt_exec_callback_QAbstractItemView_timerEvent(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2672,8 +2508,6 @@ func miqt_exec_callback_QAbstractItemView_inputMethodEvent(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemView) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QAbstractItemView_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
@@ -2705,7 +2539,6 @@ func miqt_exec_callback_QAbstractItemView_eventFilter(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_ViewportSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QAbstractItemView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2734,7 +2567,6 @@ func miqt_exec_callback_QAbstractItemView_viewportSizeHint(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemView) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QAbstractItemView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2763,7 +2595,6 @@ func miqt_exec_callback_QAbstractItemView_minimumSizeHint(self *C.QAbstractItemV
 }
 
 func (this *QAbstractItemView) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QAbstractItemView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2792,8 +2623,6 @@ func miqt_exec_callback_QAbstractItemView_sizeHint(self *C.QAbstractItemView, cb
 }
 
 func (this *QAbstractItemView) callVirtualBase_SetupViewport(viewport *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewport)
 
 	C.QAbstractItemView_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -2820,7 +2649,6 @@ func miqt_exec_callback_QAbstractItemView_setupViewport(self *C.QAbstractItemVie
 }
 
 func (this *QAbstractItemView) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QAbstractItemView_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -2848,7 +2676,6 @@ func miqt_exec_callback_QAbstractItemView_paintEvent(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QAbstractItemView_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -2876,7 +2703,6 @@ func miqt_exec_callback_QAbstractItemView_wheelEvent(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QAbstractItemView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -2904,7 +2730,6 @@ func miqt_exec_callback_QAbstractItemView_contextMenuEvent(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -2933,7 +2758,6 @@ func miqt_exec_callback_QAbstractItemView_scrollContentsBy(self *C.QAbstractItem
 }
 
 func (this *QAbstractItemView) callVirtualBase_ChangeEvent(param1 *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QAbstractItemView_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -2961,7 +2785,6 @@ func miqt_exec_callback_QAbstractItemView_changeEvent(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QAbstractItemView_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
@@ -2989,7 +2812,6 @@ func miqt_exec_callback_QAbstractItemView_initStyleOption(self *C.QAbstractItemV
 }
 
 func (this *QAbstractItemView) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QAbstractItemView_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -3015,7 +2837,6 @@ func miqt_exec_callback_QAbstractItemView_devType(self *C.QAbstractItemView, cb 
 }
 
 func (this *QAbstractItemView) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QAbstractItemView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -3042,7 +2863,6 @@ func miqt_exec_callback_QAbstractItemView_setVisible(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QAbstractItemView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3071,7 +2891,6 @@ func miqt_exec_callback_QAbstractItemView_heightForWidth(self *C.QAbstractItemVi
 }
 
 func (this *QAbstractItemView) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QAbstractItemView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -3097,7 +2916,6 @@ func miqt_exec_callback_QAbstractItemView_hasHeightForWidth(self *C.QAbstractIte
 }
 
 func (this *QAbstractItemView) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QAbstractItemView_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -3124,7 +2942,6 @@ func miqt_exec_callback_QAbstractItemView_paintEngine(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3152,7 +2969,6 @@ func miqt_exec_callback_QAbstractItemView_keyReleaseEvent(self *C.QAbstractItemV
 }
 
 func (this *QAbstractItemView) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3180,7 +2996,6 @@ func miqt_exec_callback_QAbstractItemView_enterEvent(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3208,7 +3023,6 @@ func miqt_exec_callback_QAbstractItemView_leaveEvent(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3236,7 +3050,6 @@ func miqt_exec_callback_QAbstractItemView_moveEvent(self *C.QAbstractItemView, c
 }
 
 func (this *QAbstractItemView) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3264,7 +3077,6 @@ func miqt_exec_callback_QAbstractItemView_closeEvent(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3292,7 +3104,6 @@ func miqt_exec_callback_QAbstractItemView_tabletEvent(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3320,7 +3131,6 @@ func miqt_exec_callback_QAbstractItemView_actionEvent(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3348,7 +3158,6 @@ func miqt_exec_callback_QAbstractItemView_showEvent(self *C.QAbstractItemView, c
 }
 
 func (this *QAbstractItemView) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3376,7 +3185,6 @@ func miqt_exec_callback_QAbstractItemView_hideEvent(self *C.QAbstractItemView, c
 }
 
 func (this *QAbstractItemView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -3418,7 +3226,6 @@ func miqt_exec_callback_QAbstractItemView_nativeEvent(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QAbstractItemView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3447,7 +3254,6 @@ func miqt_exec_callback_QAbstractItemView_metric(self *C.QAbstractItemView, cb C
 }
 
 func (this *QAbstractItemView) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QAbstractItemView_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -3475,7 +3281,6 @@ func miqt_exec_callback_QAbstractItemView_initPainter(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QAbstractItemView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -3506,7 +3311,6 @@ func miqt_exec_callback_QAbstractItemView_redirected(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QAbstractItemView_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -3533,7 +3337,6 @@ func miqt_exec_callback_QAbstractItemView_sharedPainter(self *C.QAbstractItemVie
 }
 
 func (this *QAbstractItemView) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3561,7 +3364,6 @@ func miqt_exec_callback_QAbstractItemView_childEvent(self *C.QAbstractItemView, 
 }
 
 func (this *QAbstractItemView) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QAbstractItemView_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3589,7 +3391,6 @@ func miqt_exec_callback_QAbstractItemView_customEvent(self *C.QAbstractItemView,
 }
 
 func (this *QAbstractItemView) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractItemView_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3617,7 +3418,6 @@ func miqt_exec_callback_QAbstractItemView_connectNotify(self *C.QAbstractItemVie
 }
 
 func (this *QAbstractItemView) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QAbstractItemView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3652,6 +3452,8 @@ func (this *QAbstractItemView) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QAbstractItemView) GoGC() {
 	if this.gc != nil {
 		return

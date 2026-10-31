@@ -160,7 +160,6 @@ func NewQCamera3(position QCameraDevice__Position) *QCamera {
 
 // NewQCamera4 constructs a new QCamera object.
 func NewQCamera4(parent *qt6.QObject) *QCamera {
-	defer runtime.KeepAlive(parent)
 
 	return newQCamera(C.QCamera_new4((*C.QObject)(parent.UnsafePointer())))
 }
@@ -168,25 +167,21 @@ func NewQCamera4(parent *qt6.QObject) *QCamera {
 // NewQCamera5 constructs a new QCamera object.
 func NewQCamera5(cameraDevice *QCameraDevice, parent *qt6.QObject) *QCamera {
 	defer runtime.KeepAlive(cameraDevice)
-	defer runtime.KeepAlive(parent)
 
 	return newQCamera(C.QCamera_new5(cameraDevice.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQCamera6 constructs a new QCamera object.
 func NewQCamera6(position QCameraDevice__Position, parent *qt6.QObject) *QCamera {
-	defer runtime.KeepAlive(parent)
 
 	return newQCamera(C.QCamera_new6((C.int)(position), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QCamera) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QCamera_metaObject(this.h)))
 }
 
 func (this *QCamera) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCamera_metacast(this.h, param1_Cstring))
@@ -202,53 +197,44 @@ func QCamera_Tr(s string) string {
 }
 
 func (this *QCamera) IsAvailable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCamera_isAvailable(this.h))
 }
 
 func (this *QCamera) IsActive() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCamera_isActive(this.h))
 }
 
 func (this *QCamera) CaptureSession() *QMediaCaptureSession {
-	defer runtime.KeepAlive(this)
 	return newQMediaCaptureSession(C.QCamera_captureSession(this.h))
 }
 
 func (this *QCamera) CameraDevice() *QCameraDevice {
-	defer runtime.KeepAlive(this)
 	_goptr := newQCameraDevice(C.QCamera_cameraDevice(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCamera) SetCameraDevice(cameraDevice *QCameraDevice) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cameraDevice)
 	C.QCamera_setCameraDevice(this.h, cameraDevice.cPointer())
 }
 
 func (this *QCamera) CameraFormat() *QCameraFormat {
-	defer runtime.KeepAlive(this)
 	_goptr := newQCameraFormat(C.QCamera_cameraFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCamera) SetCameraFormat(format *QCameraFormat) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(format)
 	C.QCamera_setCameraFormat(this.h, format.cPointer())
 }
 
 func (this *QCamera) Error() QCamera__Error {
-	defer runtime.KeepAlive(this)
 	return (QCamera__Error)(C.QCamera_error(this.h))
 }
 
 func (this *QCamera) ErrorString() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QCamera_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -256,242 +242,195 @@ func (this *QCamera) ErrorString() string {
 }
 
 func (this *QCamera) SupportedFeatures() QCamera__Feature {
-	defer runtime.KeepAlive(this)
 	return (QCamera__Feature)(C.QCamera_supportedFeatures(this.h))
 }
 
 func (this *QCamera) FocusMode() QCamera__FocusMode {
-	defer runtime.KeepAlive(this)
 	return (QCamera__FocusMode)(C.QCamera_focusMode(this.h))
 }
 
 func (this *QCamera) SetFocusMode(mode QCamera__FocusMode) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setFocusMode(this.h, (C.int)(mode))
 }
 
 func (this *QCamera) IsFocusModeSupported(mode QCamera__FocusMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCamera_isFocusModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCamera) FocusPoint() *qt6.QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QCamera_focusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCamera) CustomFocusPoint() *qt6.QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QCamera_customFocusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCamera) SetCustomFocusPoint(point *qt6.QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(point)
 	C.QCamera_setCustomFocusPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
 
 func (this *QCamera) SetFocusDistance(d float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setFocusDistance(this.h, (C.float)(d))
 }
 
 func (this *QCamera) FocusDistance() float32 {
-	defer runtime.KeepAlive(this)
 	return (float32)(C.QCamera_focusDistance(this.h))
 }
 
 func (this *QCamera) MinimumZoomFactor() float32 {
-	defer runtime.KeepAlive(this)
 	return (float32)(C.QCamera_minimumZoomFactor(this.h))
 }
 
 func (this *QCamera) MaximumZoomFactor() float32 {
-	defer runtime.KeepAlive(this)
 	return (float32)(C.QCamera_maximumZoomFactor(this.h))
 }
 
 func (this *QCamera) ZoomFactor() float32 {
-	defer runtime.KeepAlive(this)
 	return (float32)(C.QCamera_zoomFactor(this.h))
 }
 
 func (this *QCamera) SetZoomFactor(factor float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setZoomFactor(this.h, (C.float)(factor))
 }
 
 func (this *QCamera) FlashMode() QCamera__FlashMode {
-	defer runtime.KeepAlive(this)
 	return (QCamera__FlashMode)(C.QCamera_flashMode(this.h))
 }
 
 func (this *QCamera) IsFlashModeSupported(mode QCamera__FlashMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCamera_isFlashModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCamera) IsFlashReady() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCamera_isFlashReady(this.h))
 }
 
 func (this *QCamera) TorchMode() QCamera__TorchMode {
-	defer runtime.KeepAlive(this)
 	return (QCamera__TorchMode)(C.QCamera_torchMode(this.h))
 }
 
 func (this *QCamera) IsTorchModeSupported(mode QCamera__TorchMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCamera_isTorchModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCamera) ExposureMode() QCamera__ExposureMode {
-	defer runtime.KeepAlive(this)
 	return (QCamera__ExposureMode)(C.QCamera_exposureMode(this.h))
 }
 
 func (this *QCamera) IsExposureModeSupported(mode QCamera__ExposureMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCamera_isExposureModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCamera) ExposureCompensation() float32 {
-	defer runtime.KeepAlive(this)
 	return (float32)(C.QCamera_exposureCompensation(this.h))
 }
 
 func (this *QCamera) IsoSensitivity() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QCamera_isoSensitivity(this.h))
 }
 
 func (this *QCamera) ManualIsoSensitivity() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QCamera_manualIsoSensitivity(this.h))
 }
 
 func (this *QCamera) ExposureTime() float32 {
-	defer runtime.KeepAlive(this)
 	return (float32)(C.QCamera_exposureTime(this.h))
 }
 
 func (this *QCamera) ManualExposureTime() float32 {
-	defer runtime.KeepAlive(this)
 	return (float32)(C.QCamera_manualExposureTime(this.h))
 }
 
 func (this *QCamera) MinimumIsoSensitivity() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QCamera_minimumIsoSensitivity(this.h))
 }
 
 func (this *QCamera) MaximumIsoSensitivity() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QCamera_maximumIsoSensitivity(this.h))
 }
 
 func (this *QCamera) MinimumExposureTime() float32 {
-	defer runtime.KeepAlive(this)
 	return (float32)(C.QCamera_minimumExposureTime(this.h))
 }
 
 func (this *QCamera) MaximumExposureTime() float32 {
-	defer runtime.KeepAlive(this)
 	return (float32)(C.QCamera_maximumExposureTime(this.h))
 }
 
 func (this *QCamera) WhiteBalanceMode() QCamera__WhiteBalanceMode {
-	defer runtime.KeepAlive(this)
 	return (QCamera__WhiteBalanceMode)(C.QCamera_whiteBalanceMode(this.h))
 }
 
 func (this *QCamera) IsWhiteBalanceModeSupported(mode QCamera__WhiteBalanceMode) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QCamera_isWhiteBalanceModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCamera) ColorTemperature() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QCamera_colorTemperature(this.h))
 }
 
 func (this *QCamera) SetActive(active bool) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setActive(this.h, (C.bool)(active))
 }
 
 func (this *QCamera) Start() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_start(this.h)
 }
 
 func (this *QCamera) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_stop(this.h)
 }
 
 func (this *QCamera) ZoomTo(zoom float32, rate float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_zoomTo(this.h, (C.float)(zoom), (C.float)(rate))
 }
 
 func (this *QCamera) SetFlashMode(mode QCamera__FlashMode) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setFlashMode(this.h, (C.int)(mode))
 }
 
 func (this *QCamera) SetTorchMode(mode QCamera__TorchMode) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setTorchMode(this.h, (C.int)(mode))
 }
 
 func (this *QCamera) SetExposureMode(mode QCamera__ExposureMode) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setExposureMode(this.h, (C.int)(mode))
 }
 
 func (this *QCamera) SetExposureCompensation(ev float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setExposureCompensation(this.h, (C.float)(ev))
 }
 
 func (this *QCamera) SetManualIsoSensitivity(iso int) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setManualIsoSensitivity(this.h, (C.int)(iso))
 }
 
 func (this *QCamera) SetAutoIsoSensitivity() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setAutoIsoSensitivity(this.h)
 }
 
 func (this *QCamera) SetManualExposureTime(seconds float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setManualExposureTime(this.h, (C.float)(seconds))
 }
 
 func (this *QCamera) SetAutoExposureTime() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setAutoExposureTime(this.h)
 }
 
 func (this *QCamera) SetWhiteBalanceMode(mode QCamera__WhiteBalanceMode) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setWhiteBalanceMode(this.h, (C.int)(mode))
 }
 
 func (this *QCamera) SetColorTemperature(colorTemperature int) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_setColorTemperature(this.h, (C.int)(colorTemperature))
 }
 
 func (this *QCamera) ActiveChanged(param1 bool) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_activeChanged(this.h, (C.bool)(param1))
 }
 func (this *QCamera) OnActiveChanged(slot func(param1 bool)) {
@@ -512,7 +451,6 @@ func miqt_exec_callback_QCamera_activeChanged(cb C.intptr_t, param1 C.bool) {
 }
 
 func (this *QCamera) ErrorChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_errorChanged(this.h)
 }
 func (this *QCamera) OnErrorChanged(slot func()) {
@@ -530,7 +468,6 @@ func miqt_exec_callback_QCamera_errorChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) ErrorOccurred(error QCamera__Error, errorString string) {
-	defer runtime.KeepAlive(this)
 	errorString_ms := C.struct_miqt_string{}
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
@@ -560,7 +497,6 @@ func miqt_exec_callback_QCamera_errorOccurred(cb C.intptr_t, error C.int, errorS
 }
 
 func (this *QCamera) CameraDeviceChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_cameraDeviceChanged(this.h)
 }
 func (this *QCamera) OnCameraDeviceChanged(slot func()) {
@@ -578,7 +514,6 @@ func miqt_exec_callback_QCamera_cameraDeviceChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) CameraFormatChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_cameraFormatChanged(this.h)
 }
 func (this *QCamera) OnCameraFormatChanged(slot func()) {
@@ -596,7 +531,6 @@ func miqt_exec_callback_QCamera_cameraFormatChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) SupportedFeaturesChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_supportedFeaturesChanged(this.h)
 }
 func (this *QCamera) OnSupportedFeaturesChanged(slot func()) {
@@ -614,7 +548,6 @@ func miqt_exec_callback_QCamera_supportedFeaturesChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) FocusModeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_focusModeChanged(this.h)
 }
 func (this *QCamera) OnFocusModeChanged(slot func()) {
@@ -632,7 +565,6 @@ func miqt_exec_callback_QCamera_focusModeChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) ZoomFactorChanged(param1 float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_zoomFactorChanged(this.h, (C.float)(param1))
 }
 func (this *QCamera) OnZoomFactorChanged(slot func(param1 float32)) {
@@ -653,7 +585,6 @@ func miqt_exec_callback_QCamera_zoomFactorChanged(cb C.intptr_t, param1 C.float)
 }
 
 func (this *QCamera) MinimumZoomFactorChanged(param1 float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_minimumZoomFactorChanged(this.h, (C.float)(param1))
 }
 func (this *QCamera) OnMinimumZoomFactorChanged(slot func(param1 float32)) {
@@ -674,7 +605,6 @@ func miqt_exec_callback_QCamera_minimumZoomFactorChanged(cb C.intptr_t, param1 C
 }
 
 func (this *QCamera) MaximumZoomFactorChanged(param1 float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_maximumZoomFactorChanged(this.h, (C.float)(param1))
 }
 func (this *QCamera) OnMaximumZoomFactorChanged(slot func(param1 float32)) {
@@ -695,7 +625,6 @@ func miqt_exec_callback_QCamera_maximumZoomFactorChanged(cb C.intptr_t, param1 C
 }
 
 func (this *QCamera) FocusDistanceChanged(param1 float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_focusDistanceChanged(this.h, (C.float)(param1))
 }
 func (this *QCamera) OnFocusDistanceChanged(slot func(param1 float32)) {
@@ -716,7 +645,6 @@ func miqt_exec_callback_QCamera_focusDistanceChanged(cb C.intptr_t, param1 C.flo
 }
 
 func (this *QCamera) FocusPointChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_focusPointChanged(this.h)
 }
 func (this *QCamera) OnFocusPointChanged(slot func()) {
@@ -734,7 +662,6 @@ func miqt_exec_callback_QCamera_focusPointChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) CustomFocusPointChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_customFocusPointChanged(this.h)
 }
 func (this *QCamera) OnCustomFocusPointChanged(slot func()) {
@@ -752,7 +679,6 @@ func miqt_exec_callback_QCamera_customFocusPointChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) FlashReady(param1 bool) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_flashReady(this.h, (C.bool)(param1))
 }
 func (this *QCamera) OnFlashReady(slot func(param1 bool)) {
@@ -773,7 +699,6 @@ func miqt_exec_callback_QCamera_flashReady(cb C.intptr_t, param1 C.bool) {
 }
 
 func (this *QCamera) FlashModeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_flashModeChanged(this.h)
 }
 func (this *QCamera) OnFlashModeChanged(slot func()) {
@@ -791,7 +716,6 @@ func miqt_exec_callback_QCamera_flashModeChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) TorchModeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_torchModeChanged(this.h)
 }
 func (this *QCamera) OnTorchModeChanged(slot func()) {
@@ -809,7 +733,6 @@ func miqt_exec_callback_QCamera_torchModeChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) ExposureTimeChanged(speed float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_exposureTimeChanged(this.h, (C.float)(speed))
 }
 func (this *QCamera) OnExposureTimeChanged(slot func(speed float32)) {
@@ -830,7 +753,6 @@ func miqt_exec_callback_QCamera_exposureTimeChanged(cb C.intptr_t, speed C.float
 }
 
 func (this *QCamera) ManualExposureTimeChanged(speed float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_manualExposureTimeChanged(this.h, (C.float)(speed))
 }
 func (this *QCamera) OnManualExposureTimeChanged(slot func(speed float32)) {
@@ -851,7 +773,6 @@ func miqt_exec_callback_QCamera_manualExposureTimeChanged(cb C.intptr_t, speed C
 }
 
 func (this *QCamera) IsoSensitivityChanged(param1 int) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_isoSensitivityChanged(this.h, (C.int)(param1))
 }
 func (this *QCamera) OnIsoSensitivityChanged(slot func(param1 int)) {
@@ -872,7 +793,6 @@ func miqt_exec_callback_QCamera_isoSensitivityChanged(cb C.intptr_t, param1 C.in
 }
 
 func (this *QCamera) ManualIsoSensitivityChanged(param1 int) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_manualIsoSensitivityChanged(this.h, (C.int)(param1))
 }
 func (this *QCamera) OnManualIsoSensitivityChanged(slot func(param1 int)) {
@@ -893,7 +813,6 @@ func miqt_exec_callback_QCamera_manualIsoSensitivityChanged(cb C.intptr_t, param
 }
 
 func (this *QCamera) ExposureCompensationChanged(param1 float32) {
-	defer runtime.KeepAlive(this)
 	C.QCamera_exposureCompensationChanged(this.h, (C.float)(param1))
 }
 func (this *QCamera) OnExposureCompensationChanged(slot func(param1 float32)) {
@@ -914,7 +833,6 @@ func miqt_exec_callback_QCamera_exposureCompensationChanged(cb C.intptr_t, param
 }
 
 func (this *QCamera) ExposureModeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_exposureModeChanged(this.h)
 }
 func (this *QCamera) OnExposureModeChanged(slot func()) {
@@ -932,7 +850,6 @@ func miqt_exec_callback_QCamera_exposureModeChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) WhiteBalanceModeChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_whiteBalanceModeChanged(this.h)
 }
 func (this *QCamera) OnWhiteBalanceModeChanged(slot func()) {
@@ -950,7 +867,6 @@ func miqt_exec_callback_QCamera_whiteBalanceModeChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) ColorTemperatureChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_colorTemperatureChanged(this.h)
 }
 func (this *QCamera) OnColorTemperatureChanged(slot func()) {
@@ -968,7 +884,6 @@ func miqt_exec_callback_QCamera_colorTemperatureChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) BrightnessChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_brightnessChanged(this.h)
 }
 func (this *QCamera) OnBrightnessChanged(slot func()) {
@@ -986,7 +901,6 @@ func miqt_exec_callback_QCamera_brightnessChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) ContrastChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_contrastChanged(this.h)
 }
 func (this *QCamera) OnContrastChanged(slot func()) {
@@ -1004,7 +918,6 @@ func miqt_exec_callback_QCamera_contrastChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) SaturationChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_saturationChanged(this.h)
 }
 func (this *QCamera) OnSaturationChanged(slot func()) {
@@ -1022,7 +935,6 @@ func miqt_exec_callback_QCamera_saturationChanged(cb C.intptr_t) {
 }
 
 func (this *QCamera) HueChanged() {
-	defer runtime.KeepAlive(this)
 	C.QCamera_hueChanged(this.h)
 }
 func (this *QCamera) OnHueChanged(slot func()) {
@@ -1063,7 +975,6 @@ func QCamera_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QCamera that was directly constructed.
 func (this *QCamera) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QCamera_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -1078,7 +989,6 @@ func (this *QCamera) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QCamera that was directly constructed.
 func (this *QCamera) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QCamera_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1093,7 +1003,6 @@ func (this *QCamera) SenderSignalIndex() int {
 
 // Receivers can only be called from a QCamera that was directly constructed.
 func (this *QCamera) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1110,7 +1019,6 @@ func (this *QCamera) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QCamera that was directly constructed.
 func (this *QCamera) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1125,7 +1033,6 @@ func (this *QCamera) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QCamera) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCamera_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -1155,8 +1062,6 @@ func miqt_exec_callback_QCamera_event(self *C.QCamera, cb C.intptr_t, event *C.Q
 }
 
 func (this *QCamera) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QCamera_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1188,7 +1093,6 @@ func miqt_exec_callback_QCamera_eventFilter(self *C.QCamera, cb C.intptr_t, watc
 }
 
 func (this *QCamera) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCamera_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1216,7 +1120,6 @@ func miqt_exec_callback_QCamera_timerEvent(self *C.QCamera, cb C.intptr_t, event
 }
 
 func (this *QCamera) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCamera_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1244,7 +1147,6 @@ func miqt_exec_callback_QCamera_childEvent(self *C.QCamera, cb C.intptr_t, event
 }
 
 func (this *QCamera) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QCamera_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1272,7 +1174,6 @@ func miqt_exec_callback_QCamera_customEvent(self *C.QCamera, cb C.intptr_t, even
 }
 
 func (this *QCamera) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCamera_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1300,7 +1201,6 @@ func miqt_exec_callback_QCamera_connectNotify(self *C.QCamera, cb C.intptr_t, si
 }
 
 func (this *QCamera) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QCamera_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1335,6 +1235,8 @@ func (this *QCamera) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCamera) GoGC() {
 	if this.gc != nil {
 		return

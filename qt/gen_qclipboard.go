@@ -68,12 +68,10 @@ func UnsafeNewQClipboard(h unsafe.Pointer) *QClipboard {
 }
 
 func (this *QClipboard) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QClipboard_metaObject(this.h))
 }
 
 func (this *QClipboard) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QClipboard_metacast(this.h, param1_Cstring))
@@ -98,37 +96,30 @@ func QClipboard_TrUtf8(s string) string {
 }
 
 func (this *QClipboard) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QClipboard_clear(this.h)
 }
 
 func (this *QClipboard) SupportsSelection() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QClipboard_supportsSelection(this.h))
 }
 
 func (this *QClipboard) SupportsFindBuffer() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QClipboard_supportsFindBuffer(this.h))
 }
 
 func (this *QClipboard) OwnsSelection() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QClipboard_ownsSelection(this.h))
 }
 
 func (this *QClipboard) OwnsClipboard() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QClipboard_ownsClipboard(this.h))
 }
 
 func (this *QClipboard) OwnsFindBuffer() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QClipboard_ownsFindBuffer(this.h))
 }
 
 func (this *QClipboard) Text() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QClipboard_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -136,7 +127,6 @@ func (this *QClipboard) Text() string {
 }
 
 func (this *QClipboard) TextWithSubtype(subtype string) string {
-	defer runtime.KeepAlive(this)
 	subtype_ms := C.struct_miqt_string{}
 	subtype_ms.data = C.CString(subtype)
 	subtype_ms.len = C.size_t(len(subtype))
@@ -148,7 +138,6 @@ func (this *QClipboard) TextWithSubtype(subtype string) string {
 }
 
 func (this *QClipboard) SetText(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -157,44 +146,36 @@ func (this *QClipboard) SetText(param1 string) {
 }
 
 func (this *QClipboard) MimeData() *QMimeData {
-	defer runtime.KeepAlive(this)
 	return newQMimeData(C.QClipboard_mimeData(this.h))
 }
 
 func (this *QClipboard) SetMimeData(data *QMimeData) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	C.QClipboard_setMimeData(this.h, data.cPointer())
 }
 
 func (this *QClipboard) Image() *QImage {
-	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QClipboard_image(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QClipboard) Pixmap() *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QClipboard_pixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QClipboard) SetImage(param1 *QImage) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QClipboard_setImage(this.h, param1.cPointer())
 }
 
 func (this *QClipboard) SetPixmap(param1 *QPixmap) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QClipboard_setPixmap(this.h, param1.cPointer())
 }
 
 func (this *QClipboard) Changed(mode QClipboard__Mode) {
-	defer runtime.KeepAlive(this)
 	C.QClipboard_changed(this.h, (C.int)(mode))
 }
 func (this *QClipboard) OnChanged(slot func(mode QClipboard__Mode)) {
@@ -215,7 +196,6 @@ func miqt_exec_callback_QClipboard_changed(cb C.intptr_t, mode C.int) {
 }
 
 func (this *QClipboard) SelectionChanged() {
-	defer runtime.KeepAlive(this)
 	C.QClipboard_selectionChanged(this.h)
 }
 func (this *QClipboard) OnSelectionChanged(slot func()) {
@@ -233,7 +213,6 @@ func miqt_exec_callback_QClipboard_selectionChanged(cb C.intptr_t) {
 }
 
 func (this *QClipboard) FindBufferChanged() {
-	defer runtime.KeepAlive(this)
 	C.QClipboard_findBufferChanged(this.h)
 }
 func (this *QClipboard) OnFindBufferChanged(slot func()) {
@@ -251,7 +230,6 @@ func miqt_exec_callback_QClipboard_findBufferChanged(cb C.intptr_t) {
 }
 
 func (this *QClipboard) DataChanged() {
-	defer runtime.KeepAlive(this)
 	C.QClipboard_dataChanged(this.h)
 }
 func (this *QClipboard) OnDataChanged(slot func()) {
@@ -313,12 +291,10 @@ func QClipboard_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QClipboard) ClearWithMode(mode QClipboard__Mode) {
-	defer runtime.KeepAlive(this)
 	C.QClipboard_clearWithMode(this.h, (C.int)(mode))
 }
 
 func (this *QClipboard) TextWithMode(mode QClipboard__Mode) string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QClipboard_textWithMode(this.h, (C.int)(mode))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -326,7 +302,6 @@ func (this *QClipboard) TextWithMode(mode QClipboard__Mode) string {
 }
 
 func (this *QClipboard) Text2(subtype string, mode QClipboard__Mode) string {
-	defer runtime.KeepAlive(this)
 	subtype_ms := C.struct_miqt_string{}
 	subtype_ms.data = C.CString(subtype)
 	subtype_ms.len = C.size_t(len(subtype))
@@ -338,7 +313,6 @@ func (this *QClipboard) Text2(subtype string, mode QClipboard__Mode) string {
 }
 
 func (this *QClipboard) SetText2(param1 string, mode QClipboard__Mode) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -347,38 +321,31 @@ func (this *QClipboard) SetText2(param1 string, mode QClipboard__Mode) {
 }
 
 func (this *QClipboard) MimeDataWithMode(mode QClipboard__Mode) *QMimeData {
-	defer runtime.KeepAlive(this)
 	return newQMimeData(C.QClipboard_mimeDataWithMode(this.h, (C.int)(mode)))
 }
 
 func (this *QClipboard) SetMimeData2(data *QMimeData, mode QClipboard__Mode) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
 	C.QClipboard_setMimeData2(this.h, data.cPointer(), (C.int)(mode))
 }
 
 func (this *QClipboard) ImageWithMode(mode QClipboard__Mode) *QImage {
-	defer runtime.KeepAlive(this)
 	_goptr := newQImage(C.QClipboard_imageWithMode(this.h, (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QClipboard) PixmapWithMode(mode QClipboard__Mode) *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QClipboard_pixmapWithMode(this.h, (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QClipboard) SetImage2(param1 *QImage, mode QClipboard__Mode) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QClipboard_setImage2(this.h, param1.cPointer(), (C.int)(mode))
 }
 
 func (this *QClipboard) SetPixmap2(param1 *QPixmap, mode QClipboard__Mode) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QClipboard_setPixmap2(this.h, param1.cPointer(), (C.int)(mode))
 }

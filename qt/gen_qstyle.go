@@ -696,12 +696,10 @@ func NewQStyle() *QStyle {
 }
 
 func (this *QStyle) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QStyle_metaObject(this.h))
 }
 
 func (this *QStyle) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QStyle_metacast(this.h, param1_Cstring))
@@ -726,37 +724,27 @@ func QStyle_TrUtf8(s string) string {
 }
 
 func (this *QStyle) Polish(widget *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QStyle_polish(this.h, widget.cPointer())
 }
 
 func (this *QStyle) Unpolish(widget *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QStyle_unpolish(this.h, widget.cPointer())
 }
 
 func (this *QStyle) PolishWithApplication(application *QApplication) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(application)
 	C.QStyle_polishWithApplication(this.h, application.cPointer())
 }
 
 func (this *QStyle) UnpolishWithApplication(application *QApplication) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(application)
 	C.QStyle_unpolishWithApplication(this.h, application.cPointer())
 }
 
 func (this *QStyle) PolishWithPalette(palette *QPalette) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(palette)
 	C.QStyle_polishWithPalette(this.h, palette.cPointer())
 }
 
 func (this *QStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(fm)
 	defer runtime.KeepAlive(r)
 	text_ms := C.struct_miqt_string{}
@@ -769,7 +757,6 @@ func (this *QStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled 
 }
 
 func (this *QStyle) ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(r)
 	defer runtime.KeepAlive(pixmap)
 	_goptr := newQRect(C.QStyle_itemPixmapRect(this.h, r.cPointer(), (C.int)(flags), pixmap.cPointer()))
@@ -778,7 +765,6 @@ func (this *QStyle) ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect 
 }
 
 func (this *QStyle) DrawItemText(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(rect)
 	defer runtime.KeepAlive(pal)
@@ -790,7 +776,6 @@ func (this *QStyle) DrawItemText(painter *QPainter, rect *QRect, flags int, pal 
 }
 
 func (this *QStyle) DrawItemPixmap(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(rect)
 	defer runtime.KeepAlive(pixmap)
@@ -798,107 +783,83 @@ func (this *QStyle) DrawItemPixmap(painter *QPainter, rect *QRect, alignment int
 }
 
 func (this *QStyle) StandardPalette() *QPalette {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPalette(C.QStyle_standardPalette(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyle) DrawPrimitive(pe QStyle__PrimitiveElement, opt *QStyleOption, p *QPainter, w *QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(opt)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(w)
 	C.QStyle_drawPrimitive(this.h, (C.int)(pe), opt.cPointer(), p.cPointer(), w.cPointer())
 }
 
 func (this *QStyle) DrawControl(element QStyle__ControlElement, opt *QStyleOption, p *QPainter, w *QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(opt)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(w)
 	C.QStyle_drawControl(this.h, (C.int)(element), opt.cPointer(), p.cPointer(), w.cPointer())
 }
 
 func (this *QStyle) SubElementRect(subElement QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	_goptr := newQRect(C.QStyle_subElementRect(this.h, (C.int)(subElement), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyle) DrawComplexControl(cc QStyle__ComplexControl, opt *QStyleOptionComplex, p *QPainter, widget *QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(opt)
 	defer runtime.KeepAlive(p)
-	defer runtime.KeepAlive(widget)
 	C.QStyle_drawComplexControl(this.h, (C.int)(cc), opt.cPointer(), p.cPointer(), widget.cPointer())
 }
 
 func (this *QStyle) HitTestComplexControl(cc QStyle__ComplexControl, opt *QStyleOptionComplex, pt *QPoint, widget *QWidget) QStyle__SubControl {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(opt)
 	defer runtime.KeepAlive(pt)
-	defer runtime.KeepAlive(widget)
 	return (QStyle__SubControl)(C.QStyle_hitTestComplexControl(this.h, (C.int)(cc), opt.cPointer(), pt.cPointer(), widget.cPointer()))
 }
 
 func (this *QStyle) SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(opt)
-	defer runtime.KeepAlive(widget)
 	_goptr := newQRect(C.QStyle_subControlRect(this.h, (C.int)(cc), opt.cPointer(), (C.int)(sc), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyle) PixelMetric(metric QStyle__PixelMetric, option *QStyleOption, widget *QWidget) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	return (int)(C.QStyle_pixelMetric(this.h, (C.int)(metric), option.cPointer(), widget.cPointer()))
 }
 
 func (this *QStyle) SizeFromContents(ct QStyle__ContentsType, opt *QStyleOption, contentsSize *QSize, w *QWidget) *QSize {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(opt)
 	defer runtime.KeepAlive(contentsSize)
-	defer runtime.KeepAlive(w)
 	_goptr := newQSize(C.QStyle_sizeFromContents(this.h, (C.int)(ct), opt.cPointer(), contentsSize.cPointer(), w.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyle) StyleHint(stylehint QStyle__StyleHint, opt *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(opt)
-	defer runtime.KeepAlive(widget)
 	defer runtime.KeepAlive(returnData)
 	return (int)(C.QStyle_styleHint(this.h, (C.int)(stylehint), opt.cPointer(), widget.cPointer(), returnData.cPointer()))
 }
 
 func (this *QStyle) StandardPixmap(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(opt)
-	defer runtime.KeepAlive(widget)
 	_goptr := newQPixmap(C.QStyle_standardPixmap(this.h, (C.int)(standardPixmap), opt.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyle) StandardIcon(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	_goptr := newQIcon(C.QStyle_standardIcon(this.h, (C.int)(standardIcon), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyle) GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pixmap)
 	defer runtime.KeepAlive(opt)
 	_goptr := newQPixmap(C.QStyle_generatedIconPixmap(this.h, (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()))
@@ -943,19 +904,15 @@ func QStyle_AlignedRect(direction LayoutDirection, alignment AlignmentFlag, size
 }
 
 func (this *QStyle) LayoutSpacing(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	return (int)(C.QStyle_layoutSpacing(this.h, (C.int)(control1), (C.int)(control2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
 }
 
 func (this *QStyle) CombinedLayoutSpacing(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QStyle_combinedLayoutSpacing(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation)))
 }
 
 func (this *QStyle) Proxy() *QStyle {
-	defer runtime.KeepAlive(this)
 	return newQStyle(C.QStyle_proxy(this.h))
 }
 
@@ -1012,21 +969,17 @@ func QStyle_SliderValueFromPosition2(min int, max int, pos int, space int, upsid
 }
 
 func (this *QStyle) CombinedLayoutSpacing2(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 	return (int)(C.QStyle_combinedLayoutSpacing2(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer()))
 }
 
 func (this *QStyle) CombinedLayoutSpacing3(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	return (int)(C.QStyle_combinedLayoutSpacing3(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
 }
 
 // Sender can only be called from a QStyle that was directly constructed.
 func (this *QStyle) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QStyle_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1041,7 +994,6 @@ func (this *QStyle) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QStyle that was directly constructed.
 func (this *QStyle) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QStyle_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1056,7 +1008,6 @@ func (this *QStyle) SenderSignalIndex() int {
 
 // Receivers can only be called from a QStyle that was directly constructed.
 func (this *QStyle) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1073,7 +1024,6 @@ func (this *QStyle) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QStyle that was directly constructed.
 func (this *QStyle) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1088,8 +1038,6 @@ func (this *QStyle) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QStyle) callVirtualBase_Polish(widget *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 
 	C.QStyle_virtualbase_polish(unsafe.Pointer(this.h), widget.cPointer())
 
@@ -1116,8 +1064,6 @@ func miqt_exec_callback_QStyle_polish(self *C.QStyle, cb C.intptr_t, widget *C.Q
 }
 
 func (this *QStyle) callVirtualBase_Unpolish(widget *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 
 	C.QStyle_virtualbase_unpolish(unsafe.Pointer(this.h), widget.cPointer())
 
@@ -1144,8 +1090,6 @@ func miqt_exec_callback_QStyle_unpolish(self *C.QStyle, cb C.intptr_t, widget *C
 }
 
 func (this *QStyle) callVirtualBase_PolishWithApplication(application *QApplication) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(application)
 
 	C.QStyle_virtualbase_polishWithApplication(unsafe.Pointer(this.h), application.cPointer())
 
@@ -1172,8 +1116,6 @@ func miqt_exec_callback_QStyle_polishWithApplication(self *C.QStyle, cb C.intptr
 }
 
 func (this *QStyle) callVirtualBase_UnpolishWithApplication(application *QApplication) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(application)
 
 	C.QStyle_virtualbase_unpolishWithApplication(unsafe.Pointer(this.h), application.cPointer())
 
@@ -1200,7 +1142,6 @@ func miqt_exec_callback_QStyle_unpolishWithApplication(self *C.QStyle, cb C.intp
 }
 
 func (this *QStyle) callVirtualBase_PolishWithPalette(palette *QPalette) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(palette)
 
 	C.QStyle_virtualbase_polishWithPalette(unsafe.Pointer(this.h), palette.cPointer())
@@ -1228,7 +1169,6 @@ func miqt_exec_callback_QStyle_polishWithPalette(self *C.QStyle, cb C.intptr_t, 
 }
 
 func (this *QStyle) callVirtualBase_ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(fm)
 	defer runtime.KeepAlive(r)
 	text_ms := C.struct_miqt_string{}
@@ -1277,7 +1217,6 @@ func miqt_exec_callback_QStyle_itemTextRect(self *C.QStyle, cb C.intptr_t, fm *C
 }
 
 func (this *QStyle) callVirtualBase_ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(r)
 	defer runtime.KeepAlive(pixmap)
 
@@ -1315,7 +1254,6 @@ func miqt_exec_callback_QStyle_itemPixmapRect(self *C.QStyle, cb C.intptr_t, r *
 }
 
 func (this *QStyle) callVirtualBase_DrawItemText(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(rect)
 	defer runtime.KeepAlive(pal)
@@ -1363,7 +1301,6 @@ func miqt_exec_callback_QStyle_drawItemText(self *C.QStyle, cb C.intptr_t, paint
 }
 
 func (this *QStyle) callVirtualBase_DrawItemPixmap(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(rect)
 	defer runtime.KeepAlive(pixmap)
@@ -1399,7 +1336,6 @@ func miqt_exec_callback_QStyle_drawItemPixmap(self *C.QStyle, cb C.intptr_t, pai
 }
 
 func (this *QStyle) callVirtualBase_StandardPalette() *QPalette {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQPalette(C.QStyle_virtualbase_standardPalette(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1784,7 +1720,6 @@ func miqt_exec_callback_QStyle_layoutSpacing(self *C.QStyle, cb C.intptr_t, cont
 }
 
 func (this *QStyle) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStyle_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1814,8 +1749,6 @@ func miqt_exec_callback_QStyle_event(self *C.QStyle, cb C.intptr_t, event *C.QEv
 }
 
 func (this *QStyle) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QStyle_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1847,7 +1780,6 @@ func miqt_exec_callback_QStyle_eventFilter(self *C.QStyle, cb C.intptr_t, watche
 }
 
 func (this *QStyle) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStyle_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1875,7 +1807,6 @@ func miqt_exec_callback_QStyle_timerEvent(self *C.QStyle, cb C.intptr_t, event *
 }
 
 func (this *QStyle) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStyle_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1903,7 +1834,6 @@ func miqt_exec_callback_QStyle_childEvent(self *C.QStyle, cb C.intptr_t, event *
 }
 
 func (this *QStyle) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QStyle_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1931,7 +1861,6 @@ func miqt_exec_callback_QStyle_customEvent(self *C.QStyle, cb C.intptr_t, event 
 }
 
 func (this *QStyle) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QStyle_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1959,7 +1888,6 @@ func miqt_exec_callback_QStyle_connectNotify(self *C.QStyle, cb C.intptr_t, sign
 }
 
 func (this *QStyle) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QStyle_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1994,6 +1922,8 @@ func (this *QStyle) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QStyle) GoGC() {
 	if this.gc != nil {
 		return

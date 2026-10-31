@@ -60,12 +60,10 @@ func UnsafeNewQCameraCaptureBufferFormatControl(h unsafe.Pointer) *QCameraCaptur
 }
 
 func (this *QCameraCaptureBufferFormatControl) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraCaptureBufferFormatControl_metaObject(this.h)))
 }
 
 func (this *QCameraCaptureBufferFormatControl) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QCameraCaptureBufferFormatControl_metacast(this.h, param1_Cstring))
@@ -90,7 +88,6 @@ func QCameraCaptureBufferFormatControl_TrUtf8(s string) string {
 }
 
 func (this *QCameraCaptureBufferFormatControl) SupportedBufferFormats() []QVideoFrame__PixelFormat {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QCameraCaptureBufferFormatControl_supportedBufferFormats(this.h)
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
 	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -101,17 +98,14 @@ func (this *QCameraCaptureBufferFormatControl) SupportedBufferFormats() []QVideo
 }
 
 func (this *QCameraCaptureBufferFormatControl) BufferFormat() QVideoFrame__PixelFormat {
-	defer runtime.KeepAlive(this)
 	return (QVideoFrame__PixelFormat)(C.QCameraCaptureBufferFormatControl_bufferFormat(this.h))
 }
 
 func (this *QCameraCaptureBufferFormatControl) SetBufferFormat(format QVideoFrame__PixelFormat) {
-	defer runtime.KeepAlive(this)
 	C.QCameraCaptureBufferFormatControl_setBufferFormat(this.h, (C.int)(format))
 }
 
 func (this *QCameraCaptureBufferFormatControl) BufferFormatChanged(format QVideoFrame__PixelFormat) {
-	defer runtime.KeepAlive(this)
 	C.QCameraCaptureBufferFormatControl_bufferFormatChanged(this.h, (C.int)(format))
 }
 func (this *QCameraCaptureBufferFormatControl) OnBufferFormatChanged(slot func(format QVideoFrame__PixelFormat)) {
@@ -183,6 +177,8 @@ func (this *QCameraCaptureBufferFormatControl) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QCameraCaptureBufferFormatControl) GoGC() {
 	if this.gc != nil {
 		return

@@ -177,7 +177,6 @@ func (this *QCommandLineParser) Process(arguments []string) {
 
 func (this *QCommandLineParser) ProcessWithApp(app *QCoreApplication) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(app)
 	C.QCommandLineParser_processWithApp(this.h, app.cPointer())
 }
 

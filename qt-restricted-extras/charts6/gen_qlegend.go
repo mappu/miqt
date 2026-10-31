@@ -72,12 +72,10 @@ func UnsafeNewQLegend(h unsafe.Pointer) *QLegend {
 }
 
 func (this *QLegend) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QLegend_metaObject(this.h)))
 }
 
 func (this *QLegend) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QLegend_metacast(this.h, param1_Cstring))
@@ -93,141 +91,117 @@ func QLegend_Tr(s string) string {
 }
 
 func (this *QLegend) Paint(painter *qt6.QPainter, option *qt6.QStyleOptionGraphicsItem, widget *qt6.QWidget) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(option)
-	defer runtime.KeepAlive(widget)
 	C.QLegend_paint(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QStyleOptionGraphicsItem)(option.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 }
 
 func (this *QLegend) SetBrush(brush *qt6.QBrush) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(brush)
 	C.QLegend_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QLegend) Brush() *qt6.QBrush {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QLegend_brush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegend) SetColor(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QLegend_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QLegend) Color() *qt6.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QLegend_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegend) SetPen(pen *qt6.QPen) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pen)
 	C.QLegend_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QLegend) Pen() *qt6.QPen {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QLegend_pen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegend) SetBorderColor(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QLegend_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QLegend) BorderColor() *qt6.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QLegend_borderColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegend) SetFont(font *qt6.QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QLegend_setFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QLegend) Font() *qt6.QFont {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QLegend_font(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegend) SetLabelBrush(brush *qt6.QBrush) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(brush)
 	C.QLegend_setLabelBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QLegend) LabelBrush() *qt6.QBrush {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QLegend_labelBrush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegend) SetLabelColor(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QLegend_setLabelColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QLegend) LabelColor() *qt6.QColor {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QLegend_labelColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLegend) SetAlignment(alignment qt6.AlignmentFlag) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QLegend) Alignment() qt6.AlignmentFlag {
-	defer runtime.KeepAlive(this)
 	return (qt6.AlignmentFlag)(C.QLegend_alignment(this.h))
 }
 
 func (this *QLegend) DetachFromChart() {
-	defer runtime.KeepAlive(this)
 	C.QLegend_detachFromChart(this.h)
 }
 
 func (this *QLegend) AttachToChart() {
-	defer runtime.KeepAlive(this)
 	C.QLegend_attachToChart(this.h)
 }
 
 func (this *QLegend) IsAttachedToChart() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QLegend_isAttachedToChart(this.h))
 }
 
 func (this *QLegend) SetBackgroundVisible() {
-	defer runtime.KeepAlive(this)
 	C.QLegend_setBackgroundVisible(this.h)
 }
 
 func (this *QLegend) IsBackgroundVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QLegend_isBackgroundVisible(this.h))
 }
 
 func (this *QLegend) Markers() []*QLegendMarker {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QLegend_markers(this.h)
 	_ret := make([]*QLegendMarker, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QLegendMarker)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -238,47 +212,38 @@ func (this *QLegend) Markers() []*QLegendMarker {
 }
 
 func (this *QLegend) ReverseMarkers() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QLegend_reverseMarkers(this.h))
 }
 
 func (this *QLegend) SetReverseMarkers() {
-	defer runtime.KeepAlive(this)
 	C.QLegend_setReverseMarkers(this.h)
 }
 
 func (this *QLegend) ShowToolTips() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QLegend_showToolTips(this.h))
 }
 
 func (this *QLegend) SetShowToolTips(show bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_setShowToolTips(this.h, (C.bool)(show))
 }
 
 func (this *QLegend) IsInteractive() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QLegend_isInteractive(this.h))
 }
 
 func (this *QLegend) SetInteractive(interactive bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_setInteractive(this.h, (C.bool)(interactive))
 }
 
 func (this *QLegend) MarkerShape() QLegend__MarkerShape {
-	defer runtime.KeepAlive(this)
 	return (QLegend__MarkerShape)(C.QLegend_markerShape(this.h))
 }
 
 func (this *QLegend) SetMarkerShape(shape QLegend__MarkerShape) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_setMarkerShape(this.h, (C.int)(shape))
 }
 
 func (this *QLegend) BackgroundVisibleChanged(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_backgroundVisibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QLegend) OnBackgroundVisibleChanged(slot func(visible bool)) {
@@ -299,7 +264,6 @@ func miqt_exec_callback_QLegend_backgroundVisibleChanged(cb C.intptr_t, visible 
 }
 
 func (this *QLegend) ColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QLegend_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
@@ -323,7 +287,6 @@ func miqt_exec_callback_QLegend_colorChanged(cb C.intptr_t, color *C.QColor) {
 }
 
 func (this *QLegend) BorderColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QLegend_borderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
@@ -347,7 +310,6 @@ func miqt_exec_callback_QLegend_borderColorChanged(cb C.intptr_t, color *C.QColo
 }
 
 func (this *QLegend) FontChanged(font qt6.QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QLegend_fontChanged(this.h, (*C.QFont)(font.UnsafePointer()))
 }
@@ -371,7 +333,6 @@ func miqt_exec_callback_QLegend_fontChanged(cb C.intptr_t, font *C.QFont) {
 }
 
 func (this *QLegend) LabelColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(color)
 	C.QLegend_labelColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
 }
@@ -395,7 +356,6 @@ func miqt_exec_callback_QLegend_labelColorChanged(cb C.intptr_t, color *C.QColor
 }
 
 func (this *QLegend) ReverseMarkersChanged(reverseMarkers bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_reverseMarkersChanged(this.h, (C.bool)(reverseMarkers))
 }
 func (this *QLegend) OnReverseMarkersChanged(slot func(reverseMarkers bool)) {
@@ -416,7 +376,6 @@ func miqt_exec_callback_QLegend_reverseMarkersChanged(cb C.intptr_t, reverseMark
 }
 
 func (this *QLegend) ShowToolTipsChanged(showToolTips bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_showToolTipsChanged(this.h, (C.bool)(showToolTips))
 }
 func (this *QLegend) OnShowToolTipsChanged(slot func(showToolTips bool)) {
@@ -437,7 +396,6 @@ func miqt_exec_callback_QLegend_showToolTipsChanged(cb C.intptr_t, showToolTips 
 }
 
 func (this *QLegend) MarkerShapeChanged(shape QLegend__MarkerShape) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_markerShapeChanged(this.h, (C.int)(shape))
 }
 func (this *QLegend) OnMarkerShapeChanged(slot func(shape QLegend__MarkerShape)) {
@@ -458,7 +416,6 @@ func miqt_exec_callback_QLegend_markerShapeChanged(cb C.intptr_t, shape C.int) {
 }
 
 func (this *QLegend) AttachedToChartChanged(attachedToChart bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_attachedToChartChanged(this.h, (C.bool)(attachedToChart))
 }
 func (this *QLegend) OnAttachedToChartChanged(slot func(attachedToChart bool)) {
@@ -479,7 +436,6 @@ func miqt_exec_callback_QLegend_attachedToChartChanged(cb C.intptr_t, attachedTo
 }
 
 func (this *QLegend) InteractiveChanged(interactive bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_interactiveChanged(this.h, (C.bool)(interactive))
 }
 func (this *QLegend) OnInteractiveChanged(slot func(interactive bool)) {
@@ -522,13 +478,10 @@ func QLegend_Tr3(s string, c string, n int) string {
 }
 
 func (this *QLegend) SetBackgroundVisibleWithVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_setBackgroundVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QLegend) MarkersWithSeries(series *QAbstractSeries) []*QLegendMarker {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(series)
 	var _ma C.struct_miqt_array = C.QLegend_markersWithSeries(this.h, series.cPointer())
 	_ret := make([]*QLegendMarker, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QLegendMarker)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -539,7 +492,6 @@ func (this *QLegend) MarkersWithSeries(series *QAbstractSeries) []*QLegendMarker
 }
 
 func (this *QLegend) SetReverseMarkersWithReverseMarkers(reverseMarkers bool) {
-	defer runtime.KeepAlive(this)
 	C.QLegend_setReverseMarkersWithReverseMarkers(this.h, (C.bool)(reverseMarkers))
 }
 
@@ -551,6 +503,8 @@ func (this *QLegend) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QLegend) GoGC() {
 	if this.gc != nil {
 		return

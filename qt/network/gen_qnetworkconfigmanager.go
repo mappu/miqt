@@ -78,18 +78,15 @@ func NewQNetworkConfigurationManager() *QNetworkConfigurationManager {
 
 // NewQNetworkConfigurationManager2 constructs a new QNetworkConfigurationManager object.
 func NewQNetworkConfigurationManager2(parent *qt.QObject) *QNetworkConfigurationManager {
-	defer runtime.KeepAlive(parent)
 
 	return newQNetworkConfigurationManager(C.QNetworkConfigurationManager_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QNetworkConfigurationManager) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkConfigurationManager_metaObject(this.h)))
 }
 
 func (this *QNetworkConfigurationManager) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QNetworkConfigurationManager_metacast(this.h, param1_Cstring))
@@ -114,19 +111,16 @@ func QNetworkConfigurationManager_TrUtf8(s string) string {
 }
 
 func (this *QNetworkConfigurationManager) Capabilities() QNetworkConfigurationManager__Capability {
-	defer runtime.KeepAlive(this)
 	return (QNetworkConfigurationManager__Capability)(C.QNetworkConfigurationManager_capabilities(this.h))
 }
 
 func (this *QNetworkConfigurationManager) DefaultConfiguration() *QNetworkConfiguration {
-	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkConfiguration(C.QNetworkConfigurationManager_defaultConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkConfigurationManager) AllConfigurations() []QNetworkConfiguration {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkConfigurationManager_allConfigurations(this.h)
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -139,7 +133,6 @@ func (this *QNetworkConfigurationManager) AllConfigurations() []QNetworkConfigur
 }
 
 func (this *QNetworkConfigurationManager) ConfigurationFromIdentifier(identifier string) *QNetworkConfiguration {
-	defer runtime.KeepAlive(this)
 	identifier_ms := C.struct_miqt_string{}
 	identifier_ms.data = C.CString(identifier)
 	identifier_ms.len = C.size_t(len(identifier))
@@ -150,17 +143,14 @@ func (this *QNetworkConfigurationManager) ConfigurationFromIdentifier(identifier
 }
 
 func (this *QNetworkConfigurationManager) IsOnline() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkConfigurationManager_isOnline(this.h))
 }
 
 func (this *QNetworkConfigurationManager) UpdateConfigurations() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkConfigurationManager_updateConfigurations(this.h)
 }
 
 func (this *QNetworkConfigurationManager) ConfigurationAdded(config *QNetworkConfiguration) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(config)
 	C.QNetworkConfigurationManager_configurationAdded(this.h, config.cPointer())
 }
@@ -182,7 +172,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_configurationAdded(cb C.int
 }
 
 func (this *QNetworkConfigurationManager) ConfigurationRemoved(config *QNetworkConfiguration) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(config)
 	C.QNetworkConfigurationManager_configurationRemoved(this.h, config.cPointer())
 }
@@ -204,7 +193,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_configurationRemoved(cb C.i
 }
 
 func (this *QNetworkConfigurationManager) ConfigurationChanged(config *QNetworkConfiguration) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(config)
 	C.QNetworkConfigurationManager_configurationChanged(this.h, config.cPointer())
 }
@@ -226,7 +214,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_configurationChanged(cb C.i
 }
 
 func (this *QNetworkConfigurationManager) OnlineStateChanged(isOnline bool) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkConfigurationManager_onlineStateChanged(this.h, (C.bool)(isOnline))
 }
 func (this *QNetworkConfigurationManager) OnOnlineStateChanged(slot func(isOnline bool)) {
@@ -247,7 +234,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged(cb C.int
 }
 
 func (this *QNetworkConfigurationManager) UpdateCompleted() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkConfigurationManager_updateCompleted(this.h)
 }
 func (this *QNetworkConfigurationManager) OnUpdateCompleted(slot func()) {
@@ -309,7 +295,6 @@ func QNetworkConfigurationManager_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QNetworkConfigurationManager) AllConfigurationsWithFlags(flags QNetworkConfiguration__StateFlag) []QNetworkConfiguration {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkConfigurationManager_allConfigurationsWithFlags(this.h, (C.int)(flags))
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -323,7 +308,6 @@ func (this *QNetworkConfigurationManager) AllConfigurationsWithFlags(flags QNetw
 
 // Sender can only be called from a QNetworkConfigurationManager that was directly constructed.
 func (this *QNetworkConfigurationManager) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QNetworkConfigurationManager_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -338,7 +322,6 @@ func (this *QNetworkConfigurationManager) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QNetworkConfigurationManager that was directly constructed.
 func (this *QNetworkConfigurationManager) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QNetworkConfigurationManager_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -353,7 +336,6 @@ func (this *QNetworkConfigurationManager) SenderSignalIndex() int {
 
 // Receivers can only be called from a QNetworkConfigurationManager that was directly constructed.
 func (this *QNetworkConfigurationManager) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -370,7 +352,6 @@ func (this *QNetworkConfigurationManager) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QNetworkConfigurationManager that was directly constructed.
 func (this *QNetworkConfigurationManager) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -385,7 +366,6 @@ func (this *QNetworkConfigurationManager) IsSignalConnected(signal *qt.QMetaMeth
 }
 
 func (this *QNetworkConfigurationManager) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkConfigurationManager_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -415,8 +395,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_event(self *C.QNetworkConfi
 }
 
 func (this *QNetworkConfigurationManager) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QNetworkConfigurationManager_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -448,7 +426,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_eventFilter(self *C.QNetwor
 }
 
 func (this *QNetworkConfigurationManager) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNetworkConfigurationManager_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -476,7 +453,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_timerEvent(self *C.QNetwork
 }
 
 func (this *QNetworkConfigurationManager) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNetworkConfigurationManager_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -504,7 +480,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_childEvent(self *C.QNetwork
 }
 
 func (this *QNetworkConfigurationManager) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QNetworkConfigurationManager_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -532,7 +507,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_customEvent(self *C.QNetwor
 }
 
 func (this *QNetworkConfigurationManager) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QNetworkConfigurationManager_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -560,7 +534,6 @@ func miqt_exec_callback_QNetworkConfigurationManager_connectNotify(self *C.QNetw
 }
 
 func (this *QNetworkConfigurationManager) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QNetworkConfigurationManager_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -595,6 +568,8 @@ func (this *QNetworkConfigurationManager) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QNetworkConfigurationManager) GoGC() {
 	if this.gc != nil {
 		return

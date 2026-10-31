@@ -70,7 +70,6 @@ func NewQImageReader() *QImageReader {
 
 // NewQImageReader2 constructs a new QImageReader object.
 func NewQImageReader2(device *QIODevice) *QImageReader {
-	defer runtime.KeepAlive(device)
 
 	return newQImageReader(C.QImageReader_new2(device.cPointer()))
 }
@@ -87,7 +86,6 @@ func NewQImageReader3(fileName string) *QImageReader {
 
 // NewQImageReader4 constructs a new QImageReader object.
 func NewQImageReader4(device *QIODevice, format []byte) *QImageReader {
-	defer runtime.KeepAlive(device)
 	format_alias := C.struct_miqt_string{}
 	if len(format) > 0 {
 		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
@@ -167,7 +165,6 @@ func (this *QImageReader) DecideFormatFromContent() bool {
 
 func (this *QImageReader) SetDevice(device *QIODevice) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	C.QImageReader_setDevice(this.h, device.cPointer())
 }
 
@@ -420,7 +417,6 @@ func QImageReader_ImageFormatWithFileName(fileName string) []byte {
 }
 
 func QImageReader_ImageFormatWithDevice(device *QIODevice) []byte {
-	defer runtime.KeepAlive(device)
 	var _bytearray C.struct_miqt_string = C.QImageReader_imageFormatWithDevice(device.cPointer())
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))

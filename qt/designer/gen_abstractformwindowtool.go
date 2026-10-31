@@ -66,18 +66,15 @@ func NewQDesignerFormWindowToolInterface() *QDesignerFormWindowToolInterface {
 
 // NewQDesignerFormWindowToolInterface2 constructs a new QDesignerFormWindowToolInterface object.
 func NewQDesignerFormWindowToolInterface2(parent *qt.QObject) *QDesignerFormWindowToolInterface {
-	defer runtime.KeepAlive(parent)
 
 	return newQDesignerFormWindowToolInterface(C.QDesignerFormWindowToolInterface_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerFormWindowToolInterface) MetaObject() *qt.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerFormWindowToolInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerFormWindowToolInterface) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerFormWindowToolInterface_metacast(this.h, param1_Cstring))
@@ -102,39 +99,30 @@ func QDesignerFormWindowToolInterface_TrUtf8(s string) string {
 }
 
 func (this *QDesignerFormWindowToolInterface) Core() *QDesignerFormEditorInterface {
-	defer runtime.KeepAlive(this)
 	return newQDesignerFormEditorInterface(C.QDesignerFormWindowToolInterface_core(this.h))
 }
 
 func (this *QDesignerFormWindowToolInterface) FormWindow() *QDesignerFormWindowInterface {
-	defer runtime.KeepAlive(this)
 	return newQDesignerFormWindowInterface(C.QDesignerFormWindowToolInterface_formWindow(this.h))
 }
 
 func (this *QDesignerFormWindowToolInterface) Editor() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QDesignerFormWindowToolInterface_editor(this.h)))
 }
 
 func (this *QDesignerFormWindowToolInterface) Action() *qt.QAction {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQAction(unsafe.Pointer(C.QDesignerFormWindowToolInterface_action(this.h)))
 }
 
 func (this *QDesignerFormWindowToolInterface) Activated() {
-	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowToolInterface_activated(this.h)
 }
 
 func (this *QDesignerFormWindowToolInterface) Deactivated() {
-	defer runtime.KeepAlive(this)
 	C.QDesignerFormWindowToolInterface_deactivated(this.h)
 }
 
 func (this *QDesignerFormWindowToolInterface) HandleEvent(widget *qt.QWidget, managedWidget *qt.QWidget, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
-	defer runtime.KeepAlive(managedWidget)
 	defer runtime.KeepAlive(event)
 	return (bool)(C.QDesignerFormWindowToolInterface_handleEvent(this.h, (*C.QWidget)(widget.UnsafePointer()), (*C.QWidget)(managedWidget.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 }
@@ -185,7 +173,6 @@ func QDesignerFormWindowToolInterface_TrUtf83(s string, c string, n int) string 
 
 // Sender can only be called from a QDesignerFormWindowToolInterface that was directly constructed.
 func (this *QDesignerFormWindowToolInterface) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QDesignerFormWindowToolInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -200,7 +187,6 @@ func (this *QDesignerFormWindowToolInterface) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerFormWindowToolInterface that was directly constructed.
 func (this *QDesignerFormWindowToolInterface) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerFormWindowToolInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -215,7 +201,6 @@ func (this *QDesignerFormWindowToolInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerFormWindowToolInterface that was directly constructed.
 func (this *QDesignerFormWindowToolInterface) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -232,7 +217,6 @@ func (this *QDesignerFormWindowToolInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerFormWindowToolInterface that was directly constructed.
 func (this *QDesignerFormWindowToolInterface) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -260,7 +244,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_core(self *C.QDesignerF
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -280,7 +263,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_formWindow(self *C.QDes
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
@@ -300,7 +282,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_editor(self *C.QDesigne
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QWidget)(virtualReturn.UnsafePointer())
 
@@ -320,7 +301,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_action(self *C.QDesigne
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
 	return (*C.QAction)(virtualReturn.UnsafePointer())
 
@@ -387,7 +367,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_handleEvent(self *C.QDe
 }
 
 func (this *QDesignerFormWindowToolInterface) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerFormWindowToolInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -417,8 +396,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_event(self *C.QDesigner
 }
 
 func (this *QDesignerFormWindowToolInterface) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerFormWindowToolInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -450,7 +427,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_eventFilter(self *C.QDe
 }
 
 func (this *QDesignerFormWindowToolInterface) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerFormWindowToolInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -478,7 +454,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_timerEvent(self *C.QDes
 }
 
 func (this *QDesignerFormWindowToolInterface) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerFormWindowToolInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -506,7 +481,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_childEvent(self *C.QDes
 }
 
 func (this *QDesignerFormWindowToolInterface) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerFormWindowToolInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -534,7 +508,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_customEvent(self *C.QDe
 }
 
 func (this *QDesignerFormWindowToolInterface) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerFormWindowToolInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -562,7 +535,6 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_connectNotify(self *C.Q
 }
 
 func (this *QDesignerFormWindowToolInterface) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerFormWindowToolInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -597,6 +569,8 @@ func (this *QDesignerFormWindowToolInterface) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDesignerFormWindowToolInterface) GoGC() {
 	if this.gc != nil {
 		return

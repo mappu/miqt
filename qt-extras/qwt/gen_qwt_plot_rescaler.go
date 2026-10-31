@@ -76,133 +76,108 @@ func UnsafeNewQwtPlotRescaler(h unsafe.Pointer) *QwtPlotRescaler {
 
 // NewQwtPlotRescaler constructs a new QwtPlotRescaler object.
 func NewQwtPlotRescaler(canvas *qt.QWidget) *QwtPlotRescaler {
-	defer runtime.KeepAlive(canvas)
 
 	return newQwtPlotRescaler(C.QwtPlotRescaler_new((*C.QWidget)(canvas.UnsafePointer())))
 }
 
 // NewQwtPlotRescaler2 constructs a new QwtPlotRescaler object.
 func NewQwtPlotRescaler2(canvas *qt.QWidget, referenceAxis int) *QwtPlotRescaler {
-	defer runtime.KeepAlive(canvas)
 
 	return newQwtPlotRescaler(C.QwtPlotRescaler_new2((*C.QWidget)(canvas.UnsafePointer()), (C.int)(referenceAxis)))
 }
 
 // NewQwtPlotRescaler3 constructs a new QwtPlotRescaler object.
 func NewQwtPlotRescaler3(canvas *qt.QWidget, referenceAxis int, param3 QwtPlotRescaler__RescalePolicy) *QwtPlotRescaler {
-	defer runtime.KeepAlive(canvas)
 
 	return newQwtPlotRescaler(C.QwtPlotRescaler_new3((*C.QWidget)(canvas.UnsafePointer()), (C.int)(referenceAxis), (C.int)(param3)))
 }
 
 func (this *QwtPlotRescaler) SetEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotRescaler_setEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QwtPlotRescaler) IsEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QwtPlotRescaler_isEnabled(this.h))
 }
 
 func (this *QwtPlotRescaler) SetRescalePolicy(rescalePolicy QwtPlotRescaler__RescalePolicy) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotRescaler_setRescalePolicy(this.h, (C.int)(rescalePolicy))
 }
 
 func (this *QwtPlotRescaler) RescalePolicy() QwtPlotRescaler__RescalePolicy {
-	defer runtime.KeepAlive(this)
 	return (QwtPlotRescaler__RescalePolicy)(C.QwtPlotRescaler_rescalePolicy(this.h))
 }
 
 func (this *QwtPlotRescaler) SetExpandingDirection(expandingDirection QwtPlotRescaler__ExpandingDirection) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotRescaler_setExpandingDirection(this.h, (C.int)(expandingDirection))
 }
 
 func (this *QwtPlotRescaler) SetExpandingDirection2(axis int, param2 QwtPlotRescaler__ExpandingDirection) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotRescaler_setExpandingDirection2(this.h, (C.int)(axis), (C.int)(param2))
 }
 
 func (this *QwtPlotRescaler) ExpandingDirection(axis int) QwtPlotRescaler__ExpandingDirection {
-	defer runtime.KeepAlive(this)
 	return (QwtPlotRescaler__ExpandingDirection)(C.QwtPlotRescaler_expandingDirection(this.h, (C.int)(axis)))
 }
 
 func (this *QwtPlotRescaler) SetReferenceAxis(axis int) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotRescaler_setReferenceAxis(this.h, (C.int)(axis))
 }
 
 func (this *QwtPlotRescaler) ReferenceAxis() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QwtPlotRescaler_referenceAxis(this.h))
 }
 
 func (this *QwtPlotRescaler) SetAspectRatio(ratio float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotRescaler_setAspectRatio(this.h, (C.double)(ratio))
 }
 
 func (this *QwtPlotRescaler) SetAspectRatio2(axis int, ratio float64) {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotRescaler_setAspectRatio2(this.h, (C.int)(axis), (C.double)(ratio))
 }
 
 func (this *QwtPlotRescaler) AspectRatio(axis int) float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QwtPlotRescaler_aspectRatio(this.h, (C.int)(axis)))
 }
 
 func (this *QwtPlotRescaler) SetIntervalHint(axis int, param2 *QwtInterval) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param2)
 	C.QwtPlotRescaler_setIntervalHint(this.h, (C.int)(axis), param2.cPointer())
 }
 
 func (this *QwtPlotRescaler) IntervalHint(axis int) *QwtInterval {
-	defer runtime.KeepAlive(this)
 	_goptr := newQwtInterval(C.QwtPlotRescaler_intervalHint(this.h, (C.int)(axis)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QwtPlotRescaler) Canvas() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtPlotRescaler_canvas(this.h)))
 }
 
 func (this *QwtPlotRescaler) Canvas2() *qt.QWidget {
-	defer runtime.KeepAlive(this)
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtPlotRescaler_canvas2(this.h)))
 }
 
 func (this *QwtPlotRescaler) Plot() *QwtPlot {
-	defer runtime.KeepAlive(this)
 	return newQwtPlot(C.QwtPlotRescaler_plot(this.h))
 }
 
 func (this *QwtPlotRescaler) Plot2() *QwtPlot {
-	defer runtime.KeepAlive(this)
 	return newQwtPlot(C.QwtPlotRescaler_plot2(this.h))
 }
 
 func (this *QwtPlotRescaler) EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	return (bool)(C.QwtPlotRescaler_eventFilter(this.h, (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 }
 
 func (this *QwtPlotRescaler) Rescale() {
-	defer runtime.KeepAlive(this)
 	C.QwtPlotRescaler_rescale(this.h)
 }
 
 // Orientation can only be called from a QwtPlotRescaler that was directly constructed.
 func (this *QwtPlotRescaler) Orientation(axis int) qt.Orientation {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (qt.Orientation)(C.QwtPlotRescaler_protectedbase_orientation(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(axis)))
@@ -217,7 +192,6 @@ func (this *QwtPlotRescaler) Orientation(axis int) qt.Orientation {
 
 // Interval can only be called from a QwtPlotRescaler that was directly constructed.
 func (this *QwtPlotRescaler) Interval(axis int) QwtInterval {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQwtInterval(C.QwtPlotRescaler_protectedbase_interval(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(axis)))
@@ -234,7 +208,6 @@ func (this *QwtPlotRescaler) Interval(axis int) QwtInterval {
 
 // ExpandInterval can only be called from a QwtPlotRescaler that was directly constructed.
 func (this *QwtPlotRescaler) ExpandInterval(param1 *QwtInterval, width float64, param3 QwtPlotRescaler__ExpandingDirection) QwtInterval {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -252,7 +225,6 @@ func (this *QwtPlotRescaler) ExpandInterval(param1 *QwtInterval, width float64, 
 
 // Sender can only be called from a QwtPlotRescaler that was directly constructed.
 func (this *QwtPlotRescaler) Sender() *qt.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QwtPlotRescaler_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -267,7 +239,6 @@ func (this *QwtPlotRescaler) Sender() *qt.QObject {
 
 // SenderSignalIndex can only be called from a QwtPlotRescaler that was directly constructed.
 func (this *QwtPlotRescaler) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QwtPlotRescaler_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -282,7 +253,6 @@ func (this *QwtPlotRescaler) SenderSignalIndex() int {
 
 // Receivers can only be called from a QwtPlotRescaler that was directly constructed.
 func (this *QwtPlotRescaler) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -299,7 +269,6 @@ func (this *QwtPlotRescaler) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QwtPlotRescaler that was directly constructed.
 func (this *QwtPlotRescaler) IsSignalConnected(signal *qt.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -314,8 +283,6 @@ func (this *QwtPlotRescaler) IsSignalConnected(signal *qt.QMetaMethod) bool {
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QwtPlotRescaler_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
@@ -347,7 +314,6 @@ func miqt_exec_callback_QwtPlotRescaler_eventFilter(self *C.QwtPlotRescaler, cb 
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_CanvasResizeEvent(param1 *qt.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QwtPlotRescaler_virtualbase_canvasResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(param1.UnsafePointer()))
@@ -375,7 +341,6 @@ func miqt_exec_callback_QwtPlotRescaler_canvasResizeEvent(self *C.QwtPlotRescale
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_Rescale2(oldSize *qt.QSize, newSize *qt.QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(oldSize)
 	defer runtime.KeepAlive(newSize)
 
@@ -406,7 +371,6 @@ func miqt_exec_callback_QwtPlotRescaler_rescale2(self *C.QwtPlotRescaler, cb C.i
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_ExpandScale(axis int, oldSize *qt.QSize, newSize *qt.QSize) *QwtInterval {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(oldSize)
 	defer runtime.KeepAlive(newSize)
 
@@ -444,7 +408,6 @@ func miqt_exec_callback_QwtPlotRescaler_expandScale(self *C.QwtPlotRescaler, cb 
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_SyncScale(axis int, reference *QwtInterval, size *qt.QSize) *QwtInterval {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(reference)
 	defer runtime.KeepAlive(size)
 
@@ -482,7 +445,6 @@ func miqt_exec_callback_QwtPlotRescaler_syncScale(self *C.QwtPlotRescaler, cb C.
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_UpdateScales(intervals *QwtInterval) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(intervals)
 
 	C.QwtPlotRescaler_virtualbase_updateScales(unsafe.Pointer(this.h), intervals.cPointer())
@@ -510,7 +472,6 @@ func miqt_exec_callback_QwtPlotRescaler_updateScales(self *C.QwtPlotRescaler, cb
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_Event(event *qt.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QwtPlotRescaler_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -540,7 +501,6 @@ func miqt_exec_callback_QwtPlotRescaler_event(self *C.QwtPlotRescaler, cb C.intp
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotRescaler_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -568,7 +528,6 @@ func miqt_exec_callback_QwtPlotRescaler_timerEvent(self *C.QwtPlotRescaler, cb C
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotRescaler_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -596,7 +555,6 @@ func miqt_exec_callback_QwtPlotRescaler_childEvent(self *C.QwtPlotRescaler, cb C
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_CustomEvent(event *qt.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QwtPlotRescaler_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -624,7 +582,6 @@ func miqt_exec_callback_QwtPlotRescaler_customEvent(self *C.QwtPlotRescaler, cb 
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotRescaler_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -652,7 +609,6 @@ func miqt_exec_callback_QwtPlotRescaler_connectNotify(self *C.QwtPlotRescaler, c
 }
 
 func (this *QwtPlotRescaler) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QwtPlotRescaler_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -687,6 +643,8 @@ func (this *QwtPlotRescaler) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QwtPlotRescaler) GoGC() {
 	if this.gc != nil {
 		return

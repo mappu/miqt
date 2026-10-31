@@ -72,7 +72,6 @@ func UnsafeNewQWidget(h unsafe.Pointer) *QWidget {
 
 // NewQWidget constructs a new QWidget object.
 func NewQWidget(parent *QWidget) *QWidget {
-	defer runtime.KeepAlive(parent)
 
 	return newQWidget(C.QWidget_new(parent.cPointer()))
 }
@@ -85,18 +84,15 @@ func NewQWidget2() *QWidget {
 
 // NewQWidget3 constructs a new QWidget object.
 func NewQWidget3(parent *QWidget, f WindowType) *QWidget {
-	defer runtime.KeepAlive(parent)
 
 	return newQWidget(C.QWidget_new3(parent.cPointer(), (C.int)(f)))
 }
 
 func (this *QWidget) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QWidget_metaObject(this.h))
 }
 
 func (this *QWidget) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWidget_metacast(this.h, param1_Cstring))
@@ -121,315 +117,255 @@ func QWidget_TrUtf8(s string) string {
 }
 
 func (this *QWidget) DevType() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_devType(this.h))
 }
 
 func (this *QWidget) WinId() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QWidget_winId(this.h))
 }
 
 func (this *QWidget) CreateWinId() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_createWinId(this.h)
 }
 
 func (this *QWidget) InternalWinId() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QWidget_internalWinId(this.h))
 }
 
 func (this *QWidget) EffectiveWinId() uintptr {
-	defer runtime.KeepAlive(this)
 	return (uintptr)(C.QWidget_effectiveWinId(this.h))
 }
 
 func (this *QWidget) Style() *QStyle {
-	defer runtime.KeepAlive(this)
 	return newQStyle(C.QWidget_style(this.h))
 }
 
 func (this *QWidget) SetStyle(style *QStyle) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(style)
 	C.QWidget_setStyle(this.h, style.cPointer())
 }
 
 func (this *QWidget) IsTopLevel() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isTopLevel(this.h))
 }
 
 func (this *QWidget) IsWindow() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isWindow(this.h))
 }
 
 func (this *QWidget) IsModal() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isModal(this.h))
 }
 
 func (this *QWidget) WindowModality() WindowModality {
-	defer runtime.KeepAlive(this)
 	return (WindowModality)(C.QWidget_windowModality(this.h))
 }
 
 func (this *QWidget) SetWindowModality(windowModality WindowModality) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setWindowModality(this.h, (C.int)(windowModality))
 }
 
 func (this *QWidget) IsEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isEnabled(this.h))
 }
 
 func (this *QWidget) IsEnabledTo(param1 *QWidget) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	return (bool)(C.QWidget_isEnabledTo(this.h, param1.cPointer()))
 }
 
 func (this *QWidget) IsEnabledToTLW() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isEnabledToTLW(this.h))
 }
 
 func (this *QWidget) SetEnabled(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QWidget) SetDisabled(disabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setDisabled(this.h, (C.bool)(disabled))
 }
 
 func (this *QWidget) SetWindowModified(windowModified bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setWindowModified(this.h, (C.bool)(windowModified))
 }
 
 func (this *QWidget) FrameGeometry() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QWidget_frameGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) Geometry() *QRect {
-	defer runtime.KeepAlive(this)
-	_ret := newQRect(C.QWidget_geometry(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQRect(C.QWidget_geometry(this.h))
 }
 
 func (this *QWidget) NormalGeometry() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QWidget_normalGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) X() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_x(this.h))
 }
 
 func (this *QWidget) Y() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_y(this.h))
 }
 
 func (this *QWidget) Pos() *QPoint {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPoint(C.QWidget_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) FrameSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidget_frameSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) Size() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidget_size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) Width() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_width(this.h))
 }
 
 func (this *QWidget) Height() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_height(this.h))
 }
 
 func (this *QWidget) Rect() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QWidget_rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) ChildrenRect() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QWidget_childrenRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) ChildrenRegion() *QRegion {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRegion(C.QWidget_childrenRegion(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) MinimumSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidget_minimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) MaximumSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidget_maximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) MinimumWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_minimumWidth(this.h))
 }
 
 func (this *QWidget) MinimumHeight() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_minimumHeight(this.h))
 }
 
 func (this *QWidget) MaximumWidth() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_maximumWidth(this.h))
 }
 
 func (this *QWidget) MaximumHeight() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_maximumHeight(this.h))
 }
 
 func (this *QWidget) SetMinimumSize(minimumSize *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(minimumSize)
 	C.QWidget_setMinimumSize(this.h, minimumSize.cPointer())
 }
 
 func (this *QWidget) SetMinimumSize2(minw int, minh int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setMinimumSize2(this.h, (C.int)(minw), (C.int)(minh))
 }
 
 func (this *QWidget) SetMaximumSize(maximumSize *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(maximumSize)
 	C.QWidget_setMaximumSize(this.h, maximumSize.cPointer())
 }
 
 func (this *QWidget) SetMaximumSize2(maxw int, maxh int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setMaximumSize2(this.h, (C.int)(maxw), (C.int)(maxh))
 }
 
 func (this *QWidget) SetMinimumWidth(minw int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setMinimumWidth(this.h, (C.int)(minw))
 }
 
 func (this *QWidget) SetMinimumHeight(minh int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setMinimumHeight(this.h, (C.int)(minh))
 }
 
 func (this *QWidget) SetMaximumWidth(maxw int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setMaximumWidth(this.h, (C.int)(maxw))
 }
 
 func (this *QWidget) SetMaximumHeight(maxh int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setMaximumHeight(this.h, (C.int)(maxh))
 }
 
 func (this *QWidget) SizeIncrement() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidget_sizeIncrement(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) SetSizeIncrement(sizeIncrement *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sizeIncrement)
 	C.QWidget_setSizeIncrement(this.h, sizeIncrement.cPointer())
 }
 
 func (this *QWidget) SetSizeIncrement2(w int, h int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setSizeIncrement2(this.h, (C.int)(w), (C.int)(h))
 }
 
 func (this *QWidget) BaseSize() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidget_baseSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) SetBaseSize(baseSize *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(baseSize)
 	C.QWidget_setBaseSize(this.h, baseSize.cPointer())
 }
 
 func (this *QWidget) SetBaseSize2(basew int, baseh int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setBaseSize2(this.h, (C.int)(basew), (C.int)(baseh))
 }
 
 func (this *QWidget) SetFixedSize(fixedSize *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(fixedSize)
 	C.QWidget_setFixedSize(this.h, fixedSize.cPointer())
 }
 
 func (this *QWidget) SetFixedSize2(w int, h int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setFixedSize2(this.h, (C.int)(w), (C.int)(h))
 }
 
 func (this *QWidget) SetFixedWidth(w int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setFixedWidth(this.h, (C.int)(w))
 }
 
 func (this *QWidget) SetFixedHeight(h int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setFixedHeight(this.h, (C.int)(h))
 }
 
 func (this *QWidget) MapToGlobal(param1 *QPoint) *QPoint {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	_goptr := newQPoint(C.QWidget_mapToGlobal(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -437,7 +373,6 @@ func (this *QWidget) MapToGlobal(param1 *QPoint) *QPoint {
 }
 
 func (this *QWidget) MapFromGlobal(param1 *QPoint) *QPoint {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	_goptr := newQPoint(C.QWidget_mapFromGlobal(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -445,7 +380,6 @@ func (this *QWidget) MapFromGlobal(param1 *QPoint) *QPoint {
 }
 
 func (this *QWidget) MapToParent(param1 *QPoint) *QPoint {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	_goptr := newQPoint(C.QWidget_mapToParent(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -453,7 +387,6 @@ func (this *QWidget) MapToParent(param1 *QPoint) *QPoint {
 }
 
 func (this *QWidget) MapFromParent(param1 *QPoint) *QPoint {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	_goptr := newQPoint(C.QWidget_mapFromParent(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -461,8 +394,6 @@ func (this *QWidget) MapFromParent(param1 *QPoint) *QPoint {
 }
 
 func (this *QWidget) MapTo(param1 *QWidget, param2 *QPoint) *QPoint {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	_goptr := newQPoint(C.QWidget_mapTo(this.h, param1.cPointer(), param2.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -470,8 +401,6 @@ func (this *QWidget) MapTo(param1 *QWidget, param2 *QPoint) *QPoint {
 }
 
 func (this *QWidget) MapFrom(param1 *QWidget, param2 *QPoint) *QPoint {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	_goptr := newQPoint(C.QWidget_mapFrom(this.h, param1.cPointer(), param2.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -479,189 +408,151 @@ func (this *QWidget) MapFrom(param1 *QWidget, param2 *QPoint) *QPoint {
 }
 
 func (this *QWidget) Window() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidget_window(this.h))
 }
 
 func (this *QWidget) NativeParentWidget() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidget_nativeParentWidget(this.h))
 }
 
 func (this *QWidget) TopLevelWidget() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidget_topLevelWidget(this.h))
 }
 
 func (this *QWidget) Palette() *QPalette {
-	defer runtime.KeepAlive(this)
-	_ret := newQPalette(C.QWidget_palette(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQPalette(C.QWidget_palette(this.h))
 }
 
 func (this *QWidget) SetPalette(palette *QPalette) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(palette)
 	C.QWidget_setPalette(this.h, palette.cPointer())
 }
 
 func (this *QWidget) SetBackgroundRole(backgroundRole QPalette__ColorRole) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setBackgroundRole(this.h, (C.int)(backgroundRole))
 }
 
 func (this *QWidget) BackgroundRole() QPalette__ColorRole {
-	defer runtime.KeepAlive(this)
 	return (QPalette__ColorRole)(C.QWidget_backgroundRole(this.h))
 }
 
 func (this *QWidget) SetForegroundRole(foregroundRole QPalette__ColorRole) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setForegroundRole(this.h, (C.int)(foregroundRole))
 }
 
 func (this *QWidget) ForegroundRole() QPalette__ColorRole {
-	defer runtime.KeepAlive(this)
 	return (QPalette__ColorRole)(C.QWidget_foregroundRole(this.h))
 }
 
 func (this *QWidget) Font() *QFont {
-	defer runtime.KeepAlive(this)
-	_ret := newQFont(C.QWidget_font(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQFont(C.QWidget_font(this.h))
 }
 
 func (this *QWidget) SetFont(font *QFont) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	C.QWidget_setFont(this.h, font.cPointer())
 }
 
 func (this *QWidget) FontMetrics() *QFontMetrics {
-	defer runtime.KeepAlive(this)
 	_goptr := newQFontMetrics(C.QWidget_fontMetrics(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) FontInfo() *QFontInfo {
-	defer runtime.KeepAlive(this)
 	_goptr := newQFontInfo(C.QWidget_fontInfo(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) Cursor() *QCursor {
-	defer runtime.KeepAlive(this)
 	_goptr := newQCursor(C.QWidget_cursor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) SetCursor(cursor *QCursor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cursor)
 	C.QWidget_setCursor(this.h, cursor.cPointer())
 }
 
 func (this *QWidget) UnsetCursor() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_unsetCursor(this.h)
 }
 
 func (this *QWidget) SetMouseTracking(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setMouseTracking(this.h, (C.bool)(enable))
 }
 
 func (this *QWidget) HasMouseTracking() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_hasMouseTracking(this.h))
 }
 
 func (this *QWidget) UnderMouse() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_underMouse(this.h))
 }
 
 func (this *QWidget) SetTabletTracking(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setTabletTracking(this.h, (C.bool)(enable))
 }
 
 func (this *QWidget) HasTabletTracking() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_hasTabletTracking(this.h))
 }
 
 func (this *QWidget) SetMask(mask *QBitmap) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(mask)
 	C.QWidget_setMask(this.h, mask.cPointer())
 }
 
 func (this *QWidget) SetMaskWithMask(mask *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(mask)
 	C.QWidget_setMaskWithMask(this.h, mask.cPointer())
 }
 
 func (this *QWidget) Mask() *QRegion {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRegion(C.QWidget_mask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) ClearMask() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_clearMask(this.h)
 }
 
 func (this *QWidget) Render(target *QPaintDevice) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(target)
 	C.QWidget_render(this.h, target.cPointer())
 }
 
 func (this *QWidget) RenderWithPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	C.QWidget_renderWithPainter(this.h, painter.cPointer())
 }
 
 func (this *QWidget) Grab() *QPixmap {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPixmap(C.QWidget_grab(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) GraphicsEffect() *QGraphicsEffect {
-	defer runtime.KeepAlive(this)
 	return newQGraphicsEffect(C.QWidget_graphicsEffect(this.h))
 }
 
 func (this *QWidget) SetGraphicsEffect(effect *QGraphicsEffect) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(effect)
 	C.QWidget_setGraphicsEffect(this.h, effect.cPointer())
 }
 
 func (this *QWidget) GrabGesture(typeVal GestureType) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_grabGesture(this.h, (C.int)(typeVal))
 }
 
 func (this *QWidget) UngrabGesture(typeVal GestureType) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_ungrabGesture(this.h, (C.int)(typeVal))
 }
 
 func (this *QWidget) SetWindowTitle(windowTitle string) {
-	defer runtime.KeepAlive(this)
 	windowTitle_ms := C.struct_miqt_string{}
 	windowTitle_ms.data = C.CString(windowTitle)
 	windowTitle_ms.len = C.size_t(len(windowTitle))
@@ -670,7 +561,6 @@ func (this *QWidget) SetWindowTitle(windowTitle string) {
 }
 
 func (this *QWidget) SetStyleSheet(styleSheet string) {
-	defer runtime.KeepAlive(this)
 	styleSheet_ms := C.struct_miqt_string{}
 	styleSheet_ms.data = C.CString(styleSheet)
 	styleSheet_ms.len = C.size_t(len(styleSheet))
@@ -679,7 +569,6 @@ func (this *QWidget) SetStyleSheet(styleSheet string) {
 }
 
 func (this *QWidget) StyleSheet() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_styleSheet(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -687,7 +576,6 @@ func (this *QWidget) StyleSheet() string {
 }
 
 func (this *QWidget) WindowTitle() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_windowTitle(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -695,20 +583,17 @@ func (this *QWidget) WindowTitle() string {
 }
 
 func (this *QWidget) SetWindowIcon(icon *QIcon) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	C.QWidget_setWindowIcon(this.h, icon.cPointer())
 }
 
 func (this *QWidget) WindowIcon() *QIcon {
-	defer runtime.KeepAlive(this)
 	_goptr := newQIcon(C.QWidget_windowIcon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) SetWindowIconText(windowIconText string) {
-	defer runtime.KeepAlive(this)
 	windowIconText_ms := C.struct_miqt_string{}
 	windowIconText_ms.data = C.CString(windowIconText)
 	windowIconText_ms.len = C.size_t(len(windowIconText))
@@ -717,7 +602,6 @@ func (this *QWidget) SetWindowIconText(windowIconText string) {
 }
 
 func (this *QWidget) WindowIconText() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_windowIconText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -725,7 +609,6 @@ func (this *QWidget) WindowIconText() string {
 }
 
 func (this *QWidget) SetWindowRole(windowRole string) {
-	defer runtime.KeepAlive(this)
 	windowRole_ms := C.struct_miqt_string{}
 	windowRole_ms.data = C.CString(windowRole)
 	windowRole_ms.len = C.size_t(len(windowRole))
@@ -734,7 +617,6 @@ func (this *QWidget) SetWindowRole(windowRole string) {
 }
 
 func (this *QWidget) WindowRole() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_windowRole(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -742,7 +624,6 @@ func (this *QWidget) WindowRole() string {
 }
 
 func (this *QWidget) SetWindowFilePath(filePath string) {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -751,7 +632,6 @@ func (this *QWidget) SetWindowFilePath(filePath string) {
 }
 
 func (this *QWidget) WindowFilePath() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_windowFilePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -759,22 +639,18 @@ func (this *QWidget) WindowFilePath() string {
 }
 
 func (this *QWidget) SetWindowOpacity(level float64) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setWindowOpacity(this.h, (C.double)(level))
 }
 
 func (this *QWidget) WindowOpacity() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QWidget_windowOpacity(this.h))
 }
 
 func (this *QWidget) IsWindowModified() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isWindowModified(this.h))
 }
 
 func (this *QWidget) SetToolTip(toolTip string) {
-	defer runtime.KeepAlive(this)
 	toolTip_ms := C.struct_miqt_string{}
 	toolTip_ms.data = C.CString(toolTip)
 	toolTip_ms.len = C.size_t(len(toolTip))
@@ -783,7 +659,6 @@ func (this *QWidget) SetToolTip(toolTip string) {
 }
 
 func (this *QWidget) ToolTip() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_toolTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -791,17 +666,14 @@ func (this *QWidget) ToolTip() string {
 }
 
 func (this *QWidget) SetToolTipDuration(msec int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setToolTipDuration(this.h, (C.int)(msec))
 }
 
 func (this *QWidget) ToolTipDuration() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_toolTipDuration(this.h))
 }
 
 func (this *QWidget) SetStatusTip(statusTip string) {
-	defer runtime.KeepAlive(this)
 	statusTip_ms := C.struct_miqt_string{}
 	statusTip_ms.data = C.CString(statusTip)
 	statusTip_ms.len = C.size_t(len(statusTip))
@@ -810,7 +682,6 @@ func (this *QWidget) SetStatusTip(statusTip string) {
 }
 
 func (this *QWidget) StatusTip() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_statusTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -818,7 +689,6 @@ func (this *QWidget) StatusTip() string {
 }
 
 func (this *QWidget) SetWhatsThis(whatsThis string) {
-	defer runtime.KeepAlive(this)
 	whatsThis_ms := C.struct_miqt_string{}
 	whatsThis_ms.data = C.CString(whatsThis)
 	whatsThis_ms.len = C.size_t(len(whatsThis))
@@ -827,7 +697,6 @@ func (this *QWidget) SetWhatsThis(whatsThis string) {
 }
 
 func (this *QWidget) WhatsThis() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_whatsThis(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -835,7 +704,6 @@ func (this *QWidget) WhatsThis() string {
 }
 
 func (this *QWidget) AccessibleName() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_accessibleName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -843,7 +711,6 @@ func (this *QWidget) AccessibleName() string {
 }
 
 func (this *QWidget) SetAccessibleName(name string) {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -852,7 +719,6 @@ func (this *QWidget) SetAccessibleName(name string) {
 }
 
 func (this *QWidget) AccessibleDescription() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QWidget_accessibleDescription(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -860,7 +726,6 @@ func (this *QWidget) AccessibleDescription() string {
 }
 
 func (this *QWidget) SetAccessibleDescription(description string) {
-	defer runtime.KeepAlive(this)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
@@ -869,159 +734,127 @@ func (this *QWidget) SetAccessibleDescription(description string) {
 }
 
 func (this *QWidget) SetLayoutDirection(direction LayoutDirection) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setLayoutDirection(this.h, (C.int)(direction))
 }
 
 func (this *QWidget) LayoutDirection() LayoutDirection {
-	defer runtime.KeepAlive(this)
 	return (LayoutDirection)(C.QWidget_layoutDirection(this.h))
 }
 
 func (this *QWidget) UnsetLayoutDirection() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_unsetLayoutDirection(this.h)
 }
 
 func (this *QWidget) SetLocale(locale *QLocale) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(locale)
 	C.QWidget_setLocale(this.h, locale.cPointer())
 }
 
 func (this *QWidget) Locale() *QLocale {
-	defer runtime.KeepAlive(this)
 	_goptr := newQLocale(C.QWidget_locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) UnsetLocale() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_unsetLocale(this.h)
 }
 
 func (this *QWidget) IsRightToLeft() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isRightToLeft(this.h))
 }
 
 func (this *QWidget) IsLeftToRight() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isLeftToRight(this.h))
 }
 
 func (this *QWidget) SetFocus() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setFocus(this.h)
 }
 
 func (this *QWidget) IsActiveWindow() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isActiveWindow(this.h))
 }
 
 func (this *QWidget) ActivateWindow() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_activateWindow(this.h)
 }
 
 func (this *QWidget) ClearFocus() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_clearFocus(this.h)
 }
 
 func (this *QWidget) SetFocusWithReason(reason FocusReason) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setFocusWithReason(this.h, (C.int)(reason))
 }
 
 func (this *QWidget) FocusPolicy() FocusPolicy {
-	defer runtime.KeepAlive(this)
 	return (FocusPolicy)(C.QWidget_focusPolicy(this.h))
 }
 
 func (this *QWidget) SetFocusPolicy(policy FocusPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setFocusPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QWidget) HasFocus() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_hasFocus(this.h))
 }
 
 func QWidget_SetTabOrder(param1 *QWidget, param2 *QWidget) {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 	C.QWidget_setTabOrder(param1.cPointer(), param2.cPointer())
 }
 
 func (this *QWidget) SetFocusProxy(focusProxy *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(focusProxy)
 	C.QWidget_setFocusProxy(this.h, focusProxy.cPointer())
 }
 
 func (this *QWidget) FocusProxy() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidget_focusProxy(this.h))
 }
 
 func (this *QWidget) ContextMenuPolicy() ContextMenuPolicy {
-	defer runtime.KeepAlive(this)
 	return (ContextMenuPolicy)(C.QWidget_contextMenuPolicy(this.h))
 }
 
 func (this *QWidget) SetContextMenuPolicy(policy ContextMenuPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setContextMenuPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QWidget) GrabMouse() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_grabMouse(this.h)
 }
 
 func (this *QWidget) GrabMouseWithQCursor(param1 *QCursor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QWidget_grabMouseWithQCursor(this.h, param1.cPointer())
 }
 
 func (this *QWidget) ReleaseMouse() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_releaseMouse(this.h)
 }
 
 func (this *QWidget) GrabKeyboard() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_grabKeyboard(this.h)
 }
 
 func (this *QWidget) ReleaseKeyboard() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_releaseKeyboard(this.h)
 }
 
 func (this *QWidget) GrabShortcut(key *QKeySequence) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(key)
 	return (int)(C.QWidget_grabShortcut(this.h, key.cPointer()))
 }
 
 func (this *QWidget) ReleaseShortcut(id int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_releaseShortcut(this.h, (C.int)(id))
 }
 
 func (this *QWidget) SetShortcutEnabled(id int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setShortcutEnabled(this.h, (C.int)(id))
 }
 
 func (this *QWidget) SetShortcutAutoRepeat(id int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setShortcutAutoRepeat(this.h, (C.int)(id))
 }
 
@@ -1034,160 +867,129 @@ func QWidget_KeyboardGrabber() *QWidget {
 }
 
 func (this *QWidget) UpdatesEnabled() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_updatesEnabled(this.h))
 }
 
 func (this *QWidget) SetUpdatesEnabled(enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setUpdatesEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QWidget) GraphicsProxyWidget() *QGraphicsProxyWidget {
-	defer runtime.KeepAlive(this)
 	return newQGraphicsProxyWidget(C.QWidget_graphicsProxyWidget(this.h))
 }
 
 func (this *QWidget) Update() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_update(this.h)
 }
 
 func (this *QWidget) Repaint() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_repaint(this.h)
 }
 
 func (this *QWidget) Update2(x int, y int, w int, h int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_update2(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 }
 
 func (this *QWidget) UpdateWithQRect(param1 *QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QWidget_updateWithQRect(this.h, param1.cPointer())
 }
 
 func (this *QWidget) UpdateWithQRegion(param1 *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QWidget_updateWithQRegion(this.h, param1.cPointer())
 }
 
 func (this *QWidget) Repaint2(x int, y int, w int, h int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_repaint2(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 }
 
 func (this *QWidget) RepaintWithQRect(param1 *QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QWidget_repaintWithQRect(this.h, param1.cPointer())
 }
 
 func (this *QWidget) RepaintWithQRegion(param1 *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QWidget_repaintWithQRegion(this.h, param1.cPointer())
 }
 
 func (this *QWidget) SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QWidget) SetHidden(hidden bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setHidden(this.h, (C.bool)(hidden))
 }
 
 func (this *QWidget) Show() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_show(this.h)
 }
 
 func (this *QWidget) Hide() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_hide(this.h)
 }
 
 func (this *QWidget) ShowMinimized() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_showMinimized(this.h)
 }
 
 func (this *QWidget) ShowMaximized() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_showMaximized(this.h)
 }
 
 func (this *QWidget) ShowFullScreen() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_showFullScreen(this.h)
 }
 
 func (this *QWidget) ShowNormal() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_showNormal(this.h)
 }
 
 func (this *QWidget) Close() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_close(this.h))
 }
 
 func (this *QWidget) Raise() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_raise(this.h)
 }
 
 func (this *QWidget) Lower() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_lower(this.h)
 }
 
 func (this *QWidget) StackUnder(param1 *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QWidget_stackUnder(this.h, param1.cPointer())
 }
 
 func (this *QWidget) Move(x int, y int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_move(this.h, (C.int)(x), (C.int)(y))
 }
 
 func (this *QWidget) MoveWithQPoint(param1 *QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QWidget_moveWithQPoint(this.h, param1.cPointer())
 }
 
 func (this *QWidget) Resize(w int, h int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_resize(this.h, (C.int)(w), (C.int)(h))
 }
 
 func (this *QWidget) ResizeWithQSize(param1 *QSize) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QWidget_resizeWithQSize(this.h, param1.cPointer())
 }
 
 func (this *QWidget) SetGeometry(x int, y int, w int, h int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setGeometry(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 }
 
 func (this *QWidget) SetGeometryWithGeometry(geometry *QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(geometry)
 	C.QWidget_setGeometryWithGeometry(this.h, geometry.cPointer())
 }
 
 func (this *QWidget) SaveGeometry() []byte {
-	defer runtime.KeepAlive(this)
 	var _bytearray C.struct_miqt_string = C.QWidget_saveGeometry(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
@@ -1195,7 +997,6 @@ func (this *QWidget) SaveGeometry() []byte {
 }
 
 func (this *QWidget) RestoreGeometry(geometry []byte) bool {
-	defer runtime.KeepAlive(this)
 	geometry_alias := C.struct_miqt_string{}
 	if len(geometry) > 0 {
 		geometry_alias.data = (*C.char)(unsafe.Pointer(&geometry[0]))
@@ -1207,208 +1008,165 @@ func (this *QWidget) RestoreGeometry(geometry []byte) bool {
 }
 
 func (this *QWidget) AdjustSize() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_adjustSize(this.h)
 }
 
 func (this *QWidget) IsVisible() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isVisible(this.h))
 }
 
 func (this *QWidget) IsVisibleTo(param1 *QWidget) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	return (bool)(C.QWidget_isVisibleTo(this.h, param1.cPointer()))
 }
 
 func (this *QWidget) IsHidden() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isHidden(this.h))
 }
 
 func (this *QWidget) IsMinimized() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isMinimized(this.h))
 }
 
 func (this *QWidget) IsMaximized() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isMaximized(this.h))
 }
 
 func (this *QWidget) IsFullScreen() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_isFullScreen(this.h))
 }
 
 func (this *QWidget) WindowState() WindowState {
-	defer runtime.KeepAlive(this)
 	return (WindowState)(C.QWidget_windowState(this.h))
 }
 
 func (this *QWidget) SetWindowState(state WindowState) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setWindowState(this.h, (C.int)(state))
 }
 
 func (this *QWidget) OverrideWindowState(state WindowState) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_overrideWindowState(this.h, (C.int)(state))
 }
 
 func (this *QWidget) SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidget_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QWidget_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) SizePolicy() *QSizePolicy {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSizePolicy(C.QWidget_sizePolicy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) SetSizePolicy(sizePolicy QSizePolicy) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(sizePolicy)
 	C.QWidget_setSizePolicy(this.h, sizePolicy.cPointer())
 }
 
 func (this *QWidget) SetSizePolicy2(horizontal QSizePolicy__Policy, vertical QSizePolicy__Policy) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setSizePolicy2(this.h, (C.int)(horizontal), (C.int)(vertical))
 }
 
 func (this *QWidget) HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QWidget_heightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QWidget) HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_hasHeightForWidth(this.h))
 }
 
 func (this *QWidget) VisibleRegion() *QRegion {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRegion(C.QWidget_visibleRegion(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) SetContentsMargins(left int, top int, right int, bottom int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setContentsMargins(this.h, (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
 }
 
 func (this *QWidget) SetContentsMarginsWithMargins(margins *QMargins) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(margins)
 	C.QWidget_setContentsMarginsWithMargins(this.h, margins.cPointer())
 }
 
 func (this *QWidget) GetContentsMargins(left *int, top *int, right *int, bottom *int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_getContentsMargins(this.h, (*C.int)(unsafe.Pointer(left)), (*C.int)(unsafe.Pointer(top)), (*C.int)(unsafe.Pointer(right)), (*C.int)(unsafe.Pointer(bottom)))
 }
 
 func (this *QWidget) ContentsMargins() *QMargins {
-	defer runtime.KeepAlive(this)
 	_goptr := newQMargins(C.QWidget_contentsMargins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) ContentsRect() *QRect {
-	defer runtime.KeepAlive(this)
 	_goptr := newQRect(C.QWidget_contentsRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) Layout() *QLayout {
-	defer runtime.KeepAlive(this)
 	return newQLayout(C.QWidget_layout(this.h))
 }
 
 func (this *QWidget) SetLayout(layout *QLayout) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(layout)
 	C.QWidget_setLayout(this.h, layout.cPointer())
 }
 
 func (this *QWidget) UpdateGeometry() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_updateGeometry(this.h)
 }
 
 func (this *QWidget) SetParent(parent *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	C.QWidget_setParent(this.h, parent.cPointer())
 }
 
 func (this *QWidget) SetParent2(parent *QWidget, f WindowType) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(parent)
 	C.QWidget_setParent2(this.h, parent.cPointer(), (C.int)(f))
 }
 
 func (this *QWidget) Scroll(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_scroll(this.h, (C.int)(dx), (C.int)(dy))
 }
 
 func (this *QWidget) Scroll2(dx int, dy int, param3 *QRect) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param3)
 	C.QWidget_scroll2(this.h, (C.int)(dx), (C.int)(dy), param3.cPointer())
 }
 
 func (this *QWidget) FocusWidget() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidget_focusWidget(this.h))
 }
 
 func (this *QWidget) NextInFocusChain() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidget_nextInFocusChain(this.h))
 }
 
 func (this *QWidget) PreviousInFocusChain() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidget_previousInFocusChain(this.h))
 }
 
 func (this *QWidget) AcceptDrops() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_acceptDrops(this.h))
 }
 
 func (this *QWidget) SetAcceptDrops(on bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setAcceptDrops(this.h, (C.bool)(on))
 }
 
 func (this *QWidget) AddAction(action *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 	C.QWidget_addAction(this.h, action.cPointer())
 }
 
 func (this *QWidget) AddActions(actions []*QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(actions)
 	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray_ptr))
 	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
@@ -1420,9 +1178,6 @@ func (this *QWidget) AddActions(actions []*QAction) {
 }
 
 func (this *QWidget) InsertActions(before *QAction, actions []*QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(before)
-	defer runtime.KeepAlive(actions)
 	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray_ptr))
 	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
@@ -1434,20 +1189,14 @@ func (this *QWidget) InsertActions(before *QAction, actions []*QAction) {
 }
 
 func (this *QWidget) InsertAction(before *QAction, action *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(before)
-	defer runtime.KeepAlive(action)
 	C.QWidget_insertAction(this.h, before.cPointer(), action.cPointer())
 }
 
 func (this *QWidget) RemoveAction(action *QAction) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(action)
 	C.QWidget_removeAction(this.h, action.cPointer())
 }
 
 func (this *QWidget) Actions() []*QAction {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QWidget_actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QAction)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -1458,32 +1207,26 @@ func (this *QWidget) Actions() []*QAction {
 }
 
 func (this *QWidget) ParentWidget() *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidget_parentWidget(this.h))
 }
 
 func (this *QWidget) SetWindowFlags(typeVal WindowType) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setWindowFlags(this.h, (C.int)(typeVal))
 }
 
 func (this *QWidget) WindowFlags() WindowType {
-	defer runtime.KeepAlive(this)
 	return (WindowType)(C.QWidget_windowFlags(this.h))
 }
 
 func (this *QWidget) SetWindowFlag(param1 WindowType) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setWindowFlag(this.h, (C.int)(param1))
 }
 
 func (this *QWidget) OverrideWindowFlags(typeVal WindowType) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_overrideWindowFlags(this.h, (C.int)(typeVal))
 }
 
 func (this *QWidget) WindowType() WindowType {
-	defer runtime.KeepAlive(this)
 	return (WindowType)(C.QWidget_windowType(this.h))
 }
 
@@ -1492,74 +1235,59 @@ func QWidget_Find(param1 uintptr) *QWidget {
 }
 
 func (this *QWidget) ChildAt(x int, y int) *QWidget {
-	defer runtime.KeepAlive(this)
 	return newQWidget(C.QWidget_childAt(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QWidget) ChildAtWithQPoint(p *QPoint) *QWidget {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(p)
 	return newQWidget(C.QWidget_childAtWithQPoint(this.h, p.cPointer()))
 }
 
 func (this *QWidget) SetAttribute(param1 WidgetAttribute) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setAttribute(this.h, (C.int)(param1))
 }
 
 func (this *QWidget) TestAttribute(param1 WidgetAttribute) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_testAttribute(this.h, (C.int)(param1)))
 }
 
 func (this *QWidget) PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 	return newQPaintEngine(C.QWidget_paintEngine(this.h))
 }
 
 func (this *QWidget) EnsurePolished() {
-	defer runtime.KeepAlive(this)
 	C.QWidget_ensurePolished(this.h)
 }
 
 func (this *QWidget) IsAncestorOf(child *QWidget) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(child)
 	return (bool)(C.QWidget_isAncestorOf(this.h, child.cPointer()))
 }
 
 func (this *QWidget) AutoFillBackground() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWidget_autoFillBackground(this.h))
 }
 
 func (this *QWidget) SetAutoFillBackground(enabled bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setAutoFillBackground(this.h, (C.bool)(enabled))
 }
 
 func (this *QWidget) BackingStore() *QBackingStore {
-	defer runtime.KeepAlive(this)
 	return newQBackingStore(C.QWidget_backingStore(this.h))
 }
 
 func (this *QWidget) WindowHandle() *QWindow {
-	defer runtime.KeepAlive(this)
 	return newQWindow(C.QWidget_windowHandle(this.h))
 }
 
 func (this *QWidget) Screen() *QScreen {
-	defer runtime.KeepAlive(this)
 	return newQScreen(C.QWidget_screen(this.h))
 }
 
 func QWidget_CreateWindowContainer(window *QWindow) *QWidget {
-	defer runtime.KeepAlive(window)
 	return newQWidget(C.QWidget_createWindowContainer(window.cPointer()))
 }
 
 func (this *QWidget) WindowTitleChanged(title string) {
-	defer runtime.KeepAlive(this)
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -1587,7 +1315,6 @@ func miqt_exec_callback_QWidget_windowTitleChanged(cb C.intptr_t, title C.struct
 }
 
 func (this *QWidget) WindowIconChanged(icon *QIcon) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(icon)
 	C.QWidget_windowIconChanged(this.h, icon.cPointer())
 }
@@ -1609,7 +1336,6 @@ func miqt_exec_callback_QWidget_windowIconChanged(cb C.intptr_t, icon *C.QIcon) 
 }
 
 func (this *QWidget) WindowIconTextChanged(iconText string) {
-	defer runtime.KeepAlive(this)
 	iconText_ms := C.struct_miqt_string{}
 	iconText_ms.data = C.CString(iconText)
 	iconText_ms.len = C.size_t(len(iconText))
@@ -1637,7 +1363,6 @@ func miqt_exec_callback_QWidget_windowIconTextChanged(cb C.intptr_t, iconText C.
 }
 
 func (this *QWidget) CustomContextMenuRequested(pos *QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QWidget_customContextMenuRequested(this.h, pos.cPointer())
 }
@@ -1659,19 +1384,16 @@ func miqt_exec_callback_QWidget_customContextMenuRequested(cb C.intptr_t, pos *C
 }
 
 func (this *QWidget) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := newQVariant(C.QWidget_inputMethodQuery(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWidget) InputMethodHints() InputMethodHint {
-	defer runtime.KeepAlive(this)
 	return (InputMethodHint)(C.QWidget_inputMethodHints(this.h))
 }
 
 func (this *QWidget) SetInputMethodHints(hints InputMethodHint) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setInputMethodHints(this.h, (C.int)(hints))
 }
 
@@ -1720,14 +1442,12 @@ func QWidget_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QWidget) Render2(target *QPaintDevice, targetOffset *QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(target)
 	defer runtime.KeepAlive(targetOffset)
 	C.QWidget_render2(this.h, target.cPointer(), targetOffset.cPointer())
 }
 
 func (this *QWidget) Render3(target *QPaintDevice, targetOffset *QPoint, sourceRegion *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(target)
 	defer runtime.KeepAlive(targetOffset)
 	defer runtime.KeepAlive(sourceRegion)
@@ -1735,7 +1455,6 @@ func (this *QWidget) Render3(target *QPaintDevice, targetOffset *QPoint, sourceR
 }
 
 func (this *QWidget) Render4(target *QPaintDevice, targetOffset *QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(target)
 	defer runtime.KeepAlive(targetOffset)
 	defer runtime.KeepAlive(sourceRegion)
@@ -1743,14 +1462,12 @@ func (this *QWidget) Render4(target *QPaintDevice, targetOffset *QPoint, sourceR
 }
 
 func (this *QWidget) Render5(painter *QPainter, targetOffset *QPoint) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(targetOffset)
 	C.QWidget_render5(this.h, painter.cPointer(), targetOffset.cPointer())
 }
 
 func (this *QWidget) Render6(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(targetOffset)
 	defer runtime.KeepAlive(sourceRegion)
@@ -1758,7 +1475,6 @@ func (this *QWidget) Render6(painter *QPainter, targetOffset *QPoint, sourceRegi
 }
 
 func (this *QWidget) Render7(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(targetOffset)
 	defer runtime.KeepAlive(sourceRegion)
@@ -1766,7 +1482,6 @@ func (this *QWidget) Render7(painter *QPainter, targetOffset *QPoint, sourceRegi
 }
 
 func (this *QWidget) GrabWithRectangle(rectangle *QRect) *QPixmap {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rectangle)
 	_goptr := newQPixmap(C.QWidget_grabWithRectangle(this.h, rectangle.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1774,51 +1489,40 @@ func (this *QWidget) GrabWithRectangle(rectangle *QRect) *QPixmap {
 }
 
 func (this *QWidget) GrabGesture2(typeVal GestureType, flags GestureFlag) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_grabGesture2(this.h, (C.int)(typeVal), (C.int)(flags))
 }
 
 func (this *QWidget) GrabShortcut2(key *QKeySequence, context ShortcutContext) int {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(key)
 	return (int)(C.QWidget_grabShortcut2(this.h, key.cPointer(), (C.int)(context)))
 }
 
 func (this *QWidget) SetShortcutEnabled2(id int, enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setShortcutEnabled2(this.h, (C.int)(id), (C.bool)(enable))
 }
 
 func (this *QWidget) SetShortcutAutoRepeat2(id int, enable bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setShortcutAutoRepeat2(this.h, (C.int)(id), (C.bool)(enable))
 }
 
 func (this *QWidget) SetWindowFlag2(param1 WindowType, on bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setWindowFlag2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func (this *QWidget) SetAttribute2(param1 WidgetAttribute, on bool) {
-	defer runtime.KeepAlive(this)
 	C.QWidget_setAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
 func QWidget_CreateWindowContainer2(window *QWindow, parent *QWidget) *QWidget {
-	defer runtime.KeepAlive(window)
-	defer runtime.KeepAlive(parent)
 	return newQWidget(C.QWidget_createWindowContainer2(window.cPointer(), parent.cPointer()))
 }
 
 func QWidget_CreateWindowContainer3(window *QWindow, parent *QWidget, flags WindowType) *QWidget {
-	defer runtime.KeepAlive(window)
-	defer runtime.KeepAlive(parent)
 	return newQWidget(C.QWidget_createWindowContainer3(window.cPointer(), parent.cPointer(), (C.int)(flags)))
 }
 
 // UpdateMicroFocus can only be called from a QWidget that was directly constructed.
 func (this *QWidget) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1831,7 +1535,6 @@ func (this *QWidget) UpdateMicroFocus() {
 
 // Create can only be called from a QWidget that was directly constructed.
 func (this *QWidget) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWidget_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1844,7 +1547,6 @@ func (this *QWidget) Create() {
 
 // Destroy can only be called from a QWidget that was directly constructed.
 func (this *QWidget) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWidget_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -1857,7 +1559,6 @@ func (this *QWidget) Destroy() {
 
 // FocusNextChild can only be called from a QWidget that was directly constructed.
 func (this *QWidget) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWidget_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1872,7 +1573,6 @@ func (this *QWidget) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QWidget that was directly constructed.
 func (this *QWidget) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QWidget_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1887,7 +1587,6 @@ func (this *QWidget) FocusPreviousChild() bool {
 
 // CreateWithWId can only be called from a QWidget that was directly constructed.
 func (this *QWidget) CreateWithWId(param1 uintptr) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWidget_protectedbase_createWithWId(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uintptr_t)(param1))
@@ -1900,7 +1599,6 @@ func (this *QWidget) CreateWithWId(param1 uintptr) {
 
 // Create2 can only be called from a QWidget that was directly constructed.
 func (this *QWidget) Create2(param1 uintptr, initializeWindow bool) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWidget_protectedbase_create2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uintptr_t)(param1), (C.bool)(initializeWindow))
@@ -1913,7 +1611,6 @@ func (this *QWidget) Create2(param1 uintptr, initializeWindow bool) {
 
 // Create3 can only be called from a QWidget that was directly constructed.
 func (this *QWidget) Create3(param1 uintptr, initializeWindow bool, destroyOldWindow bool) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWidget_protectedbase_create3(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uintptr_t)(param1), (C.bool)(initializeWindow), (C.bool)(destroyOldWindow))
@@ -1926,7 +1623,6 @@ func (this *QWidget) Create3(param1 uintptr, initializeWindow bool, destroyOldWi
 
 // DestroyWithDestroyWindow can only be called from a QWidget that was directly constructed.
 func (this *QWidget) DestroyWithDestroyWindow(destroyWindow bool) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWidget_protectedbase_destroyWithDestroyWindow(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(destroyWindow))
@@ -1939,7 +1635,6 @@ func (this *QWidget) DestroyWithDestroyWindow(destroyWindow bool) {
 
 // Destroy2 can only be called from a QWidget that was directly constructed.
 func (this *QWidget) Destroy2(destroyWindow bool, destroySubWindows bool) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QWidget_protectedbase_destroy2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(destroyWindow), (C.bool)(destroySubWindows))
@@ -1952,7 +1647,6 @@ func (this *QWidget) Destroy2(destroyWindow bool, destroySubWindows bool) {
 
 // Sender can only be called from a QWidget that was directly constructed.
 func (this *QWidget) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1967,7 +1661,6 @@ func (this *QWidget) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QWidget that was directly constructed.
 func (this *QWidget) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1982,7 +1675,6 @@ func (this *QWidget) SenderSignalIndex() int {
 
 // Receivers can only be called from a QWidget that was directly constructed.
 func (this *QWidget) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1999,7 +1691,6 @@ func (this *QWidget) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QWidget that was directly constructed.
 func (this *QWidget) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -2014,7 +1705,6 @@ func (this *QWidget) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QWidget) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -2040,7 +1730,6 @@ func miqt_exec_callback_QWidget_devType(self *C.QWidget, cb C.intptr_t) C.int {
 }
 
 func (this *QWidget) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -2067,7 +1756,6 @@ func miqt_exec_callback_QWidget_setVisible(self *C.QWidget, cb C.intptr_t, visib
 }
 
 func (this *QWidget) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2096,7 +1784,6 @@ func miqt_exec_callback_QWidget_sizeHint(self *C.QWidget, cb C.intptr_t) *C.QSiz
 }
 
 func (this *QWidget) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2125,7 +1812,6 @@ func miqt_exec_callback_QWidget_minimumSizeHint(self *C.QWidget, cb C.intptr_t) 
 }
 
 func (this *QWidget) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2154,7 +1840,6 @@ func miqt_exec_callback_QWidget_heightForWidth(self *C.QWidget, cb C.intptr_t, p
 }
 
 func (this *QWidget) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -2180,7 +1865,6 @@ func miqt_exec_callback_QWidget_hasHeightForWidth(self *C.QWidget, cb C.intptr_t
 }
 
 func (this *QWidget) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QWidget_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -2207,7 +1891,6 @@ func miqt_exec_callback_QWidget_paintEngine(self *C.QWidget, cb C.intptr_t) *C.Q
 }
 
 func (this *QWidget) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWidget_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -2237,7 +1920,6 @@ func miqt_exec_callback_QWidget_event(self *C.QWidget, cb C.intptr_t, event *C.Q
 }
 
 func (this *QWidget) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2265,7 +1947,6 @@ func miqt_exec_callback_QWidget_mousePressEvent(self *C.QWidget, cb C.intptr_t, 
 }
 
 func (this *QWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2293,7 +1974,6 @@ func miqt_exec_callback_QWidget_mouseReleaseEvent(self *C.QWidget, cb C.intptr_t
 }
 
 func (this *QWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2321,7 +2001,6 @@ func miqt_exec_callback_QWidget_mouseDoubleClickEvent(self *C.QWidget, cb C.intp
 }
 
 func (this *QWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2349,7 +2028,6 @@ func miqt_exec_callback_QWidget_mouseMoveEvent(self *C.QWidget, cb C.intptr_t, e
 }
 
 func (this *QWidget) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2377,7 +2055,6 @@ func miqt_exec_callback_QWidget_wheelEvent(self *C.QWidget, cb C.intptr_t, event
 }
 
 func (this *QWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2405,7 +2082,6 @@ func miqt_exec_callback_QWidget_keyPressEvent(self *C.QWidget, cb C.intptr_t, ev
 }
 
 func (this *QWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2433,7 +2109,6 @@ func miqt_exec_callback_QWidget_keyReleaseEvent(self *C.QWidget, cb C.intptr_t, 
 }
 
 func (this *QWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2461,7 +2136,6 @@ func miqt_exec_callback_QWidget_focusInEvent(self *C.QWidget, cb C.intptr_t, eve
 }
 
 func (this *QWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2489,7 +2163,6 @@ func miqt_exec_callback_QWidget_focusOutEvent(self *C.QWidget, cb C.intptr_t, ev
 }
 
 func (this *QWidget) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2517,7 +2190,6 @@ func miqt_exec_callback_QWidget_enterEvent(self *C.QWidget, cb C.intptr_t, event
 }
 
 func (this *QWidget) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2545,7 +2217,6 @@ func miqt_exec_callback_QWidget_leaveEvent(self *C.QWidget, cb C.intptr_t, event
 }
 
 func (this *QWidget) callVirtualBase_PaintEvent(event *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2573,7 +2244,6 @@ func miqt_exec_callback_QWidget_paintEvent(self *C.QWidget, cb C.intptr_t, event
 }
 
 func (this *QWidget) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2601,7 +2271,6 @@ func miqt_exec_callback_QWidget_moveEvent(self *C.QWidget, cb C.intptr_t, event 
 }
 
 func (this *QWidget) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2629,7 +2298,6 @@ func miqt_exec_callback_QWidget_resizeEvent(self *C.QWidget, cb C.intptr_t, even
 }
 
 func (this *QWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2657,7 +2325,6 @@ func miqt_exec_callback_QWidget_closeEvent(self *C.QWidget, cb C.intptr_t, event
 }
 
 func (this *QWidget) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2685,7 +2352,6 @@ func miqt_exec_callback_QWidget_contextMenuEvent(self *C.QWidget, cb C.intptr_t,
 }
 
 func (this *QWidget) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2713,7 +2379,6 @@ func miqt_exec_callback_QWidget_tabletEvent(self *C.QWidget, cb C.intptr_t, even
 }
 
 func (this *QWidget) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2741,7 +2406,6 @@ func miqt_exec_callback_QWidget_actionEvent(self *C.QWidget, cb C.intptr_t, even
 }
 
 func (this *QWidget) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2769,7 +2433,6 @@ func miqt_exec_callback_QWidget_dragEnterEvent(self *C.QWidget, cb C.intptr_t, e
 }
 
 func (this *QWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2797,7 +2460,6 @@ func miqt_exec_callback_QWidget_dragMoveEvent(self *C.QWidget, cb C.intptr_t, ev
 }
 
 func (this *QWidget) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2825,7 +2487,6 @@ func miqt_exec_callback_QWidget_dragLeaveEvent(self *C.QWidget, cb C.intptr_t, e
 }
 
 func (this *QWidget) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2853,7 +2514,6 @@ func miqt_exec_callback_QWidget_dropEvent(self *C.QWidget, cb C.intptr_t, event 
 }
 
 func (this *QWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2881,7 +2541,6 @@ func miqt_exec_callback_QWidget_showEvent(self *C.QWidget, cb C.intptr_t, event 
 }
 
 func (this *QWidget) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2909,7 +2568,6 @@ func miqt_exec_callback_QWidget_hideEvent(self *C.QWidget, cb C.intptr_t, event 
 }
 
 func (this *QWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2951,7 +2609,6 @@ func miqt_exec_callback_QWidget_nativeEvent(self *C.QWidget, cb C.intptr_t, even
 }
 
 func (this *QWidget) callVirtualBase_ChangeEvent(param1 *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -2979,7 +2636,6 @@ func miqt_exec_callback_QWidget_changeEvent(self *C.QWidget, cb C.intptr_t, para
 }
 
 func (this *QWidget) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -3008,7 +2664,6 @@ func miqt_exec_callback_QWidget_metric(self *C.QWidget, cb C.intptr_t, param1 C.
 }
 
 func (this *QWidget) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QWidget_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -3036,7 +2691,6 @@ func miqt_exec_callback_QWidget_initPainter(self *C.QWidget, cb C.intptr_t, pain
 }
 
 func (this *QWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -3067,7 +2721,6 @@ func miqt_exec_callback_QWidget_redirected(self *C.QWidget, cb C.intptr_t, offse
 }
 
 func (this *QWidget) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -3094,7 +2747,6 @@ func miqt_exec_callback_QWidget_sharedPainter(self *C.QWidget, cb C.intptr_t) *C
 }
 
 func (this *QWidget) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -3122,7 +2774,6 @@ func miqt_exec_callback_QWidget_inputMethodEvent(self *C.QWidget, cb C.intptr_t,
 }
 
 func (this *QWidget) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3154,7 +2805,6 @@ func miqt_exec_callback_QWidget_inputMethodQuery(self *C.QWidget, cb C.intptr_t,
 }
 
 func (this *QWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -3183,8 +2833,6 @@ func miqt_exec_callback_QWidget_focusNextPrevChild(self *C.QWidget, cb C.intptr_
 }
 
 func (this *QWidget) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -3216,7 +2864,6 @@ func miqt_exec_callback_QWidget_eventFilter(self *C.QWidget, cb C.intptr_t, watc
 }
 
 func (this *QWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3244,7 +2891,6 @@ func miqt_exec_callback_QWidget_timerEvent(self *C.QWidget, cb C.intptr_t, event
 }
 
 func (this *QWidget) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3272,7 +2918,6 @@ func miqt_exec_callback_QWidget_childEvent(self *C.QWidget, cb C.intptr_t, event
 }
 
 func (this *QWidget) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QWidget_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -3300,7 +2945,6 @@ func miqt_exec_callback_QWidget_customEvent(self *C.QWidget, cb C.intptr_t, even
 }
 
 func (this *QWidget) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3328,7 +2972,6 @@ func miqt_exec_callback_QWidget_connectNotify(self *C.QWidget, cb C.intptr_t, si
 }
 
 func (this *QWidget) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -3363,6 +3006,8 @@ func (this *QWidget) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWidget) GoGC() {
 	if this.gc != nil {
 		return

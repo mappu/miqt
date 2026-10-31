@@ -656,7 +656,6 @@ func (this *QImage) ApplyColorTransform(transform *QColorTransform) {
 
 func (this *QImage) Load(device *QIODevice, format string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QImage_load(this.h, device.cPointer(), format_Cstring))
@@ -699,7 +698,6 @@ func (this *QImage) Save(fileName string) bool {
 
 func (this *QImage) SaveWithDevice(device *QIODevice) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	return (bool)(C.QImage_saveWithDevice(this.h, device.cPointer()))
 }
 
@@ -1008,7 +1006,6 @@ func (this *QImage) Save3(fileName string, format string, quality int) bool {
 
 func (this *QImage) Save4(device *QIODevice, format string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QImage_save4(this.h, device.cPointer(), format_Cstring))
@@ -1016,7 +1013,6 @@ func (this *QImage) Save4(device *QIODevice, format string) bool {
 
 func (this *QImage) Save5(device *QIODevice, format string, quality int) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 	return (bool)(C.QImage_save5(this.h, device.cPointer(), format_Cstring, (C.int)(quality)))

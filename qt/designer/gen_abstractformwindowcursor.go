@@ -136,7 +136,6 @@ func (this *QDesignerFormWindowCursorInterface) SetProperty(name string, value *
 
 func (this *QDesignerFormWindowCursorInterface) SetWidgetProperty(widget *qt.QWidget, name string, value *qt.QVariant) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	defer runtime.KeepAlive(value)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
@@ -147,7 +146,6 @@ func (this *QDesignerFormWindowCursorInterface) SetWidgetProperty(widget *qt.QWi
 
 func (this *QDesignerFormWindowCursorInterface) ResetWidgetProperty(widget *qt.QWidget, name string) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -157,7 +155,6 @@ func (this *QDesignerFormWindowCursorInterface) ResetWidgetProperty(widget *qt.Q
 
 func (this *QDesignerFormWindowCursorInterface) IsWidgetSelected(widget *qt.QWidget) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	return (bool)(C.QDesignerFormWindowCursorInterface_isWidgetSelected(this.h, (*C.QWidget)(widget.UnsafePointer())))
 }
 

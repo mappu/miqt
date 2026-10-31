@@ -92,7 +92,6 @@ func NewQBoxSet3(label string) *QBoxSet {
 
 // NewQBoxSet4 constructs a new QBoxSet object.
 func NewQBoxSet4(label string, parent *qt6.QObject) *QBoxSet {
-	defer runtime.KeepAlive(parent)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -113,7 +112,6 @@ func NewQBoxSet5(le float64, lq float64, m float64, uq float64, ue float64, labe
 
 // NewQBoxSet6 constructs a new QBoxSet object.
 func NewQBoxSet6(le float64, lq float64, m float64, uq float64, ue float64, label string, parent *qt6.QObject) *QBoxSet {
-	defer runtime.KeepAlive(parent)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -123,12 +121,10 @@ func NewQBoxSet6(le float64, lq float64, m float64, uq float64, ue float64, labe
 }
 
 func (this *QBoxSet) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QBoxSet_metaObject(this.h)))
 }
 
 func (this *QBoxSet) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QBoxSet_metacast(this.h, param1_Cstring))
@@ -144,12 +140,10 @@ func QBoxSet_Tr(s string) string {
 }
 
 func (this *QBoxSet) Append(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_append(this.h, (C.double)(value))
 }
 
 func (this *QBoxSet) AppendWithValues(values []float64) {
-	defer runtime.KeepAlive(this)
 	values_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(values))))
 	defer C.free(unsafe.Pointer(values_CArray_ptr))
 	values_CArray := unsafe.Slice(values_CArray_ptr, len(values))
@@ -161,12 +155,10 @@ func (this *QBoxSet) AppendWithValues(values []float64) {
 }
 
 func (this *QBoxSet) Clear() {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_clear(this.h)
 }
 
 func (this *QBoxSet) SetLabel(label string) {
-	defer runtime.KeepAlive(this)
 	label_ms := C.struct_miqt_string{}
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
@@ -175,7 +167,6 @@ func (this *QBoxSet) SetLabel(label string) {
 }
 
 func (this *QBoxSet) Label() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QBoxSet_label(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -183,60 +174,48 @@ func (this *QBoxSet) Label() string {
 }
 
 func (this *QBoxSet) OperatorShiftLeft(value *float64) *QBoxSet {
-	defer runtime.KeepAlive(this)
-	_ret := newQBoxSet(C.QBoxSet_operatorShiftLeft(this.h, (*C.double)(unsafe.Pointer(value))))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQBoxSet(C.QBoxSet_operatorShiftLeft(this.h, (*C.double)(unsafe.Pointer(value))))
 }
 
 func (this *QBoxSet) SetValue(index int, value float64) {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_setValue(this.h, (C.int)(index), (C.double)(value))
 }
 
 func (this *QBoxSet) At(index int) float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QBoxSet_at(this.h, (C.int)(index)))
 }
 
 func (this *QBoxSet) OperatorSubscript(index int) float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QBoxSet_operatorSubscript(this.h, (C.int)(index)))
 }
 
 func (this *QBoxSet) Count() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QBoxSet_count(this.h))
 }
 
 func (this *QBoxSet) SetPen(pen *qt6.QPen) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pen)
 	C.QBoxSet_setPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
 func (this *QBoxSet) Pen() *qt6.QPen {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQPen(unsafe.Pointer(C.QBoxSet_pen(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBoxSet) SetBrush(brush *qt6.QBrush) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(brush)
 	C.QBoxSet_setBrush(this.h, (*C.QBrush)(brush.UnsafePointer()))
 }
 
 func (this *QBoxSet) Brush() *qt6.QBrush {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQBrush(unsafe.Pointer(C.QBoxSet_brush(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBoxSet) Clicked() {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_clicked(this.h)
 }
 func (this *QBoxSet) OnClicked(slot func()) {
@@ -254,7 +233,6 @@ func miqt_exec_callback_QBoxSet_clicked(cb C.intptr_t) {
 }
 
 func (this *QBoxSet) Hovered(status bool) {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_hovered(this.h, (C.bool)(status))
 }
 func (this *QBoxSet) OnHovered(slot func(status bool)) {
@@ -275,7 +253,6 @@ func miqt_exec_callback_QBoxSet_hovered(cb C.intptr_t, status C.bool) {
 }
 
 func (this *QBoxSet) Pressed() {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_pressed(this.h)
 }
 func (this *QBoxSet) OnPressed(slot func()) {
@@ -293,7 +270,6 @@ func miqt_exec_callback_QBoxSet_pressed(cb C.intptr_t) {
 }
 
 func (this *QBoxSet) Released() {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_released(this.h)
 }
 func (this *QBoxSet) OnReleased(slot func()) {
@@ -311,7 +287,6 @@ func miqt_exec_callback_QBoxSet_released(cb C.intptr_t) {
 }
 
 func (this *QBoxSet) DoubleClicked() {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_doubleClicked(this.h)
 }
 func (this *QBoxSet) OnDoubleClicked(slot func()) {
@@ -329,7 +304,6 @@ func miqt_exec_callback_QBoxSet_doubleClicked(cb C.intptr_t) {
 }
 
 func (this *QBoxSet) PenChanged() {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_penChanged(this.h)
 }
 func (this *QBoxSet) OnPenChanged(slot func()) {
@@ -347,7 +321,6 @@ func miqt_exec_callback_QBoxSet_penChanged(cb C.intptr_t) {
 }
 
 func (this *QBoxSet) BrushChanged() {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_brushChanged(this.h)
 }
 func (this *QBoxSet) OnBrushChanged(slot func()) {
@@ -365,7 +338,6 @@ func miqt_exec_callback_QBoxSet_brushChanged(cb C.intptr_t) {
 }
 
 func (this *QBoxSet) ValuesChanged() {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_valuesChanged(this.h)
 }
 func (this *QBoxSet) OnValuesChanged(slot func()) {
@@ -383,7 +355,6 @@ func miqt_exec_callback_QBoxSet_valuesChanged(cb C.intptr_t) {
 }
 
 func (this *QBoxSet) ValueChanged(index int) {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_valueChanged(this.h, (C.int)(index))
 }
 func (this *QBoxSet) OnValueChanged(slot func(index int)) {
@@ -404,7 +375,6 @@ func miqt_exec_callback_QBoxSet_valueChanged(cb C.intptr_t, index C.int) {
 }
 
 func (this *QBoxSet) Cleared() {
-	defer runtime.KeepAlive(this)
 	C.QBoxSet_cleared(this.h)
 }
 func (this *QBoxSet) OnCleared(slot func()) {
@@ -445,7 +415,6 @@ func QBoxSet_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QBoxSet that was directly constructed.
 func (this *QBoxSet) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QBoxSet_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -460,7 +429,6 @@ func (this *QBoxSet) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QBoxSet that was directly constructed.
 func (this *QBoxSet) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QBoxSet_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -475,7 +443,6 @@ func (this *QBoxSet) SenderSignalIndex() int {
 
 // Receivers can only be called from a QBoxSet that was directly constructed.
 func (this *QBoxSet) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -492,7 +459,6 @@ func (this *QBoxSet) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QBoxSet that was directly constructed.
 func (this *QBoxSet) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -507,7 +473,6 @@ func (this *QBoxSet) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QBoxSet) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBoxSet_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -537,8 +502,6 @@ func miqt_exec_callback_QBoxSet_event(self *C.QBoxSet, cb C.intptr_t, event *C.Q
 }
 
 func (this *QBoxSet) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QBoxSet_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -570,7 +533,6 @@ func miqt_exec_callback_QBoxSet_eventFilter(self *C.QBoxSet, cb C.intptr_t, watc
 }
 
 func (this *QBoxSet) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QBoxSet_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -598,7 +560,6 @@ func miqt_exec_callback_QBoxSet_timerEvent(self *C.QBoxSet, cb C.intptr_t, event
 }
 
 func (this *QBoxSet) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QBoxSet_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -626,7 +587,6 @@ func miqt_exec_callback_QBoxSet_childEvent(self *C.QBoxSet, cb C.intptr_t, event
 }
 
 func (this *QBoxSet) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QBoxSet_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -654,7 +614,6 @@ func miqt_exec_callback_QBoxSet_customEvent(self *C.QBoxSet, cb C.intptr_t, even
 }
 
 func (this *QBoxSet) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QBoxSet_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -682,7 +641,6 @@ func miqt_exec_callback_QBoxSet_connectNotify(self *C.QBoxSet, cb C.intptr_t, si
 }
 
 func (this *QBoxSet) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QBoxSet_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -717,6 +675,8 @@ func (this *QBoxSet) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QBoxSet) GoGC() {
 	if this.gc != nil {
 		return

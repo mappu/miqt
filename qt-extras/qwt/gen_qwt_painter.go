@@ -115,7 +115,6 @@ func QwtPainter_DrawText4(param1 *qt.QPainter, param2 *qt.QRectF, flags int, par
 func QwtPainter_DrawSimpleRichText(param1 *qt.QPainter, param2 *qt.QRectF, flags int, param4 *qt.QTextDocument) {
 	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(param4)
 	C.QwtPainter_drawSimpleRichText((*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()), (C.int)(flags), (*C.QTextDocument)(param4.UnsafePointer()))
 }
 
@@ -251,13 +250,11 @@ func QwtPainter_DrawFrame(param1 *qt.QPainter, rect *qt.QRectF, palette *qt.QPal
 
 func QwtPainter_DrawFocusRect(param1 *qt.QPainter, param2 *qt.QWidget) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 	C.QwtPainter_drawFocusRect((*C.QPainter)(param1.UnsafePointer()), (*C.QWidget)(param2.UnsafePointer()))
 }
 
 func QwtPainter_DrawFocusRect2(param1 *qt.QPainter, param2 *qt.QWidget, param3 *qt.QRect) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 	defer runtime.KeepAlive(param3)
 	C.QwtPainter_drawFocusRect2((*C.QPainter)(param1.UnsafePointer()), (*C.QWidget)(param2.UnsafePointer()), (*C.QRect)(param3.UnsafePointer()))
 }
@@ -272,7 +269,6 @@ func QwtPainter_IsX11GraphicsSystem() bool {
 }
 
 func QwtPainter_FillPixmap(param1 *qt.QWidget, param2 *qt.QPixmap) {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	C.QwtPainter_fillPixmap((*C.QWidget)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()))
 }
@@ -280,12 +276,10 @@ func QwtPainter_FillPixmap(param1 *qt.QWidget, param2 *qt.QPixmap) {
 func QwtPainter_DrawBackgound(painter *qt.QPainter, rect *qt.QRectF, widget *qt.QWidget) {
 	defer runtime.KeepAlive(painter)
 	defer runtime.KeepAlive(rect)
-	defer runtime.KeepAlive(widget)
 	C.QwtPainter_drawBackgound((*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 }
 
 func QwtPainter_BackingStore(param1 *qt.QWidget, param2 *qt.QSize) *qt.QPixmap {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QwtPainter_backingStore((*C.QWidget)(param1.UnsafePointer()), (*C.QSize)(param2.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -293,7 +287,6 @@ func QwtPainter_BackingStore(param1 *qt.QWidget, param2 *qt.QSize) *qt.QPixmap {
 }
 
 func QwtPainter_FillPixmap2(param1 *qt.QWidget, param2 *qt.QPixmap, offset *qt.QPoint) {
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 	defer runtime.KeepAlive(offset)
 	C.QwtPainter_fillPixmap2((*C.QWidget)(param1.UnsafePointer()), (*C.QPixmap)(param2.UnsafePointer()), (*C.QPoint)(offset.UnsafePointer()))

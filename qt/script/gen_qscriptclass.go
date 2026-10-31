@@ -70,7 +70,6 @@ func UnsafeNewQScriptClass(h unsafe.Pointer) *QScriptClass {
 
 // NewQScriptClass constructs a new QScriptClass object.
 func NewQScriptClass(engine *QScriptEngine) *QScriptClass {
-	defer runtime.KeepAlive(engine)
 
 	return newQScriptClass(C.QScriptClass_new(engine.cPointer()))
 }

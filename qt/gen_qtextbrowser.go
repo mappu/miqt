@@ -60,7 +60,6 @@ func UnsafeNewQTextBrowser(h unsafe.Pointer) *QTextBrowser {
 
 // NewQTextBrowser constructs a new QTextBrowser object.
 func NewQTextBrowser(parent *QWidget) *QTextBrowser {
-	defer runtime.KeepAlive(parent)
 
 	return newQTextBrowser(C.QTextBrowser_new(parent.cPointer()))
 }
@@ -72,12 +71,10 @@ func NewQTextBrowser2() *QTextBrowser {
 }
 
 func (this *QTextBrowser) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTextBrowser_metaObject(this.h))
 }
 
 func (this *QTextBrowser) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTextBrowser_metacast(this.h, param1_Cstring))
@@ -102,19 +99,16 @@ func QTextBrowser_TrUtf8(s string) string {
 }
 
 func (this *QTextBrowser) Source() *QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := newQUrl(C.QTextBrowser_source(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBrowser) SourceType() QTextDocument__ResourceType {
-	defer runtime.KeepAlive(this)
 	return (QTextDocument__ResourceType)(C.QTextBrowser_sourceType(this.h))
 }
 
 func (this *QTextBrowser) SearchPaths() []string {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QTextBrowser_searchPaths(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -128,7 +122,6 @@ func (this *QTextBrowser) SearchPaths() []string {
 }
 
 func (this *QTextBrowser) SetSearchPaths(paths []string) {
-	defer runtime.KeepAlive(this)
 	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
 	defer C.free(unsafe.Pointer(paths_CArray_ptr))
 	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
@@ -144,7 +137,6 @@ func (this *QTextBrowser) SetSearchPaths(paths []string) {
 }
 
 func (this *QTextBrowser) LoadResource(typeVal int, name *QUrl) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(name)
 	_goptr := newQVariant(C.QTextBrowser_loadResource(this.h, (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -152,22 +144,18 @@ func (this *QTextBrowser) LoadResource(typeVal int, name *QUrl) *QVariant {
 }
 
 func (this *QTextBrowser) IsBackwardAvailable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextBrowser_isBackwardAvailable(this.h))
 }
 
 func (this *QTextBrowser) IsForwardAvailable() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextBrowser_isForwardAvailable(this.h))
 }
 
 func (this *QTextBrowser) ClearHistory() {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_clearHistory(this.h)
 }
 
 func (this *QTextBrowser) HistoryTitle(param1 int) string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QTextBrowser_historyTitle(this.h, (C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -175,76 +163,62 @@ func (this *QTextBrowser) HistoryTitle(param1 int) string {
 }
 
 func (this *QTextBrowser) HistoryUrl(param1 int) *QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := newQUrl(C.QTextBrowser_historyUrl(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBrowser) BackwardHistoryCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextBrowser_backwardHistoryCount(this.h))
 }
 
 func (this *QTextBrowser) ForwardHistoryCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QTextBrowser_forwardHistoryCount(this.h))
 }
 
 func (this *QTextBrowser) OpenExternalLinks() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextBrowser_openExternalLinks(this.h))
 }
 
 func (this *QTextBrowser) SetOpenExternalLinks(open bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_setOpenExternalLinks(this.h, (C.bool)(open))
 }
 
 func (this *QTextBrowser) OpenLinks() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QTextBrowser_openLinks(this.h))
 }
 
 func (this *QTextBrowser) SetOpenLinks(open bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_setOpenLinks(this.h, (C.bool)(open))
 }
 
 func (this *QTextBrowser) SetSource(name *QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(name)
 	C.QTextBrowser_setSource(this.h, name.cPointer())
 }
 
 func (this *QTextBrowser) SetSource2(name *QUrl, typeVal QTextDocument__ResourceType) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(name)
 	C.QTextBrowser_setSource2(this.h, name.cPointer(), (C.int)(typeVal))
 }
 
 func (this *QTextBrowser) Backward() {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_backward(this.h)
 }
 
 func (this *QTextBrowser) Forward() {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_forward(this.h)
 }
 
 func (this *QTextBrowser) Home() {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_home(this.h)
 }
 
 func (this *QTextBrowser) Reload() {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_reload(this.h)
 }
 
 func (this *QTextBrowser) BackwardAvailable(param1 bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_backwardAvailable(this.h, (C.bool)(param1))
 }
 func (this *QTextBrowser) OnBackwardAvailable(slot func(param1 bool)) {
@@ -265,7 +239,6 @@ func miqt_exec_callback_QTextBrowser_backwardAvailable(cb C.intptr_t, param1 C.b
 }
 
 func (this *QTextBrowser) ForwardAvailable(param1 bool) {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_forwardAvailable(this.h, (C.bool)(param1))
 }
 func (this *QTextBrowser) OnForwardAvailable(slot func(param1 bool)) {
@@ -286,7 +259,6 @@ func miqt_exec_callback_QTextBrowser_forwardAvailable(cb C.intptr_t, param1 C.bo
 }
 
 func (this *QTextBrowser) HistoryChanged() {
-	defer runtime.KeepAlive(this)
 	C.QTextBrowser_historyChanged(this.h)
 }
 func (this *QTextBrowser) OnHistoryChanged(slot func()) {
@@ -304,7 +276,6 @@ func miqt_exec_callback_QTextBrowser_historyChanged(cb C.intptr_t) {
 }
 
 func (this *QTextBrowser) SourceChanged(param1 *QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QTextBrowser_sourceChanged(this.h, param1.cPointer())
 }
@@ -326,7 +297,6 @@ func miqt_exec_callback_QTextBrowser_sourceChanged(cb C.intptr_t, param1 *C.QUrl
 }
 
 func (this *QTextBrowser) Highlighted(param1 *QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QTextBrowser_highlighted(this.h, param1.cPointer())
 }
@@ -348,7 +318,6 @@ func miqt_exec_callback_QTextBrowser_highlighted(cb C.intptr_t, param1 *C.QUrl) 
 }
 
 func (this *QTextBrowser) HighlightedWithQString(param1 string) {
-	defer runtime.KeepAlive(this)
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
@@ -376,7 +345,6 @@ func miqt_exec_callback_QTextBrowser_highlightedWithQString(cb C.intptr_t, param
 }
 
 func (this *QTextBrowser) AnchorClicked(param1 *QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QTextBrowser_anchorClicked(this.h, param1.cPointer())
 }
@@ -443,7 +411,6 @@ func QTextBrowser_TrUtf83(s string, c string, n int) string {
 
 // DoSetSource can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) DoSetSource(name *QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(name)
 
 	var _dynamic_cast_ok C.bool = false
@@ -457,7 +424,6 @@ func (this *QTextBrowser) DoSetSource(name *QUrl) {
 
 // DoSetSource2 can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) DoSetSource2(name *QUrl, typeVal QTextDocument__ResourceType) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(name)
 
 	var _dynamic_cast_ok C.bool = false
@@ -471,7 +437,6 @@ func (this *QTextBrowser) DoSetSource2(name *QUrl, typeVal QTextDocument__Resour
 
 // ZoomInF can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) ZoomInF(rangeVal float32) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextBrowser_protectedbase_zoomInF(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.float)(rangeVal))
@@ -484,7 +449,6 @@ func (this *QTextBrowser) ZoomInF(rangeVal float32) {
 
 // SetViewportMargins can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) SetViewportMargins(left int, top int, right int, bottom int) {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextBrowser_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
@@ -497,7 +461,6 @@ func (this *QTextBrowser) SetViewportMargins(left int, top int, right int, botto
 
 // ViewportMargins can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) ViewportMargins() QMargins {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_goptr := newQMargins(C.QTextBrowser_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -514,7 +477,6 @@ func (this *QTextBrowser) ViewportMargins() QMargins {
 
 // DrawFrame can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) DrawFrame(param1 *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -528,7 +490,6 @@ func (this *QTextBrowser) DrawFrame(param1 *QPainter) {
 
 // InitStyleOption can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) InitStyleOption(option *QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	var _dynamic_cast_ok C.bool = false
@@ -542,7 +503,6 @@ func (this *QTextBrowser) InitStyleOption(option *QStyleOptionFrame) {
 
 // UpdateMicroFocus can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextBrowser_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -555,7 +515,6 @@ func (this *QTextBrowser) UpdateMicroFocus() {
 
 // Create can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextBrowser_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -568,7 +527,6 @@ func (this *QTextBrowser) Create() {
 
 // Destroy can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QTextBrowser_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -581,7 +539,6 @@ func (this *QTextBrowser) Destroy() {
 
 // FocusNextChild can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTextBrowser_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -596,7 +553,6 @@ func (this *QTextBrowser) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QTextBrowser_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -611,7 +567,6 @@ func (this *QTextBrowser) FocusPreviousChild() bool {
 
 // Sender can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTextBrowser_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -626,7 +581,6 @@ func (this *QTextBrowser) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTextBrowser_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -641,7 +595,6 @@ func (this *QTextBrowser) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -658,7 +611,6 @@ func (this *QTextBrowser) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTextBrowser that was directly constructed.
 func (this *QTextBrowser) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -673,7 +625,6 @@ func (this *QTextBrowser) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTextBrowser) callVirtualBase_LoadResource(typeVal int, name *QUrl) *QVariant {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(name)
 
 	_goptr := newQVariant(C.QTextBrowser_virtualbase_loadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer()))
@@ -708,7 +659,6 @@ func miqt_exec_callback_QTextBrowser_loadResource(self *C.QTextBrowser, cb C.int
 }
 
 func (this *QTextBrowser) callVirtualBase_SetSource(name *QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(name)
 
 	C.QTextBrowser_virtualbase_setSource(unsafe.Pointer(this.h), name.cPointer())
@@ -736,7 +686,6 @@ func miqt_exec_callback_QTextBrowser_setSource(self *C.QTextBrowser, cb C.intptr
 }
 
 func (this *QTextBrowser) callVirtualBase_Backward() {
-	defer runtime.KeepAlive(this)
 
 	C.QTextBrowser_virtualbase_backward(unsafe.Pointer(this.h))
 
@@ -760,7 +709,6 @@ func miqt_exec_callback_QTextBrowser_backward(self *C.QTextBrowser, cb C.intptr_
 }
 
 func (this *QTextBrowser) callVirtualBase_Forward() {
-	defer runtime.KeepAlive(this)
 
 	C.QTextBrowser_virtualbase_forward(unsafe.Pointer(this.h))
 
@@ -784,7 +732,6 @@ func miqt_exec_callback_QTextBrowser_forward(self *C.QTextBrowser, cb C.intptr_t
 }
 
 func (this *QTextBrowser) callVirtualBase_Home() {
-	defer runtime.KeepAlive(this)
 
 	C.QTextBrowser_virtualbase_home(unsafe.Pointer(this.h))
 
@@ -808,7 +755,6 @@ func miqt_exec_callback_QTextBrowser_home(self *C.QTextBrowser, cb C.intptr_t) {
 }
 
 func (this *QTextBrowser) callVirtualBase_Reload() {
-	defer runtime.KeepAlive(this)
 
 	C.QTextBrowser_virtualbase_reload(unsafe.Pointer(this.h))
 
@@ -832,7 +778,6 @@ func miqt_exec_callback_QTextBrowser_reload(self *C.QTextBrowser, cb C.intptr_t)
 }
 
 func (this *QTextBrowser) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QTextBrowser_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -862,7 +807,6 @@ func miqt_exec_callback_QTextBrowser_event(self *C.QTextBrowser, cb C.intptr_t, 
 }
 
 func (this *QTextBrowser) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(ev)
 
 	C.QTextBrowser_virtualbase_keyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
@@ -890,7 +834,6 @@ func miqt_exec_callback_QTextBrowser_keyPressEvent(self *C.QTextBrowser, cb C.in
 }
 
 func (this *QTextBrowser) callVirtualBase_MouseMoveEvent(ev *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(ev)
 
 	C.QTextBrowser_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), ev.cPointer())
@@ -918,7 +861,6 @@ func miqt_exec_callback_QTextBrowser_mouseMoveEvent(self *C.QTextBrowser, cb C.i
 }
 
 func (this *QTextBrowser) callVirtualBase_MousePressEvent(ev *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(ev)
 
 	C.QTextBrowser_virtualbase_mousePressEvent(unsafe.Pointer(this.h), ev.cPointer())
@@ -946,7 +888,6 @@ func miqt_exec_callback_QTextBrowser_mousePressEvent(self *C.QTextBrowser, cb C.
 }
 
 func (this *QTextBrowser) callVirtualBase_MouseReleaseEvent(ev *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(ev)
 
 	C.QTextBrowser_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), ev.cPointer())
@@ -974,7 +915,6 @@ func miqt_exec_callback_QTextBrowser_mouseReleaseEvent(self *C.QTextBrowser, cb 
 }
 
 func (this *QTextBrowser) callVirtualBase_FocusOutEvent(ev *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(ev)
 
 	C.QTextBrowser_virtualbase_focusOutEvent(unsafe.Pointer(this.h), ev.cPointer())
@@ -1002,7 +942,6 @@ func miqt_exec_callback_QTextBrowser_focusOutEvent(self *C.QTextBrowser, cb C.in
 }
 
 func (this *QTextBrowser) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTextBrowser_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1031,7 +970,6 @@ func miqt_exec_callback_QTextBrowser_focusNextPrevChild(self *C.QTextBrowser, cb
 }
 
 func (this *QTextBrowser) callVirtualBase_PaintEvent(e *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1059,7 +997,6 @@ func miqt_exec_callback_QTextBrowser_paintEvent(self *C.QTextBrowser, cb C.intpt
 }
 
 func (this *QTextBrowser) callVirtualBase_InputMethodQuery(property InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QTextBrowser_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(property)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1091,7 +1028,6 @@ func miqt_exec_callback_QTextBrowser_inputMethodQuery(self *C.QTextBrowser, cb C
 }
 
 func (this *QTextBrowser) callVirtualBase_TimerEvent(e *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_timerEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1119,7 +1055,6 @@ func miqt_exec_callback_QTextBrowser_timerEvent(self *C.QTextBrowser, cb C.intpt
 }
 
 func (this *QTextBrowser) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1147,7 +1082,6 @@ func miqt_exec_callback_QTextBrowser_keyReleaseEvent(self *C.QTextBrowser, cb C.
 }
 
 func (this *QTextBrowser) callVirtualBase_ResizeEvent(e *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1175,7 +1109,6 @@ func miqt_exec_callback_QTextBrowser_resizeEvent(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_MouseDoubleClickEvent(e *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1203,7 +1136,6 @@ func miqt_exec_callback_QTextBrowser_mouseDoubleClickEvent(self *C.QTextBrowser,
 }
 
 func (this *QTextBrowser) callVirtualBase_ContextMenuEvent(e *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1231,7 +1163,6 @@ func miqt_exec_callback_QTextBrowser_contextMenuEvent(self *C.QTextBrowser, cb C
 }
 
 func (this *QTextBrowser) callVirtualBase_DragEnterEvent(e *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1259,7 +1190,6 @@ func miqt_exec_callback_QTextBrowser_dragEnterEvent(self *C.QTextBrowser, cb C.i
 }
 
 func (this *QTextBrowser) callVirtualBase_DragLeaveEvent(e *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1287,7 +1217,6 @@ func miqt_exec_callback_QTextBrowser_dragLeaveEvent(self *C.QTextBrowser, cb C.i
 }
 
 func (this *QTextBrowser) callVirtualBase_DragMoveEvent(e *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1315,7 +1244,6 @@ func miqt_exec_callback_QTextBrowser_dragMoveEvent(self *C.QTextBrowser, cb C.in
 }
 
 func (this *QTextBrowser) callVirtualBase_DropEvent(e *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_dropEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1343,7 +1271,6 @@ func miqt_exec_callback_QTextBrowser_dropEvent(self *C.QTextBrowser, cb C.intptr
 }
 
 func (this *QTextBrowser) callVirtualBase_FocusInEvent(e *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_focusInEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1371,7 +1298,6 @@ func miqt_exec_callback_QTextBrowser_focusInEvent(self *C.QTextBrowser, cb C.int
 }
 
 func (this *QTextBrowser) callVirtualBase_ShowEvent(param1 *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QTextBrowser_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1399,7 +1325,6 @@ func miqt_exec_callback_QTextBrowser_showEvent(self *C.QTextBrowser, cb C.intptr
 }
 
 func (this *QTextBrowser) callVirtualBase_ChangeEvent(e *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1427,7 +1352,6 @@ func miqt_exec_callback_QTextBrowser_changeEvent(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_WheelEvent(e *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	C.QTextBrowser_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
@@ -1455,7 +1379,6 @@ func miqt_exec_callback_QTextBrowser_wheelEvent(self *C.QTextBrowser, cb C.intpt
 }
 
 func (this *QTextBrowser) callVirtualBase_CreateMimeDataFromSelection() *QMimeData {
-	defer runtime.KeepAlive(this)
 
 	return newQMimeData(C.QTextBrowser_virtualbase_createMimeDataFromSelection(unsafe.Pointer(this.h)))
 
@@ -1475,15 +1398,12 @@ func miqt_exec_callback_QTextBrowser_createMimeDataFromSelection(self *C.QTextBr
 	}
 
 	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_CreateMimeDataFromSelection)
-	defer runtime.KeepAlive(virtualReturn)
 
 	return virtualReturn.cPointer()
 
 }
 
 func (this *QTextBrowser) callVirtualBase_CanInsertFromMimeData(source *QMimeData) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(source)
 
 	return (bool)(C.QTextBrowser_virtualbase_canInsertFromMimeData(unsafe.Pointer(this.h), source.cPointer()))
 
@@ -1512,8 +1432,6 @@ func miqt_exec_callback_QTextBrowser_canInsertFromMimeData(self *C.QTextBrowser,
 }
 
 func (this *QTextBrowser) callVirtualBase_InsertFromMimeData(source *QMimeData) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(source)
 
 	C.QTextBrowser_virtualbase_insertFromMimeData(unsafe.Pointer(this.h), source.cPointer())
 
@@ -1540,7 +1458,6 @@ func miqt_exec_callback_QTextBrowser_insertFromMimeData(self *C.QTextBrowser, cb
 }
 
 func (this *QTextBrowser) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QTextBrowser_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1568,7 +1485,6 @@ func miqt_exec_callback_QTextBrowser_inputMethodEvent(self *C.QTextBrowser, cb C
 }
 
 func (this *QTextBrowser) callVirtualBase_ScrollContentsBy(dx int, dy int) {
-	defer runtime.KeepAlive(this)
 
 	C.QTextBrowser_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
@@ -1597,7 +1513,6 @@ func miqt_exec_callback_QTextBrowser_scrollContentsBy(self *C.QTextBrowser, cb C
 }
 
 func (this *QTextBrowser) callVirtualBase_DoSetTextCursor(cursor *QTextCursor) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(cursor)
 
 	C.QTextBrowser_virtualbase_doSetTextCursor(unsafe.Pointer(this.h), cursor.cPointer())
@@ -1625,7 +1540,6 @@ func miqt_exec_callback_QTextBrowser_doSetTextCursor(self *C.QTextBrowser, cb C.
 }
 
 func (this *QTextBrowser) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTextBrowser_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1654,7 +1568,6 @@ func miqt_exec_callback_QTextBrowser_minimumSizeHint(self *C.QTextBrowser, cb C.
 }
 
 func (this *QTextBrowser) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTextBrowser_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1683,8 +1596,6 @@ func miqt_exec_callback_QTextBrowser_sizeHint(self *C.QTextBrowser, cb C.intptr_
 }
 
 func (this *QTextBrowser) callVirtualBase_SetupViewport(viewport *QWidget) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(viewport)
 
 	C.QTextBrowser_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
@@ -1711,8 +1622,6 @@ func miqt_exec_callback_QTextBrowser_setupViewport(self *C.QTextBrowser, cb C.in
 }
 
 func (this *QTextBrowser) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	defer runtime.KeepAlive(param2)
 
 	return (bool)(C.QTextBrowser_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
@@ -1744,7 +1653,6 @@ func miqt_exec_callback_QTextBrowser_eventFilter(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_ViewportEvent(param1 *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	return (bool)(C.QTextBrowser_virtualbase_viewportEvent(unsafe.Pointer(this.h), param1.cPointer()))
@@ -1774,7 +1682,6 @@ func miqt_exec_callback_QTextBrowser_viewportEvent(self *C.QTextBrowser, cb C.in
 }
 
 func (this *QTextBrowser) callVirtualBase_ViewportSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QTextBrowser_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1803,7 +1710,6 @@ func miqt_exec_callback_QTextBrowser_viewportSizeHint(self *C.QTextBrowser, cb C
 }
 
 func (this *QTextBrowser) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTextBrowser_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -1829,7 +1735,6 @@ func miqt_exec_callback_QTextBrowser_devType(self *C.QTextBrowser, cb C.intptr_t
 }
 
 func (this *QTextBrowser) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QTextBrowser_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -1856,7 +1761,6 @@ func miqt_exec_callback_QTextBrowser_setVisible(self *C.QTextBrowser, cb C.intpt
 }
 
 func (this *QTextBrowser) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTextBrowser_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1885,7 +1789,6 @@ func miqt_exec_callback_QTextBrowser_heightForWidth(self *C.QTextBrowser, cb C.i
 }
 
 func (this *QTextBrowser) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QTextBrowser_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -1911,7 +1814,6 @@ func miqt_exec_callback_QTextBrowser_hasHeightForWidth(self *C.QTextBrowser, cb 
 }
 
 func (this *QTextBrowser) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QTextBrowser_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -1938,7 +1840,6 @@ func miqt_exec_callback_QTextBrowser_paintEngine(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_EnterEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextBrowser_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1966,7 +1867,6 @@ func miqt_exec_callback_QTextBrowser_enterEvent(self *C.QTextBrowser, cb C.intpt
 }
 
 func (this *QTextBrowser) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextBrowser_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1994,7 +1894,6 @@ func miqt_exec_callback_QTextBrowser_leaveEvent(self *C.QTextBrowser, cb C.intpt
 }
 
 func (this *QTextBrowser) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextBrowser_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2022,7 +1921,6 @@ func miqt_exec_callback_QTextBrowser_moveEvent(self *C.QTextBrowser, cb C.intptr
 }
 
 func (this *QTextBrowser) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextBrowser_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2050,7 +1948,6 @@ func miqt_exec_callback_QTextBrowser_closeEvent(self *C.QTextBrowser, cb C.intpt
 }
 
 func (this *QTextBrowser) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextBrowser_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2078,7 +1975,6 @@ func miqt_exec_callback_QTextBrowser_tabletEvent(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextBrowser_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2106,7 +2002,6 @@ func miqt_exec_callback_QTextBrowser_actionEvent(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextBrowser_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2134,7 +2029,6 @@ func miqt_exec_callback_QTextBrowser_hideEvent(self *C.QTextBrowser, cb C.intptr
 }
 
 func (this *QTextBrowser) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -2176,7 +2070,6 @@ func miqt_exec_callback_QTextBrowser_nativeEvent(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QTextBrowser_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -2205,7 +2098,6 @@ func miqt_exec_callback_QTextBrowser_metric(self *C.QTextBrowser, cb C.intptr_t,
 }
 
 func (this *QTextBrowser) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QTextBrowser_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -2233,7 +2125,6 @@ func miqt_exec_callback_QTextBrowser_initPainter(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTextBrowser_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -2264,7 +2155,6 @@ func miqt_exec_callback_QTextBrowser_redirected(self *C.QTextBrowser, cb C.intpt
 }
 
 func (this *QTextBrowser) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QTextBrowser_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -2291,7 +2181,6 @@ func miqt_exec_callback_QTextBrowser_sharedPainter(self *C.QTextBrowser, cb C.in
 }
 
 func (this *QTextBrowser) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextBrowser_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2319,7 +2208,6 @@ func miqt_exec_callback_QTextBrowser_childEvent(self *C.QTextBrowser, cb C.intpt
 }
 
 func (this *QTextBrowser) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTextBrowser_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2347,7 +2235,6 @@ func miqt_exec_callback_QTextBrowser_customEvent(self *C.QTextBrowser, cb C.intp
 }
 
 func (this *QTextBrowser) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTextBrowser_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2375,7 +2262,6 @@ func miqt_exec_callback_QTextBrowser_connectNotify(self *C.QTextBrowser, cb C.in
 }
 
 func (this *QTextBrowser) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTextBrowser_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2410,6 +2296,8 @@ func (this *QTextBrowser) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTextBrowser) GoGC() {
 	if this.gc != nil {
 		return

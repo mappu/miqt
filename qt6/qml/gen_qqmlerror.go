@@ -140,7 +140,6 @@ func (this *QQmlError) Object() *qt6.QObject {
 
 func (this *QQmlError) SetObject(object *qt6.QObject) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	C.QQmlError_setObject(this.h, (*C.QObject)(object.UnsafePointer()))
 }
 

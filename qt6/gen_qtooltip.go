@@ -100,7 +100,6 @@ func QToolTip_SetFont(font *QFont) {
 
 func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget) {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(w)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
@@ -110,7 +109,6 @@ func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget) {
 
 func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget, rect *QRect) {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(w)
 	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
@@ -121,7 +119,6 @@ func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget, rect *QRect) {
 
 func QToolTip_ShowText4(pos *QPoint, text string, w *QWidget, rect *QRect, msecShowTime int) {
 	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(w)
 	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)

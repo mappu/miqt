@@ -78,12 +78,10 @@ func UnsafeNewQWebEngineNavigationRequest(h unsafe.Pointer) *QWebEngineNavigatio
 }
 
 func (this *QWebEngineNavigationRequest) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineNavigationRequest_metaObject(this.h)))
 }
 
 func (this *QWebEngineNavigationRequest) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QWebEngineNavigationRequest_metacast(this.h, param1_Cstring))
@@ -99,34 +97,28 @@ func QWebEngineNavigationRequest_Tr(s string) string {
 }
 
 func (this *QWebEngineNavigationRequest) Url() *qt6.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNavigationRequest_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNavigationRequest) IsMainFrame() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QWebEngineNavigationRequest_isMainFrame(this.h))
 }
 
 func (this *QWebEngineNavigationRequest) NavigationType() QWebEngineNavigationRequest__NavigationType {
-	defer runtime.KeepAlive(this)
 	return (QWebEngineNavigationRequest__NavigationType)(C.QWebEngineNavigationRequest_navigationType(this.h))
 }
 
 func (this *QWebEngineNavigationRequest) Accept() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineNavigationRequest_accept(this.h)
 }
 
 func (this *QWebEngineNavigationRequest) Reject() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineNavigationRequest_reject(this.h)
 }
 
 func (this *QWebEngineNavigationRequest) ActionChanged() {
-	defer runtime.KeepAlive(this)
 	C.QWebEngineNavigationRequest_actionChanged(this.h)
 }
 func (this *QWebEngineNavigationRequest) OnActionChanged(slot func()) {
@@ -173,6 +165,8 @@ func (this *QWebEngineNavigationRequest) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QWebEngineNavigationRequest) GoGC() {
 	if this.gc != nil {
 		return

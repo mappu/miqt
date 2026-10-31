@@ -83,18 +83,15 @@ func NewQJSEngine() *QJSEngine {
 
 // NewQJSEngine2 constructs a new QJSEngine object.
 func NewQJSEngine2(parent *qt6.QObject) *QJSEngine {
-	defer runtime.KeepAlive(parent)
 
 	return newQJSEngine(C.QJSEngine_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QJSEngine) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QJSEngine_metaObject(this.h)))
 }
 
 func (this *QJSEngine) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QJSEngine_metacast(this.h, param1_Cstring))
@@ -110,14 +107,12 @@ func QJSEngine_Tr(s string) string {
 }
 
 func (this *QJSEngine) GlobalObject() *QJSValue {
-	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSEngine_globalObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSEngine) Evaluate(program string) *QJSValue {
-	defer runtime.KeepAlive(this)
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -128,7 +123,6 @@ func (this *QJSEngine) Evaluate(program string) *QJSValue {
 }
 
 func (this *QJSEngine) ImportModule(fileName string) *QJSValue {
-	defer runtime.KeepAlive(this)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -139,7 +133,6 @@ func (this *QJSEngine) ImportModule(fileName string) *QJSValue {
 }
 
 func (this *QJSEngine) RegisterModule(moduleName string, value *QJSValue) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	moduleName_ms := C.struct_miqt_string{}
 	moduleName_ms.data = C.CString(moduleName)
@@ -149,14 +142,12 @@ func (this *QJSEngine) RegisterModule(moduleName string, value *QJSValue) bool {
 }
 
 func (this *QJSEngine) NewObject() *QJSValue {
-	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSEngine_newObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSEngine) NewSymbol(name string) *QJSValue {
-	defer runtime.KeepAlive(this)
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -167,22 +158,18 @@ func (this *QJSEngine) NewSymbol(name string) *QJSValue {
 }
 
 func (this *QJSEngine) NewArray() *QJSValue {
-	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSEngine_newArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSEngine) NewQObject(object *qt6.QObject) *QJSValue {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	_goptr := newQJSValue(C.QJSEngine_newQObject(this.h, (*C.QObject)(object.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSEngine) NewQMetaObject(metaObject *qt6.QMetaObject) *QJSValue {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(metaObject)
 	_goptr := newQJSValue(C.QJSEngine_newQMetaObject(this.h, (*C.QMetaObject)(metaObject.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -190,44 +177,36 @@ func (this *QJSEngine) NewQMetaObject(metaObject *qt6.QMetaObject) *QJSValue {
 }
 
 func (this *QJSEngine) NewErrorObject(errorType QJSValue__ErrorType) *QJSValue {
-	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSEngine_newErrorObject(this.h, (C.int)(errorType)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSEngine) CollectGarbage() {
-	defer runtime.KeepAlive(this)
 	C.QJSEngine_collectGarbage(this.h)
 }
 
 func QJSEngine_SetObjectOwnership(param1 *qt6.QObject, param2 QJSEngine__ObjectOwnership) {
-	defer runtime.KeepAlive(param1)
 	C.QJSEngine_setObjectOwnership((*C.QObject)(param1.UnsafePointer()), (C.int)(param2))
 }
 
 func QJSEngine_ObjectOwnership(param1 *qt6.QObject) QJSEngine__ObjectOwnership {
-	defer runtime.KeepAlive(param1)
 	return (QJSEngine__ObjectOwnership)(C.QJSEngine_objectOwnership((*C.QObject)(param1.UnsafePointer())))
 }
 
 func (this *QJSEngine) InstallExtensions(extensions QJSEngine__Extension) {
-	defer runtime.KeepAlive(this)
 	C.QJSEngine_installExtensions(this.h, (C.int)(extensions))
 }
 
 func (this *QJSEngine) SetInterrupted(interrupted bool) {
-	defer runtime.KeepAlive(this)
 	C.QJSEngine_setInterrupted(this.h, (C.bool)(interrupted))
 }
 
 func (this *QJSEngine) IsInterrupted() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSEngine_isInterrupted(this.h))
 }
 
 func (this *QJSEngine) ThrowError(message string) {
-	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -236,30 +215,25 @@ func (this *QJSEngine) ThrowError(message string) {
 }
 
 func (this *QJSEngine) ThrowErrorWithErrorType(errorType QJSValue__ErrorType) {
-	defer runtime.KeepAlive(this)
 	C.QJSEngine_throwErrorWithErrorType(this.h, (C.int)(errorType))
 }
 
 func (this *QJSEngine) ThrowErrorWithError(error *QJSValue) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(error)
 	C.QJSEngine_throwErrorWithError(this.h, error.cPointer())
 }
 
 func (this *QJSEngine) HasError() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QJSEngine_hasError(this.h))
 }
 
 func (this *QJSEngine) CatchError() *QJSValue {
-	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSEngine_catchError(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSEngine) UiLanguage() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QJSEngine_uiLanguage(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -267,7 +241,6 @@ func (this *QJSEngine) UiLanguage() string {
 }
 
 func (this *QJSEngine) SetUiLanguage(language string) {
-	defer runtime.KeepAlive(this)
 	language_ms := C.struct_miqt_string{}
 	language_ms.data = C.CString(language)
 	language_ms.len = C.size_t(len(language))
@@ -276,7 +249,6 @@ func (this *QJSEngine) SetUiLanguage(language string) {
 }
 
 func (this *QJSEngine) UiLanguageChanged() {
-	defer runtime.KeepAlive(this)
 	C.QJSEngine_uiLanguageChanged(this.h)
 }
 func (this *QJSEngine) OnUiLanguageChanged(slot func()) {
@@ -316,7 +288,6 @@ func QJSEngine_Tr3(s string, c string, n int) string {
 }
 
 func (this *QJSEngine) Evaluate2(program string, fileName string) *QJSValue {
-	defer runtime.KeepAlive(this)
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -331,7 +302,6 @@ func (this *QJSEngine) Evaluate2(program string, fileName string) *QJSValue {
 }
 
 func (this *QJSEngine) Evaluate3(program string, fileName string, lineNumber int) *QJSValue {
-	defer runtime.KeepAlive(this)
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -346,7 +316,6 @@ func (this *QJSEngine) Evaluate3(program string, fileName string, lineNumber int
 }
 
 func (this *QJSEngine) Evaluate4(program string, fileName string, lineNumber int, exceptionStackTrace []string) *QJSValue {
-	defer runtime.KeepAlive(this)
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -372,14 +341,12 @@ func (this *QJSEngine) Evaluate4(program string, fileName string, lineNumber int
 }
 
 func (this *QJSEngine) NewArrayWithLength(length uint) *QJSValue {
-	defer runtime.KeepAlive(this)
 	_goptr := newQJSValue(C.QJSEngine_newArrayWithLength(this.h, (C.uint)(length)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSEngine) NewErrorObject2(errorType QJSValue__ErrorType, message string) *QJSValue {
-	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -390,13 +357,11 @@ func (this *QJSEngine) NewErrorObject2(errorType QJSValue__ErrorType, message st
 }
 
 func (this *QJSEngine) InstallExtensions2(extensions QJSEngine__Extension, object *QJSValue) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(object)
 	C.QJSEngine_installExtensions2(this.h, (C.int)(extensions), object.cPointer())
 }
 
 func (this *QJSEngine) ThrowError2(errorType QJSValue__ErrorType, message string) {
-	defer runtime.KeepAlive(this)
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
@@ -406,7 +371,6 @@ func (this *QJSEngine) ThrowError2(errorType QJSValue__ErrorType, message string
 
 // Sender can only be called from a QJSEngine that was directly constructed.
 func (this *QJSEngine) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QJSEngine_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -421,7 +385,6 @@ func (this *QJSEngine) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QJSEngine that was directly constructed.
 func (this *QJSEngine) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QJSEngine_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -436,7 +399,6 @@ func (this *QJSEngine) SenderSignalIndex() int {
 
 // Receivers can only be called from a QJSEngine that was directly constructed.
 func (this *QJSEngine) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -453,7 +415,6 @@ func (this *QJSEngine) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QJSEngine that was directly constructed.
 func (this *QJSEngine) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -468,7 +429,6 @@ func (this *QJSEngine) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 }
 
 func (this *QJSEngine) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QJSEngine_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -498,8 +458,6 @@ func miqt_exec_callback_QJSEngine_event(self *C.QJSEngine, cb C.intptr_t, event 
 }
 
 func (this *QJSEngine) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QJSEngine_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -531,7 +489,6 @@ func miqt_exec_callback_QJSEngine_eventFilter(self *C.QJSEngine, cb C.intptr_t, 
 }
 
 func (this *QJSEngine) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QJSEngine_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -559,7 +516,6 @@ func miqt_exec_callback_QJSEngine_timerEvent(self *C.QJSEngine, cb C.intptr_t, e
 }
 
 func (this *QJSEngine) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QJSEngine_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -587,7 +543,6 @@ func miqt_exec_callback_QJSEngine_childEvent(self *C.QJSEngine, cb C.intptr_t, e
 }
 
 func (this *QJSEngine) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QJSEngine_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -615,7 +570,6 @@ func miqt_exec_callback_QJSEngine_customEvent(self *C.QJSEngine, cb C.intptr_t, 
 }
 
 func (this *QJSEngine) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QJSEngine_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -643,7 +597,6 @@ func miqt_exec_callback_QJSEngine_connectNotify(self *C.QJSEngine, cb C.intptr_t
 }
 
 func (this *QJSEngine) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QJSEngine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -678,6 +631,8 @@ func (this *QJSEngine) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QJSEngine) GoGC() {
 	if this.gc != nil {
 		return

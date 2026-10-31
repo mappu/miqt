@@ -148,7 +148,6 @@ func (this *QIcon) PixmapWithExtent(extent int) *QPixmap {
 
 func (this *QIcon) Pixmap3(window *QWindow, size *QSize) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(window)
 	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIcon_pixmap3(this.h, window.cPointer(), size.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -165,7 +164,6 @@ func (this *QIcon) ActualSize(size *QSize) *QSize {
 
 func (this *QIcon) ActualSize2(window *QWindow, size *QSize) *QSize {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(window)
 	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIcon_actualSize2(this.h, window.cPointer(), size.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -412,7 +410,6 @@ func (this *QIcon) Pixmap9(extent int, mode QIcon__Mode, state QIcon__State) *QP
 
 func (this *QIcon) Pixmap10(window *QWindow, size *QSize, mode QIcon__Mode) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(window)
 	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIcon_pixmap10(this.h, window.cPointer(), size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -421,7 +418,6 @@ func (this *QIcon) Pixmap10(window *QWindow, size *QSize, mode QIcon__Mode) *QPi
 
 func (this *QIcon) Pixmap11(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(window)
 	defer runtime.KeepAlive(size)
 	_goptr := newQPixmap(C.QIcon_pixmap11(this.h, window.cPointer(), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -446,7 +442,6 @@ func (this *QIcon) ActualSize4(size *QSize, mode QIcon__Mode, state QIcon__State
 
 func (this *QIcon) ActualSize5(window *QWindow, size *QSize, mode QIcon__Mode) *QSize {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(window)
 	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIcon_actualSize5(this.h, window.cPointer(), size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -455,7 +450,6 @@ func (this *QIcon) ActualSize5(window *QWindow, size *QSize, mode QIcon__Mode) *
 
 func (this *QIcon) ActualSize6(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(window)
 	defer runtime.KeepAlive(size)
 	_goptr := newQSize(C.QIcon_actualSize6(this.h, window.cPointer(), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

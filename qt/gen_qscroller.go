@@ -85,12 +85,10 @@ func UnsafeNewQScroller(h unsafe.Pointer) *QScroller {
 }
 
 func (this *QScroller) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QScroller_metaObject(this.h))
 }
 
 func (this *QScroller) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QScroller_metacast(this.h, param1_Cstring))
@@ -115,32 +113,26 @@ func QScroller_TrUtf8(s string) string {
 }
 
 func QScroller_HasScroller(target *QObject) bool {
-	defer runtime.KeepAlive(target)
 	return (bool)(C.QScroller_hasScroller(target.cPointer()))
 }
 
 func QScroller_Scroller(target *QObject) *QScroller {
-	defer runtime.KeepAlive(target)
 	return newQScroller(C.QScroller_scroller(target.cPointer()))
 }
 
 func QScroller_ScrollerWithTarget(target *QObject) *QScroller {
-	defer runtime.KeepAlive(target)
 	return newQScroller(C.QScroller_scrollerWithTarget(target.cPointer()))
 }
 
 func QScroller_GrabGesture(target *QObject) GestureType {
-	defer runtime.KeepAlive(target)
 	return (GestureType)(C.QScroller_grabGesture(target.cPointer()))
 }
 
 func QScroller_GrabbedGesture(target *QObject) GestureType {
-	defer runtime.KeepAlive(target)
 	return (GestureType)(C.QScroller_grabbedGesture(target.cPointer()))
 }
 
 func QScroller_UngrabGesture(target *QObject) {
-	defer runtime.KeepAlive(target)
 	C.QScroller_ungrabGesture(target.cPointer())
 }
 
@@ -155,56 +147,47 @@ func QScroller_ActiveScrollers() []*QScroller {
 }
 
 func (this *QScroller) Target() *QObject {
-	defer runtime.KeepAlive(this)
 	return newQObject(C.QScroller_target(this.h))
 }
 
 func (this *QScroller) State() QScroller__State {
-	defer runtime.KeepAlive(this)
 	return (QScroller__State)(C.QScroller_state(this.h))
 }
 
 func (this *QScroller) HandleInput(input QScroller__Input, position *QPointF) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(position)
 	return (bool)(C.QScroller_handleInput(this.h, (C.int)(input), position.cPointer()))
 }
 
 func (this *QScroller) Stop() {
-	defer runtime.KeepAlive(this)
 	C.QScroller_stop(this.h)
 }
 
 func (this *QScroller) Velocity() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QScroller_velocity(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScroller) FinalPosition() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QScroller_finalPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScroller) PixelPerMeter() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QScroller_pixelPerMeter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScroller) ScrollerProperties() *QScrollerProperties {
-	defer runtime.KeepAlive(this)
 	_goptr := newQScrollerProperties(C.QScroller_scrollerProperties(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScroller) SetSnapPositionsX(positions []float64) {
-	defer runtime.KeepAlive(this)
 	positions_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray_ptr))
 	positions_CArray := unsafe.Slice(positions_CArray_ptr, len(positions))
@@ -216,12 +199,10 @@ func (this *QScroller) SetSnapPositionsX(positions []float64) {
 }
 
 func (this *QScroller) SetSnapPositionsX2(first float64, interval float64) {
-	defer runtime.KeepAlive(this)
 	C.QScroller_setSnapPositionsX2(this.h, (C.double)(first), (C.double)(interval))
 }
 
 func (this *QScroller) SetSnapPositionsY(positions []float64) {
-	defer runtime.KeepAlive(this)
 	positions_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray_ptr))
 	positions_CArray := unsafe.Slice(positions_CArray_ptr, len(positions))
@@ -233,47 +214,39 @@ func (this *QScroller) SetSnapPositionsY(positions []float64) {
 }
 
 func (this *QScroller) SetSnapPositionsY2(first float64, interval float64) {
-	defer runtime.KeepAlive(this)
 	C.QScroller_setSnapPositionsY2(this.h, (C.double)(first), (C.double)(interval))
 }
 
 func (this *QScroller) SetScrollerProperties(prop *QScrollerProperties) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(prop)
 	C.QScroller_setScrollerProperties(this.h, prop.cPointer())
 }
 
 func (this *QScroller) ScrollTo(pos *QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QScroller_scrollTo(this.h, pos.cPointer())
 }
 
 func (this *QScroller) ScrollTo2(pos *QPointF, scrollTime int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QScroller_scrollTo2(this.h, pos.cPointer(), (C.int)(scrollTime))
 }
 
 func (this *QScroller) EnsureVisible(rect *QRectF, xmargin float64, ymargin float64) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	C.QScroller_ensureVisible(this.h, rect.cPointer(), (C.double)(xmargin), (C.double)(ymargin))
 }
 
 func (this *QScroller) EnsureVisible2(rect *QRectF, xmargin float64, ymargin float64, scrollTime int) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(rect)
 	C.QScroller_ensureVisible2(this.h, rect.cPointer(), (C.double)(xmargin), (C.double)(ymargin), (C.int)(scrollTime))
 }
 
 func (this *QScroller) ResendPrepareEvent() {
-	defer runtime.KeepAlive(this)
 	C.QScroller_resendPrepareEvent(this.h)
 }
 
 func (this *QScroller) StateChanged(newstate QScroller__State) {
-	defer runtime.KeepAlive(this)
 	C.QScroller_stateChanged(this.h, (C.int)(newstate))
 }
 func (this *QScroller) OnStateChanged(slot func(newstate QScroller__State)) {
@@ -294,7 +267,6 @@ func miqt_exec_callback_QScroller_stateChanged(cb C.intptr_t, newstate C.int) {
 }
 
 func (this *QScroller) ScrollerPropertiesChanged(param1 *QScrollerProperties) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 	C.QScroller_scrollerPropertiesChanged(this.h, param1.cPointer())
 }
@@ -360,12 +332,10 @@ func QScroller_TrUtf83(s string, c string, n int) string {
 }
 
 func QScroller_GrabGesture2(target *QObject, gestureType QScroller__ScrollerGestureType) GestureType {
-	defer runtime.KeepAlive(target)
 	return (GestureType)(C.QScroller_grabGesture2(target.cPointer(), (C.int)(gestureType)))
 }
 
 func (this *QScroller) HandleInput2(input QScroller__Input, position *QPointF, timestamp int64) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(position)
 	return (bool)(C.QScroller_handleInput2(this.h, (C.int)(input), position.cPointer(), (C.longlong)(timestamp)))
 }

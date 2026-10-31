@@ -109,7 +109,6 @@ func (this *QMessageAuthenticationCode) AddDataWithData(data []byte) {
 
 func (this *QMessageAuthenticationCode) AddDataWithDevice(device *QIODevice) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	return (bool)(C.QMessageAuthenticationCode_addDataWithDevice(this.h, device.cPointer()))
 }
 

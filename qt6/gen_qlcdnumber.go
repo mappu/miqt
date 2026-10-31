@@ -77,7 +77,6 @@ func UnsafeNewQLCDNumber(h unsafe.Pointer) *QLCDNumber {
 
 // NewQLCDNumber constructs a new QLCDNumber object.
 func NewQLCDNumber(parent *QWidget) *QLCDNumber {
-	defer runtime.KeepAlive(parent)
 
 	return newQLCDNumber(C.QLCDNumber_new(parent.cPointer()))
 }
@@ -96,18 +95,15 @@ func NewQLCDNumber3(numDigits uint) *QLCDNumber {
 
 // NewQLCDNumber4 constructs a new QLCDNumber object.
 func NewQLCDNumber4(numDigits uint, parent *QWidget) *QLCDNumber {
-	defer runtime.KeepAlive(parent)
 
 	return newQLCDNumber(C.QLCDNumber_new4((C.uint)(numDigits), parent.cPointer()))
 }
 
 func (this *QLCDNumber) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QLCDNumber_metaObject(this.h))
 }
 
 func (this *QLCDNumber) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QLCDNumber_metacast(this.h, param1_Cstring))
@@ -123,69 +119,56 @@ func QLCDNumber_Tr(s string) string {
 }
 
 func (this *QLCDNumber) SmallDecimalPoint() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QLCDNumber_smallDecimalPoint(this.h))
 }
 
 func (this *QLCDNumber) DigitCount() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QLCDNumber_digitCount(this.h))
 }
 
 func (this *QLCDNumber) SetDigitCount(nDigits int) {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_setDigitCount(this.h, (C.int)(nDigits))
 }
 
 func (this *QLCDNumber) CheckOverflow(num float64) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QLCDNumber_checkOverflow(this.h, (C.double)(num)))
 }
 
 func (this *QLCDNumber) CheckOverflowWithNum(num int) bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QLCDNumber_checkOverflowWithNum(this.h, (C.int)(num)))
 }
 
 func (this *QLCDNumber) Mode() QLCDNumber__Mode {
-	defer runtime.KeepAlive(this)
 	return (QLCDNumber__Mode)(C.QLCDNumber_mode(this.h))
 }
 
 func (this *QLCDNumber) SetMode(mode QLCDNumber__Mode) {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_setMode(this.h, (C.int)(mode))
 }
 
 func (this *QLCDNumber) SegmentStyle() QLCDNumber__SegmentStyle {
-	defer runtime.KeepAlive(this)
 	return (QLCDNumber__SegmentStyle)(C.QLCDNumber_segmentStyle(this.h))
 }
 
 func (this *QLCDNumber) SetSegmentStyle(segmentStyle QLCDNumber__SegmentStyle) {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_setSegmentStyle(this.h, (C.int)(segmentStyle))
 }
 
 func (this *QLCDNumber) Value() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QLCDNumber_value(this.h))
 }
 
 func (this *QLCDNumber) IntValue() int {
-	defer runtime.KeepAlive(this)
 	return (int)(C.QLCDNumber_intValue(this.h))
 }
 
 func (this *QLCDNumber) SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSize(C.QLCDNumber_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLCDNumber) Display(str string) {
-	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
@@ -194,42 +177,34 @@ func (this *QLCDNumber) Display(str string) {
 }
 
 func (this *QLCDNumber) DisplayWithNum(num int) {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_displayWithNum(this.h, (C.int)(num))
 }
 
 func (this *QLCDNumber) Display2(num float64) {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_display2(this.h, (C.double)(num))
 }
 
 func (this *QLCDNumber) SetHexMode() {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_setHexMode(this.h)
 }
 
 func (this *QLCDNumber) SetDecMode() {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_setDecMode(this.h)
 }
 
 func (this *QLCDNumber) SetOctMode() {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_setOctMode(this.h)
 }
 
 func (this *QLCDNumber) SetBinMode() {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_setBinMode(this.h)
 }
 
 func (this *QLCDNumber) SetSmallDecimalPoint(smallDecimalPoint bool) {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_setSmallDecimalPoint(this.h, (C.bool)(smallDecimalPoint))
 }
 
 func (this *QLCDNumber) Overflow() {
-	defer runtime.KeepAlive(this)
 	C.QLCDNumber_overflow(this.h)
 }
 func (this *QLCDNumber) OnOverflow(slot func()) {
@@ -270,7 +245,6 @@ func QLCDNumber_Tr3(s string, c string, n int) string {
 
 // DrawFrame can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) DrawFrame(param1 *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	var _dynamic_cast_ok C.bool = false
@@ -284,7 +258,6 @@ func (this *QLCDNumber) DrawFrame(param1 *QPainter) {
 
 // UpdateMicroFocus can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QLCDNumber_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -297,7 +270,6 @@ func (this *QLCDNumber) UpdateMicroFocus() {
 
 // Create can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QLCDNumber_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -310,7 +282,6 @@ func (this *QLCDNumber) Create() {
 
 // Destroy can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QLCDNumber_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -323,7 +294,6 @@ func (this *QLCDNumber) Destroy() {
 
 // FocusNextChild can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QLCDNumber_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -338,7 +308,6 @@ func (this *QLCDNumber) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QLCDNumber_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -353,7 +322,6 @@ func (this *QLCDNumber) FocusPreviousChild() bool {
 
 // Sender can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QLCDNumber_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -368,7 +336,6 @@ func (this *QLCDNumber) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QLCDNumber_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -383,7 +350,6 @@ func (this *QLCDNumber) SenderSignalIndex() int {
 
 // Receivers can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -400,7 +366,6 @@ func (this *QLCDNumber) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QLCDNumber that was directly constructed.
 func (this *QLCDNumber) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -415,7 +380,6 @@ func (this *QLCDNumber) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QLCDNumber) callVirtualBase_SizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QLCDNumber_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -444,7 +408,6 @@ func miqt_exec_callback_QLCDNumber_sizeHint(self *C.QLCDNumber, cb C.intptr_t) *
 }
 
 func (this *QLCDNumber) callVirtualBase_Event(e *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(e)
 
 	return (bool)(C.QLCDNumber_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
@@ -474,7 +437,6 @@ func miqt_exec_callback_QLCDNumber_event(self *C.QLCDNumber, cb C.intptr_t, e *C
 }
 
 func (this *QLCDNumber) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QLCDNumber_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -502,7 +464,6 @@ func miqt_exec_callback_QLCDNumber_paintEvent(self *C.QLCDNumber, cb C.intptr_t,
 }
 
 func (this *QLCDNumber) callVirtualBase_ChangeEvent(param1 *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QLCDNumber_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -530,7 +491,6 @@ func miqt_exec_callback_QLCDNumber_changeEvent(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(option)
 
 	C.QLCDNumber_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
@@ -558,7 +518,6 @@ func miqt_exec_callback_QLCDNumber_initStyleOption(self *C.QLCDNumber, cb C.intp
 }
 
 func (this *QLCDNumber) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QLCDNumber_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -584,7 +543,6 @@ func miqt_exec_callback_QLCDNumber_devType(self *C.QLCDNumber, cb C.intptr_t) C.
 }
 
 func (this *QLCDNumber) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QLCDNumber_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -611,7 +569,6 @@ func miqt_exec_callback_QLCDNumber_setVisible(self *C.QLCDNumber, cb C.intptr_t,
 }
 
 func (this *QLCDNumber) callVirtualBase_MinimumSizeHint() *QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQSize(C.QLCDNumber_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -640,7 +597,6 @@ func miqt_exec_callback_QLCDNumber_minimumSizeHint(self *C.QLCDNumber, cb C.intp
 }
 
 func (this *QLCDNumber) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QLCDNumber_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -669,7 +625,6 @@ func miqt_exec_callback_QLCDNumber_heightForWidth(self *C.QLCDNumber, cb C.intpt
 }
 
 func (this *QLCDNumber) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLCDNumber_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -695,7 +650,6 @@ func miqt_exec_callback_QLCDNumber_hasHeightForWidth(self *C.QLCDNumber, cb C.in
 }
 
 func (this *QLCDNumber) callVirtualBase_PaintEngine() *QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return newQPaintEngine(C.QLCDNumber_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
@@ -722,7 +676,6 @@ func miqt_exec_callback_QLCDNumber_paintEngine(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_MousePressEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -750,7 +703,6 @@ func miqt_exec_callback_QLCDNumber_mousePressEvent(self *C.QLCDNumber, cb C.intp
 }
 
 func (this *QLCDNumber) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -778,7 +730,6 @@ func miqt_exec_callback_QLCDNumber_mouseReleaseEvent(self *C.QLCDNumber, cb C.in
 }
 
 func (this *QLCDNumber) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -806,7 +757,6 @@ func miqt_exec_callback_QLCDNumber_mouseDoubleClickEvent(self *C.QLCDNumber, cb 
 }
 
 func (this *QLCDNumber) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -834,7 +784,6 @@ func miqt_exec_callback_QLCDNumber_mouseMoveEvent(self *C.QLCDNumber, cb C.intpt
 }
 
 func (this *QLCDNumber) callVirtualBase_WheelEvent(event *QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -862,7 +811,6 @@ func miqt_exec_callback_QLCDNumber_wheelEvent(self *C.QLCDNumber, cb C.intptr_t,
 }
 
 func (this *QLCDNumber) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -890,7 +838,6 @@ func miqt_exec_callback_QLCDNumber_keyPressEvent(self *C.QLCDNumber, cb C.intptr
 }
 
 func (this *QLCDNumber) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -918,7 +865,6 @@ func miqt_exec_callback_QLCDNumber_keyReleaseEvent(self *C.QLCDNumber, cb C.intp
 }
 
 func (this *QLCDNumber) callVirtualBase_FocusInEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -946,7 +892,6 @@ func miqt_exec_callback_QLCDNumber_focusInEvent(self *C.QLCDNumber, cb C.intptr_
 }
 
 func (this *QLCDNumber) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -974,7 +919,6 @@ func miqt_exec_callback_QLCDNumber_focusOutEvent(self *C.QLCDNumber, cb C.intptr
 }
 
 func (this *QLCDNumber) callVirtualBase_EnterEvent(event *QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1002,7 +946,6 @@ func miqt_exec_callback_QLCDNumber_enterEvent(self *C.QLCDNumber, cb C.intptr_t,
 }
 
 func (this *QLCDNumber) callVirtualBase_LeaveEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1030,7 +973,6 @@ func miqt_exec_callback_QLCDNumber_leaveEvent(self *C.QLCDNumber, cb C.intptr_t,
 }
 
 func (this *QLCDNumber) callVirtualBase_MoveEvent(event *QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1058,7 +1000,6 @@ func miqt_exec_callback_QLCDNumber_moveEvent(self *C.QLCDNumber, cb C.intptr_t, 
 }
 
 func (this *QLCDNumber) callVirtualBase_ResizeEvent(event *QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1086,7 +1027,6 @@ func miqt_exec_callback_QLCDNumber_resizeEvent(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_CloseEvent(event *QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1114,7 +1054,6 @@ func miqt_exec_callback_QLCDNumber_closeEvent(self *C.QLCDNumber, cb C.intptr_t,
 }
 
 func (this *QLCDNumber) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1142,7 +1081,6 @@ func miqt_exec_callback_QLCDNumber_contextMenuEvent(self *C.QLCDNumber, cb C.int
 }
 
 func (this *QLCDNumber) callVirtualBase_TabletEvent(event *QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1170,7 +1108,6 @@ func miqt_exec_callback_QLCDNumber_tabletEvent(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_ActionEvent(event *QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1198,7 +1135,6 @@ func miqt_exec_callback_QLCDNumber_actionEvent(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1226,7 +1162,6 @@ func miqt_exec_callback_QLCDNumber_dragEnterEvent(self *C.QLCDNumber, cb C.intpt
 }
 
 func (this *QLCDNumber) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1254,7 +1189,6 @@ func miqt_exec_callback_QLCDNumber_dragMoveEvent(self *C.QLCDNumber, cb C.intptr
 }
 
 func (this *QLCDNumber) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1282,7 +1216,6 @@ func miqt_exec_callback_QLCDNumber_dragLeaveEvent(self *C.QLCDNumber, cb C.intpt
 }
 
 func (this *QLCDNumber) callVirtualBase_DropEvent(event *QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1310,7 +1243,6 @@ func miqt_exec_callback_QLCDNumber_dropEvent(self *C.QLCDNumber, cb C.intptr_t, 
 }
 
 func (this *QLCDNumber) callVirtualBase_ShowEvent(event *QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1338,7 +1270,6 @@ func miqt_exec_callback_QLCDNumber_showEvent(self *C.QLCDNumber, cb C.intptr_t, 
 }
 
 func (this *QLCDNumber) callVirtualBase_HideEvent(event *QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1366,7 +1297,6 @@ func miqt_exec_callback_QLCDNumber_hideEvent(self *C.QLCDNumber, cb C.intptr_t, 
 }
 
 func (this *QLCDNumber) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1408,7 +1338,6 @@ func miqt_exec_callback_QLCDNumber_nativeEvent(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QLCDNumber_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1437,7 +1366,6 @@ func miqt_exec_callback_QLCDNumber_metric(self *C.QLCDNumber, cb C.intptr_t, par
 }
 
 func (this *QLCDNumber) callVirtualBase_InitPainter(painter *QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QLCDNumber_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
@@ -1465,7 +1393,6 @@ func miqt_exec_callback_QLCDNumber_initPainter(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QLCDNumber_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
@@ -1496,7 +1423,6 @@ func miqt_exec_callback_QLCDNumber_redirected(self *C.QLCDNumber, cb C.intptr_t,
 }
 
 func (this *QLCDNumber) callVirtualBase_SharedPainter() *QPainter {
-	defer runtime.KeepAlive(this)
 
 	return newQPainter(C.QLCDNumber_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
@@ -1523,7 +1449,6 @@ func miqt_exec_callback_QLCDNumber_sharedPainter(self *C.QLCDNumber, cb C.intptr
 }
 
 func (this *QLCDNumber) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QLCDNumber_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
@@ -1551,7 +1476,6 @@ func miqt_exec_callback_QLCDNumber_inputMethodEvent(self *C.QLCDNumber, cb C.int
 }
 
 func (this *QLCDNumber) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := newQVariant(C.QLCDNumber_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1583,7 +1507,6 @@ func miqt_exec_callback_QLCDNumber_inputMethodQuery(self *C.QLCDNumber, cb C.int
 }
 
 func (this *QLCDNumber) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QLCDNumber_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1612,8 +1535,6 @@ func miqt_exec_callback_QLCDNumber_focusNextPrevChild(self *C.QLCDNumber, cb C.i
 }
 
 func (this *QLCDNumber) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QLCDNumber_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1645,7 +1566,6 @@ func miqt_exec_callback_QLCDNumber_eventFilter(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1673,7 +1593,6 @@ func miqt_exec_callback_QLCDNumber_timerEvent(self *C.QLCDNumber, cb C.intptr_t,
 }
 
 func (this *QLCDNumber) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1701,7 +1620,6 @@ func miqt_exec_callback_QLCDNumber_childEvent(self *C.QLCDNumber, cb C.intptr_t,
 }
 
 func (this *QLCDNumber) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QLCDNumber_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1729,7 +1647,6 @@ func miqt_exec_callback_QLCDNumber_customEvent(self *C.QLCDNumber, cb C.intptr_t
 }
 
 func (this *QLCDNumber) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QLCDNumber_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1757,7 +1674,6 @@ func miqt_exec_callback_QLCDNumber_connectNotify(self *C.QLCDNumber, cb C.intptr
 }
 
 func (this *QLCDNumber) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QLCDNumber_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1792,6 +1708,8 @@ func (this *QLCDNumber) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QLCDNumber) GoGC() {
 	if this.gc != nil {
 		return

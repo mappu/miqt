@@ -108,7 +108,6 @@ func (this *QCryptographicHash) AddDataWithData(data []byte) {
 
 func (this *QCryptographicHash) AddDataWithDevice(device *QIODevice) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(device)
 	return (bool)(C.QCryptographicHash_addDataWithDevice(this.h, device.cPointer()))
 }
 

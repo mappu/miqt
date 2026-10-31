@@ -303,7 +303,6 @@ func (this *QNetworkRequest) SetSslConfiguration(configuration *QSslConfiguratio
 
 func (this *QNetworkRequest) SetOriginatingObject(object *qt6.QObject) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(object)
 	C.QNetworkRequest_setOriginatingObject(this.h, (*C.QObject)(object.UnsafePointer()))
 }
 

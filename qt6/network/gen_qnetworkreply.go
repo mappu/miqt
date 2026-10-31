@@ -98,12 +98,10 @@ func UnsafeNewQNetworkReply(h unsafe.Pointer) *QNetworkReply {
 }
 
 func (this *QNetworkReply) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkReply_metaObject(this.h)))
 }
 
 func (this *QNetworkReply) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QNetworkReply_metacast(this.h, param1_Cstring))
@@ -119,73 +117,60 @@ func QNetworkReply_Tr(s string) string {
 }
 
 func (this *QNetworkReply) Close() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_close(this.h)
 }
 
 func (this *QNetworkReply) IsSequential() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkReply_isSequential(this.h))
 }
 
 func (this *QNetworkReply) ReadBufferSize() int64 {
-	defer runtime.KeepAlive(this)
 	return (int64)(C.QNetworkReply_readBufferSize(this.h))
 }
 
 func (this *QNetworkReply) SetReadBufferSize(size int64) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_setReadBufferSize(this.h, (C.longlong)(size))
 }
 
 func (this *QNetworkReply) Manager() *QNetworkAccessManager {
-	defer runtime.KeepAlive(this)
 	return newQNetworkAccessManager(C.QNetworkReply_manager(this.h))
 }
 
 func (this *QNetworkReply) Operation() QNetworkAccessManager__Operation {
-	defer runtime.KeepAlive(this)
 	return (QNetworkAccessManager__Operation)(C.QNetworkReply_operation(this.h))
 }
 
 func (this *QNetworkReply) Request() *QNetworkRequest {
-	defer runtime.KeepAlive(this)
 	_goptr := newQNetworkRequest(C.QNetworkReply_request(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) Error() QNetworkReply__NetworkError {
-	defer runtime.KeepAlive(this)
 	return (QNetworkReply__NetworkError)(C.QNetworkReply_error(this.h))
 }
 
 func (this *QNetworkReply) IsFinished() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkReply_isFinished(this.h))
 }
 
 func (this *QNetworkReply) IsRunning() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QNetworkReply_isRunning(this.h))
 }
 
 func (this *QNetworkReply) Url() *qt6.QUrl {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkReply_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) Header(header QNetworkRequest__KnownHeaders) *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkReply_header(this.h, (C.int)(header))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) HasRawHeader(headerName []byte) bool {
-	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -197,7 +182,6 @@ func (this *QNetworkReply) HasRawHeader(headerName []byte) bool {
 }
 
 func (this *QNetworkReply) RawHeaderList() [][]byte {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkReply_rawHeaderList(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
@@ -211,7 +195,6 @@ func (this *QNetworkReply) RawHeaderList() [][]byte {
 }
 
 func (this *QNetworkReply) RawHeader(headerName []byte) []byte {
-	defer runtime.KeepAlive(this)
 	headerName_alias := C.struct_miqt_string{}
 	if len(headerName) > 0 {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
@@ -229,7 +212,6 @@ func (this *QNetworkReply) RawHeaderPairs() []struct {
 	First  []byte
 	Second []byte
 } {
-	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QNetworkReply_rawHeaderPairs(this.h)
 	_ret := make([]struct {
 		First  []byte
@@ -257,27 +239,23 @@ func (this *QNetworkReply) RawHeaderPairs() []struct {
 }
 
 func (this *QNetworkReply) Attribute(code QNetworkRequest__Attribute) *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkReply_attribute(this.h, (C.int)(code))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) SslConfiguration() *QSslConfiguration {
-	defer runtime.KeepAlive(this)
 	_goptr := newQSslConfiguration(C.QNetworkReply_sslConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) SetSslConfiguration(configuration *QSslConfiguration) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(configuration)
 	C.QNetworkReply_setSslConfiguration(this.h, configuration.cPointer())
 }
 
 func (this *QNetworkReply) IgnoreSslErrors(errors []QSslError) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(errors)
 	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
 	defer C.free(unsafe.Pointer(errors_CArray_ptr))
@@ -290,17 +268,14 @@ func (this *QNetworkReply) IgnoreSslErrors(errors []QSslError) {
 }
 
 func (this *QNetworkReply) Abort() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_abort(this.h)
 }
 
 func (this *QNetworkReply) IgnoreSslErrors2() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_ignoreSslErrors2(this.h)
 }
 
 func (this *QNetworkReply) SocketStartedConnecting() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_socketStartedConnecting(this.h)
 }
 func (this *QNetworkReply) OnSocketStartedConnecting(slot func()) {
@@ -318,7 +293,6 @@ func miqt_exec_callback_QNetworkReply_socketStartedConnecting(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) RequestSent() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_requestSent(this.h)
 }
 func (this *QNetworkReply) OnRequestSent(slot func()) {
@@ -336,7 +310,6 @@ func miqt_exec_callback_QNetworkReply_requestSent(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) MetaDataChanged() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_metaDataChanged(this.h)
 }
 func (this *QNetworkReply) OnMetaDataChanged(slot func()) {
@@ -354,7 +327,6 @@ func miqt_exec_callback_QNetworkReply_metaDataChanged(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) Finished() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_finished(this.h)
 }
 func (this *QNetworkReply) OnFinished(slot func()) {
@@ -372,7 +344,6 @@ func miqt_exec_callback_QNetworkReply_finished(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) ErrorOccurred(param1 QNetworkReply__NetworkError) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_errorOccurred(this.h, (C.int)(param1))
 }
 func (this *QNetworkReply) OnErrorOccurred(slot func(param1 QNetworkReply__NetworkError)) {
@@ -393,7 +364,6 @@ func miqt_exec_callback_QNetworkReply_errorOccurred(cb C.intptr_t, param1 C.int)
 }
 
 func (this *QNetworkReply) Encrypted() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_encrypted(this.h)
 }
 func (this *QNetworkReply) OnEncrypted(slot func()) {
@@ -411,7 +381,6 @@ func miqt_exec_callback_QNetworkReply_encrypted(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) SslErrors(errors []QSslError) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(errors)
 	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
 	defer C.free(unsafe.Pointer(errors_CArray_ptr))
@@ -448,7 +417,6 @@ func miqt_exec_callback_QNetworkReply_sslErrors(cb C.intptr_t, errors C.struct_m
 }
 
 func (this *QNetworkReply) PreSharedKeyAuthenticationRequired(authenticator *QSslPreSharedKeyAuthenticator) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(authenticator)
 	C.QNetworkReply_preSharedKeyAuthenticationRequired(this.h, authenticator.cPointer())
 }
@@ -470,7 +438,6 @@ func miqt_exec_callback_QNetworkReply_preSharedKeyAuthenticationRequired(cb C.in
 }
 
 func (this *QNetworkReply) Redirected(url *qt6.QUrl) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(url)
 	C.QNetworkReply_redirected(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
@@ -492,7 +459,6 @@ func miqt_exec_callback_QNetworkReply_redirected(cb C.intptr_t, url *C.QUrl) {
 }
 
 func (this *QNetworkReply) RedirectAllowed() {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_redirectAllowed(this.h)
 }
 func (this *QNetworkReply) OnRedirectAllowed(slot func()) {
@@ -510,7 +476,6 @@ func miqt_exec_callback_QNetworkReply_redirectAllowed(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) UploadProgress(bytesSent int64, bytesTotal int64) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_uploadProgress(this.h, (C.longlong)(bytesSent), (C.longlong)(bytesTotal))
 }
 func (this *QNetworkReply) OnUploadProgress(slot func(bytesSent int64, bytesTotal int64)) {
@@ -533,7 +498,6 @@ func miqt_exec_callback_QNetworkReply_uploadProgress(cb C.intptr_t, bytesSent C.
 }
 
 func (this *QNetworkReply) DownloadProgress(bytesReceived int64, bytesTotal int64) {
-	defer runtime.KeepAlive(this)
 	C.QNetworkReply_downloadProgress(this.h, (C.longlong)(bytesReceived), (C.longlong)(bytesTotal))
 }
 func (this *QNetworkReply) OnDownloadProgress(slot func(bytesReceived int64, bytesTotal int64)) {
@@ -585,6 +549,8 @@ func (this *QNetworkReply) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QNetworkReply) GoGC() {
 	if this.gc != nil {
 		return

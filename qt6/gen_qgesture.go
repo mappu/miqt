@@ -91,18 +91,15 @@ func NewQGesture() *QGesture {
 
 // NewQGesture2 constructs a new QGesture object.
 func NewQGesture2(parent *QObject) *QGesture {
-	defer runtime.KeepAlive(parent)
 
 	return newQGesture(C.QGesture_new2(parent.cPointer()))
 }
 
 func (this *QGesture) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QGesture_metaObject(this.h))
 }
 
 func (this *QGesture) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QGesture_metacast(this.h, param1_Cstring))
@@ -118,45 +115,37 @@ func QGesture_Tr(s string) string {
 }
 
 func (this *QGesture) GestureType() GestureType {
-	defer runtime.KeepAlive(this)
 	return (GestureType)(C.QGesture_gestureType(this.h))
 }
 
 func (this *QGesture) State() GestureState {
-	defer runtime.KeepAlive(this)
 	return (GestureState)(C.QGesture_state(this.h))
 }
 
 func (this *QGesture) HotSpot() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QGesture_hotSpot(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGesture) SetHotSpot(value *QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	C.QGesture_setHotSpot(this.h, value.cPointer())
 }
 
 func (this *QGesture) HasHotSpot() bool {
-	defer runtime.KeepAlive(this)
 	return (bool)(C.QGesture_hasHotSpot(this.h))
 }
 
 func (this *QGesture) UnsetHotSpot() {
-	defer runtime.KeepAlive(this)
 	C.QGesture_unsetHotSpot(this.h)
 }
 
 func (this *QGesture) SetGestureCancelPolicy(policy QGesture__GestureCancelPolicy) {
-	defer runtime.KeepAlive(this)
 	C.QGesture_setGestureCancelPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QGesture) GestureCancelPolicy() QGesture__GestureCancelPolicy {
-	defer runtime.KeepAlive(this)
 	return (QGesture__GestureCancelPolicy)(C.QGesture_gestureCancelPolicy(this.h))
 }
 
@@ -184,7 +173,6 @@ func QGesture_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QGesture that was directly constructed.
 func (this *QGesture) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QGesture_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -199,7 +187,6 @@ func (this *QGesture) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QGesture that was directly constructed.
 func (this *QGesture) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QGesture_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -214,7 +201,6 @@ func (this *QGesture) SenderSignalIndex() int {
 
 // Receivers can only be called from a QGesture that was directly constructed.
 func (this *QGesture) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -231,7 +217,6 @@ func (this *QGesture) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QGesture that was directly constructed.
 func (this *QGesture) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -246,7 +231,6 @@ func (this *QGesture) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QGesture) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGesture_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -276,8 +260,6 @@ func miqt_exec_callback_QGesture_event(self *C.QGesture, cb C.intptr_t, event *C
 }
 
 func (this *QGesture) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QGesture_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -309,7 +291,6 @@ func miqt_exec_callback_QGesture_eventFilter(self *C.QGesture, cb C.intptr_t, wa
 }
 
 func (this *QGesture) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGesture_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -337,7 +318,6 @@ func miqt_exec_callback_QGesture_timerEvent(self *C.QGesture, cb C.intptr_t, eve
 }
 
 func (this *QGesture) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGesture_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -365,7 +345,6 @@ func miqt_exec_callback_QGesture_childEvent(self *C.QGesture, cb C.intptr_t, eve
 }
 
 func (this *QGesture) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QGesture_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -393,7 +372,6 @@ func miqt_exec_callback_QGesture_customEvent(self *C.QGesture, cb C.intptr_t, ev
 }
 
 func (this *QGesture) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGesture_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -421,7 +399,6 @@ func miqt_exec_callback_QGesture_connectNotify(self *C.QGesture, cb C.intptr_t, 
 }
 
 func (this *QGesture) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QGesture_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -456,6 +433,8 @@ func (this *QGesture) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QGesture) GoGC() {
 	if this.gc != nil {
 		return
@@ -519,18 +498,15 @@ func NewQPanGesture() *QPanGesture {
 
 // NewQPanGesture2 constructs a new QPanGesture object.
 func NewQPanGesture2(parent *QObject) *QPanGesture {
-	defer runtime.KeepAlive(parent)
 
 	return newQPanGesture(C.QPanGesture_new2(parent.cPointer()))
 }
 
 func (this *QPanGesture) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPanGesture_metaObject(this.h))
 }
 
 func (this *QPanGesture) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPanGesture_metacast(this.h, param1_Cstring))
@@ -546,45 +522,38 @@ func QPanGesture_Tr(s string) string {
 }
 
 func (this *QPanGesture) LastOffset() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QPanGesture_lastOffset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPanGesture) Offset() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QPanGesture_offset(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPanGesture) Delta() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QPanGesture_delta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPanGesture) Acceleration() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPanGesture_acceleration(this.h))
 }
 
 func (this *QPanGesture) SetLastOffset(value *QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	C.QPanGesture_setLastOffset(this.h, value.cPointer())
 }
 
 func (this *QPanGesture) SetOffset(value *QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	C.QPanGesture_setOffset(this.h, value.cPointer())
 }
 
 func (this *QPanGesture) SetAcceleration(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QPanGesture_setAcceleration(this.h, (C.double)(value))
 }
 
@@ -612,7 +581,6 @@ func QPanGesture_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QPanGesture that was directly constructed.
 func (this *QPanGesture) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QPanGesture_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -627,7 +595,6 @@ func (this *QPanGesture) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QPanGesture that was directly constructed.
 func (this *QPanGesture) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPanGesture_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -642,7 +609,6 @@ func (this *QPanGesture) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPanGesture that was directly constructed.
 func (this *QPanGesture) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -659,7 +625,6 @@ func (this *QPanGesture) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPanGesture that was directly constructed.
 func (this *QPanGesture) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -674,7 +639,6 @@ func (this *QPanGesture) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QPanGesture) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPanGesture_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -704,8 +668,6 @@ func miqt_exec_callback_QPanGesture_event(self *C.QPanGesture, cb C.intptr_t, ev
 }
 
 func (this *QPanGesture) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPanGesture_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -737,7 +699,6 @@ func miqt_exec_callback_QPanGesture_eventFilter(self *C.QPanGesture, cb C.intptr
 }
 
 func (this *QPanGesture) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPanGesture_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -765,7 +726,6 @@ func miqt_exec_callback_QPanGesture_timerEvent(self *C.QPanGesture, cb C.intptr_
 }
 
 func (this *QPanGesture) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPanGesture_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -793,7 +753,6 @@ func miqt_exec_callback_QPanGesture_childEvent(self *C.QPanGesture, cb C.intptr_
 }
 
 func (this *QPanGesture) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPanGesture_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -821,7 +780,6 @@ func miqt_exec_callback_QPanGesture_customEvent(self *C.QPanGesture, cb C.intptr
 }
 
 func (this *QPanGesture) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPanGesture_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -849,7 +807,6 @@ func miqt_exec_callback_QPanGesture_connectNotify(self *C.QPanGesture, cb C.intp
 }
 
 func (this *QPanGesture) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPanGesture_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -884,6 +841,8 @@ func (this *QPanGesture) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPanGesture) GoGC() {
 	if this.gc != nil {
 		return
@@ -947,18 +906,15 @@ func NewQPinchGesture() *QPinchGesture {
 
 // NewQPinchGesture2 constructs a new QPinchGesture object.
 func NewQPinchGesture2(parent *QObject) *QPinchGesture {
-	defer runtime.KeepAlive(parent)
 
 	return newQPinchGesture(C.QPinchGesture_new2(parent.cPointer()))
 }
 
 func (this *QPinchGesture) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QPinchGesture_metaObject(this.h))
 }
 
 func (this *QPinchGesture) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QPinchGesture_metacast(this.h, param1_Cstring))
@@ -974,121 +930,99 @@ func QPinchGesture_Tr(s string) string {
 }
 
 func (this *QPinchGesture) TotalChangeFlags() QPinchGesture__ChangeFlag {
-	defer runtime.KeepAlive(this)
 	return (QPinchGesture__ChangeFlag)(C.QPinchGesture_totalChangeFlags(this.h))
 }
 
 func (this *QPinchGesture) SetTotalChangeFlags(value QPinchGesture__ChangeFlag) {
-	defer runtime.KeepAlive(this)
 	C.QPinchGesture_setTotalChangeFlags(this.h, (C.int)(value))
 }
 
 func (this *QPinchGesture) ChangeFlags() QPinchGesture__ChangeFlag {
-	defer runtime.KeepAlive(this)
 	return (QPinchGesture__ChangeFlag)(C.QPinchGesture_changeFlags(this.h))
 }
 
 func (this *QPinchGesture) SetChangeFlags(value QPinchGesture__ChangeFlag) {
-	defer runtime.KeepAlive(this)
 	C.QPinchGesture_setChangeFlags(this.h, (C.int)(value))
 }
 
 func (this *QPinchGesture) StartCenterPoint() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QPinchGesture_startCenterPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPinchGesture) LastCenterPoint() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QPinchGesture_lastCenterPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPinchGesture) CenterPoint() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QPinchGesture_centerPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPinchGesture) SetStartCenterPoint(value *QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	C.QPinchGesture_setStartCenterPoint(this.h, value.cPointer())
 }
 
 func (this *QPinchGesture) SetLastCenterPoint(value *QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	C.QPinchGesture_setLastCenterPoint(this.h, value.cPointer())
 }
 
 func (this *QPinchGesture) SetCenterPoint(value *QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(value)
 	C.QPinchGesture_setCenterPoint(this.h, value.cPointer())
 }
 
 func (this *QPinchGesture) TotalScaleFactor() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPinchGesture_totalScaleFactor(this.h))
 }
 
 func (this *QPinchGesture) LastScaleFactor() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPinchGesture_lastScaleFactor(this.h))
 }
 
 func (this *QPinchGesture) ScaleFactor() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPinchGesture_scaleFactor(this.h))
 }
 
 func (this *QPinchGesture) SetTotalScaleFactor(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QPinchGesture_setTotalScaleFactor(this.h, (C.double)(value))
 }
 
 func (this *QPinchGesture) SetLastScaleFactor(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QPinchGesture_setLastScaleFactor(this.h, (C.double)(value))
 }
 
 func (this *QPinchGesture) SetScaleFactor(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QPinchGesture_setScaleFactor(this.h, (C.double)(value))
 }
 
 func (this *QPinchGesture) TotalRotationAngle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPinchGesture_totalRotationAngle(this.h))
 }
 
 func (this *QPinchGesture) LastRotationAngle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPinchGesture_lastRotationAngle(this.h))
 }
 
 func (this *QPinchGesture) RotationAngle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QPinchGesture_rotationAngle(this.h))
 }
 
 func (this *QPinchGesture) SetTotalRotationAngle(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QPinchGesture_setTotalRotationAngle(this.h, (C.double)(value))
 }
 
 func (this *QPinchGesture) SetLastRotationAngle(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QPinchGesture_setLastRotationAngle(this.h, (C.double)(value))
 }
 
 func (this *QPinchGesture) SetRotationAngle(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QPinchGesture_setRotationAngle(this.h, (C.double)(value))
 }
 
@@ -1116,7 +1050,6 @@ func QPinchGesture_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QPinchGesture that was directly constructed.
 func (this *QPinchGesture) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QPinchGesture_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1131,7 +1064,6 @@ func (this *QPinchGesture) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QPinchGesture that was directly constructed.
 func (this *QPinchGesture) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QPinchGesture_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1146,7 +1078,6 @@ func (this *QPinchGesture) SenderSignalIndex() int {
 
 // Receivers can only be called from a QPinchGesture that was directly constructed.
 func (this *QPinchGesture) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1163,7 +1094,6 @@ func (this *QPinchGesture) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QPinchGesture that was directly constructed.
 func (this *QPinchGesture) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1178,7 +1108,6 @@ func (this *QPinchGesture) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QPinchGesture) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPinchGesture_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1208,8 +1137,6 @@ func miqt_exec_callback_QPinchGesture_event(self *C.QPinchGesture, cb C.intptr_t
 }
 
 func (this *QPinchGesture) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QPinchGesture_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1241,7 +1168,6 @@ func miqt_exec_callback_QPinchGesture_eventFilter(self *C.QPinchGesture, cb C.in
 }
 
 func (this *QPinchGesture) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPinchGesture_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1269,7 +1195,6 @@ func miqt_exec_callback_QPinchGesture_timerEvent(self *C.QPinchGesture, cb C.int
 }
 
 func (this *QPinchGesture) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPinchGesture_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1297,7 +1222,6 @@ func miqt_exec_callback_QPinchGesture_childEvent(self *C.QPinchGesture, cb C.int
 }
 
 func (this *QPinchGesture) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QPinchGesture_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1325,7 +1249,6 @@ func miqt_exec_callback_QPinchGesture_customEvent(self *C.QPinchGesture, cb C.in
 }
 
 func (this *QPinchGesture) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPinchGesture_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1353,7 +1276,6 @@ func miqt_exec_callback_QPinchGesture_connectNotify(self *C.QPinchGesture, cb C.
 }
 
 func (this *QPinchGesture) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QPinchGesture_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1388,6 +1310,8 @@ func (this *QPinchGesture) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QPinchGesture) GoGC() {
 	if this.gc != nil {
 		return
@@ -1451,18 +1375,15 @@ func NewQSwipeGesture() *QSwipeGesture {
 
 // NewQSwipeGesture2 constructs a new QSwipeGesture object.
 func NewQSwipeGesture2(parent *QObject) *QSwipeGesture {
-	defer runtime.KeepAlive(parent)
 
 	return newQSwipeGesture(C.QSwipeGesture_new2(parent.cPointer()))
 }
 
 func (this *QSwipeGesture) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QSwipeGesture_metaObject(this.h))
 }
 
 func (this *QSwipeGesture) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QSwipeGesture_metacast(this.h, param1_Cstring))
@@ -1478,22 +1399,18 @@ func QSwipeGesture_Tr(s string) string {
 }
 
 func (this *QSwipeGesture) HorizontalDirection() QSwipeGesture__SwipeDirection {
-	defer runtime.KeepAlive(this)
 	return (QSwipeGesture__SwipeDirection)(C.QSwipeGesture_horizontalDirection(this.h))
 }
 
 func (this *QSwipeGesture) VerticalDirection() QSwipeGesture__SwipeDirection {
-	defer runtime.KeepAlive(this)
 	return (QSwipeGesture__SwipeDirection)(C.QSwipeGesture_verticalDirection(this.h))
 }
 
 func (this *QSwipeGesture) SwipeAngle() float64 {
-	defer runtime.KeepAlive(this)
 	return (float64)(C.QSwipeGesture_swipeAngle(this.h))
 }
 
 func (this *QSwipeGesture) SetSwipeAngle(value float64) {
-	defer runtime.KeepAlive(this)
 	C.QSwipeGesture_setSwipeAngle(this.h, (C.double)(value))
 }
 
@@ -1521,7 +1438,6 @@ func QSwipeGesture_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QSwipeGesture that was directly constructed.
 func (this *QSwipeGesture) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QSwipeGesture_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1536,7 +1452,6 @@ func (this *QSwipeGesture) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QSwipeGesture that was directly constructed.
 func (this *QSwipeGesture) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QSwipeGesture_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1551,7 +1466,6 @@ func (this *QSwipeGesture) SenderSignalIndex() int {
 
 // Receivers can only be called from a QSwipeGesture that was directly constructed.
 func (this *QSwipeGesture) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1568,7 +1482,6 @@ func (this *QSwipeGesture) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QSwipeGesture that was directly constructed.
 func (this *QSwipeGesture) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1583,7 +1496,6 @@ func (this *QSwipeGesture) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QSwipeGesture) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSwipeGesture_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -1613,8 +1525,6 @@ func miqt_exec_callback_QSwipeGesture_event(self *C.QSwipeGesture, cb C.intptr_t
 }
 
 func (this *QSwipeGesture) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QSwipeGesture_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -1646,7 +1556,6 @@ func miqt_exec_callback_QSwipeGesture_eventFilter(self *C.QSwipeGesture, cb C.in
 }
 
 func (this *QSwipeGesture) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSwipeGesture_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1674,7 +1583,6 @@ func miqt_exec_callback_QSwipeGesture_timerEvent(self *C.QSwipeGesture, cb C.int
 }
 
 func (this *QSwipeGesture) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSwipeGesture_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1702,7 +1610,6 @@ func miqt_exec_callback_QSwipeGesture_childEvent(self *C.QSwipeGesture, cb C.int
 }
 
 func (this *QSwipeGesture) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QSwipeGesture_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -1730,7 +1637,6 @@ func miqt_exec_callback_QSwipeGesture_customEvent(self *C.QSwipeGesture, cb C.in
 }
 
 func (this *QSwipeGesture) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSwipeGesture_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1758,7 +1664,6 @@ func miqt_exec_callback_QSwipeGesture_connectNotify(self *C.QSwipeGesture, cb C.
 }
 
 func (this *QSwipeGesture) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QSwipeGesture_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -1793,6 +1698,8 @@ func (this *QSwipeGesture) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QSwipeGesture) GoGC() {
 	if this.gc != nil {
 		return
@@ -1856,18 +1763,15 @@ func NewQTapGesture() *QTapGesture {
 
 // NewQTapGesture2 constructs a new QTapGesture object.
 func NewQTapGesture2(parent *QObject) *QTapGesture {
-	defer runtime.KeepAlive(parent)
 
 	return newQTapGesture(C.QTapGesture_new2(parent.cPointer()))
 }
 
 func (this *QTapGesture) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTapGesture_metaObject(this.h))
 }
 
 func (this *QTapGesture) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTapGesture_metacast(this.h, param1_Cstring))
@@ -1883,14 +1787,12 @@ func QTapGesture_Tr(s string) string {
 }
 
 func (this *QTapGesture) Position() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QTapGesture_position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTapGesture) SetPosition(pos *QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QTapGesture_setPosition(this.h, pos.cPointer())
 }
@@ -1919,7 +1821,6 @@ func QTapGesture_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QTapGesture that was directly constructed.
 func (this *QTapGesture) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTapGesture_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1934,7 +1835,6 @@ func (this *QTapGesture) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTapGesture that was directly constructed.
 func (this *QTapGesture) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTapGesture_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -1949,7 +1849,6 @@ func (this *QTapGesture) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTapGesture that was directly constructed.
 func (this *QTapGesture) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -1966,7 +1865,6 @@ func (this *QTapGesture) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTapGesture that was directly constructed.
 func (this *QTapGesture) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -1981,7 +1879,6 @@ func (this *QTapGesture) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTapGesture) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTapGesture_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -2011,8 +1908,6 @@ func miqt_exec_callback_QTapGesture_event(self *C.QTapGesture, cb C.intptr_t, ev
 }
 
 func (this *QTapGesture) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTapGesture_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -2044,7 +1939,6 @@ func miqt_exec_callback_QTapGesture_eventFilter(self *C.QTapGesture, cb C.intptr
 }
 
 func (this *QTapGesture) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTapGesture_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2072,7 +1966,6 @@ func miqt_exec_callback_QTapGesture_timerEvent(self *C.QTapGesture, cb C.intptr_
 }
 
 func (this *QTapGesture) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTapGesture_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2100,7 +1993,6 @@ func miqt_exec_callback_QTapGesture_childEvent(self *C.QTapGesture, cb C.intptr_
 }
 
 func (this *QTapGesture) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTapGesture_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2128,7 +2020,6 @@ func miqt_exec_callback_QTapGesture_customEvent(self *C.QTapGesture, cb C.intptr
 }
 
 func (this *QTapGesture) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTapGesture_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2156,7 +2047,6 @@ func miqt_exec_callback_QTapGesture_connectNotify(self *C.QTapGesture, cb C.intp
 }
 
 func (this *QTapGesture) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTapGesture_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2191,6 +2081,8 @@ func (this *QTapGesture) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTapGesture) GoGC() {
 	if this.gc != nil {
 		return
@@ -2254,18 +2146,15 @@ func NewQTapAndHoldGesture() *QTapAndHoldGesture {
 
 // NewQTapAndHoldGesture2 constructs a new QTapAndHoldGesture object.
 func NewQTapAndHoldGesture2(parent *QObject) *QTapAndHoldGesture {
-	defer runtime.KeepAlive(parent)
 
 	return newQTapAndHoldGesture(C.QTapAndHoldGesture_new2(parent.cPointer()))
 }
 
 func (this *QTapAndHoldGesture) MetaObject() *QMetaObject {
-	defer runtime.KeepAlive(this)
 	return newQMetaObject(C.QTapAndHoldGesture_metaObject(this.h))
 }
 
 func (this *QTapAndHoldGesture) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QTapAndHoldGesture_metacast(this.h, param1_Cstring))
@@ -2281,14 +2170,12 @@ func QTapAndHoldGesture_Tr(s string) string {
 }
 
 func (this *QTapAndHoldGesture) Position() *QPointF {
-	defer runtime.KeepAlive(this)
 	_goptr := newQPointF(C.QTapAndHoldGesture_position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTapAndHoldGesture) SetPosition(pos *QPointF) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pos)
 	C.QTapAndHoldGesture_setPosition(this.h, pos.cPointer())
 }
@@ -2325,7 +2212,6 @@ func QTapAndHoldGesture_Tr3(s string, c string, n int) string {
 
 // Sender can only be called from a QTapAndHoldGesture that was directly constructed.
 func (this *QTapAndHoldGesture) Sender() *QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := newQObject(C.QTapAndHoldGesture_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2340,7 +2226,6 @@ func (this *QTapAndHoldGesture) Sender() *QObject {
 
 // SenderSignalIndex can only be called from a QTapAndHoldGesture that was directly constructed.
 func (this *QTapAndHoldGesture) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QTapAndHoldGesture_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -2355,7 +2240,6 @@ func (this *QTapAndHoldGesture) SenderSignalIndex() int {
 
 // Receivers can only be called from a QTapAndHoldGesture that was directly constructed.
 func (this *QTapAndHoldGesture) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -2372,7 +2256,6 @@ func (this *QTapAndHoldGesture) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QTapAndHoldGesture that was directly constructed.
 func (this *QTapAndHoldGesture) IsSignalConnected(signal *QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -2387,7 +2270,6 @@ func (this *QTapAndHoldGesture) IsSignalConnected(signal *QMetaMethod) bool {
 }
 
 func (this *QTapAndHoldGesture) callVirtualBase_Event(event *QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTapAndHoldGesture_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
@@ -2417,8 +2299,6 @@ func miqt_exec_callback_QTapAndHoldGesture_event(self *C.QTapAndHoldGesture, cb 
 }
 
 func (this *QTapAndHoldGesture) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QTapAndHoldGesture_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
@@ -2450,7 +2330,6 @@ func miqt_exec_callback_QTapAndHoldGesture_eventFilter(self *C.QTapAndHoldGestur
 }
 
 func (this *QTapAndHoldGesture) callVirtualBase_TimerEvent(event *QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTapAndHoldGesture_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2478,7 +2357,6 @@ func miqt_exec_callback_QTapAndHoldGesture_timerEvent(self *C.QTapAndHoldGesture
 }
 
 func (this *QTapAndHoldGesture) callVirtualBase_ChildEvent(event *QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTapAndHoldGesture_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2506,7 +2384,6 @@ func miqt_exec_callback_QTapAndHoldGesture_childEvent(self *C.QTapAndHoldGesture
 }
 
 func (this *QTapAndHoldGesture) callVirtualBase_CustomEvent(event *QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QTapAndHoldGesture_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
@@ -2534,7 +2411,6 @@ func miqt_exec_callback_QTapAndHoldGesture_customEvent(self *C.QTapAndHoldGestur
 }
 
 func (this *QTapAndHoldGesture) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTapAndHoldGesture_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2562,7 +2438,6 @@ func miqt_exec_callback_QTapAndHoldGesture_connectNotify(self *C.QTapAndHoldGest
 }
 
 func (this *QTapAndHoldGesture) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QTapAndHoldGesture_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
@@ -2597,6 +2472,8 @@ func (this *QTapAndHoldGesture) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QTapAndHoldGesture) GoGC() {
 	if this.gc != nil {
 		return
@@ -2654,7 +2531,6 @@ func UnsafeNewQGestureEvent(h unsafe.Pointer) *QGestureEvent {
 
 // NewQGestureEvent constructs a new QGestureEvent object.
 func NewQGestureEvent(gestures []*QGesture) *QGestureEvent {
-	defer runtime.KeepAlive(gestures)
 	gestures_CArray_ptr := (**C.QGesture)(C.malloc(C.size_t(8 * len(gestures))))
 	defer C.free(unsafe.Pointer(gestures_CArray_ptr))
 	gestures_CArray := unsafe.Slice(gestures_CArray_ptr, len(gestures))
@@ -2713,25 +2589,21 @@ func (this *QGestureEvent) CanceledGestures() []*QGesture {
 
 func (this *QGestureEvent) SetAccepted(param1 *QGesture, param2 bool) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QGestureEvent_setAccepted(this.h, param1.cPointer(), (C.bool)(param2))
 }
 
 func (this *QGestureEvent) Accept(param1 *QGesture) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QGestureEvent_accept(this.h, param1.cPointer())
 }
 
 func (this *QGestureEvent) Ignore(param1 *QGesture) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	C.QGestureEvent_ignore(this.h, param1.cPointer())
 }
 
 func (this *QGestureEvent) IsAccepted(param1 *QGesture) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	return (bool)(C.QGestureEvent_isAccepted(this.h, param1.cPointer()))
 }
 
@@ -2757,7 +2629,6 @@ func (this *QGestureEvent) IsAcceptedWithQtGestureType(param1 GestureType) bool 
 
 func (this *QGestureEvent) SetWidget(widget *QWidget) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(widget)
 	C.QGestureEvent_setWidget(this.h, widget.cPointer())
 }
 

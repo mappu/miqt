@@ -60,7 +60,6 @@ func UnsafeNewQDesignerResourceBrowserInterface(h unsafe.Pointer) *QDesignerReso
 
 // NewQDesignerResourceBrowserInterface constructs a new QDesignerResourceBrowserInterface object.
 func NewQDesignerResourceBrowserInterface(parent *qt6.QWidget) *QDesignerResourceBrowserInterface {
-	defer runtime.KeepAlive(parent)
 
 	return newQDesignerResourceBrowserInterface(C.QDesignerResourceBrowserInterface_new((*C.QWidget)(parent.UnsafePointer())))
 }
@@ -72,12 +71,10 @@ func NewQDesignerResourceBrowserInterface2() *QDesignerResourceBrowserInterface 
 }
 
 func (this *QDesignerResourceBrowserInterface) MetaObject() *qt6.QMetaObject {
-	defer runtime.KeepAlive(this)
 	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QDesignerResourceBrowserInterface_metaObject(this.h)))
 }
 
 func (this *QDesignerResourceBrowserInterface) Metacast(param1 string) unsafe.Pointer {
-	defer runtime.KeepAlive(this)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 	return (unsafe.Pointer)(C.QDesignerResourceBrowserInterface_metacast(this.h, param1_Cstring))
@@ -93,7 +90,6 @@ func QDesignerResourceBrowserInterface_Tr(s string) string {
 }
 
 func (this *QDesignerResourceBrowserInterface) SetCurrentPath(filePath string) {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -102,7 +98,6 @@ func (this *QDesignerResourceBrowserInterface) SetCurrentPath(filePath string) {
 }
 
 func (this *QDesignerResourceBrowserInterface) CurrentPath() string {
-	defer runtime.KeepAlive(this)
 	var _ms C.struct_miqt_string = C.QDesignerResourceBrowserInterface_currentPath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -110,7 +105,6 @@ func (this *QDesignerResourceBrowserInterface) CurrentPath() string {
 }
 
 func (this *QDesignerResourceBrowserInterface) CurrentPathChanged(filePath string) {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -138,7 +132,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_currentPathChanged(cb 
 }
 
 func (this *QDesignerResourceBrowserInterface) PathActivated(filePath string) {
-	defer runtime.KeepAlive(this)
 	filePath_ms := C.struct_miqt_string{}
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
@@ -189,7 +182,6 @@ func QDesignerResourceBrowserInterface_Tr3(s string, c string, n int) string {
 
 // UpdateMicroFocus can only be called from a QDesignerResourceBrowserInterface that was directly constructed.
 func (this *QDesignerResourceBrowserInterface) UpdateMicroFocus() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerResourceBrowserInterface_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -202,7 +194,6 @@ func (this *QDesignerResourceBrowserInterface) UpdateMicroFocus() {
 
 // Create can only be called from a QDesignerResourceBrowserInterface that was directly constructed.
 func (this *QDesignerResourceBrowserInterface) Create() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerResourceBrowserInterface_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -215,7 +206,6 @@ func (this *QDesignerResourceBrowserInterface) Create() {
 
 // Destroy can only be called from a QDesignerResourceBrowserInterface that was directly constructed.
 func (this *QDesignerResourceBrowserInterface) Destroy() {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	C.QDesignerResourceBrowserInterface_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
@@ -228,7 +218,6 @@ func (this *QDesignerResourceBrowserInterface) Destroy() {
 
 // FocusNextChild can only be called from a QDesignerResourceBrowserInterface that was directly constructed.
 func (this *QDesignerResourceBrowserInterface) FocusNextChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerResourceBrowserInterface_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -243,7 +232,6 @@ func (this *QDesignerResourceBrowserInterface) FocusNextChild() bool {
 
 // FocusPreviousChild can only be called from a QDesignerResourceBrowserInterface that was directly constructed.
 func (this *QDesignerResourceBrowserInterface) FocusPreviousChild() bool {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (bool)(C.QDesignerResourceBrowserInterface_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -258,7 +246,6 @@ func (this *QDesignerResourceBrowserInterface) FocusPreviousChild() bool {
 
 // Sender can only be called from a QDesignerResourceBrowserInterface that was directly constructed.
 func (this *QDesignerResourceBrowserInterface) Sender() *qt6.QObject {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QDesignerResourceBrowserInterface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
@@ -273,7 +260,6 @@ func (this *QDesignerResourceBrowserInterface) Sender() *qt6.QObject {
 
 // SenderSignalIndex can only be called from a QDesignerResourceBrowserInterface that was directly constructed.
 func (this *QDesignerResourceBrowserInterface) SenderSignalIndex() int {
-	defer runtime.KeepAlive(this)
 
 	var _dynamic_cast_ok C.bool = false
 	_method_ret := (int)(C.QDesignerResourceBrowserInterface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
@@ -288,7 +274,6 @@ func (this *QDesignerResourceBrowserInterface) SenderSignalIndex() int {
 
 // Receivers can only be called from a QDesignerResourceBrowserInterface that was directly constructed.
 func (this *QDesignerResourceBrowserInterface) Receivers(signal string) int {
-	defer runtime.KeepAlive(this)
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
@@ -305,7 +290,6 @@ func (this *QDesignerResourceBrowserInterface) Receivers(signal string) int {
 
 // IsSignalConnected can only be called from a QDesignerResourceBrowserInterface that was directly constructed.
 func (this *QDesignerResourceBrowserInterface) IsSignalConnected(signal *qt6.QMetaMethod) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	var _dynamic_cast_ok C.bool = false
@@ -365,7 +349,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_currentPath(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_DevType() int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerResourceBrowserInterface_virtualbase_devType(unsafe.Pointer(this.h)))
 
@@ -391,7 +374,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_devType(self *C.QDesig
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_SetVisible(visible bool) {
-	defer runtime.KeepAlive(this)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
@@ -418,7 +400,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_setVisible(self *C.QDe
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_SizeHint() *qt6.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QDesignerResourceBrowserInterface_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -447,7 +428,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_sizeHint(self *C.QDesi
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_MinimumSizeHint() *qt6.QSize {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QDesignerResourceBrowserInterface_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -476,7 +456,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_minimumSizeHint(self *
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_HeightForWidth(param1 int) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerResourceBrowserInterface_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -505,7 +484,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_heightForWidth(self *C
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_HasHeightForWidth() bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDesignerResourceBrowserInterface_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
@@ -531,7 +509,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_hasHeightForWidth(self
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
-	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QDesignerResourceBrowserInterface_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
@@ -558,7 +535,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_paintEngine(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_Event(event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerResourceBrowserInterface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
@@ -588,7 +564,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_event(self *C.QDesigne
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_MousePressEvent(event *qt6.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -616,7 +591,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_mousePressEvent(self *
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_MouseReleaseEvent(event *qt6.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -644,7 +618,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_mouseReleaseEvent(self
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_MouseDoubleClickEvent(event *qt6.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -672,7 +645,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_mouseDoubleClickEvent(
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_MouseMoveEvent(event *qt6.QMouseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
@@ -700,7 +672,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_mouseMoveEvent(self *C
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_WheelEvent(event *qt6.QWheelEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
@@ -728,7 +699,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_wheelEvent(self *C.QDe
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_KeyPressEvent(event *qt6.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -756,7 +726,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_keyPressEvent(self *C.
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_KeyReleaseEvent(event *qt6.QKeyEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
@@ -784,7 +753,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_keyReleaseEvent(self *
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_FocusInEvent(event *qt6.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -812,7 +780,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_focusInEvent(self *C.Q
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_FocusOutEvent(event *qt6.QFocusEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
@@ -840,7 +807,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_focusOutEvent(self *C.
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_EnterEvent(event *qt6.QEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEnterEvent)(event.UnsafePointer()))
@@ -868,7 +834,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_enterEvent(self *C.QDe
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_LeaveEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -896,7 +861,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_leaveEvent(self *C.QDe
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_PaintEvent(event *qt6.QPaintEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
@@ -924,7 +888,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_paintEvent(self *C.QDe
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_MoveEvent(event *qt6.QMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
@@ -952,7 +915,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_moveEvent(self *C.QDes
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_ResizeEvent(event *qt6.QResizeEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
@@ -980,7 +942,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_resizeEvent(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_CloseEvent(event *qt6.QCloseEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
@@ -1008,7 +969,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_closeEvent(self *C.QDe
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_ContextMenuEvent(event *qt6.QContextMenuEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
@@ -1036,7 +996,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_contextMenuEvent(self 
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_TabletEvent(event *qt6.QTabletEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
@@ -1064,7 +1023,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_tabletEvent(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_ActionEvent(event *qt6.QActionEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
@@ -1092,7 +1050,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_actionEvent(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_DragEnterEvent(event *qt6.QDragEnterEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
@@ -1120,7 +1077,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_dragEnterEvent(self *C
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_DragMoveEvent(event *qt6.QDragMoveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
@@ -1148,7 +1104,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_dragMoveEvent(self *C.
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_DragLeaveEvent(event *qt6.QDragLeaveEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
@@ -1176,7 +1131,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_dragLeaveEvent(self *C
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_DropEvent(event *qt6.QDropEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
@@ -1204,7 +1158,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_dropEvent(self *C.QDes
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_ShowEvent(event *qt6.QShowEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
@@ -1232,7 +1185,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_showEvent(self *C.QDes
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_HideEvent(event *qt6.QHideEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
@@ -1260,7 +1212,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_hideEvent(self *C.QDes
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
-	defer runtime.KeepAlive(this)
 	eventType_alias := C.struct_miqt_string{}
 	if len(eventType) > 0 {
 		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
@@ -1302,7 +1253,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_nativeEvent(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_ChangeEvent(param1 *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
@@ -1330,7 +1280,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_changeEvent(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_Metric(param1 qt6.QPaintDevice__PaintDeviceMetric) int {
-	defer runtime.KeepAlive(this)
 
 	return (int)(C.QDesignerResourceBrowserInterface_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
@@ -1359,7 +1308,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_metric(self *C.QDesign
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_InitPainter(painter *qt6.QPainter) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
@@ -1387,7 +1335,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_initPainter(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QDesignerResourceBrowserInterface_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
@@ -1418,7 +1365,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_redirected(self *C.QDe
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_SharedPainter() *qt6.QPainter {
-	defer runtime.KeepAlive(this)
 
 	return qt6.UnsafeNewQPainter(unsafe.Pointer(C.QDesignerResourceBrowserInterface_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
@@ -1445,7 +1391,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_sharedPainter(self *C.
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_InputMethodEvent(param1 *qt6.QInputMethodEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
@@ -1473,7 +1418,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_inputMethodEvent(self 
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_InputMethodQuery(param1 qt6.InputMethodQuery) *qt6.QVariant {
-	defer runtime.KeepAlive(this)
 
 	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QDesignerResourceBrowserInterface_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1505,7 +1449,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_inputMethodQuery(self 
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_FocusNextPrevChild(next bool) bool {
-	defer runtime.KeepAlive(this)
 
 	return (bool)(C.QDesignerResourceBrowserInterface_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
@@ -1534,8 +1477,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_focusNextPrevChild(sel
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(watched)
 	defer runtime.KeepAlive(event)
 
 	return (bool)(C.QDesignerResourceBrowserInterface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
@@ -1567,7 +1508,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_eventFilter(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
@@ -1595,7 +1535,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_timerEvent(self *C.QDe
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
@@ -1623,7 +1562,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_childEvent(self *C.QDe
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_CustomEvent(event *qt6.QEvent) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(event)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
@@ -1651,7 +1589,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_customEvent(self *C.QD
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1679,7 +1616,6 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_connectNotify(self *C.
 }
 
 func (this *QDesignerResourceBrowserInterface) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
-	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(signal)
 
 	C.QDesignerResourceBrowserInterface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
@@ -1714,6 +1650,8 @@ func (this *QDesignerResourceBrowserInterface) Delete() {
 // GoGC adds a Go Finalizer to this object, so that it will be deleted
 // from C++ memory once it (and every value copy of it) is unreachable
 // from Go memory.
+// This is a QObject class, so this is unsupported: the bindings do not
+// keep it alive during calls into C++, and its parent may delete it.
 func (this *QDesignerResourceBrowserInterface) GoGC() {
 	if this.gc != nil {
 		return
