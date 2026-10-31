@@ -35,7 +35,7 @@ bool QPagedPaintDevice_newPage(QPagedPaintDevice* self);
 bool QPagedPaintDevice_setPageLayout(QPagedPaintDevice* self, QPageLayout* pageLayout);
 bool QPagedPaintDevice_setPageSize(QPagedPaintDevice* self, QPageSize* pageSize);
 bool QPagedPaintDevice_setPageOrientation(QPagedPaintDevice* self, int orientation);
-bool QPagedPaintDevice_setPageMargins(QPagedPaintDevice* self, QMarginsF* margins, int units);
+bool QPagedPaintDevice_setPageMargins(QPagedPaintDevice* self, struct miqt_qmarginsf margins, int units);
 QPageLayout* QPagedPaintDevice_pageLayout(const QPagedPaintDevice* self);
 void QPagedPaintDevice_setPageRanges(QPagedPaintDevice* self, QPageRanges* ranges);
 QPageRanges* QPagedPaintDevice_pageRanges(const QPagedPaintDevice* self);

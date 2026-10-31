@@ -22,16 +22,16 @@ QwtPointPolar* QwtPointPolar_new3(QwtPointPolar* param1) {
 	return new (std::nothrow) QwtPointPolar(*param1);
 }
 
-QwtPointPolar* QwtPointPolar_new4(QPointF* param1) {
-	return new (std::nothrow) QwtPointPolar(*param1);
+QwtPointPolar* QwtPointPolar_new4(struct miqt_qpointf param1) {
+	return new (std::nothrow) QwtPointPolar(miqt_from_cabi<QPointF>(param1));
 }
 
-void QwtPointPolar_setPoint(QwtPointPolar* self, QPointF* point) {
-	self->setPoint(*point);
+void QwtPointPolar_setPoint(QwtPointPolar* self, struct miqt_qpointf point) {
+	self->setPoint(miqt_from_cabi<QPointF>(point));
 }
 
-QPointF* QwtPointPolar_toPoint(const QwtPointPolar* self) {
-	return new QPointF(self->toPoint());
+struct miqt_qpointf QwtPointPolar_toPoint(const QwtPointPolar* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->toPoint());
 }
 
 bool QwtPointPolar_isValid(const QwtPointPolar* self) {

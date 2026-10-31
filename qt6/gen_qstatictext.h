@@ -41,7 +41,7 @@ void QStaticText_setTextWidth(QStaticText* self, double textWidth);
 double QStaticText_textWidth(const QStaticText* self);
 void QStaticText_setTextOption(QStaticText* self, QTextOption* textOption);
 QTextOption* QStaticText_textOption(const QStaticText* self);
-QSizeF* QStaticText_size(const QStaticText* self);
+struct miqt_qsizef QStaticText_size(const QStaticText* self);
 void QStaticText_prepare(QStaticText* self);
 void QStaticText_setPerformanceHint(QStaticText* self, int performanceHint);
 int QStaticText_performanceHint(const QStaticText* self);

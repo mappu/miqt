@@ -59,8 +59,8 @@ struct miqt_string QPaintDeviceWindow_trUtf8(const char* s) {
 	return _ms;
 }
 
-void QPaintDeviceWindow_update(QPaintDeviceWindow* self, QRect* rect) {
-	self->update(*rect);
+void QPaintDeviceWindow_update(QPaintDeviceWindow* self, struct miqt_qrect rect) {
+	self->update(miqt_from_cabi<QRect>(rect));
 }
 
 void QPaintDeviceWindow_updateWithRegion(QPaintDeviceWindow* self, QRegion* region) {

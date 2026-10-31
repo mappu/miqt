@@ -31,8 +31,8 @@ QObject* QAccessibleObject_object(const QAccessibleObject* self) {
 	return self->object();
 }
 
-QRect* QAccessibleObject_rect(const QAccessibleObject* self) {
-	return new QRect(self->rect());
+struct miqt_qrect QAccessibleObject_rect(const QAccessibleObject* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rect());
 }
 
 void QAccessibleObject_setText(QAccessibleObject* self, int t, struct miqt_string text) {

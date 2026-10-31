@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -292,77 +293,56 @@ func (this *QWindow) MaximumHeight() int {
 	return (int)(C.QWindow_maximumHeight(this.h))
 }
 
-func (this *QWindow) MinimumSize() *QSize {
-	_goptr := newQSize(C.QWindow_minimumSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) MinimumSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QWindow_minimumSize(this.h))
 }
 
-func (this *QWindow) MaximumSize() *QSize {
-	_goptr := newQSize(C.QWindow_maximumSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) MaximumSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QWindow_maximumSize(this.h))
 }
 
-func (this *QWindow) BaseSize() *QSize {
-	_goptr := newQSize(C.QWindow_baseSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) BaseSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QWindow_baseSize(this.h))
 }
 
-func (this *QWindow) SizeIncrement() *QSize {
-	_goptr := newQSize(C.QWindow_sizeIncrement(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) SizeIncrement() QSize {
+	return libmiqt.ValueCast[QSize](C.QWindow_sizeIncrement(this.h))
 }
 
-func (this *QWindow) SetMinimumSize(size *QSize) {
-	defer runtime.KeepAlive(size)
-	C.QWindow_setMinimumSize(this.h, size.cPointer())
+func (this *QWindow) SetMinimumSize(size QSize) {
+	C.QWindow_setMinimumSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QWindow) SetMaximumSize(size *QSize) {
-	defer runtime.KeepAlive(size)
-	C.QWindow_setMaximumSize(this.h, size.cPointer())
+func (this *QWindow) SetMaximumSize(size QSize) {
+	C.QWindow_setMaximumSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QWindow) SetBaseSize(size *QSize) {
-	defer runtime.KeepAlive(size)
-	C.QWindow_setBaseSize(this.h, size.cPointer())
+func (this *QWindow) SetBaseSize(size QSize) {
+	C.QWindow_setBaseSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QWindow) SetSizeIncrement(size *QSize) {
-	defer runtime.KeepAlive(size)
-	C.QWindow_setSizeIncrement(this.h, size.cPointer())
+func (this *QWindow) SetSizeIncrement(size QSize) {
+	C.QWindow_setSizeIncrement(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QWindow) Geometry() *QRect {
-	_goptr := newQRect(C.QWindow_geometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) Geometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QWindow_geometry(this.h))
 }
 
-func (this *QWindow) FrameMargins() *QMargins {
-	_goptr := newQMargins(C.QWindow_frameMargins(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) FrameMargins() QMargins {
+	return libmiqt.ValueCast[QMargins](C.QWindow_frameMargins(this.h))
 }
 
-func (this *QWindow) FrameGeometry() *QRect {
-	_goptr := newQRect(C.QWindow_frameGeometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) FrameGeometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QWindow_frameGeometry(this.h))
 }
 
-func (this *QWindow) FramePosition() *QPoint {
-	_goptr := newQPoint(C.QWindow_framePosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) FramePosition() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWindow_framePosition(this.h))
 }
 
-func (this *QWindow) SetFramePosition(point *QPoint) {
-	defer runtime.KeepAlive(point)
-	C.QWindow_setFramePosition(this.h, point.cPointer())
+func (this *QWindow) SetFramePosition(point QPoint) {
+	C.QWindow_setFramePosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point))
 }
 
 func (this *QWindow) Width() int {
@@ -381,30 +361,24 @@ func (this *QWindow) Y() int {
 	return (int)(C.QWindow_y(this.h))
 }
 
-func (this *QWindow) Size() *QSize {
-	_goptr := newQSize(C.QWindow_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) Size() QSize {
+	return libmiqt.ValueCast[QSize](C.QWindow_size(this.h))
 }
 
-func (this *QWindow) Position() *QPoint {
-	_goptr := newQPoint(C.QWindow_position(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) Position() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWindow_position(this.h))
 }
 
-func (this *QWindow) SetPosition(pt *QPoint) {
-	defer runtime.KeepAlive(pt)
-	C.QWindow_setPosition(this.h, pt.cPointer())
+func (this *QWindow) SetPosition(pt QPoint) {
+	C.QWindow_setPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pt))
 }
 
 func (this *QWindow) SetPosition2(posx int, posy int) {
 	C.QWindow_setPosition2(this.h, (C.int)(posx), (C.int)(posy))
 }
 
-func (this *QWindow) Resize(newSize *QSize) {
-	defer runtime.KeepAlive(newSize)
-	C.QWindow_resize(this.h, newSize.cPointer())
+func (this *QWindow) Resize(newSize QSize) {
+	C.QWindow_resize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](newSize))
 }
 
 func (this *QWindow) Resize2(w int, h int) {
@@ -465,32 +439,20 @@ func (this *QWindow) FocusObject() *QObject {
 	return newQObject(C.QWindow_focusObject(this.h))
 }
 
-func (this *QWindow) MapToGlobal(pos *QPointF) *QPointF {
-	defer runtime.KeepAlive(pos)
-	_goptr := newQPointF(C.QWindow_mapToGlobal(this.h, pos.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) MapToGlobal(pos QPointF) QPointF {
+	return libmiqt.ValueCast[QPointF](C.QWindow_mapToGlobal(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos)))
 }
 
-func (this *QWindow) MapFromGlobal(pos *QPointF) *QPointF {
-	defer runtime.KeepAlive(pos)
-	_goptr := newQPointF(C.QWindow_mapFromGlobal(this.h, pos.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) MapFromGlobal(pos QPointF) QPointF {
+	return libmiqt.ValueCast[QPointF](C.QWindow_mapFromGlobal(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos)))
 }
 
-func (this *QWindow) MapToGlobalWithPos(pos *QPoint) *QPoint {
-	defer runtime.KeepAlive(pos)
-	_goptr := newQPoint(C.QWindow_mapToGlobalWithPos(this.h, pos.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) MapToGlobalWithPos(pos QPoint) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWindow_mapToGlobalWithPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
-func (this *QWindow) MapFromGlobalWithPos(pos *QPoint) *QPoint {
-	defer runtime.KeepAlive(pos)
-	_goptr := newQPoint(C.QWindow_mapFromGlobalWithPos(this.h, pos.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWindow) MapFromGlobalWithPos(pos QPoint) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QWindow_mapFromGlobalWithPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 func (this *QWindow) Cursor() *QCursor {
@@ -592,9 +554,8 @@ func (this *QWindow) SetGeometry(posx int, posy int, w int, h int) {
 	C.QWindow_setGeometry(this.h, (C.int)(posx), (C.int)(posy), (C.int)(w), (C.int)(h))
 }
 
-func (this *QWindow) SetGeometryWithRect(rect *QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QWindow_setGeometryWithRect(this.h, rect.cPointer())
+func (this *QWindow) SetGeometryWithRect(rect QRect) {
+	C.QWindow_setGeometryWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
 func (this *QWindow) SetMinimumWidth(w int) {
@@ -1167,14 +1128,12 @@ func miqt_exec_callback_QWindow_format(self *C.QWindow, cb C.intptr_t) *C.QSurfa
 
 }
 
-func (this *QWindow) callVirtualBase_Size() *QSize {
+func (this *QWindow) callVirtualBase_Size() QSize {
 
-	_goptr := newQSize(C.QWindow_virtualbase_size(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QWindow_virtualbase_size(unsafe.Pointer(this.h)))
 
 }
-func (this *QWindow) OnSize(slot func(super func() *QSize) *QSize) {
+func (this *QWindow) OnSize(slot func(super func() QSize) QSize) {
 	ok := C.QWindow_override_virtual_size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1182,16 +1141,15 @@ func (this *QWindow) OnSize(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QWindow_size
-func miqt_exec_callback_QWindow_size(self *C.QWindow, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QWindow_size(self *C.QWindow, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QWindow{h: self}).callVirtualBase_Size)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QWindow_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 

@@ -53,7 +53,7 @@ QwtPlotHistogram* QwtPlotHistogram_new2(QwtText* title);
 QwtPlotHistogram* QwtPlotHistogram_new3(struct miqt_string title);
 void QwtPlotHistogram_virtbase(QwtPlotHistogram* src, QwtPlotSeriesItem** outptr_QwtPlotSeriesItem);
 int QwtPlotHistogram_rtti(const QwtPlotHistogram* self);
-void QwtPlotHistogram_setPen(QwtPlotHistogram* self, QColor* param1);
+void QwtPlotHistogram_setPen(QwtPlotHistogram* self, struct miqt_qcolor param1);
 void QwtPlotHistogram_setPenWithPen(QwtPlotHistogram* self, QPen* pen);
 QPen* QwtPlotHistogram_pen(const QwtPlotHistogram* self);
 void QwtPlotHistogram_setBrush(QwtPlotHistogram* self, QBrush* brush);
@@ -65,11 +65,11 @@ void QwtPlotHistogram_setStyle(QwtPlotHistogram* self, int style);
 int QwtPlotHistogram_style(const QwtPlotHistogram* self);
 void QwtPlotHistogram_setSymbol(QwtPlotHistogram* self, QwtColumnSymbol* symbol);
 QwtColumnSymbol* QwtPlotHistogram_symbol(const QwtPlotHistogram* self);
-QRectF* QwtPlotHistogram_boundingRect(const QwtPlotHistogram* self);
-QwtGraphic* QwtPlotHistogram_legendIcon(const QwtPlotHistogram* self, int index, QSizeF* param2);
+struct miqt_qrectf QwtPlotHistogram_boundingRect(const QwtPlotHistogram* self);
+QwtGraphic* QwtPlotHistogram_legendIcon(const QwtPlotHistogram* self, int index, struct miqt_qsizef param2);
 void QwtPlotHistogram_drawColumn(const QwtPlotHistogram* self, QPainter* param1, QwtColumnRect* param2, QwtIntervalSample* param3);
-void QwtPlotHistogram_setPen2(QwtPlotHistogram* self, QColor* param1, double width);
-void QwtPlotHistogram_setPen3(QwtPlotHistogram* self, QColor* param1, double width, int param3);
+void QwtPlotHistogram_setPen2(QwtPlotHistogram* self, struct miqt_qcolor param1, double width);
+void QwtPlotHistogram_setPen3(QwtPlotHistogram* self, struct miqt_qcolor param1, double width, int param3);
 
 void QwtPlotHistogram_delete(QwtPlotHistogram* self);
 

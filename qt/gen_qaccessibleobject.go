@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -67,11 +68,9 @@ func (this *QAccessibleObject) Object() *QObject {
 	return newQObject(C.QAccessibleObject_object(this.h))
 }
 
-func (this *QAccessibleObject) Rect() *QRect {
+func (this *QAccessibleObject) Rect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QAccessibleObject_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QAccessibleObject_rect(this.h))
 }
 
 func (this *QAccessibleObject) SetText(t QAccessible__Text, text string) {

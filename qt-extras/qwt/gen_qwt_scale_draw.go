@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -103,10 +104,9 @@ func (this *QwtScaleDraw) Move(x float64, y float64) {
 	C.QwtScaleDraw_move(this.h, (C.double)(x), (C.double)(y))
 }
 
-func (this *QwtScaleDraw) MoveWithQPointF(param1 *qt.QPointF) {
+func (this *QwtScaleDraw) MoveWithQPointF(param1 qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtScaleDraw_moveWithQPointF(this.h, (*C.QPointF)(param1.UnsafePointer()))
+	C.QwtScaleDraw_moveWithQPointF(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](param1))
 }
 
 func (this *QwtScaleDraw) SetLength(length float64) {
@@ -129,11 +129,9 @@ func (this *QwtScaleDraw) Orientation() qt.Orientation {
 	return (qt.Orientation)(C.QwtScaleDraw_orientation(this.h))
 }
 
-func (this *QwtScaleDraw) Pos() *qt.QPointF {
+func (this *QwtScaleDraw) Pos() qt.QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtScaleDraw_pos(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPointF](C.QwtScaleDraw_pos(this.h))
 }
 
 func (this *QwtScaleDraw) Length() float64 {
@@ -173,45 +171,35 @@ func (this *QwtScaleDraw) MaxLabelWidth(param1 *qt.QFont) int {
 	return (int)(C.QwtScaleDraw_maxLabelWidth(this.h, (*C.QFont)(param1.UnsafePointer())))
 }
 
-func (this *QwtScaleDraw) LabelPosition(value float64) *qt.QPointF {
+func (this *QwtScaleDraw) LabelPosition(value float64) qt.QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtScaleDraw_labelPosition(this.h, (C.double)(value))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPointF](C.QwtScaleDraw_labelPosition(this.h, (C.double)(value)))
 }
 
-func (this *QwtScaleDraw) LabelRect(param1 *qt.QFont, value float64) *qt.QRectF {
+func (this *QwtScaleDraw) LabelRect(param1 *qt.QFont, value float64) qt.QRectF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtScaleDraw_labelRect(this.h, (*C.QFont)(param1.UnsafePointer()), (C.double)(value))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtScaleDraw_labelRect(this.h, (*C.QFont)(param1.UnsafePointer()), (C.double)(value)))
 }
 
-func (this *QwtScaleDraw) LabelSize(param1 *qt.QFont, value float64) *qt.QSizeF {
+func (this *QwtScaleDraw) LabelSize(param1 *qt.QFont, value float64) qt.QSizeF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtScaleDraw_labelSize(this.h, (*C.QFont)(param1.UnsafePointer()), (C.double)(value))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtScaleDraw_labelSize(this.h, (*C.QFont)(param1.UnsafePointer()), (C.double)(value)))
 }
 
-func (this *QwtScaleDraw) BoundingLabelRect(param1 *qt.QFont, value float64) *qt.QRect {
+func (this *QwtScaleDraw) BoundingLabelRect(param1 *qt.QFont, value float64) qt.QRect {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtScaleDraw_boundingLabelRect(this.h, (*C.QFont)(param1.UnsafePointer()), (C.double)(value))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtScaleDraw_boundingLabelRect(this.h, (*C.QFont)(param1.UnsafePointer()), (C.double)(value)))
 }
 
 // LabelTransformation can only be called from a QwtScaleDraw that was directly constructed.
-func (this *QwtScaleDraw) LabelTransformation(param1 *qt.QPointF, param2 *qt.QSizeF) qt.QTransform {
+func (this *QwtScaleDraw) LabelTransformation(param1 qt.QPointF, param2 qt.QSizeF) qt.QTransform {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQTransform(unsafe.Pointer(C.QwtScaleDraw_protectedbase_labelTransformation(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()), (*C.QSizeF)(param2.UnsafePointer()))))
+	_goptr := qt.UnsafeNewQTransform(unsafe.Pointer(C.QwtScaleDraw_protectedbase_labelTransformation(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](param1), libmiqt.ValueCast[C.struct_miqt_qsizef](param2))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_method_ret := *_goptr
 

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -115,15 +116,12 @@ func QMainWindow_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QMainWindow) IconSize() *QSize {
-	_goptr := newQSize(C.QMainWindow_iconSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMainWindow) IconSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QMainWindow_iconSize(this.h))
 }
 
-func (this *QMainWindow) SetIconSize(iconSize *QSize) {
-	defer runtime.KeepAlive(iconSize)
-	C.QMainWindow_setIconSize(this.h, iconSize.cPointer())
+func (this *QMainWindow) SetIconSize(iconSize QSize) {
+	C.QMainWindow_setIconSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](iconSize))
 }
 
 func (this *QMainWindow) ToolButtonStyle() ToolButtonStyle {
@@ -174,9 +172,8 @@ func (this *QMainWindow) DockOptions() QMainWindow__DockOption {
 	return (QMainWindow__DockOption)(C.QMainWindow_dockOptions(this.h))
 }
 
-func (this *QMainWindow) IsSeparator(pos *QPoint) bool {
-	defer runtime.KeepAlive(pos)
-	return (bool)(C.QMainWindow_isSeparator(this.h, pos.cPointer()))
+func (this *QMainWindow) IsSeparator(pos QPoint) bool {
+	return (bool)(C.QMainWindow_isSeparator(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 func (this *QMainWindow) MenuBar() *QMenuBar {
@@ -361,23 +358,22 @@ func (this *QMainWindow) SetUnifiedTitleAndToolBarOnMac(set bool) {
 	C.QMainWindow_setUnifiedTitleAndToolBarOnMac(this.h, (C.bool)(set))
 }
 
-func (this *QMainWindow) IconSizeChanged(iconSize *QSize) {
-	defer runtime.KeepAlive(iconSize)
-	C.QMainWindow_iconSizeChanged(this.h, iconSize.cPointer())
+func (this *QMainWindow) IconSizeChanged(iconSize QSize) {
+	C.QMainWindow_iconSizeChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](iconSize))
 }
-func (this *QMainWindow) OnIconSizeChanged(slot func(iconSize *QSize)) {
+func (this *QMainWindow) OnIconSizeChanged(slot func(iconSize QSize)) {
 	C.QMainWindow_connect_iconSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMainWindow_iconSizeChanged
-func miqt_exec_callback_QMainWindow_iconSizeChanged(cb C.intptr_t, iconSize *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(iconSize *QSize))
+func miqt_exec_callback_QMainWindow_iconSizeChanged(cb C.intptr_t, iconSize C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(iconSize QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize(iconSize)
+	slotval1 := libmiqt.ValueCast[QSize](iconSize)
 
 	gofunc(slotval1)
 }
@@ -743,14 +739,12 @@ func miqt_exec_callback_QMainWindow_setVisible(self *C.QMainWindow, cb C.intptr_
 
 }
 
-func (this *QMainWindow) callVirtualBase_SizeHint() *QSize {
+func (this *QMainWindow) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QMainWindow_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QMainWindow_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QMainWindow) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QMainWindow) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMainWindow_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -758,27 +752,24 @@ func (this *QMainWindow) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QMainWindow_sizeHint
-func miqt_exec_callback_QMainWindow_sizeHint(self *C.QMainWindow, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMainWindow_sizeHint(self *C.QMainWindow, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMainWindow{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMainWindow_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QMainWindow) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QMainWindow_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QMainWindow) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QMainWindow) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QMainWindow_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QMainWindow) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMainWindow_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -786,16 +777,15 @@ func (this *QMainWindow) OnMinimumSizeHint(slot func(super func() *QSize) *QSize
 }
 
 //export miqt_exec_callback_QMainWindow_minimumSizeHint
-func miqt_exec_callback_QMainWindow_minimumSizeHint(self *C.QMainWindow, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMainWindow_minimumSizeHint(self *C.QMainWindow, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMainWindow{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMainWindow_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1623,7 +1613,6 @@ func miqt_exec_callback_QMainWindow_initPainter(self *C.QMainWindow, cb C.intptr
 }
 
 func (this *QMainWindow) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QMainWindow_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

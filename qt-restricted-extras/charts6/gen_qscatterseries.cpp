@@ -20,15 +20,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QScatterSeries_colorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QScatterSeries_borderColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QScatterSeries_colorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QScatterSeries_borderColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QScatterSeries_markerShapeChanged(intptr_t, int);
 void miqt_exec_callback_QScatterSeries_markerSizeChanged(intptr_t, double);
 int miqt_exec_callback_QScatterSeries_type(const QScatterSeries*, intptr_t);
 void miqt_exec_callback_QScatterSeries_setPen(QScatterSeries*, intptr_t, QPen*);
 void miqt_exec_callback_QScatterSeries_setBrush(QScatterSeries*, intptr_t, QBrush*);
-void miqt_exec_callback_QScatterSeries_setColor(QScatterSeries*, intptr_t, QColor*);
-QColor* miqt_exec_callback_QScatterSeries_color(const QScatterSeries*, intptr_t);
+void miqt_exec_callback_QScatterSeries_setColor(QScatterSeries*, intptr_t, struct miqt_qcolor);
+struct miqt_qcolor miqt_exec_callback_QScatterSeries_color(const QScatterSeries*, intptr_t);
 bool miqt_exec_callback_QScatterSeries_event(QScatterSeries*, intptr_t, QEvent*);
 bool miqt_exec_callback_QScatterSeries_eventFilter(QScatterSeries*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QScatterSeries_timerEvent(QScatterSeries*, intptr_t, QTimerEvent*);
@@ -111,14 +111,12 @@ public:
 			return;
 		}
 
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QScatterSeries_setColor(this, handle__setColor, sigval1);
 
 	}
 
-	friend void QScatterSeries_virtualbase_setColor(void* self, QColor* color);
+	friend void QScatterSeries_virtualbase_setColor(void* self, struct miqt_qcolor color);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__color = 0;
@@ -129,13 +127,11 @@ public:
 			return QScatterSeries::color();
 		}
 
-		QColor* callback_return_value = miqt_exec_callback_QScatterSeries_color(this, handle__color);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QScatterSeries_color(this, handle__color);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QScatterSeries_virtualbase_color(const void* self);
+	friend struct miqt_qcolor QScatterSeries_virtualbase_color(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -314,20 +310,20 @@ QBrush* QScatterSeries_brush(const QScatterSeries* self) {
 	return new QBrush(self->brush());
 }
 
-void QScatterSeries_setColor(QScatterSeries* self, QColor* color) {
-	self->setColor(*color);
+void QScatterSeries_setColor(QScatterSeries* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QScatterSeries_color(const QScatterSeries* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QScatterSeries_color(const QScatterSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-void QScatterSeries_setBorderColor(QScatterSeries* self, QColor* color) {
-	self->setBorderColor(*color);
+void QScatterSeries_setBorderColor(QScatterSeries* self, struct miqt_qcolor color) {
+	self->setBorderColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QScatterSeries_borderColor(const QScatterSeries* self) {
-	return new QColor(self->borderColor());
+struct miqt_qcolor QScatterSeries_borderColor(const QScatterSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->borderColor());
 }
 
 int QScatterSeries_markerShape(const QScatterSeries* self) {
@@ -348,24 +344,24 @@ void QScatterSeries_setMarkerSize(QScatterSeries* self, double size) {
 	self->setMarkerSize(static_cast<qreal>(size));
 }
 
-void QScatterSeries_colorChanged(QScatterSeries* self, QColor* color) {
-	self->colorChanged(*color);
+void QScatterSeries_colorChanged(QScatterSeries* self, struct miqt_qcolor color) {
+	self->colorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QScatterSeries_connect_colorChanged(QScatterSeries* self, intptr_t slot) {
 	QScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(QColor)>(&QScatterSeries::colorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QScatterSeries_colorChanged(slot, sigval1);
 	});
 }
 
-void QScatterSeries_borderColorChanged(QScatterSeries* self, QColor* color) {
-	self->borderColorChanged(*color);
+void QScatterSeries_borderColorChanged(QScatterSeries* self, struct miqt_qcolor color) {
+	self->borderColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QScatterSeries_connect_borderColorChanged(QScatterSeries* self, intptr_t slot) {
 	QScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(QColor)>(&QScatterSeries::borderColorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QScatterSeries_borderColorChanged(slot, sigval1);
 	});
 }
@@ -469,8 +465,8 @@ bool QScatterSeries_override_virtual_setColor(void* self, intptr_t slot) {
 	return true;
 }
 
-void QScatterSeries_virtualbase_setColor(void* self, QColor* color) {
-	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::setColor(*color);
+void QScatterSeries_virtualbase_setColor(void* self, struct miqt_qcolor color) {
+	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::setColor(miqt_from_cabi<QColor>(color));
 }
 
 bool QScatterSeries_override_virtual_color(void* self, intptr_t slot) {
@@ -483,8 +479,8 @@ bool QScatterSeries_override_virtual_color(void* self, intptr_t slot) {
 	return true;
 }
 
-QColor* QScatterSeries_virtualbase_color(const void* self) {
-	return new QColor(static_cast<const MiqtVirtualQScatterSeries*>(self)->QScatterSeries::color());
+struct miqt_qcolor QScatterSeries_virtualbase_color(const void* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQScatterSeries*>(self)->QScatterSeries::color());
 }
 
 bool QScatterSeries_override_virtual_event(void* self, intptr_t slot) {
@@ -583,10 +579,6 @@ bool QScatterSeries_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QScatterSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::disconnectNotify(*signal);
-}
-
-QColor* QScatterSeries_virtualreturncopy_QColor(QColor* src) {
-	return new QColor(*src);
 }
 
 QObject* QScatterSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

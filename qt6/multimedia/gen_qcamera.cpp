@@ -308,16 +308,16 @@ bool QCamera_isFocusModeSupported(const QCamera* self, int mode) {
 	return self->isFocusModeSupported(static_cast<QCamera::FocusMode>(mode));
 }
 
-QPointF* QCamera_focusPoint(const QCamera* self) {
-	return new QPointF(self->focusPoint());
+struct miqt_qpointf QCamera_focusPoint(const QCamera* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->focusPoint());
 }
 
-QPointF* QCamera_customFocusPoint(const QCamera* self) {
-	return new QPointF(self->customFocusPoint());
+struct miqt_qpointf QCamera_customFocusPoint(const QCamera* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->customFocusPoint());
 }
 
-void QCamera_setCustomFocusPoint(QCamera* self, QPointF* point) {
-	self->setCustomFocusPoint(*point);
+void QCamera_setCustomFocusPoint(QCamera* self, struct miqt_qpointf point) {
+	self->setCustomFocusPoint(miqt_from_cabi<QPointF>(point));
 }
 
 void QCamera_setFocusDistance(QCamera* self, float d) {

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -640,13 +641,12 @@ func miqt_exec_callback_QPdfWriter_setPageOrientation(self *C.QPdfWriter, cb C.i
 
 }
 
-func (this *QPdfWriter) callVirtualBase_SetPageMargins(margins *QMarginsF, units QPageLayout__Unit) bool {
-	defer runtime.KeepAlive(margins)
+func (this *QPdfWriter) callVirtualBase_SetPageMargins(margins QMarginsF, units QPageLayout__Unit) bool {
 
-	return (bool)(C.QPdfWriter_virtualbase_setPageMargins(unsafe.Pointer(this.h), margins.cPointer(), (C.int)(units)))
+	return (bool)(C.QPdfWriter_virtualbase_setPageMargins(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins), (C.int)(units)))
 
 }
-func (this *QPdfWriter) OnSetPageMargins(slot func(super func(margins *QMarginsF, units QPageLayout__Unit) bool, margins *QMarginsF, units QPageLayout__Unit) bool) {
+func (this *QPdfWriter) OnSetPageMargins(slot func(super func(margins QMarginsF, units QPageLayout__Unit) bool, margins QMarginsF, units QPageLayout__Unit) bool) {
 	ok := C.QPdfWriter_override_virtual_setPageMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -654,14 +654,14 @@ func (this *QPdfWriter) OnSetPageMargins(slot func(super func(margins *QMarginsF
 }
 
 //export miqt_exec_callback_QPdfWriter_setPageMargins
-func miqt_exec_callback_QPdfWriter_setPageMargins(self *C.QPdfWriter, cb C.intptr_t, margins *C.QMarginsF, units C.int) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(margins *QMarginsF, units QPageLayout__Unit) bool, margins *QMarginsF, units QPageLayout__Unit) bool)
+func miqt_exec_callback_QPdfWriter_setPageMargins(self *C.QPdfWriter, cb C.intptr_t, margins C.struct_miqt_qmarginsf, units C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(margins QMarginsF, units QPageLayout__Unit) bool, margins QMarginsF, units QPageLayout__Unit) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQMarginsF(margins)
+	slotval1 := libmiqt.ValueCast[QMarginsF](margins)
 
 	slotval2 := (QPageLayout__Unit)(units)
 
@@ -751,7 +751,6 @@ func miqt_exec_callback_QPdfWriter_initPainter(self *C.QPdfWriter, cb C.intptr_t
 }
 
 func (this *QPdfWriter) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QPdfWriter_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

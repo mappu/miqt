@@ -47,7 +47,7 @@ QMetaObject* QPaintDeviceWindow_metaObject(const QPaintDeviceWindow* self);
 void* QPaintDeviceWindow_metacast(QPaintDeviceWindow* self, const char* param1);
 struct miqt_string QPaintDeviceWindow_tr(const char* s);
 struct miqt_string QPaintDeviceWindow_trUtf8(const char* s);
-void QPaintDeviceWindow_update(QPaintDeviceWindow* self, QRect* rect);
+void QPaintDeviceWindow_update(QPaintDeviceWindow* self, struct miqt_qrect rect);
 void QPaintDeviceWindow_updateWithRegion(QPaintDeviceWindow* self, QRegion* region);
 void QPaintDeviceWindow_update2(QPaintDeviceWindow* self);
 void QPaintDeviceWindow_paintEvent(QPaintDeviceWindow* self, QPaintEvent* event);

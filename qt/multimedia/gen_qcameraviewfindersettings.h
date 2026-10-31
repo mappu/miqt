@@ -27,8 +27,8 @@ QCameraViewfinderSettings* QCameraViewfinderSettings_new2(QCameraViewfinderSetti
 void QCameraViewfinderSettings_operatorAssign(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other);
 void QCameraViewfinderSettings_swap(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other);
 bool QCameraViewfinderSettings_isNull(const QCameraViewfinderSettings* self);
-QSize* QCameraViewfinderSettings_resolution(const QCameraViewfinderSettings* self);
-void QCameraViewfinderSettings_setResolution(QCameraViewfinderSettings* self, QSize* resolution);
+struct miqt_qsize QCameraViewfinderSettings_resolution(const QCameraViewfinderSettings* self);
+void QCameraViewfinderSettings_setResolution(QCameraViewfinderSettings* self, struct miqt_qsize resolution);
 void QCameraViewfinderSettings_setResolution2(QCameraViewfinderSettings* self, int width, int height);
 double QCameraViewfinderSettings_minimumFrameRate(const QCameraViewfinderSettings* self);
 void QCameraViewfinderSettings_setMinimumFrameRate(QCameraViewfinderSettings* self, double rate);
@@ -36,8 +36,8 @@ double QCameraViewfinderSettings_maximumFrameRate(const QCameraViewfinderSetting
 void QCameraViewfinderSettings_setMaximumFrameRate(QCameraViewfinderSettings* self, double rate);
 int QCameraViewfinderSettings_pixelFormat(const QCameraViewfinderSettings* self);
 void QCameraViewfinderSettings_setPixelFormat(QCameraViewfinderSettings* self, int format);
-QSize* QCameraViewfinderSettings_pixelAspectRatio(const QCameraViewfinderSettings* self);
-void QCameraViewfinderSettings_setPixelAspectRatio(QCameraViewfinderSettings* self, QSize* ratio);
+struct miqt_qsize QCameraViewfinderSettings_pixelAspectRatio(const QCameraViewfinderSettings* self);
+void QCameraViewfinderSettings_setPixelAspectRatio(QCameraViewfinderSettings* self, struct miqt_qsize ratio);
 void QCameraViewfinderSettings_setPixelAspectRatio2(QCameraViewfinderSettings* self, int horizontal, int vertical);
 
 void QCameraViewfinderSettings_delete(QCameraViewfinderSettings* self);

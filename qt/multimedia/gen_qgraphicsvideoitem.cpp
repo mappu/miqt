@@ -36,9 +36,9 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsVideoItem_nativeSizeChanged(intptr_t, QSizeF*);
+void miqt_exec_callback_QGraphicsVideoItem_nativeSizeChanged(intptr_t, struct miqt_qsizef);
 QMediaObject* miqt_exec_callback_QGraphicsVideoItem_mediaObject(const QGraphicsVideoItem*, intptr_t);
-QRectF* miqt_exec_callback_QGraphicsVideoItem_boundingRect(const QGraphicsVideoItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsVideoItem_boundingRect(const QGraphicsVideoItem*, intptr_t);
 void miqt_exec_callback_QGraphicsVideoItem_paint(QGraphicsVideoItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 void miqt_exec_callback_QGraphicsVideoItem_timerEvent(QGraphicsVideoItem*, intptr_t, QTimerEvent*);
 QVariant* miqt_exec_callback_QGraphicsVideoItem_itemChange(QGraphicsVideoItem*, intptr_t, int, QVariant*);
@@ -51,7 +51,7 @@ void miqt_exec_callback_QGraphicsVideoItem_connectNotify(QGraphicsVideoItem*, in
 void miqt_exec_callback_QGraphicsVideoItem_disconnectNotify(QGraphicsVideoItem*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsVideoItem_advance(QGraphicsVideoItem*, intptr_t, int);
 QPainterPath* miqt_exec_callback_QGraphicsVideoItem_shape(const QGraphicsVideoItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsVideoItem_contains(const QGraphicsVideoItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsVideoItem_contains(const QGraphicsVideoItem*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QGraphicsVideoItem_collidesWithItem(const QGraphicsVideoItem*, intptr_t, QGraphicsItem*, int);
 bool miqt_exec_callback_QGraphicsVideoItem_collidesWithPath(const QGraphicsVideoItem*, intptr_t, QPainterPath*, int);
 bool miqt_exec_callback_QGraphicsVideoItem_isObscuredBy(const QGraphicsVideoItem*, intptr_t, QGraphicsItem*);
@@ -117,13 +117,11 @@ public:
 			return QGraphicsVideoItem::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsVideoItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsVideoItem_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsVideoItem_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -347,14 +345,12 @@ public:
 			return QGraphicsVideoItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsVideoItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsVideoItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__collidesWithItem = 0;
@@ -929,43 +925,41 @@ void QGraphicsVideoItem_setAspectRatioMode(QGraphicsVideoItem* self, int mode) {
 	self->setAspectRatioMode(static_cast<Qt::AspectRatioMode>(mode));
 }
 
-QPointF* QGraphicsVideoItem_offset(const QGraphicsVideoItem* self) {
-	return new QPointF(self->offset());
+struct miqt_qpointf QGraphicsVideoItem_offset(const QGraphicsVideoItem* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->offset());
 }
 
-void QGraphicsVideoItem_setOffset(QGraphicsVideoItem* self, QPointF* offset) {
-	self->setOffset(*offset);
+void QGraphicsVideoItem_setOffset(QGraphicsVideoItem* self, struct miqt_qpointf offset) {
+	self->setOffset(miqt_from_cabi<QPointF>(offset));
 }
 
-QSizeF* QGraphicsVideoItem_size(const QGraphicsVideoItem* self) {
-	return new QSizeF(self->size());
+struct miqt_qsizef QGraphicsVideoItem_size(const QGraphicsVideoItem* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->size());
 }
 
-void QGraphicsVideoItem_setSize(QGraphicsVideoItem* self, QSizeF* size) {
-	self->setSize(*size);
+void QGraphicsVideoItem_setSize(QGraphicsVideoItem* self, struct miqt_qsizef size) {
+	self->setSize(miqt_from_cabi<QSizeF>(size));
 }
 
-QSizeF* QGraphicsVideoItem_nativeSize(const QGraphicsVideoItem* self) {
-	return new QSizeF(self->nativeSize());
+struct miqt_qsizef QGraphicsVideoItem_nativeSize(const QGraphicsVideoItem* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->nativeSize());
 }
 
-QRectF* QGraphicsVideoItem_boundingRect(const QGraphicsVideoItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsVideoItem_boundingRect(const QGraphicsVideoItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 void QGraphicsVideoItem_paint(QGraphicsVideoItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
 	self->paint(painter, option, widget);
 }
 
-void QGraphicsVideoItem_nativeSizeChanged(QGraphicsVideoItem* self, QSizeF* size) {
-	self->nativeSizeChanged(*size);
+void QGraphicsVideoItem_nativeSizeChanged(QGraphicsVideoItem* self, struct miqt_qsizef size) {
+	self->nativeSizeChanged(miqt_from_cabi<QSizeF>(size));
 }
 
 void QGraphicsVideoItem_connect_nativeSizeChanged(QGraphicsVideoItem* self, intptr_t slot) {
 	QGraphicsVideoItem::connect(self, static_cast<void (QGraphicsVideoItem::*)(const QSizeF&)>(&QGraphicsVideoItem::nativeSizeChanged), self, [=](const QSizeF& size) {
-		const QSizeF& size_ret = size;
-		// Cast returned reference into pointer
-		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
+		struct miqt_qsizef sigval1 = miqt_to_cabi<struct miqt_qsizef>(size);
 		miqt_exec_callback_QGraphicsVideoItem_nativeSizeChanged(slot, sigval1);
 	});
 }
@@ -1038,8 +1032,8 @@ bool QGraphicsVideoItem_override_virtual_boundingRect(void* self, intptr_t slot)
 	return true;
 }
 
-QRectF* QGraphicsVideoItem_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsVideoItem*>(self)->QGraphicsVideoItem::boundingRect());
+struct miqt_qrectf QGraphicsVideoItem_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsVideoItem*>(self)->QGraphicsVideoItem::boundingRect());
 }
 
 bool QGraphicsVideoItem_override_virtual_paint(void* self, intptr_t slot) {
@@ -1220,8 +1214,8 @@ bool QGraphicsVideoItem_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsVideoItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsVideoItem*>(self)->QGraphicsVideoItem::contains(*point);
+bool QGraphicsVideoItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsVideoItem*>(self)->QGraphicsVideoItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsVideoItem_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -1628,10 +1622,6 @@ bool QGraphicsVideoItem_override_virtual_extension(void* self, intptr_t slot) {
 
 QVariant* QGraphicsVideoItem_virtualbase_extension(const void* self, QVariant* variant) {
 	return new QVariant(static_cast<const MiqtVirtualQGraphicsVideoItem*>(self)->QGraphicsVideoItem::extension(*variant));
-}
-
-QRectF* QGraphicsVideoItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
 }
 
 QVariant* QGraphicsVideoItem_virtualreturncopy_QVariant(QVariant* src) {

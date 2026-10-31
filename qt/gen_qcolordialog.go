@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -79,17 +80,15 @@ func NewQColorDialog2() *QColorDialog {
 }
 
 // NewQColorDialog3 constructs a new QColorDialog object.
-func NewQColorDialog3(initial *QColor) *QColorDialog {
-	defer runtime.KeepAlive(initial)
+func NewQColorDialog3(initial QColor) *QColorDialog {
 
-	return newQColorDialog(C.QColorDialog_new3(initial.cPointer()))
+	return newQColorDialog(C.QColorDialog_new3(libmiqt.ValueCast[C.struct_miqt_qcolor](initial)))
 }
 
 // NewQColorDialog4 constructs a new QColorDialog object.
-func NewQColorDialog4(initial *QColor, parent *QWidget) *QColorDialog {
-	defer runtime.KeepAlive(initial)
+func NewQColorDialog4(initial QColor, parent *QWidget) *QColorDialog {
 
-	return newQColorDialog(C.QColorDialog_new4(initial.cPointer(), parent.cPointer()))
+	return newQColorDialog(C.QColorDialog_new4(libmiqt.ValueCast[C.struct_miqt_qcolor](initial), parent.cPointer()))
 }
 
 func (this *QColorDialog) MetaObject() *QMetaObject {
@@ -120,21 +119,16 @@ func QColorDialog_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QColorDialog) SetCurrentColor(color *QColor) {
-	defer runtime.KeepAlive(color)
-	C.QColorDialog_setCurrentColor(this.h, color.cPointer())
+func (this *QColorDialog) SetCurrentColor(color QColor) {
+	C.QColorDialog_setCurrentColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QColorDialog) CurrentColor() *QColor {
-	_goptr := newQColor(C.QColorDialog_currentColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QColorDialog) CurrentColor() QColor {
+	return libmiqt.ValueCast[QColor](C.QColorDialog_currentColor(this.h))
 }
 
-func (this *QColorDialog) SelectedColor() *QColor {
-	_goptr := newQColor(C.QColorDialog_selectedColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QColorDialog) SelectedColor() QColor {
+	return libmiqt.ValueCast[QColor](C.QColorDialog_selectedColor(this.h))
 }
 
 func (this *QColorDialog) SetOption(option QColorDialog__ColorDialogOption) {
@@ -157,10 +151,8 @@ func (this *QColorDialog) SetVisible(visible bool) {
 	C.QColorDialog_setVisible(this.h, (C.bool)(visible))
 }
 
-func QColorDialog_GetColor() *QColor {
-	_goptr := newQColor(C.QColorDialog_getColor())
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QColorDialog_GetColor() QColor {
+	return libmiqt.ValueCast[QColor](C.QColorDialog_getColor())
 }
 
 func QColorDialog_GetRgba() uint {
@@ -171,66 +163,58 @@ func QColorDialog_CustomCount() int {
 	return (int)(C.QColorDialog_customCount())
 }
 
-func QColorDialog_CustomColor(index int) *QColor {
-	_goptr := newQColor(C.QColorDialog_customColor((C.int)(index)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QColorDialog_CustomColor(index int) QColor {
+	return libmiqt.ValueCast[QColor](C.QColorDialog_customColor((C.int)(index)))
 }
 
 func QColorDialog_SetCustomColor(index int, color QColor) {
-	defer runtime.KeepAlive(color)
-	C.QColorDialog_setCustomColor((C.int)(index), color.cPointer())
+	C.QColorDialog_setCustomColor((C.int)(index), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func QColorDialog_StandardColor(index int) *QColor {
-	_goptr := newQColor(C.QColorDialog_standardColor((C.int)(index)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QColorDialog_StandardColor(index int) QColor {
+	return libmiqt.ValueCast[QColor](C.QColorDialog_standardColor((C.int)(index)))
 }
 
 func QColorDialog_SetStandardColor(index int, color QColor) {
-	defer runtime.KeepAlive(color)
-	C.QColorDialog_setStandardColor((C.int)(index), color.cPointer())
+	C.QColorDialog_setStandardColor((C.int)(index), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QColorDialog) CurrentColorChanged(color *QColor) {
-	defer runtime.KeepAlive(color)
-	C.QColorDialog_currentColorChanged(this.h, color.cPointer())
+func (this *QColorDialog) CurrentColorChanged(color QColor) {
+	C.QColorDialog_currentColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QColorDialog) OnCurrentColorChanged(slot func(color *QColor)) {
+func (this *QColorDialog) OnCurrentColorChanged(slot func(color QColor)) {
 	C.QColorDialog_connect_currentColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColorDialog_currentColorChanged
-func miqt_exec_callback_QColorDialog_currentColorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *QColor))
+func miqt_exec_callback_QColorDialog_currentColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQColor(color)
+	slotval1 := libmiqt.ValueCast[QColor](color)
 
 	gofunc(slotval1)
 }
 
-func (this *QColorDialog) ColorSelected(color *QColor) {
-	defer runtime.KeepAlive(color)
-	C.QColorDialog_colorSelected(this.h, color.cPointer())
+func (this *QColorDialog) ColorSelected(color QColor) {
+	C.QColorDialog_colorSelected(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QColorDialog) OnColorSelected(slot func(color *QColor)) {
+func (this *QColorDialog) OnColorSelected(slot func(color QColor)) {
 	C.QColorDialog_connect_colorSelected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColorDialog_colorSelected
-func miqt_exec_callback_QColorDialog_colorSelected(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *QColor))
+func miqt_exec_callback_QColorDialog_colorSelected(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQColor(color)
+	slotval1 := libmiqt.ValueCast[QColor](color)
 
 	gofunc(slotval1)
 }
@@ -283,40 +267,28 @@ func (this *QColorDialog) SetOption2(option QColorDialog__ColorDialogOption, on 
 	C.QColorDialog_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
-func QColorDialog_GetColorWithInitial(initial *QColor) *QColor {
-	defer runtime.KeepAlive(initial)
-	_goptr := newQColor(C.QColorDialog_getColorWithInitial(initial.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QColorDialog_GetColorWithInitial(initial QColor) QColor {
+	return libmiqt.ValueCast[QColor](C.QColorDialog_getColorWithInitial(libmiqt.ValueCast[C.struct_miqt_qcolor](initial)))
 }
 
-func QColorDialog_GetColor2(initial *QColor, parent *QWidget) *QColor {
-	defer runtime.KeepAlive(initial)
-	_goptr := newQColor(C.QColorDialog_getColor2(initial.cPointer(), parent.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QColorDialog_GetColor2(initial QColor, parent *QWidget) QColor {
+	return libmiqt.ValueCast[QColor](C.QColorDialog_getColor2(libmiqt.ValueCast[C.struct_miqt_qcolor](initial), parent.cPointer()))
 }
 
-func QColorDialog_GetColor3(initial *QColor, parent *QWidget, title string) *QColor {
-	defer runtime.KeepAlive(initial)
+func QColorDialog_GetColor3(initial QColor, parent *QWidget, title string) QColor {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	_goptr := newQColor(C.QColorDialog_getColor3(initial.cPointer(), parent.cPointer(), title_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QColorDialog_getColor3(libmiqt.ValueCast[C.struct_miqt_qcolor](initial), parent.cPointer(), title_ms))
 }
 
-func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, options QColorDialog__ColorDialogOption) *QColor {
-	defer runtime.KeepAlive(initial)
+func QColorDialog_GetColor4(initial QColor, parent *QWidget, title string, options QColorDialog__ColorDialogOption) QColor {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	_goptr := newQColor(C.QColorDialog_getColor4(initial.cPointer(), parent.cPointer(), title_ms, (C.int)(options)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QColorDialog_getColor4(libmiqt.ValueCast[C.struct_miqt_qcolor](initial), parent.cPointer(), title_ms, (C.int)(options)))
 }
 
 func QColorDialog_GetRgbaWithRgba(rgba uint) uint {
@@ -545,14 +517,12 @@ func miqt_exec_callback_QColorDialog_done(self *C.QColorDialog, cb C.intptr_t, r
 
 }
 
-func (this *QColorDialog) callVirtualBase_SizeHint() *QSize {
+func (this *QColorDialog) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QColorDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QColorDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QColorDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QColorDialog) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QColorDialog_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -560,27 +530,24 @@ func (this *QColorDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QColorDialog_sizeHint
-func miqt_exec_callback_QColorDialog_sizeHint(self *C.QColorDialog, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QColorDialog_sizeHint(self *C.QColorDialog, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QColorDialog{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QColorDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QColorDialog) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QColorDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QColorDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QColorDialog) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QColorDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QColorDialog) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QColorDialog_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -588,16 +555,15 @@ func (this *QColorDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSiz
 }
 
 //export miqt_exec_callback_QColorDialog_minimumSizeHint
-func miqt_exec_callback_QColorDialog_minimumSizeHint(self *C.QColorDialog, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QColorDialog_minimumSizeHint(self *C.QColorDialog, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QColorDialog{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QColorDialog_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1604,7 +1570,6 @@ func miqt_exec_callback_QColorDialog_initPainter(self *C.QColorDialog, cb C.intp
 }
 
 func (this *QColorDialog) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QColorDialog_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

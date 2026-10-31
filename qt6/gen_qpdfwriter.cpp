@@ -39,7 +39,7 @@ void miqt_exec_callback_QPdfWriter_disconnectNotify(QPdfWriter*, intptr_t, QMeta
 bool miqt_exec_callback_QPdfWriter_setPageLayout(QPdfWriter*, intptr_t, QPageLayout*);
 bool miqt_exec_callback_QPdfWriter_setPageSize(QPdfWriter*, intptr_t, QPageSize*);
 bool miqt_exec_callback_QPdfWriter_setPageOrientation(QPdfWriter*, intptr_t, int);
-bool miqt_exec_callback_QPdfWriter_setPageMargins(QPdfWriter*, intptr_t, QMarginsF*, int);
+bool miqt_exec_callback_QPdfWriter_setPageMargins(QPdfWriter*, intptr_t, struct miqt_qmarginsf, int);
 void miqt_exec_callback_QPdfWriter_setPageRanges(QPdfWriter*, intptr_t, QPageRanges*);
 int miqt_exec_callback_QPdfWriter_devType(const QPdfWriter*, intptr_t);
 void miqt_exec_callback_QPdfWriter_initPainter(const QPdfWriter*, intptr_t, QPainter*);
@@ -288,16 +288,14 @@ public:
 			return QPdfWriter::setPageMargins(margins, units);
 		}
 
-		const QMarginsF& margins_ret = margins;
-		// Cast returned reference into pointer
-		QMarginsF* sigval1 = const_cast<QMarginsF*>(&margins_ret);
+		struct miqt_qmarginsf sigval1 = miqt_to_cabi<struct miqt_qmarginsf>(margins);
 		QPageLayout::Unit units_ret = units;
 		int sigval2 = static_cast<int>(units_ret);
 		bool callback_return_value = miqt_exec_callback_QPdfWriter_setPageMargins(this, handle__setPageMargins, sigval1, sigval2);
 		return callback_return_value;
 	}
 
-	friend bool QPdfWriter_virtualbase_setPageMargins(void* self, QMarginsF* margins, int units);
+	friend bool QPdfWriter_virtualbase_setPageMargins(void* self, struct miqt_qmarginsf margins, int units);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setPageRanges = 0;
@@ -715,8 +713,8 @@ bool QPdfWriter_override_virtual_setPageMargins(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QPdfWriter_virtualbase_setPageMargins(void* self, QMarginsF* margins, int units) {
-	return static_cast<MiqtVirtualQPdfWriter*>(self)->QPdfWriter::setPageMargins(*margins, static_cast<QPageLayout::Unit>(units));
+bool QPdfWriter_virtualbase_setPageMargins(void* self, struct miqt_qmarginsf margins, int units) {
+	return static_cast<MiqtVirtualQPdfWriter*>(self)->QPdfWriter::setPageMargins(miqt_from_cabi<QMarginsF>(margins), static_cast<QPageLayout::Unit>(units));
 }
 
 bool QPdfWriter_override_virtual_setPageRanges(void* self, intptr_t slot) {

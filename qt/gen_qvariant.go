@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -340,31 +341,27 @@ func NewQVariant24(hash map[string]QVariant) *QVariant {
 }
 
 // NewQVariant25 constructs a new QVariant object.
-func NewQVariant25(size *QSize) *QVariant {
-	defer runtime.KeepAlive(size)
+func NewQVariant25(size QSize) *QVariant {
 
-	return newQVariant(C.QVariant_new25(size.cPointer()))
+	return newQVariant(C.QVariant_new25(libmiqt.ValueCast[C.struct_miqt_qsize](size)))
 }
 
 // NewQVariant26 constructs a new QVariant object.
-func NewQVariant26(size *QSizeF) *QVariant {
-	defer runtime.KeepAlive(size)
+func NewQVariant26(size QSizeF) *QVariant {
 
-	return newQVariant(C.QVariant_new26(size.cPointer()))
+	return newQVariant(C.QVariant_new26(libmiqt.ValueCast[C.struct_miqt_qsizef](size)))
 }
 
 // NewQVariant27 constructs a new QVariant object.
-func NewQVariant27(pt *QPoint) *QVariant {
-	defer runtime.KeepAlive(pt)
+func NewQVariant27(pt QPoint) *QVariant {
 
-	return newQVariant(C.QVariant_new27(pt.cPointer()))
+	return newQVariant(C.QVariant_new27(libmiqt.ValueCast[C.struct_miqt_qpoint](pt)))
 }
 
 // NewQVariant28 constructs a new QVariant object.
-func NewQVariant28(pt *QPointF) *QVariant {
-	defer runtime.KeepAlive(pt)
+func NewQVariant28(pt QPointF) *QVariant {
 
-	return newQVariant(C.QVariant_new28(pt.cPointer()))
+	return newQVariant(C.QVariant_new28(libmiqt.ValueCast[C.struct_miqt_qpointf](pt)))
 }
 
 // NewQVariant29 constructs a new QVariant object.
@@ -382,17 +379,15 @@ func NewQVariant30(line *QLineF) *QVariant {
 }
 
 // NewQVariant31 constructs a new QVariant object.
-func NewQVariant31(rect *QRect) *QVariant {
-	defer runtime.KeepAlive(rect)
+func NewQVariant31(rect QRect) *QVariant {
 
-	return newQVariant(C.QVariant_new31(rect.cPointer()))
+	return newQVariant(C.QVariant_new31(libmiqt.ValueCast[C.struct_miqt_qrect](rect)))
 }
 
 // NewQVariant32 constructs a new QVariant object.
-func NewQVariant32(rect *QRectF) *QVariant {
-	defer runtime.KeepAlive(rect)
+func NewQVariant32(rect QRectF) *QVariant {
 
-	return newQVariant(C.QVariant_new32(rect.cPointer()))
+	return newQVariant(C.QVariant_new32(libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 // NewQVariant33 constructs a new QVariant object.
@@ -466,10 +461,9 @@ func NewQVariant42(jsonDocument *QJsonDocument) *QVariant {
 }
 
 // NewQVariant43 constructs a new QVariant object.
-func NewQVariant43(modelIndex *QModelIndex) *QVariant {
-	defer runtime.KeepAlive(modelIndex)
+func NewQVariant43(modelIndex QModelIndex) *QVariant {
 
-	return newQVariant(C.QVariant_new43(modelIndex.cPointer()))
+	return newQVariant(C.QVariant_new43(libmiqt.ValueCast[C.struct_miqt_qmodelindex](modelIndex)))
 }
 
 // NewQVariant44 constructs a new QVariant object.
@@ -714,39 +708,29 @@ func (this *QVariant) ToHash() map[string]QVariant {
 	return _ret
 }
 
-func (this *QVariant) ToPoint() *QPoint {
+func (this *QVariant) ToPoint() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QVariant_toPoint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QVariant_toPoint(this.h))
 }
 
-func (this *QVariant) ToPointF() *QPointF {
+func (this *QVariant) ToPointF() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QVariant_toPointF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QVariant_toPointF(this.h))
 }
 
-func (this *QVariant) ToRect() *QRect {
+func (this *QVariant) ToRect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QVariant_toRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QVariant_toRect(this.h))
 }
 
-func (this *QVariant) ToSize() *QSize {
+func (this *QVariant) ToSize() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QVariant_toSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QVariant_toSize(this.h))
 }
 
-func (this *QVariant) ToSizeF() *QSizeF {
+func (this *QVariant) ToSizeF() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QVariant_toSizeF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QVariant_toSizeF(this.h))
 }
 
 func (this *QVariant) ToLine() *QLine {
@@ -763,11 +747,9 @@ func (this *QVariant) ToLineF() *QLineF {
 	return _goptr
 }
 
-func (this *QVariant) ToRectF() *QRectF {
+func (this *QVariant) ToRectF() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QVariant_toRectF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QVariant_toRectF(this.h))
 }
 
 func (this *QVariant) ToLocale() *QLocale {
@@ -840,11 +822,9 @@ func (this *QVariant) ToJsonDocument() *QJsonDocument {
 	return _goptr
 }
 
-func (this *QVariant) ToModelIndex() *QModelIndex {
+func (this *QVariant) ToModelIndex() QModelIndex {
 	defer runtime.KeepAlive(this)
-	_goptr := newQModelIndex(C.QVariant_toModelIndex(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QModelIndex](C.QVariant_toModelIndex(this.h))
 }
 
 func (this *QVariant) ToPersistentModelIndex() *QPersistentModelIndex {

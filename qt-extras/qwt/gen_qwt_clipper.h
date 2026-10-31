@@ -26,7 +26,7 @@ typedef struct QwtClipper QwtClipper;
 typedef struct QwtInterval QwtInterval;
 #endif
 
-struct miqt_array /* of QwtInterval* */  QwtClipper_clipCircle(QRectF* param1, QPointF* param2, double radius);
+struct miqt_array /* of QwtInterval* */  QwtClipper_clipCircle(struct miqt_qrectf param1, struct miqt_qpointf param2, double radius);
 
 void QwtClipper_delete(QwtClipper* self);
 

@@ -93,8 +93,8 @@ void* QGraphicsProxyWidget_metacast(QGraphicsProxyWidget* self, const char* para
 struct miqt_string QGraphicsProxyWidget_tr(const char* s);
 void QGraphicsProxyWidget_setWidget(QGraphicsProxyWidget* self, QWidget* widget);
 QWidget* QGraphicsProxyWidget_widget(const QGraphicsProxyWidget* self);
-QRectF* QGraphicsProxyWidget_subWidgetRect(const QGraphicsProxyWidget* self, QWidget* widget);
-void QGraphicsProxyWidget_setGeometry(QGraphicsProxyWidget* self, QRectF* rect);
+struct miqt_qrectf QGraphicsProxyWidget_subWidgetRect(const QGraphicsProxyWidget* self, QWidget* widget);
+void QGraphicsProxyWidget_setGeometry(QGraphicsProxyWidget* self, struct miqt_qrectf rect);
 void QGraphicsProxyWidget_paint(QGraphicsProxyWidget* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
 int QGraphicsProxyWidget_type(const QGraphicsProxyWidget* self);
 QGraphicsProxyWidget* QGraphicsProxyWidget_createProxyForChildWidget(QGraphicsProxyWidget* self, QWidget* child);
@@ -125,13 +125,13 @@ void QGraphicsProxyWidget_focusOutEvent(QGraphicsProxyWidget* self, QFocusEvent*
 bool QGraphicsProxyWidget_focusNextPrevChild(QGraphicsProxyWidget* self, bool next);
 QVariant* QGraphicsProxyWidget_inputMethodQuery(const QGraphicsProxyWidget* self, int query);
 void QGraphicsProxyWidget_inputMethodEvent(QGraphicsProxyWidget* self, QInputMethodEvent* event);
-QSizeF* QGraphicsProxyWidget_sizeHint(const QGraphicsProxyWidget* self, int which, QSizeF* constraint);
+struct miqt_qsizef QGraphicsProxyWidget_sizeHint(const QGraphicsProxyWidget* self, int which, struct miqt_qsizef constraint);
 void QGraphicsProxyWidget_resizeEvent(QGraphicsProxyWidget* self, QGraphicsSceneResizeEvent* event);
 struct miqt_string QGraphicsProxyWidget_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsProxyWidget_tr3(const char* s, const char* c, int n);
 
 bool QGraphicsProxyWidget_override_virtual_setGeometry(void* self, intptr_t slot);
-void QGraphicsProxyWidget_virtualbase_setGeometry(void* self, QRectF* rect);
+void QGraphicsProxyWidget_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 bool QGraphicsProxyWidget_override_virtual_paint(void* self, intptr_t slot);
 void QGraphicsProxyWidget_virtualbase_paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
 bool QGraphicsProxyWidget_override_virtual_type(void* self, intptr_t slot);
@@ -191,7 +191,7 @@ QVariant* QGraphicsProxyWidget_virtualbase_inputMethodQuery(const void* self, in
 bool QGraphicsProxyWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot);
 void QGraphicsProxyWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 bool QGraphicsProxyWidget_override_virtual_sizeHint(void* self, intptr_t slot);
-QSizeF* QGraphicsProxyWidget_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+struct miqt_qsizef QGraphicsProxyWidget_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint);
 bool QGraphicsProxyWidget_override_virtual_resizeEvent(void* self, intptr_t slot);
 void QGraphicsProxyWidget_virtualbase_resizeEvent(void* self, QGraphicsSceneResizeEvent* event);
 bool QGraphicsProxyWidget_override_virtual_getContentsMargins(void* self, intptr_t slot);
@@ -199,7 +199,7 @@ void QGraphicsProxyWidget_virtualbase_getContentsMargins(const void* self, doubl
 bool QGraphicsProxyWidget_override_virtual_paintWindowFrame(void* self, intptr_t slot);
 void QGraphicsProxyWidget_virtualbase_paintWindowFrame(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
 bool QGraphicsProxyWidget_override_virtual_boundingRect(void* self, intptr_t slot);
-QRectF* QGraphicsProxyWidget_virtualbase_boundingRect(const void* self);
+struct miqt_qrectf QGraphicsProxyWidget_virtualbase_boundingRect(const void* self);
 bool QGraphicsProxyWidget_override_virtual_shape(void* self, intptr_t slot);
 QPainterPath* QGraphicsProxyWidget_virtualbase_shape(const void* self);
 bool QGraphicsProxyWidget_override_virtual_initStyleOption(void* self, intptr_t slot);
@@ -213,7 +213,7 @@ bool QGraphicsProxyWidget_virtualbase_sceneEvent(void* self, QEvent* event);
 bool QGraphicsProxyWidget_override_virtual_windowFrameEvent(void* self, intptr_t slot);
 bool QGraphicsProxyWidget_virtualbase_windowFrameEvent(void* self, QEvent* e);
 bool QGraphicsProxyWidget_override_virtual_windowFrameSectionAt(void* self, intptr_t slot);
-int QGraphicsProxyWidget_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos);
+int QGraphicsProxyWidget_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos);
 bool QGraphicsProxyWidget_override_virtual_changeEvent(void* self, intptr_t slot);
 void QGraphicsProxyWidget_virtualbase_changeEvent(void* self, QEvent* event);
 bool QGraphicsProxyWidget_override_virtual_closeEvent(void* self, intptr_t slot);
@@ -239,7 +239,7 @@ void QGraphicsProxyWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 bool QGraphicsProxyWidget_override_virtual_advance(void* self, intptr_t slot);
 void QGraphicsProxyWidget_virtualbase_advance(void* self, int phase);
 bool QGraphicsProxyWidget_override_virtual_contains(void* self, intptr_t slot);
-bool QGraphicsProxyWidget_virtualbase_contains(const void* self, QPointF* point);
+bool QGraphicsProxyWidget_virtualbase_contains(const void* self, struct miqt_qpointf point);
 bool QGraphicsProxyWidget_override_virtual_collidesWithItem(void* self, intptr_t slot);
 bool QGraphicsProxyWidget_virtualbase_collidesWithItem(const void* self, QGraphicsItem* other, int mode);
 bool QGraphicsProxyWidget_override_virtual_collidesWithPath(void* self, intptr_t slot);
@@ -259,8 +259,6 @@ QVariant* QGraphicsProxyWidget_virtualbase_extension(const void* self, QVariant*
 bool QGraphicsProxyWidget_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsProxyWidget_virtualbase_isEmpty(const void* self);
 QVariant* QGraphicsProxyWidget_virtualreturncopy_QVariant(QVariant* src);
-QSizeF* QGraphicsProxyWidget_virtualreturncopy_QSizeF(QSizeF* src);
-QRectF* QGraphicsProxyWidget_virtualreturncopy_QRectF(QRectF* src);
 QPainterPath* QGraphicsProxyWidget_virtualreturncopy_QPainterPath(QPainterPath* src);
 
 QGraphicsProxyWidget* QGraphicsProxyWidget_protectedbase_newProxyWidget(bool* _dynamic_cast_ok, void* self, QWidget* param1);

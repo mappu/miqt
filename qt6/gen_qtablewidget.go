@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -411,17 +412,14 @@ func (this *QTableWidgetItem) SetCheckState(state CheckState) {
 	C.QTableWidgetItem_setCheckState(this.h, (C.int)(state))
 }
 
-func (this *QTableWidgetItem) SizeHint() *QSize {
+func (this *QTableWidgetItem) SizeHint() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QTableWidgetItem_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTableWidgetItem_sizeHint(this.h))
 }
 
-func (this *QTableWidgetItem) SetSizeHint(size *QSize) {
+func (this *QTableWidgetItem) SetSizeHint(size QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QTableWidgetItem_setSizeHint(this.h, size.cPointer())
+	C.QTableWidgetItem_setSizeHint(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
 func (this *QTableWidgetItem) Data(role int) *QVariant {
@@ -796,16 +794,13 @@ func (this *QTableWidget) Items(data *QMimeData) []*QTableWidgetItem {
 	return _ret
 }
 
-func (this *QTableWidget) IndexFromItem(item *QTableWidgetItem) *QModelIndex {
+func (this *QTableWidget) IndexFromItem(item *QTableWidgetItem) QModelIndex {
 	defer runtime.KeepAlive(item)
-	_goptr := newQModelIndex(C.QTableWidget_indexFromItem(this.h, item.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QModelIndex](C.QTableWidget_indexFromItem(this.h, item.cPointer()))
 }
 
-func (this *QTableWidget) ItemFromIndex(index *QModelIndex) *QTableWidgetItem {
-	defer runtime.KeepAlive(index)
-	return newQTableWidgetItem(C.QTableWidget_itemFromIndex(this.h, index.cPointer()))
+func (this *QTableWidget) ItemFromIndex(index QModelIndex) *QTableWidgetItem {
+	return newQTableWidgetItem(C.QTableWidget_itemFromIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QTableWidget) VerticalHeaderItem(row int) *QTableWidgetItem {
@@ -987,20 +982,17 @@ func (this *QTableWidget) VisualColumn(logicalColumn int) int {
 	return (int)(C.QTableWidget_visualColumn(this.h, (C.int)(logicalColumn)))
 }
 
-func (this *QTableWidget) ItemAt(p *QPoint) *QTableWidgetItem {
-	defer runtime.KeepAlive(p)
-	return newQTableWidgetItem(C.QTableWidget_itemAt(this.h, p.cPointer()))
+func (this *QTableWidget) ItemAt(p QPoint) *QTableWidgetItem {
+	return newQTableWidgetItem(C.QTableWidget_itemAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
 func (this *QTableWidget) ItemAt2(x int, y int) *QTableWidgetItem {
 	return newQTableWidgetItem(C.QTableWidget_itemAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
-func (this *QTableWidget) VisualItemRect(item *QTableWidgetItem) *QRect {
+func (this *QTableWidget) VisualItemRect(item *QTableWidgetItem) QRect {
 	defer runtime.KeepAlive(item)
-	_goptr := newQRect(C.QTableWidget_visualItemRect(this.h, item.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QTableWidget_visualItemRect(this.h, item.cPointer()))
 }
 
 func (this *QTableWidget) ItemPrototype() *QTableWidgetItem {
@@ -1548,9 +1540,7 @@ func (this *QTableWidget) ScrollDirtyRegion(dx int, dy int) {
 func (this *QTableWidget) DirtyRegionOffset() QPoint {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQPoint(C.QTableWidget_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QPoint](C.QTableWidget_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -1626,9 +1616,7 @@ func (this *QTableWidget) SetViewportMargins(left int, top int, right int, botto
 func (this *QTableWidget) ViewportMargins() QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQMargins(C.QTableWidget_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QMargins](C.QTableWidget_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -1974,13 +1962,12 @@ func miqt_exec_callback_QTableWidget_dropEvent(self *C.QTableWidget, cb C.intptr
 
 }
 
-func (this *QTableWidget) callVirtualBase_SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
+func (this *QTableWidget) callVirtualBase_SetRootIndex(index QModelIndex) {
 
-	C.QTableWidget_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
+	C.QTableWidget_virtualbase_setRootIndex(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 
 }
-func (this *QTableWidget) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
+func (this *QTableWidget) OnSetRootIndex(slot func(super func(index QModelIndex), index QModelIndex)) {
 	ok := C.QTableWidget_override_virtual_setRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1988,14 +1975,14 @@ func (this *QTableWidget) OnSetRootIndex(slot func(super func(index *QModelIndex
 }
 
 //export miqt_exec_callback_QTableWidget_setRootIndex
-func miqt_exec_callback_QTableWidget_setRootIndex(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex), index *QModelIndex))
+func miqt_exec_callback_QTableWidget_setRootIndex(self *C.QTableWidget, cb C.intptr_t, index C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex), index QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	gofunc((&QTableWidget{h: self}).callVirtualBase_SetRootIndex, slotval1)
 
@@ -2050,15 +2037,12 @@ func miqt_exec_callback_QTableWidget_doItemsLayout(self *C.QTableWidget, cb C.in
 
 }
 
-func (this *QTableWidget) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
-	defer runtime.KeepAlive(index)
+func (this *QTableWidget) callVirtualBase_VisualRect(index QModelIndex) QRect {
 
-	_goptr := newQRect(C.QTableWidget_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QTableWidget_virtualbase_visualRect(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QTableWidget) OnVisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
+func (this *QTableWidget) OnVisualRect(slot func(super func(index QModelIndex) QRect, index QModelIndex) QRect) {
 	ok := C.QTableWidget_override_virtual_visualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2066,29 +2050,27 @@ func (this *QTableWidget) OnVisualRect(slot func(super func(index *QModelIndex) 
 }
 
 //export miqt_exec_callback_QTableWidget_visualRect
-func miqt_exec_callback_QTableWidget_visualRect(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect)
+func miqt_exec_callback_QTableWidget_visualRect(self *C.QTableWidget, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) QRect, index QModelIndex) QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_VisualRect, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTableWidget_virtualreturncopy_QRect(virtualReturn.cPointer())
-
-}
-
-func (this *QTableWidget) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
-	defer runtime.KeepAlive(index)
-
-	C.QTableWidget_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
-func (this *QTableWidget) OnScrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
+
+func (this *QTableWidget) callVirtualBase_ScrollTo(index QModelIndex, hint QAbstractItemView__ScrollHint) {
+
+	C.QTableWidget_virtualbase_scrollTo(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(hint))
+
+}
+func (this *QTableWidget) OnScrollTo(slot func(super func(index QModelIndex, hint QAbstractItemView__ScrollHint), index QModelIndex, hint QAbstractItemView__ScrollHint)) {
 	ok := C.QTableWidget_override_virtual_scrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2096,14 +2078,14 @@ func (this *QTableWidget) OnScrollTo(slot func(super func(index *QModelIndex, hi
 }
 
 //export miqt_exec_callback_QTableWidget_scrollTo
-func miqt_exec_callback_QTableWidget_scrollTo(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex, hint C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint))
+func miqt_exec_callback_QTableWidget_scrollTo(self *C.QTableWidget, cb C.intptr_t, index C.struct_miqt_qmodelindex, hint C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, hint QAbstractItemView__ScrollHint), index QModelIndex, hint QAbstractItemView__ScrollHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := (QAbstractItemView__ScrollHint)(hint)
 
@@ -2111,15 +2093,12 @@ func miqt_exec_callback_QTableWidget_scrollTo(self *C.QTableWidget, cb C.intptr_
 
 }
 
-func (this *QTableWidget) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
-	defer runtime.KeepAlive(p)
+func (this *QTableWidget) callVirtualBase_IndexAt(p QPoint) QModelIndex {
 
-	_goptr := newQModelIndex(C.QTableWidget_virtualbase_indexAt(unsafe.Pointer(this.h), p.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QModelIndex](C.QTableWidget_virtualbase_indexAt(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 
 }
-func (this *QTableWidget) OnIndexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
+func (this *QTableWidget) OnIndexAt(slot func(super func(p QPoint) QModelIndex, p QPoint) QModelIndex) {
 	ok := C.QTableWidget_override_virtual_indexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2127,19 +2106,18 @@ func (this *QTableWidget) OnIndexAt(slot func(super func(p *QPoint) *QModelIndex
 }
 
 //export miqt_exec_callback_QTableWidget_indexAt
-func miqt_exec_callback_QTableWidget_indexAt(self *C.QTableWidget, cb C.intptr_t, p *C.QPoint) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex)
+func miqt_exec_callback_QTableWidget_indexAt(self *C.QTableWidget, cb C.intptr_t, p C.struct_miqt_qpoint) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p QPoint) QModelIndex, p QPoint) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPoint(p)
+	slotval1 := libmiqt.ValueCast[QPoint](p)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_IndexAt, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTableWidget_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
 
@@ -2302,14 +2280,12 @@ func miqt_exec_callback_QTableWidget_verticalOffset(self *C.QTableWidget, cb C.i
 
 }
 
-func (this *QTableWidget) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
+func (this *QTableWidget) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex {
 
-	_goptr := newQModelIndex(C.QTableWidget_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QModelIndex](C.QTableWidget_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 
 }
-func (this *QTableWidget) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
+func (this *QTableWidget) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex) {
 	ok := C.QTableWidget_override_virtual_moveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2317,8 +2293,8 @@ func (this *QTableWidget) OnMoveCursor(slot func(super func(cursorAction QAbstra
 }
 
 //export miqt_exec_callback_QTableWidget_moveCursor
-func miqt_exec_callback_QTableWidget_moveCursor(self *C.QTableWidget, cb C.intptr_t, cursorAction C.int, modifiers C.int) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex)
+func miqt_exec_callback_QTableWidget_moveCursor(self *C.QTableWidget, cb C.intptr_t, cursorAction C.int, modifiers C.int) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -2329,19 +2305,17 @@ func miqt_exec_callback_QTableWidget_moveCursor(self *C.QTableWidget, cb C.intpt
 	slotval2 := (KeyboardModifier)(modifiers)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_MoveCursor, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTableWidget_virtualreturncopy_QModelIndex(virtualReturn.cPointer())
-
-}
-
-func (this *QTableWidget) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
-	defer runtime.KeepAlive(rect)
-
-	C.QTableWidget_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
-func (this *QTableWidget) OnSetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
+
+func (this *QTableWidget) callVirtualBase_SetSelection(rect QRect, command QItemSelectionModel__SelectionFlag) {
+
+	C.QTableWidget_virtualbase_setSelection(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](rect), (C.int)(command))
+
+}
+func (this *QTableWidget) OnSetSelection(slot func(super func(rect QRect, command QItemSelectionModel__SelectionFlag), rect QRect, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QTableWidget_override_virtual_setSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2349,14 +2323,14 @@ func (this *QTableWidget) OnSetSelection(slot func(super func(rect *QRect, comma
 }
 
 //export miqt_exec_callback_QTableWidget_setSelection
-func miqt_exec_callback_QTableWidget_setSelection(self *C.QTableWidget, cb C.intptr_t, rect *C.QRect, command C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag))
+func miqt_exec_callback_QTableWidget_setSelection(self *C.QTableWidget, cb C.intptr_t, rect C.struct_miqt_qrect, command C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRect, command QItemSelectionModel__SelectionFlag), rect QRect, command QItemSelectionModel__SelectionFlag))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(rect)
+	slotval1 := libmiqt.ValueCast[QRect](rect)
 
 	slotval2 := (QItemSelectionModel__SelectionFlag)(command)
 
@@ -2400,11 +2374,9 @@ func (this *QTableWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
 
 	var _ma C.struct_miqt_array = C.QTableWidget_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQModelIndex(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QModelIndex](_outCast[i])
 	}
 	return _ret
 
@@ -2424,11 +2396,10 @@ func miqt_exec_callback_QTableWidget_selectedIndexes(self *C.QTableWidget, cb C.
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SelectedIndexes)
-	defer runtime.KeepAlive(virtualReturn)
-	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = C.QTableWidget_virtualreturncopy_QModelIndex(virtualReturn[i].cPointer())
+		virtualReturn_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn[i])
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -2459,14 +2430,12 @@ func miqt_exec_callback_QTableWidget_updateGeometries(self *C.QTableWidget, cb C
 
 }
 
-func (this *QTableWidget) callVirtualBase_ViewportSizeHint() *QSize {
+func (this *QTableWidget) callVirtualBase_ViewportSizeHint() QSize {
 
-	_goptr := newQSize(C.QTableWidget_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTableWidget_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTableWidget) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTableWidget) OnViewportSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTableWidget_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2474,16 +2443,15 @@ func (this *QTableWidget) OnViewportSizeHint(slot func(super func() *QSize) *QSi
 }
 
 //export miqt_exec_callback_QTableWidget_viewportSizeHint
-func miqt_exec_callback_QTableWidget_viewportSizeHint(self *C.QTableWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTableWidget_viewportSizeHint(self *C.QTableWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTableWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2595,13 +2563,12 @@ func miqt_exec_callback_QTableWidget_horizontalScrollbarAction(self *C.QTableWid
 
 }
 
-func (this *QTableWidget) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
-	defer runtime.KeepAlive(index)
+func (this *QTableWidget) callVirtualBase_IsIndexHidden(index QModelIndex) bool {
 
-	return (bool)(C.QTableWidget_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
+	return (bool)(C.QTableWidget_virtualbase_isIndexHidden(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QTableWidget) OnIsIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+func (this *QTableWidget) OnIsIndexHidden(slot func(super func(index QModelIndex) bool, index QModelIndex) bool) {
 	ok := C.QTableWidget_override_virtual_isIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2609,14 +2576,14 @@ func (this *QTableWidget) OnIsIndexHidden(slot func(super func(index *QModelInde
 }
 
 //export miqt_exec_callback_QTableWidget_isIndexHidden
-func miqt_exec_callback_QTableWidget_isIndexHidden(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) bool, index *QModelIndex) bool)
+func miqt_exec_callback_QTableWidget_isIndexHidden(self *C.QTableWidget, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) bool, index QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_IsIndexHidden, slotval1)
 
@@ -2654,14 +2621,12 @@ func miqt_exec_callback_QTableWidget_selectionChanged(self *C.QTableWidget, cb C
 
 }
 
-func (this *QTableWidget) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
-	defer runtime.KeepAlive(current)
-	defer runtime.KeepAlive(previous)
+func (this *QTableWidget) callVirtualBase_CurrentChanged(current QModelIndex, previous QModelIndex) {
 
-	C.QTableWidget_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
+	C.QTableWidget_virtualbase_currentChanged(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](current), libmiqt.ValueCast[C.struct_miqt_qmodelindex](previous))
 
 }
-func (this *QTableWidget) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
+func (this *QTableWidget) OnCurrentChanged(slot func(super func(current QModelIndex, previous QModelIndex), current QModelIndex, previous QModelIndex)) {
 	ok := C.QTableWidget_override_virtual_currentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2669,16 +2634,16 @@ func (this *QTableWidget) OnCurrentChanged(slot func(super func(current *QModelI
 }
 
 //export miqt_exec_callback_QTableWidget_currentChanged
-func miqt_exec_callback_QTableWidget_currentChanged(self *C.QTableWidget, cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex))
+func miqt_exec_callback_QTableWidget_currentChanged(self *C.QTableWidget, cb C.intptr_t, current C.struct_miqt_qmodelindex, previous C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(current QModelIndex, previous QModelIndex), current QModelIndex, previous QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(current)
+	slotval1 := libmiqt.ValueCast[QModelIndex](current)
 
-	slotval2 := newQModelIndex(previous)
+	slotval2 := libmiqt.ValueCast[QModelIndex](previous)
 
 	gofunc((&QTableWidget{h: self}).callVirtualBase_CurrentChanged, slotval1, slotval2)
 
@@ -2717,13 +2682,12 @@ func miqt_exec_callback_QTableWidget_keyboardSearch(self *C.QTableWidget, cb C.i
 
 }
 
-func (this *QTableWidget) callVirtualBase_ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
-	defer runtime.KeepAlive(index)
+func (this *QTableWidget) callVirtualBase_ItemDelegateForIndex(index QModelIndex) *QAbstractItemDelegate {
 
-	return newQAbstractItemDelegate(C.QTableWidget_virtualbase_itemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
+	return newQAbstractItemDelegate(C.QTableWidget_virtualbase_itemDelegateForIndex(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QTableWidget) OnItemDelegateForIndex(slot func(super func(index *QModelIndex) *QAbstractItemDelegate, index *QModelIndex) *QAbstractItemDelegate) {
+func (this *QTableWidget) OnItemDelegateForIndex(slot func(super func(index QModelIndex) *QAbstractItemDelegate, index QModelIndex) *QAbstractItemDelegate) {
 	ok := C.QTableWidget_override_virtual_itemDelegateForIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2731,14 +2695,14 @@ func (this *QTableWidget) OnItemDelegateForIndex(slot func(super func(index *QMo
 }
 
 //export miqt_exec_callback_QTableWidget_itemDelegateForIndex
-func miqt_exec_callback_QTableWidget_itemDelegateForIndex(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex) *C.QAbstractItemDelegate {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QAbstractItemDelegate, index *QModelIndex) *QAbstractItemDelegate)
+func miqt_exec_callback_QTableWidget_itemDelegateForIndex(self *C.QTableWidget, cb C.intptr_t, index C.struct_miqt_qmodelindex) *C.QAbstractItemDelegate {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex) *QAbstractItemDelegate, index QModelIndex) *QAbstractItemDelegate)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_ItemDelegateForIndex, slotval1)
 
@@ -2823,9 +2787,7 @@ func miqt_exec_callback_QTableWidget_selectAll(self *C.QTableWidget, cb C.intptr
 
 }
 
-func (this *QTableWidget) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	defer runtime.KeepAlive(topLeft)
-	defer runtime.KeepAlive(bottomRight)
+func (this *QTableWidget) callVirtualBase_DataChanged(topLeft QModelIndex, bottomRight QModelIndex, roles []int) {
 	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray_ptr))
 	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
@@ -2834,10 +2796,10 @@ func (this *QTableWidget) callVirtualBase_DataChanged(topLeft *QModelIndex, bott
 	}
 	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray_ptr)}
 
-	C.QTableWidget_virtualbase_dataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
+	C.QTableWidget_virtualbase_dataChanged(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](topLeft), libmiqt.ValueCast[C.struct_miqt_qmodelindex](bottomRight), roles_ma)
 
 }
-func (this *QTableWidget) OnDataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
+func (this *QTableWidget) OnDataChanged(slot func(super func(topLeft QModelIndex, bottomRight QModelIndex, roles []int), topLeft QModelIndex, bottomRight QModelIndex, roles []int)) {
 	ok := C.QTableWidget_override_virtual_dataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2845,16 +2807,16 @@ func (this *QTableWidget) OnDataChanged(slot func(super func(topLeft *QModelInde
 }
 
 //export miqt_exec_callback_QTableWidget_dataChanged
-func miqt_exec_callback_QTableWidget_dataChanged(self *C.QTableWidget, cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles C.struct_miqt_array) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int))
+func miqt_exec_callback_QTableWidget_dataChanged(self *C.QTableWidget, cb C.intptr_t, topLeft C.struct_miqt_qmodelindex, bottomRight C.struct_miqt_qmodelindex, roles C.struct_miqt_array) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(topLeft QModelIndex, bottomRight QModelIndex, roles []int), topLeft QModelIndex, bottomRight QModelIndex, roles []int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(topLeft)
+	slotval1 := libmiqt.ValueCast[QModelIndex](topLeft)
 
-	slotval2 := newQModelIndex(bottomRight)
+	slotval2 := libmiqt.ValueCast[QModelIndex](bottomRight)
 
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
@@ -2868,13 +2830,12 @@ func miqt_exec_callback_QTableWidget_dataChanged(self *C.QTableWidget, cb C.intp
 
 }
 
-func (this *QTableWidget) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(parent)
+func (this *QTableWidget) callVirtualBase_RowsInserted(parent QModelIndex, start int, end int) {
 
-	C.QTableWidget_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+	C.QTableWidget_virtualbase_rowsInserted(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(start), (C.int)(end))
 
 }
-func (this *QTableWidget) OnRowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QTableWidget) OnRowsInserted(slot func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int)) {
 	ok := C.QTableWidget_override_virtual_rowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2882,14 +2843,14 @@ func (this *QTableWidget) OnRowsInserted(slot func(super func(parent *QModelInde
 }
 
 //export miqt_exec_callback_QTableWidget_rowsInserted
-func miqt_exec_callback_QTableWidget_rowsInserted(self *C.QTableWidget, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
+func miqt_exec_callback_QTableWidget_rowsInserted(self *C.QTableWidget, cb C.intptr_t, parent C.struct_miqt_qmodelindex, start C.int, end C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	slotval2 := (int)(start)
 
@@ -2899,13 +2860,12 @@ func miqt_exec_callback_QTableWidget_rowsInserted(self *C.QTableWidget, cb C.int
 
 }
 
-func (this *QTableWidget) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
-	defer runtime.KeepAlive(parent)
+func (this *QTableWidget) callVirtualBase_RowsAboutToBeRemoved(parent QModelIndex, start int, end int) {
 
-	C.QTableWidget_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+	C.QTableWidget_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(start), (C.int)(end))
 
 }
-func (this *QTableWidget) OnRowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QTableWidget) OnRowsAboutToBeRemoved(slot func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int)) {
 	ok := C.QTableWidget_override_virtual_rowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2913,14 +2873,14 @@ func (this *QTableWidget) OnRowsAboutToBeRemoved(slot func(super func(parent *QM
 }
 
 //export miqt_exec_callback_QTableWidget_rowsAboutToBeRemoved
-func miqt_exec_callback_QTableWidget_rowsAboutToBeRemoved(self *C.QTableWidget, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
+func miqt_exec_callback_QTableWidget_rowsAboutToBeRemoved(self *C.QTableWidget, cb C.intptr_t, parent C.struct_miqt_qmodelindex, start C.int, end C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent QModelIndex, start int, end int), parent QModelIndex, start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(parent)
+	slotval1 := libmiqt.ValueCast[QModelIndex](parent)
 
 	slotval2 := (int)(start)
 
@@ -3108,14 +3068,13 @@ func miqt_exec_callback_QTableWidget_editorDestroyed(self *C.QTableWidget, cb C.
 
 }
 
-func (this *QTableWidget) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
-	defer runtime.KeepAlive(index)
+func (this *QTableWidget) callVirtualBase_Edit2(index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
 	defer runtime.KeepAlive(event)
 
-	return (bool)(C.QTableWidget_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
+	return (bool)(C.QTableWidget_virtualbase_edit2(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(trigger), event.cPointer()))
 
 }
-func (this *QTableWidget) OnEdit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
+func (this *QTableWidget) OnEdit2(slot func(super func(index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
 	ok := C.QTableWidget_override_virtual_edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3123,14 +3082,14 @@ func (this *QTableWidget) OnEdit2(slot func(super func(index *QModelIndex, trigg
 }
 
 //export miqt_exec_callback_QTableWidget_edit2
-func miqt_exec_callback_QTableWidget_edit2(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex, trigger C.int, event *C.QEvent) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool)
+func miqt_exec_callback_QTableWidget_edit2(self *C.QTableWidget, cb C.intptr_t, index C.struct_miqt_qmodelindex, trigger C.int, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := (QAbstractItemView__EditTrigger)(trigger)
 
@@ -3142,14 +3101,13 @@ func miqt_exec_callback_QTableWidget_edit2(self *C.QTableWidget, cb C.intptr_t, 
 
 }
 
-func (this *QTableWidget) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
-	defer runtime.KeepAlive(index)
+func (this *QTableWidget) callVirtualBase_SelectionCommand(index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
 	defer runtime.KeepAlive(event)
 
-	return (QItemSelectionModel__SelectionFlag)(C.QTableWidget_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
+	return (QItemSelectionModel__SelectionFlag)(C.QTableWidget_virtualbase_selectionCommand(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), event.cPointer()))
 
 }
-func (this *QTableWidget) OnSelectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
+func (this *QTableWidget) OnSelectionCommand(slot func(super func(index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
 	ok := C.QTableWidget_override_virtual_selectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3157,14 +3115,14 @@ func (this *QTableWidget) OnSelectionCommand(slot func(super func(index *QModelI
 }
 
 //export miqt_exec_callback_QTableWidget_selectionCommand
-func miqt_exec_callback_QTableWidget_selectionCommand(self *C.QTableWidget, cb C.intptr_t, index *C.QModelIndex, event *C.QEvent) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag)
+func miqt_exec_callback_QTableWidget_selectionCommand(self *C.QTableWidget, cb C.intptr_t, index C.struct_miqt_qmodelindex, event *C.QEvent) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQModelIndex(index)
+	slotval1 := libmiqt.ValueCast[QModelIndex](index)
 
 	slotval2 := newQEvent(event)
 
@@ -3612,14 +3570,12 @@ func miqt_exec_callback_QTableWidget_eventFilter(self *C.QTableWidget, cb C.intp
 
 }
 
-func (this *QTableWidget) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QTableWidget) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QTableWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QTableWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QTableWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTableWidget) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTableWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3627,27 +3583,24 @@ func (this *QTableWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QSiz
 }
 
 //export miqt_exec_callback_QTableWidget_minimumSizeHint
-func miqt_exec_callback_QTableWidget_minimumSizeHint(self *C.QTableWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTableWidget_minimumSizeHint(self *C.QTableWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTableWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QTableWidget) callVirtualBase_SizeHint() *QSize {
-
-	_goptr := newQSize(C.QTableWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QTableWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QTableWidget) callVirtualBase_SizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QTableWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QTableWidget) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QTableWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3655,16 +3608,15 @@ func (this *QTableWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QTableWidget_sizeHint
-func miqt_exec_callback_QTableWidget_sizeHint(self *C.QTableWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QTableWidget_sizeHint(self *C.QTableWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QTableWidget{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QTableWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -4272,7 +4224,6 @@ func miqt_exec_callback_QTableWidget_initPainter(self *C.QTableWidget, cb C.intp
 }
 
 func (this *QTableWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QTableWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

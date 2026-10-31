@@ -42,10 +42,10 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QwtThermo_sizeHint(const QwtThermo*, intptr_t);
-QSize* miqt_exec_callback_QwtThermo_minimumSizeHint(const QwtThermo*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtThermo_sizeHint(const QwtThermo*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtThermo_minimumSizeHint(const QwtThermo*, intptr_t);
 void miqt_exec_callback_QwtThermo_setValue(QwtThermo*, intptr_t, double);
-void miqt_exec_callback_QwtThermo_drawLiquid(const QwtThermo*, intptr_t, QPainter*, QRect*);
+void miqt_exec_callback_QwtThermo_drawLiquid(const QwtThermo*, intptr_t, QPainter*, struct miqt_qrect);
 void miqt_exec_callback_QwtThermo_scaleChange(QwtThermo*, intptr_t);
 void miqt_exec_callback_QwtThermo_paintEvent(QwtThermo*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtThermo_resizeEvent(QwtThermo*, intptr_t, QResizeEvent*);
@@ -113,13 +113,11 @@ public:
 			return QwtThermo::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtThermo_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtThermo_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtThermo_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtThermo_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -130,13 +128,11 @@ public:
 			return QwtThermo::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtThermo_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtThermo_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtThermo_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtThermo_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setValue = 0;
@@ -166,14 +162,12 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QRect& param2_ret = param2;
-		// Cast returned reference into pointer
-		QRect* sigval2 = const_cast<QRect*>(&param2_ret);
+		struct miqt_qrect sigval2 = miqt_to_cabi<struct miqt_qrect>(param2);
 		miqt_exec_callback_QwtThermo_drawLiquid(this, handle__drawLiquid, sigval1, sigval2);
 
 	}
 
-	friend void QwtThermo_virtualbase_drawLiquid(const void* self, QPainter* param1, QRect* param2);
+	friend void QwtThermo_virtualbase_drawLiquid(const void* self, QPainter* param1, struct miqt_qrect param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scaleChange = 0;
@@ -958,9 +952,9 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend QwtScaleDraw* QwtThermo_protectedbase_scaleDraw2(bool* _dynamic_cast_ok, void* self);
-	friend QRect* QwtThermo_protectedbase_pipeRect(bool* _dynamic_cast_ok, const void* self);
-	friend QRect* QwtThermo_protectedbase_fillRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
-	friend QRect* QwtThermo_protectedbase_alarmRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
+	friend struct miqt_qrect QwtThermo_protectedbase_pipeRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrect QwtThermo_protectedbase_fillRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1);
+	friend struct miqt_qrect QwtThermo_protectedbase_alarmRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1);
 	friend void QwtThermo_protectedbase_rescale(bool* _dynamic_cast_ok, void* self, double lowerBound, double upperBound, double stepSize);
 	friend void QwtThermo_protectedbase_setAbstractScaleDraw(bool* _dynamic_cast_ok, void* self, QwtAbstractScaleDraw* abstractScaleDraw);
 	friend QwtAbstractScaleDraw* QwtThermo_protectedbase_abstractScaleDraw(bool* _dynamic_cast_ok, const void* self);
@@ -1133,12 +1127,12 @@ double QwtThermo_value(const QwtThermo* self) {
 	return self->value();
 }
 
-QSize* QwtThermo_sizeHint(const QwtThermo* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtThermo_sizeHint(const QwtThermo* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QwtThermo_minimumSizeHint(const QwtThermo* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QwtThermo_minimumSizeHint(const QwtThermo* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QwtThermo_setScaleDraw(QwtThermo* self, QwtScaleDraw* scaleDraw) {
@@ -1207,8 +1201,8 @@ bool QwtThermo_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtThermo_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtThermo*>(self)->QwtThermo::sizeHint());
+struct miqt_qsize QwtThermo_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtThermo*>(self)->QwtThermo::sizeHint());
 }
 
 bool QwtThermo_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1221,8 +1215,8 @@ bool QwtThermo_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtThermo_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtThermo*>(self)->QwtThermo::minimumSizeHint());
+struct miqt_qsize QwtThermo_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtThermo*>(self)->QwtThermo::minimumSizeHint());
 }
 
 bool QwtThermo_override_virtual_setValue(void* self, intptr_t slot) {
@@ -1249,8 +1243,8 @@ bool QwtThermo_override_virtual_drawLiquid(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtThermo_virtualbase_drawLiquid(const void* self, QPainter* param1, QRect* param2) {
-	static_cast<const MiqtVirtualQwtThermo*>(self)->QwtThermo::drawLiquid(param1, *param2);
+void QwtThermo_virtualbase_drawLiquid(const void* self, QPainter* param1, struct miqt_qrect param2) {
+	static_cast<const MiqtVirtualQwtThermo*>(self)->QwtThermo::drawLiquid(param1, miqt_from_cabi<QRect>(param2));
 }
 
 bool QwtThermo_override_virtual_scaleChange(void* self, intptr_t slot) {
@@ -1898,10 +1892,6 @@ void QwtThermo_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtThermo*>(self)->QwtThermo::disconnectNotify(*signal);
 }
 
-QSize* QwtThermo_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QwtThermo_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -1917,37 +1907,37 @@ QwtScaleDraw* QwtThermo_protectedbase_scaleDraw2(bool* _dynamic_cast_ok, void* s
 	return self_cast->scaleDraw();
 }
 
-QRect* QwtThermo_protectedbase_pipeRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrect QwtThermo_protectedbase_pipeRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQwtThermo* self_cast = dynamic_cast<MiqtVirtualQwtThermo*>( (QwtThermo*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->pipeRect());
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->pipeRect());
 }
 
-QRect* QwtThermo_protectedbase_fillRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
+struct miqt_qrect QwtThermo_protectedbase_fillRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1) {
 	MiqtVirtualQwtThermo* self_cast = dynamic_cast<MiqtVirtualQwtThermo*>( (QwtThermo*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->fillRect(*param1));
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->fillRect(miqt_from_cabi<QRect>(param1)));
 }
 
-QRect* QwtThermo_protectedbase_alarmRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
+struct miqt_qrect QwtThermo_protectedbase_alarmRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1) {
 	MiqtVirtualQwtThermo* self_cast = dynamic_cast<MiqtVirtualQwtThermo*>( (QwtThermo*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->alarmRect(*param1));
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->alarmRect(miqt_from_cabi<QRect>(param1)));
 }
 
 void QwtThermo_protectedbase_rescale(bool* _dynamic_cast_ok, void* self, double lowerBound, double upperBound, double stepSize) {

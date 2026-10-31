@@ -231,12 +231,12 @@ void QSpatialSound_setAutoPlay(QSpatialSound* self, bool autoPlay) {
 	self->setAutoPlay(autoPlay);
 }
 
-void QSpatialSound_setPosition(QSpatialSound* self, QVector3D* pos) {
-	self->setPosition(*pos);
+void QSpatialSound_setPosition(QSpatialSound* self, struct miqt_qvector3d pos) {
+	self->setPosition(miqt_from_cabi<QVector3D>(pos));
 }
 
-QVector3D* QSpatialSound_position(const QSpatialSound* self) {
-	return new QVector3D(self->position());
+struct miqt_qvector3d QSpatialSound_position(const QSpatialSound* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->position());
 }
 
 void QSpatialSound_setRotation(QSpatialSound* self, QQuaternion* q) {

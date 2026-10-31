@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -111,10 +112,9 @@ func NewQVideoFrame() *QVideoFrame {
 }
 
 // NewQVideoFrame2 constructs a new QVideoFrame object.
-func NewQVideoFrame2(bytes int, size *qt.QSize, bytesPerLine int, format QVideoFrame__PixelFormat) *QVideoFrame {
-	defer runtime.KeepAlive(size)
+func NewQVideoFrame2(bytes int, size qt.QSize, bytesPerLine int, format QVideoFrame__PixelFormat) *QVideoFrame {
 
-	return newQVideoFrame(C.QVideoFrame_new2((C.int)(bytes), (*C.QSize)(size.UnsafePointer()), (C.int)(bytesPerLine), (C.int)(format)))
+	return newQVideoFrame(C.QVideoFrame_new2((C.int)(bytes), libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(bytesPerLine), (C.int)(format)))
 }
 
 // NewQVideoFrame3 constructs a new QVideoFrame object.
@@ -164,11 +164,9 @@ func (this *QVideoFrame) HandleType() QAbstractVideoBuffer__HandleType {
 	return (QAbstractVideoBuffer__HandleType)(C.QVideoFrame_handleType(this.h))
 }
 
-func (this *QVideoFrame) Size() *qt.QSize {
+func (this *QVideoFrame) Size() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrame_size(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QVideoFrame_size(this.h))
 }
 
 func (this *QVideoFrame) Width() int {

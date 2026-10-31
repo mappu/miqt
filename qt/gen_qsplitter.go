@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -158,16 +159,12 @@ func (this *QSplitter) Refresh() {
 	C.QSplitter_refresh(this.h)
 }
 
-func (this *QSplitter) SizeHint() *QSize {
-	_goptr := newQSize(C.QSplitter_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QSplitter) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QSplitter_sizeHint(this.h))
 }
 
-func (this *QSplitter) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QSplitter_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QSplitter) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QSplitter_minimumSizeHint(this.h))
 }
 
 func (this *QSplitter) Sizes() []int {
@@ -498,14 +495,12 @@ func (this *QSplitter) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QSplitter) callVirtualBase_SizeHint() *QSize {
+func (this *QSplitter) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QSplitter_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QSplitter_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitter) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QSplitter) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QSplitter_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -513,27 +508,24 @@ func (this *QSplitter) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QSplitter_sizeHint
-func miqt_exec_callback_QSplitter_sizeHint(self *C.QSplitter, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QSplitter_sizeHint(self *C.QSplitter, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QSplitter{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSplitter_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QSplitter) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QSplitter_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QSplitter) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QSplitter) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QSplitter_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QSplitter) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QSplitter_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -541,16 +533,15 @@ func (this *QSplitter) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QSplitter_minimumSizeHint
-func miqt_exec_callback_QSplitter_minimumSizeHint(self *C.QSplitter, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QSplitter_minimumSizeHint(self *C.QSplitter, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QSplitter{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSplitter_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1537,7 +1528,6 @@ func miqt_exec_callback_QSplitter_initPainter(self *C.QSplitter, cb C.intptr_t, 
 }
 
 func (this *QSplitter) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QSplitter_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -1932,10 +1922,8 @@ func (this *QSplitterHandle) Splitter() *QSplitter {
 	return newQSplitter(C.QSplitterHandle_splitter(this.h))
 }
 
-func (this *QSplitterHandle) SizeHint() *QSize {
-	_goptr := newQSize(C.QSplitterHandle_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QSplitterHandle) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QSplitterHandle_sizeHint(this.h))
 }
 
 func QSplitterHandle_Tr2(s string, c string) string {
@@ -2131,14 +2119,12 @@ func (this *QSplitterHandle) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QSplitterHandle) callVirtualBase_SizeHint() *QSize {
+func (this *QSplitterHandle) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QSplitterHandle_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QSplitterHandle_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitterHandle) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QSplitterHandle) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QSplitterHandle_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2146,16 +2132,15 @@ func (this *QSplitterHandle) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QSplitterHandle_sizeHint
-func miqt_exec_callback_QSplitterHandle_sizeHint(self *C.QSplitterHandle, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QSplitterHandle_sizeHint(self *C.QSplitterHandle, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QSplitterHandle{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSplitterHandle_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2374,14 +2359,12 @@ func miqt_exec_callback_QSplitterHandle_setVisible(self *C.QSplitterHandle, cb C
 
 }
 
-func (this *QSplitterHandle) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QSplitterHandle) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QSplitterHandle_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QSplitterHandle_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitterHandle) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QSplitterHandle) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QSplitterHandle_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2389,16 +2372,15 @@ func (this *QSplitterHandle) OnMinimumSizeHint(slot func(super func() *QSize) *Q
 }
 
 //export miqt_exec_callback_QSplitterHandle_minimumSizeHint
-func miqt_exec_callback_QSplitterHandle_minimumSizeHint(self *C.QSplitterHandle, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QSplitterHandle_minimumSizeHint(self *C.QSplitterHandle, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QSplitterHandle{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSplitterHandle_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -3118,7 +3100,6 @@ func miqt_exec_callback_QSplitterHandle_initPainter(self *C.QSplitterHandle, cb 
 }
 
 func (this *QSplitterHandle) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QSplitterHandle_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

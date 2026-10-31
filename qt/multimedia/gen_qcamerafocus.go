@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -90,10 +91,9 @@ func NewQCameraFocusZone() *QCameraFocusZone {
 }
 
 // NewQCameraFocusZone2 constructs a new QCameraFocusZone object.
-func NewQCameraFocusZone2(area *qt.QRectF) *QCameraFocusZone {
-	defer runtime.KeepAlive(area)
+func NewQCameraFocusZone2(area qt.QRectF) *QCameraFocusZone {
 
-	return newQCameraFocusZone(C.QCameraFocusZone_new2((*C.QRectF)(area.UnsafePointer())))
+	return newQCameraFocusZone(C.QCameraFocusZone_new2(libmiqt.ValueCast[C.struct_miqt_qrectf](area)))
 }
 
 // NewQCameraFocusZone3 constructs a new QCameraFocusZone object.
@@ -104,10 +104,9 @@ func NewQCameraFocusZone3(other *QCameraFocusZone) *QCameraFocusZone {
 }
 
 // NewQCameraFocusZone4 constructs a new QCameraFocusZone object.
-func NewQCameraFocusZone4(area *qt.QRectF, status QCameraFocusZone__FocusZoneStatus) *QCameraFocusZone {
-	defer runtime.KeepAlive(area)
+func NewQCameraFocusZone4(area qt.QRectF, status QCameraFocusZone__FocusZoneStatus) *QCameraFocusZone {
 
-	return newQCameraFocusZone(C.QCameraFocusZone_new4((*C.QRectF)(area.UnsafePointer()), (C.int)(status)))
+	return newQCameraFocusZone(C.QCameraFocusZone_new4(libmiqt.ValueCast[C.struct_miqt_qrectf](area), (C.int)(status)))
 }
 
 func (this *QCameraFocusZone) OperatorAssign(other *QCameraFocusZone) {
@@ -133,11 +132,9 @@ func (this *QCameraFocusZone) IsValid() bool {
 	return (bool)(C.QCameraFocusZone_isValid(this.h))
 }
 
-func (this *QCameraFocusZone) Area() *qt.QRectF {
+func (this *QCameraFocusZone) Area() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QCameraFocusZone_area(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QCameraFocusZone_area(this.h))
 }
 
 func (this *QCameraFocusZone) Status() QCameraFocusZone__FocusZoneStatus {
@@ -268,15 +265,12 @@ func (this *QCameraFocus) IsFocusPointModeSupported(param1 QCameraFocus__FocusPo
 	return (bool)(C.QCameraFocus_isFocusPointModeSupported(this.h, (C.int)(param1)))
 }
 
-func (this *QCameraFocus) CustomFocusPoint() *qt.QPointF {
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraFocus_customFocusPoint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCameraFocus) CustomFocusPoint() qt.QPointF {
+	return libmiqt.ValueCast[qt.QPointF](C.QCameraFocus_customFocusPoint(this.h))
 }
 
-func (this *QCameraFocus) SetCustomFocusPoint(point *qt.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QCameraFocus_setCustomFocusPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QCameraFocus) SetCustomFocusPoint(point qt.QPointF) {
+	C.QCameraFocus_setCustomFocusPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
 
 func (this *QCameraFocus) FocusZones() []QCameraFocusZone {

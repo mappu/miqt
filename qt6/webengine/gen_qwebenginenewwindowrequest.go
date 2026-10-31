@@ -9,6 +9,7 @@ package webengine
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
@@ -95,10 +96,8 @@ func (this *QWebEngineNewWindowRequest) RequestedUrl() *qt6.QUrl {
 	return _goptr
 }
 
-func (this *QWebEngineNewWindowRequest) RequestedGeometry() *qt6.QRect {
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QWebEngineNewWindowRequest_requestedGeometry(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebEngineNewWindowRequest) RequestedGeometry() qt6.QRect {
+	return libmiqt.ValueCast[qt6.QRect](C.QWebEngineNewWindowRequest_requestedGeometry(this.h))
 }
 
 func (this *QWebEngineNewWindowRequest) IsUserInitiated() bool {

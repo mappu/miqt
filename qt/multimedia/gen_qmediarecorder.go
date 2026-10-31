@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -277,11 +278,9 @@ func (this *QMediaRecorder) VideoCodecDescription(codecName string) string {
 func (this *QMediaRecorder) SupportedResolutions() []qt.QSize {
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutions(this.h)
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qsize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt.QSize](_outCast[i])
 	}
 	return _ret
 }
@@ -735,11 +734,9 @@ func (this *QMediaRecorder) SupportedResolutionsWithSettings(settings *QVideoEnc
 	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutionsWithSettings(this.h, settings.cPointer())
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qsize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt.QSize](_outCast[i])
 	}
 	return _ret
 }
@@ -748,11 +745,9 @@ func (this *QMediaRecorder) SupportedResolutions2(settings *QVideoEncoderSetting
 	defer runtime.KeepAlive(settings)
 	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutions2(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qsize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt.QSize](_outCast[i])
 	}
 	return _ret
 }

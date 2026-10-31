@@ -167,20 +167,20 @@ QVariant* QVariant_new24(struct miqt_map /* of struct miqt_string to QVariant* *
 	return new (std::nothrow) QVariant(hash_QMap);
 }
 
-QVariant* QVariant_new25(QSize* size) {
-	return new (std::nothrow) QVariant(*size);
+QVariant* QVariant_new25(struct miqt_qsize size) {
+	return new (std::nothrow) QVariant(miqt_from_cabi<QSize>(size));
 }
 
-QVariant* QVariant_new26(QSizeF* size) {
-	return new (std::nothrow) QVariant(*size);
+QVariant* QVariant_new26(struct miqt_qsizef size) {
+	return new (std::nothrow) QVariant(miqt_from_cabi<QSizeF>(size));
 }
 
-QVariant* QVariant_new27(QPoint* pt) {
-	return new (std::nothrow) QVariant(*pt);
+QVariant* QVariant_new27(struct miqt_qpoint pt) {
+	return new (std::nothrow) QVariant(miqt_from_cabi<QPoint>(pt));
 }
 
-QVariant* QVariant_new28(QPointF* pt) {
-	return new (std::nothrow) QVariant(*pt);
+QVariant* QVariant_new28(struct miqt_qpointf pt) {
+	return new (std::nothrow) QVariant(miqt_from_cabi<QPointF>(pt));
 }
 
 QVariant* QVariant_new29(QLine* line) {
@@ -191,12 +191,12 @@ QVariant* QVariant_new30(QLineF* line) {
 	return new (std::nothrow) QVariant(*line);
 }
 
-QVariant* QVariant_new31(QRect* rect) {
-	return new (std::nothrow) QVariant(*rect);
+QVariant* QVariant_new31(struct miqt_qrect rect) {
+	return new (std::nothrow) QVariant(miqt_from_cabi<QRect>(rect));
 }
 
-QVariant* QVariant_new32(QRectF* rect) {
-	return new (std::nothrow) QVariant(*rect);
+QVariant* QVariant_new32(struct miqt_qrectf rect) {
+	return new (std::nothrow) QVariant(miqt_from_cabi<QRectF>(rect));
 }
 
 QVariant* QVariant_new33(QLocale* locale) {
@@ -239,8 +239,8 @@ QVariant* QVariant_new42(QJsonDocument* jsonDocument) {
 	return new (std::nothrow) QVariant(*jsonDocument);
 }
 
-QVariant* QVariant_new43(QModelIndex* modelIndex) {
-	return new (std::nothrow) QVariant(*modelIndex);
+QVariant* QVariant_new43(struct miqt_qmodelindex modelIndex) {
+	return new (std::nothrow) QVariant(miqt_from_cabi<QModelIndex>(modelIndex));
 }
 
 QVariant* QVariant_new44(QPersistentModelIndex* modelIndex) {
@@ -465,24 +465,24 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_toHash(const 
 	return _out;
 }
 
-QPoint* QVariant_toPoint(const QVariant* self) {
-	return new QPoint(self->toPoint());
+struct miqt_qpoint QVariant_toPoint(const QVariant* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->toPoint());
 }
 
-QPointF* QVariant_toPointF(const QVariant* self) {
-	return new QPointF(self->toPointF());
+struct miqt_qpointf QVariant_toPointF(const QVariant* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->toPointF());
 }
 
-QRect* QVariant_toRect(const QVariant* self) {
-	return new QRect(self->toRect());
+struct miqt_qrect QVariant_toRect(const QVariant* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->toRect());
 }
 
-QSize* QVariant_toSize(const QVariant* self) {
-	return new QSize(self->toSize());
+struct miqt_qsize QVariant_toSize(const QVariant* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->toSize());
 }
 
-QSizeF* QVariant_toSizeF(const QVariant* self) {
-	return new QSizeF(self->toSizeF());
+struct miqt_qsizef QVariant_toSizeF(const QVariant* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->toSizeF());
 }
 
 QLine* QVariant_toLine(const QVariant* self) {
@@ -493,8 +493,8 @@ QLineF* QVariant_toLineF(const QVariant* self) {
 	return new QLineF(self->toLineF());
 }
 
-QRectF* QVariant_toRectF(const QVariant* self) {
-	return new QRectF(self->toRectF());
+struct miqt_qrectf QVariant_toRectF(const QVariant* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->toRectF());
 }
 
 QLocale* QVariant_toLocale(const QVariant* self) {
@@ -537,8 +537,8 @@ QJsonDocument* QVariant_toJsonDocument(const QVariant* self) {
 	return new QJsonDocument(self->toJsonDocument());
 }
 
-QModelIndex* QVariant_toModelIndex(const QVariant* self) {
-	return new QModelIndex(self->toModelIndex());
+struct miqt_qmodelindex QVariant_toModelIndex(const QVariant* self) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->toModelIndex());
 }
 
 QPersistentModelIndex* QVariant_toPersistentModelIndex(const QVariant* self) {

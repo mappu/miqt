@@ -9,6 +9,7 @@ package printsupport
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -497,14 +498,12 @@ func miqt_exec_callback_QPrintPreviewWidget_devType(self *C.QPrintPreviewWidget,
 
 }
 
-func (this *QPrintPreviewWidget) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QPrintPreviewWidget) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPrintPreviewWidget_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QPrintPreviewWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QPrintPreviewWidget) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QPrintPreviewWidget) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QPrintPreviewWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -512,27 +511,24 @@ func (this *QPrintPreviewWidget) OnSizeHint(slot func(super func() *qt.QSize) *q
 }
 
 //export miqt_exec_callback_QPrintPreviewWidget_sizeHint
-func miqt_exec_callback_QPrintPreviewWidget_sizeHint(self *C.QPrintPreviewWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QPrintPreviewWidget_sizeHint(self *C.QPrintPreviewWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPrintPreviewWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QPrintPreviewWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPrintPreviewWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QPrintPreviewWidget) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QPrintPreviewWidget) callVirtualBase_MinimumSizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QPrintPreviewWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QPrintPreviewWidget) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QPrintPreviewWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -540,16 +536,15 @@ func (this *QPrintPreviewWidget) OnMinimumSizeHint(slot func(super func() *qt.QS
 }
 
 //export miqt_exec_callback_QPrintPreviewWidget_minimumSizeHint
-func miqt_exec_callback_QPrintPreviewWidget_minimumSizeHint(self *C.QPrintPreviewWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QPrintPreviewWidget_minimumSizeHint(self *C.QPrintPreviewWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPrintPreviewWidget{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPrintPreviewWidget_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1433,7 +1428,6 @@ func miqt_exec_callback_QPrintPreviewWidget_initPainter(self *C.QPrintPreviewWid
 }
 
 func (this *QPrintPreviewWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QPrintPreviewWidget_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

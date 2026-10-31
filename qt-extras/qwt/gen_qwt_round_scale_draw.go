@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -80,17 +81,14 @@ func (this *QwtRoundScaleDraw) MoveCenter(x float64, y float64) {
 	C.QwtRoundScaleDraw_moveCenter(this.h, (C.double)(x), (C.double)(y))
 }
 
-func (this *QwtRoundScaleDraw) MoveCenterWithQPointF(param1 *qt.QPointF) {
+func (this *QwtRoundScaleDraw) MoveCenterWithQPointF(param1 qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtRoundScaleDraw_moveCenterWithQPointF(this.h, (*C.QPointF)(param1.UnsafePointer()))
+	C.QwtRoundScaleDraw_moveCenterWithQPointF(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](param1))
 }
 
-func (this *QwtRoundScaleDraw) Center() *qt.QPointF {
+func (this *QwtRoundScaleDraw) Center() qt.QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtRoundScaleDraw_center(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPointF](C.QwtRoundScaleDraw_center(this.h))
 }
 
 func (this *QwtRoundScaleDraw) SetAngleRange(angle1 float64, angle2 float64) {

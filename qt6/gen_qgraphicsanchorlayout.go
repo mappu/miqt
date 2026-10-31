@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -255,10 +256,9 @@ func (this *QGraphicsAnchorLayout) RemoveAt(index int) {
 	C.QGraphicsAnchorLayout_removeAt(this.h, (C.int)(index))
 }
 
-func (this *QGraphicsAnchorLayout) SetGeometry(rect *QRectF) {
+func (this *QGraphicsAnchorLayout) SetGeometry(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsAnchorLayout_setGeometry(this.h, rect.cPointer())
+	C.QGraphicsAnchorLayout_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsAnchorLayout) Count() int {
@@ -351,14 +351,13 @@ func miqt_exec_callback_QGraphicsAnchorLayout_removeAt(self *C.QGraphicsAnchorLa
 
 }
 
-func (this *QGraphicsAnchorLayout) callVirtualBase_SetGeometry(rect *QRectF) {
+func (this *QGraphicsAnchorLayout) callVirtualBase_SetGeometry(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
 
-	C.QGraphicsAnchorLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QGraphicsAnchorLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsAnchorLayout) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+func (this *QGraphicsAnchorLayout) OnSetGeometry(slot func(super func(rect QRectF), rect QRectF)) {
 	ok := C.QGraphicsAnchorLayout_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -366,14 +365,14 @@ func (this *QGraphicsAnchorLayout) OnSetGeometry(slot func(super func(rect *QRec
 }
 
 //export miqt_exec_callback_QGraphicsAnchorLayout_setGeometry
-func miqt_exec_callback_QGraphicsAnchorLayout_setGeometry(self *C.QGraphicsAnchorLayout, cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF), rect *QRectF))
+func miqt_exec_callback_QGraphicsAnchorLayout_setGeometry(self *C.QGraphicsAnchorLayout, cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRectF), rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(rect)
+	slotval1 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc((&QGraphicsAnchorLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -459,16 +458,13 @@ func miqt_exec_callback_QGraphicsAnchorLayout_invalidate(self *C.QGraphicsAnchor
 
 }
 
-func (this *QGraphicsAnchorLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+func (this *QGraphicsAnchorLayout) callVirtualBase_SizeHint(which SizeHint, constraint QSizeF) QSizeF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(constraint)
 
-	_goptr := newQSizeF(C.QGraphicsAnchorLayout_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsAnchorLayout_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 
 }
-func (this *QGraphicsAnchorLayout) OnSizeHint(slot func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF) {
+func (this *QGraphicsAnchorLayout) OnSizeHint(slot func(super func(which SizeHint, constraint QSizeF) QSizeF, which SizeHint, constraint QSizeF) QSizeF) {
 	ok := C.QGraphicsAnchorLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -476,8 +472,8 @@ func (this *QGraphicsAnchorLayout) OnSizeHint(slot func(super func(which SizeHin
 }
 
 //export miqt_exec_callback_QGraphicsAnchorLayout_sizeHint
-func miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(self *C.QGraphicsAnchorLayout, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF)
+func miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(self *C.QGraphicsAnchorLayout, cb C.intptr_t, which C.int, constraint C.struct_miqt_qsizef) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint QSizeF) QSizeF, which SizeHint, constraint QSizeF) QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -485,12 +481,11 @@ func miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(self *C.QGraphicsAnchorLa
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := newQSizeF(constraint)
+	slotval2 := libmiqt.ValueCast[QSizeF](constraint)
 
 	virtualReturn := gofunc((&QGraphicsAnchorLayout{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsAnchorLayout_virtualreturncopy_QSizeF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 

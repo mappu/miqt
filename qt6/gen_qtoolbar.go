@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -157,15 +158,12 @@ func (this *QToolBar) InsertWidget(before *QAction, widget *QWidget) *QAction {
 	return newQAction(C.QToolBar_insertWidget(this.h, before.cPointer(), widget.cPointer()))
 }
 
-func (this *QToolBar) ActionGeometry(action *QAction) *QRect {
-	_goptr := newQRect(C.QToolBar_actionGeometry(this.h, action.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QToolBar) ActionGeometry(action *QAction) QRect {
+	return libmiqt.ValueCast[QRect](C.QToolBar_actionGeometry(this.h, action.cPointer()))
 }
 
-func (this *QToolBar) ActionAt(p *QPoint) *QAction {
-	defer runtime.KeepAlive(p)
-	return newQAction(C.QToolBar_actionAt(this.h, p.cPointer()))
+func (this *QToolBar) ActionAt(p QPoint) *QAction {
+	return newQAction(C.QToolBar_actionAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
 func (this *QToolBar) ActionAt2(x int, y int) *QAction {
@@ -176,10 +174,8 @@ func (this *QToolBar) ToggleViewAction() *QAction {
 	return newQAction(C.QToolBar_toggleViewAction(this.h))
 }
 
-func (this *QToolBar) IconSize() *QSize {
-	_goptr := newQSize(C.QToolBar_iconSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QToolBar) IconSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QToolBar_iconSize(this.h))
 }
 
 func (this *QToolBar) ToolButtonStyle() ToolButtonStyle {
@@ -202,9 +198,8 @@ func (this *QToolBar) IsFloating() bool {
 	return (bool)(C.QToolBar_isFloating(this.h))
 }
 
-func (this *QToolBar) SetIconSize(iconSize *QSize) {
-	defer runtime.KeepAlive(iconSize)
-	C.QToolBar_setIconSize(this.h, iconSize.cPointer())
+func (this *QToolBar) SetIconSize(iconSize QSize) {
+	C.QToolBar_setIconSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](iconSize))
 }
 
 func (this *QToolBar) SetToolButtonStyle(toolButtonStyle ToolButtonStyle) {
@@ -291,23 +286,22 @@ func miqt_exec_callback_QToolBar_orientationChanged(cb C.intptr_t, orientation C
 	gofunc(slotval1)
 }
 
-func (this *QToolBar) IconSizeChanged(iconSize *QSize) {
-	defer runtime.KeepAlive(iconSize)
-	C.QToolBar_iconSizeChanged(this.h, iconSize.cPointer())
+func (this *QToolBar) IconSizeChanged(iconSize QSize) {
+	C.QToolBar_iconSizeChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](iconSize))
 }
-func (this *QToolBar) OnIconSizeChanged(slot func(iconSize *QSize)) {
+func (this *QToolBar) OnIconSizeChanged(slot func(iconSize QSize)) {
 	C.QToolBar_connect_iconSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QToolBar_iconSizeChanged
-func miqt_exec_callback_QToolBar_iconSizeChanged(cb C.intptr_t, iconSize *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(iconSize *QSize))
+func miqt_exec_callback_QToolBar_iconSizeChanged(cb C.intptr_t, iconSize C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(iconSize QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize(iconSize)
+	slotval1 := libmiqt.ValueCast[QSize](iconSize)
 
 	gofunc(slotval1)
 }
@@ -705,14 +699,12 @@ func miqt_exec_callback_QToolBar_setVisible(self *C.QToolBar, cb C.intptr_t, vis
 
 }
 
-func (this *QToolBar) callVirtualBase_SizeHint() *QSize {
+func (this *QToolBar) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QToolBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QToolBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QToolBar) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QToolBar) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QToolBar_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -720,27 +712,24 @@ func (this *QToolBar) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QToolBar_sizeHint
-func miqt_exec_callback_QToolBar_sizeHint(self *C.QToolBar, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QToolBar_sizeHint(self *C.QToolBar, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QToolBar{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QToolBar_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QToolBar) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QToolBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QToolBar) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QToolBar) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QToolBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QToolBar) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QToolBar_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -748,16 +737,15 @@ func (this *QToolBar) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QToolBar_minimumSizeHint
-func miqt_exec_callback_QToolBar_minimumSizeHint(self *C.QToolBar, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QToolBar_minimumSizeHint(self *C.QToolBar, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QToolBar{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QToolBar_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1531,7 +1519,6 @@ func miqt_exec_callback_QToolBar_initPainter(self *C.QToolBar, cb C.intptr_t, pa
 }
 
 func (this *QToolBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QToolBar_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

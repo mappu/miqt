@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -133,55 +134,52 @@ func (this *QwtPlotPicker) Canvas2() *qt.QWidget {
 	return qt.UnsafeNewQWidget(unsafe.Pointer(C.QwtPlotPicker_canvas2(this.h)))
 }
 
-func (this *QwtPlotPicker) Selected(pos *qt.QPointF) {
-	defer runtime.KeepAlive(pos)
-	C.QwtPlotPicker_selected(this.h, (*C.QPointF)(pos.UnsafePointer()))
+func (this *QwtPlotPicker) Selected(pos qt.QPointF) {
+	C.QwtPlotPicker_selected(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
-func (this *QwtPlotPicker) OnSelected(slot func(pos *qt.QPointF)) {
+func (this *QwtPlotPicker) OnSelected(slot func(pos qt.QPointF)) {
 	C.QwtPlotPicker_connect_selected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtPlotPicker_selected
-func miqt_exec_callback_QwtPlotPicker_selected(cb C.intptr_t, pos *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(pos *qt.QPointF))
+func miqt_exec_callback_QwtPlotPicker_selected(cb C.intptr_t, pos C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pos qt.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(pos))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](pos)
 
 	gofunc(slotval1)
 }
 
-func (this *QwtPlotPicker) SelectedWithRect(rect *qt.QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QwtPlotPicker_selectedWithRect(this.h, (*C.QRectF)(rect.UnsafePointer()))
+func (this *QwtPlotPicker) SelectedWithRect(rect qt.QRectF) {
+	C.QwtPlotPicker_selectedWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
-func (this *QwtPlotPicker) OnSelectedWithRect(slot func(rect *qt.QRectF)) {
+func (this *QwtPlotPicker) OnSelectedWithRect(slot func(rect qt.QRectF)) {
 	C.QwtPlotPicker_connect_selectedWithRect(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtPlotPicker_selectedWithRect
-func miqt_exec_callback_QwtPlotPicker_selectedWithRect(cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(rect *qt.QRectF))
+func miqt_exec_callback_QwtPlotPicker_selectedWithRect(cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rect qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](rect)
 
 	gofunc(slotval1)
 }
 
 func (this *QwtPlotPicker) SelectedWithPa(pa []qt.QPointF) {
-	defer runtime.KeepAlive(pa)
-	pa_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(pa))))
+	pa_CArray_ptr := (*C.struct_miqt_qpointf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qpointf{})) * len(pa))))
 	defer C.free(unsafe.Pointer(pa_CArray_ptr))
 	pa_CArray := unsafe.Slice(pa_CArray_ptr, len(pa))
 	for i := range pa {
-		pa_CArray[i] = (*C.QPointF)(pa[i].UnsafePointer())
+		pa_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qpointf](pa[i])
 	}
 	pa_ma := C.struct_miqt_array{len: C.size_t(len(pa)), data: unsafe.Pointer(pa_CArray_ptr)}
 	C.QwtPlotPicker_selectedWithPa(this.h, pa_ma)
@@ -200,55 +198,51 @@ func miqt_exec_callback_QwtPlotPicker_selectedWithPa(cb C.intptr_t, pa C.struct_
 	// Convert all CABI parameters to Go parameters
 	var pa_ma C.struct_miqt_array = pa
 	pa_ret := make([]qt.QPointF, int(pa_ma.len))
-	pa_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(pa_ma.data)), int(pa_ma.len))
+	pa_outCast := unsafe.Slice((*C.struct_miqt_qpointf)(unsafe.Pointer(pa_ma.data)), int(pa_ma.len))
 	for i := 0; i < int(pa_ma.len); i++ {
-		pa_vv_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(pa_outCast[i]))
-		pa_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		pa_ret[i] = *pa_vv_goptr
+		pa_ret[i] = libmiqt.ValueCast[qt.QPointF](pa_outCast[i])
 	}
 	slotval1 := pa_ret
 
 	gofunc(slotval1)
 }
 
-func (this *QwtPlotPicker) Appended(pos *qt.QPointF) {
-	defer runtime.KeepAlive(pos)
-	C.QwtPlotPicker_appended(this.h, (*C.QPointF)(pos.UnsafePointer()))
+func (this *QwtPlotPicker) Appended(pos qt.QPointF) {
+	C.QwtPlotPicker_appended(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
-func (this *QwtPlotPicker) OnAppended(slot func(pos *qt.QPointF)) {
+func (this *QwtPlotPicker) OnAppended(slot func(pos qt.QPointF)) {
 	C.QwtPlotPicker_connect_appended(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtPlotPicker_appended
-func miqt_exec_callback_QwtPlotPicker_appended(cb C.intptr_t, pos *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(pos *qt.QPointF))
+func miqt_exec_callback_QwtPlotPicker_appended(cb C.intptr_t, pos C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pos qt.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(pos))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](pos)
 
 	gofunc(slotval1)
 }
 
-func (this *QwtPlotPicker) Moved(pos *qt.QPointF) {
-	defer runtime.KeepAlive(pos)
-	C.QwtPlotPicker_moved(this.h, (*C.QPointF)(pos.UnsafePointer()))
+func (this *QwtPlotPicker) Moved(pos qt.QPointF) {
+	C.QwtPlotPicker_moved(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
-func (this *QwtPlotPicker) OnMoved(slot func(pos *qt.QPointF)) {
+func (this *QwtPlotPicker) OnMoved(slot func(pos qt.QPointF)) {
 	C.QwtPlotPicker_connect_moved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtPlotPicker_moved
-func miqt_exec_callback_QwtPlotPicker_moved(cb C.intptr_t, pos *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(pos *qt.QPointF))
+func miqt_exec_callback_QwtPlotPicker_moved(cb C.intptr_t, pos C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(pos qt.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(pos))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](pos)
 
 	gofunc(slotval1)
 }
@@ -301,9 +295,7 @@ func QwtPlotPicker_TrUtf83(s string, c string, n int) string {
 func (this *QwtPlotPicker) ScaleRect() qt.QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotPicker_protectedbase_scaleRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRectF](C.QwtPlotPicker_protectedbase_scaleRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -314,13 +306,10 @@ func (this *QwtPlotPicker) ScaleRect() qt.QRectF {
 }
 
 // InvTransform can only be called from a QwtPlotPicker that was directly constructed.
-func (this *QwtPlotPicker) InvTransform(param1 *qt.QRect) qt.QRectF {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotPicker) InvTransform(param1 qt.QRect) qt.QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotPicker_protectedbase_invTransform(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRectF](C.QwtPlotPicker_protectedbase_invTransform(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -331,13 +320,10 @@ func (this *QwtPlotPicker) InvTransform(param1 *qt.QRect) qt.QRectF {
 }
 
 // Transform can only be called from a QwtPlotPicker that was directly constructed.
-func (this *QwtPlotPicker) Transform(param1 *qt.QRectF) qt.QRect {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotPicker) Transform(param1 qt.QRectF) qt.QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPlotPicker_protectedbase_transform(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRect](C.QwtPlotPicker_protectedbase_transform(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -348,13 +334,10 @@ func (this *QwtPlotPicker) Transform(param1 *qt.QRectF) qt.QRect {
 }
 
 // InvTransformWithQPoint can only be called from a QwtPlotPicker that was directly constructed.
-func (this *QwtPlotPicker) InvTransformWithQPoint(param1 *qt.QPoint) qt.QPointF {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotPicker) InvTransformWithQPoint(param1 qt.QPoint) qt.QPointF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtPlotPicker_protectedbase_invTransformWithQPoint(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QPointF](C.QwtPlotPicker_protectedbase_invTransformWithQPoint(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -365,13 +348,10 @@ func (this *QwtPlotPicker) InvTransformWithQPoint(param1 *qt.QPoint) qt.QPointF 
 }
 
 // TransformWithQPointF can only be called from a QwtPlotPicker that was directly constructed.
-func (this *QwtPlotPicker) TransformWithQPointF(param1 *qt.QPointF) qt.QPoint {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotPicker) TransformWithQPointF(param1 qt.QPointF) qt.QPoint {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QwtPlotPicker_protectedbase_transformWithQPointF(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QPoint](C.QwtPlotPicker_protectedbase_transformWithQPointF(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -496,15 +476,14 @@ func miqt_exec_callback_QwtPlotPicker_setAxis(self *C.QwtPlotPicker, cb C.intptr
 
 }
 
-func (this *QwtPlotPicker) callVirtualBase_TrackerText(param1 *qt.QPoint) *QwtText {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotPicker) callVirtualBase_TrackerText(param1 qt.QPoint) *QwtText {
 
-	_goptr := newQwtText(C.QwtPlotPicker_virtualbase_trackerText(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
+	_goptr := newQwtText(C.QwtPlotPicker_virtualbase_trackerText(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QwtPlotPicker) OnTrackerText(slot func(super func(param1 *qt.QPoint) *QwtText, param1 *qt.QPoint) *QwtText) {
+func (this *QwtPlotPicker) OnTrackerText(slot func(super func(param1 qt.QPoint) *QwtText, param1 qt.QPoint) *QwtText) {
 	ok := C.QwtPlotPicker_override_virtual_trackerText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -512,14 +491,14 @@ func (this *QwtPlotPicker) OnTrackerText(slot func(super func(param1 *qt.QPoint)
 }
 
 //export miqt_exec_callback_QwtPlotPicker_trackerText
-func miqt_exec_callback_QwtPlotPicker_trackerText(self *C.QwtPlotPicker, cb C.intptr_t, param1 *C.QPoint) *C.QwtText {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint) *QwtText, param1 *qt.QPoint) *QwtText)
+func miqt_exec_callback_QwtPlotPicker_trackerText(self *C.QwtPlotPicker, cb C.intptr_t, param1 C.struct_miqt_qpoint) *C.QwtText {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint) *QwtText, param1 qt.QPoint) *QwtText)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	virtualReturn := gofunc((&QwtPlotPicker{h: self}).callVirtualBase_TrackerText, slotval1)
 	defer runtime.KeepAlive(virtualReturn)
@@ -528,15 +507,14 @@ func miqt_exec_callback_QwtPlotPicker_trackerText(self *C.QwtPlotPicker, cb C.in
 
 }
 
-func (this *QwtPlotPicker) callVirtualBase_TrackerTextF(param1 *qt.QPointF) *QwtText {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotPicker) callVirtualBase_TrackerTextF(param1 qt.QPointF) *QwtText {
 
-	_goptr := newQwtText(C.QwtPlotPicker_virtualbase_trackerTextF(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer())))
+	_goptr := newQwtText(C.QwtPlotPicker_virtualbase_trackerTextF(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QwtPlotPicker) OnTrackerTextF(slot func(super func(param1 *qt.QPointF) *QwtText, param1 *qt.QPointF) *QwtText) {
+func (this *QwtPlotPicker) OnTrackerTextF(slot func(super func(param1 qt.QPointF) *QwtText, param1 qt.QPointF) *QwtText) {
 	ok := C.QwtPlotPicker_override_virtual_trackerTextF(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -544,14 +522,14 @@ func (this *QwtPlotPicker) OnTrackerTextF(slot func(super func(param1 *qt.QPoint
 }
 
 //export miqt_exec_callback_QwtPlotPicker_trackerTextF
-func miqt_exec_callback_QwtPlotPicker_trackerTextF(self *C.QwtPlotPicker, cb C.intptr_t, param1 *C.QPointF) *C.QwtText {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPointF) *QwtText, param1 *qt.QPointF) *QwtText)
+func miqt_exec_callback_QwtPlotPicker_trackerTextF(self *C.QwtPlotPicker, cb C.intptr_t, param1 C.struct_miqt_qpointf) *C.QwtText {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPointF) *QwtText, param1 qt.QPointF) *QwtText)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](param1)
 
 	virtualReturn := gofunc((&QwtPlotPicker{h: self}).callVirtualBase_TrackerTextF, slotval1)
 	defer runtime.KeepAlive(virtualReturn)
@@ -560,13 +538,12 @@ func miqt_exec_callback_QwtPlotPicker_trackerTextF(self *C.QwtPlotPicker, cb C.i
 
 }
 
-func (this *QwtPlotPicker) callVirtualBase_Move(param1 *qt.QPoint) {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotPicker) callVirtualBase_Move(param1 qt.QPoint) {
 
-	C.QwtPlotPicker_virtualbase_move(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
+	C.QwtPlotPicker_virtualbase_move(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1))
 
 }
-func (this *QwtPlotPicker) OnMove(slot func(super func(param1 *qt.QPoint), param1 *qt.QPoint)) {
+func (this *QwtPlotPicker) OnMove(slot func(super func(param1 qt.QPoint), param1 qt.QPoint)) {
 	ok := C.QwtPlotPicker_override_virtual_move(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -574,26 +551,25 @@ func (this *QwtPlotPicker) OnMove(slot func(super func(param1 *qt.QPoint), param
 }
 
 //export miqt_exec_callback_QwtPlotPicker_move
-func miqt_exec_callback_QwtPlotPicker_move(self *C.QwtPlotPicker, cb C.intptr_t, param1 *C.QPoint) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint), param1 *qt.QPoint))
+func miqt_exec_callback_QwtPlotPicker_move(self *C.QwtPlotPicker, cb C.intptr_t, param1 C.struct_miqt_qpoint) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint), param1 qt.QPoint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	gofunc((&QwtPlotPicker{h: self}).callVirtualBase_Move, slotval1)
 
 }
 
-func (this *QwtPlotPicker) callVirtualBase_Append(param1 *qt.QPoint) {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotPicker) callVirtualBase_Append(param1 qt.QPoint) {
 
-	C.QwtPlotPicker_virtualbase_append(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
+	C.QwtPlotPicker_virtualbase_append(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1))
 
 }
-func (this *QwtPlotPicker) OnAppend(slot func(super func(param1 *qt.QPoint), param1 *qt.QPoint)) {
+func (this *QwtPlotPicker) OnAppend(slot func(super func(param1 qt.QPoint), param1 qt.QPoint)) {
 	ok := C.QwtPlotPicker_override_virtual_append(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -601,14 +577,14 @@ func (this *QwtPlotPicker) OnAppend(slot func(super func(param1 *qt.QPoint), par
 }
 
 //export miqt_exec_callback_QwtPlotPicker_append
-func miqt_exec_callback_QwtPlotPicker_append(self *C.QwtPlotPicker, cb C.intptr_t, param1 *C.QPoint) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint), param1 *qt.QPoint))
+func miqt_exec_callback_QwtPlotPicker_append(self *C.QwtPlotPicker, cb C.intptr_t, param1 C.struct_miqt_qpoint) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint), param1 qt.QPoint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	gofunc((&QwtPlotPicker{h: self}).callVirtualBase_Append, slotval1)
 
@@ -783,15 +759,13 @@ func miqt_exec_callback_QwtPlotPicker_rubberBandMask(self *C.QwtPlotPicker, cb C
 
 }
 
-func (this *QwtPlotPicker) callVirtualBase_TrackerRect(param1 *qt.QFont) *qt.QRect {
+func (this *QwtPlotPicker) callVirtualBase_TrackerRect(param1 *qt.QFont) qt.QRect {
 	defer runtime.KeepAlive(param1)
 
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPlotPicker_virtualbase_trackerRect(unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtPlotPicker_virtualbase_trackerRect(unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer())))
 
 }
-func (this *QwtPlotPicker) OnTrackerRect(slot func(super func(param1 *qt.QFont) *qt.QRect, param1 *qt.QFont) *qt.QRect) {
+func (this *QwtPlotPicker) OnTrackerRect(slot func(super func(param1 *qt.QFont) qt.QRect, param1 *qt.QFont) qt.QRect) {
 	ok := C.QwtPlotPicker_override_virtual_trackerRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -799,8 +773,8 @@ func (this *QwtPlotPicker) OnTrackerRect(slot func(super func(param1 *qt.QFont) 
 }
 
 //export miqt_exec_callback_QwtPlotPicker_trackerRect
-func miqt_exec_callback_QwtPlotPicker_trackerRect(self *C.QwtPlotPicker, cb C.intptr_t, param1 *C.QFont) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QFont) *qt.QRect, param1 *qt.QFont) *qt.QRect)
+func miqt_exec_callback_QwtPlotPicker_trackerRect(self *C.QwtPlotPicker, cb C.intptr_t, param1 *C.QFont) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QFont) qt.QRect, param1 *qt.QFont) qt.QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -809,9 +783,8 @@ func miqt_exec_callback_QwtPlotPicker_trackerRect(self *C.QwtPlotPicker, cb C.in
 	slotval1 := qt.UnsafeNewQFont(unsafe.Pointer(param1))
 
 	virtualReturn := gofunc((&QwtPlotPicker{h: self}).callVirtualBase_TrackerRect, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtPlotPicker_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
 
@@ -1154,14 +1127,12 @@ func miqt_exec_callback_QwtPlotPicker_widgetLeaveEvent(self *C.QwtPlotPicker, cb
 
 }
 
-func (this *QwtPlotPicker) callVirtualBase_StretchSelection(oldSize *qt.QSize, newSize *qt.QSize) {
-	defer runtime.KeepAlive(oldSize)
-	defer runtime.KeepAlive(newSize)
+func (this *QwtPlotPicker) callVirtualBase_StretchSelection(oldSize qt.QSize, newSize qt.QSize) {
 
-	C.QwtPlotPicker_virtualbase_stretchSelection(unsafe.Pointer(this.h), (*C.QSize)(oldSize.UnsafePointer()), (*C.QSize)(newSize.UnsafePointer()))
+	C.QwtPlotPicker_virtualbase_stretchSelection(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsize](oldSize), libmiqt.ValueCast[C.struct_miqt_qsize](newSize))
 
 }
-func (this *QwtPlotPicker) OnStretchSelection(slot func(super func(oldSize *qt.QSize, newSize *qt.QSize), oldSize *qt.QSize, newSize *qt.QSize)) {
+func (this *QwtPlotPicker) OnStretchSelection(slot func(super func(oldSize qt.QSize, newSize qt.QSize), oldSize qt.QSize, newSize qt.QSize)) {
 	ok := C.QwtPlotPicker_override_virtual_stretchSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1169,16 +1140,16 @@ func (this *QwtPlotPicker) OnStretchSelection(slot func(super func(oldSize *qt.Q
 }
 
 //export miqt_exec_callback_QwtPlotPicker_stretchSelection
-func miqt_exec_callback_QwtPlotPicker_stretchSelection(self *C.QwtPlotPicker, cb C.intptr_t, oldSize *C.QSize, newSize *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(oldSize *qt.QSize, newSize *qt.QSize), oldSize *qt.QSize, newSize *qt.QSize))
+func miqt_exec_callback_QwtPlotPicker_stretchSelection(self *C.QwtPlotPicker, cb C.intptr_t, oldSize C.struct_miqt_qsize, newSize C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(oldSize qt.QSize, newSize qt.QSize), oldSize qt.QSize, newSize qt.QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSize(unsafe.Pointer(oldSize))
+	slotval1 := libmiqt.ValueCast[qt.QSize](oldSize)
 
-	slotval2 := qt.UnsafeNewQSize(unsafe.Pointer(newSize))
+	slotval2 := libmiqt.ValueCast[qt.QSize](newSize)
 
 	gofunc((&QwtPlotPicker{h: self}).callVirtualBase_StretchSelection, slotval1, slotval2)
 

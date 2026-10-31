@@ -65,9 +65,9 @@ QwtPlot* QwtPlotRescaler_plot2(const QwtPlotRescaler* self);
 bool QwtPlotRescaler_eventFilter(QwtPlotRescaler* self, QObject* param1, QEvent* param2);
 void QwtPlotRescaler_rescale(const QwtPlotRescaler* self);
 void QwtPlotRescaler_canvasResizeEvent(QwtPlotRescaler* self, QResizeEvent* param1);
-void QwtPlotRescaler_rescale2(const QwtPlotRescaler* self, QSize* oldSize, QSize* newSize);
-QwtInterval* QwtPlotRescaler_expandScale(const QwtPlotRescaler* self, int axis, QSize* oldSize, QSize* newSize);
-QwtInterval* QwtPlotRescaler_syncScale(const QwtPlotRescaler* self, int axis, QwtInterval* reference, QSize* size);
+void QwtPlotRescaler_rescale2(const QwtPlotRescaler* self, struct miqt_qsize oldSize, struct miqt_qsize newSize);
+QwtInterval* QwtPlotRescaler_expandScale(const QwtPlotRescaler* self, int axis, struct miqt_qsize oldSize, struct miqt_qsize newSize);
+QwtInterval* QwtPlotRescaler_syncScale(const QwtPlotRescaler* self, int axis, QwtInterval* reference, struct miqt_qsize size);
 void QwtPlotRescaler_updateScales(const QwtPlotRescaler* self, QwtInterval* intervals);
 
 bool QwtPlotRescaler_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -75,11 +75,11 @@ bool QwtPlotRescaler_virtualbase_eventFilter(void* self, QObject* param1, QEvent
 bool QwtPlotRescaler_override_virtual_canvasResizeEvent(void* self, intptr_t slot);
 void QwtPlotRescaler_virtualbase_canvasResizeEvent(void* self, QResizeEvent* param1);
 bool QwtPlotRescaler_override_virtual_rescale2(void* self, intptr_t slot);
-void QwtPlotRescaler_virtualbase_rescale2(const void* self, QSize* oldSize, QSize* newSize);
+void QwtPlotRescaler_virtualbase_rescale2(const void* self, struct miqt_qsize oldSize, struct miqt_qsize newSize);
 bool QwtPlotRescaler_override_virtual_expandScale(void* self, intptr_t slot);
-QwtInterval* QwtPlotRescaler_virtualbase_expandScale(const void* self, int axis, QSize* oldSize, QSize* newSize);
+QwtInterval* QwtPlotRescaler_virtualbase_expandScale(const void* self, int axis, struct miqt_qsize oldSize, struct miqt_qsize newSize);
 bool QwtPlotRescaler_override_virtual_syncScale(void* self, intptr_t slot);
-QwtInterval* QwtPlotRescaler_virtualbase_syncScale(const void* self, int axis, QwtInterval* reference, QSize* size);
+QwtInterval* QwtPlotRescaler_virtualbase_syncScale(const void* self, int axis, QwtInterval* reference, struct miqt_qsize size);
 bool QwtPlotRescaler_override_virtual_updateScales(void* self, intptr_t slot);
 void QwtPlotRescaler_virtualbase_updateScales(const void* self, QwtInterval* intervals);
 bool QwtPlotRescaler_override_virtual_event(void* self, intptr_t slot);

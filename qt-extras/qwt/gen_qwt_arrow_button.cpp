@@ -40,18 +40,18 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QwtArrowButton_sizeHint(const QwtArrowButton*, intptr_t);
-QSize* miqt_exec_callback_QwtArrowButton_minimumSizeHint(const QwtArrowButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtArrowButton_sizeHint(const QwtArrowButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtArrowButton_minimumSizeHint(const QwtArrowButton*, intptr_t);
 void miqt_exec_callback_QwtArrowButton_paintEvent(QwtArrowButton*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtArrowButton_drawButtonLabel(QwtArrowButton*, intptr_t, QPainter*);
-void miqt_exec_callback_QwtArrowButton_drawArrow(const QwtArrowButton*, intptr_t, QPainter*, QRect*, int);
-QRect* miqt_exec_callback_QwtArrowButton_labelRect(const QwtArrowButton*, intptr_t);
-QSize* miqt_exec_callback_QwtArrowButton_arrowSize(const QwtArrowButton*, intptr_t, int, QSize*);
+void miqt_exec_callback_QwtArrowButton_drawArrow(const QwtArrowButton*, intptr_t, QPainter*, struct miqt_qrect, int);
+struct miqt_qrect miqt_exec_callback_QwtArrowButton_labelRect(const QwtArrowButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtArrowButton_arrowSize(const QwtArrowButton*, intptr_t, int, struct miqt_qsize);
 void miqt_exec_callback_QwtArrowButton_keyPressEvent(QwtArrowButton*, intptr_t, QKeyEvent*);
 bool miqt_exec_callback_QwtArrowButton_event(QwtArrowButton*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtArrowButton_focusInEvent(QwtArrowButton*, intptr_t, QFocusEvent*);
 void miqt_exec_callback_QwtArrowButton_focusOutEvent(QwtArrowButton*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QwtArrowButton_hitButton(const QwtArrowButton*, intptr_t, QPoint*);
+bool miqt_exec_callback_QwtArrowButton_hitButton(const QwtArrowButton*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QwtArrowButton_checkStateSet(QwtArrowButton*, intptr_t);
 void miqt_exec_callback_QwtArrowButton_nextCheckState(QwtArrowButton*, intptr_t);
 void miqt_exec_callback_QwtArrowButton_keyReleaseEvent(QwtArrowButton*, intptr_t, QKeyEvent*);
@@ -115,13 +115,11 @@ public:
 			return QwtArrowButton::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtArrowButton_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtArrowButton_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtArrowButton_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtArrowButton_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -132,13 +130,11 @@ public:
 			return QwtArrowButton::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtArrowButton_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtArrowButton_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtArrowButton_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtArrowButton_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -185,16 +181,14 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QRect& param2_ret = param2;
-		// Cast returned reference into pointer
-		QRect* sigval2 = const_cast<QRect*>(&param2_ret);
+		struct miqt_qrect sigval2 = miqt_to_cabi<struct miqt_qrect>(param2);
 		Qt::ArrowType param3_ret = param3;
 		int sigval3 = static_cast<int>(param3_ret);
 		miqt_exec_callback_QwtArrowButton_drawArrow(this, handle__drawArrow, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtArrowButton_virtualbase_drawArrow(const void* self, QPainter* param1, QRect* param2, int param3);
+	friend void QwtArrowButton_virtualbase_drawArrow(const void* self, QPainter* param1, struct miqt_qrect param2, int param3);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__labelRect = 0;
@@ -205,13 +199,11 @@ public:
 			return QwtArrowButton::labelRect();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QwtArrowButton_labelRect(this, handle__labelRect);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QwtArrowButton_labelRect(this, handle__labelRect);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QwtArrowButton_virtualbase_labelRect(const void* self);
+	friend struct miqt_qrect QwtArrowButton_virtualbase_labelRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__arrowSize = 0;
@@ -224,16 +216,12 @@ public:
 
 		Qt::ArrowType param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-		const QSize& boundingSize_ret = boundingSize;
-		// Cast returned reference into pointer
-		QSize* sigval2 = const_cast<QSize*>(&boundingSize_ret);
-		QSize* callback_return_value = miqt_exec_callback_QwtArrowButton_arrowSize(this, handle__arrowSize, sigval1, sigval2);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize sigval2 = miqt_to_cabi<struct miqt_qsize>(boundingSize);
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtArrowButton_arrowSize(this, handle__arrowSize, sigval1, sigval2);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtArrowButton_virtualbase_arrowSize(const void* self, int param1, QSize* boundingSize);
+	friend struct miqt_qsize QwtArrowButton_virtualbase_arrowSize(const void* self, int param1, struct miqt_qsize boundingSize);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -311,14 +299,12 @@ public:
 			return QwtArrowButton::hitButton(pos);
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		bool callback_return_value = miqt_exec_callback_QwtArrowButton_hitButton(this, handle__hitButton, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QwtArrowButton_virtualbase_hitButton(const void* self, QPoint* pos);
+	friend bool QwtArrowButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__checkStateSet = 0;
@@ -1067,12 +1053,12 @@ int QwtArrowButton_num(const QwtArrowButton* self) {
 	return self->num();
 }
 
-QSize* QwtArrowButton_sizeHint(const QwtArrowButton* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtArrowButton_sizeHint(const QwtArrowButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QwtArrowButton_minimumSizeHint(const QwtArrowButton* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QwtArrowButton_minimumSizeHint(const QwtArrowButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 bool QwtArrowButton_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1085,8 +1071,8 @@ bool QwtArrowButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtArrowButton_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::sizeHint());
+struct miqt_qsize QwtArrowButton_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::sizeHint());
 }
 
 bool QwtArrowButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1099,8 +1085,8 @@ bool QwtArrowButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QwtArrowButton_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::minimumSizeHint());
+struct miqt_qsize QwtArrowButton_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::minimumSizeHint());
 }
 
 bool QwtArrowButton_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1141,8 +1127,8 @@ bool QwtArrowButton_override_virtual_drawArrow(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtArrowButton_virtualbase_drawArrow(const void* self, QPainter* param1, QRect* param2, int param3) {
-	static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::drawArrow(param1, *param2, static_cast<Qt::ArrowType>(param3));
+void QwtArrowButton_virtualbase_drawArrow(const void* self, QPainter* param1, struct miqt_qrect param2, int param3) {
+	static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::drawArrow(param1, miqt_from_cabi<QRect>(param2), static_cast<Qt::ArrowType>(param3));
 }
 
 bool QwtArrowButton_override_virtual_labelRect(void* self, intptr_t slot) {
@@ -1155,8 +1141,8 @@ bool QwtArrowButton_override_virtual_labelRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QwtArrowButton_virtualbase_labelRect(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::labelRect());
+struct miqt_qrect QwtArrowButton_virtualbase_labelRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::labelRect());
 }
 
 bool QwtArrowButton_override_virtual_arrowSize(void* self, intptr_t slot) {
@@ -1169,8 +1155,8 @@ bool QwtArrowButton_override_virtual_arrowSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtArrowButton_virtualbase_arrowSize(const void* self, int param1, QSize* boundingSize) {
-	return new QSize(static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::arrowSize(static_cast<Qt::ArrowType>(param1), *boundingSize));
+struct miqt_qsize QwtArrowButton_virtualbase_arrowSize(const void* self, int param1, struct miqt_qsize boundingSize) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::arrowSize(static_cast<Qt::ArrowType>(param1), miqt_from_cabi<QSize>(boundingSize)));
 }
 
 bool QwtArrowButton_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1239,8 +1225,8 @@ bool QwtArrowButton_override_virtual_hitButton(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QwtArrowButton_virtualbase_hitButton(const void* self, QPoint* pos) {
-	return static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::hitButton(*pos);
+bool QwtArrowButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos) {
+	return static_cast<const MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::hitButton(miqt_from_cabi<QPoint>(pos));
 }
 
 bool QwtArrowButton_override_virtual_checkStateSet(void* self, intptr_t slot) {
@@ -1830,14 +1816,6 @@ bool QwtArrowButton_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QwtArrowButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtArrowButton*>(self)->QwtArrowButton::disconnectNotify(*signal);
-}
-
-QSize* QwtArrowButton_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
-QRect* QwtArrowButton_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
 }
 
 QVariant* QwtArrowButton_virtualreturncopy_QVariant(QVariant* src) {

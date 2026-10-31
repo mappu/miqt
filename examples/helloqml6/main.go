@@ -17,11 +17,11 @@ func main() {
 
 	model := qt.NewQAbstractListModel()
 
-	model.OnRowCount(func(parent *qt.QModelIndex) int {
+	model.OnRowCount(func(parent qt.QModelIndex) int {
 		return 1000
 	})
 
-	model.OnData(func(idx *qt.QModelIndex, role int) *qt.QVariant {
+	model.OnData(func(idx qt.QModelIndex, role int) *qt.QVariant {
 		if !idx.IsValid() {
 			return qt.NewQVariant()
 		}

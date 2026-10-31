@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -141,10 +142,9 @@ func (this *QwtPlotTradingCurve) SymbolStyle() QwtPlotTradingCurve__SymbolStyle 
 	return (QwtPlotTradingCurve__SymbolStyle)(C.QwtPlotTradingCurve_symbolStyle(this.h))
 }
 
-func (this *QwtPlotTradingCurve) SetSymbolPen(param1 *qt.QColor) {
+func (this *QwtPlotTradingCurve) SetSymbolPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotTradingCurve_setSymbolPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotTradingCurve_setSymbolPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotTradingCurve) SetSymbolPenWithSymbolPen(symbolPen *qt.QPen) {
@@ -203,17 +203,14 @@ func (this *QwtPlotTradingCurve) MaxSymbolWidth() float64 {
 	return (float64)(C.QwtPlotTradingCurve_maxSymbolWidth(this.h))
 }
 
-func (this *QwtPlotTradingCurve) BoundingRect() *qt.QRectF {
+func (this *QwtPlotTradingCurve) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotTradingCurve_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotTradingCurve_boundingRect(this.h))
 }
 
-func (this *QwtPlotTradingCurve) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+func (this *QwtPlotTradingCurve) LegendIcon(index int, param2 qt.QSizeF) *QwtGraphic {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	_goptr := newQwtGraphic(C.QwtPlotTradingCurve_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
+	_goptr := newQwtGraphic(C.QwtPlotTradingCurve_legendIcon(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qsizef](param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -223,16 +220,14 @@ func (this *QwtPlotTradingCurve) SetPaintAttribute2(param1 QwtPlotTradingCurve__
 	C.QwtPlotTradingCurve_setPaintAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
-func (this *QwtPlotTradingCurve) SetSymbolPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotTradingCurve) SetSymbolPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotTradingCurve_setSymbolPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtPlotTradingCurve_setSymbolPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotTradingCurve) SetSymbolPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtPlotTradingCurve) SetSymbolPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotTradingCurve_setSymbolPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotTradingCurve_setSymbolPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
 // Delete this object from C++ memory.

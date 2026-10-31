@@ -27,7 +27,7 @@ extern "C" {
 
 bool miqt_exec_callback_QPdfWriter_newPage(QPdfWriter*, intptr_t);
 void miqt_exec_callback_QPdfWriter_setPageSize(QPdfWriter*, intptr_t, int);
-void miqt_exec_callback_QPdfWriter_setPageSizeMM(QPdfWriter*, intptr_t, QSizeF*);
+void miqt_exec_callback_QPdfWriter_setPageSizeMM(QPdfWriter*, intptr_t, struct miqt_qsizef);
 void miqt_exec_callback_QPdfWriter_setMargins(QPdfWriter*, intptr_t, QPagedPaintDevice__Margins*);
 QPaintEngine* miqt_exec_callback_QPdfWriter_paintEngine(const QPdfWriter*, intptr_t);
 int miqt_exec_callback_QPdfWriter_metric(const QPdfWriter*, intptr_t, int);
@@ -97,14 +97,12 @@ public:
 			return;
 		}
 
-		const QSizeF& size_ret = size;
-		// Cast returned reference into pointer
-		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
+		struct miqt_qsizef sigval1 = miqt_to_cabi<struct miqt_qsizef>(size);
 		miqt_exec_callback_QPdfWriter_setPageSizeMM(this, handle__setPageSizeMM, sigval1);
 
 	}
 
-	friend void QPdfWriter_virtualbase_setPageSizeMM(void* self, QSizeF* size);
+	friend void QPdfWriter_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMargins = 0;
@@ -471,8 +469,8 @@ void QPdfWriter_setPageSize(QPdfWriter* self, int size) {
 	self->setPageSize(static_cast<QPagedPaintDevice::PageSize>(size));
 }
 
-void QPdfWriter_setPageSizeMM(QPdfWriter* self, QSizeF* size) {
-	self->setPageSizeMM(*size);
+void QPdfWriter_setPageSizeMM(QPdfWriter* self, struct miqt_qsizef size) {
+	self->setPageSizeMM(miqt_from_cabi<QSizeF>(size));
 }
 
 void QPdfWriter_setMargins(QPdfWriter* self, QPagedPaintDevice__Margins* m) {
@@ -568,8 +566,8 @@ bool QPdfWriter_override_virtual_setPageSizeMM(void* self, intptr_t slot) {
 	return true;
 }
 
-void QPdfWriter_virtualbase_setPageSizeMM(void* self, QSizeF* size) {
-	static_cast<MiqtVirtualQPdfWriter*>(self)->QPdfWriter::setPageSizeMM(*size);
+void QPdfWriter_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size) {
+	static_cast<MiqtVirtualQPdfWriter*>(self)->QPdfWriter::setPageSizeMM(miqt_from_cabi<QSizeF>(size));
 }
 
 bool QPdfWriter_override_virtual_setMargins(void* self, intptr_t slot) {

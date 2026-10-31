@@ -42,15 +42,15 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QwtKnob_sizeHint(const QwtKnob*, intptr_t);
-QSize* miqt_exec_callback_QwtKnob_minimumSizeHint(const QwtKnob*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtKnob_sizeHint(const QwtKnob*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtKnob_minimumSizeHint(const QwtKnob*, intptr_t);
 void miqt_exec_callback_QwtKnob_paintEvent(QwtKnob*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtKnob_changeEvent(QwtKnob*, intptr_t, QEvent*);
-void miqt_exec_callback_QwtKnob_drawKnob(const QwtKnob*, intptr_t, QPainter*, QRectF*);
+void miqt_exec_callback_QwtKnob_drawKnob(const QwtKnob*, intptr_t, QPainter*, struct miqt_qrectf);
 void miqt_exec_callback_QwtKnob_drawFocusIndicator(const QwtKnob*, intptr_t, QPainter*);
-void miqt_exec_callback_QwtKnob_drawMarker(const QwtKnob*, intptr_t, QPainter*, QRectF*, double);
-double miqt_exec_callback_QwtKnob_scrolledTo(const QwtKnob*, intptr_t, QPoint*);
-bool miqt_exec_callback_QwtKnob_isScrollPosition(const QwtKnob*, intptr_t, QPoint*);
+void miqt_exec_callback_QwtKnob_drawMarker(const QwtKnob*, intptr_t, QPainter*, struct miqt_qrectf, double);
+double miqt_exec_callback_QwtKnob_scrolledTo(const QwtKnob*, intptr_t, struct miqt_qpoint);
+bool miqt_exec_callback_QwtKnob_isScrollPosition(const QwtKnob*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QwtKnob_mousePressEvent(QwtKnob*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QwtKnob_mouseReleaseEvent(QwtKnob*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QwtKnob_mouseMoveEvent(QwtKnob*, intptr_t, QMouseEvent*);
@@ -117,13 +117,11 @@ public:
 			return QwtKnob::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtKnob_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtKnob_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtKnob_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtKnob_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -134,13 +132,11 @@ public:
 			return QwtKnob::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtKnob_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtKnob_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtKnob_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtKnob_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -187,14 +183,12 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QRectF& param2_ret = param2;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&param2_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(param2);
 		miqt_exec_callback_QwtKnob_drawKnob(this, handle__drawKnob, sigval1, sigval2);
 
 	}
 
-	friend void QwtKnob_virtualbase_drawKnob(const void* self, QPainter* param1, QRectF* param2);
+	friend void QwtKnob_virtualbase_drawKnob(const void* self, QPainter* param1, struct miqt_qrectf param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawFocusIndicator = 0;
@@ -224,15 +218,13 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QRectF& param2_ret = param2;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&param2_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(param2);
 		double sigval3 = angle;
 		miqt_exec_callback_QwtKnob_drawMarker(this, handle__drawMarker, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtKnob_virtualbase_drawMarker(const void* self, QPainter* param1, QRectF* param2, double angle);
+	friend void QwtKnob_virtualbase_drawMarker(const void* self, QPainter* param1, struct miqt_qrectf param2, double angle);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrolledTo = 0;
@@ -243,14 +235,12 @@ public:
 			return QwtKnob::scrolledTo(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		double callback_return_value = miqt_exec_callback_QwtKnob_scrolledTo(this, handle__scrolledTo, sigval1);
 		return static_cast<double>(callback_return_value);
 	}
 
-	friend double QwtKnob_virtualbase_scrolledTo(const void* self, QPoint* param1);
+	friend double QwtKnob_virtualbase_scrolledTo(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isScrollPosition = 0;
@@ -261,14 +251,12 @@ public:
 			return QwtKnob::isScrollPosition(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		bool callback_return_value = miqt_exec_callback_QwtKnob_isScrollPosition(this, handle__isScrollPosition, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QwtKnob_virtualbase_isScrollPosition(const void* self, QPoint* param1);
+	friend bool QwtKnob_virtualbase_isScrollPosition(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -1159,12 +1147,12 @@ int QwtKnob_markerSize(const QwtKnob* self) {
 	return self->markerSize();
 }
 
-QSize* QwtKnob_sizeHint(const QwtKnob* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtKnob_sizeHint(const QwtKnob* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QwtKnob_minimumSizeHint(const QwtKnob* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QwtKnob_minimumSizeHint(const QwtKnob* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QwtKnob_setScaleDraw(QwtKnob* self, QwtRoundScaleDraw* scaleDraw) {
@@ -1179,8 +1167,8 @@ QwtRoundScaleDraw* QwtKnob_scaleDraw2(QwtKnob* self) {
 	return self->scaleDraw();
 }
 
-QRect* QwtKnob_knobRect(const QwtKnob* self) {
-	return new QRect(self->knobRect());
+struct miqt_qrect QwtKnob_knobRect(const QwtKnob* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->knobRect());
 }
 
 struct miqt_string QwtKnob_tr2(const char* s, const char* c) {
@@ -1237,8 +1225,8 @@ bool QwtKnob_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtKnob_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::sizeHint());
+struct miqt_qsize QwtKnob_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::sizeHint());
 }
 
 bool QwtKnob_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1251,8 +1239,8 @@ bool QwtKnob_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtKnob_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::minimumSizeHint());
+struct miqt_qsize QwtKnob_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::minimumSizeHint());
 }
 
 bool QwtKnob_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1293,8 +1281,8 @@ bool QwtKnob_override_virtual_drawKnob(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtKnob_virtualbase_drawKnob(const void* self, QPainter* param1, QRectF* param2) {
-	static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::drawKnob(param1, *param2);
+void QwtKnob_virtualbase_drawKnob(const void* self, QPainter* param1, struct miqt_qrectf param2) {
+	static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::drawKnob(param1, miqt_from_cabi<QRectF>(param2));
 }
 
 bool QwtKnob_override_virtual_drawFocusIndicator(void* self, intptr_t slot) {
@@ -1321,8 +1309,8 @@ bool QwtKnob_override_virtual_drawMarker(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtKnob_virtualbase_drawMarker(const void* self, QPainter* param1, QRectF* param2, double angle) {
-	static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::drawMarker(param1, *param2, static_cast<double>(angle));
+void QwtKnob_virtualbase_drawMarker(const void* self, QPainter* param1, struct miqt_qrectf param2, double angle) {
+	static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::drawMarker(param1, miqt_from_cabi<QRectF>(param2), static_cast<double>(angle));
 }
 
 bool QwtKnob_override_virtual_scrolledTo(void* self, intptr_t slot) {
@@ -1335,8 +1323,8 @@ bool QwtKnob_override_virtual_scrolledTo(void* self, intptr_t slot) {
 	return true;
 }
 
-double QwtKnob_virtualbase_scrolledTo(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::scrolledTo(*param1);
+double QwtKnob_virtualbase_scrolledTo(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::scrolledTo(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtKnob_override_virtual_isScrollPosition(void* self, intptr_t slot) {
@@ -1349,8 +1337,8 @@ bool QwtKnob_override_virtual_isScrollPosition(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QwtKnob_virtualbase_isScrollPosition(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::isScrollPosition(*param1);
+bool QwtKnob_virtualbase_isScrollPosition(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQwtKnob*>(self)->QwtKnob::isScrollPosition(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtKnob_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1982,10 +1970,6 @@ bool QwtKnob_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QwtKnob_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtKnob*>(self)->QwtKnob::disconnectNotify(*signal);
-}
-
-QSize* QwtKnob_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtKnob_virtualreturncopy_QVariant(QVariant* src) {

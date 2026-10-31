@@ -9,6 +9,7 @@ package qscintilla
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -68,16 +69,14 @@ func NewQsciStyle() *QsciStyle {
 }
 
 // NewQsciStyle2 constructs a new QsciStyle object.
-func NewQsciStyle2(style int, description string, color *qt.QColor, paper *qt.QColor, font *qt.QFont) *QsciStyle {
-	defer runtime.KeepAlive(color)
-	defer runtime.KeepAlive(paper)
+func NewQsciStyle2(style int, description string, color qt.QColor, paper qt.QColor, font *qt.QFont) *QsciStyle {
 	defer runtime.KeepAlive(font)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
 
-	return newQsciStyle(C.QsciStyle_new2((C.int)(style), description_ms, (*C.QColor)(color.UnsafePointer()), (*C.QColor)(paper.UnsafePointer()), (*C.QFont)(font.UnsafePointer())))
+	return newQsciStyle(C.QsciStyle_new2((C.int)(style), description_ms, libmiqt.ValueCast[C.struct_miqt_qcolor](color), libmiqt.ValueCast[C.struct_miqt_qcolor](paper), (*C.QFont)(font.UnsafePointer())))
 }
 
 // NewQsciStyle3 constructs a new QsciStyle object.
@@ -94,16 +93,14 @@ func NewQsciStyle4(style int) *QsciStyle {
 }
 
 // NewQsciStyle5 constructs a new QsciStyle object.
-func NewQsciStyle5(style int, description string, color *qt.QColor, paper *qt.QColor, font *qt.QFont, eolFill bool) *QsciStyle {
-	defer runtime.KeepAlive(color)
-	defer runtime.KeepAlive(paper)
+func NewQsciStyle5(style int, description string, color qt.QColor, paper qt.QColor, font *qt.QFont, eolFill bool) *QsciStyle {
 	defer runtime.KeepAlive(font)
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
 
-	return newQsciStyle(C.QsciStyle_new5((C.int)(style), description_ms, (*C.QColor)(color.UnsafePointer()), (*C.QColor)(paper.UnsafePointer()), (*C.QFont)(font.UnsafePointer()), (C.bool)(eolFill)))
+	return newQsciStyle(C.QsciStyle_new5((C.int)(style), description_ms, libmiqt.ValueCast[C.struct_miqt_qcolor](color), libmiqt.ValueCast[C.struct_miqt_qcolor](paper), (*C.QFont)(font.UnsafePointer()), (C.bool)(eolFill)))
 }
 
 func (this *QsciStyle) Apply(sci *QsciScintillaBase) {
@@ -138,30 +135,24 @@ func (this *QsciStyle) Description() string {
 	return _ret
 }
 
-func (this *QsciStyle) SetColor(color *qt.QColor) {
+func (this *QsciStyle) SetColor(color qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QsciStyle_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QsciStyle_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QsciStyle) Color() *qt.QColor {
+func (this *QsciStyle) Color() qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciStyle_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QsciStyle_color(this.h))
 }
 
-func (this *QsciStyle) SetPaper(paper *qt.QColor) {
+func (this *QsciStyle) SetPaper(paper qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(paper)
-	C.QsciStyle_setPaper(this.h, (*C.QColor)(paper.UnsafePointer()))
+	C.QsciStyle_setPaper(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](paper))
 }
 
-func (this *QsciStyle) Paper() *qt.QColor {
+func (this *QsciStyle) Paper() qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciStyle_paper(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QsciStyle_paper(this.h))
 }
 
 func (this *QsciStyle) SetFont(font *qt.QFont) {

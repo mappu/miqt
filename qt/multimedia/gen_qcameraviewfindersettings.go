@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -83,17 +84,14 @@ func (this *QCameraViewfinderSettings) IsNull() bool {
 	return (bool)(C.QCameraViewfinderSettings_isNull(this.h))
 }
 
-func (this *QCameraViewfinderSettings) Resolution() *qt.QSize {
+func (this *QCameraViewfinderSettings) Resolution() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinderSettings_resolution(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QCameraViewfinderSettings_resolution(this.h))
 }
 
-func (this *QCameraViewfinderSettings) SetResolution(resolution *qt.QSize) {
+func (this *QCameraViewfinderSettings) SetResolution(resolution qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(resolution)
-	C.QCameraViewfinderSettings_setResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
+	C.QCameraViewfinderSettings_setResolution(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](resolution))
 }
 
 func (this *QCameraViewfinderSettings) SetResolution2(width int, height int) {
@@ -131,17 +129,14 @@ func (this *QCameraViewfinderSettings) SetPixelFormat(format QVideoFrame__PixelF
 	C.QCameraViewfinderSettings_setPixelFormat(this.h, (C.int)(format))
 }
 
-func (this *QCameraViewfinderSettings) PixelAspectRatio() *qt.QSize {
+func (this *QCameraViewfinderSettings) PixelAspectRatio() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinderSettings_pixelAspectRatio(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QCameraViewfinderSettings_pixelAspectRatio(this.h))
 }
 
-func (this *QCameraViewfinderSettings) SetPixelAspectRatio(ratio *qt.QSize) {
+func (this *QCameraViewfinderSettings) SetPixelAspectRatio(ratio qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(ratio)
-	C.QCameraViewfinderSettings_setPixelAspectRatio(this.h, (*C.QSize)(ratio.UnsafePointer()))
+	C.QCameraViewfinderSettings_setPixelAspectRatio(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](ratio))
 }
 
 func (this *QCameraViewfinderSettings) SetPixelAspectRatio2(horizontal int, vertical int) {

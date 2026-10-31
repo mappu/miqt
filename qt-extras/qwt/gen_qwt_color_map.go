@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -97,12 +98,10 @@ func (this *QwtColorMap) ColorIndex(interval *QwtInterval, value float64) byte {
 	return (byte)(C.QwtColorMap_colorIndex(this.h, interval.cPointer(), (C.double)(value)))
 }
 
-func (this *QwtColorMap) Color(param1 *QwtInterval, value float64) *qt.QColor {
+func (this *QwtColorMap) Color(param1 *QwtInterval, value float64) qt.QColor {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtColorMap_color(this.h, param1.cPointer(), (C.double)(value))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QwtColorMap_color(this.h, param1.cPointer(), (C.double)(value)))
 }
 
 func (this *QwtColorMap) ColorTable(param1 *QwtInterval) []uint {
@@ -283,11 +282,9 @@ func NewQwtLinearColorMap() *QwtLinearColorMap {
 }
 
 // NewQwtLinearColorMap2 constructs a new QwtLinearColorMap object.
-func NewQwtLinearColorMap2(color1 *qt.QColor, color2 *qt.QColor) *QwtLinearColorMap {
-	defer runtime.KeepAlive(color1)
-	defer runtime.KeepAlive(color2)
+func NewQwtLinearColorMap2(color1 qt.QColor, color2 qt.QColor) *QwtLinearColorMap {
 
-	return newQwtLinearColorMap(C.QwtLinearColorMap_new2((*C.QColor)(color1.UnsafePointer()), (*C.QColor)(color2.UnsafePointer())))
+	return newQwtLinearColorMap(C.QwtLinearColorMap_new2(libmiqt.ValueCast[C.struct_miqt_qcolor](color1), libmiqt.ValueCast[C.struct_miqt_qcolor](color2)))
 }
 
 // NewQwtLinearColorMap3 constructs a new QwtLinearColorMap object.
@@ -297,11 +294,9 @@ func NewQwtLinearColorMap3(param1 QwtColorMap__Format) *QwtLinearColorMap {
 }
 
 // NewQwtLinearColorMap4 constructs a new QwtLinearColorMap object.
-func NewQwtLinearColorMap4(color1 *qt.QColor, color2 *qt.QColor, param3 QwtColorMap__Format) *QwtLinearColorMap {
-	defer runtime.KeepAlive(color1)
-	defer runtime.KeepAlive(color2)
+func NewQwtLinearColorMap4(color1 qt.QColor, color2 qt.QColor, param3 QwtColorMap__Format) *QwtLinearColorMap {
 
-	return newQwtLinearColorMap(C.QwtLinearColorMap_new4((*C.QColor)(color1.UnsafePointer()), (*C.QColor)(color2.UnsafePointer()), (C.int)(param3)))
+	return newQwtLinearColorMap(C.QwtLinearColorMap_new4(libmiqt.ValueCast[C.struct_miqt_qcolor](color1), libmiqt.ValueCast[C.struct_miqt_qcolor](color2), (C.int)(param3)))
 }
 
 func (this *QwtLinearColorMap) SetMode(mode QwtLinearColorMap__Mode) {
@@ -314,17 +309,14 @@ func (this *QwtLinearColorMap) Mode() QwtLinearColorMap__Mode {
 	return (QwtLinearColorMap__Mode)(C.QwtLinearColorMap_mode(this.h))
 }
 
-func (this *QwtLinearColorMap) SetColorInterval(color1 *qt.QColor, color2 *qt.QColor) {
+func (this *QwtLinearColorMap) SetColorInterval(color1 qt.QColor, color2 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color1)
-	defer runtime.KeepAlive(color2)
-	C.QwtLinearColorMap_setColorInterval(this.h, (*C.QColor)(color1.UnsafePointer()), (*C.QColor)(color2.UnsafePointer()))
+	C.QwtLinearColorMap_setColorInterval(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color1), libmiqt.ValueCast[C.struct_miqt_qcolor](color2))
 }
 
-func (this *QwtLinearColorMap) AddColorStop(value float64, param2 *qt.QColor) {
+func (this *QwtLinearColorMap) AddColorStop(value float64, param2 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	C.QwtLinearColorMap_addColorStop(this.h, (C.double)(value), (*C.QColor)(param2.UnsafePointer()))
+	C.QwtLinearColorMap_addColorStop(this.h, (C.double)(value), libmiqt.ValueCast[C.struct_miqt_qcolor](param2))
 }
 
 func (this *QwtLinearColorMap) ColorStops() []float64 {
@@ -338,18 +330,14 @@ func (this *QwtLinearColorMap) ColorStops() []float64 {
 	return _ret
 }
 
-func (this *QwtLinearColorMap) Color1() *qt.QColor {
+func (this *QwtLinearColorMap) Color1() qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtLinearColorMap_color1(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QwtLinearColorMap_color1(this.h))
 }
 
-func (this *QwtLinearColorMap) Color2() *qt.QColor {
+func (this *QwtLinearColorMap) Color2() qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtLinearColorMap_color2(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QwtLinearColorMap_color2(this.h))
 }
 
 func (this *QwtLinearColorMap) Rgb(param1 *QwtInterval, value float64) uint {
@@ -540,23 +528,19 @@ func NewQwtAlphaColorMap() *QwtAlphaColorMap {
 }
 
 // NewQwtAlphaColorMap2 constructs a new QwtAlphaColorMap object.
-func NewQwtAlphaColorMap2(param1 *qt.QColor) *QwtAlphaColorMap {
-	defer runtime.KeepAlive(param1)
+func NewQwtAlphaColorMap2(param1 qt.QColor) *QwtAlphaColorMap {
 
-	return newQwtAlphaColorMap(C.QwtAlphaColorMap_new2((*C.QColor)(param1.UnsafePointer())))
+	return newQwtAlphaColorMap(C.QwtAlphaColorMap_new2(libmiqt.ValueCast[C.struct_miqt_qcolor](param1)))
 }
 
-func (this *QwtAlphaColorMap) SetColor(color *qt.QColor) {
+func (this *QwtAlphaColorMap) SetColor(color qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QwtAlphaColorMap_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QwtAlphaColorMap_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QwtAlphaColorMap) Color() *qt.QColor {
+func (this *QwtAlphaColorMap) Color() qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtAlphaColorMap_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QwtAlphaColorMap_color(this.h))
 }
 
 func (this *QwtAlphaColorMap) Rgb(param1 *QwtInterval, value float64) uint {

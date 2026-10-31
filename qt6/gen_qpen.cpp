@@ -22,8 +22,8 @@ QPen* QPen_new2(int param1) {
 	return new (std::nothrow) QPen(static_cast<Qt::PenStyle>(param1));
 }
 
-QPen* QPen_new3(QColor* color) {
-	return new (std::nothrow) QPen(*color);
+QPen* QPen_new3(struct miqt_qcolor color) {
+	return new (std::nothrow) QPen(miqt_from_cabi<QColor>(color));
 }
 
 QPen* QPen_new4(QBrush* brush, double width) {
@@ -121,12 +121,12 @@ void QPen_setWidth(QPen* self, int width) {
 	self->setWidth(static_cast<int>(width));
 }
 
-QColor* QPen_color(const QPen* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QPen_color(const QPen* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-void QPen_setColor(QPen* self, QColor* color) {
-	self->setColor(*color);
+void QPen_setColor(QPen* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
 QBrush* QPen_brush(const QPen* self) {

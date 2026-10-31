@@ -34,27 +34,27 @@ const char* miqt_exec_callback_QsciLexerSQL_blockStart(const QsciLexerSQL*, intp
 const char* miqt_exec_callback_QsciLexerSQL_blockStartKeyword(const QsciLexerSQL*, intptr_t, int*);
 int miqt_exec_callback_QsciLexerSQL_braceStyle(const QsciLexerSQL*, intptr_t);
 bool miqt_exec_callback_QsciLexerSQL_caseSensitive(const QsciLexerSQL*, intptr_t);
-QColor* miqt_exec_callback_QsciLexerSQL_color(const QsciLexerSQL*, intptr_t, int);
+struct miqt_qcolor miqt_exec_callback_QsciLexerSQL_color(const QsciLexerSQL*, intptr_t, int);
 bool miqt_exec_callback_QsciLexerSQL_eolFill(const QsciLexerSQL*, intptr_t, int);
 QFont* miqt_exec_callback_QsciLexerSQL_font(const QsciLexerSQL*, intptr_t, int);
 int miqt_exec_callback_QsciLexerSQL_indentationGuideView(const QsciLexerSQL*, intptr_t);
 const char* miqt_exec_callback_QsciLexerSQL_keywords(const QsciLexerSQL*, intptr_t, int);
 int miqt_exec_callback_QsciLexerSQL_defaultStyle(const QsciLexerSQL*, intptr_t);
 struct miqt_string miqt_exec_callback_QsciLexerSQL_description(const QsciLexerSQL*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerSQL_paper(const QsciLexerSQL*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerSQL_defaultColorWithStyle(const QsciLexerSQL*, intptr_t, int);
+struct miqt_qcolor miqt_exec_callback_QsciLexerSQL_paper(const QsciLexerSQL*, intptr_t, int);
+struct miqt_qcolor miqt_exec_callback_QsciLexerSQL_defaultColorWithStyle(const QsciLexerSQL*, intptr_t, int);
 bool miqt_exec_callback_QsciLexerSQL_defaultEolFill(const QsciLexerSQL*, intptr_t, int);
 QFont* miqt_exec_callback_QsciLexerSQL_defaultFontWithStyle(const QsciLexerSQL*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerSQL_defaultPaperWithStyle(const QsciLexerSQL*, intptr_t, int);
+struct miqt_qcolor miqt_exec_callback_QsciLexerSQL_defaultPaperWithStyle(const QsciLexerSQL*, intptr_t, int);
 void miqt_exec_callback_QsciLexerSQL_setEditor(QsciLexerSQL*, intptr_t, QsciScintilla*);
 void miqt_exec_callback_QsciLexerSQL_refreshProperties(QsciLexerSQL*, intptr_t);
 int miqt_exec_callback_QsciLexerSQL_styleBitsNeeded(const QsciLexerSQL*, intptr_t);
 const char* miqt_exec_callback_QsciLexerSQL_wordCharacters(const QsciLexerSQL*, intptr_t);
 void miqt_exec_callback_QsciLexerSQL_setAutoIndentStyle(QsciLexerSQL*, intptr_t, int);
-void miqt_exec_callback_QsciLexerSQL_setColor(QsciLexerSQL*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerSQL_setColor(QsciLexerSQL*, intptr_t, struct miqt_qcolor, int);
 void miqt_exec_callback_QsciLexerSQL_setEolFill(QsciLexerSQL*, intptr_t, bool, int);
 void miqt_exec_callback_QsciLexerSQL_setFont(QsciLexerSQL*, intptr_t, QFont*, int);
-void miqt_exec_callback_QsciLexerSQL_setPaper(QsciLexerSQL*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerSQL_setPaper(QsciLexerSQL*, intptr_t, struct miqt_qcolor, int);
 bool miqt_exec_callback_QsciLexerSQL_readProperties(QsciLexerSQL*, intptr_t, QSettings*, struct miqt_string);
 bool miqt_exec_callback_QsciLexerSQL_writeProperties(const QsciLexerSQL*, intptr_t, QSettings*, struct miqt_string);
 bool miqt_exec_callback_QsciLexerSQL_event(QsciLexerSQL*, intptr_t, QEvent*);
@@ -345,13 +345,11 @@ public:
 		}
 
 		int sigval1 = style;
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerSQL_color(this, handle__color, sigval1);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QsciLexerSQL_color(this, handle__color, sigval1);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QsciLexerSQL_virtualbase_color(const void* self, int style);
+	friend struct miqt_qcolor QsciLexerSQL_virtualbase_color(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eolFill = 0;
@@ -464,13 +462,11 @@ public:
 		}
 
 		int sigval1 = style;
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerSQL_paper(this, handle__paper, sigval1);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QsciLexerSQL_paper(this, handle__paper, sigval1);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QsciLexerSQL_virtualbase_paper(const void* self, int style);
+	friend struct miqt_qcolor QsciLexerSQL_virtualbase_paper(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__defaultColorWithStyle = 0;
@@ -482,13 +478,11 @@ public:
 		}
 
 		int sigval1 = style;
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerSQL_defaultColorWithStyle(this, handle__defaultColorWithStyle, sigval1);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QsciLexerSQL_defaultColorWithStyle(this, handle__defaultColorWithStyle, sigval1);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QsciLexerSQL_virtualbase_defaultColorWithStyle(const void* self, int style);
+	friend struct miqt_qcolor QsciLexerSQL_virtualbase_defaultColorWithStyle(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__defaultEolFill = 0;
@@ -534,13 +528,11 @@ public:
 		}
 
 		int sigval1 = style;
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerSQL_defaultPaperWithStyle(this, handle__defaultPaperWithStyle, sigval1);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QsciLexerSQL_defaultPaperWithStyle(this, handle__defaultPaperWithStyle, sigval1);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QsciLexerSQL_virtualbase_defaultPaperWithStyle(const void* self, int style);
+	friend struct miqt_qcolor QsciLexerSQL_virtualbase_defaultPaperWithStyle(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEditor = 0;
@@ -637,15 +629,13 @@ public:
 			return;
 		}
 
-		const QColor& c_ret = c;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&c_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(c);
 		int sigval2 = style;
 		miqt_exec_callback_QsciLexerSQL_setColor(this, handle__setColor, sigval1, sigval2);
 
 	}
 
-	friend void QsciLexerSQL_virtualbase_setColor(void* self, QColor* c, int style);
+	friend void QsciLexerSQL_virtualbase_setColor(void* self, struct miqt_qcolor c, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEolFill = 0;
@@ -695,15 +685,13 @@ public:
 			return;
 		}
 
-		const QColor& c_ret = c;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&c_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(c);
 		int sigval2 = style;
 		miqt_exec_callback_QsciLexerSQL_setPaper(this, handle__setPaper, sigval1, sigval2);
 
 	}
 
-	friend void QsciLexerSQL_virtualbase_setPaper(void* self, QColor* c, int style);
+	friend void QsciLexerSQL_virtualbase_setPaper(void* self, struct miqt_qcolor c, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__readProperties = 0;
@@ -942,8 +930,8 @@ int QsciLexerSQL_braceStyle(const QsciLexerSQL* self) {
 	return self->braceStyle();
 }
 
-QColor* QsciLexerSQL_defaultColor(const QsciLexerSQL* self, int style) {
-	return new QColor(self->defaultColor(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerSQL_defaultColor(const QsciLexerSQL* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->defaultColor(static_cast<int>(style)));
 }
 
 bool QsciLexerSQL_defaultEolFill(const QsciLexerSQL* self, int style) {
@@ -954,8 +942,8 @@ QFont* QsciLexerSQL_defaultFont(const QsciLexerSQL* self, int style) {
 	return new QFont(self->defaultFont(static_cast<int>(style)));
 }
 
-QColor* QsciLexerSQL_defaultPaper(const QsciLexerSQL* self, int style) {
-	return new QColor(self->defaultPaper(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerSQL_defaultPaper(const QsciLexerSQL* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->defaultPaper(static_cast<int>(style)));
 }
 
 const char* QsciLexerSQL_keywords(const QsciLexerSQL* self, int set) {
@@ -1303,8 +1291,8 @@ bool QsciLexerSQL_override_virtual_color(void* self, intptr_t slot) {
 	return true;
 }
 
-QColor* QsciLexerSQL_virtualbase_color(const void* self, int style) {
-	return new QColor(static_cast<const MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::color(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerSQL_virtualbase_color(const void* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::color(static_cast<int>(style)));
 }
 
 bool QsciLexerSQL_override_virtual_eolFill(void* self, intptr_t slot) {
@@ -1397,8 +1385,8 @@ bool QsciLexerSQL_override_virtual_paper(void* self, intptr_t slot) {
 	return true;
 }
 
-QColor* QsciLexerSQL_virtualbase_paper(const void* self, int style) {
-	return new QColor(static_cast<const MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::paper(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerSQL_virtualbase_paper(const void* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::paper(static_cast<int>(style)));
 }
 
 bool QsciLexerSQL_override_virtual_defaultColorWithStyle(void* self, intptr_t slot) {
@@ -1411,8 +1399,8 @@ bool QsciLexerSQL_override_virtual_defaultColorWithStyle(void* self, intptr_t sl
 	return true;
 }
 
-QColor* QsciLexerSQL_virtualbase_defaultColorWithStyle(const void* self, int style) {
-	return new QColor(static_cast<const MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::defaultColor(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerSQL_virtualbase_defaultColorWithStyle(const void* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::defaultColor(static_cast<int>(style)));
 }
 
 bool QsciLexerSQL_override_virtual_defaultEolFill(void* self, intptr_t slot) {
@@ -1453,8 +1441,8 @@ bool QsciLexerSQL_override_virtual_defaultPaperWithStyle(void* self, intptr_t sl
 	return true;
 }
 
-QColor* QsciLexerSQL_virtualbase_defaultPaperWithStyle(const void* self, int style) {
-	return new QColor(static_cast<const MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::defaultPaper(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerSQL_virtualbase_defaultPaperWithStyle(const void* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::defaultPaper(static_cast<int>(style)));
 }
 
 bool QsciLexerSQL_override_virtual_setEditor(void* self, intptr_t slot) {
@@ -1537,8 +1525,8 @@ bool QsciLexerSQL_override_virtual_setColor(void* self, intptr_t slot) {
 	return true;
 }
 
-void QsciLexerSQL_virtualbase_setColor(void* self, QColor* c, int style) {
-	static_cast<MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::setColor(*c, static_cast<int>(style));
+void QsciLexerSQL_virtualbase_setColor(void* self, struct miqt_qcolor c, int style) {
+	static_cast<MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::setColor(miqt_from_cabi<QColor>(c), static_cast<int>(style));
 }
 
 bool QsciLexerSQL_override_virtual_setEolFill(void* self, intptr_t slot) {
@@ -1579,8 +1567,8 @@ bool QsciLexerSQL_override_virtual_setPaper(void* self, intptr_t slot) {
 	return true;
 }
 
-void QsciLexerSQL_virtualbase_setPaper(void* self, QColor* c, int style) {
-	static_cast<MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::setPaper(*c, static_cast<int>(style));
+void QsciLexerSQL_virtualbase_setPaper(void* self, struct miqt_qcolor c, int style) {
+	static_cast<MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::setPaper(miqt_from_cabi<QColor>(c), static_cast<int>(style));
 }
 
 bool QsciLexerSQL_override_virtual_readProperties(void* self, intptr_t slot) {
@@ -1709,10 +1697,6 @@ bool QsciLexerSQL_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QsciLexerSQL_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQsciLexerSQL*>(self)->QsciLexerSQL::disconnectNotify(*signal);
-}
-
-QColor* QsciLexerSQL_virtualreturncopy_QColor(QColor* src) {
-	return new QColor(*src);
 }
 
 QFont* QsciLexerSQL_virtualreturncopy_QFont(QFont* src) {

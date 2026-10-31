@@ -54,14 +54,14 @@ void miqt_exec_callback_QWizard_pageRemoved(intptr_t, int);
 bool miqt_exec_callback_QWizard_validateCurrentPage(QWizard*, intptr_t);
 int miqt_exec_callback_QWizard_nextId(const QWizard*, intptr_t);
 void miqt_exec_callback_QWizard_setVisible(QWizard*, intptr_t, bool);
-QSize* miqt_exec_callback_QWizard_sizeHint(const QWizard*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWizard_sizeHint(const QWizard*, intptr_t);
 bool miqt_exec_callback_QWizard_event(QWizard*, intptr_t, QEvent*);
 void miqt_exec_callback_QWizard_resizeEvent(QWizard*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QWizard_paintEvent(QWizard*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QWizard_done(QWizard*, intptr_t, int);
 void miqt_exec_callback_QWizard_initializePage(QWizard*, intptr_t, int);
 void miqt_exec_callback_QWizard_cleanupPage(QWizard*, intptr_t, int);
-QSize* miqt_exec_callback_QWizard_minimumSizeHint(const QWizard*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWizard_minimumSizeHint(const QWizard*, intptr_t);
 void miqt_exec_callback_QWizard_open(QWizard*, intptr_t);
 int miqt_exec_callback_QWizard_exec(QWizard*, intptr_t);
 void miqt_exec_callback_QWizard_accept(QWizard*, intptr_t);
@@ -115,8 +115,8 @@ bool miqt_exec_callback_QWizardPage_isComplete(const QWizardPage*, intptr_t);
 int miqt_exec_callback_QWizardPage_nextId(const QWizardPage*, intptr_t);
 int miqt_exec_callback_QWizardPage_devType(const QWizardPage*, intptr_t);
 void miqt_exec_callback_QWizardPage_setVisible(QWizardPage*, intptr_t, bool);
-QSize* miqt_exec_callback_QWizardPage_sizeHint(const QWizardPage*, intptr_t);
-QSize* miqt_exec_callback_QWizardPage_minimumSizeHint(const QWizardPage*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWizardPage_sizeHint(const QWizardPage*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWizardPage_minimumSizeHint(const QWizardPage*, intptr_t);
 int miqt_exec_callback_QWizardPage_heightForWidth(const QWizardPage*, intptr_t, int);
 bool miqt_exec_callback_QWizardPage_hasHeightForWidth(const QWizardPage*, intptr_t);
 QPaintEngine* miqt_exec_callback_QWizardPage_paintEngine(const QWizardPage*, intptr_t);
@@ -229,13 +229,11 @@ public:
 			return QWizard::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWizard_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWizard_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWizard_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QWizard_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -347,13 +345,11 @@ public:
 			return QWizard::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWizard_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWizard_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWizard_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QWizard_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1370,8 +1366,8 @@ void QWizard_setVisible(QWizard* self, bool visible) {
 	self->setVisible(visible);
 }
 
-QSize* QWizard_sizeHint(const QWizard* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QWizard_sizeHint(const QWizard* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QWizard_currentIdChanged(QWizard* self, int id) {
@@ -1540,8 +1536,8 @@ bool QWizard_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWizard_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWizard*>(self)->QWizard::sizeHint());
+struct miqt_qsize QWizard_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWizard*>(self)->QWizard::sizeHint());
 }
 
 bool QWizard_override_virtual_event(void* self, intptr_t slot) {
@@ -1638,8 +1634,8 @@ bool QWizard_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWizard_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWizard*>(self)->QWizard::minimumSizeHint());
+struct miqt_qsize QWizard_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWizard*>(self)->QWizard::minimumSizeHint());
 }
 
 bool QWizard_override_virtual_open(void* self, intptr_t slot) {
@@ -2273,10 +2269,6 @@ void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQWizard*>(self)->QWizard::disconnectNotify(*signal);
 }
 
-QSize* QWizard_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QWizard_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -2521,13 +2513,11 @@ public:
 			return QWizardPage::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWizardPage_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWizardPage_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWizardPage_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QWizardPage_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -2538,13 +2528,11 @@ public:
 			return QWizardPage::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWizardPage_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWizardPage_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWizardPage_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QWizardPage_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -3593,8 +3581,8 @@ bool QWizardPage_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWizardPage_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::sizeHint());
+struct miqt_qsize QWizardPage_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::sizeHint());
 }
 
 bool QWizardPage_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -3607,8 +3595,8 @@ bool QWizardPage_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWizardPage_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::minimumSizeHint());
+struct miqt_qsize QWizardPage_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::minimumSizeHint());
 }
 
 bool QWizardPage_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -4212,10 +4200,6 @@ bool QWizardPage_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::disconnectNotify(*signal);
-}
-
-QSize* QWizardPage_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QWizardPage_virtualreturncopy_QVariant(QVariant* src) {

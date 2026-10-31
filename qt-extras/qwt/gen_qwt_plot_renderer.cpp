@@ -20,11 +20,11 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QwtPlotRenderer_render(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, QRectF*);
-void miqt_exec_callback_QwtPlotRenderer_renderTitle(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, QRectF*);
-void miqt_exec_callback_QwtPlotRenderer_renderFooter(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, QRectF*);
-void miqt_exec_callback_QwtPlotRenderer_renderScale(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, int, int, int, int, QRectF*);
-void miqt_exec_callback_QwtPlotRenderer_renderLegend(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, QRectF*);
+void miqt_exec_callback_QwtPlotRenderer_render(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, struct miqt_qrectf);
+void miqt_exec_callback_QwtPlotRenderer_renderTitle(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, struct miqt_qrectf);
+void miqt_exec_callback_QwtPlotRenderer_renderFooter(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, struct miqt_qrectf);
+void miqt_exec_callback_QwtPlotRenderer_renderScale(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, int, int, int, int, struct miqt_qrectf);
+void miqt_exec_callback_QwtPlotRenderer_renderLegend(const QwtPlotRenderer*, intptr_t, QwtPlot*, QPainter*, struct miqt_qrectf);
 bool miqt_exec_callback_QwtPlotRenderer_event(QwtPlotRenderer*, intptr_t, QEvent*);
 bool miqt_exec_callback_QwtPlotRenderer_eventFilter(QwtPlotRenderer*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QwtPlotRenderer_timerEvent(QwtPlotRenderer*, intptr_t, QTimerEvent*);
@@ -56,14 +56,12 @@ public:
 
 		QwtPlot* sigval1 = param1;
 		QPainter* sigval2 = param2;
-		const QRectF& plotRect_ret = plotRect;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&plotRect_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(plotRect);
 		miqt_exec_callback_QwtPlotRenderer_render(this, handle__render, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtPlotRenderer_virtualbase_render(const void* self, QwtPlot* param1, QPainter* param2, QRectF* plotRect);
+	friend void QwtPlotRenderer_virtualbase_render(const void* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf plotRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__renderTitle = 0;
@@ -77,14 +75,12 @@ public:
 
 		QwtPlot* sigval1 = (QwtPlot*) param1;
 		QPainter* sigval2 = param2;
-		const QRectF& titleRect_ret = titleRect;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&titleRect_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(titleRect);
 		miqt_exec_callback_QwtPlotRenderer_renderTitle(this, handle__renderTitle, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtPlotRenderer_virtualbase_renderTitle(const void* self, QwtPlot* param1, QPainter* param2, QRectF* titleRect);
+	friend void QwtPlotRenderer_virtualbase_renderTitle(const void* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf titleRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__renderFooter = 0;
@@ -98,14 +94,12 @@ public:
 
 		QwtPlot* sigval1 = (QwtPlot*) param1;
 		QPainter* sigval2 = param2;
-		const QRectF& footerRect_ret = footerRect;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&footerRect_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(footerRect);
 		miqt_exec_callback_QwtPlotRenderer_renderFooter(this, handle__renderFooter, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtPlotRenderer_virtualbase_renderFooter(const void* self, QwtPlot* param1, QPainter* param2, QRectF* footerRect);
+	friend void QwtPlotRenderer_virtualbase_renderFooter(const void* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf footerRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__renderScale = 0;
@@ -123,14 +117,12 @@ public:
 		int sigval4 = startDist;
 		int sigval5 = endDist;
 		int sigval6 = baseDist;
-		const QRectF& scaleRect_ret = scaleRect;
-		// Cast returned reference into pointer
-		QRectF* sigval7 = const_cast<QRectF*>(&scaleRect_ret);
+		struct miqt_qrectf sigval7 = miqt_to_cabi<struct miqt_qrectf>(scaleRect);
 		miqt_exec_callback_QwtPlotRenderer_renderScale(this, handle__renderScale, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7);
 
 	}
 
-	friend void QwtPlotRenderer_virtualbase_renderScale(const void* self, QwtPlot* param1, QPainter* param2, int axisId, int startDist, int endDist, int baseDist, QRectF* scaleRect);
+	friend void QwtPlotRenderer_virtualbase_renderScale(const void* self, QwtPlot* param1, QPainter* param2, int axisId, int startDist, int endDist, int baseDist, struct miqt_qrectf scaleRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__renderLegend = 0;
@@ -144,14 +136,12 @@ public:
 
 		QwtPlot* sigval1 = (QwtPlot*) param1;
 		QPainter* sigval2 = param2;
-		const QRectF& legendRect_ret = legendRect;
-		// Cast returned reference into pointer
-		QRectF* sigval3 = const_cast<QRectF*>(&legendRect_ret);
+		struct miqt_qrectf sigval3 = miqt_to_cabi<struct miqt_qrectf>(legendRect);
 		miqt_exec_callback_QwtPlotRenderer_renderLegend(this, handle__renderLegend, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtPlotRenderer_virtualbase_renderLegend(const void* self, QwtPlot* param1, QPainter* param2, QRectF* legendRect);
+	friend void QwtPlotRenderer_virtualbase_renderLegend(const void* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf legendRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -358,15 +348,15 @@ int QwtPlotRenderer_layoutFlags(const QwtPlotRenderer* self) {
 	return static_cast<int>(_ret);
 }
 
-void QwtPlotRenderer_renderDocument(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string fileName, QSizeF* sizeMM) {
+void QwtPlotRenderer_renderDocument(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string fileName, struct miqt_qsizef sizeMM) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	self->renderDocument(param1, fileName_QString, *sizeMM);
+	self->renderDocument(param1, fileName_QString, miqt_from_cabi<QSizeF>(sizeMM));
 }
 
-void QwtPlotRenderer_renderDocument2(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string fileName, struct miqt_string format, QSizeF* sizeMM) {
+void QwtPlotRenderer_renderDocument2(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string fileName, struct miqt_string format, struct miqt_qsizef sizeMM) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QString format_QString = QString::fromUtf8(format.data, format.len);
-	self->renderDocument(param1, fileName_QString, format_QString, *sizeMM);
+	self->renderDocument(param1, fileName_QString, format_QString, miqt_from_cabi<QSizeF>(sizeMM));
 }
 
 void QwtPlotRenderer_renderTo(const QwtPlotRenderer* self, QwtPlot* param1, QSvgGenerator* param2) {
@@ -381,24 +371,24 @@ void QwtPlotRenderer_renderTo3(const QwtPlotRenderer* self, QwtPlot* param1, QPa
 	self->renderTo(param1, *param2);
 }
 
-void QwtPlotRenderer_render(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, QRectF* plotRect) {
-	self->render(param1, param2, *plotRect);
+void QwtPlotRenderer_render(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf plotRect) {
+	self->render(param1, param2, miqt_from_cabi<QRectF>(plotRect));
 }
 
-void QwtPlotRenderer_renderTitle(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, QRectF* titleRect) {
-	self->renderTitle(param1, param2, *titleRect);
+void QwtPlotRenderer_renderTitle(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf titleRect) {
+	self->renderTitle(param1, param2, miqt_from_cabi<QRectF>(titleRect));
 }
 
-void QwtPlotRenderer_renderFooter(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, QRectF* footerRect) {
-	self->renderFooter(param1, param2, *footerRect);
+void QwtPlotRenderer_renderFooter(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf footerRect) {
+	self->renderFooter(param1, param2, miqt_from_cabi<QRectF>(footerRect));
 }
 
-void QwtPlotRenderer_renderScale(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, int axisId, int startDist, int endDist, int baseDist, QRectF* scaleRect) {
-	self->renderScale(param1, param2, static_cast<int>(axisId), static_cast<int>(startDist), static_cast<int>(endDist), static_cast<int>(baseDist), *scaleRect);
+void QwtPlotRenderer_renderScale(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, int axisId, int startDist, int endDist, int baseDist, struct miqt_qrectf scaleRect) {
+	self->renderScale(param1, param2, static_cast<int>(axisId), static_cast<int>(startDist), static_cast<int>(endDist), static_cast<int>(baseDist), miqt_from_cabi<QRectF>(scaleRect));
 }
 
-void QwtPlotRenderer_renderLegend(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, QRectF* legendRect) {
-	self->renderLegend(param1, param2, *legendRect);
+void QwtPlotRenderer_renderLegend(const QwtPlotRenderer* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf legendRect) {
+	self->renderLegend(param1, param2, miqt_from_cabi<QRectF>(legendRect));
 }
 
 bool QwtPlotRenderer_exportTo(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string documentName) {
@@ -458,25 +448,25 @@ void QwtPlotRenderer_setLayoutFlag2(QwtPlotRenderer* self, int flag, bool on) {
 	self->setLayoutFlag(static_cast<QwtPlotRenderer::LayoutFlag>(flag), on);
 }
 
-void QwtPlotRenderer_renderDocument3(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string fileName, QSizeF* sizeMM, int resolution) {
+void QwtPlotRenderer_renderDocument3(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string fileName, struct miqt_qsizef sizeMM, int resolution) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	self->renderDocument(param1, fileName_QString, *sizeMM, static_cast<int>(resolution));
+	self->renderDocument(param1, fileName_QString, miqt_from_cabi<QSizeF>(sizeMM), static_cast<int>(resolution));
 }
 
-void QwtPlotRenderer_renderDocument4(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string fileName, struct miqt_string format, QSizeF* sizeMM, int resolution) {
+void QwtPlotRenderer_renderDocument4(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string fileName, struct miqt_string format, struct miqt_qsizef sizeMM, int resolution) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QString format_QString = QString::fromUtf8(format.data, format.len);
-	self->renderDocument(param1, fileName_QString, format_QString, *sizeMM, static_cast<int>(resolution));
+	self->renderDocument(param1, fileName_QString, format_QString, miqt_from_cabi<QSizeF>(sizeMM), static_cast<int>(resolution));
 }
 
-bool QwtPlotRenderer_exportTo2(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string documentName, QSizeF* sizeMM) {
+bool QwtPlotRenderer_exportTo2(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string documentName, struct miqt_qsizef sizeMM) {
 	QString documentName_QString = QString::fromUtf8(documentName.data, documentName.len);
-	return self->exportTo(param1, documentName_QString, *sizeMM);
+	return self->exportTo(param1, documentName_QString, miqt_from_cabi<QSizeF>(sizeMM));
 }
 
-bool QwtPlotRenderer_exportTo3(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string documentName, QSizeF* sizeMM, int resolution) {
+bool QwtPlotRenderer_exportTo3(QwtPlotRenderer* self, QwtPlot* param1, struct miqt_string documentName, struct miqt_qsizef sizeMM, int resolution) {
 	QString documentName_QString = QString::fromUtf8(documentName.data, documentName.len);
-	return self->exportTo(param1, documentName_QString, *sizeMM, static_cast<int>(resolution));
+	return self->exportTo(param1, documentName_QString, miqt_from_cabi<QSizeF>(sizeMM), static_cast<int>(resolution));
 }
 
 bool QwtPlotRenderer_override_virtual_render(void* self, intptr_t slot) {
@@ -489,8 +479,8 @@ bool QwtPlotRenderer_override_virtual_render(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotRenderer_virtualbase_render(const void* self, QwtPlot* param1, QPainter* param2, QRectF* plotRect) {
-	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::render(param1, param2, *plotRect);
+void QwtPlotRenderer_virtualbase_render(const void* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf plotRect) {
+	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::render(param1, param2, miqt_from_cabi<QRectF>(plotRect));
 }
 
 bool QwtPlotRenderer_override_virtual_renderTitle(void* self, intptr_t slot) {
@@ -503,8 +493,8 @@ bool QwtPlotRenderer_override_virtual_renderTitle(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotRenderer_virtualbase_renderTitle(const void* self, QwtPlot* param1, QPainter* param2, QRectF* titleRect) {
-	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::renderTitle(param1, param2, *titleRect);
+void QwtPlotRenderer_virtualbase_renderTitle(const void* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf titleRect) {
+	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::renderTitle(param1, param2, miqt_from_cabi<QRectF>(titleRect));
 }
 
 bool QwtPlotRenderer_override_virtual_renderFooter(void* self, intptr_t slot) {
@@ -517,8 +507,8 @@ bool QwtPlotRenderer_override_virtual_renderFooter(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotRenderer_virtualbase_renderFooter(const void* self, QwtPlot* param1, QPainter* param2, QRectF* footerRect) {
-	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::renderFooter(param1, param2, *footerRect);
+void QwtPlotRenderer_virtualbase_renderFooter(const void* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf footerRect) {
+	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::renderFooter(param1, param2, miqt_from_cabi<QRectF>(footerRect));
 }
 
 bool QwtPlotRenderer_override_virtual_renderScale(void* self, intptr_t slot) {
@@ -531,8 +521,8 @@ bool QwtPlotRenderer_override_virtual_renderScale(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotRenderer_virtualbase_renderScale(const void* self, QwtPlot* param1, QPainter* param2, int axisId, int startDist, int endDist, int baseDist, QRectF* scaleRect) {
-	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::renderScale(param1, param2, static_cast<int>(axisId), static_cast<int>(startDist), static_cast<int>(endDist), static_cast<int>(baseDist), *scaleRect);
+void QwtPlotRenderer_virtualbase_renderScale(const void* self, QwtPlot* param1, QPainter* param2, int axisId, int startDist, int endDist, int baseDist, struct miqt_qrectf scaleRect) {
+	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::renderScale(param1, param2, static_cast<int>(axisId), static_cast<int>(startDist), static_cast<int>(endDist), static_cast<int>(baseDist), miqt_from_cabi<QRectF>(scaleRect));
 }
 
 bool QwtPlotRenderer_override_virtual_renderLegend(void* self, intptr_t slot) {
@@ -545,8 +535,8 @@ bool QwtPlotRenderer_override_virtual_renderLegend(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotRenderer_virtualbase_renderLegend(const void* self, QwtPlot* param1, QPainter* param2, QRectF* legendRect) {
-	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::renderLegend(param1, param2, *legendRect);
+void QwtPlotRenderer_virtualbase_renderLegend(const void* self, QwtPlot* param1, QPainter* param2, struct miqt_qrectf legendRect) {
+	static_cast<const MiqtVirtualQwtPlotRenderer*>(self)->QwtPlotRenderer::renderLegend(param1, param2, miqt_from_cabi<QRectF>(legendRect));
 }
 
 bool QwtPlotRenderer_override_virtual_event(void* self, intptr_t slot) {

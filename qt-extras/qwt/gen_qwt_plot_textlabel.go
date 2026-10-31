@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -92,13 +93,9 @@ func (this *QwtPlotTextLabel) Margin() int {
 	return (int)(C.QwtPlotTextLabel_margin(this.h))
 }
 
-func (this *QwtPlotTextLabel) TextRect(param1 *qt.QRectF, param2 *qt.QSizeF) *qt.QRectF {
+func (this *QwtPlotTextLabel) TextRect(param1 qt.QRectF, param2 qt.QSizeF) qt.QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotTextLabel_textRect(this.h, (*C.QRectF)(param1.UnsafePointer()), (*C.QSizeF)(param2.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotTextLabel_textRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1), libmiqt.ValueCast[C.struct_miqt_qsizef](param2)))
 }
 
 // Delete this object from C++ memory.

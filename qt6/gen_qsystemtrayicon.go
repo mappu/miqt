@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -164,10 +165,8 @@ func QSystemTrayIcon_SupportsMessages() bool {
 	return (bool)(C.QSystemTrayIcon_supportsMessages())
 }
 
-func (this *QSystemTrayIcon) Geometry() *QRect {
-	_goptr := newQRect(C.QSystemTrayIcon_geometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QSystemTrayIcon) Geometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QSystemTrayIcon_geometry(this.h))
 }
 
 func (this *QSystemTrayIcon) IsVisible() bool {

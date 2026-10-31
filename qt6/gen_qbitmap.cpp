@@ -150,8 +150,8 @@ QBitmap* QBitmap_new3(int w, int h) {
 	return new (std::nothrow) MiqtVirtualQBitmap(static_cast<int>(w), static_cast<int>(h));
 }
 
-QBitmap* QBitmap_new4(QSize* param1) {
-	return new (std::nothrow) MiqtVirtualQBitmap(*param1);
+QBitmap* QBitmap_new4(struct miqt_qsize param1) {
+	return new (std::nothrow) MiqtVirtualQBitmap(miqt_from_cabi<QSize>(param1));
 }
 
 QBitmap* QBitmap_new5(struct miqt_string fileName) {
@@ -192,8 +192,8 @@ QBitmap* QBitmap_fromImage(QImage* image) {
 	return new QBitmap(QBitmap::fromImage(*image));
 }
 
-QBitmap* QBitmap_fromData(QSize* size, const unsigned char* bits) {
-	return new QBitmap(QBitmap::fromData(*size, static_cast<const uchar*>(bits)));
+QBitmap* QBitmap_fromData(struct miqt_qsize size, const unsigned char* bits) {
+	return new QBitmap(QBitmap::fromData(miqt_from_cabi<QSize>(size), static_cast<const uchar*>(bits)));
 }
 
 QBitmap* QBitmap_fromPixmap(QPixmap* pixmap) {
@@ -212,8 +212,8 @@ QBitmap* QBitmap_fromImage2(QImage* image, int flags) {
 	return new QBitmap(QBitmap::fromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
-QBitmap* QBitmap_fromData2(QSize* size, const unsigned char* bits, int monoFormat) {
-	return new QBitmap(QBitmap::fromData(*size, static_cast<const uchar*>(bits), static_cast<QImage::Format>(monoFormat)));
+QBitmap* QBitmap_fromData2(struct miqt_qsize size, const unsigned char* bits, int monoFormat) {
+	return new QBitmap(QBitmap::fromData(miqt_from_cabi<QSize>(size), static_cast<const uchar*>(bits), static_cast<QImage::Format>(monoFormat)));
 }
 
 bool QBitmap_override_virtual_devType(void* self, intptr_t slot) {

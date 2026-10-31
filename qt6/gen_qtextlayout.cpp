@@ -36,8 +36,8 @@ bool QTextInlineObject_isValid(const QTextInlineObject* self) {
 	return self->isValid();
 }
 
-QRectF* QTextInlineObject_rect(const QTextInlineObject* self) {
-	return new QRectF(self->rect());
+struct miqt_qrectf QTextInlineObject_rect(const QTextInlineObject* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->rect());
 }
 
 double QTextInlineObject_width(const QTextInlineObject* self) {
@@ -266,28 +266,28 @@ int QTextLayout_rightCursorPosition(const QTextLayout* self, int oldPos) {
 	return self->rightCursorPosition(static_cast<int>(oldPos));
 }
 
-void QTextLayout_draw(const QTextLayout* self, QPainter* p, QPointF* pos) {
-	self->draw(p, *pos);
+void QTextLayout_draw(const QTextLayout* self, QPainter* p, struct miqt_qpointf pos) {
+	self->draw(p, miqt_from_cabi<QPointF>(pos));
 }
 
-void QTextLayout_drawCursor(const QTextLayout* self, QPainter* p, QPointF* pos, int cursorPosition) {
-	self->drawCursor(p, *pos, static_cast<int>(cursorPosition));
+void QTextLayout_drawCursor(const QTextLayout* self, QPainter* p, struct miqt_qpointf pos, int cursorPosition) {
+	self->drawCursor(p, miqt_from_cabi<QPointF>(pos), static_cast<int>(cursorPosition));
 }
 
-void QTextLayout_drawCursor2(const QTextLayout* self, QPainter* p, QPointF* pos, int cursorPosition, int width) {
-	self->drawCursor(p, *pos, static_cast<int>(cursorPosition), static_cast<int>(width));
+void QTextLayout_drawCursor2(const QTextLayout* self, QPainter* p, struct miqt_qpointf pos, int cursorPosition, int width) {
+	self->drawCursor(p, miqt_from_cabi<QPointF>(pos), static_cast<int>(cursorPosition), static_cast<int>(width));
 }
 
-QPointF* QTextLayout_position(const QTextLayout* self) {
-	return new QPointF(self->position());
+struct miqt_qpointf QTextLayout_position(const QTextLayout* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->position());
 }
 
-void QTextLayout_setPosition(QTextLayout* self, QPointF* p) {
-	self->setPosition(*p);
+void QTextLayout_setPosition(QTextLayout* self, struct miqt_qpointf p) {
+	self->setPosition(miqt_from_cabi<QPointF>(p));
 }
 
-QRectF* QTextLayout_boundingRect(const QTextLayout* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QTextLayout_boundingRect(const QTextLayout* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 double QTextLayout_minimumWidth(const QTextLayout* self) {
@@ -325,24 +325,24 @@ int QTextLayout_previousCursorPosition2(const QTextLayout* self, int oldPos, int
 	return self->previousCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
 }
 
-void QTextLayout_draw2(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections) {
+void QTextLayout_draw2(const QTextLayout* self, QPainter* p, struct miqt_qpointf pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections) {
 	QList<QTextLayout::FormatRange> selections_QList;
 	selections_QList.reserve(selections.len);
 	QTextLayout__FormatRange** selections_arr = static_cast<QTextLayout__FormatRange**>(selections.data);
 	for(size_t i = 0; i < selections.len; ++i) {
 		selections_QList.push_back(*(selections_arr[i]));
 	}
-	self->draw(p, *pos, selections_QList);
+	self->draw(p, miqt_from_cabi<QPointF>(pos), selections_QList);
 }
 
-void QTextLayout_draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections, QRectF* clip) {
+void QTextLayout_draw3(const QTextLayout* self, QPainter* p, struct miqt_qpointf pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections, struct miqt_qrectf clip) {
 	QList<QTextLayout::FormatRange> selections_QList;
 	selections_QList.reserve(selections.len);
 	QTextLayout__FormatRange** selections_arr = static_cast<QTextLayout__FormatRange**>(selections.data);
 	for(size_t i = 0; i < selections.len; ++i) {
 		selections_QList.push_back(*(selections_arr[i]));
 	}
-	self->draw(p, *pos, selections_QList, *clip);
+	self->draw(p, miqt_from_cabi<QPointF>(pos), selections_QList, miqt_from_cabi<QRectF>(clip));
 }
 
 struct miqt_array /* of QGlyphRun* */  QTextLayout_glyphRunsWithFrom(const QTextLayout* self, int from) {
@@ -383,8 +383,8 @@ bool QTextLine_isValid(const QTextLine* self) {
 	return self->isValid();
 }
 
-QRectF* QTextLine_rect(const QTextLine* self) {
-	return new QRectF(self->rect());
+struct miqt_qrectf QTextLine_rect(const QTextLine* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->rect());
 }
 
 double QTextLine_x(const QTextLine* self) {
@@ -440,8 +440,8 @@ double QTextLine_horizontalAdvance(const QTextLine* self) {
 	return static_cast<double>(_ret);
 }
 
-QRectF* QTextLine_naturalTextRect(const QTextLine* self) {
-	return new QRectF(self->naturalTextRect());
+struct miqt_qrectf QTextLine_naturalTextRect(const QTextLine* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->naturalTextRect());
 }
 
 double QTextLine_cursorToX(const QTextLine* self, int* cursorPos) {
@@ -470,12 +470,12 @@ void QTextLine_setNumColumns2(QTextLine* self, int columns, double alignmentWidt
 	self->setNumColumns(static_cast<int>(columns), static_cast<qreal>(alignmentWidth));
 }
 
-void QTextLine_setPosition(QTextLine* self, QPointF* pos) {
-	self->setPosition(*pos);
+void QTextLine_setPosition(QTextLine* self, struct miqt_qpointf pos) {
+	self->setPosition(miqt_from_cabi<QPointF>(pos));
 }
 
-QPointF* QTextLine_position(const QTextLine* self) {
-	return new QPointF(self->position());
+struct miqt_qpointf QTextLine_position(const QTextLine* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->position());
 }
 
 int QTextLine_textStart(const QTextLine* self) {
@@ -490,8 +490,8 @@ int QTextLine_lineNumber(const QTextLine* self) {
 	return self->lineNumber();
 }
 
-void QTextLine_draw(const QTextLine* self, QPainter* painter, QPointF* position) {
-	self->draw(painter, *position);
+void QTextLine_draw(const QTextLine* self, QPainter* painter, struct miqt_qpointf position) {
+	self->draw(painter, miqt_from_cabi<QPointF>(position));
 }
 
 struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRuns(const QTextLine* self) {

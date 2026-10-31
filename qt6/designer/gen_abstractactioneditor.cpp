@@ -51,8 +51,8 @@ void miqt_exec_callback_QDesignerActionEditorInterface_unmanageAction(QDesignerA
 void miqt_exec_callback_QDesignerActionEditorInterface_setFormWindow(QDesignerActionEditorInterface*, intptr_t, QDesignerFormWindowInterface*);
 int miqt_exec_callback_QDesignerActionEditorInterface_devType(const QDesignerActionEditorInterface*, intptr_t);
 void miqt_exec_callback_QDesignerActionEditorInterface_setVisible(QDesignerActionEditorInterface*, intptr_t, bool);
-QSize* miqt_exec_callback_QDesignerActionEditorInterface_sizeHint(const QDesignerActionEditorInterface*, intptr_t);
-QSize* miqt_exec_callback_QDesignerActionEditorInterface_minimumSizeHint(const QDesignerActionEditorInterface*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDesignerActionEditorInterface_sizeHint(const QDesignerActionEditorInterface*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDesignerActionEditorInterface_minimumSizeHint(const QDesignerActionEditorInterface*, intptr_t);
 int miqt_exec_callback_QDesignerActionEditorInterface_heightForWidth(const QDesignerActionEditorInterface*, intptr_t, int);
 bool miqt_exec_callback_QDesignerActionEditorInterface_hasHeightForWidth(const QDesignerActionEditorInterface*, intptr_t);
 QPaintEngine* miqt_exec_callback_QDesignerActionEditorInterface_paintEngine(const QDesignerActionEditorInterface*, intptr_t);
@@ -206,13 +206,11 @@ public:
 			return QDesignerActionEditorInterface::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDesignerActionEditorInterface_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDesignerActionEditorInterface_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDesignerActionEditorInterface_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDesignerActionEditorInterface_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -223,13 +221,11 @@ public:
 			return QDesignerActionEditorInterface::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDesignerActionEditorInterface_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDesignerActionEditorInterface_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDesignerActionEditorInterface_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDesignerActionEditorInterface_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1128,8 +1124,8 @@ bool QDesignerActionEditorInterface_override_virtual_sizeHint(void* self, intptr
 	return true;
 }
 
-QSize* QDesignerActionEditorInterface_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDesignerActionEditorInterface*>(self)->QDesignerActionEditorInterface::sizeHint());
+struct miqt_qsize QDesignerActionEditorInterface_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDesignerActionEditorInterface*>(self)->QDesignerActionEditorInterface::sizeHint());
 }
 
 bool QDesignerActionEditorInterface_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1142,8 +1138,8 @@ bool QDesignerActionEditorInterface_override_virtual_minimumSizeHint(void* self,
 	return true;
 }
 
-QSize* QDesignerActionEditorInterface_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDesignerActionEditorInterface*>(self)->QDesignerActionEditorInterface::minimumSizeHint());
+struct miqt_qsize QDesignerActionEditorInterface_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDesignerActionEditorInterface*>(self)->QDesignerActionEditorInterface::minimumSizeHint());
 }
 
 bool QDesignerActionEditorInterface_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1747,10 +1743,6 @@ bool QDesignerActionEditorInterface_override_virtual_disconnectNotify(void* self
 
 void QDesignerActionEditorInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDesignerActionEditorInterface*>(self)->QDesignerActionEditorInterface::disconnectNotify(*signal);
-}
-
-QSize* QDesignerActionEditorInterface_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QDesignerActionEditorInterface_virtualreturncopy_QVariant(QVariant* src) {

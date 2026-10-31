@@ -9,6 +9,7 @@ package webengine
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
@@ -132,10 +133,8 @@ func QWebEngineContextMenuRequest_Tr(s string) string {
 	return _ret
 }
 
-func (this *QWebEngineContextMenuRequest) Position() *qt6.QPoint {
-	_goptr := qt6.UnsafeNewQPoint(unsafe.Pointer(C.QWebEngineContextMenuRequest_position(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebEngineContextMenuRequest) Position() qt6.QPoint {
+	return libmiqt.ValueCast[qt6.QPoint](C.QWebEngineContextMenuRequest_position(this.h))
 }
 
 func (this *QWebEngineContextMenuRequest) SelectedText() string {

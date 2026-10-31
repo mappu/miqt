@@ -21,7 +21,7 @@ extern "C" {
 
 void miqt_exec_callback_QPdfPageRenderer_documentChanged(intptr_t, QPdfDocument*);
 void miqt_exec_callback_QPdfPageRenderer_renderModeChanged(intptr_t, int);
-void miqt_exec_callback_QPdfPageRenderer_pageRendered(intptr_t, int, QSize*, QImage*, QPdfDocumentRenderOptions*, unsigned long long);
+void miqt_exec_callback_QPdfPageRenderer_pageRendered(intptr_t, int, struct miqt_qsize, QImage*, QPdfDocumentRenderOptions*, unsigned long long);
 bool miqt_exec_callback_QPdfPageRenderer_event(QPdfPageRenderer*, intptr_t, QEvent*);
 bool miqt_exec_callback_QPdfPageRenderer_eventFilter(QPdfPageRenderer*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QPdfPageRenderer_timerEvent(QPdfPageRenderer*, intptr_t, QTimerEvent*);
@@ -229,8 +229,8 @@ void QPdfPageRenderer_setDocument(QPdfPageRenderer* self, QPdfDocument* document
 	self->setDocument(document);
 }
 
-unsigned long long QPdfPageRenderer_requestPage(QPdfPageRenderer* self, int pageNumber, QSize* imageSize) {
-	quint64 _ret = self->requestPage(static_cast<int>(pageNumber), *imageSize);
+unsigned long long QPdfPageRenderer_requestPage(QPdfPageRenderer* self, int pageNumber, struct miqt_qsize imageSize) {
+	quint64 _ret = self->requestPage(static_cast<int>(pageNumber), miqt_from_cabi<QSize>(imageSize));
 	return static_cast<unsigned long long>(_ret);
 }
 
@@ -257,14 +257,14 @@ void QPdfPageRenderer_connect_renderModeChanged(QPdfPageRenderer* self, intptr_t
 	});
 }
 
-void QPdfPageRenderer_pageRendered(QPdfPageRenderer* self, int pageNumber, QSize* imageSize, QImage* image, QPdfDocumentRenderOptions* options, unsigned long long requestId) {
-	self->pageRendered(static_cast<int>(pageNumber), *imageSize, *image, *options, static_cast<quint64>(requestId));
+void QPdfPageRenderer_pageRendered(QPdfPageRenderer* self, int pageNumber, struct miqt_qsize imageSize, QImage* image, QPdfDocumentRenderOptions* options, unsigned long long requestId) {
+	self->pageRendered(static_cast<int>(pageNumber), miqt_from_cabi<QSize>(imageSize), *image, *options, static_cast<quint64>(requestId));
 }
 
 void QPdfPageRenderer_connect_pageRendered(QPdfPageRenderer* self, intptr_t slot) {
 	QPdfPageRenderer::connect(self, static_cast<void (QPdfPageRenderer::*)(int, QSize, const QImage&, QPdfDocumentRenderOptions, quint64)>(&QPdfPageRenderer::pageRendered), self, [=](int pageNumber, QSize imageSize, const QImage& image, QPdfDocumentRenderOptions options, quint64 requestId) {
 		int sigval1 = pageNumber;
-		QSize* sigval2 = new QSize(imageSize);
+		struct miqt_qsize sigval2 = miqt_to_cabi<struct miqt_qsize>(imageSize);
 		const QImage& image_ret = image;
 		// Cast returned reference into pointer
 		QImage* sigval3 = const_cast<QImage*>(&image_ret);
@@ -319,8 +319,8 @@ struct miqt_string QPdfPageRenderer_trUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-unsigned long long QPdfPageRenderer_requestPage2(QPdfPageRenderer* self, int pageNumber, QSize* imageSize, QPdfDocumentRenderOptions* options) {
-	quint64 _ret = self->requestPage(static_cast<int>(pageNumber), *imageSize, *options);
+unsigned long long QPdfPageRenderer_requestPage2(QPdfPageRenderer* self, int pageNumber, struct miqt_qsize imageSize, QPdfDocumentRenderOptions* options) {
+	quint64 _ret = self->requestPage(static_cast<int>(pageNumber), miqt_from_cabi<QSize>(imageSize), *options);
 	return static_cast<unsigned long long>(_ret);
 }
 

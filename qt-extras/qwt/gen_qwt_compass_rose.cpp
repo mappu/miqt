@@ -9,8 +9,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QwtCompassRose_setPalette(QwtCompassRose*, intptr_t, QPalette*);
-void miqt_exec_callback_QwtCompassRose_draw(const QwtCompassRose*, intptr_t, QPainter*, QPointF*, double, double, int);
-void miqt_exec_callback_QwtSimpleCompassRose_draw(const QwtSimpleCompassRose*, intptr_t, QPainter*, QPointF*, double, double, int);
+void miqt_exec_callback_QwtCompassRose_draw(const QwtCompassRose*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
+void miqt_exec_callback_QwtSimpleCompassRose_draw(const QwtSimpleCompassRose*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
 void miqt_exec_callback_QwtSimpleCompassRose_setPalette(QwtSimpleCompassRose*, intptr_t, QPalette*);
 #ifdef __cplusplus
 } /* extern C */
@@ -52,9 +52,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = radius;
 		double sigval4 = north;
 		QPalette::ColorGroup colorGroup_ret = colorGroup;
@@ -79,8 +77,8 @@ QPalette* QwtCompassRose_palette(const QwtCompassRose* self) {
 	return const_cast<QPalette*>(&_ret);
 }
 
-void QwtCompassRose_draw(const QwtCompassRose* self, QPainter* painter, QPointF* center, double radius, double north, int colorGroup) {
-	self->draw(painter, *center, static_cast<double>(radius), static_cast<double>(north), static_cast<QPalette::ColorGroup>(colorGroup));
+void QwtCompassRose_draw(const QwtCompassRose* self, QPainter* painter, struct miqt_qpointf center, double radius, double north, int colorGroup) {
+	self->draw(painter, miqt_from_cabi<QPointF>(center), static_cast<double>(radius), static_cast<double>(north), static_cast<QPalette::ColorGroup>(colorGroup));
 }
 
 void QwtCompassRose_operatorAssign(QwtCompassRose* self, QwtCompassRose* param1) {
@@ -136,9 +134,7 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = radius;
 		double sigval4 = north;
 		QPalette::ColorGroup param5_ret = param5;
@@ -147,7 +143,7 @@ public:
 
 	}
 
-	friend void QwtSimpleCompassRose_virtualbase_draw(const void* self, QPainter* param1, QPointF* center, double radius, double north, int param5);
+	friend void QwtSimpleCompassRose_virtualbase_draw(const void* self, QPainter* param1, struct miqt_qpointf center, double radius, double north, int param5);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setPalette = 0;
@@ -222,12 +218,12 @@ double QwtSimpleCompassRose_shrinkFactor(const QwtSimpleCompassRose* self) {
 	return self->shrinkFactor();
 }
 
-void QwtSimpleCompassRose_draw(const QwtSimpleCompassRose* self, QPainter* param1, QPointF* center, double radius, double north, int param5) {
-	self->draw(param1, *center, static_cast<double>(radius), static_cast<double>(north), static_cast<QPalette::ColorGroup>(param5));
+void QwtSimpleCompassRose_draw(const QwtSimpleCompassRose* self, QPainter* param1, struct miqt_qpointf center, double radius, double north, int param5) {
+	self->draw(param1, miqt_from_cabi<QPointF>(center), static_cast<double>(radius), static_cast<double>(north), static_cast<QPalette::ColorGroup>(param5));
 }
 
-void QwtSimpleCompassRose_drawRose(QPainter* param1, QPalette* param2, QPointF* center, double radius, double north, double width, int numThorns, int numThornLevels, double shrinkFactor) {
-	QwtSimpleCompassRose::drawRose(param1, *param2, *center, static_cast<double>(radius), static_cast<double>(north), static_cast<double>(width), static_cast<int>(numThorns), static_cast<int>(numThornLevels), static_cast<double>(shrinkFactor));
+void QwtSimpleCompassRose_drawRose(QPainter* param1, QPalette* param2, struct miqt_qpointf center, double radius, double north, double width, int numThorns, int numThornLevels, double shrinkFactor) {
+	QwtSimpleCompassRose::drawRose(param1, *param2, miqt_from_cabi<QPointF>(center), static_cast<double>(radius), static_cast<double>(north), static_cast<double>(width), static_cast<int>(numThorns), static_cast<int>(numThornLevels), static_cast<double>(shrinkFactor));
 }
 
 void QwtSimpleCompassRose_operatorAssign(QwtSimpleCompassRose* self, QwtSimpleCompassRose* param1) {
@@ -244,8 +240,8 @@ bool QwtSimpleCompassRose_override_virtual_draw(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtSimpleCompassRose_virtualbase_draw(const void* self, QPainter* param1, QPointF* center, double radius, double north, int param5) {
-	static_cast<const MiqtVirtualQwtSimpleCompassRose*>(self)->QwtSimpleCompassRose::draw(param1, *center, static_cast<double>(radius), static_cast<double>(north), static_cast<QPalette::ColorGroup>(param5));
+void QwtSimpleCompassRose_virtualbase_draw(const void* self, QPainter* param1, struct miqt_qpointf center, double radius, double north, int param5) {
+	static_cast<const MiqtVirtualQwtSimpleCompassRose*>(self)->QwtSimpleCompassRose::draw(param1, miqt_from_cabi<QPointF>(center), static_cast<double>(radius), static_cast<double>(north), static_cast<QPalette::ColorGroup>(param5));
 }
 
 bool QwtSimpleCompassRose_override_virtual_setPalette(void* self, intptr_t slot) {

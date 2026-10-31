@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -183,16 +184,12 @@ func (this *QwtKnob) MarkerSize() int {
 	return (int)(C.QwtKnob_markerSize(this.h))
 }
 
-func (this *QwtKnob) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtKnob_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtKnob) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtKnob_sizeHint(this.h))
 }
 
-func (this *QwtKnob) MinimumSizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtKnob_minimumSizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtKnob) MinimumSizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtKnob_minimumSizeHint(this.h))
 }
 
 func (this *QwtKnob) SetScaleDraw(scaleDraw *QwtRoundScaleDraw) {
@@ -208,10 +205,8 @@ func (this *QwtKnob) ScaleDraw2() *QwtRoundScaleDraw {
 	return newQwtRoundScaleDraw(C.QwtKnob_scaleDraw2(this.h))
 }
 
-func (this *QwtKnob) KnobRect() *qt.QRect {
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtKnob_knobRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtKnob) KnobRect() qt.QRect {
+	return libmiqt.ValueCast[qt.QRect](C.QwtKnob_knobRect(this.h))
 }
 
 func QwtKnob_Tr2(s string, c string) string {
@@ -446,14 +441,12 @@ func (this *QwtKnob) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 
-func (this *QwtKnob) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QwtKnob) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtKnob_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtKnob_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtKnob) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtKnob) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtKnob_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -461,27 +454,24 @@ func (this *QwtKnob) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
 }
 
 //export miqt_exec_callback_QwtKnob_sizeHint
-func miqt_exec_callback_QwtKnob_sizeHint(self *C.QwtKnob, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtKnob_sizeHint(self *C.QwtKnob, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtKnob{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtKnob_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtKnob) callVirtualBase_MinimumSizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtKnob_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QwtKnob) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtKnob) callVirtualBase_MinimumSizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtKnob_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtKnob) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtKnob_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -489,16 +479,15 @@ func (this *QwtKnob) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSi
 }
 
 //export miqt_exec_callback_QwtKnob_minimumSizeHint
-func miqt_exec_callback_QwtKnob_minimumSizeHint(self *C.QwtKnob, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtKnob_minimumSizeHint(self *C.QwtKnob, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtKnob{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtKnob_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -556,14 +545,13 @@ func miqt_exec_callback_QwtKnob_changeEvent(self *C.QwtKnob, cb C.intptr_t, para
 
 }
 
-func (this *QwtKnob) callVirtualBase_DrawKnob(param1 *qt.QPainter, param2 *qt.QRectF) {
+func (this *QwtKnob) callVirtualBase_DrawKnob(param1 *qt.QPainter, param2 qt.QRectF) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
-	C.QwtKnob_virtualbase_drawKnob(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
+	C.QwtKnob_virtualbase_drawKnob(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2))
 
 }
-func (this *QwtKnob) OnDrawKnob(slot func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF)) {
+func (this *QwtKnob) OnDrawKnob(slot func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF)) {
 	ok := C.QwtKnob_override_virtual_drawKnob(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -571,8 +559,8 @@ func (this *QwtKnob) OnDrawKnob(slot func(super func(param1 *qt.QPainter, param2
 }
 
 //export miqt_exec_callback_QwtKnob_drawKnob
-func miqt_exec_callback_QwtKnob_drawKnob(self *C.QwtKnob, cb C.intptr_t, param1 *C.QPainter, param2 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF))
+func miqt_exec_callback_QwtKnob_drawKnob(self *C.QwtKnob, cb C.intptr_t, param1 *C.QPainter, param2 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -580,7 +568,7 @@ func miqt_exec_callback_QwtKnob_drawKnob(self *C.QwtKnob, cb C.intptr_t, param1 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQRectF(unsafe.Pointer(param2))
+	slotval2 := libmiqt.ValueCast[qt.QRectF](param2)
 
 	gofunc((&QwtKnob{h: self}).callVirtualBase_DrawKnob, slotval1, slotval2)
 
@@ -613,14 +601,13 @@ func miqt_exec_callback_QwtKnob_drawFocusIndicator(self *C.QwtKnob, cb C.intptr_
 
 }
 
-func (this *QwtKnob) callVirtualBase_DrawMarker(param1 *qt.QPainter, param2 *qt.QRectF, angle float64) {
+func (this *QwtKnob) callVirtualBase_DrawMarker(param1 *qt.QPainter, param2 qt.QRectF, angle float64) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
-	C.QwtKnob_virtualbase_drawMarker(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()), (C.double)(angle))
+	C.QwtKnob_virtualbase_drawMarker(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2), (C.double)(angle))
 
 }
-func (this *QwtKnob) OnDrawMarker(slot func(super func(param1 *qt.QPainter, param2 *qt.QRectF, angle float64), param1 *qt.QPainter, param2 *qt.QRectF, angle float64)) {
+func (this *QwtKnob) OnDrawMarker(slot func(super func(param1 *qt.QPainter, param2 qt.QRectF, angle float64), param1 *qt.QPainter, param2 qt.QRectF, angle float64)) {
 	ok := C.QwtKnob_override_virtual_drawMarker(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -628,8 +615,8 @@ func (this *QwtKnob) OnDrawMarker(slot func(super func(param1 *qt.QPainter, para
 }
 
 //export miqt_exec_callback_QwtKnob_drawMarker
-func miqt_exec_callback_QwtKnob_drawMarker(self *C.QwtKnob, cb C.intptr_t, param1 *C.QPainter, param2 *C.QRectF, angle C.double) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 *qt.QRectF, angle float64), param1 *qt.QPainter, param2 *qt.QRectF, angle float64))
+func miqt_exec_callback_QwtKnob_drawMarker(self *C.QwtKnob, cb C.intptr_t, param1 *C.QPainter, param2 C.struct_miqt_qrectf, angle C.double) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.QRectF, angle float64), param1 *qt.QPainter, param2 qt.QRectF, angle float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -637,7 +624,7 @@ func miqt_exec_callback_QwtKnob_drawMarker(self *C.QwtKnob, cb C.intptr_t, param
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQRectF(unsafe.Pointer(param2))
+	slotval2 := libmiqt.ValueCast[qt.QRectF](param2)
 
 	slotval3 := (float64)(angle)
 
@@ -645,13 +632,12 @@ func miqt_exec_callback_QwtKnob_drawMarker(self *C.QwtKnob, cb C.intptr_t, param
 
 }
 
-func (this *QwtKnob) callVirtualBase_ScrolledTo(param1 *qt.QPoint) float64 {
-	defer runtime.KeepAlive(param1)
+func (this *QwtKnob) callVirtualBase_ScrolledTo(param1 qt.QPoint) float64 {
 
-	return (float64)(C.QwtKnob_virtualbase_scrolledTo(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
+	return (float64)(C.QwtKnob_virtualbase_scrolledTo(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 
 }
-func (this *QwtKnob) OnScrolledTo(slot func(super func(param1 *qt.QPoint) float64, param1 *qt.QPoint) float64) {
+func (this *QwtKnob) OnScrolledTo(slot func(super func(param1 qt.QPoint) float64, param1 qt.QPoint) float64) {
 	ok := C.QwtKnob_override_virtual_scrolledTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -659,14 +645,14 @@ func (this *QwtKnob) OnScrolledTo(slot func(super func(param1 *qt.QPoint) float6
 }
 
 //export miqt_exec_callback_QwtKnob_scrolledTo
-func miqt_exec_callback_QwtKnob_scrolledTo(self *C.QwtKnob, cb C.intptr_t, param1 *C.QPoint) C.double {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint) float64, param1 *qt.QPoint) float64)
+func miqt_exec_callback_QwtKnob_scrolledTo(self *C.QwtKnob, cb C.intptr_t, param1 C.struct_miqt_qpoint) C.double {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint) float64, param1 qt.QPoint) float64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	virtualReturn := gofunc((&QwtKnob{h: self}).callVirtualBase_ScrolledTo, slotval1)
 
@@ -674,13 +660,12 @@ func miqt_exec_callback_QwtKnob_scrolledTo(self *C.QwtKnob, cb C.intptr_t, param
 
 }
 
-func (this *QwtKnob) callVirtualBase_IsScrollPosition(param1 *qt.QPoint) bool {
-	defer runtime.KeepAlive(param1)
+func (this *QwtKnob) callVirtualBase_IsScrollPosition(param1 qt.QPoint) bool {
 
-	return (bool)(C.QwtKnob_virtualbase_isScrollPosition(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
+	return (bool)(C.QwtKnob_virtualbase_isScrollPosition(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 
 }
-func (this *QwtKnob) OnIsScrollPosition(slot func(super func(param1 *qt.QPoint) bool, param1 *qt.QPoint) bool) {
+func (this *QwtKnob) OnIsScrollPosition(slot func(super func(param1 qt.QPoint) bool, param1 qt.QPoint) bool) {
 	ok := C.QwtKnob_override_virtual_isScrollPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -688,14 +673,14 @@ func (this *QwtKnob) OnIsScrollPosition(slot func(super func(param1 *qt.QPoint) 
 }
 
 //export miqt_exec_callback_QwtKnob_isScrollPosition
-func miqt_exec_callback_QwtKnob_isScrollPosition(self *C.QwtKnob, cb C.intptr_t, param1 *C.QPoint) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint) bool, param1 *qt.QPoint) bool)
+func miqt_exec_callback_QwtKnob_isScrollPosition(self *C.QwtKnob, cb C.intptr_t, param1 C.struct_miqt_qpoint) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint) bool, param1 qt.QPoint) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	virtualReturn := gofunc((&QwtKnob{h: self}).callVirtualBase_IsScrollPosition, slotval1)
 
@@ -1626,7 +1611,6 @@ func miqt_exec_callback_QwtKnob_initPainter(self *C.QwtKnob, cb C.intptr_t, pain
 }
 
 func (this *QwtKnob) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtKnob_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

@@ -25,36 +25,36 @@ QPageSize* QPageSize_new2(int pageSizeId) {
 	return new (std::nothrow) QPageSize(static_cast<QPageSize::PageSizeId>(pageSizeId));
 }
 
-QPageSize* QPageSize_new3(QSize* pointSize) {
-	return new (std::nothrow) QPageSize(*pointSize);
+QPageSize* QPageSize_new3(struct miqt_qsize pointSize) {
+	return new (std::nothrow) QPageSize(miqt_from_cabi<QSize>(pointSize));
 }
 
-QPageSize* QPageSize_new4(QSizeF* size, int units) {
-	return new (std::nothrow) QPageSize(*size, static_cast<QPageSize::Unit>(units));
+QPageSize* QPageSize_new4(struct miqt_qsizef size, int units) {
+	return new (std::nothrow) QPageSize(miqt_from_cabi<QSizeF>(size), static_cast<QPageSize::Unit>(units));
 }
 
 QPageSize* QPageSize_new5(QPageSize* other) {
 	return new (std::nothrow) QPageSize(*other);
 }
 
-QPageSize* QPageSize_new6(QSize* pointSize, struct miqt_string name) {
+QPageSize* QPageSize_new6(struct miqt_qsize pointSize, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new (std::nothrow) QPageSize(*pointSize, name_QString);
+	return new (std::nothrow) QPageSize(miqt_from_cabi<QSize>(pointSize), name_QString);
 }
 
-QPageSize* QPageSize_new7(QSize* pointSize, struct miqt_string name, int matchPolicy) {
+QPageSize* QPageSize_new7(struct miqt_qsize pointSize, struct miqt_string name, int matchPolicy) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new (std::nothrow) QPageSize(*pointSize, name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
+	return new (std::nothrow) QPageSize(miqt_from_cabi<QSize>(pointSize), name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 }
 
-QPageSize* QPageSize_new8(QSizeF* size, int units, struct miqt_string name) {
+QPageSize* QPageSize_new8(struct miqt_qsizef size, int units, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new (std::nothrow) QPageSize(*size, static_cast<QPageSize::Unit>(units), name_QString);
+	return new (std::nothrow) QPageSize(miqt_from_cabi<QSizeF>(size), static_cast<QPageSize::Unit>(units), name_QString);
 }
 
-QPageSize* QPageSize_new9(QSizeF* size, int units, struct miqt_string name, int matchPolicy) {
+QPageSize* QPageSize_new9(struct miqt_qsizef size, int units, struct miqt_string name, int matchPolicy) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new (std::nothrow) QPageSize(*size, static_cast<QPageSize::Unit>(units), name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
+	return new (std::nothrow) QPageSize(miqt_from_cabi<QSizeF>(size), static_cast<QPageSize::Unit>(units), name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 }
 
 void QPageSize_operatorAssign(QPageSize* self, QPageSize* other) {
@@ -104,8 +104,8 @@ int QPageSize_windowsId(const QPageSize* self) {
 	return self->windowsId();
 }
 
-QSizeF* QPageSize_definitionSize(const QPageSize* self) {
-	return new QSizeF(self->definitionSize());
+struct miqt_qsizef QPageSize_definitionSize(const QPageSize* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->definitionSize());
 }
 
 int QPageSize_definitionUnits(const QPageSize* self) {
@@ -113,28 +113,28 @@ int QPageSize_definitionUnits(const QPageSize* self) {
 	return static_cast<int>(_ret);
 }
 
-QSizeF* QPageSize_size(const QPageSize* self, int units) {
-	return new QSizeF(self->size(static_cast<QPageSize::Unit>(units)));
+struct miqt_qsizef QPageSize_size(const QPageSize* self, int units) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->size(static_cast<QPageSize::Unit>(units)));
 }
 
-QSize* QPageSize_sizePoints(const QPageSize* self) {
-	return new QSize(self->sizePoints());
+struct miqt_qsize QPageSize_sizePoints(const QPageSize* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizePoints());
 }
 
-QSize* QPageSize_sizePixels(const QPageSize* self, int resolution) {
-	return new QSize(self->sizePixels(static_cast<int>(resolution)));
+struct miqt_qsize QPageSize_sizePixels(const QPageSize* self, int resolution) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizePixels(static_cast<int>(resolution)));
 }
 
-QRectF* QPageSize_rect(const QPageSize* self, int units) {
-	return new QRectF(self->rect(static_cast<QPageSize::Unit>(units)));
+struct miqt_qrectf QPageSize_rect(const QPageSize* self, int units) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->rect(static_cast<QPageSize::Unit>(units)));
 }
 
-QRect* QPageSize_rectPoints(const QPageSize* self) {
-	return new QRect(self->rectPoints());
+struct miqt_qrect QPageSize_rectPoints(const QPageSize* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rectPoints());
 }
 
-QRect* QPageSize_rectPixels(const QPageSize* self, int resolution) {
-	return new QRect(self->rectPixels(static_cast<int>(resolution)));
+struct miqt_qrect QPageSize_rectPixels(const QPageSize* self, int resolution) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rectPixels(static_cast<int>(resolution)));
 }
 
 struct miqt_string QPageSize_keyWithPageSizeId(int pageSizeId) {
@@ -159,13 +159,13 @@ struct miqt_string QPageSize_nameWithPageSizeId(int pageSizeId) {
 	return _ms;
 }
 
-int QPageSize_idWithPointSize(QSize* pointSize) {
-	QPageSize::PageSizeId _ret = QPageSize::id(*pointSize);
+int QPageSize_idWithPointSize(struct miqt_qsize pointSize) {
+	QPageSize::PageSizeId _ret = QPageSize::id(miqt_from_cabi<QSize>(pointSize));
 	return static_cast<int>(_ret);
 }
 
-int QPageSize_id2(QSizeF* size, int units) {
-	QPageSize::PageSizeId _ret = QPageSize::id(*size, static_cast<QPageSize::Unit>(units));
+int QPageSize_id2(struct miqt_qsizef size, int units) {
+	QPageSize::PageSizeId _ret = QPageSize::id(miqt_from_cabi<QSizeF>(size), static_cast<QPageSize::Unit>(units));
 	return static_cast<int>(_ret);
 }
 
@@ -178,8 +178,8 @@ int QPageSize_windowsIdWithPageSizeId(int pageSizeId) {
 	return QPageSize::windowsId(static_cast<QPageSize::PageSizeId>(pageSizeId));
 }
 
-QSizeF* QPageSize_definitionSizeWithPageSizeId(int pageSizeId) {
-	return new QSizeF(QPageSize::definitionSize(static_cast<QPageSize::PageSizeId>(pageSizeId)));
+struct miqt_qsizef QPageSize_definitionSizeWithPageSizeId(int pageSizeId) {
+	return miqt_to_cabi<struct miqt_qsizef>(QPageSize::definitionSize(static_cast<QPageSize::PageSizeId>(pageSizeId)));
 }
 
 int QPageSize_definitionUnitsWithPageSizeId(int pageSizeId) {
@@ -187,25 +187,25 @@ int QPageSize_definitionUnitsWithPageSizeId(int pageSizeId) {
 	return static_cast<int>(_ret);
 }
 
-QSizeF* QPageSize_size2(int pageSizeId, int units) {
-	return new QSizeF(QPageSize::size(static_cast<QPageSize::PageSizeId>(pageSizeId), static_cast<QPageSize::Unit>(units)));
+struct miqt_qsizef QPageSize_size2(int pageSizeId, int units) {
+	return miqt_to_cabi<struct miqt_qsizef>(QPageSize::size(static_cast<QPageSize::PageSizeId>(pageSizeId), static_cast<QPageSize::Unit>(units)));
 }
 
-QSize* QPageSize_sizePointsWithPageSizeId(int pageSizeId) {
-	return new QSize(QPageSize::sizePoints(static_cast<QPageSize::PageSizeId>(pageSizeId)));
+struct miqt_qsize QPageSize_sizePointsWithPageSizeId(int pageSizeId) {
+	return miqt_to_cabi<struct miqt_qsize>(QPageSize::sizePoints(static_cast<QPageSize::PageSizeId>(pageSizeId)));
 }
 
-QSize* QPageSize_sizePixels2(int pageSizeId, int resolution) {
-	return new QSize(QPageSize::sizePixels(static_cast<QPageSize::PageSizeId>(pageSizeId), static_cast<int>(resolution)));
+struct miqt_qsize QPageSize_sizePixels2(int pageSizeId, int resolution) {
+	return miqt_to_cabi<struct miqt_qsize>(QPageSize::sizePixels(static_cast<QPageSize::PageSizeId>(pageSizeId), static_cast<int>(resolution)));
 }
 
-int QPageSize_id3(QSize* pointSize, int matchPolicy) {
-	QPageSize::PageSizeId _ret = QPageSize::id(*pointSize, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
+int QPageSize_id3(struct miqt_qsize pointSize, int matchPolicy) {
+	QPageSize::PageSizeId _ret = QPageSize::id(miqt_from_cabi<QSize>(pointSize), static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 	return static_cast<int>(_ret);
 }
 
-int QPageSize_id4(QSizeF* size, int units, int matchPolicy) {
-	QPageSize::PageSizeId _ret = QPageSize::id(*size, static_cast<QPageSize::Unit>(units), static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
+int QPageSize_id4(struct miqt_qsizef size, int units, int matchPolicy) {
+	QPageSize::PageSizeId _ret = QPageSize::id(miqt_from_cabi<QSizeF>(size), static_cast<QPageSize::Unit>(units), static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 	return static_cast<int>(_ret);
 }
 

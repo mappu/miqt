@@ -44,10 +44,10 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QRadioButton_sizeHint(const QRadioButton*, intptr_t);
-QSize* miqt_exec_callback_QRadioButton_minimumSizeHint(const QRadioButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QRadioButton_sizeHint(const QRadioButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QRadioButton_minimumSizeHint(const QRadioButton*, intptr_t);
 bool miqt_exec_callback_QRadioButton_event(QRadioButton*, intptr_t, QEvent*);
-bool miqt_exec_callback_QRadioButton_hitButton(const QRadioButton*, intptr_t, QPoint*);
+bool miqt_exec_callback_QRadioButton_hitButton(const QRadioButton*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QRadioButton_paintEvent(QRadioButton*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QRadioButton_mouseMoveEvent(QRadioButton*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QRadioButton_initStyleOption(const QRadioButton*, intptr_t, QStyleOptionButton*);
@@ -118,13 +118,11 @@ public:
 			return QRadioButton::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QRadioButton_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QRadioButton_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QRadioButton_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QRadioButton_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -135,13 +133,11 @@ public:
 			return QRadioButton::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QRadioButton_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QRadioButton_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QRadioButton_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QRadioButton_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -168,14 +164,12 @@ public:
 			return QRadioButton::hitButton(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		bool callback_return_value = miqt_exec_callback_QRadioButton_hitButton(this, handle__hitButton, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QRadioButton_virtualbase_hitButton(const void* self, QPoint* param1);
+	friend bool QRadioButton_virtualbase_hitButton(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -1029,12 +1023,12 @@ struct miqt_string QRadioButton_tr(const char* s) {
 	return _ms;
 }
 
-QSize* QRadioButton_sizeHint(const QRadioButton* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QRadioButton_sizeHint(const QRadioButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QRadioButton_minimumSizeHint(const QRadioButton* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QRadioButton_minimumSizeHint(const QRadioButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 struct miqt_string QRadioButton_tr2(const char* s, const char* c) {
@@ -1069,8 +1063,8 @@ bool QRadioButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QRadioButton_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQRadioButton*>(self)->QRadioButton::sizeHint());
+struct miqt_qsize QRadioButton_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQRadioButton*>(self)->QRadioButton::sizeHint());
 }
 
 bool QRadioButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1083,8 +1077,8 @@ bool QRadioButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QRadioButton_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQRadioButton*>(self)->QRadioButton::minimumSizeHint());
+struct miqt_qsize QRadioButton_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQRadioButton*>(self)->QRadioButton::minimumSizeHint());
 }
 
 bool QRadioButton_override_virtual_event(void* self, intptr_t slot) {
@@ -1111,8 +1105,8 @@ bool QRadioButton_override_virtual_hitButton(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QRadioButton_virtualbase_hitButton(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQRadioButton*>(self)->QRadioButton::hitButton(*param1);
+bool QRadioButton_virtualbase_hitButton(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQRadioButton*>(self)->QRadioButton::hitButton(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QRadioButton_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1772,10 +1766,6 @@ bool QRadioButton_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQRadioButton*>(self)->QRadioButton::disconnectNotify(*signal);
-}
-
-QSize* QRadioButton_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QRadioButton_virtualreturncopy_QVariant(QVariant* src) {

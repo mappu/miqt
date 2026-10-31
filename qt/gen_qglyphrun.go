@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -102,7 +103,6 @@ func (this *QGlyphRun) SetRawFont(rawFont *QRawFont) {
 
 func (this *QGlyphRun) SetRawData(glyphIndexArray *uint, glyphPositionArray *QPointF, size int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(glyphPositionArray)
 	C.QGlyphRun_setRawData(this.h, (*C.uint)(unsafe.Pointer(glyphIndexArray)), glyphPositionArray.cPointer(), (C.int)(size))
 }
 
@@ -133,23 +133,20 @@ func (this *QGlyphRun) Positions() []QPointF {
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QGlyphRun_positions(this.h)
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qpointf)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_goptr := newQPointF(_outCast[i])
-		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_vv_goptr
+		_ret[i] = libmiqt.ValueCast[QPointF](_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QGlyphRun) SetPositions(positions []QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(positions)
-	positions_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(positions))))
+	positions_CArray_ptr := (*C.struct_miqt_qpointf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qpointf{})) * len(positions))))
 	defer C.free(unsafe.Pointer(positions_CArray_ptr))
 	positions_CArray := unsafe.Slice(positions_CArray_ptr, len(positions))
 	for i := range positions {
-		positions_CArray[i] = positions[i].cPointer()
+		positions_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qpointf](positions[i])
 	}
 	positions_ma := C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray_ptr)}
 	C.QGlyphRun_setPositions(this.h, positions_ma)
@@ -227,17 +224,14 @@ func (this *QGlyphRun) Flags() QGlyphRun__GlyphRunFlag {
 	return (QGlyphRun__GlyphRunFlag)(C.QGlyphRun_flags(this.h))
 }
 
-func (this *QGlyphRun) SetBoundingRect(boundingRect *QRectF) {
+func (this *QGlyphRun) SetBoundingRect(boundingRect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(boundingRect)
-	C.QGlyphRun_setBoundingRect(this.h, boundingRect.cPointer())
+	C.QGlyphRun_setBoundingRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](boundingRect))
 }
 
-func (this *QGlyphRun) BoundingRect() *QRectF {
+func (this *QGlyphRun) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGlyphRun_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGlyphRun_boundingRect(this.h))
 }
 
 func (this *QGlyphRun) IsEmpty() bool {

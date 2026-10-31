@@ -49,14 +49,14 @@ void miqt_exec_callback_QwtAbstractSlider_mouseReleaseEvent(QwtAbstractSlider*, 
 void miqt_exec_callback_QwtAbstractSlider_mouseMoveEvent(QwtAbstractSlider*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QwtAbstractSlider_keyPressEvent(QwtAbstractSlider*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QwtAbstractSlider_wheelEvent(QwtAbstractSlider*, intptr_t, QWheelEvent*);
-bool miqt_exec_callback_QwtAbstractSlider_isScrollPosition(const QwtAbstractSlider*, intptr_t, QPoint*);
-double miqt_exec_callback_QwtAbstractSlider_scrolledTo(const QwtAbstractSlider*, intptr_t, QPoint*);
+bool miqt_exec_callback_QwtAbstractSlider_isScrollPosition(const QwtAbstractSlider*, intptr_t, struct miqt_qpoint);
+double miqt_exec_callback_QwtAbstractSlider_scrolledTo(const QwtAbstractSlider*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QwtAbstractSlider_scaleChange(QwtAbstractSlider*, intptr_t);
 void miqt_exec_callback_QwtAbstractSlider_sliderChange(QwtAbstractSlider*, intptr_t);
 int miqt_exec_callback_QwtAbstractSlider_devType(const QwtAbstractSlider*, intptr_t);
 void miqt_exec_callback_QwtAbstractSlider_setVisible(QwtAbstractSlider*, intptr_t, bool);
-QSize* miqt_exec_callback_QwtAbstractSlider_sizeHint(const QwtAbstractSlider*, intptr_t);
-QSize* miqt_exec_callback_QwtAbstractSlider_minimumSizeHint(const QwtAbstractSlider*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtAbstractSlider_sizeHint(const QwtAbstractSlider*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtAbstractSlider_minimumSizeHint(const QwtAbstractSlider*, intptr_t);
 int miqt_exec_callback_QwtAbstractSlider_heightForWidth(const QwtAbstractSlider*, intptr_t, int);
 bool miqt_exec_callback_QwtAbstractSlider_hasHeightForWidth(const QwtAbstractSlider*, intptr_t);
 QPaintEngine* miqt_exec_callback_QwtAbstractSlider_paintEngine(const QwtAbstractSlider*, intptr_t);
@@ -201,9 +201,7 @@ public:
 			return false; // Pure virtual, there is no base we can call
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		bool callback_return_value = miqt_exec_callback_QwtAbstractSlider_isScrollPosition(this, handle__isScrollPosition, sigval1);
 		return callback_return_value;
 	}
@@ -217,9 +215,7 @@ public:
 			return 0; // Pure virtual, there is no base we can call
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		double callback_return_value = miqt_exec_callback_QwtAbstractSlider_scrolledTo(this, handle__scrolledTo, sigval1);
 		return static_cast<double>(callback_return_value);
 	}
@@ -297,13 +293,11 @@ public:
 			return QwtAbstractSlider::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtAbstractSlider_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtAbstractSlider_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtAbstractSlider_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtAbstractSlider_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -314,13 +308,11 @@ public:
 			return QwtAbstractSlider::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtAbstractSlider_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtAbstractSlider_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtAbstractSlider_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtAbstractSlider_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1354,8 +1346,8 @@ bool QwtAbstractSlider_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtAbstractSlider_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtAbstractSlider*>(self)->QwtAbstractSlider::sizeHint());
+struct miqt_qsize QwtAbstractSlider_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtAbstractSlider*>(self)->QwtAbstractSlider::sizeHint());
 }
 
 bool QwtAbstractSlider_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1368,8 +1360,8 @@ bool QwtAbstractSlider_override_virtual_minimumSizeHint(void* self, intptr_t slo
 	return true;
 }
 
-QSize* QwtAbstractSlider_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtAbstractSlider*>(self)->QwtAbstractSlider::minimumSizeHint());
+struct miqt_qsize QwtAbstractSlider_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtAbstractSlider*>(self)->QwtAbstractSlider::minimumSizeHint());
 }
 
 bool QwtAbstractSlider_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1903,10 +1895,6 @@ bool QwtAbstractSlider_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QwtAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtAbstractSlider*>(self)->QwtAbstractSlider::disconnectNotify(*signal);
-}
-
-QSize* QwtAbstractSlider_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtAbstractSlider_virtualreturncopy_QVariant(QVariant* src) {

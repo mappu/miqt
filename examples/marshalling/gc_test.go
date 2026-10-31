@@ -14,7 +14,7 @@ import (
 // C++ object while a call is still using it:
 //   - as the receiver, e.g. w.Grab().Width()
 //   - as an argument, e.g. w.SetFont(w.Font())
-//   - as the owner of a returned reference, e.g. Palette().Color().Name()
+//   - as the owner of a returned reference, e.g. Palette().Brush().Style()
 //   - as a value returned from a virtual override, which C++ copies after the
 //     Go callback has returned
 //
@@ -35,19 +35,18 @@ func TestGoGCKeepAlive(t *testing.T) {
 		return fmt.Sprintf("row %d", row)
 	}
 
-	proxy.OnData(func(super func(proxyIndex *qt.QModelIndex, role int) *qt.QVariant, proxyIndex *qt.QModelIndex, role int) *qt.QVariant {
+	proxy.OnData(func(super func(proxyIndex qt.QModelIndex, role int) *qt.QVariant, proxyIndex qt.QModelIndex, role int) *qt.QVariant {
 		v := qt.NewQVariant14(cellText(proxyIndex.Row()))
 		v.GoGC()
 		return v
 	})
-	proxy.OnItemData(func(super func(index *qt.QModelIndex) map[int]qt.QVariant, index *qt.QModelIndex) map[int]qt.QVariant {
+	proxy.OnItemData(func(super func(index qt.QModelIndex) map[int]qt.QVariant, index qt.QModelIndex) map[int]qt.QVariant {
 		v := qt.NewQVariant14(cellText(index.Row()))
 		v.GoGC()
 		return map[int]qt.QVariant{int(qt.DisplayRole): *v}
 	})
-	proxy.OnMatch(func(super func(start *qt.QModelIndex, role int, value *qt.QVariant, hits int, flags qt.MatchFlag) []qt.QModelIndex, start *qt.QModelIndex, role int, value *qt.QVariant, hits int, flags qt.MatchFlag) []qt.QModelIndex {
-		// Index() returns values that have a finalizer
-		return []qt.QModelIndex{*proxy.Index(start.Row(), 0, qt.NewQModelIndex())}
+	proxy.OnMatch(func(super func(start qt.QModelIndex, role int, value *qt.QVariant, hits int, flags qt.MatchFlag) []qt.QModelIndex, start qt.QModelIndex, role int, value *qt.QVariant, hits int, flags qt.MatchFlag) []qt.QModelIndex {
+		return []qt.QModelIndex{proxy.Index(start.Row(), 0, qt.NewQModelIndex())}
 	})
 
 	w := qt.NewQLabel3("Hello")
@@ -68,7 +67,6 @@ func TestGoGCKeepAlive(t *testing.T) {
 	}()
 
 	root := qt.NewQModelIndex()
-	defer root.Delete()
 
 	for i := 0; i < 20000; i++ {
 		row := i % rows
@@ -82,7 +80,7 @@ func TestGoGCKeepAlive(t *testing.T) {
 		w.SetFont(w.Font())
 
 		// Owner of a returned reference
-		_ = qt.QGuiApplication_Palette().Color(qt.QPalette__Active, qt.QPalette__Window).Name()
+		_ = qt.QGuiApplication_Palette().Brush(qt.QPalette__Active, qt.QPalette__Window).Style()
 
 		// Values returned from virtual overrides
 		index := proxy.Index(row, 0, root)

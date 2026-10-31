@@ -179,7 +179,7 @@ void QGLContext_swapBuffers(const QGLContext* self);
 void QGLContext_setTextureCacheLimit(int size);
 int QGLContext_textureCacheLimit();
 QPaintDevice* QGLContext_device(const QGLContext* self);
-QColor* QGLContext_overlayTransparentColor(const QGLContext* self);
+struct miqt_qcolor QGLContext_overlayTransparentColor(const QGLContext* self);
 QGLContext* QGLContext_currentContext();
 bool QGLContext_chooseContext(QGLContext* self, QGLContext* shareContext);
 
@@ -199,7 +199,7 @@ bool QGLContext_protectedbase_windowCreated(bool* _dynamic_cast_ok, const void* 
 void QGLContext_protectedbase_setWindowCreated(bool* _dynamic_cast_ok, void* self, bool on);
 bool QGLContext_protectedbase_initialized(bool* _dynamic_cast_ok, const void* self);
 void QGLContext_protectedbase_setInitialized(bool* _dynamic_cast_ok, void* self, bool on);
-unsigned int QGLContext_protectedbase_colorIndex(bool* _dynamic_cast_ok, const void* self, QColor* c);
+unsigned int QGLContext_protectedbase_colorIndex(bool* _dynamic_cast_ok, const void* self, struct miqt_qcolor c);
 void QGLContext_protectedbase_setValid(bool* _dynamic_cast_ok, void* self, bool valid);
 void QGLContext_protectedbase_setDevice(bool* _dynamic_cast_ok, void* self, QPaintDevice* pDev);
 
@@ -222,8 +222,8 @@ QMetaObject* QGLWidget_metaObject(const QGLWidget* self);
 void* QGLWidget_metacast(QGLWidget* self, const char* param1);
 struct miqt_string QGLWidget_tr(const char* s);
 struct miqt_string QGLWidget_trUtf8(const char* s);
-void QGLWidget_qglColor(const QGLWidget* self, QColor* c);
-void QGLWidget_qglClearColor(const QGLWidget* self, QColor* c);
+void QGLWidget_qglColor(const QGLWidget* self, struct miqt_qcolor c);
+void QGLWidget_qglClearColor(const QGLWidget* self, struct miqt_qcolor c);
 bool QGLWidget_isValid(const QGLWidget* self);
 bool QGLWidget_isSharing(const QGLWidget* self);
 void QGLWidget_makeCurrent(QGLWidget* self);
@@ -301,9 +301,9 @@ int QGLWidget_virtualbase_devType(const void* self);
 bool QGLWidget_override_virtual_setVisible(void* self, intptr_t slot);
 void QGLWidget_virtualbase_setVisible(void* self, bool visible);
 bool QGLWidget_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QGLWidget_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QGLWidget_virtualbase_sizeHint(const void* self);
 bool QGLWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QGLWidget_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QGLWidget_virtualbase_minimumSizeHint(const void* self);
 bool QGLWidget_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QGLWidget_virtualbase_heightForWidth(const void* self, int param1);
 bool QGLWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -382,7 +382,6 @@ bool QGLWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGLWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGLWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGLWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QGLWidget_virtualreturncopy_QSize(QSize* src);
 QVariant* QGLWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QGLWidget_protectedbase_setAutoBufferSwap(bool* _dynamic_cast_ok, void* self, bool on);

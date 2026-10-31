@@ -29,9 +29,9 @@ void QWhatsThis_leaveWhatsThisMode() {
 	QWhatsThis::leaveWhatsThisMode();
 }
 
-void QWhatsThis_showText(QPoint* pos, struct miqt_string text) {
+void QWhatsThis_showText(struct miqt_qpoint pos, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QWhatsThis::showText(*pos, text_QString);
+	QWhatsThis::showText(miqt_from_cabi<QPoint>(pos), text_QString);
 }
 
 void QWhatsThis_hideText() {
@@ -42,9 +42,9 @@ QAction* QWhatsThis_createAction() {
 	return QWhatsThis::createAction();
 }
 
-void QWhatsThis_showText2(QPoint* pos, struct miqt_string text, QWidget* w) {
+void QWhatsThis_showText2(struct miqt_qpoint pos, struct miqt_string text, QWidget* w) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QWhatsThis::showText(*pos, text_QString, w);
+	QWhatsThis::showText(miqt_from_cabi<QPoint>(pos), text_QString, w);
 }
 
 QAction* QWhatsThis_createActionWithParent(QObject* parent) {

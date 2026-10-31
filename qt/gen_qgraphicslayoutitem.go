@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -91,10 +92,9 @@ func (this *QGraphicsLayoutItem) SizePolicy() *QSizePolicy {
 	return _goptr
 }
 
-func (this *QGraphicsLayoutItem) SetMinimumSize(size *QSizeF) {
+func (this *QGraphicsLayoutItem) SetMinimumSize(size QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QGraphicsLayoutItem_setMinimumSize(this.h, size.cPointer())
+	C.QGraphicsLayoutItem_setMinimumSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
 func (this *QGraphicsLayoutItem) SetMinimumSize2(w float64, h float64) {
@@ -102,11 +102,9 @@ func (this *QGraphicsLayoutItem) SetMinimumSize2(w float64, h float64) {
 	C.QGraphicsLayoutItem_setMinimumSize2(this.h, (C.double)(w), (C.double)(h))
 }
 
-func (this *QGraphicsLayoutItem) MinimumSize() *QSizeF {
+func (this *QGraphicsLayoutItem) MinimumSize() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_minimumSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsLayoutItem_minimumSize(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetMinimumWidth(width float64) {
@@ -129,10 +127,9 @@ func (this *QGraphicsLayoutItem) MinimumHeight() float64 {
 	return (float64)(C.QGraphicsLayoutItem_minimumHeight(this.h))
 }
 
-func (this *QGraphicsLayoutItem) SetPreferredSize(size *QSizeF) {
+func (this *QGraphicsLayoutItem) SetPreferredSize(size QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QGraphicsLayoutItem_setPreferredSize(this.h, size.cPointer())
+	C.QGraphicsLayoutItem_setPreferredSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
 func (this *QGraphicsLayoutItem) SetPreferredSize2(w float64, h float64) {
@@ -140,11 +137,9 @@ func (this *QGraphicsLayoutItem) SetPreferredSize2(w float64, h float64) {
 	C.QGraphicsLayoutItem_setPreferredSize2(this.h, (C.double)(w), (C.double)(h))
 }
 
-func (this *QGraphicsLayoutItem) PreferredSize() *QSizeF {
+func (this *QGraphicsLayoutItem) PreferredSize() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_preferredSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsLayoutItem_preferredSize(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetPreferredWidth(width float64) {
@@ -167,10 +162,9 @@ func (this *QGraphicsLayoutItem) PreferredHeight() float64 {
 	return (float64)(C.QGraphicsLayoutItem_preferredHeight(this.h))
 }
 
-func (this *QGraphicsLayoutItem) SetMaximumSize(size *QSizeF) {
+func (this *QGraphicsLayoutItem) SetMaximumSize(size QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QGraphicsLayoutItem_setMaximumSize(this.h, size.cPointer())
+	C.QGraphicsLayoutItem_setMaximumSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
 func (this *QGraphicsLayoutItem) SetMaximumSize2(w float64, h float64) {
@@ -178,11 +172,9 @@ func (this *QGraphicsLayoutItem) SetMaximumSize2(w float64, h float64) {
 	C.QGraphicsLayoutItem_setMaximumSize2(this.h, (C.double)(w), (C.double)(h))
 }
 
-func (this *QGraphicsLayoutItem) MaximumSize() *QSizeF {
+func (this *QGraphicsLayoutItem) MaximumSize() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_maximumSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsLayoutItem_maximumSize(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetMaximumWidth(width float64) {
@@ -205,17 +197,14 @@ func (this *QGraphicsLayoutItem) MaximumHeight() float64 {
 	return (float64)(C.QGraphicsLayoutItem_maximumHeight(this.h))
 }
 
-func (this *QGraphicsLayoutItem) SetGeometry(rect *QRectF) {
+func (this *QGraphicsLayoutItem) SetGeometry(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsLayoutItem_setGeometry(this.h, rect.cPointer())
+	C.QGraphicsLayoutItem_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
-func (this *QGraphicsLayoutItem) Geometry() *QRectF {
+func (this *QGraphicsLayoutItem) Geometry() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsLayoutItem_geometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsLayoutItem_geometry(this.h))
 }
 
 func (this *QGraphicsLayoutItem) GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
@@ -223,18 +212,14 @@ func (this *QGraphicsLayoutItem) GetContentsMargins(left *float64, top *float64,
 	C.QGraphicsLayoutItem_getContentsMargins(this.h, (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
 }
 
-func (this *QGraphicsLayoutItem) ContentsRect() *QRectF {
+func (this *QGraphicsLayoutItem) ContentsRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsLayoutItem_contentsRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsLayoutItem_contentsRect(this.h))
 }
 
-func (this *QGraphicsLayoutItem) EffectiveSizeHint(which SizeHint) *QSizeF {
+func (this *QGraphicsLayoutItem) EffectiveSizeHint(which SizeHint) QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_effectiveSizeHint(this.h, (C.int)(which)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsLayoutItem_effectiveSizeHint(this.h, (C.int)(which)))
 }
 
 func (this *QGraphicsLayoutItem) UpdateGeometry() {
@@ -273,12 +258,9 @@ func (this *QGraphicsLayoutItem) SetSizePolicy3(hPolicy QSizePolicy__Policy, vPo
 	C.QGraphicsLayoutItem_setSizePolicy3(this.h, (C.int)(hPolicy), (C.int)(vPolicy), (C.int)(controlType))
 }
 
-func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {
+func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which SizeHint, constraint QSizeF) QSizeF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(constraint)
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_effectiveSizeHint2(this.h, (C.int)(which), constraint.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsLayoutItem_effectiveSizeHint2(this.h, (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 }
 
 // SetGraphicsItem can only be called from a QGraphicsLayoutItem that was directly constructed.
@@ -308,14 +290,13 @@ func (this *QGraphicsLayoutItem) SetOwnedByLayout(ownedByLayout bool) {
 
 }
 
-func (this *QGraphicsLayoutItem) callVirtualBase_SetGeometry(rect *QRectF) {
+func (this *QGraphicsLayoutItem) callVirtualBase_SetGeometry(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
 
-	C.QGraphicsLayoutItem_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QGraphicsLayoutItem_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsLayoutItem) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+func (this *QGraphicsLayoutItem) OnSetGeometry(slot func(super func(rect QRectF), rect QRectF)) {
 	ok := C.QGraphicsLayoutItem_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -323,14 +304,14 @@ func (this *QGraphicsLayoutItem) OnSetGeometry(slot func(super func(rect *QRectF
 }
 
 //export miqt_exec_callback_QGraphicsLayoutItem_setGeometry
-func miqt_exec_callback_QGraphicsLayoutItem_setGeometry(self *C.QGraphicsLayoutItem, cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF), rect *QRectF))
+func miqt_exec_callback_QGraphicsLayoutItem_setGeometry(self *C.QGraphicsLayoutItem, cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRectF), rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(rect)
+	slotval1 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc((&QGraphicsLayoutItem{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -392,7 +373,7 @@ func miqt_exec_callback_QGraphicsLayoutItem_updateGeometry(self *C.QGraphicsLayo
 	gofunc((&QGraphicsLayoutItem{h: self}).callVirtualBase_UpdateGeometry)
 
 }
-func (this *QGraphicsLayoutItem) OnSizeHint(slot func(which SizeHint, constraint *QSizeF) *QSizeF) {
+func (this *QGraphicsLayoutItem) OnSizeHint(slot func(which SizeHint, constraint QSizeF) QSizeF) {
 	ok := C.QGraphicsLayoutItem_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -400,8 +381,8 @@ func (this *QGraphicsLayoutItem) OnSizeHint(slot func(which SizeHint, constraint
 }
 
 //export miqt_exec_callback_QGraphicsLayoutItem_sizeHint
-func miqt_exec_callback_QGraphicsLayoutItem_sizeHint(self *C.QGraphicsLayoutItem, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(which SizeHint, constraint *QSizeF) *QSizeF)
+func miqt_exec_callback_QGraphicsLayoutItem_sizeHint(self *C.QGraphicsLayoutItem, cb C.intptr_t, which C.int, constraint C.struct_miqt_qsizef) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(which SizeHint, constraint QSizeF) QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -409,12 +390,11 @@ func miqt_exec_callback_QGraphicsLayoutItem_sizeHint(self *C.QGraphicsLayoutItem
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := newQSizeF(constraint)
+	slotval2 := libmiqt.ValueCast[QSizeF](constraint)
 
 	virtualReturn := gofunc(slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsLayoutItem_virtualreturncopy_QSizeF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 

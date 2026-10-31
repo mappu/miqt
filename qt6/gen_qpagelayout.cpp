@@ -19,20 +19,20 @@ QPageLayout* QPageLayout_new() {
 	return new (std::nothrow) QPageLayout();
 }
 
-QPageLayout* QPageLayout_new2(QPageSize* pageSize, int orientation, QMarginsF* margins) {
-	return new (std::nothrow) QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins);
+QPageLayout* QPageLayout_new2(QPageSize* pageSize, int orientation, struct miqt_qmarginsf margins) {
+	return new (std::nothrow) QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), miqt_from_cabi<QMarginsF>(margins));
 }
 
 QPageLayout* QPageLayout_new3(QPageLayout* other) {
 	return new (std::nothrow) QPageLayout(*other);
 }
 
-QPageLayout* QPageLayout_new4(QPageSize* pageSize, int orientation, QMarginsF* margins, int units) {
-	return new (std::nothrow) QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units));
+QPageLayout* QPageLayout_new4(QPageSize* pageSize, int orientation, struct miqt_qmarginsf margins, int units) {
+	return new (std::nothrow) QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), miqt_from_cabi<QMarginsF>(margins), static_cast<QPageLayout::Unit>(units));
 }
 
-QPageLayout* QPageLayout_new5(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QMarginsF* minMargins) {
-	return new (std::nothrow) QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units), *minMargins);
+QPageLayout* QPageLayout_new5(QPageSize* pageSize, int orientation, struct miqt_qmarginsf margins, int units, struct miqt_qmarginsf minMargins) {
+	return new (std::nothrow) QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), miqt_from_cabi<QMarginsF>(margins), static_cast<QPageLayout::Unit>(units), miqt_from_cabi<QMarginsF>(minMargins));
 }
 
 void QPageLayout_operatorAssign(QPageLayout* self, QPageLayout* other) {
@@ -86,8 +86,8 @@ int QPageLayout_units(const QPageLayout* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QPageLayout_setMargins(QPageLayout* self, QMarginsF* margins) {
-	return self->setMargins(*margins);
+bool QPageLayout_setMargins(QPageLayout* self, struct miqt_qmarginsf margins) {
+	return self->setMargins(miqt_from_cabi<QMarginsF>(margins));
 }
 
 bool QPageLayout_setLeftMargin(QPageLayout* self, double leftMargin) {
@@ -106,68 +106,68 @@ bool QPageLayout_setBottomMargin(QPageLayout* self, double bottomMargin) {
 	return self->setBottomMargin(static_cast<qreal>(bottomMargin));
 }
 
-QMarginsF* QPageLayout_margins(const QPageLayout* self) {
-	return new QMarginsF(self->margins());
+struct miqt_qmarginsf QPageLayout_margins(const QPageLayout* self) {
+	return miqt_to_cabi<struct miqt_qmarginsf>(self->margins());
 }
 
-QMarginsF* QPageLayout_marginsWithUnits(const QPageLayout* self, int units) {
-	return new QMarginsF(self->margins(static_cast<QPageLayout::Unit>(units)));
+struct miqt_qmarginsf QPageLayout_marginsWithUnits(const QPageLayout* self, int units) {
+	return miqt_to_cabi<struct miqt_qmarginsf>(self->margins(static_cast<QPageLayout::Unit>(units)));
 }
 
-QMargins* QPageLayout_marginsPoints(const QPageLayout* self) {
-	return new QMargins(self->marginsPoints());
+struct miqt_qmargins QPageLayout_marginsPoints(const QPageLayout* self) {
+	return miqt_to_cabi<struct miqt_qmargins>(self->marginsPoints());
 }
 
-QMargins* QPageLayout_marginsPixels(const QPageLayout* self, int resolution) {
-	return new QMargins(self->marginsPixels(static_cast<int>(resolution)));
+struct miqt_qmargins QPageLayout_marginsPixels(const QPageLayout* self, int resolution) {
+	return miqt_to_cabi<struct miqt_qmargins>(self->marginsPixels(static_cast<int>(resolution)));
 }
 
-void QPageLayout_setMinimumMargins(QPageLayout* self, QMarginsF* minMargins) {
-	self->setMinimumMargins(*minMargins);
+void QPageLayout_setMinimumMargins(QPageLayout* self, struct miqt_qmarginsf minMargins) {
+	self->setMinimumMargins(miqt_from_cabi<QMarginsF>(minMargins));
 }
 
-QMarginsF* QPageLayout_minimumMargins(const QPageLayout* self) {
-	return new QMarginsF(self->minimumMargins());
+struct miqt_qmarginsf QPageLayout_minimumMargins(const QPageLayout* self) {
+	return miqt_to_cabi<struct miqt_qmarginsf>(self->minimumMargins());
 }
 
-QMarginsF* QPageLayout_maximumMargins(const QPageLayout* self) {
-	return new QMarginsF(self->maximumMargins());
+struct miqt_qmarginsf QPageLayout_maximumMargins(const QPageLayout* self) {
+	return miqt_to_cabi<struct miqt_qmarginsf>(self->maximumMargins());
 }
 
-QRectF* QPageLayout_fullRect(const QPageLayout* self) {
-	return new QRectF(self->fullRect());
+struct miqt_qrectf QPageLayout_fullRect(const QPageLayout* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->fullRect());
 }
 
-QRectF* QPageLayout_fullRectWithUnits(const QPageLayout* self, int units) {
-	return new QRectF(self->fullRect(static_cast<QPageLayout::Unit>(units)));
+struct miqt_qrectf QPageLayout_fullRectWithUnits(const QPageLayout* self, int units) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->fullRect(static_cast<QPageLayout::Unit>(units)));
 }
 
-QRect* QPageLayout_fullRectPoints(const QPageLayout* self) {
-	return new QRect(self->fullRectPoints());
+struct miqt_qrect QPageLayout_fullRectPoints(const QPageLayout* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->fullRectPoints());
 }
 
-QRect* QPageLayout_fullRectPixels(const QPageLayout* self, int resolution) {
-	return new QRect(self->fullRectPixels(static_cast<int>(resolution)));
+struct miqt_qrect QPageLayout_fullRectPixels(const QPageLayout* self, int resolution) {
+	return miqt_to_cabi<struct miqt_qrect>(self->fullRectPixels(static_cast<int>(resolution)));
 }
 
-QRectF* QPageLayout_paintRect(const QPageLayout* self) {
-	return new QRectF(self->paintRect());
+struct miqt_qrectf QPageLayout_paintRect(const QPageLayout* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->paintRect());
 }
 
-QRectF* QPageLayout_paintRectWithUnits(const QPageLayout* self, int units) {
-	return new QRectF(self->paintRect(static_cast<QPageLayout::Unit>(units)));
+struct miqt_qrectf QPageLayout_paintRectWithUnits(const QPageLayout* self, int units) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->paintRect(static_cast<QPageLayout::Unit>(units)));
 }
 
-QRect* QPageLayout_paintRectPoints(const QPageLayout* self) {
-	return new QRect(self->paintRectPoints());
+struct miqt_qrect QPageLayout_paintRectPoints(const QPageLayout* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->paintRectPoints());
 }
 
-QRect* QPageLayout_paintRectPixels(const QPageLayout* self, int resolution) {
-	return new QRect(self->paintRectPixels(static_cast<int>(resolution)));
+struct miqt_qrect QPageLayout_paintRectPixels(const QPageLayout* self, int resolution) {
+	return miqt_to_cabi<struct miqt_qrect>(self->paintRectPixels(static_cast<int>(resolution)));
 }
 
-void QPageLayout_setPageSize2(QPageLayout* self, QPageSize* pageSize, QMarginsF* minMargins) {
-	self->setPageSize(*pageSize, *minMargins);
+void QPageLayout_setPageSize2(QPageLayout* self, QPageSize* pageSize, struct miqt_qmarginsf minMargins) {
+	self->setPageSize(*pageSize, miqt_from_cabi<QMarginsF>(minMargins));
 }
 
 void QPageLayout_delete(QPageLayout* self) {

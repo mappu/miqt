@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -592,11 +593,9 @@ func (this *QGraphicsItem) UngrabKeyboard() {
 	C.QGraphicsItem_ungrabKeyboard(this.h)
 }
 
-func (this *QGraphicsItem) Pos() *QPointF {
+func (this *QGraphicsItem) Pos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsItem_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_pos(this.h))
 }
 
 func (this *QGraphicsItem) X() float64 {
@@ -619,17 +618,14 @@ func (this *QGraphicsItem) SetY(y float64) {
 	C.QGraphicsItem_setY(this.h, (C.double)(y))
 }
 
-func (this *QGraphicsItem) ScenePos() *QPointF {
+func (this *QGraphicsItem) ScenePos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsItem_scenePos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_scenePos(this.h))
 }
 
-func (this *QGraphicsItem) SetPos(pos *QPointF) {
+func (this *QGraphicsItem) SetPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsItem_setPos(this.h, pos.cPointer())
+	C.QGraphicsItem_setPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
 func (this *QGraphicsItem) SetPos2(x float64, y float64) {
@@ -761,17 +757,14 @@ func (this *QGraphicsItem) SetTransformations(transformations []*QGraphicsTransf
 	C.QGraphicsItem_setTransformations(this.h, transformations_ma)
 }
 
-func (this *QGraphicsItem) TransformOriginPoint() *QPointF {
+func (this *QGraphicsItem) TransformOriginPoint() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsItem_transformOriginPoint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_transformOriginPoint(this.h))
 }
 
-func (this *QGraphicsItem) SetTransformOriginPoint(origin *QPointF) {
+func (this *QGraphicsItem) SetTransformOriginPoint(origin QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(origin)
-	C.QGraphicsItem_setTransformOriginPoint(this.h, origin.cPointer())
+	C.QGraphicsItem_setTransformOriginPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](origin))
 }
 
 func (this *QGraphicsItem) SetTransformOriginPoint2(ax float64, ay float64) {
@@ -800,25 +793,19 @@ func (this *QGraphicsItem) StackBefore(sibling *QGraphicsItem) {
 	C.QGraphicsItem_stackBefore(this.h, sibling.cPointer())
 }
 
-func (this *QGraphicsItem) BoundingRect() *QRectF {
+func (this *QGraphicsItem) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsItem_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_boundingRect(this.h))
 }
 
-func (this *QGraphicsItem) ChildrenBoundingRect() *QRectF {
+func (this *QGraphicsItem) ChildrenBoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsItem_childrenBoundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_childrenBoundingRect(this.h))
 }
 
-func (this *QGraphicsItem) SceneBoundingRect() *QRectF {
+func (this *QGraphicsItem) SceneBoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsItem_sceneBoundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_sceneBoundingRect(this.h))
 }
 
 func (this *QGraphicsItem) Shape() *QPainterPath {
@@ -840,10 +827,9 @@ func (this *QGraphicsItem) ClipPath() *QPainterPath {
 	return _goptr
 }
 
-func (this *QGraphicsItem) Contains(point *QPointF) bool {
+func (this *QGraphicsItem) Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	return (bool)(C.QGraphicsItem_contains(this.h, point.cPointer()))
+	return (bool)(C.QGraphicsItem_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsItem) CollidesWithItem(other *QGraphicsItem, mode ItemSelectionMode) bool {
@@ -932,54 +918,36 @@ func (this *QGraphicsItem) Scroll(dx float64, dy float64) {
 	C.QGraphicsItem_scroll(this.h, (C.double)(dx), (C.double)(dy))
 }
 
-func (this *QGraphicsItem) MapToItem(item *QGraphicsItem, point *QPointF) *QPointF {
+func (this *QGraphicsItem) MapToItem(item *QGraphicsItem, point QPointF) QPointF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
-	defer runtime.KeepAlive(point)
-	_goptr := newQPointF(C.QGraphicsItem_mapToItem(this.h, item.cPointer(), point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapToItem(this.h, item.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
-func (this *QGraphicsItem) MapToParent(point *QPointF) *QPointF {
+func (this *QGraphicsItem) MapToParent(point QPointF) QPointF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	_goptr := newQPointF(C.QGraphicsItem_mapToParent(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapToParent(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
-func (this *QGraphicsItem) MapToScene(point *QPointF) *QPointF {
+func (this *QGraphicsItem) MapToScene(point QPointF) QPointF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	_goptr := newQPointF(C.QGraphicsItem_mapToScene(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapToScene(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
-func (this *QGraphicsItem) MapRectToItem(item *QGraphicsItem, rect *QRectF) *QRectF {
+func (this *QGraphicsItem) MapRectToItem(item *QGraphicsItem, rect QRectF) QRectF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectToItem(this.h, item.cPointer(), rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectToItem(this.h, item.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
-func (this *QGraphicsItem) MapRectToParent(rect *QRectF) *QRectF {
+func (this *QGraphicsItem) MapRectToParent(rect QRectF) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectToParent(this.h, rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectToParent(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
-func (this *QGraphicsItem) MapRectToScene(rect *QRectF) *QRectF {
+func (this *QGraphicsItem) MapRectToScene(rect QRectF) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectToScene(this.h, rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectToScene(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 func (this *QGraphicsItem) MapToItem4(item *QGraphicsItem, path *QPainterPath) *QPainterPath {
@@ -1007,54 +975,36 @@ func (this *QGraphicsItem) MapToSceneWithPath(path *QPainterPath) *QPainterPath 
 	return _goptr
 }
 
-func (this *QGraphicsItem) MapFromItem(item *QGraphicsItem, point *QPointF) *QPointF {
+func (this *QGraphicsItem) MapFromItem(item *QGraphicsItem, point QPointF) QPointF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
-	defer runtime.KeepAlive(point)
-	_goptr := newQPointF(C.QGraphicsItem_mapFromItem(this.h, item.cPointer(), point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapFromItem(this.h, item.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
-func (this *QGraphicsItem) MapFromParent(point *QPointF) *QPointF {
+func (this *QGraphicsItem) MapFromParent(point QPointF) QPointF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	_goptr := newQPointF(C.QGraphicsItem_mapFromParent(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapFromParent(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
-func (this *QGraphicsItem) MapFromScene(point *QPointF) *QPointF {
+func (this *QGraphicsItem) MapFromScene(point QPointF) QPointF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	_goptr := newQPointF(C.QGraphicsItem_mapFromScene(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapFromScene(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
-func (this *QGraphicsItem) MapRectFromItem(item *QGraphicsItem, rect *QRectF) *QRectF {
+func (this *QGraphicsItem) MapRectFromItem(item *QGraphicsItem, rect QRectF) QRectF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectFromItem(this.h, item.cPointer(), rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectFromItem(this.h, item.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
-func (this *QGraphicsItem) MapRectFromParent(rect *QRectF) *QRectF {
+func (this *QGraphicsItem) MapRectFromParent(rect QRectF) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectFromParent(this.h, rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectFromParent(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
-func (this *QGraphicsItem) MapRectFromScene(rect *QRectF) *QRectF {
+func (this *QGraphicsItem) MapRectFromScene(rect QRectF) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectFromScene(this.h, rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectFromScene(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 func (this *QGraphicsItem) MapFromItem4(item *QGraphicsItem, path *QPainterPath) *QPainterPath {
@@ -1082,92 +1032,68 @@ func (this *QGraphicsItem) MapFromSceneWithPath(path *QPainterPath) *QPainterPat
 	return _goptr
 }
 
-func (this *QGraphicsItem) MapToItem5(item *QGraphicsItem, x float64, y float64) *QPointF {
+func (this *QGraphicsItem) MapToItem5(item *QGraphicsItem, x float64, y float64) QPointF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
-	_goptr := newQPointF(C.QGraphicsItem_mapToItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapToItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y)))
 }
 
-func (this *QGraphicsItem) MapToParent2(x float64, y float64) *QPointF {
+func (this *QGraphicsItem) MapToParent2(x float64, y float64) QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsItem_mapToParent2(this.h, (C.double)(x), (C.double)(y)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapToParent2(this.h, (C.double)(x), (C.double)(y)))
 }
 
-func (this *QGraphicsItem) MapToScene2(x float64, y float64) *QPointF {
+func (this *QGraphicsItem) MapToScene2(x float64, y float64) QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsItem_mapToScene2(this.h, (C.double)(x), (C.double)(y)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapToScene2(this.h, (C.double)(x), (C.double)(y)))
 }
 
-func (this *QGraphicsItem) MapRectToItem2(item *QGraphicsItem, x float64, y float64, w float64, h float64) *QRectF {
+func (this *QGraphicsItem) MapRectToItem2(item *QGraphicsItem, x float64, y float64, w float64, h float64) QRectF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectToItem2(this.h, item.cPointer(), (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectToItem2(this.h, item.cPointer(), (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 }
 
-func (this *QGraphicsItem) MapRectToParent2(x float64, y float64, w float64, h float64) *QRectF {
+func (this *QGraphicsItem) MapRectToParent2(x float64, y float64, w float64, h float64) QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectToParent2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectToParent2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 }
 
-func (this *QGraphicsItem) MapRectToScene2(x float64, y float64, w float64, h float64) *QRectF {
+func (this *QGraphicsItem) MapRectToScene2(x float64, y float64, w float64, h float64) QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectToScene2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectToScene2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 }
 
-func (this *QGraphicsItem) MapFromItem5(item *QGraphicsItem, x float64, y float64) *QPointF {
+func (this *QGraphicsItem) MapFromItem5(item *QGraphicsItem, x float64, y float64) QPointF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
-	_goptr := newQPointF(C.QGraphicsItem_mapFromItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapFromItem5(this.h, item.cPointer(), (C.double)(x), (C.double)(y)))
 }
 
-func (this *QGraphicsItem) MapFromParent2(x float64, y float64) *QPointF {
+func (this *QGraphicsItem) MapFromParent2(x float64, y float64) QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsItem_mapFromParent2(this.h, (C.double)(x), (C.double)(y)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapFromParent2(this.h, (C.double)(x), (C.double)(y)))
 }
 
-func (this *QGraphicsItem) MapFromScene2(x float64, y float64) *QPointF {
+func (this *QGraphicsItem) MapFromScene2(x float64, y float64) QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsItem_mapFromScene2(this.h, (C.double)(x), (C.double)(y)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItem_mapFromScene2(this.h, (C.double)(x), (C.double)(y)))
 }
 
-func (this *QGraphicsItem) MapRectFromItem2(item *QGraphicsItem, x float64, y float64, w float64, h float64) *QRectF {
+func (this *QGraphicsItem) MapRectFromItem2(item *QGraphicsItem, x float64, y float64, w float64, h float64) QRectF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(item)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectFromItem2(this.h, item.cPointer(), (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectFromItem2(this.h, item.cPointer(), (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 }
 
-func (this *QGraphicsItem) MapRectFromParent2(x float64, y float64, w float64, h float64) *QRectF {
+func (this *QGraphicsItem) MapRectFromParent2(x float64, y float64, w float64, h float64) QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectFromParent2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectFromParent2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 }
 
-func (this *QGraphicsItem) MapRectFromScene2(x float64, y float64, w float64, h float64) *QRectF {
+func (this *QGraphicsItem) MapRectFromScene2(x float64, y float64, w float64, h float64) QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsItem_mapRectFromScene2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItem_mapRectFromScene2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h)))
 }
 
 func (this *QGraphicsItem) IsAncestorOf(child *QGraphicsItem) bool {
@@ -1232,10 +1158,9 @@ func (this *QGraphicsItem) SetFlag2(flag QGraphicsItem__GraphicsItemFlag, enable
 	C.QGraphicsItem_setFlag2(this.h, (C.int)(flag), (C.bool)(enabled))
 }
 
-func (this *QGraphicsItem) SetCacheMode2(mode QGraphicsItem__CacheMode, cacheSize *QSize) {
+func (this *QGraphicsItem) SetCacheMode2(mode QGraphicsItem__CacheMode, cacheSize QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(cacheSize)
-	C.QGraphicsItem_setCacheMode2(this.h, (C.int)(mode), cacheSize.cPointer())
+	C.QGraphicsItem_setCacheMode2(this.h, (C.int)(mode), libmiqt.ValueCast[C.struct_miqt_qsize](cacheSize))
 }
 
 func (this *QGraphicsItem) SetFocusWithFocusReason(focusReason FocusReason) {
@@ -1243,22 +1168,19 @@ func (this *QGraphicsItem) SetFocusWithFocusReason(focusReason FocusReason) {
 	C.QGraphicsItem_setFocusWithFocusReason(this.h, (C.int)(focusReason))
 }
 
-func (this *QGraphicsItem) EnsureVisibleWithRect(rect *QRectF) {
+func (this *QGraphicsItem) EnsureVisibleWithRect(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsItem_ensureVisibleWithRect(this.h, rect.cPointer())
+	C.QGraphicsItem_ensureVisibleWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
-func (this *QGraphicsItem) EnsureVisible3(rect *QRectF, xmargin int) {
+func (this *QGraphicsItem) EnsureVisible3(rect QRectF, xmargin int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsItem_ensureVisible3(this.h, rect.cPointer(), (C.int)(xmargin))
+	C.QGraphicsItem_ensureVisible3(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(xmargin))
 }
 
-func (this *QGraphicsItem) EnsureVisible4(rect *QRectF, xmargin int, ymargin int) {
+func (this *QGraphicsItem) EnsureVisible4(rect QRectF, xmargin int, ymargin int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsItem_ensureVisible4(this.h, rect.cPointer(), (C.int)(xmargin), (C.int)(ymargin))
+	C.QGraphicsItem_ensureVisible4(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(xmargin), (C.int)(ymargin))
 }
 
 func (this *QGraphicsItem) EnsureVisible5(x float64, y float64, w float64, h float64, xmargin int) {
@@ -1302,22 +1224,19 @@ func (this *QGraphicsItem) CollidingItemsWithMode(mode ItemSelectionMode) []*QGr
 	return _ret
 }
 
-func (this *QGraphicsItem) IsObscuredWithRect(rect *QRectF) bool {
+func (this *QGraphicsItem) IsObscuredWithRect(rect QRectF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	return (bool)(C.QGraphicsItem_isObscuredWithRect(this.h, rect.cPointer()))
+	return (bool)(C.QGraphicsItem_isObscuredWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
-func (this *QGraphicsItem) UpdateWithRect(rect *QRectF) {
+func (this *QGraphicsItem) UpdateWithRect(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsItem_updateWithRect(this.h, rect.cPointer())
+	C.QGraphicsItem_updateWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
-func (this *QGraphicsItem) Scroll2(dx float64, dy float64, rect *QRectF) {
+func (this *QGraphicsItem) Scroll2(dx float64, dy float64, rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsItem_scroll2(this.h, (C.double)(dx), (C.double)(dy), rect.cPointer())
+	C.QGraphicsItem_scroll2(this.h, (C.double)(dx), (C.double)(dy), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 // UpdateMicroFocus can only be called from a QGraphicsItem that was directly constructed.
@@ -1398,7 +1317,7 @@ func miqt_exec_callback_QGraphicsItem_advance(self *C.QGraphicsItem, cb C.intptr
 	gofunc((&QGraphicsItem{h: self}).callVirtualBase_Advance, slotval1)
 
 }
-func (this *QGraphicsItem) OnBoundingRect(slot func() *QRectF) {
+func (this *QGraphicsItem) OnBoundingRect(slot func() QRectF) {
 	ok := C.QGraphicsItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1406,16 +1325,15 @@ func (this *QGraphicsItem) OnBoundingRect(slot func() *QRectF) {
 }
 
 //export miqt_exec_callback_QGraphicsItem_boundingRect
-func miqt_exec_callback_QGraphicsItem_boundingRect(self *C.QGraphicsItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func() *QRectF)
+func miqt_exec_callback_QGraphicsItem_boundingRect(self *C.QGraphicsItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func() QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -1448,14 +1366,13 @@ func miqt_exec_callback_QGraphicsItem_shape(self *C.QGraphicsItem, cb C.intptr_t
 
 }
 
-func (this *QGraphicsItem) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QGraphicsItem) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QGraphicsItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1463,14 +1380,14 @@ func (this *QGraphicsItem) OnContains(slot func(super func(point *QPointF) bool,
 }
 
 //export miqt_exec_callback_QGraphicsItem_contains
-func miqt_exec_callback_QGraphicsItem_contains(self *C.QGraphicsItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsItem_contains(self *C.QGraphicsItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -3072,7 +2989,7 @@ func miqt_exec_callback_QGraphicsObject_advance(self *C.QGraphicsObject, cb C.in
 	gofunc((&QGraphicsObject{h: self}).callVirtualBase_Advance, slotval1)
 
 }
-func (this *QGraphicsObject) OnBoundingRect(slot func() *QRectF) {
+func (this *QGraphicsObject) OnBoundingRect(slot func() QRectF) {
 	ok := C.QGraphicsObject_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3080,16 +2997,15 @@ func (this *QGraphicsObject) OnBoundingRect(slot func() *QRectF) {
 }
 
 //export miqt_exec_callback_QGraphicsObject_boundingRect
-func miqt_exec_callback_QGraphicsObject_boundingRect(self *C.QGraphicsObject, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func() *QRectF)
+func miqt_exec_callback_QGraphicsObject_boundingRect(self *C.QGraphicsObject, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func() QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsObject_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -3121,13 +3037,12 @@ func miqt_exec_callback_QGraphicsObject_shape(self *C.QGraphicsObject, cb C.intp
 
 }
 
-func (this *QGraphicsObject) callVirtualBase_Contains(point *QPointF) bool {
-	defer runtime.KeepAlive(point)
+func (this *QGraphicsObject) callVirtualBase_Contains(point QPointF) bool {
 
-	return (bool)(C.QGraphicsObject_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsObject_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsObject) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsObject) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsObject_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3135,14 +3050,14 @@ func (this *QGraphicsObject) OnContains(slot func(super func(point *QPointF) boo
 }
 
 //export miqt_exec_callback_QGraphicsObject_contains
-func miqt_exec_callback_QGraphicsObject_contains(self *C.QGraphicsObject, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsObject_contains(self *C.QGraphicsObject, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsObject{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -4273,7 +4188,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_advance(self *C.QAbstractGrap
 	gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_Advance, slotval1)
 
 }
-func (this *QAbstractGraphicsShapeItem) OnBoundingRect(slot func() *QRectF) {
+func (this *QAbstractGraphicsShapeItem) OnBoundingRect(slot func() QRectF) {
 	ok := C.QAbstractGraphicsShapeItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -4281,16 +4196,15 @@ func (this *QAbstractGraphicsShapeItem) OnBoundingRect(slot func() *QRectF) {
 }
 
 //export miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect
-func miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect(self *C.QAbstractGraphicsShapeItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func() *QRectF)
+func miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect(self *C.QAbstractGraphicsShapeItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func() QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc()
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QAbstractGraphicsShapeItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -4323,14 +4237,13 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_shape(self *C.QAbstractGraphi
 
 }
 
-func (this *QAbstractGraphicsShapeItem) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QAbstractGraphicsShapeItem) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QAbstractGraphicsShapeItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QAbstractGraphicsShapeItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QAbstractGraphicsShapeItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QAbstractGraphicsShapeItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QAbstractGraphicsShapeItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -4338,14 +4251,14 @@ func (this *QAbstractGraphicsShapeItem) OnContains(slot func(super func(point *Q
 }
 
 //export miqt_exec_callback_QAbstractGraphicsShapeItem_contains
-func miqt_exec_callback_QAbstractGraphicsShapeItem_contains(self *C.QAbstractGraphicsShapeItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QAbstractGraphicsShapeItem_contains(self *C.QAbstractGraphicsShapeItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QAbstractGraphicsShapeItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -5297,11 +5210,9 @@ func (this *QGraphicsPathItem) SetPath(path *QPainterPath) {
 	C.QGraphicsPathItem_setPath(this.h, path.cPointer())
 }
 
-func (this *QGraphicsPathItem) BoundingRect() *QRectF {
+func (this *QGraphicsPathItem) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsPathItem_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsPathItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsPathItem) Shape() *QPainterPath {
@@ -5311,10 +5222,9 @@ func (this *QGraphicsPathItem) Shape() *QPainterPath {
 	return _goptr
 }
 
-func (this *QGraphicsPathItem) Contains(point *QPointF) bool {
+func (this *QGraphicsPathItem) Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	return (bool)(C.QGraphicsPathItem_contains(this.h, point.cPointer()))
+	return (bool)(C.QGraphicsPathItem_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsPathItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -5394,15 +5304,13 @@ func (this *QGraphicsPathItem) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsPathItem) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsPathItem) callVirtualBase_BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQRectF(C.QGraphicsPathItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsPathItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsPathItem) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsPathItem) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsPathItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -5410,16 +5318,15 @@ func (this *QGraphicsPathItem) OnBoundingRect(slot func(super func() *QRectF) *Q
 }
 
 //export miqt_exec_callback_QGraphicsPathItem_boundingRect
-func miqt_exec_callback_QGraphicsPathItem_boundingRect(self *C.QGraphicsPathItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsPathItem_boundingRect(self *C.QGraphicsPathItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsPathItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsPathItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -5452,14 +5359,13 @@ func miqt_exec_callback_QGraphicsPathItem_shape(self *C.QGraphicsPathItem, cb C.
 
 }
 
-func (this *QGraphicsPathItem) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QGraphicsPathItem) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QGraphicsPathItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsPathItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsPathItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsPathItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsPathItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -5467,14 +5373,14 @@ func (this *QGraphicsPathItem) OnContains(slot func(super func(point *QPointF) b
 }
 
 //export miqt_exec_callback_QGraphicsPathItem_contains
-func miqt_exec_callback_QGraphicsPathItem_contains(self *C.QGraphicsPathItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsPathItem_contains(self *C.QGraphicsPathItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsPathItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -6487,10 +6393,9 @@ func NewQGraphicsRectItem() *QGraphicsRectItem {
 }
 
 // NewQGraphicsRectItem2 constructs a new QGraphicsRectItem object.
-func NewQGraphicsRectItem2(rect *QRectF) *QGraphicsRectItem {
-	defer runtime.KeepAlive(rect)
+func NewQGraphicsRectItem2(rect QRectF) *QGraphicsRectItem {
 
-	return newQGraphicsRectItem(C.QGraphicsRectItem_new2(rect.cPointer()))
+	return newQGraphicsRectItem(C.QGraphicsRectItem_new2(libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 // NewQGraphicsRectItem3 constructs a new QGraphicsRectItem object.
@@ -6507,11 +6412,10 @@ func NewQGraphicsRectItem4(parent *QGraphicsItem) *QGraphicsRectItem {
 }
 
 // NewQGraphicsRectItem5 constructs a new QGraphicsRectItem object.
-func NewQGraphicsRectItem5(rect *QRectF, parent *QGraphicsItem) *QGraphicsRectItem {
-	defer runtime.KeepAlive(rect)
+func NewQGraphicsRectItem5(rect QRectF, parent *QGraphicsItem) *QGraphicsRectItem {
 	defer runtime.KeepAlive(parent)
 
-	return newQGraphicsRectItem(C.QGraphicsRectItem_new5(rect.cPointer(), parent.cPointer()))
+	return newQGraphicsRectItem(C.QGraphicsRectItem_new5(libmiqt.ValueCast[C.struct_miqt_qrectf](rect), parent.cPointer()))
 }
 
 // NewQGraphicsRectItem6 constructs a new QGraphicsRectItem object.
@@ -6521,17 +6425,14 @@ func NewQGraphicsRectItem6(x float64, y float64, w float64, h float64, parent *Q
 	return newQGraphicsRectItem(C.QGraphicsRectItem_new6((C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), parent.cPointer()))
 }
 
-func (this *QGraphicsRectItem) Rect() *QRectF {
+func (this *QGraphicsRectItem) Rect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsRectItem_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsRectItem_rect(this.h))
 }
 
-func (this *QGraphicsRectItem) SetRect(rect *QRectF) {
+func (this *QGraphicsRectItem) SetRect(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsRectItem_setRect(this.h, rect.cPointer())
+	C.QGraphicsRectItem_setRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsRectItem) SetRect2(x float64, y float64, w float64, h float64) {
@@ -6539,11 +6440,9 @@ func (this *QGraphicsRectItem) SetRect2(x float64, y float64, w float64, h float
 	C.QGraphicsRectItem_setRect2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
 }
 
-func (this *QGraphicsRectItem) BoundingRect() *QRectF {
+func (this *QGraphicsRectItem) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsRectItem_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsRectItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsRectItem) Shape() *QPainterPath {
@@ -6553,10 +6452,9 @@ func (this *QGraphicsRectItem) Shape() *QPainterPath {
 	return _goptr
 }
 
-func (this *QGraphicsRectItem) Contains(point *QPointF) bool {
+func (this *QGraphicsRectItem) Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	return (bool)(C.QGraphicsRectItem_contains(this.h, point.cPointer()))
+	return (bool)(C.QGraphicsRectItem_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsRectItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -6636,15 +6534,13 @@ func (this *QGraphicsRectItem) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsRectItem) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsRectItem) callVirtualBase_BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQRectF(C.QGraphicsRectItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsRectItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsRectItem) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsRectItem) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsRectItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -6652,16 +6548,15 @@ func (this *QGraphicsRectItem) OnBoundingRect(slot func(super func() *QRectF) *Q
 }
 
 //export miqt_exec_callback_QGraphicsRectItem_boundingRect
-func miqt_exec_callback_QGraphicsRectItem_boundingRect(self *C.QGraphicsRectItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsRectItem_boundingRect(self *C.QGraphicsRectItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsRectItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsRectItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -6694,14 +6589,13 @@ func miqt_exec_callback_QGraphicsRectItem_shape(self *C.QGraphicsRectItem, cb C.
 
 }
 
-func (this *QGraphicsRectItem) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QGraphicsRectItem) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QGraphicsRectItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsRectItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsRectItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsRectItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsRectItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -6709,14 +6603,14 @@ func (this *QGraphicsRectItem) OnContains(slot func(super func(point *QPointF) b
 }
 
 //export miqt_exec_callback_QGraphicsRectItem_contains
-func miqt_exec_callback_QGraphicsRectItem_contains(self *C.QGraphicsRectItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsRectItem_contains(self *C.QGraphicsRectItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsRectItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -7729,10 +7623,9 @@ func NewQGraphicsEllipseItem() *QGraphicsEllipseItem {
 }
 
 // NewQGraphicsEllipseItem2 constructs a new QGraphicsEllipseItem object.
-func NewQGraphicsEllipseItem2(rect *QRectF) *QGraphicsEllipseItem {
-	defer runtime.KeepAlive(rect)
+func NewQGraphicsEllipseItem2(rect QRectF) *QGraphicsEllipseItem {
 
-	return newQGraphicsEllipseItem(C.QGraphicsEllipseItem_new2(rect.cPointer()))
+	return newQGraphicsEllipseItem(C.QGraphicsEllipseItem_new2(libmiqt.ValueCast[C.struct_miqt_qrectf](rect)))
 }
 
 // NewQGraphicsEllipseItem3 constructs a new QGraphicsEllipseItem object.
@@ -7749,11 +7642,10 @@ func NewQGraphicsEllipseItem4(parent *QGraphicsItem) *QGraphicsEllipseItem {
 }
 
 // NewQGraphicsEllipseItem5 constructs a new QGraphicsEllipseItem object.
-func NewQGraphicsEllipseItem5(rect *QRectF, parent *QGraphicsItem) *QGraphicsEllipseItem {
-	defer runtime.KeepAlive(rect)
+func NewQGraphicsEllipseItem5(rect QRectF, parent *QGraphicsItem) *QGraphicsEllipseItem {
 	defer runtime.KeepAlive(parent)
 
-	return newQGraphicsEllipseItem(C.QGraphicsEllipseItem_new5(rect.cPointer(), parent.cPointer()))
+	return newQGraphicsEllipseItem(C.QGraphicsEllipseItem_new5(libmiqt.ValueCast[C.struct_miqt_qrectf](rect), parent.cPointer()))
 }
 
 // NewQGraphicsEllipseItem6 constructs a new QGraphicsEllipseItem object.
@@ -7763,17 +7655,14 @@ func NewQGraphicsEllipseItem6(x float64, y float64, w float64, h float64, parent
 	return newQGraphicsEllipseItem(C.QGraphicsEllipseItem_new6((C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), parent.cPointer()))
 }
 
-func (this *QGraphicsEllipseItem) Rect() *QRectF {
+func (this *QGraphicsEllipseItem) Rect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsEllipseItem_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsEllipseItem_rect(this.h))
 }
 
-func (this *QGraphicsEllipseItem) SetRect(rect *QRectF) {
+func (this *QGraphicsEllipseItem) SetRect(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsEllipseItem_setRect(this.h, rect.cPointer())
+	C.QGraphicsEllipseItem_setRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsEllipseItem) SetRect2(x float64, y float64, w float64, h float64) {
@@ -7801,11 +7690,9 @@ func (this *QGraphicsEllipseItem) SetSpanAngle(angle int) {
 	C.QGraphicsEllipseItem_setSpanAngle(this.h, (C.int)(angle))
 }
 
-func (this *QGraphicsEllipseItem) BoundingRect() *QRectF {
+func (this *QGraphicsEllipseItem) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsEllipseItem_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsEllipseItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsEllipseItem) Shape() *QPainterPath {
@@ -7815,10 +7702,9 @@ func (this *QGraphicsEllipseItem) Shape() *QPainterPath {
 	return _goptr
 }
 
-func (this *QGraphicsEllipseItem) Contains(point *QPointF) bool {
+func (this *QGraphicsEllipseItem) Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	return (bool)(C.QGraphicsEllipseItem_contains(this.h, point.cPointer()))
+	return (bool)(C.QGraphicsEllipseItem_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsEllipseItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -7898,15 +7784,13 @@ func (this *QGraphicsEllipseItem) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsEllipseItem) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsEllipseItem) callVirtualBase_BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQRectF(C.QGraphicsEllipseItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsEllipseItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsEllipseItem) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsEllipseItem) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsEllipseItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -7914,16 +7798,15 @@ func (this *QGraphicsEllipseItem) OnBoundingRect(slot func(super func() *QRectF)
 }
 
 //export miqt_exec_callback_QGraphicsEllipseItem_boundingRect
-func miqt_exec_callback_QGraphicsEllipseItem_boundingRect(self *C.QGraphicsEllipseItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsEllipseItem_boundingRect(self *C.QGraphicsEllipseItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsEllipseItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsEllipseItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -7956,14 +7839,13 @@ func miqt_exec_callback_QGraphicsEllipseItem_shape(self *C.QGraphicsEllipseItem,
 
 }
 
-func (this *QGraphicsEllipseItem) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QGraphicsEllipseItem) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QGraphicsEllipseItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsEllipseItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsEllipseItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsEllipseItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsEllipseItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -7971,14 +7853,14 @@ func (this *QGraphicsEllipseItem) OnContains(slot func(super func(point *QPointF
 }
 
 //export miqt_exec_callback_QGraphicsEllipseItem_contains
-func miqt_exec_callback_QGraphicsEllipseItem_contains(self *C.QGraphicsEllipseItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsEllipseItem_contains(self *C.QGraphicsEllipseItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsEllipseItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -9007,11 +8889,9 @@ func (this *QGraphicsPolygonItem) SetFillRule(rule FillRule) {
 	C.QGraphicsPolygonItem_setFillRule(this.h, (C.int)(rule))
 }
 
-func (this *QGraphicsPolygonItem) BoundingRect() *QRectF {
+func (this *QGraphicsPolygonItem) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsPolygonItem_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsPolygonItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsPolygonItem) Shape() *QPainterPath {
@@ -9021,10 +8901,9 @@ func (this *QGraphicsPolygonItem) Shape() *QPainterPath {
 	return _goptr
 }
 
-func (this *QGraphicsPolygonItem) Contains(point *QPointF) bool {
+func (this *QGraphicsPolygonItem) Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	return (bool)(C.QGraphicsPolygonItem_contains(this.h, point.cPointer()))
+	return (bool)(C.QGraphicsPolygonItem_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsPolygonItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -9104,15 +8983,13 @@ func (this *QGraphicsPolygonItem) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsPolygonItem) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsPolygonItem) callVirtualBase_BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQRectF(C.QGraphicsPolygonItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsPolygonItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsPolygonItem) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsPolygonItem) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsPolygonItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -9120,16 +8997,15 @@ func (this *QGraphicsPolygonItem) OnBoundingRect(slot func(super func() *QRectF)
 }
 
 //export miqt_exec_callback_QGraphicsPolygonItem_boundingRect
-func miqt_exec_callback_QGraphicsPolygonItem_boundingRect(self *C.QGraphicsPolygonItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsPolygonItem_boundingRect(self *C.QGraphicsPolygonItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsPolygonItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsPolygonItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -9162,14 +9038,13 @@ func miqt_exec_callback_QGraphicsPolygonItem_shape(self *C.QGraphicsPolygonItem,
 
 }
 
-func (this *QGraphicsPolygonItem) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QGraphicsPolygonItem) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QGraphicsPolygonItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsPolygonItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsPolygonItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsPolygonItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsPolygonItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -9177,14 +9052,14 @@ func (this *QGraphicsPolygonItem) OnContains(slot func(super func(point *QPointF
 }
 
 //export miqt_exec_callback_QGraphicsPolygonItem_contains
-func miqt_exec_callback_QGraphicsPolygonItem_contains(self *C.QGraphicsPolygonItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsPolygonItem_contains(self *C.QGraphicsPolygonItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsPolygonItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -10262,11 +10137,9 @@ func (this *QGraphicsLineItem) SetLine2(x1 float64, y1 float64, x2 float64, y2 f
 	C.QGraphicsLineItem_setLine2(this.h, (C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2))
 }
 
-func (this *QGraphicsLineItem) BoundingRect() *QRectF {
+func (this *QGraphicsLineItem) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsLineItem_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsLineItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsLineItem) Shape() *QPainterPath {
@@ -10276,10 +10149,9 @@ func (this *QGraphicsLineItem) Shape() *QPainterPath {
 	return _goptr
 }
 
-func (this *QGraphicsLineItem) Contains(point *QPointF) bool {
+func (this *QGraphicsLineItem) Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	return (bool)(C.QGraphicsLineItem_contains(this.h, point.cPointer()))
+	return (bool)(C.QGraphicsLineItem_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsLineItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -10359,15 +10231,13 @@ func (this *QGraphicsLineItem) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsLineItem) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsLineItem) callVirtualBase_BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQRectF(C.QGraphicsLineItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsLineItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsLineItem) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsLineItem) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsLineItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -10375,16 +10245,15 @@ func (this *QGraphicsLineItem) OnBoundingRect(slot func(super func() *QRectF) *Q
 }
 
 //export miqt_exec_callback_QGraphicsLineItem_boundingRect
-func miqt_exec_callback_QGraphicsLineItem_boundingRect(self *C.QGraphicsLineItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsLineItem_boundingRect(self *C.QGraphicsLineItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsLineItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -10417,14 +10286,13 @@ func miqt_exec_callback_QGraphicsLineItem_shape(self *C.QGraphicsLineItem, cb C.
 
 }
 
-func (this *QGraphicsLineItem) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QGraphicsLineItem) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QGraphicsLineItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsLineItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsLineItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsLineItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsLineItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -10432,14 +10300,14 @@ func (this *QGraphicsLineItem) OnContains(slot func(super func(point *QPointF) b
 }
 
 //export miqt_exec_callback_QGraphicsLineItem_contains
-func miqt_exec_callback_QGraphicsLineItem_contains(self *C.QGraphicsLineItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsLineItem_contains(self *C.QGraphicsLineItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsLineItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -11496,17 +11364,14 @@ func (this *QGraphicsPixmapItem) SetTransformationMode(mode TransformationMode) 
 	C.QGraphicsPixmapItem_setTransformationMode(this.h, (C.int)(mode))
 }
 
-func (this *QGraphicsPixmapItem) Offset() *QPointF {
+func (this *QGraphicsPixmapItem) Offset() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QGraphicsPixmapItem_offset(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGraphicsPixmapItem_offset(this.h))
 }
 
-func (this *QGraphicsPixmapItem) SetOffset(offset *QPointF) {
+func (this *QGraphicsPixmapItem) SetOffset(offset QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(offset)
-	C.QGraphicsPixmapItem_setOffset(this.h, offset.cPointer())
+	C.QGraphicsPixmapItem_setOffset(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](offset))
 }
 
 func (this *QGraphicsPixmapItem) SetOffset2(x float64, y float64) {
@@ -11514,11 +11379,9 @@ func (this *QGraphicsPixmapItem) SetOffset2(x float64, y float64) {
 	C.QGraphicsPixmapItem_setOffset2(this.h, (C.double)(x), (C.double)(y))
 }
 
-func (this *QGraphicsPixmapItem) BoundingRect() *QRectF {
+func (this *QGraphicsPixmapItem) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsPixmapItem_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsPixmapItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsPixmapItem) Shape() *QPainterPath {
@@ -11528,10 +11391,9 @@ func (this *QGraphicsPixmapItem) Shape() *QPainterPath {
 	return _goptr
 }
 
-func (this *QGraphicsPixmapItem) Contains(point *QPointF) bool {
+func (this *QGraphicsPixmapItem) Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	return (bool)(C.QGraphicsPixmapItem_contains(this.h, point.cPointer()))
+	return (bool)(C.QGraphicsPixmapItem_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsPixmapItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -11621,15 +11483,13 @@ func (this *QGraphicsPixmapItem) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsPixmapItem) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsPixmapItem) callVirtualBase_BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQRectF(C.QGraphicsPixmapItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsPixmapItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsPixmapItem) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsPixmapItem) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsPixmapItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -11637,16 +11497,15 @@ func (this *QGraphicsPixmapItem) OnBoundingRect(slot func(super func() *QRectF) 
 }
 
 //export miqt_exec_callback_QGraphicsPixmapItem_boundingRect
-func miqt_exec_callback_QGraphicsPixmapItem_boundingRect(self *C.QGraphicsPixmapItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsPixmapItem_boundingRect(self *C.QGraphicsPixmapItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsPixmapItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -11679,14 +11538,13 @@ func miqt_exec_callback_QGraphicsPixmapItem_shape(self *C.QGraphicsPixmapItem, c
 
 }
 
-func (this *QGraphicsPixmapItem) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QGraphicsPixmapItem) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QGraphicsPixmapItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsPixmapItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsPixmapItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsPixmapItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsPixmapItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -11694,14 +11552,14 @@ func (this *QGraphicsPixmapItem) OnContains(slot func(super func(point *QPointF)
 }
 
 //export miqt_exec_callback_QGraphicsPixmapItem_contains
-func miqt_exec_callback_QGraphicsPixmapItem_contains(self *C.QGraphicsPixmapItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsPixmapItem_contains(self *C.QGraphicsPixmapItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsPixmapItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -12810,21 +12668,16 @@ func (this *QGraphicsTextItem) SetFont(font *QFont) {
 	C.QGraphicsTextItem_setFont(this.h, font.cPointer())
 }
 
-func (this *QGraphicsTextItem) SetDefaultTextColor(c *QColor) {
-	defer runtime.KeepAlive(c)
-	C.QGraphicsTextItem_setDefaultTextColor(this.h, c.cPointer())
+func (this *QGraphicsTextItem) SetDefaultTextColor(c QColor) {
+	C.QGraphicsTextItem_setDefaultTextColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](c))
 }
 
-func (this *QGraphicsTextItem) DefaultTextColor() *QColor {
-	_goptr := newQColor(C.QGraphicsTextItem_defaultTextColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsTextItem) DefaultTextColor() QColor {
+	return libmiqt.ValueCast[QColor](C.QGraphicsTextItem_defaultTextColor(this.h))
 }
 
-func (this *QGraphicsTextItem) BoundingRect() *QRectF {
-	_goptr := newQRectF(C.QGraphicsTextItem_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsTextItem) BoundingRect() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsTextItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsTextItem) Shape() *QPainterPath {
@@ -12833,9 +12686,8 @@ func (this *QGraphicsTextItem) Shape() *QPainterPath {
 	return _goptr
 }
 
-func (this *QGraphicsTextItem) Contains(point *QPointF) bool {
-	defer runtime.KeepAlive(point)
-	return (bool)(C.QGraphicsTextItem_contains(this.h, point.cPointer()))
+func (this *QGraphicsTextItem) Contains(point QPointF) bool {
+	return (bool)(C.QGraphicsTextItem_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsTextItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -13119,14 +12971,12 @@ func (this *QGraphicsTextItem) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsTextItem) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsTextItem) callVirtualBase_BoundingRect() QRectF {
 
-	_goptr := newQRectF(C.QGraphicsTextItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsTextItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsTextItem) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsTextItem) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsTextItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -13134,16 +12984,15 @@ func (this *QGraphicsTextItem) OnBoundingRect(slot func(super func() *QRectF) *Q
 }
 
 //export miqt_exec_callback_QGraphicsTextItem_boundingRect
-func miqt_exec_callback_QGraphicsTextItem_boundingRect(self *C.QGraphicsTextItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsTextItem_boundingRect(self *C.QGraphicsTextItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsTextItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -13175,13 +13024,12 @@ func miqt_exec_callback_QGraphicsTextItem_shape(self *C.QGraphicsTextItem, cb C.
 
 }
 
-func (this *QGraphicsTextItem) callVirtualBase_Contains(point *QPointF) bool {
-	defer runtime.KeepAlive(point)
+func (this *QGraphicsTextItem) callVirtualBase_Contains(point QPointF) bool {
 
-	return (bool)(C.QGraphicsTextItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsTextItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsTextItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsTextItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsTextItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -13189,14 +13037,14 @@ func (this *QGraphicsTextItem) OnContains(slot func(super func(point *QPointF) b
 }
 
 //export miqt_exec_callback_QGraphicsTextItem_contains
-func miqt_exec_callback_QGraphicsTextItem_contains(self *C.QGraphicsTextItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsTextItem_contains(self *C.QGraphicsTextItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsTextItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -14431,11 +14279,9 @@ func (this *QGraphicsSimpleTextItem) Font() *QFont {
 	return _goptr
 }
 
-func (this *QGraphicsSimpleTextItem) BoundingRect() *QRectF {
+func (this *QGraphicsSimpleTextItem) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsSimpleTextItem_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsSimpleTextItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsSimpleTextItem) Shape() *QPainterPath {
@@ -14445,10 +14291,9 @@ func (this *QGraphicsSimpleTextItem) Shape() *QPainterPath {
 	return _goptr
 }
 
-func (this *QGraphicsSimpleTextItem) Contains(point *QPointF) bool {
+func (this *QGraphicsSimpleTextItem) Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	return (bool)(C.QGraphicsSimpleTextItem_contains(this.h, point.cPointer()))
+	return (bool)(C.QGraphicsSimpleTextItem_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsSimpleTextItem) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -14528,15 +14373,13 @@ func (this *QGraphicsSimpleTextItem) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsSimpleTextItem) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsSimpleTextItem) callVirtualBase_BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQRectF(C.QGraphicsSimpleTextItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsSimpleTextItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsSimpleTextItem) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsSimpleTextItem) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsSimpleTextItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -14544,16 +14387,15 @@ func (this *QGraphicsSimpleTextItem) OnBoundingRect(slot func(super func() *QRec
 }
 
 //export miqt_exec_callback_QGraphicsSimpleTextItem_boundingRect
-func miqt_exec_callback_QGraphicsSimpleTextItem_boundingRect(self *C.QGraphicsSimpleTextItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsSimpleTextItem_boundingRect(self *C.QGraphicsSimpleTextItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsSimpleTextItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsSimpleTextItem_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -14586,14 +14428,13 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_shape(self *C.QGraphicsSimpleTex
 
 }
 
-func (this *QGraphicsSimpleTextItem) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QGraphicsSimpleTextItem) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QGraphicsSimpleTextItem_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsSimpleTextItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsSimpleTextItem) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsSimpleTextItem) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsSimpleTextItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -14601,14 +14442,14 @@ func (this *QGraphicsSimpleTextItem) OnContains(slot func(super func(point *QPoi
 }
 
 //export miqt_exec_callback_QGraphicsSimpleTextItem_contains
-func miqt_exec_callback_QGraphicsSimpleTextItem_contains(self *C.QGraphicsSimpleTextItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsSimpleTextItem_contains(self *C.QGraphicsSimpleTextItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsSimpleTextItem{h: self}).callVirtualBase_Contains, slotval1)
 
@@ -15639,11 +15480,9 @@ func (this *QGraphicsItemGroup) RemoveFromGroup(item *QGraphicsItem) {
 	C.QGraphicsItemGroup_removeFromGroup(this.h, item.cPointer())
 }
 
-func (this *QGraphicsItemGroup) BoundingRect() *QRectF {
+func (this *QGraphicsItemGroup) BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QGraphicsItemGroup_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItemGroup_boundingRect(this.h))
 }
 
 func (this *QGraphicsItemGroup) Paint(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget) {
@@ -15723,15 +15562,13 @@ func (this *QGraphicsItemGroup) PrepareGeometryChange() {
 
 }
 
-func (this *QGraphicsItemGroup) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsItemGroup) callVirtualBase_BoundingRect() QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQRectF(C.QGraphicsItemGroup_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsItemGroup_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsItemGroup) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsItemGroup) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsItemGroup_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -15739,16 +15576,15 @@ func (this *QGraphicsItemGroup) OnBoundingRect(slot func(super func() *QRectF) *
 }
 
 //export miqt_exec_callback_QGraphicsItemGroup_boundingRect
-func miqt_exec_callback_QGraphicsItemGroup_boundingRect(self *C.QGraphicsItemGroup, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsItemGroup_boundingRect(self *C.QGraphicsItemGroup, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsItemGroup_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -15926,14 +15762,13 @@ func miqt_exec_callback_QGraphicsItemGroup_shape(self *C.QGraphicsItemGroup, cb 
 
 }
 
-func (this *QGraphicsItemGroup) callVirtualBase_Contains(point *QPointF) bool {
+func (this *QGraphicsItemGroup) callVirtualBase_Contains(point QPointF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
 
-	return (bool)(C.QGraphicsItemGroup_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsItemGroup_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsItemGroup) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsItemGroup) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsItemGroup_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -15941,14 +15776,14 @@ func (this *QGraphicsItemGroup) OnContains(slot func(super func(point *QPointF) 
 }
 
 //export miqt_exec_callback_QGraphicsItemGroup_contains
-func miqt_exec_callback_QGraphicsItemGroup_contains(self *C.QGraphicsItemGroup, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsItemGroup_contains(self *C.QGraphicsItemGroup, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsItemGroup{h: self}).callVirtualBase_Contains, slotval1)
 

@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -99,11 +100,10 @@ func (this *QwtDialNeedle) Palette() *qt.QPalette {
 	return qt.UnsafeNewQPalette(unsafe.Pointer(C.QwtDialNeedle_palette(this.h)))
 }
 
-func (this *QwtDialNeedle) Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+func (this *QwtDialNeedle) Draw(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(center)
-	C.QwtDialNeedle_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
+	C.QwtDialNeedle_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(length), (C.double)(direction), (C.int)(param5))
 }
 
 func (this *QwtDialNeedle) OperatorAssign(param1 *QwtDialNeedle) {
@@ -140,15 +140,14 @@ func miqt_exec_callback_QwtDialNeedle_setPalette(self *C.QwtDialNeedle, cb C.int
 
 }
 
-func (this *QwtDialNeedle) callVirtualBase_Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+func (this *QwtDialNeedle) callVirtualBase_Draw(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(center)
 
-	C.QwtDialNeedle_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
+	C.QwtDialNeedle_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(length), (C.double)(direction), (C.int)(param5))
 
 }
-func (this *QwtDialNeedle) OnDraw(slot func(super func(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup)) {
+func (this *QwtDialNeedle) OnDraw(slot func(super func(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup)) {
 	ok := C.QwtDialNeedle_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -156,8 +155,8 @@ func (this *QwtDialNeedle) OnDraw(slot func(super func(painter *qt.QPainter, cen
 }
 
 //export miqt_exec_callback_QwtDialNeedle_draw
-func miqt_exec_callback_QwtDialNeedle_draw(self *C.QwtDialNeedle, cb C.intptr_t, painter *C.QPainter, center *C.QPointF, length C.double, direction C.double, param5 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup))
+func miqt_exec_callback_QwtDialNeedle_draw(self *C.QwtDialNeedle, cb C.intptr_t, painter *C.QPainter, center C.struct_miqt_qpointf, length C.double, direction C.double, param5 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -165,7 +164,7 @@ func miqt_exec_callback_QwtDialNeedle_draw(self *C.QwtDialNeedle, cb C.intptr_t,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(center))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](center)
 
 	slotval3 := (float64)(length)
 
@@ -319,18 +318,15 @@ func NewQwtDialSimpleNeedle3(param1 QwtDialSimpleNeedle__Style, hasKnob bool) *Q
 }
 
 // NewQwtDialSimpleNeedle4 constructs a new QwtDialSimpleNeedle object.
-func NewQwtDialSimpleNeedle4(param1 QwtDialSimpleNeedle__Style, hasKnob bool, mid *qt.QColor) *QwtDialSimpleNeedle {
-	defer runtime.KeepAlive(mid)
+func NewQwtDialSimpleNeedle4(param1 QwtDialSimpleNeedle__Style, hasKnob bool, mid qt.QColor) *QwtDialSimpleNeedle {
 
-	return newQwtDialSimpleNeedle(C.QwtDialSimpleNeedle_new4((C.int)(param1), (C.bool)(hasKnob), (*C.QColor)(mid.UnsafePointer())))
+	return newQwtDialSimpleNeedle(C.QwtDialSimpleNeedle_new4((C.int)(param1), (C.bool)(hasKnob), libmiqt.ValueCast[C.struct_miqt_qcolor](mid)))
 }
 
 // NewQwtDialSimpleNeedle5 constructs a new QwtDialSimpleNeedle object.
-func NewQwtDialSimpleNeedle5(param1 QwtDialSimpleNeedle__Style, hasKnob bool, mid *qt.QColor, base *qt.QColor) *QwtDialSimpleNeedle {
-	defer runtime.KeepAlive(mid)
-	defer runtime.KeepAlive(base)
+func NewQwtDialSimpleNeedle5(param1 QwtDialSimpleNeedle__Style, hasKnob bool, mid qt.QColor, base qt.QColor) *QwtDialSimpleNeedle {
 
-	return newQwtDialSimpleNeedle(C.QwtDialSimpleNeedle_new5((C.int)(param1), (C.bool)(hasKnob), (*C.QColor)(mid.UnsafePointer()), (*C.QColor)(base.UnsafePointer())))
+	return newQwtDialSimpleNeedle(C.QwtDialSimpleNeedle_new5((C.int)(param1), (C.bool)(hasKnob), libmiqt.ValueCast[C.struct_miqt_qcolor](mid), libmiqt.ValueCast[C.struct_miqt_qcolor](base)))
 }
 
 func (this *QwtDialSimpleNeedle) SetWidth(width float64) {
@@ -409,15 +405,14 @@ func miqt_exec_callback_QwtDialSimpleNeedle_setPalette(self *C.QwtDialSimpleNeed
 
 }
 
-func (this *QwtDialSimpleNeedle) callVirtualBase_Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+func (this *QwtDialSimpleNeedle) callVirtualBase_Draw(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(center)
 
-	C.QwtDialSimpleNeedle_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
+	C.QwtDialSimpleNeedle_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(length), (C.double)(direction), (C.int)(param5))
 
 }
-func (this *QwtDialSimpleNeedle) OnDraw(slot func(super func(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup)) {
+func (this *QwtDialSimpleNeedle) OnDraw(slot func(super func(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup)) {
 	ok := C.QwtDialSimpleNeedle_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -425,8 +420,8 @@ func (this *QwtDialSimpleNeedle) OnDraw(slot func(super func(painter *qt.QPainte
 }
 
 //export miqt_exec_callback_QwtDialSimpleNeedle_draw
-func miqt_exec_callback_QwtDialSimpleNeedle_draw(self *C.QwtDialSimpleNeedle, cb C.intptr_t, painter *C.QPainter, center *C.QPointF, length C.double, direction C.double, param5 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup))
+func miqt_exec_callback_QwtDialSimpleNeedle_draw(self *C.QwtDialSimpleNeedle, cb C.intptr_t, painter *C.QPainter, center C.struct_miqt_qpointf, length C.double, direction C.double, param5 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -434,7 +429,7 @@ func miqt_exec_callback_QwtDialSimpleNeedle_draw(self *C.QwtDialSimpleNeedle, cb
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(center))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](center)
 
 	slotval3 := (float64)(length)
 
@@ -564,18 +559,15 @@ func NewQwtCompassMagnetNeedle3(param1 QwtCompassMagnetNeedle__Style) *QwtCompas
 }
 
 // NewQwtCompassMagnetNeedle4 constructs a new QwtCompassMagnetNeedle object.
-func NewQwtCompassMagnetNeedle4(param1 QwtCompassMagnetNeedle__Style, light *qt.QColor) *QwtCompassMagnetNeedle {
-	defer runtime.KeepAlive(light)
+func NewQwtCompassMagnetNeedle4(param1 QwtCompassMagnetNeedle__Style, light qt.QColor) *QwtCompassMagnetNeedle {
 
-	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new4((C.int)(param1), (*C.QColor)(light.UnsafePointer())))
+	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new4((C.int)(param1), libmiqt.ValueCast[C.struct_miqt_qcolor](light)))
 }
 
 // NewQwtCompassMagnetNeedle5 constructs a new QwtCompassMagnetNeedle object.
-func NewQwtCompassMagnetNeedle5(param1 QwtCompassMagnetNeedle__Style, light *qt.QColor, dark *qt.QColor) *QwtCompassMagnetNeedle {
-	defer runtime.KeepAlive(light)
-	defer runtime.KeepAlive(dark)
+func NewQwtCompassMagnetNeedle5(param1 QwtCompassMagnetNeedle__Style, light qt.QColor, dark qt.QColor) *QwtCompassMagnetNeedle {
 
-	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new5((C.int)(param1), (*C.QColor)(light.UnsafePointer()), (*C.QColor)(dark.UnsafePointer())))
+	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new5((C.int)(param1), libmiqt.ValueCast[C.struct_miqt_qcolor](light), libmiqt.ValueCast[C.struct_miqt_qcolor](dark)))
 }
 
 func (this *QwtCompassMagnetNeedle) OperatorAssign(param1 *QwtCompassMagnetNeedle) {
@@ -644,15 +636,14 @@ func miqt_exec_callback_QwtCompassMagnetNeedle_setPalette(self *C.QwtCompassMagn
 
 }
 
-func (this *QwtCompassMagnetNeedle) callVirtualBase_Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+func (this *QwtCompassMagnetNeedle) callVirtualBase_Draw(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(center)
 
-	C.QwtCompassMagnetNeedle_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
+	C.QwtCompassMagnetNeedle_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(length), (C.double)(direction), (C.int)(param5))
 
 }
-func (this *QwtCompassMagnetNeedle) OnDraw(slot func(super func(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup)) {
+func (this *QwtCompassMagnetNeedle) OnDraw(slot func(super func(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup)) {
 	ok := C.QwtCompassMagnetNeedle_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -660,8 +651,8 @@ func (this *QwtCompassMagnetNeedle) OnDraw(slot func(super func(painter *qt.QPai
 }
 
 //export miqt_exec_callback_QwtCompassMagnetNeedle_draw
-func miqt_exec_callback_QwtCompassMagnetNeedle_draw(self *C.QwtCompassMagnetNeedle, cb C.intptr_t, painter *C.QPainter, center *C.QPointF, length C.double, direction C.double, param5 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup))
+func miqt_exec_callback_QwtCompassMagnetNeedle_draw(self *C.QwtCompassMagnetNeedle, cb C.intptr_t, painter *C.QPainter, center C.struct_miqt_qpointf, length C.double, direction C.double, param5 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -669,7 +660,7 @@ func miqt_exec_callback_QwtCompassMagnetNeedle_draw(self *C.QwtCompassMagnetNeed
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(center))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](center)
 
 	slotval3 := (float64)(length)
 
@@ -793,18 +784,15 @@ func NewQwtCompassWindArrow2(param1 *QwtCompassWindArrow) *QwtCompassWindArrow {
 }
 
 // NewQwtCompassWindArrow3 constructs a new QwtCompassWindArrow object.
-func NewQwtCompassWindArrow3(param1 QwtCompassWindArrow__Style, light *qt.QColor) *QwtCompassWindArrow {
-	defer runtime.KeepAlive(light)
+func NewQwtCompassWindArrow3(param1 QwtCompassWindArrow__Style, light qt.QColor) *QwtCompassWindArrow {
 
-	return newQwtCompassWindArrow(C.QwtCompassWindArrow_new3((C.int)(param1), (*C.QColor)(light.UnsafePointer())))
+	return newQwtCompassWindArrow(C.QwtCompassWindArrow_new3((C.int)(param1), libmiqt.ValueCast[C.struct_miqt_qcolor](light)))
 }
 
 // NewQwtCompassWindArrow4 constructs a new QwtCompassWindArrow object.
-func NewQwtCompassWindArrow4(param1 QwtCompassWindArrow__Style, light *qt.QColor, dark *qt.QColor) *QwtCompassWindArrow {
-	defer runtime.KeepAlive(light)
-	defer runtime.KeepAlive(dark)
+func NewQwtCompassWindArrow4(param1 QwtCompassWindArrow__Style, light qt.QColor, dark qt.QColor) *QwtCompassWindArrow {
 
-	return newQwtCompassWindArrow(C.QwtCompassWindArrow_new4((C.int)(param1), (*C.QColor)(light.UnsafePointer()), (*C.QColor)(dark.UnsafePointer())))
+	return newQwtCompassWindArrow(C.QwtCompassWindArrow_new4((C.int)(param1), libmiqt.ValueCast[C.struct_miqt_qcolor](light), libmiqt.ValueCast[C.struct_miqt_qcolor](dark)))
 }
 
 func (this *QwtCompassWindArrow) OperatorAssign(param1 *QwtCompassWindArrow) {
@@ -873,15 +861,14 @@ func miqt_exec_callback_QwtCompassWindArrow_setPalette(self *C.QwtCompassWindArr
 
 }
 
-func (this *QwtCompassWindArrow) callVirtualBase_Draw(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
+func (this *QwtCompassWindArrow) callVirtualBase_Draw(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(center)
 
-	C.QwtCompassWindArrow_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QPointF)(center.UnsafePointer()), (C.double)(length), (C.double)(direction), (C.int)(param5))
+	C.QwtCompassWindArrow_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qpointf](center), (C.double)(length), (C.double)(direction), (C.int)(param5))
 
 }
-func (this *QwtCompassWindArrow) OnDraw(slot func(super func(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup)) {
+func (this *QwtCompassWindArrow) OnDraw(slot func(super func(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup)) {
 	ok := C.QwtCompassWindArrow_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -889,8 +876,8 @@ func (this *QwtCompassWindArrow) OnDraw(slot func(super func(painter *qt.QPainte
 }
 
 //export miqt_exec_callback_QwtCompassWindArrow_draw
-func miqt_exec_callback_QwtCompassWindArrow_draw(self *C.QwtCompassWindArrow, cb C.intptr_t, painter *C.QPainter, center *C.QPointF, length C.double, direction C.double, param5 C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center *qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup))
+func miqt_exec_callback_QwtCompassWindArrow_draw(self *C.QwtCompassWindArrow, cb C.intptr_t, painter *C.QPainter, center C.struct_miqt_qpointf, length C.double, direction C.double, param5 C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup), painter *qt.QPainter, center qt.QPointF, length float64, direction float64, param5 qt.QPalette__ColorGroup))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -898,7 +885,7 @@ func miqt_exec_callback_QwtCompassWindArrow_draw(self *C.QwtCompassWindArrow, cb
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQPointF(unsafe.Pointer(center))
+	slotval2 := libmiqt.ValueCast[qt.QPointF](center)
 
 	slotval3 := (float64)(length)
 

@@ -37,7 +37,7 @@ void miqt_exec_callback_QWebFrame_titleChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QWebFrame_urlChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QWebFrame_initialLayoutCompleted(intptr_t);
 void miqt_exec_callback_QWebFrame_iconChanged(intptr_t);
-void miqt_exec_callback_QWebFrame_contentsSizeChanged(intptr_t, QSize*);
+void miqt_exec_callback_QWebFrame_contentsSizeChanged(intptr_t, struct miqt_qsize);
 void miqt_exec_callback_QWebFrame_loadStarted(intptr_t);
 void miqt_exec_callback_QWebFrame_loadFinished(intptr_t, bool);
 void miqt_exec_callback_QWebFrame_pageChanged(intptr_t);
@@ -61,12 +61,12 @@ bool QWebHitTestResult_isNull(const QWebHitTestResult* self) {
 	return self->isNull();
 }
 
-QPoint* QWebHitTestResult_pos(const QWebHitTestResult* self) {
-	return new QPoint(self->pos());
+struct miqt_qpoint QWebHitTestResult_pos(const QWebHitTestResult* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QRect* QWebHitTestResult_boundingRect(const QWebHitTestResult* self) {
-	return new QRect(self->boundingRect());
+struct miqt_qrect QWebHitTestResult_boundingRect(const QWebHitTestResult* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->boundingRect());
 }
 
 QWebElement* QWebHitTestResult_enclosingBlockElement(const QWebHitTestResult* self) {
@@ -332,20 +332,20 @@ int QWebFrame_scrollBarMaximum(const QWebFrame* self, int orientation) {
 	return self->scrollBarMaximum(static_cast<Qt::Orientation>(orientation));
 }
 
-QRect* QWebFrame_scrollBarGeometry(const QWebFrame* self, int orientation) {
-	return new QRect(self->scrollBarGeometry(static_cast<Qt::Orientation>(orientation)));
+struct miqt_qrect QWebFrame_scrollBarGeometry(const QWebFrame* self, int orientation) {
+	return miqt_to_cabi<struct miqt_qrect>(self->scrollBarGeometry(static_cast<Qt::Orientation>(orientation)));
 }
 
 void QWebFrame_scroll(QWebFrame* self, int param1, int param2) {
 	self->scroll(static_cast<int>(param1), static_cast<int>(param2));
 }
 
-QPoint* QWebFrame_scrollPosition(const QWebFrame* self) {
-	return new QPoint(self->scrollPosition());
+struct miqt_qpoint QWebFrame_scrollPosition(const QWebFrame* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->scrollPosition());
 }
 
-void QWebFrame_setScrollPosition(QWebFrame* self, QPoint* pos) {
-	self->setScrollPosition(*pos);
+void QWebFrame_setScrollPosition(QWebFrame* self, struct miqt_qpoint pos) {
+	self->setScrollPosition(miqt_from_cabi<QPoint>(pos));
 }
 
 void QWebFrame_scrollToAnchor(QWebFrame* self, struct miqt_string anchor) {
@@ -387,16 +387,16 @@ void QWebFrame_setFocus(QWebFrame* self) {
 	self->setFocus();
 }
 
-QPoint* QWebFrame_pos(const QWebFrame* self) {
-	return new QPoint(self->pos());
+struct miqt_qpoint QWebFrame_pos(const QWebFrame* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QRect* QWebFrame_geometry(const QWebFrame* self) {
-	return new QRect(self->geometry());
+struct miqt_qrect QWebFrame_geometry(const QWebFrame* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->geometry());
 }
 
-QSize* QWebFrame_contentsSize(const QWebFrame* self) {
-	return new QSize(self->contentsSize());
+struct miqt_qsize QWebFrame_contentsSize(const QWebFrame* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->contentsSize());
 }
 
 QWebElement* QWebFrame_documentElement(const QWebFrame* self) {
@@ -417,8 +417,8 @@ QWebElement* QWebFrame_findFirstElement(const QWebFrame* self, struct miqt_strin
 	return new QWebElement(self->findFirstElement(selectorQuery_QString));
 }
 
-QWebHitTestResult* QWebFrame_hitTestContent(const QWebFrame* self, QPoint* pos) {
-	return new QWebHitTestResult(self->hitTestContent(*pos));
+QWebHitTestResult* QWebFrame_hitTestContent(const QWebFrame* self, struct miqt_qpoint pos) {
+	return new QWebHitTestResult(self->hitTestContent(miqt_from_cabi<QPoint>(pos)));
 }
 
 bool QWebFrame_event(QWebFrame* self, QEvent* param1) {
@@ -510,15 +510,13 @@ void QWebFrame_connect_iconChanged(QWebFrame* self, intptr_t slot) {
 	});
 }
 
-void QWebFrame_contentsSizeChanged(QWebFrame* self, QSize* size) {
-	self->contentsSizeChanged(*size);
+void QWebFrame_contentsSizeChanged(QWebFrame* self, struct miqt_qsize size) {
+	self->contentsSizeChanged(miqt_from_cabi<QSize>(size));
 }
 
 void QWebFrame_connect_contentsSizeChanged(QWebFrame* self, intptr_t slot) {
 	QWebFrame::connect(self, static_cast<void (QWebFrame::*)(const QSize&)>(&QWebFrame::contentsSizeChanged), self, [=](const QSize& size) {
-		const QSize& size_ret = size;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&size_ret);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(size);
 		miqt_exec_callback_QWebFrame_contentsSizeChanged(slot, sigval1);
 	});
 }

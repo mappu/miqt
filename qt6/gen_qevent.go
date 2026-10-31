@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -661,25 +662,19 @@ func (this *QSinglePointEvent) Buttons() MouseButton {
 	return (MouseButton)(C.QSinglePointEvent_buttons(this.h))
 }
 
-func (this *QSinglePointEvent) Position() *QPointF {
+func (this *QSinglePointEvent) Position() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QSinglePointEvent_position(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QSinglePointEvent_position(this.h))
 }
 
-func (this *QSinglePointEvent) ScenePosition() *QPointF {
+func (this *QSinglePointEvent) ScenePosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QSinglePointEvent_scenePosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QSinglePointEvent_scenePosition(this.h))
 }
 
-func (this *QSinglePointEvent) GlobalPosition() *QPointF {
+func (this *QSinglePointEvent) GlobalPosition() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QSinglePointEvent_globalPosition(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QSinglePointEvent_globalPosition(this.h))
 }
 
 func (this *QSinglePointEvent) IsBeginEvent() bool {
@@ -771,21 +766,15 @@ func UnsafeNewQEnterEvent(h unsafe.Pointer) *QEnterEvent {
 }
 
 // NewQEnterEvent constructs a new QEnterEvent object.
-func NewQEnterEvent(localPos *QPointF, scenePos *QPointF, globalPos *QPointF) *QEnterEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
+func NewQEnterEvent(localPos QPointF, scenePos QPointF, globalPos QPointF) *QEnterEvent {
 
-	return newQEnterEvent(C.QEnterEvent_new(localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer()))
+	return newQEnterEvent(C.QEnterEvent_new(libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos)))
 }
 
 // NewQEnterEvent2 constructs a new QEnterEvent object.
-func NewQEnterEvent2(localPos *QPointF, scenePos *QPointF, globalPos *QPointF, device *QPointingDevice) *QEnterEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
+func NewQEnterEvent2(localPos QPointF, scenePos QPointF, globalPos QPointF, device *QPointingDevice) *QEnterEvent {
 
-	return newQEnterEvent(C.QEnterEvent_new2(localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), device.cPointer()))
+	return newQEnterEvent(C.QEnterEvent_new2(libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), device.cPointer()))
 }
 
 func (this *QEnterEvent) Clone() *QEnterEvent {
@@ -793,18 +782,14 @@ func (this *QEnterEvent) Clone() *QEnterEvent {
 	return newQEnterEvent(C.QEnterEvent_clone(this.h))
 }
 
-func (this *QEnterEvent) Pos() *QPoint {
+func (this *QEnterEvent) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QEnterEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QEnterEvent_pos(this.h))
 }
 
-func (this *QEnterEvent) GlobalPos() *QPoint {
+func (this *QEnterEvent) GlobalPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QEnterEvent_globalPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QEnterEvent_globalPos(this.h))
 }
 
 func (this *QEnterEvent) X() int {
@@ -827,25 +812,19 @@ func (this *QEnterEvent) GlobalY() int {
 	return (int)(C.QEnterEvent_globalY(this.h))
 }
 
-func (this *QEnterEvent) LocalPos() *QPointF {
+func (this *QEnterEvent) LocalPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEnterEvent_localPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEnterEvent_localPos(this.h))
 }
 
-func (this *QEnterEvent) WindowPos() *QPointF {
+func (this *QEnterEvent) WindowPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEnterEvent_windowPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEnterEvent_windowPos(this.h))
 }
 
-func (this *QEnterEvent) ScreenPos() *QPointF {
+func (this *QEnterEvent) ScreenPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QEnterEvent_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QEnterEvent_screenPos(this.h))
 }
 
 func (this *QEnterEvent) callVirtualBase_Clone() *QEnterEvent {
@@ -1071,69 +1050,51 @@ func UnsafeNewQMouseEvent(h unsafe.Pointer) *QMouseEvent {
 }
 
 // NewQMouseEvent constructs a new QMouseEvent object.
-func NewQMouseEvent(typeVal QEvent__Type, localPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
-	defer runtime.KeepAlive(localPos)
+func NewQMouseEvent(typeVal QEvent__Type, localPos QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
 
-	return newQMouseEvent(C.QMouseEvent_new((C.int)(typeVal), localPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
+	return newQMouseEvent(C.QMouseEvent_new((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQMouseEvent2 constructs a new QMouseEvent object.
-func NewQMouseEvent2(typeVal QEvent__Type, localPos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(globalPos)
+func NewQMouseEvent2(typeVal QEvent__Type, localPos QPointF, globalPos QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
 
-	return newQMouseEvent(C.QMouseEvent_new2((C.int)(typeVal), localPos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
+	return newQMouseEvent(C.QMouseEvent_new2((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQMouseEvent3 constructs a new QMouseEvent object.
-func NewQMouseEvent3(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
+func NewQMouseEvent3(typeVal QEvent__Type, localPos QPointF, scenePos QPointF, globalPos QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
 
-	return newQMouseEvent(C.QMouseEvent_new3((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
+	return newQMouseEvent(C.QMouseEvent_new3((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQMouseEvent4 constructs a new QMouseEvent object.
-func NewQMouseEvent4(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, source MouseEventSource) *QMouseEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
+func NewQMouseEvent4(typeVal QEvent__Type, localPos QPointF, scenePos QPointF, globalPos QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, source MouseEventSource) *QMouseEvent {
 
-	return newQMouseEvent(C.QMouseEvent_new4((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), (C.int)(source)))
+	return newQMouseEvent(C.QMouseEvent_new4((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), (C.int)(source)))
 }
 
 // NewQMouseEvent5 constructs a new QMouseEvent object.
-func NewQMouseEvent5(typeVal QEvent__Type, localPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
-	defer runtime.KeepAlive(localPos)
+func NewQMouseEvent5(typeVal QEvent__Type, localPos QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
 
-	return newQMouseEvent(C.QMouseEvent_new5((C.int)(typeVal), localPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
+	return newQMouseEvent(C.QMouseEvent_new5((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
 }
 
 // NewQMouseEvent6 constructs a new QMouseEvent object.
-func NewQMouseEvent6(typeVal QEvent__Type, localPos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(globalPos)
+func NewQMouseEvent6(typeVal QEvent__Type, localPos QPointF, globalPos QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
 
-	return newQMouseEvent(C.QMouseEvent_new6((C.int)(typeVal), localPos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
+	return newQMouseEvent(C.QMouseEvent_new6((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
 }
 
 // NewQMouseEvent7 constructs a new QMouseEvent object.
-func NewQMouseEvent7(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
+func NewQMouseEvent7(typeVal QEvent__Type, localPos QPointF, scenePos QPointF, globalPos QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, device *QPointingDevice) *QMouseEvent {
 
-	return newQMouseEvent(C.QMouseEvent_new7((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
+	return newQMouseEvent(C.QMouseEvent_new7((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), device.cPointer()))
 }
 
 // NewQMouseEvent8 constructs a new QMouseEvent object.
-func NewQMouseEvent8(typeVal QEvent__Type, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, source MouseEventSource, device *QPointingDevice) *QMouseEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
+func NewQMouseEvent8(typeVal QEvent__Type, localPos QPointF, scenePos QPointF, globalPos QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, source MouseEventSource, device *QPointingDevice) *QMouseEvent {
 
-	return newQMouseEvent(C.QMouseEvent_new8((C.int)(typeVal), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), (C.int)(source), device.cPointer()))
+	return newQMouseEvent(C.QMouseEvent_new8((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), (C.int)(source), device.cPointer()))
 }
 
 func (this *QMouseEvent) Clone() *QMouseEvent {
@@ -1141,18 +1102,14 @@ func (this *QMouseEvent) Clone() *QMouseEvent {
 	return newQMouseEvent(C.QMouseEvent_clone(this.h))
 }
 
-func (this *QMouseEvent) Pos() *QPoint {
+func (this *QMouseEvent) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QMouseEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QMouseEvent_pos(this.h))
 }
 
-func (this *QMouseEvent) GlobalPos() *QPoint {
+func (this *QMouseEvent) GlobalPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QMouseEvent_globalPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QMouseEvent_globalPos(this.h))
 }
 
 func (this *QMouseEvent) X() int {
@@ -1175,25 +1132,19 @@ func (this *QMouseEvent) GlobalY() int {
 	return (int)(C.QMouseEvent_globalY(this.h))
 }
 
-func (this *QMouseEvent) LocalPos() *QPointF {
+func (this *QMouseEvent) LocalPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QMouseEvent_localPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QMouseEvent_localPos(this.h))
 }
 
-func (this *QMouseEvent) WindowPos() *QPointF {
+func (this *QMouseEvent) WindowPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QMouseEvent_windowPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QMouseEvent_windowPos(this.h))
 }
 
-func (this *QMouseEvent) ScreenPos() *QPointF {
+func (this *QMouseEvent) ScreenPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QMouseEvent_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QMouseEvent_screenPos(this.h))
 }
 
 func (this *QMouseEvent) Source() MouseEventSource {
@@ -1429,54 +1380,39 @@ func UnsafeNewQHoverEvent(h unsafe.Pointer) *QHoverEvent {
 }
 
 // NewQHoverEvent constructs a new QHoverEvent object.
-func NewQHoverEvent(typeVal QEvent__Type, scenePos *QPointF, globalPos *QPointF, oldPos *QPointF) *QHoverEvent {
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(oldPos)
+func NewQHoverEvent(typeVal QEvent__Type, scenePos QPointF, globalPos QPointF, oldPos QPointF) *QHoverEvent {
 
-	return newQHoverEvent(C.QHoverEvent_new((C.int)(typeVal), scenePos.cPointer(), globalPos.cPointer(), oldPos.cPointer()))
+	return newQHoverEvent(C.QHoverEvent_new((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), libmiqt.ValueCast[C.struct_miqt_qpointf](oldPos)))
 }
 
 // NewQHoverEvent2 constructs a new QHoverEvent object.
-func NewQHoverEvent2(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF) *QHoverEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(oldPos)
+func NewQHoverEvent2(typeVal QEvent__Type, pos QPointF, oldPos QPointF) *QHoverEvent {
 
-	return newQHoverEvent(C.QHoverEvent_new2((C.int)(typeVal), pos.cPointer(), oldPos.cPointer()))
+	return newQHoverEvent(C.QHoverEvent_new2((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](pos), libmiqt.ValueCast[C.struct_miqt_qpointf](oldPos)))
 }
 
 // NewQHoverEvent3 constructs a new QHoverEvent object.
-func NewQHoverEvent3(typeVal QEvent__Type, scenePos *QPointF, globalPos *QPointF, oldPos *QPointF, modifiers KeyboardModifier) *QHoverEvent {
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(oldPos)
+func NewQHoverEvent3(typeVal QEvent__Type, scenePos QPointF, globalPos QPointF, oldPos QPointF, modifiers KeyboardModifier) *QHoverEvent {
 
-	return newQHoverEvent(C.QHoverEvent_new3((C.int)(typeVal), scenePos.cPointer(), globalPos.cPointer(), oldPos.cPointer(), (C.int)(modifiers)))
+	return newQHoverEvent(C.QHoverEvent_new3((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), libmiqt.ValueCast[C.struct_miqt_qpointf](oldPos), (C.int)(modifiers)))
 }
 
 // NewQHoverEvent4 constructs a new QHoverEvent object.
-func NewQHoverEvent4(typeVal QEvent__Type, scenePos *QPointF, globalPos *QPointF, oldPos *QPointF, modifiers KeyboardModifier, device *QPointingDevice) *QHoverEvent {
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(oldPos)
+func NewQHoverEvent4(typeVal QEvent__Type, scenePos QPointF, globalPos QPointF, oldPos QPointF, modifiers KeyboardModifier, device *QPointingDevice) *QHoverEvent {
 
-	return newQHoverEvent(C.QHoverEvent_new4((C.int)(typeVal), scenePos.cPointer(), globalPos.cPointer(), oldPos.cPointer(), (C.int)(modifiers), device.cPointer()))
+	return newQHoverEvent(C.QHoverEvent_new4((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), libmiqt.ValueCast[C.struct_miqt_qpointf](oldPos), (C.int)(modifiers), device.cPointer()))
 }
 
 // NewQHoverEvent5 constructs a new QHoverEvent object.
-func NewQHoverEvent5(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifiers KeyboardModifier) *QHoverEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(oldPos)
+func NewQHoverEvent5(typeVal QEvent__Type, pos QPointF, oldPos QPointF, modifiers KeyboardModifier) *QHoverEvent {
 
-	return newQHoverEvent(C.QHoverEvent_new5((C.int)(typeVal), pos.cPointer(), oldPos.cPointer(), (C.int)(modifiers)))
+	return newQHoverEvent(C.QHoverEvent_new5((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](pos), libmiqt.ValueCast[C.struct_miqt_qpointf](oldPos), (C.int)(modifiers)))
 }
 
 // NewQHoverEvent6 constructs a new QHoverEvent object.
-func NewQHoverEvent6(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifiers KeyboardModifier, device *QPointingDevice) *QHoverEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(oldPos)
+func NewQHoverEvent6(typeVal QEvent__Type, pos QPointF, oldPos QPointF, modifiers KeyboardModifier, device *QPointingDevice) *QHoverEvent {
 
-	return newQHoverEvent(C.QHoverEvent_new6((C.int)(typeVal), pos.cPointer(), oldPos.cPointer(), (C.int)(modifiers), device.cPointer()))
+	return newQHoverEvent(C.QHoverEvent_new6((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpointf](pos), libmiqt.ValueCast[C.struct_miqt_qpointf](oldPos), (C.int)(modifiers), device.cPointer()))
 }
 
 func (this *QHoverEvent) Clone() *QHoverEvent {
@@ -1484,18 +1420,14 @@ func (this *QHoverEvent) Clone() *QHoverEvent {
 	return newQHoverEvent(C.QHoverEvent_clone(this.h))
 }
 
-func (this *QHoverEvent) Pos() *QPoint {
+func (this *QHoverEvent) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QHoverEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QHoverEvent_pos(this.h))
 }
 
-func (this *QHoverEvent) PosF() *QPointF {
+func (this *QHoverEvent) PosF() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QHoverEvent_posF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QHoverEvent_posF(this.h))
 }
 
 func (this *QHoverEvent) IsUpdateEvent() bool {
@@ -1503,18 +1435,14 @@ func (this *QHoverEvent) IsUpdateEvent() bool {
 	return (bool)(C.QHoverEvent_isUpdateEvent(this.h))
 }
 
-func (this *QHoverEvent) OldPos() *QPoint {
+func (this *QHoverEvent) OldPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QHoverEvent_oldPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QHoverEvent_oldPos(this.h))
 }
 
-func (this *QHoverEvent) OldPosF() *QPointF {
+func (this *QHoverEvent) OldPosF() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QHoverEvent_oldPosF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QHoverEvent_oldPosF(this.h))
 }
 
 func (this *QHoverEvent) callVirtualBase_Clone() *QHoverEvent {
@@ -1740,33 +1668,21 @@ func UnsafeNewQWheelEvent(h unsafe.Pointer) *QWheelEvent {
 }
 
 // NewQWheelEvent constructs a new QWheelEvent object.
-func NewQWheelEvent(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool) *QWheelEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(pixelDelta)
-	defer runtime.KeepAlive(angleDelta)
+func NewQWheelEvent(pos QPointF, globalPos QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool) *QWheelEvent {
 
-	return newQWheelEvent(C.QWheelEvent_new(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted)))
+	return newQWheelEvent(C.QWheelEvent_new(libmiqt.ValueCast[C.struct_miqt_qpointf](pos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), libmiqt.ValueCast[C.struct_miqt_qpoint](pixelDelta), libmiqt.ValueCast[C.struct_miqt_qpoint](angleDelta), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted)))
 }
 
 // NewQWheelEvent2 constructs a new QWheelEvent object.
-func NewQWheelEvent2(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool, source MouseEventSource) *QWheelEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(pixelDelta)
-	defer runtime.KeepAlive(angleDelta)
+func NewQWheelEvent2(pos QPointF, globalPos QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool, source MouseEventSource) *QWheelEvent {
 
-	return newQWheelEvent(C.QWheelEvent_new2(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted), (C.int)(source)))
+	return newQWheelEvent(C.QWheelEvent_new2(libmiqt.ValueCast[C.struct_miqt_qpointf](pos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), libmiqt.ValueCast[C.struct_miqt_qpoint](pixelDelta), libmiqt.ValueCast[C.struct_miqt_qpoint](angleDelta), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted), (C.int)(source)))
 }
 
 // NewQWheelEvent3 constructs a new QWheelEvent object.
-func NewQWheelEvent3(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool, source MouseEventSource, device *QPointingDevice) *QWheelEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(pixelDelta)
-	defer runtime.KeepAlive(angleDelta)
+func NewQWheelEvent3(pos QPointF, globalPos QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool, source MouseEventSource, device *QPointingDevice) *QWheelEvent {
 
-	return newQWheelEvent(C.QWheelEvent_new3(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted), (C.int)(source), device.cPointer()))
+	return newQWheelEvent(C.QWheelEvent_new3(libmiqt.ValueCast[C.struct_miqt_qpointf](pos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), libmiqt.ValueCast[C.struct_miqt_qpoint](pixelDelta), libmiqt.ValueCast[C.struct_miqt_qpoint](angleDelta), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted), (C.int)(source), device.cPointer()))
 }
 
 func (this *QWheelEvent) Clone() *QWheelEvent {
@@ -1774,18 +1690,14 @@ func (this *QWheelEvent) Clone() *QWheelEvent {
 	return newQWheelEvent(C.QWheelEvent_clone(this.h))
 }
 
-func (this *QWheelEvent) PixelDelta() *QPoint {
+func (this *QWheelEvent) PixelDelta() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QWheelEvent_pixelDelta(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QWheelEvent_pixelDelta(this.h))
 }
 
-func (this *QWheelEvent) AngleDelta() *QPoint {
+func (this *QWheelEvent) AngleDelta() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QWheelEvent_angleDelta(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QWheelEvent_angleDelta(this.h))
 }
 
 func (this *QWheelEvent) Phase() ScrollPhase {
@@ -2051,11 +1963,9 @@ func UnsafeNewQTabletEvent(h unsafe.Pointer) *QTabletEvent {
 }
 
 // NewQTabletEvent constructs a new QTabletEvent object.
-func NewQTabletEvent(t QEvent__Type, device *QPointingDevice, pos *QPointF, globalPos *QPointF, pressure float64, xTilt float32, yTilt float32, tangentialPressure float32, rotation float64, z float32, keyState KeyboardModifier, button MouseButton, buttons MouseButton) *QTabletEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(globalPos)
+func NewQTabletEvent(t QEvent__Type, device *QPointingDevice, pos QPointF, globalPos QPointF, pressure float64, xTilt float32, yTilt float32, tangentialPressure float32, rotation float64, z float32, keyState KeyboardModifier, button MouseButton, buttons MouseButton) *QTabletEvent {
 
-	return newQTabletEvent(C.QTabletEvent_new((C.int)(t), device.cPointer(), pos.cPointer(), globalPos.cPointer(), (C.double)(pressure), (C.float)(xTilt), (C.float)(yTilt), (C.float)(tangentialPressure), (C.double)(rotation), (C.float)(z), (C.int)(keyState), (C.int)(button), (C.int)(buttons)))
+	return newQTabletEvent(C.QTabletEvent_new((C.int)(t), device.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](pos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.double)(pressure), (C.float)(xTilt), (C.float)(yTilt), (C.float)(tangentialPressure), (C.double)(rotation), (C.float)(z), (C.int)(keyState), (C.int)(button), (C.int)(buttons)))
 }
 
 func (this *QTabletEvent) Clone() *QTabletEvent {
@@ -2063,32 +1973,24 @@ func (this *QTabletEvent) Clone() *QTabletEvent {
 	return newQTabletEvent(C.QTabletEvent_clone(this.h))
 }
 
-func (this *QTabletEvent) Pos() *QPoint {
+func (this *QTabletEvent) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QTabletEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QTabletEvent_pos(this.h))
 }
 
-func (this *QTabletEvent) GlobalPos() *QPoint {
+func (this *QTabletEvent) GlobalPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QTabletEvent_globalPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QTabletEvent_globalPos(this.h))
 }
 
-func (this *QTabletEvent) PosF() *QPointF {
+func (this *QTabletEvent) PosF() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QTabletEvent_posF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QTabletEvent_posF(this.h))
 }
 
-func (this *QTabletEvent) GlobalPosF() *QPointF {
+func (this *QTabletEvent) GlobalPosF() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QTabletEvent_globalPosF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QTabletEvent_globalPosF(this.h))
 }
 
 func (this *QTabletEvent) X() int {
@@ -2379,32 +2281,21 @@ func UnsafeNewQNativeGestureEvent(h unsafe.Pointer) *QNativeGestureEvent {
 }
 
 // NewQNativeGestureEvent constructs a new QNativeGestureEvent object.
-func NewQNativeGestureEvent(typeVal NativeGestureType, dev *QPointingDevice, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, value float64, sequenceId uint64, intArgument uint64) *QNativeGestureEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
+func NewQNativeGestureEvent(typeVal NativeGestureType, dev *QPointingDevice, localPos QPointF, scenePos QPointF, globalPos QPointF, value float64, sequenceId uint64, intArgument uint64) *QNativeGestureEvent {
 
-	return newQNativeGestureEvent(C.QNativeGestureEvent_new((C.int)(typeVal), dev.cPointer(), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.double)(value), (C.ulonglong)(sequenceId), (C.ulonglong)(intArgument)))
+	return newQNativeGestureEvent(C.QNativeGestureEvent_new((C.int)(typeVal), dev.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.double)(value), (C.ulonglong)(sequenceId), (C.ulonglong)(intArgument)))
 }
 
 // NewQNativeGestureEvent2 constructs a new QNativeGestureEvent object.
-func NewQNativeGestureEvent2(typeVal NativeGestureType, dev *QPointingDevice, fingerCount int, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, value float64, delta *QPointF) *QNativeGestureEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(delta)
+func NewQNativeGestureEvent2(typeVal NativeGestureType, dev *QPointingDevice, fingerCount int, localPos QPointF, scenePos QPointF, globalPos QPointF, value float64, delta QPointF) *QNativeGestureEvent {
 
-	return newQNativeGestureEvent(C.QNativeGestureEvent_new2((C.int)(typeVal), dev.cPointer(), (C.int)(fingerCount), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.double)(value), delta.cPointer()))
+	return newQNativeGestureEvent(C.QNativeGestureEvent_new2((C.int)(typeVal), dev.cPointer(), (C.int)(fingerCount), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.double)(value), libmiqt.ValueCast[C.struct_miqt_qpointf](delta)))
 }
 
 // NewQNativeGestureEvent3 constructs a new QNativeGestureEvent object.
-func NewQNativeGestureEvent3(typeVal NativeGestureType, dev *QPointingDevice, fingerCount int, localPos *QPointF, scenePos *QPointF, globalPos *QPointF, value float64, delta *QPointF, sequenceId uint64) *QNativeGestureEvent {
-	defer runtime.KeepAlive(localPos)
-	defer runtime.KeepAlive(scenePos)
-	defer runtime.KeepAlive(globalPos)
-	defer runtime.KeepAlive(delta)
+func NewQNativeGestureEvent3(typeVal NativeGestureType, dev *QPointingDevice, fingerCount int, localPos QPointF, scenePos QPointF, globalPos QPointF, value float64, delta QPointF, sequenceId uint64) *QNativeGestureEvent {
 
-	return newQNativeGestureEvent(C.QNativeGestureEvent_new3((C.int)(typeVal), dev.cPointer(), (C.int)(fingerCount), localPos.cPointer(), scenePos.cPointer(), globalPos.cPointer(), (C.double)(value), delta.cPointer(), (C.ulonglong)(sequenceId)))
+	return newQNativeGestureEvent(C.QNativeGestureEvent_new3((C.int)(typeVal), dev.cPointer(), (C.int)(fingerCount), libmiqt.ValueCast[C.struct_miqt_qpointf](localPos), libmiqt.ValueCast[C.struct_miqt_qpointf](scenePos), libmiqt.ValueCast[C.struct_miqt_qpointf](globalPos), (C.double)(value), libmiqt.ValueCast[C.struct_miqt_qpointf](delta), (C.ulonglong)(sequenceId)))
 }
 
 func (this *QNativeGestureEvent) Clone() *QNativeGestureEvent {
@@ -2427,46 +2318,34 @@ func (this *QNativeGestureEvent) Value() float64 {
 	return (float64)(C.QNativeGestureEvent_value(this.h))
 }
 
-func (this *QNativeGestureEvent) Delta() *QPointF {
+func (this *QNativeGestureEvent) Delta() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QNativeGestureEvent_delta(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QNativeGestureEvent_delta(this.h))
 }
 
-func (this *QNativeGestureEvent) Pos() *QPoint {
+func (this *QNativeGestureEvent) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QNativeGestureEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QNativeGestureEvent_pos(this.h))
 }
 
-func (this *QNativeGestureEvent) GlobalPos() *QPoint {
+func (this *QNativeGestureEvent) GlobalPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QNativeGestureEvent_globalPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QNativeGestureEvent_globalPos(this.h))
 }
 
-func (this *QNativeGestureEvent) LocalPos() *QPointF {
+func (this *QNativeGestureEvent) LocalPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QNativeGestureEvent_localPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QNativeGestureEvent_localPos(this.h))
 }
 
-func (this *QNativeGestureEvent) WindowPos() *QPointF {
+func (this *QNativeGestureEvent) WindowPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QNativeGestureEvent_windowPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QNativeGestureEvent_windowPos(this.h))
 }
 
-func (this *QNativeGestureEvent) ScreenPos() *QPointF {
+func (this *QNativeGestureEvent) ScreenPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QNativeGestureEvent_screenPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QNativeGestureEvent_screenPos(this.h))
 }
 
 func (this *QNativeGestureEvent) callVirtualBase_Clone() *QNativeGestureEvent {
@@ -3134,10 +3013,9 @@ func NewQPaintEvent(paintRegion *QRegion) *QPaintEvent {
 }
 
 // NewQPaintEvent2 constructs a new QPaintEvent object.
-func NewQPaintEvent2(paintRect *QRect) *QPaintEvent {
-	defer runtime.KeepAlive(paintRect)
+func NewQPaintEvent2(paintRect QRect) *QPaintEvent {
 
-	return newQPaintEvent(C.QPaintEvent_new2(paintRect.cPointer()))
+	return newQPaintEvent(C.QPaintEvent_new2(libmiqt.ValueCast[C.struct_miqt_qrect](paintRect)))
 }
 
 func (this *QPaintEvent) Clone() *QPaintEvent {
@@ -3145,11 +3023,9 @@ func (this *QPaintEvent) Clone() *QPaintEvent {
 	return newQPaintEvent(C.QPaintEvent_clone(this.h))
 }
 
-func (this *QPaintEvent) Rect() *QRect {
+func (this *QPaintEvent) Rect() QRect {
 	defer runtime.KeepAlive(this)
-	_ret := newQRect(C.QPaintEvent_rect(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QRect](C.QPaintEvent_rect(this.h))
 }
 
 func (this *QPaintEvent) Region() *QRegion {
@@ -3277,11 +3153,9 @@ func UnsafeNewQMoveEvent(h unsafe.Pointer) *QMoveEvent {
 }
 
 // NewQMoveEvent constructs a new QMoveEvent object.
-func NewQMoveEvent(pos *QPoint, oldPos *QPoint) *QMoveEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(oldPos)
+func NewQMoveEvent(pos QPoint, oldPos QPoint) *QMoveEvent {
 
-	return newQMoveEvent(C.QMoveEvent_new(pos.cPointer(), oldPos.cPointer()))
+	return newQMoveEvent(C.QMoveEvent_new(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), libmiqt.ValueCast[C.struct_miqt_qpoint](oldPos)))
 }
 
 func (this *QMoveEvent) Clone() *QMoveEvent {
@@ -3289,18 +3163,14 @@ func (this *QMoveEvent) Clone() *QMoveEvent {
 	return newQMoveEvent(C.QMoveEvent_clone(this.h))
 }
 
-func (this *QMoveEvent) Pos() *QPoint {
+func (this *QMoveEvent) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QMoveEvent_pos(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QPoint](C.QMoveEvent_pos(this.h))
 }
 
-func (this *QMoveEvent) OldPos() *QPoint {
+func (this *QMoveEvent) OldPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QMoveEvent_oldPos(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QPoint](C.QMoveEvent_oldPos(this.h))
 }
 
 func (this *QMoveEvent) callVirtualBase_Clone() *QMoveEvent {
@@ -3690,11 +3560,9 @@ func UnsafeNewQResizeEvent(h unsafe.Pointer) *QResizeEvent {
 }
 
 // NewQResizeEvent constructs a new QResizeEvent object.
-func NewQResizeEvent(size *QSize, oldSize *QSize) *QResizeEvent {
-	defer runtime.KeepAlive(size)
-	defer runtime.KeepAlive(oldSize)
+func NewQResizeEvent(size QSize, oldSize QSize) *QResizeEvent {
 
-	return newQResizeEvent(C.QResizeEvent_new(size.cPointer(), oldSize.cPointer()))
+	return newQResizeEvent(C.QResizeEvent_new(libmiqt.ValueCast[C.struct_miqt_qsize](size), libmiqt.ValueCast[C.struct_miqt_qsize](oldSize)))
 }
 
 func (this *QResizeEvent) Clone() *QResizeEvent {
@@ -3702,18 +3570,14 @@ func (this *QResizeEvent) Clone() *QResizeEvent {
 	return newQResizeEvent(C.QResizeEvent_clone(this.h))
 }
 
-func (this *QResizeEvent) Size() *QSize {
+func (this *QResizeEvent) Size() QSize {
 	defer runtime.KeepAlive(this)
-	_ret := newQSize(C.QResizeEvent_size(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QSize](C.QResizeEvent_size(this.h))
 }
 
-func (this *QResizeEvent) OldSize() *QSize {
+func (this *QResizeEvent) OldSize() QSize {
 	defer runtime.KeepAlive(this)
-	_ret := newQSize(C.QResizeEvent_oldSize(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QSize](C.QResizeEvent_oldSize(this.h))
 }
 
 func (this *QResizeEvent) callVirtualBase_Clone() *QResizeEvent {
@@ -4346,26 +4210,21 @@ func UnsafeNewQContextMenuEvent(h unsafe.Pointer) *QContextMenuEvent {
 }
 
 // NewQContextMenuEvent constructs a new QContextMenuEvent object.
-func NewQContextMenuEvent(reason QContextMenuEvent__Reason, pos *QPoint, globalPos *QPoint) *QContextMenuEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(globalPos)
+func NewQContextMenuEvent(reason QContextMenuEvent__Reason, pos QPoint, globalPos QPoint) *QContextMenuEvent {
 
-	return newQContextMenuEvent(C.QContextMenuEvent_new((C.int)(reason), pos.cPointer(), globalPos.cPointer()))
+	return newQContextMenuEvent(C.QContextMenuEvent_new((C.int)(reason), libmiqt.ValueCast[C.struct_miqt_qpoint](pos), libmiqt.ValueCast[C.struct_miqt_qpoint](globalPos)))
 }
 
 // NewQContextMenuEvent2 constructs a new QContextMenuEvent object.
-func NewQContextMenuEvent2(reason QContextMenuEvent__Reason, pos *QPoint) *QContextMenuEvent {
-	defer runtime.KeepAlive(pos)
+func NewQContextMenuEvent2(reason QContextMenuEvent__Reason, pos QPoint) *QContextMenuEvent {
 
-	return newQContextMenuEvent(C.QContextMenuEvent_new2((C.int)(reason), pos.cPointer()))
+	return newQContextMenuEvent(C.QContextMenuEvent_new2((C.int)(reason), libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 // NewQContextMenuEvent3 constructs a new QContextMenuEvent object.
-func NewQContextMenuEvent3(reason QContextMenuEvent__Reason, pos *QPoint, globalPos *QPoint, modifiers KeyboardModifier) *QContextMenuEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(globalPos)
+func NewQContextMenuEvent3(reason QContextMenuEvent__Reason, pos QPoint, globalPos QPoint, modifiers KeyboardModifier) *QContextMenuEvent {
 
-	return newQContextMenuEvent(C.QContextMenuEvent_new3((C.int)(reason), pos.cPointer(), globalPos.cPointer(), (C.int)(modifiers)))
+	return newQContextMenuEvent(C.QContextMenuEvent_new3((C.int)(reason), libmiqt.ValueCast[C.struct_miqt_qpoint](pos), libmiqt.ValueCast[C.struct_miqt_qpoint](globalPos), (C.int)(modifiers)))
 }
 
 func (this *QContextMenuEvent) Clone() *QContextMenuEvent {
@@ -4393,18 +4252,14 @@ func (this *QContextMenuEvent) GlobalY() int {
 	return (int)(C.QContextMenuEvent_globalY(this.h))
 }
 
-func (this *QContextMenuEvent) Pos() *QPoint {
+func (this *QContextMenuEvent) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QContextMenuEvent_pos(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QPoint](C.QContextMenuEvent_pos(this.h))
 }
 
-func (this *QContextMenuEvent) GlobalPos() *QPoint {
+func (this *QContextMenuEvent) GlobalPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QContextMenuEvent_globalPos(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QPoint](C.QContextMenuEvent_globalPos(this.h))
 }
 
 func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
@@ -4915,17 +4770,15 @@ func UnsafeNewQDropEvent(h unsafe.Pointer) *QDropEvent {
 }
 
 // NewQDropEvent constructs a new QDropEvent object.
-func NewQDropEvent(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDropEvent {
-	defer runtime.KeepAlive(pos)
+func NewQDropEvent(pos QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDropEvent {
 
-	return newQDropEvent(C.QDropEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
+	return newQDropEvent(C.QDropEvent_new(libmiqt.ValueCast[C.struct_miqt_qpointf](pos), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQDropEvent2 constructs a new QDropEvent object.
-func NewQDropEvent2(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDropEvent {
-	defer runtime.KeepAlive(pos)
+func NewQDropEvent2(pos QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDropEvent {
 
-	return newQDropEvent(C.QDropEvent_new2(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
+	return newQDropEvent(C.QDropEvent_new2(libmiqt.ValueCast[C.struct_miqt_qpointf](pos), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
 
 func (this *QDropEvent) Clone() *QDropEvent {
@@ -4933,18 +4786,14 @@ func (this *QDropEvent) Clone() *QDropEvent {
 	return newQDropEvent(C.QDropEvent_clone(this.h))
 }
 
-func (this *QDropEvent) Pos() *QPoint {
+func (this *QDropEvent) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QDropEvent_pos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPoint](C.QDropEvent_pos(this.h))
 }
 
-func (this *QDropEvent) PosF() *QPointF {
+func (this *QDropEvent) PosF() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QDropEvent_posF(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QDropEvent_posF(this.h))
 }
 
 func (this *QDropEvent) MouseButtons() MouseButton {
@@ -4957,11 +4806,9 @@ func (this *QDropEvent) KeyboardModifiers() KeyboardModifier {
 	return (KeyboardModifier)(C.QDropEvent_keyboardModifiers(this.h))
 }
 
-func (this *QDropEvent) Position() *QPointF {
+func (this *QDropEvent) Position() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QDropEvent_position(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QDropEvent_position(this.h))
 }
 
 func (this *QDropEvent) Buttons() MouseButton {
@@ -5127,17 +4974,15 @@ func UnsafeNewQDragMoveEvent(h unsafe.Pointer) *QDragMoveEvent {
 }
 
 // NewQDragMoveEvent constructs a new QDragMoveEvent object.
-func NewQDragMoveEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragMoveEvent {
-	defer runtime.KeepAlive(pos)
+func NewQDragMoveEvent(pos QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragMoveEvent {
 
-	return newQDragMoveEvent(C.QDragMoveEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
+	return newQDragMoveEvent(C.QDragMoveEvent_new(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQDragMoveEvent2 constructs a new QDragMoveEvent object.
-func NewQDragMoveEvent2(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDragMoveEvent {
-	defer runtime.KeepAlive(pos)
+func NewQDragMoveEvent2(pos QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDragMoveEvent {
 
-	return newQDragMoveEvent(C.QDragMoveEvent_new2(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
+	return newQDragMoveEvent(C.QDragMoveEvent_new2(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
 
 func (this *QDragMoveEvent) Clone() *QDragMoveEvent {
@@ -5145,11 +4990,9 @@ func (this *QDragMoveEvent) Clone() *QDragMoveEvent {
 	return newQDragMoveEvent(C.QDragMoveEvent_clone(this.h))
 }
 
-func (this *QDragMoveEvent) AnswerRect() *QRect {
+func (this *QDragMoveEvent) AnswerRect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QDragMoveEvent_answerRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QDragMoveEvent_answerRect(this.h))
 }
 
 func (this *QDragMoveEvent) Accept() {
@@ -5162,16 +5005,14 @@ func (this *QDragMoveEvent) Ignore() {
 	C.QDragMoveEvent_ignore(this.h)
 }
 
-func (this *QDragMoveEvent) AcceptWithQRect(r *QRect) {
+func (this *QDragMoveEvent) AcceptWithQRect(r QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QDragMoveEvent_acceptWithQRect(this.h, r.cPointer())
+	C.QDragMoveEvent_acceptWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r))
 }
 
-func (this *QDragMoveEvent) IgnoreWithQRect(r *QRect) {
+func (this *QDragMoveEvent) IgnoreWithQRect(r QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QDragMoveEvent_ignoreWithQRect(this.h, r.cPointer())
+	C.QDragMoveEvent_ignoreWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r))
 }
 
 func (this *QDragMoveEvent) callVirtualBase_Clone() *QDragMoveEvent {
@@ -5292,10 +5133,9 @@ func UnsafeNewQDragEnterEvent(h unsafe.Pointer) *QDragEnterEvent {
 }
 
 // NewQDragEnterEvent constructs a new QDragEnterEvent object.
-func NewQDragEnterEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragEnterEvent {
-	defer runtime.KeepAlive(pos)
+func NewQDragEnterEvent(pos QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragEnterEvent {
 
-	return newQDragEnterEvent(C.QDragEnterEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
+	return newQDragEnterEvent(C.QDragEnterEvent_new(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 func (this *QDragEnterEvent) Clone() *QDragEnterEvent {
@@ -5549,11 +5389,9 @@ func UnsafeNewQHelpEvent(h unsafe.Pointer) *QHelpEvent {
 }
 
 // NewQHelpEvent constructs a new QHelpEvent object.
-func NewQHelpEvent(typeVal QEvent__Type, pos *QPoint, globalPos *QPoint) *QHelpEvent {
-	defer runtime.KeepAlive(pos)
-	defer runtime.KeepAlive(globalPos)
+func NewQHelpEvent(typeVal QEvent__Type, pos QPoint, globalPos QPoint) *QHelpEvent {
 
-	return newQHelpEvent(C.QHelpEvent_new((C.int)(typeVal), pos.cPointer(), globalPos.cPointer()))
+	return newQHelpEvent(C.QHelpEvent_new((C.int)(typeVal), libmiqt.ValueCast[C.struct_miqt_qpoint](pos), libmiqt.ValueCast[C.struct_miqt_qpoint](globalPos)))
 }
 
 func (this *QHelpEvent) Clone() *QHelpEvent {
@@ -5581,18 +5419,14 @@ func (this *QHelpEvent) GlobalY() int {
 	return (int)(C.QHelpEvent_globalY(this.h))
 }
 
-func (this *QHelpEvent) Pos() *QPoint {
+func (this *QHelpEvent) Pos() QPoint {
 	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QHelpEvent_pos(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QPoint](C.QHelpEvent_pos(this.h))
 }
 
-func (this *QHelpEvent) GlobalPos() *QPoint {
+func (this *QHelpEvent) GlobalPos() QPoint {
 	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QHelpEvent_globalPos(this.h))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return libmiqt.ValueCast[QPoint](C.QHelpEvent_globalPos(this.h))
 }
 
 func (this *QHelpEvent) callVirtualBase_Clone() *QHelpEvent {
@@ -7043,10 +6877,9 @@ func UnsafeNewQScrollPrepareEvent(h unsafe.Pointer) *QScrollPrepareEvent {
 }
 
 // NewQScrollPrepareEvent constructs a new QScrollPrepareEvent object.
-func NewQScrollPrepareEvent(startPos *QPointF) *QScrollPrepareEvent {
-	defer runtime.KeepAlive(startPos)
+func NewQScrollPrepareEvent(startPos QPointF) *QScrollPrepareEvent {
 
-	return newQScrollPrepareEvent(C.QScrollPrepareEvent_new(startPos.cPointer()))
+	return newQScrollPrepareEvent(C.QScrollPrepareEvent_new(libmiqt.ValueCast[C.struct_miqt_qpointf](startPos)))
 }
 
 func (this *QScrollPrepareEvent) Clone() *QScrollPrepareEvent {
@@ -7054,50 +6887,39 @@ func (this *QScrollPrepareEvent) Clone() *QScrollPrepareEvent {
 	return newQScrollPrepareEvent(C.QScrollPrepareEvent_clone(this.h))
 }
 
-func (this *QScrollPrepareEvent) StartPos() *QPointF {
+func (this *QScrollPrepareEvent) StartPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QScrollPrepareEvent_startPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QScrollPrepareEvent_startPos(this.h))
 }
 
-func (this *QScrollPrepareEvent) ViewportSize() *QSizeF {
+func (this *QScrollPrepareEvent) ViewportSize() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QScrollPrepareEvent_viewportSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QScrollPrepareEvent_viewportSize(this.h))
 }
 
-func (this *QScrollPrepareEvent) ContentPosRange() *QRectF {
+func (this *QScrollPrepareEvent) ContentPosRange() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QScrollPrepareEvent_contentPosRange(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QScrollPrepareEvent_contentPosRange(this.h))
 }
 
-func (this *QScrollPrepareEvent) ContentPos() *QPointF {
+func (this *QScrollPrepareEvent) ContentPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QScrollPrepareEvent_contentPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QScrollPrepareEvent_contentPos(this.h))
 }
 
-func (this *QScrollPrepareEvent) SetViewportSize(size *QSizeF) {
+func (this *QScrollPrepareEvent) SetViewportSize(size QSizeF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QScrollPrepareEvent_setViewportSize(this.h, size.cPointer())
+	C.QScrollPrepareEvent_setViewportSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
-func (this *QScrollPrepareEvent) SetContentPosRange(rect *QRectF) {
+func (this *QScrollPrepareEvent) SetContentPosRange(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QScrollPrepareEvent_setContentPosRange(this.h, rect.cPointer())
+	C.QScrollPrepareEvent_setContentPosRange(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
-func (this *QScrollPrepareEvent) SetContentPos(pos *QPointF) {
+func (this *QScrollPrepareEvent) SetContentPos(pos QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QScrollPrepareEvent_setContentPos(this.h, pos.cPointer())
+	C.QScrollPrepareEvent_setContentPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
 func (this *QScrollPrepareEvent) callVirtualBase_Clone() *QScrollPrepareEvent {
@@ -7218,11 +7040,9 @@ func UnsafeNewQScrollEvent(h unsafe.Pointer) *QScrollEvent {
 }
 
 // NewQScrollEvent constructs a new QScrollEvent object.
-func NewQScrollEvent(contentPos *QPointF, overshoot *QPointF, scrollState QScrollEvent__ScrollState) *QScrollEvent {
-	defer runtime.KeepAlive(contentPos)
-	defer runtime.KeepAlive(overshoot)
+func NewQScrollEvent(contentPos QPointF, overshoot QPointF, scrollState QScrollEvent__ScrollState) *QScrollEvent {
 
-	return newQScrollEvent(C.QScrollEvent_new(contentPos.cPointer(), overshoot.cPointer(), (C.int)(scrollState)))
+	return newQScrollEvent(C.QScrollEvent_new(libmiqt.ValueCast[C.struct_miqt_qpointf](contentPos), libmiqt.ValueCast[C.struct_miqt_qpointf](overshoot), (C.int)(scrollState)))
 }
 
 func (this *QScrollEvent) Clone() *QScrollEvent {
@@ -7230,18 +7050,14 @@ func (this *QScrollEvent) Clone() *QScrollEvent {
 	return newQScrollEvent(C.QScrollEvent_clone(this.h))
 }
 
-func (this *QScrollEvent) ContentPos() *QPointF {
+func (this *QScrollEvent) ContentPos() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QScrollEvent_contentPos(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QScrollEvent_contentPos(this.h))
 }
 
-func (this *QScrollEvent) OvershootDistance() *QPointF {
+func (this *QScrollEvent) OvershootDistance() QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QScrollEvent_overshootDistance(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QScrollEvent_overshootDistance(this.h))
 }
 
 func (this *QScrollEvent) ScrollState() QScrollEvent__ScrollState {

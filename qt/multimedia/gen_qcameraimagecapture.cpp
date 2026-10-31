@@ -321,12 +321,12 @@ struct miqt_string QCameraImageCapture_imageCodecDescription(const QCameraImageC
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions(const QCameraImageCapture* self) {
+struct miqt_array /* of struct miqt_qsize */  QCameraImageCapture_supportedResolutions(const QCameraImageCapture* self) {
 	QList<QSize> _ret = self->supportedResolutions();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
+	struct miqt_qsize* _arr = static_cast<struct miqt_qsize*>(malloc(sizeof(struct miqt_qsize) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qsize>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -569,12 +569,12 @@ struct miqt_string QCameraImageCapture_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutionsWithSettings(const QCameraImageCapture* self, QImageEncoderSettings* settings) {
+struct miqt_array /* of struct miqt_qsize */  QCameraImageCapture_supportedResolutionsWithSettings(const QCameraImageCapture* self, QImageEncoderSettings* settings) {
 	QList<QSize> _ret = self->supportedResolutions(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
+	struct miqt_qsize* _arr = static_cast<struct miqt_qsize*>(malloc(sizeof(struct miqt_qsize) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qsize>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -582,12 +582,12 @@ struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutionsWithS
 	return _out;
 }
 
-struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of struct miqt_qsize */  QCameraImageCapture_supportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous) {
 	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
+	struct miqt_qsize* _arr = static_cast<struct miqt_qsize*>(malloc(sizeof(struct miqt_qsize) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QSize(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qsize>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

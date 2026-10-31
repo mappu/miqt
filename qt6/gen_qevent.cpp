@@ -658,16 +658,16 @@ int QSinglePointEvent_buttons(const QSinglePointEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-QPointF* QSinglePointEvent_position(const QSinglePointEvent* self) {
-	return new QPointF(self->position());
+struct miqt_qpointf QSinglePointEvent_position(const QSinglePointEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->position());
 }
 
-QPointF* QSinglePointEvent_scenePosition(const QSinglePointEvent* self) {
-	return new QPointF(self->scenePosition());
+struct miqt_qpointf QSinglePointEvent_scenePosition(const QSinglePointEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->scenePosition());
 }
 
-QPointF* QSinglePointEvent_globalPosition(const QSinglePointEvent* self) {
-	return new QPointF(self->globalPosition());
+struct miqt_qpointf QSinglePointEvent_globalPosition(const QSinglePointEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->globalPosition());
 }
 
 bool QSinglePointEvent_isBeginEvent(const QSinglePointEvent* self) {
@@ -799,12 +799,12 @@ public:
 
 };
 
-QEnterEvent* QEnterEvent_new(QPointF* localPos, QPointF* scenePos, QPointF* globalPos) {
-	return new (std::nothrow) MiqtVirtualQEnterEvent(*localPos, *scenePos, *globalPos);
+QEnterEvent* QEnterEvent_new(struct miqt_qpointf localPos, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos) {
+	return new (std::nothrow) MiqtVirtualQEnterEvent(miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos));
 }
 
-QEnterEvent* QEnterEvent_new2(QPointF* localPos, QPointF* scenePos, QPointF* globalPos, QPointingDevice* device) {
-	return new (std::nothrow) MiqtVirtualQEnterEvent(*localPos, *scenePos, *globalPos, device);
+QEnterEvent* QEnterEvent_new2(struct miqt_qpointf localPos, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, QPointingDevice* device) {
+	return new (std::nothrow) MiqtVirtualQEnterEvent(miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), device);
 }
 
 void QEnterEvent_virtbase(QEnterEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -815,12 +815,12 @@ QEnterEvent* QEnterEvent_clone(const QEnterEvent* self) {
 	return self->clone();
 }
 
-QPoint* QEnterEvent_pos(const QEnterEvent* self) {
-	return new QPoint(self->pos());
+struct miqt_qpoint QEnterEvent_pos(const QEnterEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QPoint* QEnterEvent_globalPos(const QEnterEvent* self) {
-	return new QPoint(self->globalPos());
+struct miqt_qpoint QEnterEvent_globalPos(const QEnterEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->globalPos());
 }
 
 int QEnterEvent_x(const QEnterEvent* self) {
@@ -839,16 +839,16 @@ int QEnterEvent_globalY(const QEnterEvent* self) {
 	return self->globalY();
 }
 
-QPointF* QEnterEvent_localPos(const QEnterEvent* self) {
-	return new QPointF(self->localPos());
+struct miqt_qpointf QEnterEvent_localPos(const QEnterEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->localPos());
 }
 
-QPointF* QEnterEvent_windowPos(const QEnterEvent* self) {
-	return new QPointF(self->windowPos());
+struct miqt_qpointf QEnterEvent_windowPos(const QEnterEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->windowPos());
 }
 
-QPointF* QEnterEvent_screenPos(const QEnterEvent* self) {
-	return new QPointF(self->screenPos());
+struct miqt_qpointf QEnterEvent_screenPos(const QEnterEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->screenPos());
 }
 
 bool QEnterEvent_override_virtual_clone(void* self, intptr_t slot) {
@@ -1050,36 +1050,36 @@ public:
 
 };
 
-QMouseEvent* QMouseEvent_new(int type, QPointF* localPos, int button, int buttons, int modifiers) {
-	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QMouseEvent* QMouseEvent_new(int type, struct miqt_qpointf localPos, int button, int buttons, int modifiers) {
+	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(localPos), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QMouseEvent* QMouseEvent_new2(int type, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers) {
-	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QMouseEvent* QMouseEvent_new2(int type, struct miqt_qpointf localPos, struct miqt_qpointf globalPos, int button, int buttons, int modifiers) {
+	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(globalPos), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QMouseEvent* QMouseEvent_new3(int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers) {
-	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QMouseEvent* QMouseEvent_new3(int type, struct miqt_qpointf localPos, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, int button, int buttons, int modifiers) {
+	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QMouseEvent* QMouseEvent_new4(int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source) {
-	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source));
+QMouseEvent* QMouseEvent_new4(int type, struct miqt_qpointf localPos, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, int button, int buttons, int modifiers, int source) {
+	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source));
 }
 
-QMouseEvent* QMouseEvent_new5(int type, QPointF* localPos, int button, int buttons, int modifiers, QPointingDevice* device) {
-	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QMouseEvent* QMouseEvent_new5(int type, struct miqt_qpointf localPos, int button, int buttons, int modifiers, QPointingDevice* device) {
+	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(localPos), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
-QMouseEvent* QMouseEvent_new6(int type, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device) {
-	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QMouseEvent* QMouseEvent_new6(int type, struct miqt_qpointf localPos, struct miqt_qpointf globalPos, int button, int buttons, int modifiers, QPointingDevice* device) {
+	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(globalPos), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
-QMouseEvent* QMouseEvent_new7(int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device) {
-	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QMouseEvent* QMouseEvent_new7(int type, struct miqt_qpointf localPos, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, int button, int buttons, int modifiers, QPointingDevice* device) {
+	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
-QMouseEvent* QMouseEvent_new8(int type, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source, QPointingDevice* device) {
-	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), *localPos, *scenePos, *globalPos, static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source), device);
+QMouseEvent* QMouseEvent_new8(int type, struct miqt_qpointf localPos, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, int button, int buttons, int modifiers, int source, QPointingDevice* device) {
+	return new (std::nothrow) MiqtVirtualQMouseEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::MouseEventSource>(source), device);
 }
 
 void QMouseEvent_virtbase(QMouseEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -1090,12 +1090,12 @@ QMouseEvent* QMouseEvent_clone(const QMouseEvent* self) {
 	return self->clone();
 }
 
-QPoint* QMouseEvent_pos(const QMouseEvent* self) {
-	return new QPoint(self->pos());
+struct miqt_qpoint QMouseEvent_pos(const QMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QPoint* QMouseEvent_globalPos(const QMouseEvent* self) {
-	return new QPoint(self->globalPos());
+struct miqt_qpoint QMouseEvent_globalPos(const QMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->globalPos());
 }
 
 int QMouseEvent_x(const QMouseEvent* self) {
@@ -1114,16 +1114,16 @@ int QMouseEvent_globalY(const QMouseEvent* self) {
 	return self->globalY();
 }
 
-QPointF* QMouseEvent_localPos(const QMouseEvent* self) {
-	return new QPointF(self->localPos());
+struct miqt_qpointf QMouseEvent_localPos(const QMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->localPos());
 }
 
-QPointF* QMouseEvent_windowPos(const QMouseEvent* self) {
-	return new QPointF(self->windowPos());
+struct miqt_qpointf QMouseEvent_windowPos(const QMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->windowPos());
 }
 
-QPointF* QMouseEvent_screenPos(const QMouseEvent* self) {
-	return new QPointF(self->screenPos());
+struct miqt_qpointf QMouseEvent_screenPos(const QMouseEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->screenPos());
 }
 
 int QMouseEvent_source(const QMouseEvent* self) {
@@ -1333,28 +1333,28 @@ public:
 
 };
 
-QHoverEvent* QHoverEvent_new(int type, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos) {
-	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *scenePos, *globalPos, *oldPos);
+QHoverEvent* QHoverEvent_new(int type, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, struct miqt_qpointf oldPos) {
+	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), miqt_from_cabi<QPointF>(oldPos));
 }
 
-QHoverEvent* QHoverEvent_new2(int type, QPointF* pos, QPointF* oldPos) {
-	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *pos, *oldPos);
+QHoverEvent* QHoverEvent_new2(int type, struct miqt_qpointf pos, struct miqt_qpointf oldPos) {
+	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(pos), miqt_from_cabi<QPointF>(oldPos));
 }
 
-QHoverEvent* QHoverEvent_new3(int type, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers) {
-	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *scenePos, *globalPos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers));
+QHoverEvent* QHoverEvent_new3(int type, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, struct miqt_qpointf oldPos, int modifiers) {
+	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), miqt_from_cabi<QPointF>(oldPos), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QHoverEvent* QHoverEvent_new4(int type, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers, QPointingDevice* device) {
-	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *scenePos, *globalPos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QHoverEvent* QHoverEvent_new4(int type, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, struct miqt_qpointf oldPos, int modifiers, QPointingDevice* device) {
+	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), miqt_from_cabi<QPointF>(oldPos), static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
-QHoverEvent* QHoverEvent_new5(int type, QPointF* pos, QPointF* oldPos, int modifiers) {
-	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *pos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers));
+QHoverEvent* QHoverEvent_new5(int type, struct miqt_qpointf pos, struct miqt_qpointf oldPos, int modifiers) {
+	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(pos), miqt_from_cabi<QPointF>(oldPos), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QHoverEvent* QHoverEvent_new6(int type, QPointF* pos, QPointF* oldPos, int modifiers, QPointingDevice* device) {
-	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), *pos, *oldPos, static_cast<Qt::KeyboardModifiers>(modifiers), device);
+QHoverEvent* QHoverEvent_new6(int type, struct miqt_qpointf pos, struct miqt_qpointf oldPos, int modifiers, QPointingDevice* device) {
+	return new (std::nothrow) MiqtVirtualQHoverEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPointF>(pos), miqt_from_cabi<QPointF>(oldPos), static_cast<Qt::KeyboardModifiers>(modifiers), device);
 }
 
 void QHoverEvent_virtbase(QHoverEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -1365,24 +1365,24 @@ QHoverEvent* QHoverEvent_clone(const QHoverEvent* self) {
 	return self->clone();
 }
 
-QPoint* QHoverEvent_pos(const QHoverEvent* self) {
-	return new QPoint(self->pos());
+struct miqt_qpoint QHoverEvent_pos(const QHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QPointF* QHoverEvent_posF(const QHoverEvent* self) {
-	return new QPointF(self->posF());
+struct miqt_qpointf QHoverEvent_posF(const QHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->posF());
 }
 
 bool QHoverEvent_isUpdateEvent(const QHoverEvent* self) {
 	return self->isUpdateEvent();
 }
 
-QPoint* QHoverEvent_oldPos(const QHoverEvent* self) {
-	return new QPoint(self->oldPos());
+struct miqt_qpoint QHoverEvent_oldPos(const QHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->oldPos());
 }
 
-QPointF* QHoverEvent_oldPosF(const QHoverEvent* self) {
-	return new QPointF(self->oldPosF());
+struct miqt_qpointf QHoverEvent_oldPosF(const QHoverEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->oldPosF());
 }
 
 bool QHoverEvent_override_virtual_clone(void* self, intptr_t slot) {
@@ -1579,16 +1579,16 @@ public:
 
 };
 
-QWheelEvent* QWheelEvent_new(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted) {
-	return new (std::nothrow) MiqtVirtualQWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted);
+QWheelEvent* QWheelEvent_new(struct miqt_qpointf pos, struct miqt_qpointf globalPos, struct miqt_qpoint pixelDelta, struct miqt_qpoint angleDelta, int buttons, int modifiers, int phase, bool inverted) {
+	return new (std::nothrow) MiqtVirtualQWheelEvent(miqt_from_cabi<QPointF>(pos), miqt_from_cabi<QPointF>(globalPos), miqt_from_cabi<QPoint>(pixelDelta), miqt_from_cabi<QPoint>(angleDelta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted);
 }
 
-QWheelEvent* QWheelEvent_new2(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source) {
-	return new (std::nothrow) MiqtVirtualQWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source));
+QWheelEvent* QWheelEvent_new2(struct miqt_qpointf pos, struct miqt_qpointf globalPos, struct miqt_qpoint pixelDelta, struct miqt_qpoint angleDelta, int buttons, int modifiers, int phase, bool inverted, int source) {
+	return new (std::nothrow) MiqtVirtualQWheelEvent(miqt_from_cabi<QPointF>(pos), miqt_from_cabi<QPointF>(globalPos), miqt_from_cabi<QPoint>(pixelDelta), miqt_from_cabi<QPoint>(angleDelta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source));
 }
 
-QWheelEvent* QWheelEvent_new3(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source, QPointingDevice* device) {
-	return new (std::nothrow) MiqtVirtualQWheelEvent(*pos, *globalPos, *pixelDelta, *angleDelta, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source), device);
+QWheelEvent* QWheelEvent_new3(struct miqt_qpointf pos, struct miqt_qpointf globalPos, struct miqt_qpoint pixelDelta, struct miqt_qpoint angleDelta, int buttons, int modifiers, int phase, bool inverted, int source, QPointingDevice* device) {
+	return new (std::nothrow) MiqtVirtualQWheelEvent(miqt_from_cabi<QPointF>(pos), miqt_from_cabi<QPointF>(globalPos), miqt_from_cabi<QPoint>(pixelDelta), miqt_from_cabi<QPoint>(angleDelta), static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::ScrollPhase>(phase), inverted, static_cast<Qt::MouseEventSource>(source), device);
 }
 
 void QWheelEvent_virtbase(QWheelEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -1599,12 +1599,12 @@ QWheelEvent* QWheelEvent_clone(const QWheelEvent* self) {
 	return self->clone();
 }
 
-QPoint* QWheelEvent_pixelDelta(const QWheelEvent* self) {
-	return new QPoint(self->pixelDelta());
+struct miqt_qpoint QWheelEvent_pixelDelta(const QWheelEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pixelDelta());
 }
 
-QPoint* QWheelEvent_angleDelta(const QWheelEvent* self) {
-	return new QPoint(self->angleDelta());
+struct miqt_qpoint QWheelEvent_angleDelta(const QWheelEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->angleDelta());
 }
 
 int QWheelEvent_phase(const QWheelEvent* self) {
@@ -1833,8 +1833,8 @@ public:
 
 };
 
-QTabletEvent* QTabletEvent_new(int t, QPointingDevice* device, QPointF* pos, QPointF* globalPos, double pressure, float xTilt, float yTilt, float tangentialPressure, double rotation, float z, int keyState, int button, int buttons) {
-	return new (std::nothrow) MiqtVirtualQTabletEvent(static_cast<QEvent::Type>(t), device, *pos, *globalPos, static_cast<qreal>(pressure), static_cast<float>(xTilt), static_cast<float>(yTilt), static_cast<float>(tangentialPressure), static_cast<qreal>(rotation), static_cast<float>(z), static_cast<Qt::KeyboardModifiers>(keyState), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons));
+QTabletEvent* QTabletEvent_new(int t, QPointingDevice* device, struct miqt_qpointf pos, struct miqt_qpointf globalPos, double pressure, float xTilt, float yTilt, float tangentialPressure, double rotation, float z, int keyState, int button, int buttons) {
+	return new (std::nothrow) MiqtVirtualQTabletEvent(static_cast<QEvent::Type>(t), device, miqt_from_cabi<QPointF>(pos), miqt_from_cabi<QPointF>(globalPos), static_cast<qreal>(pressure), static_cast<float>(xTilt), static_cast<float>(yTilt), static_cast<float>(tangentialPressure), static_cast<qreal>(rotation), static_cast<float>(z), static_cast<Qt::KeyboardModifiers>(keyState), static_cast<Qt::MouseButton>(button), static_cast<Qt::MouseButtons>(buttons));
 }
 
 void QTabletEvent_virtbase(QTabletEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -1845,20 +1845,20 @@ QTabletEvent* QTabletEvent_clone(const QTabletEvent* self) {
 	return self->clone();
 }
 
-QPoint* QTabletEvent_pos(const QTabletEvent* self) {
-	return new QPoint(self->pos());
+struct miqt_qpoint QTabletEvent_pos(const QTabletEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QPoint* QTabletEvent_globalPos(const QTabletEvent* self) {
-	return new QPoint(self->globalPos());
+struct miqt_qpoint QTabletEvent_globalPos(const QTabletEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->globalPos());
 }
 
-QPointF* QTabletEvent_posF(const QTabletEvent* self) {
-	return new QPointF(self->posF());
+struct miqt_qpointf QTabletEvent_posF(const QTabletEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->posF());
 }
 
-QPointF* QTabletEvent_globalPosF(const QTabletEvent* self) {
-	return new QPointF(self->globalPosF());
+struct miqt_qpointf QTabletEvent_globalPosF(const QTabletEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->globalPosF());
 }
 
 int QTabletEvent_x(const QTabletEvent* self) {
@@ -2116,16 +2116,16 @@ public:
 
 };
 
-QNativeGestureEvent* QNativeGestureEvent_new(int type, QPointingDevice* dev, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, unsigned long long sequenceId, unsigned long long intArgument) {
-	return new (std::nothrow) MiqtVirtualQNativeGestureEvent(static_cast<Qt::NativeGestureType>(type), dev, *localPos, *scenePos, *globalPos, static_cast<qreal>(value), static_cast<quint64>(sequenceId), static_cast<quint64>(intArgument));
+QNativeGestureEvent* QNativeGestureEvent_new(int type, QPointingDevice* dev, struct miqt_qpointf localPos, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, double value, unsigned long long sequenceId, unsigned long long intArgument) {
+	return new (std::nothrow) MiqtVirtualQNativeGestureEvent(static_cast<Qt::NativeGestureType>(type), dev, miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), static_cast<qreal>(value), static_cast<quint64>(sequenceId), static_cast<quint64>(intArgument));
 }
 
-QNativeGestureEvent* QNativeGestureEvent_new2(int type, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta) {
-	return new (std::nothrow) MiqtVirtualQNativeGestureEvent(static_cast<Qt::NativeGestureType>(type), dev, static_cast<int>(fingerCount), *localPos, *scenePos, *globalPos, static_cast<qreal>(value), *delta);
+QNativeGestureEvent* QNativeGestureEvent_new2(int type, QPointingDevice* dev, int fingerCount, struct miqt_qpointf localPos, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, double value, struct miqt_qpointf delta) {
+	return new (std::nothrow) MiqtVirtualQNativeGestureEvent(static_cast<Qt::NativeGestureType>(type), dev, static_cast<int>(fingerCount), miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), static_cast<qreal>(value), miqt_from_cabi<QPointF>(delta));
 }
 
-QNativeGestureEvent* QNativeGestureEvent_new3(int type, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta, unsigned long long sequenceId) {
-	return new (std::nothrow) MiqtVirtualQNativeGestureEvent(static_cast<Qt::NativeGestureType>(type), dev, static_cast<int>(fingerCount), *localPos, *scenePos, *globalPos, static_cast<qreal>(value), *delta, static_cast<quint64>(sequenceId));
+QNativeGestureEvent* QNativeGestureEvent_new3(int type, QPointingDevice* dev, int fingerCount, struct miqt_qpointf localPos, struct miqt_qpointf scenePos, struct miqt_qpointf globalPos, double value, struct miqt_qpointf delta, unsigned long long sequenceId) {
+	return new (std::nothrow) MiqtVirtualQNativeGestureEvent(static_cast<Qt::NativeGestureType>(type), dev, static_cast<int>(fingerCount), miqt_from_cabi<QPointF>(localPos), miqt_from_cabi<QPointF>(scenePos), miqt_from_cabi<QPointF>(globalPos), static_cast<qreal>(value), miqt_from_cabi<QPointF>(delta), static_cast<quint64>(sequenceId));
 }
 
 void QNativeGestureEvent_virtbase(QNativeGestureEvent* src, QSinglePointEvent** outptr_QSinglePointEvent) {
@@ -2150,28 +2150,28 @@ double QNativeGestureEvent_value(const QNativeGestureEvent* self) {
 	return static_cast<double>(_ret);
 }
 
-QPointF* QNativeGestureEvent_delta(const QNativeGestureEvent* self) {
-	return new QPointF(self->delta());
+struct miqt_qpointf QNativeGestureEvent_delta(const QNativeGestureEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->delta());
 }
 
-QPoint* QNativeGestureEvent_pos(const QNativeGestureEvent* self) {
-	return new QPoint(self->pos());
+struct miqt_qpoint QNativeGestureEvent_pos(const QNativeGestureEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QPoint* QNativeGestureEvent_globalPos(const QNativeGestureEvent* self) {
-	return new QPoint(self->globalPos());
+struct miqt_qpoint QNativeGestureEvent_globalPos(const QNativeGestureEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->globalPos());
 }
 
-QPointF* QNativeGestureEvent_localPos(const QNativeGestureEvent* self) {
-	return new QPointF(self->localPos());
+struct miqt_qpointf QNativeGestureEvent_localPos(const QNativeGestureEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->localPos());
 }
 
-QPointF* QNativeGestureEvent_windowPos(const QNativeGestureEvent* self) {
-	return new QPointF(self->windowPos());
+struct miqt_qpointf QNativeGestureEvent_windowPos(const QNativeGestureEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->windowPos());
 }
 
-QPointF* QNativeGestureEvent_screenPos(const QNativeGestureEvent* self) {
-	return new QPointF(self->screenPos());
+struct miqt_qpointf QNativeGestureEvent_screenPos(const QNativeGestureEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->screenPos());
 }
 
 bool QNativeGestureEvent_override_virtual_clone(void* self, intptr_t slot) {
@@ -2626,8 +2626,8 @@ QPaintEvent* QPaintEvent_new(QRegion* paintRegion) {
 	return new (std::nothrow) MiqtVirtualQPaintEvent(*paintRegion);
 }
 
-QPaintEvent* QPaintEvent_new2(QRect* paintRect) {
-	return new (std::nothrow) MiqtVirtualQPaintEvent(*paintRect);
+QPaintEvent* QPaintEvent_new2(struct miqt_qrect paintRect) {
+	return new (std::nothrow) MiqtVirtualQPaintEvent(miqt_from_cabi<QRect>(paintRect));
 }
 
 void QPaintEvent_virtbase(QPaintEvent* src, QEvent** outptr_QEvent) {
@@ -2638,10 +2638,8 @@ QPaintEvent* QPaintEvent_clone(const QPaintEvent* self) {
 	return self->clone();
 }
 
-QRect* QPaintEvent_rect(const QPaintEvent* self) {
-	const QRect& _ret = self->rect();
-	// Cast returned reference into pointer
-	return const_cast<QRect*>(&_ret);
+struct miqt_qrect QPaintEvent_rect(const QPaintEvent* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rect());
 }
 
 QRegion* QPaintEvent_region(const QPaintEvent* self) {
@@ -2723,8 +2721,8 @@ public:
 
 };
 
-QMoveEvent* QMoveEvent_new(QPoint* pos, QPoint* oldPos) {
-	return new (std::nothrow) MiqtVirtualQMoveEvent(*pos, *oldPos);
+QMoveEvent* QMoveEvent_new(struct miqt_qpoint pos, struct miqt_qpoint oldPos) {
+	return new (std::nothrow) MiqtVirtualQMoveEvent(miqt_from_cabi<QPoint>(pos), miqt_from_cabi<QPoint>(oldPos));
 }
 
 void QMoveEvent_virtbase(QMoveEvent* src, QEvent** outptr_QEvent) {
@@ -2735,16 +2733,12 @@ QMoveEvent* QMoveEvent_clone(const QMoveEvent* self) {
 	return self->clone();
 }
 
-QPoint* QMoveEvent_pos(const QMoveEvent* self) {
-	const QPoint& _ret = self->pos();
-	// Cast returned reference into pointer
-	return const_cast<QPoint*>(&_ret);
+struct miqt_qpoint QMoveEvent_pos(const QMoveEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QPoint* QMoveEvent_oldPos(const QMoveEvent* self) {
-	const QPoint& _ret = self->oldPos();
-	// Cast returned reference into pointer
-	return const_cast<QPoint*>(&_ret);
+struct miqt_qpoint QMoveEvent_oldPos(const QMoveEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->oldPos());
 }
 
 bool QMoveEvent_override_virtual_clone(void* self, intptr_t slot) {
@@ -3001,8 +2995,8 @@ public:
 
 };
 
-QResizeEvent* QResizeEvent_new(QSize* size, QSize* oldSize) {
-	return new (std::nothrow) MiqtVirtualQResizeEvent(*size, *oldSize);
+QResizeEvent* QResizeEvent_new(struct miqt_qsize size, struct miqt_qsize oldSize) {
+	return new (std::nothrow) MiqtVirtualQResizeEvent(miqt_from_cabi<QSize>(size), miqt_from_cabi<QSize>(oldSize));
 }
 
 void QResizeEvent_virtbase(QResizeEvent* src, QEvent** outptr_QEvent) {
@@ -3013,16 +3007,12 @@ QResizeEvent* QResizeEvent_clone(const QResizeEvent* self) {
 	return self->clone();
 }
 
-QSize* QResizeEvent_size(const QResizeEvent* self) {
-	const QSize& _ret = self->size();
-	// Cast returned reference into pointer
-	return const_cast<QSize*>(&_ret);
+struct miqt_qsize QResizeEvent_size(const QResizeEvent* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
-QSize* QResizeEvent_oldSize(const QResizeEvent* self) {
-	const QSize& _ret = self->oldSize();
-	// Cast returned reference into pointer
-	return const_cast<QSize*>(&_ret);
+struct miqt_qsize QResizeEvent_oldSize(const QResizeEvent* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->oldSize());
 }
 
 bool QResizeEvent_override_virtual_clone(void* self, intptr_t slot) {
@@ -3458,16 +3448,16 @@ public:
 
 };
 
-QContextMenuEvent* QContextMenuEvent_new(int reason, QPoint* pos, QPoint* globalPos) {
-	return new (std::nothrow) MiqtVirtualQContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos);
+QContextMenuEvent* QContextMenuEvent_new(int reason, struct miqt_qpoint pos, struct miqt_qpoint globalPos) {
+	return new (std::nothrow) MiqtVirtualQContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), miqt_from_cabi<QPoint>(pos), miqt_from_cabi<QPoint>(globalPos));
 }
 
-QContextMenuEvent* QContextMenuEvent_new2(int reason, QPoint* pos) {
-	return new (std::nothrow) MiqtVirtualQContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos);
+QContextMenuEvent* QContextMenuEvent_new2(int reason, struct miqt_qpoint pos) {
+	return new (std::nothrow) MiqtVirtualQContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), miqt_from_cabi<QPoint>(pos));
 }
 
-QContextMenuEvent* QContextMenuEvent_new3(int reason, QPoint* pos, QPoint* globalPos, int modifiers) {
-	return new (std::nothrow) MiqtVirtualQContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), *pos, *globalPos, static_cast<Qt::KeyboardModifiers>(modifiers));
+QContextMenuEvent* QContextMenuEvent_new3(int reason, struct miqt_qpoint pos, struct miqt_qpoint globalPos, int modifiers) {
+	return new (std::nothrow) MiqtVirtualQContextMenuEvent(static_cast<QContextMenuEvent::Reason>(reason), miqt_from_cabi<QPoint>(pos), miqt_from_cabi<QPoint>(globalPos), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
 void QContextMenuEvent_virtbase(QContextMenuEvent* src, QInputEvent** outptr_QInputEvent) {
@@ -3494,16 +3484,12 @@ int QContextMenuEvent_globalY(const QContextMenuEvent* self) {
 	return self->globalY();
 }
 
-QPoint* QContextMenuEvent_pos(const QContextMenuEvent* self) {
-	const QPoint& _ret = self->pos();
-	// Cast returned reference into pointer
-	return const_cast<QPoint*>(&_ret);
+struct miqt_qpoint QContextMenuEvent_pos(const QContextMenuEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QPoint* QContextMenuEvent_globalPos(const QContextMenuEvent* self) {
-	const QPoint& _ret = self->globalPos();
-	// Cast returned reference into pointer
-	return const_cast<QPoint*>(&_ret);
+struct miqt_qpoint QContextMenuEvent_globalPos(const QContextMenuEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->globalPos());
 }
 
 int QContextMenuEvent_reason(const QContextMenuEvent* self) {
@@ -3852,12 +3838,12 @@ public:
 
 };
 
-QDropEvent* QDropEvent_new(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers) {
-	return new (std::nothrow) MiqtVirtualQDropEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QDropEvent* QDropEvent_new(struct miqt_qpointf pos, int actions, QMimeData* data, int buttons, int modifiers) {
+	return new (std::nothrow) MiqtVirtualQDropEvent(miqt_from_cabi<QPointF>(pos), static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QDropEvent* QDropEvent_new2(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, int type) {
-	return new (std::nothrow) MiqtVirtualQDropEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(type));
+QDropEvent* QDropEvent_new2(struct miqt_qpointf pos, int actions, QMimeData* data, int buttons, int modifiers, int type) {
+	return new (std::nothrow) MiqtVirtualQDropEvent(miqt_from_cabi<QPointF>(pos), static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(type));
 }
 
 void QDropEvent_virtbase(QDropEvent* src, QEvent** outptr_QEvent) {
@@ -3868,12 +3854,12 @@ QDropEvent* QDropEvent_clone(const QDropEvent* self) {
 	return self->clone();
 }
 
-QPoint* QDropEvent_pos(const QDropEvent* self) {
-	return new QPoint(self->pos());
+struct miqt_qpoint QDropEvent_pos(const QDropEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QPointF* QDropEvent_posF(const QDropEvent* self) {
-	return new QPointF(self->posF());
+struct miqt_qpointf QDropEvent_posF(const QDropEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->posF());
 }
 
 int QDropEvent_mouseButtons(const QDropEvent* self) {
@@ -3886,8 +3872,8 @@ int QDropEvent_keyboardModifiers(const QDropEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-QPointF* QDropEvent_position(const QDropEvent* self) {
-	return new QPointF(self->position());
+struct miqt_qpointf QDropEvent_position(const QDropEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->position());
 }
 
 int QDropEvent_buttons(const QDropEvent* self) {
@@ -4005,12 +3991,12 @@ public:
 
 };
 
-QDragMoveEvent* QDragMoveEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
-	return new (std::nothrow) MiqtVirtualQDragMoveEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QDragMoveEvent* QDragMoveEvent_new(struct miqt_qpoint pos, int actions, QMimeData* data, int buttons, int modifiers) {
+	return new (std::nothrow) MiqtVirtualQDragMoveEvent(miqt_from_cabi<QPoint>(pos), static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-QDragMoveEvent* QDragMoveEvent_new2(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, int type) {
-	return new (std::nothrow) MiqtVirtualQDragMoveEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(type));
+QDragMoveEvent* QDragMoveEvent_new2(struct miqt_qpoint pos, int actions, QMimeData* data, int buttons, int modifiers, int type) {
+	return new (std::nothrow) MiqtVirtualQDragMoveEvent(miqt_from_cabi<QPoint>(pos), static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEvent::Type>(type));
 }
 
 void QDragMoveEvent_virtbase(QDragMoveEvent* src, QDropEvent** outptr_QDropEvent) {
@@ -4021,8 +4007,8 @@ QDragMoveEvent* QDragMoveEvent_clone(const QDragMoveEvent* self) {
 	return self->clone();
 }
 
-QRect* QDragMoveEvent_answerRect(const QDragMoveEvent* self) {
-	return new QRect(self->answerRect());
+struct miqt_qrect QDragMoveEvent_answerRect(const QDragMoveEvent* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->answerRect());
 }
 
 void QDragMoveEvent_accept(QDragMoveEvent* self) {
@@ -4033,12 +4019,12 @@ void QDragMoveEvent_ignore(QDragMoveEvent* self) {
 	self->ignore();
 }
 
-void QDragMoveEvent_acceptWithQRect(QDragMoveEvent* self, QRect* r) {
-	self->accept(*r);
+void QDragMoveEvent_acceptWithQRect(QDragMoveEvent* self, struct miqt_qrect r) {
+	self->accept(miqt_from_cabi<QRect>(r));
 }
 
-void QDragMoveEvent_ignoreWithQRect(QDragMoveEvent* self, QRect* r) {
-	self->ignore(*r);
+void QDragMoveEvent_ignoreWithQRect(QDragMoveEvent* self, struct miqt_qrect r) {
+	self->ignore(miqt_from_cabi<QRect>(r));
 }
 
 bool QDragMoveEvent_override_virtual_clone(void* self, intptr_t slot) {
@@ -4114,8 +4100,8 @@ public:
 
 };
 
-QDragEnterEvent* QDragEnterEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
-	return new (std::nothrow) MiqtVirtualQDragEnterEvent(*pos, static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
+QDragEnterEvent* QDragEnterEvent_new(struct miqt_qpoint pos, int actions, QMimeData* data, int buttons, int modifiers) {
+	return new (std::nothrow) MiqtVirtualQDragEnterEvent(miqt_from_cabi<QPoint>(pos), static_cast<Qt::DropActions>(actions), data, static_cast<Qt::MouseButtons>(buttons), static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
 void QDragEnterEvent_virtbase(QDragEnterEvent* src, QDragMoveEvent** outptr_QDragMoveEvent) {
@@ -4284,8 +4270,8 @@ public:
 
 };
 
-QHelpEvent* QHelpEvent_new(int type, QPoint* pos, QPoint* globalPos) {
-	return new (std::nothrow) MiqtVirtualQHelpEvent(static_cast<QEvent::Type>(type), *pos, *globalPos);
+QHelpEvent* QHelpEvent_new(int type, struct miqt_qpoint pos, struct miqt_qpoint globalPos) {
+	return new (std::nothrow) MiqtVirtualQHelpEvent(static_cast<QEvent::Type>(type), miqt_from_cabi<QPoint>(pos), miqt_from_cabi<QPoint>(globalPos));
 }
 
 void QHelpEvent_virtbase(QHelpEvent* src, QEvent** outptr_QEvent) {
@@ -4312,16 +4298,12 @@ int QHelpEvent_globalY(const QHelpEvent* self) {
 	return self->globalY();
 }
 
-QPoint* QHelpEvent_pos(const QHelpEvent* self) {
-	const QPoint& _ret = self->pos();
-	// Cast returned reference into pointer
-	return const_cast<QPoint*>(&_ret);
+struct miqt_qpoint QHelpEvent_pos(const QHelpEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QPoint* QHelpEvent_globalPos(const QHelpEvent* self) {
-	const QPoint& _ret = self->globalPos();
-	// Cast returned reference into pointer
-	return const_cast<QPoint*>(&_ret);
+struct miqt_qpoint QHelpEvent_globalPos(const QHelpEvent* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->globalPos());
 }
 
 bool QHelpEvent_override_virtual_clone(void* self, intptr_t slot) {
@@ -5366,8 +5348,8 @@ public:
 
 };
 
-QScrollPrepareEvent* QScrollPrepareEvent_new(QPointF* startPos) {
-	return new (std::nothrow) MiqtVirtualQScrollPrepareEvent(*startPos);
+QScrollPrepareEvent* QScrollPrepareEvent_new(struct miqt_qpointf startPos) {
+	return new (std::nothrow) MiqtVirtualQScrollPrepareEvent(miqt_from_cabi<QPointF>(startPos));
 }
 
 void QScrollPrepareEvent_virtbase(QScrollPrepareEvent* src, QEvent** outptr_QEvent) {
@@ -5378,32 +5360,32 @@ QScrollPrepareEvent* QScrollPrepareEvent_clone(const QScrollPrepareEvent* self) 
 	return self->clone();
 }
 
-QPointF* QScrollPrepareEvent_startPos(const QScrollPrepareEvent* self) {
-	return new QPointF(self->startPos());
+struct miqt_qpointf QScrollPrepareEvent_startPos(const QScrollPrepareEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->startPos());
 }
 
-QSizeF* QScrollPrepareEvent_viewportSize(const QScrollPrepareEvent* self) {
-	return new QSizeF(self->viewportSize());
+struct miqt_qsizef QScrollPrepareEvent_viewportSize(const QScrollPrepareEvent* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->viewportSize());
 }
 
-QRectF* QScrollPrepareEvent_contentPosRange(const QScrollPrepareEvent* self) {
-	return new QRectF(self->contentPosRange());
+struct miqt_qrectf QScrollPrepareEvent_contentPosRange(const QScrollPrepareEvent* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->contentPosRange());
 }
 
-QPointF* QScrollPrepareEvent_contentPos(const QScrollPrepareEvent* self) {
-	return new QPointF(self->contentPos());
+struct miqt_qpointf QScrollPrepareEvent_contentPos(const QScrollPrepareEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->contentPos());
 }
 
-void QScrollPrepareEvent_setViewportSize(QScrollPrepareEvent* self, QSizeF* size) {
-	self->setViewportSize(*size);
+void QScrollPrepareEvent_setViewportSize(QScrollPrepareEvent* self, struct miqt_qsizef size) {
+	self->setViewportSize(miqt_from_cabi<QSizeF>(size));
 }
 
-void QScrollPrepareEvent_setContentPosRange(QScrollPrepareEvent* self, QRectF* rect) {
-	self->setContentPosRange(*rect);
+void QScrollPrepareEvent_setContentPosRange(QScrollPrepareEvent* self, struct miqt_qrectf rect) {
+	self->setContentPosRange(miqt_from_cabi<QRectF>(rect));
 }
 
-void QScrollPrepareEvent_setContentPos(QScrollPrepareEvent* self, QPointF* pos) {
-	self->setContentPos(*pos);
+void QScrollPrepareEvent_setContentPos(QScrollPrepareEvent* self, struct miqt_qpointf pos) {
+	self->setContentPos(miqt_from_cabi<QPointF>(pos));
 }
 
 bool QScrollPrepareEvent_override_virtual_clone(void* self, intptr_t slot) {
@@ -5479,8 +5461,8 @@ public:
 
 };
 
-QScrollEvent* QScrollEvent_new(QPointF* contentPos, QPointF* overshoot, int scrollState) {
-	return new (std::nothrow) MiqtVirtualQScrollEvent(*contentPos, *overshoot, static_cast<QScrollEvent::ScrollState>(scrollState));
+QScrollEvent* QScrollEvent_new(struct miqt_qpointf contentPos, struct miqt_qpointf overshoot, int scrollState) {
+	return new (std::nothrow) MiqtVirtualQScrollEvent(miqt_from_cabi<QPointF>(contentPos), miqt_from_cabi<QPointF>(overshoot), static_cast<QScrollEvent::ScrollState>(scrollState));
 }
 
 void QScrollEvent_virtbase(QScrollEvent* src, QEvent** outptr_QEvent) {
@@ -5491,12 +5473,12 @@ QScrollEvent* QScrollEvent_clone(const QScrollEvent* self) {
 	return self->clone();
 }
 
-QPointF* QScrollEvent_contentPos(const QScrollEvent* self) {
-	return new QPointF(self->contentPos());
+struct miqt_qpointf QScrollEvent_contentPos(const QScrollEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->contentPos());
 }
 
-QPointF* QScrollEvent_overshootDistance(const QScrollEvent* self) {
-	return new QPointF(self->overshootDistance());
+struct miqt_qpointf QScrollEvent_overshootDistance(const QScrollEvent* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->overshootDistance());
 }
 
 int QScrollEvent_scrollState(const QScrollEvent* self) {

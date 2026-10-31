@@ -107,7 +107,7 @@ QMediaObject* QCameraViewfinder_virtualbase_mediaObject(const void* self);
 bool QCameraViewfinder_override_virtual_setMediaObject(void* self, intptr_t slot);
 bool QCameraViewfinder_virtualbase_setMediaObject(void* self, QMediaObject* object);
 bool QCameraViewfinder_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QCameraViewfinder_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QCameraViewfinder_virtualbase_sizeHint(const void* self);
 bool QCameraViewfinder_override_virtual_event(void* self, intptr_t slot);
 bool QCameraViewfinder_virtualbase_event(void* self, QEvent* event);
 bool QCameraViewfinder_override_virtual_showEvent(void* self, intptr_t slot);
@@ -125,7 +125,7 @@ int QCameraViewfinder_virtualbase_devType(const void* self);
 bool QCameraViewfinder_override_virtual_setVisible(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_setVisible(void* self, bool visible);
 bool QCameraViewfinder_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QCameraViewfinder_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QCameraViewfinder_virtualbase_minimumSizeHint(const void* self);
 bool QCameraViewfinder_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QCameraViewfinder_virtualbase_heightForWidth(const void* self, int param1);
 bool QCameraViewfinder_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -200,7 +200,6 @@ bool QCameraViewfinder_override_virtual_connectNotify(void* self, intptr_t slot)
 void QCameraViewfinder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCameraViewfinder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QCameraViewfinder_virtualreturncopy_QSize(QSize* src);
 QVariant* QCameraViewfinder_virtualreturncopy_QVariant(QVariant* src);
 
 void QCameraViewfinder_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

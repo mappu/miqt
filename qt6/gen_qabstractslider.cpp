@@ -56,8 +56,8 @@ void miqt_exec_callback_QAbstractSlider_wheelEvent(QAbstractSlider*, intptr_t, Q
 void miqt_exec_callback_QAbstractSlider_changeEvent(QAbstractSlider*, intptr_t, QEvent*);
 int miqt_exec_callback_QAbstractSlider_devType(const QAbstractSlider*, intptr_t);
 void miqt_exec_callback_QAbstractSlider_setVisible(QAbstractSlider*, intptr_t, bool);
-QSize* miqt_exec_callback_QAbstractSlider_sizeHint(const QAbstractSlider*, intptr_t);
-QSize* miqt_exec_callback_QAbstractSlider_minimumSizeHint(const QAbstractSlider*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QAbstractSlider_sizeHint(const QAbstractSlider*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QAbstractSlider_minimumSizeHint(const QAbstractSlider*, intptr_t);
 int miqt_exec_callback_QAbstractSlider_heightForWidth(const QAbstractSlider*, intptr_t, int);
 bool miqt_exec_callback_QAbstractSlider_hasHeightForWidth(const QAbstractSlider*, intptr_t);
 QPaintEngine* miqt_exec_callback_QAbstractSlider_paintEngine(const QAbstractSlider*, intptr_t);
@@ -251,13 +251,11 @@ public:
 			return QAbstractSlider::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractSlider_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractSlider_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QAbstractSlider_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QAbstractSlider_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -268,13 +266,11 @@ public:
 			return QAbstractSlider::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractSlider_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractSlider_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QAbstractSlider_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QAbstractSlider_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1279,8 +1275,8 @@ bool QAbstractSlider_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QAbstractSlider_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQAbstractSlider*>(self)->QAbstractSlider::sizeHint());
+struct miqt_qsize QAbstractSlider_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQAbstractSlider*>(self)->QAbstractSlider::sizeHint());
 }
 
 bool QAbstractSlider_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1293,8 +1289,8 @@ bool QAbstractSlider_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 	return true;
 }
 
-QSize* QAbstractSlider_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQAbstractSlider*>(self)->QAbstractSlider::minimumSizeHint());
+struct miqt_qsize QAbstractSlider_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQAbstractSlider*>(self)->QAbstractSlider::minimumSizeHint());
 }
 
 bool QAbstractSlider_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1828,10 +1824,6 @@ bool QAbstractSlider_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQAbstractSlider*>(self)->QAbstractSlider::disconnectNotify(*signal);
-}
-
-QSize* QAbstractSlider_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QAbstractSlider_virtualreturncopy_QVariant(QVariant* src) {

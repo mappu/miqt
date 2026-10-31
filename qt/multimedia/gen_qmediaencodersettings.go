@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -345,17 +346,14 @@ func (this *QVideoEncoderSettings) SetCodec(codec string) {
 	C.QVideoEncoderSettings_setCodec(this.h, codec_ms)
 }
 
-func (this *QVideoEncoderSettings) Resolution() *qt.QSize {
+func (this *QVideoEncoderSettings) Resolution() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoEncoderSettings_resolution(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QVideoEncoderSettings_resolution(this.h))
 }
 
-func (this *QVideoEncoderSettings) SetResolution(resolution *qt.QSize) {
+func (this *QVideoEncoderSettings) SetResolution(resolution qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(resolution)
-	C.QVideoEncoderSettings_setResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
+	C.QVideoEncoderSettings_setResolution(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](resolution))
 }
 
 func (this *QVideoEncoderSettings) SetResolution2(width int, height int) {
@@ -572,17 +570,14 @@ func (this *QImageEncoderSettings) SetCodec(codec string) {
 	C.QImageEncoderSettings_setCodec(this.h, codec_ms)
 }
 
-func (this *QImageEncoderSettings) Resolution() *qt.QSize {
+func (this *QImageEncoderSettings) Resolution() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QImageEncoderSettings_resolution(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QImageEncoderSettings_resolution(this.h))
 }
 
-func (this *QImageEncoderSettings) SetResolution(resolution *qt.QSize) {
+func (this *QImageEncoderSettings) SetResolution(resolution qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(resolution)
-	C.QImageEncoderSettings_setResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
+	C.QImageEncoderSettings_setResolution(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](resolution))
 }
 
 func (this *QImageEncoderSettings) SetResolution2(width int, height int) {

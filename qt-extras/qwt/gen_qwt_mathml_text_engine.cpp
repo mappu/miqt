@@ -25,14 +25,14 @@ double QwtMathMLTextEngine_heightForWidth(const QwtMathMLTextEngine* self, QFont
 	return self->heightForWidth(*font, static_cast<int>(flags), text_QString, static_cast<double>(width));
 }
 
-QSizeF* QwtMathMLTextEngine_textSize(const QwtMathMLTextEngine* self, QFont* font, int flags, struct miqt_string text) {
+struct miqt_qsizef QwtMathMLTextEngine_textSize(const QwtMathMLTextEngine* self, QFont* font, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QSizeF(self->textSize(*font, static_cast<int>(flags), text_QString));
+	return miqt_to_cabi<struct miqt_qsizef>(self->textSize(*font, static_cast<int>(flags), text_QString));
 }
 
-void QwtMathMLTextEngine_draw(const QwtMathMLTextEngine* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text) {
+void QwtMathMLTextEngine_draw(const QwtMathMLTextEngine* self, QPainter* painter, struct miqt_qrectf rect, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	self->draw(painter, *rect, static_cast<int>(flags), text_QString);
+	self->draw(painter, miqt_from_cabi<QRectF>(rect), static_cast<int>(flags), text_QString);
 }
 
 bool QwtMathMLTextEngine_mightRender(const QwtMathMLTextEngine* self, struct miqt_string param1) {

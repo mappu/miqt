@@ -24,12 +24,12 @@ extern "C" {
 int miqt_exec_callback_QLayout_spacing(const QLayout*, intptr_t);
 void miqt_exec_callback_QLayout_setSpacing(QLayout*, intptr_t, int);
 void miqt_exec_callback_QLayout_invalidate(QLayout*, intptr_t);
-QRect* miqt_exec_callback_QLayout_geometry(const QLayout*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QLayout_geometry(const QLayout*, intptr_t);
 void miqt_exec_callback_QLayout_addItem(QLayout*, intptr_t, QLayoutItem*);
 int miqt_exec_callback_QLayout_expandingDirections(const QLayout*, intptr_t);
-QSize* miqt_exec_callback_QLayout_minimumSize(const QLayout*, intptr_t);
-QSize* miqt_exec_callback_QLayout_maximumSize(const QLayout*, intptr_t);
-void miqt_exec_callback_QLayout_setGeometry(QLayout*, intptr_t, QRect*);
+struct miqt_qsize miqt_exec_callback_QLayout_minimumSize(const QLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QLayout_maximumSize(const QLayout*, intptr_t);
+void miqt_exec_callback_QLayout_setGeometry(QLayout*, intptr_t, struct miqt_qrect);
 QLayoutItem* miqt_exec_callback_QLayout_itemAt(const QLayout*, intptr_t, int);
 QLayoutItem* miqt_exec_callback_QLayout_takeAt(QLayout*, intptr_t, int);
 int miqt_exec_callback_QLayout_indexOf(const QLayout*, intptr_t, QWidget*);
@@ -46,7 +46,7 @@ void miqt_exec_callback_QLayout_timerEvent(QLayout*, intptr_t, QTimerEvent*);
 void miqt_exec_callback_QLayout_customEvent(QLayout*, intptr_t, QEvent*);
 void miqt_exec_callback_QLayout_connectNotify(QLayout*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QLayout_disconnectNotify(QLayout*, intptr_t, QMetaMethod*);
-QSize* miqt_exec_callback_QLayout_sizeHint(const QLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QLayout_sizeHint(const QLayout*, intptr_t);
 bool miqt_exec_callback_QLayout_hasHeightForWidth(const QLayout*, intptr_t);
 int miqt_exec_callback_QLayout_heightForWidth(const QLayout*, intptr_t, int);
 int miqt_exec_callback_QLayout_minimumHeightForWidth(const QLayout*, intptr_t, int);
@@ -121,13 +121,11 @@ public:
 			return QLayout::geometry();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QLayout_geometry(this, handle__geometry);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QLayout_geometry(this, handle__geometry);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QLayout_virtualbase_geometry(const void* self);
+	friend struct miqt_qrect QLayout_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__addItem = 0;
@@ -167,13 +165,11 @@ public:
 			return QLayout::minimumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QLayout_minimumSize(this, handle__minimumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QLayout_minimumSize(this, handle__minimumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QLayout_virtualbase_minimumSize(const void* self);
+	friend struct miqt_qsize QLayout_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -184,13 +180,11 @@ public:
 			return QLayout::maximumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QLayout_maximumSize(this, handle__maximumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QLayout_maximumSize(this, handle__maximumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QLayout_virtualbase_maximumSize(const void* self);
+	friend struct miqt_qsize QLayout_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -202,14 +196,12 @@ public:
 			return;
 		}
 
-		const QRect& geometry_ret = geometry;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&geometry_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(geometry);
 		miqt_exec_callback_QLayout_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QLayout_virtualbase_setGeometry(void* self, QRect* geometry);
+	friend void QLayout_virtualbase_setGeometry(void* self, struct miqt_qrect geometry);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemAt = 0;
@@ -479,10 +471,8 @@ public:
 			return QSize(); // Pure virtual, there is no base we can call
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QLayout_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QLayout_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -567,7 +557,7 @@ public:
 	friend void QLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 	friend void QLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
 	friend bool QLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout);
-	friend QRect* QLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
+	friend struct miqt_qrect QLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1);
 	friend QObject* QLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -618,8 +608,8 @@ void QLayout_setContentsMargins(QLayout* self, int left, int top, int right, int
 	self->setContentsMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-void QLayout_setContentsMarginsWithMargins(QLayout* self, QMargins* margins) {
-	self->setContentsMargins(*margins);
+void QLayout_setContentsMarginsWithMargins(QLayout* self, struct miqt_qmargins margins) {
+	self->setContentsMargins(miqt_from_cabi<QMargins>(margins));
 }
 
 void QLayout_unsetContentsMargins(QLayout* self) {
@@ -630,12 +620,12 @@ void QLayout_getContentsMargins(const QLayout* self, int* left, int* top, int* r
 	self->getContentsMargins(static_cast<int*>(left), static_cast<int*>(top), static_cast<int*>(right), static_cast<int*>(bottom));
 }
 
-QMargins* QLayout_contentsMargins(const QLayout* self) {
-	return new QMargins(self->contentsMargins());
+struct miqt_qmargins QLayout_contentsMargins(const QLayout* self) {
+	return miqt_to_cabi<struct miqt_qmargins>(self->contentsMargins());
 }
 
-QRect* QLayout_contentsRect(const QLayout* self) {
-	return new QRect(self->contentsRect());
+struct miqt_qrect QLayout_contentsRect(const QLayout* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->contentsRect());
 }
 
 bool QLayout_setAlignment(QLayout* self, QWidget* w, int alignment) {
@@ -671,8 +661,8 @@ void QLayout_invalidate(QLayout* self) {
 	self->invalidate();
 }
 
-QRect* QLayout_geometry(const QLayout* self) {
-	return new QRect(self->geometry());
+struct miqt_qrect QLayout_geometry(const QLayout* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->geometry());
 }
 
 bool QLayout_activate(QLayout* self) {
@@ -704,16 +694,16 @@ int QLayout_expandingDirections(const QLayout* self) {
 	return static_cast<int>(_ret);
 }
 
-QSize* QLayout_minimumSize(const QLayout* self) {
-	return new QSize(self->minimumSize());
+struct miqt_qsize QLayout_minimumSize(const QLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSize());
 }
 
-QSize* QLayout_maximumSize(const QLayout* self) {
-	return new QSize(self->maximumSize());
+struct miqt_qsize QLayout_maximumSize(const QLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->maximumSize());
 }
 
-void QLayout_setGeometry(QLayout* self, QRect* geometry) {
-	self->setGeometry(*geometry);
+void QLayout_setGeometry(QLayout* self, struct miqt_qrect geometry) {
+	self->setGeometry(miqt_from_cabi<QRect>(geometry));
 }
 
 QLayoutItem* QLayout_itemAt(const QLayout* self, int index) {
@@ -757,16 +747,16 @@ int QLayout_totalHeightForWidth(const QLayout* self, int w) {
 	return self->totalHeightForWidth(static_cast<int>(w));
 }
 
-QSize* QLayout_totalMinimumSize(const QLayout* self) {
-	return new QSize(self->totalMinimumSize());
+struct miqt_qsize QLayout_totalMinimumSize(const QLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->totalMinimumSize());
 }
 
-QSize* QLayout_totalMaximumSize(const QLayout* self) {
-	return new QSize(self->totalMaximumSize());
+struct miqt_qsize QLayout_totalMaximumSize(const QLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->totalMaximumSize());
 }
 
-QSize* QLayout_totalSizeHint(const QLayout* self) {
-	return new QSize(self->totalSizeHint());
+struct miqt_qsize QLayout_totalSizeHint(const QLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->totalSizeHint());
 }
 
 QLayout* QLayout_layout(QLayout* self) {
@@ -781,8 +771,8 @@ bool QLayout_isEnabled(const QLayout* self) {
 	return self->isEnabled();
 }
 
-QSize* QLayout_closestAcceptableSize(QWidget* w, QSize* s) {
-	return new QSize(QLayout::closestAcceptableSize(w, *s));
+struct miqt_qsize QLayout_closestAcceptableSize(QWidget* w, struct miqt_qsize s) {
+	return miqt_to_cabi<struct miqt_qsize>(QLayout::closestAcceptableSize(w, miqt_from_cabi<QSize>(s)));
 }
 
 struct miqt_string QLayout_tr2(const char* s, const char* c) {
@@ -859,8 +849,8 @@ bool QLayout_override_virtual_geometry(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QLayout_virtualbase_geometry(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQLayout*>(self)->QLayout::geometry());
+struct miqt_qrect QLayout_virtualbase_geometry(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQLayout*>(self)->QLayout::geometry());
 }
 
 bool QLayout_override_virtual_addItem(void* self, intptr_t slot) {
@@ -898,8 +888,8 @@ bool QLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QLayout_virtualbase_minimumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQLayout*>(self)->QLayout::minimumSize());
+struct miqt_qsize QLayout_virtualbase_minimumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQLayout*>(self)->QLayout::minimumSize());
 }
 
 bool QLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -912,8 +902,8 @@ bool QLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QLayout_virtualbase_maximumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQLayout*>(self)->QLayout::maximumSize());
+struct miqt_qsize QLayout_virtualbase_maximumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQLayout*>(self)->QLayout::maximumSize());
 }
 
 bool QLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -926,8 +916,8 @@ bool QLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 	return true;
 }
 
-void QLayout_virtualbase_setGeometry(void* self, QRect* geometry) {
-	static_cast<MiqtVirtualQLayout*>(self)->QLayout::setGeometry(*geometry);
+void QLayout_virtualbase_setGeometry(void* self, struct miqt_qrect geometry) {
+	static_cast<MiqtVirtualQLayout*>(self)->QLayout::setGeometry(miqt_from_cabi<QRect>(geometry));
 }
 
 bool QLayout_override_virtual_itemAt(void* self, intptr_t slot) {
@@ -1223,14 +1213,6 @@ QSpacerItem* QLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQLayout*>(self)->QLayout::spacerItem();
 }
 
-QRect* QLayout_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
-QSize* QLayout_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 void QLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -1275,15 +1257,15 @@ bool QLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayo
 	return self_cast->adoptLayout(layout);
 }
 
-QRect* QLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
+struct miqt_qrect QLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->alignmentRect(*param1));
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->alignmentRect(miqt_from_cabi<QRect>(param1)));
 }
 
 QObject* QLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

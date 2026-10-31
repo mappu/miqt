@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -220,11 +221,9 @@ func (this *QImageIOHandler) CurrentImageNumber() int {
 	return (int)(C.QImageIOHandler_currentImageNumber(this.h))
 }
 
-func (this *QImageIOHandler) CurrentImageRect() *QRect {
+func (this *QImageIOHandler) CurrentImageRect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QImageIOHandler_currentImageRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QImageIOHandler_currentImageRect(this.h))
 }
 
 func (this *QImageIOHandler) callVirtualBase_Name() []byte {
@@ -583,15 +582,13 @@ func miqt_exec_callback_QImageIOHandler_currentImageNumber(self *C.QImageIOHandl
 
 }
 
-func (this *QImageIOHandler) callVirtualBase_CurrentImageRect() *QRect {
+func (this *QImageIOHandler) callVirtualBase_CurrentImageRect() QRect {
 	defer runtime.KeepAlive(this)
 
-	_goptr := newQRect(C.QImageIOHandler_virtualbase_currentImageRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QImageIOHandler_virtualbase_currentImageRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QImageIOHandler) OnCurrentImageRect(slot func(super func() *QRect) *QRect) {
+func (this *QImageIOHandler) OnCurrentImageRect(slot func(super func() QRect) QRect) {
 	ok := C.QImageIOHandler_override_virtual_currentImageRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -599,16 +596,15 @@ func (this *QImageIOHandler) OnCurrentImageRect(slot func(super func() *QRect) *
 }
 
 //export miqt_exec_callback_QImageIOHandler_currentImageRect
-func miqt_exec_callback_QImageIOHandler_currentImageRect(self *C.QImageIOHandler, cb C.intptr_t) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRect) *QRect)
+func miqt_exec_callback_QImageIOHandler_currentImageRect(self *C.QImageIOHandler, cb C.intptr_t) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRect) QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QImageIOHandler{h: self}).callVirtualBase_CurrentImageRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QImageIOHandler_virtualreturncopy_QRect(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
 

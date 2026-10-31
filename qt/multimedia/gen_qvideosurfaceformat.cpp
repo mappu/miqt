@@ -19,16 +19,16 @@ QVideoSurfaceFormat* QVideoSurfaceFormat_new() {
 	return new (std::nothrow) QVideoSurfaceFormat();
 }
 
-QVideoSurfaceFormat* QVideoSurfaceFormat_new2(QSize* size, int pixelFormat) {
-	return new (std::nothrow) QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat));
+QVideoSurfaceFormat* QVideoSurfaceFormat_new2(struct miqt_qsize size, int pixelFormat) {
+	return new (std::nothrow) QVideoSurfaceFormat(miqt_from_cabi<QSize>(size), static_cast<QVideoFrame::PixelFormat>(pixelFormat));
 }
 
 QVideoSurfaceFormat* QVideoSurfaceFormat_new3(QVideoSurfaceFormat* format) {
 	return new (std::nothrow) QVideoSurfaceFormat(*format);
 }
 
-QVideoSurfaceFormat* QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int handleType) {
-	return new (std::nothrow) QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat), static_cast<QAbstractVideoBuffer::HandleType>(handleType));
+QVideoSurfaceFormat* QVideoSurfaceFormat_new4(struct miqt_qsize size, int pixelFormat, int handleType) {
+	return new (std::nothrow) QVideoSurfaceFormat(miqt_from_cabi<QSize>(size), static_cast<QVideoFrame::PixelFormat>(pixelFormat), static_cast<QAbstractVideoBuffer::HandleType>(handleType));
 }
 
 void QVideoSurfaceFormat_operatorAssign(QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {
@@ -57,12 +57,12 @@ int QVideoSurfaceFormat_handleType(const QVideoSurfaceFormat* self) {
 	return static_cast<int>(_ret);
 }
 
-QSize* QVideoSurfaceFormat_frameSize(const QVideoSurfaceFormat* self) {
-	return new QSize(self->frameSize());
+struct miqt_qsize QVideoSurfaceFormat_frameSize(const QVideoSurfaceFormat* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->frameSize());
 }
 
-void QVideoSurfaceFormat_setFrameSize(QVideoSurfaceFormat* self, QSize* size) {
-	self->setFrameSize(*size);
+void QVideoSurfaceFormat_setFrameSize(QVideoSurfaceFormat* self, struct miqt_qsize size) {
+	self->setFrameSize(miqt_from_cabi<QSize>(size));
 }
 
 void QVideoSurfaceFormat_setFrameSize2(QVideoSurfaceFormat* self, int width, int height) {
@@ -77,12 +77,12 @@ int QVideoSurfaceFormat_frameHeight(const QVideoSurfaceFormat* self) {
 	return self->frameHeight();
 }
 
-QRect* QVideoSurfaceFormat_viewport(const QVideoSurfaceFormat* self) {
-	return new QRect(self->viewport());
+struct miqt_qrect QVideoSurfaceFormat_viewport(const QVideoSurfaceFormat* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->viewport());
 }
 
-void QVideoSurfaceFormat_setViewport(QVideoSurfaceFormat* self, QRect* viewport) {
-	self->setViewport(*viewport);
+void QVideoSurfaceFormat_setViewport(QVideoSurfaceFormat* self, struct miqt_qrect viewport) {
+	self->setViewport(miqt_from_cabi<QRect>(viewport));
 }
 
 int QVideoSurfaceFormat_scanLineDirection(const QVideoSurfaceFormat* self) {
@@ -103,12 +103,12 @@ void QVideoSurfaceFormat_setFrameRate(QVideoSurfaceFormat* self, double rate) {
 	self->setFrameRate(static_cast<qreal>(rate));
 }
 
-QSize* QVideoSurfaceFormat_pixelAspectRatio(const QVideoSurfaceFormat* self) {
-	return new QSize(self->pixelAspectRatio());
+struct miqt_qsize QVideoSurfaceFormat_pixelAspectRatio(const QVideoSurfaceFormat* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->pixelAspectRatio());
 }
 
-void QVideoSurfaceFormat_setPixelAspectRatio(QVideoSurfaceFormat* self, QSize* ratio) {
-	self->setPixelAspectRatio(*ratio);
+void QVideoSurfaceFormat_setPixelAspectRatio(QVideoSurfaceFormat* self, struct miqt_qsize ratio) {
+	self->setPixelAspectRatio(miqt_from_cabi<QSize>(ratio));
 }
 
 void QVideoSurfaceFormat_setPixelAspectRatio2(QVideoSurfaceFormat* self, int width, int height) {
@@ -132,8 +132,8 @@ void QVideoSurfaceFormat_setMirrored(QVideoSurfaceFormat* self, bool mirrored) {
 	self->setMirrored(mirrored);
 }
 
-QSize* QVideoSurfaceFormat_sizeHint(const QVideoSurfaceFormat* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QVideoSurfaceFormat_sizeHint(const QVideoSurfaceFormat* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_propertyNames(const QVideoSurfaceFormat* self) {

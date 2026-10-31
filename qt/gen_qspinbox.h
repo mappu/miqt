@@ -142,9 +142,9 @@ struct miqt_string QSpinBox_virtualbase_textFromValue(const void* self, int val)
 bool QSpinBox_override_virtual_fixup(void* self, intptr_t slot);
 void QSpinBox_virtualbase_fixup(const void* self, struct miqt_string str);
 bool QSpinBox_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QSpinBox_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QSpinBox_virtualbase_sizeHint(const void* self);
 bool QSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QSpinBox_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QSpinBox_virtualbase_minimumSizeHint(const void* self);
 bool QSpinBox_override_virtual_inputMethodQuery(void* self, intptr_t slot);
 QVariant* QSpinBox_virtualbase_inputMethodQuery(const void* self, int param1);
 bool QSpinBox_override_virtual_stepBy(void* self, intptr_t slot);
@@ -239,7 +239,6 @@ bool QSpinBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QSpinBox_virtualreturncopy_QSize(QSize* src);
 QVariant* QSpinBox_virtualreturncopy_QVariant(QVariant* src);
 
 void QSpinBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSpinBox* option);
@@ -306,9 +305,9 @@ struct miqt_string QDoubleSpinBox_virtualbase_textFromValue(const void* self, do
 bool QDoubleSpinBox_override_virtual_fixup(void* self, intptr_t slot);
 void QDoubleSpinBox_virtualbase_fixup(const void* self, struct miqt_string str);
 bool QDoubleSpinBox_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QDoubleSpinBox_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QDoubleSpinBox_virtualbase_sizeHint(const void* self);
 bool QDoubleSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QDoubleSpinBox_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QDoubleSpinBox_virtualbase_minimumSizeHint(const void* self);
 bool QDoubleSpinBox_override_virtual_event(void* self, intptr_t slot);
 bool QDoubleSpinBox_virtualbase_event(void* self, QEvent* event);
 bool QDoubleSpinBox_override_virtual_inputMethodQuery(void* self, intptr_t slot);
@@ -405,7 +404,6 @@ bool QDoubleSpinBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDoubleSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDoubleSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDoubleSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QDoubleSpinBox_virtualreturncopy_QSize(QSize* src);
 QVariant* QDoubleSpinBox_virtualreturncopy_QVariant(QVariant* src);
 
 void QDoubleSpinBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSpinBox* option);

@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -193,15 +194,12 @@ func (this *QMediaRecorder) SetQuality(quality QMediaRecorder__Quality) {
 	C.QMediaRecorder_setQuality(this.h, (C.int)(quality))
 }
 
-func (this *QMediaRecorder) VideoResolution() *qt6.QSize {
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QMediaRecorder_videoResolution(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMediaRecorder) VideoResolution() qt6.QSize {
+	return libmiqt.ValueCast[qt6.QSize](C.QMediaRecorder_videoResolution(this.h))
 }
 
-func (this *QMediaRecorder) SetVideoResolution(videoResolution *qt6.QSize) {
-	defer runtime.KeepAlive(videoResolution)
-	C.QMediaRecorder_setVideoResolution(this.h, (*C.QSize)(videoResolution.UnsafePointer()))
+func (this *QMediaRecorder) SetVideoResolution(videoResolution qt6.QSize) {
+	C.QMediaRecorder_setVideoResolution(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](videoResolution))
 }
 
 func (this *QMediaRecorder) SetVideoResolution2(width int, height int) {

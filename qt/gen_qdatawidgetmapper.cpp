@@ -245,12 +245,12 @@ QAbstractItemDelegate* QDataWidgetMapper_itemDelegate(const QDataWidgetMapper* s
 	return self->itemDelegate();
 }
 
-void QDataWidgetMapper_setRootIndex(QDataWidgetMapper* self, QModelIndex* index) {
-	self->setRootIndex(*index);
+void QDataWidgetMapper_setRootIndex(QDataWidgetMapper* self, struct miqt_qmodelindex index) {
+	self->setRootIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
-QModelIndex* QDataWidgetMapper_rootIndex(const QDataWidgetMapper* self) {
-	return new QModelIndex(self->rootIndex());
+struct miqt_qmodelindex QDataWidgetMapper_rootIndex(const QDataWidgetMapper* self) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->rootIndex());
 }
 
 void QDataWidgetMapper_setOrientation(QDataWidgetMapper* self, int aOrientation) {
@@ -337,8 +337,8 @@ void QDataWidgetMapper_setCurrentIndex(QDataWidgetMapper* self, int index) {
 	self->setCurrentIndex(static_cast<int>(index));
 }
 
-void QDataWidgetMapper_setCurrentModelIndex(QDataWidgetMapper* self, QModelIndex* index) {
-	self->setCurrentModelIndex(*index);
+void QDataWidgetMapper_setCurrentModelIndex(QDataWidgetMapper* self, struct miqt_qmodelindex index) {
+	self->setCurrentModelIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QDataWidgetMapper_currentIndexChanged(QDataWidgetMapper* self, int index) {

@@ -68,11 +68,11 @@ void miqt_exec_callback_QHeaderView_geometriesChanged(intptr_t);
 void miqt_exec_callback_QHeaderView_sortIndicatorChanged(intptr_t, int, int);
 void miqt_exec_callback_QHeaderView_sortIndicatorClearableChanged(intptr_t, bool);
 void miqt_exec_callback_QHeaderView_setModel(QHeaderView*, intptr_t, QAbstractItemModel*);
-QSize* miqt_exec_callback_QHeaderView_sizeHint(const QHeaderView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QHeaderView_sizeHint(const QHeaderView*, intptr_t);
 void miqt_exec_callback_QHeaderView_setVisible(QHeaderView*, intptr_t, bool);
 void miqt_exec_callback_QHeaderView_doItemsLayout(QHeaderView*, intptr_t);
 void miqt_exec_callback_QHeaderView_reset(QHeaderView*, intptr_t);
-void miqt_exec_callback_QHeaderView_currentChanged(QHeaderView*, intptr_t, QModelIndex*, QModelIndex*);
+void miqt_exec_callback_QHeaderView_currentChanged(QHeaderView*, intptr_t, struct miqt_qmodelindex, struct miqt_qmodelindex);
 bool miqt_exec_callback_QHeaderView_event(QHeaderView*, intptr_t, QEvent*);
 void miqt_exec_callback_QHeaderView_paintEvent(QHeaderView*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QHeaderView_mousePressEvent(QHeaderView*, intptr_t, QMouseEvent*);
@@ -80,20 +80,20 @@ void miqt_exec_callback_QHeaderView_mouseMoveEvent(QHeaderView*, intptr_t, QMous
 void miqt_exec_callback_QHeaderView_mouseReleaseEvent(QHeaderView*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QHeaderView_mouseDoubleClickEvent(QHeaderView*, intptr_t, QMouseEvent*);
 bool miqt_exec_callback_QHeaderView_viewportEvent(QHeaderView*, intptr_t, QEvent*);
-void miqt_exec_callback_QHeaderView_paintSection(const QHeaderView*, intptr_t, QPainter*, QRect*, int);
-QSize* miqt_exec_callback_QHeaderView_sectionSizeFromContents(const QHeaderView*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_paintSection(const QHeaderView*, intptr_t, QPainter*, struct miqt_qrect, int);
+struct miqt_qsize miqt_exec_callback_QHeaderView_sectionSizeFromContents(const QHeaderView*, intptr_t, int);
 int miqt_exec_callback_QHeaderView_horizontalOffset(const QHeaderView*, intptr_t);
 int miqt_exec_callback_QHeaderView_verticalOffset(const QHeaderView*, intptr_t);
 void miqt_exec_callback_QHeaderView_updateGeometries(QHeaderView*, intptr_t);
 void miqt_exec_callback_QHeaderView_scrollContentsBy(QHeaderView*, intptr_t, int, int);
-void miqt_exec_callback_QHeaderView_dataChanged(QHeaderView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
-void miqt_exec_callback_QHeaderView_rowsInserted(QHeaderView*, intptr_t, QModelIndex*, int, int);
-QRect* miqt_exec_callback_QHeaderView_visualRect(const QHeaderView*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QHeaderView_scrollTo(QHeaderView*, intptr_t, QModelIndex*, int);
-QModelIndex* miqt_exec_callback_QHeaderView_indexAt(const QHeaderView*, intptr_t, QPoint*);
-bool miqt_exec_callback_QHeaderView_isIndexHidden(const QHeaderView*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QHeaderView_moveCursor(QHeaderView*, intptr_t, int, int);
-void miqt_exec_callback_QHeaderView_setSelection(QHeaderView*, intptr_t, QRect*, int);
+void miqt_exec_callback_QHeaderView_dataChanged(QHeaderView*, intptr_t, struct miqt_qmodelindex, struct miqt_qmodelindex, struct miqt_array /* of int */ );
+void miqt_exec_callback_QHeaderView_rowsInserted(QHeaderView*, intptr_t, struct miqt_qmodelindex, int, int);
+struct miqt_qrect miqt_exec_callback_QHeaderView_visualRect(const QHeaderView*, intptr_t, struct miqt_qmodelindex);
+void miqt_exec_callback_QHeaderView_scrollTo(QHeaderView*, intptr_t, struct miqt_qmodelindex, int);
+struct miqt_qmodelindex miqt_exec_callback_QHeaderView_indexAt(const QHeaderView*, intptr_t, struct miqt_qpoint);
+bool miqt_exec_callback_QHeaderView_isIndexHidden(const QHeaderView*, intptr_t, struct miqt_qmodelindex);
+struct miqt_qmodelindex miqt_exec_callback_QHeaderView_moveCursor(QHeaderView*, intptr_t, int, int);
+void miqt_exec_callback_QHeaderView_setSelection(QHeaderView*, intptr_t, struct miqt_qrect, int);
 QRegion* miqt_exec_callback_QHeaderView_visualRegionForSelection(const QHeaderView*, intptr_t, QItemSelection*);
 void miqt_exec_callback_QHeaderView_initStyleOptionForIndex(const QHeaderView*, intptr_t, QStyleOptionHeader*, int);
 void miqt_exec_callback_QHeaderView_initStyleOption(const QHeaderView*, intptr_t, QStyleOptionHeader*);
@@ -101,11 +101,11 @@ void miqt_exec_callback_QHeaderView_setSelectionModel(QHeaderView*, intptr_t, QI
 void miqt_exec_callback_QHeaderView_keyboardSearch(QHeaderView*, intptr_t, struct miqt_string);
 int miqt_exec_callback_QHeaderView_sizeHintForRow(const QHeaderView*, intptr_t, int);
 int miqt_exec_callback_QHeaderView_sizeHintForColumn(const QHeaderView*, intptr_t, int);
-QAbstractItemDelegate* miqt_exec_callback_QHeaderView_itemDelegateForIndex(const QHeaderView*, intptr_t, QModelIndex*);
+QAbstractItemDelegate* miqt_exec_callback_QHeaderView_itemDelegateForIndex(const QHeaderView*, intptr_t, struct miqt_qmodelindex);
 QVariant* miqt_exec_callback_QHeaderView_inputMethodQuery(const QHeaderView*, intptr_t, int);
-void miqt_exec_callback_QHeaderView_setRootIndex(QHeaderView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QHeaderView_setRootIndex(QHeaderView*, intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QHeaderView_selectAll(QHeaderView*, intptr_t);
-void miqt_exec_callback_QHeaderView_rowsAboutToBeRemoved(QHeaderView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QHeaderView_rowsAboutToBeRemoved(QHeaderView*, intptr_t, struct miqt_qmodelindex, int, int);
 void miqt_exec_callback_QHeaderView_selectionChanged(QHeaderView*, intptr_t, QItemSelection*, QItemSelection*);
 void miqt_exec_callback_QHeaderView_updateEditorData(QHeaderView*, intptr_t);
 void miqt_exec_callback_QHeaderView_updateEditorGeometries(QHeaderView*, intptr_t);
@@ -116,9 +116,9 @@ void miqt_exec_callback_QHeaderView_horizontalScrollbarValueChanged(QHeaderView*
 void miqt_exec_callback_QHeaderView_closeEditor(QHeaderView*, intptr_t, QWidget*, int);
 void miqt_exec_callback_QHeaderView_commitData(QHeaderView*, intptr_t, QWidget*);
 void miqt_exec_callback_QHeaderView_editorDestroyed(QHeaderView*, intptr_t, QObject*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QHeaderView_selectedIndexes(const QHeaderView*, intptr_t);
-bool miqt_exec_callback_QHeaderView_edit2(QHeaderView*, intptr_t, QModelIndex*, int, QEvent*);
-int miqt_exec_callback_QHeaderView_selectionCommand(const QHeaderView*, intptr_t, QModelIndex*, QEvent*);
+struct miqt_array /* of struct miqt_qmodelindex */  miqt_exec_callback_QHeaderView_selectedIndexes(const QHeaderView*, intptr_t);
+bool miqt_exec_callback_QHeaderView_edit2(QHeaderView*, intptr_t, struct miqt_qmodelindex, int, QEvent*);
+int miqt_exec_callback_QHeaderView_selectionCommand(const QHeaderView*, intptr_t, struct miqt_qmodelindex, QEvent*);
 void miqt_exec_callback_QHeaderView_startDrag(QHeaderView*, intptr_t, int);
 void miqt_exec_callback_QHeaderView_initViewItemOption(const QHeaderView*, intptr_t, QStyleOptionViewItem*);
 bool miqt_exec_callback_QHeaderView_focusNextPrevChild(QHeaderView*, intptr_t, bool);
@@ -133,8 +133,8 @@ void miqt_exec_callback_QHeaderView_resizeEvent(QHeaderView*, intptr_t, QResizeE
 void miqt_exec_callback_QHeaderView_timerEvent(QHeaderView*, intptr_t, QTimerEvent*);
 void miqt_exec_callback_QHeaderView_inputMethodEvent(QHeaderView*, intptr_t, QInputMethodEvent*);
 bool miqt_exec_callback_QHeaderView_eventFilter(QHeaderView*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QHeaderView_viewportSizeHint(const QHeaderView*, intptr_t);
-QSize* miqt_exec_callback_QHeaderView_minimumSizeHint(const QHeaderView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QHeaderView_viewportSizeHint(const QHeaderView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QHeaderView_minimumSizeHint(const QHeaderView*, intptr_t);
 void miqt_exec_callback_QHeaderView_setupViewport(QHeaderView*, intptr_t, QWidget*);
 void miqt_exec_callback_QHeaderView_wheelEvent(QHeaderView*, intptr_t, QWheelEvent*);
 void miqt_exec_callback_QHeaderView_contextMenuEvent(QHeaderView*, intptr_t, QContextMenuEvent*);
@@ -199,13 +199,11 @@ public:
 			return QHeaderView::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QHeaderView_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QHeaderView_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QHeaderView_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QHeaderView_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -266,17 +264,13 @@ public:
 			return;
 		}
 
-		const QModelIndex& current_ret = current;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&current_ret);
-		const QModelIndex& old_ret = old;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&old_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(current);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(old);
 		miqt_exec_callback_QHeaderView_currentChanged(this, handle__currentChanged, sigval1, sigval2);
 
 	}
 
-	friend void QHeaderView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* old);
+	friend void QHeaderView_virtualbase_currentChanged(void* self, struct miqt_qmodelindex current, struct miqt_qmodelindex old);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -406,15 +400,13 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval2 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval2 = miqt_to_cabi<struct miqt_qrect>(rect);
 		int sigval3 = logicalIndex;
 		miqt_exec_callback_QHeaderView_paintSection(this, handle__paintSection, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QHeaderView_virtualbase_paintSection(const void* self, QPainter* painter, QRect* rect, int logicalIndex);
+	friend void QHeaderView_virtualbase_paintSection(const void* self, QPainter* painter, struct miqt_qrect rect, int logicalIndex);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sectionSizeFromContents = 0;
@@ -426,13 +418,11 @@ public:
 		}
 
 		int sigval1 = logicalIndex;
-		QSize* callback_return_value = miqt_exec_callback_QHeaderView_sectionSizeFromContents(this, handle__sectionSizeFromContents, sigval1);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QHeaderView_sectionSizeFromContents(this, handle__sectionSizeFromContents, sigval1);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QHeaderView_virtualbase_sectionSizeFromContents(const void* self, int logicalIndex);
+	friend struct miqt_qsize QHeaderView_virtualbase_sectionSizeFromContents(const void* self, int logicalIndex);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__horizontalOffset = 0;
@@ -508,12 +498,8 @@ public:
 			return;
 		}
 
-		const QModelIndex& topLeft_ret = topLeft;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&topLeft_ret);
-		const QModelIndex& bottomRight_ret = bottomRight;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&bottomRight_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(topLeft);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(bottomRight);
 		const QList<int>& roles_ret = roles;
 		// Convert QList<> from C++ memory to manually-managed C memory
 		int* roles_arr = static_cast<int*>(malloc(sizeof(int) * roles_ret.length()));
@@ -528,7 +514,7 @@ public:
 
 	}
 
-	friend void QHeaderView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles);
+	friend void QHeaderView_virtualbase_dataChanged(void* self, struct miqt_qmodelindex topLeft, struct miqt_qmodelindex bottomRight, struct miqt_array /* of int */  roles);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowsInserted = 0;
@@ -540,16 +526,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int sigval2 = start;
 		int sigval3 = end;
 		miqt_exec_callback_QHeaderView_rowsInserted(this, handle__rowsInserted, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QHeaderView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end);
+	friend void QHeaderView_virtualbase_rowsInserted(void* self, struct miqt_qmodelindex parent, int start, int end);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__visualRect = 0;
@@ -560,16 +544,12 @@ public:
 			return QHeaderView::visualRect(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		QRect* callback_return_value = miqt_exec_callback_QHeaderView_visualRect(this, handle__visualRect, sigval1);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QHeaderView_visualRect(this, handle__visualRect, sigval1);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QHeaderView_virtualbase_visualRect(const void* self, QModelIndex* index);
+	friend struct miqt_qrect QHeaderView_virtualbase_visualRect(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrollTo = 0;
@@ -581,16 +561,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QAbstractItemView::ScrollHint hint_ret = hint;
 		int sigval2 = static_cast<int>(hint_ret);
 		miqt_exec_callback_QHeaderView_scrollTo(this, handle__scrollTo, sigval1, sigval2);
 
 	}
 
-	friend void QHeaderView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint);
+	friend void QHeaderView_virtualbase_scrollTo(void* self, struct miqt_qmodelindex index, int hint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indexAt = 0;
@@ -601,16 +579,12 @@ public:
 			return QHeaderView::indexAt(p);
 		}
 
-		const QPoint& p_ret = p;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&p_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QHeaderView_indexAt(this, handle__indexAt, sigval1);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(p);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QHeaderView_indexAt(this, handle__indexAt, sigval1);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QHeaderView_virtualbase_indexAt(const void* self, QPoint* p);
+	friend struct miqt_qmodelindex QHeaderView_virtualbase_indexAt(const void* self, struct miqt_qpoint p);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isIndexHidden = 0;
@@ -621,14 +595,12 @@ public:
 			return QHeaderView::isIndexHidden(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		bool callback_return_value = miqt_exec_callback_QHeaderView_isIndexHidden(this, handle__isIndexHidden, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QHeaderView_virtualbase_isIndexHidden(const void* self, QModelIndex* index);
+	friend bool QHeaderView_virtualbase_isIndexHidden(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveCursor = 0;
@@ -643,13 +615,11 @@ public:
 		int sigval1 = static_cast<int>(param1_ret);
 		Qt::KeyboardModifiers param2_ret = param2;
 		int sigval2 = static_cast<int>(param2_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QHeaderView_moveCursor(this, handle__moveCursor, sigval1, sigval2);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QHeaderView_moveCursor(this, handle__moveCursor, sigval1, sigval2);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QHeaderView_virtualbase_moveCursor(void* self, int param1, int param2);
+	friend struct miqt_qmodelindex QHeaderView_virtualbase_moveCursor(void* self, int param1, int param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setSelection = 0;
@@ -661,16 +631,14 @@ public:
 			return;
 		}
 
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(rect);
 		QItemSelectionModel::SelectionFlags flags_ret = flags;
 		int sigval2 = static_cast<int>(flags_ret);
 		miqt_exec_callback_QHeaderView_setSelection(this, handle__setSelection, sigval1, sigval2);
 
 	}
 
-	friend void QHeaderView_virtualbase_setSelection(void* self, QRect* rect, int flags);
+	friend void QHeaderView_virtualbase_setSelection(void* self, struct miqt_qrect rect, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__visualRegionForSelection = 0;
@@ -809,14 +777,12 @@ public:
 			return QHeaderView::itemDelegateForIndex(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QHeaderView_itemDelegateForIndex(this, handle__itemDelegateForIndex, sigval1);
 		return callback_return_value;
 	}
 
-	friend QAbstractItemDelegate* QHeaderView_virtualbase_itemDelegateForIndex(const void* self, QModelIndex* index);
+	friend QAbstractItemDelegate* QHeaderView_virtualbase_itemDelegateForIndex(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -847,14 +813,12 @@ public:
 			return;
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QHeaderView_setRootIndex(this, handle__setRootIndex, sigval1);
 
 	}
 
-	friend void QHeaderView_virtualbase_setRootIndex(void* self, QModelIndex* index);
+	friend void QHeaderView_virtualbase_setRootIndex(void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectAll = 0;
@@ -882,16 +846,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int sigval2 = start;
 		int sigval3 = end;
 		miqt_exec_callback_QHeaderView_rowsAboutToBeRemoved(this, handle__rowsAboutToBeRemoved, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QHeaderView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end);
+	friend void QHeaderView_virtualbase_rowsAboutToBeRemoved(void* self, struct miqt_qmodelindex parent, int start, int end);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectionChanged = 0;
@@ -1077,22 +1039,18 @@ public:
 			return QHeaderView::selectedIndexes();
 		}
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QHeaderView_selectedIndexes(this, handle__selectedIndexes);
+		struct miqt_array /* of struct miqt_qmodelindex */  callback_return_value = miqt_exec_callback_QHeaderView_selectedIndexes(this, handle__selectedIndexes);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
-		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		struct miqt_qmodelindex* callback_return_value_arr = static_cast<struct miqt_qmodelindex*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
-		}
-		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
-		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			delete callback_return_value_free_arr[i];
+			callback_return_value_QList.push_back(miqt_from_cabi<QModelIndex>(callback_return_value_arr[i]));
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 
-	friend struct miqt_array /* of QModelIndex* */  QHeaderView_virtualbase_selectedIndexes(const void* self);
+	friend struct miqt_array /* of struct miqt_qmodelindex */  QHeaderView_virtualbase_selectedIndexes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__edit2 = 0;
@@ -1103,9 +1061,7 @@ public:
 			return QHeaderView::edit(index, trigger, event);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QAbstractItemView::EditTrigger trigger_ret = trigger;
 		int sigval2 = static_cast<int>(trigger_ret);
 		QEvent* sigval3 = event;
@@ -1113,7 +1069,7 @@ public:
 		return callback_return_value;
 	}
 
-	friend bool QHeaderView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event);
+	friend bool QHeaderView_virtualbase_edit2(void* self, struct miqt_qmodelindex index, int trigger, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectionCommand = 0;
@@ -1124,15 +1080,13 @@ public:
 			return QHeaderView::selectionCommand(index, event);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QEvent* sigval2 = (QEvent*) event;
 		int callback_return_value = miqt_exec_callback_QHeaderView_selectionCommand(this, handle__selectionCommand, sigval1, sigval2);
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
 
-	friend int QHeaderView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event);
+	friend int QHeaderView_virtualbase_selectionCommand(const void* self, struct miqt_qmodelindex index, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__startDrag = 0;
@@ -1381,13 +1335,11 @@ public:
 			return QHeaderView::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QHeaderView_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QHeaderView_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QHeaderView_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QHeaderView_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -1398,13 +1350,11 @@ public:
 			return QHeaderView::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QHeaderView_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QHeaderView_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QHeaderView_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QHeaderView_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -1852,8 +1802,8 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QHeaderView_protectedbase_updateSection(bool* _dynamic_cast_ok, void* self, int logicalIndex);
 	friend void QHeaderView_protectedbase_resizeSections2(bool* _dynamic_cast_ok, void* self);
-	friend void QHeaderView_protectedbase_sectionsInserted(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int logicalFirst, int logicalLast);
-	friend void QHeaderView_protectedbase_sectionsAboutToBeRemoved(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int logicalFirst, int logicalLast);
+	friend void QHeaderView_protectedbase_sectionsInserted(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int logicalFirst, int logicalLast);
+	friend void QHeaderView_protectedbase_sectionsAboutToBeRemoved(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int logicalFirst, int logicalLast);
 	friend void QHeaderView_protectedbase_initialize(bool* _dynamic_cast_ok, void* self);
 	friend void QHeaderView_protectedbase_initializeSections(bool* _dynamic_cast_ok, void* self);
 	friend void QHeaderView_protectedbase_initializeSections2(bool* _dynamic_cast_ok, void* self, int start, int end);
@@ -1863,13 +1813,13 @@ public:
 	friend void QHeaderView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
 	friend void QHeaderView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region);
 	friend void QHeaderView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy);
-	friend QPoint* QHeaderView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qpoint QHeaderView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
 	friend void QHeaderView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self);
 	friend void QHeaderView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self);
 	friend void QHeaderView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self);
 	friend int QHeaderView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self);
 	friend void QHeaderView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QHeaderView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QHeaderView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QHeaderView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QHeaderView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QHeaderView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -1930,8 +1880,8 @@ int QHeaderView_length(const QHeaderView* self) {
 	return self->length();
 }
 
-QSize* QHeaderView_sizeHint(const QHeaderView* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QHeaderView_sizeHint(const QHeaderView* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QHeaderView_setVisible(QHeaderView* self, bool v) {
@@ -1954,8 +1904,8 @@ int QHeaderView_logicalIndexAt2(const QHeaderView* self, int x, int y) {
 	return self->logicalIndexAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-int QHeaderView_logicalIndexAtWithPos(const QHeaderView* self, QPoint* pos) {
-	return self->logicalIndexAt(*pos);
+int QHeaderView_logicalIndexAtWithPos(const QHeaderView* self, struct miqt_qpoint pos) {
+	return self->logicalIndexAt(miqt_from_cabi<QPoint>(pos));
 }
 
 int QHeaderView_sectionSize(const QHeaderView* self, int logicalIndex) {
@@ -2376,8 +2326,8 @@ bool QHeaderView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QHeaderView_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::sizeHint());
+struct miqt_qsize QHeaderView_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::sizeHint());
 }
 
 bool QHeaderView_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -2432,8 +2382,8 @@ bool QHeaderView_override_virtual_currentChanged(void* self, intptr_t slot) {
 	return true;
 }
 
-void QHeaderView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* old) {
-	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::currentChanged(*current, *old);
+void QHeaderView_virtualbase_currentChanged(void* self, struct miqt_qmodelindex current, struct miqt_qmodelindex old) {
+	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::currentChanged(miqt_from_cabi<QModelIndex>(current), miqt_from_cabi<QModelIndex>(old));
 }
 
 bool QHeaderView_override_virtual_event(void* self, intptr_t slot) {
@@ -2544,8 +2494,8 @@ bool QHeaderView_override_virtual_paintSection(void* self, intptr_t slot) {
 	return true;
 }
 
-void QHeaderView_virtualbase_paintSection(const void* self, QPainter* painter, QRect* rect, int logicalIndex) {
-	static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::paintSection(painter, *rect, static_cast<int>(logicalIndex));
+void QHeaderView_virtualbase_paintSection(const void* self, QPainter* painter, struct miqt_qrect rect, int logicalIndex) {
+	static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::paintSection(painter, miqt_from_cabi<QRect>(rect), static_cast<int>(logicalIndex));
 }
 
 bool QHeaderView_override_virtual_sectionSizeFromContents(void* self, intptr_t slot) {
@@ -2558,8 +2508,8 @@ bool QHeaderView_override_virtual_sectionSizeFromContents(void* self, intptr_t s
 	return true;
 }
 
-QSize* QHeaderView_virtualbase_sectionSizeFromContents(const void* self, int logicalIndex) {
-	return new QSize(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::sectionSizeFromContents(static_cast<int>(logicalIndex)));
+struct miqt_qsize QHeaderView_virtualbase_sectionSizeFromContents(const void* self, int logicalIndex) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::sectionSizeFromContents(static_cast<int>(logicalIndex)));
 }
 
 bool QHeaderView_override_virtual_horizontalOffset(void* self, intptr_t slot) {
@@ -2628,14 +2578,14 @@ bool QHeaderView_override_virtual_dataChanged(void* self, intptr_t slot) {
 	return true;
 }
 
-void QHeaderView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
+void QHeaderView_virtualbase_dataChanged(void* self, struct miqt_qmodelindex topLeft, struct miqt_qmodelindex bottomRight, struct miqt_array /* of int */  roles) {
 	QList<int> roles_QList;
 	roles_QList.reserve(roles.len);
 	int* roles_arr = static_cast<int*>(roles.data);
 	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QList.push_back(static_cast<int>(roles_arr[i]));
 	}
-	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::dataChanged(*topLeft, *bottomRight, roles_QList);
+	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::dataChanged(miqt_from_cabi<QModelIndex>(topLeft), miqt_from_cabi<QModelIndex>(bottomRight), roles_QList);
 }
 
 bool QHeaderView_override_virtual_rowsInserted(void* self, intptr_t slot) {
@@ -2648,8 +2598,8 @@ bool QHeaderView_override_virtual_rowsInserted(void* self, intptr_t slot) {
 	return true;
 }
 
-void QHeaderView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
-	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
+void QHeaderView_virtualbase_rowsInserted(void* self, struct miqt_qmodelindex parent, int start, int end) {
+	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::rowsInserted(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(start), static_cast<int>(end));
 }
 
 bool QHeaderView_override_virtual_visualRect(void* self, intptr_t slot) {
@@ -2662,8 +2612,8 @@ bool QHeaderView_override_virtual_visualRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QHeaderView_virtualbase_visualRect(const void* self, QModelIndex* index) {
-	return new QRect(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::visualRect(*index));
+struct miqt_qrect QHeaderView_virtualbase_visualRect(const void* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::visualRect(miqt_from_cabi<QModelIndex>(index)));
 }
 
 bool QHeaderView_override_virtual_scrollTo(void* self, intptr_t slot) {
@@ -2676,8 +2626,8 @@ bool QHeaderView_override_virtual_scrollTo(void* self, intptr_t slot) {
 	return true;
 }
 
-void QHeaderView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint) {
-	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::scrollTo(*index, static_cast<MiqtVirtualQHeaderView::ScrollHint>(hint));
+void QHeaderView_virtualbase_scrollTo(void* self, struct miqt_qmodelindex index, int hint) {
+	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::scrollTo(miqt_from_cabi<QModelIndex>(index), static_cast<MiqtVirtualQHeaderView::ScrollHint>(hint));
 }
 
 bool QHeaderView_override_virtual_indexAt(void* self, intptr_t slot) {
@@ -2690,8 +2640,8 @@ bool QHeaderView_override_virtual_indexAt(void* self, intptr_t slot) {
 	return true;
 }
 
-QModelIndex* QHeaderView_virtualbase_indexAt(const void* self, QPoint* p) {
-	return new QModelIndex(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::indexAt(*p));
+struct miqt_qmodelindex QHeaderView_virtualbase_indexAt(const void* self, struct miqt_qpoint p) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::indexAt(miqt_from_cabi<QPoint>(p)));
 }
 
 bool QHeaderView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
@@ -2704,8 +2654,8 @@ bool QHeaderView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QHeaderView_virtualbase_isIndexHidden(const void* self, QModelIndex* index) {
-	return static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::isIndexHidden(*index);
+bool QHeaderView_virtualbase_isIndexHidden(const void* self, struct miqt_qmodelindex index) {
+	return static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::isIndexHidden(miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QHeaderView_override_virtual_moveCursor(void* self, intptr_t slot) {
@@ -2718,8 +2668,8 @@ bool QHeaderView_override_virtual_moveCursor(void* self, intptr_t slot) {
 	return true;
 }
 
-QModelIndex* QHeaderView_virtualbase_moveCursor(void* self, int param1, int param2) {
-	return new QModelIndex(static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::moveCursor(static_cast<MiqtVirtualQHeaderView::CursorAction>(param1), static_cast<Qt::KeyboardModifiers>(param2)));
+struct miqt_qmodelindex QHeaderView_virtualbase_moveCursor(void* self, int param1, int param2) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::moveCursor(static_cast<MiqtVirtualQHeaderView::CursorAction>(param1), static_cast<Qt::KeyboardModifiers>(param2)));
 }
 
 bool QHeaderView_override_virtual_setSelection(void* self, intptr_t slot) {
@@ -2732,8 +2682,8 @@ bool QHeaderView_override_virtual_setSelection(void* self, intptr_t slot) {
 	return true;
 }
 
-void QHeaderView_virtualbase_setSelection(void* self, QRect* rect, int flags) {
-	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(flags));
+void QHeaderView_virtualbase_setSelection(void* self, struct miqt_qrect rect, int flags) {
+	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::setSelection(miqt_from_cabi<QRect>(rect), static_cast<QItemSelectionModel::SelectionFlags>(flags));
 }
 
 bool QHeaderView_override_virtual_visualRegionForSelection(void* self, intptr_t slot) {
@@ -2845,8 +2795,8 @@ bool QHeaderView_override_virtual_itemDelegateForIndex(void* self, intptr_t slot
 	return true;
 }
 
-QAbstractItemDelegate* QHeaderView_virtualbase_itemDelegateForIndex(const void* self, QModelIndex* index) {
-	return static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::itemDelegateForIndex(*index);
+QAbstractItemDelegate* QHeaderView_virtualbase_itemDelegateForIndex(const void* self, struct miqt_qmodelindex index) {
+	return static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::itemDelegateForIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QHeaderView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2873,8 +2823,8 @@ bool QHeaderView_override_virtual_setRootIndex(void* self, intptr_t slot) {
 	return true;
 }
 
-void QHeaderView_virtualbase_setRootIndex(void* self, QModelIndex* index) {
-	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::setRootIndex(*index);
+void QHeaderView_virtualbase_setRootIndex(void* self, struct miqt_qmodelindex index) {
+	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::setRootIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QHeaderView_override_virtual_selectAll(void* self, intptr_t slot) {
@@ -2901,8 +2851,8 @@ bool QHeaderView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot
 	return true;
 }
 
-void QHeaderView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
-	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
+void QHeaderView_virtualbase_rowsAboutToBeRemoved(void* self, struct miqt_qmodelindex parent, int start, int end) {
+	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::rowsAboutToBeRemoved(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(start), static_cast<int>(end));
 }
 
 bool QHeaderView_override_virtual_selectionChanged(void* self, intptr_t slot) {
@@ -3055,12 +3005,12 @@ bool QHeaderView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 	return true;
 }
 
-struct miqt_array /* of QModelIndex* */  QHeaderView_virtualbase_selectedIndexes(const void* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QHeaderView_virtualbase_selectedIndexes(const void* self) {
 	QModelIndexList _ret = static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -3078,8 +3028,8 @@ bool QHeaderView_override_virtual_edit2(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QHeaderView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
-	return static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::edit(*index, static_cast<MiqtVirtualQHeaderView::EditTrigger>(trigger), event);
+bool QHeaderView_virtualbase_edit2(void* self, struct miqt_qmodelindex index, int trigger, QEvent* event) {
+	return static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::edit(miqt_from_cabi<QModelIndex>(index), static_cast<MiqtVirtualQHeaderView::EditTrigger>(trigger), event);
 }
 
 bool QHeaderView_override_virtual_selectionCommand(void* self, intptr_t slot) {
@@ -3092,8 +3042,8 @@ bool QHeaderView_override_virtual_selectionCommand(void* self, intptr_t slot) {
 	return true;
 }
 
-int QHeaderView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
-	QItemSelectionModel::SelectionFlags _ret = static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::selectionCommand(*index, event);
+int QHeaderView_virtualbase_selectionCommand(const void* self, struct miqt_qmodelindex index, QEvent* event) {
+	QItemSelectionModel::SelectionFlags _ret = static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::selectionCommand(miqt_from_cabi<QModelIndex>(index), event);
 	return static_cast<int>(_ret);
 }
 
@@ -3303,8 +3253,8 @@ bool QHeaderView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QHeaderView_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::viewportSizeHint());
+struct miqt_qsize QHeaderView_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::viewportSizeHint());
 }
 
 bool QHeaderView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -3317,8 +3267,8 @@ bool QHeaderView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QHeaderView_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::minimumSizeHint());
+struct miqt_qsize QHeaderView_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQHeaderView*>(self)->QHeaderView::minimumSizeHint());
 }
 
 bool QHeaderView_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -3686,18 +3636,6 @@ void QHeaderView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQHeaderView*>(self)->QHeaderView::disconnectNotify(*signal);
 }
 
-QSize* QHeaderView_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
-QRect* QHeaderView_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
-QModelIndex* QHeaderView_virtualreturncopy_QModelIndex(QModelIndex* src) {
-	return new QModelIndex(*src);
-}
-
 QRegion* QHeaderView_virtualreturncopy_QRegion(QRegion* src) {
 	return new QRegion(*src);
 }
@@ -3728,7 +3666,7 @@ void QHeaderView_protectedbase_resizeSections2(bool* _dynamic_cast_ok, void* sel
 	self_cast->resizeSections();
 }
 
-void QHeaderView_protectedbase_sectionsInserted(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int logicalFirst, int logicalLast) {
+void QHeaderView_protectedbase_sectionsInserted(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int logicalFirst, int logicalLast) {
 	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -3736,10 +3674,10 @@ void QHeaderView_protectedbase_sectionsInserted(bool* _dynamic_cast_ok, void* se
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->sectionsInserted(*parent, static_cast<int>(logicalFirst), static_cast<int>(logicalLast));
+	self_cast->sectionsInserted(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(logicalFirst), static_cast<int>(logicalLast));
 }
 
-void QHeaderView_protectedbase_sectionsAboutToBeRemoved(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int logicalFirst, int logicalLast) {
+void QHeaderView_protectedbase_sectionsAboutToBeRemoved(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int logicalFirst, int logicalLast) {
 	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -3747,7 +3685,7 @@ void QHeaderView_protectedbase_sectionsAboutToBeRemoved(bool* _dynamic_cast_ok, 
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->sectionsAboutToBeRemoved(*parent, static_cast<int>(logicalFirst), static_cast<int>(logicalLast));
+	self_cast->sectionsAboutToBeRemoved(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(logicalFirst), static_cast<int>(logicalLast));
 }
 
 void QHeaderView_protectedbase_initialize(bool* _dynamic_cast_ok, void* self) {
@@ -3850,15 +3788,15 @@ void QHeaderView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* s
 	self_cast->scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
 }
 
-QPoint* QHeaderView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qpoint QHeaderView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qpoint){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QPoint(self_cast->dirtyRegionOffset());
+	return miqt_to_cabi<struct miqt_qpoint>(self_cast->dirtyRegionOffset());
 }
 
 void QHeaderView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self) {
@@ -3917,15 +3855,15 @@ void QHeaderView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* 
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QHeaderView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QHeaderView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QHeaderView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

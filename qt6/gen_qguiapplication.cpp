@@ -298,8 +298,8 @@ struct miqt_array /* of QWindow* */  QGuiApplication_topLevelWindows() {
 	return _out;
 }
 
-QWindow* QGuiApplication_topLevelAt(QPoint* pos) {
-	return QGuiApplication::topLevelAt(*pos);
+QWindow* QGuiApplication_topLevelAt(struct miqt_qpoint pos) {
+	return QGuiApplication::topLevelAt(miqt_from_cabi<QPoint>(pos));
 }
 
 void QGuiApplication_setWindowIcon(QIcon* icon) {
@@ -350,8 +350,8 @@ struct miqt_array /* of QScreen* */  QGuiApplication_screens() {
 	return _out;
 }
 
-QScreen* QGuiApplication_screenAt(QPoint* point) {
-	return QGuiApplication::screenAt(*point);
+QScreen* QGuiApplication_screenAt(struct miqt_qpoint point) {
+	return QGuiApplication::screenAt(miqt_from_cabi<QPoint>(point));
 }
 
 double QGuiApplication_devicePixelRatio(const QGuiApplication* self) {

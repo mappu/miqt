@@ -27,12 +27,12 @@ QVector4D* QVector4D_new3(float xpos, float ypos, float zpos, float wpos) {
 	return new (std::nothrow) QVector4D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos), static_cast<float>(wpos));
 }
 
-QVector4D* QVector4D_new4(QPoint* point) {
-	return new (std::nothrow) QVector4D(*point);
+QVector4D* QVector4D_new4(struct miqt_qpoint point) {
+	return new (std::nothrow) QVector4D(miqt_from_cabi<QPoint>(point));
 }
 
-QVector4D* QVector4D_new5(QPointF* point) {
-	return new (std::nothrow) QVector4D(*point);
+QVector4D* QVector4D_new5(struct miqt_qpointf point) {
+	return new (std::nothrow) QVector4D(miqt_from_cabi<QPointF>(point));
 }
 
 QVector4D* QVector4D_new6(QVector2D* vector) {
@@ -43,12 +43,12 @@ QVector4D* QVector4D_new7(QVector2D* vector, float zpos, float wpos) {
 	return new (std::nothrow) QVector4D(*vector, static_cast<float>(zpos), static_cast<float>(wpos));
 }
 
-QVector4D* QVector4D_new8(QVector3D* vector) {
-	return new (std::nothrow) QVector4D(*vector);
+QVector4D* QVector4D_new8(struct miqt_qvector3d vector) {
+	return new (std::nothrow) QVector4D(miqt_from_cabi<QVector3D>(vector));
 }
 
-QVector4D* QVector4D_new9(QVector3D* vector, float wpos) {
-	return new (std::nothrow) QVector4D(*vector, static_cast<float>(wpos));
+QVector4D* QVector4D_new9(struct miqt_qvector3d vector, float wpos) {
+	return new (std::nothrow) QVector4D(miqt_from_cabi<QVector3D>(vector), static_cast<float>(wpos));
 }
 
 QVector4D* QVector4D_new10(QVector4D* param1) {
@@ -159,20 +159,20 @@ QVector2D* QVector4D_toVector2DAffine(const QVector4D* self) {
 	return new QVector2D(self->toVector2DAffine());
 }
 
-QVector3D* QVector4D_toVector3D(const QVector4D* self) {
-	return new QVector3D(self->toVector3D());
+struct miqt_qvector3d QVector4D_toVector3D(const QVector4D* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->toVector3D());
 }
 
-QVector3D* QVector4D_toVector3DAffine(const QVector4D* self) {
-	return new QVector3D(self->toVector3DAffine());
+struct miqt_qvector3d QVector4D_toVector3DAffine(const QVector4D* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->toVector3DAffine());
 }
 
-QPoint* QVector4D_toPoint(const QVector4D* self) {
-	return new QPoint(self->toPoint());
+struct miqt_qpoint QVector4D_toPoint(const QVector4D* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->toPoint());
 }
 
-QPointF* QVector4D_toPointF(const QVector4D* self) {
-	return new QPointF(self->toPointF());
+struct miqt_qpointf QVector4D_toPointF(const QVector4D* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->toPointF());
 }
 
 QVariant* QVector4D_ToQVariant(const QVector4D* self) {

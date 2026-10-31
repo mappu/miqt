@@ -58,7 +58,6 @@ func main() {
 
 	view.OnResizeEvent(func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent) {
 		rect := scene.ItemsBoundingRect()
-		defer rect.Delete()
 
 		view.FitInView3(rect, qt.KeepAspectRatio)
 	})
@@ -69,7 +68,6 @@ func main() {
 	for x := 0; x < DX; x++ {
 		for y := 0; y < DY; y++ {
 			color := qt.NewQColor11(x, y*3, x*4, 255)
-			defer color.Delete()
 
 			image.SetPixelColor(x, y, color)
 		}
@@ -85,21 +83,18 @@ func main() {
 
 	item.OnMouseMoveEvent(func(super func(event *qt.QGraphicsSceneMouseEvent), event *qt.QGraphicsSceneMouseEvent) {
 		pos := event.Pos()
-		defer pos.Delete()
 
 		drawPixel(item, pos, statusBar)
 	})
 
 	item.OnMousePressEvent(func(super func(event *qt.QGraphicsSceneMouseEvent), event *qt.QGraphicsSceneMouseEvent) {
 		pos := event.Pos()
-		defer pos.Delete()
 
 		drawPixel(item, pos, statusBar)
 	})
 
 	item.OnHoverMoveEvent(func(super func(event *qt.QGraphicsSceneHoverEvent), event *qt.QGraphicsSceneHoverEvent) {
 		pos := event.Pos()
-		defer pos.Delete()
 
 		x := int(pos.X())
 		y := int(pos.Y())
@@ -118,7 +113,6 @@ func main() {
 		}
 
 		colorValue := img.PixelColor(x, y)
-		defer colorValue.Delete()
 
 		r := colorValue.Red()
 		g := colorValue.Green()
@@ -140,7 +134,7 @@ func main() {
 	qt.QApplication_Exec()
 }
 
-func drawPixel(item *qt.QGraphicsPixmapItem, pos *qt.QPointF, statusBar *qt.QStatusBar) {
+func drawPixel(item *qt.QGraphicsPixmapItem, pos qt.QPointF, statusBar *qt.QStatusBar) {
 	x := int(pos.X())
 	y := int(pos.Y())
 
@@ -151,7 +145,6 @@ func drawPixel(item *qt.QGraphicsPixmapItem, pos *qt.QPointF, statusBar *qt.QSta
 	defer img.Delete()
 
 	color := qt.NewQColor11(ReplacementR, ReplacementG, ReplacementB, 255)
-	defer color.Delete()
 
 	height := img.Height()
 	width := img.Width()

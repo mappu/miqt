@@ -45,21 +45,21 @@ int QColormap_size(const QColormap* self) {
 	return self->size();
 }
 
-unsigned int QColormap_pixel(const QColormap* self, QColor* color) {
-	uint _ret = self->pixel(*color);
+unsigned int QColormap_pixel(const QColormap* self, struct miqt_qcolor color) {
+	uint _ret = self->pixel(miqt_from_cabi<QColor>(color));
 	return static_cast<unsigned int>(_ret);
 }
 
-QColor* QColormap_colorAt(const QColormap* self, unsigned int pixel) {
-	return new QColor(self->colorAt(static_cast<uint>(pixel)));
+struct miqt_qcolor QColormap_colorAt(const QColormap* self, unsigned int pixel) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->colorAt(static_cast<uint>(pixel)));
 }
 
-struct miqt_array /* of QColor* */  QColormap_colormap(const QColormap* self) {
+struct miqt_array /* of struct miqt_qcolor */  QColormap_colormap(const QColormap* self) {
 	const QVector<QColor> _ret = self->colormap();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QColor** _arr = static_cast<QColor**>(malloc(sizeof(QColor*) * _ret.length()));
+	struct miqt_qcolor* _arr = static_cast<struct miqt_qcolor*>(malloc(sizeof(struct miqt_qcolor) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QColor(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qcolor>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

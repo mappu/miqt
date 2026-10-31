@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -142,10 +143,8 @@ func QGraphicsView_Tr(s string) string {
 	return _ret
 }
 
-func (this *QGraphicsView) SizeHint() *QSize {
-	_goptr := newQSize(C.QGraphicsView_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsView) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QGraphicsView_sizeHint(this.h))
 }
 
 func (this *QGraphicsView) RenderHints() QPainter__RenderHint {
@@ -220,10 +219,8 @@ func (this *QGraphicsView) SetRubberBandSelectionMode(mode ItemSelectionMode) {
 	C.QGraphicsView_setRubberBandSelectionMode(this.h, (C.int)(mode))
 }
 
-func (this *QGraphicsView) RubberBandRect() *QRect {
-	_goptr := newQRect(C.QGraphicsView_rubberBandRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsView) RubberBandRect() QRect {
+	return libmiqt.ValueCast[QRect](C.QGraphicsView_rubberBandRect(this.h))
 }
 
 func (this *QGraphicsView) CacheMode() QGraphicsView__CacheModeFlag {
@@ -254,15 +251,12 @@ func (this *QGraphicsView) SetScene(scene *QGraphicsScene) {
 	C.QGraphicsView_setScene(this.h, scene.cPointer())
 }
 
-func (this *QGraphicsView) SceneRect() *QRectF {
-	_goptr := newQRectF(C.QGraphicsView_sceneRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsView) SceneRect() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsView_sceneRect(this.h))
 }
 
-func (this *QGraphicsView) SetSceneRect(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsView_setSceneRect(this.h, rect.cPointer())
+func (this *QGraphicsView) SetSceneRect(rect QRectF) {
+	C.QGraphicsView_setSceneRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsView) SetSceneRect2(x float64, y float64, w float64, h float64) {
@@ -310,9 +304,8 @@ func (this *QGraphicsView) Translate(dx float64, dy float64) {
 	C.QGraphicsView_translate(this.h, (C.double)(dx), (C.double)(dy))
 }
 
-func (this *QGraphicsView) CenterOn(pos *QPointF) {
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsView_centerOn(this.h, pos.cPointer())
+func (this *QGraphicsView) CenterOn(pos QPointF) {
+	C.QGraphicsView_centerOn(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
 func (this *QGraphicsView) CenterOn2(x float64, y float64) {
@@ -324,9 +317,8 @@ func (this *QGraphicsView) CenterOnWithItem(item *QGraphicsItem) {
 	C.QGraphicsView_centerOnWithItem(this.h, item.cPointer())
 }
 
-func (this *QGraphicsView) EnsureVisible(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsView_ensureVisible(this.h, rect.cPointer())
+func (this *QGraphicsView) EnsureVisible(rect QRectF) {
+	C.QGraphicsView_ensureVisible(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsView) EnsureVisible2(x float64, y float64, w float64, h float64) {
@@ -338,9 +330,8 @@ func (this *QGraphicsView) EnsureVisibleWithItem(item *QGraphicsItem) {
 	C.QGraphicsView_ensureVisibleWithItem(this.h, item.cPointer())
 }
 
-func (this *QGraphicsView) FitInView(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsView_fitInView(this.h, rect.cPointer())
+func (this *QGraphicsView) FitInView(rect QRectF) {
+	C.QGraphicsView_fitInView(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsView) FitInView2(x float64, y float64, w float64, h float64) {
@@ -367,9 +358,8 @@ func (this *QGraphicsView) Items() []*QGraphicsItem {
 	return _ret
 }
 
-func (this *QGraphicsView) ItemsWithPos(pos *QPoint) []*QGraphicsItem {
-	defer runtime.KeepAlive(pos)
-	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithPos(this.h, pos.cPointer())
+func (this *QGraphicsView) ItemsWithPos(pos QPoint) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -388,9 +378,8 @@ func (this *QGraphicsView) Items2(x int, y int) []*QGraphicsItem {
 	return _ret
 }
 
-func (this *QGraphicsView) ItemsWithRect(rect *QRect) []*QGraphicsItem {
-	defer runtime.KeepAlive(rect)
-	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithRect(this.h, rect.cPointer())
+func (this *QGraphicsView) ItemsWithRect(rect QRect) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -420,20 +409,16 @@ func (this *QGraphicsView) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
 	return _ret
 }
 
-func (this *QGraphicsView) ItemAt(pos *QPoint) *QGraphicsItem {
-	defer runtime.KeepAlive(pos)
-	return newQGraphicsItem(C.QGraphicsView_itemAt(this.h, pos.cPointer()))
+func (this *QGraphicsView) ItemAt(pos QPoint) *QGraphicsItem {
+	return newQGraphicsItem(C.QGraphicsView_itemAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 func (this *QGraphicsView) ItemAt2(x int, y int) *QGraphicsItem {
 	return newQGraphicsItem(C.QGraphicsView_itemAt2(this.h, (C.int)(x), (C.int)(y)))
 }
 
-func (this *QGraphicsView) MapToScene(point *QPoint) *QPointF {
-	defer runtime.KeepAlive(point)
-	_goptr := newQPointF(C.QGraphicsView_mapToScene(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsView) MapToScene(point QPoint) QPointF {
+	return libmiqt.ValueCast[QPointF](C.QGraphicsView_mapToScene(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
 func (this *QGraphicsView) MapToSceneWithPath(path *QPainterPath) *QPainterPath {
@@ -443,11 +428,8 @@ func (this *QGraphicsView) MapToSceneWithPath(path *QPainterPath) *QPainterPath 
 	return _goptr
 }
 
-func (this *QGraphicsView) MapFromScene(point *QPointF) *QPoint {
-	defer runtime.KeepAlive(point)
-	_goptr := newQPoint(C.QGraphicsView_mapFromScene(this.h, point.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsView) MapFromScene(point QPointF) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QGraphicsView_mapFromScene(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QGraphicsView) MapFromSceneWithPath(path *QPainterPath) *QPainterPath {
@@ -457,16 +439,12 @@ func (this *QGraphicsView) MapFromSceneWithPath(path *QPainterPath) *QPainterPat
 	return _goptr
 }
 
-func (this *QGraphicsView) MapToScene2(x int, y int) *QPointF {
-	_goptr := newQPointF(C.QGraphicsView_mapToScene2(this.h, (C.int)(x), (C.int)(y)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsView) MapToScene2(x int, y int) QPointF {
+	return libmiqt.ValueCast[QPointF](C.QGraphicsView_mapToScene2(this.h, (C.int)(x), (C.int)(y)))
 }
 
-func (this *QGraphicsView) MapFromScene2(x float64, y float64) *QPoint {
-	_goptr := newQPoint(C.QGraphicsView_mapFromScene2(this.h, (C.double)(x), (C.double)(y)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsView) MapFromScene2(x float64, y float64) QPoint {
+	return libmiqt.ValueCast[QPoint](C.QGraphicsView_mapFromScene2(this.h, (C.double)(x), (C.double)(y)))
 }
 
 func (this *QGraphicsView) InputMethodQuery(query InputMethodQuery) *QVariant {
@@ -498,12 +476,11 @@ func (this *QGraphicsView) SetForegroundBrush(brush *QBrush) {
 }
 
 func (this *QGraphicsView) UpdateScene(rects []QRectF) {
-	defer runtime.KeepAlive(rects)
-	rects_CArray_ptr := (**C.QRectF)(C.malloc(C.size_t(8 * len(rects))))
+	rects_CArray_ptr := (*C.struct_miqt_qrectf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qrectf{})) * len(rects))))
 	defer C.free(unsafe.Pointer(rects_CArray_ptr))
 	rects_CArray := unsafe.Slice(rects_CArray_ptr, len(rects))
 	for i := range rects {
-		rects_CArray[i] = rects[i].cPointer()
+		rects_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qrectf](rects[i])
 	}
 	rects_ma := C.struct_miqt_array{len: C.size_t(len(rects)), data: unsafe.Pointer(rects_CArray_ptr)}
 	C.QGraphicsView_updateScene(this.h, rects_ma)
@@ -513,40 +490,30 @@ func (this *QGraphicsView) InvalidateScene() {
 	C.QGraphicsView_invalidateScene(this.h)
 }
 
-func (this *QGraphicsView) UpdateSceneRect(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsView_updateSceneRect(this.h, rect.cPointer())
+func (this *QGraphicsView) UpdateSceneRect(rect QRectF) {
+	C.QGraphicsView_updateSceneRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsView) RubberBandChanged(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF) {
-	defer runtime.KeepAlive(viewportRect)
-	defer runtime.KeepAlive(fromScenePoint)
-	defer runtime.KeepAlive(toScenePoint)
-	C.QGraphicsView_rubberBandChanged(this.h, viewportRect.cPointer(), fromScenePoint.cPointer(), toScenePoint.cPointer())
+	C.QGraphicsView_rubberBandChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](viewportRect), libmiqt.ValueCast[C.struct_miqt_qpointf](fromScenePoint), libmiqt.ValueCast[C.struct_miqt_qpointf](toScenePoint))
 }
 func (this *QGraphicsView) OnRubberBandChanged(slot func(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF)) {
 	C.QGraphicsView_connect_rubberBandChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsView_rubberBandChanged
-func miqt_exec_callback_QGraphicsView_rubberBandChanged(cb C.intptr_t, viewportRect *C.QRect, fromScenePoint *C.QPointF, toScenePoint *C.QPointF) {
+func miqt_exec_callback_QGraphicsView_rubberBandChanged(cb C.intptr_t, viewportRect C.struct_miqt_qrect, fromScenePoint C.struct_miqt_qpointf, toScenePoint C.struct_miqt_qpointf) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(viewportRect QRect, fromScenePoint QPointF, toScenePoint QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	viewportRect_goptr := newQRect(viewportRect)
-	viewportRect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *viewportRect_goptr
+	slotval1 := libmiqt.ValueCast[QRect](viewportRect)
 
-	fromScenePoint_goptr := newQPointF(fromScenePoint)
-	fromScenePoint_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval2 := *fromScenePoint_goptr
+	slotval2 := libmiqt.ValueCast[QPointF](fromScenePoint)
 
-	toScenePoint_goptr := newQPointF(toScenePoint)
-	toScenePoint_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval3 := *toScenePoint_goptr
+	slotval3 := libmiqt.ValueCast[QPointF](toScenePoint)
 
 	gofunc(slotval1, slotval2, slotval3)
 }
@@ -586,14 +553,12 @@ func (this *QGraphicsView) SetTransform2(matrix *QTransform, combine bool) {
 	C.QGraphicsView_setTransform2(this.h, matrix.cPointer(), (C.bool)(combine))
 }
 
-func (this *QGraphicsView) EnsureVisible3(rect *QRectF, xmargin int) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsView_ensureVisible3(this.h, rect.cPointer(), (C.int)(xmargin))
+func (this *QGraphicsView) EnsureVisible3(rect QRectF, xmargin int) {
+	C.QGraphicsView_ensureVisible3(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(xmargin))
 }
 
-func (this *QGraphicsView) EnsureVisible4(rect *QRectF, xmargin int, ymargin int) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsView_ensureVisible4(this.h, rect.cPointer(), (C.int)(xmargin), (C.int)(ymargin))
+func (this *QGraphicsView) EnsureVisible4(rect QRectF, xmargin int, ymargin int) {
+	C.QGraphicsView_ensureVisible4(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(xmargin), (C.int)(ymargin))
 }
 
 func (this *QGraphicsView) EnsureVisible5(x float64, y float64, w float64, h float64, xmargin int) {
@@ -614,9 +579,8 @@ func (this *QGraphicsView) EnsureVisible8(item *QGraphicsItem, xmargin int, ymar
 	C.QGraphicsView_ensureVisible8(this.h, item.cPointer(), (C.int)(xmargin), (C.int)(ymargin))
 }
 
-func (this *QGraphicsView) FitInView3(rect *QRectF, aspectRadioMode AspectRatioMode) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsView_fitInView3(this.h, rect.cPointer(), (C.int)(aspectRadioMode))
+func (this *QGraphicsView) FitInView3(rect QRectF, aspectRadioMode AspectRatioMode) {
+	C.QGraphicsView_fitInView3(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(aspectRadioMode))
 }
 
 func (this *QGraphicsView) FitInView4(x float64, y float64, w float64, h float64, aspectRadioMode AspectRatioMode) {
@@ -628,29 +592,23 @@ func (this *QGraphicsView) FitInView5(item *QGraphicsItem, aspectRadioMode Aspec
 	C.QGraphicsView_fitInView5(this.h, item.cPointer(), (C.int)(aspectRadioMode))
 }
 
-func (this *QGraphicsView) Render2(painter *QPainter, target *QRectF) {
+func (this *QGraphicsView) Render2(painter *QPainter, target QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(target)
-	C.QGraphicsView_render2(this.h, painter.cPointer(), target.cPointer())
+	C.QGraphicsView_render2(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](target))
 }
 
-func (this *QGraphicsView) Render3(painter *QPainter, target *QRectF, source *QRect) {
+func (this *QGraphicsView) Render3(painter *QPainter, target QRectF, source QRect) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(target)
-	defer runtime.KeepAlive(source)
-	C.QGraphicsView_render3(this.h, painter.cPointer(), target.cPointer(), source.cPointer())
+	C.QGraphicsView_render3(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](target), libmiqt.ValueCast[C.struct_miqt_qrect](source))
 }
 
-func (this *QGraphicsView) Render4(painter *QPainter, target *QRectF, source *QRect, aspectRatioMode AspectRatioMode) {
+func (this *QGraphicsView) Render4(painter *QPainter, target QRectF, source QRect, aspectRatioMode AspectRatioMode) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(target)
-	defer runtime.KeepAlive(source)
-	C.QGraphicsView_render4(this.h, painter.cPointer(), target.cPointer(), source.cPointer(), (C.int)(aspectRatioMode))
+	C.QGraphicsView_render4(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](target), libmiqt.ValueCast[C.struct_miqt_qrect](source), (C.int)(aspectRatioMode))
 }
 
-func (this *QGraphicsView) Items4(rect *QRect, mode ItemSelectionMode) []*QGraphicsItem {
-	defer runtime.KeepAlive(rect)
-	var _ma C.struct_miqt_array = C.QGraphicsView_items4(this.h, rect.cPointer(), (C.int)(mode))
+func (this *QGraphicsView) Items4(rect QRect, mode ItemSelectionMode) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsView_items4(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
@@ -680,14 +638,12 @@ func (this *QGraphicsView) Items7(path *QPainterPath, mode ItemSelectionMode) []
 	return _ret
 }
 
-func (this *QGraphicsView) InvalidateSceneWithRect(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsView_invalidateSceneWithRect(this.h, rect.cPointer())
+func (this *QGraphicsView) InvalidateSceneWithRect(rect QRectF) {
+	C.QGraphicsView_invalidateSceneWithRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
-func (this *QGraphicsView) InvalidateScene2(rect *QRectF, layers QGraphicsScene__SceneLayer) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsView_invalidateScene2(this.h, rect.cPointer(), (C.int)(layers))
+func (this *QGraphicsView) InvalidateScene2(rect QRectF, layers QGraphicsScene__SceneLayer) {
+	C.QGraphicsView_invalidateScene2(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(layers))
 }
 
 // SetViewportMargins can only be called from a QGraphicsView that was directly constructed.
@@ -706,9 +662,7 @@ func (this *QGraphicsView) SetViewportMargins(left int, top int, right int, bott
 func (this *QGraphicsView) ViewportMargins() QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQMargins(C.QGraphicsView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QMargins](C.QGraphicsView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -854,14 +808,12 @@ func (this *QGraphicsView) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QGraphicsView) callVirtualBase_SizeHint() *QSize {
+func (this *QGraphicsView) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QGraphicsView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QGraphicsView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsView) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QGraphicsView) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QGraphicsView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -869,16 +821,15 @@ func (this *QGraphicsView) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QGraphicsView_sizeHint
-func miqt_exec_callback_QGraphicsView_sizeHint(self *C.QGraphicsView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QGraphicsView_sizeHint(self *C.QGraphicsView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsView_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1539,14 +1490,13 @@ func miqt_exec_callback_QGraphicsView_inputMethodEvent(self *C.QGraphicsView, cb
 
 }
 
-func (this *QGraphicsView) callVirtualBase_DrawBackground(painter *QPainter, rect *QRectF) {
+func (this *QGraphicsView) callVirtualBase_DrawBackground(painter *QPainter, rect QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 
-	C.QGraphicsView_virtualbase_drawBackground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
+	C.QGraphicsView_virtualbase_drawBackground(unsafe.Pointer(this.h), painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsView) OnDrawBackground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
+func (this *QGraphicsView) OnDrawBackground(slot func(super func(painter *QPainter, rect QRectF), painter *QPainter, rect QRectF)) {
 	ok := C.QGraphicsView_override_virtual_drawBackground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1554,8 +1504,8 @@ func (this *QGraphicsView) OnDrawBackground(slot func(super func(painter *QPaint
 }
 
 //export miqt_exec_callback_QGraphicsView_drawBackground
-func miqt_exec_callback_QGraphicsView_drawBackground(self *C.QGraphicsView, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF))
+func miqt_exec_callback_QGraphicsView_drawBackground(self *C.QGraphicsView, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect QRectF), painter *QPainter, rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1563,20 +1513,19 @@ func miqt_exec_callback_QGraphicsView_drawBackground(self *C.QGraphicsView, cb C
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQRectF(rect)
+	slotval2 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_DrawBackground, slotval1, slotval2)
 
 }
 
-func (this *QGraphicsView) callVirtualBase_DrawForeground(painter *QPainter, rect *QRectF) {
+func (this *QGraphicsView) callVirtualBase_DrawForeground(painter *QPainter, rect QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 
-	C.QGraphicsView_virtualbase_drawForeground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
+	C.QGraphicsView_virtualbase_drawForeground(unsafe.Pointer(this.h), painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsView) OnDrawForeground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
+func (this *QGraphicsView) OnDrawForeground(slot func(super func(painter *QPainter, rect QRectF), painter *QPainter, rect QRectF)) {
 	ok := C.QGraphicsView_override_virtual_drawForeground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1584,8 +1533,8 @@ func (this *QGraphicsView) OnDrawForeground(slot func(super func(painter *QPaint
 }
 
 //export miqt_exec_callback_QGraphicsView_drawForeground
-func miqt_exec_callback_QGraphicsView_drawForeground(self *C.QGraphicsView, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF))
+func miqt_exec_callback_QGraphicsView_drawForeground(self *C.QGraphicsView, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect QRectF), painter *QPainter, rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1593,20 +1542,18 @@ func miqt_exec_callback_QGraphicsView_drawForeground(self *C.QGraphicsView, cb C
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQRectF(rect)
+	slotval2 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc((&QGraphicsView{h: self}).callVirtualBase_DrawForeground, slotval1, slotval2)
 
 }
 
-func (this *QGraphicsView) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QGraphicsView) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QGraphicsView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QGraphicsView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsView) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QGraphicsView) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QGraphicsView_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1614,16 +1561,15 @@ func (this *QGraphicsView) OnMinimumSizeHint(slot func(super func() *QSize) *QSi
 }
 
 //export miqt_exec_callback_QGraphicsView_minimumSizeHint
-func miqt_exec_callback_QGraphicsView_minimumSizeHint(self *C.QGraphicsView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QGraphicsView_minimumSizeHint(self *C.QGraphicsView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsView_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1658,14 +1604,12 @@ func miqt_exec_callback_QGraphicsView_eventFilter(self *C.QGraphicsView, cb C.in
 
 }
 
-func (this *QGraphicsView) callVirtualBase_ViewportSizeHint() *QSize {
+func (this *QGraphicsView) callVirtualBase_ViewportSizeHint() QSize {
 
-	_goptr := newQSize(C.QGraphicsView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QGraphicsView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsView) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QGraphicsView) OnViewportSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QGraphicsView_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1673,16 +1617,15 @@ func (this *QGraphicsView) OnViewportSizeHint(slot func(super func() *QSize) *QS
 }
 
 //export miqt_exec_callback_QGraphicsView_viewportSizeHint
-func miqt_exec_callback_QGraphicsView_viewportSizeHint(self *C.QGraphicsView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QGraphicsView_viewportSizeHint(self *C.QGraphicsView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsView_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -2156,7 +2099,6 @@ func miqt_exec_callback_QGraphicsView_initPainter(self *C.QGraphicsView, cb C.in
 }
 
 func (this *QGraphicsView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QGraphicsView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

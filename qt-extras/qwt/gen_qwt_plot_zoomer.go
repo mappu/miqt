@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -115,21 +116,16 @@ func (this *QwtPlotZoomer) SetZoomBase(doReplot bool) {
 	C.QwtPlotZoomer_setZoomBase(this.h, (C.bool)(doReplot))
 }
 
-func (this *QwtPlotZoomer) SetZoomBaseWithZoomBase(zoomBase *qt.QRectF) {
-	defer runtime.KeepAlive(zoomBase)
-	C.QwtPlotZoomer_setZoomBaseWithZoomBase(this.h, (*C.QRectF)(zoomBase.UnsafePointer()))
+func (this *QwtPlotZoomer) SetZoomBaseWithZoomBase(zoomBase qt.QRectF) {
+	C.QwtPlotZoomer_setZoomBaseWithZoomBase(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](zoomBase))
 }
 
-func (this *QwtPlotZoomer) ZoomBase() *qt.QRectF {
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotZoomer_zoomBase(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtPlotZoomer) ZoomBase() qt.QRectF {
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotZoomer_zoomBase(this.h))
 }
 
-func (this *QwtPlotZoomer) ZoomRect() *qt.QRectF {
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotZoomer_zoomRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtPlotZoomer) ZoomRect() qt.QRectF {
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotZoomer_zoomRect(this.h))
 }
 
 func (this *QwtPlotZoomer) SetAxis(xAxis int, yAxis int) {
@@ -152,37 +148,34 @@ func (this *QwtPlotZoomer) MoveBy(dx float64, dy float64) {
 	C.QwtPlotZoomer_moveBy(this.h, (C.double)(dx), (C.double)(dy))
 }
 
-func (this *QwtPlotZoomer) MoveTo(param1 *qt.QPointF) {
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotZoomer_moveTo(this.h, (*C.QPointF)(param1.UnsafePointer()))
+func (this *QwtPlotZoomer) MoveTo(param1 qt.QPointF) {
+	C.QwtPlotZoomer_moveTo(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](param1))
 }
 
-func (this *QwtPlotZoomer) Zoom(param1 *qt.QRectF) {
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotZoomer_zoom(this.h, (*C.QRectF)(param1.UnsafePointer()))
+func (this *QwtPlotZoomer) Zoom(param1 qt.QRectF) {
+	C.QwtPlotZoomer_zoom(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1))
 }
 
 func (this *QwtPlotZoomer) ZoomWithOffset(offset int) {
 	C.QwtPlotZoomer_zoomWithOffset(this.h, (C.int)(offset))
 }
 
-func (this *QwtPlotZoomer) Zoomed(rect *qt.QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QwtPlotZoomer_zoomed(this.h, (*C.QRectF)(rect.UnsafePointer()))
+func (this *QwtPlotZoomer) Zoomed(rect qt.QRectF) {
+	C.QwtPlotZoomer_zoomed(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
-func (this *QwtPlotZoomer) OnZoomed(slot func(rect *qt.QRectF)) {
+func (this *QwtPlotZoomer) OnZoomed(slot func(rect qt.QRectF)) {
 	C.QwtPlotZoomer_connect_zoomed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_zoomed
-func miqt_exec_callback_QwtPlotZoomer_zoomed(cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(rect *qt.QRectF))
+func miqt_exec_callback_QwtPlotZoomer_zoomed(cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rect qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](rect)
 
 	gofunc(slotval1)
 }
@@ -235,9 +228,7 @@ func QwtPlotZoomer_TrUtf83(s string, c string, n int) string {
 func (this *QwtPlotZoomer) ScaleRect() qt.QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotZoomer_protectedbase_scaleRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRectF](C.QwtPlotZoomer_protectedbase_scaleRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -248,13 +239,10 @@ func (this *QwtPlotZoomer) ScaleRect() qt.QRectF {
 }
 
 // InvTransform can only be called from a QwtPlotZoomer that was directly constructed.
-func (this *QwtPlotZoomer) InvTransform(param1 *qt.QRect) qt.QRectF {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotZoomer) InvTransform(param1 qt.QRect) qt.QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotZoomer_protectedbase_invTransform(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRectF](C.QwtPlotZoomer_protectedbase_invTransform(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -265,13 +253,10 @@ func (this *QwtPlotZoomer) InvTransform(param1 *qt.QRect) qt.QRectF {
 }
 
 // Transform can only be called from a QwtPlotZoomer that was directly constructed.
-func (this *QwtPlotZoomer) Transform(param1 *qt.QRectF) qt.QRect {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotZoomer) Transform(param1 qt.QRectF) qt.QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPlotZoomer_protectedbase_transform(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRect](C.QwtPlotZoomer_protectedbase_transform(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -394,13 +379,12 @@ func miqt_exec_callback_QwtPlotZoomer_setZoomBase(self *C.QwtPlotZoomer, cb C.in
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_SetZoomBaseWithZoomBase(zoomBase *qt.QRectF) {
-	defer runtime.KeepAlive(zoomBase)
+func (this *QwtPlotZoomer) callVirtualBase_SetZoomBaseWithZoomBase(zoomBase qt.QRectF) {
 
-	C.QwtPlotZoomer_virtualbase_setZoomBaseWithZoomBase(unsafe.Pointer(this.h), (*C.QRectF)(zoomBase.UnsafePointer()))
+	C.QwtPlotZoomer_virtualbase_setZoomBaseWithZoomBase(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](zoomBase))
 
 }
-func (this *QwtPlotZoomer) OnSetZoomBaseWithZoomBase(slot func(super func(zoomBase *qt.QRectF), zoomBase *qt.QRectF)) {
+func (this *QwtPlotZoomer) OnSetZoomBaseWithZoomBase(slot func(super func(zoomBase qt.QRectF), zoomBase qt.QRectF)) {
 	ok := C.QwtPlotZoomer_override_virtual_setZoomBaseWithZoomBase(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -408,14 +392,14 @@ func (this *QwtPlotZoomer) OnSetZoomBaseWithZoomBase(slot func(super func(zoomBa
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_setZoomBaseWithZoomBase
-func miqt_exec_callback_QwtPlotZoomer_setZoomBaseWithZoomBase(self *C.QwtPlotZoomer, cb C.intptr_t, zoomBase *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(zoomBase *qt.QRectF), zoomBase *qt.QRectF))
+func miqt_exec_callback_QwtPlotZoomer_setZoomBaseWithZoomBase(self *C.QwtPlotZoomer, cb C.intptr_t, zoomBase C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(zoomBase qt.QRectF), zoomBase qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(zoomBase))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](zoomBase)
 
 	gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_SetZoomBaseWithZoomBase, slotval1)
 
@@ -449,13 +433,12 @@ func miqt_exec_callback_QwtPlotZoomer_setAxis(self *C.QwtPlotZoomer, cb C.intptr
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_MoveTo(param1 *qt.QPointF) {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotZoomer) callVirtualBase_MoveTo(param1 qt.QPointF) {
 
-	C.QwtPlotZoomer_virtualbase_moveTo(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer()))
+	C.QwtPlotZoomer_virtualbase_moveTo(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](param1))
 
 }
-func (this *QwtPlotZoomer) OnMoveTo(slot func(super func(param1 *qt.QPointF), param1 *qt.QPointF)) {
+func (this *QwtPlotZoomer) OnMoveTo(slot func(super func(param1 qt.QPointF), param1 qt.QPointF)) {
 	ok := C.QwtPlotZoomer_override_virtual_moveTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -463,26 +446,25 @@ func (this *QwtPlotZoomer) OnMoveTo(slot func(super func(param1 *qt.QPointF), pa
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_moveTo
-func miqt_exec_callback_QwtPlotZoomer_moveTo(self *C.QwtPlotZoomer, cb C.intptr_t, param1 *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPointF), param1 *qt.QPointF))
+func miqt_exec_callback_QwtPlotZoomer_moveTo(self *C.QwtPlotZoomer, cb C.intptr_t, param1 C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPointF), param1 qt.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](param1)
 
 	gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_MoveTo, slotval1)
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_Zoom(param1 *qt.QRectF) {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotZoomer) callVirtualBase_Zoom(param1 qt.QRectF) {
 
-	C.QwtPlotZoomer_virtualbase_zoom(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))
+	C.QwtPlotZoomer_virtualbase_zoom(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1))
 
 }
-func (this *QwtPlotZoomer) OnZoom(slot func(super func(param1 *qt.QRectF), param1 *qt.QRectF)) {
+func (this *QwtPlotZoomer) OnZoom(slot func(super func(param1 qt.QRectF), param1 qt.QRectF)) {
 	ok := C.QwtPlotZoomer_override_virtual_zoom(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -490,14 +472,14 @@ func (this *QwtPlotZoomer) OnZoom(slot func(super func(param1 *qt.QRectF), param
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_zoom
-func miqt_exec_callback_QwtPlotZoomer_zoom(self *C.QwtPlotZoomer, cb C.intptr_t, param1 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF), param1 *qt.QRectF))
+func miqt_exec_callback_QwtPlotZoomer_zoom(self *C.QwtPlotZoomer, cb C.intptr_t, param1 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF), param1 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_Zoom, slotval1)
 
@@ -552,14 +534,12 @@ func miqt_exec_callback_QwtPlotZoomer_rescale(self *C.QwtPlotZoomer, cb C.intptr
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_MinZoomSize() *qt.QSizeF {
+func (this *QwtPlotZoomer) callVirtualBase_MinZoomSize() qt.QSizeF {
 
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtPlotZoomer_virtualbase_minZoomSize(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtPlotZoomer_virtualbase_minZoomSize(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtPlotZoomer) OnMinZoomSize(slot func(super func() *qt.QSizeF) *qt.QSizeF) {
+func (this *QwtPlotZoomer) OnMinZoomSize(slot func(super func() qt.QSizeF) qt.QSizeF) {
 	ok := C.QwtPlotZoomer_override_virtual_minZoomSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -567,16 +547,15 @@ func (this *QwtPlotZoomer) OnMinZoomSize(slot func(super func() *qt.QSizeF) *qt.
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_minZoomSize
-func miqt_exec_callback_QwtPlotZoomer_minZoomSize(self *C.QwtPlotZoomer, cb C.intptr_t) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSizeF) *qt.QSizeF)
+func miqt_exec_callback_QwtPlotZoomer_minZoomSize(self *C.QwtPlotZoomer, cb C.intptr_t) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSizeF) qt.QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_MinZoomSize)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtPlotZoomer_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 
@@ -685,15 +664,14 @@ func miqt_exec_callback_QwtPlotZoomer_end(self *C.QwtPlotZoomer, cb C.intptr_t, 
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_TrackerText(param1 *qt.QPoint) *QwtText {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotZoomer) callVirtualBase_TrackerText(param1 qt.QPoint) *QwtText {
 
-	_goptr := newQwtText(C.QwtPlotZoomer_virtualbase_trackerText(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer())))
+	_goptr := newQwtText(C.QwtPlotZoomer_virtualbase_trackerText(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QwtPlotZoomer) OnTrackerText(slot func(super func(param1 *qt.QPoint) *QwtText, param1 *qt.QPoint) *QwtText) {
+func (this *QwtPlotZoomer) OnTrackerText(slot func(super func(param1 qt.QPoint) *QwtText, param1 qt.QPoint) *QwtText) {
 	ok := C.QwtPlotZoomer_override_virtual_trackerText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -701,14 +679,14 @@ func (this *QwtPlotZoomer) OnTrackerText(slot func(super func(param1 *qt.QPoint)
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_trackerText
-func miqt_exec_callback_QwtPlotZoomer_trackerText(self *C.QwtPlotZoomer, cb C.intptr_t, param1 *C.QPoint) *C.QwtText {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint) *QwtText, param1 *qt.QPoint) *QwtText)
+func miqt_exec_callback_QwtPlotZoomer_trackerText(self *C.QwtPlotZoomer, cb C.intptr_t, param1 C.struct_miqt_qpoint) *C.QwtText {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint) *QwtText, param1 qt.QPoint) *QwtText)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_TrackerText, slotval1)
 	defer runtime.KeepAlive(virtualReturn)
@@ -717,15 +695,14 @@ func miqt_exec_callback_QwtPlotZoomer_trackerText(self *C.QwtPlotZoomer, cb C.in
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_TrackerTextF(param1 *qt.QPointF) *QwtText {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotZoomer) callVirtualBase_TrackerTextF(param1 qt.QPointF) *QwtText {
 
-	_goptr := newQwtText(C.QwtPlotZoomer_virtualbase_trackerTextF(unsafe.Pointer(this.h), (*C.QPointF)(param1.UnsafePointer())))
+	_goptr := newQwtText(C.QwtPlotZoomer_virtualbase_trackerTextF(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QwtPlotZoomer) OnTrackerTextF(slot func(super func(param1 *qt.QPointF) *QwtText, param1 *qt.QPointF) *QwtText) {
+func (this *QwtPlotZoomer) OnTrackerTextF(slot func(super func(param1 qt.QPointF) *QwtText, param1 qt.QPointF) *QwtText) {
 	ok := C.QwtPlotZoomer_override_virtual_trackerTextF(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -733,14 +710,14 @@ func (this *QwtPlotZoomer) OnTrackerTextF(slot func(super func(param1 *qt.QPoint
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_trackerTextF
-func miqt_exec_callback_QwtPlotZoomer_trackerTextF(self *C.QwtPlotZoomer, cb C.intptr_t, param1 *C.QPointF) *C.QwtText {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPointF) *QwtText, param1 *qt.QPointF) *QwtText)
+func miqt_exec_callback_QwtPlotZoomer_trackerTextF(self *C.QwtPlotZoomer, cb C.intptr_t, param1 C.struct_miqt_qpointf) *C.QwtText {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPointF) *QwtText, param1 qt.QPointF) *QwtText)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](param1)
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_TrackerTextF, slotval1)
 	defer runtime.KeepAlive(virtualReturn)
@@ -749,13 +726,12 @@ func miqt_exec_callback_QwtPlotZoomer_trackerTextF(self *C.QwtPlotZoomer, cb C.i
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_Move(param1 *qt.QPoint) {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotZoomer) callVirtualBase_Move(param1 qt.QPoint) {
 
-	C.QwtPlotZoomer_virtualbase_move(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
+	C.QwtPlotZoomer_virtualbase_move(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1))
 
 }
-func (this *QwtPlotZoomer) OnMove(slot func(super func(param1 *qt.QPoint), param1 *qt.QPoint)) {
+func (this *QwtPlotZoomer) OnMove(slot func(super func(param1 qt.QPoint), param1 qt.QPoint)) {
 	ok := C.QwtPlotZoomer_override_virtual_move(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -763,26 +739,25 @@ func (this *QwtPlotZoomer) OnMove(slot func(super func(param1 *qt.QPoint), param
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_move
-func miqt_exec_callback_QwtPlotZoomer_move(self *C.QwtPlotZoomer, cb C.intptr_t, param1 *C.QPoint) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint), param1 *qt.QPoint))
+func miqt_exec_callback_QwtPlotZoomer_move(self *C.QwtPlotZoomer, cb C.intptr_t, param1 C.struct_miqt_qpoint) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint), param1 qt.QPoint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_Move, slotval1)
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_Append(param1 *qt.QPoint) {
-	defer runtime.KeepAlive(param1)
+func (this *QwtPlotZoomer) callVirtualBase_Append(param1 qt.QPoint) {
 
-	C.QwtPlotZoomer_virtualbase_append(unsafe.Pointer(this.h), (*C.QPoint)(param1.UnsafePointer()))
+	C.QwtPlotZoomer_virtualbase_append(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](param1))
 
 }
-func (this *QwtPlotZoomer) OnAppend(slot func(super func(param1 *qt.QPoint), param1 *qt.QPoint)) {
+func (this *QwtPlotZoomer) OnAppend(slot func(super func(param1 qt.QPoint), param1 qt.QPoint)) {
 	ok := C.QwtPlotZoomer_override_virtual_append(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -790,14 +765,14 @@ func (this *QwtPlotZoomer) OnAppend(slot func(super func(param1 *qt.QPoint), par
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_append
-func miqt_exec_callback_QwtPlotZoomer_append(self *C.QwtPlotZoomer, cb C.intptr_t, param1 *C.QPoint) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPoint), param1 *qt.QPoint))
+func miqt_exec_callback_QwtPlotZoomer_append(self *C.QwtPlotZoomer, cb C.intptr_t, param1 C.struct_miqt_qpoint) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPoint), param1 qt.QPoint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QPoint](param1)
 
 	gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_Append, slotval1)
 
@@ -944,15 +919,13 @@ func miqt_exec_callback_QwtPlotZoomer_rubberBandMask(self *C.QwtPlotZoomer, cb C
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_TrackerRect(param1 *qt.QFont) *qt.QRect {
+func (this *QwtPlotZoomer) callVirtualBase_TrackerRect(param1 *qt.QFont) qt.QRect {
 	defer runtime.KeepAlive(param1)
 
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtPlotZoomer_virtualbase_trackerRect(unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QwtPlotZoomer_virtualbase_trackerRect(unsafe.Pointer(this.h), (*C.QFont)(param1.UnsafePointer())))
 
 }
-func (this *QwtPlotZoomer) OnTrackerRect(slot func(super func(param1 *qt.QFont) *qt.QRect, param1 *qt.QFont) *qt.QRect) {
+func (this *QwtPlotZoomer) OnTrackerRect(slot func(super func(param1 *qt.QFont) qt.QRect, param1 *qt.QFont) qt.QRect) {
 	ok := C.QwtPlotZoomer_override_virtual_trackerRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -960,8 +933,8 @@ func (this *QwtPlotZoomer) OnTrackerRect(slot func(super func(param1 *qt.QFont) 
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_trackerRect
-func miqt_exec_callback_QwtPlotZoomer_trackerRect(self *C.QwtPlotZoomer, cb C.intptr_t, param1 *C.QFont) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QFont) *qt.QRect, param1 *qt.QFont) *qt.QRect)
+func miqt_exec_callback_QwtPlotZoomer_trackerRect(self *C.QwtPlotZoomer, cb C.intptr_t, param1 *C.QFont) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QFont) qt.QRect, param1 *qt.QFont) qt.QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -970,9 +943,8 @@ func miqt_exec_callback_QwtPlotZoomer_trackerRect(self *C.QwtPlotZoomer, cb C.in
 	slotval1 := qt.UnsafeNewQFont(unsafe.Pointer(param1))
 
 	virtualReturn := gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_TrackerRect, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtPlotZoomer_virtualreturncopy_QRect((*C.QRect)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
 
@@ -1238,14 +1210,12 @@ func miqt_exec_callback_QwtPlotZoomer_widgetLeaveEvent(self *C.QwtPlotZoomer, cb
 
 }
 
-func (this *QwtPlotZoomer) callVirtualBase_StretchSelection(oldSize *qt.QSize, newSize *qt.QSize) {
-	defer runtime.KeepAlive(oldSize)
-	defer runtime.KeepAlive(newSize)
+func (this *QwtPlotZoomer) callVirtualBase_StretchSelection(oldSize qt.QSize, newSize qt.QSize) {
 
-	C.QwtPlotZoomer_virtualbase_stretchSelection(unsafe.Pointer(this.h), (*C.QSize)(oldSize.UnsafePointer()), (*C.QSize)(newSize.UnsafePointer()))
+	C.QwtPlotZoomer_virtualbase_stretchSelection(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsize](oldSize), libmiqt.ValueCast[C.struct_miqt_qsize](newSize))
 
 }
-func (this *QwtPlotZoomer) OnStretchSelection(slot func(super func(oldSize *qt.QSize, newSize *qt.QSize), oldSize *qt.QSize, newSize *qt.QSize)) {
+func (this *QwtPlotZoomer) OnStretchSelection(slot func(super func(oldSize qt.QSize, newSize qt.QSize), oldSize qt.QSize, newSize qt.QSize)) {
 	ok := C.QwtPlotZoomer_override_virtual_stretchSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1253,16 +1223,16 @@ func (this *QwtPlotZoomer) OnStretchSelection(slot func(super func(oldSize *qt.Q
 }
 
 //export miqt_exec_callback_QwtPlotZoomer_stretchSelection
-func miqt_exec_callback_QwtPlotZoomer_stretchSelection(self *C.QwtPlotZoomer, cb C.intptr_t, oldSize *C.QSize, newSize *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(oldSize *qt.QSize, newSize *qt.QSize), oldSize *qt.QSize, newSize *qt.QSize))
+func miqt_exec_callback_QwtPlotZoomer_stretchSelection(self *C.QwtPlotZoomer, cb C.intptr_t, oldSize C.struct_miqt_qsize, newSize C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(oldSize qt.QSize, newSize qt.QSize), oldSize qt.QSize, newSize qt.QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSize(unsafe.Pointer(oldSize))
+	slotval1 := libmiqt.ValueCast[qt.QSize](oldSize)
 
-	slotval2 := qt.UnsafeNewQSize(unsafe.Pointer(newSize))
+	slotval2 := libmiqt.ValueCast[qt.QSize](newSize)
 
 	gofunc((&QwtPlotZoomer{h: self}).callVirtualBase_StretchSelection, slotval1, slotval2)
 

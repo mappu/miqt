@@ -43,20 +43,20 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QwtDial_setOrigin(QwtDial*, intptr_t, double);
-QRect* miqt_exec_callback_QwtDial_scaleInnerRect(const QwtDial*, intptr_t);
-QSize* miqt_exec_callback_QwtDial_sizeHint(const QwtDial*, intptr_t);
-QSize* miqt_exec_callback_QwtDial_minimumSizeHint(const QwtDial*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QwtDial_scaleInnerRect(const QwtDial*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtDial_sizeHint(const QwtDial*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtDial_minimumSizeHint(const QwtDial*, intptr_t);
 void miqt_exec_callback_QwtDial_wheelEvent(QwtDial*, intptr_t, QWheelEvent*);
 void miqt_exec_callback_QwtDial_paintEvent(QwtDial*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QwtDial_changeEvent(QwtDial*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtDial_drawFrame(QwtDial*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtDial_drawContents(const QwtDial*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtDial_drawFocusIndicator(const QwtDial*, intptr_t, QPainter*);
-void miqt_exec_callback_QwtDial_drawScale(const QwtDial*, intptr_t, QPainter*, QPointF*, double);
-void miqt_exec_callback_QwtDial_drawScaleContents(const QwtDial*, intptr_t, QPainter*, QPointF*, double);
-void miqt_exec_callback_QwtDial_drawNeedle(const QwtDial*, intptr_t, QPainter*, QPointF*, double, double, int);
-double miqt_exec_callback_QwtDial_scrolledTo(const QwtDial*, intptr_t, QPoint*);
-bool miqt_exec_callback_QwtDial_isScrollPosition(const QwtDial*, intptr_t, QPoint*);
+void miqt_exec_callback_QwtDial_drawScale(const QwtDial*, intptr_t, QPainter*, struct miqt_qpointf, double);
+void miqt_exec_callback_QwtDial_drawScaleContents(const QwtDial*, intptr_t, QPainter*, struct miqt_qpointf, double);
+void miqt_exec_callback_QwtDial_drawNeedle(const QwtDial*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
+double miqt_exec_callback_QwtDial_scrolledTo(const QwtDial*, intptr_t, struct miqt_qpoint);
+bool miqt_exec_callback_QwtDial_isScrollPosition(const QwtDial*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QwtDial_sliderChange(QwtDial*, intptr_t);
 void miqt_exec_callback_QwtDial_scaleChange(QwtDial*, intptr_t);
 void miqt_exec_callback_QwtDial_mousePressEvent(QwtDial*, intptr_t, QMouseEvent*);
@@ -139,13 +139,11 @@ public:
 			return QwtDial::scaleInnerRect();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QwtDial_scaleInnerRect(this, handle__scaleInnerRect);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QwtDial_scaleInnerRect(this, handle__scaleInnerRect);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QwtDial_virtualbase_scaleInnerRect(const void* self);
+	friend struct miqt_qrect QwtDial_virtualbase_scaleInnerRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -156,13 +154,11 @@ public:
 			return QwtDial::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtDial_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtDial_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtDial_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtDial_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -173,13 +169,11 @@ public:
 			return QwtDial::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtDial_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtDial_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtDial_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtDial_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -294,15 +288,13 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = radius;
 		miqt_exec_callback_QwtDial_drawScale(this, handle__drawScale, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtDial_virtualbase_drawScale(const void* self, QPainter* param1, QPointF* center, double radius);
+	friend void QwtDial_virtualbase_drawScale(const void* self, QPainter* param1, struct miqt_qpointf center, double radius);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawScaleContents = 0;
@@ -315,15 +307,13 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = radius;
 		miqt_exec_callback_QwtDial_drawScaleContents(this, handle__drawScaleContents, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QwtDial_virtualbase_drawScaleContents(const void* self, QPainter* painter, QPointF* center, double radius);
+	friend void QwtDial_virtualbase_drawScaleContents(const void* self, QPainter* painter, struct miqt_qpointf center, double radius);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawNeedle = 0;
@@ -336,9 +326,7 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QPointF& param2_ret = param2;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&param2_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(param2);
 		double sigval3 = radius;
 		double sigval4 = direction;
 		QPalette::ColorGroup param5_ret = param5;
@@ -347,7 +335,7 @@ public:
 
 	}
 
-	friend void QwtDial_virtualbase_drawNeedle(const void* self, QPainter* param1, QPointF* param2, double radius, double direction, int param5);
+	friend void QwtDial_virtualbase_drawNeedle(const void* self, QPainter* param1, struct miqt_qpointf param2, double radius, double direction, int param5);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrolledTo = 0;
@@ -358,14 +346,12 @@ public:
 			return QwtDial::scrolledTo(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		double callback_return_value = miqt_exec_callback_QwtDial_scrolledTo(this, handle__scrolledTo, sigval1);
 		return static_cast<double>(callback_return_value);
 	}
 
-	friend double QwtDial_virtualbase_scrolledTo(const void* self, QPoint* param1);
+	friend double QwtDial_virtualbase_scrolledTo(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isScrollPosition = 0;
@@ -376,14 +362,12 @@ public:
 			return QwtDial::isScrollPosition(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		bool callback_return_value = miqt_exec_callback_QwtDial_isScrollPosition(this, handle__isScrollPosition, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QwtDial_virtualbase_isScrollPosition(const void* self, QPoint* param1);
+	friend bool QwtDial_virtualbase_isScrollPosition(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sliderChange = 0;
@@ -1257,24 +1241,24 @@ QwtDialNeedle* QwtDial_needle2(QwtDial* self) {
 	return self->needle();
 }
 
-QRect* QwtDial_boundingRect(const QwtDial* self) {
-	return new QRect(self->boundingRect());
+struct miqt_qrect QwtDial_boundingRect(const QwtDial* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->boundingRect());
 }
 
-QRect* QwtDial_innerRect(const QwtDial* self) {
-	return new QRect(self->innerRect());
+struct miqt_qrect QwtDial_innerRect(const QwtDial* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->innerRect());
 }
 
-QRect* QwtDial_scaleInnerRect(const QwtDial* self) {
-	return new QRect(self->scaleInnerRect());
+struct miqt_qrect QwtDial_scaleInnerRect(const QwtDial* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->scaleInnerRect());
 }
 
-QSize* QwtDial_sizeHint(const QwtDial* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtDial_sizeHint(const QwtDial* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QwtDial_minimumSizeHint(const QwtDial* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QwtDial_minimumSizeHint(const QwtDial* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QwtDial_setScaleDraw(QwtDial* self, QwtRoundScaleDraw* scaleDraw) {
@@ -1357,8 +1341,8 @@ bool QwtDial_override_virtual_scaleInnerRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QwtDial_virtualbase_scaleInnerRect(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::scaleInnerRect());
+struct miqt_qrect QwtDial_virtualbase_scaleInnerRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::scaleInnerRect());
 }
 
 bool QwtDial_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1371,8 +1355,8 @@ bool QwtDial_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtDial_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::sizeHint());
+struct miqt_qsize QwtDial_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::sizeHint());
 }
 
 bool QwtDial_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1385,8 +1369,8 @@ bool QwtDial_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtDial_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::minimumSizeHint());
+struct miqt_qsize QwtDial_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::minimumSizeHint());
 }
 
 bool QwtDial_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1483,8 +1467,8 @@ bool QwtDial_override_virtual_drawScale(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtDial_virtualbase_drawScale(const void* self, QPainter* param1, QPointF* center, double radius) {
-	static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::drawScale(param1, *center, static_cast<double>(radius));
+void QwtDial_virtualbase_drawScale(const void* self, QPainter* param1, struct miqt_qpointf center, double radius) {
+	static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::drawScale(param1, miqt_from_cabi<QPointF>(center), static_cast<double>(radius));
 }
 
 bool QwtDial_override_virtual_drawScaleContents(void* self, intptr_t slot) {
@@ -1497,8 +1481,8 @@ bool QwtDial_override_virtual_drawScaleContents(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtDial_virtualbase_drawScaleContents(const void* self, QPainter* painter, QPointF* center, double radius) {
-	static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::drawScaleContents(painter, *center, static_cast<double>(radius));
+void QwtDial_virtualbase_drawScaleContents(const void* self, QPainter* painter, struct miqt_qpointf center, double radius) {
+	static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::drawScaleContents(painter, miqt_from_cabi<QPointF>(center), static_cast<double>(radius));
 }
 
 bool QwtDial_override_virtual_drawNeedle(void* self, intptr_t slot) {
@@ -1511,8 +1495,8 @@ bool QwtDial_override_virtual_drawNeedle(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtDial_virtualbase_drawNeedle(const void* self, QPainter* param1, QPointF* param2, double radius, double direction, int param5) {
-	static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::drawNeedle(param1, *param2, static_cast<double>(radius), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
+void QwtDial_virtualbase_drawNeedle(const void* self, QPainter* param1, struct miqt_qpointf param2, double radius, double direction, int param5) {
+	static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::drawNeedle(param1, miqt_from_cabi<QPointF>(param2), static_cast<double>(radius), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
 }
 
 bool QwtDial_override_virtual_scrolledTo(void* self, intptr_t slot) {
@@ -1525,8 +1509,8 @@ bool QwtDial_override_virtual_scrolledTo(void* self, intptr_t slot) {
 	return true;
 }
 
-double QwtDial_virtualbase_scrolledTo(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::scrolledTo(*param1);
+double QwtDial_virtualbase_scrolledTo(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::scrolledTo(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtDial_override_virtual_isScrollPosition(void* self, intptr_t slot) {
@@ -1539,8 +1523,8 @@ bool QwtDial_override_virtual_isScrollPosition(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QwtDial_virtualbase_isScrollPosition(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::isScrollPosition(*param1);
+bool QwtDial_virtualbase_isScrollPosition(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQwtDial*>(self)->QwtDial::isScrollPosition(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtDial_override_virtual_sliderChange(void* self, intptr_t slot) {
@@ -2158,14 +2142,6 @@ bool QwtDial_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QwtDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtDial*>(self)->QwtDial::disconnectNotify(*signal);
-}
-
-QRect* QwtDial_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
-QSize* QwtDial_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtDial_virtualreturncopy_QVariant(QVariant* src) {

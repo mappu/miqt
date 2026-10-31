@@ -51,7 +51,7 @@ void miqt_exec_callback_QAbstractButton_clicked(intptr_t);
 void miqt_exec_callback_QAbstractButton_toggled(intptr_t, bool);
 void miqt_exec_callback_QAbstractButton_clickedWithChecked(intptr_t, bool);
 void miqt_exec_callback_QAbstractButton_paintEvent(QAbstractButton*, intptr_t, QPaintEvent*);
-bool miqt_exec_callback_QAbstractButton_hitButton(const QAbstractButton*, intptr_t, QPoint*);
+bool miqt_exec_callback_QAbstractButton_hitButton(const QAbstractButton*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QAbstractButton_checkStateSet(QAbstractButton*, intptr_t);
 void miqt_exec_callback_QAbstractButton_nextCheckState(QAbstractButton*, intptr_t);
 bool miqt_exec_callback_QAbstractButton_event(QAbstractButton*, intptr_t, QEvent*);
@@ -66,8 +66,8 @@ void miqt_exec_callback_QAbstractButton_changeEvent(QAbstractButton*, intptr_t, 
 void miqt_exec_callback_QAbstractButton_timerEvent(QAbstractButton*, intptr_t, QTimerEvent*);
 int miqt_exec_callback_QAbstractButton_devType(const QAbstractButton*, intptr_t);
 void miqt_exec_callback_QAbstractButton_setVisible(QAbstractButton*, intptr_t, bool);
-QSize* miqt_exec_callback_QAbstractButton_sizeHint(const QAbstractButton*, intptr_t);
-QSize* miqt_exec_callback_QAbstractButton_minimumSizeHint(const QAbstractButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QAbstractButton_sizeHint(const QAbstractButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QAbstractButton_minimumSizeHint(const QAbstractButton*, intptr_t);
 int miqt_exec_callback_QAbstractButton_heightForWidth(const QAbstractButton*, intptr_t, int);
 bool miqt_exec_callback_QAbstractButton_hasHeightForWidth(const QAbstractButton*, intptr_t);
 QPaintEngine* miqt_exec_callback_QAbstractButton_paintEngine(const QAbstractButton*, intptr_t);
@@ -135,14 +135,12 @@ public:
 			return QAbstractButton::hitButton(pos);
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		bool callback_return_value = miqt_exec_callback_QAbstractButton_hitButton(this, handle__hitButton, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QAbstractButton_virtualbase_hitButton(const void* self, QPoint* pos);
+	friend bool QAbstractButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__checkStateSet = 0;
@@ -386,13 +384,11 @@ public:
 			return QAbstractButton::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractButton_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractButton_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QAbstractButton_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QAbstractButton_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -403,13 +399,11 @@ public:
 			return QAbstractButton::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractButton_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractButton_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QAbstractButton_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QAbstractButton_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1026,8 +1020,8 @@ QIcon* QAbstractButton_icon(const QAbstractButton* self) {
 	return new QIcon(self->icon());
 }
 
-QSize* QAbstractButton_iconSize(const QAbstractButton* self) {
-	return new QSize(self->iconSize());
+struct miqt_qsize QAbstractButton_iconSize(const QAbstractButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize());
 }
 
 void QAbstractButton_setShortcut(QAbstractButton* self, QKeySequence* key) {
@@ -1094,8 +1088,8 @@ QButtonGroup* QAbstractButton_group(const QAbstractButton* self) {
 	return self->group();
 }
 
-void QAbstractButton_setIconSize(QAbstractButton* self, QSize* size) {
-	self->setIconSize(*size);
+void QAbstractButton_setIconSize(QAbstractButton* self, struct miqt_qsize size) {
+	self->setIconSize(miqt_from_cabi<QSize>(size));
 }
 
 void QAbstractButton_animateClick(QAbstractButton* self) {
@@ -1208,8 +1202,8 @@ bool QAbstractButton_override_virtual_hitButton(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QAbstractButton_virtualbase_hitButton(const void* self, QPoint* pos) {
-	return static_cast<const MiqtVirtualQAbstractButton*>(self)->QAbstractButton::hitButton(*pos);
+bool QAbstractButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos) {
+	return static_cast<const MiqtVirtualQAbstractButton*>(self)->QAbstractButton::hitButton(miqt_from_cabi<QPoint>(pos));
 }
 
 bool QAbstractButton_override_virtual_checkStateSet(void* self, intptr_t slot) {
@@ -1418,8 +1412,8 @@ bool QAbstractButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QAbstractButton_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQAbstractButton*>(self)->QAbstractButton::sizeHint());
+struct miqt_qsize QAbstractButton_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQAbstractButton*>(self)->QAbstractButton::sizeHint());
 }
 
 bool QAbstractButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1432,8 +1426,8 @@ bool QAbstractButton_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 	return true;
 }
 
-QSize* QAbstractButton_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQAbstractButton*>(self)->QAbstractButton::minimumSizeHint());
+struct miqt_qsize QAbstractButton_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQAbstractButton*>(self)->QAbstractButton::minimumSizeHint());
 }
 
 bool QAbstractButton_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1883,10 +1877,6 @@ bool QAbstractButton_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QAbstractButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQAbstractButton*>(self)->QAbstractButton::disconnectNotify(*signal);
-}
-
-QSize* QAbstractButton_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QAbstractButton_virtualreturncopy_QVariant(QVariant* src) {

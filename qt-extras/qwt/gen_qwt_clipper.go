@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -53,10 +54,8 @@ func UnsafeNewQwtClipper(h unsafe.Pointer) *QwtClipper {
 	return newQwtClipper((*C.QwtClipper)(h))
 }
 
-func QwtClipper_ClipCircle(param1 *qt.QRectF, param2 *qt.QPointF, radius float64) []QwtInterval {
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
-	var _ma C.struct_miqt_array = C.QwtClipper_clipCircle((*C.QRectF)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.double)(radius))
+func QwtClipper_ClipCircle(param1 qt.QRectF, param2 qt.QPointF, radius float64) []QwtInterval {
+	var _ma C.struct_miqt_array = C.QwtClipper_clipCircle(libmiqt.ValueCast[C.struct_miqt_qrectf](param1), libmiqt.ValueCast[C.struct_miqt_qpointf](param2), (C.double)(radius))
 	_ret := make([]QwtInterval, int(_ma.len))
 	_outCast := unsafe.Slice((**C.QwtInterval)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {

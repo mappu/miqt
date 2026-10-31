@@ -199,8 +199,8 @@ struct miqt_string QVideoSink_tr(const char* s) {
 	return _ms;
 }
 
-QSize* QVideoSink_videoSize(const QVideoSink* self) {
-	return new QSize(self->videoSize());
+struct miqt_qsize QVideoSink_videoSize(const QVideoSink* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->videoSize());
 }
 
 struct miqt_string QVideoSink_subtitleText(const QVideoSink* self) {

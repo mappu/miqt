@@ -9,6 +9,7 @@ package pdf
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -86,30 +87,24 @@ func (this *QPdfDocumentRenderOptions) SetRenderFlags(r QPdf__RenderFlag) {
 	C.QPdfDocumentRenderOptions_setRenderFlags(this.h, (C.int)(r))
 }
 
-func (this *QPdfDocumentRenderOptions) ScaledClipRect() *qt.QRect {
+func (this *QPdfDocumentRenderOptions) ScaledClipRect() qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QPdfDocumentRenderOptions_scaledClipRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QPdfDocumentRenderOptions_scaledClipRect(this.h))
 }
 
-func (this *QPdfDocumentRenderOptions) SetScaledClipRect(r *qt.QRect) {
+func (this *QPdfDocumentRenderOptions) SetScaledClipRect(r qt.QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QPdfDocumentRenderOptions_setScaledClipRect(this.h, (*C.QRect)(r.UnsafePointer()))
+	C.QPdfDocumentRenderOptions_setScaledClipRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r))
 }
 
-func (this *QPdfDocumentRenderOptions) ScaledSize() *qt.QSize {
+func (this *QPdfDocumentRenderOptions) ScaledSize() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPdfDocumentRenderOptions_scaledSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QPdfDocumentRenderOptions_scaledSize(this.h))
 }
 
-func (this *QPdfDocumentRenderOptions) SetScaledSize(s *qt.QSize) {
+func (this *QPdfDocumentRenderOptions) SetScaledSize(s qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(s)
-	C.QPdfDocumentRenderOptions_setScaledSize(this.h, (*C.QSize)(s.UnsafePointer()))
+	C.QPdfDocumentRenderOptions_setScaledSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](s))
 }
 
 // Delete this object from C++ memory.

@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -254,13 +255,12 @@ func miqt_exec_callback_QLineSeries_setBrush(self *C.QLineSeries, cb C.intptr_t,
 
 }
 
-func (this *QLineSeries) callVirtualBase_SetColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
+func (this *QLineSeries) callVirtualBase_SetColor(color qt6.QColor) {
 
-	C.QLineSeries_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(color.UnsafePointer()))
+	C.QLineSeries_virtualbase_setColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 
 }
-func (this *QLineSeries) OnSetColor(slot func(super func(color *qt6.QColor), color *qt6.QColor)) {
+func (this *QLineSeries) OnSetColor(slot func(super func(color qt6.QColor), color qt6.QColor)) {
 	ok := C.QLineSeries_override_virtual_setColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -268,27 +268,25 @@ func (this *QLineSeries) OnSetColor(slot func(super func(color *qt6.QColor), col
 }
 
 //export miqt_exec_callback_QLineSeries_setColor
-func miqt_exec_callback_QLineSeries_setColor(self *C.QLineSeries, cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(color *qt6.QColor), color *qt6.QColor))
+func miqt_exec_callback_QLineSeries_setColor(self *C.QLineSeries, cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(color qt6.QColor), color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc((&QLineSeries{h: self}).callVirtualBase_SetColor, slotval1)
 
 }
 
-func (this *QLineSeries) callVirtualBase_Color() *qt6.QColor {
+func (this *QLineSeries) callVirtualBase_Color() qt6.QColor {
 
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QLineSeries_virtualbase_color(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QColor](C.QLineSeries_virtualbase_color(unsafe.Pointer(this.h)))
 
 }
-func (this *QLineSeries) OnColor(slot func(super func() *qt6.QColor) *qt6.QColor) {
+func (this *QLineSeries) OnColor(slot func(super func() qt6.QColor) qt6.QColor) {
 	ok := C.QLineSeries_override_virtual_color(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -296,16 +294,15 @@ func (this *QLineSeries) OnColor(slot func(super func() *qt6.QColor) *qt6.QColor
 }
 
 //export miqt_exec_callback_QLineSeries_color
-func miqt_exec_callback_QLineSeries_color(self *C.QLineSeries, cb C.intptr_t) *C.QColor {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QColor) *qt6.QColor)
+func miqt_exec_callback_QLineSeries_color(self *C.QLineSeries, cb C.intptr_t) C.struct_miqt_qcolor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QColor) qt6.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QLineSeries{h: self}).callVirtualBase_Color)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QLineSeries_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qcolor](virtualReturn)
 
 }
 

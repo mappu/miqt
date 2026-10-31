@@ -44,13 +44,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QLCDNumber_overflow(intptr_t);
-QSize* miqt_exec_callback_QLCDNumber_sizeHint(const QLCDNumber*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QLCDNumber_sizeHint(const QLCDNumber*, intptr_t);
 bool miqt_exec_callback_QLCDNumber_event(QLCDNumber*, intptr_t, QEvent*);
 void miqt_exec_callback_QLCDNumber_paintEvent(QLCDNumber*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QLCDNumber_changeEvent(QLCDNumber*, intptr_t, QEvent*);
 int miqt_exec_callback_QLCDNumber_devType(const QLCDNumber*, intptr_t);
 void miqt_exec_callback_QLCDNumber_setVisible(QLCDNumber*, intptr_t, bool);
-QSize* miqt_exec_callback_QLCDNumber_minimumSizeHint(const QLCDNumber*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QLCDNumber_minimumSizeHint(const QLCDNumber*, intptr_t);
 int miqt_exec_callback_QLCDNumber_heightForWidth(const QLCDNumber*, intptr_t, int);
 bool miqt_exec_callback_QLCDNumber_hasHeightForWidth(const QLCDNumber*, intptr_t);
 QPaintEngine* miqt_exec_callback_QLCDNumber_paintEngine(const QLCDNumber*, intptr_t);
@@ -114,13 +114,11 @@ public:
 			return QLCDNumber::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QLCDNumber_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QLCDNumber_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QLCDNumber_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QLCDNumber_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -213,13 +211,11 @@ public:
 			return QLCDNumber::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QLCDNumber_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QLCDNumber_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QLCDNumber_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QLCDNumber_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1014,8 +1010,8 @@ int QLCDNumber_intValue(const QLCDNumber* self) {
 	return self->intValue();
 }
 
-QSize* QLCDNumber_sizeHint(const QLCDNumber* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QLCDNumber_sizeHint(const QLCDNumber* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QLCDNumber_display(QLCDNumber* self, struct miqt_string str) {
@@ -1115,8 +1111,8 @@ bool QLCDNumber_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QLCDNumber_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQLCDNumber*>(self)->QLCDNumber::sizeHint());
+struct miqt_qsize QLCDNumber_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQLCDNumber*>(self)->QLCDNumber::sizeHint());
 }
 
 bool QLCDNumber_override_virtual_event(void* self, intptr_t slot) {
@@ -1199,8 +1195,8 @@ bool QLCDNumber_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QLCDNumber_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQLCDNumber*>(self)->QLCDNumber::minimumSizeHint());
+struct miqt_qsize QLCDNumber_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQLCDNumber*>(self)->QLCDNumber::minimumSizeHint());
 }
 
 bool QLCDNumber_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1762,10 +1758,6 @@ bool QLCDNumber_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQLCDNumber*>(self)->QLCDNumber::disconnectNotify(*signal);
-}
-
-QSize* QLCDNumber_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QLCDNumber_virtualreturncopy_QVariant(QVariant* src) {

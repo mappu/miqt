@@ -53,7 +53,7 @@ void miqt_exec_callback_QChartView_resizeEvent(QChartView*, intptr_t, QResizeEve
 void miqt_exec_callback_QChartView_mousePressEvent(QChartView*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QChartView_mouseMoveEvent(QChartView*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QChartView_mouseReleaseEvent(QChartView*, intptr_t, QMouseEvent*);
-QSize* miqt_exec_callback_QChartView_sizeHint(const QChartView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QChartView_sizeHint(const QChartView*, intptr_t);
 QVariant* miqt_exec_callback_QChartView_inputMethodQuery(const QChartView*, intptr_t, int);
 void miqt_exec_callback_QChartView_setupViewport(QChartView*, intptr_t, QWidget*);
 bool miqt_exec_callback_QChartView_event(QChartView*, intptr_t, QEvent*);
@@ -74,11 +74,11 @@ void miqt_exec_callback_QChartView_paintEvent(QChartView*, intptr_t, QPaintEvent
 void miqt_exec_callback_QChartView_scrollContentsBy(QChartView*, intptr_t, int, int);
 void miqt_exec_callback_QChartView_showEvent(QChartView*, intptr_t, QShowEvent*);
 void miqt_exec_callback_QChartView_inputMethodEvent(QChartView*, intptr_t, QInputMethodEvent*);
-void miqt_exec_callback_QChartView_drawBackground(QChartView*, intptr_t, QPainter*, QRectF*);
-void miqt_exec_callback_QChartView_drawForeground(QChartView*, intptr_t, QPainter*, QRectF*);
-QSize* miqt_exec_callback_QChartView_minimumSizeHint(const QChartView*, intptr_t);
+void miqt_exec_callback_QChartView_drawBackground(QChartView*, intptr_t, QPainter*, struct miqt_qrectf);
+void miqt_exec_callback_QChartView_drawForeground(QChartView*, intptr_t, QPainter*, struct miqt_qrectf);
+struct miqt_qsize miqt_exec_callback_QChartView_minimumSizeHint(const QChartView*, intptr_t);
 bool miqt_exec_callback_QChartView_eventFilter(QChartView*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QChartView_viewportSizeHint(const QChartView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QChartView_viewportSizeHint(const QChartView*, intptr_t);
 void miqt_exec_callback_QChartView_changeEvent(QChartView*, intptr_t, QEvent*);
 void miqt_exec_callback_QChartView_initStyleOption(const QChartView*, intptr_t, QStyleOptionFrame*);
 int miqt_exec_callback_QChartView_devType(const QChartView*, intptr_t);
@@ -194,13 +194,11 @@ public:
 			return QChartView::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QChartView_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QChartView_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QChartView_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QChartView_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -553,14 +551,12 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QChartView_drawBackground(this, handle__drawBackground, sigval1, sigval2);
 
 	}
 
-	friend void QChartView_virtualbase_drawBackground(void* self, QPainter* painter, QRectF* rect);
+	friend void QChartView_virtualbase_drawBackground(void* self, QPainter* painter, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawForeground = 0;
@@ -573,14 +569,12 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QChartView_drawForeground(this, handle__drawForeground, sigval1, sigval2);
 
 	}
 
-	friend void QChartView_virtualbase_drawForeground(void* self, QPainter* painter, QRectF* rect);
+	friend void QChartView_virtualbase_drawForeground(void* self, QPainter* painter, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -591,13 +585,11 @@ public:
 			return QChartView::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QChartView_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QChartView_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QChartView_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QChartView_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -625,13 +617,11 @@ public:
 			return QChartView::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QChartView_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QChartView_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QChartView_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QChartView_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -1044,7 +1034,7 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QChartView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QChartView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QChartView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QChartView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QChartView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QChartView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -1201,8 +1191,8 @@ bool QChartView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QChartView_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQChartView*>(self)->QChartView::sizeHint());
+struct miqt_qsize QChartView_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQChartView*>(self)->QChartView::sizeHint());
 }
 
 bool QChartView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1495,8 +1485,8 @@ bool QChartView_override_virtual_drawBackground(void* self, intptr_t slot) {
 	return true;
 }
 
-void QChartView_virtualbase_drawBackground(void* self, QPainter* painter, QRectF* rect) {
-	static_cast<MiqtVirtualQChartView*>(self)->QChartView::drawBackground(painter, *rect);
+void QChartView_virtualbase_drawBackground(void* self, QPainter* painter, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQChartView*>(self)->QChartView::drawBackground(painter, miqt_from_cabi<QRectF>(rect));
 }
 
 bool QChartView_override_virtual_drawForeground(void* self, intptr_t slot) {
@@ -1509,8 +1499,8 @@ bool QChartView_override_virtual_drawForeground(void* self, intptr_t slot) {
 	return true;
 }
 
-void QChartView_virtualbase_drawForeground(void* self, QPainter* painter, QRectF* rect) {
-	static_cast<MiqtVirtualQChartView*>(self)->QChartView::drawForeground(painter, *rect);
+void QChartView_virtualbase_drawForeground(void* self, QPainter* painter, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQChartView*>(self)->QChartView::drawForeground(painter, miqt_from_cabi<QRectF>(rect));
 }
 
 bool QChartView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1523,8 +1513,8 @@ bool QChartView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QChartView_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQChartView*>(self)->QChartView::minimumSizeHint());
+struct miqt_qsize QChartView_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQChartView*>(self)->QChartView::minimumSizeHint());
 }
 
 bool QChartView_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1551,8 +1541,8 @@ bool QChartView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QChartView_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQChartView*>(self)->QChartView::viewportSizeHint());
+struct miqt_qsize QChartView_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQChartView*>(self)->QChartView::viewportSizeHint());
 }
 
 bool QChartView_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1892,10 +1882,6 @@ void QChartView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQChartView*>(self)->QChartView::disconnectNotify(*signal);
 }
 
-QSize* QChartView_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QChartView_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -1911,15 +1897,15 @@ void QChartView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* s
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QChartView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QChartView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQChartView* self_cast = dynamic_cast<MiqtVirtualQChartView*>( (QChartView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QChartView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

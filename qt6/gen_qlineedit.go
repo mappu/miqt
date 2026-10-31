@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -210,16 +211,12 @@ func (this *QLineEdit) Completer() *QCompleter {
 	return newQCompleter(C.QLineEdit_completer(this.h))
 }
 
-func (this *QLineEdit) SizeHint() *QSize {
-	_goptr := newQSize(C.QLineEdit_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QLineEdit) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QLineEdit_sizeHint(this.h))
 }
 
-func (this *QLineEdit) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QLineEdit_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QLineEdit) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QLineEdit_minimumSizeHint(this.h))
 }
 
 func (this *QLineEdit) CursorPosition() int {
@@ -230,9 +227,8 @@ func (this *QLineEdit) SetCursorPosition(cursorPosition int) {
 	C.QLineEdit_setCursorPosition(this.h, (C.int)(cursorPosition))
 }
 
-func (this *QLineEdit) CursorPositionAt(pos *QPoint) int {
-	defer runtime.KeepAlive(pos)
-	return (int)(C.QLineEdit_cursorPositionAt(this.h, pos.cPointer()))
+func (this *QLineEdit) CursorPositionAt(pos QPoint) int {
+	return (int)(C.QLineEdit_cursorPositionAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 func (this *QLineEdit) SetAlignment(flag AlignmentFlag) {
@@ -357,15 +353,12 @@ func (this *QLineEdit) SetTextMargins(left int, top int, right int, bottom int) 
 	C.QLineEdit_setTextMargins(this.h, (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
 }
 
-func (this *QLineEdit) SetTextMarginsWithMargins(margins *QMargins) {
-	defer runtime.KeepAlive(margins)
-	C.QLineEdit_setTextMarginsWithMargins(this.h, margins.cPointer())
+func (this *QLineEdit) SetTextMarginsWithMargins(margins QMargins) {
+	C.QLineEdit_setTextMarginsWithMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmargins](margins))
 }
 
-func (this *QLineEdit) TextMargins() *QMargins {
-	_goptr := newQMargins(C.QLineEdit_textMargins(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QLineEdit) TextMargins() QMargins {
+	return libmiqt.ValueCast[QMargins](C.QLineEdit_textMargins(this.h))
 }
 
 func (this *QLineEdit) AddAction(action *QAction, position QLineEdit__ActionPosition) {
@@ -630,9 +623,7 @@ func (this *QLineEdit) CursorBackward2(mark bool, steps int) {
 func (this *QLineEdit) CursorRect() QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRect(C.QLineEdit_protectedbase_cursorRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRect](C.QLineEdit_protectedbase_cursorRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -765,14 +756,12 @@ func (this *QLineEdit) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QLineEdit) callVirtualBase_SizeHint() *QSize {
+func (this *QLineEdit) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QLineEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QLineEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QLineEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QLineEdit) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QLineEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -780,27 +769,24 @@ func (this *QLineEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QLineEdit_sizeHint
-func miqt_exec_callback_QLineEdit_sizeHint(self *C.QLineEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QLineEdit_sizeHint(self *C.QLineEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QLineEdit{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QLineEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QLineEdit) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QLineEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QLineEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QLineEdit) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QLineEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QLineEdit) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QLineEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -808,16 +794,15 @@ func (this *QLineEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QLineEdit_minimumSizeHint
-func miqt_exec_callback_QLineEdit_minimumSizeHint(self *C.QLineEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QLineEdit_minimumSizeHint(self *C.QLineEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QLineEdit{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QLineEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1864,7 +1849,6 @@ func miqt_exec_callback_QLineEdit_initPainter(self *C.QLineEdit, cb C.intptr_t, 
 }
 
 func (this *QLineEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QLineEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

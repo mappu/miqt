@@ -31,7 +31,7 @@ typedef struct QwtInterval QwtInterval;
 #endif
 
 QwtColumnRect* QwtColumnRect_new();
-QRectF* QwtColumnRect_toRect(const QwtColumnRect* self);
+struct miqt_qrectf QwtColumnRect_toRect(const QwtColumnRect* self);
 int QwtColumnRect_orientation(const QwtColumnRect* self);
 QwtInterval* QwtColumnRect_hInterval(const QwtColumnRect* self);
 void QwtColumnRect_setHInterval(QwtColumnRect* self, QwtInterval* hInterval);

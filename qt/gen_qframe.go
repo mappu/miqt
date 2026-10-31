@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -143,10 +144,8 @@ func (this *QFrame) FrameWidth() int {
 	return (int)(C.QFrame_frameWidth(this.h))
 }
 
-func (this *QFrame) SizeHint() *QSize {
-	_goptr := newQSize(C.QFrame_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QFrame) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QFrame_sizeHint(this.h))
 }
 
 func (this *QFrame) FrameShape() QFrame__Shape {
@@ -181,15 +180,12 @@ func (this *QFrame) SetMidLineWidth(midLineWidth int) {
 	C.QFrame_setMidLineWidth(this.h, (C.int)(midLineWidth))
 }
 
-func (this *QFrame) FrameRect() *QRect {
-	_goptr := newQRect(C.QFrame_frameRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QFrame) FrameRect() QRect {
+	return libmiqt.ValueCast[QRect](C.QFrame_frameRect(this.h))
 }
 
-func (this *QFrame) SetFrameRect(frameRect *QRect) {
-	defer runtime.KeepAlive(frameRect)
-	C.QFrame_setFrameRect(this.h, frameRect.cPointer())
+func (this *QFrame) SetFrameRect(frameRect QRect) {
+	C.QFrame_setFrameRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](frameRect))
 }
 
 func QFrame_Tr2(s string, c string) string {
@@ -385,14 +381,12 @@ func (this *QFrame) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QFrame) callVirtualBase_SizeHint() *QSize {
+func (this *QFrame) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QFrame_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QFrame_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QFrame) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QFrame) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QFrame_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -400,16 +394,15 @@ func (this *QFrame) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QFrame_sizeHint
-func miqt_exec_callback_QFrame_sizeHint(self *C.QFrame, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QFrame_sizeHint(self *C.QFrame, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QFrame{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QFrame_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -547,14 +540,12 @@ func miqt_exec_callback_QFrame_setVisible(self *C.QFrame, cb C.intptr_t, visible
 
 }
 
-func (this *QFrame) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QFrame) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QFrame_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QFrame_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QFrame) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QFrame) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QFrame_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -562,16 +553,15 @@ func (this *QFrame) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QFrame_minimumSizeHint
-func miqt_exec_callback_QFrame_minimumSizeHint(self *C.QFrame, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QFrame_minimumSizeHint(self *C.QFrame, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QFrame{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QFrame_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1372,7 +1362,6 @@ func miqt_exec_callback_QFrame_initPainter(self *C.QFrame, cb C.intptr_t, painte
 }
 
 func (this *QFrame) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QFrame_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

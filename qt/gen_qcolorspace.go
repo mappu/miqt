@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -107,13 +108,9 @@ func NewQColorSpace4(primaries QColorSpace__Primaries, gamma float32) *QColorSpa
 }
 
 // NewQColorSpace5 constructs a new QColorSpace object.
-func NewQColorSpace5(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF, transferFunction QColorSpace__TransferFunction) *QColorSpace {
-	defer runtime.KeepAlive(whitePoint)
-	defer runtime.KeepAlive(redPoint)
-	defer runtime.KeepAlive(greenPoint)
-	defer runtime.KeepAlive(bluePoint)
+func NewQColorSpace5(whitePoint QPointF, redPoint QPointF, greenPoint QPointF, bluePoint QPointF, transferFunction QColorSpace__TransferFunction) *QColorSpace {
 
-	return newQColorSpace(C.QColorSpace_new5(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction)))
+	return newQColorSpace(C.QColorSpace_new5(libmiqt.ValueCast[C.struct_miqt_qpointf](whitePoint), libmiqt.ValueCast[C.struct_miqt_qpointf](redPoint), libmiqt.ValueCast[C.struct_miqt_qpointf](greenPoint), libmiqt.ValueCast[C.struct_miqt_qpointf](bluePoint), (C.int)(transferFunction)))
 }
 
 // NewQColorSpace6 constructs a new QColorSpace object.
@@ -130,13 +127,9 @@ func NewQColorSpace7(primaries QColorSpace__Primaries, transferFunction QColorSp
 }
 
 // NewQColorSpace8 constructs a new QColorSpace object.
-func NewQColorSpace8(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF, transferFunction QColorSpace__TransferFunction, gamma float32) *QColorSpace {
-	defer runtime.KeepAlive(whitePoint)
-	defer runtime.KeepAlive(redPoint)
-	defer runtime.KeepAlive(greenPoint)
-	defer runtime.KeepAlive(bluePoint)
+func NewQColorSpace8(whitePoint QPointF, redPoint QPointF, greenPoint QPointF, bluePoint QPointF, transferFunction QColorSpace__TransferFunction, gamma float32) *QColorSpace {
 
-	return newQColorSpace(C.QColorSpace_new8(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction), (C.float)(gamma)))
+	return newQColorSpace(C.QColorSpace_new8(libmiqt.ValueCast[C.struct_miqt_qpointf](whitePoint), libmiqt.ValueCast[C.struct_miqt_qpointf](redPoint), libmiqt.ValueCast[C.struct_miqt_qpointf](greenPoint), libmiqt.ValueCast[C.struct_miqt_qpointf](bluePoint), (C.int)(transferFunction), (C.float)(gamma)))
 }
 
 func (this *QColorSpace) OperatorAssign(colorSpace *QColorSpace) {
@@ -183,13 +176,9 @@ func (this *QColorSpace) SetPrimaries(primariesId QColorSpace__Primaries) {
 	C.QColorSpace_setPrimaries(this.h, (C.int)(primariesId))
 }
 
-func (this *QColorSpace) SetPrimaries2(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF) {
+func (this *QColorSpace) SetPrimaries2(whitePoint QPointF, redPoint QPointF, greenPoint QPointF, bluePoint QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(whitePoint)
-	defer runtime.KeepAlive(redPoint)
-	defer runtime.KeepAlive(greenPoint)
-	defer runtime.KeepAlive(bluePoint)
-	C.QColorSpace_setPrimaries2(this.h, whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer())
+	C.QColorSpace_setPrimaries2(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](whitePoint), libmiqt.ValueCast[C.struct_miqt_qpointf](redPoint), libmiqt.ValueCast[C.struct_miqt_qpointf](greenPoint), libmiqt.ValueCast[C.struct_miqt_qpointf](bluePoint))
 }
 
 func (this *QColorSpace) IsValid() bool {

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -106,10 +107,8 @@ func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
 	C.QGraphicsItemAnimation_setTimeLine(this.h, timeLine.cPointer())
 }
 
-func (this *QGraphicsItemAnimation) PosAt(step float64) *QPointF {
-	_goptr := newQPointF(C.QGraphicsItemAnimation_posAt(this.h, (C.double)(step)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsItemAnimation) PosAt(step float64) QPointF {
+	return libmiqt.ValueCast[QPointF](C.QGraphicsItemAnimation_posAt(this.h, (C.double)(step)))
 }
 
 func (this *QGraphicsItemAnimation) PosList() []struct {
@@ -125,12 +124,10 @@ func (this *QGraphicsItemAnimation) PosList() []struct {
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
-		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
+		_lv_Second_CArray := (*[0xffff]C.struct_miqt_qpointf)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
-		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_lv_entry_Second := *_lv_second_goptr
+		_lv_entry_Second := libmiqt.ValueCast[QPointF](_lv_Second_CArray[0])
 
 		_ret[i] = struct {
 			First  float64
@@ -140,9 +137,8 @@ func (this *QGraphicsItemAnimation) PosList() []struct {
 	return _ret
 }
 
-func (this *QGraphicsItemAnimation) SetPosAt(step float64, pos *QPointF) {
-	defer runtime.KeepAlive(pos)
-	C.QGraphicsItemAnimation_setPosAt(this.h, (C.double)(step), pos.cPointer())
+func (this *QGraphicsItemAnimation) SetPosAt(step float64, pos QPointF) {
+	C.QGraphicsItemAnimation_setPosAt(this.h, (C.double)(step), libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
 func (this *QGraphicsItemAnimation) TransformAt(step float64) *QTransform {
@@ -206,12 +202,10 @@ func (this *QGraphicsItemAnimation) TranslationList() []struct {
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
-		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
+		_lv_Second_CArray := (*[0xffff]C.struct_miqt_qpointf)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
-		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_lv_entry_Second := *_lv_second_goptr
+		_lv_entry_Second := libmiqt.ValueCast[QPointF](_lv_Second_CArray[0])
 
 		_ret[i] = struct {
 			First  float64
@@ -246,12 +240,10 @@ func (this *QGraphicsItemAnimation) ScaleList() []struct {
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
-		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
+		_lv_Second_CArray := (*[0xffff]C.struct_miqt_qpointf)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
-		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_lv_entry_Second := *_lv_second_goptr
+		_lv_entry_Second := libmiqt.ValueCast[QPointF](_lv_Second_CArray[0])
 
 		_ret[i] = struct {
 			First  float64
@@ -286,12 +278,10 @@ func (this *QGraphicsItemAnimation) ShearList() []struct {
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
-		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
+		_lv_Second_CArray := (*[0xffff]C.struct_miqt_qpointf)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
-		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_lv_entry_Second := *_lv_second_goptr
+		_lv_entry_Second := libmiqt.ValueCast[QPointF](_lv_Second_CArray[0])
 
 		_ret[i] = struct {
 			First  float64

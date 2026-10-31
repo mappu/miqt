@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -91,18 +92,16 @@ func (this *QXYSeries) Append(x float64, y float64) {
 	C.QXYSeries_append(this.h, (C.double)(x), (C.double)(y))
 }
 
-func (this *QXYSeries) AppendWithPoint(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QXYSeries_appendWithPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QXYSeries) AppendWithPoint(point qt6.QPointF) {
+	C.QXYSeries_appendWithPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
 
 func (this *QXYSeries) AppendWithPoints(points []qt6.QPointF) {
-	defer runtime.KeepAlive(points)
-	points_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(points))))
+	points_CArray_ptr := (*C.struct_miqt_qpointf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qpointf{})) * len(points))))
 	defer C.free(unsafe.Pointer(points_CArray_ptr))
 	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
 	for i := range points {
-		points_CArray[i] = (*C.QPointF)(points[i].UnsafePointer())
+		points_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qpointf](points[i])
 	}
 	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray_ptr)}
 	C.QXYSeries_appendWithPoints(this.h, points_ma)
@@ -112,28 +111,24 @@ func (this *QXYSeries) Replace(oldX float64, oldY float64, newX float64, newY fl
 	C.QXYSeries_replace(this.h, (C.double)(oldX), (C.double)(oldY), (C.double)(newX), (C.double)(newY))
 }
 
-func (this *QXYSeries) Replace2(oldPoint *qt6.QPointF, newPoint *qt6.QPointF) {
-	defer runtime.KeepAlive(oldPoint)
-	defer runtime.KeepAlive(newPoint)
-	C.QXYSeries_replace2(this.h, (*C.QPointF)(oldPoint.UnsafePointer()), (*C.QPointF)(newPoint.UnsafePointer()))
+func (this *QXYSeries) Replace2(oldPoint qt6.QPointF, newPoint qt6.QPointF) {
+	C.QXYSeries_replace2(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](oldPoint), libmiqt.ValueCast[C.struct_miqt_qpointf](newPoint))
 }
 
 func (this *QXYSeries) Replace3(index int, newX float64, newY float64) {
 	C.QXYSeries_replace3(this.h, (C.int)(index), (C.double)(newX), (C.double)(newY))
 }
 
-func (this *QXYSeries) Replace4(index int, newPoint *qt6.QPointF) {
-	defer runtime.KeepAlive(newPoint)
-	C.QXYSeries_replace4(this.h, (C.int)(index), (*C.QPointF)(newPoint.UnsafePointer()))
+func (this *QXYSeries) Replace4(index int, newPoint qt6.QPointF) {
+	C.QXYSeries_replace4(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qpointf](newPoint))
 }
 
 func (this *QXYSeries) Remove(x float64, y float64) {
 	C.QXYSeries_remove(this.h, (C.double)(x), (C.double)(y))
 }
 
-func (this *QXYSeries) RemoveWithPoint(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QXYSeries_removeWithPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QXYSeries) RemoveWithPoint(point qt6.QPointF) {
+	C.QXYSeries_removeWithPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
 
 func (this *QXYSeries) RemoveWithIndex(index int) {
@@ -144,9 +139,8 @@ func (this *QXYSeries) RemovePoints(index int, count int) {
 	C.QXYSeries_removePoints(this.h, (C.int)(index), (C.int)(count))
 }
 
-func (this *QXYSeries) Insert(index int, point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QXYSeries_insert(this.h, (C.int)(index), (*C.QPointF)(point.UnsafePointer()))
+func (this *QXYSeries) Insert(index int, point qt6.QPointF) {
+	C.QXYSeries_insert(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
 
 func (this *QXYSeries) Clear() {
@@ -160,11 +154,9 @@ func (this *QXYSeries) Count() int {
 func (this *QXYSeries) Points() []qt6.QPointF {
 	var _ma C.struct_miqt_array = C.QXYSeries_points(this.h)
 	_ret := make([]qt6.QPointF, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qpointf)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt6.QPointF](_outCast[i])
 	}
 	return _ret
 }
@@ -172,31 +164,27 @@ func (this *QXYSeries) Points() []qt6.QPointF {
 func (this *QXYSeries) PointsVector() []qt6.QPointF {
 	var _ma C.struct_miqt_array = C.QXYSeries_pointsVector(this.h)
 	_ret := make([]qt6.QPointF, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qpointf)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt6.QPointF](_outCast[i])
 	}
 	return _ret
 }
 
-func (this *QXYSeries) At(index int) *qt6.QPointF {
-	return qt6.UnsafeNewQPointF(unsafe.Pointer(C.QXYSeries_at(this.h, (C.int)(index))))
+func (this *QXYSeries) At(index int) qt6.QPointF {
+	return libmiqt.ValueCast[qt6.QPointF](C.QXYSeries_at(this.h, (C.int)(index)))
 }
 
-func (this *QXYSeries) OperatorShiftLeft(point *qt6.QPointF) *QXYSeries {
-	defer runtime.KeepAlive(point)
-	return newQXYSeries(C.QXYSeries_operatorShiftLeft(this.h, (*C.QPointF)(point.UnsafePointer())))
+func (this *QXYSeries) OperatorShiftLeft(point qt6.QPointF) *QXYSeries {
+	return newQXYSeries(C.QXYSeries_operatorShiftLeft(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 }
 
 func (this *QXYSeries) OperatorShiftLeftWithPoints(points []qt6.QPointF) *QXYSeries {
-	defer runtime.KeepAlive(points)
-	points_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(points))))
+	points_CArray_ptr := (*C.struct_miqt_qpointf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qpointf{})) * len(points))))
 	defer C.free(unsafe.Pointer(points_CArray_ptr))
 	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
 	for i := range points {
-		points_CArray[i] = (*C.QPointF)(points[i].UnsafePointer())
+		points_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qpointf](points[i])
 	}
 	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray_ptr)}
 	return newQXYSeries(C.QXYSeries_operatorShiftLeftWithPoints(this.h, points_ma))
@@ -224,26 +212,20 @@ func (this *QXYSeries) Brush() *qt6.QBrush {
 	return _goptr
 }
 
-func (this *QXYSeries) SetColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QXYSeries_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QXYSeries) SetColor(color qt6.QColor) {
+	C.QXYSeries_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QXYSeries) Color() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QXYSeries_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QXYSeries) Color() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QXYSeries_color(this.h))
 }
 
-func (this *QXYSeries) SetSelectedColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QXYSeries_setSelectedColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QXYSeries) SetSelectedColor(color qt6.QColor) {
+	C.QXYSeries_setSelectedColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QXYSeries) SelectedColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QXYSeries_selectedColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QXYSeries) SelectedColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QXYSeries_selectedColor(this.h))
 }
 
 func (this *QXYSeries) SetPointsVisible() {
@@ -288,15 +270,12 @@ func (this *QXYSeries) PointLabelsFont() *qt6.QFont {
 	return _goptr
 }
 
-func (this *QXYSeries) SetPointLabelsColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QXYSeries_setPointLabelsColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QXYSeries) SetPointLabelsColor(color qt6.QColor) {
+	C.QXYSeries_setPointLabelsColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QXYSeries) PointLabelsColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QXYSeries_pointLabelsColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QXYSeries) PointLabelsColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QXYSeries_pointLabelsColor(this.h))
 }
 
 func (this *QXYSeries) SetPointLabelsClipping() {
@@ -308,12 +287,11 @@ func (this *QXYSeries) PointLabelsClipping() bool {
 }
 
 func (this *QXYSeries) ReplaceWithPoints(points []qt6.QPointF) {
-	defer runtime.KeepAlive(points)
-	points_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(points))))
+	points_CArray_ptr := (*C.struct_miqt_qpointf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qpointf{})) * len(points))))
 	defer C.free(unsafe.Pointer(points_CArray_ptr))
 	points_CArray := unsafe.Slice(points_CArray_ptr, len(points))
 	for i := range points {
-		points_CArray[i] = (*C.QPointF)(points[i].UnsafePointer())
+		points_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qpointf](points[i])
 	}
 	points_ma := C.struct_miqt_array{len: C.size_t(len(points)), data: unsafe.Pointer(points_CArray_ptr)}
 	C.QXYSeries_replaceWithPoints(this.h, points_ma)
@@ -448,15 +426,12 @@ func (this *QXYSeries) BestFitLinePen() *qt6.QPen {
 	return _goptr
 }
 
-func (this *QXYSeries) SetBestFitLineColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QXYSeries_setBestFitLineColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QXYSeries) SetBestFitLineColor(color qt6.QColor) {
+	C.QXYSeries_setBestFitLineColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QXYSeries) BestFitLineColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QXYSeries_bestFitLineColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QXYSeries) BestFitLineColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QXYSeries_bestFitLineColor(this.h))
 }
 
 func (this *QXYSeries) ClearPointConfiguration(index int) {
@@ -608,109 +583,104 @@ func (this *QXYSeries) ColorBy(sourceData []float64) {
 	C.QXYSeries_colorBy(this.h, sourceData_ma)
 }
 
-func (this *QXYSeries) Clicked(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QXYSeries_clicked(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QXYSeries) Clicked(point qt6.QPointF) {
+	C.QXYSeries_clicked(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
-func (this *QXYSeries) OnClicked(slot func(point *qt6.QPointF)) {
+func (this *QXYSeries) OnClicked(slot func(point qt6.QPointF)) {
 	C.QXYSeries_connect_clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QXYSeries_clicked
-func miqt_exec_callback_QXYSeries_clicked(cb C.intptr_t, point *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF))
+func miqt_exec_callback_QXYSeries_clicked(cb C.intptr_t, point C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	gofunc(slotval1)
 }
 
-func (this *QXYSeries) Hovered(point *qt6.QPointF, state bool) {
-	defer runtime.KeepAlive(point)
-	C.QXYSeries_hovered(this.h, (*C.QPointF)(point.UnsafePointer()), (C.bool)(state))
+func (this *QXYSeries) Hovered(point qt6.QPointF, state bool) {
+	C.QXYSeries_hovered(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point), (C.bool)(state))
 }
-func (this *QXYSeries) OnHovered(slot func(point *qt6.QPointF, state bool)) {
+func (this *QXYSeries) OnHovered(slot func(point qt6.QPointF, state bool)) {
 	C.QXYSeries_connect_hovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QXYSeries_hovered
-func miqt_exec_callback_QXYSeries_hovered(cb C.intptr_t, point *C.QPointF, state C.bool) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF, state bool))
+func miqt_exec_callback_QXYSeries_hovered(cb C.intptr_t, point C.struct_miqt_qpointf, state C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF, state bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	slotval2 := (bool)(state)
 
 	gofunc(slotval1, slotval2)
 }
 
-func (this *QXYSeries) Pressed(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QXYSeries_pressed(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QXYSeries) Pressed(point qt6.QPointF) {
+	C.QXYSeries_pressed(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
-func (this *QXYSeries) OnPressed(slot func(point *qt6.QPointF)) {
+func (this *QXYSeries) OnPressed(slot func(point qt6.QPointF)) {
 	C.QXYSeries_connect_pressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QXYSeries_pressed
-func miqt_exec_callback_QXYSeries_pressed(cb C.intptr_t, point *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF))
+func miqt_exec_callback_QXYSeries_pressed(cb C.intptr_t, point C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	gofunc(slotval1)
 }
 
-func (this *QXYSeries) Released(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QXYSeries_released(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QXYSeries) Released(point qt6.QPointF) {
+	C.QXYSeries_released(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
-func (this *QXYSeries) OnReleased(slot func(point *qt6.QPointF)) {
+func (this *QXYSeries) OnReleased(slot func(point qt6.QPointF)) {
 	C.QXYSeries_connect_released(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QXYSeries_released
-func miqt_exec_callback_QXYSeries_released(cb C.intptr_t, point *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF))
+func miqt_exec_callback_QXYSeries_released(cb C.intptr_t, point C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	gofunc(slotval1)
 }
 
-func (this *QXYSeries) DoubleClicked(point *qt6.QPointF) {
-	defer runtime.KeepAlive(point)
-	C.QXYSeries_doubleClicked(this.h, (*C.QPointF)(point.UnsafePointer()))
+func (this *QXYSeries) DoubleClicked(point qt6.QPointF) {
+	C.QXYSeries_doubleClicked(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
-func (this *QXYSeries) OnDoubleClicked(slot func(point *qt6.QPointF)) {
+func (this *QXYSeries) OnDoubleClicked(slot func(point qt6.QPointF)) {
 	C.QXYSeries_connect_doubleClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QXYSeries_doubleClicked
-func miqt_exec_callback_QXYSeries_doubleClicked(cb C.intptr_t, point *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(point *qt6.QPointF))
+func miqt_exec_callback_QXYSeries_doubleClicked(cb C.intptr_t, point C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(point qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	gofunc(slotval1)
 }
@@ -776,45 +746,41 @@ func miqt_exec_callback_QXYSeries_pointAdded(cb C.intptr_t, index C.int) {
 }
 
 func (this *QXYSeries) ColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QXYSeries_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QXYSeries_colorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QXYSeries) OnColorChanged(slot func(color qt6.QColor)) {
 	C.QXYSeries_connect_colorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QXYSeries_colorChanged
-func miqt_exec_callback_QXYSeries_colorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QXYSeries_colorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
-func (this *QXYSeries) SelectedColorChanged(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QXYSeries_selectedColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QXYSeries) SelectedColorChanged(color qt6.QColor) {
+	C.QXYSeries_selectedColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QXYSeries) OnSelectedColorChanged(slot func(color *qt6.QColor)) {
+func (this *QXYSeries) OnSelectedColorChanged(slot func(color qt6.QColor)) {
 	C.QXYSeries_connect_selectedColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QXYSeries_selectedColorChanged
-func miqt_exec_callback_QXYSeries_selectedColorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *qt6.QColor))
+func miqt_exec_callback_QXYSeries_selectedColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
@@ -904,23 +870,22 @@ func miqt_exec_callback_QXYSeries_pointLabelsFontChanged(cb C.intptr_t, font *C.
 	gofunc(slotval1)
 }
 
-func (this *QXYSeries) PointLabelsColorChanged(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QXYSeries_pointLabelsColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QXYSeries) PointLabelsColorChanged(color qt6.QColor) {
+	C.QXYSeries_pointLabelsColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QXYSeries) OnPointLabelsColorChanged(slot func(color *qt6.QColor)) {
+func (this *QXYSeries) OnPointLabelsColorChanged(slot func(color qt6.QColor)) {
 	C.QXYSeries_connect_pointLabelsColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QXYSeries_pointLabelsColorChanged
-func miqt_exec_callback_QXYSeries_pointLabelsColorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *qt6.QColor))
+func miqt_exec_callback_QXYSeries_pointLabelsColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
@@ -1088,23 +1053,22 @@ func miqt_exec_callback_QXYSeries_bestFitLinePenChanged(cb C.intptr_t, pen *C.QP
 	gofunc(slotval1)
 }
 
-func (this *QXYSeries) BestFitLineColorChanged(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QXYSeries_bestFitLineColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QXYSeries) BestFitLineColorChanged(color qt6.QColor) {
+	C.QXYSeries_bestFitLineColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
-func (this *QXYSeries) OnBestFitLineColorChanged(slot func(color *qt6.QColor)) {
+func (this *QXYSeries) OnBestFitLineColorChanged(slot func(color qt6.QColor)) {
 	C.QXYSeries_connect_bestFitLineColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QXYSeries_bestFitLineColorChanged
-func miqt_exec_callback_QXYSeries_bestFitLineColorChanged(cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(color *qt6.QColor))
+func miqt_exec_callback_QXYSeries_bestFitLineColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }

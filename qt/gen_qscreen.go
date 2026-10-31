@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -118,22 +119,16 @@ func (this *QScreen) Depth() int {
 	return (int)(C.QScreen_depth(this.h))
 }
 
-func (this *QScreen) Size() *QSize {
-	_goptr := newQSize(C.QScreen_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) Size() QSize {
+	return libmiqt.ValueCast[QSize](C.QScreen_size(this.h))
 }
 
-func (this *QScreen) Geometry() *QRect {
-	_goptr := newQRect(C.QScreen_geometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) Geometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QScreen_geometry(this.h))
 }
 
-func (this *QScreen) PhysicalSize() *QSizeF {
-	_goptr := newQSizeF(C.QScreen_physicalSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) PhysicalSize() QSizeF {
+	return libmiqt.ValueCast[QSizeF](C.QScreen_physicalSize(this.h))
 }
 
 func (this *QScreen) PhysicalDotsPerInchX() float64 {
@@ -164,16 +159,12 @@ func (this *QScreen) DevicePixelRatio() float64 {
 	return (float64)(C.QScreen_devicePixelRatio(this.h))
 }
 
-func (this *QScreen) AvailableSize() *QSize {
-	_goptr := newQSize(C.QScreen_availableSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) AvailableSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QScreen_availableSize(this.h))
 }
 
-func (this *QScreen) AvailableGeometry() *QRect {
-	_goptr := newQRect(C.QScreen_availableGeometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) AvailableGeometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QScreen_availableGeometry(this.h))
 }
 
 func (this *QScreen) VirtualSiblings() []*QScreen {
@@ -187,32 +178,23 @@ func (this *QScreen) VirtualSiblings() []*QScreen {
 }
 
 func (this *QScreen) VirtualSiblingAt(point QPoint) *QScreen {
-	defer runtime.KeepAlive(point)
-	return newQScreen(C.QScreen_virtualSiblingAt(this.h, point.cPointer()))
+	return newQScreen(C.QScreen_virtualSiblingAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
-func (this *QScreen) VirtualSize() *QSize {
-	_goptr := newQSize(C.QScreen_virtualSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) VirtualSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QScreen_virtualSize(this.h))
 }
 
-func (this *QScreen) VirtualGeometry() *QRect {
-	_goptr := newQRect(C.QScreen_virtualGeometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) VirtualGeometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QScreen_virtualGeometry(this.h))
 }
 
-func (this *QScreen) AvailableVirtualSize() *QSize {
-	_goptr := newQSize(C.QScreen_availableVirtualSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) AvailableVirtualSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QScreen_availableVirtualSize(this.h))
 }
 
-func (this *QScreen) AvailableVirtualGeometry() *QRect {
-	_goptr := newQRect(C.QScreen_availableVirtualGeometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) AvailableVirtualGeometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QScreen_availableVirtualGeometry(this.h))
 }
 
 func (this *QScreen) PrimaryOrientation() ScreenOrientation {
@@ -239,18 +221,14 @@ func (this *QScreen) AngleBetween(a ScreenOrientation, b ScreenOrientation) int 
 	return (int)(C.QScreen_angleBetween(this.h, (C.int)(a), (C.int)(b)))
 }
 
-func (this *QScreen) TransformBetween(a ScreenOrientation, b ScreenOrientation, target *QRect) *QTransform {
-	defer runtime.KeepAlive(target)
-	_goptr := newQTransform(C.QScreen_transformBetween(this.h, (C.int)(a), (C.int)(b), target.cPointer()))
+func (this *QScreen) TransformBetween(a ScreenOrientation, b ScreenOrientation, target QRect) *QTransform {
+	_goptr := newQTransform(C.QScreen_transformBetween(this.h, (C.int)(a), (C.int)(b), libmiqt.ValueCast[C.struct_miqt_qrect](target)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScreen) MapBetween(a ScreenOrientation, b ScreenOrientation, rect *QRect) *QRect {
-	defer runtime.KeepAlive(rect)
-	_goptr := newQRect(C.QScreen_mapBetween(this.h, (C.int)(a), (C.int)(b), rect.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScreen) MapBetween(a ScreenOrientation, b ScreenOrientation, rect QRect) QRect {
+	return libmiqt.ValueCast[QRect](C.QScreen_mapBetween(this.h, (C.int)(a), (C.int)(b), libmiqt.ValueCast[C.struct_miqt_qrect](rect)))
 }
 
 func (this *QScreen) IsPortrait(orientation ScreenOrientation) bool {
@@ -271,65 +249,62 @@ func (this *QScreen) RefreshRate() float64 {
 	return (float64)(C.QScreen_refreshRate(this.h))
 }
 
-func (this *QScreen) GeometryChanged(geometry *QRect) {
-	defer runtime.KeepAlive(geometry)
-	C.QScreen_geometryChanged(this.h, geometry.cPointer())
+func (this *QScreen) GeometryChanged(geometry QRect) {
+	C.QScreen_geometryChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](geometry))
 }
-func (this *QScreen) OnGeometryChanged(slot func(geometry *QRect)) {
+func (this *QScreen) OnGeometryChanged(slot func(geometry QRect)) {
 	C.QScreen_connect_geometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_geometryChanged
-func miqt_exec_callback_QScreen_geometryChanged(cb C.intptr_t, geometry *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(geometry *QRect))
+func miqt_exec_callback_QScreen_geometryChanged(cb C.intptr_t, geometry C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(geometry QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(geometry)
+	slotval1 := libmiqt.ValueCast[QRect](geometry)
 
 	gofunc(slotval1)
 }
 
-func (this *QScreen) AvailableGeometryChanged(geometry *QRect) {
-	defer runtime.KeepAlive(geometry)
-	C.QScreen_availableGeometryChanged(this.h, geometry.cPointer())
+func (this *QScreen) AvailableGeometryChanged(geometry QRect) {
+	C.QScreen_availableGeometryChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](geometry))
 }
-func (this *QScreen) OnAvailableGeometryChanged(slot func(geometry *QRect)) {
+func (this *QScreen) OnAvailableGeometryChanged(slot func(geometry QRect)) {
 	C.QScreen_connect_availableGeometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_availableGeometryChanged
-func miqt_exec_callback_QScreen_availableGeometryChanged(cb C.intptr_t, geometry *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(geometry *QRect))
+func miqt_exec_callback_QScreen_availableGeometryChanged(cb C.intptr_t, geometry C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(geometry QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(geometry)
+	slotval1 := libmiqt.ValueCast[QRect](geometry)
 
 	gofunc(slotval1)
 }
 
-func (this *QScreen) PhysicalSizeChanged(size *QSizeF) {
-	defer runtime.KeepAlive(size)
-	C.QScreen_physicalSizeChanged(this.h, size.cPointer())
+func (this *QScreen) PhysicalSizeChanged(size QSizeF) {
+	C.QScreen_physicalSizeChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
-func (this *QScreen) OnPhysicalSizeChanged(slot func(size *QSizeF)) {
+func (this *QScreen) OnPhysicalSizeChanged(slot func(size QSizeF)) {
 	C.QScreen_connect_physicalSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_physicalSizeChanged
-func miqt_exec_callback_QScreen_physicalSizeChanged(cb C.intptr_t, size *C.QSizeF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(size *QSizeF))
+func miqt_exec_callback_QScreen_physicalSizeChanged(cb C.intptr_t, size C.struct_miqt_qsizef) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(size QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSizeF(size)
+	slotval1 := libmiqt.ValueCast[QSizeF](size)
 
 	gofunc(slotval1)
 }
@@ -374,23 +349,22 @@ func miqt_exec_callback_QScreen_logicalDotsPerInchChanged(cb C.intptr_t, dpi C.d
 	gofunc(slotval1)
 }
 
-func (this *QScreen) VirtualGeometryChanged(rect *QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QScreen_virtualGeometryChanged(this.h, rect.cPointer())
+func (this *QScreen) VirtualGeometryChanged(rect QRect) {
+	C.QScreen_virtualGeometryChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
-func (this *QScreen) OnVirtualGeometryChanged(slot func(rect *QRect)) {
+func (this *QScreen) OnVirtualGeometryChanged(slot func(rect QRect)) {
 	C.QScreen_connect_virtualGeometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScreen_virtualGeometryChanged
-func miqt_exec_callback_QScreen_virtualGeometryChanged(cb C.intptr_t, rect *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(rect *QRect))
+func miqt_exec_callback_QScreen_virtualGeometryChanged(cb C.intptr_t, rect C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rect QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(rect)
+	slotval1 := libmiqt.ValueCast[QRect](rect)
 
 	gofunc(slotval1)
 }

@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -187,25 +188,19 @@ func (this *QwtText) RenderFlags() int {
 	return (int)(C.QwtText_renderFlags(this.h))
 }
 
-func (this *QwtText) SetColor(color *qt.QColor) {
+func (this *QwtText) SetColor(color qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QwtText_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QwtText_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QwtText) Color() *qt.QColor {
+func (this *QwtText) Color() qt.QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtText_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QwtText_color(this.h))
 }
 
-func (this *QwtText) UsedColor(param1 *qt.QColor) *qt.QColor {
+func (this *QwtText) UsedColor(param1 qt.QColor) qt.QColor {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QwtText_usedColor(this.h, (*C.QColor)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QColor](C.QwtText_usedColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1)))
 }
 
 func (this *QwtText) SetBorderRadius(borderRadius float64) {
@@ -269,18 +264,15 @@ func (this *QwtText) HeightForWidth(width float64) float64 {
 	return (float64)(C.QwtText_heightForWidth(this.h, (C.double)(width)))
 }
 
-func (this *QwtText) TextSize() *qt.QSizeF {
+func (this *QwtText) TextSize() qt.QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtText_textSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtText_textSize(this.h))
 }
 
-func (this *QwtText) Draw(painter *qt.QPainter, rect *qt.QRectF) {
+func (this *QwtText) Draw(painter *qt.QPainter, rect qt.QRectF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
-	C.QwtText_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()))
+	C.QwtText_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func QwtText_TextEngine(text string) *QwtTextEngine {
@@ -325,12 +317,10 @@ func (this *QwtText) HeightForWidth2(width float64, param2 *qt.QFont) float64 {
 	return (float64)(C.QwtText_heightForWidth2(this.h, (C.double)(width), (*C.QFont)(param2.UnsafePointer())))
 }
 
-func (this *QwtText) TextSizeWithQFont(param1 *qt.QFont) *qt.QSizeF {
+func (this *QwtText) TextSizeWithQFont(param1 *qt.QFont) qt.QSizeF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtText_textSizeWithQFont(this.h, (*C.QFont)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtText_textSizeWithQFont(this.h, (*C.QFont)(param1.UnsafePointer())))
 }
 
 func QwtText_TextEngine2(text string, param2 QwtText__TextFormat) *QwtTextEngine {

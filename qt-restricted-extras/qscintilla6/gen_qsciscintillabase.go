@@ -9,6 +9,7 @@ package qscintilla6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -1314,20 +1315,17 @@ func (this *QsciScintillaBase) SendScintilla8(msg uint, cpMin int64, cpMax int64
 	return (int64)(C.QsciScintillaBase_SendScintilla8(this.h, (C.uint)(msg), (C.long)(cpMin), (C.long)(cpMax), lpstrText_Cstring))
 }
 
-func (this *QsciScintillaBase) SendScintilla9(msg uint, wParam uint64, col *qt6.QColor) int64 {
-	defer runtime.KeepAlive(col)
-	return (int64)(C.QsciScintillaBase_SendScintilla9(this.h, (C.uint)(msg), (C.ulong)(wParam), (*C.QColor)(col.UnsafePointer())))
+func (this *QsciScintillaBase) SendScintilla9(msg uint, wParam uint64, col qt6.QColor) int64 {
+	return (int64)(C.QsciScintillaBase_SendScintilla9(this.h, (C.uint)(msg), (C.ulong)(wParam), libmiqt.ValueCast[C.struct_miqt_qcolor](col)))
 }
 
-func (this *QsciScintillaBase) SendScintilla10(msg uint, col *qt6.QColor) int64 {
-	defer runtime.KeepAlive(col)
-	return (int64)(C.QsciScintillaBase_SendScintilla10(this.h, (C.uint)(msg), (*C.QColor)(col.UnsafePointer())))
+func (this *QsciScintillaBase) SendScintilla10(msg uint, col qt6.QColor) int64 {
+	return (int64)(C.QsciScintillaBase_SendScintilla10(this.h, (C.uint)(msg), libmiqt.ValueCast[C.struct_miqt_qcolor](col)))
 }
 
-func (this *QsciScintillaBase) SendScintilla11(msg uint, wParam uint64, hdc *qt6.QPainter, rc *qt6.QRect, cpMin int64, cpMax int64) int64 {
+func (this *QsciScintillaBase) SendScintilla11(msg uint, wParam uint64, hdc *qt6.QPainter, rc qt6.QRect, cpMin int64, cpMax int64) int64 {
 	defer runtime.KeepAlive(hdc)
-	defer runtime.KeepAlive(rc)
-	return (int64)(C.QsciScintillaBase_SendScintilla11(this.h, (C.uint)(msg), (C.ulong)(wParam), (*C.QPainter)(hdc.UnsafePointer()), (*C.QRect)(rc.UnsafePointer()), (C.long)(cpMin), (C.long)(cpMax)))
+	return (int64)(C.QsciScintillaBase_SendScintilla11(this.h, (C.uint)(msg), (C.ulong)(wParam), (*C.QPainter)(hdc.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrect](rc), (C.long)(cpMin), (C.long)(cpMax)))
 }
 
 func (this *QsciScintillaBase) SendScintilla12(msg uint, wParam uint64, lParam *qt6.QPixmap) int64 {
@@ -2261,9 +2259,7 @@ func (this *QsciScintillaBase) SetViewportMargins(left int, top int, right int, 
 func (this *QsciScintillaBase) ViewportMargins() qt6.QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt6.UnsafeNewQMargins(unsafe.Pointer(C.QsciScintillaBase_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt6.QMargins](C.QsciScintillaBase_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -3034,14 +3030,12 @@ func miqt_exec_callback_QsciScintillaBase_scrollContentsBy(self *C.QsciScintilla
 
 }
 
-func (this *QsciScintillaBase) callVirtualBase_MinimumSizeHint() *qt6.QSize {
+func (this *QsciScintillaBase) callVirtualBase_MinimumSizeHint() qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QsciScintillaBase_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QsciScintillaBase_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciScintillaBase) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QsciScintillaBase) OnMinimumSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QsciScintillaBase_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3049,27 +3043,24 @@ func (this *QsciScintillaBase) OnMinimumSizeHint(slot func(super func() *qt6.QSi
 }
 
 //export miqt_exec_callback_QsciScintillaBase_minimumSizeHint
-func miqt_exec_callback_QsciScintillaBase_minimumSizeHint(self *C.QsciScintillaBase, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QsciScintillaBase_minimumSizeHint(self *C.QsciScintillaBase, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciScintillaBase_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QsciScintillaBase) callVirtualBase_SizeHint() *qt6.QSize {
-
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QsciScintillaBase_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QsciScintillaBase) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+
+func (this *QsciScintillaBase) callVirtualBase_SizeHint() qt6.QSize {
+
+	return libmiqt.ValueCast[qt6.QSize](C.QsciScintillaBase_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciScintillaBase) OnSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QsciScintillaBase_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3077,16 +3068,15 @@ func (this *QsciScintillaBase) OnSizeHint(slot func(super func() *qt6.QSize) *qt
 }
 
 //export miqt_exec_callback_QsciScintillaBase_sizeHint
-func miqt_exec_callback_QsciScintillaBase_sizeHint(self *C.QsciScintillaBase, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QsciScintillaBase_sizeHint(self *C.QsciScintillaBase, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciScintillaBase_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -3232,14 +3222,12 @@ func miqt_exec_callback_QsciScintillaBase_wheelEvent(self *C.QsciScintillaBase, 
 
 }
 
-func (this *QsciScintillaBase) callVirtualBase_ViewportSizeHint() *qt6.QSize {
+func (this *QsciScintillaBase) callVirtualBase_ViewportSizeHint() qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QsciScintillaBase_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QsciScintillaBase_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciScintillaBase) OnViewportSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QsciScintillaBase) OnViewportSizeHint(slot func(super func() qt6.QSize) qt6.QSize) {
 	ok := C.QsciScintillaBase_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3247,16 +3235,15 @@ func (this *QsciScintillaBase) OnViewportSizeHint(slot func(super func() *qt6.QS
 }
 
 //export miqt_exec_callback_QsciScintillaBase_viewportSizeHint
-func miqt_exec_callback_QsciScintillaBase_viewportSizeHint(self *C.QsciScintillaBase, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QSize) *qt6.QSize)
+func miqt_exec_callback_QsciScintillaBase_viewportSizeHint(self *C.QsciScintillaBase, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QSize) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QsciScintillaBase_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -3757,7 +3744,6 @@ func miqt_exec_callback_QsciScintillaBase_initPainter(self *C.QsciScintillaBase,
 }
 
 func (this *QsciScintillaBase) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciScintillaBase_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

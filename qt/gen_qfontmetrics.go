@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -212,68 +213,55 @@ func (this *QFontMetrics) CharWidth(str string, pos int) int {
 	return (int)(C.QFontMetrics_charWidth(this.h, str_ms, (C.int)(pos)))
 }
 
-func (this *QFontMetrics) BoundingRect(param1 QChar) *QRect {
+func (this *QFontMetrics) BoundingRect(param1 QChar) QRect {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	_goptr := newQRect(C.QFontMetrics_boundingRect(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QFontMetrics_boundingRect(this.h, param1.cPointer()))
 }
 
-func (this *QFontMetrics) BoundingRectWithText(text string) *QRect {
+func (this *QFontMetrics) BoundingRectWithText(text string) QRect {
 	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRect(C.QFontMetrics_boundingRectWithText(this.h, text_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QFontMetrics_boundingRectWithText(this.h, text_ms))
 }
 
-func (this *QFontMetrics) BoundingRect2(r *QRect, flags int, text string) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRect(C.QFontMetrics_boundingRect2(this.h, r.cPointer(), (C.int)(flags), text_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QFontMetrics) BoundingRect3(x int, y int, w int, h int, flags int, text string) *QRect {
+func (this *QFontMetrics) BoundingRect2(r QRect, flags int, text string) QRect {
 	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRect(C.QFontMetrics_boundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QFontMetrics_boundingRect2(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r), (C.int)(flags), text_ms))
 }
 
-func (this *QFontMetrics) Size(flags int, str string) *QSize {
+func (this *QFontMetrics) BoundingRect3(x int, y int, w int, h int, flags int, text string) QRect {
+	defer runtime.KeepAlive(this)
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return libmiqt.ValueCast[QRect](C.QFontMetrics_boundingRect3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms))
+}
+
+func (this *QFontMetrics) Size(flags int, str string) QSize {
 	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	_goptr := newQSize(C.QFontMetrics_size(this.h, (C.int)(flags), str_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QFontMetrics_size(this.h, (C.int)(flags), str_ms))
 }
 
-func (this *QFontMetrics) TightBoundingRect(text string) *QRect {
+func (this *QFontMetrics) TightBoundingRect(text string) QRect {
 	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRect(C.QFontMetrics_tightBoundingRect(this.h, text_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QFontMetrics_tightBoundingRect(this.h, text_ms))
 }
 
 func (this *QFontMetrics) ElidedText(text string, mode TextElideMode, width int) string {
@@ -343,72 +331,58 @@ func (this *QFontMetrics) HorizontalAdvance2(param1 string, lenVal int) int {
 	return (int)(C.QFontMetrics_horizontalAdvance2(this.h, param1_ms, (C.int)(lenVal)))
 }
 
-func (this *QFontMetrics) BoundingRect4(r *QRect, flags int, text string, tabstops int) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRect(C.QFontMetrics_boundingRect4(this.h, r.cPointer(), (C.int)(flags), text_ms, (C.int)(tabstops)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QFontMetrics) BoundingRect5(r *QRect, flags int, text string, tabstops int, tabarray *int) *QRect {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRect(C.QFontMetrics_boundingRect5(this.h, r.cPointer(), (C.int)(flags), text_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-func (this *QFontMetrics) BoundingRect6(x int, y int, w int, h int, flags int, text string, tabstops int) *QRect {
+func (this *QFontMetrics) BoundingRect4(r QRect, flags int, text string, tabstops int) QRect {
 	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRect(C.QFontMetrics_boundingRect6(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms, (C.int)(tabstops)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QFontMetrics_boundingRect4(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r), (C.int)(flags), text_ms, (C.int)(tabstops)))
 }
 
-func (this *QFontMetrics) BoundingRect7(x int, y int, w int, h int, flags int, text string, tabstops int, tabarray *int) *QRect {
+func (this *QFontMetrics) BoundingRect5(r QRect, flags int, text string, tabstops int, tabarray *int) QRect {
 	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRect(C.QFontMetrics_boundingRect7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QFontMetrics_boundingRect5(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r), (C.int)(flags), text_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
 }
 
-func (this *QFontMetrics) Size2(flags int, str string, tabstops int) *QSize {
+func (this *QFontMetrics) BoundingRect6(x int, y int, w int, h int, flags int, text string, tabstops int) QRect {
+	defer runtime.KeepAlive(this)
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return libmiqt.ValueCast[QRect](C.QFontMetrics_boundingRect6(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms, (C.int)(tabstops)))
+}
+
+func (this *QFontMetrics) BoundingRect7(x int, y int, w int, h int, flags int, text string, tabstops int, tabarray *int) QRect {
+	defer runtime.KeepAlive(this)
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+	return libmiqt.ValueCast[QRect](C.QFontMetrics_boundingRect7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
+}
+
+func (this *QFontMetrics) Size2(flags int, str string, tabstops int) QSize {
 	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	_goptr := newQSize(C.QFontMetrics_size2(this.h, (C.int)(flags), str_ms, (C.int)(tabstops)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QFontMetrics_size2(this.h, (C.int)(flags), str_ms, (C.int)(tabstops)))
 }
 
-func (this *QFontMetrics) Size3(flags int, str string, tabstops int, tabarray *int) *QSize {
+func (this *QFontMetrics) Size3(flags int, str string, tabstops int, tabarray *int) QSize {
 	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	_goptr := newQSize(C.QFontMetrics_size3(this.h, (C.int)(flags), str_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QFontMetrics_size3(this.h, (C.int)(flags), str_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
 }
 
 func (this *QFontMetrics) ElidedText2(text string, mode TextElideMode, width int, flags int) string {
@@ -636,57 +610,46 @@ func (this *QFontMetricsF) HorizontalAdvanceWithQChar(param1 QChar) float64 {
 	return (float64)(C.QFontMetricsF_horizontalAdvanceWithQChar(this.h, param1.cPointer()))
 }
 
-func (this *QFontMetricsF) BoundingRect(stringVal string) *QRectF {
+func (this *QFontMetricsF) BoundingRect(stringVal string) QRectF {
 	defer runtime.KeepAlive(this)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_goptr := newQRectF(C.QFontMetricsF_boundingRect(this.h, stringVal_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QFontMetricsF_boundingRect(this.h, stringVal_ms))
 }
 
-func (this *QFontMetricsF) BoundingRectWithQChar(param1 QChar) *QRectF {
+func (this *QFontMetricsF) BoundingRectWithQChar(param1 QChar) QRectF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	_goptr := newQRectF(C.QFontMetricsF_boundingRectWithQChar(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QFontMetricsF_boundingRectWithQChar(this.h, param1.cPointer()))
 }
 
-func (this *QFontMetricsF) BoundingRect2(r *QRectF, flags int, stringVal string) *QRectF {
+func (this *QFontMetricsF) BoundingRect2(r QRectF, flags int, stringVal string) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_goptr := newQRectF(C.QFontMetricsF_boundingRect2(this.h, r.cPointer(), (C.int)(flags), stringVal_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QFontMetricsF_boundingRect2(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](r), (C.int)(flags), stringVal_ms))
 }
 
-func (this *QFontMetricsF) Size(flags int, str string) *QSizeF {
+func (this *QFontMetricsF) Size(flags int, str string) QSizeF {
 	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	_goptr := newQSizeF(C.QFontMetricsF_size(this.h, (C.int)(flags), str_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QFontMetricsF_size(this.h, (C.int)(flags), str_ms))
 }
 
-func (this *QFontMetricsF) TightBoundingRect(text string) *QRectF {
+func (this *QFontMetricsF) TightBoundingRect(text string) QRectF {
 	defer runtime.KeepAlive(this)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRectF(C.QFontMetricsF_tightBoundingRect(this.h, text_ms))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QFontMetricsF_tightBoundingRect(this.h, text_ms))
 }
 
 func (this *QFontMetricsF) ElidedText(text string, mode TextElideMode, width float64) string {
@@ -747,50 +710,40 @@ func (this *QFontMetricsF) HorizontalAdvance2(stringVal string, length int) floa
 	return (float64)(C.QFontMetricsF_horizontalAdvance2(this.h, stringVal_ms, (C.int)(length)))
 }
 
-func (this *QFontMetricsF) BoundingRect3(r *QRectF, flags int, stringVal string, tabstops int) *QRectF {
+func (this *QFontMetricsF) BoundingRect3(r QRectF, flags int, stringVal string, tabstops int) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_goptr := newQRectF(C.QFontMetricsF_boundingRect3(this.h, r.cPointer(), (C.int)(flags), stringVal_ms, (C.int)(tabstops)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QFontMetricsF_boundingRect3(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](r), (C.int)(flags), stringVal_ms, (C.int)(tabstops)))
 }
 
-func (this *QFontMetricsF) BoundingRect4(r *QRectF, flags int, stringVal string, tabstops int, tabarray *int) *QRectF {
+func (this *QFontMetricsF) BoundingRect4(r QRectF, flags int, stringVal string, tabstops int, tabarray *int) QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_goptr := newQRectF(C.QFontMetricsF_boundingRect4(this.h, r.cPointer(), (C.int)(flags), stringVal_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QFontMetricsF_boundingRect4(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](r), (C.int)(flags), stringVal_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
 }
 
-func (this *QFontMetricsF) Size2(flags int, str string, tabstops int) *QSizeF {
+func (this *QFontMetricsF) Size2(flags int, str string, tabstops int) QSizeF {
 	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	_goptr := newQSizeF(C.QFontMetricsF_size2(this.h, (C.int)(flags), str_ms, (C.int)(tabstops)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QFontMetricsF_size2(this.h, (C.int)(flags), str_ms, (C.int)(tabstops)))
 }
 
-func (this *QFontMetricsF) Size3(flags int, str string, tabstops int, tabarray *int) *QSizeF {
+func (this *QFontMetricsF) Size3(flags int, str string, tabstops int, tabarray *int) QSizeF {
 	defer runtime.KeepAlive(this)
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	_goptr := newQSizeF(C.QFontMetricsF_size3(this.h, (C.int)(flags), str_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QFontMetricsF_size3(this.h, (C.int)(flags), str_ms, (C.int)(tabstops), (*C.int)(unsafe.Pointer(tabarray))))
 }
 
 func (this *QFontMetricsF) ElidedText2(text string, mode TextElideMode, width float64, flags int) string {

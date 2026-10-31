@@ -50,11 +50,11 @@ void miqt_exec_callback_QToolBox_itemInserted(QToolBox*, intptr_t, int);
 void miqt_exec_callback_QToolBox_itemRemoved(QToolBox*, intptr_t, int);
 void miqt_exec_callback_QToolBox_showEvent(QToolBox*, intptr_t, QShowEvent*);
 void miqt_exec_callback_QToolBox_changeEvent(QToolBox*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QToolBox_sizeHint(const QToolBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QToolBox_sizeHint(const QToolBox*, intptr_t);
 void miqt_exec_callback_QToolBox_paintEvent(QToolBox*, intptr_t, QPaintEvent*);
 int miqt_exec_callback_QToolBox_devType(const QToolBox*, intptr_t);
 void miqt_exec_callback_QToolBox_setVisible(QToolBox*, intptr_t, bool);
-QSize* miqt_exec_callback_QToolBox_minimumSizeHint(const QToolBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QToolBox_minimumSizeHint(const QToolBox*, intptr_t);
 int miqt_exec_callback_QToolBox_heightForWidth(const QToolBox*, intptr_t, int);
 bool miqt_exec_callback_QToolBox_hasHeightForWidth(const QToolBox*, intptr_t);
 QPaintEngine* miqt_exec_callback_QToolBox_paintEngine(const QToolBox*, intptr_t);
@@ -200,13 +200,11 @@ public:
 			return QToolBox::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QToolBox_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QToolBox_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QToolBox_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QToolBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -266,13 +264,11 @@ public:
 			return QToolBox::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QToolBox_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QToolBox_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QToolBox_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QToolBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1235,8 +1231,8 @@ bool QToolBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QToolBox_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::sizeHint());
+struct miqt_qsize QToolBox_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::sizeHint());
 }
 
 bool QToolBox_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1291,8 +1287,8 @@ bool QToolBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QToolBox_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::minimumSizeHint());
+struct miqt_qsize QToolBox_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::minimumSizeHint());
 }
 
 bool QToolBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1840,10 +1836,6 @@ bool QToolBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QToolBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::disconnectNotify(*signal);
-}
-
-QSize* QToolBox_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QToolBox_virtualreturncopy_QVariant(QVariant* src) {

@@ -125,8 +125,8 @@ void QAccessibleInterface_setText(QAccessibleInterface* self, int t, struct miqt
 	self->setText(static_cast<QAccessible::Text>(t), text_QString);
 }
 
-QRect* QAccessibleInterface_rect(const QAccessibleInterface* self) {
-	return new QRect(self->rect());
+struct miqt_qrect QAccessibleInterface_rect(const QAccessibleInterface* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rect());
 }
 
 int QAccessibleInterface_role(const QAccessibleInterface* self) {
@@ -138,12 +138,12 @@ QAccessible__State* QAccessibleInterface_state(const QAccessibleInterface* self)
 	return new QAccessible::State(self->state());
 }
 
-QColor* QAccessibleInterface_foregroundColor(const QAccessibleInterface* self) {
-	return new QColor(self->foregroundColor());
+struct miqt_qcolor QAccessibleInterface_foregroundColor(const QAccessibleInterface* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->foregroundColor());
 }
 
-QColor* QAccessibleInterface_backgroundColor(const QAccessibleInterface* self) {
-	return new QColor(self->backgroundColor());
+struct miqt_qcolor QAccessibleInterface_backgroundColor(const QAccessibleInterface* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->backgroundColor());
 }
 
 QAccessibleTextInterface* QAccessibleInterface_textInterface(QAccessibleInterface* self) {
@@ -262,12 +262,12 @@ int QAccessibleTextInterface_characterCount(const QAccessibleTextInterface* self
 	return self->characterCount();
 }
 
-QRect* QAccessibleTextInterface_characterRect(const QAccessibleTextInterface* self, int offset) {
-	return new QRect(self->characterRect(static_cast<int>(offset)));
+struct miqt_qrect QAccessibleTextInterface_characterRect(const QAccessibleTextInterface* self, int offset) {
+	return miqt_to_cabi<struct miqt_qrect>(self->characterRect(static_cast<int>(offset)));
 }
 
-int QAccessibleTextInterface_offsetAtPoint(const QAccessibleTextInterface* self, QPoint* point) {
-	return self->offsetAtPoint(*point);
+int QAccessibleTextInterface_offsetAtPoint(const QAccessibleTextInterface* self, struct miqt_qpoint point) {
+	return self->offsetAtPoint(miqt_from_cabi<QPoint>(point));
 }
 
 void QAccessibleTextInterface_scrollToSubstring(QAccessibleTextInterface* self, int startIndex, int endIndex) {
@@ -760,12 +760,12 @@ struct miqt_string QAccessibleImageInterface_imageDescription(const QAccessibleI
 	return _ms;
 }
 
-QSize* QAccessibleImageInterface_imageSize(const QAccessibleImageInterface* self) {
-	return new QSize(self->imageSize());
+struct miqt_qsize QAccessibleImageInterface_imageSize(const QAccessibleImageInterface* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->imageSize());
 }
 
-QPoint* QAccessibleImageInterface_imagePosition(const QAccessibleImageInterface* self) {
-	return new QPoint(self->imagePosition());
+struct miqt_qpoint QAccessibleImageInterface_imagePosition(const QAccessibleImageInterface* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->imagePosition());
 }
 
 void QAccessibleImageInterface_delete(QAccessibleImageInterface* self) {

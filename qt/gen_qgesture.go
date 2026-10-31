@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -131,15 +132,12 @@ func (this *QGesture) State() GestureState {
 	return (GestureState)(C.QGesture_state(this.h))
 }
 
-func (this *QGesture) HotSpot() *QPointF {
-	_goptr := newQPointF(C.QGesture_hotSpot(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGesture) HotSpot() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QGesture_hotSpot(this.h))
 }
 
-func (this *QGesture) SetHotSpot(value *QPointF) {
-	defer runtime.KeepAlive(value)
-	C.QGesture_setHotSpot(this.h, value.cPointer())
+func (this *QGesture) SetHotSpot(value QPointF) {
+	C.QGesture_setHotSpot(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](value))
 }
 
 func (this *QGesture) HasHotSpot() bool {
@@ -561,36 +559,28 @@ func QPanGesture_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QPanGesture) LastOffset() *QPointF {
-	_goptr := newQPointF(C.QPanGesture_lastOffset(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPanGesture) LastOffset() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QPanGesture_lastOffset(this.h))
 }
 
-func (this *QPanGesture) Offset() *QPointF {
-	_goptr := newQPointF(C.QPanGesture_offset(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPanGesture) Offset() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QPanGesture_offset(this.h))
 }
 
-func (this *QPanGesture) Delta() *QPointF {
-	_goptr := newQPointF(C.QPanGesture_delta(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPanGesture) Delta() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QPanGesture_delta(this.h))
 }
 
 func (this *QPanGesture) Acceleration() float64 {
 	return (float64)(C.QPanGesture_acceleration(this.h))
 }
 
-func (this *QPanGesture) SetLastOffset(value *QPointF) {
-	defer runtime.KeepAlive(value)
-	C.QPanGesture_setLastOffset(this.h, value.cPointer())
+func (this *QPanGesture) SetLastOffset(value QPointF) {
+	C.QPanGesture_setLastOffset(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](value))
 }
 
-func (this *QPanGesture) SetOffset(value *QPointF) {
-	defer runtime.KeepAlive(value)
-	C.QPanGesture_setOffset(this.h, value.cPointer())
+func (this *QPanGesture) SetOffset(value QPointF) {
+	C.QPanGesture_setOffset(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](value))
 }
 
 func (this *QPanGesture) SetAcceleration(value float64) {
@@ -1016,37 +1006,28 @@ func (this *QPinchGesture) SetChangeFlags(value QPinchGesture__ChangeFlag) {
 	C.QPinchGesture_setChangeFlags(this.h, (C.int)(value))
 }
 
-func (this *QPinchGesture) StartCenterPoint() *QPointF {
-	_goptr := newQPointF(C.QPinchGesture_startCenterPoint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPinchGesture) StartCenterPoint() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QPinchGesture_startCenterPoint(this.h))
 }
 
-func (this *QPinchGesture) LastCenterPoint() *QPointF {
-	_goptr := newQPointF(C.QPinchGesture_lastCenterPoint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPinchGesture) LastCenterPoint() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QPinchGesture_lastCenterPoint(this.h))
 }
 
-func (this *QPinchGesture) CenterPoint() *QPointF {
-	_goptr := newQPointF(C.QPinchGesture_centerPoint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPinchGesture) CenterPoint() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QPinchGesture_centerPoint(this.h))
 }
 
-func (this *QPinchGesture) SetStartCenterPoint(value *QPointF) {
-	defer runtime.KeepAlive(value)
-	C.QPinchGesture_setStartCenterPoint(this.h, value.cPointer())
+func (this *QPinchGesture) SetStartCenterPoint(value QPointF) {
+	C.QPinchGesture_setStartCenterPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](value))
 }
 
-func (this *QPinchGesture) SetLastCenterPoint(value *QPointF) {
-	defer runtime.KeepAlive(value)
-	C.QPinchGesture_setLastCenterPoint(this.h, value.cPointer())
+func (this *QPinchGesture) SetLastCenterPoint(value QPointF) {
+	C.QPinchGesture_setLastCenterPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](value))
 }
 
-func (this *QPinchGesture) SetCenterPoint(value *QPointF) {
-	defer runtime.KeepAlive(value)
-	C.QPinchGesture_setCenterPoint(this.h, value.cPointer())
+func (this *QPinchGesture) SetCenterPoint(value QPointF) {
+	C.QPinchGesture_setCenterPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](value))
 }
 
 func (this *QPinchGesture) TotalScaleFactor() float64 {
@@ -1919,15 +1900,12 @@ func QTapGesture_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QTapGesture) Position() *QPointF {
-	_goptr := newQPointF(C.QTapGesture_position(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTapGesture) Position() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QTapGesture_position(this.h))
 }
 
-func (this *QTapGesture) SetPosition(pos *QPointF) {
-	defer runtime.KeepAlive(pos)
-	C.QTapGesture_setPosition(this.h, pos.cPointer())
+func (this *QTapGesture) SetPosition(pos QPointF) {
+	C.QTapGesture_setPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
 func QTapGesture_Tr2(s string, c string) string {
@@ -2333,15 +2311,12 @@ func QTapAndHoldGesture_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QTapAndHoldGesture) Position() *QPointF {
-	_goptr := newQPointF(C.QTapAndHoldGesture_position(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTapAndHoldGesture) Position() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QTapAndHoldGesture_position(this.h))
 }
 
-func (this *QTapAndHoldGesture) SetPosition(pos *QPointF) {
-	defer runtime.KeepAlive(pos)
-	C.QTapAndHoldGesture_setPosition(this.h, pos.cPointer())
+func (this *QTapAndHoldGesture) SetPosition(pos QPointF) {
+	C.QTapAndHoldGesture_setPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](pos))
 }
 
 func QTapAndHoldGesture_SetTimeout(msecs int) {
@@ -2823,12 +2798,9 @@ func (this *QGestureEvent) Widget() *QWidget {
 	return newQWidget(C.QGestureEvent_widget(this.h))
 }
 
-func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {
+func (this *QGestureEvent) MapToGraphicsScene(gesturePoint QPointF) QPointF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(gesturePoint)
-	_goptr := newQPointF(C.QGestureEvent_mapToGraphicsScene(this.h, gesturePoint.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QPointF](C.QGestureEvent_mapToGraphicsScene(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](gesturePoint)))
 }
 
 func (this *QGestureEvent) OperatorAssign(param1 *QGestureEvent) {

@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -72,11 +73,9 @@ func (this *QwtPlotSeriesItem) Orientation() qt.Orientation {
 	return (qt.Orientation)(C.QwtPlotSeriesItem_orientation(this.h))
 }
 
-func (this *QwtPlotSeriesItem) BoundingRect() *qt.QRectF {
+func (this *QwtPlotSeriesItem) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotSeriesItem_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotSeriesItem_boundingRect(this.h))
 }
 
 func (this *QwtPlotSeriesItem) UpdateScaleDiv(param1 *QwtScaleDiv, param2 *QwtScaleDiv) {

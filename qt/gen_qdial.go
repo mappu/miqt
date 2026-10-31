@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -118,16 +119,12 @@ func (this *QDial) NotchesVisible() bool {
 	return (bool)(C.QDial_notchesVisible(this.h))
 }
 
-func (this *QDial) SizeHint() *QSize {
-	_goptr := newQSize(C.QDial_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDial) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QDial_sizeHint(this.h))
 }
 
-func (this *QDial) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QDial_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDial) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QDial_minimumSizeHint(this.h))
 }
 
 func (this *QDial) SetNotchesVisible(visible bool) {
@@ -344,14 +341,12 @@ func (this *QDial) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QDial) callVirtualBase_SizeHint() *QSize {
+func (this *QDial) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QDial_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QDial_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QDial) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDial) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDial_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -359,27 +354,24 @@ func (this *QDial) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QDial_sizeHint
-func miqt_exec_callback_QDial_sizeHint(self *C.QDial, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDial_sizeHint(self *C.QDial, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDial{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDial_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QDial) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QDial_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QDial) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QDial) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QDial_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QDial) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QDial_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -387,16 +379,15 @@ func (this *QDial) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QDial_minimumSizeHint
-func miqt_exec_callback_QDial_minimumSizeHint(self *C.QDial, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QDial_minimumSizeHint(self *C.QDial, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QDial{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QDial_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1384,7 +1375,6 @@ func miqt_exec_callback_QDial_initPainter(self *C.QDial, cb C.intptr_t, painter 
 }
 
 func (this *QDial) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QDial_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

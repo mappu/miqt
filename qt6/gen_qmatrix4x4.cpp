@@ -129,16 +129,16 @@ bool QMatrix4x4_operatorNotEqual(const QMatrix4x4* self, QMatrix4x4* other) {
 	return (*self != *other);
 }
 
-void QMatrix4x4_scale(QMatrix4x4* self, QVector3D* vector) {
-	self->scale(*vector);
+void QMatrix4x4_scale(QMatrix4x4* self, struct miqt_qvector3d vector) {
+	self->scale(miqt_from_cabi<QVector3D>(vector));
 }
 
-void QMatrix4x4_translate(QMatrix4x4* self, QVector3D* vector) {
-	self->translate(*vector);
+void QMatrix4x4_translate(QMatrix4x4* self, struct miqt_qvector3d vector) {
+	self->translate(miqt_from_cabi<QVector3D>(vector));
 }
 
-void QMatrix4x4_rotate(QMatrix4x4* self, float angle, QVector3D* vector) {
-	self->rotate(static_cast<float>(angle), *vector);
+void QMatrix4x4_rotate(QMatrix4x4* self, float angle, struct miqt_qvector3d vector) {
+	self->rotate(static_cast<float>(angle), miqt_from_cabi<QVector3D>(vector));
 }
 
 void QMatrix4x4_scale2(QMatrix4x4* self, float x, float y) {
@@ -169,12 +169,12 @@ void QMatrix4x4_rotateWithQuaternion(QMatrix4x4* self, QQuaternion* quaternion) 
 	self->rotate(*quaternion);
 }
 
-void QMatrix4x4_ortho(QMatrix4x4* self, QRect* rect) {
-	self->ortho(*rect);
+void QMatrix4x4_ortho(QMatrix4x4* self, struct miqt_qrect rect) {
+	self->ortho(miqt_from_cabi<QRect>(rect));
 }
 
-void QMatrix4x4_orthoWithRect(QMatrix4x4* self, QRectF* rect) {
-	self->ortho(*rect);
+void QMatrix4x4_orthoWithRect(QMatrix4x4* self, struct miqt_qrectf rect) {
+	self->ortho(miqt_from_cabi<QRectF>(rect));
 }
 
 void QMatrix4x4_ortho2(QMatrix4x4* self, float left, float right, float bottom, float top, float nearPlane, float farPlane) {
@@ -189,12 +189,12 @@ void QMatrix4x4_perspective(QMatrix4x4* self, float verticalAngle, float aspectR
 	self->perspective(static_cast<float>(verticalAngle), static_cast<float>(aspectRatio), static_cast<float>(nearPlane), static_cast<float>(farPlane));
 }
 
-void QMatrix4x4_lookAt(QMatrix4x4* self, QVector3D* eye, QVector3D* center, QVector3D* up) {
-	self->lookAt(*eye, *center, *up);
+void QMatrix4x4_lookAt(QMatrix4x4* self, struct miqt_qvector3d eye, struct miqt_qvector3d center, struct miqt_qvector3d up) {
+	self->lookAt(miqt_from_cabi<QVector3D>(eye), miqt_from_cabi<QVector3D>(center), miqt_from_cabi<QVector3D>(up));
 }
 
-void QMatrix4x4_viewport(QMatrix4x4* self, QRectF* rect) {
-	self->viewport(*rect);
+void QMatrix4x4_viewport(QMatrix4x4* self, struct miqt_qrectf rect) {
+	self->viewport(miqt_from_cabi<QRectF>(rect));
 }
 
 void QMatrix4x4_viewport2(QMatrix4x4* self, float left, float bottom, float width, float height) {
@@ -217,32 +217,32 @@ QTransform* QMatrix4x4_toTransformWithDistanceToPlane(const QMatrix4x4* self, fl
 	return new QTransform(self->toTransform(static_cast<float>(distanceToPlane)));
 }
 
-QPoint* QMatrix4x4_map(const QMatrix4x4* self, QPoint* point) {
-	return new QPoint(self->map(*point));
+struct miqt_qpoint QMatrix4x4_map(const QMatrix4x4* self, struct miqt_qpoint point) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->map(miqt_from_cabi<QPoint>(point)));
 }
 
-QPointF* QMatrix4x4_mapWithPoint(const QMatrix4x4* self, QPointF* point) {
-	return new QPointF(self->map(*point));
+struct miqt_qpointf QMatrix4x4_mapWithPoint(const QMatrix4x4* self, struct miqt_qpointf point) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->map(miqt_from_cabi<QPointF>(point)));
 }
 
-QVector3D* QMatrix4x4_map2(const QMatrix4x4* self, QVector3D* point) {
-	return new QVector3D(self->map(*point));
+struct miqt_qvector3d QMatrix4x4_map2(const QMatrix4x4* self, struct miqt_qvector3d point) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->map(miqt_from_cabi<QVector3D>(point)));
 }
 
-QVector3D* QMatrix4x4_mapVector(const QMatrix4x4* self, QVector3D* vector) {
-	return new QVector3D(self->mapVector(*vector));
+struct miqt_qvector3d QMatrix4x4_mapVector(const QMatrix4x4* self, struct miqt_qvector3d vector) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->mapVector(miqt_from_cabi<QVector3D>(vector)));
 }
 
 QVector4D* QMatrix4x4_map3(const QMatrix4x4* self, QVector4D* point) {
 	return new QVector4D(self->map(*point));
 }
 
-QRect* QMatrix4x4_mapRect(const QMatrix4x4* self, QRect* rect) {
-	return new QRect(self->mapRect(*rect));
+struct miqt_qrect QMatrix4x4_mapRect(const QMatrix4x4* self, struct miqt_qrect rect) {
+	return miqt_to_cabi<struct miqt_qrect>(self->mapRect(miqt_from_cabi<QRect>(rect)));
 }
 
-QRectF* QMatrix4x4_mapRectWithRect(const QMatrix4x4* self, QRectF* rect) {
-	return new QRectF(self->mapRect(*rect));
+struct miqt_qrectf QMatrix4x4_mapRectWithRect(const QMatrix4x4* self, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRect(miqt_from_cabi<QRectF>(rect)));
 }
 
 float* QMatrix4x4_data(QMatrix4x4* self) {

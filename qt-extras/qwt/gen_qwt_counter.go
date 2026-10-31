@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -147,10 +148,8 @@ func (this *QwtCounter) IncSteps(param1 QwtCounter__Button) int {
 	return (int)(C.QwtCounter_incSteps(this.h, (C.int)(param1)))
 }
 
-func (this *QwtCounter) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCounter_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtCounter) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtCounter_sizeHint(this.h))
 }
 
 func (this *QwtCounter) SingleStep() float64 {
@@ -420,14 +419,12 @@ func (this *QwtCounter) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 
-func (this *QwtCounter) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QwtCounter) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCounter_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtCounter_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtCounter) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtCounter) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtCounter_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -435,16 +432,15 @@ func (this *QwtCounter) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) 
 }
 
 //export miqt_exec_callback_QwtCounter_sizeHint
-func miqt_exec_callback_QwtCounter_sizeHint(self *C.QwtCounter, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtCounter_sizeHint(self *C.QwtCounter, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtCounter{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtCounter_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -582,14 +578,12 @@ func miqt_exec_callback_QwtCounter_setVisible(self *C.QwtCounter, cb C.intptr_t,
 
 }
 
-func (this *QwtCounter) callVirtualBase_MinimumSizeHint() *qt.QSize {
+func (this *QwtCounter) callVirtualBase_MinimumSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtCounter_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtCounter_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtCounter) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtCounter) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtCounter_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -597,16 +591,15 @@ func (this *QwtCounter) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.
 }
 
 //export miqt_exec_callback_QwtCounter_minimumSizeHint
-func miqt_exec_callback_QwtCounter_minimumSizeHint(self *C.QwtCounter, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtCounter_minimumSizeHint(self *C.QwtCounter, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtCounter{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtCounter_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1407,7 +1400,6 @@ func miqt_exec_callback_QwtCounter_initPainter(self *C.QwtCounter, cb C.intptr_t
 }
 
 func (this *QwtCounter) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtCounter_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

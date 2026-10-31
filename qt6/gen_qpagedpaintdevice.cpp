@@ -35,8 +35,8 @@ bool QPagedPaintDevice_setPageOrientation(QPagedPaintDevice* self, int orientati
 	return self->setPageOrientation(static_cast<QPageLayout::Orientation>(orientation));
 }
 
-bool QPagedPaintDevice_setPageMargins(QPagedPaintDevice* self, QMarginsF* margins, int units) {
-	return self->setPageMargins(*margins, static_cast<QPageLayout::Unit>(units));
+bool QPagedPaintDevice_setPageMargins(QPagedPaintDevice* self, struct miqt_qmarginsf margins, int units) {
+	return self->setPageMargins(miqt_from_cabi<QMarginsF>(margins), static_cast<QPageLayout::Unit>(units));
 }
 
 QPageLayout* QPagedPaintDevice_pageLayout(const QPagedPaintDevice* self) {

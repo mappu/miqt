@@ -61,8 +61,8 @@ void miqt_exec_callback_QComboBox_currentIndexChangedWithQString(intptr_t, struc
 void miqt_exec_callback_QComboBox_currentTextChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QComboBox_activatedWithQString(intptr_t, struct miqt_string);
 void miqt_exec_callback_QComboBox_highlightedWithQString(intptr_t, struct miqt_string);
-QSize* miqt_exec_callback_QComboBox_sizeHint(const QComboBox*, intptr_t);
-QSize* miqt_exec_callback_QComboBox_minimumSizeHint(const QComboBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QComboBox_sizeHint(const QComboBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QComboBox_minimumSizeHint(const QComboBox*, intptr_t);
 void miqt_exec_callback_QComboBox_showPopup(QComboBox*, intptr_t);
 void miqt_exec_callback_QComboBox_hidePopup(QComboBox*, intptr_t);
 bool miqt_exec_callback_QComboBox_event(QComboBox*, intptr_t, QEvent*);
@@ -131,13 +131,11 @@ public:
 			return QComboBox::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QComboBox_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QComboBox_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QComboBox_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QComboBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -148,13 +146,11 @@ public:
 			return QComboBox::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QComboBox_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QComboBox_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QComboBox_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QComboBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showPopup = 0;
@@ -1096,12 +1092,12 @@ void QComboBox_setMinimumContentsLength(QComboBox* self, int characters) {
 	self->setMinimumContentsLength(static_cast<int>(characters));
 }
 
-QSize* QComboBox_iconSize(const QComboBox* self) {
-	return new QSize(self->iconSize());
+struct miqt_qsize QComboBox_iconSize(const QComboBox* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize());
 }
 
-void QComboBox_setIconSize(QComboBox* self, QSize* size) {
-	self->setIconSize(*size);
+void QComboBox_setIconSize(QComboBox* self, struct miqt_qsize size) {
+	self->setIconSize(miqt_from_cabi<QSize>(size));
 }
 
 void QComboBox_setPlaceholderText(QComboBox* self, struct miqt_string placeholderText) {
@@ -1168,12 +1164,12 @@ void QComboBox_setModel(QComboBox* self, QAbstractItemModel* model) {
 	self->setModel(model);
 }
 
-QModelIndex* QComboBox_rootModelIndex(const QComboBox* self) {
-	return new QModelIndex(self->rootModelIndex());
+struct miqt_qmodelindex QComboBox_rootModelIndex(const QComboBox* self) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->rootModelIndex());
 }
 
-void QComboBox_setRootModelIndex(QComboBox* self, QModelIndex* index) {
-	self->setRootModelIndex(*index);
+void QComboBox_setRootModelIndex(QComboBox* self, struct miqt_qmodelindex index) {
+	self->setRootModelIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 int QComboBox_modelColumn(const QComboBox* self) {
@@ -1293,12 +1289,12 @@ void QComboBox_setView(QComboBox* self, QAbstractItemView* itemView) {
 	self->setView(itemView);
 }
 
-QSize* QComboBox_sizeHint(const QComboBox* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QComboBox_sizeHint(const QComboBox* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QComboBox_minimumSizeHint(const QComboBox* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QComboBox_minimumSizeHint(const QComboBox* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QComboBox_showPopup(QComboBox* self) {
@@ -1608,8 +1604,8 @@ bool QComboBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QComboBox_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQComboBox*>(self)->QComboBox::sizeHint());
+struct miqt_qsize QComboBox_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQComboBox*>(self)->QComboBox::sizeHint());
 }
 
 bool QComboBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1622,8 +1618,8 @@ bool QComboBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QComboBox_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQComboBox*>(self)->QComboBox::minimumSizeHint());
+struct miqt_qsize QComboBox_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQComboBox*>(self)->QComboBox::minimumSizeHint());
 }
 
 bool QComboBox_override_virtual_showPopup(void* self, intptr_t slot) {
@@ -2283,10 +2279,6 @@ bool QComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQComboBox*>(self)->QComboBox::disconnectNotify(*signal);
-}
-
-QSize* QComboBox_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QComboBox_virtualreturncopy_QVariant(QVariant* src) {

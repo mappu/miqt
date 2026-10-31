@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -66,25 +67,20 @@ func NewQIconEngine() *QIconEngine {
 	return newQIconEngine(C.QIconEngine_new())
 }
 
-func (this *QIconEngine) Paint(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State) {
+func (this *QIconEngine) Paint(painter *QPainter, rect QRect, mode QIcon__Mode, state QIcon__State) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
-	C.QIconEngine_paint(this.h, painter.cPointer(), rect.cPointer(), (C.int)(mode), (C.int)(state))
+	C.QIconEngine_paint(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrect](rect), (C.int)(mode), (C.int)(state))
 }
 
-func (this *QIconEngine) ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
+func (this *QIconEngine) ActualSize(size QSize, mode QIcon__Mode, state QIcon__State) QSize {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	_goptr := newQSize(C.QIconEngine_actualSize(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QIconEngine_actualSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(mode), (C.int)(state)))
 }
 
-func (this *QIconEngine) Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
+func (this *QIconEngine) Pixmap(size QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	_goptr := newQPixmap(C.QIconEngine_pixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
+	_goptr := newQPixmap(C.QIconEngine_pixmap(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -95,14 +91,13 @@ func (this *QIconEngine) AddPixmap(pixmap *QPixmap, mode QIcon__Mode, state QIco
 	C.QIconEngine_addPixmap(this.h, pixmap.cPointer(), (C.int)(mode), (C.int)(state))
 }
 
-func (this *QIconEngine) AddFile(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
+func (this *QIconEngine) AddFile(fileName string, size QSize, mode QIcon__Mode, state QIcon__State) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QIconEngine_addFile(this.h, fileName_ms, size.cPointer(), (C.int)(mode), (C.int)(state))
+	C.QIconEngine_addFile(this.h, fileName_ms, libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(mode), (C.int)(state))
 }
 
 func (this *QIconEngine) Key() string {
@@ -134,11 +129,9 @@ func (this *QIconEngine) AvailableSizes(mode QIcon__Mode, state QIcon__State) []
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QIconEngine_availableSizes(this.h, (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qsize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQSize(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QSize](_outCast[i])
 	}
 	return _ret
 }
@@ -156,10 +149,9 @@ func (this *QIconEngine) IsNull() bool {
 	return (bool)(C.QIconEngine_isNull(this.h))
 }
 
-func (this *QIconEngine) ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
+func (this *QIconEngine) ScaledPixmap(size QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	_goptr := newQPixmap(C.QIconEngine_scaledPixmap(this.h, size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)))
+	_goptr := newQPixmap(C.QIconEngine_scaledPixmap(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(mode), (C.int)(state), (C.double)(scale)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -168,7 +160,7 @@ func (this *QIconEngine) VirtualHook(id int, data unsafe.Pointer) {
 	defer runtime.KeepAlive(this)
 	C.QIconEngine_virtualHook(this.h, (C.int)(id), data)
 }
-func (this *QIconEngine) OnPaint(slot func(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State)) {
+func (this *QIconEngine) OnPaint(slot func(painter *QPainter, rect QRect, mode QIcon__Mode, state QIcon__State)) {
 	ok := C.QIconEngine_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -176,8 +168,8 @@ func (this *QIconEngine) OnPaint(slot func(painter *QPainter, rect *QRect, mode 
 }
 
 //export miqt_exec_callback_QIconEngine_paint
-func miqt_exec_callback_QIconEngine_paint(self *C.QIconEngine, cb C.intptr_t, painter *C.QPainter, rect *C.QRect, mode C.int, state C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State))
+func miqt_exec_callback_QIconEngine_paint(self *C.QIconEngine, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrect, mode C.int, state C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(painter *QPainter, rect QRect, mode QIcon__Mode, state QIcon__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -185,7 +177,7 @@ func miqt_exec_callback_QIconEngine_paint(self *C.QIconEngine, cb C.intptr_t, pa
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQRect(rect)
+	slotval2 := libmiqt.ValueCast[QRect](rect)
 
 	slotval3 := (QIcon__Mode)(mode)
 
@@ -195,16 +187,13 @@ func miqt_exec_callback_QIconEngine_paint(self *C.QIconEngine, cb C.intptr_t, pa
 
 }
 
-func (this *QIconEngine) callVirtualBase_ActualSize(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
+func (this *QIconEngine) callVirtualBase_ActualSize(size QSize, mode QIcon__Mode, state QIcon__State) QSize {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
 
-	_goptr := newQSize(C.QIconEngine_virtualbase_actualSize(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QIconEngine_virtualbase_actualSize(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(mode), (C.int)(state)))
 
 }
-func (this *QIconEngine) OnActualSize(slot func(super func(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize, size *QSize, mode QIcon__Mode, state QIcon__State) *QSize) {
+func (this *QIconEngine) OnActualSize(slot func(super func(size QSize, mode QIcon__Mode, state QIcon__State) QSize, size QSize, mode QIcon__Mode, state QIcon__State) QSize) {
 	ok := C.QIconEngine_override_virtual_actualSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -212,36 +201,34 @@ func (this *QIconEngine) OnActualSize(slot func(super func(size *QSize, mode QIc
 }
 
 //export miqt_exec_callback_QIconEngine_actualSize
-func miqt_exec_callback_QIconEngine_actualSize(self *C.QIconEngine, cb C.intptr_t, size *C.QSize, mode C.int, state C.int) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize, size *QSize, mode QIcon__Mode, state QIcon__State) *QSize)
+func miqt_exec_callback_QIconEngine_actualSize(self *C.QIconEngine, cb C.intptr_t, size C.struct_miqt_qsize, mode C.int, state C.int) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size QSize, mode QIcon__Mode, state QIcon__State) QSize, size QSize, mode QIcon__Mode, state QIcon__State) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize(size)
+	slotval1 := libmiqt.ValueCast[QSize](size)
 
 	slotval2 := (QIcon__Mode)(mode)
 
 	slotval3 := (QIcon__State)(state)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_ActualSize, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QIconEngine_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
-func (this *QIconEngine) callVirtualBase_Pixmap(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
+func (this *QIconEngine) callVirtualBase_Pixmap(size QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
 
-	_goptr := newQPixmap(C.QIconEngine_virtualbase_pixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state)))
+	_goptr := newQPixmap(C.QIconEngine_virtualbase_pixmap(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QIconEngine) OnPixmap(slot func(super func(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap) {
+func (this *QIconEngine) OnPixmap(slot func(super func(size QSize, mode QIcon__Mode, state QIcon__State) *QPixmap, size QSize, mode QIcon__Mode, state QIcon__State) *QPixmap) {
 	ok := C.QIconEngine_override_virtual_pixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -249,14 +236,14 @@ func (this *QIconEngine) OnPixmap(slot func(super func(size *QSize, mode QIcon__
 }
 
 //export miqt_exec_callback_QIconEngine_pixmap
-func miqt_exec_callback_QIconEngine_pixmap(self *C.QIconEngine, cb C.intptr_t, size *C.QSize, mode C.int, state C.int) *C.QPixmap {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap)
+func miqt_exec_callback_QIconEngine_pixmap(self *C.QIconEngine, cb C.intptr_t, size C.struct_miqt_qsize, mode C.int, state C.int) *C.QPixmap {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size QSize, mode QIcon__Mode, state QIcon__State) *QPixmap, size QSize, mode QIcon__Mode, state QIcon__State) *QPixmap)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize(size)
+	slotval1 := libmiqt.ValueCast[QSize](size)
 
 	slotval2 := (QIcon__Mode)(mode)
 
@@ -301,18 +288,17 @@ func miqt_exec_callback_QIconEngine_addPixmap(self *C.QIconEngine, cb C.intptr_t
 
 }
 
-func (this *QIconEngine) callVirtualBase_AddFile(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State) {
+func (this *QIconEngine) callVirtualBase_AddFile(fileName string, size QSize, mode QIcon__Mode, state QIcon__State) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	C.QIconEngine_virtualbase_addFile(unsafe.Pointer(this.h), fileName_ms, size.cPointer(), (C.int)(mode), (C.int)(state))
+	C.QIconEngine_virtualbase_addFile(unsafe.Pointer(this.h), fileName_ms, libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(mode), (C.int)(state))
 
 }
-func (this *QIconEngine) OnAddFile(slot func(super func(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State), fileName string, size *QSize, mode QIcon__Mode, state QIcon__State)) {
+func (this *QIconEngine) OnAddFile(slot func(super func(fileName string, size QSize, mode QIcon__Mode, state QIcon__State), fileName string, size QSize, mode QIcon__Mode, state QIcon__State)) {
 	ok := C.QIconEngine_override_virtual_addFile(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -320,8 +306,8 @@ func (this *QIconEngine) OnAddFile(slot func(super func(fileName string, size *Q
 }
 
 //export miqt_exec_callback_QIconEngine_addFile
-func miqt_exec_callback_QIconEngine_addFile(self *C.QIconEngine, cb C.intptr_t, fileName C.struct_miqt_string, size *C.QSize, mode C.int, state C.int) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fileName string, size *QSize, mode QIcon__Mode, state QIcon__State), fileName string, size *QSize, mode QIcon__Mode, state QIcon__State))
+func miqt_exec_callback_QIconEngine_addFile(self *C.QIconEngine, cb C.intptr_t, fileName C.struct_miqt_string, size C.struct_miqt_qsize, mode C.int, state C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fileName string, size QSize, mode QIcon__Mode, state QIcon__State), fileName string, size QSize, mode QIcon__Mode, state QIcon__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -331,7 +317,7 @@ func miqt_exec_callback_QIconEngine_addFile(self *C.QIconEngine, cb C.intptr_t, 
 	fileName_ret := C.GoStringN(fileName_ms.data, C.int(int64(fileName_ms.len)))
 	C.free(unsafe.Pointer(fileName_ms.data))
 	slotval1 := fileName_ret
-	slotval2 := newQSize(size)
+	slotval2 := libmiqt.ValueCast[QSize](size)
 
 	slotval3 := (QIcon__Mode)(mode)
 
@@ -457,11 +443,9 @@ func (this *QIconEngine) callVirtualBase_AvailableSizes(mode QIcon__Mode, state 
 
 	var _ma C.struct_miqt_array = C.QIconEngine_virtualbase_availableSizes(unsafe.Pointer(this.h), (C.int)(mode), (C.int)(state))
 	_ret := make([]QSize, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qsize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := newQSize(_outCast[i])
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[QSize](_outCast[i])
 	}
 	return _ret
 
@@ -486,11 +470,10 @@ func miqt_exec_callback_QIconEngine_availableSizes(self *C.QIconEngine, cb C.int
 	slotval2 := (QIcon__State)(state)
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_AvailableSizes, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
-	virtualReturn_CArray_ptr := (**C.QSize)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_qsize)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qsize{})) * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = C.QIconEngine_virtualreturncopy_QSize(virtualReturn[i].cPointer())
+		virtualReturn_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn[i])
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -555,16 +538,15 @@ func miqt_exec_callback_QIconEngine_isNull(self *C.QIconEngine, cb C.intptr_t) C
 
 }
 
-func (this *QIconEngine) callVirtualBase_ScaledPixmap(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
+func (this *QIconEngine) callVirtualBase_ScaledPixmap(size QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
 
-	_goptr := newQPixmap(C.QIconEngine_virtualbase_scaledPixmap(unsafe.Pointer(this.h), size.cPointer(), (C.int)(mode), (C.int)(state), (C.double)(scale)))
+	_goptr := newQPixmap(C.QIconEngine_virtualbase_scaledPixmap(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsize](size), (C.int)(mode), (C.int)(state), (C.double)(scale)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QIconEngine) OnScaledPixmap(slot func(super func(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap, size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap) {
+func (this *QIconEngine) OnScaledPixmap(slot func(super func(size QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap, size QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap) {
 	ok := C.QIconEngine_override_virtual_scaledPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -572,14 +554,14 @@ func (this *QIconEngine) OnScaledPixmap(slot func(super func(size *QSize, mode Q
 }
 
 //export miqt_exec_callback_QIconEngine_scaledPixmap
-func miqt_exec_callback_QIconEngine_scaledPixmap(self *C.QIconEngine, cb C.intptr_t, size *C.QSize, mode C.int, state C.int, scale C.double) *C.QPixmap {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap, size *QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap)
+func miqt_exec_callback_QIconEngine_scaledPixmap(self *C.QIconEngine, cb C.intptr_t, size C.struct_miqt_qsize, mode C.int, state C.int, scale C.double) *C.QPixmap {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap, size QSize, mode QIcon__Mode, state QIcon__State, scale float64) *QPixmap)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize(size)
+	slotval1 := libmiqt.ValueCast[QSize](size)
 
 	slotval2 := (QIcon__Mode)(mode)
 
@@ -694,17 +676,14 @@ func NewQIconEngine__ScaledPixmapArgument2() *QIconEngine__ScaledPixmapArgument 
 	return newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new2())
 }
 
-func (this *QIconEngine__ScaledPixmapArgument) Size() *QSize {
+func (this *QIconEngine__ScaledPixmapArgument) Size() QSize {
 	defer runtime.KeepAlive(this)
-	size_goptr := newQSize(C.QIconEngine__ScaledPixmapArgument_size(this.h))
-	size_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return size_goptr
+	return libmiqt.ValueCast[QSize](C.QIconEngine__ScaledPixmapArgument_size(this.h))
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) SetSize(size QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QIconEngine__ScaledPixmapArgument_setSize(this.h, size.cPointer())
+	C.QIconEngine__ScaledPixmapArgument_setSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) Mode() QIcon__Mode {

@@ -8,18 +8,18 @@
 extern "C" {
 #endif
 
-QRectF* miqt_exec_callback_QwtPointArrayData_boundingRect(const QwtPointArrayData*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QwtPointArrayData_boundingRect(const QwtPointArrayData*, intptr_t);
 size_t miqt_exec_callback_QwtPointArrayData_size(const QwtPointArrayData*, intptr_t);
-QPointF* miqt_exec_callback_QwtPointArrayData_sample(const QwtPointArrayData*, intptr_t, size_t);
-QRectF* miqt_exec_callback_QwtCPointerData_boundingRect(const QwtCPointerData*, intptr_t);
+struct miqt_qpointf miqt_exec_callback_QwtPointArrayData_sample(const QwtPointArrayData*, intptr_t, size_t);
+struct miqt_qrectf miqt_exec_callback_QwtCPointerData_boundingRect(const QwtCPointerData*, intptr_t);
 size_t miqt_exec_callback_QwtCPointerData_size(const QwtCPointerData*, intptr_t);
-QPointF* miqt_exec_callback_QwtCPointerData_sample(const QwtCPointerData*, intptr_t, size_t);
+struct miqt_qpointf miqt_exec_callback_QwtCPointerData_sample(const QwtCPointerData*, intptr_t, size_t);
 size_t miqt_exec_callback_QwtSyntheticPointData_size(const QwtSyntheticPointData*, intptr_t);
-QRectF* miqt_exec_callback_QwtSyntheticPointData_boundingRect(const QwtSyntheticPointData*, intptr_t);
-QPointF* miqt_exec_callback_QwtSyntheticPointData_sample(const QwtSyntheticPointData*, intptr_t, size_t);
+struct miqt_qrectf miqt_exec_callback_QwtSyntheticPointData_boundingRect(const QwtSyntheticPointData*, intptr_t);
+struct miqt_qpointf miqt_exec_callback_QwtSyntheticPointData_sample(const QwtSyntheticPointData*, intptr_t, size_t);
 double miqt_exec_callback_QwtSyntheticPointData_y(const QwtSyntheticPointData*, intptr_t, double);
 double miqt_exec_callback_QwtSyntheticPointData_x(const QwtSyntheticPointData*, intptr_t, unsigned int);
-void miqt_exec_callback_QwtSyntheticPointData_setRectOfInterest(QwtSyntheticPointData*, intptr_t, QRectF*);
+void miqt_exec_callback_QwtSyntheticPointData_setRectOfInterest(QwtSyntheticPointData*, intptr_t, struct miqt_qrectf);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -42,13 +42,11 @@ public:
 			return QwtPointArrayData::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QwtPointArrayData_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QwtPointArrayData_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QwtPointArrayData_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QwtPointArrayData_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__size = 0;
@@ -75,13 +73,11 @@ public:
 		}
 
 		size_t sigval1 = index;
-		QPointF* callback_return_value = miqt_exec_callback_QwtPointArrayData_sample(this, handle__sample, sigval1);
-		QPointF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qpointf callback_return_value = miqt_exec_callback_QwtPointArrayData_sample(this, handle__sample, sigval1);
+		return miqt_from_cabi<QPointF>(callback_return_value);
 	}
 
-	friend QPointF* QwtPointArrayData_virtualbase_sample(const void* self, size_t index);
+	friend struct miqt_qpointf QwtPointArrayData_virtualbase_sample(const void* self, size_t index);
 
 };
 
@@ -109,16 +105,16 @@ QwtPointArrayData* QwtPointArrayData_new3(QwtPointArrayData* param1) {
 	return new (std::nothrow) MiqtVirtualQwtPointArrayData(*param1);
 }
 
-QRectF* QwtPointArrayData_boundingRect(const QwtPointArrayData* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPointArrayData_boundingRect(const QwtPointArrayData* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 size_t QwtPointArrayData_size(const QwtPointArrayData* self) {
 	return self->size();
 }
 
-QPointF* QwtPointArrayData_sample(const QwtPointArrayData* self, size_t index) {
-	return new QPointF(self->sample(static_cast<size_t>(index)));
+struct miqt_qpointf QwtPointArrayData_sample(const QwtPointArrayData* self, size_t index) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->sample(static_cast<size_t>(index)));
 }
 
 struct miqt_array /* of double */  QwtPointArrayData_xData(const QwtPointArrayData* self) {
@@ -157,8 +153,8 @@ bool QwtPointArrayData_override_virtual_boundingRect(void* self, intptr_t slot) 
 	return true;
 }
 
-QRectF* QwtPointArrayData_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQwtPointArrayData*>(self)->QwtPointArrayData::boundingRect());
+struct miqt_qrectf QwtPointArrayData_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQwtPointArrayData*>(self)->QwtPointArrayData::boundingRect());
 }
 
 bool QwtPointArrayData_override_virtual_size(void* self, intptr_t slot) {
@@ -185,16 +181,8 @@ bool QwtPointArrayData_override_virtual_sample(void* self, intptr_t slot) {
 	return true;
 }
 
-QPointF* QwtPointArrayData_virtualbase_sample(const void* self, size_t index) {
-	return new QPointF(static_cast<const MiqtVirtualQwtPointArrayData*>(self)->QwtPointArrayData::sample(static_cast<size_t>(index)));
-}
-
-QRectF* QwtPointArrayData_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
-QPointF* QwtPointArrayData_virtualreturncopy_QPointF(QPointF* src) {
-	return new QPointF(*src);
+struct miqt_qpointf QwtPointArrayData_virtualbase_sample(const void* self, size_t index) {
+	return miqt_to_cabi<struct miqt_qpointf>(static_cast<const MiqtVirtualQwtPointArrayData*>(self)->QwtPointArrayData::sample(static_cast<size_t>(index)));
 }
 
 void QwtPointArrayData_delete(QwtPointArrayData* self) {
@@ -218,13 +206,11 @@ public:
 			return QwtCPointerData::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QwtCPointerData_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QwtCPointerData_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QwtCPointerData_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QwtCPointerData_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__size = 0;
@@ -251,13 +237,11 @@ public:
 		}
 
 		size_t sigval1 = index;
-		QPointF* callback_return_value = miqt_exec_callback_QwtCPointerData_sample(this, handle__sample, sigval1);
-		QPointF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qpointf callback_return_value = miqt_exec_callback_QwtCPointerData_sample(this, handle__sample, sigval1);
+		return miqt_from_cabi<QPointF>(callback_return_value);
 	}
 
-	friend QPointF* QwtCPointerData_virtualbase_sample(const void* self, size_t index);
+	friend struct miqt_qpointf QwtCPointerData_virtualbase_sample(const void* self, size_t index);
 
 };
 
@@ -269,16 +253,16 @@ QwtCPointerData* QwtCPointerData_new2(QwtCPointerData* param1) {
 	return new (std::nothrow) MiqtVirtualQwtCPointerData(*param1);
 }
 
-QRectF* QwtCPointerData_boundingRect(const QwtCPointerData* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtCPointerData_boundingRect(const QwtCPointerData* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 size_t QwtCPointerData_size(const QwtCPointerData* self) {
 	return self->size();
 }
 
-QPointF* QwtCPointerData_sample(const QwtCPointerData* self, size_t index) {
-	return new QPointF(self->sample(static_cast<size_t>(index)));
+struct miqt_qpointf QwtCPointerData_sample(const QwtCPointerData* self, size_t index) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->sample(static_cast<size_t>(index)));
 }
 
 const double* QwtCPointerData_xData(const QwtCPointerData* self) {
@@ -299,8 +283,8 @@ bool QwtCPointerData_override_virtual_boundingRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRectF* QwtCPointerData_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQwtCPointerData*>(self)->QwtCPointerData::boundingRect());
+struct miqt_qrectf QwtCPointerData_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQwtCPointerData*>(self)->QwtCPointerData::boundingRect());
 }
 
 bool QwtCPointerData_override_virtual_size(void* self, intptr_t slot) {
@@ -327,16 +311,8 @@ bool QwtCPointerData_override_virtual_sample(void* self, intptr_t slot) {
 	return true;
 }
 
-QPointF* QwtCPointerData_virtualbase_sample(const void* self, size_t index) {
-	return new QPointF(static_cast<const MiqtVirtualQwtCPointerData*>(self)->QwtCPointerData::sample(static_cast<size_t>(index)));
-}
-
-QRectF* QwtCPointerData_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
-QPointF* QwtCPointerData_virtualreturncopy_QPointF(QPointF* src) {
-	return new QPointF(*src);
+struct miqt_qpointf QwtCPointerData_virtualbase_sample(const void* self, size_t index) {
+	return miqt_to_cabi<struct miqt_qpointf>(static_cast<const MiqtVirtualQwtCPointerData*>(self)->QwtCPointerData::sample(static_cast<size_t>(index)));
 }
 
 void QwtCPointerData_delete(QwtCPointerData* self) {
@@ -376,13 +352,11 @@ public:
 			return QwtSyntheticPointData::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QwtSyntheticPointData_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QwtSyntheticPointData_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QwtSyntheticPointData_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QwtSyntheticPointData_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sample = 0;
@@ -394,13 +368,11 @@ public:
 		}
 
 		size_t sigval1 = index;
-		QPointF* callback_return_value = miqt_exec_callback_QwtSyntheticPointData_sample(this, handle__sample, sigval1);
-		QPointF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qpointf callback_return_value = miqt_exec_callback_QwtSyntheticPointData_sample(this, handle__sample, sigval1);
+		return miqt_from_cabi<QPointF>(callback_return_value);
 	}
 
-	friend QPointF* QwtSyntheticPointData_virtualbase_sample(const void* self, size_t index);
+	friend struct miqt_qpointf QwtSyntheticPointData_virtualbase_sample(const void* self, size_t index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__y = 0;
@@ -443,14 +415,12 @@ public:
 			return;
 		}
 
-		const QRectF& rectOfInterest_ret = rectOfInterest;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rectOfInterest_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rectOfInterest);
 		miqt_exec_callback_QwtSyntheticPointData_setRectOfInterest(this, handle__setRectOfInterest, sigval1);
 
 	}
 
-	friend void QwtSyntheticPointData_virtualbase_setRectOfInterest(void* self, QRectF* rectOfInterest);
+	friend void QwtSyntheticPointData_virtualbase_setRectOfInterest(void* self, struct miqt_qrectf rectOfInterest);
 
 };
 
@@ -482,12 +452,12 @@ QwtInterval* QwtSyntheticPointData_interval(const QwtSyntheticPointData* self) {
 	return new QwtInterval(self->interval());
 }
 
-QRectF* QwtSyntheticPointData_boundingRect(const QwtSyntheticPointData* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtSyntheticPointData_boundingRect(const QwtSyntheticPointData* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
-QPointF* QwtSyntheticPointData_sample(const QwtSyntheticPointData* self, size_t index) {
-	return new QPointF(self->sample(static_cast<size_t>(index)));
+struct miqt_qpointf QwtSyntheticPointData_sample(const QwtSyntheticPointData* self, size_t index) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->sample(static_cast<size_t>(index)));
 }
 
 double QwtSyntheticPointData_y(const QwtSyntheticPointData* self, double x) {
@@ -498,12 +468,12 @@ double QwtSyntheticPointData_x(const QwtSyntheticPointData* self, unsigned int i
 	return self->x(static_cast<uint>(index));
 }
 
-void QwtSyntheticPointData_setRectOfInterest(QwtSyntheticPointData* self, QRectF* rectOfInterest) {
-	self->setRectOfInterest(*rectOfInterest);
+void QwtSyntheticPointData_setRectOfInterest(QwtSyntheticPointData* self, struct miqt_qrectf rectOfInterest) {
+	self->setRectOfInterest(miqt_from_cabi<QRectF>(rectOfInterest));
 }
 
-QRectF* QwtSyntheticPointData_rectOfInterest(const QwtSyntheticPointData* self) {
-	return new QRectF(self->rectOfInterest());
+struct miqt_qrectf QwtSyntheticPointData_rectOfInterest(const QwtSyntheticPointData* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->rectOfInterest());
 }
 
 bool QwtSyntheticPointData_override_virtual_size(void* self, intptr_t slot) {
@@ -530,8 +500,8 @@ bool QwtSyntheticPointData_override_virtual_boundingRect(void* self, intptr_t sl
 	return true;
 }
 
-QRectF* QwtSyntheticPointData_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQwtSyntheticPointData*>(self)->QwtSyntheticPointData::boundingRect());
+struct miqt_qrectf QwtSyntheticPointData_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQwtSyntheticPointData*>(self)->QwtSyntheticPointData::boundingRect());
 }
 
 bool QwtSyntheticPointData_override_virtual_sample(void* self, intptr_t slot) {
@@ -544,8 +514,8 @@ bool QwtSyntheticPointData_override_virtual_sample(void* self, intptr_t slot) {
 	return true;
 }
 
-QPointF* QwtSyntheticPointData_virtualbase_sample(const void* self, size_t index) {
-	return new QPointF(static_cast<const MiqtVirtualQwtSyntheticPointData*>(self)->QwtSyntheticPointData::sample(static_cast<size_t>(index)));
+struct miqt_qpointf QwtSyntheticPointData_virtualbase_sample(const void* self, size_t index) {
+	return miqt_to_cabi<struct miqt_qpointf>(static_cast<const MiqtVirtualQwtSyntheticPointData*>(self)->QwtSyntheticPointData::sample(static_cast<size_t>(index)));
 }
 
 bool QwtSyntheticPointData_override_virtual_y(void* self, intptr_t slot) {
@@ -582,16 +552,8 @@ bool QwtSyntheticPointData_override_virtual_setRectOfInterest(void* self, intptr
 	return true;
 }
 
-void QwtSyntheticPointData_virtualbase_setRectOfInterest(void* self, QRectF* rectOfInterest) {
-	static_cast<MiqtVirtualQwtSyntheticPointData*>(self)->QwtSyntheticPointData::setRectOfInterest(*rectOfInterest);
-}
-
-QRectF* QwtSyntheticPointData_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
-QPointF* QwtSyntheticPointData_virtualreturncopy_QPointF(QPointF* src) {
-	return new QPointF(*src);
+void QwtSyntheticPointData_virtualbase_setRectOfInterest(void* self, struct miqt_qrectf rectOfInterest) {
+	static_cast<MiqtVirtualQwtSyntheticPointData*>(self)->QwtSyntheticPointData::setRectOfInterest(miqt_from_cabi<QRectF>(rectOfInterest));
 }
 
 void QwtSyntheticPointData_delete(QwtSyntheticPointData* self) {

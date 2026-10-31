@@ -50,10 +50,10 @@ void miqt_exec_callback_QTabBar_tabCloseRequested(intptr_t, int);
 void miqt_exec_callback_QTabBar_tabMoved(intptr_t, int, int);
 void miqt_exec_callback_QTabBar_tabBarClicked(intptr_t, int);
 void miqt_exec_callback_QTabBar_tabBarDoubleClicked(intptr_t, int);
-QSize* miqt_exec_callback_QTabBar_sizeHint(const QTabBar*, intptr_t);
-QSize* miqt_exec_callback_QTabBar_minimumSizeHint(const QTabBar*, intptr_t);
-QSize* miqt_exec_callback_QTabBar_tabSizeHint(const QTabBar*, intptr_t, int);
-QSize* miqt_exec_callback_QTabBar_minimumTabSizeHint(const QTabBar*, intptr_t, int);
+struct miqt_qsize miqt_exec_callback_QTabBar_sizeHint(const QTabBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTabBar_minimumSizeHint(const QTabBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTabBar_tabSizeHint(const QTabBar*, intptr_t, int);
+struct miqt_qsize miqt_exec_callback_QTabBar_minimumTabSizeHint(const QTabBar*, intptr_t, int);
 void miqt_exec_callback_QTabBar_tabInserted(QTabBar*, intptr_t, int);
 void miqt_exec_callback_QTabBar_tabRemoved(QTabBar*, intptr_t, int);
 void miqt_exec_callback_QTabBar_tabLayoutChange(QTabBar*, intptr_t);
@@ -123,13 +123,11 @@ public:
 			return QTabBar::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTabBar_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTabBar_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTabBar_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QTabBar_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -140,13 +138,11 @@ public:
 			return QTabBar::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTabBar_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTabBar_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTabBar_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QTabBar_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabSizeHint = 0;
@@ -158,13 +154,11 @@ public:
 		}
 
 		int sigval1 = index;
-		QSize* callback_return_value = miqt_exec_callback_QTabBar_tabSizeHint(this, handle__tabSizeHint, sigval1);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTabBar_tabSizeHint(this, handle__tabSizeHint, sigval1);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTabBar_virtualbase_tabSizeHint(const void* self, int index);
+	friend struct miqt_qsize QTabBar_virtualbase_tabSizeHint(const void* self, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumTabSizeHint = 0;
@@ -176,13 +170,11 @@ public:
 		}
 
 		int sigval1 = index;
-		QSize* callback_return_value = miqt_exec_callback_QTabBar_minimumTabSizeHint(this, handle__minimumTabSizeHint, sigval1);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTabBar_minimumTabSizeHint(this, handle__minimumTabSizeHint, sigval1);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTabBar_virtualbase_minimumTabSizeHint(const void* self, int index);
+	friend struct miqt_qsize QTabBar_virtualbase_minimumTabSizeHint(const void* self, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabInserted = 0;
@@ -1123,12 +1115,12 @@ void QTabBar_setTabText(QTabBar* self, int index, struct miqt_string text) {
 	self->setTabText(static_cast<int>(index), text_QString);
 }
 
-QColor* QTabBar_tabTextColor(const QTabBar* self, int index) {
-	return new QColor(self->tabTextColor(static_cast<int>(index)));
+struct miqt_qcolor QTabBar_tabTextColor(const QTabBar* self, int index) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->tabTextColor(static_cast<int>(index)));
 }
 
-void QTabBar_setTabTextColor(QTabBar* self, int index, QColor* color) {
-	self->setTabTextColor(static_cast<int>(index), *color);
+void QTabBar_setTabTextColor(QTabBar* self, int index, struct miqt_qcolor color) {
+	self->setTabTextColor(static_cast<int>(index), miqt_from_cabi<QColor>(color));
 }
 
 QIcon* QTabBar_tabIcon(const QTabBar* self, int index) {
@@ -1188,12 +1180,12 @@ QVariant* QTabBar_tabData(const QTabBar* self, int index) {
 	return new QVariant(self->tabData(static_cast<int>(index)));
 }
 
-QRect* QTabBar_tabRect(const QTabBar* self, int index) {
-	return new QRect(self->tabRect(static_cast<int>(index)));
+struct miqt_qrect QTabBar_tabRect(const QTabBar* self, int index) {
+	return miqt_to_cabi<struct miqt_qrect>(self->tabRect(static_cast<int>(index)));
 }
 
-int QTabBar_tabAt(const QTabBar* self, QPoint* pos) {
-	return self->tabAt(*pos);
+int QTabBar_tabAt(const QTabBar* self, struct miqt_qpoint pos) {
+	return self->tabAt(miqt_from_cabi<QPoint>(pos));
 }
 
 int QTabBar_currentIndex(const QTabBar* self) {
@@ -1204,12 +1196,12 @@ int QTabBar_count(const QTabBar* self) {
 	return self->count();
 }
 
-QSize* QTabBar_sizeHint(const QTabBar* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QTabBar_sizeHint(const QTabBar* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QTabBar_minimumSizeHint(const QTabBar* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QTabBar_minimumSizeHint(const QTabBar* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QTabBar_setDrawBase(QTabBar* self, bool drawTheBase) {
@@ -1220,12 +1212,12 @@ bool QTabBar_drawBase(const QTabBar* self) {
 	return self->drawBase();
 }
 
-QSize* QTabBar_iconSize(const QTabBar* self) {
-	return new QSize(self->iconSize());
+struct miqt_qsize QTabBar_iconSize(const QTabBar* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize());
 }
 
-void QTabBar_setIconSize(QTabBar* self, QSize* size) {
-	self->setIconSize(*size);
+void QTabBar_setIconSize(QTabBar* self, struct miqt_qsize size) {
+	self->setIconSize(miqt_from_cabi<QSize>(size));
 }
 
 bool QTabBar_usesScrollButtons(const QTabBar* self) {
@@ -1431,8 +1423,8 @@ bool QTabBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTabBar_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTabBar*>(self)->QTabBar::sizeHint());
+struct miqt_qsize QTabBar_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTabBar*>(self)->QTabBar::sizeHint());
 }
 
 bool QTabBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1445,8 +1437,8 @@ bool QTabBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTabBar_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTabBar*>(self)->QTabBar::minimumSizeHint());
+struct miqt_qsize QTabBar_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTabBar*>(self)->QTabBar::minimumSizeHint());
 }
 
 bool QTabBar_override_virtual_tabSizeHint(void* self, intptr_t slot) {
@@ -1459,8 +1451,8 @@ bool QTabBar_override_virtual_tabSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTabBar_virtualbase_tabSizeHint(const void* self, int index) {
-	return new QSize(static_cast<const MiqtVirtualQTabBar*>(self)->QTabBar::tabSizeHint(static_cast<int>(index)));
+struct miqt_qsize QTabBar_virtualbase_tabSizeHint(const void* self, int index) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTabBar*>(self)->QTabBar::tabSizeHint(static_cast<int>(index)));
 }
 
 bool QTabBar_override_virtual_minimumTabSizeHint(void* self, intptr_t slot) {
@@ -1473,8 +1465,8 @@ bool QTabBar_override_virtual_minimumTabSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTabBar_virtualbase_minimumTabSizeHint(const void* self, int index) {
-	return new QSize(static_cast<const MiqtVirtualQTabBar*>(self)->QTabBar::minimumTabSizeHint(static_cast<int>(index)));
+struct miqt_qsize QTabBar_virtualbase_minimumTabSizeHint(const void* self, int index) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTabBar*>(self)->QTabBar::minimumTabSizeHint(static_cast<int>(index)));
 }
 
 bool QTabBar_override_virtual_tabInserted(void* self, intptr_t slot) {
@@ -2148,10 +2140,6 @@ bool QTabBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQTabBar*>(self)->QTabBar::disconnectNotify(*signal);
-}
-
-QSize* QTabBar_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QTabBar_virtualreturncopy_QVariant(QVariant* src) {

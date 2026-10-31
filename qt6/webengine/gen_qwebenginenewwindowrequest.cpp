@@ -51,8 +51,8 @@ QUrl* QWebEngineNewWindowRequest_requestedUrl(const QWebEngineNewWindowRequest* 
 	return new QUrl(self->requestedUrl());
 }
 
-QRect* QWebEngineNewWindowRequest_requestedGeometry(const QWebEngineNewWindowRequest* self) {
-	return new QRect(self->requestedGeometry());
+struct miqt_qrect QWebEngineNewWindowRequest_requestedGeometry(const QWebEngineNewWindowRequest* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->requestedGeometry());
 }
 
 bool QWebEngineNewWindowRequest_isUserInitiated(const QWebEngineNewWindowRequest* self) {

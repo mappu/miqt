@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -68,27 +69,24 @@ func (this *QwtMathMLTextEngine) HeightForWidth(font *qt.QFont, flags int, text 
 	return (float64)(C.QwtMathMLTextEngine_heightForWidth(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms, (C.double)(width)))
 }
 
-func (this *QwtMathMLTextEngine) TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+func (this *QwtMathMLTextEngine) TextSize(font *qt.QFont, flags int, text string) qt.QSizeF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtMathMLTextEngine_textSize(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtMathMLTextEngine_textSize(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms))
 }
 
-func (this *QwtMathMLTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+func (this *QwtMathMLTextEngine) Draw(painter *qt.QPainter, rect qt.QRectF, flags int, text string) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QwtMathMLTextEngine_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()), (C.int)(flags), text_ms)
+	C.QwtMathMLTextEngine_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(flags), text_ms)
 }
 
 func (this *QwtMathMLTextEngine) MightRender(param1 string) bool {

@@ -46,7 +46,7 @@ void miqt_exec_callback_QWebEnginePage_loadProgress(intptr_t, int);
 void miqt_exec_callback_QWebEnginePage_loadFinished(intptr_t, bool);
 void miqt_exec_callback_QWebEnginePage_linkHovered(intptr_t, struct miqt_string);
 void miqt_exec_callback_QWebEnginePage_selectionChanged(intptr_t);
-void miqt_exec_callback_QWebEnginePage_geometryChangeRequested(intptr_t, QRect*);
+void miqt_exec_callback_QWebEnginePage_geometryChangeRequested(intptr_t, struct miqt_qrect);
 void miqt_exec_callback_QWebEnginePage_windowCloseRequested(intptr_t);
 void miqt_exec_callback_QWebEnginePage_featurePermissionRequested(intptr_t, QUrl*, int);
 void miqt_exec_callback_QWebEnginePage_featurePermissionRequestCanceled(intptr_t, QUrl*, int);
@@ -60,8 +60,8 @@ void miqt_exec_callback_QWebEnginePage_titleChanged(intptr_t, struct miqt_string
 void miqt_exec_callback_QWebEnginePage_urlChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QWebEnginePage_iconUrlChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QWebEnginePage_iconChanged(intptr_t, QIcon*);
-void miqt_exec_callback_QWebEnginePage_scrollPositionChanged(intptr_t, QPointF*);
-void miqt_exec_callback_QWebEnginePage_contentsSizeChanged(intptr_t, QSizeF*);
+void miqt_exec_callback_QWebEnginePage_scrollPositionChanged(intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QWebEnginePage_contentsSizeChanged(intptr_t, struct miqt_qsizef);
 void miqt_exec_callback_QWebEnginePage_audioMutedChanged(intptr_t, bool);
 void miqt_exec_callback_QWebEnginePage_recentlyAudibleChanged(intptr_t, bool);
 void miqt_exec_callback_QWebEnginePage_renderProcessPidChanged(intptr_t, long long);
@@ -628,12 +628,12 @@ void QWebEnginePage_setZoomFactor(QWebEnginePage* self, double factor) {
 	self->setZoomFactor(static_cast<qreal>(factor));
 }
 
-QPointF* QWebEnginePage_scrollPosition(const QWebEnginePage* self) {
-	return new QPointF(self->scrollPosition());
+struct miqt_qpointf QWebEnginePage_scrollPosition(const QWebEnginePage* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->scrollPosition());
 }
 
-QSizeF* QWebEnginePage_contentsSize(const QWebEnginePage* self) {
-	return new QSizeF(self->contentsSize());
+struct miqt_qsizef QWebEnginePage_contentsSize(const QWebEnginePage* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->contentsSize());
 }
 
 void QWebEnginePage_runJavaScript(QWebEnginePage* self, struct miqt_string scriptSource) {
@@ -668,12 +668,12 @@ void QWebEnginePage_setWebChannel2(QWebEnginePage* self, QWebChannel* param1, un
 	self->setWebChannel(param1, static_cast<uint>(worldId));
 }
 
-QColor* QWebEnginePage_backgroundColor(const QWebEnginePage* self) {
-	return new QColor(self->backgroundColor());
+struct miqt_qcolor QWebEnginePage_backgroundColor(const QWebEnginePage* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->backgroundColor());
 }
 
-void QWebEnginePage_setBackgroundColor(QWebEnginePage* self, QColor* color) {
-	self->setBackgroundColor(*color);
+void QWebEnginePage_setBackgroundColor(QWebEnginePage* self, struct miqt_qcolor color) {
+	self->setBackgroundColor(miqt_from_cabi<QColor>(color));
 }
 
 void QWebEnginePage_save(const QWebEnginePage* self, struct miqt_string filePath) {
@@ -812,15 +812,13 @@ void QWebEnginePage_connect_selectionChanged(QWebEnginePage* self, intptr_t slot
 	});
 }
 
-void QWebEnginePage_geometryChangeRequested(QWebEnginePage* self, QRect* geom) {
-	self->geometryChangeRequested(*geom);
+void QWebEnginePage_geometryChangeRequested(QWebEnginePage* self, struct miqt_qrect geom) {
+	self->geometryChangeRequested(miqt_from_cabi<QRect>(geom));
 }
 
 void QWebEnginePage_connect_geometryChangeRequested(QWebEnginePage* self, intptr_t slot) {
 	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QRect&)>(&QWebEnginePage::geometryChangeRequested), self, [=](const QRect& geom) {
-		const QRect& geom_ret = geom;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&geom_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(geom);
 		miqt_exec_callback_QWebEnginePage_geometryChangeRequested(slot, sigval1);
 	});
 }
@@ -1006,28 +1004,24 @@ void QWebEnginePage_connect_iconChanged(QWebEnginePage* self, intptr_t slot) {
 	});
 }
 
-void QWebEnginePage_scrollPositionChanged(QWebEnginePage* self, QPointF* position) {
-	self->scrollPositionChanged(*position);
+void QWebEnginePage_scrollPositionChanged(QWebEnginePage* self, struct miqt_qpointf position) {
+	self->scrollPositionChanged(miqt_from_cabi<QPointF>(position));
 }
 
 void QWebEnginePage_connect_scrollPositionChanged(QWebEnginePage* self, intptr_t slot) {
 	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QPointF&)>(&QWebEnginePage::scrollPositionChanged), self, [=](const QPointF& position) {
-		const QPointF& position_ret = position;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&position_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(position);
 		miqt_exec_callback_QWebEnginePage_scrollPositionChanged(slot, sigval1);
 	});
 }
 
-void QWebEnginePage_contentsSizeChanged(QWebEnginePage* self, QSizeF* size) {
-	self->contentsSizeChanged(*size);
+void QWebEnginePage_contentsSizeChanged(QWebEnginePage* self, struct miqt_qsizef size) {
+	self->contentsSizeChanged(miqt_from_cabi<QSizeF>(size));
 }
 
 void QWebEnginePage_connect_contentsSizeChanged(QWebEnginePage* self, intptr_t slot) {
 	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QSizeF&)>(&QWebEnginePage::contentsSizeChanged), self, [=](const QSizeF& size) {
-		const QSizeF& size_ret = size;
-		// Cast returned reference into pointer
-		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
+		struct miqt_qsizef sigval1 = miqt_to_cabi<struct miqt_qsizef>(size);
 		miqt_exec_callback_QWebEnginePage_contentsSizeChanged(slot, sigval1);
 	});
 }

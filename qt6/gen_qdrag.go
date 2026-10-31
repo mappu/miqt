@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -102,15 +103,12 @@ func (this *QDrag) Pixmap() *QPixmap {
 	return _goptr
 }
 
-func (this *QDrag) SetHotSpot(hotspot *QPoint) {
-	defer runtime.KeepAlive(hotspot)
-	C.QDrag_setHotSpot(this.h, hotspot.cPointer())
+func (this *QDrag) SetHotSpot(hotspot QPoint) {
+	C.QDrag_setHotSpot(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](hotspot))
 }
 
-func (this *QDrag) HotSpot() *QPoint {
-	_goptr := newQPoint(C.QDrag_hotSpot(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDrag) HotSpot() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QDrag_hotSpot(this.h))
 }
 
 func (this *QDrag) Source() *QObject {

@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -140,10 +141,8 @@ func (this *QwtLegendLabel) Icon() *qt.QPixmap {
 	return _goptr
 }
 
-func (this *QwtLegendLabel) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtLegendLabel_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtLegendLabel) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtLegendLabel_sizeHint(this.h))
 }
 
 func (this *QwtLegendLabel) IsChecked() bool {
@@ -471,14 +470,12 @@ func miqt_exec_callback_QwtLegendLabel_setText(self *C.QwtLegendLabel, cb C.intp
 
 }
 
-func (this *QwtLegendLabel) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QwtLegendLabel) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtLegendLabel_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtLegendLabel_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtLegendLabel) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtLegendLabel) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtLegendLabel_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -486,16 +483,15 @@ func (this *QwtLegendLabel) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSi
 }
 
 //export miqt_exec_callback_QwtLegendLabel_sizeHint
-func miqt_exec_callback_QwtLegendLabel_sizeHint(self *C.QwtLegendLabel, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtLegendLabel_sizeHint(self *C.QwtLegendLabel, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtLegendLabel{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtLegendLabel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -634,14 +630,12 @@ func miqt_exec_callback_QwtLegendLabel_keyReleaseEvent(self *C.QwtLegendLabel, c
 
 }
 
-func (this *QwtLegendLabel) callVirtualBase_MinimumSizeHint() *qt.QSize {
+func (this *QwtLegendLabel) callVirtualBase_MinimumSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtLegendLabel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtLegendLabel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtLegendLabel) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtLegendLabel) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtLegendLabel_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -649,16 +643,15 @@ func (this *QwtLegendLabel) OnMinimumSizeHint(slot func(super func() *qt.QSize) 
 }
 
 //export miqt_exec_callback_QwtLegendLabel_minimumSizeHint
-func miqt_exec_callback_QwtLegendLabel_minimumSizeHint(self *C.QwtLegendLabel, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtLegendLabel_minimumSizeHint(self *C.QwtLegendLabel, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtLegendLabel{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtLegendLabel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -690,14 +683,13 @@ func miqt_exec_callback_QwtLegendLabel_heightForWidth(self *C.QwtLegendLabel, cb
 
 }
 
-func (this *QwtLegendLabel) callVirtualBase_DrawText(param1 *qt.QPainter, param2 *qt.QRectF) {
+func (this *QwtLegendLabel) callVirtualBase_DrawText(param1 *qt.QPainter, param2 qt.QRectF) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
-	C.QwtLegendLabel_virtualbase_drawText(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRectF)(param2.UnsafePointer()))
+	C.QwtLegendLabel_virtualbase_drawText(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](param2))
 
 }
-func (this *QwtLegendLabel) OnDrawText(slot func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF)) {
+func (this *QwtLegendLabel) OnDrawText(slot func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF)) {
 	ok := C.QwtLegendLabel_override_virtual_drawText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -705,8 +697,8 @@ func (this *QwtLegendLabel) OnDrawText(slot func(super func(param1 *qt.QPainter,
 }
 
 //export miqt_exec_callback_QwtLegendLabel_drawText
-func miqt_exec_callback_QwtLegendLabel_drawText(self *C.QwtLegendLabel, cb C.intptr_t, param1 *C.QPainter, param2 *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 *qt.QRectF), param1 *qt.QPainter, param2 *qt.QRectF))
+func miqt_exec_callback_QwtLegendLabel_drawText(self *C.QwtLegendLabel, cb C.intptr_t, param1 *C.QPainter, param2 C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.QRectF), param1 *qt.QPainter, param2 qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -714,7 +706,7 @@ func miqt_exec_callback_QwtLegendLabel_drawText(self *C.QwtLegendLabel, cb C.int
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQRectF(unsafe.Pointer(param2))
+	slotval2 := libmiqt.ValueCast[qt.QRectF](param2)
 
 	gofunc((&QwtLegendLabel{h: self}).callVirtualBase_DrawText, slotval1, slotval2)
 
@@ -1515,7 +1507,6 @@ func miqt_exec_callback_QwtLegendLabel_initPainter(self *C.QwtLegendLabel, cb C.
 }
 
 func (this *QwtLegendLabel) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtLegendLabel_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

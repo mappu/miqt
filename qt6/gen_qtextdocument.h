@@ -117,8 +117,8 @@ QTextBlock* QTextDocument_begin(const QTextDocument* self);
 QTextBlock* QTextDocument_end(const QTextDocument* self);
 QTextBlock* QTextDocument_firstBlock(const QTextDocument* self);
 QTextBlock* QTextDocument_lastBlock(const QTextDocument* self);
-void QTextDocument_setPageSize(QTextDocument* self, QSizeF* size);
-QSizeF* QTextDocument_pageSize(const QTextDocument* self);
+void QTextDocument_setPageSize(QTextDocument* self, struct miqt_qsizef size);
+struct miqt_qsizef QTextDocument_pageSize(const QTextDocument* self);
 void QTextDocument_setDefaultFont(QTextDocument* self, QFont* font);
 QFont* QTextDocument_defaultFont(const QTextDocument* self);
 void QTextDocument_setSuperScriptBaseline(QTextDocument* self, double baseline);
@@ -147,7 +147,7 @@ void QTextDocument_setIndentWidth(QTextDocument* self, double width);
 double QTextDocument_documentMargin(const QTextDocument* self);
 void QTextDocument_setDocumentMargin(QTextDocument* self, double margin);
 void QTextDocument_adjustSize(QTextDocument* self);
-QSizeF* QTextDocument_size(const QTextDocument* self);
+struct miqt_qsizef QTextDocument_size(const QTextDocument* self);
 int QTextDocument_blockCount(const QTextDocument* self);
 int QTextDocument_lineCount(const QTextDocument* self);
 int QTextDocument_characterCount(const QTextDocument* self);
@@ -201,7 +201,7 @@ QTextCursor* QTextDocument_find6(const QTextDocument* self, struct miqt_string s
 QTextCursor* QTextDocument_find7(const QTextDocument* self, QRegularExpression* expr, int from);
 QTextCursor* QTextDocument_find8(const QTextDocument* self, QRegularExpression* expr, int from, int options);
 QTextCursor* QTextDocument_find9(const QTextDocument* self, QRegularExpression* expr, QTextCursor* cursor, int options);
-void QTextDocument_drawContents2(QTextDocument* self, QPainter* painter, QRectF* rect);
+void QTextDocument_drawContents2(QTextDocument* self, QPainter* painter, struct miqt_qrectf rect);
 void QTextDocument_clearUndoRedoStacksWithHistoryToClear(QTextDocument* self, int historyToClear);
 void QTextDocument_setModifiedWithBool(QTextDocument* self, bool m);
 

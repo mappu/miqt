@@ -138,15 +138,15 @@ struct miqt_array /* of int */  QPrinterInfo_supportedPaperSizes(const QPrinterI
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and QSizeF*   */  QPrinterInfo_supportedSizesWithNames(const QPrinterInfo* self) {
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_qsizef   */  QPrinterInfo_supportedSizesWithNames(const QPrinterInfo* self) {
 	QList<QPair<QString, QSizeF>> _ret = self->supportedSizesWithNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of struct miqt_string and QSizeF* */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and QSizeF* */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and QSizeF* */ ) * _ret.length()));
+	struct miqt_map /* tuple of struct miqt_string and struct miqt_qsizef */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_qsizef */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and struct miqt_qsizef */ ) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QPair<QString, QSizeF> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		struct miqt_string* _lv_first_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string)));
-		QSizeF** _lv_second_arr = static_cast<QSizeF**>(malloc(sizeof(QSizeF*)));
+		struct miqt_qsizef* _lv_second_arr = static_cast<struct miqt_qsizef*>(malloc(sizeof(struct miqt_qsizef)));
 		QString _lv_first_ret = _lv_ret.first;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_first_b = _lv_first_ret.toUtf8();
@@ -155,7 +155,7 @@ struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and QSizeF*
 		_lv_first_ms.data = static_cast<char*>(malloc(_lv_first_ms.len));
 		memcpy(_lv_first_ms.data, _lv_first_b.data(), _lv_first_ms.len);
 		_lv_first_arr[0] = _lv_first_ms;
-		_lv_second_arr[0] = new QSizeF(_lv_ret.second);
+		_lv_second_arr[0] = miqt_to_cabi<struct miqt_qsizef>(_lv_ret.second);
 		struct miqt_map _lv_out;
 		_lv_out.len = 1;
 		_lv_out.keys = static_cast<void*>(_lv_first_arr);

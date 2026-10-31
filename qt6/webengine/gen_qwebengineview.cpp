@@ -67,7 +67,7 @@ void miqt_exec_callback_QWebEngineView_renderProcessTerminated(intptr_t, int, in
 void miqt_exec_callback_QWebEngineView_pdfPrintingFinished(intptr_t, struct miqt_string, bool);
 void miqt_exec_callback_QWebEngineView_printRequested(intptr_t);
 void miqt_exec_callback_QWebEngineView_printFinished(intptr_t, bool);
-QSize* miqt_exec_callback_QWebEngineView_sizeHint(const QWebEngineView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWebEngineView_sizeHint(const QWebEngineView*, intptr_t);
 QWebEngineView* miqt_exec_callback_QWebEngineView_createWindow(QWebEngineView*, intptr_t, int);
 void miqt_exec_callback_QWebEngineView_contextMenuEvent(QWebEngineView*, intptr_t, QContextMenuEvent*);
 bool miqt_exec_callback_QWebEngineView_event(QWebEngineView*, intptr_t, QEvent*);
@@ -80,7 +80,7 @@ void miqt_exec_callback_QWebEngineView_dragMoveEvent(QWebEngineView*, intptr_t, 
 void miqt_exec_callback_QWebEngineView_dropEvent(QWebEngineView*, intptr_t, QDropEvent*);
 int miqt_exec_callback_QWebEngineView_devType(const QWebEngineView*, intptr_t);
 void miqt_exec_callback_QWebEngineView_setVisible(QWebEngineView*, intptr_t, bool);
-QSize* miqt_exec_callback_QWebEngineView_minimumSizeHint(const QWebEngineView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWebEngineView_minimumSizeHint(const QWebEngineView*, intptr_t);
 int miqt_exec_callback_QWebEngineView_heightForWidth(const QWebEngineView*, intptr_t, int);
 bool miqt_exec_callback_QWebEngineView_hasHeightForWidth(const QWebEngineView*, intptr_t);
 QPaintEngine* miqt_exec_callback_QWebEngineView_paintEngine(const QWebEngineView*, intptr_t);
@@ -140,13 +140,11 @@ public:
 			return QWebEngineView::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWebEngineView_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWebEngineView_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWebEngineView_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QWebEngineView_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createWindow = 0;
@@ -358,13 +356,11 @@ public:
 			return QWebEngineView::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWebEngineView_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWebEngineView_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWebEngineView_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QWebEngineView_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1105,8 +1101,8 @@ void QWebEngineView_findText(QWebEngineView* self, struct miqt_string subString)
 	self->findText(subString_QString);
 }
 
-QSize* QWebEngineView_sizeHint(const QWebEngineView* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QWebEngineView_sizeHint(const QWebEngineView* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 QWebEngineSettings* QWebEngineView_settings(const QWebEngineView* self) {
@@ -1368,8 +1364,8 @@ bool QWebEngineView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWebEngineView_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWebEngineView*>(self)->QWebEngineView::sizeHint());
+struct miqt_qsize QWebEngineView_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWebEngineView*>(self)->QWebEngineView::sizeHint());
 }
 
 bool QWebEngineView_override_virtual_createWindow(void* self, intptr_t slot) {
@@ -1550,8 +1546,8 @@ bool QWebEngineView_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QWebEngineView_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWebEngineView*>(self)->QWebEngineView::minimumSizeHint());
+struct miqt_qsize QWebEngineView_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWebEngineView*>(self)->QWebEngineView::minimumSizeHint());
 }
 
 bool QWebEngineView_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2029,10 +2025,6 @@ bool QWebEngineView_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QWebEngineView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQWebEngineView*>(self)->QWebEngineView::disconnectNotify(*signal);
-}
-
-QSize* QWebEngineView_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QWebEngineView_virtualreturncopy_QVariant(QVariant* src) {

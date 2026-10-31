@@ -136,12 +136,12 @@ void miqt_exec_callback_ScintillaEditBase_dropEvent(ScintillaEditBase*, intptr_t
 void miqt_exec_callback_ScintillaEditBase_inputMethodEvent(ScintillaEditBase*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_ScintillaEditBase_inputMethodQuery(const ScintillaEditBase*, intptr_t, int);
 void miqt_exec_callback_ScintillaEditBase_scrollContentsBy(ScintillaEditBase*, intptr_t, int, int);
-QSize* miqt_exec_callback_ScintillaEditBase_minimumSizeHint(const ScintillaEditBase*, intptr_t);
-QSize* miqt_exec_callback_ScintillaEditBase_sizeHint(const ScintillaEditBase*, intptr_t);
+struct miqt_qsize miqt_exec_callback_ScintillaEditBase_minimumSizeHint(const ScintillaEditBase*, intptr_t);
+struct miqt_qsize miqt_exec_callback_ScintillaEditBase_sizeHint(const ScintillaEditBase*, intptr_t);
 void miqt_exec_callback_ScintillaEditBase_setupViewport(ScintillaEditBase*, intptr_t, QWidget*);
 bool miqt_exec_callback_ScintillaEditBase_eventFilter(ScintillaEditBase*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_ScintillaEditBase_viewportEvent(ScintillaEditBase*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_ScintillaEditBase_viewportSizeHint(const ScintillaEditBase*, intptr_t);
+struct miqt_qsize miqt_exec_callback_ScintillaEditBase_viewportSizeHint(const ScintillaEditBase*, intptr_t);
 void miqt_exec_callback_ScintillaEditBase_changeEvent(ScintillaEditBase*, intptr_t, QEvent*);
 int miqt_exec_callback_ScintillaEditBase_devType(const ScintillaEditBase*, intptr_t);
 void miqt_exec_callback_ScintillaEditBase_setVisible(ScintillaEditBase*, intptr_t, bool);
@@ -201,12 +201,12 @@ void miqt_exec_callback_ScintillaEdit_dropEvent(ScintillaEdit*, intptr_t, QDropE
 void miqt_exec_callback_ScintillaEdit_inputMethodEvent(ScintillaEdit*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_ScintillaEdit_inputMethodQuery(const ScintillaEdit*, intptr_t, int);
 void miqt_exec_callback_ScintillaEdit_scrollContentsBy(ScintillaEdit*, intptr_t, int, int);
-QSize* miqt_exec_callback_ScintillaEdit_minimumSizeHint(const ScintillaEdit*, intptr_t);
-QSize* miqt_exec_callback_ScintillaEdit_sizeHint(const ScintillaEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_ScintillaEdit_minimumSizeHint(const ScintillaEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_ScintillaEdit_sizeHint(const ScintillaEdit*, intptr_t);
 void miqt_exec_callback_ScintillaEdit_setupViewport(ScintillaEdit*, intptr_t, QWidget*);
 bool miqt_exec_callback_ScintillaEdit_eventFilter(ScintillaEdit*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_ScintillaEdit_viewportEvent(ScintillaEdit*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_ScintillaEdit_viewportSizeHint(const ScintillaEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_ScintillaEdit_viewportSizeHint(const ScintillaEdit*, intptr_t);
 void miqt_exec_callback_ScintillaEdit_changeEvent(ScintillaEdit*, intptr_t, QEvent*);
 int miqt_exec_callback_ScintillaEdit_devType(const ScintillaEdit*, intptr_t);
 void miqt_exec_callback_ScintillaEdit_setVisible(ScintillaEdit*, intptr_t, bool);
@@ -2525,13 +2525,11 @@ public:
 			return ScintillaEditBase::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_ScintillaEditBase_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* ScintillaEditBase_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize ScintillaEditBase_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -2542,13 +2540,11 @@ public:
 			return ScintillaEditBase::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_ScintillaEditBase_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* ScintillaEditBase_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize ScintillaEditBase_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -2609,13 +2605,11 @@ public:
 			return ScintillaEditBase::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_ScintillaEditBase_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* ScintillaEditBase_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize ScintillaEditBase_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -3060,7 +3054,7 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void ScintillaEditBase_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* ScintillaEditBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins ScintillaEditBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void ScintillaEditBase_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void ScintillaEditBase_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 	friend void ScintillaEditBase_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -3963,8 +3957,8 @@ bool ScintillaEditBase_override_virtual_minimumSizeHint(void* self, intptr_t slo
 	return true;
 }
 
-QSize* ScintillaEditBase_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualScintillaEditBase*>(self)->ScintillaEditBase::minimumSizeHint());
+struct miqt_qsize ScintillaEditBase_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualScintillaEditBase*>(self)->ScintillaEditBase::minimumSizeHint());
 }
 
 bool ScintillaEditBase_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -3977,8 +3971,8 @@ bool ScintillaEditBase_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* ScintillaEditBase_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualScintillaEditBase*>(self)->ScintillaEditBase::sizeHint());
+struct miqt_qsize ScintillaEditBase_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualScintillaEditBase*>(self)->ScintillaEditBase::sizeHint());
 }
 
 bool ScintillaEditBase_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -4033,8 +4027,8 @@ bool ScintillaEditBase_override_virtual_viewportSizeHint(void* self, intptr_t sl
 	return true;
 }
 
-QSize* ScintillaEditBase_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualScintillaEditBase*>(self)->ScintillaEditBase::viewportSizeHint());
+struct miqt_qsize ScintillaEditBase_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualScintillaEditBase*>(self)->ScintillaEditBase::viewportSizeHint());
 }
 
 bool ScintillaEditBase_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -4406,10 +4400,6 @@ QVariant* ScintillaEditBase_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
 
-QSize* ScintillaEditBase_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 void ScintillaEditBase_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
@@ -4421,15 +4411,15 @@ void ScintillaEditBase_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, 
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* ScintillaEditBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins ScintillaEditBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void ScintillaEditBase_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
@@ -5549,13 +5539,11 @@ public:
 			return ScintillaEdit::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_ScintillaEdit_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* ScintillaEdit_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize ScintillaEdit_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -5566,13 +5554,11 @@ public:
 			return ScintillaEdit::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_ScintillaEdit_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* ScintillaEdit_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize ScintillaEdit_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -5633,13 +5619,11 @@ public:
 			return ScintillaEdit::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_ScintillaEdit_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* ScintillaEdit_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize ScintillaEdit_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -6084,7 +6068,7 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void ScintillaEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* ScintillaEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins ScintillaEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void ScintillaEdit_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void ScintillaEdit_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 	friend void ScintillaEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -6203,12 +6187,12 @@ struct miqt_string ScintillaEdit_textRange(ScintillaEdit* self, int start, int e
 	return _ms;
 }
 
-long ScintillaEdit_formatRange(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, QRect* print_rect, QRect* page_rect, long range_start, long range_end) {
-	return self->format_range(draw, target, measure, *print_rect, *page_rect, static_cast<long>(range_start), static_cast<long>(range_end));
+long ScintillaEdit_formatRange(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, struct miqt_qrect print_rect, struct miqt_qrect page_rect, long range_start, long range_end) {
+	return self->format_range(draw, target, measure, miqt_from_cabi<QRect>(print_rect), miqt_from_cabi<QRect>(page_rect), static_cast<long>(range_start), static_cast<long>(range_end));
 }
 
-long ScintillaEdit_formatRange2(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, QRect* print_rect, QRect* page_rect, long range_start, long range_end) {
-	return self->formatRange(draw, target, measure, *print_rect, *page_rect, static_cast<long>(range_start), static_cast<long>(range_end));
+long ScintillaEdit_formatRange2(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, struct miqt_qrect print_rect, struct miqt_qrect page_rect, long range_start, long range_end) {
+	return self->formatRange(draw, target, measure, miqt_from_cabi<QRect>(print_rect), miqt_from_cabi<QRect>(page_rect), static_cast<long>(range_start), static_cast<long>(range_end));
 }
 
 void ScintillaEdit_addText(ScintillaEdit* self, intptr_t length, const char* text) {
@@ -10176,8 +10160,8 @@ bool ScintillaEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* ScintillaEdit_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualScintillaEdit*>(self)->ScintillaEdit::minimumSizeHint());
+struct miqt_qsize ScintillaEdit_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualScintillaEdit*>(self)->ScintillaEdit::minimumSizeHint());
 }
 
 bool ScintillaEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -10190,8 +10174,8 @@ bool ScintillaEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* ScintillaEdit_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualScintillaEdit*>(self)->ScintillaEdit::sizeHint());
+struct miqt_qsize ScintillaEdit_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualScintillaEdit*>(self)->ScintillaEdit::sizeHint());
 }
 
 bool ScintillaEdit_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -10246,8 +10230,8 @@ bool ScintillaEdit_override_virtual_viewportSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* ScintillaEdit_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualScintillaEdit*>(self)->ScintillaEdit::viewportSizeHint());
+struct miqt_qsize ScintillaEdit_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualScintillaEdit*>(self)->ScintillaEdit::viewportSizeHint());
 }
 
 bool ScintillaEdit_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -10619,10 +10603,6 @@ QVariant* ScintillaEdit_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
 
-QSize* ScintillaEdit_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 void ScintillaEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
@@ -10634,15 +10614,15 @@ void ScintillaEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* ScintillaEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins ScintillaEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void ScintillaEdit_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

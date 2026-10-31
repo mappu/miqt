@@ -59,9 +59,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsItem_advance(QGraphicsItem*, intptr_t, int);
-QRectF* miqt_exec_callback_QGraphicsItem_boundingRect(const QGraphicsItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsItem_boundingRect(const QGraphicsItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsItem_shape(const QGraphicsItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsItem_contains(const QGraphicsItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsItem_contains(const QGraphicsItem*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QGraphicsItem_collidesWithItem(const QGraphicsItem*, intptr_t, QGraphicsItem*, int);
 bool miqt_exec_callback_QGraphicsItem_collidesWithPath(const QGraphicsItem*, intptr_t, QPainterPath*, int);
 bool miqt_exec_callback_QGraphicsItem_isObscuredBy(const QGraphicsItem*, intptr_t, QGraphicsItem*);
@@ -113,9 +113,9 @@ void miqt_exec_callback_QGraphicsObject_customEvent(QGraphicsObject*, intptr_t, 
 void miqt_exec_callback_QGraphicsObject_connectNotify(QGraphicsObject*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsObject_disconnectNotify(QGraphicsObject*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsObject_advance(QGraphicsObject*, intptr_t, int);
-QRectF* miqt_exec_callback_QGraphicsObject_boundingRect(const QGraphicsObject*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsObject_boundingRect(const QGraphicsObject*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsObject_shape(const QGraphicsObject*, intptr_t);
-bool miqt_exec_callback_QGraphicsObject_contains(const QGraphicsObject*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsObject_contains(const QGraphicsObject*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QGraphicsObject_collidesWithItem(const QGraphicsObject*, intptr_t, QGraphicsItem*, int);
 bool miqt_exec_callback_QGraphicsObject_collidesWithPath(const QGraphicsObject*, intptr_t, QPainterPath*, int);
 bool miqt_exec_callback_QGraphicsObject_isObscuredBy(const QGraphicsObject*, intptr_t, QGraphicsItem*);
@@ -150,9 +150,9 @@ QVariant* miqt_exec_callback_QGraphicsObject_extension(const QGraphicsObject*, i
 bool miqt_exec_callback_QAbstractGraphicsShapeItem_isObscuredBy(const QAbstractGraphicsShapeItem*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QAbstractGraphicsShapeItem_opaqueArea(const QAbstractGraphicsShapeItem*, intptr_t);
 void miqt_exec_callback_QAbstractGraphicsShapeItem_advance(QAbstractGraphicsShapeItem*, intptr_t, int);
-QRectF* miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect(const QAbstractGraphicsShapeItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect(const QAbstractGraphicsShapeItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QAbstractGraphicsShapeItem_shape(const QAbstractGraphicsShapeItem*, intptr_t);
-bool miqt_exec_callback_QAbstractGraphicsShapeItem_contains(const QAbstractGraphicsShapeItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QAbstractGraphicsShapeItem_contains(const QAbstractGraphicsShapeItem*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QAbstractGraphicsShapeItem_collidesWithItem(const QAbstractGraphicsShapeItem*, intptr_t, QGraphicsItem*, int);
 bool miqt_exec_callback_QAbstractGraphicsShapeItem_collidesWithPath(const QAbstractGraphicsShapeItem*, intptr_t, QPainterPath*, int);
 void miqt_exec_callback_QAbstractGraphicsShapeItem_paint(QAbstractGraphicsShapeItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
@@ -182,9 +182,9 @@ QVariant* miqt_exec_callback_QAbstractGraphicsShapeItem_itemChange(QAbstractGrap
 bool miqt_exec_callback_QAbstractGraphicsShapeItem_supportsExtension(const QAbstractGraphicsShapeItem*, intptr_t, int);
 void miqt_exec_callback_QAbstractGraphicsShapeItem_setExtension(QAbstractGraphicsShapeItem*, intptr_t, int, QVariant*);
 QVariant* miqt_exec_callback_QAbstractGraphicsShapeItem_extension(const QAbstractGraphicsShapeItem*, intptr_t, QVariant*);
-QRectF* miqt_exec_callback_QGraphicsPathItem_boundingRect(const QGraphicsPathItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsPathItem_boundingRect(const QGraphicsPathItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsPathItem_shape(const QGraphicsPathItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsPathItem_contains(const QGraphicsPathItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsPathItem_contains(const QGraphicsPathItem*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsPathItem_paint(QGraphicsPathItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 bool miqt_exec_callback_QGraphicsPathItem_isObscuredBy(const QGraphicsPathItem*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QGraphicsPathItem_opaqueArea(const QGraphicsPathItem*, intptr_t);
@@ -217,9 +217,9 @@ void miqt_exec_callback_QGraphicsPathItem_wheelEvent(QGraphicsPathItem*, intptr_
 void miqt_exec_callback_QGraphicsPathItem_inputMethodEvent(QGraphicsPathItem*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QGraphicsPathItem_inputMethodQuery(const QGraphicsPathItem*, intptr_t, int);
 QVariant* miqt_exec_callback_QGraphicsPathItem_itemChange(QGraphicsPathItem*, intptr_t, int, QVariant*);
-QRectF* miqt_exec_callback_QGraphicsRectItem_boundingRect(const QGraphicsRectItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsRectItem_boundingRect(const QGraphicsRectItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsRectItem_shape(const QGraphicsRectItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsRectItem_contains(const QGraphicsRectItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsRectItem_contains(const QGraphicsRectItem*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsRectItem_paint(QGraphicsRectItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 bool miqt_exec_callback_QGraphicsRectItem_isObscuredBy(const QGraphicsRectItem*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QGraphicsRectItem_opaqueArea(const QGraphicsRectItem*, intptr_t);
@@ -252,9 +252,9 @@ void miqt_exec_callback_QGraphicsRectItem_wheelEvent(QGraphicsRectItem*, intptr_
 void miqt_exec_callback_QGraphicsRectItem_inputMethodEvent(QGraphicsRectItem*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QGraphicsRectItem_inputMethodQuery(const QGraphicsRectItem*, intptr_t, int);
 QVariant* miqt_exec_callback_QGraphicsRectItem_itemChange(QGraphicsRectItem*, intptr_t, int, QVariant*);
-QRectF* miqt_exec_callback_QGraphicsEllipseItem_boundingRect(const QGraphicsEllipseItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsEllipseItem_boundingRect(const QGraphicsEllipseItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsEllipseItem_shape(const QGraphicsEllipseItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsEllipseItem_contains(const QGraphicsEllipseItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsEllipseItem_contains(const QGraphicsEllipseItem*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsEllipseItem_paint(QGraphicsEllipseItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 bool miqt_exec_callback_QGraphicsEllipseItem_isObscuredBy(const QGraphicsEllipseItem*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QGraphicsEllipseItem_opaqueArea(const QGraphicsEllipseItem*, intptr_t);
@@ -287,9 +287,9 @@ void miqt_exec_callback_QGraphicsEllipseItem_wheelEvent(QGraphicsEllipseItem*, i
 void miqt_exec_callback_QGraphicsEllipseItem_inputMethodEvent(QGraphicsEllipseItem*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QGraphicsEllipseItem_inputMethodQuery(const QGraphicsEllipseItem*, intptr_t, int);
 QVariant* miqt_exec_callback_QGraphicsEllipseItem_itemChange(QGraphicsEllipseItem*, intptr_t, int, QVariant*);
-QRectF* miqt_exec_callback_QGraphicsPolygonItem_boundingRect(const QGraphicsPolygonItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsPolygonItem_boundingRect(const QGraphicsPolygonItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsPolygonItem_shape(const QGraphicsPolygonItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsPolygonItem_contains(const QGraphicsPolygonItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsPolygonItem_contains(const QGraphicsPolygonItem*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsPolygonItem_paint(QGraphicsPolygonItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 bool miqt_exec_callback_QGraphicsPolygonItem_isObscuredBy(const QGraphicsPolygonItem*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QGraphicsPolygonItem_opaqueArea(const QGraphicsPolygonItem*, intptr_t);
@@ -322,9 +322,9 @@ void miqt_exec_callback_QGraphicsPolygonItem_wheelEvent(QGraphicsPolygonItem*, i
 void miqt_exec_callback_QGraphicsPolygonItem_inputMethodEvent(QGraphicsPolygonItem*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QGraphicsPolygonItem_inputMethodQuery(const QGraphicsPolygonItem*, intptr_t, int);
 QVariant* miqt_exec_callback_QGraphicsPolygonItem_itemChange(QGraphicsPolygonItem*, intptr_t, int, QVariant*);
-QRectF* miqt_exec_callback_QGraphicsLineItem_boundingRect(const QGraphicsLineItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsLineItem_boundingRect(const QGraphicsLineItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsLineItem_shape(const QGraphicsLineItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsLineItem_contains(const QGraphicsLineItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsLineItem_contains(const QGraphicsLineItem*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsLineItem_paint(QGraphicsLineItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 bool miqt_exec_callback_QGraphicsLineItem_isObscuredBy(const QGraphicsLineItem*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QGraphicsLineItem_opaqueArea(const QGraphicsLineItem*, intptr_t);
@@ -357,9 +357,9 @@ void miqt_exec_callback_QGraphicsLineItem_wheelEvent(QGraphicsLineItem*, intptr_
 void miqt_exec_callback_QGraphicsLineItem_inputMethodEvent(QGraphicsLineItem*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QGraphicsLineItem_inputMethodQuery(const QGraphicsLineItem*, intptr_t, int);
 QVariant* miqt_exec_callback_QGraphicsLineItem_itemChange(QGraphicsLineItem*, intptr_t, int, QVariant*);
-QRectF* miqt_exec_callback_QGraphicsPixmapItem_boundingRect(const QGraphicsPixmapItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsPixmapItem_boundingRect(const QGraphicsPixmapItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsPixmapItem_shape(const QGraphicsPixmapItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsPixmapItem_contains(const QGraphicsPixmapItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsPixmapItem_contains(const QGraphicsPixmapItem*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsPixmapItem_paint(QGraphicsPixmapItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 bool miqt_exec_callback_QGraphicsPixmapItem_isObscuredBy(const QGraphicsPixmapItem*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QGraphicsPixmapItem_opaqueArea(const QGraphicsPixmapItem*, intptr_t);
@@ -394,9 +394,9 @@ QVariant* miqt_exec_callback_QGraphicsPixmapItem_inputMethodQuery(const QGraphic
 QVariant* miqt_exec_callback_QGraphicsPixmapItem_itemChange(QGraphicsPixmapItem*, intptr_t, int, QVariant*);
 void miqt_exec_callback_QGraphicsTextItem_linkActivated(intptr_t, struct miqt_string);
 void miqt_exec_callback_QGraphicsTextItem_linkHovered(intptr_t, struct miqt_string);
-QRectF* miqt_exec_callback_QGraphicsTextItem_boundingRect(const QGraphicsTextItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsTextItem_boundingRect(const QGraphicsTextItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsTextItem_shape(const QGraphicsTextItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsTextItem_contains(const QGraphicsTextItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsTextItem_contains(const QGraphicsTextItem*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsTextItem_paint(QGraphicsTextItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 bool miqt_exec_callback_QGraphicsTextItem_isObscuredBy(const QGraphicsTextItem*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QGraphicsTextItem_opaqueArea(const QGraphicsTextItem*, intptr_t);
@@ -436,9 +436,9 @@ bool miqt_exec_callback_QGraphicsTextItem_collidesWithPath(const QGraphicsTextIt
 bool miqt_exec_callback_QGraphicsTextItem_sceneEventFilter(QGraphicsTextItem*, intptr_t, QGraphicsItem*, QEvent*);
 void miqt_exec_callback_QGraphicsTextItem_wheelEvent(QGraphicsTextItem*, intptr_t, QGraphicsSceneWheelEvent*);
 QVariant* miqt_exec_callback_QGraphicsTextItem_itemChange(QGraphicsTextItem*, intptr_t, int, QVariant*);
-QRectF* miqt_exec_callback_QGraphicsSimpleTextItem_boundingRect(const QGraphicsSimpleTextItem*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsSimpleTextItem_boundingRect(const QGraphicsSimpleTextItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsSimpleTextItem_shape(const QGraphicsSimpleTextItem*, intptr_t);
-bool miqt_exec_callback_QGraphicsSimpleTextItem_contains(const QGraphicsSimpleTextItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsSimpleTextItem_contains(const QGraphicsSimpleTextItem*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsSimpleTextItem_paint(QGraphicsSimpleTextItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 bool miqt_exec_callback_QGraphicsSimpleTextItem_isObscuredBy(const QGraphicsSimpleTextItem*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QGraphicsSimpleTextItem_opaqueArea(const QGraphicsSimpleTextItem*, intptr_t);
@@ -471,14 +471,14 @@ void miqt_exec_callback_QGraphicsSimpleTextItem_wheelEvent(QGraphicsSimpleTextIt
 void miqt_exec_callback_QGraphicsSimpleTextItem_inputMethodEvent(QGraphicsSimpleTextItem*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QGraphicsSimpleTextItem_inputMethodQuery(const QGraphicsSimpleTextItem*, intptr_t, int);
 QVariant* miqt_exec_callback_QGraphicsSimpleTextItem_itemChange(QGraphicsSimpleTextItem*, intptr_t, int, QVariant*);
-QRectF* miqt_exec_callback_QGraphicsItemGroup_boundingRect(const QGraphicsItemGroup*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsItemGroup_boundingRect(const QGraphicsItemGroup*, intptr_t);
 void miqt_exec_callback_QGraphicsItemGroup_paint(QGraphicsItemGroup*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 bool miqt_exec_callback_QGraphicsItemGroup_isObscuredBy(const QGraphicsItemGroup*, intptr_t, QGraphicsItem*);
 QPainterPath* miqt_exec_callback_QGraphicsItemGroup_opaqueArea(const QGraphicsItemGroup*, intptr_t);
 int miqt_exec_callback_QGraphicsItemGroup_type(const QGraphicsItemGroup*, intptr_t);
 void miqt_exec_callback_QGraphicsItemGroup_advance(QGraphicsItemGroup*, intptr_t, int);
 QPainterPath* miqt_exec_callback_QGraphicsItemGroup_shape(const QGraphicsItemGroup*, intptr_t);
-bool miqt_exec_callback_QGraphicsItemGroup_contains(const QGraphicsItemGroup*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsItemGroup_contains(const QGraphicsItemGroup*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QGraphicsItemGroup_collidesWithItem(const QGraphicsItemGroup*, intptr_t, QGraphicsItem*, int);
 bool miqt_exec_callback_QGraphicsItemGroup_collidesWithPath(const QGraphicsItemGroup*, intptr_t, QPainterPath*, int);
 bool miqt_exec_callback_QGraphicsItemGroup_sceneEventFilter(QGraphicsItemGroup*, intptr_t, QGraphicsItem*, QEvent*);
@@ -544,10 +544,8 @@ public:
 			return QRectF(); // Pure virtual, there is no base we can call
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -576,14 +574,12 @@ public:
 			return QGraphicsItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__collidesWithItem = 0;
@@ -1443,8 +1439,8 @@ void QGraphicsItem_ungrabKeyboard(QGraphicsItem* self) {
 	self->ungrabKeyboard();
 }
 
-QPointF* QGraphicsItem_pos(const QGraphicsItem* self) {
-	return new QPointF(self->pos());
+struct miqt_qpointf QGraphicsItem_pos(const QGraphicsItem* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pos());
 }
 
 double QGraphicsItem_x(const QGraphicsItem* self) {
@@ -1465,12 +1461,12 @@ void QGraphicsItem_setY(QGraphicsItem* self, double y) {
 	self->setY(static_cast<qreal>(y));
 }
 
-QPointF* QGraphicsItem_scenePos(const QGraphicsItem* self) {
-	return new QPointF(self->scenePos());
+struct miqt_qpointf QGraphicsItem_scenePos(const QGraphicsItem* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->scenePos());
 }
 
-void QGraphicsItem_setPos(QGraphicsItem* self, QPointF* pos) {
-	self->setPos(*pos);
+void QGraphicsItem_setPos(QGraphicsItem* self, struct miqt_qpointf pos) {
+	self->setPos(miqt_from_cabi<QPointF>(pos));
 }
 
 void QGraphicsItem_setPos2(QGraphicsItem* self, double x, double y) {
@@ -1554,12 +1550,12 @@ void QGraphicsItem_setTransformations(QGraphicsItem* self, struct miqt_array /* 
 	self->setTransformations(transformations_QList);
 }
 
-QPointF* QGraphicsItem_transformOriginPoint(const QGraphicsItem* self) {
-	return new QPointF(self->transformOriginPoint());
+struct miqt_qpointf QGraphicsItem_transformOriginPoint(const QGraphicsItem* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->transformOriginPoint());
 }
 
-void QGraphicsItem_setTransformOriginPoint(QGraphicsItem* self, QPointF* origin) {
-	self->setTransformOriginPoint(*origin);
+void QGraphicsItem_setTransformOriginPoint(QGraphicsItem* self, struct miqt_qpointf origin) {
+	self->setTransformOriginPoint(miqt_from_cabi<QPointF>(origin));
 }
 
 void QGraphicsItem_setTransformOriginPoint2(QGraphicsItem* self, double ax, double ay) {
@@ -1583,16 +1579,16 @@ void QGraphicsItem_stackBefore(QGraphicsItem* self, QGraphicsItem* sibling) {
 	self->stackBefore(sibling);
 }
 
-QRectF* QGraphicsItem_boundingRect(const QGraphicsItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsItem_boundingRect(const QGraphicsItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
-QRectF* QGraphicsItem_childrenBoundingRect(const QGraphicsItem* self) {
-	return new QRectF(self->childrenBoundingRect());
+struct miqt_qrectf QGraphicsItem_childrenBoundingRect(const QGraphicsItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->childrenBoundingRect());
 }
 
-QRectF* QGraphicsItem_sceneBoundingRect(const QGraphicsItem* self) {
-	return new QRectF(self->sceneBoundingRect());
+struct miqt_qrectf QGraphicsItem_sceneBoundingRect(const QGraphicsItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->sceneBoundingRect());
 }
 
 QPainterPath* QGraphicsItem_shape(const QGraphicsItem* self) {
@@ -1607,8 +1603,8 @@ QPainterPath* QGraphicsItem_clipPath(const QGraphicsItem* self) {
 	return new QPainterPath(self->clipPath());
 }
 
-bool QGraphicsItem_contains(const QGraphicsItem* self, QPointF* point) {
-	return self->contains(*point);
+bool QGraphicsItem_contains(const QGraphicsItem* self, struct miqt_qpointf point) {
+	return self->contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsItem_collidesWithItem(const QGraphicsItem* self, QGraphicsItem* other, int mode) {
@@ -1677,28 +1673,28 @@ void QGraphicsItem_scroll(QGraphicsItem* self, double dx, double dy) {
 	self->scroll(static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
-QPointF* QGraphicsItem_mapToItem(const QGraphicsItem* self, QGraphicsItem* item, QPointF* point) {
-	return new QPointF(self->mapToItem(item, *point));
+struct miqt_qpointf QGraphicsItem_mapToItem(const QGraphicsItem* self, QGraphicsItem* item, struct miqt_qpointf point) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToItem(item, miqt_from_cabi<QPointF>(point)));
 }
 
-QPointF* QGraphicsItem_mapToParent(const QGraphicsItem* self, QPointF* point) {
-	return new QPointF(self->mapToParent(*point));
+struct miqt_qpointf QGraphicsItem_mapToParent(const QGraphicsItem* self, struct miqt_qpointf point) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToParent(miqt_from_cabi<QPointF>(point)));
 }
 
-QPointF* QGraphicsItem_mapToScene(const QGraphicsItem* self, QPointF* point) {
-	return new QPointF(self->mapToScene(*point));
+struct miqt_qpointf QGraphicsItem_mapToScene(const QGraphicsItem* self, struct miqt_qpointf point) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToScene(miqt_from_cabi<QPointF>(point)));
 }
 
-QRectF* QGraphicsItem_mapRectToItem(const QGraphicsItem* self, QGraphicsItem* item, QRectF* rect) {
-	return new QRectF(self->mapRectToItem(item, *rect));
+struct miqt_qrectf QGraphicsItem_mapRectToItem(const QGraphicsItem* self, QGraphicsItem* item, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectToItem(item, miqt_from_cabi<QRectF>(rect)));
 }
 
-QRectF* QGraphicsItem_mapRectToParent(const QGraphicsItem* self, QRectF* rect) {
-	return new QRectF(self->mapRectToParent(*rect));
+struct miqt_qrectf QGraphicsItem_mapRectToParent(const QGraphicsItem* self, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectToParent(miqt_from_cabi<QRectF>(rect)));
 }
 
-QRectF* QGraphicsItem_mapRectToScene(const QGraphicsItem* self, QRectF* rect) {
-	return new QRectF(self->mapRectToScene(*rect));
+struct miqt_qrectf QGraphicsItem_mapRectToScene(const QGraphicsItem* self, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectToScene(miqt_from_cabi<QRectF>(rect)));
 }
 
 QPainterPath* QGraphicsItem_mapToItem4(const QGraphicsItem* self, QGraphicsItem* item, QPainterPath* path) {
@@ -1713,28 +1709,28 @@ QPainterPath* QGraphicsItem_mapToSceneWithPath(const QGraphicsItem* self, QPaint
 	return new QPainterPath(self->mapToScene(*path));
 }
 
-QPointF* QGraphicsItem_mapFromItem(const QGraphicsItem* self, QGraphicsItem* item, QPointF* point) {
-	return new QPointF(self->mapFromItem(item, *point));
+struct miqt_qpointf QGraphicsItem_mapFromItem(const QGraphicsItem* self, QGraphicsItem* item, struct miqt_qpointf point) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFromItem(item, miqt_from_cabi<QPointF>(point)));
 }
 
-QPointF* QGraphicsItem_mapFromParent(const QGraphicsItem* self, QPointF* point) {
-	return new QPointF(self->mapFromParent(*point));
+struct miqt_qpointf QGraphicsItem_mapFromParent(const QGraphicsItem* self, struct miqt_qpointf point) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFromParent(miqt_from_cabi<QPointF>(point)));
 }
 
-QPointF* QGraphicsItem_mapFromScene(const QGraphicsItem* self, QPointF* point) {
-	return new QPointF(self->mapFromScene(*point));
+struct miqt_qpointf QGraphicsItem_mapFromScene(const QGraphicsItem* self, struct miqt_qpointf point) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFromScene(miqt_from_cabi<QPointF>(point)));
 }
 
-QRectF* QGraphicsItem_mapRectFromItem(const QGraphicsItem* self, QGraphicsItem* item, QRectF* rect) {
-	return new QRectF(self->mapRectFromItem(item, *rect));
+struct miqt_qrectf QGraphicsItem_mapRectFromItem(const QGraphicsItem* self, QGraphicsItem* item, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectFromItem(item, miqt_from_cabi<QRectF>(rect)));
 }
 
-QRectF* QGraphicsItem_mapRectFromParent(const QGraphicsItem* self, QRectF* rect) {
-	return new QRectF(self->mapRectFromParent(*rect));
+struct miqt_qrectf QGraphicsItem_mapRectFromParent(const QGraphicsItem* self, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectFromParent(miqt_from_cabi<QRectF>(rect)));
 }
 
-QRectF* QGraphicsItem_mapRectFromScene(const QGraphicsItem* self, QRectF* rect) {
-	return new QRectF(self->mapRectFromScene(*rect));
+struct miqt_qrectf QGraphicsItem_mapRectFromScene(const QGraphicsItem* self, struct miqt_qrectf rect) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectFromScene(miqt_from_cabi<QRectF>(rect)));
 }
 
 QPainterPath* QGraphicsItem_mapFromItem4(const QGraphicsItem* self, QGraphicsItem* item, QPainterPath* path) {
@@ -1749,52 +1745,52 @@ QPainterPath* QGraphicsItem_mapFromSceneWithPath(const QGraphicsItem* self, QPai
 	return new QPainterPath(self->mapFromScene(*path));
 }
 
-QPointF* QGraphicsItem_mapToItem5(const QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
-	return new QPointF(self->mapToItem(item, static_cast<qreal>(x), static_cast<qreal>(y)));
+struct miqt_qpointf QGraphicsItem_mapToItem5(const QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToItem(item, static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
-QPointF* QGraphicsItem_mapToParent2(const QGraphicsItem* self, double x, double y) {
-	return new QPointF(self->mapToParent(static_cast<qreal>(x), static_cast<qreal>(y)));
+struct miqt_qpointf QGraphicsItem_mapToParent2(const QGraphicsItem* self, double x, double y) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToParent(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
-QPointF* QGraphicsItem_mapToScene2(const QGraphicsItem* self, double x, double y) {
-	return new QPointF(self->mapToScene(static_cast<qreal>(x), static_cast<qreal>(y)));
+struct miqt_qpointf QGraphicsItem_mapToScene2(const QGraphicsItem* self, double x, double y) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToScene(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
-QRectF* QGraphicsItem_mapRectToItem2(const QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
-	return new QRectF(self->mapRectToItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
+struct miqt_qrectf QGraphicsItem_mapRectToItem2(const QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectToItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
-QRectF* QGraphicsItem_mapRectToParent2(const QGraphicsItem* self, double x, double y, double w, double h) {
-	return new QRectF(self->mapRectToParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
+struct miqt_qrectf QGraphicsItem_mapRectToParent2(const QGraphicsItem* self, double x, double y, double w, double h) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectToParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
-QRectF* QGraphicsItem_mapRectToScene2(const QGraphicsItem* self, double x, double y, double w, double h) {
-	return new QRectF(self->mapRectToScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
+struct miqt_qrectf QGraphicsItem_mapRectToScene2(const QGraphicsItem* self, double x, double y, double w, double h) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectToScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
-QPointF* QGraphicsItem_mapFromItem5(const QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
-	return new QPointF(self->mapFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y)));
+struct miqt_qpointf QGraphicsItem_mapFromItem5(const QGraphicsItem* self, QGraphicsItem* item, double x, double y) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
-QPointF* QGraphicsItem_mapFromParent2(const QGraphicsItem* self, double x, double y) {
-	return new QPointF(self->mapFromParent(static_cast<qreal>(x), static_cast<qreal>(y)));
+struct miqt_qpointf QGraphicsItem_mapFromParent2(const QGraphicsItem* self, double x, double y) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFromParent(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
-QPointF* QGraphicsItem_mapFromScene2(const QGraphicsItem* self, double x, double y) {
-	return new QPointF(self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y)));
+struct miqt_qpointf QGraphicsItem_mapFromScene2(const QGraphicsItem* self, double x, double y) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFromScene(static_cast<qreal>(x), static_cast<qreal>(y)));
 }
 
-QRectF* QGraphicsItem_mapRectFromItem2(const QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
-	return new QRectF(self->mapRectFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
+struct miqt_qrectf QGraphicsItem_mapRectFromItem2(const QGraphicsItem* self, QGraphicsItem* item, double x, double y, double w, double h) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectFromItem(item, static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
-QRectF* QGraphicsItem_mapRectFromParent2(const QGraphicsItem* self, double x, double y, double w, double h) {
-	return new QRectF(self->mapRectFromParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
+struct miqt_qrectf QGraphicsItem_mapRectFromParent2(const QGraphicsItem* self, double x, double y, double w, double h) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectFromParent(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
-QRectF* QGraphicsItem_mapRectFromScene2(const QGraphicsItem* self, double x, double y, double w, double h) {
-	return new QRectF(self->mapRectFromScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
+struct miqt_qrectf QGraphicsItem_mapRectFromScene2(const QGraphicsItem* self, double x, double y, double w, double h) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->mapRectFromScene(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h)));
 }
 
 bool QGraphicsItem_isAncestorOf(const QGraphicsItem* self, QGraphicsItem* child) {
@@ -1842,24 +1838,24 @@ void QGraphicsItem_setFlag2(QGraphicsItem* self, int flag, bool enabled) {
 	self->setFlag(static_cast<QGraphicsItem::GraphicsItemFlag>(flag), enabled);
 }
 
-void QGraphicsItem_setCacheMode2(QGraphicsItem* self, int mode, QSize* cacheSize) {
-	self->setCacheMode(static_cast<QGraphicsItem::CacheMode>(mode), *cacheSize);
+void QGraphicsItem_setCacheMode2(QGraphicsItem* self, int mode, struct miqt_qsize cacheSize) {
+	self->setCacheMode(static_cast<QGraphicsItem::CacheMode>(mode), miqt_from_cabi<QSize>(cacheSize));
 }
 
 void QGraphicsItem_setFocusWithFocusReason(QGraphicsItem* self, int focusReason) {
 	self->setFocus(static_cast<Qt::FocusReason>(focusReason));
 }
 
-void QGraphicsItem_ensureVisibleWithRect(QGraphicsItem* self, QRectF* rect) {
-	self->ensureVisible(*rect);
+void QGraphicsItem_ensureVisibleWithRect(QGraphicsItem* self, struct miqt_qrectf rect) {
+	self->ensureVisible(miqt_from_cabi<QRectF>(rect));
 }
 
-void QGraphicsItem_ensureVisible3(QGraphicsItem* self, QRectF* rect, int xmargin) {
-	self->ensureVisible(*rect, static_cast<int>(xmargin));
+void QGraphicsItem_ensureVisible3(QGraphicsItem* self, struct miqt_qrectf rect, int xmargin) {
+	self->ensureVisible(miqt_from_cabi<QRectF>(rect), static_cast<int>(xmargin));
 }
 
-void QGraphicsItem_ensureVisible4(QGraphicsItem* self, QRectF* rect, int xmargin, int ymargin) {
-	self->ensureVisible(*rect, static_cast<int>(xmargin), static_cast<int>(ymargin));
+void QGraphicsItem_ensureVisible4(QGraphicsItem* self, struct miqt_qrectf rect, int xmargin, int ymargin) {
+	self->ensureVisible(miqt_from_cabi<QRectF>(rect), static_cast<int>(xmargin), static_cast<int>(ymargin));
 }
 
 void QGraphicsItem_ensureVisible5(QGraphicsItem* self, double x, double y, double w, double h, int xmargin) {
@@ -1891,16 +1887,16 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsItem_collidingItemsWithMode(
 	return _out;
 }
 
-bool QGraphicsItem_isObscuredWithRect(const QGraphicsItem* self, QRectF* rect) {
-	return self->isObscured(*rect);
+bool QGraphicsItem_isObscuredWithRect(const QGraphicsItem* self, struct miqt_qrectf rect) {
+	return self->isObscured(miqt_from_cabi<QRectF>(rect));
 }
 
-void QGraphicsItem_updateWithRect(QGraphicsItem* self, QRectF* rect) {
-	self->update(*rect);
+void QGraphicsItem_updateWithRect(QGraphicsItem* self, struct miqt_qrectf rect) {
+	self->update(miqt_from_cabi<QRectF>(rect));
 }
 
-void QGraphicsItem_scroll2(QGraphicsItem* self, double dx, double dy, QRectF* rect) {
-	self->scroll(static_cast<qreal>(dx), static_cast<qreal>(dy), *rect);
+void QGraphicsItem_scroll2(QGraphicsItem* self, double dx, double dy, struct miqt_qrectf rect) {
+	self->scroll(static_cast<qreal>(dx), static_cast<qreal>(dy), miqt_from_cabi<QRectF>(rect));
 }
 
 bool QGraphicsItem_override_virtual_advance(void* self, intptr_t slot) {
@@ -1951,8 +1947,8 @@ bool QGraphicsItem_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsItem*>(self)->QGraphicsItem::contains(*point);
+bool QGraphicsItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsItem*>(self)->QGraphicsItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsItem_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -2385,10 +2381,6 @@ QVariant* QGraphicsItem_virtualbase_extension(const void* self, QVariant* varian
 	return new QVariant(static_cast<const MiqtVirtualQGraphicsItem*>(self)->QGraphicsItem::extension(*variant));
 }
 
-QRectF* QGraphicsItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -2601,10 +2593,8 @@ public:
 			return QRectF(); // Pure virtual, there is no base we can call
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsObject_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsObject_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -2633,14 +2623,12 @@ public:
 			return QGraphicsObject::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsObject_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsObject_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsObject_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__collidesWithItem = 0;
@@ -3525,8 +3513,8 @@ bool QGraphicsObject_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsObject_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsObject*>(self)->QGraphicsObject::contains(*point);
+bool QGraphicsObject_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsObject*>(self)->QGraphicsObject::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsObject_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -3959,10 +3947,6 @@ QVariant* QGraphicsObject_virtualbase_extension(const void* self, QVariant* vari
 	return new QVariant(static_cast<const MiqtVirtualQGraphicsObject*>(self)->QGraphicsObject::extension(*variant));
 }
 
-QRectF* QGraphicsObject_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsObject_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -4130,10 +4114,8 @@ public:
 			return QRectF(); // Pure virtual, there is no base we can call
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -4162,14 +4144,12 @@ public:
 			return QAbstractGraphicsShapeItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QAbstractGraphicsShapeItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QAbstractGraphicsShapeItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QAbstractGraphicsShapeItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__collidesWithItem = 0;
@@ -4797,8 +4777,8 @@ bool QAbstractGraphicsShapeItem_override_virtual_contains(void* self, intptr_t s
 	return true;
 }
 
-bool QAbstractGraphicsShapeItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQAbstractGraphicsShapeItem*>(self)->QAbstractGraphicsShapeItem::contains(*point);
+bool QAbstractGraphicsShapeItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQAbstractGraphicsShapeItem*>(self)->QAbstractGraphicsShapeItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QAbstractGraphicsShapeItem_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -5207,10 +5187,6 @@ QPainterPath* QAbstractGraphicsShapeItem_virtualreturncopy_QPainterPath(QPainter
 	return new QPainterPath(*src);
 }
 
-QRectF* QAbstractGraphicsShapeItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QVariant* QAbstractGraphicsShapeItem_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -5282,13 +5258,11 @@ public:
 			return QGraphicsPathItem::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsPathItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsPathItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsPathItem_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsPathItem_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -5316,14 +5290,12 @@ public:
 			return QGraphicsPathItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsPathItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsPathItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsPathItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -5920,16 +5892,16 @@ void QGraphicsPathItem_setPath(QGraphicsPathItem* self, QPainterPath* path) {
 	self->setPath(*path);
 }
 
-QRectF* QGraphicsPathItem_boundingRect(const QGraphicsPathItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsPathItem_boundingRect(const QGraphicsPathItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 QPainterPath* QGraphicsPathItem_shape(const QGraphicsPathItem* self) {
 	return new QPainterPath(self->shape());
 }
 
-bool QGraphicsPathItem_contains(const QGraphicsPathItem* self, QPointF* point) {
-	return self->contains(*point);
+bool QGraphicsPathItem_contains(const QGraphicsPathItem* self, struct miqt_qpointf point) {
+	return self->contains(miqt_from_cabi<QPointF>(point));
 }
 
 void QGraphicsPathItem_paint(QGraphicsPathItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -5958,8 +5930,8 @@ bool QGraphicsPathItem_override_virtual_boundingRect(void* self, intptr_t slot) 
 	return true;
 }
 
-QRectF* QGraphicsPathItem_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsPathItem*>(self)->QGraphicsPathItem::boundingRect());
+struct miqt_qrectf QGraphicsPathItem_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsPathItem*>(self)->QGraphicsPathItem::boundingRect());
 }
 
 bool QGraphicsPathItem_override_virtual_shape(void* self, intptr_t slot) {
@@ -5986,8 +5958,8 @@ bool QGraphicsPathItem_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsPathItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsPathItem*>(self)->QGraphicsPathItem::contains(*point);
+bool QGraphicsPathItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsPathItem*>(self)->QGraphicsPathItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsPathItem_override_virtual_paint(void* self, intptr_t slot) {
@@ -6438,10 +6410,6 @@ QVariant* QGraphicsPathItem_virtualbase_itemChange(void* self, int change, QVari
 	return new QVariant(static_cast<MiqtVirtualQGraphicsPathItem*>(self)->QGraphicsPathItem::itemChange(static_cast<MiqtVirtualQGraphicsPathItem::GraphicsItemChange>(change), *value));
 }
 
-QRectF* QGraphicsPathItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsPathItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -6519,13 +6487,11 @@ public:
 			return QGraphicsRectItem::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsRectItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsRectItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsRectItem_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsRectItem_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -6553,14 +6519,12 @@ public:
 			return QGraphicsRectItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsRectItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsRectItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsRectItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -7133,8 +7097,8 @@ QGraphicsRectItem* QGraphicsRectItem_new() {
 	return new (std::nothrow) MiqtVirtualQGraphicsRectItem();
 }
 
-QGraphicsRectItem* QGraphicsRectItem_new2(QRectF* rect) {
-	return new (std::nothrow) MiqtVirtualQGraphicsRectItem(*rect);
+QGraphicsRectItem* QGraphicsRectItem_new2(struct miqt_qrectf rect) {
+	return new (std::nothrow) MiqtVirtualQGraphicsRectItem(miqt_from_cabi<QRectF>(rect));
 }
 
 QGraphicsRectItem* QGraphicsRectItem_new3(double x, double y, double w, double h) {
@@ -7145,8 +7109,8 @@ QGraphicsRectItem* QGraphicsRectItem_new4(QGraphicsItem* parent) {
 	return new (std::nothrow) MiqtVirtualQGraphicsRectItem(parent);
 }
 
-QGraphicsRectItem* QGraphicsRectItem_new5(QRectF* rect, QGraphicsItem* parent) {
-	return new (std::nothrow) MiqtVirtualQGraphicsRectItem(*rect, parent);
+QGraphicsRectItem* QGraphicsRectItem_new5(struct miqt_qrectf rect, QGraphicsItem* parent) {
+	return new (std::nothrow) MiqtVirtualQGraphicsRectItem(miqt_from_cabi<QRectF>(rect), parent);
 }
 
 QGraphicsRectItem* QGraphicsRectItem_new6(double x, double y, double w, double h, QGraphicsItem* parent) {
@@ -7157,28 +7121,28 @@ void QGraphicsRectItem_virtbase(QGraphicsRectItem* src, QAbstractGraphicsShapeIt
 	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(src);
 }
 
-QRectF* QGraphicsRectItem_rect(const QGraphicsRectItem* self) {
-	return new QRectF(self->rect());
+struct miqt_qrectf QGraphicsRectItem_rect(const QGraphicsRectItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->rect());
 }
 
-void QGraphicsRectItem_setRect(QGraphicsRectItem* self, QRectF* rect) {
-	self->setRect(*rect);
+void QGraphicsRectItem_setRect(QGraphicsRectItem* self, struct miqt_qrectf rect) {
+	self->setRect(miqt_from_cabi<QRectF>(rect));
 }
 
 void QGraphicsRectItem_setRect2(QGraphicsRectItem* self, double x, double y, double w, double h) {
 	self->setRect(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
-QRectF* QGraphicsRectItem_boundingRect(const QGraphicsRectItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsRectItem_boundingRect(const QGraphicsRectItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 QPainterPath* QGraphicsRectItem_shape(const QGraphicsRectItem* self) {
 	return new QPainterPath(self->shape());
 }
 
-bool QGraphicsRectItem_contains(const QGraphicsRectItem* self, QPointF* point) {
-	return self->contains(*point);
+bool QGraphicsRectItem_contains(const QGraphicsRectItem* self, struct miqt_qpointf point) {
+	return self->contains(miqt_from_cabi<QPointF>(point));
 }
 
 void QGraphicsRectItem_paint(QGraphicsRectItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -7207,8 +7171,8 @@ bool QGraphicsRectItem_override_virtual_boundingRect(void* self, intptr_t slot) 
 	return true;
 }
 
-QRectF* QGraphicsRectItem_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsRectItem*>(self)->QGraphicsRectItem::boundingRect());
+struct miqt_qrectf QGraphicsRectItem_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsRectItem*>(self)->QGraphicsRectItem::boundingRect());
 }
 
 bool QGraphicsRectItem_override_virtual_shape(void* self, intptr_t slot) {
@@ -7235,8 +7199,8 @@ bool QGraphicsRectItem_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsRectItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsRectItem*>(self)->QGraphicsRectItem::contains(*point);
+bool QGraphicsRectItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsRectItem*>(self)->QGraphicsRectItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsRectItem_override_virtual_paint(void* self, intptr_t slot) {
@@ -7687,10 +7651,6 @@ QVariant* QGraphicsRectItem_virtualbase_itemChange(void* self, int change, QVari
 	return new QVariant(static_cast<MiqtVirtualQGraphicsRectItem*>(self)->QGraphicsRectItem::itemChange(static_cast<MiqtVirtualQGraphicsRectItem::GraphicsItemChange>(change), *value));
 }
 
-QRectF* QGraphicsRectItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsRectItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -7768,13 +7728,11 @@ public:
 			return QGraphicsEllipseItem::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsEllipseItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsEllipseItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsEllipseItem_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsEllipseItem_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -7802,14 +7760,12 @@ public:
 			return QGraphicsEllipseItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsEllipseItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsEllipseItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsEllipseItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -8382,8 +8338,8 @@ QGraphicsEllipseItem* QGraphicsEllipseItem_new() {
 	return new (std::nothrow) MiqtVirtualQGraphicsEllipseItem();
 }
 
-QGraphicsEllipseItem* QGraphicsEllipseItem_new2(QRectF* rect) {
-	return new (std::nothrow) MiqtVirtualQGraphicsEllipseItem(*rect);
+QGraphicsEllipseItem* QGraphicsEllipseItem_new2(struct miqt_qrectf rect) {
+	return new (std::nothrow) MiqtVirtualQGraphicsEllipseItem(miqt_from_cabi<QRectF>(rect));
 }
 
 QGraphicsEllipseItem* QGraphicsEllipseItem_new3(double x, double y, double w, double h) {
@@ -8394,8 +8350,8 @@ QGraphicsEllipseItem* QGraphicsEllipseItem_new4(QGraphicsItem* parent) {
 	return new (std::nothrow) MiqtVirtualQGraphicsEllipseItem(parent);
 }
 
-QGraphicsEllipseItem* QGraphicsEllipseItem_new5(QRectF* rect, QGraphicsItem* parent) {
-	return new (std::nothrow) MiqtVirtualQGraphicsEllipseItem(*rect, parent);
+QGraphicsEllipseItem* QGraphicsEllipseItem_new5(struct miqt_qrectf rect, QGraphicsItem* parent) {
+	return new (std::nothrow) MiqtVirtualQGraphicsEllipseItem(miqt_from_cabi<QRectF>(rect), parent);
 }
 
 QGraphicsEllipseItem* QGraphicsEllipseItem_new6(double x, double y, double w, double h, QGraphicsItem* parent) {
@@ -8406,12 +8362,12 @@ void QGraphicsEllipseItem_virtbase(QGraphicsEllipseItem* src, QAbstractGraphicsS
 	*outptr_QAbstractGraphicsShapeItem = static_cast<QAbstractGraphicsShapeItem*>(src);
 }
 
-QRectF* QGraphicsEllipseItem_rect(const QGraphicsEllipseItem* self) {
-	return new QRectF(self->rect());
+struct miqt_qrectf QGraphicsEllipseItem_rect(const QGraphicsEllipseItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->rect());
 }
 
-void QGraphicsEllipseItem_setRect(QGraphicsEllipseItem* self, QRectF* rect) {
-	self->setRect(*rect);
+void QGraphicsEllipseItem_setRect(QGraphicsEllipseItem* self, struct miqt_qrectf rect) {
+	self->setRect(miqt_from_cabi<QRectF>(rect));
 }
 
 void QGraphicsEllipseItem_setRect2(QGraphicsEllipseItem* self, double x, double y, double w, double h) {
@@ -8434,16 +8390,16 @@ void QGraphicsEllipseItem_setSpanAngle(QGraphicsEllipseItem* self, int angle) {
 	self->setSpanAngle(static_cast<int>(angle));
 }
 
-QRectF* QGraphicsEllipseItem_boundingRect(const QGraphicsEllipseItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsEllipseItem_boundingRect(const QGraphicsEllipseItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 QPainterPath* QGraphicsEllipseItem_shape(const QGraphicsEllipseItem* self) {
 	return new QPainterPath(self->shape());
 }
 
-bool QGraphicsEllipseItem_contains(const QGraphicsEllipseItem* self, QPointF* point) {
-	return self->contains(*point);
+bool QGraphicsEllipseItem_contains(const QGraphicsEllipseItem* self, struct miqt_qpointf point) {
+	return self->contains(miqt_from_cabi<QPointF>(point));
 }
 
 void QGraphicsEllipseItem_paint(QGraphicsEllipseItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -8472,8 +8428,8 @@ bool QGraphicsEllipseItem_override_virtual_boundingRect(void* self, intptr_t slo
 	return true;
 }
 
-QRectF* QGraphicsEllipseItem_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsEllipseItem*>(self)->QGraphicsEllipseItem::boundingRect());
+struct miqt_qrectf QGraphicsEllipseItem_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsEllipseItem*>(self)->QGraphicsEllipseItem::boundingRect());
 }
 
 bool QGraphicsEllipseItem_override_virtual_shape(void* self, intptr_t slot) {
@@ -8500,8 +8456,8 @@ bool QGraphicsEllipseItem_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsEllipseItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsEllipseItem*>(self)->QGraphicsEllipseItem::contains(*point);
+bool QGraphicsEllipseItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsEllipseItem*>(self)->QGraphicsEllipseItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsEllipseItem_override_virtual_paint(void* self, intptr_t slot) {
@@ -8952,10 +8908,6 @@ QVariant* QGraphicsEllipseItem_virtualbase_itemChange(void* self, int change, QV
 	return new QVariant(static_cast<MiqtVirtualQGraphicsEllipseItem*>(self)->QGraphicsEllipseItem::itemChange(static_cast<MiqtVirtualQGraphicsEllipseItem::GraphicsItemChange>(change), *value));
 }
 
-QRectF* QGraphicsEllipseItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsEllipseItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -9029,13 +8981,11 @@ public:
 			return QGraphicsPolygonItem::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsPolygonItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsPolygonItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsPolygonItem_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsPolygonItem_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -9063,14 +9013,12 @@ public:
 			return QGraphicsPolygonItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsPolygonItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsPolygonItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsPolygonItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -9660,16 +9608,16 @@ void QGraphicsPolygonItem_setFillRule(QGraphicsPolygonItem* self, int rule) {
 	self->setFillRule(static_cast<Qt::FillRule>(rule));
 }
 
-QRectF* QGraphicsPolygonItem_boundingRect(const QGraphicsPolygonItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsPolygonItem_boundingRect(const QGraphicsPolygonItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 QPainterPath* QGraphicsPolygonItem_shape(const QGraphicsPolygonItem* self) {
 	return new QPainterPath(self->shape());
 }
 
-bool QGraphicsPolygonItem_contains(const QGraphicsPolygonItem* self, QPointF* point) {
-	return self->contains(*point);
+bool QGraphicsPolygonItem_contains(const QGraphicsPolygonItem* self, struct miqt_qpointf point) {
+	return self->contains(miqt_from_cabi<QPointF>(point));
 }
 
 void QGraphicsPolygonItem_paint(QGraphicsPolygonItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -9698,8 +9646,8 @@ bool QGraphicsPolygonItem_override_virtual_boundingRect(void* self, intptr_t slo
 	return true;
 }
 
-QRectF* QGraphicsPolygonItem_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsPolygonItem*>(self)->QGraphicsPolygonItem::boundingRect());
+struct miqt_qrectf QGraphicsPolygonItem_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsPolygonItem*>(self)->QGraphicsPolygonItem::boundingRect());
 }
 
 bool QGraphicsPolygonItem_override_virtual_shape(void* self, intptr_t slot) {
@@ -9726,8 +9674,8 @@ bool QGraphicsPolygonItem_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsPolygonItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsPolygonItem*>(self)->QGraphicsPolygonItem::contains(*point);
+bool QGraphicsPolygonItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsPolygonItem*>(self)->QGraphicsPolygonItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsPolygonItem_override_virtual_paint(void* self, intptr_t slot) {
@@ -10178,10 +10126,6 @@ QVariant* QGraphicsPolygonItem_virtualbase_itemChange(void* self, int change, QV
 	return new QVariant(static_cast<MiqtVirtualQGraphicsPolygonItem*>(self)->QGraphicsPolygonItem::itemChange(static_cast<MiqtVirtualQGraphicsPolygonItem::GraphicsItemChange>(change), *value));
 }
 
-QRectF* QGraphicsPolygonItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsPolygonItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -10259,13 +10203,11 @@ public:
 			return QGraphicsLineItem::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsLineItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsLineItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsLineItem_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsLineItem_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -10293,14 +10235,12 @@ public:
 			return QGraphicsLineItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsLineItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsLineItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsLineItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -10917,16 +10857,16 @@ void QGraphicsLineItem_setLine2(QGraphicsLineItem* self, double x1, double y1, d
 	self->setLine(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
 }
 
-QRectF* QGraphicsLineItem_boundingRect(const QGraphicsLineItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsLineItem_boundingRect(const QGraphicsLineItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 QPainterPath* QGraphicsLineItem_shape(const QGraphicsLineItem* self) {
 	return new QPainterPath(self->shape());
 }
 
-bool QGraphicsLineItem_contains(const QGraphicsLineItem* self, QPointF* point) {
-	return self->contains(*point);
+bool QGraphicsLineItem_contains(const QGraphicsLineItem* self, struct miqt_qpointf point) {
+	return self->contains(miqt_from_cabi<QPointF>(point));
 }
 
 void QGraphicsLineItem_paint(QGraphicsLineItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -10955,8 +10895,8 @@ bool QGraphicsLineItem_override_virtual_boundingRect(void* self, intptr_t slot) 
 	return true;
 }
 
-QRectF* QGraphicsLineItem_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsLineItem*>(self)->QGraphicsLineItem::boundingRect());
+struct miqt_qrectf QGraphicsLineItem_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsLineItem*>(self)->QGraphicsLineItem::boundingRect());
 }
 
 bool QGraphicsLineItem_override_virtual_shape(void* self, intptr_t slot) {
@@ -10983,8 +10923,8 @@ bool QGraphicsLineItem_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsLineItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsLineItem*>(self)->QGraphicsLineItem::contains(*point);
+bool QGraphicsLineItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsLineItem*>(self)->QGraphicsLineItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsLineItem_override_virtual_paint(void* self, intptr_t slot) {
@@ -11435,10 +11375,6 @@ QVariant* QGraphicsLineItem_virtualbase_itemChange(void* self, int change, QVari
 	return new QVariant(static_cast<MiqtVirtualQGraphicsLineItem*>(self)->QGraphicsLineItem::itemChange(static_cast<MiqtVirtualQGraphicsLineItem::GraphicsItemChange>(change), *value));
 }
 
-QRectF* QGraphicsLineItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsLineItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -11514,13 +11450,11 @@ public:
 			return QGraphicsPixmapItem::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsPixmapItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsPixmapItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsPixmapItem_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsPixmapItem_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -11548,14 +11482,12 @@ public:
 			return QGraphicsPixmapItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsPixmapItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsPixmapItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsPixmapItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -12161,28 +12093,28 @@ void QGraphicsPixmapItem_setTransformationMode(QGraphicsPixmapItem* self, int mo
 	self->setTransformationMode(static_cast<Qt::TransformationMode>(mode));
 }
 
-QPointF* QGraphicsPixmapItem_offset(const QGraphicsPixmapItem* self) {
-	return new QPointF(self->offset());
+struct miqt_qpointf QGraphicsPixmapItem_offset(const QGraphicsPixmapItem* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->offset());
 }
 
-void QGraphicsPixmapItem_setOffset(QGraphicsPixmapItem* self, QPointF* offset) {
-	self->setOffset(*offset);
+void QGraphicsPixmapItem_setOffset(QGraphicsPixmapItem* self, struct miqt_qpointf offset) {
+	self->setOffset(miqt_from_cabi<QPointF>(offset));
 }
 
 void QGraphicsPixmapItem_setOffset2(QGraphicsPixmapItem* self, double x, double y) {
 	self->setOffset(static_cast<qreal>(x), static_cast<qreal>(y));
 }
 
-QRectF* QGraphicsPixmapItem_boundingRect(const QGraphicsPixmapItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsPixmapItem_boundingRect(const QGraphicsPixmapItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 QPainterPath* QGraphicsPixmapItem_shape(const QGraphicsPixmapItem* self) {
 	return new QPainterPath(self->shape());
 }
 
-bool QGraphicsPixmapItem_contains(const QGraphicsPixmapItem* self, QPointF* point) {
-	return self->contains(*point);
+bool QGraphicsPixmapItem_contains(const QGraphicsPixmapItem* self, struct miqt_qpointf point) {
+	return self->contains(miqt_from_cabi<QPointF>(point));
 }
 
 void QGraphicsPixmapItem_paint(QGraphicsPixmapItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -12220,8 +12152,8 @@ bool QGraphicsPixmapItem_override_virtual_boundingRect(void* self, intptr_t slot
 	return true;
 }
 
-QRectF* QGraphicsPixmapItem_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsPixmapItem*>(self)->QGraphicsPixmapItem::boundingRect());
+struct miqt_qrectf QGraphicsPixmapItem_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsPixmapItem*>(self)->QGraphicsPixmapItem::boundingRect());
 }
 
 bool QGraphicsPixmapItem_override_virtual_shape(void* self, intptr_t slot) {
@@ -12248,8 +12180,8 @@ bool QGraphicsPixmapItem_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsPixmapItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsPixmapItem*>(self)->QGraphicsPixmapItem::contains(*point);
+bool QGraphicsPixmapItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsPixmapItem*>(self)->QGraphicsPixmapItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsPixmapItem_override_virtual_paint(void* self, intptr_t slot) {
@@ -12700,10 +12632,6 @@ QVariant* QGraphicsPixmapItem_virtualbase_itemChange(void* self, int change, QVa
 	return new QVariant(static_cast<MiqtVirtualQGraphicsPixmapItem*>(self)->QGraphicsPixmapItem::itemChange(static_cast<MiqtVirtualQGraphicsPixmapItem::GraphicsItemChange>(change), *value));
 }
 
-QRectF* QGraphicsPixmapItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsPixmapItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -12779,13 +12707,11 @@ public:
 			return QGraphicsTextItem::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsTextItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsTextItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsTextItem_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsTextItem_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -12813,14 +12739,12 @@ public:
 			return QGraphicsTextItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsTextItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsTextItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsTextItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -13596,24 +13520,24 @@ void QGraphicsTextItem_setFont(QGraphicsTextItem* self, QFont* font) {
 	self->setFont(*font);
 }
 
-void QGraphicsTextItem_setDefaultTextColor(QGraphicsTextItem* self, QColor* c) {
-	self->setDefaultTextColor(*c);
+void QGraphicsTextItem_setDefaultTextColor(QGraphicsTextItem* self, struct miqt_qcolor c) {
+	self->setDefaultTextColor(miqt_from_cabi<QColor>(c));
 }
 
-QColor* QGraphicsTextItem_defaultTextColor(const QGraphicsTextItem* self) {
-	return new QColor(self->defaultTextColor());
+struct miqt_qcolor QGraphicsTextItem_defaultTextColor(const QGraphicsTextItem* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->defaultTextColor());
 }
 
-QRectF* QGraphicsTextItem_boundingRect(const QGraphicsTextItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsTextItem_boundingRect(const QGraphicsTextItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 QPainterPath* QGraphicsTextItem_shape(const QGraphicsTextItem* self) {
 	return new QPainterPath(self->shape());
 }
 
-bool QGraphicsTextItem_contains(const QGraphicsTextItem* self, QPointF* point) {
-	return self->contains(*point);
+bool QGraphicsTextItem_contains(const QGraphicsTextItem* self, struct miqt_qpointf point) {
+	return self->contains(miqt_from_cabi<QPointF>(point));
 }
 
 void QGraphicsTextItem_paint(QGraphicsTextItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -13756,8 +13680,8 @@ bool QGraphicsTextItem_override_virtual_boundingRect(void* self, intptr_t slot) 
 	return true;
 }
 
-QRectF* QGraphicsTextItem_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsTextItem*>(self)->QGraphicsTextItem::boundingRect());
+struct miqt_qrectf QGraphicsTextItem_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsTextItem*>(self)->QGraphicsTextItem::boundingRect());
 }
 
 bool QGraphicsTextItem_override_virtual_shape(void* self, intptr_t slot) {
@@ -13784,8 +13708,8 @@ bool QGraphicsTextItem_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsTextItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsTextItem*>(self)->QGraphicsTextItem::contains(*point);
+bool QGraphicsTextItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsTextItem*>(self)->QGraphicsTextItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsTextItem_override_virtual_paint(void* self, intptr_t slot) {
@@ -14334,10 +14258,6 @@ QVariant* QGraphicsTextItem_virtualbase_itemChange(void* self, int change, QVari
 	return new QVariant(static_cast<MiqtVirtualQGraphicsTextItem*>(self)->QGraphicsTextItem::itemChange(static_cast<MiqtVirtualQGraphicsTextItem::GraphicsItemChange>(change), *value));
 }
 
-QRectF* QGraphicsTextItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsTextItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -14457,13 +14377,11 @@ public:
 			return QGraphicsSimpleTextItem::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsSimpleTextItem_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsSimpleTextItem_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsSimpleTextItem_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsSimpleTextItem_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -14491,14 +14409,12 @@ public:
 			return QGraphicsSimpleTextItem::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsSimpleTextItem_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsSimpleTextItem_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsSimpleTextItem_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -15113,16 +15029,16 @@ QFont* QGraphicsSimpleTextItem_font(const QGraphicsSimpleTextItem* self) {
 	return new QFont(self->font());
 }
 
-QRectF* QGraphicsSimpleTextItem_boundingRect(const QGraphicsSimpleTextItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsSimpleTextItem_boundingRect(const QGraphicsSimpleTextItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 QPainterPath* QGraphicsSimpleTextItem_shape(const QGraphicsSimpleTextItem* self) {
 	return new QPainterPath(self->shape());
 }
 
-bool QGraphicsSimpleTextItem_contains(const QGraphicsSimpleTextItem* self, QPointF* point) {
-	return self->contains(*point);
+bool QGraphicsSimpleTextItem_contains(const QGraphicsSimpleTextItem* self, struct miqt_qpointf point) {
+	return self->contains(miqt_from_cabi<QPointF>(point));
 }
 
 void QGraphicsSimpleTextItem_paint(QGraphicsSimpleTextItem* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -15151,8 +15067,8 @@ bool QGraphicsSimpleTextItem_override_virtual_boundingRect(void* self, intptr_t 
 	return true;
 }
 
-QRectF* QGraphicsSimpleTextItem_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsSimpleTextItem*>(self)->QGraphicsSimpleTextItem::boundingRect());
+struct miqt_qrectf QGraphicsSimpleTextItem_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsSimpleTextItem*>(self)->QGraphicsSimpleTextItem::boundingRect());
 }
 
 bool QGraphicsSimpleTextItem_override_virtual_shape(void* self, intptr_t slot) {
@@ -15179,8 +15095,8 @@ bool QGraphicsSimpleTextItem_override_virtual_contains(void* self, intptr_t slot
 	return true;
 }
 
-bool QGraphicsSimpleTextItem_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsSimpleTextItem*>(self)->QGraphicsSimpleTextItem::contains(*point);
+bool QGraphicsSimpleTextItem_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsSimpleTextItem*>(self)->QGraphicsSimpleTextItem::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsSimpleTextItem_override_virtual_paint(void* self, intptr_t slot) {
@@ -15631,10 +15547,6 @@ QVariant* QGraphicsSimpleTextItem_virtualbase_itemChange(void* self, int change,
 	return new QVariant(static_cast<MiqtVirtualQGraphicsSimpleTextItem*>(self)->QGraphicsSimpleTextItem::itemChange(static_cast<MiqtVirtualQGraphicsSimpleTextItem::GraphicsItemChange>(change), *value));
 }
 
-QRectF* QGraphicsSimpleTextItem_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QGraphicsSimpleTextItem_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
 }
@@ -15708,13 +15620,11 @@ public:
 			return QGraphicsItemGroup::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsItemGroup_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsItemGroup_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsItemGroup_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsItemGroup_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -15826,14 +15736,12 @@ public:
 			return QGraphicsItemGroup::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsItemGroup_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsItemGroup_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsItemGroup_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__collidesWithItem = 0;
@@ -16338,8 +16246,8 @@ void QGraphicsItemGroup_removeFromGroup(QGraphicsItemGroup* self, QGraphicsItem*
 	self->removeFromGroup(item);
 }
 
-QRectF* QGraphicsItemGroup_boundingRect(const QGraphicsItemGroup* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QGraphicsItemGroup_boundingRect(const QGraphicsItemGroup* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 void QGraphicsItemGroup_paint(QGraphicsItemGroup* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -16368,8 +16276,8 @@ bool QGraphicsItemGroup_override_virtual_boundingRect(void* self, intptr_t slot)
 	return true;
 }
 
-QRectF* QGraphicsItemGroup_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsItemGroup*>(self)->QGraphicsItemGroup::boundingRect());
+struct miqt_qrectf QGraphicsItemGroup_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsItemGroup*>(self)->QGraphicsItemGroup::boundingRect());
 }
 
 bool QGraphicsItemGroup_override_virtual_paint(void* self, intptr_t slot) {
@@ -16466,8 +16374,8 @@ bool QGraphicsItemGroup_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsItemGroup_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsItemGroup*>(self)->QGraphicsItemGroup::contains(*point);
+bool QGraphicsItemGroup_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsItemGroup*>(self)->QGraphicsItemGroup::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsItemGroup_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -16846,10 +16754,6 @@ bool QGraphicsItemGroup_override_virtual_extension(void* self, intptr_t slot) {
 
 QVariant* QGraphicsItemGroup_virtualbase_extension(const void* self, QVariant* variant) {
 	return new QVariant(static_cast<const MiqtVirtualQGraphicsItemGroup*>(self)->QGraphicsItemGroup::extension(*variant));
-}
-
-QRectF* QGraphicsItemGroup_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
 }
 
 QPainterPath* QGraphicsItemGroup_virtualreturncopy_QPainterPath(QPainterPath* src) {

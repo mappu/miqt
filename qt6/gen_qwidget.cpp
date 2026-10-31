@@ -68,11 +68,11 @@ extern "C" {
 void miqt_exec_callback_QWidget_windowTitleChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QWidget_windowIconChanged(intptr_t, QIcon*);
 void miqt_exec_callback_QWidget_windowIconTextChanged(intptr_t, struct miqt_string);
-void miqt_exec_callback_QWidget_customContextMenuRequested(intptr_t, QPoint*);
+void miqt_exec_callback_QWidget_customContextMenuRequested(intptr_t, struct miqt_qpoint);
 int miqt_exec_callback_QWidget_devType(const QWidget*, intptr_t);
 void miqt_exec_callback_QWidget_setVisible(QWidget*, intptr_t, bool);
-QSize* miqt_exec_callback_QWidget_sizeHint(const QWidget*, intptr_t);
-QSize* miqt_exec_callback_QWidget_minimumSizeHint(const QWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWidget_sizeHint(const QWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWidget_minimumSizeHint(const QWidget*, intptr_t);
 int miqt_exec_callback_QWidget_heightForWidth(const QWidget*, intptr_t, int);
 bool miqt_exec_callback_QWidget_hasHeightForWidth(const QWidget*, intptr_t);
 QPaintEngine* miqt_exec_callback_QWidget_paintEngine(const QWidget*, intptr_t);
@@ -170,13 +170,11 @@ public:
 			return QWidget::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWidget_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWidget_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWidget_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -187,13 +185,11 @@ public:
 			return QWidget::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWidget_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWidget_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1055,18 +1051,16 @@ void QWidget_setWindowModified(QWidget* self, bool windowModified) {
 	self->setWindowModified(windowModified);
 }
 
-QRect* QWidget_frameGeometry(const QWidget* self) {
-	return new QRect(self->frameGeometry());
+struct miqt_qrect QWidget_frameGeometry(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->frameGeometry());
 }
 
-QRect* QWidget_geometry(const QWidget* self) {
-	const QRect& _ret = self->geometry();
-	// Cast returned reference into pointer
-	return const_cast<QRect*>(&_ret);
+struct miqt_qrect QWidget_geometry(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->geometry());
 }
 
-QRect* QWidget_normalGeometry(const QWidget* self) {
-	return new QRect(self->normalGeometry());
+struct miqt_qrect QWidget_normalGeometry(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->normalGeometry());
 }
 
 int QWidget_x(const QWidget* self) {
@@ -1077,16 +1071,16 @@ int QWidget_y(const QWidget* self) {
 	return self->y();
 }
 
-QPoint* QWidget_pos(const QWidget* self) {
-	return new QPoint(self->pos());
+struct miqt_qpoint QWidget_pos(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->pos());
 }
 
-QSize* QWidget_frameSize(const QWidget* self) {
-	return new QSize(self->frameSize());
+struct miqt_qsize QWidget_frameSize(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->frameSize());
 }
 
-QSize* QWidget_size(const QWidget* self) {
-	return new QSize(self->size());
+struct miqt_qsize QWidget_size(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
 int QWidget_width(const QWidget* self) {
@@ -1097,24 +1091,24 @@ int QWidget_height(const QWidget* self) {
 	return self->height();
 }
 
-QRect* QWidget_rect(const QWidget* self) {
-	return new QRect(self->rect());
+struct miqt_qrect QWidget_rect(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rect());
 }
 
-QRect* QWidget_childrenRect(const QWidget* self) {
-	return new QRect(self->childrenRect());
+struct miqt_qrect QWidget_childrenRect(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->childrenRect());
 }
 
 QRegion* QWidget_childrenRegion(const QWidget* self) {
 	return new QRegion(self->childrenRegion());
 }
 
-QSize* QWidget_minimumSize(const QWidget* self) {
-	return new QSize(self->minimumSize());
+struct miqt_qsize QWidget_minimumSize(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSize());
 }
 
-QSize* QWidget_maximumSize(const QWidget* self) {
-	return new QSize(self->maximumSize());
+struct miqt_qsize QWidget_maximumSize(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->maximumSize());
 }
 
 int QWidget_minimumWidth(const QWidget* self) {
@@ -1133,16 +1127,16 @@ int QWidget_maximumHeight(const QWidget* self) {
 	return self->maximumHeight();
 }
 
-void QWidget_setMinimumSize(QWidget* self, QSize* minimumSize) {
-	self->setMinimumSize(*minimumSize);
+void QWidget_setMinimumSize(QWidget* self, struct miqt_qsize minimumSize) {
+	self->setMinimumSize(miqt_from_cabi<QSize>(minimumSize));
 }
 
 void QWidget_setMinimumSize2(QWidget* self, int minw, int minh) {
 	self->setMinimumSize(static_cast<int>(minw), static_cast<int>(minh));
 }
 
-void QWidget_setMaximumSize(QWidget* self, QSize* maximumSize) {
-	self->setMaximumSize(*maximumSize);
+void QWidget_setMaximumSize(QWidget* self, struct miqt_qsize maximumSize) {
+	self->setMaximumSize(miqt_from_cabi<QSize>(maximumSize));
 }
 
 void QWidget_setMaximumSize2(QWidget* self, int maxw, int maxh) {
@@ -1165,32 +1159,32 @@ void QWidget_setMaximumHeight(QWidget* self, int maxh) {
 	self->setMaximumHeight(static_cast<int>(maxh));
 }
 
-QSize* QWidget_sizeIncrement(const QWidget* self) {
-	return new QSize(self->sizeIncrement());
+struct miqt_qsize QWidget_sizeIncrement(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeIncrement());
 }
 
-void QWidget_setSizeIncrement(QWidget* self, QSize* sizeIncrement) {
-	self->setSizeIncrement(*sizeIncrement);
+void QWidget_setSizeIncrement(QWidget* self, struct miqt_qsize sizeIncrement) {
+	self->setSizeIncrement(miqt_from_cabi<QSize>(sizeIncrement));
 }
 
 void QWidget_setSizeIncrement2(QWidget* self, int w, int h) {
 	self->setSizeIncrement(static_cast<int>(w), static_cast<int>(h));
 }
 
-QSize* QWidget_baseSize(const QWidget* self) {
-	return new QSize(self->baseSize());
+struct miqt_qsize QWidget_baseSize(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->baseSize());
 }
 
-void QWidget_setBaseSize(QWidget* self, QSize* baseSize) {
-	self->setBaseSize(*baseSize);
+void QWidget_setBaseSize(QWidget* self, struct miqt_qsize baseSize) {
+	self->setBaseSize(miqt_from_cabi<QSize>(baseSize));
 }
 
 void QWidget_setBaseSize2(QWidget* self, int basew, int baseh) {
 	self->setBaseSize(static_cast<int>(basew), static_cast<int>(baseh));
 }
 
-void QWidget_setFixedSize(QWidget* self, QSize* fixedSize) {
-	self->setFixedSize(*fixedSize);
+void QWidget_setFixedSize(QWidget* self, struct miqt_qsize fixedSize) {
+	self->setFixedSize(miqt_from_cabi<QSize>(fixedSize));
 }
 
 void QWidget_setFixedSize2(QWidget* self, int w, int h) {
@@ -1205,52 +1199,52 @@ void QWidget_setFixedHeight(QWidget* self, int h) {
 	self->setFixedHeight(static_cast<int>(h));
 }
 
-QPointF* QWidget_mapToGlobal(const QWidget* self, QPointF* param1) {
-	return new QPointF(self->mapToGlobal(*param1));
+struct miqt_qpointf QWidget_mapToGlobal(const QWidget* self, struct miqt_qpointf param1) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToGlobal(miqt_from_cabi<QPointF>(param1)));
 }
 
-QPoint* QWidget_mapToGlobalWithQPoint(const QWidget* self, QPoint* param1) {
-	return new QPoint(self->mapToGlobal(*param1));
+struct miqt_qpoint QWidget_mapToGlobalWithQPoint(const QWidget* self, struct miqt_qpoint param1) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapToGlobal(miqt_from_cabi<QPoint>(param1)));
 }
 
-QPointF* QWidget_mapFromGlobal(const QWidget* self, QPointF* param1) {
-	return new QPointF(self->mapFromGlobal(*param1));
+struct miqt_qpointf QWidget_mapFromGlobal(const QWidget* self, struct miqt_qpointf param1) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFromGlobal(miqt_from_cabi<QPointF>(param1)));
 }
 
-QPoint* QWidget_mapFromGlobalWithQPoint(const QWidget* self, QPoint* param1) {
-	return new QPoint(self->mapFromGlobal(*param1));
+struct miqt_qpoint QWidget_mapFromGlobalWithQPoint(const QWidget* self, struct miqt_qpoint param1) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapFromGlobal(miqt_from_cabi<QPoint>(param1)));
 }
 
-QPointF* QWidget_mapToParent(const QWidget* self, QPointF* param1) {
-	return new QPointF(self->mapToParent(*param1));
+struct miqt_qpointf QWidget_mapToParent(const QWidget* self, struct miqt_qpointf param1) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToParent(miqt_from_cabi<QPointF>(param1)));
 }
 
-QPoint* QWidget_mapToParentWithQPoint(const QWidget* self, QPoint* param1) {
-	return new QPoint(self->mapToParent(*param1));
+struct miqt_qpoint QWidget_mapToParentWithQPoint(const QWidget* self, struct miqt_qpoint param1) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapToParent(miqt_from_cabi<QPoint>(param1)));
 }
 
-QPointF* QWidget_mapFromParent(const QWidget* self, QPointF* param1) {
-	return new QPointF(self->mapFromParent(*param1));
+struct miqt_qpointf QWidget_mapFromParent(const QWidget* self, struct miqt_qpointf param1) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFromParent(miqt_from_cabi<QPointF>(param1)));
 }
 
-QPoint* QWidget_mapFromParentWithQPoint(const QWidget* self, QPoint* param1) {
-	return new QPoint(self->mapFromParent(*param1));
+struct miqt_qpoint QWidget_mapFromParentWithQPoint(const QWidget* self, struct miqt_qpoint param1) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapFromParent(miqt_from_cabi<QPoint>(param1)));
 }
 
-QPointF* QWidget_mapTo(const QWidget* self, QWidget* param1, QPointF* param2) {
-	return new QPointF(self->mapTo(param1, *param2));
+struct miqt_qpointf QWidget_mapTo(const QWidget* self, QWidget* param1, struct miqt_qpointf param2) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapTo(param1, miqt_from_cabi<QPointF>(param2)));
 }
 
-QPoint* QWidget_mapTo2(const QWidget* self, QWidget* param1, QPoint* param2) {
-	return new QPoint(self->mapTo(param1, *param2));
+struct miqt_qpoint QWidget_mapTo2(const QWidget* self, QWidget* param1, struct miqt_qpoint param2) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapTo(param1, miqt_from_cabi<QPoint>(param2)));
 }
 
-QPointF* QWidget_mapFrom(const QWidget* self, QWidget* param1, QPointF* param2) {
-	return new QPointF(self->mapFrom(param1, *param2));
+struct miqt_qpointf QWidget_mapFrom(const QWidget* self, QWidget* param1, struct miqt_qpointf param2) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapFrom(param1, miqt_from_cabi<QPointF>(param2)));
 }
 
-QPoint* QWidget_mapFrom2(const QWidget* self, QWidget* param1, QPoint* param2) {
-	return new QPoint(self->mapFrom(param1, *param2));
+struct miqt_qpoint QWidget_mapFrom2(const QWidget* self, QWidget* param1, struct miqt_qpoint param2) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->mapFrom(param1, miqt_from_cabi<QPoint>(param2)));
 }
 
 QWidget* QWidget_window(const QWidget* self) {
@@ -1731,8 +1725,8 @@ void QWidget_update2(QWidget* self, int x, int y, int w, int h) {
 	self->update(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
 }
 
-void QWidget_updateWithQRect(QWidget* self, QRect* param1) {
-	self->update(*param1);
+void QWidget_updateWithQRect(QWidget* self, struct miqt_qrect param1) {
+	self->update(miqt_from_cabi<QRect>(param1));
 }
 
 void QWidget_updateWithQRegion(QWidget* self, QRegion* param1) {
@@ -1743,8 +1737,8 @@ void QWidget_repaint2(QWidget* self, int x, int y, int w, int h) {
 	self->repaint(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
 }
 
-void QWidget_repaintWithQRect(QWidget* self, QRect* param1) {
-	self->repaint(*param1);
+void QWidget_repaintWithQRect(QWidget* self, struct miqt_qrect param1) {
+	self->repaint(miqt_from_cabi<QRect>(param1));
 }
 
 void QWidget_repaintWithQRegion(QWidget* self, QRegion* param1) {
@@ -1803,24 +1797,24 @@ void QWidget_move(QWidget* self, int x, int y) {
 	self->move(static_cast<int>(x), static_cast<int>(y));
 }
 
-void QWidget_moveWithQPoint(QWidget* self, QPoint* param1) {
-	self->move(*param1);
+void QWidget_moveWithQPoint(QWidget* self, struct miqt_qpoint param1) {
+	self->move(miqt_from_cabi<QPoint>(param1));
 }
 
 void QWidget_resize(QWidget* self, int w, int h) {
 	self->resize(static_cast<int>(w), static_cast<int>(h));
 }
 
-void QWidget_resizeWithQSize(QWidget* self, QSize* param1) {
-	self->resize(*param1);
+void QWidget_resizeWithQSize(QWidget* self, struct miqt_qsize param1) {
+	self->resize(miqt_from_cabi<QSize>(param1));
 }
 
 void QWidget_setGeometry(QWidget* self, int x, int y, int w, int h) {
 	self->setGeometry(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
 }
 
-void QWidget_setGeometryWithGeometry(QWidget* self, QRect* geometry) {
-	self->setGeometry(*geometry);
+void QWidget_setGeometryWithGeometry(QWidget* self, struct miqt_qrect geometry) {
+	self->setGeometry(miqt_from_cabi<QRect>(geometry));
 }
 
 struct miqt_string QWidget_saveGeometry(const QWidget* self) {
@@ -1878,12 +1872,12 @@ void QWidget_overrideWindowState(QWidget* self, int state) {
 	self->overrideWindowState(static_cast<Qt::WindowStates>(state));
 }
 
-QSize* QWidget_sizeHint(const QWidget* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QWidget_sizeHint(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QWidget_minimumSizeHint(const QWidget* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QWidget_minimumSizeHint(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 QSizePolicy* QWidget_sizePolicy(const QWidget* self) {
@@ -1914,16 +1908,16 @@ void QWidget_setContentsMargins(QWidget* self, int left, int top, int right, int
 	self->setContentsMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-void QWidget_setContentsMarginsWithMargins(QWidget* self, QMargins* margins) {
-	self->setContentsMargins(*margins);
+void QWidget_setContentsMarginsWithMargins(QWidget* self, struct miqt_qmargins margins) {
+	self->setContentsMargins(miqt_from_cabi<QMargins>(margins));
 }
 
-QMargins* QWidget_contentsMargins(const QWidget* self) {
-	return new QMargins(self->contentsMargins());
+struct miqt_qmargins QWidget_contentsMargins(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qmargins>(self->contentsMargins());
 }
 
-QRect* QWidget_contentsRect(const QWidget* self) {
-	return new QRect(self->contentsRect());
+struct miqt_qrect QWidget_contentsRect(const QWidget* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->contentsRect());
 }
 
 QLayout* QWidget_layout(const QWidget* self) {
@@ -1950,8 +1944,8 @@ void QWidget_scroll(QWidget* self, int dx, int dy) {
 	self->scroll(static_cast<int>(dx), static_cast<int>(dy));
 }
 
-void QWidget_scroll2(QWidget* self, int dx, int dy, QRect* param3) {
-	self->scroll(static_cast<int>(dx), static_cast<int>(dy), *param3);
+void QWidget_scroll2(QWidget* self, int dx, int dy, struct miqt_qrect param3) {
+	self->scroll(static_cast<int>(dx), static_cast<int>(dy), miqt_from_cabi<QRect>(param3));
 }
 
 QWidget* QWidget_focusWidget(const QWidget* self) {
@@ -2073,8 +2067,8 @@ QWidget* QWidget_childAt(const QWidget* self, int x, int y) {
 	return self->childAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-QWidget* QWidget_childAtWithQPoint(const QWidget* self, QPoint* p) {
-	return self->childAt(*p);
+QWidget* QWidget_childAtWithQPoint(const QWidget* self, struct miqt_qpoint p) {
+	return self->childAt(miqt_from_cabi<QPoint>(p));
 }
 
 void QWidget_setAttribute(QWidget* self, int param1) {
@@ -2176,15 +2170,13 @@ void QWidget_connect_windowIconTextChanged(QWidget* self, intptr_t slot) {
 	});
 }
 
-void QWidget_customContextMenuRequested(QWidget* self, QPoint* pos) {
-	self->customContextMenuRequested(*pos);
+void QWidget_customContextMenuRequested(QWidget* self, struct miqt_qpoint pos) {
+	self->customContextMenuRequested(miqt_from_cabi<QPoint>(pos));
 }
 
 void QWidget_connect_customContextMenuRequested(QWidget* self, intptr_t slot) {
 	QWidget::connect(self, static_cast<void (QWidget::*)(const QPoint&)>(&QWidget::customContextMenuRequested), self, [=](const QPoint& pos) {
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		miqt_exec_callback_QWidget_customContextMenuRequested(slot, sigval1);
 	});
 }
@@ -2224,32 +2216,32 @@ struct miqt_string QWidget_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QWidget_render2(QWidget* self, QPaintDevice* target, QPoint* targetOffset) {
-	self->render(target, *targetOffset);
+void QWidget_render2(QWidget* self, QPaintDevice* target, struct miqt_qpoint targetOffset) {
+	self->render(target, miqt_from_cabi<QPoint>(targetOffset));
 }
 
-void QWidget_render3(QWidget* self, QPaintDevice* target, QPoint* targetOffset, QRegion* sourceRegion) {
-	self->render(target, *targetOffset, *sourceRegion);
+void QWidget_render3(QWidget* self, QPaintDevice* target, struct miqt_qpoint targetOffset, QRegion* sourceRegion) {
+	self->render(target, miqt_from_cabi<QPoint>(targetOffset), *sourceRegion);
 }
 
-void QWidget_render4(QWidget* self, QPaintDevice* target, QPoint* targetOffset, QRegion* sourceRegion, int renderFlags) {
-	self->render(target, *targetOffset, *sourceRegion, static_cast<QWidget::RenderFlags>(renderFlags));
+void QWidget_render4(QWidget* self, QPaintDevice* target, struct miqt_qpoint targetOffset, QRegion* sourceRegion, int renderFlags) {
+	self->render(target, miqt_from_cabi<QPoint>(targetOffset), *sourceRegion, static_cast<QWidget::RenderFlags>(renderFlags));
 }
 
-void QWidget_render5(QWidget* self, QPainter* painter, QPoint* targetOffset) {
-	self->render(painter, *targetOffset);
+void QWidget_render5(QWidget* self, QPainter* painter, struct miqt_qpoint targetOffset) {
+	self->render(painter, miqt_from_cabi<QPoint>(targetOffset));
 }
 
-void QWidget_render6(QWidget* self, QPainter* painter, QPoint* targetOffset, QRegion* sourceRegion) {
-	self->render(painter, *targetOffset, *sourceRegion);
+void QWidget_render6(QWidget* self, QPainter* painter, struct miqt_qpoint targetOffset, QRegion* sourceRegion) {
+	self->render(painter, miqt_from_cabi<QPoint>(targetOffset), *sourceRegion);
 }
 
-void QWidget_render7(QWidget* self, QPainter* painter, QPoint* targetOffset, QRegion* sourceRegion, int renderFlags) {
-	self->render(painter, *targetOffset, *sourceRegion, static_cast<QWidget::RenderFlags>(renderFlags));
+void QWidget_render7(QWidget* self, QPainter* painter, struct miqt_qpoint targetOffset, QRegion* sourceRegion, int renderFlags) {
+	self->render(painter, miqt_from_cabi<QPoint>(targetOffset), *sourceRegion, static_cast<QWidget::RenderFlags>(renderFlags));
 }
 
-QPixmap* QWidget_grabWithRectangle(QWidget* self, QRect* rectangle) {
-	return new QPixmap(self->grab(*rectangle));
+QPixmap* QWidget_grabWithRectangle(QWidget* self, struct miqt_qrect rectangle) {
+	return new QPixmap(self->grab(miqt_from_cabi<QRect>(rectangle)));
 }
 
 void QWidget_grabGesture2(QWidget* self, int type, int flags) {
@@ -2322,8 +2314,8 @@ bool QWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWidget_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWidget*>(self)->QWidget::sizeHint());
+struct miqt_qsize QWidget_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWidget*>(self)->QWidget::sizeHint());
 }
 
 bool QWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -2336,8 +2328,8 @@ bool QWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWidget_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWidget*>(self)->QWidget::minimumSizeHint());
+struct miqt_qsize QWidget_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWidget*>(self)->QWidget::minimumSizeHint());
 }
 
 bool QWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2941,10 +2933,6 @@ bool QWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQWidget*>(self)->QWidget::disconnectNotify(*signal);
-}
-
-QSize* QWidget_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QWidget_virtualreturncopy_QVariant(QVariant* src) {

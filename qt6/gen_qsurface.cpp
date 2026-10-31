@@ -30,8 +30,8 @@ bool QSurface_supportsOpenGL(const QSurface* self) {
 	return self->supportsOpenGL();
 }
 
-QSize* QSurface_size(const QSurface* self) {
-	return new QSize(self->size());
+struct miqt_qsize QSurface_size(const QSurface* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
 void QSurface_operatorAssign(QSurface* self, QSurface* param1) {

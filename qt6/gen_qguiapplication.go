@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -157,9 +158,8 @@ func QGuiApplication_TopLevelWindows() []*QWindow {
 	return _ret
 }
 
-func QGuiApplication_TopLevelAt(pos *QPoint) *QWindow {
-	defer runtime.KeepAlive(pos)
-	return newQWindow(C.QGuiApplication_topLevelAt(pos.cPointer()))
+func QGuiApplication_TopLevelAt(pos QPoint) *QWindow {
+	return newQWindow(C.QGuiApplication_topLevelAt(libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 func QGuiApplication_SetWindowIcon(icon *QIcon) {
@@ -206,9 +206,8 @@ func QGuiApplication_Screens() []*QScreen {
 	return _ret
 }
 
-func QGuiApplication_ScreenAt(point *QPoint) *QScreen {
-	defer runtime.KeepAlive(point)
-	return newQScreen(C.QGuiApplication_screenAt(point.cPointer()))
+func QGuiApplication_ScreenAt(point QPoint) *QScreen {
+	return newQScreen(C.QGuiApplication_screenAt(libmiqt.ValueCast[C.struct_miqt_qpoint](point)))
 }
 
 func (this *QGuiApplication) DevicePixelRatio() float64 {

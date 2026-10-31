@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -121,15 +122,12 @@ func (this *QDataWidgetMapper) ItemDelegate() *QAbstractItemDelegate {
 	return newQAbstractItemDelegate(C.QDataWidgetMapper_itemDelegate(this.h))
 }
 
-func (this *QDataWidgetMapper) SetRootIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QDataWidgetMapper_setRootIndex(this.h, index.cPointer())
+func (this *QDataWidgetMapper) SetRootIndex(index QModelIndex) {
+	C.QDataWidgetMapper_setRootIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
-func (this *QDataWidgetMapper) RootIndex() *QModelIndex {
-	_goptr := newQModelIndex(C.QDataWidgetMapper_rootIndex(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QDataWidgetMapper) RootIndex() QModelIndex {
+	return libmiqt.ValueCast[QModelIndex](C.QDataWidgetMapper_rootIndex(this.h))
 }
 
 func (this *QDataWidgetMapper) SetOrientation(aOrientation Orientation) {
@@ -218,9 +216,8 @@ func (this *QDataWidgetMapper) SetCurrentIndex(index int) {
 	C.QDataWidgetMapper_setCurrentIndex(this.h, (C.int)(index))
 }
 
-func (this *QDataWidgetMapper) SetCurrentModelIndex(index *QModelIndex) {
-	defer runtime.KeepAlive(index)
-	C.QDataWidgetMapper_setCurrentModelIndex(this.h, index.cPointer())
+func (this *QDataWidgetMapper) SetCurrentModelIndex(index QModelIndex) {
+	C.QDataWidgetMapper_setCurrentModelIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 }
 
 func (this *QDataWidgetMapper) CurrentIndexChanged(index int) {

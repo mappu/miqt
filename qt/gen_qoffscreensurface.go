@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -141,10 +142,8 @@ func (this *QOffscreenSurface) RequestedFormat() *QSurfaceFormat {
 	return _goptr
 }
 
-func (this *QOffscreenSurface) Size() *QSize {
-	_goptr := newQSize(C.QOffscreenSurface_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QOffscreenSurface) Size() QSize {
+	return libmiqt.ValueCast[QSize](C.QOffscreenSurface_size(this.h))
 }
 
 func (this *QOffscreenSurface) Screen() *QScreen {
@@ -339,14 +338,12 @@ func miqt_exec_callback_QOffscreenSurface_format(self *C.QOffscreenSurface, cb C
 
 }
 
-func (this *QOffscreenSurface) callVirtualBase_Size() *QSize {
+func (this *QOffscreenSurface) callVirtualBase_Size() QSize {
 
-	_goptr := newQSize(C.QOffscreenSurface_virtualbase_size(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QOffscreenSurface_virtualbase_size(unsafe.Pointer(this.h)))
 
 }
-func (this *QOffscreenSurface) OnSize(slot func(super func() *QSize) *QSize) {
+func (this *QOffscreenSurface) OnSize(slot func(super func() QSize) QSize) {
 	ok := C.QOffscreenSurface_override_virtual_size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -354,16 +351,15 @@ func (this *QOffscreenSurface) OnSize(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QOffscreenSurface_size
-func miqt_exec_callback_QOffscreenSurface_size(self *C.QOffscreenSurface, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QOffscreenSurface_size(self *C.QOffscreenSurface, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QOffscreenSurface{h: self}).callVirtualBase_Size)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QOffscreenSurface_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 

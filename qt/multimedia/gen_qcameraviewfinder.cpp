@@ -46,7 +46,7 @@ extern "C" {
 
 QMediaObject* miqt_exec_callback_QCameraViewfinder_mediaObject(const QCameraViewfinder*, intptr_t);
 bool miqt_exec_callback_QCameraViewfinder_setMediaObject(QCameraViewfinder*, intptr_t, QMediaObject*);
-QSize* miqt_exec_callback_QCameraViewfinder_sizeHint(const QCameraViewfinder*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QCameraViewfinder_sizeHint(const QCameraViewfinder*, intptr_t);
 bool miqt_exec_callback_QCameraViewfinder_event(QCameraViewfinder*, intptr_t, QEvent*);
 void miqt_exec_callback_QCameraViewfinder_showEvent(QCameraViewfinder*, intptr_t, QShowEvent*);
 void miqt_exec_callback_QCameraViewfinder_hideEvent(QCameraViewfinder*, intptr_t, QHideEvent*);
@@ -55,7 +55,7 @@ void miqt_exec_callback_QCameraViewfinder_moveEvent(QCameraViewfinder*, intptr_t
 void miqt_exec_callback_QCameraViewfinder_paintEvent(QCameraViewfinder*, intptr_t, QPaintEvent*);
 int miqt_exec_callback_QCameraViewfinder_devType(const QCameraViewfinder*, intptr_t);
 void miqt_exec_callback_QCameraViewfinder_setVisible(QCameraViewfinder*, intptr_t, bool);
-QSize* miqt_exec_callback_QCameraViewfinder_minimumSizeHint(const QCameraViewfinder*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QCameraViewfinder_minimumSizeHint(const QCameraViewfinder*, intptr_t);
 int miqt_exec_callback_QCameraViewfinder_heightForWidth(const QCameraViewfinder*, intptr_t, int);
 bool miqt_exec_callback_QCameraViewfinder_hasHeightForWidth(const QCameraViewfinder*, intptr_t);
 QPaintEngine* miqt_exec_callback_QCameraViewfinder_paintEngine(const QCameraViewfinder*, intptr_t);
@@ -145,13 +145,11 @@ public:
 			return QCameraViewfinder::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QCameraViewfinder_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QCameraViewfinder_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QCameraViewfinder_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QCameraViewfinder_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -295,13 +293,11 @@ public:
 			return QCameraViewfinder::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QCameraViewfinder_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QCameraViewfinder_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QCameraViewfinder_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QCameraViewfinder_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1075,8 +1071,8 @@ bool QCameraViewfinder_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QCameraViewfinder_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQCameraViewfinder*>(self)->QCameraViewfinder::sizeHint());
+struct miqt_qsize QCameraViewfinder_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQCameraViewfinder*>(self)->QCameraViewfinder::sizeHint());
 }
 
 bool QCameraViewfinder_override_virtual_event(void* self, intptr_t slot) {
@@ -1201,8 +1197,8 @@ bool QCameraViewfinder_override_virtual_minimumSizeHint(void* self, intptr_t slo
 	return true;
 }
 
-QSize* QCameraViewfinder_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQCameraViewfinder*>(self)->QCameraViewfinder::minimumSizeHint());
+struct miqt_qsize QCameraViewfinder_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQCameraViewfinder*>(self)->QCameraViewfinder::minimumSizeHint());
 }
 
 bool QCameraViewfinder_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1722,10 +1718,6 @@ bool QCameraViewfinder_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQCameraViewfinder*>(self)->QCameraViewfinder::disconnectNotify(*signal);
-}
-
-QSize* QCameraViewfinder_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QCameraViewfinder_virtualreturncopy_QVariant(QVariant* src) {

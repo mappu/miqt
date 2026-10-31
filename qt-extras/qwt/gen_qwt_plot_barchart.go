@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -95,12 +96,11 @@ func (this *QwtPlotBarChart) Rtti() int {
 
 func (this *QwtPlotBarChart) SetSamples(samples []qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(samples)
-	samples_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(samples))))
+	samples_CArray_ptr := (*C.struct_miqt_qpointf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qpointf{})) * len(samples))))
 	defer C.free(unsafe.Pointer(samples_CArray_ptr))
 	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
 	for i := range samples {
-		samples_CArray[i] = (*C.QPointF)(samples[i].UnsafePointer())
+		samples_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qpointf](samples[i])
 	}
 	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray_ptr)}
 	C.QwtPlotBarChart_setSamples(this.h, samples_ma)
@@ -139,17 +139,14 @@ func (this *QwtPlotBarChart) LegendMode() QwtPlotBarChart__LegendMode {
 	return (QwtPlotBarChart__LegendMode)(C.QwtPlotBarChart_legendMode(this.h))
 }
 
-func (this *QwtPlotBarChart) BoundingRect() *qt.QRectF {
+func (this *QwtPlotBarChart) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotBarChart_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotBarChart_boundingRect(this.h))
 }
 
-func (this *QwtPlotBarChart) SpecialSymbol(sampleIndex int, param2 *qt.QPointF) *QwtColumnSymbol {
+func (this *QwtPlotBarChart) SpecialSymbol(sampleIndex int, param2 qt.QPointF) *QwtColumnSymbol {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	return newQwtColumnSymbol(C.QwtPlotBarChart_specialSymbol(this.h, (C.int)(sampleIndex), (*C.QPointF)(param2.UnsafePointer())))
+	return newQwtColumnSymbol(C.QwtPlotBarChart_specialSymbol(this.h, (C.int)(sampleIndex), libmiqt.ValueCast[C.struct_miqt_qpointf](param2)))
 }
 
 func (this *QwtPlotBarChart) BarTitle(sampleIndex int) *QwtText {

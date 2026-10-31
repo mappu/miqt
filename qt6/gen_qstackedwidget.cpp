@@ -47,13 +47,13 @@ extern "C" {
 void miqt_exec_callback_QStackedWidget_currentChanged(intptr_t, int);
 void miqt_exec_callback_QStackedWidget_widgetRemoved(intptr_t, int);
 bool miqt_exec_callback_QStackedWidget_event(QStackedWidget*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QStackedWidget_sizeHint(const QStackedWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QStackedWidget_sizeHint(const QStackedWidget*, intptr_t);
 void miqt_exec_callback_QStackedWidget_paintEvent(QStackedWidget*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QStackedWidget_changeEvent(QStackedWidget*, intptr_t, QEvent*);
 void miqt_exec_callback_QStackedWidget_initStyleOption(const QStackedWidget*, intptr_t, QStyleOptionFrame*);
 int miqt_exec_callback_QStackedWidget_devType(const QStackedWidget*, intptr_t);
 void miqt_exec_callback_QStackedWidget_setVisible(QStackedWidget*, intptr_t, bool);
-QSize* miqt_exec_callback_QStackedWidget_minimumSizeHint(const QStackedWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QStackedWidget_minimumSizeHint(const QStackedWidget*, intptr_t);
 int miqt_exec_callback_QStackedWidget_heightForWidth(const QStackedWidget*, intptr_t, int);
 bool miqt_exec_callback_QStackedWidget_hasHeightForWidth(const QStackedWidget*, intptr_t);
 QPaintEngine* miqt_exec_callback_QStackedWidget_paintEngine(const QStackedWidget*, intptr_t);
@@ -131,13 +131,11 @@ public:
 			return QStackedWidget::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QStackedWidget_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QStackedWidget_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QStackedWidget_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QStackedWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -231,13 +229,11 @@ public:
 			return QStackedWidget::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QStackedWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QStackedWidget_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QStackedWidget_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QStackedWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1075,8 +1071,8 @@ bool QStackedWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QStackedWidget_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::sizeHint());
+struct miqt_qsize QStackedWidget_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::sizeHint());
 }
 
 bool QStackedWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1159,8 +1155,8 @@ bool QStackedWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QStackedWidget_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::minimumSizeHint());
+struct miqt_qsize QStackedWidget_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::minimumSizeHint());
 }
 
 bool QStackedWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1722,10 +1718,6 @@ bool QStackedWidget_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QStackedWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::disconnectNotify(*signal);
-}
-
-QSize* QStackedWidget_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QStackedWidget_virtualreturncopy_QVariant(QVariant* src) {

@@ -44,7 +44,7 @@ bool QPrinterInfo_supportsCustomPageSizes(const QPrinterInfo* self);
 QPageSize* QPrinterInfo_minimumPhysicalPageSize(const QPrinterInfo* self);
 QPageSize* QPrinterInfo_maximumPhysicalPageSize(const QPrinterInfo* self);
 struct miqt_array /* of int */  QPrinterInfo_supportedPaperSizes(const QPrinterInfo* self);
-struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and QSizeF*   */  QPrinterInfo_supportedSizesWithNames(const QPrinterInfo* self);
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_qsizef   */  QPrinterInfo_supportedSizesWithNames(const QPrinterInfo* self);
 struct miqt_array /* of int */  QPrinterInfo_supportedResolutions(const QPrinterInfo* self);
 int QPrinterInfo_defaultDuplexMode(const QPrinterInfo* self);
 struct miqt_array /* of int */  QPrinterInfo_supportedDuplexModes(const QPrinterInfo* self);

@@ -166,12 +166,12 @@ void QMediaResource_setVideoBitRate(QMediaResource* self, int rate) {
 	self->setVideoBitRate(static_cast<int>(rate));
 }
 
-QSize* QMediaResource_resolution(const QMediaResource* self) {
-	return new QSize(self->resolution());
+struct miqt_qsize QMediaResource_resolution(const QMediaResource* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->resolution());
 }
 
-void QMediaResource_setResolution(QMediaResource* self, QSize* resolution) {
-	self->setResolution(*resolution);
+void QMediaResource_setResolution(QMediaResource* self, struct miqt_qsize resolution) {
+	self->setResolution(miqt_from_cabi<QSize>(resolution));
 }
 
 void QMediaResource_setResolution2(QMediaResource* self, int width, int height) {

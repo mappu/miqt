@@ -42,7 +42,7 @@ void QVideoSink_virtbase(QVideoSink* src, QObject** outptr_QObject);
 QMetaObject* QVideoSink_metaObject(const QVideoSink* self);
 void* QVideoSink_metacast(QVideoSink* self, const char* param1);
 struct miqt_string QVideoSink_tr(const char* s);
-QSize* QVideoSink_videoSize(const QVideoSink* self);
+struct miqt_qsize QVideoSink_videoSize(const QVideoSink* self);
 struct miqt_string QVideoSink_subtitleText(const QVideoSink* self);
 void QVideoSink_setSubtitleText(QVideoSink* self, struct miqt_string subtitle);
 void QVideoSink_setVideoFrame(QVideoSink* self, QVideoFrame* frame);

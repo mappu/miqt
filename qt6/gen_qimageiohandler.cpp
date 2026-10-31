@@ -34,7 +34,7 @@ int miqt_exec_callback_QImageIOHandler_loopCount(const QImageIOHandler*, intptr_
 int miqt_exec_callback_QImageIOHandler_imageCount(const QImageIOHandler*, intptr_t);
 int miqt_exec_callback_QImageIOHandler_nextImageDelay(const QImageIOHandler*, intptr_t);
 int miqt_exec_callback_QImageIOHandler_currentImageNumber(const QImageIOHandler*, intptr_t);
-QRect* miqt_exec_callback_QImageIOHandler_currentImageRect(const QImageIOHandler*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QImageIOHandler_currentImageRect(const QImageIOHandler*, intptr_t);
 int miqt_exec_callback_QImageIOPlugin_capabilities(const QImageIOPlugin*, intptr_t, QIODevice*, struct miqt_string);
 QImageIOHandler* miqt_exec_callback_QImageIOPlugin_create(const QImageIOPlugin*, intptr_t, QIODevice*, struct miqt_string);
 bool miqt_exec_callback_QImageIOPlugin_event(QImageIOPlugin*, intptr_t, QEvent*);
@@ -257,13 +257,11 @@ public:
 			return QImageIOHandler::currentImageRect();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QImageIOHandler_currentImageRect(this, handle__currentImageRect);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QImageIOHandler_currentImageRect(this, handle__currentImageRect);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QImageIOHandler_virtualbase_currentImageRect(const void* self);
+	friend struct miqt_qrect QImageIOHandler_virtualbase_currentImageRect(const void* self);
 
 };
 
@@ -346,12 +344,12 @@ int QImageIOHandler_currentImageNumber(const QImageIOHandler* self) {
 	return self->currentImageNumber();
 }
 
-QRect* QImageIOHandler_currentImageRect(const QImageIOHandler* self) {
-	return new QRect(self->currentImageRect());
+struct miqt_qrect QImageIOHandler_currentImageRect(const QImageIOHandler* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->currentImageRect());
 }
 
-bool QImageIOHandler_allocateImage(QSize* size, int format, QImage* image) {
-	return QImageIOHandler::allocateImage(*size, static_cast<QImage::Format>(format), image);
+bool QImageIOHandler_allocateImage(struct miqt_qsize size, int format, QImage* image) {
+	return QImageIOHandler::allocateImage(miqt_from_cabi<QSize>(size), static_cast<QImage::Format>(format), image);
 }
 
 bool QImageIOHandler_override_virtual_canRead(void* self, intptr_t slot) {
@@ -524,16 +522,12 @@ bool QImageIOHandler_override_virtual_currentImageRect(void* self, intptr_t slot
 	return true;
 }
 
-QRect* QImageIOHandler_virtualbase_currentImageRect(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQImageIOHandler*>(self)->QImageIOHandler::currentImageRect());
+struct miqt_qrect QImageIOHandler_virtualbase_currentImageRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQImageIOHandler*>(self)->QImageIOHandler::currentImageRect());
 }
 
 QVariant* QImageIOHandler_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
-}
-
-QRect* QImageIOHandler_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
 }
 
 void QImageIOHandler_delete(QImageIOHandler* self) {

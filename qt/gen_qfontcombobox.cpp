@@ -45,9 +45,9 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QFontComboBox_currentFontChanged(intptr_t, QFont*);
-QSize* miqt_exec_callback_QFontComboBox_sizeHint(const QFontComboBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFontComboBox_sizeHint(const QFontComboBox*, intptr_t);
 bool miqt_exec_callback_QFontComboBox_event(QFontComboBox*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QFontComboBox_minimumSizeHint(const QFontComboBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFontComboBox_minimumSizeHint(const QFontComboBox*, intptr_t);
 void miqt_exec_callback_QFontComboBox_showPopup(QFontComboBox*, intptr_t);
 void miqt_exec_callback_QFontComboBox_hidePopup(QFontComboBox*, intptr_t);
 QVariant* miqt_exec_callback_QFontComboBox_inputMethodQuery(const QFontComboBox*, intptr_t, int);
@@ -115,13 +115,11 @@ public:
 			return QFontComboBox::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFontComboBox_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFontComboBox_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFontComboBox_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QFontComboBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -148,13 +146,11 @@ public:
 			return QFontComboBox::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFontComboBox_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFontComboBox_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFontComboBox_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QFontComboBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showPopup = 0;
@@ -1014,8 +1010,8 @@ QFont* QFontComboBox_currentFont(const QFontComboBox* self) {
 	return new QFont(self->currentFont());
 }
 
-QSize* QFontComboBox_sizeHint(const QFontComboBox* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QFontComboBox_sizeHint(const QFontComboBox* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QFontComboBox_setCurrentFont(QFontComboBox* self, QFont* f) {
@@ -1089,8 +1085,8 @@ bool QFontComboBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFontComboBox_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFontComboBox*>(self)->QFontComboBox::sizeHint());
+struct miqt_qsize QFontComboBox_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFontComboBox*>(self)->QFontComboBox::sizeHint());
 }
 
 bool QFontComboBox_override_virtual_event(void* self, intptr_t slot) {
@@ -1117,8 +1113,8 @@ bool QFontComboBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFontComboBox_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFontComboBox*>(self)->QFontComboBox::minimumSizeHint());
+struct miqt_qsize QFontComboBox_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFontComboBox*>(self)->QFontComboBox::minimumSizeHint());
 }
 
 bool QFontComboBox_override_virtual_showPopup(void* self, intptr_t slot) {
@@ -1764,10 +1760,6 @@ bool QFontComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QFontComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQFontComboBox*>(self)->QFontComboBox::disconnectNotify(*signal);
-}
-
-QSize* QFontComboBox_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QFontComboBox_virtualreturncopy_QVariant(QVariant* src) {

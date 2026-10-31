@@ -11,20 +11,20 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QwtDialNeedle_setPalette(QwtDialNeedle*, intptr_t, QPalette*);
-void miqt_exec_callback_QwtDialNeedle_draw(const QwtDialNeedle*, intptr_t, QPainter*, QPointF*, double, double, int);
+void miqt_exec_callback_QwtDialNeedle_draw(const QwtDialNeedle*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
 void miqt_exec_callback_QwtDialNeedle_drawNeedle(const QwtDialNeedle*, intptr_t, QPainter*, double, int);
 void miqt_exec_callback_QwtDialNeedle_drawKnob(const QwtDialNeedle*, intptr_t, QPainter*, double, QBrush*, bool);
 void miqt_exec_callback_QwtDialSimpleNeedle_drawNeedle(const QwtDialSimpleNeedle*, intptr_t, QPainter*, double, int);
 void miqt_exec_callback_QwtDialSimpleNeedle_setPalette(QwtDialSimpleNeedle*, intptr_t, QPalette*);
-void miqt_exec_callback_QwtDialSimpleNeedle_draw(const QwtDialSimpleNeedle*, intptr_t, QPainter*, QPointF*, double, double, int);
+void miqt_exec_callback_QwtDialSimpleNeedle_draw(const QwtDialSimpleNeedle*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
 void miqt_exec_callback_QwtDialSimpleNeedle_drawKnob(const QwtDialSimpleNeedle*, intptr_t, QPainter*, double, QBrush*, bool);
 void miqt_exec_callback_QwtCompassMagnetNeedle_drawNeedle(const QwtCompassMagnetNeedle*, intptr_t, QPainter*, double, int);
 void miqt_exec_callback_QwtCompassMagnetNeedle_setPalette(QwtCompassMagnetNeedle*, intptr_t, QPalette*);
-void miqt_exec_callback_QwtCompassMagnetNeedle_draw(const QwtCompassMagnetNeedle*, intptr_t, QPainter*, QPointF*, double, double, int);
+void miqt_exec_callback_QwtCompassMagnetNeedle_draw(const QwtCompassMagnetNeedle*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
 void miqt_exec_callback_QwtCompassMagnetNeedle_drawKnob(const QwtCompassMagnetNeedle*, intptr_t, QPainter*, double, QBrush*, bool);
 void miqt_exec_callback_QwtCompassWindArrow_drawNeedle(const QwtCompassWindArrow*, intptr_t, QPainter*, double, int);
 void miqt_exec_callback_QwtCompassWindArrow_setPalette(QwtCompassWindArrow*, intptr_t, QPalette*);
-void miqt_exec_callback_QwtCompassWindArrow_draw(const QwtCompassWindArrow*, intptr_t, QPainter*, QPointF*, double, double, int);
+void miqt_exec_callback_QwtCompassWindArrow_draw(const QwtCompassWindArrow*, intptr_t, QPainter*, struct miqt_qpointf, double, double, int);
 void miqt_exec_callback_QwtCompassWindArrow_drawKnob(const QwtCompassWindArrow*, intptr_t, QPainter*, double, QBrush*, bool);
 #ifdef __cplusplus
 } /* extern C */
@@ -68,9 +68,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = length;
 		double sigval4 = direction;
 		QPalette::ColorGroup param5_ret = param5;
@@ -79,7 +77,7 @@ public:
 
 	}
 
-	friend void QwtDialNeedle_virtualbase_draw(const void* self, QPainter* painter, QPointF* center, double length, double direction, int param5);
+	friend void QwtDialNeedle_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qpointf center, double length, double direction, int param5);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawNeedle = 0;
@@ -140,8 +138,8 @@ QPalette* QwtDialNeedle_palette(const QwtDialNeedle* self) {
 	return const_cast<QPalette*>(&_ret);
 }
 
-void QwtDialNeedle_draw(const QwtDialNeedle* self, QPainter* painter, QPointF* center, double length, double direction, int param5) {
-	self->draw(painter, *center, static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
+void QwtDialNeedle_draw(const QwtDialNeedle* self, QPainter* painter, struct miqt_qpointf center, double length, double direction, int param5) {
+	self->draw(painter, miqt_from_cabi<QPointF>(center), static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
 }
 
 void QwtDialNeedle_operatorAssign(QwtDialNeedle* self, QwtDialNeedle* param1) {
@@ -172,8 +170,8 @@ bool QwtDialNeedle_override_virtual_draw(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtDialNeedle_virtualbase_draw(const void* self, QPainter* painter, QPointF* center, double length, double direction, int param5) {
-	static_cast<const MiqtVirtualQwtDialNeedle*>(self)->QwtDialNeedle::draw(painter, *center, static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
+void QwtDialNeedle_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qpointf center, double length, double direction, int param5) {
+	static_cast<const MiqtVirtualQwtDialNeedle*>(self)->QwtDialNeedle::draw(painter, miqt_from_cabi<QPointF>(center), static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
 }
 
 bool QwtDialNeedle_override_virtual_drawNeedle(void* self, intptr_t slot) {
@@ -265,9 +263,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = length;
 		double sigval4 = direction;
 		QPalette::ColorGroup param5_ret = param5;
@@ -276,7 +272,7 @@ public:
 
 	}
 
-	friend void QwtDialSimpleNeedle_virtualbase_draw(const void* self, QPainter* painter, QPointF* center, double length, double direction, int param5);
+	friend void QwtDialSimpleNeedle_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qpointf center, double length, double direction, int param5);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawKnob = 0;
@@ -314,12 +310,12 @@ QwtDialSimpleNeedle* QwtDialSimpleNeedle_new3(int param1, bool hasKnob) {
 	return new (std::nothrow) MiqtVirtualQwtDialSimpleNeedle(static_cast<QwtDialSimpleNeedle::Style>(param1), hasKnob);
 }
 
-QwtDialSimpleNeedle* QwtDialSimpleNeedle_new4(int param1, bool hasKnob, QColor* mid) {
-	return new (std::nothrow) MiqtVirtualQwtDialSimpleNeedle(static_cast<QwtDialSimpleNeedle::Style>(param1), hasKnob, *mid);
+QwtDialSimpleNeedle* QwtDialSimpleNeedle_new4(int param1, bool hasKnob, struct miqt_qcolor mid) {
+	return new (std::nothrow) MiqtVirtualQwtDialSimpleNeedle(static_cast<QwtDialSimpleNeedle::Style>(param1), hasKnob, miqt_from_cabi<QColor>(mid));
 }
 
-QwtDialSimpleNeedle* QwtDialSimpleNeedle_new5(int param1, bool hasKnob, QColor* mid, QColor* base) {
-	return new (std::nothrow) MiqtVirtualQwtDialSimpleNeedle(static_cast<QwtDialSimpleNeedle::Style>(param1), hasKnob, *mid, *base);
+QwtDialSimpleNeedle* QwtDialSimpleNeedle_new5(int param1, bool hasKnob, struct miqt_qcolor mid, struct miqt_qcolor base) {
+	return new (std::nothrow) MiqtVirtualQwtDialSimpleNeedle(static_cast<QwtDialSimpleNeedle::Style>(param1), hasKnob, miqt_from_cabi<QColor>(mid), miqt_from_cabi<QColor>(base));
 }
 
 void QwtDialSimpleNeedle_virtbase(QwtDialSimpleNeedle* src, QwtDialNeedle** outptr_QwtDialNeedle) {
@@ -376,8 +372,8 @@ bool QwtDialSimpleNeedle_override_virtual_draw(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtDialSimpleNeedle_virtualbase_draw(const void* self, QPainter* painter, QPointF* center, double length, double direction, int param5) {
-	static_cast<const MiqtVirtualQwtDialSimpleNeedle*>(self)->QwtDialSimpleNeedle::draw(painter, *center, static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
+void QwtDialSimpleNeedle_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qpointf center, double length, double direction, int param5) {
+	static_cast<const MiqtVirtualQwtDialSimpleNeedle*>(self)->QwtDialSimpleNeedle::draw(painter, miqt_from_cabi<QPointF>(center), static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
 }
 
 bool QwtDialSimpleNeedle_override_virtual_drawKnob(void* self, intptr_t slot) {
@@ -459,9 +455,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = length;
 		double sigval4 = direction;
 		QPalette::ColorGroup param5_ret = param5;
@@ -470,7 +464,7 @@ public:
 
 	}
 
-	friend void QwtCompassMagnetNeedle_virtualbase_draw(const void* self, QPainter* painter, QPointF* center, double length, double direction, int param5);
+	friend void QwtCompassMagnetNeedle_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qpointf center, double length, double direction, int param5);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawKnob = 0;
@@ -508,12 +502,12 @@ QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new3(int param1) {
 	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle(static_cast<QwtCompassMagnetNeedle::Style>(param1));
 }
 
-QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new4(int param1, QColor* light) {
-	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle(static_cast<QwtCompassMagnetNeedle::Style>(param1), *light);
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new4(int param1, struct miqt_qcolor light) {
+	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle(static_cast<QwtCompassMagnetNeedle::Style>(param1), miqt_from_cabi<QColor>(light));
 }
 
-QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new5(int param1, QColor* light, QColor* dark) {
-	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle(static_cast<QwtCompassMagnetNeedle::Style>(param1), *light, *dark);
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new5(int param1, struct miqt_qcolor light, struct miqt_qcolor dark) {
+	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle(static_cast<QwtCompassMagnetNeedle::Style>(param1), miqt_from_cabi<QColor>(light), miqt_from_cabi<QColor>(dark));
 }
 
 void QwtCompassMagnetNeedle_virtbase(QwtCompassMagnetNeedle* src, QwtDialNeedle** outptr_QwtDialNeedle) {
@@ -562,8 +556,8 @@ bool QwtCompassMagnetNeedle_override_virtual_draw(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtCompassMagnetNeedle_virtualbase_draw(const void* self, QPainter* painter, QPointF* center, double length, double direction, int param5) {
-	static_cast<const MiqtVirtualQwtCompassMagnetNeedle*>(self)->QwtCompassMagnetNeedle::draw(painter, *center, static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
+void QwtCompassMagnetNeedle_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qpointf center, double length, double direction, int param5) {
+	static_cast<const MiqtVirtualQwtCompassMagnetNeedle*>(self)->QwtCompassMagnetNeedle::draw(painter, miqt_from_cabi<QPointF>(center), static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
 }
 
 bool QwtCompassMagnetNeedle_override_virtual_drawKnob(void* self, intptr_t slot) {
@@ -644,9 +638,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QPointF& center_ret = center;
-		// Cast returned reference into pointer
-		QPointF* sigval2 = const_cast<QPointF*>(&center_ret);
+		struct miqt_qpointf sigval2 = miqt_to_cabi<struct miqt_qpointf>(center);
 		double sigval3 = length;
 		double sigval4 = direction;
 		QPalette::ColorGroup param5_ret = param5;
@@ -655,7 +647,7 @@ public:
 
 	}
 
-	friend void QwtCompassWindArrow_virtualbase_draw(const void* self, QPainter* painter, QPointF* center, double length, double direction, int param5);
+	friend void QwtCompassWindArrow_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qpointf center, double length, double direction, int param5);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawKnob = 0;
@@ -689,12 +681,12 @@ QwtCompassWindArrow* QwtCompassWindArrow_new2(QwtCompassWindArrow* param1) {
 	return new (std::nothrow) MiqtVirtualQwtCompassWindArrow(*param1);
 }
 
-QwtCompassWindArrow* QwtCompassWindArrow_new3(int param1, QColor* light) {
-	return new (std::nothrow) MiqtVirtualQwtCompassWindArrow(static_cast<QwtCompassWindArrow::Style>(param1), *light);
+QwtCompassWindArrow* QwtCompassWindArrow_new3(int param1, struct miqt_qcolor light) {
+	return new (std::nothrow) MiqtVirtualQwtCompassWindArrow(static_cast<QwtCompassWindArrow::Style>(param1), miqt_from_cabi<QColor>(light));
 }
 
-QwtCompassWindArrow* QwtCompassWindArrow_new4(int param1, QColor* light, QColor* dark) {
-	return new (std::nothrow) MiqtVirtualQwtCompassWindArrow(static_cast<QwtCompassWindArrow::Style>(param1), *light, *dark);
+QwtCompassWindArrow* QwtCompassWindArrow_new4(int param1, struct miqt_qcolor light, struct miqt_qcolor dark) {
+	return new (std::nothrow) MiqtVirtualQwtCompassWindArrow(static_cast<QwtCompassWindArrow::Style>(param1), miqt_from_cabi<QColor>(light), miqt_from_cabi<QColor>(dark));
 }
 
 void QwtCompassWindArrow_virtbase(QwtCompassWindArrow* src, QwtDialNeedle** outptr_QwtDialNeedle) {
@@ -743,8 +735,8 @@ bool QwtCompassWindArrow_override_virtual_draw(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtCompassWindArrow_virtualbase_draw(const void* self, QPainter* painter, QPointF* center, double length, double direction, int param5) {
-	static_cast<const MiqtVirtualQwtCompassWindArrow*>(self)->QwtCompassWindArrow::draw(painter, *center, static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
+void QwtCompassWindArrow_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qpointf center, double length, double direction, int param5) {
+	static_cast<const MiqtVirtualQwtCompassWindArrow*>(self)->QwtCompassWindArrow::draw(painter, miqt_from_cabi<QPointF>(center), static_cast<double>(length), static_cast<double>(direction), static_cast<QPalette::ColorGroup>(param5));
 }
 
 bool QwtCompassWindArrow_override_virtual_drawKnob(void* self, intptr_t slot) {

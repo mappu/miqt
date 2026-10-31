@@ -161,12 +161,12 @@ void QwtRoundScaleDraw_moveCenter(QwtRoundScaleDraw* self, double x, double y) {
 	self->moveCenter(static_cast<double>(x), static_cast<double>(y));
 }
 
-void QwtRoundScaleDraw_moveCenterWithQPointF(QwtRoundScaleDraw* self, QPointF* param1) {
-	self->moveCenter(*param1);
+void QwtRoundScaleDraw_moveCenterWithQPointF(QwtRoundScaleDraw* self, struct miqt_qpointf param1) {
+	self->moveCenter(miqt_from_cabi<QPointF>(param1));
 }
 
-QPointF* QwtRoundScaleDraw_center(const QwtRoundScaleDraw* self) {
-	return new QPointF(self->center());
+struct miqt_qpointf QwtRoundScaleDraw_center(const QwtRoundScaleDraw* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->center());
 }
 
 void QwtRoundScaleDraw_setAngleRange(QwtRoundScaleDraw* self, double angle1, double angle2) {

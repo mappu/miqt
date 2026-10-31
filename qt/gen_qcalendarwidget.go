@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -121,16 +122,12 @@ func QCalendarWidget_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QCalendarWidget) SizeHint() *QSize {
-	_goptr := newQSize(C.QCalendarWidget_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCalendarWidget) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QCalendarWidget_sizeHint(this.h))
 }
 
-func (this *QCalendarWidget) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QCalendarWidget_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QCalendarWidget) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QCalendarWidget_minimumSizeHint(this.h))
 }
 
 func (this *QCalendarWidget) SelectedDate() *QDate {
@@ -610,14 +607,12 @@ func (this *QCalendarWidget) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QCalendarWidget) callVirtualBase_SizeHint() *QSize {
+func (this *QCalendarWidget) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QCalendarWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QCalendarWidget_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QCalendarWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QCalendarWidget) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QCalendarWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -625,27 +620,24 @@ func (this *QCalendarWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QCalendarWidget_sizeHint
-func miqt_exec_callback_QCalendarWidget_sizeHint(self *C.QCalendarWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QCalendarWidget_sizeHint(self *C.QCalendarWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QCalendarWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QCalendarWidget) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QCalendarWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QCalendarWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QCalendarWidget) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QCalendarWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QCalendarWidget) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QCalendarWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -653,16 +645,15 @@ func (this *QCalendarWidget) OnMinimumSizeHint(slot func(super func() *QSize) *Q
 }
 
 //export miqt_exec_callback_QCalendarWidget_minimumSizeHint
-func miqt_exec_callback_QCalendarWidget_minimumSizeHint(self *C.QCalendarWidget, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QCalendarWidget_minimumSizeHint(self *C.QCalendarWidget, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QCalendarWidget{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QCalendarWidget_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -807,15 +798,14 @@ func miqt_exec_callback_QCalendarWidget_keyPressEvent(self *C.QCalendarWidget, c
 
 }
 
-func (this *QCalendarWidget) callVirtualBase_PaintCell(painter *QPainter, rect *QRect, date *QDate) {
+func (this *QCalendarWidget) callVirtualBase_PaintCell(painter *QPainter, rect QRect, date *QDate) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 	defer runtime.KeepAlive(date)
 
-	C.QCalendarWidget_virtualbase_paintCell(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), date.cPointer())
+	C.QCalendarWidget_virtualbase_paintCell(unsafe.Pointer(this.h), painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrect](rect), date.cPointer())
 
 }
-func (this *QCalendarWidget) OnPaintCell(slot func(super func(painter *QPainter, rect *QRect, date *QDate), painter *QPainter, rect *QRect, date *QDate)) {
+func (this *QCalendarWidget) OnPaintCell(slot func(super func(painter *QPainter, rect QRect, date *QDate), painter *QPainter, rect QRect, date *QDate)) {
 	ok := C.QCalendarWidget_override_virtual_paintCell(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -823,8 +813,8 @@ func (this *QCalendarWidget) OnPaintCell(slot func(super func(painter *QPainter,
 }
 
 //export miqt_exec_callback_QCalendarWidget_paintCell
-func miqt_exec_callback_QCalendarWidget_paintCell(self *C.QCalendarWidget, cb C.intptr_t, painter *C.QPainter, rect *C.QRect, date *C.QDate) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRect, date *QDate), painter *QPainter, rect *QRect, date *QDate))
+func miqt_exec_callback_QCalendarWidget_paintCell(self *C.QCalendarWidget, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrect, date *C.QDate) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect QRect, date *QDate), painter *QPainter, rect QRect, date *QDate))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -832,7 +822,7 @@ func miqt_exec_callback_QCalendarWidget_paintCell(self *C.QCalendarWidget, cb C.
 	// Convert all CABI parameters to Go parameters
 	slotval1 := newQPainter(painter)
 
-	slotval2 := newQRect(rect)
+	slotval2 := libmiqt.ValueCast[QRect](rect)
 
 	slotval3 := newQDate(date)
 
@@ -1661,7 +1651,6 @@ func miqt_exec_callback_QCalendarWidget_initPainter(self *C.QCalendarWidget, cb 
 }
 
 func (this *QCalendarWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QCalendarWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

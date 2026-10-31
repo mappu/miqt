@@ -24,21 +24,21 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QXYSeries_clicked(intptr_t, QPointF*);
-void miqt_exec_callback_QXYSeries_hovered(intptr_t, QPointF*, bool);
-void miqt_exec_callback_QXYSeries_pressed(intptr_t, QPointF*);
-void miqt_exec_callback_QXYSeries_released(intptr_t, QPointF*);
-void miqt_exec_callback_QXYSeries_doubleClicked(intptr_t, QPointF*);
+void miqt_exec_callback_QXYSeries_clicked(intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QXYSeries_hovered(intptr_t, struct miqt_qpointf, bool);
+void miqt_exec_callback_QXYSeries_pressed(intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QXYSeries_released(intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QXYSeries_doubleClicked(intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QXYSeries_pointReplaced(intptr_t, int);
 void miqt_exec_callback_QXYSeries_pointRemoved(intptr_t, int);
 void miqt_exec_callback_QXYSeries_pointAdded(intptr_t, int);
-void miqt_exec_callback_QXYSeries_colorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QXYSeries_selectedColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QXYSeries_colorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QXYSeries_selectedColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QXYSeries_pointsReplaced(intptr_t);
 void miqt_exec_callback_QXYSeries_pointLabelsFormatChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QXYSeries_pointLabelsVisibilityChanged(intptr_t, bool);
 void miqt_exec_callback_QXYSeries_pointLabelsFontChanged(intptr_t, QFont*);
-void miqt_exec_callback_QXYSeries_pointLabelsColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QXYSeries_pointLabelsColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QXYSeries_pointLabelsClippingChanged(intptr_t, bool);
 void miqt_exec_callback_QXYSeries_pointsRemoved(intptr_t, int, int);
 void miqt_exec_callback_QXYSeries_penChanged(intptr_t, QPen*);
@@ -47,7 +47,7 @@ void miqt_exec_callback_QXYSeries_lightMarkerChanged(intptr_t, QImage*);
 void miqt_exec_callback_QXYSeries_selectedLightMarkerChanged(intptr_t, QImage*);
 void miqt_exec_callback_QXYSeries_bestFitLineVisibilityChanged(intptr_t, bool);
 void miqt_exec_callback_QXYSeries_bestFitLinePenChanged(intptr_t, QPen*);
-void miqt_exec_callback_QXYSeries_bestFitLineColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QXYSeries_bestFitLineColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QXYSeries_pointsConfigurationChanged(intptr_t, struct miqt_map /* of int to struct miqt_map  of int to QVariant*   */ );
 void miqt_exec_callback_QXYSeries_markerSizeChanged(intptr_t, double);
 #ifdef __cplusplus
@@ -81,16 +81,16 @@ void QXYSeries_append(QXYSeries* self, double x, double y) {
 	self->append(static_cast<qreal>(x), static_cast<qreal>(y));
 }
 
-void QXYSeries_appendWithPoint(QXYSeries* self, QPointF* point) {
-	self->append(*point);
+void QXYSeries_appendWithPoint(QXYSeries* self, struct miqt_qpointf point) {
+	self->append(miqt_from_cabi<QPointF>(point));
 }
 
-void QXYSeries_appendWithPoints(QXYSeries* self, struct miqt_array /* of QPointF* */  points) {
+void QXYSeries_appendWithPoints(QXYSeries* self, struct miqt_array /* of struct miqt_qpointf */  points) {
 	QList<QPointF> points_QList;
 	points_QList.reserve(points.len);
-	QPointF** points_arr = static_cast<QPointF**>(points.data);
+	struct miqt_qpointf* points_arr = static_cast<struct miqt_qpointf*>(points.data);
 	for(size_t i = 0; i < points.len; ++i) {
-		points_QList.push_back(*(points_arr[i]));
+		points_QList.push_back(miqt_from_cabi<QPointF>(points_arr[i]));
 	}
 	self->append(points_QList);
 }
@@ -99,24 +99,24 @@ void QXYSeries_replace(QXYSeries* self, double oldX, double oldY, double newX, d
 	self->replace(static_cast<qreal>(oldX), static_cast<qreal>(oldY), static_cast<qreal>(newX), static_cast<qreal>(newY));
 }
 
-void QXYSeries_replace2(QXYSeries* self, QPointF* oldPoint, QPointF* newPoint) {
-	self->replace(*oldPoint, *newPoint);
+void QXYSeries_replace2(QXYSeries* self, struct miqt_qpointf oldPoint, struct miqt_qpointf newPoint) {
+	self->replace(miqt_from_cabi<QPointF>(oldPoint), miqt_from_cabi<QPointF>(newPoint));
 }
 
 void QXYSeries_replace3(QXYSeries* self, int index, double newX, double newY) {
 	self->replace(static_cast<int>(index), static_cast<qreal>(newX), static_cast<qreal>(newY));
 }
 
-void QXYSeries_replace4(QXYSeries* self, int index, QPointF* newPoint) {
-	self->replace(static_cast<int>(index), *newPoint);
+void QXYSeries_replace4(QXYSeries* self, int index, struct miqt_qpointf newPoint) {
+	self->replace(static_cast<int>(index), miqt_from_cabi<QPointF>(newPoint));
 }
 
 void QXYSeries_remove(QXYSeries* self, double x, double y) {
 	self->remove(static_cast<qreal>(x), static_cast<qreal>(y));
 }
 
-void QXYSeries_removeWithPoint(QXYSeries* self, QPointF* point) {
-	self->remove(*point);
+void QXYSeries_removeWithPoint(QXYSeries* self, struct miqt_qpointf point) {
+	self->remove(miqt_from_cabi<QPointF>(point));
 }
 
 void QXYSeries_removeWithIndex(QXYSeries* self, int index) {
@@ -127,8 +127,8 @@ void QXYSeries_removePoints(QXYSeries* self, int index, int count) {
 	self->removePoints(static_cast<int>(index), static_cast<int>(count));
 }
 
-void QXYSeries_insert(QXYSeries* self, int index, QPointF* point) {
-	self->insert(static_cast<int>(index), *point);
+void QXYSeries_insert(QXYSeries* self, int index, struct miqt_qpointf point) {
+	self->insert(static_cast<int>(index), miqt_from_cabi<QPointF>(point));
 }
 
 void QXYSeries_clear(QXYSeries* self) {
@@ -139,12 +139,12 @@ int QXYSeries_count(const QXYSeries* self) {
 	return self->count();
 }
 
-struct miqt_array /* of QPointF* */  QXYSeries_points(const QXYSeries* self) {
+struct miqt_array /* of struct miqt_qpointf */  QXYSeries_points(const QXYSeries* self) {
 	QList<QPointF> _ret = self->points();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
+	struct miqt_qpointf* _arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QPointF(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qpointf>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -152,12 +152,12 @@ struct miqt_array /* of QPointF* */  QXYSeries_points(const QXYSeries* self) {
 	return _out;
 }
 
-struct miqt_array /* of QPointF* */  QXYSeries_pointsVector(const QXYSeries* self) {
+struct miqt_array /* of struct miqt_qpointf */  QXYSeries_pointsVector(const QXYSeries* self) {
 	QList<QPointF> _ret = self->pointsVector();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
+	struct miqt_qpointf* _arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QPointF(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qpointf>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -165,24 +165,22 @@ struct miqt_array /* of QPointF* */  QXYSeries_pointsVector(const QXYSeries* sel
 	return _out;
 }
 
-QPointF* QXYSeries_at(const QXYSeries* self, int index) {
-	const QPointF& _ret = self->at(static_cast<int>(index));
-	// Cast returned reference into pointer
-	return const_cast<QPointF*>(&_ret);
+struct miqt_qpointf QXYSeries_at(const QXYSeries* self, int index) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->at(static_cast<int>(index)));
 }
 
-QXYSeries* QXYSeries_operatorShiftLeft(QXYSeries* self, QPointF* point) {
-	QXYSeries& _ret = self->operator<<(*point);
+QXYSeries* QXYSeries_operatorShiftLeft(QXYSeries* self, struct miqt_qpointf point) {
+	QXYSeries& _ret = self->operator<<(miqt_from_cabi<QPointF>(point));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QXYSeries* QXYSeries_operatorShiftLeftWithPoints(QXYSeries* self, struct miqt_array /* of QPointF* */  points) {
+QXYSeries* QXYSeries_operatorShiftLeftWithPoints(QXYSeries* self, struct miqt_array /* of struct miqt_qpointf */  points) {
 	QList<QPointF> points_QList;
 	points_QList.reserve(points.len);
-	QPointF** points_arr = static_cast<QPointF**>(points.data);
+	struct miqt_qpointf* points_arr = static_cast<struct miqt_qpointf*>(points.data);
 	for(size_t i = 0; i < points.len; ++i) {
-		points_QList.push_back(*(points_arr[i]));
+		points_QList.push_back(miqt_from_cabi<QPointF>(points_arr[i]));
 	}
 	QXYSeries& _ret = self->operator<<(points_QList);
 	// Cast returned reference into pointer
@@ -205,20 +203,20 @@ QBrush* QXYSeries_brush(const QXYSeries* self) {
 	return new QBrush(self->brush());
 }
 
-void QXYSeries_setColor(QXYSeries* self, QColor* color) {
-	self->setColor(*color);
+void QXYSeries_setColor(QXYSeries* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QXYSeries_color(const QXYSeries* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QXYSeries_color(const QXYSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-void QXYSeries_setSelectedColor(QXYSeries* self, QColor* color) {
-	self->setSelectedColor(*color);
+void QXYSeries_setSelectedColor(QXYSeries* self, struct miqt_qcolor color) {
+	self->setSelectedColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QXYSeries_selectedColor(const QXYSeries* self) {
-	return new QColor(self->selectedColor());
+struct miqt_qcolor QXYSeries_selectedColor(const QXYSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->selectedColor());
 }
 
 void QXYSeries_setPointsVisible(QXYSeries* self) {
@@ -261,12 +259,12 @@ QFont* QXYSeries_pointLabelsFont(const QXYSeries* self) {
 	return new QFont(self->pointLabelsFont());
 }
 
-void QXYSeries_setPointLabelsColor(QXYSeries* self, QColor* color) {
-	self->setPointLabelsColor(*color);
+void QXYSeries_setPointLabelsColor(QXYSeries* self, struct miqt_qcolor color) {
+	self->setPointLabelsColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QXYSeries_pointLabelsColor(const QXYSeries* self) {
-	return new QColor(self->pointLabelsColor());
+struct miqt_qcolor QXYSeries_pointLabelsColor(const QXYSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->pointLabelsColor());
 }
 
 void QXYSeries_setPointLabelsClipping(QXYSeries* self) {
@@ -277,12 +275,12 @@ bool QXYSeries_pointLabelsClipping(const QXYSeries* self) {
 	return self->pointLabelsClipping();
 }
 
-void QXYSeries_replaceWithPoints(QXYSeries* self, struct miqt_array /* of QPointF* */  points) {
+void QXYSeries_replaceWithPoints(QXYSeries* self, struct miqt_array /* of struct miqt_qpointf */  points) {
 	QList<QPointF> points_QList;
 	points_QList.reserve(points.len);
-	QPointF** points_arr = static_cast<QPointF**>(points.data);
+	struct miqt_qpointf* points_arr = static_cast<struct miqt_qpointf*>(points.data);
 	for(size_t i = 0; i < points.len; ++i) {
-		points_QList.push_back(*(points_arr[i]));
+		points_QList.push_back(miqt_from_cabi<QPointF>(points_arr[i]));
 	}
 	self->replace(points_QList);
 }
@@ -413,12 +411,12 @@ QPen* QXYSeries_bestFitLinePen(const QXYSeries* self) {
 	return new QPen(self->bestFitLinePen());
 }
 
-void QXYSeries_setBestFitLineColor(QXYSeries* self, QColor* color) {
-	self->setBestFitLineColor(*color);
+void QXYSeries_setBestFitLineColor(QXYSeries* self, struct miqt_qcolor color) {
+	self->setBestFitLineColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QXYSeries_bestFitLineColor(const QXYSeries* self) {
-	return new QColor(self->bestFitLineColor());
+struct miqt_qcolor QXYSeries_bestFitLineColor(const QXYSeries* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->bestFitLineColor());
 }
 
 void QXYSeries_clearPointConfiguration(QXYSeries* self, const int index) {
@@ -542,68 +540,58 @@ void QXYSeries_colorBy(QXYSeries* self, struct miqt_array /* of double */  sourc
 	self->colorBy(sourceData_QList);
 }
 
-void QXYSeries_clicked(QXYSeries* self, QPointF* point) {
-	self->clicked(*point);
+void QXYSeries_clicked(QXYSeries* self, struct miqt_qpointf point) {
+	self->clicked(miqt_from_cabi<QPointF>(point));
 }
 
 void QXYSeries_connect_clicked(QXYSeries* self, intptr_t slot) {
 	QXYSeries::connect(self, static_cast<void (QXYSeries::*)(const QPointF&)>(&QXYSeries::clicked), self, [=](const QPointF& point) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		miqt_exec_callback_QXYSeries_clicked(slot, sigval1);
 	});
 }
 
-void QXYSeries_hovered(QXYSeries* self, QPointF* point, bool state) {
-	self->hovered(*point, state);
+void QXYSeries_hovered(QXYSeries* self, struct miqt_qpointf point, bool state) {
+	self->hovered(miqt_from_cabi<QPointF>(point), state);
 }
 
 void QXYSeries_connect_hovered(QXYSeries* self, intptr_t slot) {
 	QXYSeries::connect(self, static_cast<void (QXYSeries::*)(const QPointF&, bool)>(&QXYSeries::hovered), self, [=](const QPointF& point, bool state) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool sigval2 = state;
 		miqt_exec_callback_QXYSeries_hovered(slot, sigval1, sigval2);
 	});
 }
 
-void QXYSeries_pressed(QXYSeries* self, QPointF* point) {
-	self->pressed(*point);
+void QXYSeries_pressed(QXYSeries* self, struct miqt_qpointf point) {
+	self->pressed(miqt_from_cabi<QPointF>(point));
 }
 
 void QXYSeries_connect_pressed(QXYSeries* self, intptr_t slot) {
 	QXYSeries::connect(self, static_cast<void (QXYSeries::*)(const QPointF&)>(&QXYSeries::pressed), self, [=](const QPointF& point) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		miqt_exec_callback_QXYSeries_pressed(slot, sigval1);
 	});
 }
 
-void QXYSeries_released(QXYSeries* self, QPointF* point) {
-	self->released(*point);
+void QXYSeries_released(QXYSeries* self, struct miqt_qpointf point) {
+	self->released(miqt_from_cabi<QPointF>(point));
 }
 
 void QXYSeries_connect_released(QXYSeries* self, intptr_t slot) {
 	QXYSeries::connect(self, static_cast<void (QXYSeries::*)(const QPointF&)>(&QXYSeries::released), self, [=](const QPointF& point) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		miqt_exec_callback_QXYSeries_released(slot, sigval1);
 	});
 }
 
-void QXYSeries_doubleClicked(QXYSeries* self, QPointF* point) {
-	self->doubleClicked(*point);
+void QXYSeries_doubleClicked(QXYSeries* self, struct miqt_qpointf point) {
+	self->doubleClicked(miqt_from_cabi<QPointF>(point));
 }
 
 void QXYSeries_connect_doubleClicked(QXYSeries* self, intptr_t slot) {
 	QXYSeries::connect(self, static_cast<void (QXYSeries::*)(const QPointF&)>(&QXYSeries::doubleClicked), self, [=](const QPointF& point) {
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		miqt_exec_callback_QXYSeries_doubleClicked(slot, sigval1);
 	});
 }
@@ -641,26 +629,24 @@ void QXYSeries_connect_pointAdded(QXYSeries* self, intptr_t slot) {
 	});
 }
 
-void QXYSeries_colorChanged(QXYSeries* self, QColor* color) {
-	self->colorChanged(*color);
+void QXYSeries_colorChanged(QXYSeries* self, struct miqt_qcolor color) {
+	self->colorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QXYSeries_connect_colorChanged(QXYSeries* self, intptr_t slot) {
 	QXYSeries::connect(self, static_cast<void (QXYSeries::*)(QColor)>(&QXYSeries::colorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QXYSeries_colorChanged(slot, sigval1);
 	});
 }
 
-void QXYSeries_selectedColorChanged(QXYSeries* self, QColor* color) {
-	self->selectedColorChanged(*color);
+void QXYSeries_selectedColorChanged(QXYSeries* self, struct miqt_qcolor color) {
+	self->selectedColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QXYSeries_connect_selectedColorChanged(QXYSeries* self, intptr_t slot) {
 	QXYSeries::connect(self, static_cast<void (QXYSeries::*)(const QColor&)>(&QXYSeries::selectedColorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QXYSeries_selectedColorChanged(slot, sigval1);
 	});
 }
@@ -718,15 +704,13 @@ void QXYSeries_connect_pointLabelsFontChanged(QXYSeries* self, intptr_t slot) {
 	});
 }
 
-void QXYSeries_pointLabelsColorChanged(QXYSeries* self, QColor* color) {
-	self->pointLabelsColorChanged(*color);
+void QXYSeries_pointLabelsColorChanged(QXYSeries* self, struct miqt_qcolor color) {
+	self->pointLabelsColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QXYSeries_connect_pointLabelsColorChanged(QXYSeries* self, intptr_t slot) {
 	QXYSeries::connect(self, static_cast<void (QXYSeries::*)(const QColor&)>(&QXYSeries::pointLabelsColorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QXYSeries_pointLabelsColorChanged(slot, sigval1);
 	});
 }
@@ -827,15 +811,13 @@ void QXYSeries_connect_bestFitLinePenChanged(QXYSeries* self, intptr_t slot) {
 	});
 }
 
-void QXYSeries_bestFitLineColorChanged(QXYSeries* self, QColor* color) {
-	self->bestFitLineColorChanged(*color);
+void QXYSeries_bestFitLineColorChanged(QXYSeries* self, struct miqt_qcolor color) {
+	self->bestFitLineColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QXYSeries_connect_bestFitLineColorChanged(QXYSeries* self, intptr_t slot) {
 	QXYSeries::connect(self, static_cast<void (QXYSeries::*)(const QColor&)>(&QXYSeries::bestFitLineColorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QXYSeries_bestFitLineColorChanged(slot, sigval1);
 	});
 }

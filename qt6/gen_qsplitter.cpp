@@ -47,8 +47,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSplitter_splitterMoved(intptr_t, int, int);
-QSize* miqt_exec_callback_QSplitter_sizeHint(const QSplitter*, intptr_t);
-QSize* miqt_exec_callback_QSplitter_minimumSizeHint(const QSplitter*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSplitter_sizeHint(const QSplitter*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSplitter_minimumSizeHint(const QSplitter*, intptr_t);
 QSplitterHandle* miqt_exec_callback_QSplitter_createHandle(QSplitter*, intptr_t);
 void miqt_exec_callback_QSplitter_childEvent(QSplitter*, intptr_t, QChildEvent*);
 bool miqt_exec_callback_QSplitter_event(QSplitter*, intptr_t, QEvent*);
@@ -96,7 +96,7 @@ void miqt_exec_callback_QSplitter_timerEvent(QSplitter*, intptr_t, QTimerEvent*)
 void miqt_exec_callback_QSplitter_customEvent(QSplitter*, intptr_t, QEvent*);
 void miqt_exec_callback_QSplitter_connectNotify(QSplitter*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QSplitter_disconnectNotify(QSplitter*, intptr_t, QMetaMethod*);
-QSize* miqt_exec_callback_QSplitterHandle_sizeHint(const QSplitterHandle*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSplitterHandle_sizeHint(const QSplitterHandle*, intptr_t);
 void miqt_exec_callback_QSplitterHandle_paintEvent(QSplitterHandle*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QSplitterHandle_mouseMoveEvent(QSplitterHandle*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QSplitterHandle_mousePressEvent(QSplitterHandle*, intptr_t, QMouseEvent*);
@@ -105,7 +105,7 @@ void miqt_exec_callback_QSplitterHandle_resizeEvent(QSplitterHandle*, intptr_t, 
 bool miqt_exec_callback_QSplitterHandle_event(QSplitterHandle*, intptr_t, QEvent*);
 int miqt_exec_callback_QSplitterHandle_devType(const QSplitterHandle*, intptr_t);
 void miqt_exec_callback_QSplitterHandle_setVisible(QSplitterHandle*, intptr_t, bool);
-QSize* miqt_exec_callback_QSplitterHandle_minimumSizeHint(const QSplitterHandle*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSplitterHandle_minimumSizeHint(const QSplitterHandle*, intptr_t);
 int miqt_exec_callback_QSplitterHandle_heightForWidth(const QSplitterHandle*, intptr_t, int);
 bool miqt_exec_callback_QSplitterHandle_hasHeightForWidth(const QSplitterHandle*, intptr_t);
 QPaintEngine* miqt_exec_callback_QSplitterHandle_paintEngine(const QSplitterHandle*, intptr_t);
@@ -166,13 +166,11 @@ public:
 			return QSplitter::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSplitter_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSplitter_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSplitter_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QSplitter_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -183,13 +181,11 @@ public:
 			return QSplitter::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSplitter_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSplitter_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSplitter_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QSplitter_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createHandle = 0;
@@ -1093,12 +1089,12 @@ void QSplitter_refresh(QSplitter* self) {
 	self->refresh();
 }
 
-QSize* QSplitter_sizeHint(const QSplitter* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QSplitter_sizeHint(const QSplitter* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QSplitter_minimumSizeHint(const QSplitter* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QSplitter_minimumSizeHint(const QSplitter* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 struct miqt_array /* of int */  QSplitter_sizes(const QSplitter* self) {
@@ -1218,8 +1214,8 @@ bool QSplitter_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSplitter_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::sizeHint());
+struct miqt_qsize QSplitter_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::sizeHint());
 }
 
 bool QSplitter_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1232,8 +1228,8 @@ bool QSplitter_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSplitter_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::minimumSizeHint());
+struct miqt_qsize QSplitter_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::minimumSizeHint());
 }
 
 bool QSplitter_override_virtual_createHandle(void* self, intptr_t slot) {
@@ -1895,10 +1891,6 @@ void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::disconnectNotify(*signal);
 }
 
-QSize* QSplitter_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QSplitter_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -2066,13 +2058,11 @@ public:
 			return QSplitterHandle::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSplitterHandle_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSplitterHandle_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QSplitterHandle_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -2216,13 +2206,11 @@ public:
 			return QSplitterHandle::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSplitterHandle_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSplitterHandle_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QSplitterHandle_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -2915,8 +2903,8 @@ QSplitter* QSplitterHandle_splitter(const QSplitterHandle* self) {
 	return self->splitter();
 }
 
-QSize* QSplitterHandle_sizeHint(const QSplitterHandle* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QSplitterHandle_sizeHint(const QSplitterHandle* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 struct miqt_string QSplitterHandle_tr2(const char* s, const char* c) {
@@ -2951,8 +2939,8 @@ bool QSplitterHandle_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSplitterHandle_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::sizeHint());
+struct miqt_qsize QSplitterHandle_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::sizeHint());
 }
 
 bool QSplitterHandle_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -3077,8 +3065,8 @@ bool QSplitterHandle_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 	return true;
 }
 
-QSize* QSplitterHandle_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::minimumSizeHint());
+struct miqt_qsize QSplitterHandle_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::minimumSizeHint());
 }
 
 bool QSplitterHandle_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -3598,10 +3586,6 @@ bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::disconnectNotify(*signal);
-}
-
-QSize* QSplitterHandle_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QSplitterHandle_virtualreturncopy_QVariant(QVariant* src) {

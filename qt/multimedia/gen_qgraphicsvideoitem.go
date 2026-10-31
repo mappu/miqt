@@ -9,6 +9,7 @@ package multimedia
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -119,38 +120,28 @@ func (this *QGraphicsVideoItem) SetAspectRatioMode(mode qt.AspectRatioMode) {
 	C.QGraphicsVideoItem_setAspectRatioMode(this.h, (C.int)(mode))
 }
 
-func (this *QGraphicsVideoItem) Offset() *qt.QPointF {
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QGraphicsVideoItem_offset(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsVideoItem) Offset() qt.QPointF {
+	return libmiqt.ValueCast[qt.QPointF](C.QGraphicsVideoItem_offset(this.h))
 }
 
-func (this *QGraphicsVideoItem) SetOffset(offset *qt.QPointF) {
-	defer runtime.KeepAlive(offset)
-	C.QGraphicsVideoItem_setOffset(this.h, (*C.QPointF)(offset.UnsafePointer()))
+func (this *QGraphicsVideoItem) SetOffset(offset qt.QPointF) {
+	C.QGraphicsVideoItem_setOffset(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](offset))
 }
 
-func (this *QGraphicsVideoItem) Size() *qt.QSizeF {
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsVideoItem_size(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsVideoItem) Size() qt.QSizeF {
+	return libmiqt.ValueCast[qt.QSizeF](C.QGraphicsVideoItem_size(this.h))
 }
 
-func (this *QGraphicsVideoItem) SetSize(size *qt.QSizeF) {
-	defer runtime.KeepAlive(size)
-	C.QGraphicsVideoItem_setSize(this.h, (*C.QSizeF)(size.UnsafePointer()))
+func (this *QGraphicsVideoItem) SetSize(size qt.QSizeF) {
+	C.QGraphicsVideoItem_setSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
-func (this *QGraphicsVideoItem) NativeSize() *qt.QSizeF {
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QGraphicsVideoItem_nativeSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsVideoItem) NativeSize() qt.QSizeF {
+	return libmiqt.ValueCast[qt.QSizeF](C.QGraphicsVideoItem_nativeSize(this.h))
 }
 
-func (this *QGraphicsVideoItem) BoundingRect() *qt.QRectF {
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsVideoItem_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsVideoItem) BoundingRect() qt.QRectF {
+	return libmiqt.ValueCast[qt.QRectF](C.QGraphicsVideoItem_boundingRect(this.h))
 }
 
 func (this *QGraphicsVideoItem) Paint(painter *qt.QPainter, option *qt.QStyleOptionGraphicsItem, widget *qt.QWidget) {
@@ -159,23 +150,22 @@ func (this *QGraphicsVideoItem) Paint(painter *qt.QPainter, option *qt.QStyleOpt
 	C.QGraphicsVideoItem_paint(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QStyleOptionGraphicsItem)(option.UnsafePointer()), (*C.QWidget)(widget.UnsafePointer()))
 }
 
-func (this *QGraphicsVideoItem) NativeSizeChanged(size *qt.QSizeF) {
-	defer runtime.KeepAlive(size)
-	C.QGraphicsVideoItem_nativeSizeChanged(this.h, (*C.QSizeF)(size.UnsafePointer()))
+func (this *QGraphicsVideoItem) NativeSizeChanged(size qt.QSizeF) {
+	C.QGraphicsVideoItem_nativeSizeChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
-func (this *QGraphicsVideoItem) OnNativeSizeChanged(slot func(size *qt.QSizeF)) {
+func (this *QGraphicsVideoItem) OnNativeSizeChanged(slot func(size qt.QSizeF)) {
 	C.QGraphicsVideoItem_connect_nativeSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsVideoItem_nativeSizeChanged
-func miqt_exec_callback_QGraphicsVideoItem_nativeSizeChanged(cb C.intptr_t, size *C.QSizeF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(size *qt.QSizeF))
+func miqt_exec_callback_QGraphicsVideoItem_nativeSizeChanged(cb C.intptr_t, size C.struct_miqt_qsizef) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(size qt.QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSizeF(unsafe.Pointer(size))
+	slotval1 := libmiqt.ValueCast[qt.QSizeF](size)
 
 	gofunc(slotval1)
 }
@@ -356,14 +346,12 @@ func miqt_exec_callback_QGraphicsVideoItem_mediaObject(self *C.QGraphicsVideoIte
 
 }
 
-func (this *QGraphicsVideoItem) callVirtualBase_BoundingRect() *qt.QRectF {
+func (this *QGraphicsVideoItem) callVirtualBase_BoundingRect() qt.QRectF {
 
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QGraphicsVideoItem_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QGraphicsVideoItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsVideoItem) OnBoundingRect(slot func(super func() *qt.QRectF) *qt.QRectF) {
+func (this *QGraphicsVideoItem) OnBoundingRect(slot func(super func() qt.QRectF) qt.QRectF) {
 	ok := C.QGraphicsVideoItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -371,16 +359,15 @@ func (this *QGraphicsVideoItem) OnBoundingRect(slot func(super func() *qt.QRectF
 }
 
 //export miqt_exec_callback_QGraphicsVideoItem_boundingRect
-func miqt_exec_callback_QGraphicsVideoItem_boundingRect(self *C.QGraphicsVideoItem, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRectF) *qt.QRectF)
+func miqt_exec_callback_QGraphicsVideoItem_boundingRect(self *C.QGraphicsVideoItem, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRectF) qt.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsVideoItem{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsVideoItem_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -727,13 +714,12 @@ func miqt_exec_callback_QGraphicsVideoItem_shape(self *C.QGraphicsVideoItem, cb 
 
 }
 
-func (this *QGraphicsVideoItem) callVirtualBase_Contains(point *qt.QPointF) bool {
-	defer runtime.KeepAlive(point)
+func (this *QGraphicsVideoItem) callVirtualBase_Contains(point qt.QPointF) bool {
 
-	return (bool)(C.QGraphicsVideoItem_virtualbase_contains(unsafe.Pointer(this.h), (*C.QPointF)(point.UnsafePointer())))
+	return (bool)(C.QGraphicsVideoItem_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsVideoItem) OnContains(slot func(super func(point *qt.QPointF) bool, point *qt.QPointF) bool) {
+func (this *QGraphicsVideoItem) OnContains(slot func(super func(point qt.QPointF) bool, point qt.QPointF) bool) {
 	ok := C.QGraphicsVideoItem_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -741,14 +727,14 @@ func (this *QGraphicsVideoItem) OnContains(slot func(super func(point *qt.QPoint
 }
 
 //export miqt_exec_callback_QGraphicsVideoItem_contains
-func miqt_exec_callback_QGraphicsVideoItem_contains(self *C.QGraphicsVideoItem, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *qt.QPointF) bool, point *qt.QPointF) bool)
+func miqt_exec_callback_QGraphicsVideoItem_contains(self *C.QGraphicsVideoItem, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point qt.QPointF) bool, point qt.QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt.QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsVideoItem{h: self}).callVirtualBase_Contains, slotval1)
 

@@ -48,8 +48,8 @@ extern "C" {
 
 void miqt_exec_callback_QLabel_linkActivated(intptr_t, struct miqt_string);
 void miqt_exec_callback_QLabel_linkHovered(intptr_t, struct miqt_string);
-QSize* miqt_exec_callback_QLabel_sizeHint(const QLabel*, intptr_t);
-QSize* miqt_exec_callback_QLabel_minimumSizeHint(const QLabel*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QLabel_sizeHint(const QLabel*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QLabel_minimumSizeHint(const QLabel*, intptr_t);
 int miqt_exec_callback_QLabel_heightForWidth(const QLabel*, intptr_t, int);
 bool miqt_exec_callback_QLabel_event(QLabel*, intptr_t, QEvent*);
 void miqt_exec_callback_QLabel_keyPressEvent(QLabel*, intptr_t, QKeyEvent*);
@@ -120,13 +120,11 @@ public:
 			return QLabel::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QLabel_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QLabel_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QLabel_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QLabel_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -137,13 +135,11 @@ public:
 			return QLabel::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QLabel_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QLabel_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QLabel_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QLabel_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1066,12 +1062,12 @@ void QLabel_setScaledContents(QLabel* self, bool scaledContents) {
 	self->setScaledContents(scaledContents);
 }
 
-QSize* QLabel_sizeHint(const QLabel* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QLabel_sizeHint(const QLabel* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QLabel_minimumSizeHint(const QLabel* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QLabel_minimumSizeHint(const QLabel* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QLabel_setBuddy(QLabel* self, QWidget* buddy) {
@@ -1247,8 +1243,8 @@ bool QLabel_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QLabel_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQLabel*>(self)->QLabel::sizeHint());
+struct miqt_qsize QLabel_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQLabel*>(self)->QLabel::sizeHint());
 }
 
 bool QLabel_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1261,8 +1257,8 @@ bool QLabel_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QLabel_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQLabel*>(self)->QLabel::minimumSizeHint());
+struct miqt_qsize QLabel_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQLabel*>(self)->QLabel::minimumSizeHint());
 }
 
 bool QLabel_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1894,10 +1890,6 @@ bool QLabel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQLabel*>(self)->QLabel::disconnectNotify(*signal);
-}
-
-QSize* QLabel_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QLabel_virtualreturncopy_QVariant(QVariant* src) {

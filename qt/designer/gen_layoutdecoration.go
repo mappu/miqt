@@ -9,6 +9,7 @@ package designer
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -72,11 +73,9 @@ func (this *QDesignerLayoutDecorationExtension) Widgets(layout *qt.QLayout) []*q
 	return _ret
 }
 
-func (this *QDesignerLayoutDecorationExtension) ItemInfo(index int) *qt.QRect {
+func (this *QDesignerLayoutDecorationExtension) ItemInfo(index int) qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QDesignerLayoutDecorationExtension_itemInfo(this.h, (C.int)(index))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QDesignerLayoutDecorationExtension_itemInfo(this.h, (C.int)(index)))
 }
 
 func (this *QDesignerLayoutDecorationExtension) IndexOf(widget *qt.QWidget) int {
@@ -157,10 +156,9 @@ func (this *QDesignerLayoutDecorationExtension) Simplify() {
 	C.QDesignerLayoutDecorationExtension_simplify(this.h)
 }
 
-func (this *QDesignerLayoutDecorationExtension) FindItemAt(pos *qt.QPoint) int {
+func (this *QDesignerLayoutDecorationExtension) FindItemAt(pos qt.QPoint) int {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	return (int)(C.QDesignerLayoutDecorationExtension_findItemAt(this.h, (*C.QPoint)(pos.UnsafePointer())))
+	return (int)(C.QDesignerLayoutDecorationExtension_findItemAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
 func (this *QDesignerLayoutDecorationExtension) FindItemAt2(row int, column int) int {
@@ -168,10 +166,9 @@ func (this *QDesignerLayoutDecorationExtension) FindItemAt2(row int, column int)
 	return (int)(C.QDesignerLayoutDecorationExtension_findItemAt2(this.h, (C.int)(row), (C.int)(column)))
 }
 
-func (this *QDesignerLayoutDecorationExtension) AdjustIndicator(pos *qt.QPoint, index int) {
+func (this *QDesignerLayoutDecorationExtension) AdjustIndicator(pos qt.QPoint, index int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pos)
-	C.QDesignerLayoutDecorationExtension_adjustIndicator(this.h, (*C.QPoint)(pos.UnsafePointer()), (C.int)(index))
+	C.QDesignerLayoutDecorationExtension_adjustIndicator(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos), (C.int)(index))
 }
 
 func (this *QDesignerLayoutDecorationExtension) OperatorAssign(param1 *QDesignerLayoutDecorationExtension) {

@@ -34,8 +34,8 @@ QBackingStore* QBackingStore_new(QWindow* window);
 QWindow* QBackingStore_window(const QBackingStore* self);
 QPaintDevice* QBackingStore_paintDevice(QBackingStore* self);
 void QBackingStore_flush(QBackingStore* self, QRegion* region);
-void QBackingStore_resize(QBackingStore* self, QSize* size);
-QSize* QBackingStore_size(const QBackingStore* self);
+void QBackingStore_resize(QBackingStore* self, struct miqt_qsize size);
+struct miqt_qsize QBackingStore_size(const QBackingStore* self);
 bool QBackingStore_scroll(QBackingStore* self, QRegion* area, int dx, int dy);
 void QBackingStore_beginPaint(QBackingStore* self, QRegion* param1);
 void QBackingStore_endPaint(QBackingStore* self);
@@ -43,7 +43,7 @@ void QBackingStore_setStaticContents(QBackingStore* self, QRegion* region);
 QRegion* QBackingStore_staticContents(const QBackingStore* self);
 bool QBackingStore_hasStaticContents(const QBackingStore* self);
 void QBackingStore_flush2(QBackingStore* self, QRegion* region, QWindow* window);
-void QBackingStore_flush3(QBackingStore* self, QRegion* region, QWindow* window, QPoint* offset);
+void QBackingStore_flush3(QBackingStore* self, QRegion* region, QWindow* window, struct miqt_qpoint offset);
 
 void QBackingStore_delete(QBackingStore* self);
 

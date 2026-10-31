@@ -140,7 +140,7 @@ void QWebEngineView_triggerPageAction(QWebEngineView* self, int action);
 double QWebEngineView_zoomFactor(const QWebEngineView* self);
 void QWebEngineView_setZoomFactor(QWebEngineView* self, double factor);
 void QWebEngineView_findText(QWebEngineView* self, struct miqt_string subString);
-QSize* QWebEngineView_sizeHint(const QWebEngineView* self);
+struct miqt_qsize QWebEngineView_sizeHint(const QWebEngineView* self);
 QWebEngineSettings* QWebEngineView_settings(const QWebEngineView* self);
 QMenu* QWebEngineView_createStandardContextMenu(QWebEngineView* self);
 QWebEngineContextMenuRequest* QWebEngineView_lastContextMenuRequest(const QWebEngineView* self);
@@ -195,7 +195,7 @@ void QWebEngineView_printToPdf2(QWebEngineView* self, struct miqt_string filePat
 void QWebEngineView_printToPdf3(QWebEngineView* self, struct miqt_string filePath, QPageLayout* layout, QPageRanges* ranges);
 
 bool QWebEngineView_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QWebEngineView_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QWebEngineView_virtualbase_sizeHint(const void* self);
 bool QWebEngineView_override_virtual_createWindow(void* self, intptr_t slot);
 QWebEngineView* QWebEngineView_virtualbase_createWindow(void* self, int type);
 bool QWebEngineView_override_virtual_contextMenuEvent(void* self, intptr_t slot);
@@ -221,7 +221,7 @@ int QWebEngineView_virtualbase_devType(const void* self);
 bool QWebEngineView_override_virtual_setVisible(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_setVisible(void* self, bool visible);
 bool QWebEngineView_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QWebEngineView_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QWebEngineView_virtualbase_minimumSizeHint(const void* self);
 bool QWebEngineView_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QWebEngineView_virtualbase_heightForWidth(const void* self, int param1);
 bool QWebEngineView_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -290,7 +290,6 @@ bool QWebEngineView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebEngineView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QWebEngineView_virtualreturncopy_QSize(QSize* src);
 QVariant* QWebEngineView_virtualreturncopy_QVariant(QVariant* src);
 
 void QWebEngineView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

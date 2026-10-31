@@ -47,8 +47,8 @@ extern "C" {
 void miqt_exec_callback_QPrintPreviewDialog_paintRequested(intptr_t, QPrinter*);
 void miqt_exec_callback_QPrintPreviewDialog_setVisible(QPrintPreviewDialog*, intptr_t, bool);
 void miqt_exec_callback_QPrintPreviewDialog_done(QPrintPreviewDialog*, intptr_t, int);
-QSize* miqt_exec_callback_QPrintPreviewDialog_sizeHint(const QPrintPreviewDialog*, intptr_t);
-QSize* miqt_exec_callback_QPrintPreviewDialog_minimumSizeHint(const QPrintPreviewDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPrintPreviewDialog_sizeHint(const QPrintPreviewDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPrintPreviewDialog_minimumSizeHint(const QPrintPreviewDialog*, intptr_t);
 void miqt_exec_callback_QPrintPreviewDialog_open(QPrintPreviewDialog*, intptr_t);
 int miqt_exec_callback_QPrintPreviewDialog_exec(QPrintPreviewDialog*, intptr_t);
 void miqt_exec_callback_QPrintPreviewDialog_accept(QPrintPreviewDialog*, intptr_t);
@@ -156,13 +156,11 @@ public:
 			return QPrintPreviewDialog::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPrintPreviewDialog_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPrintPreviewDialog_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QPrintPreviewDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -173,13 +171,11 @@ public:
 			return QPrintPreviewDialog::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPrintPreviewDialog_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPrintPreviewDialog_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QPrintPreviewDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1136,8 +1132,8 @@ bool QPrintPreviewDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPrintPreviewDialog_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::sizeHint());
+struct miqt_qsize QPrintPreviewDialog_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::sizeHint());
 }
 
 bool QPrintPreviewDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1150,8 +1146,8 @@ bool QPrintPreviewDialog_override_virtual_minimumSizeHint(void* self, intptr_t s
 	return true;
 }
 
-QSize* QPrintPreviewDialog_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::minimumSizeHint());
+struct miqt_qsize QPrintPreviewDialog_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::minimumSizeHint());
 }
 
 bool QPrintPreviewDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1825,10 +1821,6 @@ bool QPrintPreviewDialog_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QPrintPreviewDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::disconnectNotify(*signal);
-}
-
-QSize* QPrintPreviewDialog_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QPrintPreviewDialog_virtualreturncopy_QVariant(QVariant* src) {

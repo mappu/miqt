@@ -19,12 +19,12 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QScreen_geometryChanged(intptr_t, QRect*);
-void miqt_exec_callback_QScreen_availableGeometryChanged(intptr_t, QRect*);
-void miqt_exec_callback_QScreen_physicalSizeChanged(intptr_t, QSizeF*);
+void miqt_exec_callback_QScreen_geometryChanged(intptr_t, struct miqt_qrect);
+void miqt_exec_callback_QScreen_availableGeometryChanged(intptr_t, struct miqt_qrect);
+void miqt_exec_callback_QScreen_physicalSizeChanged(intptr_t, struct miqt_qsizef);
 void miqt_exec_callback_QScreen_physicalDotsPerInchChanged(intptr_t, double);
 void miqt_exec_callback_QScreen_logicalDotsPerInchChanged(intptr_t, double);
-void miqt_exec_callback_QScreen_virtualGeometryChanged(intptr_t, QRect*);
+void miqt_exec_callback_QScreen_virtualGeometryChanged(intptr_t, struct miqt_qrect);
 void miqt_exec_callback_QScreen_primaryOrientationChanged(intptr_t, int);
 void miqt_exec_callback_QScreen_orientationChanged(intptr_t, int);
 void miqt_exec_callback_QScreen_refreshRateChanged(intptr_t, double);
@@ -103,16 +103,16 @@ int QScreen_depth(const QScreen* self) {
 	return self->depth();
 }
 
-QSize* QScreen_size(const QScreen* self) {
-	return new QSize(self->size());
+struct miqt_qsize QScreen_size(const QScreen* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
-QRect* QScreen_geometry(const QScreen* self) {
-	return new QRect(self->geometry());
+struct miqt_qrect QScreen_geometry(const QScreen* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->geometry());
 }
 
-QSizeF* QScreen_physicalSize(const QScreen* self) {
-	return new QSizeF(self->physicalSize());
+struct miqt_qsizef QScreen_physicalSize(const QScreen* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->physicalSize());
 }
 
 double QScreen_physicalDotsPerInchX(const QScreen* self) {
@@ -150,12 +150,12 @@ double QScreen_devicePixelRatio(const QScreen* self) {
 	return static_cast<double>(_ret);
 }
 
-QSize* QScreen_availableSize(const QScreen* self) {
-	return new QSize(self->availableSize());
+struct miqt_qsize QScreen_availableSize(const QScreen* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->availableSize());
 }
 
-QRect* QScreen_availableGeometry(const QScreen* self) {
-	return new QRect(self->availableGeometry());
+struct miqt_qrect QScreen_availableGeometry(const QScreen* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->availableGeometry());
 }
 
 struct miqt_array /* of QScreen* */  QScreen_virtualSiblings(const QScreen* self) {
@@ -171,24 +171,24 @@ struct miqt_array /* of QScreen* */  QScreen_virtualSiblings(const QScreen* self
 	return _out;
 }
 
-QScreen* QScreen_virtualSiblingAt(QScreen* self, QPoint* point) {
-	return self->virtualSiblingAt(*point);
+QScreen* QScreen_virtualSiblingAt(QScreen* self, struct miqt_qpoint point) {
+	return self->virtualSiblingAt(miqt_from_cabi<QPoint>(point));
 }
 
-QSize* QScreen_virtualSize(const QScreen* self) {
-	return new QSize(self->virtualSize());
+struct miqt_qsize QScreen_virtualSize(const QScreen* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->virtualSize());
 }
 
-QRect* QScreen_virtualGeometry(const QScreen* self) {
-	return new QRect(self->virtualGeometry());
+struct miqt_qrect QScreen_virtualGeometry(const QScreen* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->virtualGeometry());
 }
 
-QSize* QScreen_availableVirtualSize(const QScreen* self) {
-	return new QSize(self->availableVirtualSize());
+struct miqt_qsize QScreen_availableVirtualSize(const QScreen* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->availableVirtualSize());
 }
 
-QRect* QScreen_availableVirtualGeometry(const QScreen* self) {
-	return new QRect(self->availableVirtualGeometry());
+struct miqt_qrect QScreen_availableVirtualGeometry(const QScreen* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->availableVirtualGeometry());
 }
 
 int QScreen_primaryOrientation(const QScreen* self) {
@@ -210,12 +210,12 @@ int QScreen_angleBetween(const QScreen* self, int a, int b) {
 	return self->angleBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b));
 }
 
-QTransform* QScreen_transformBetween(const QScreen* self, int a, int b, QRect* target) {
-	return new QTransform(self->transformBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *target));
+QTransform* QScreen_transformBetween(const QScreen* self, int a, int b, struct miqt_qrect target) {
+	return new QTransform(self->transformBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), miqt_from_cabi<QRect>(target)));
 }
 
-QRect* QScreen_mapBetween(const QScreen* self, int a, int b, QRect* rect) {
-	return new QRect(self->mapBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), *rect));
+struct miqt_qrect QScreen_mapBetween(const QScreen* self, int a, int b, struct miqt_qrect rect) {
+	return miqt_to_cabi<struct miqt_qrect>(self->mapBetween(static_cast<Qt::ScreenOrientation>(a), static_cast<Qt::ScreenOrientation>(b), miqt_from_cabi<QRect>(rect)));
 }
 
 bool QScreen_isPortrait(const QScreen* self, int orientation) {
@@ -235,41 +235,35 @@ double QScreen_refreshRate(const QScreen* self) {
 	return static_cast<double>(_ret);
 }
 
-void QScreen_geometryChanged(QScreen* self, QRect* geometry) {
-	self->geometryChanged(*geometry);
+void QScreen_geometryChanged(QScreen* self, struct miqt_qrect geometry) {
+	self->geometryChanged(miqt_from_cabi<QRect>(geometry));
 }
 
 void QScreen_connect_geometryChanged(QScreen* self, intptr_t slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(const QRect&)>(&QScreen::geometryChanged), self, [=](const QRect& geometry) {
-		const QRect& geometry_ret = geometry;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&geometry_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(geometry);
 		miqt_exec_callback_QScreen_geometryChanged(slot, sigval1);
 	});
 }
 
-void QScreen_availableGeometryChanged(QScreen* self, QRect* geometry) {
-	self->availableGeometryChanged(*geometry);
+void QScreen_availableGeometryChanged(QScreen* self, struct miqt_qrect geometry) {
+	self->availableGeometryChanged(miqt_from_cabi<QRect>(geometry));
 }
 
 void QScreen_connect_availableGeometryChanged(QScreen* self, intptr_t slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(const QRect&)>(&QScreen::availableGeometryChanged), self, [=](const QRect& geometry) {
-		const QRect& geometry_ret = geometry;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&geometry_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(geometry);
 		miqt_exec_callback_QScreen_availableGeometryChanged(slot, sigval1);
 	});
 }
 
-void QScreen_physicalSizeChanged(QScreen* self, QSizeF* size) {
-	self->physicalSizeChanged(*size);
+void QScreen_physicalSizeChanged(QScreen* self, struct miqt_qsizef size) {
+	self->physicalSizeChanged(miqt_from_cabi<QSizeF>(size));
 }
 
 void QScreen_connect_physicalSizeChanged(QScreen* self, intptr_t slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(const QSizeF&)>(&QScreen::physicalSizeChanged), self, [=](const QSizeF& size) {
-		const QSizeF& size_ret = size;
-		// Cast returned reference into pointer
-		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
+		struct miqt_qsizef sigval1 = miqt_to_cabi<struct miqt_qsizef>(size);
 		miqt_exec_callback_QScreen_physicalSizeChanged(slot, sigval1);
 	});
 }
@@ -298,15 +292,13 @@ void QScreen_connect_logicalDotsPerInchChanged(QScreen* self, intptr_t slot) {
 	});
 }
 
-void QScreen_virtualGeometryChanged(QScreen* self, QRect* rect) {
-	self->virtualGeometryChanged(*rect);
+void QScreen_virtualGeometryChanged(QScreen* self, struct miqt_qrect rect) {
+	self->virtualGeometryChanged(miqt_from_cabi<QRect>(rect));
 }
 
 void QScreen_connect_virtualGeometryChanged(QScreen* self, intptr_t slot) {
 	QScreen::connect(self, static_cast<void (QScreen::*)(const QRect&)>(&QScreen::virtualGeometryChanged), self, [=](const QRect& rect) {
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(rect);
 		miqt_exec_callback_QScreen_virtualGeometryChanged(slot, sigval1);
 	});
 }

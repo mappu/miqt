@@ -22,10 +22,10 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCompleter_activated(intptr_t, struct miqt_string);
-void miqt_exec_callback_QCompleter_activatedWithIndex(intptr_t, QModelIndex*);
+void miqt_exec_callback_QCompleter_activatedWithIndex(intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QCompleter_highlighted(intptr_t, struct miqt_string);
-void miqt_exec_callback_QCompleter_highlightedWithIndex(intptr_t, QModelIndex*);
-struct miqt_string miqt_exec_callback_QCompleter_pathFromIndex(const QCompleter*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QCompleter_highlightedWithIndex(intptr_t, struct miqt_qmodelindex);
+struct miqt_string miqt_exec_callback_QCompleter_pathFromIndex(const QCompleter*, intptr_t, struct miqt_qmodelindex);
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QCompleter_splitPath(const QCompleter*, intptr_t, struct miqt_string);
 bool miqt_exec_callback_QCompleter_eventFilter(QCompleter*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QCompleter_event(QCompleter*, intptr_t, QEvent*);
@@ -59,16 +59,14 @@ public:
 			return QCompleter::pathFromIndex(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		struct miqt_string callback_return_value = miqt_exec_callback_QCompleter_pathFromIndex(this, handle__pathFromIndex, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
-	friend struct miqt_string QCompleter_virtualbase_pathFromIndex(const void* self, QModelIndex* index);
+	friend struct miqt_string QCompleter_virtualbase_pathFromIndex(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__splitPath = 0;
@@ -406,8 +404,8 @@ int QCompleter_currentRow(const QCompleter* self) {
 	return self->currentRow();
 }
 
-QModelIndex* QCompleter_currentIndex(const QCompleter* self) {
-	return new QModelIndex(self->currentIndex());
+struct miqt_qmodelindex QCompleter_currentIndex(const QCompleter* self) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->currentIndex());
 }
 
 struct miqt_string QCompleter_currentCompletion(const QCompleter* self) {
@@ -449,8 +447,8 @@ void QCompleter_setWrapAround(QCompleter* self, bool wrap) {
 	self->setWrapAround(wrap);
 }
 
-struct miqt_string QCompleter_pathFromIndex(const QCompleter* self, QModelIndex* index) {
-	QString _ret = self->pathFromIndex(*index);
+struct miqt_string QCompleter_pathFromIndex(const QCompleter* self, struct miqt_qmodelindex index) {
+	QString _ret = self->pathFromIndex(miqt_from_cabi<QModelIndex>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -500,15 +498,13 @@ void QCompleter_connect_activated(QCompleter* self, intptr_t slot) {
 	});
 }
 
-void QCompleter_activatedWithIndex(QCompleter* self, QModelIndex* index) {
-	self->activated(*index);
+void QCompleter_activatedWithIndex(QCompleter* self, struct miqt_qmodelindex index) {
+	self->activated(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QCompleter_connect_activatedWithIndex(QCompleter* self, intptr_t slot) {
 	QCompleter::connect(self, static_cast<void (QCompleter::*)(const QModelIndex&)>(&QCompleter::activated), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QCompleter_activatedWithIndex(slot, sigval1);
 	});
 }
@@ -532,15 +528,13 @@ void QCompleter_connect_highlighted(QCompleter* self, intptr_t slot) {
 	});
 }
 
-void QCompleter_highlightedWithIndex(QCompleter* self, QModelIndex* index) {
-	self->highlighted(*index);
+void QCompleter_highlightedWithIndex(QCompleter* self, struct miqt_qmodelindex index) {
+	self->highlighted(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QCompleter_connect_highlightedWithIndex(QCompleter* self, intptr_t slot) {
 	QCompleter::connect(self, static_cast<void (QCompleter::*)(const QModelIndex&)>(&QCompleter::highlighted), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QCompleter_highlightedWithIndex(slot, sigval1);
 	});
 }
@@ -589,8 +583,8 @@ struct miqt_string QCompleter_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QCompleter_completeWithRect(QCompleter* self, QRect* rect) {
-	self->complete(*rect);
+void QCompleter_completeWithRect(QCompleter* self, struct miqt_qrect rect) {
+	self->complete(miqt_from_cabi<QRect>(rect));
 }
 
 bool QCompleter_override_virtual_pathFromIndex(void* self, intptr_t slot) {
@@ -603,8 +597,8 @@ bool QCompleter_override_virtual_pathFromIndex(void* self, intptr_t slot) {
 	return true;
 }
 
-struct miqt_string QCompleter_virtualbase_pathFromIndex(const void* self, QModelIndex* index) {
-	QString _ret = static_cast<const MiqtVirtualQCompleter*>(self)->QCompleter::pathFromIndex(*index);
+struct miqt_string QCompleter_virtualbase_pathFromIndex(const void* self, struct miqt_qmodelindex index) {
+	QString _ret = static_cast<const MiqtVirtualQCompleter*>(self)->QCompleter::pathFromIndex(miqt_from_cabi<QModelIndex>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;

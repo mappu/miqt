@@ -53,8 +53,8 @@ void miqt_exec_callback_QRubberBand_moveEvent(QRubberBand*, intptr_t, QMoveEvent
 void miqt_exec_callback_QRubberBand_initStyleOption(const QRubberBand*, intptr_t, QStyleOptionRubberBand*);
 int miqt_exec_callback_QRubberBand_devType(const QRubberBand*, intptr_t);
 void miqt_exec_callback_QRubberBand_setVisible(QRubberBand*, intptr_t, bool);
-QSize* miqt_exec_callback_QRubberBand_sizeHint(const QRubberBand*, intptr_t);
-QSize* miqt_exec_callback_QRubberBand_minimumSizeHint(const QRubberBand*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QRubberBand_sizeHint(const QRubberBand*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QRubberBand_minimumSizeHint(const QRubberBand*, intptr_t);
 int miqt_exec_callback_QRubberBand_heightForWidth(const QRubberBand*, intptr_t, int);
 bool miqt_exec_callback_QRubberBand_hasHeightForWidth(const QRubberBand*, intptr_t);
 QPaintEngine* miqt_exec_callback_QRubberBand_paintEngine(const QRubberBand*, intptr_t);
@@ -263,13 +263,11 @@ public:
 			return QRubberBand::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QRubberBand_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QRubberBand_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QRubberBand_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QRubberBand_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -280,13 +278,11 @@ public:
 			return QRubberBand::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QRubberBand_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QRubberBand_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QRubberBand_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QRubberBand_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -969,8 +965,8 @@ int QRubberBand_shape(const QRubberBand* self) {
 	return static_cast<int>(_ret);
 }
 
-void QRubberBand_setGeometry(QRubberBand* self, QRect* r) {
-	self->setGeometry(*r);
+void QRubberBand_setGeometry(QRubberBand* self, struct miqt_qrect r) {
+	self->setGeometry(miqt_from_cabi<QRect>(r));
 }
 
 void QRubberBand_setGeometry2(QRubberBand* self, int x, int y, int w, int h) {
@@ -981,16 +977,16 @@ void QRubberBand_move(QRubberBand* self, int x, int y) {
 	self->move(static_cast<int>(x), static_cast<int>(y));
 }
 
-void QRubberBand_moveWithQPoint(QRubberBand* self, QPoint* p) {
-	self->move(*p);
+void QRubberBand_moveWithQPoint(QRubberBand* self, struct miqt_qpoint p) {
+	self->move(miqt_from_cabi<QPoint>(p));
 }
 
 void QRubberBand_resize(QRubberBand* self, int w, int h) {
 	self->resize(static_cast<int>(w), static_cast<int>(h));
 }
 
-void QRubberBand_resizeWithQSize(QRubberBand* self, QSize* s) {
-	self->resize(*s);
+void QRubberBand_resizeWithQSize(QRubberBand* self, struct miqt_qsize s) {
+	self->resize(miqt_from_cabi<QSize>(s));
 }
 
 struct miqt_string QRubberBand_tr2(const char* s, const char* c) {
@@ -1151,8 +1147,8 @@ bool QRubberBand_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QRubberBand_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQRubberBand*>(self)->QRubberBand::sizeHint());
+struct miqt_qsize QRubberBand_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQRubberBand*>(self)->QRubberBand::sizeHint());
 }
 
 bool QRubberBand_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1165,8 +1161,8 @@ bool QRubberBand_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QRubberBand_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQRubberBand*>(self)->QRubberBand::minimumSizeHint());
+struct miqt_qsize QRubberBand_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQRubberBand*>(self)->QRubberBand::minimumSizeHint());
 }
 
 bool QRubberBand_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1686,10 +1682,6 @@ bool QRubberBand_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQRubberBand*>(self)->QRubberBand::disconnectNotify(*signal);
-}
-
-QSize* QRubberBand_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QRubberBand_virtualreturncopy_QVariant(QVariant* src) {

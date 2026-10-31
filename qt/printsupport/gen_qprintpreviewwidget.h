@@ -134,9 +134,9 @@ void QPrintPreviewWidget_virtualbase_setVisible(void* self, bool visible);
 bool QPrintPreviewWidget_override_virtual_devType(void* self, intptr_t slot);
 int QPrintPreviewWidget_virtualbase_devType(const void* self);
 bool QPrintPreviewWidget_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QPrintPreviewWidget_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QPrintPreviewWidget_virtualbase_sizeHint(const void* self);
 bool QPrintPreviewWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QPrintPreviewWidget_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QPrintPreviewWidget_virtualbase_minimumSizeHint(const void* self);
 bool QPrintPreviewWidget_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QPrintPreviewWidget_virtualbase_heightForWidth(const void* self, int param1);
 bool QPrintPreviewWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -223,7 +223,6 @@ bool QPrintPreviewWidget_override_virtual_connectNotify(void* self, intptr_t slo
 void QPrintPreviewWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPrintPreviewWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPrintPreviewWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QPrintPreviewWidget_virtualreturncopy_QSize(QSize* src);
 QVariant* QPrintPreviewWidget_virtualreturncopy_QVariant(QVariant* src);
 
 void QPrintPreviewWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

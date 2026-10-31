@@ -62,9 +62,9 @@ int QwtPlotMultiBarChart_style(const QwtPlotMultiBarChart* self);
 void QwtPlotMultiBarChart_setSymbol(QwtPlotMultiBarChart* self, int valueIndex, QwtColumnSymbol* param2);
 QwtColumnSymbol* QwtPlotMultiBarChart_symbol(const QwtPlotMultiBarChart* self, int valueIndex);
 void QwtPlotMultiBarChart_resetSymbolMap(QwtPlotMultiBarChart* self);
-QRectF* QwtPlotMultiBarChart_boundingRect(const QwtPlotMultiBarChart* self);
+struct miqt_qrectf QwtPlotMultiBarChart_boundingRect(const QwtPlotMultiBarChart* self);
 struct miqt_array /* of QwtLegendData* */  QwtPlotMultiBarChart_legendData(const QwtPlotMultiBarChart* self);
-QwtGraphic* QwtPlotMultiBarChart_legendIcon(const QwtPlotMultiBarChart* self, int index, QSizeF* param2);
+QwtGraphic* QwtPlotMultiBarChart_legendIcon(const QwtPlotMultiBarChart* self, int index, struct miqt_qsizef param2);
 QwtColumnSymbol* QwtPlotMultiBarChart_specialSymbol(const QwtPlotMultiBarChart* self, int sampleIndex, int valueIndex);
 void QwtPlotMultiBarChart_drawBar(const QwtPlotMultiBarChart* self, QPainter* param1, int sampleIndex, int valueIndex, QwtColumnRect* param4);
 

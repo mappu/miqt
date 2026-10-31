@@ -199,12 +199,12 @@ void QVideoEncoderSettings_setCodec(QVideoEncoderSettings* self, struct miqt_str
 	self->setCodec(codec_QString);
 }
 
-QSize* QVideoEncoderSettings_resolution(const QVideoEncoderSettings* self) {
-	return new QSize(self->resolution());
+struct miqt_qsize QVideoEncoderSettings_resolution(const QVideoEncoderSettings* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->resolution());
 }
 
-void QVideoEncoderSettings_setResolution(QVideoEncoderSettings* self, QSize* resolution) {
-	self->setResolution(*resolution);
+void QVideoEncoderSettings_setResolution(QVideoEncoderSettings* self, struct miqt_qsize resolution) {
+	self->setResolution(miqt_from_cabi<QSize>(resolution));
 }
 
 void QVideoEncoderSettings_setResolution2(QVideoEncoderSettings* self, int width, int height) {
@@ -327,12 +327,12 @@ void QImageEncoderSettings_setCodec(QImageEncoderSettings* self, struct miqt_str
 	self->setCodec(codec_QString);
 }
 
-QSize* QImageEncoderSettings_resolution(const QImageEncoderSettings* self) {
-	return new QSize(self->resolution());
+struct miqt_qsize QImageEncoderSettings_resolution(const QImageEncoderSettings* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->resolution());
 }
 
-void QImageEncoderSettings_setResolution(QImageEncoderSettings* self, QSize* resolution) {
-	self->setResolution(*resolution);
+void QImageEncoderSettings_setResolution(QImageEncoderSettings* self, struct miqt_qsize resolution) {
+	self->setResolution(miqt_from_cabi<QSize>(resolution));
 }
 
 void QImageEncoderSettings_setResolution2(QImageEncoderSettings* self, int width, int height) {

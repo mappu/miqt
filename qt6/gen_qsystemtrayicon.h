@@ -54,7 +54,7 @@ struct miqt_string QSystemTrayIcon_toolTip(const QSystemTrayIcon* self);
 void QSystemTrayIcon_setToolTip(QSystemTrayIcon* self, struct miqt_string tip);
 bool QSystemTrayIcon_isSystemTrayAvailable();
 bool QSystemTrayIcon_supportsMessages();
-QRect* QSystemTrayIcon_geometry(const QSystemTrayIcon* self);
+struct miqt_qrect QSystemTrayIcon_geometry(const QSystemTrayIcon* self);
 bool QSystemTrayIcon_isVisible(const QSystemTrayIcon* self);
 void QSystemTrayIcon_setVisible(QSystemTrayIcon* self, bool visible);
 void QSystemTrayIcon_show(QSystemTrayIcon* self);

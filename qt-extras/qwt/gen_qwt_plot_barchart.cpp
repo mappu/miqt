@@ -40,12 +40,12 @@ int QwtPlotBarChart_rtti(const QwtPlotBarChart* self) {
 	return self->rtti();
 }
 
-void QwtPlotBarChart_setSamples(QwtPlotBarChart* self, struct miqt_array /* of QPointF* */  samples) {
+void QwtPlotBarChart_setSamples(QwtPlotBarChart* self, struct miqt_array /* of struct miqt_qpointf */  samples) {
 	QVector<QPointF> samples_QList;
 	samples_QList.reserve(samples.len);
-	QPointF** samples_arr = static_cast<QPointF**>(samples.data);
+	struct miqt_qpointf* samples_arr = static_cast<struct miqt_qpointf*>(samples.data);
 	for(size_t i = 0; i < samples.len; ++i) {
-		samples_QList.push_back(*(samples_arr[i]));
+		samples_QList.push_back(miqt_from_cabi<QPointF>(samples_arr[i]));
 	}
 	self->setSamples(samples_QList);
 }
@@ -77,12 +77,12 @@ int QwtPlotBarChart_legendMode(const QwtPlotBarChart* self) {
 	return static_cast<int>(_ret);
 }
 
-QRectF* QwtPlotBarChart_boundingRect(const QwtPlotBarChart* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotBarChart_boundingRect(const QwtPlotBarChart* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
-QwtColumnSymbol* QwtPlotBarChart_specialSymbol(const QwtPlotBarChart* self, int sampleIndex, QPointF* param2) {
-	return self->specialSymbol(static_cast<int>(sampleIndex), *param2);
+QwtColumnSymbol* QwtPlotBarChart_specialSymbol(const QwtPlotBarChart* self, int sampleIndex, struct miqt_qpointf param2) {
+	return self->specialSymbol(static_cast<int>(sampleIndex), miqt_from_cabi<QPointF>(param2));
 }
 
 QwtText* QwtPlotBarChart_barTitle(const QwtPlotBarChart* self, int sampleIndex) {

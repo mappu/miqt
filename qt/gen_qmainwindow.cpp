@@ -47,7 +47,7 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMainWindow_iconSizeChanged(intptr_t, QSize*);
+void miqt_exec_callback_QMainWindow_iconSizeChanged(intptr_t, struct miqt_qsize);
 void miqt_exec_callback_QMainWindow_toolButtonStyleChanged(intptr_t, int);
 void miqt_exec_callback_QMainWindow_tabifiedDockWidgetActivated(intptr_t, QDockWidget*);
 QMenu* miqt_exec_callback_QMainWindow_createPopupMenu(QMainWindow*, intptr_t);
@@ -55,8 +55,8 @@ void miqt_exec_callback_QMainWindow_contextMenuEvent(QMainWindow*, intptr_t, QCo
 bool miqt_exec_callback_QMainWindow_event(QMainWindow*, intptr_t, QEvent*);
 int miqt_exec_callback_QMainWindow_devType(const QMainWindow*, intptr_t);
 void miqt_exec_callback_QMainWindow_setVisible(QMainWindow*, intptr_t, bool);
-QSize* miqt_exec_callback_QMainWindow_sizeHint(const QMainWindow*, intptr_t);
-QSize* miqt_exec_callback_QMainWindow_minimumSizeHint(const QMainWindow*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMainWindow_sizeHint(const QMainWindow*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMainWindow_minimumSizeHint(const QMainWindow*, intptr_t);
 int miqt_exec_callback_QMainWindow_heightForWidth(const QMainWindow*, intptr_t, int);
 bool miqt_exec_callback_QMainWindow_hasHeightForWidth(const QMainWindow*, intptr_t);
 QPaintEngine* miqt_exec_callback_QMainWindow_paintEngine(const QMainWindow*, intptr_t);
@@ -200,13 +200,11 @@ public:
 			return QMainWindow::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMainWindow_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMainWindow_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMainWindow_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QMainWindow_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -217,13 +215,11 @@ public:
 			return QMainWindow::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMainWindow_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMainWindow_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMainWindow_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QMainWindow_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -983,12 +979,12 @@ struct miqt_string QMainWindow_trUtf8(const char* s) {
 	return _ms;
 }
 
-QSize* QMainWindow_iconSize(const QMainWindow* self) {
-	return new QSize(self->iconSize());
+struct miqt_qsize QMainWindow_iconSize(const QMainWindow* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize());
 }
 
-void QMainWindow_setIconSize(QMainWindow* self, QSize* iconSize) {
-	self->setIconSize(*iconSize);
+void QMainWindow_setIconSize(QMainWindow* self, struct miqt_qsize iconSize) {
+	self->setIconSize(miqt_from_cabi<QSize>(iconSize));
 }
 
 int QMainWindow_toolButtonStyle(const QMainWindow* self) {
@@ -1043,8 +1039,8 @@ int QMainWindow_dockOptions(const QMainWindow* self) {
 	return static_cast<int>(_ret);
 }
 
-bool QMainWindow_isSeparator(const QMainWindow* self, QPoint* pos) {
-	return self->isSeparator(*pos);
+bool QMainWindow_isSeparator(const QMainWindow* self, struct miqt_qpoint pos) {
+	return self->isSeparator(miqt_from_cabi<QPoint>(pos));
 }
 
 QMenuBar* QMainWindow_menuBar(const QMainWindow* self) {
@@ -1226,15 +1222,13 @@ void QMainWindow_setUnifiedTitleAndToolBarOnMac(QMainWindow* self, bool set) {
 	self->setUnifiedTitleAndToolBarOnMac(set);
 }
 
-void QMainWindow_iconSizeChanged(QMainWindow* self, QSize* iconSize) {
-	self->iconSizeChanged(*iconSize);
+void QMainWindow_iconSizeChanged(QMainWindow* self, struct miqt_qsize iconSize) {
+	self->iconSizeChanged(miqt_from_cabi<QSize>(iconSize));
 }
 
 void QMainWindow_connect_iconSizeChanged(QMainWindow* self, intptr_t slot) {
 	QMainWindow::connect(self, static_cast<void (QMainWindow::*)(const QSize&)>(&QMainWindow::iconSizeChanged), self, [=](const QSize& iconSize) {
-		const QSize& iconSize_ret = iconSize;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&iconSize_ret);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(iconSize);
 		miqt_exec_callback_QMainWindow_iconSizeChanged(slot, sigval1);
 	});
 }
@@ -1404,8 +1398,8 @@ bool QMainWindow_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMainWindow_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMainWindow*>(self)->QMainWindow::sizeHint());
+struct miqt_qsize QMainWindow_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMainWindow*>(self)->QMainWindow::sizeHint());
 }
 
 bool QMainWindow_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1418,8 +1412,8 @@ bool QMainWindow_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMainWindow_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMainWindow*>(self)->QMainWindow::minimumSizeHint());
+struct miqt_qsize QMainWindow_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMainWindow*>(self)->QMainWindow::minimumSizeHint());
 }
 
 bool QMainWindow_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1995,10 +1989,6 @@ bool QMainWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QMainWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQMainWindow*>(self)->QMainWindow::disconnectNotify(*signal);
-}
-
-QSize* QMainWindow_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QMainWindow_virtualreturncopy_QVariant(QVariant* src) {

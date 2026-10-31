@@ -42,7 +42,7 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QSizeGrip_sizeHint(const QSizeGrip*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSizeGrip_sizeHint(const QSizeGrip*, intptr_t);
 void miqt_exec_callback_QSizeGrip_setVisible(QSizeGrip*, intptr_t, bool);
 void miqt_exec_callback_QSizeGrip_paintEvent(QSizeGrip*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QSizeGrip_mousePressEvent(QSizeGrip*, intptr_t, QMouseEvent*);
@@ -54,7 +54,7 @@ void miqt_exec_callback_QSizeGrip_hideEvent(QSizeGrip*, intptr_t, QHideEvent*);
 bool miqt_exec_callback_QSizeGrip_eventFilter(QSizeGrip*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QSizeGrip_event(QSizeGrip*, intptr_t, QEvent*);
 int miqt_exec_callback_QSizeGrip_devType(const QSizeGrip*, intptr_t);
-QSize* miqt_exec_callback_QSizeGrip_minimumSizeHint(const QSizeGrip*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSizeGrip_minimumSizeHint(const QSizeGrip*, intptr_t);
 int miqt_exec_callback_QSizeGrip_heightForWidth(const QSizeGrip*, intptr_t, int);
 bool miqt_exec_callback_QSizeGrip_hasHeightForWidth(const QSizeGrip*, intptr_t);
 QPaintEngine* miqt_exec_callback_QSizeGrip_paintEngine(const QSizeGrip*, intptr_t);
@@ -109,13 +109,11 @@ public:
 			return QSizeGrip::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSizeGrip_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSizeGrip_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSizeGrip_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QSizeGrip_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -310,13 +308,11 @@ public:
 			return QSizeGrip::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSizeGrip_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSizeGrip_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSizeGrip_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QSizeGrip_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -939,8 +935,8 @@ struct miqt_string QSizeGrip_tr(const char* s) {
 	return _ms;
 }
 
-QSize* QSizeGrip_sizeHint(const QSizeGrip* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QSizeGrip_sizeHint(const QSizeGrip* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QSizeGrip_setVisible(QSizeGrip* self, bool visible) {
@@ -979,8 +975,8 @@ bool QSizeGrip_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSizeGrip_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSizeGrip*>(self)->QSizeGrip::sizeHint());
+struct miqt_qsize QSizeGrip_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSizeGrip*>(self)->QSizeGrip::sizeHint());
 }
 
 bool QSizeGrip_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1147,8 +1143,8 @@ bool QSizeGrip_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSizeGrip_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSizeGrip*>(self)->QSizeGrip::minimumSizeHint());
+struct miqt_qsize QSizeGrip_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSizeGrip*>(self)->QSizeGrip::minimumSizeHint());
 }
 
 bool QSizeGrip_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1626,10 +1622,6 @@ bool QSizeGrip_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSizeGrip*>(self)->QSizeGrip::disconnectNotify(*signal);
-}
-
-QSize* QSizeGrip_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QSizeGrip_virtualreturncopy_QVariant(QVariant* src) {

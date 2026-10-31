@@ -124,9 +124,9 @@ int QDesignerPropertyEditorInterface_virtualbase_devType(const void* self);
 bool QDesignerPropertyEditorInterface_override_virtual_setVisible(void* self, intptr_t slot);
 void QDesignerPropertyEditorInterface_virtualbase_setVisible(void* self, bool visible);
 bool QDesignerPropertyEditorInterface_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QDesignerPropertyEditorInterface_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QDesignerPropertyEditorInterface_virtualbase_sizeHint(const void* self);
 bool QDesignerPropertyEditorInterface_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QDesignerPropertyEditorInterface_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QDesignerPropertyEditorInterface_virtualbase_minimumSizeHint(const void* self);
 bool QDesignerPropertyEditorInterface_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QDesignerPropertyEditorInterface_virtualbase_heightForWidth(const void* self, int param1);
 bool QDesignerPropertyEditorInterface_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -213,7 +213,6 @@ bool QDesignerPropertyEditorInterface_override_virtual_connectNotify(void* self,
 void QDesignerPropertyEditorInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesignerPropertyEditorInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesignerPropertyEditorInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QDesignerPropertyEditorInterface_virtualreturncopy_QSize(QSize* src);
 QVariant* QDesignerPropertyEditorInterface_virtualreturncopy_QVariant(QVariant* src);
 
 void QDesignerPropertyEditorInterface_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

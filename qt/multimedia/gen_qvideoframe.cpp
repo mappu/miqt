@@ -21,8 +21,8 @@ QVideoFrame* QVideoFrame_new() {
 	return new (std::nothrow) QVideoFrame();
 }
 
-QVideoFrame* QVideoFrame_new2(int bytes, QSize* size, int bytesPerLine, int format) {
-	return new (std::nothrow) QVideoFrame(static_cast<int>(bytes), *size, static_cast<int>(bytesPerLine), static_cast<QVideoFrame::PixelFormat>(format));
+QVideoFrame* QVideoFrame_new2(int bytes, struct miqt_qsize size, int bytesPerLine, int format) {
+	return new (std::nothrow) QVideoFrame(static_cast<int>(bytes), miqt_from_cabi<QSize>(size), static_cast<int>(bytesPerLine), static_cast<QVideoFrame::PixelFormat>(format));
 }
 
 QVideoFrame* QVideoFrame_new3(QImage* image) {
@@ -59,8 +59,8 @@ int QVideoFrame_handleType(const QVideoFrame* self) {
 	return static_cast<int>(_ret);
 }
 
-QSize* QVideoFrame_size(const QVideoFrame* self) {
-	return new QSize(self->size());
+struct miqt_qsize QVideoFrame_size(const QVideoFrame* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
 int QVideoFrame_width(const QVideoFrame* self) {

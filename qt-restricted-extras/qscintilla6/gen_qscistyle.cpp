@@ -18,9 +18,9 @@ QsciStyle* QsciStyle_new() {
 	return new (std::nothrow) QsciStyle();
 }
 
-QsciStyle* QsciStyle_new2(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font) {
+QsciStyle* QsciStyle_new2(int style, struct miqt_string description, struct miqt_qcolor color, struct miqt_qcolor paper, QFont* font) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new (std::nothrow) QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font);
+	return new (std::nothrow) QsciStyle(static_cast<int>(style), description_QString, miqt_from_cabi<QColor>(color), miqt_from_cabi<QColor>(paper), *font);
 }
 
 QsciStyle* QsciStyle_new3(QsciStyle* param1) {
@@ -31,9 +31,9 @@ QsciStyle* QsciStyle_new4(int style) {
 	return new (std::nothrow) QsciStyle(static_cast<int>(style));
 }
 
-QsciStyle* QsciStyle_new5(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, bool eolFill) {
+QsciStyle* QsciStyle_new5(int style, struct miqt_string description, struct miqt_qcolor color, struct miqt_qcolor paper, QFont* font, bool eolFill) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new (std::nothrow) QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font, eolFill);
+	return new (std::nothrow) QsciStyle(static_cast<int>(style), description_QString, miqt_from_cabi<QColor>(color), miqt_from_cabi<QColor>(paper), *font, eolFill);
 }
 
 void QsciStyle_apply(const QsciStyle* self, QsciScintillaBase* sci) {
@@ -64,20 +64,20 @@ struct miqt_string QsciStyle_description(const QsciStyle* self) {
 	return _ms;
 }
 
-void QsciStyle_setColor(QsciStyle* self, QColor* color) {
-	self->setColor(*color);
+void QsciStyle_setColor(QsciStyle* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QsciStyle_color(const QsciStyle* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QsciStyle_color(const QsciStyle* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-void QsciStyle_setPaper(QsciStyle* self, QColor* paper) {
-	self->setPaper(*paper);
+void QsciStyle_setPaper(QsciStyle* self, struct miqt_qcolor paper) {
+	self->setPaper(miqt_from_cabi<QColor>(paper));
 }
 
-QColor* QsciStyle_paper(const QsciStyle* self) {
-	return new QColor(self->paper());
+struct miqt_qcolor QsciStyle_paper(const QsciStyle* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->paper());
 }
 
 void QsciStyle_setFont(QsciStyle* self, QFont* font) {

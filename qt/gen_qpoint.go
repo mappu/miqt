@@ -9,334 +9,208 @@ package qt
 import "C"
 
 import (
-	"runtime"
+	"github.com/mappu/miqt/libmiqt"
 	"unsafe"
 )
 
+// QPoint is a plain Go struct with the same memory layout as the
+// Qt class. The zero value is not always the same as the default constructor;
+// use NewQPoint().
 type QPoint struct {
-	h  *C.QPoint
-	gc *[1]unsafe.Pointer
-}
-
-// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
-// and its base class wrappers, so that they all keep it alive.
-func (this *QPoint) miqtSetGC(gc *[1]unsafe.Pointer) {
-	this.gc = gc
+	xp int32
+	yp int32
 }
 
 func (this *QPoint) cPointer() *C.QPoint {
-	if this == nil {
-		return nil
-	}
-	return this.h
+	return (*C.QPoint)(unsafe.Pointer(this))
 }
 
 func (this *QPoint) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
+	return unsafe.Pointer(this)
 }
 
-// newQPoint constructs the type using only CGO pointers.
+// newQPoint views C++ memory as this type, without copying it.
 func newQPoint(h *C.QPoint) *QPoint {
-	if h == nil {
-		return nil
-	}
-
-	return &QPoint{h: h}
+	return (*QPoint)(unsafe.Pointer(h))
 }
 
-// UnsafeNewQPoint constructs the type using only unsafe pointers.
+// UnsafeNewQPoint views C++ memory as this type, without copying it.
 func UnsafeNewQPoint(h unsafe.Pointer) *QPoint {
-	return newQPoint((*C.QPoint)(h))
+	return (*QPoint)(h)
 }
 
 // NewQPoint constructs a new QPoint object.
-func NewQPoint() *QPoint {
+func NewQPoint() QPoint {
 
-	return newQPoint(C.QPoint_new())
+	return libmiqt.ValueCast[QPoint](C.QPoint_new())
 }
 
 // NewQPoint2 constructs a new QPoint object.
-func NewQPoint2(xpos int, ypos int) *QPoint {
+func NewQPoint2(xpos int, ypos int) QPoint {
 
-	return newQPoint(C.QPoint_new2((C.int)(xpos), (C.int)(ypos)))
+	return libmiqt.ValueCast[QPoint](C.QPoint_new2((C.int)(xpos), (C.int)(ypos)))
 }
 
 // NewQPoint3 constructs a new QPoint object.
-func NewQPoint3(param1 *QPoint) *QPoint {
-	defer runtime.KeepAlive(param1)
+func NewQPoint3(param1 QPoint) QPoint {
 
-	return newQPoint(C.QPoint_new3(param1.cPointer()))
+	return libmiqt.ValueCast[QPoint](C.QPoint_new3(libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 }
 
-func (this *QPoint) IsNull() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QPoint_isNull(this.h))
+func (this QPoint) IsNull() bool {
+	return (bool)(C.QPoint_isNull(libmiqt.ValueCast[C.struct_miqt_qpoint](this)))
 }
 
-func (this *QPoint) X() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QPoint_x(this.h))
+func (this QPoint) X() int {
+	return (int)(C.QPoint_x(libmiqt.ValueCast[C.struct_miqt_qpoint](this)))
 }
 
-func (this *QPoint) Y() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QPoint_y(this.h))
+func (this QPoint) Y() int {
+	return (int)(C.QPoint_y(libmiqt.ValueCast[C.struct_miqt_qpoint](this)))
 }
 
 func (this *QPoint) SetX(x int) {
-	defer runtime.KeepAlive(this)
-	C.QPoint_setX(this.h, (C.int)(x))
+	C.QPoint_setX(this.cPointer(), (C.int)(x))
 }
 
 func (this *QPoint) SetY(y int) {
-	defer runtime.KeepAlive(this)
-	C.QPoint_setY(this.h, (C.int)(y))
+	C.QPoint_setY(this.cPointer(), (C.int)(y))
 }
 
-func (this *QPoint) ManhattanLength() int {
-	defer runtime.KeepAlive(this)
-	return (int)(C.QPoint_manhattanLength(this.h))
+func (this QPoint) ManhattanLength() int {
+	return (int)(C.QPoint_manhattanLength(libmiqt.ValueCast[C.struct_miqt_qpoint](this)))
 }
 
-func (this *QPoint) Transposed() *QPoint {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QPoint_transposed(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QPoint) Transposed() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QPoint_transposed(libmiqt.ValueCast[C.struct_miqt_qpoint](this)))
 }
 
-func (this *QPoint) OperatorPlusAssign(p *QPoint) *QPoint {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_ret := newQPoint(C.QPoint_operatorPlusAssign(this.h, p.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QPoint) OperatorPlusAssign(p QPoint) *QPoint {
+	return newQPoint(C.QPoint_operatorPlusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
-func (this *QPoint) OperatorMinusAssign(p *QPoint) *QPoint {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_ret := newQPoint(C.QPoint_operatorMinusAssign(this.h, p.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QPoint) OperatorMinusAssign(p QPoint) *QPoint {
+	return newQPoint(C.QPoint_operatorMinusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
 func (this *QPoint) OperatorMultiplyAssign(factor float32) *QPoint {
-	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QPoint_operatorMultiplyAssign(this.h, (C.float)(factor)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQPoint(C.QPoint_operatorMultiplyAssign(this.cPointer(), (C.float)(factor)))
 }
 
 func (this *QPoint) OperatorMultiplyAssignWithFactor(factor float64) *QPoint {
-	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QPoint_operatorMultiplyAssignWithFactor(this.h, (C.double)(factor)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQPoint(C.QPoint_operatorMultiplyAssignWithFactor(this.cPointer(), (C.double)(factor)))
 }
 
 func (this *QPoint) OperatorMultiplyAssign2(factor int) *QPoint {
-	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QPoint_operatorMultiplyAssign2(this.h, (C.int)(factor)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQPoint(C.QPoint_operatorMultiplyAssign2(this.cPointer(), (C.int)(factor)))
 }
 
 func (this *QPoint) OperatorDivideAssign(divisor float64) *QPoint {
-	defer runtime.KeepAlive(this)
-	_ret := newQPoint(C.QPoint_operatorDivideAssign(this.h, (C.double)(divisor)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQPoint(C.QPoint_operatorDivideAssign(this.cPointer(), (C.double)(divisor)))
 }
 
-func QPoint_DotProduct(p1 *QPoint, p2 *QPoint) int {
-	defer runtime.KeepAlive(p1)
-	defer runtime.KeepAlive(p2)
-	return (int)(C.QPoint_dotProduct(p1.cPointer(), p2.cPointer()))
+func QPoint_DotProduct(p1 QPoint, p2 QPoint) int {
+	return (int)(C.QPoint_dotProduct(libmiqt.ValueCast[C.struct_miqt_qpoint](p1), libmiqt.ValueCast[C.struct_miqt_qpoint](p2)))
 }
 
-// Delete this object from C++ memory.
-func (this *QPoint) Delete() {
-	C.QPoint_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this object, so that it will be deleted
-// from C++ memory once it (and every value copy of it) is unreachable
-// from Go memory.
-func (this *QPoint) GoGC() {
-	if this.gc != nil {
-		return
-	}
-	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
-	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
-		C.QPoint_delete((*C.QPoint)(gc[0]))
-	})
-	this.miqtSetGC(gc)
-}
-
+// QPointF is a plain Go struct with the same memory layout as the
+// Qt class. The zero value is not always the same as the default constructor;
+// use NewQPointF().
 type QPointF struct {
-	h  *C.QPointF
-	gc *[1]unsafe.Pointer
-}
-
-// miqtSetGC shares the GoGC() finalizer object gc with this wrapper
-// and its base class wrappers, so that they all keep it alive.
-func (this *QPointF) miqtSetGC(gc *[1]unsafe.Pointer) {
-	this.gc = gc
+	xp float64
+	yp float64
 }
 
 func (this *QPointF) cPointer() *C.QPointF {
-	if this == nil {
-		return nil
-	}
-	return this.h
+	return (*C.QPointF)(unsafe.Pointer(this))
 }
 
 func (this *QPointF) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
+	return unsafe.Pointer(this)
 }
 
-// newQPointF constructs the type using only CGO pointers.
+// newQPointF views C++ memory as this type, without copying it.
 func newQPointF(h *C.QPointF) *QPointF {
-	if h == nil {
-		return nil
-	}
-
-	return &QPointF{h: h}
+	return (*QPointF)(unsafe.Pointer(h))
 }
 
-// UnsafeNewQPointF constructs the type using only unsafe pointers.
+// UnsafeNewQPointF views C++ memory as this type, without copying it.
 func UnsafeNewQPointF(h unsafe.Pointer) *QPointF {
-	return newQPointF((*C.QPointF)(h))
+	return (*QPointF)(h)
 }
 
 // NewQPointF constructs a new QPointF object.
-func NewQPointF() *QPointF {
+func NewQPointF() QPointF {
 
-	return newQPointF(C.QPointF_new())
+	return libmiqt.ValueCast[QPointF](C.QPointF_new())
 }
 
 // NewQPointF2 constructs a new QPointF object.
-func NewQPointF2(p *QPoint) *QPointF {
-	defer runtime.KeepAlive(p)
+func NewQPointF2(p QPoint) QPointF {
 
-	return newQPointF(C.QPointF_new2(p.cPointer()))
+	return libmiqt.ValueCast[QPointF](C.QPointF_new2(libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
 // NewQPointF3 constructs a new QPointF object.
-func NewQPointF3(xpos float64, ypos float64) *QPointF {
+func NewQPointF3(xpos float64, ypos float64) QPointF {
 
-	return newQPointF(C.QPointF_new3((C.double)(xpos), (C.double)(ypos)))
+	return libmiqt.ValueCast[QPointF](C.QPointF_new3((C.double)(xpos), (C.double)(ypos)))
 }
 
 // NewQPointF4 constructs a new QPointF object.
-func NewQPointF4(param1 *QPointF) *QPointF {
-	defer runtime.KeepAlive(param1)
+func NewQPointF4(param1 QPointF) QPointF {
 
-	return newQPointF(C.QPointF_new4(param1.cPointer()))
+	return libmiqt.ValueCast[QPointF](C.QPointF_new4(libmiqt.ValueCast[C.struct_miqt_qpointf](param1)))
 }
 
-func (this *QPointF) ManhattanLength() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QPointF_manhattanLength(this.h))
+func (this QPointF) ManhattanLength() float64 {
+	return (float64)(C.QPointF_manhattanLength(libmiqt.ValueCast[C.struct_miqt_qpointf](this)))
 }
 
-func (this *QPointF) IsNull() bool {
-	defer runtime.KeepAlive(this)
-	return (bool)(C.QPointF_isNull(this.h))
+func (this QPointF) IsNull() bool {
+	return (bool)(C.QPointF_isNull(libmiqt.ValueCast[C.struct_miqt_qpointf](this)))
 }
 
-func (this *QPointF) X() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QPointF_x(this.h))
+func (this QPointF) X() float64 {
+	return (float64)(C.QPointF_x(libmiqt.ValueCast[C.struct_miqt_qpointf](this)))
 }
 
-func (this *QPointF) Y() float64 {
-	defer runtime.KeepAlive(this)
-	return (float64)(C.QPointF_y(this.h))
+func (this QPointF) Y() float64 {
+	return (float64)(C.QPointF_y(libmiqt.ValueCast[C.struct_miqt_qpointf](this)))
 }
 
 func (this *QPointF) SetX(x float64) {
-	defer runtime.KeepAlive(this)
-	C.QPointF_setX(this.h, (C.double)(x))
+	C.QPointF_setX(this.cPointer(), (C.double)(x))
 }
 
 func (this *QPointF) SetY(y float64) {
-	defer runtime.KeepAlive(this)
-	C.QPointF_setY(this.h, (C.double)(y))
+	C.QPointF_setY(this.cPointer(), (C.double)(y))
 }
 
-func (this *QPointF) Transposed() *QPointF {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPointF(C.QPointF_transposed(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this QPointF) Transposed() QPointF {
+	return libmiqt.ValueCast[QPointF](C.QPointF_transposed(libmiqt.ValueCast[C.struct_miqt_qpointf](this)))
 }
 
-func (this *QPointF) OperatorPlusAssign(p *QPointF) *QPointF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_ret := newQPointF(C.QPointF_operatorPlusAssign(this.h, p.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QPointF) OperatorPlusAssign(p QPointF) *QPointF {
+	return newQPointF(C.QPointF_operatorPlusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p)))
 }
 
-func (this *QPointF) OperatorMinusAssign(p *QPointF) *QPointF {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_ret := newQPointF(C.QPointF_operatorMinusAssign(this.h, p.cPointer()))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+func (this *QPointF) OperatorMinusAssign(p QPointF) *QPointF {
+	return newQPointF(C.QPointF_operatorMinusAssign(this.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpointf](p)))
 }
 
 func (this *QPointF) OperatorMultiplyAssign(c float64) *QPointF {
-	defer runtime.KeepAlive(this)
-	_ret := newQPointF(C.QPointF_operatorMultiplyAssign(this.h, (C.double)(c)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQPointF(C.QPointF_operatorMultiplyAssign(this.cPointer(), (C.double)(c)))
 }
 
 func (this *QPointF) OperatorDivideAssign(c float64) *QPointF {
-	defer runtime.KeepAlive(this)
-	_ret := newQPointF(C.QPointF_operatorDivideAssign(this.h, (C.double)(c)))
-	_ret.miqtSetGC(this.gc)
-	return _ret
+	return newQPointF(C.QPointF_operatorDivideAssign(this.cPointer(), (C.double)(c)))
 }
 
-func QPointF_DotProduct(p1 *QPointF, p2 *QPointF) float64 {
-	defer runtime.KeepAlive(p1)
-	defer runtime.KeepAlive(p2)
-	return (float64)(C.QPointF_dotProduct(p1.cPointer(), p2.cPointer()))
+func QPointF_DotProduct(p1 QPointF, p2 QPointF) float64 {
+	return (float64)(C.QPointF_dotProduct(libmiqt.ValueCast[C.struct_miqt_qpointf](p1), libmiqt.ValueCast[C.struct_miqt_qpointf](p2)))
 }
 
-func (this *QPointF) ToPoint() *QPoint {
-	defer runtime.KeepAlive(this)
-	_goptr := newQPoint(C.QPointF_toPoint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
-}
-
-// Delete this object from C++ memory.
-func (this *QPointF) Delete() {
-	C.QPointF_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this object, so that it will be deleted
-// from C++ memory once it (and every value copy of it) is unreachable
-// from Go memory.
-func (this *QPointF) GoGC() {
-	if this.gc != nil {
-		return
-	}
-	gc := &[1]unsafe.Pointer{unsafe.Pointer(this.h)}
-	runtime.SetFinalizer(gc, func(gc *[1]unsafe.Pointer) {
-		C.QPointF_delete((*C.QPointF)(gc[0]))
-	})
-	this.miqtSetGC(gc)
+func (this QPointF) ToPoint() QPoint {
+	return libmiqt.ValueCast[QPoint](C.QPointF_toPoint(libmiqt.ValueCast[C.struct_miqt_qpointf](this)))
 }

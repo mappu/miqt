@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -106,12 +107,9 @@ func (this *QwtPlotRasterItem) InvalidateCache() {
 	C.QwtPlotRasterItem_invalidateCache(this.h)
 }
 
-func (this *QwtPlotRasterItem) PixelHint(param1 *qt.QRectF) *qt.QRectF {
+func (this *QwtPlotRasterItem) PixelHint(param1 qt.QRectF) qt.QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotRasterItem_pixelHint(this.h, (*C.QRectF)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotRasterItem_pixelHint(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 }
 
 func (this *QwtPlotRasterItem) Interval(param1 qt.Axis) *QwtInterval {
@@ -121,11 +119,9 @@ func (this *QwtPlotRasterItem) Interval(param1 qt.Axis) *QwtInterval {
 	return _goptr
 }
 
-func (this *QwtPlotRasterItem) BoundingRect() *qt.QRectF {
+func (this *QwtPlotRasterItem) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotRasterItem_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotRasterItem_boundingRect(this.h))
 }
 
 func (this *QwtPlotRasterItem) SetPaintAttribute2(param1 QwtPlotRasterItem__PaintAttribute, on bool) {

@@ -17,8 +17,8 @@ QLine* QLine_new() {
 	return new (std::nothrow) QLine();
 }
 
-QLine* QLine_new2(QPoint* pt1, QPoint* pt2) {
-	return new (std::nothrow) QLine(*pt1, *pt2);
+QLine* QLine_new2(struct miqt_qpoint pt1, struct miqt_qpoint pt2) {
+	return new (std::nothrow) QLine(miqt_from_cabi<QPoint>(pt1), miqt_from_cabi<QPoint>(pt2));
 }
 
 QLine* QLine_new3(int x1, int y1, int x2, int y2) {
@@ -33,12 +33,12 @@ bool QLine_isNull(const QLine* self) {
 	return self->isNull();
 }
 
-QPoint* QLine_p1(const QLine* self) {
-	return new QPoint(self->p1());
+struct miqt_qpoint QLine_p1(const QLine* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->p1());
 }
 
-QPoint* QLine_p2(const QLine* self) {
-	return new QPoint(self->p2());
+struct miqt_qpoint QLine_p2(const QLine* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->p2());
 }
 
 int QLine_x1(const QLine* self) {
@@ -65,36 +65,36 @@ int QLine_dy(const QLine* self) {
 	return self->dy();
 }
 
-void QLine_translate(QLine* self, QPoint* p) {
-	self->translate(*p);
+void QLine_translate(QLine* self, struct miqt_qpoint p) {
+	self->translate(miqt_from_cabi<QPoint>(p));
 }
 
 void QLine_translate2(QLine* self, int dx, int dy) {
 	self->translate(static_cast<int>(dx), static_cast<int>(dy));
 }
 
-QLine* QLine_translated(const QLine* self, QPoint* p) {
-	return new QLine(self->translated(*p));
+QLine* QLine_translated(const QLine* self, struct miqt_qpoint p) {
+	return new QLine(self->translated(miqt_from_cabi<QPoint>(p)));
 }
 
 QLine* QLine_translated2(const QLine* self, int dx, int dy) {
 	return new QLine(self->translated(static_cast<int>(dx), static_cast<int>(dy)));
 }
 
-QPoint* QLine_center(const QLine* self) {
-	return new QPoint(self->center());
+struct miqt_qpoint QLine_center(const QLine* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->center());
 }
 
-void QLine_setP1(QLine* self, QPoint* p1) {
-	self->setP1(*p1);
+void QLine_setP1(QLine* self, struct miqt_qpoint p1) {
+	self->setP1(miqt_from_cabi<QPoint>(p1));
 }
 
-void QLine_setP2(QLine* self, QPoint* p2) {
-	self->setP2(*p2);
+void QLine_setP2(QLine* self, struct miqt_qpoint p2) {
+	self->setP2(miqt_from_cabi<QPoint>(p2));
 }
 
-void QLine_setPoints(QLine* self, QPoint* p1, QPoint* p2) {
-	self->setPoints(*p1, *p2);
+void QLine_setPoints(QLine* self, struct miqt_qpoint p1, struct miqt_qpoint p2) {
+	self->setPoints(miqt_from_cabi<QPoint>(p1), miqt_from_cabi<QPoint>(p2));
 }
 
 void QLine_setLine(QLine* self, int x1, int y1, int x2, int y2) {
@@ -117,8 +117,8 @@ QLineF* QLineF_new() {
 	return new (std::nothrow) QLineF();
 }
 
-QLineF* QLineF_new2(QPointF* pt1, QPointF* pt2) {
-	return new (std::nothrow) QLineF(*pt1, *pt2);
+QLineF* QLineF_new2(struct miqt_qpointf pt1, struct miqt_qpointf pt2) {
+	return new (std::nothrow) QLineF(miqt_from_cabi<QPointF>(pt1), miqt_from_cabi<QPointF>(pt2));
 }
 
 QLineF* QLineF_new3(double x1, double y1, double x2, double y2) {
@@ -141,12 +141,12 @@ bool QLineF_isNull(const QLineF* self) {
 	return self->isNull();
 }
 
-QPointF* QLineF_p1(const QLineF* self) {
-	return new QPointF(self->p1());
+struct miqt_qpointf QLineF_p1(const QLineF* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->p1());
 }
 
-QPointF* QLineF_p2(const QLineF* self) {
-	return new QPointF(self->p2());
+struct miqt_qpointf QLineF_p2(const QLineF* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->p2());
 }
 
 double QLineF_x1(const QLineF* self) {
@@ -225,40 +225,40 @@ double QLineF_angleWithQLineF(const QLineF* self, QLineF* l) {
 	return static_cast<double>(_ret);
 }
 
-QPointF* QLineF_pointAt(const QLineF* self, double t) {
-	return new QPointF(self->pointAt(static_cast<qreal>(t)));
+struct miqt_qpointf QLineF_pointAt(const QLineF* self, double t) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->pointAt(static_cast<qreal>(t)));
 }
 
-void QLineF_translate(QLineF* self, QPointF* p) {
-	self->translate(*p);
+void QLineF_translate(QLineF* self, struct miqt_qpointf p) {
+	self->translate(miqt_from_cabi<QPointF>(p));
 }
 
 void QLineF_translate2(QLineF* self, double dx, double dy) {
 	self->translate(static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
-QLineF* QLineF_translated(const QLineF* self, QPointF* p) {
-	return new QLineF(self->translated(*p));
+QLineF* QLineF_translated(const QLineF* self, struct miqt_qpointf p) {
+	return new QLineF(self->translated(miqt_from_cabi<QPointF>(p)));
 }
 
 QLineF* QLineF_translated2(const QLineF* self, double dx, double dy) {
 	return new QLineF(self->translated(static_cast<qreal>(dx), static_cast<qreal>(dy)));
 }
 
-QPointF* QLineF_center(const QLineF* self) {
-	return new QPointF(self->center());
+struct miqt_qpointf QLineF_center(const QLineF* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->center());
 }
 
-void QLineF_setP1(QLineF* self, QPointF* p1) {
-	self->setP1(*p1);
+void QLineF_setP1(QLineF* self, struct miqt_qpointf p1) {
+	self->setP1(miqt_from_cabi<QPointF>(p1));
 }
 
-void QLineF_setP2(QLineF* self, QPointF* p2) {
-	self->setP2(*p2);
+void QLineF_setP2(QLineF* self, struct miqt_qpointf p2) {
+	self->setP2(miqt_from_cabi<QPointF>(p2));
 }
 
-void QLineF_setPoints(QLineF* self, QPointF* p1, QPointF* p2) {
-	self->setPoints(*p1, *p2);
+void QLineF_setPoints(QLineF* self, struct miqt_qpointf p1, struct miqt_qpointf p2) {
+	self->setPoints(miqt_from_cabi<QPointF>(p1), miqt_from_cabi<QPointF>(p2));
 }
 
 void QLineF_setLine(QLineF* self, double x1, double y1, double x2, double y2) {

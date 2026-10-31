@@ -32,7 +32,6 @@ func main() {
 
 	screen := screenshot.Screen()
 	rect := screen.Geometry()
-	defer rect.Delete()
 
 	screenshotLabel.SetMinimumSize2(rect.Width()/8, rect.Height()/8)
 
@@ -136,23 +135,18 @@ func main() {
 	delaySpinBox.SetValue(5)
 
 	availableGeometry := screen.AvailableGeometry()
-	defer availableGeometry.Delete()
 
 	topLeftPoint := availableGeometry.TopLeft()
-	defer topLeftPoint.Delete()
 
 	offset := qt.NewQPoint2(50, 50)
-	defer offset.Delete()
 
 	topLeftPoint.OperatorPlusAssign(offset)
 
 	screenshot.MoveWithQPoint(topLeftPoint)
 	screenshot.OnResizeEvent(func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent) {
 		scaledSize := originalPixmap.Size()
-		defer scaledSize.Delete()
 
 		labelSize := screenshotLabel.Size()
-		defer labelSize.Delete()
 
 		scaledSize.Scale2(labelSize, qt.KeepAspectRatio)
 
@@ -160,7 +154,6 @@ func main() {
 		defer pixmap.Delete()
 
 		size := pixmap.Size()
-		defer size.Delete()
 
 		if scaledSize != size {
 			updateScreenshotLabel()
@@ -199,7 +192,6 @@ func shootScreenshot() {
 
 func updateScreenshotLabel() {
 	size := screenshotLabel.Size()
-	defer size.Delete()
 
 	pixmap := originalPixmap.Scaled5(size, qt.KeepAspectRatio, qt.SmoothTransformation)
 	defer pixmap.Delete()

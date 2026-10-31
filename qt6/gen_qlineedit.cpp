@@ -57,8 +57,8 @@ void miqt_exec_callback_QLineEdit_returnPressed(intptr_t);
 void miqt_exec_callback_QLineEdit_editingFinished(intptr_t);
 void miqt_exec_callback_QLineEdit_selectionChanged(intptr_t);
 void miqt_exec_callback_QLineEdit_inputRejected(intptr_t);
-QSize* miqt_exec_callback_QLineEdit_sizeHint(const QLineEdit*, intptr_t);
-QSize* miqt_exec_callback_QLineEdit_minimumSizeHint(const QLineEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QLineEdit_sizeHint(const QLineEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QLineEdit_minimumSizeHint(const QLineEdit*, intptr_t);
 void miqt_exec_callback_QLineEdit_mousePressEvent(QLineEdit*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QLineEdit_mouseMoveEvent(QLineEdit*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QLineEdit_mouseReleaseEvent(QLineEdit*, intptr_t, QMouseEvent*);
@@ -128,13 +128,11 @@ public:
 			return QLineEdit::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QLineEdit_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QLineEdit_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QLineEdit_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QLineEdit_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -145,13 +143,11 @@ public:
 			return QLineEdit::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QLineEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QLineEdit_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QLineEdit_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QLineEdit_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -937,7 +933,7 @@ public:
 	friend void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
-	friend QRect* QLineEdit_protectedbase_cursorRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrect QLineEdit_protectedbase_cursorRect(bool* _dynamic_cast_ok, const void* self);
 	friend void QLineEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QLineEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 	friend void QLineEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -1085,12 +1081,12 @@ QCompleter* QLineEdit_completer(const QLineEdit* self) {
 	return self->completer();
 }
 
-QSize* QLineEdit_sizeHint(const QLineEdit* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QLineEdit_sizeHint(const QLineEdit* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QLineEdit_minimumSizeHint(const QLineEdit* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QLineEdit_minimumSizeHint(const QLineEdit* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 int QLineEdit_cursorPosition(const QLineEdit* self) {
@@ -1101,8 +1097,8 @@ void QLineEdit_setCursorPosition(QLineEdit* self, int cursorPosition) {
 	self->setCursorPosition(static_cast<int>(cursorPosition));
 }
 
-int QLineEdit_cursorPositionAt(QLineEdit* self, QPoint* pos) {
-	return self->cursorPositionAt(*pos);
+int QLineEdit_cursorPositionAt(QLineEdit* self, struct miqt_qpoint pos) {
+	return self->cursorPositionAt(miqt_from_cabi<QPoint>(pos));
 }
 
 void QLineEdit_setAlignment(QLineEdit* self, int flag) {
@@ -1234,12 +1230,12 @@ void QLineEdit_setTextMargins(QLineEdit* self, int left, int top, int right, int
 	self->setTextMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-void QLineEdit_setTextMarginsWithMargins(QLineEdit* self, QMargins* margins) {
-	self->setTextMargins(*margins);
+void QLineEdit_setTextMarginsWithMargins(QLineEdit* self, struct miqt_qmargins margins) {
+	self->setTextMargins(miqt_from_cabi<QMargins>(margins));
 }
 
-QMargins* QLineEdit_textMargins(const QLineEdit* self) {
-	return new QMargins(self->textMargins());
+struct miqt_qmargins QLineEdit_textMargins(const QLineEdit* self) {
+	return miqt_to_cabi<struct miqt_qmargins>(self->textMargins());
 }
 
 void QLineEdit_addAction(QLineEdit* self, QAction* action, int position) {
@@ -1442,8 +1438,8 @@ bool QLineEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QLineEdit_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQLineEdit*>(self)->QLineEdit::sizeHint());
+struct miqt_qsize QLineEdit_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQLineEdit*>(self)->QLineEdit::sizeHint());
 }
 
 bool QLineEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1456,8 +1452,8 @@ bool QLineEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QLineEdit_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQLineEdit*>(self)->QLineEdit::minimumSizeHint());
+struct miqt_qsize QLineEdit_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQLineEdit*>(self)->QLineEdit::minimumSizeHint());
 }
 
 bool QLineEdit_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -2105,23 +2101,19 @@ void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQLineEdit*>(self)->QLineEdit::disconnectNotify(*signal);
 }
 
-QSize* QLineEdit_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QLineEdit_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
 
-QRect* QLineEdit_protectedbase_cursorRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrect QLineEdit_protectedbase_cursorRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->cursorRect());
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->cursorRect());
 }
 
 void QLineEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

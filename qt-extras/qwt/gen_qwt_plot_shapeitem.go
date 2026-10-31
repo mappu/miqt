@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -114,10 +115,9 @@ func (this *QwtPlotShapeItem) LegendMode() QwtPlotShapeItem__LegendMode {
 	return (QwtPlotShapeItem__LegendMode)(C.QwtPlotShapeItem_legendMode(this.h))
 }
 
-func (this *QwtPlotShapeItem) SetRect(rect *qt.QRectF) {
+func (this *QwtPlotShapeItem) SetRect(rect qt.QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QwtPlotShapeItem_setRect(this.h, (*C.QRectF)(rect.UnsafePointer()))
+	C.QwtPlotShapeItem_setRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QwtPlotShapeItem) SetShape(shape *qt.QPainterPath) {
@@ -133,10 +133,9 @@ func (this *QwtPlotShapeItem) Shape() *qt.QPainterPath {
 	return _goptr
 }
 
-func (this *QwtPlotShapeItem) SetPen(param1 *qt.QColor) {
+func (this *QwtPlotShapeItem) SetPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotShapeItem_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotShapeItem_setPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotShapeItem) SetPenWithPen(pen *qt.QPen) {
@@ -175,17 +174,14 @@ func (this *QwtPlotShapeItem) RenderTolerance() float64 {
 	return (float64)(C.QwtPlotShapeItem_renderTolerance(this.h))
 }
 
-func (this *QwtPlotShapeItem) BoundingRect() *qt.QRectF {
+func (this *QwtPlotShapeItem) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotShapeItem_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotShapeItem_boundingRect(this.h))
 }
 
-func (this *QwtPlotShapeItem) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+func (this *QwtPlotShapeItem) LegendIcon(index int, param2 qt.QSizeF) *QwtGraphic {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	_goptr := newQwtGraphic(C.QwtPlotShapeItem_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
+	_goptr := newQwtGraphic(C.QwtPlotShapeItem_legendIcon(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qsizef](param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -200,16 +196,14 @@ func (this *QwtPlotShapeItem) SetPaintAttribute2(param1 QwtPlotShapeItem__PaintA
 	C.QwtPlotShapeItem_setPaintAttribute2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
-func (this *QwtPlotShapeItem) SetPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotShapeItem) SetPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotShapeItem_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtPlotShapeItem_setPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotShapeItem) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtPlotShapeItem) SetPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotShapeItem_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotShapeItem_setPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
 // Delete this object from C++ memory.

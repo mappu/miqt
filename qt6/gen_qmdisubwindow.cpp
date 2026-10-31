@@ -46,8 +46,8 @@ extern "C" {
 
 void miqt_exec_callback_QMdiSubWindow_windowStateChanged(intptr_t, int, int);
 void miqt_exec_callback_QMdiSubWindow_aboutToActivate(intptr_t);
-QSize* miqt_exec_callback_QMdiSubWindow_sizeHint(const QMdiSubWindow*, intptr_t);
-QSize* miqt_exec_callback_QMdiSubWindow_minimumSizeHint(const QMdiSubWindow*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMdiSubWindow_sizeHint(const QMdiSubWindow*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMdiSubWindow_minimumSizeHint(const QMdiSubWindow*, intptr_t);
 bool miqt_exec_callback_QMdiSubWindow_eventFilter(QMdiSubWindow*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QMdiSubWindow_event(QMdiSubWindow*, intptr_t, QEvent*);
 void miqt_exec_callback_QMdiSubWindow_showEvent(QMdiSubWindow*, intptr_t, QShowEvent*);
@@ -115,13 +115,11 @@ public:
 			return QMdiSubWindow::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMdiSubWindow_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMdiSubWindow_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMdiSubWindow_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QMdiSubWindow_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -132,13 +130,11 @@ public:
 			return QMdiSubWindow::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMdiSubWindow_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMdiSubWindow_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMdiSubWindow_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QMdiSubWindow_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -953,12 +949,12 @@ struct miqt_string QMdiSubWindow_tr(const char* s) {
 	return _ms;
 }
 
-QSize* QMdiSubWindow_sizeHint(const QMdiSubWindow* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QMdiSubWindow_sizeHint(const QMdiSubWindow* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QMdiSubWindow_minimumSizeHint(const QMdiSubWindow* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QMdiSubWindow_minimumSizeHint(const QMdiSubWindow* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QMdiSubWindow_setWidget(QMdiSubWindow* self, QWidget* widget) {
@@ -1085,8 +1081,8 @@ bool QMdiSubWindow_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMdiSubWindow_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMdiSubWindow*>(self)->QMdiSubWindow::sizeHint());
+struct miqt_qsize QMdiSubWindow_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMdiSubWindow*>(self)->QMdiSubWindow::sizeHint());
 }
 
 bool QMdiSubWindow_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1099,8 +1095,8 @@ bool QMdiSubWindow_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMdiSubWindow_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMdiSubWindow*>(self)->QMdiSubWindow::minimumSizeHint());
+struct miqt_qsize QMdiSubWindow_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMdiSubWindow*>(self)->QMdiSubWindow::minimumSizeHint());
 }
 
 bool QMdiSubWindow_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1732,10 +1728,6 @@ bool QMdiSubWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QMdiSubWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQMdiSubWindow*>(self)->QMdiSubWindow::disconnectNotify(*signal);
-}
-
-QSize* QMdiSubWindow_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QMdiSubWindow_virtualreturncopy_QVariant(QVariant* src) {

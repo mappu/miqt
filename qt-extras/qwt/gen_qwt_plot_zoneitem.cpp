@@ -47,8 +47,8 @@ QwtInterval* QwtPlotZoneItem_interval(const QwtPlotZoneItem* self) {
 	return new QwtInterval(self->interval());
 }
 
-void QwtPlotZoneItem_setPen(QwtPlotZoneItem* self, QColor* param1) {
-	self->setPen(*param1);
+void QwtPlotZoneItem_setPen(QwtPlotZoneItem* self, struct miqt_qcolor param1) {
+	self->setPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotZoneItem_setPenWithPen(QwtPlotZoneItem* self, QPen* pen) {
@@ -71,16 +71,16 @@ QBrush* QwtPlotZoneItem_brush(const QwtPlotZoneItem* self) {
 	return const_cast<QBrush*>(&_ret);
 }
 
-QRectF* QwtPlotZoneItem_boundingRect(const QwtPlotZoneItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotZoneItem_boundingRect(const QwtPlotZoneItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
-void QwtPlotZoneItem_setPen2(QwtPlotZoneItem* self, QColor* param1, double width) {
-	self->setPen(*param1, static_cast<qreal>(width));
+void QwtPlotZoneItem_setPen2(QwtPlotZoneItem* self, struct miqt_qcolor param1, double width) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotZoneItem_setPen3(QwtPlotZoneItem* self, QColor* param1, double width, int param3) {
-	self->setPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotZoneItem_setPen3(QwtPlotZoneItem* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 void QwtPlotZoneItem_delete(QwtPlotZoneItem* self) {

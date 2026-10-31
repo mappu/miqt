@@ -45,7 +45,7 @@ extern "C" {
 
 void miqt_exec_callback_QVideoWidget_fullScreenChanged(intptr_t, bool);
 void miqt_exec_callback_QVideoWidget_aspectRatioModeChanged(intptr_t, int);
-QSize* miqt_exec_callback_QVideoWidget_sizeHint(const QVideoWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QVideoWidget_sizeHint(const QVideoWidget*, intptr_t);
 bool miqt_exec_callback_QVideoWidget_event(QVideoWidget*, intptr_t, QEvent*);
 void miqt_exec_callback_QVideoWidget_showEvent(QVideoWidget*, intptr_t, QShowEvent*);
 void miqt_exec_callback_QVideoWidget_hideEvent(QVideoWidget*, intptr_t, QHideEvent*);
@@ -53,7 +53,7 @@ void miqt_exec_callback_QVideoWidget_resizeEvent(QVideoWidget*, intptr_t, QResiz
 void miqt_exec_callback_QVideoWidget_moveEvent(QVideoWidget*, intptr_t, QMoveEvent*);
 int miqt_exec_callback_QVideoWidget_devType(const QVideoWidget*, intptr_t);
 void miqt_exec_callback_QVideoWidget_setVisible(QVideoWidget*, intptr_t, bool);
-QSize* miqt_exec_callback_QVideoWidget_minimumSizeHint(const QVideoWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QVideoWidget_minimumSizeHint(const QVideoWidget*, intptr_t);
 int miqt_exec_callback_QVideoWidget_heightForWidth(const QVideoWidget*, intptr_t, int);
 bool miqt_exec_callback_QVideoWidget_hasHeightForWidth(const QVideoWidget*, intptr_t);
 QPaintEngine* miqt_exec_callback_QVideoWidget_paintEngine(const QVideoWidget*, intptr_t);
@@ -113,13 +113,11 @@ public:
 			return QVideoWidget::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QVideoWidget_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QVideoWidget_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QVideoWidget_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QVideoWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -246,13 +244,11 @@ public:
 			return QVideoWidget::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QVideoWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QVideoWidget_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QVideoWidget_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QVideoWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -956,8 +952,8 @@ int QVideoWidget_aspectRatioMode(const QVideoWidget* self) {
 	return static_cast<int>(_ret);
 }
 
-QSize* QVideoWidget_sizeHint(const QVideoWidget* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QVideoWidget_sizeHint(const QVideoWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QVideoWidget_setFullScreen(QVideoWidget* self, bool fullScreen) {
@@ -1023,8 +1019,8 @@ bool QVideoWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QVideoWidget_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQVideoWidget*>(self)->QVideoWidget::sizeHint());
+struct miqt_qsize QVideoWidget_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQVideoWidget*>(self)->QVideoWidget::sizeHint());
 }
 
 bool QVideoWidget_override_virtual_event(void* self, intptr_t slot) {
@@ -1135,8 +1131,8 @@ bool QVideoWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QVideoWidget_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQVideoWidget*>(self)->QVideoWidget::minimumSizeHint());
+struct miqt_qsize QVideoWidget_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQVideoWidget*>(self)->QVideoWidget::minimumSizeHint());
 }
 
 bool QVideoWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1670,10 +1666,6 @@ bool QVideoWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QVideoWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQVideoWidget*>(self)->QVideoWidget::disconnectNotify(*signal);
-}
-
-QSize* QVideoWidget_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QVideoWidget_virtualreturncopy_QVariant(QVariant* src) {

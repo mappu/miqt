@@ -37,7 +37,7 @@ QMetaObject* QVideoEncoderSettingsControl_metaObject(const QVideoEncoderSettings
 void* QVideoEncoderSettingsControl_metacast(QVideoEncoderSettingsControl* self, const char* param1);
 struct miqt_string QVideoEncoderSettingsControl_tr(const char* s);
 struct miqt_string QVideoEncoderSettingsControl_trUtf8(const char* s);
-struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_supportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous);
+struct miqt_array /* of struct miqt_qsize */  QVideoEncoderSettingsControl_supportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous);
 struct miqt_array /* of double */  QVideoEncoderSettingsControl_supportedFrameRates(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous);
 struct miqt_array /* of struct miqt_string */  QVideoEncoderSettingsControl_supportedVideoCodecs(const QVideoEncoderSettingsControl* self);
 struct miqt_string QVideoEncoderSettingsControl_videoCodecDescription(const QVideoEncoderSettingsControl* self, struct miqt_string codec);

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -173,11 +174,10 @@ func (this *QSyntaxHighlighter) SetFormat(start int, count int, format *QTextCha
 }
 
 // SetFormat2 can only be called from a QSyntaxHighlighter that was directly constructed.
-func (this *QSyntaxHighlighter) SetFormat2(start int, count int, color *QColor) {
-	defer runtime.KeepAlive(color)
+func (this *QSyntaxHighlighter) SetFormat2(start int, count int, color QColor) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSyntaxHighlighter_protectedbase_setFormat2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(count), color.cPointer())
+	C.QSyntaxHighlighter_protectedbase_setFormat2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")

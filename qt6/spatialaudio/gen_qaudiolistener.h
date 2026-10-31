@@ -38,8 +38,8 @@ typedef struct QVector3D QVector3D;
 
 QAudioListener* QAudioListener_new(QAudioEngine* engine);
 void QAudioListener_virtbase(QAudioListener* src, QObject** outptr_QObject);
-void QAudioListener_setPosition(QAudioListener* self, QVector3D* pos);
-QVector3D* QAudioListener_position(const QAudioListener* self);
+void QAudioListener_setPosition(QAudioListener* self, struct miqt_qvector3d pos);
+struct miqt_qvector3d QAudioListener_position(const QAudioListener* self);
 void QAudioListener_setRotation(QAudioListener* self, QQuaternion* q);
 QQuaternion* QAudioListener_rotation(const QAudioListener* self);
 QAudioEngine* QAudioListener_engine(const QAudioListener* self);

@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -72,10 +73,9 @@ func NewQRegion2(x int, y int, w int, h int) *QRegion {
 }
 
 // NewQRegion3 constructs a new QRegion object.
-func NewQRegion3(r *QRect) *QRegion {
-	defer runtime.KeepAlive(r)
+func NewQRegion3(r QRect) *QRegion {
 
-	return newQRegion(C.QRegion_new3(r.cPointer()))
+	return newQRegion(C.QRegion_new3(libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 }
 
 // NewQRegion4 constructs a new QRegion object.
@@ -99,10 +99,9 @@ func NewQRegion6(x int, y int, w int, h int, t QRegion__RegionType) *QRegion {
 }
 
 // NewQRegion7 constructs a new QRegion object.
-func NewQRegion7(r *QRect, t QRegion__RegionType) *QRegion {
-	defer runtime.KeepAlive(r)
+func NewQRegion7(r QRect, t QRegion__RegionType) *QRegion {
 
-	return newQRegion(C.QRegion_new7(r.cPointer(), (C.int)(t)))
+	return newQRegion(C.QRegion_new7(libmiqt.ValueCast[C.struct_miqt_qrect](r), (C.int)(t)))
 }
 
 func (this *QRegion) OperatorAssign(param1 *QRegion) {
@@ -147,16 +146,14 @@ func (this *QRegion) Cend() *QRect {
 	return newQRect(C.QRegion_cend(this.h))
 }
 
-func (this *QRegion) Contains(p *QPoint) bool {
+func (this *QRegion) Contains(p QPoint) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	return (bool)(C.QRegion_contains(this.h, p.cPointer()))
+	return (bool)(C.QRegion_contains(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 }
 
-func (this *QRegion) ContainsWithQRect(r *QRect) bool {
+func (this *QRegion) ContainsWithQRect(r QRect) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	return (bool)(C.QRegion_containsWithQRect(this.h, r.cPointer()))
+	return (bool)(C.QRegion_containsWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 }
 
 func (this *QRegion) Translate(dx int, dy int) {
@@ -164,10 +161,9 @@ func (this *QRegion) Translate(dx int, dy int) {
 	C.QRegion_translate(this.h, (C.int)(dx), (C.int)(dy))
 }
 
-func (this *QRegion) TranslateWithQPoint(p *QPoint) {
+func (this *QRegion) TranslateWithQPoint(p QPoint) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	C.QRegion_translateWithQPoint(this.h, p.cPointer())
+	C.QRegion_translateWithQPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p))
 }
 
 func (this *QRegion) Translated(dx int, dy int) *QRegion {
@@ -177,10 +173,9 @@ func (this *QRegion) Translated(dx int, dy int) *QRegion {
 	return _goptr
 }
 
-func (this *QRegion) TranslatedWithQPoint(p *QPoint) *QRegion {
+func (this *QRegion) TranslatedWithQPoint(p QPoint) *QRegion {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(p)
-	_goptr := newQRegion(C.QRegion_translatedWithQPoint(this.h, p.cPointer()))
+	_goptr := newQRegion(C.QRegion_translatedWithQPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](p)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -193,10 +188,9 @@ func (this *QRegion) United(r *QRegion) *QRegion {
 	return _goptr
 }
 
-func (this *QRegion) UnitedWithQRect(r *QRect) *QRegion {
+func (this *QRegion) UnitedWithQRect(r QRect) *QRegion {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	_goptr := newQRegion(C.QRegion_unitedWithQRect(this.h, r.cPointer()))
+	_goptr := newQRegion(C.QRegion_unitedWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -209,10 +203,9 @@ func (this *QRegion) Intersected(r *QRegion) *QRegion {
 	return _goptr
 }
 
-func (this *QRegion) IntersectedWithQRect(r *QRect) *QRegion {
+func (this *QRegion) IntersectedWithQRect(r QRect) *QRegion {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	_goptr := newQRegion(C.QRegion_intersectedWithQRect(this.h, r.cPointer()))
+	_goptr := newQRegion(C.QRegion_intersectedWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -239,35 +232,29 @@ func (this *QRegion) Intersects(r *QRegion) bool {
 	return (bool)(C.QRegion_intersects(this.h, r.cPointer()))
 }
 
-func (this *QRegion) IntersectsWithQRect(r *QRect) bool {
+func (this *QRegion) IntersectsWithQRect(r QRect) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	return (bool)(C.QRegion_intersectsWithQRect(this.h, r.cPointer()))
+	return (bool)(C.QRegion_intersectsWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 }
 
-func (this *QRegion) BoundingRect() *QRect {
+func (this *QRegion) BoundingRect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QRegion_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QRegion_boundingRect(this.h))
 }
 
 func (this *QRegion) Rects() []QRect {
 	defer runtime.KeepAlive(this)
 	var _ma C.struct_miqt_array = C.QRegion_rects(this.h)
 	_ret := make([]QRect, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QRect)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qrect)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_goptr := newQRect(_outCast[i])
-		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_vv_goptr
+		_ret[i] = libmiqt.ValueCast[QRect](_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QRegion) SetRects(rect *QRect, num int) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
 	C.QRegion_setRects(this.h, rect.cPointer(), (C.int)(num))
 }
 
@@ -292,10 +279,9 @@ func (this *QRegion) OperatorPlus(r *QRegion) *QRegion {
 	return _goptr
 }
 
-func (this *QRegion) OperatorPlusWithQRect(r *QRect) *QRegion {
+func (this *QRegion) OperatorPlusWithQRect(r QRect) *QRegion {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	_goptr := newQRegion(C.QRegion_operatorPlusWithQRect(this.h, r.cPointer()))
+	_goptr := newQRegion(C.QRegion_operatorPlusWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -308,10 +294,9 @@ func (this *QRegion) OperatorBitwiseAnd(r *QRegion) *QRegion {
 	return _goptr
 }
 
-func (this *QRegion) OperatorBitwiseAndWithQRect(r *QRect) *QRegion {
+func (this *QRegion) OperatorBitwiseAndWithQRect(r QRect) *QRegion {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	_goptr := newQRegion(C.QRegion_operatorBitwiseAndWithQRect(this.h, r.cPointer()))
+	_goptr := newQRegion(C.QRegion_operatorBitwiseAndWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -346,10 +331,9 @@ func (this *QRegion) OperatorPlusAssign(r *QRegion) *QRegion {
 	return _ret
 }
 
-func (this *QRegion) OperatorPlusAssignWithQRect(r *QRect) *QRegion {
+func (this *QRegion) OperatorPlusAssignWithQRect(r QRect) *QRegion {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	_ret := newQRegion(C.QRegion_operatorPlusAssignWithQRect(this.h, r.cPointer()))
+	_ret := newQRegion(C.QRegion_operatorPlusAssignWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r)))
 	_ret.miqtSetGC(this.gc)
 	return _ret
 }
@@ -360,10 +344,9 @@ func (this *QRegion) OperatorBitwiseAndAssign(r *QRegion) {
 	C.QRegion_operatorBitwiseAndAssign(this.h, r.cPointer())
 }
 
-func (this *QRegion) OperatorBitwiseAndAssignWithQRect(r *QRect) {
+func (this *QRegion) OperatorBitwiseAndAssignWithQRect(r QRect) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(r)
-	C.QRegion_operatorBitwiseAndAssignWithQRect(this.h, r.cPointer())
+	C.QRegion_operatorBitwiseAndAssignWithQRect(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](r))
 }
 
 func (this *QRegion) OperatorMinusAssign(r *QRegion) *QRegion {

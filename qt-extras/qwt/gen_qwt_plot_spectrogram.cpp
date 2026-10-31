@@ -65,12 +65,12 @@ QwtInterval* QwtPlotSpectrogram_interval(const QwtPlotSpectrogram* self, int par
 	return new QwtInterval(self->interval(static_cast<Qt::Axis>(param1)));
 }
 
-QRectF* QwtPlotSpectrogram_pixelHint(const QwtPlotSpectrogram* self, QRectF* param1) {
-	return new QRectF(self->pixelHint(*param1));
+struct miqt_qrectf QwtPlotSpectrogram_pixelHint(const QwtPlotSpectrogram* self, struct miqt_qrectf param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->pixelHint(miqt_from_cabi<QRectF>(param1)));
 }
 
-void QwtPlotSpectrogram_setDefaultContourPen(QwtPlotSpectrogram* self, QColor* param1) {
-	self->setDefaultContourPen(*param1);
+void QwtPlotSpectrogram_setDefaultContourPen(QwtPlotSpectrogram* self, struct miqt_qcolor param1) {
+	self->setDefaultContourPen(miqt_from_cabi<QColor>(param1));
 }
 
 void QwtPlotSpectrogram_setDefaultContourPenWithDefaultContourPen(QwtPlotSpectrogram* self, QPen* defaultContourPen) {
@@ -124,12 +124,12 @@ void QwtPlotSpectrogram_setDisplayMode2(QwtPlotSpectrogram* self, int param1, bo
 	self->setDisplayMode(static_cast<QwtPlotSpectrogram::DisplayMode>(param1), on);
 }
 
-void QwtPlotSpectrogram_setDefaultContourPen2(QwtPlotSpectrogram* self, QColor* param1, double width) {
-	self->setDefaultContourPen(*param1, static_cast<qreal>(width));
+void QwtPlotSpectrogram_setDefaultContourPen2(QwtPlotSpectrogram* self, struct miqt_qcolor param1, double width) {
+	self->setDefaultContourPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width));
 }
 
-void QwtPlotSpectrogram_setDefaultContourPen3(QwtPlotSpectrogram* self, QColor* param1, double width, int param3) {
-	self->setDefaultContourPen(*param1, static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
+void QwtPlotSpectrogram_setDefaultContourPen3(QwtPlotSpectrogram* self, struct miqt_qcolor param1, double width, int param3) {
+	self->setDefaultContourPen(miqt_from_cabi<QColor>(param1), static_cast<qreal>(width), static_cast<Qt::PenStyle>(param3));
 }
 
 void QwtPlotSpectrogram_delete(QwtPlotSpectrogram* self) {

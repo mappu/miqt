@@ -32,8 +32,8 @@ bool QWebEngineContextMenuData_isValid(const QWebEngineContextMenuData* self) {
 	return self->isValid();
 }
 
-QPoint* QWebEngineContextMenuData_position(const QWebEngineContextMenuData* self) {
-	return new QPoint(self->position());
+struct miqt_qpoint QWebEngineContextMenuData_position(const QWebEngineContextMenuData* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->position());
 }
 
 struct miqt_string QWebEngineContextMenuData_selectedText(const QWebEngineContextMenuData* self) {

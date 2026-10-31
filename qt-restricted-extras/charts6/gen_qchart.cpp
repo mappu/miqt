@@ -51,22 +51,22 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QChart_plotAreaChanged(intptr_t, QRectF*);
-void miqt_exec_callback_QChart_setGeometry(QChart*, intptr_t, QRectF*);
+void miqt_exec_callback_QChart_plotAreaChanged(intptr_t, struct miqt_qrectf);
+void miqt_exec_callback_QChart_setGeometry(QChart*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QChart_getContentsMargins(const QChart*, intptr_t, double*, double*, double*, double*);
 int miqt_exec_callback_QChart_type(const QChart*, intptr_t);
 void miqt_exec_callback_QChart_paint(QChart*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 void miqt_exec_callback_QChart_paintWindowFrame(QChart*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
-QRectF* miqt_exec_callback_QChart_boundingRect(const QChart*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QChart_boundingRect(const QChart*, intptr_t);
 QPainterPath* miqt_exec_callback_QChart_shape(const QChart*, intptr_t);
 void miqt_exec_callback_QChart_initStyleOption(const QChart*, intptr_t, QStyleOption*);
-QSizeF* miqt_exec_callback_QChart_sizeHint(const QChart*, intptr_t, int, QSizeF*);
+struct miqt_qsizef miqt_exec_callback_QChart_sizeHint(const QChart*, intptr_t, int, struct miqt_qsizef);
 void miqt_exec_callback_QChart_updateGeometry(QChart*, intptr_t);
 QVariant* miqt_exec_callback_QChart_itemChange(QChart*, intptr_t, int, QVariant*);
 QVariant* miqt_exec_callback_QChart_propertyChange(QChart*, intptr_t, struct miqt_string, QVariant*);
 bool miqt_exec_callback_QChart_sceneEvent(QChart*, intptr_t, QEvent*);
 bool miqt_exec_callback_QChart_windowFrameEvent(QChart*, intptr_t, QEvent*);
-int miqt_exec_callback_QChart_windowFrameSectionAt(const QChart*, intptr_t, QPointF*);
+int miqt_exec_callback_QChart_windowFrameSectionAt(const QChart*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QChart_event(QChart*, intptr_t, QEvent*);
 void miqt_exec_callback_QChart_changeEvent(QChart*, intptr_t, QEvent*);
 void miqt_exec_callback_QChart_closeEvent(QChart*, intptr_t, QCloseEvent*);
@@ -91,7 +91,7 @@ void miqt_exec_callback_QChart_customEvent(QChart*, intptr_t, QEvent*);
 void miqt_exec_callback_QChart_connectNotify(QChart*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QChart_disconnectNotify(QChart*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QChart_advance(QChart*, intptr_t, int);
-bool miqt_exec_callback_QChart_contains(const QChart*, intptr_t, QPointF*);
+bool miqt_exec_callback_QChart_contains(const QChart*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QChart_collidesWithItem(const QChart*, intptr_t, QGraphicsItem*, int);
 bool miqt_exec_callback_QChart_collidesWithPath(const QChart*, intptr_t, QPainterPath*, int);
 bool miqt_exec_callback_QChart_isObscuredBy(const QChart*, intptr_t, QGraphicsItem*);
@@ -139,14 +139,12 @@ public:
 			return;
 		}
 
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QChart_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QChart_virtualbase_setGeometry(void* self, QRectF* rect);
+	friend void QChart_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__getContentsMargins = 0;
@@ -234,13 +232,11 @@ public:
 			return QChart::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QChart_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QChart_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QChart_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QChart_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -287,16 +283,12 @@ public:
 
 		Qt::SizeHint which_ret = which;
 		int sigval1 = static_cast<int>(which_ret);
-		const QSizeF& constraint_ret = constraint;
-		// Cast returned reference into pointer
-		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
-		QSizeF* callback_return_value = miqt_exec_callback_QChart_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef sigval2 = miqt_to_cabi<struct miqt_qsizef>(constraint);
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QChart_sizeHint(this, handle__sizeHint, sigval1, sigval2);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
-	friend QSizeF* QChart_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+	friend struct miqt_qsizef QChart_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateGeometry = 0;
@@ -405,14 +397,12 @@ public:
 			return QChart::windowFrameSectionAt(pos);
 		}
 
-		const QPointF& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&pos_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(pos);
 		int callback_return_value = miqt_exec_callback_QChart_windowFrameSectionAt(this, handle__windowFrameSectionAt, sigval1);
 		return static_cast<Qt::WindowFrameSection>(callback_return_value);
 	}
 
-	friend int QChart_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos);
+	friend int QChart_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -832,14 +822,12 @@ public:
 			return QChart::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QChart_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QChart_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QChart_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__collidesWithItem = 0;
@@ -1488,8 +1476,8 @@ void QChart_zoomOut(QChart* self) {
 	self->zoomOut();
 }
 
-void QChart_zoomInWithRect(QChart* self, QRectF* rect) {
-	self->zoomIn(*rect);
+void QChart_zoomInWithRect(QChart* self, struct miqt_qrectf rect) {
+	self->zoomIn(miqt_from_cabi<QRectF>(rect));
 }
 
 void QChart_zoom(QChart* self, double factor) {
@@ -1512,20 +1500,20 @@ QLegend* QChart_legend(const QChart* self) {
 	return self->legend();
 }
 
-void QChart_setMargins(QChart* self, QMargins* margins) {
-	self->setMargins(*margins);
+void QChart_setMargins(QChart* self, struct miqt_qmargins margins) {
+	self->setMargins(miqt_from_cabi<QMargins>(margins));
 }
 
-QMargins* QChart_margins(const QChart* self) {
-	return new QMargins(self->margins());
+struct miqt_qmargins QChart_margins(const QChart* self) {
+	return miqt_to_cabi<struct miqt_qmargins>(self->margins());
 }
 
-QRectF* QChart_plotArea(const QChart* self) {
-	return new QRectF(self->plotArea());
+struct miqt_qrectf QChart_plotArea(const QChart* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->plotArea());
 }
 
-void QChart_setPlotArea(QChart* self, QRectF* rect) {
-	self->setPlotArea(*rect);
+void QChart_setPlotArea(QChart* self, struct miqt_qrectf rect) {
+	self->setPlotArea(miqt_from_cabi<QRectF>(rect));
 }
 
 void QChart_setPlotAreaBackgroundBrush(QChart* self, QBrush* brush) {
@@ -1568,12 +1556,12 @@ QLocale* QChart_locale(const QChart* self) {
 	return new QLocale(self->locale());
 }
 
-QPointF* QChart_mapToValue(QChart* self, QPointF* position) {
-	return new QPointF(self->mapToValue(*position));
+struct miqt_qpointf QChart_mapToValue(QChart* self, struct miqt_qpointf position) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToValue(miqt_from_cabi<QPointF>(position)));
 }
 
-QPointF* QChart_mapToPosition(QChart* self, QPointF* value) {
-	return new QPointF(self->mapToPosition(*value));
+struct miqt_qpointf QChart_mapToPosition(QChart* self, struct miqt_qpointf value) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToPosition(miqt_from_cabi<QPointF>(value)));
 }
 
 int QChart_chartType(const QChart* self) {
@@ -1581,15 +1569,13 @@ int QChart_chartType(const QChart* self) {
 	return static_cast<int>(_ret);
 }
 
-void QChart_plotAreaChanged(QChart* self, QRectF* plotArea) {
-	self->plotAreaChanged(*plotArea);
+void QChart_plotAreaChanged(QChart* self, struct miqt_qrectf plotArea) {
+	self->plotAreaChanged(miqt_from_cabi<QRectF>(plotArea));
 }
 
 void QChart_connect_plotAreaChanged(QChart* self, intptr_t slot) {
 	QChart::connect(self, static_cast<void (QChart::*)(const QRectF&)>(&QChart::plotAreaChanged), self, [=](const QRectF& plotArea) {
-		const QRectF& plotArea_ret = plotArea;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&plotArea_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(plotArea);
 		miqt_exec_callback_QChart_plotAreaChanged(slot, sigval1);
 	});
 }
@@ -1670,12 +1656,12 @@ void QChart_setPlotAreaBackgroundVisibleWithVisible(QChart* self, bool visible) 
 	self->setPlotAreaBackgroundVisible(visible);
 }
 
-QPointF* QChart_mapToValue2(QChart* self, QPointF* position, QAbstractSeries* series) {
-	return new QPointF(self->mapToValue(*position, series));
+struct miqt_qpointf QChart_mapToValue2(QChart* self, struct miqt_qpointf position, QAbstractSeries* series) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToValue(miqt_from_cabi<QPointF>(position), series));
 }
 
-QPointF* QChart_mapToPosition2(QChart* self, QPointF* value, QAbstractSeries* series) {
-	return new QPointF(self->mapToPosition(*value, series));
+struct miqt_qpointf QChart_mapToPosition2(QChart* self, struct miqt_qpointf value, QAbstractSeries* series) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->mapToPosition(miqt_from_cabi<QPointF>(value), series));
 }
 
 bool QChart_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -1688,8 +1674,8 @@ bool QChart_override_virtual_setGeometry(void* self, intptr_t slot) {
 	return true;
 }
 
-void QChart_virtualbase_setGeometry(void* self, QRectF* rect) {
-	static_cast<MiqtVirtualQChart*>(self)->QChart::setGeometry(*rect);
+void QChart_virtualbase_setGeometry(void* self, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQChart*>(self)->QChart::setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 bool QChart_override_virtual_getContentsMargins(void* self, intptr_t slot) {
@@ -1758,8 +1744,8 @@ bool QChart_override_virtual_boundingRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRectF* QChart_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQChart*>(self)->QChart::boundingRect());
+struct miqt_qrectf QChart_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQChart*>(self)->QChart::boundingRect());
 }
 
 bool QChart_override_virtual_shape(void* self, intptr_t slot) {
@@ -1800,8 +1786,8 @@ bool QChart_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSizeF* QChart_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
-	return new QSizeF(static_cast<const MiqtVirtualQChart*>(self)->QChart::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+struct miqt_qsizef QChart_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint) {
+	return miqt_to_cabi<struct miqt_qsizef>(static_cast<const MiqtVirtualQChart*>(self)->QChart::sizeHint(static_cast<Qt::SizeHint>(which), miqt_from_cabi<QSizeF>(constraint)));
 }
 
 bool QChart_override_virtual_updateGeometry(void* self, intptr_t slot) {
@@ -1885,8 +1871,8 @@ bool QChart_override_virtual_windowFrameSectionAt(void* self, intptr_t slot) {
 	return true;
 }
 
-int QChart_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos) {
-	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQChart*>(self)->QChart::windowFrameSectionAt(*pos);
+int QChart_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos) {
+	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQChart*>(self)->QChart::windowFrameSectionAt(miqt_from_cabi<QPointF>(pos));
 	return static_cast<int>(_ret);
 }
 
@@ -2236,8 +2222,8 @@ bool QChart_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QChart_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQChart*>(self)->QChart::contains(*point);
+bool QChart_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQChart*>(self)->QChart::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QChart_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -2576,16 +2562,8 @@ bool QChart_virtualbase_isEmpty(const void* self) {
 	return static_cast<const MiqtVirtualQChart*>(self)->QChart::isEmpty();
 }
 
-QRectF* QChart_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
-}
-
 QPainterPath* QChart_virtualreturncopy_QPainterPath(QPainterPath* src) {
 	return new QPainterPath(*src);
-}
-
-QSizeF* QChart_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
 }
 
 QVariant* QChart_virtualreturncopy_QVariant(QVariant* src) {

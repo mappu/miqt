@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -84,11 +85,10 @@ func NewQPageLayout() *QPageLayout {
 }
 
 // NewQPageLayout2 constructs a new QPageLayout object.
-func NewQPageLayout2(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF) *QPageLayout {
+func NewQPageLayout2(pageSize *QPageSize, orientation QPageLayout__Orientation, margins QMarginsF) *QPageLayout {
 	defer runtime.KeepAlive(pageSize)
-	defer runtime.KeepAlive(margins)
 
-	return newQPageLayout(C.QPageLayout_new2(pageSize.cPointer(), (C.int)(orientation), margins.cPointer()))
+	return newQPageLayout(C.QPageLayout_new2(pageSize.cPointer(), (C.int)(orientation), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins)))
 }
 
 // NewQPageLayout3 constructs a new QPageLayout object.
@@ -99,20 +99,17 @@ func NewQPageLayout3(other *QPageLayout) *QPageLayout {
 }
 
 // NewQPageLayout4 constructs a new QPageLayout object.
-func NewQPageLayout4(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF, units QPageLayout__Unit) *QPageLayout {
+func NewQPageLayout4(pageSize *QPageSize, orientation QPageLayout__Orientation, margins QMarginsF, units QPageLayout__Unit) *QPageLayout {
 	defer runtime.KeepAlive(pageSize)
-	defer runtime.KeepAlive(margins)
 
-	return newQPageLayout(C.QPageLayout_new4(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units)))
+	return newQPageLayout(C.QPageLayout_new4(pageSize.cPointer(), (C.int)(orientation), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins), (C.int)(units)))
 }
 
 // NewQPageLayout5 constructs a new QPageLayout object.
-func NewQPageLayout5(pageSize *QPageSize, orientation QPageLayout__Orientation, margins *QMarginsF, units QPageLayout__Unit, minMargins *QMarginsF) *QPageLayout {
+func NewQPageLayout5(pageSize *QPageSize, orientation QPageLayout__Orientation, margins QMarginsF, units QPageLayout__Unit, minMargins QMarginsF) *QPageLayout {
 	defer runtime.KeepAlive(pageSize)
-	defer runtime.KeepAlive(margins)
-	defer runtime.KeepAlive(minMargins)
 
-	return newQPageLayout(C.QPageLayout_new5(pageSize.cPointer(), (C.int)(orientation), margins.cPointer(), (C.int)(units), minMargins.cPointer()))
+	return newQPageLayout(C.QPageLayout_new5(pageSize.cPointer(), (C.int)(orientation), libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins), (C.int)(units), libmiqt.ValueCast[C.struct_miqt_qmarginsf](minMargins)))
 }
 
 func (this *QPageLayout) OperatorAssign(other *QPageLayout) {
@@ -181,10 +178,9 @@ func (this *QPageLayout) Units() QPageLayout__Unit {
 	return (QPageLayout__Unit)(C.QPageLayout_units(this.h))
 }
 
-func (this *QPageLayout) SetMargins(margins *QMarginsF) bool {
+func (this *QPageLayout) SetMargins(margins QMarginsF) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	return (bool)(C.QPageLayout_setMargins(this.h, margins.cPointer()))
+	return (bool)(C.QPageLayout_setMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins)))
 }
 
 func (this *QPageLayout) SetLeftMargin(leftMargin float64) bool {
@@ -207,115 +203,85 @@ func (this *QPageLayout) SetBottomMargin(bottomMargin float64) bool {
 	return (bool)(C.QPageLayout_setBottomMargin(this.h, (C.double)(bottomMargin)))
 }
 
-func (this *QPageLayout) Margins() *QMarginsF {
+func (this *QPageLayout) Margins() QMarginsF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQMarginsF(C.QPageLayout_margins(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QMarginsF](C.QPageLayout_margins(this.h))
 }
 
-func (this *QPageLayout) MarginsWithUnits(units QPageLayout__Unit) *QMarginsF {
+func (this *QPageLayout) MarginsWithUnits(units QPageLayout__Unit) QMarginsF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQMarginsF(C.QPageLayout_marginsWithUnits(this.h, (C.int)(units)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QMarginsF](C.QPageLayout_marginsWithUnits(this.h, (C.int)(units)))
 }
 
-func (this *QPageLayout) MarginsPoints() *QMargins {
+func (this *QPageLayout) MarginsPoints() QMargins {
 	defer runtime.KeepAlive(this)
-	_goptr := newQMargins(C.QPageLayout_marginsPoints(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QMargins](C.QPageLayout_marginsPoints(this.h))
 }
 
-func (this *QPageLayout) MarginsPixels(resolution int) *QMargins {
+func (this *QPageLayout) MarginsPixels(resolution int) QMargins {
 	defer runtime.KeepAlive(this)
-	_goptr := newQMargins(C.QPageLayout_marginsPixels(this.h, (C.int)(resolution)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QMargins](C.QPageLayout_marginsPixels(this.h, (C.int)(resolution)))
 }
 
-func (this *QPageLayout) SetMinimumMargins(minMargins *QMarginsF) {
+func (this *QPageLayout) SetMinimumMargins(minMargins QMarginsF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(minMargins)
-	C.QPageLayout_setMinimumMargins(this.h, minMargins.cPointer())
+	C.QPageLayout_setMinimumMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmarginsf](minMargins))
 }
 
-func (this *QPageLayout) MinimumMargins() *QMarginsF {
+func (this *QPageLayout) MinimumMargins() QMarginsF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQMarginsF(C.QPageLayout_minimumMargins(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QMarginsF](C.QPageLayout_minimumMargins(this.h))
 }
 
-func (this *QPageLayout) MaximumMargins() *QMarginsF {
+func (this *QPageLayout) MaximumMargins() QMarginsF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQMarginsF(C.QPageLayout_maximumMargins(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QMarginsF](C.QPageLayout_maximumMargins(this.h))
 }
 
-func (this *QPageLayout) FullRect() *QRectF {
+func (this *QPageLayout) FullRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QPageLayout_fullRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QPageLayout_fullRect(this.h))
 }
 
-func (this *QPageLayout) FullRectWithUnits(units QPageLayout__Unit) *QRectF {
+func (this *QPageLayout) FullRectWithUnits(units QPageLayout__Unit) QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QPageLayout_fullRectWithUnits(this.h, (C.int)(units)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QPageLayout_fullRectWithUnits(this.h, (C.int)(units)))
 }
 
-func (this *QPageLayout) FullRectPoints() *QRect {
+func (this *QPageLayout) FullRectPoints() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QPageLayout_fullRectPoints(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPageLayout_fullRectPoints(this.h))
 }
 
-func (this *QPageLayout) FullRectPixels(resolution int) *QRect {
+func (this *QPageLayout) FullRectPixels(resolution int) QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QPageLayout_fullRectPixels(this.h, (C.int)(resolution)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPageLayout_fullRectPixels(this.h, (C.int)(resolution)))
 }
 
-func (this *QPageLayout) PaintRect() *QRectF {
+func (this *QPageLayout) PaintRect() QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QPageLayout_paintRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QPageLayout_paintRect(this.h))
 }
 
-func (this *QPageLayout) PaintRectWithUnits(units QPageLayout__Unit) *QRectF {
+func (this *QPageLayout) PaintRectWithUnits(units QPageLayout__Unit) QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QPageLayout_paintRectWithUnits(this.h, (C.int)(units)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QPageLayout_paintRectWithUnits(this.h, (C.int)(units)))
 }
 
-func (this *QPageLayout) PaintRectPoints() *QRect {
+func (this *QPageLayout) PaintRectPoints() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QPageLayout_paintRectPoints(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPageLayout_paintRectPoints(this.h))
 }
 
-func (this *QPageLayout) PaintRectPixels(resolution int) *QRect {
+func (this *QPageLayout) PaintRectPixels(resolution int) QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QPageLayout_paintRectPixels(this.h, (C.int)(resolution)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPageLayout_paintRectPixels(this.h, (C.int)(resolution)))
 }
 
-func (this *QPageLayout) SetPageSize2(pageSize *QPageSize, minMargins *QMarginsF) {
+func (this *QPageLayout) SetPageSize2(pageSize *QPageSize, minMargins QMarginsF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(pageSize)
-	defer runtime.KeepAlive(minMargins)
-	C.QPageLayout_setPageSize2(this.h, pageSize.cPointer(), minMargins.cPointer())
+	C.QPageLayout_setPageSize2(this.h, pageSize.cPointer(), libmiqt.ValueCast[C.struct_miqt_qmarginsf](minMargins))
 }
 
 // Delete this object from C++ memory.

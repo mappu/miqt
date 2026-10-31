@@ -9,6 +9,7 @@ package pdf
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -145,15 +146,12 @@ func (this *QPdfView) SetPageSpacing(spacing int) {
 	C.QPdfView_setPageSpacing(this.h, (C.int)(spacing))
 }
 
-func (this *QPdfView) DocumentMargins() *qt.QMargins {
-	_goptr := qt.UnsafeNewQMargins(unsafe.Pointer(C.QPdfView_documentMargins(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPdfView) DocumentMargins() qt.QMargins {
+	return libmiqt.ValueCast[qt.QMargins](C.QPdfView_documentMargins(this.h))
 }
 
 func (this *QPdfView) SetDocumentMargins(margins qt.QMargins) {
-	defer runtime.KeepAlive(margins)
-	C.QPdfView_setDocumentMargins(this.h, (*C.QMargins)(margins.UnsafePointer()))
+	C.QPdfView_setDocumentMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmargins](margins))
 }
 
 func (this *QPdfView) SetPageMode(mode QPdfView__PageMode) {
@@ -269,24 +267,21 @@ func miqt_exec_callback_QPdfView_pageSpacingChanged(cb C.intptr_t, pageSpacing C
 }
 
 func (this *QPdfView) DocumentMarginsChanged(documentMargins qt.QMargins) {
-	defer runtime.KeepAlive(documentMargins)
-	C.QPdfView_documentMarginsChanged(this.h, (*C.QMargins)(documentMargins.UnsafePointer()))
+	C.QPdfView_documentMarginsChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qmargins](documentMargins))
 }
 func (this *QPdfView) OnDocumentMarginsChanged(slot func(documentMargins qt.QMargins)) {
 	C.QPdfView_connect_documentMarginsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfView_documentMarginsChanged
-func miqt_exec_callback_QPdfView_documentMarginsChanged(cb C.intptr_t, documentMargins *C.QMargins) {
+func miqt_exec_callback_QPdfView_documentMarginsChanged(cb C.intptr_t, documentMargins C.struct_miqt_qmargins) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(documentMargins qt.QMargins))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	documentMargins_goptr := qt.UnsafeNewQMargins(unsafe.Pointer(documentMargins))
-	documentMargins_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *documentMargins_goptr
+	slotval1 := libmiqt.ValueCast[qt.QMargins](documentMargins)
 
 	gofunc(slotval1)
 }
@@ -351,9 +346,7 @@ func (this *QPdfView) SetViewportMargins(left int, top int, right int, bottom in
 func (this *QPdfView) ViewportMargins() qt.QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQMargins(unsafe.Pointer(C.QPdfView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QMargins](C.QPdfView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -594,14 +587,12 @@ func miqt_exec_callback_QPdfView_scrollContentsBy(self *C.QPdfView, cb C.intptr_
 
 }
 
-func (this *QPdfView) callVirtualBase_MinimumSizeHint() *qt.QSize {
+func (this *QPdfView) callVirtualBase_MinimumSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPdfView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QPdfView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QPdfView) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QPdfView) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QPdfView_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -609,27 +600,24 @@ func (this *QPdfView) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QS
 }
 
 //export miqt_exec_callback_QPdfView_minimumSizeHint
-func miqt_exec_callback_QPdfView_minimumSizeHint(self *C.QPdfView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QPdfView_minimumSizeHint(self *C.QPdfView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPdfView_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QPdfView) callVirtualBase_SizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPdfView_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QPdfView) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QPdfView) callVirtualBase_SizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QPdfView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QPdfView) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QPdfView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -637,16 +625,15 @@ func (this *QPdfView) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
 }
 
 //export miqt_exec_callback_QPdfView_sizeHint
-func miqt_exec_callback_QPdfView_sizeHint(self *C.QPdfView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QPdfView_sizeHint(self *C.QPdfView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPdfView_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1062,14 +1049,12 @@ func miqt_exec_callback_QPdfView_keyPressEvent(self *C.QPdfView, cb C.intptr_t, 
 
 }
 
-func (this *QPdfView) callVirtualBase_ViewportSizeHint() *qt.QSize {
+func (this *QPdfView) callVirtualBase_ViewportSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QPdfView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QPdfView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QPdfView) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QPdfView) OnViewportSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QPdfView_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1077,16 +1062,15 @@ func (this *QPdfView) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.Q
 }
 
 //export miqt_exec_callback_QPdfView_viewportSizeHint
-func miqt_exec_callback_QPdfView_viewportSizeHint(self *C.QPdfView, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QPdfView_viewportSizeHint(self *C.QPdfView, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPdfView{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPdfView_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1641,7 +1625,6 @@ func miqt_exec_callback_QPdfView_initPainter(self *C.QPdfView, cb C.intptr_t, pa
 }
 
 func (this *QPdfView) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QPdfView_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

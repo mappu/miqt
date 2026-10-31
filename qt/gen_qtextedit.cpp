@@ -95,12 +95,12 @@ void miqt_exec_callback_QTextEdit_insertFromMimeData(QTextEdit*, intptr_t, QMime
 void miqt_exec_callback_QTextEdit_inputMethodEvent(QTextEdit*, intptr_t, QInputMethodEvent*);
 void miqt_exec_callback_QTextEdit_scrollContentsBy(QTextEdit*, intptr_t, int, int);
 void miqt_exec_callback_QTextEdit_doSetTextCursor(QTextEdit*, intptr_t, QTextCursor*);
-QSize* miqt_exec_callback_QTextEdit_minimumSizeHint(const QTextEdit*, intptr_t);
-QSize* miqt_exec_callback_QTextEdit_sizeHint(const QTextEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTextEdit_minimumSizeHint(const QTextEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTextEdit_sizeHint(const QTextEdit*, intptr_t);
 void miqt_exec_callback_QTextEdit_setupViewport(QTextEdit*, intptr_t, QWidget*);
 bool miqt_exec_callback_QTextEdit_eventFilter(QTextEdit*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QTextEdit_viewportEvent(QTextEdit*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QTextEdit_viewportSizeHint(const QTextEdit*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QTextEdit_viewportSizeHint(const QTextEdit*, intptr_t);
 int miqt_exec_callback_QTextEdit_devType(const QTextEdit*, intptr_t);
 void miqt_exec_callback_QTextEdit_setVisible(QTextEdit*, intptr_t, bool);
 int miqt_exec_callback_QTextEdit_heightForWidth(const QTextEdit*, intptr_t, int);
@@ -642,13 +642,11 @@ public:
 			return QTextEdit::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTextEdit_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTextEdit_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTextEdit_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QTextEdit_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -659,13 +657,11 @@ public:
 			return QTextEdit::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTextEdit_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTextEdit_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTextEdit_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QTextEdit_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -726,13 +722,11 @@ public:
 			return QTextEdit::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QTextEdit_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QTextEdit_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QTextEdit_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QTextEdit_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -1094,7 +1088,7 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QTextEdit_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range);
 	friend void QTextEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QTextEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QTextEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QTextEdit_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QTextEdit_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 	friend void QTextEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1237,12 +1231,12 @@ bool QTextEdit_fontItalic(const QTextEdit* self) {
 	return self->fontItalic();
 }
 
-QColor* QTextEdit_textColor(const QTextEdit* self) {
-	return new QColor(self->textColor());
+struct miqt_qcolor QTextEdit_textColor(const QTextEdit* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->textColor());
 }
 
-QColor* QTextEdit_textBackgroundColor(const QTextEdit* self) {
-	return new QColor(self->textBackgroundColor());
+struct miqt_qcolor QTextEdit_textBackgroundColor(const QTextEdit* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->textBackgroundColor());
 }
 
 QFont* QTextEdit_currentFont(const QTextEdit* self) {
@@ -1391,24 +1385,24 @@ QMenu* QTextEdit_createStandardContextMenu(QTextEdit* self) {
 	return self->createStandardContextMenu();
 }
 
-QMenu* QTextEdit_createStandardContextMenuWithPosition(QTextEdit* self, QPoint* position) {
-	return self->createStandardContextMenu(*position);
+QMenu* QTextEdit_createStandardContextMenuWithPosition(QTextEdit* self, struct miqt_qpoint position) {
+	return self->createStandardContextMenu(miqt_from_cabi<QPoint>(position));
 }
 
-QTextCursor* QTextEdit_cursorForPosition(const QTextEdit* self, QPoint* pos) {
-	return new QTextCursor(self->cursorForPosition(*pos));
+QTextCursor* QTextEdit_cursorForPosition(const QTextEdit* self, struct miqt_qpoint pos) {
+	return new QTextCursor(self->cursorForPosition(miqt_from_cabi<QPoint>(pos)));
 }
 
-QRect* QTextEdit_cursorRect(const QTextEdit* self, QTextCursor* cursor) {
-	return new QRect(self->cursorRect(*cursor));
+struct miqt_qrect QTextEdit_cursorRect(const QTextEdit* self, QTextCursor* cursor) {
+	return miqt_to_cabi<struct miqt_qrect>(self->cursorRect(*cursor));
 }
 
-QRect* QTextEdit_cursorRect2(const QTextEdit* self) {
-	return new QRect(self->cursorRect());
+struct miqt_qrect QTextEdit_cursorRect2(const QTextEdit* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->cursorRect());
 }
 
-struct miqt_string QTextEdit_anchorAt(const QTextEdit* self, QPoint* pos) {
-	QString _ret = self->anchorAt(*pos);
+struct miqt_string QTextEdit_anchorAt(const QTextEdit* self, struct miqt_qpoint pos) {
+	QString _ret = self->anchorAt(miqt_from_cabi<QPoint>(pos));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1523,12 +1517,12 @@ void QTextEdit_setFontItalic(QTextEdit* self, bool b) {
 	self->setFontItalic(b);
 }
 
-void QTextEdit_setTextColor(QTextEdit* self, QColor* c) {
-	self->setTextColor(*c);
+void QTextEdit_setTextColor(QTextEdit* self, struct miqt_qcolor c) {
+	self->setTextColor(miqt_from_cabi<QColor>(c));
 }
 
-void QTextEdit_setTextBackgroundColor(QTextEdit* self, QColor* c) {
-	self->setTextBackgroundColor(*c);
+void QTextEdit_setTextBackgroundColor(QTextEdit* self, struct miqt_qcolor c) {
+	self->setTextBackgroundColor(miqt_from_cabi<QColor>(c));
 }
 
 void QTextEdit_setCurrentFont(QTextEdit* self, QFont* f) {
@@ -2187,8 +2181,8 @@ bool QTextEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTextEdit_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTextEdit*>(self)->QTextEdit::minimumSizeHint());
+struct miqt_qsize QTextEdit_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTextEdit*>(self)->QTextEdit::minimumSizeHint());
 }
 
 bool QTextEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -2201,8 +2195,8 @@ bool QTextEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTextEdit_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTextEdit*>(self)->QTextEdit::sizeHint());
+struct miqt_qsize QTextEdit_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTextEdit*>(self)->QTextEdit::sizeHint());
 }
 
 bool QTextEdit_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -2257,8 +2251,8 @@ bool QTextEdit_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QTextEdit_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQTextEdit*>(self)->QTextEdit::viewportSizeHint());
+struct miqt_qsize QTextEdit_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQTextEdit*>(self)->QTextEdit::viewportSizeHint());
 }
 
 bool QTextEdit_override_virtual_devType(void* self, intptr_t slot) {
@@ -2560,10 +2554,6 @@ QVariant* QTextEdit_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
 
-QSize* QTextEdit_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 void QTextEdit_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range) {
 	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
 	if (self_cast == nullptr) {
@@ -2586,15 +2576,15 @@ void QTextEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* se
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QTextEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QTextEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QTextEdit_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

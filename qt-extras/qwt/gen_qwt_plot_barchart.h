@@ -53,16 +53,16 @@ QwtPlotBarChart* QwtPlotBarChart_new2(QwtText* title);
 QwtPlotBarChart* QwtPlotBarChart_new3(struct miqt_string title);
 void QwtPlotBarChart_virtbase(QwtPlotBarChart* src, QwtPlotAbstractBarChart** outptr_QwtPlotAbstractBarChart);
 int QwtPlotBarChart_rtti(const QwtPlotBarChart* self);
-void QwtPlotBarChart_setSamples(QwtPlotBarChart* self, struct miqt_array /* of QPointF* */  samples);
+void QwtPlotBarChart_setSamples(QwtPlotBarChart* self, struct miqt_array /* of struct miqt_qpointf */  samples);
 void QwtPlotBarChart_setSamplesWithSamples(QwtPlotBarChart* self, struct miqt_array /* of double */  samples);
 void QwtPlotBarChart_setSymbol(QwtPlotBarChart* self, QwtColumnSymbol* symbol);
 QwtColumnSymbol* QwtPlotBarChart_symbol(const QwtPlotBarChart* self);
 void QwtPlotBarChart_setLegendMode(QwtPlotBarChart* self, int legendMode);
 int QwtPlotBarChart_legendMode(const QwtPlotBarChart* self);
-QRectF* QwtPlotBarChart_boundingRect(const QwtPlotBarChart* self);
-QwtColumnSymbol* QwtPlotBarChart_specialSymbol(const QwtPlotBarChart* self, int sampleIndex, QPointF* param2);
+struct miqt_qrectf QwtPlotBarChart_boundingRect(const QwtPlotBarChart* self);
+QwtColumnSymbol* QwtPlotBarChart_specialSymbol(const QwtPlotBarChart* self, int sampleIndex, struct miqt_qpointf param2);
 QwtText* QwtPlotBarChart_barTitle(const QwtPlotBarChart* self, int sampleIndex);
-void QwtPlotBarChart_drawBar(const QwtPlotBarChart* self, QPainter* param1, int sampleIndex, QPointF* sample, QwtColumnRect* param4);
+void QwtPlotBarChart_drawBar(const QwtPlotBarChart* self, QPainter* param1, int sampleIndex, struct miqt_qpointf sample, QwtColumnRect* param4);
 
 void QwtPlotBarChart_delete(QwtPlotBarChart* self);
 

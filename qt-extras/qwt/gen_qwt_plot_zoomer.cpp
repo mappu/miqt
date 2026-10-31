@@ -30,29 +30,29 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QwtPlotZoomer_zoomed(intptr_t, QRectF*);
+void miqt_exec_callback_QwtPlotZoomer_zoomed(intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QwtPlotZoomer_setZoomBase(QwtPlotZoomer*, intptr_t, bool);
-void miqt_exec_callback_QwtPlotZoomer_setZoomBaseWithZoomBase(QwtPlotZoomer*, intptr_t, QRectF*);
+void miqt_exec_callback_QwtPlotZoomer_setZoomBaseWithZoomBase(QwtPlotZoomer*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QwtPlotZoomer_setAxis(QwtPlotZoomer*, intptr_t, int, int);
-void miqt_exec_callback_QwtPlotZoomer_moveTo(QwtPlotZoomer*, intptr_t, QPointF*);
-void miqt_exec_callback_QwtPlotZoomer_zoom(QwtPlotZoomer*, intptr_t, QRectF*);
+void miqt_exec_callback_QwtPlotZoomer_moveTo(QwtPlotZoomer*, intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QwtPlotZoomer_zoom(QwtPlotZoomer*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QwtPlotZoomer_zoomWithOffset(QwtPlotZoomer*, intptr_t, int);
 void miqt_exec_callback_QwtPlotZoomer_rescale(QwtPlotZoomer*, intptr_t);
-QSizeF* miqt_exec_callback_QwtPlotZoomer_minZoomSize(const QwtPlotZoomer*, intptr_t);
+struct miqt_qsizef miqt_exec_callback_QwtPlotZoomer_minZoomSize(const QwtPlotZoomer*, intptr_t);
 void miqt_exec_callback_QwtPlotZoomer_widgetMouseReleaseEvent(QwtPlotZoomer*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QwtPlotZoomer_widgetKeyPressEvent(QwtPlotZoomer*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QwtPlotZoomer_begin(QwtPlotZoomer*, intptr_t);
 bool miqt_exec_callback_QwtPlotZoomer_end(QwtPlotZoomer*, intptr_t, bool);
-QwtText* miqt_exec_callback_QwtPlotZoomer_trackerText(const QwtPlotZoomer*, intptr_t, QPoint*);
-QwtText* miqt_exec_callback_QwtPlotZoomer_trackerTextF(const QwtPlotZoomer*, intptr_t, QPointF*);
-void miqt_exec_callback_QwtPlotZoomer_move(QwtPlotZoomer*, intptr_t, QPoint*);
-void miqt_exec_callback_QwtPlotZoomer_append(QwtPlotZoomer*, intptr_t, QPoint*);
+QwtText* miqt_exec_callback_QwtPlotZoomer_trackerText(const QwtPlotZoomer*, intptr_t, struct miqt_qpoint);
+QwtText* miqt_exec_callback_QwtPlotZoomer_trackerTextF(const QwtPlotZoomer*, intptr_t, struct miqt_qpointf);
+void miqt_exec_callback_QwtPlotZoomer_move(QwtPlotZoomer*, intptr_t, struct miqt_qpoint);
+void miqt_exec_callback_QwtPlotZoomer_append(QwtPlotZoomer*, intptr_t, struct miqt_qpoint);
 bool miqt_exec_callback_QwtPlotZoomer_eventFilter(QwtPlotZoomer*, intptr_t, QObject*, QEvent*);
 QPainterPath* miqt_exec_callback_QwtPlotZoomer_pickArea(const QwtPlotZoomer*, intptr_t);
 void miqt_exec_callback_QwtPlotZoomer_drawRubberBand(const QwtPlotZoomer*, intptr_t, QPainter*);
 void miqt_exec_callback_QwtPlotZoomer_drawTracker(const QwtPlotZoomer*, intptr_t, QPainter*);
 QRegion* miqt_exec_callback_QwtPlotZoomer_rubberBandMask(const QwtPlotZoomer*, intptr_t);
-QRect* miqt_exec_callback_QwtPlotZoomer_trackerRect(const QwtPlotZoomer*, intptr_t, QFont*);
+struct miqt_qrect miqt_exec_callback_QwtPlotZoomer_trackerRect(const QwtPlotZoomer*, intptr_t, QFont*);
 void miqt_exec_callback_QwtPlotZoomer_transition(QwtPlotZoomer*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPlotZoomer_remove(QwtPlotZoomer*, intptr_t);
 void miqt_exec_callback_QwtPlotZoomer_reset(QwtPlotZoomer*, intptr_t);
@@ -63,7 +63,7 @@ void miqt_exec_callback_QwtPlotZoomer_widgetWheelEvent(QwtPlotZoomer*, intptr_t,
 void miqt_exec_callback_QwtPlotZoomer_widgetKeyReleaseEvent(QwtPlotZoomer*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QwtPlotZoomer_widgetEnterEvent(QwtPlotZoomer*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPlotZoomer_widgetLeaveEvent(QwtPlotZoomer*, intptr_t, QEvent*);
-void miqt_exec_callback_QwtPlotZoomer_stretchSelection(QwtPlotZoomer*, intptr_t, QSize*, QSize*);
+void miqt_exec_callback_QwtPlotZoomer_stretchSelection(QwtPlotZoomer*, intptr_t, struct miqt_qsize, struct miqt_qsize);
 void miqt_exec_callback_QwtPlotZoomer_updateDisplay(QwtPlotZoomer*, intptr_t);
 bool miqt_exec_callback_QwtPlotZoomer_event(QwtPlotZoomer*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtPlotZoomer_timerEvent(QwtPlotZoomer*, intptr_t, QTimerEvent*);
@@ -114,14 +114,12 @@ public:
 			return;
 		}
 
-		const QRectF& zoomBase_ret = zoomBase;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&zoomBase_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(zoomBase);
 		miqt_exec_callback_QwtPlotZoomer_setZoomBaseWithZoomBase(this, handle__setZoomBaseWithZoomBase, sigval1);
 
 	}
 
-	friend void QwtPlotZoomer_virtualbase_setZoomBaseWithZoomBase(void* self, QRectF* zoomBase);
+	friend void QwtPlotZoomer_virtualbase_setZoomBaseWithZoomBase(void* self, struct miqt_qrectf zoomBase);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAxis = 0;
@@ -151,14 +149,12 @@ public:
 			return;
 		}
 
-		const QPointF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&param1_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(param1);
 		miqt_exec_callback_QwtPlotZoomer_moveTo(this, handle__moveTo, sigval1);
 
 	}
 
-	friend void QwtPlotZoomer_virtualbase_moveTo(void* self, QPointF* param1);
+	friend void QwtPlotZoomer_virtualbase_moveTo(void* self, struct miqt_qpointf param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__zoom = 0;
@@ -170,14 +166,12 @@ public:
 			return;
 		}
 
-		const QRectF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(param1);
 		miqt_exec_callback_QwtPlotZoomer_zoom(this, handle__zoom, sigval1);
 
 	}
 
-	friend void QwtPlotZoomer_virtualbase_zoom(void* self, QRectF* param1);
+	friend void QwtPlotZoomer_virtualbase_zoom(void* self, struct miqt_qrectf param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__zoomWithOffset = 0;
@@ -221,13 +215,11 @@ public:
 			return QwtPlotZoomer::minZoomSize();
 		}
 
-		QSizeF* callback_return_value = miqt_exec_callback_QwtPlotZoomer_minZoomSize(this, handle__minZoomSize);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QwtPlotZoomer_minZoomSize(this, handle__minZoomSize);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
-	friend QSizeF* QwtPlotZoomer_virtualbase_minZoomSize(const void* self);
+	friend struct miqt_qsizef QwtPlotZoomer_virtualbase_minZoomSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widgetMouseReleaseEvent = 0;
@@ -304,16 +296,14 @@ public:
 			return QwtPlotZoomer::trackerText(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPlotZoomer_trackerText(this, handle__trackerText, sigval1);
 		QwtText callback_return_value_ret = *callback_return_value;
 		delete callback_return_value;
 		return callback_return_value_ret;
 	}
 
-	friend QwtText* QwtPlotZoomer_virtualbase_trackerText(const void* self, QPoint* param1);
+	friend QwtText* QwtPlotZoomer_virtualbase_trackerText(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__trackerTextF = 0;
@@ -324,16 +314,14 @@ public:
 			return QwtPlotZoomer::trackerTextF(param1);
 		}
 
-		const QPointF& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&param1_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(param1);
 		QwtText* callback_return_value = miqt_exec_callback_QwtPlotZoomer_trackerTextF(this, handle__trackerTextF, sigval1);
 		QwtText callback_return_value_ret = *callback_return_value;
 		delete callback_return_value;
 		return callback_return_value_ret;
 	}
 
-	friend QwtText* QwtPlotZoomer_virtualbase_trackerTextF(const void* self, QPointF* param1);
+	friend QwtText* QwtPlotZoomer_virtualbase_trackerTextF(const void* self, struct miqt_qpointf param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__move = 0;
@@ -345,14 +333,12 @@ public:
 			return;
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		miqt_exec_callback_QwtPlotZoomer_move(this, handle__move, sigval1);
 
 	}
 
-	friend void QwtPlotZoomer_virtualbase_move(void* self, QPoint* param1);
+	friend void QwtPlotZoomer_virtualbase_move(void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__append = 0;
@@ -364,14 +350,12 @@ public:
 			return;
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		miqt_exec_callback_QwtPlotZoomer_append(this, handle__append, sigval1);
 
 	}
 
-	friend void QwtPlotZoomer_virtualbase_append(void* self, QPoint* param1);
+	friend void QwtPlotZoomer_virtualbase_append(void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -470,13 +454,11 @@ public:
 		const QFont& param1_ret = param1;
 		// Cast returned reference into pointer
 		QFont* sigval1 = const_cast<QFont*>(&param1_ret);
-		QRect* callback_return_value = miqt_exec_callback_QwtPlotZoomer_trackerRect(this, handle__trackerRect, sigval1);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QwtPlotZoomer_trackerRect(this, handle__trackerRect, sigval1);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QwtPlotZoomer_virtualbase_trackerRect(const void* self, QFont* param1);
+	friend struct miqt_qrect QwtPlotZoomer_virtualbase_trackerRect(const void* self, QFont* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__transition = 0;
@@ -656,17 +638,13 @@ public:
 			return;
 		}
 
-		const QSize& oldSize_ret = oldSize;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&oldSize_ret);
-		const QSize& newSize_ret = newSize;
-		// Cast returned reference into pointer
-		QSize* sigval2 = const_cast<QSize*>(&newSize_ret);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(oldSize);
+		struct miqt_qsize sigval2 = miqt_to_cabi<struct miqt_qsize>(newSize);
 		miqt_exec_callback_QwtPlotZoomer_stretchSelection(this, handle__stretchSelection, sigval1, sigval2);
 
 	}
 
-	friend void QwtPlotZoomer_virtualbase_stretchSelection(void* self, QSize* oldSize, QSize* newSize);
+	friend void QwtPlotZoomer_virtualbase_stretchSelection(void* self, struct miqt_qsize oldSize, struct miqt_qsize newSize);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateDisplay = 0;
@@ -828,9 +806,9 @@ public:
 	friend bool QwtPlotZoomer_virtualbase_keyMatch2(const void* self, QwtEventPattern__KeyPattern* param1, QKeyEvent* param2);
 
 	// Wrappers to allow calling protected methods:
-	friend QRectF* QwtPlotZoomer_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self);
-	friend QRectF* QwtPlotZoomer_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, QRect* param1);
-	friend QRect* QwtPlotZoomer_protectedbase_transform(bool* _dynamic_cast_ok, const void* self, QRectF* param1);
+	friend struct miqt_qrectf QwtPlotZoomer_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrectf QwtPlotZoomer_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1);
+	friend struct miqt_qrect QwtPlotZoomer_protectedbase_transform(bool* _dynamic_cast_ok, const void* self, struct miqt_qrectf param1);
 	friend QwtWidgetOverlay* QwtPlotZoomer_protectedbase_rubberBandOverlay(bool* _dynamic_cast_ok, const void* self);
 	friend QwtWidgetOverlay* QwtPlotZoomer_protectedbase_trackerOverlay(bool* _dynamic_cast_ok, const void* self);
 	friend QObject* QwtPlotZoomer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -893,16 +871,16 @@ void QwtPlotZoomer_setZoomBase(QwtPlotZoomer* self, bool doReplot) {
 	self->setZoomBase(doReplot);
 }
 
-void QwtPlotZoomer_setZoomBaseWithZoomBase(QwtPlotZoomer* self, QRectF* zoomBase) {
-	self->setZoomBase(*zoomBase);
+void QwtPlotZoomer_setZoomBaseWithZoomBase(QwtPlotZoomer* self, struct miqt_qrectf zoomBase) {
+	self->setZoomBase(miqt_from_cabi<QRectF>(zoomBase));
 }
 
-QRectF* QwtPlotZoomer_zoomBase(const QwtPlotZoomer* self) {
-	return new QRectF(self->zoomBase());
+struct miqt_qrectf QwtPlotZoomer_zoomBase(const QwtPlotZoomer* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->zoomBase());
 }
 
-QRectF* QwtPlotZoomer_zoomRect(const QwtPlotZoomer* self) {
-	return new QRectF(self->zoomRect());
+struct miqt_qrectf QwtPlotZoomer_zoomRect(const QwtPlotZoomer* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->zoomRect());
 }
 
 void QwtPlotZoomer_setAxis(QwtPlotZoomer* self, int xAxis, int yAxis) {
@@ -926,27 +904,25 @@ void QwtPlotZoomer_moveBy(QwtPlotZoomer* self, double dx, double dy) {
 	self->moveBy(static_cast<double>(dx), static_cast<double>(dy));
 }
 
-void QwtPlotZoomer_moveTo(QwtPlotZoomer* self, QPointF* param1) {
-	self->moveTo(*param1);
+void QwtPlotZoomer_moveTo(QwtPlotZoomer* self, struct miqt_qpointf param1) {
+	self->moveTo(miqt_from_cabi<QPointF>(param1));
 }
 
-void QwtPlotZoomer_zoom(QwtPlotZoomer* self, QRectF* param1) {
-	self->zoom(*param1);
+void QwtPlotZoomer_zoom(QwtPlotZoomer* self, struct miqt_qrectf param1) {
+	self->zoom(miqt_from_cabi<QRectF>(param1));
 }
 
 void QwtPlotZoomer_zoomWithOffset(QwtPlotZoomer* self, int offset) {
 	self->zoom(static_cast<int>(offset));
 }
 
-void QwtPlotZoomer_zoomed(QwtPlotZoomer* self, QRectF* rect) {
-	self->zoomed(*rect);
+void QwtPlotZoomer_zoomed(QwtPlotZoomer* self, struct miqt_qrectf rect) {
+	self->zoomed(miqt_from_cabi<QRectF>(rect));
 }
 
 void QwtPlotZoomer_connect_zoomed(QwtPlotZoomer* self, intptr_t slot) {
 	QwtPlotZoomer::connect(self, static_cast<void (QwtPlotZoomer::*)(const QRectF&)>(&QwtPlotZoomer::zoomed), self, [=](const QRectF& rect) {
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QwtPlotZoomer_zoomed(slot, sigval1);
 	});
 }
@@ -1019,8 +995,8 @@ bool QwtPlotZoomer_override_virtual_setZoomBaseWithZoomBase(void* self, intptr_t
 	return true;
 }
 
-void QwtPlotZoomer_virtualbase_setZoomBaseWithZoomBase(void* self, QRectF* zoomBase) {
-	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::setZoomBase(*zoomBase);
+void QwtPlotZoomer_virtualbase_setZoomBaseWithZoomBase(void* self, struct miqt_qrectf zoomBase) {
+	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::setZoomBase(miqt_from_cabi<QRectF>(zoomBase));
 }
 
 bool QwtPlotZoomer_override_virtual_setAxis(void* self, intptr_t slot) {
@@ -1047,8 +1023,8 @@ bool QwtPlotZoomer_override_virtual_moveTo(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotZoomer_virtualbase_moveTo(void* self, QPointF* param1) {
-	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::moveTo(*param1);
+void QwtPlotZoomer_virtualbase_moveTo(void* self, struct miqt_qpointf param1) {
+	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::moveTo(miqt_from_cabi<QPointF>(param1));
 }
 
 bool QwtPlotZoomer_override_virtual_zoom(void* self, intptr_t slot) {
@@ -1061,8 +1037,8 @@ bool QwtPlotZoomer_override_virtual_zoom(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotZoomer_virtualbase_zoom(void* self, QRectF* param1) {
-	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::zoom(*param1);
+void QwtPlotZoomer_virtualbase_zoom(void* self, struct miqt_qrectf param1) {
+	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::zoom(miqt_from_cabi<QRectF>(param1));
 }
 
 bool QwtPlotZoomer_override_virtual_zoomWithOffset(void* self, intptr_t slot) {
@@ -1103,8 +1079,8 @@ bool QwtPlotZoomer_override_virtual_minZoomSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSizeF* QwtPlotZoomer_virtualbase_minZoomSize(const void* self) {
-	return new QSizeF(static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::minZoomSize());
+struct miqt_qsizef QwtPlotZoomer_virtualbase_minZoomSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::minZoomSize());
 }
 
 bool QwtPlotZoomer_override_virtual_widgetMouseReleaseEvent(void* self, intptr_t slot) {
@@ -1173,8 +1149,8 @@ bool QwtPlotZoomer_override_virtual_trackerText(void* self, intptr_t slot) {
 	return true;
 }
 
-QwtText* QwtPlotZoomer_virtualbase_trackerText(const void* self, QPoint* param1) {
-	return new QwtText(static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::trackerText(*param1));
+QwtText* QwtPlotZoomer_virtualbase_trackerText(const void* self, struct miqt_qpoint param1) {
+	return new QwtText(static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::trackerText(miqt_from_cabi<QPoint>(param1)));
 }
 
 bool QwtPlotZoomer_override_virtual_trackerTextF(void* self, intptr_t slot) {
@@ -1187,8 +1163,8 @@ bool QwtPlotZoomer_override_virtual_trackerTextF(void* self, intptr_t slot) {
 	return true;
 }
 
-QwtText* QwtPlotZoomer_virtualbase_trackerTextF(const void* self, QPointF* param1) {
-	return new QwtText(static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::trackerTextF(*param1));
+QwtText* QwtPlotZoomer_virtualbase_trackerTextF(const void* self, struct miqt_qpointf param1) {
+	return new QwtText(static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::trackerTextF(miqt_from_cabi<QPointF>(param1)));
 }
 
 bool QwtPlotZoomer_override_virtual_move(void* self, intptr_t slot) {
@@ -1201,8 +1177,8 @@ bool QwtPlotZoomer_override_virtual_move(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotZoomer_virtualbase_move(void* self, QPoint* param1) {
-	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::move(*param1);
+void QwtPlotZoomer_virtualbase_move(void* self, struct miqt_qpoint param1) {
+	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::move(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtPlotZoomer_override_virtual_append(void* self, intptr_t slot) {
@@ -1215,8 +1191,8 @@ bool QwtPlotZoomer_override_virtual_append(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlotZoomer_virtualbase_append(void* self, QPoint* param1) {
-	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::append(*param1);
+void QwtPlotZoomer_virtualbase_append(void* self, struct miqt_qpoint param1) {
+	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::append(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtPlotZoomer_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1299,8 +1275,8 @@ bool QwtPlotZoomer_override_virtual_trackerRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QwtPlotZoomer_virtualbase_trackerRect(const void* self, QFont* param1) {
-	return new QRect(static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::trackerRect(*param1));
+struct miqt_qrect QwtPlotZoomer_virtualbase_trackerRect(const void* self, QFont* param1) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::trackerRect(*param1));
 }
 
 bool QwtPlotZoomer_override_virtual_transition(void* self, intptr_t slot) {
@@ -1453,8 +1429,8 @@ bool QwtPlotZoomer_override_virtual_stretchSelection(void* self, intptr_t slot) 
 	return true;
 }
 
-void QwtPlotZoomer_virtualbase_stretchSelection(void* self, QSize* oldSize, QSize* newSize) {
-	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::stretchSelection(*oldSize, *newSize);
+void QwtPlotZoomer_virtualbase_stretchSelection(void* self, struct miqt_qsize oldSize, struct miqt_qsize newSize) {
+	static_cast<MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::stretchSelection(miqt_from_cabi<QSize>(oldSize), miqt_from_cabi<QSize>(newSize));
 }
 
 bool QwtPlotZoomer_override_virtual_updateDisplay(void* self, intptr_t slot) {
@@ -1583,10 +1559,6 @@ bool QwtPlotZoomer_virtualbase_keyMatch2(const void* self, QwtEventPattern__KeyP
 	return static_cast<const MiqtVirtualQwtPlotZoomer*>(self)->QwtPlotZoomer::keyMatch(*param1, param2);
 }
 
-QSizeF* QwtPlotZoomer_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
-}
-
 QwtText* QwtPlotZoomer_virtualreturncopy_QwtText(QwtText* src) {
 	return new QwtText(*src);
 }
@@ -1599,41 +1571,37 @@ QRegion* QwtPlotZoomer_virtualreturncopy_QRegion(QRegion* src) {
 	return new QRegion(*src);
 }
 
-QRect* QwtPlotZoomer_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
-QRectF* QwtPlotZoomer_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrectf QwtPlotZoomer_protectedbase_scaleRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQwtPlotZoomer* self_cast = dynamic_cast<MiqtVirtualQwtPlotZoomer*>( (QwtPlotZoomer*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->scaleRect());
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->scaleRect());
 }
 
-QRectF* QwtPlotZoomer_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
+struct miqt_qrectf QwtPlotZoomer_protectedbase_invTransform(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1) {
 	MiqtVirtualQwtPlotZoomer* self_cast = dynamic_cast<MiqtVirtualQwtPlotZoomer*>( (QwtPlotZoomer*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrectf){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRectF(self_cast->invTransform(*param1));
+	return miqt_to_cabi<struct miqt_qrectf>(self_cast->invTransform(miqt_from_cabi<QRect>(param1)));
 }
 
-QRect* QwtPlotZoomer_protectedbase_transform(bool* _dynamic_cast_ok, const void* self, QRectF* param1) {
+struct miqt_qrect QwtPlotZoomer_protectedbase_transform(bool* _dynamic_cast_ok, const void* self, struct miqt_qrectf param1) {
 	MiqtVirtualQwtPlotZoomer* self_cast = dynamic_cast<MiqtVirtualQwtPlotZoomer*>( (QwtPlotZoomer*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->transform(*param1));
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->transform(miqt_from_cabi<QRectF>(param1)));
 }
 
 QwtWidgetOverlay* QwtPlotZoomer_protectedbase_rubberBandOverlay(bool* _dynamic_cast_ok, const void* self) {

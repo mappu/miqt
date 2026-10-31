@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -513,11 +514,9 @@ func (this *QTextFormat) StringProperty(propertyId int) string {
 	return _ret
 }
 
-func (this *QTextFormat) ColorProperty(propertyId int) *QColor {
+func (this *QTextFormat) ColorProperty(propertyId int) QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QTextFormat_colorProperty(this.h, (C.int)(propertyId)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QTextFormat_colorProperty(this.h, (C.int)(propertyId)))
 }
 
 func (this *QTextFormat) PenProperty(propertyId int) *QPen {
@@ -1005,17 +1004,14 @@ func (this *QTextCharFormat) FontStrikeOut() bool {
 	return (bool)(C.QTextCharFormat_fontStrikeOut(this.h))
 }
 
-func (this *QTextCharFormat) SetUnderlineColor(color *QColor) {
+func (this *QTextCharFormat) SetUnderlineColor(color QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	C.QTextCharFormat_setUnderlineColor(this.h, color.cPointer())
+	C.QTextCharFormat_setUnderlineColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QTextCharFormat) UnderlineColor() *QColor {
+func (this *QTextCharFormat) UnderlineColor() QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QTextCharFormat_underlineColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QTextCharFormat_underlineColor(this.h))
 }
 
 func (this *QTextCharFormat) SetFontFixedPitch(fixedPitch bool) {

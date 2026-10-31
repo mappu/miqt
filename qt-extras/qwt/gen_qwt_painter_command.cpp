@@ -32,12 +32,12 @@ QwtPainterCommand* QwtPainterCommand_new2(QPainterPath* param1) {
 	return new (std::nothrow) QwtPainterCommand(*param1);
 }
 
-QwtPainterCommand* QwtPainterCommand_new3(QRectF* rect, QPixmap* param2, QRectF* subRect) {
-	return new (std::nothrow) QwtPainterCommand(*rect, *param2, *subRect);
+QwtPainterCommand* QwtPainterCommand_new3(struct miqt_qrectf rect, QPixmap* param2, struct miqt_qrectf subRect) {
+	return new (std::nothrow) QwtPainterCommand(miqt_from_cabi<QRectF>(rect), *param2, miqt_from_cabi<QRectF>(subRect));
 }
 
-QwtPainterCommand* QwtPainterCommand_new4(QRectF* rect, QImage* param2, QRectF* subRect, int param4) {
-	return new (std::nothrow) QwtPainterCommand(*rect, *param2, *subRect, static_cast<Qt::ImageConversionFlags>(param4));
+QwtPainterCommand* QwtPainterCommand_new4(struct miqt_qrectf rect, QImage* param2, struct miqt_qrectf subRect, int param4) {
+	return new (std::nothrow) QwtPainterCommand(miqt_from_cabi<QRectF>(rect), *param2, miqt_from_cabi<QRectF>(subRect), static_cast<Qt::ImageConversionFlags>(param4));
 }
 
 QwtPainterCommand* QwtPainterCommand_new5(QPaintEngineState* param1) {
@@ -93,12 +93,12 @@ QwtPainterCommand__PixmapData* QwtPainterCommand__PixmapData_new2() {
 	return new (std::nothrow) QwtPainterCommand::PixmapData();
 }
 
-QRectF* QwtPainterCommand__PixmapData_rect(const QwtPainterCommand__PixmapData* self) {
-	return new QRectF(self->rect);
+struct miqt_qrectf QwtPainterCommand__PixmapData_rect(const QwtPainterCommand__PixmapData* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->rect);
 }
 
-void QwtPainterCommand__PixmapData_setRect(QwtPainterCommand__PixmapData* self, QRectF* rect) {
-	self->rect = *rect;
+void QwtPainterCommand__PixmapData_setRect(QwtPainterCommand__PixmapData* self, struct miqt_qrectf rect) {
+	self->rect = miqt_from_cabi<QRectF>(rect);
 }
 
 QPixmap* QwtPainterCommand__PixmapData_pixmap(const QwtPainterCommand__PixmapData* self) {
@@ -109,12 +109,12 @@ void QwtPainterCommand__PixmapData_setPixmap(QwtPainterCommand__PixmapData* self
 	self->pixmap = *pixmap;
 }
 
-QRectF* QwtPainterCommand__PixmapData_subRect(const QwtPainterCommand__PixmapData* self) {
-	return new QRectF(self->subRect);
+struct miqt_qrectf QwtPainterCommand__PixmapData_subRect(const QwtPainterCommand__PixmapData* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->subRect);
 }
 
-void QwtPainterCommand__PixmapData_setSubRect(QwtPainterCommand__PixmapData* self, QRectF* subRect) {
-	self->subRect = *subRect;
+void QwtPainterCommand__PixmapData_setSubRect(QwtPainterCommand__PixmapData* self, struct miqt_qrectf subRect) {
+	self->subRect = miqt_from_cabi<QRectF>(subRect);
 }
 
 void QwtPainterCommand__PixmapData_operatorAssign(QwtPainterCommand__PixmapData* self, QwtPainterCommand__PixmapData* param1) {
@@ -133,12 +133,12 @@ QwtPainterCommand__ImageData* QwtPainterCommand__ImageData_new2() {
 	return new (std::nothrow) QwtPainterCommand::ImageData();
 }
 
-QRectF* QwtPainterCommand__ImageData_rect(const QwtPainterCommand__ImageData* self) {
-	return new QRectF(self->rect);
+struct miqt_qrectf QwtPainterCommand__ImageData_rect(const QwtPainterCommand__ImageData* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->rect);
 }
 
-void QwtPainterCommand__ImageData_setRect(QwtPainterCommand__ImageData* self, QRectF* rect) {
-	self->rect = *rect;
+void QwtPainterCommand__ImageData_setRect(QwtPainterCommand__ImageData* self, struct miqt_qrectf rect) {
+	self->rect = miqt_from_cabi<QRectF>(rect);
 }
 
 QImage* QwtPainterCommand__ImageData_image(const QwtPainterCommand__ImageData* self) {
@@ -149,12 +149,12 @@ void QwtPainterCommand__ImageData_setImage(QwtPainterCommand__ImageData* self, Q
 	self->image = *image;
 }
 
-QRectF* QwtPainterCommand__ImageData_subRect(const QwtPainterCommand__ImageData* self) {
-	return new QRectF(self->subRect);
+struct miqt_qrectf QwtPainterCommand__ImageData_subRect(const QwtPainterCommand__ImageData* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->subRect);
 }
 
-void QwtPainterCommand__ImageData_setSubRect(QwtPainterCommand__ImageData* self, QRectF* subRect) {
-	self->subRect = *subRect;
+void QwtPainterCommand__ImageData_setSubRect(QwtPainterCommand__ImageData* self, struct miqt_qrectf subRect) {
+	self->subRect = miqt_from_cabi<QRectF>(subRect);
 }
 
 int QwtPainterCommand__ImageData_flags(const QwtPainterCommand__ImageData* self) {
@@ -207,12 +207,12 @@ void QwtPainterCommand__StateData_setBrush(QwtPainterCommand__StateData* self, Q
 	self->brush = *brush;
 }
 
-QPointF* QwtPainterCommand__StateData_brushOrigin(const QwtPainterCommand__StateData* self) {
-	return new QPointF(self->brushOrigin);
+struct miqt_qpointf QwtPainterCommand__StateData_brushOrigin(const QwtPainterCommand__StateData* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->brushOrigin);
 }
 
-void QwtPainterCommand__StateData_setBrushOrigin(QwtPainterCommand__StateData* self, QPointF* brushOrigin) {
-	self->brushOrigin = *brushOrigin;
+void QwtPainterCommand__StateData_setBrushOrigin(QwtPainterCommand__StateData* self, struct miqt_qpointf brushOrigin) {
+	self->brushOrigin = miqt_from_cabi<QPointF>(brushOrigin);
 }
 
 QBrush* QwtPainterCommand__StateData_backgroundBrush(const QwtPainterCommand__StateData* self) {

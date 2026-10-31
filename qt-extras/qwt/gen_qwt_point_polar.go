@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -73,23 +74,19 @@ func NewQwtPointPolar3(param1 *QwtPointPolar) *QwtPointPolar {
 }
 
 // NewQwtPointPolar4 constructs a new QwtPointPolar object.
-func NewQwtPointPolar4(param1 *qt.QPointF) *QwtPointPolar {
-	defer runtime.KeepAlive(param1)
+func NewQwtPointPolar4(param1 qt.QPointF) *QwtPointPolar {
 
-	return newQwtPointPolar(C.QwtPointPolar_new4((*C.QPointF)(param1.UnsafePointer())))
+	return newQwtPointPolar(C.QwtPointPolar_new4(libmiqt.ValueCast[C.struct_miqt_qpointf](param1)))
 }
 
-func (this *QwtPointPolar) SetPoint(point *qt.QPointF) {
+func (this *QwtPointPolar) SetPoint(point qt.QPointF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(point)
-	C.QwtPointPolar_setPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
+	C.QwtPointPolar_setPoint(this.h, libmiqt.ValueCast[C.struct_miqt_qpointf](point))
 }
 
-func (this *QwtPointPolar) ToPoint() *qt.QPointF {
+func (this *QwtPointPolar) ToPoint() qt.QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QwtPointPolar_toPoint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPointF](C.QwtPointPolar_toPoint(this.h))
 }
 
 func (this *QwtPointPolar) IsValid() bool {

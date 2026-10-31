@@ -67,20 +67,20 @@ void QEasingCurve_setOvershoot(QEasingCurve* self, double overshoot) {
 	self->setOvershoot(static_cast<qreal>(overshoot));
 }
 
-void QEasingCurve_addCubicBezierSegment(QEasingCurve* self, QPointF* c1, QPointF* c2, QPointF* endPoint) {
-	self->addCubicBezierSegment(*c1, *c2, *endPoint);
+void QEasingCurve_addCubicBezierSegment(QEasingCurve* self, struct miqt_qpointf c1, struct miqt_qpointf c2, struct miqt_qpointf endPoint) {
+	self->addCubicBezierSegment(miqt_from_cabi<QPointF>(c1), miqt_from_cabi<QPointF>(c2), miqt_from_cabi<QPointF>(endPoint));
 }
 
-void QEasingCurve_addTCBSegment(QEasingCurve* self, QPointF* nextPoint, double t, double c, double b) {
-	self->addTCBSegment(*nextPoint, static_cast<qreal>(t), static_cast<qreal>(c), static_cast<qreal>(b));
+void QEasingCurve_addTCBSegment(QEasingCurve* self, struct miqt_qpointf nextPoint, double t, double c, double b) {
+	self->addTCBSegment(miqt_from_cabi<QPointF>(nextPoint), static_cast<qreal>(t), static_cast<qreal>(c), static_cast<qreal>(b));
 }
 
-struct miqt_array /* of QPointF* */  QEasingCurve_toCubicSpline(const QEasingCurve* self) {
+struct miqt_array /* of struct miqt_qpointf */  QEasingCurve_toCubicSpline(const QEasingCurve* self) {
 	QVector<QPointF> _ret = self->toCubicSpline();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
+	struct miqt_qpointf* _arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QPointF(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qpointf>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

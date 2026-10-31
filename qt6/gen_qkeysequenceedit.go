@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -497,14 +498,12 @@ func miqt_exec_callback_QKeySequenceEdit_setVisible(self *C.QKeySequenceEdit, cb
 
 }
 
-func (this *QKeySequenceEdit) callVirtualBase_SizeHint() *QSize {
+func (this *QKeySequenceEdit) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QKeySequenceEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QKeySequenceEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QKeySequenceEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QKeySequenceEdit) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QKeySequenceEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -512,27 +511,24 @@ func (this *QKeySequenceEdit) OnSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QKeySequenceEdit_sizeHint
-func miqt_exec_callback_QKeySequenceEdit_sizeHint(self *C.QKeySequenceEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QKeySequenceEdit_sizeHint(self *C.QKeySequenceEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QKeySequenceEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QKeySequenceEdit) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QKeySequenceEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QKeySequenceEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QKeySequenceEdit) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QKeySequenceEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QKeySequenceEdit) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QKeySequenceEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -540,16 +536,15 @@ func (this *QKeySequenceEdit) OnMinimumSizeHint(slot func(super func() *QSize) *
 }
 
 //export miqt_exec_callback_QKeySequenceEdit_minimumSizeHint
-func miqt_exec_callback_QKeySequenceEdit_minimumSizeHint(self *C.QKeySequenceEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QKeySequenceEdit_minimumSizeHint(self *C.QKeySequenceEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QKeySequenceEdit_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1323,7 +1318,6 @@ func miqt_exec_callback_QKeySequenceEdit_initPainter(self *C.QKeySequenceEdit, c
 }
 
 func (this *QKeySequenceEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QKeySequenceEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

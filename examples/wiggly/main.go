@@ -55,7 +55,6 @@ func NewWigglyWidget(text string) *WigglyWidget {
 		y := (self.widget.Height() + fontMetrics.Ascent() - fontMetrics.Descent()) / 2
 
 		color := qt.NewQColor()
-		defer color.Delete()
 
 		painter := qt.NewQPainter2(self.widget.QPaintDevice)
 		defer painter.Delete()

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -142,31 +143,24 @@ func (this *QMenuBar) IsDefaultUp() bool {
 	return (bool)(C.QMenuBar_isDefaultUp(this.h))
 }
 
-func (this *QMenuBar) SizeHint() *QSize {
-	_goptr := newQSize(C.QMenuBar_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMenuBar) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QMenuBar_sizeHint(this.h))
 }
 
-func (this *QMenuBar) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QMenuBar_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMenuBar) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QMenuBar_minimumSizeHint(this.h))
 }
 
 func (this *QMenuBar) HeightForWidth(param1 int) int {
 	return (int)(C.QMenuBar_heightForWidth(this.h, (C.int)(param1)))
 }
 
-func (this *QMenuBar) ActionGeometry(param1 *QAction) *QRect {
-	_goptr := newQRect(C.QMenuBar_actionGeometry(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMenuBar) ActionGeometry(param1 *QAction) QRect {
+	return libmiqt.ValueCast[QRect](C.QMenuBar_actionGeometry(this.h, param1.cPointer()))
 }
 
-func (this *QMenuBar) ActionAt(param1 *QPoint) *QAction {
-	defer runtime.KeepAlive(param1)
-	return newQAction(C.QMenuBar_actionAt(this.h, param1.cPointer()))
+func (this *QMenuBar) ActionAt(param1 QPoint) *QAction {
+	return newQAction(C.QMenuBar_actionAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 }
 
 func (this *QMenuBar) SetCornerWidget(w *QWidget) {
@@ -382,14 +376,12 @@ func (this *QMenuBar) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QMenuBar) callVirtualBase_SizeHint() *QSize {
+func (this *QMenuBar) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QMenuBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QMenuBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QMenuBar) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QMenuBar) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMenuBar_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -397,27 +389,24 @@ func (this *QMenuBar) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QMenuBar_sizeHint
-func miqt_exec_callback_QMenuBar_sizeHint(self *C.QMenuBar, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMenuBar_sizeHint(self *C.QMenuBar, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMenuBar{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMenuBar_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QMenuBar) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QMenuBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QMenuBar) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QMenuBar) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QMenuBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QMenuBar) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMenuBar_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -425,16 +414,15 @@ func (this *QMenuBar) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QMenuBar_minimumSizeHint
-func miqt_exec_callback_QMenuBar_minimumSizeHint(self *C.QMenuBar, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMenuBar_minimumSizeHint(self *C.QMenuBar, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMenuBar{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMenuBar_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1456,7 +1444,6 @@ func miqt_exec_callback_QMenuBar_initPainter(self *C.QMenuBar, cb C.intptr_t, pa
 }
 
 func (this *QMenuBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QMenuBar_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

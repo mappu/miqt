@@ -50,8 +50,8 @@ void miqt_exec_callback_QSplashScreen_drawContents(QSplashScreen*, intptr_t, QPa
 void miqt_exec_callback_QSplashScreen_mousePressEvent(QSplashScreen*, intptr_t, QMouseEvent*);
 int miqt_exec_callback_QSplashScreen_devType(const QSplashScreen*, intptr_t);
 void miqt_exec_callback_QSplashScreen_setVisible(QSplashScreen*, intptr_t, bool);
-QSize* miqt_exec_callback_QSplashScreen_sizeHint(const QSplashScreen*, intptr_t);
-QSize* miqt_exec_callback_QSplashScreen_minimumSizeHint(const QSplashScreen*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSplashScreen_sizeHint(const QSplashScreen*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSplashScreen_minimumSizeHint(const QSplashScreen*, intptr_t);
 int miqt_exec_callback_QSplashScreen_heightForWidth(const QSplashScreen*, intptr_t, int);
 bool miqt_exec_callback_QSplashScreen_hasHeightForWidth(const QSplashScreen*, intptr_t);
 QPaintEngine* miqt_exec_callback_QSplashScreen_paintEngine(const QSplashScreen*, intptr_t);
@@ -203,13 +203,11 @@ public:
 			return QSplashScreen::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSplashScreen_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSplashScreen_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSplashScreen_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QSplashScreen_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -220,13 +218,11 @@ public:
 			return QSplashScreen::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSplashScreen_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSplashScreen_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSplashScreen_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QSplashScreen_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1114,9 +1110,9 @@ void QSplashScreen_showMessage2(QSplashScreen* self, struct miqt_string message,
 	self->showMessage(message_QString, static_cast<int>(alignment));
 }
 
-void QSplashScreen_showMessage3(QSplashScreen* self, struct miqt_string message, int alignment, QColor* color) {
+void QSplashScreen_showMessage3(QSplashScreen* self, struct miqt_string message, int alignment, struct miqt_qcolor color) {
 	QString message_QString = QString::fromUtf8(message.data, message.len);
-	self->showMessage(message_QString, static_cast<int>(alignment), *color);
+	self->showMessage(message_QString, static_cast<int>(alignment), miqt_from_cabi<QColor>(color));
 }
 
 bool QSplashScreen_override_virtual_event(void* self, intptr_t slot) {
@@ -1199,8 +1195,8 @@ bool QSplashScreen_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSplashScreen_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSplashScreen*>(self)->QSplashScreen::sizeHint());
+struct miqt_qsize QSplashScreen_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSplashScreen*>(self)->QSplashScreen::sizeHint());
 }
 
 bool QSplashScreen_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1213,8 +1209,8 @@ bool QSplashScreen_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSplashScreen_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSplashScreen*>(self)->QSplashScreen::minimumSizeHint());
+struct miqt_qsize QSplashScreen_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSplashScreen*>(self)->QSplashScreen::minimumSizeHint());
 }
 
 bool QSplashScreen_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1790,10 +1786,6 @@ bool QSplashScreen_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QSplashScreen_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSplashScreen*>(self)->QSplashScreen::disconnectNotify(*signal);
-}
-
-QSize* QSplashScreen_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QSplashScreen_virtualreturncopy_QVariant(QVariant* src) {

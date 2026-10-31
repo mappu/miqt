@@ -497,12 +497,12 @@ QTextBlock* QTextDocument_lastBlock(const QTextDocument* self) {
 	return new QTextBlock(self->lastBlock());
 }
 
-void QTextDocument_setPageSize(QTextDocument* self, QSizeF* size) {
-	self->setPageSize(*size);
+void QTextDocument_setPageSize(QTextDocument* self, struct miqt_qsizef size) {
+	self->setPageSize(miqt_from_cabi<QSizeF>(size));
 }
 
-QSizeF* QTextDocument_pageSize(const QTextDocument* self) {
-	return new QSizeF(self->pageSize());
+struct miqt_qsizef QTextDocument_pageSize(const QTextDocument* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->pageSize());
 }
 
 void QTextDocument_setDefaultFont(QTextDocument* self, QFont* font) {
@@ -633,8 +633,8 @@ void QTextDocument_adjustSize(QTextDocument* self) {
 	self->adjustSize();
 }
 
-QSizeF* QTextDocument_size(const QTextDocument* self) {
-	return new QSizeF(self->size());
+struct miqt_qsizef QTextDocument_size(const QTextDocument* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->size());
 }
 
 int QTextDocument_blockCount(const QTextDocument* self) {
@@ -908,8 +908,8 @@ QTextCursor* QTextDocument_find9(const QTextDocument* self, QRegularExpression* 
 	return new QTextCursor(self->find(*expr, *cursor, static_cast<QTextDocument::FindFlags>(options)));
 }
 
-void QTextDocument_drawContents2(QTextDocument* self, QPainter* painter, QRectF* rect) {
-	self->drawContents(painter, *rect);
+void QTextDocument_drawContents2(QTextDocument* self, QPainter* painter, struct miqt_qrectf rect) {
+	self->drawContents(painter, miqt_from_cabi<QRectF>(rect));
 }
 
 void QTextDocument_clearUndoRedoStacksWithHistoryToClear(QTextDocument* self, int historyToClear) {

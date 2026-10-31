@@ -31,8 +31,8 @@ int QPdfDestination_page(const QPdfDestination* self) {
 	return self->page();
 }
 
-QPointF* QPdfDestination_location(const QPdfDestination* self) {
-	return new QPointF(self->location());
+struct miqt_qpointf QPdfDestination_location(const QPdfDestination* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->location());
 }
 
 double QPdfDestination_zoom(const QPdfDestination* self) {

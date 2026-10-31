@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -212,13 +213,12 @@ func (this *QSplashScreen) ShowMessage2(message string, alignment int) {
 	C.QSplashScreen_showMessage2(this.h, message_ms, (C.int)(alignment))
 }
 
-func (this *QSplashScreen) ShowMessage3(message string, alignment int, color *QColor) {
-	defer runtime.KeepAlive(color)
+func (this *QSplashScreen) ShowMessage3(message string, alignment int, color QColor) {
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
 	defer C.free(unsafe.Pointer(message_ms.data))
-	C.QSplashScreen_showMessage3(this.h, message_ms, (C.int)(alignment), color.cPointer())
+	C.QSplashScreen_showMessage3(this.h, message_ms, (C.int)(alignment), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 // UpdateMicroFocus can only be called from a QSplashScreen that was directly constructed.
@@ -478,14 +478,12 @@ func miqt_exec_callback_QSplashScreen_setVisible(self *C.QSplashScreen, cb C.int
 
 }
 
-func (this *QSplashScreen) callVirtualBase_SizeHint() *QSize {
+func (this *QSplashScreen) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QSplashScreen_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QSplashScreen_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplashScreen) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QSplashScreen) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QSplashScreen_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -493,27 +491,24 @@ func (this *QSplashScreen) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QSplashScreen_sizeHint
-func miqt_exec_callback_QSplashScreen_sizeHint(self *C.QSplashScreen, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QSplashScreen_sizeHint(self *C.QSplashScreen, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QSplashScreen{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSplashScreen_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QSplashScreen) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QSplashScreen_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QSplashScreen) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QSplashScreen) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QSplashScreen_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QSplashScreen) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QSplashScreen_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -521,16 +516,15 @@ func (this *QSplashScreen) OnMinimumSizeHint(slot func(super func() *QSize) *QSi
 }
 
 //export miqt_exec_callback_QSplashScreen_minimumSizeHint
-func miqt_exec_callback_QSplashScreen_minimumSizeHint(self *C.QSplashScreen, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QSplashScreen_minimumSizeHint(self *C.QSplashScreen, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QSplashScreen{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSplashScreen_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1358,7 +1352,6 @@ func miqt_exec_callback_QSplashScreen_initPainter(self *C.QSplashScreen, cb C.in
 }
 
 func (this *QSplashScreen) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QSplashScreen_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

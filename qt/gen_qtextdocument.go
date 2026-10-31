@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -465,15 +466,12 @@ func (this *QTextDocument) LastBlock() *QTextBlock {
 	return _goptr
 }
 
-func (this *QTextDocument) SetPageSize(size *QSizeF) {
-	defer runtime.KeepAlive(size)
-	C.QTextDocument_setPageSize(this.h, size.cPointer())
+func (this *QTextDocument) SetPageSize(size QSizeF) {
+	C.QTextDocument_setPageSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
-func (this *QTextDocument) PageSize() *QSizeF {
-	_goptr := newQSizeF(C.QTextDocument_pageSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTextDocument) PageSize() QSizeF {
+	return libmiqt.ValueCast[QSizeF](C.QTextDocument_pageSize(this.h))
 }
 
 func (this *QTextDocument) SetDefaultFont(font *QFont) {
@@ -574,10 +572,8 @@ func (this *QTextDocument) AdjustSize() {
 	C.QTextDocument_adjustSize(this.h)
 }
 
-func (this *QTextDocument) Size() *QSizeF {
-	_goptr := newQSizeF(C.QTextDocument_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QTextDocument) Size() QSizeF {
+	return libmiqt.ValueCast[QSizeF](C.QTextDocument_size(this.h))
 }
 
 func (this *QTextDocument) BlockCount() int {
@@ -1025,10 +1021,9 @@ func (this *QTextDocument) Find14(expr *QRegularExpression, cursor *QTextCursor,
 	return _goptr
 }
 
-func (this *QTextDocument) DrawContents2(painter *QPainter, rect *QRectF) {
+func (this *QTextDocument) DrawContents2(painter *QPainter, rect QRectF) {
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
-	C.QTextDocument_drawContents2(this.h, painter.cPointer(), rect.cPointer())
+	C.QTextDocument_drawContents2(this.h, painter.cPointer(), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QTextDocument) ClearUndoRedoStacksWithHistoryToClear(historyToClear QTextDocument__Stacks) {

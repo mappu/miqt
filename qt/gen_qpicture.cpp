@@ -213,12 +213,12 @@ bool QPicture_saveWithFileName(QPicture* self, struct miqt_string fileName) {
 	return self->save(fileName_QString);
 }
 
-QRect* QPicture_boundingRect(const QPicture* self) {
-	return new QRect(self->boundingRect());
+struct miqt_qrect QPicture_boundingRect(const QPicture* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->boundingRect());
 }
 
-void QPicture_setBoundingRect(QPicture* self, QRect* r) {
-	self->setBoundingRect(*r);
+void QPicture_setBoundingRect(QPicture* self, struct miqt_qrect r) {
+	self->setBoundingRect(miqt_from_cabi<QRect>(r));
 }
 
 void QPicture_operatorAssign(QPicture* self, QPicture* p) {

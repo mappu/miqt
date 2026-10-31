@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -340,14 +341,12 @@ func miqt_exec_callback_QwtPlotRescaler_canvasResizeEvent(self *C.QwtPlotRescale
 
 }
 
-func (this *QwtPlotRescaler) callVirtualBase_Rescale2(oldSize *qt.QSize, newSize *qt.QSize) {
-	defer runtime.KeepAlive(oldSize)
-	defer runtime.KeepAlive(newSize)
+func (this *QwtPlotRescaler) callVirtualBase_Rescale2(oldSize qt.QSize, newSize qt.QSize) {
 
-	C.QwtPlotRescaler_virtualbase_rescale2(unsafe.Pointer(this.h), (*C.QSize)(oldSize.UnsafePointer()), (*C.QSize)(newSize.UnsafePointer()))
+	C.QwtPlotRescaler_virtualbase_rescale2(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qsize](oldSize), libmiqt.ValueCast[C.struct_miqt_qsize](newSize))
 
 }
-func (this *QwtPlotRescaler) OnRescale2(slot func(super func(oldSize *qt.QSize, newSize *qt.QSize), oldSize *qt.QSize, newSize *qt.QSize)) {
+func (this *QwtPlotRescaler) OnRescale2(slot func(super func(oldSize qt.QSize, newSize qt.QSize), oldSize qt.QSize, newSize qt.QSize)) {
 	ok := C.QwtPlotRescaler_override_virtual_rescale2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -355,31 +354,29 @@ func (this *QwtPlotRescaler) OnRescale2(slot func(super func(oldSize *qt.QSize, 
 }
 
 //export miqt_exec_callback_QwtPlotRescaler_rescale2
-func miqt_exec_callback_QwtPlotRescaler_rescale2(self *C.QwtPlotRescaler, cb C.intptr_t, oldSize *C.QSize, newSize *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(oldSize *qt.QSize, newSize *qt.QSize), oldSize *qt.QSize, newSize *qt.QSize))
+func miqt_exec_callback_QwtPlotRescaler_rescale2(self *C.QwtPlotRescaler, cb C.intptr_t, oldSize C.struct_miqt_qsize, newSize C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(oldSize qt.QSize, newSize qt.QSize), oldSize qt.QSize, newSize qt.QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSize(unsafe.Pointer(oldSize))
+	slotval1 := libmiqt.ValueCast[qt.QSize](oldSize)
 
-	slotval2 := qt.UnsafeNewQSize(unsafe.Pointer(newSize))
+	slotval2 := libmiqt.ValueCast[qt.QSize](newSize)
 
 	gofunc((&QwtPlotRescaler{h: self}).callVirtualBase_Rescale2, slotval1, slotval2)
 
 }
 
-func (this *QwtPlotRescaler) callVirtualBase_ExpandScale(axis int, oldSize *qt.QSize, newSize *qt.QSize) *QwtInterval {
-	defer runtime.KeepAlive(oldSize)
-	defer runtime.KeepAlive(newSize)
+func (this *QwtPlotRescaler) callVirtualBase_ExpandScale(axis int, oldSize qt.QSize, newSize qt.QSize) *QwtInterval {
 
-	_goptr := newQwtInterval(C.QwtPlotRescaler_virtualbase_expandScale(unsafe.Pointer(this.h), (C.int)(axis), (*C.QSize)(oldSize.UnsafePointer()), (*C.QSize)(newSize.UnsafePointer())))
+	_goptr := newQwtInterval(C.QwtPlotRescaler_virtualbase_expandScale(unsafe.Pointer(this.h), (C.int)(axis), libmiqt.ValueCast[C.struct_miqt_qsize](oldSize), libmiqt.ValueCast[C.struct_miqt_qsize](newSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QwtPlotRescaler) OnExpandScale(slot func(super func(axis int, oldSize *qt.QSize, newSize *qt.QSize) *QwtInterval, axis int, oldSize *qt.QSize, newSize *qt.QSize) *QwtInterval) {
+func (this *QwtPlotRescaler) OnExpandScale(slot func(super func(axis int, oldSize qt.QSize, newSize qt.QSize) *QwtInterval, axis int, oldSize qt.QSize, newSize qt.QSize) *QwtInterval) {
 	ok := C.QwtPlotRescaler_override_virtual_expandScale(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -387,8 +384,8 @@ func (this *QwtPlotRescaler) OnExpandScale(slot func(super func(axis int, oldSiz
 }
 
 //export miqt_exec_callback_QwtPlotRescaler_expandScale
-func miqt_exec_callback_QwtPlotRescaler_expandScale(self *C.QwtPlotRescaler, cb C.intptr_t, axis C.int, oldSize *C.QSize, newSize *C.QSize) *C.QwtInterval {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(axis int, oldSize *qt.QSize, newSize *qt.QSize) *QwtInterval, axis int, oldSize *qt.QSize, newSize *qt.QSize) *QwtInterval)
+func miqt_exec_callback_QwtPlotRescaler_expandScale(self *C.QwtPlotRescaler, cb C.intptr_t, axis C.int, oldSize C.struct_miqt_qsize, newSize C.struct_miqt_qsize) *C.QwtInterval {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(axis int, oldSize qt.QSize, newSize qt.QSize) *QwtInterval, axis int, oldSize qt.QSize, newSize qt.QSize) *QwtInterval)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -396,9 +393,9 @@ func miqt_exec_callback_QwtPlotRescaler_expandScale(self *C.QwtPlotRescaler, cb 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(axis)
 
-	slotval2 := qt.UnsafeNewQSize(unsafe.Pointer(oldSize))
+	slotval2 := libmiqt.ValueCast[qt.QSize](oldSize)
 
-	slotval3 := qt.UnsafeNewQSize(unsafe.Pointer(newSize))
+	slotval3 := libmiqt.ValueCast[qt.QSize](newSize)
 
 	virtualReturn := gofunc((&QwtPlotRescaler{h: self}).callVirtualBase_ExpandScale, slotval1, slotval2, slotval3)
 	defer runtime.KeepAlive(virtualReturn)
@@ -407,16 +404,15 @@ func miqt_exec_callback_QwtPlotRescaler_expandScale(self *C.QwtPlotRescaler, cb 
 
 }
 
-func (this *QwtPlotRescaler) callVirtualBase_SyncScale(axis int, reference *QwtInterval, size *qt.QSize) *QwtInterval {
+func (this *QwtPlotRescaler) callVirtualBase_SyncScale(axis int, reference *QwtInterval, size qt.QSize) *QwtInterval {
 	defer runtime.KeepAlive(reference)
-	defer runtime.KeepAlive(size)
 
-	_goptr := newQwtInterval(C.QwtPlotRescaler_virtualbase_syncScale(unsafe.Pointer(this.h), (C.int)(axis), reference.cPointer(), (*C.QSize)(size.UnsafePointer())))
+	_goptr := newQwtInterval(C.QwtPlotRescaler_virtualbase_syncScale(unsafe.Pointer(this.h), (C.int)(axis), reference.cPointer(), libmiqt.ValueCast[C.struct_miqt_qsize](size)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QwtPlotRescaler) OnSyncScale(slot func(super func(axis int, reference *QwtInterval, size *qt.QSize) *QwtInterval, axis int, reference *QwtInterval, size *qt.QSize) *QwtInterval) {
+func (this *QwtPlotRescaler) OnSyncScale(slot func(super func(axis int, reference *QwtInterval, size qt.QSize) *QwtInterval, axis int, reference *QwtInterval, size qt.QSize) *QwtInterval) {
 	ok := C.QwtPlotRescaler_override_virtual_syncScale(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -424,8 +420,8 @@ func (this *QwtPlotRescaler) OnSyncScale(slot func(super func(axis int, referenc
 }
 
 //export miqt_exec_callback_QwtPlotRescaler_syncScale
-func miqt_exec_callback_QwtPlotRescaler_syncScale(self *C.QwtPlotRescaler, cb C.intptr_t, axis C.int, reference *C.QwtInterval, size *C.QSize) *C.QwtInterval {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(axis int, reference *QwtInterval, size *qt.QSize) *QwtInterval, axis int, reference *QwtInterval, size *qt.QSize) *QwtInterval)
+func miqt_exec_callback_QwtPlotRescaler_syncScale(self *C.QwtPlotRescaler, cb C.intptr_t, axis C.int, reference *C.QwtInterval, size C.struct_miqt_qsize) *C.QwtInterval {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(axis int, reference *QwtInterval, size qt.QSize) *QwtInterval, axis int, reference *QwtInterval, size qt.QSize) *QwtInterval)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -435,7 +431,7 @@ func miqt_exec_callback_QwtPlotRescaler_syncScale(self *C.QwtPlotRescaler, cb C.
 
 	slotval2 := newQwtInterval(reference)
 
-	slotval3 := qt.UnsafeNewQSize(unsafe.Pointer(size))
+	slotval3 := libmiqt.ValueCast[qt.QSize](size)
 
 	virtualReturn := gofunc((&QwtPlotRescaler{h: self}).callVirtualBase_SyncScale, slotval1, slotval2, slotval3)
 	defer runtime.KeepAlive(virtualReturn)

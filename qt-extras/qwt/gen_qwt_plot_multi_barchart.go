@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -177,11 +178,9 @@ func (this *QwtPlotMultiBarChart) ResetSymbolMap() {
 	C.QwtPlotMultiBarChart_resetSymbolMap(this.h)
 }
 
-func (this *QwtPlotMultiBarChart) BoundingRect() *qt.QRectF {
+func (this *QwtPlotMultiBarChart) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotMultiBarChart_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotMultiBarChart_boundingRect(this.h))
 }
 
 func (this *QwtPlotMultiBarChart) LegendData() []QwtLegendData {
@@ -197,10 +196,9 @@ func (this *QwtPlotMultiBarChart) LegendData() []QwtLegendData {
 	return _ret
 }
 
-func (this *QwtPlotMultiBarChart) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+func (this *QwtPlotMultiBarChart) LegendIcon(index int, param2 qt.QSizeF) *QwtGraphic {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	_goptr := newQwtGraphic(C.QwtPlotMultiBarChart_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
+	_goptr := newQwtGraphic(C.QwtPlotMultiBarChart_legendIcon(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qsizef](param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -40,9 +40,9 @@ int QwtPlotRasterItem_alpha(const QwtPlotRasterItem* self);
 void QwtPlotRasterItem_setCachePolicy(QwtPlotRasterItem* self, int cachePolicy);
 int QwtPlotRasterItem_cachePolicy(const QwtPlotRasterItem* self);
 void QwtPlotRasterItem_invalidateCache(QwtPlotRasterItem* self);
-QRectF* QwtPlotRasterItem_pixelHint(const QwtPlotRasterItem* self, QRectF* param1);
+struct miqt_qrectf QwtPlotRasterItem_pixelHint(const QwtPlotRasterItem* self, struct miqt_qrectf param1);
 QwtInterval* QwtPlotRasterItem_interval(const QwtPlotRasterItem* self, int param1);
-QRectF* QwtPlotRasterItem_boundingRect(const QwtPlotRasterItem* self);
+struct miqt_qrectf QwtPlotRasterItem_boundingRect(const QwtPlotRasterItem* self);
 void QwtPlotRasterItem_setPaintAttribute2(QwtPlotRasterItem* self, int param1, bool on);
 
 void QwtPlotRasterItem_delete(QwtPlotRasterItem* self);

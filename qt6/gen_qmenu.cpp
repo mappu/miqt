@@ -51,7 +51,7 @@ void miqt_exec_callback_QMenu_aboutToShow(intptr_t);
 void miqt_exec_callback_QMenu_aboutToHide(intptr_t);
 void miqt_exec_callback_QMenu_triggered(intptr_t, QAction*);
 void miqt_exec_callback_QMenu_hovered(intptr_t, QAction*);
-QSize* miqt_exec_callback_QMenu_sizeHint(const QMenu*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMenu_sizeHint(const QMenu*, intptr_t);
 void miqt_exec_callback_QMenu_changeEvent(QMenu*, intptr_t, QEvent*);
 void miqt_exec_callback_QMenu_keyPressEvent(QMenu*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QMenu_mouseReleaseEvent(QMenu*, intptr_t, QMouseEvent*);
@@ -69,7 +69,7 @@ bool miqt_exec_callback_QMenu_focusNextPrevChild(QMenu*, intptr_t, bool);
 void miqt_exec_callback_QMenu_initStyleOption(const QMenu*, intptr_t, QStyleOptionMenuItem*, QAction*);
 int miqt_exec_callback_QMenu_devType(const QMenu*, intptr_t);
 void miqt_exec_callback_QMenu_setVisible(QMenu*, intptr_t, bool);
-QSize* miqt_exec_callback_QMenu_minimumSizeHint(const QMenu*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMenu_minimumSizeHint(const QMenu*, intptr_t);
 int miqt_exec_callback_QMenu_heightForWidth(const QMenu*, intptr_t, int);
 bool miqt_exec_callback_QMenu_hasHeightForWidth(const QMenu*, intptr_t);
 QPaintEngine* miqt_exec_callback_QMenu_paintEngine(const QMenu*, intptr_t);
@@ -122,13 +122,11 @@ public:
 			return QMenu::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMenu_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMenu_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMenu_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QMenu_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -425,13 +423,11 @@ public:
 			return QMenu::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMenu_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMenu_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMenu_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QMenu_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1055,8 +1051,8 @@ void QMenu_showTearOffMenu(QMenu* self) {
 	self->showTearOffMenu();
 }
 
-void QMenu_showTearOffMenuWithPos(QMenu* self, QPoint* pos) {
-	self->showTearOffMenu(*pos);
+void QMenu_showTearOffMenuWithPos(QMenu* self, struct miqt_qpoint pos) {
+	self->showTearOffMenu(miqt_from_cabi<QPoint>(pos));
 }
 
 void QMenu_hideTearOffMenu(QMenu* self) {
@@ -1079,38 +1075,38 @@ QAction* QMenu_activeAction(const QMenu* self) {
 	return self->activeAction();
 }
 
-void QMenu_popup(QMenu* self, QPoint* pos) {
-	self->popup(*pos);
+void QMenu_popup(QMenu* self, struct miqt_qpoint pos) {
+	self->popup(miqt_from_cabi<QPoint>(pos));
 }
 
 QAction* QMenu_exec(QMenu* self) {
 	return self->exec();
 }
 
-QAction* QMenu_execWithPos(QMenu* self, QPoint* pos) {
-	return self->exec(*pos);
+QAction* QMenu_execWithPos(QMenu* self, struct miqt_qpoint pos) {
+	return self->exec(miqt_from_cabi<QPoint>(pos));
 }
 
-QAction* QMenu_exec2(struct miqt_array /* of QAction* */  actions, QPoint* pos) {
+QAction* QMenu_exec2(struct miqt_array /* of QAction* */  actions, struct miqt_qpoint pos) {
 	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
 	for(size_t i = 0; i < actions.len; ++i) {
 		actions_QList.push_back(actions_arr[i]);
 	}
-	return QMenu::exec(actions_QList, *pos);
+	return QMenu::exec(actions_QList, miqt_from_cabi<QPoint>(pos));
 }
 
-QSize* QMenu_sizeHint(const QMenu* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QMenu_sizeHint(const QMenu* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QRect* QMenu_actionGeometry(const QMenu* self, QAction* param1) {
-	return new QRect(self->actionGeometry(param1));
+struct miqt_qrect QMenu_actionGeometry(const QMenu* self, QAction* param1) {
+	return miqt_to_cabi<struct miqt_qrect>(self->actionGeometry(param1));
 }
 
-QAction* QMenu_actionAt(const QMenu* self, QPoint* param1) {
-	return self->actionAt(*param1);
+QAction* QMenu_actionAt(const QMenu* self, struct miqt_qpoint param1) {
+	return self->actionAt(miqt_from_cabi<QPoint>(param1));
 }
 
 QAction* QMenu_menuAction(const QMenu* self) {
@@ -1229,32 +1225,32 @@ struct miqt_string QMenu_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QMenu_popup2(QMenu* self, QPoint* pos, QAction* at) {
-	self->popup(*pos, at);
+void QMenu_popup2(QMenu* self, struct miqt_qpoint pos, QAction* at) {
+	self->popup(miqt_from_cabi<QPoint>(pos), at);
 }
 
-QAction* QMenu_exec3(QMenu* self, QPoint* pos, QAction* at) {
-	return self->exec(*pos, at);
+QAction* QMenu_exec3(QMenu* self, struct miqt_qpoint pos, QAction* at) {
+	return self->exec(miqt_from_cabi<QPoint>(pos), at);
 }
 
-QAction* QMenu_exec4(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at) {
+QAction* QMenu_exec4(struct miqt_array /* of QAction* */  actions, struct miqt_qpoint pos, QAction* at) {
 	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
 	for(size_t i = 0; i < actions.len; ++i) {
 		actions_QList.push_back(actions_arr[i]);
 	}
-	return QMenu::exec(actions_QList, *pos, at);
+	return QMenu::exec(actions_QList, miqt_from_cabi<QPoint>(pos), at);
 }
 
-QAction* QMenu_exec5(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at, QWidget* parent) {
+QAction* QMenu_exec5(struct miqt_array /* of QAction* */  actions, struct miqt_qpoint pos, QAction* at, QWidget* parent) {
 	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
 	for(size_t i = 0; i < actions.len; ++i) {
 		actions_QList.push_back(actions_arr[i]);
 	}
-	return QMenu::exec(actions_QList, *pos, at, parent);
+	return QMenu::exec(actions_QList, miqt_from_cabi<QPoint>(pos), at, parent);
 }
 
 bool QMenu_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1267,8 +1263,8 @@ bool QMenu_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMenu_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMenu*>(self)->QMenu::sizeHint());
+struct miqt_qsize QMenu_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMenu*>(self)->QMenu::sizeHint());
 }
 
 bool QMenu_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1519,8 +1515,8 @@ bool QMenu_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMenu_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMenu*>(self)->QMenu::minimumSizeHint());
+struct miqt_qsize QMenu_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMenu*>(self)->QMenu::minimumSizeHint());
 }
 
 bool QMenu_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1928,10 +1924,6 @@ bool QMenu_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QMenu_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQMenu*>(self)->QMenu::disconnectNotify(*signal);
-}
-
-QSize* QMenu_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QMenu_virtualreturncopy_QVariant(QVariant* src) {

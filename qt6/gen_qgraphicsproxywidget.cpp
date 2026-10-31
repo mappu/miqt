@@ -41,7 +41,7 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsProxyWidget_setGeometry(QGraphicsProxyWidget*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsProxyWidget_setGeometry(QGraphicsProxyWidget*, intptr_t, struct miqt_qrectf);
 void miqt_exec_callback_QGraphicsProxyWidget_paint(QGraphicsProxyWidget*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
 int miqt_exec_callback_QGraphicsProxyWidget_type(const QGraphicsProxyWidget*, intptr_t);
 QVariant* miqt_exec_callback_QGraphicsProxyWidget_itemChange(QGraphicsProxyWidget*, intptr_t, int, QVariant*);
@@ -71,18 +71,18 @@ void miqt_exec_callback_QGraphicsProxyWidget_focusOutEvent(QGraphicsProxyWidget*
 bool miqt_exec_callback_QGraphicsProxyWidget_focusNextPrevChild(QGraphicsProxyWidget*, intptr_t, bool);
 QVariant* miqt_exec_callback_QGraphicsProxyWidget_inputMethodQuery(const QGraphicsProxyWidget*, intptr_t, int);
 void miqt_exec_callback_QGraphicsProxyWidget_inputMethodEvent(QGraphicsProxyWidget*, intptr_t, QInputMethodEvent*);
-QSizeF* miqt_exec_callback_QGraphicsProxyWidget_sizeHint(const QGraphicsProxyWidget*, intptr_t, int, QSizeF*);
+struct miqt_qsizef miqt_exec_callback_QGraphicsProxyWidget_sizeHint(const QGraphicsProxyWidget*, intptr_t, int, struct miqt_qsizef);
 void miqt_exec_callback_QGraphicsProxyWidget_resizeEvent(QGraphicsProxyWidget*, intptr_t, QGraphicsSceneResizeEvent*);
 void miqt_exec_callback_QGraphicsProxyWidget_getContentsMargins(const QGraphicsProxyWidget*, intptr_t, double*, double*, double*, double*);
 void miqt_exec_callback_QGraphicsProxyWidget_paintWindowFrame(QGraphicsProxyWidget*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
-QRectF* miqt_exec_callback_QGraphicsProxyWidget_boundingRect(const QGraphicsProxyWidget*, intptr_t);
+struct miqt_qrectf miqt_exec_callback_QGraphicsProxyWidget_boundingRect(const QGraphicsProxyWidget*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsProxyWidget_shape(const QGraphicsProxyWidget*, intptr_t);
 void miqt_exec_callback_QGraphicsProxyWidget_initStyleOption(const QGraphicsProxyWidget*, intptr_t, QStyleOption*);
 void miqt_exec_callback_QGraphicsProxyWidget_updateGeometry(QGraphicsProxyWidget*, intptr_t);
 QVariant* miqt_exec_callback_QGraphicsProxyWidget_propertyChange(QGraphicsProxyWidget*, intptr_t, struct miqt_string, QVariant*);
 bool miqt_exec_callback_QGraphicsProxyWidget_sceneEvent(QGraphicsProxyWidget*, intptr_t, QEvent*);
 bool miqt_exec_callback_QGraphicsProxyWidget_windowFrameEvent(QGraphicsProxyWidget*, intptr_t, QEvent*);
-int miqt_exec_callback_QGraphicsProxyWidget_windowFrameSectionAt(const QGraphicsProxyWidget*, intptr_t, QPointF*);
+int miqt_exec_callback_QGraphicsProxyWidget_windowFrameSectionAt(const QGraphicsProxyWidget*, intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QGraphicsProxyWidget_changeEvent(QGraphicsProxyWidget*, intptr_t, QEvent*);
 void miqt_exec_callback_QGraphicsProxyWidget_closeEvent(QGraphicsProxyWidget*, intptr_t, QCloseEvent*);
 void miqt_exec_callback_QGraphicsProxyWidget_moveEvent(QGraphicsProxyWidget*, intptr_t, QGraphicsSceneMoveEvent*);
@@ -95,7 +95,7 @@ void miqt_exec_callback_QGraphicsProxyWidget_customEvent(QGraphicsProxyWidget*, 
 void miqt_exec_callback_QGraphicsProxyWidget_connectNotify(QGraphicsProxyWidget*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsProxyWidget_disconnectNotify(QGraphicsProxyWidget*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsProxyWidget_advance(QGraphicsProxyWidget*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsProxyWidget_contains(const QGraphicsProxyWidget*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsProxyWidget_contains(const QGraphicsProxyWidget*, intptr_t, struct miqt_qpointf);
 bool miqt_exec_callback_QGraphicsProxyWidget_collidesWithItem(const QGraphicsProxyWidget*, intptr_t, QGraphicsItem*, int);
 bool miqt_exec_callback_QGraphicsProxyWidget_collidesWithPath(const QGraphicsProxyWidget*, intptr_t, QPainterPath*, int);
 bool miqt_exec_callback_QGraphicsProxyWidget_isObscuredBy(const QGraphicsProxyWidget*, intptr_t, QGraphicsItem*);
@@ -128,14 +128,12 @@ public:
 			return;
 		}
 
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QGraphicsProxyWidget_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QGraphicsProxyWidget_virtualbase_setGeometry(void* self, QRectF* rect);
+	friend void QGraphicsProxyWidget_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paint = 0;
@@ -646,16 +644,12 @@ public:
 
 		Qt::SizeHint which_ret = which;
 		int sigval1 = static_cast<int>(which_ret);
-		const QSizeF& constraint_ret = constraint;
-		// Cast returned reference into pointer
-		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
-		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsProxyWidget_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef sigval2 = miqt_to_cabi<struct miqt_qsizef>(constraint);
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QGraphicsProxyWidget_sizeHint(this, handle__sizeHint, sigval1, sigval2);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
-	friend QSizeF* QGraphicsProxyWidget_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+	friend struct miqt_qsizef QGraphicsProxyWidget_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -726,13 +720,11 @@ public:
 			return QGraphicsProxyWidget::boundingRect();
 		}
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsProxyWidget_boundingRect(this, handle__boundingRect);
-		QRectF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrectf callback_return_value = miqt_exec_callback_QGraphicsProxyWidget_boundingRect(this, handle__boundingRect);
+		return miqt_from_cabi<QRectF>(callback_return_value);
 	}
 
-	friend QRectF* QGraphicsProxyWidget_virtualbase_boundingRect(const void* self);
+	friend struct miqt_qrectf QGraphicsProxyWidget_virtualbase_boundingRect(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shape = 0;
@@ -853,14 +845,12 @@ public:
 			return QGraphicsProxyWidget::windowFrameSectionAt(pos);
 		}
 
-		const QPointF& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&pos_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(pos);
 		int callback_return_value = miqt_exec_callback_QGraphicsProxyWidget_windowFrameSectionAt(this, handle__windowFrameSectionAt, sigval1);
 		return static_cast<Qt::WindowFrameSection>(callback_return_value);
 	}
 
-	friend int QGraphicsProxyWidget_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos);
+	friend int QGraphicsProxyWidget_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -1078,14 +1068,12 @@ public:
 			return QGraphicsProxyWidget::contains(point);
 		}
 
-		const QPointF& point_ret = point;
-		// Cast returned reference into pointer
-		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(point);
 		bool callback_return_value = miqt_exec_callback_QGraphicsProxyWidget_contains(this, handle__contains, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QGraphicsProxyWidget_virtualbase_contains(const void* self, QPointF* point);
+	friend bool QGraphicsProxyWidget_virtualbase_contains(const void* self, struct miqt_qpointf point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__collidesWithItem = 0;
@@ -1305,12 +1293,12 @@ QWidget* QGraphicsProxyWidget_widget(const QGraphicsProxyWidget* self) {
 	return self->widget();
 }
 
-QRectF* QGraphicsProxyWidget_subWidgetRect(const QGraphicsProxyWidget* self, QWidget* widget) {
-	return new QRectF(self->subWidgetRect(widget));
+struct miqt_qrectf QGraphicsProxyWidget_subWidgetRect(const QGraphicsProxyWidget* self, QWidget* widget) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->subWidgetRect(widget));
 }
 
-void QGraphicsProxyWidget_setGeometry(QGraphicsProxyWidget* self, QRectF* rect) {
-	self->setGeometry(*rect);
+void QGraphicsProxyWidget_setGeometry(QGraphicsProxyWidget* self, struct miqt_qrectf rect) {
+	self->setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 void QGraphicsProxyWidget_paint(QGraphicsProxyWidget* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -1357,8 +1345,8 @@ bool QGraphicsProxyWidget_override_virtual_setGeometry(void* self, intptr_t slot
 	return true;
 }
 
-void QGraphicsProxyWidget_virtualbase_setGeometry(void* self, QRectF* rect) {
-	static_cast<MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::setGeometry(*rect);
+void QGraphicsProxyWidget_virtualbase_setGeometry(void* self, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 bool QGraphicsProxyWidget_override_virtual_paint(void* self, intptr_t slot) {
@@ -1777,8 +1765,8 @@ bool QGraphicsProxyWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSizeF* QGraphicsProxyWidget_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
-	return new QSizeF(static_cast<const MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+struct miqt_qsizef QGraphicsProxyWidget_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint) {
+	return miqt_to_cabi<struct miqt_qsizef>(static_cast<const MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::sizeHint(static_cast<Qt::SizeHint>(which), miqt_from_cabi<QSizeF>(constraint)));
 }
 
 bool QGraphicsProxyWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1833,8 +1821,8 @@ bool QGraphicsProxyWidget_override_virtual_boundingRect(void* self, intptr_t slo
 	return true;
 }
 
-QRectF* QGraphicsProxyWidget_virtualbase_boundingRect(const void* self) {
-	return new QRectF(static_cast<const MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::boundingRect());
+struct miqt_qrectf QGraphicsProxyWidget_virtualbase_boundingRect(const void* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(static_cast<const MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::boundingRect());
 }
 
 bool QGraphicsProxyWidget_override_virtual_shape(void* self, intptr_t slot) {
@@ -1932,8 +1920,8 @@ bool QGraphicsProxyWidget_override_virtual_windowFrameSectionAt(void* self, intp
 	return true;
 }
 
-int QGraphicsProxyWidget_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos) {
-	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::windowFrameSectionAt(*pos);
+int QGraphicsProxyWidget_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos) {
+	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::windowFrameSectionAt(miqt_from_cabi<QPointF>(pos));
 	return static_cast<int>(_ret);
 }
 
@@ -2115,8 +2103,8 @@ bool QGraphicsProxyWidget_override_virtual_contains(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QGraphicsProxyWidget_virtualbase_contains(const void* self, QPointF* point) {
-	return static_cast<const MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::contains(*point);
+bool QGraphicsProxyWidget_virtualbase_contains(const void* self, struct miqt_qpointf point) {
+	return static_cast<const MiqtVirtualQGraphicsProxyWidget*>(self)->QGraphicsProxyWidget::contains(miqt_from_cabi<QPointF>(point));
 }
 
 bool QGraphicsProxyWidget_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -2247,14 +2235,6 @@ bool QGraphicsProxyWidget_virtualbase_isEmpty(const void* self) {
 
 QVariant* QGraphicsProxyWidget_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
-}
-
-QSizeF* QGraphicsProxyWidget_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
-}
-
-QRectF* QGraphicsProxyWidget_virtualreturncopy_QRectF(QRectF* src) {
-	return new QRectF(*src);
 }
 
 QPainterPath* QGraphicsProxyWidget_virtualreturncopy_QPainterPath(QPainterPath* src) {

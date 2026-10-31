@@ -249,8 +249,8 @@ bool QSystemTrayIcon_supportsMessages() {
 	return QSystemTrayIcon::supportsMessages();
 }
 
-QRect* QSystemTrayIcon_geometry(const QSystemTrayIcon* self) {
-	return new QRect(self->geometry());
+struct miqt_qrect QSystemTrayIcon_geometry(const QSystemTrayIcon* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->geometry());
 }
 
 bool QSystemTrayIcon_isVisible(const QSystemTrayIcon* self) {

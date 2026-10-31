@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -176,15 +177,12 @@ func (this *QPieSlice) Pen() *qt6.QPen {
 	return _goptr
 }
 
-func (this *QPieSlice) BorderColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QPieSlice_borderColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPieSlice) BorderColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QPieSlice_borderColor(this.h))
 }
 
 func (this *QPieSlice) SetBorderColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QPieSlice_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QPieSlice_setBorderColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QPieSlice) BorderWidth() int {
@@ -206,15 +204,12 @@ func (this *QPieSlice) Brush() *qt6.QBrush {
 	return _goptr
 }
 
-func (this *QPieSlice) Color() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QPieSlice_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPieSlice) Color() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QPieSlice_color(this.h))
 }
 
 func (this *QPieSlice) SetColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QPieSlice_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QPieSlice_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QPieSlice) SetLabelBrush(brush *qt6.QBrush) {
@@ -228,15 +223,12 @@ func (this *QPieSlice) LabelBrush() *qt6.QBrush {
 	return _goptr
 }
 
-func (this *QPieSlice) LabelColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QPieSlice_labelColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QPieSlice) LabelColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QPieSlice_labelColor(this.h))
 }
 
 func (this *QPieSlice) SetLabelColor(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QPieSlice_setLabelColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QPieSlice_setLabelColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
 func (this *QPieSlice) SetLabelFont(font *qt6.QFont) {

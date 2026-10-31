@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -208,16 +209,12 @@ func (this *QLabel) SetScaledContents(scaledContents bool) {
 	C.QLabel_setScaledContents(this.h, (C.bool)(scaledContents))
 }
 
-func (this *QLabel) SizeHint() *QSize {
-	_goptr := newQSize(C.QLabel_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QLabel) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QLabel_sizeHint(this.h))
 }
 
-func (this *QLabel) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QLabel_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QLabel) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QLabel_minimumSizeHint(this.h))
 }
 
 func (this *QLabel) SetBuddy(buddy *QWidget) {
@@ -513,14 +510,12 @@ func (this *QLabel) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QLabel) callVirtualBase_SizeHint() *QSize {
+func (this *QLabel) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QLabel_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QLabel_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QLabel) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QLabel) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QLabel_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -528,27 +523,24 @@ func (this *QLabel) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QLabel_sizeHint
-func miqt_exec_callback_QLabel_sizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QLabel_sizeHint(self *C.QLabel, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QLabel{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QLabel_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QLabel) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QLabel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QLabel) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QLabel) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QLabel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QLabel) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QLabel_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -556,16 +548,15 @@ func (this *QLabel) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QLabel_minimumSizeHint
-func miqt_exec_callback_QLabel_minimumSizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QLabel_minimumSizeHint(self *C.QLabel, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QLabel{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QLabel_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1555,7 +1546,6 @@ func miqt_exec_callback_QLabel_initPainter(self *C.QLabel, cb C.intptr_t, painte
 }
 
 func (this *QLabel) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QLabel_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

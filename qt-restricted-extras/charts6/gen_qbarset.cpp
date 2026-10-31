@@ -30,10 +30,10 @@ void miqt_exec_callback_QBarSet_brushChanged(intptr_t);
 void miqt_exec_callback_QBarSet_labelChanged(intptr_t);
 void miqt_exec_callback_QBarSet_labelBrushChanged(intptr_t);
 void miqt_exec_callback_QBarSet_labelFontChanged(intptr_t);
-void miqt_exec_callback_QBarSet_colorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QBarSet_borderColorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QBarSet_labelColorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QBarSet_selectedColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QBarSet_colorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QBarSet_borderColorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QBarSet_labelColorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QBarSet_selectedColorChanged(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QBarSet_valuesAdded(intptr_t, int, int);
 void miqt_exec_callback_QBarSet_valuesRemoved(intptr_t, int, int);
 void miqt_exec_callback_QBarSet_valueChanged(intptr_t, int);
@@ -318,36 +318,36 @@ QFont* QBarSet_labelFont(const QBarSet* self) {
 	return new QFont(self->labelFont());
 }
 
-QColor* QBarSet_color(QBarSet* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QBarSet_color(QBarSet* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-void QBarSet_setColor(QBarSet* self, QColor* color) {
-	self->setColor(*color);
+void QBarSet_setColor(QBarSet* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QBarSet_borderColor(QBarSet* self) {
-	return new QColor(self->borderColor());
+struct miqt_qcolor QBarSet_borderColor(QBarSet* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->borderColor());
 }
 
-void QBarSet_setBorderColor(QBarSet* self, QColor* color) {
-	self->setBorderColor(*color);
+void QBarSet_setBorderColor(QBarSet* self, struct miqt_qcolor color) {
+	self->setBorderColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QBarSet_labelColor(QBarSet* self) {
-	return new QColor(self->labelColor());
+struct miqt_qcolor QBarSet_labelColor(QBarSet* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->labelColor());
 }
 
-void QBarSet_setLabelColor(QBarSet* self, QColor* color) {
-	self->setLabelColor(*color);
+void QBarSet_setLabelColor(QBarSet* self, struct miqt_qcolor color) {
+	self->setLabelColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QBarSet_selectedColor(const QBarSet* self) {
-	return new QColor(self->selectedColor());
+struct miqt_qcolor QBarSet_selectedColor(const QBarSet* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->selectedColor());
 }
 
-void QBarSet_setSelectedColor(QBarSet* self, QColor* color) {
-	self->setSelectedColor(*color);
+void QBarSet_setSelectedColor(QBarSet* self, struct miqt_qcolor color) {
+	self->setSelectedColor(miqt_from_cabi<QColor>(color));
 }
 
 bool QBarSet_isBarSelected(const QBarSet* self, int index) {
@@ -523,48 +523,46 @@ void QBarSet_connect_labelFontChanged(QBarSet* self, intptr_t slot) {
 	});
 }
 
-void QBarSet_colorChanged(QBarSet* self, QColor* color) {
-	self->colorChanged(*color);
+void QBarSet_colorChanged(QBarSet* self, struct miqt_qcolor color) {
+	self->colorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QBarSet_connect_colorChanged(QBarSet* self, intptr_t slot) {
 	QBarSet::connect(self, static_cast<void (QBarSet::*)(QColor)>(&QBarSet::colorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QBarSet_colorChanged(slot, sigval1);
 	});
 }
 
-void QBarSet_borderColorChanged(QBarSet* self, QColor* color) {
-	self->borderColorChanged(*color);
+void QBarSet_borderColorChanged(QBarSet* self, struct miqt_qcolor color) {
+	self->borderColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QBarSet_connect_borderColorChanged(QBarSet* self, intptr_t slot) {
 	QBarSet::connect(self, static_cast<void (QBarSet::*)(QColor)>(&QBarSet::borderColorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QBarSet_borderColorChanged(slot, sigval1);
 	});
 }
 
-void QBarSet_labelColorChanged(QBarSet* self, QColor* color) {
-	self->labelColorChanged(*color);
+void QBarSet_labelColorChanged(QBarSet* self, struct miqt_qcolor color) {
+	self->labelColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QBarSet_connect_labelColorChanged(QBarSet* self, intptr_t slot) {
 	QBarSet::connect(self, static_cast<void (QBarSet::*)(QColor)>(&QBarSet::labelColorChanged), self, [=](QColor color) {
-		QColor* sigval1 = new QColor(color);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QBarSet_labelColorChanged(slot, sigval1);
 	});
 }
 
-void QBarSet_selectedColorChanged(QBarSet* self, QColor* color) {
-	self->selectedColorChanged(*color);
+void QBarSet_selectedColorChanged(QBarSet* self, struct miqt_qcolor color) {
+	self->selectedColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QBarSet_connect_selectedColorChanged(QBarSet* self, intptr_t slot) {
 	QBarSet::connect(self, static_cast<void (QBarSet::*)(const QColor&)>(&QBarSet::selectedColorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QBarSet_selectedColorChanged(slot, sigval1);
 	});
 }

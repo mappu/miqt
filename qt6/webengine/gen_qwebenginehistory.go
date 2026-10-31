@@ -9,6 +9,7 @@ package webengine
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"unsafe"
@@ -203,14 +204,12 @@ func QWebEngineHistoryModel_Tr(s string) string {
 	return _ret
 }
 
-func (this *QWebEngineHistoryModel) RowCount(parent *qt6.QModelIndex) int {
-	defer runtime.KeepAlive(parent)
-	return (int)(C.QWebEngineHistoryModel_rowCount(this.h, (*C.QModelIndex)(parent.UnsafePointer())))
+func (this *QWebEngineHistoryModel) RowCount(parent qt6.QModelIndex) int {
+	return (int)(C.QWebEngineHistoryModel_rowCount(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QWebEngineHistoryModel) Data(index *qt6.QModelIndex, role int) *qt6.QVariant {
-	defer runtime.KeepAlive(index)
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QWebEngineHistoryModel_data(this.h, (*C.QModelIndex)(index.UnsafePointer()), (C.int)(role))))
+func (this *QWebEngineHistoryModel) Data(index qt6.QModelIndex, role int) *qt6.QVariant {
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QWebEngineHistoryModel_data(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

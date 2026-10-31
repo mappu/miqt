@@ -16,68 +16,72 @@ extern "C" {
 } /* extern C */
 #endif
 
-QColor* QColor_new() {
-	return new (std::nothrow) QColor();
+struct miqt_qcolor QColor_new() {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor());
 }
 
-QColor* QColor_new2(int color) {
-	return new (std::nothrow) QColor(static_cast<Qt::GlobalColor>(color));
+struct miqt_qcolor QColor_new2(int color) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(static_cast<Qt::GlobalColor>(color)));
 }
 
-QColor* QColor_new3(int r, int g, int b) {
-	return new (std::nothrow) QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
+struct miqt_qcolor QColor_new3(int r, int g, int b) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b)));
 }
 
-QColor* QColor_new4(unsigned int rgb) {
-	return new (std::nothrow) QColor(static_cast<QRgb>(rgb));
+struct miqt_qcolor QColor_new4(unsigned int rgb) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(static_cast<QRgb>(rgb)));
 }
 
-QColor* QColor_new5(QRgba64* rgba64) {
-	return new (std::nothrow) QColor(*rgba64);
+struct miqt_qcolor QColor_new5(struct miqt_qrgba64 rgba64) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(miqt_from_cabi<QRgba64>(rgba64)));
 }
 
-QColor* QColor_new6(struct miqt_string name) {
+struct miqt_qcolor QColor_new6(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new (std::nothrow) QColor(name_QString);
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(name_QString));
 }
 
-QColor* QColor_new7(const char* aname) {
-	return new (std::nothrow) QColor(aname);
+struct miqt_qcolor QColor_new7(const char* aname) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(aname));
 }
 
-QColor* QColor_new8(int spec) {
-	return new (std::nothrow) QColor(static_cast<QColor::Spec>(spec));
+struct miqt_qcolor QColor_new8(int spec) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(static_cast<QColor::Spec>(spec)));
 }
 
-QColor* QColor_new9(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4) {
-	return new (std::nothrow) QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4));
+struct miqt_qcolor QColor_new9(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4)));
 }
 
-QColor* QColor_new10(QColor* param1) {
-	return new (std::nothrow) QColor(*param1);
+struct miqt_qcolor QColor_new10(struct miqt_qcolor param1) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(miqt_from_cabi<QColor>(param1)));
 }
 
-QColor* QColor_new11(int r, int g, int b, int a) {
-	return new (std::nothrow) QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
+struct miqt_qcolor QColor_new11(int r, int g, int b, int a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a)));
 }
 
-QColor* QColor_new12(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4, unsigned short a5) {
-	return new (std::nothrow) QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4), static_cast<ushort>(a5));
+struct miqt_qcolor QColor_new12(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4, unsigned short a5) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4), static_cast<ushort>(a5)));
 }
 
-QColor* QColor_fromString(struct miqt_string name) {
-	return new QColor(QColor::fromString(QAnyStringView(name.data, name.len)));
+struct miqt_qcolor QColor_fromString(struct miqt_string name) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromString(QAnyStringView(name.data, name.len)));
 }
 
 void QColor_operatorAssign(QColor* self, int color) {
 	self->operator=(static_cast<Qt::GlobalColor>(color));
 }
 
-bool QColor_isValid(const QColor* self) {
+bool QColor_isValid(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->isValid();
 }
 
-struct miqt_string QColor_name(const QColor* self) {
+struct miqt_string QColor_name(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -113,12 +117,16 @@ struct miqt_array /* of struct miqt_string */  QColor_colorNames() {
 	return _out;
 }
 
-int QColor_spec(const QColor* self) {
+int QColor_spec(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	QColor::Spec _ret = self->spec();
 	return static_cast<int>(_ret);
 }
 
-int QColor_alpha(const QColor* self) {
+int QColor_alpha(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->alpha();
 }
 
@@ -126,7 +134,9 @@ void QColor_setAlpha(QColor* self, int alpha) {
 	self->setAlpha(static_cast<int>(alpha));
 }
 
-float QColor_alphaF(const QColor* self) {
+float QColor_alphaF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->alphaF();
 }
 
@@ -134,15 +144,21 @@ void QColor_setAlphaF(QColor* self, float alpha) {
 	self->setAlphaF(static_cast<float>(alpha));
 }
 
-int QColor_red(const QColor* self) {
+int QColor_red(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->red();
 }
 
-int QColor_green(const QColor* self) {
+int QColor_green(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->green();
 }
 
-int QColor_blue(const QColor* self) {
+int QColor_blue(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->blue();
 }
 
@@ -158,15 +174,21 @@ void QColor_setBlue(QColor* self, int blue) {
 	self->setBlue(static_cast<int>(blue));
 }
 
-float QColor_redF(const QColor* self) {
+float QColor_redF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->redF();
 }
 
-float QColor_greenF(const QColor* self) {
+float QColor_greenF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->greenF();
 }
 
-float QColor_blueF(const QColor* self) {
+float QColor_blueF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->blueF();
 }
 
@@ -182,7 +204,9 @@ void QColor_setBlueF(QColor* self, float blue) {
 	self->setBlueF(static_cast<float>(blue));
 }
 
-void QColor_getRgb(const QColor* self, int* r, int* g, int* b) {
+void QColor_getRgb(struct miqt_qcolor self_cabi, int* r, int* g, int* b) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getRgb(static_cast<int*>(r), static_cast<int*>(g), static_cast<int*>(b));
 }
 
@@ -190,7 +214,9 @@ void QColor_setRgb(QColor* self, int r, int g, int b) {
 	self->setRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
 }
 
-void QColor_getRgbF(const QColor* self, float* r, float* g, float* b) {
+void QColor_getRgbF(struct miqt_qcolor self_cabi, float* r, float* g, float* b) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getRgbF(static_cast<float*>(r), static_cast<float*>(g), static_cast<float*>(b));
 }
 
@@ -198,15 +224,19 @@ void QColor_setRgbF(QColor* self, float r, float g, float b) {
 	self->setRgbF(static_cast<float>(r), static_cast<float>(g), static_cast<float>(b));
 }
 
-QRgba64* QColor_rgba64(const QColor* self) {
-	return new QRgba64(self->rgba64());
+struct miqt_qrgba64 QColor_rgba64(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qrgba64>(self->rgba64());
 }
 
-void QColor_setRgba64(QColor* self, QRgba64* rgba) {
-	self->setRgba64(*rgba);
+void QColor_setRgba64(QColor* self, struct miqt_qrgba64 rgba) {
+	self->setRgba64(miqt_from_cabi<QRgba64>(rgba));
 }
 
-unsigned int QColor_rgba(const QColor* self) {
+unsigned int QColor_rgba(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	QRgb _ret = self->rgba();
 	return static_cast<unsigned int>(_ret);
 }
@@ -215,7 +245,9 @@ void QColor_setRgba(QColor* self, unsigned int rgba) {
 	self->setRgba(static_cast<QRgb>(rgba));
 }
 
-unsigned int QColor_rgb(const QColor* self) {
+unsigned int QColor_rgb(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	QRgb _ret = self->rgb();
 	return static_cast<unsigned int>(_ret);
 }
@@ -224,47 +256,69 @@ void QColor_setRgbWithRgb(QColor* self, unsigned int rgb) {
 	self->setRgb(static_cast<QRgb>(rgb));
 }
 
-int QColor_hue(const QColor* self) {
+int QColor_hue(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hue();
 }
 
-int QColor_saturation(const QColor* self) {
+int QColor_saturation(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->saturation();
 }
 
-int QColor_hsvHue(const QColor* self) {
+int QColor_hsvHue(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hsvHue();
 }
 
-int QColor_hsvSaturation(const QColor* self) {
+int QColor_hsvSaturation(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hsvSaturation();
 }
 
-int QColor_value(const QColor* self) {
+int QColor_value(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->value();
 }
 
-float QColor_hueF(const QColor* self) {
+float QColor_hueF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hueF();
 }
 
-float QColor_saturationF(const QColor* self) {
+float QColor_saturationF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->saturationF();
 }
 
-float QColor_hsvHueF(const QColor* self) {
+float QColor_hsvHueF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hsvHueF();
 }
 
-float QColor_hsvSaturationF(const QColor* self) {
+float QColor_hsvSaturationF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hsvSaturationF();
 }
 
-float QColor_valueF(const QColor* self) {
+float QColor_valueF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->valueF();
 }
 
-void QColor_getHsv(const QColor* self, int* h, int* s, int* v) {
+void QColor_getHsv(struct miqt_qcolor self_cabi, int* h, int* s, int* v) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getHsv(static_cast<int*>(h), static_cast<int*>(s), static_cast<int*>(v));
 }
 
@@ -272,7 +326,9 @@ void QColor_setHsv(QColor* self, int h, int s, int v) {
 	self->setHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v));
 }
 
-void QColor_getHsvF(const QColor* self, float* h, float* s, float* v) {
+void QColor_getHsvF(struct miqt_qcolor self_cabi, float* h, float* s, float* v) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getHsvF(static_cast<float*>(h), static_cast<float*>(s), static_cast<float*>(v));
 }
 
@@ -280,39 +336,57 @@ void QColor_setHsvF(QColor* self, float h, float s, float v) {
 	self->setHsvF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(v));
 }
 
-int QColor_cyan(const QColor* self) {
+int QColor_cyan(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->cyan();
 }
 
-int QColor_magenta(const QColor* self) {
+int QColor_magenta(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->magenta();
 }
 
-int QColor_yellow(const QColor* self) {
+int QColor_yellow(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->yellow();
 }
 
-int QColor_black(const QColor* self) {
+int QColor_black(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->black();
 }
 
-float QColor_cyanF(const QColor* self) {
+float QColor_cyanF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->cyanF();
 }
 
-float QColor_magentaF(const QColor* self) {
+float QColor_magentaF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->magentaF();
 }
 
-float QColor_yellowF(const QColor* self) {
+float QColor_yellowF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->yellowF();
 }
 
-float QColor_blackF(const QColor* self) {
+float QColor_blackF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->blackF();
 }
 
-void QColor_getCmyk(const QColor* self, int* c, int* m, int* y, int* k) {
+void QColor_getCmyk(struct miqt_qcolor self_cabi, int* c, int* m, int* y, int* k) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getCmyk(static_cast<int*>(c), static_cast<int*>(m), static_cast<int*>(y), static_cast<int*>(k));
 }
 
@@ -320,7 +394,9 @@ void QColor_setCmyk(QColor* self, int c, int m, int y, int k) {
 	self->setCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k));
 }
 
-void QColor_getCmykF(const QColor* self, float* c, float* m, float* y, float* k) {
+void QColor_getCmykF(struct miqt_qcolor self_cabi, float* c, float* m, float* y, float* k) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getCmykF(static_cast<float*>(c), static_cast<float*>(m), static_cast<float*>(y), static_cast<float*>(k));
 }
 
@@ -328,31 +404,45 @@ void QColor_setCmykF(QColor* self, float c, float m, float y, float k) {
 	self->setCmykF(static_cast<float>(c), static_cast<float>(m), static_cast<float>(y), static_cast<float>(k));
 }
 
-int QColor_hslHue(const QColor* self) {
+int QColor_hslHue(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hslHue();
 }
 
-int QColor_hslSaturation(const QColor* self) {
+int QColor_hslSaturation(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hslSaturation();
 }
 
-int QColor_lightness(const QColor* self) {
+int QColor_lightness(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->lightness();
 }
 
-float QColor_hslHueF(const QColor* self) {
+float QColor_hslHueF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hslHueF();
 }
 
-float QColor_hslSaturationF(const QColor* self) {
+float QColor_hslSaturationF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->hslSaturationF();
 }
 
-float QColor_lightnessF(const QColor* self) {
+float QColor_lightnessF(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return self->lightnessF();
 }
 
-void QColor_getHsl(const QColor* self, int* h, int* s, int* l) {
+void QColor_getHsl(struct miqt_qcolor self_cabi, int* h, int* s, int* l) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getHsl(static_cast<int*>(h), static_cast<int*>(s), static_cast<int*>(l));
 }
 
@@ -360,7 +450,9 @@ void QColor_setHsl(QColor* self, int h, int s, int l) {
 	self->setHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l));
 }
 
-void QColor_getHslF(const QColor* self, float* h, float* s, float* l) {
+void QColor_getHslF(struct miqt_qcolor self_cabi, float* h, float* s, float* l) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getHslF(static_cast<float*>(h), static_cast<float*>(s), static_cast<float*>(l));
 }
 
@@ -368,95 +460,117 @@ void QColor_setHslF(QColor* self, float h, float s, float l) {
 	self->setHslF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(l));
 }
 
-QColor* QColor_toRgb(const QColor* self) {
-	return new QColor(self->toRgb());
+struct miqt_qcolor QColor_toRgb(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->toRgb());
 }
 
-QColor* QColor_toHsv(const QColor* self) {
-	return new QColor(self->toHsv());
+struct miqt_qcolor QColor_toHsv(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->toHsv());
 }
 
-QColor* QColor_toCmyk(const QColor* self) {
-	return new QColor(self->toCmyk());
+struct miqt_qcolor QColor_toCmyk(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->toCmyk());
 }
 
-QColor* QColor_toHsl(const QColor* self) {
-	return new QColor(self->toHsl());
+struct miqt_qcolor QColor_toHsl(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->toHsl());
 }
 
-QColor* QColor_toExtendedRgb(const QColor* self) {
-	return new QColor(self->toExtendedRgb());
+struct miqt_qcolor QColor_toExtendedRgb(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->toExtendedRgb());
 }
 
-QColor* QColor_convertTo(const QColor* self, int colorSpec) {
-	return new QColor(self->convertTo(static_cast<QColor::Spec>(colorSpec)));
+struct miqt_qcolor QColor_convertTo(struct miqt_qcolor self_cabi, int colorSpec) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->convertTo(static_cast<QColor::Spec>(colorSpec)));
 }
 
-QColor* QColor_fromRgb(unsigned int rgb) {
-	return new QColor(QColor::fromRgb(static_cast<QRgb>(rgb)));
+struct miqt_qcolor QColor_fromRgb(unsigned int rgb) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromRgb(static_cast<QRgb>(rgb)));
 }
 
-QColor* QColor_fromRgba(unsigned int rgba) {
-	return new QColor(QColor::fromRgba(static_cast<QRgb>(rgba)));
+struct miqt_qcolor QColor_fromRgba(unsigned int rgba) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromRgba(static_cast<QRgb>(rgba)));
 }
 
-QColor* QColor_fromRgb2(int r, int g, int b) {
-	return new QColor(QColor::fromRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b)));
+struct miqt_qcolor QColor_fromRgb2(int r, int g, int b) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b)));
 }
 
-QColor* QColor_fromRgbF(float r, float g, float b) {
-	return new QColor(QColor::fromRgbF(static_cast<float>(r), static_cast<float>(g), static_cast<float>(b)));
+struct miqt_qcolor QColor_fromRgbF(float r, float g, float b) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromRgbF(static_cast<float>(r), static_cast<float>(g), static_cast<float>(b)));
 }
 
-QColor* QColor_fromRgba64(unsigned short r, unsigned short g, unsigned short b) {
-	return new QColor(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b)));
+struct miqt_qcolor QColor_fromRgba64(unsigned short r, unsigned short g, unsigned short b) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b)));
 }
 
-QColor* QColor_fromRgba64WithRgba(QRgba64* rgba) {
-	return new QColor(QColor::fromRgba64(*rgba));
+struct miqt_qcolor QColor_fromRgba64WithRgba(struct miqt_qrgba64 rgba) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromRgba64(miqt_from_cabi<QRgba64>(rgba)));
 }
 
-QColor* QColor_fromHsv(int h, int s, int v) {
-	return new QColor(QColor::fromHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v)));
+struct miqt_qcolor QColor_fromHsv(int h, int s, int v) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v)));
 }
 
-QColor* QColor_fromHsvF(float h, float s, float v) {
-	return new QColor(QColor::fromHsvF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(v)));
+struct miqt_qcolor QColor_fromHsvF(float h, float s, float v) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromHsvF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(v)));
 }
 
-QColor* QColor_fromCmyk(int c, int m, int y, int k) {
-	return new QColor(QColor::fromCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k)));
+struct miqt_qcolor QColor_fromCmyk(int c, int m, int y, int k) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k)));
 }
 
-QColor* QColor_fromCmykF(float c, float m, float y, float k) {
-	return new QColor(QColor::fromCmykF(static_cast<float>(c), static_cast<float>(m), static_cast<float>(y), static_cast<float>(k)));
+struct miqt_qcolor QColor_fromCmykF(float c, float m, float y, float k) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromCmykF(static_cast<float>(c), static_cast<float>(m), static_cast<float>(y), static_cast<float>(k)));
 }
 
-QColor* QColor_fromHsl(int h, int s, int l) {
-	return new QColor(QColor::fromHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l)));
+struct miqt_qcolor QColor_fromHsl(int h, int s, int l) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l)));
 }
 
-QColor* QColor_fromHslF(float h, float s, float l) {
-	return new QColor(QColor::fromHslF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(l)));
+struct miqt_qcolor QColor_fromHslF(float h, float s, float l) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromHslF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(l)));
 }
 
-QColor* QColor_lighter(const QColor* self) {
-	return new QColor(self->lighter());
+struct miqt_qcolor QColor_lighter(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->lighter());
 }
 
-QColor* QColor_darker(const QColor* self) {
-	return new QColor(self->darker());
+struct miqt_qcolor QColor_darker(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->darker());
 }
 
-bool QColor_operatorEqual(const QColor* self, QColor* c) {
-	return (*self == *c);
+bool QColor_operatorEqual(struct miqt_qcolor self_cabi, struct miqt_qcolor c) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return (*self == miqt_from_cabi<QColor>(c));
 }
 
-bool QColor_operatorNotEqual(const QColor* self, QColor* c) {
-	return (*self != *c);
+bool QColor_operatorNotEqual(struct miqt_qcolor self_cabi, struct miqt_qcolor c) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return (*self != miqt_from_cabi<QColor>(c));
 }
 
-QVariant* QColor_ToQVariant(const QColor* self) {
+QVariant* QColor_ToQVariant(struct miqt_qcolor self_cabi) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	return new QVariant(self->operator QVariant());
 }
 
@@ -469,7 +583,9 @@ bool QColor_isValidColorName(struct miqt_string param1) {
 	return QColor::isValidColorName(QAnyStringView(param1.data, param1.len));
 }
 
-struct miqt_string QColor_nameWithFormat(const QColor* self, int format) {
+struct miqt_string QColor_nameWithFormat(struct miqt_qcolor self_cabi, int format) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	QString _ret = self->name(static_cast<QColor::NameFormat>(format));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -480,7 +596,9 @@ struct miqt_string QColor_nameWithFormat(const QColor* self, int format) {
 	return _ms;
 }
 
-void QColor_getRgb2(const QColor* self, int* r, int* g, int* b, int* a) {
+void QColor_getRgb2(struct miqt_qcolor self_cabi, int* r, int* g, int* b, int* a) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getRgb(static_cast<int*>(r), static_cast<int*>(g), static_cast<int*>(b), static_cast<int*>(a));
 }
 
@@ -488,7 +606,9 @@ void QColor_setRgb2(QColor* self, int r, int g, int b, int a) {
 	self->setRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
 }
 
-void QColor_getRgbF2(const QColor* self, float* r, float* g, float* b, float* a) {
+void QColor_getRgbF2(struct miqt_qcolor self_cabi, float* r, float* g, float* b, float* a) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getRgbF(static_cast<float*>(r), static_cast<float*>(g), static_cast<float*>(b), static_cast<float*>(a));
 }
 
@@ -496,7 +616,9 @@ void QColor_setRgbF2(QColor* self, float r, float g, float b, float a) {
 	self->setRgbF(static_cast<float>(r), static_cast<float>(g), static_cast<float>(b), static_cast<float>(a));
 }
 
-void QColor_getHsv2(const QColor* self, int* h, int* s, int* v, int* a) {
+void QColor_getHsv2(struct miqt_qcolor self_cabi, int* h, int* s, int* v, int* a) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getHsv(static_cast<int*>(h), static_cast<int*>(s), static_cast<int*>(v), static_cast<int*>(a));
 }
 
@@ -504,7 +626,9 @@ void QColor_setHsv2(QColor* self, int h, int s, int v, int a) {
 	self->setHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v), static_cast<int>(a));
 }
 
-void QColor_getHsvF2(const QColor* self, float* h, float* s, float* v, float* a) {
+void QColor_getHsvF2(struct miqt_qcolor self_cabi, float* h, float* s, float* v, float* a) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getHsvF(static_cast<float*>(h), static_cast<float*>(s), static_cast<float*>(v), static_cast<float*>(a));
 }
 
@@ -512,7 +636,9 @@ void QColor_setHsvF2(QColor* self, float h, float s, float v, float a) {
 	self->setHsvF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(v), static_cast<float>(a));
 }
 
-void QColor_getCmyk2(const QColor* self, int* c, int* m, int* y, int* k, int* a) {
+void QColor_getCmyk2(struct miqt_qcolor self_cabi, int* c, int* m, int* y, int* k, int* a) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getCmyk(static_cast<int*>(c), static_cast<int*>(m), static_cast<int*>(y), static_cast<int*>(k), static_cast<int*>(a));
 }
 
@@ -520,7 +646,9 @@ void QColor_setCmyk2(QColor* self, int c, int m, int y, int k, int a) {
 	self->setCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k), static_cast<int>(a));
 }
 
-void QColor_getCmykF2(const QColor* self, float* c, float* m, float* y, float* k, float* a) {
+void QColor_getCmykF2(struct miqt_qcolor self_cabi, float* c, float* m, float* y, float* k, float* a) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getCmykF(static_cast<float*>(c), static_cast<float*>(m), static_cast<float*>(y), static_cast<float*>(k), static_cast<float*>(a));
 }
 
@@ -528,7 +656,9 @@ void QColor_setCmykF2(QColor* self, float c, float m, float y, float k, float a)
 	self->setCmykF(static_cast<float>(c), static_cast<float>(m), static_cast<float>(y), static_cast<float>(k), static_cast<float>(a));
 }
 
-void QColor_getHsl2(const QColor* self, int* h, int* s, int* l, int* a) {
+void QColor_getHsl2(struct miqt_qcolor self_cabi, int* h, int* s, int* l, int* a) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getHsl(static_cast<int*>(h), static_cast<int*>(s), static_cast<int*>(l), static_cast<int*>(a));
 }
 
@@ -536,7 +666,9 @@ void QColor_setHsl2(QColor* self, int h, int s, int l, int a) {
 	self->setHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l), static_cast<int>(a));
 }
 
-void QColor_getHslF2(const QColor* self, float* h, float* s, float* l, float* a) {
+void QColor_getHslF2(struct miqt_qcolor self_cabi, float* h, float* s, float* l, float* a) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
 	self->getHslF(static_cast<float*>(h), static_cast<float*>(s), static_cast<float*>(l), static_cast<float*>(a));
 }
 
@@ -544,51 +676,51 @@ void QColor_setHslF2(QColor* self, float h, float s, float l, float a) {
 	self->setHslF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(l), static_cast<float>(a));
 }
 
-QColor* QColor_fromRgb3(int r, int g, int b, int a) {
-	return new QColor(QColor::fromRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a)));
+struct miqt_qcolor QColor_fromRgb3(int r, int g, int b, int a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a)));
 }
 
-QColor* QColor_fromRgbF2(float r, float g, float b, float a) {
-	return new QColor(QColor::fromRgbF(static_cast<float>(r), static_cast<float>(g), static_cast<float>(b), static_cast<float>(a)));
+struct miqt_qcolor QColor_fromRgbF2(float r, float g, float b, float a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromRgbF(static_cast<float>(r), static_cast<float>(g), static_cast<float>(b), static_cast<float>(a)));
 }
 
-QColor* QColor_fromRgba642(unsigned short r, unsigned short g, unsigned short b, unsigned short a) {
-	return new QColor(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b), static_cast<ushort>(a)));
+struct miqt_qcolor QColor_fromRgba642(unsigned short r, unsigned short g, unsigned short b, unsigned short a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b), static_cast<ushort>(a)));
 }
 
-QColor* QColor_fromHsv2(int h, int s, int v, int a) {
-	return new QColor(QColor::fromHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v), static_cast<int>(a)));
+struct miqt_qcolor QColor_fromHsv2(int h, int s, int v, int a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v), static_cast<int>(a)));
 }
 
-QColor* QColor_fromHsvF2(float h, float s, float v, float a) {
-	return new QColor(QColor::fromHsvF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(v), static_cast<float>(a)));
+struct miqt_qcolor QColor_fromHsvF2(float h, float s, float v, float a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromHsvF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(v), static_cast<float>(a)));
 }
 
-QColor* QColor_fromCmyk2(int c, int m, int y, int k, int a) {
-	return new QColor(QColor::fromCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k), static_cast<int>(a)));
+struct miqt_qcolor QColor_fromCmyk2(int c, int m, int y, int k, int a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k), static_cast<int>(a)));
 }
 
-QColor* QColor_fromCmykF2(float c, float m, float y, float k, float a) {
-	return new QColor(QColor::fromCmykF(static_cast<float>(c), static_cast<float>(m), static_cast<float>(y), static_cast<float>(k), static_cast<float>(a)));
+struct miqt_qcolor QColor_fromCmykF2(float c, float m, float y, float k, float a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromCmykF(static_cast<float>(c), static_cast<float>(m), static_cast<float>(y), static_cast<float>(k), static_cast<float>(a)));
 }
 
-QColor* QColor_fromHsl2(int h, int s, int l, int a) {
-	return new QColor(QColor::fromHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l), static_cast<int>(a)));
+struct miqt_qcolor QColor_fromHsl2(int h, int s, int l, int a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l), static_cast<int>(a)));
 }
 
-QColor* QColor_fromHslF2(float h, float s, float l, float a) {
-	return new QColor(QColor::fromHslF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(l), static_cast<float>(a)));
+struct miqt_qcolor QColor_fromHslF2(float h, float s, float l, float a) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColor::fromHslF(static_cast<float>(h), static_cast<float>(s), static_cast<float>(l), static_cast<float>(a)));
 }
 
-QColor* QColor_lighterWithInt(const QColor* self, int f) {
-	return new QColor(self->lighter(static_cast<int>(f)));
+struct miqt_qcolor QColor_lighterWithInt(struct miqt_qcolor self_cabi, int f) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->lighter(static_cast<int>(f)));
 }
 
-QColor* QColor_darkerWithInt(const QColor* self, int f) {
-	return new QColor(self->darker(static_cast<int>(f)));
-}
-
-void QColor_delete(QColor* self) {
-	delete self;
+struct miqt_qcolor QColor_darkerWithInt(struct miqt_qcolor self_cabi, int f) {
+	const QColor self_val = miqt_from_cabi<QColor>(self_cabi);
+	const QColor* self = &self_val;
+	return miqt_to_cabi<struct miqt_qcolor>(self->darker(static_cast<int>(f)));
 }
 

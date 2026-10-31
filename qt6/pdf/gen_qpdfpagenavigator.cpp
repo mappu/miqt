@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QPdfPageNavigator_currentPageChanged(intptr_t, int);
-void miqt_exec_callback_QPdfPageNavigator_currentLocationChanged(intptr_t, QPointF*);
+void miqt_exec_callback_QPdfPageNavigator_currentLocationChanged(intptr_t, struct miqt_qpointf);
 void miqt_exec_callback_QPdfPageNavigator_currentZoomChanged(intptr_t, double);
 void miqt_exec_callback_QPdfPageNavigator_backAvailableChanged(intptr_t, bool);
 void miqt_exec_callback_QPdfPageNavigator_forwardAvailableChanged(intptr_t, bool);
@@ -207,8 +207,8 @@ int QPdfPageNavigator_currentPage(const QPdfPageNavigator* self) {
 	return self->currentPage();
 }
 
-QPointF* QPdfPageNavigator_currentLocation(const QPdfPageNavigator* self) {
-	return new QPointF(self->currentLocation());
+struct miqt_qpointf QPdfPageNavigator_currentLocation(const QPdfPageNavigator* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->currentLocation());
 }
 
 double QPdfPageNavigator_currentZoom(const QPdfPageNavigator* self) {
@@ -232,12 +232,12 @@ void QPdfPageNavigator_jump(QPdfPageNavigator* self, QPdfLink* destination) {
 	self->jump(*destination);
 }
 
-void QPdfPageNavigator_jump2(QPdfPageNavigator* self, int page, QPointF* location) {
-	self->jump(static_cast<int>(page), *location);
+void QPdfPageNavigator_jump2(QPdfPageNavigator* self, int page, struct miqt_qpointf location) {
+	self->jump(static_cast<int>(page), miqt_from_cabi<QPointF>(location));
 }
 
-void QPdfPageNavigator_update(QPdfPageNavigator* self, int page, QPointF* location, double zoom) {
-	self->update(static_cast<int>(page), *location, static_cast<qreal>(zoom));
+void QPdfPageNavigator_update(QPdfPageNavigator* self, int page, struct miqt_qpointf location, double zoom) {
+	self->update(static_cast<int>(page), miqt_from_cabi<QPointF>(location), static_cast<qreal>(zoom));
 }
 
 void QPdfPageNavigator_forward(QPdfPageNavigator* self) {
@@ -259,13 +259,13 @@ void QPdfPageNavigator_connect_currentPageChanged(QPdfPageNavigator* self, intpt
 	});
 }
 
-void QPdfPageNavigator_currentLocationChanged(QPdfPageNavigator* self, QPointF* location) {
-	self->currentLocationChanged(*location);
+void QPdfPageNavigator_currentLocationChanged(QPdfPageNavigator* self, struct miqt_qpointf location) {
+	self->currentLocationChanged(miqt_from_cabi<QPointF>(location));
 }
 
 void QPdfPageNavigator_connect_currentLocationChanged(QPdfPageNavigator* self, intptr_t slot) {
 	QPdfPageNavigator::connect(self, static_cast<void (QPdfPageNavigator::*)(QPointF)>(&QPdfPageNavigator::currentLocationChanged), self, [=](QPointF location) {
-		QPointF* sigval1 = new QPointF(location);
+		struct miqt_qpointf sigval1 = miqt_to_cabi<struct miqt_qpointf>(location);
 		miqt_exec_callback_QPdfPageNavigator_currentLocationChanged(slot, sigval1);
 	});
 }
@@ -337,8 +337,8 @@ struct miqt_string QPdfPageNavigator_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QPdfPageNavigator_jump3(QPdfPageNavigator* self, int page, QPointF* location, double zoom) {
-	self->jump(static_cast<int>(page), *location, static_cast<qreal>(zoom));
+void QPdfPageNavigator_jump3(QPdfPageNavigator* self, int page, struct miqt_qpointf location, double zoom) {
+	self->jump(static_cast<int>(page), miqt_from_cabi<QPointF>(location), static_cast<qreal>(zoom));
 }
 
 bool QPdfPageNavigator_override_virtual_event(void* self, intptr_t slot) {

@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -121,26 +122,20 @@ func (this *QScatterSeries) Brush() *qt6.QBrush {
 	return _goptr
 }
 
-func (this *QScatterSeries) SetColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QScatterSeries_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QScatterSeries) SetColor(color qt6.QColor) {
+	C.QScatterSeries_setColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QScatterSeries) Color() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QScatterSeries_color(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScatterSeries) Color() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QScatterSeries_color(this.h))
 }
 
-func (this *QScatterSeries) SetBorderColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QScatterSeries_setBorderColor(this.h, (*C.QColor)(color.UnsafePointer()))
+func (this *QScatterSeries) SetBorderColor(color qt6.QColor) {
+	C.QScatterSeries_setBorderColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QScatterSeries) BorderColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QScatterSeries_borderColor(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScatterSeries) BorderColor() qt6.QColor {
+	return libmiqt.ValueCast[qt6.QColor](C.QScatterSeries_borderColor(this.h))
 }
 
 func (this *QScatterSeries) MarkerShape() QScatterSeries__MarkerShape {
@@ -160,47 +155,41 @@ func (this *QScatterSeries) SetMarkerSize(size float64) {
 }
 
 func (this *QScatterSeries) ColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QScatterSeries_colorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QScatterSeries_colorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QScatterSeries) OnColorChanged(slot func(color qt6.QColor)) {
 	C.QScatterSeries_connect_colorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScatterSeries_colorChanged
-func miqt_exec_callback_QScatterSeries_colorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QScatterSeries_colorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
 
 func (this *QScatterSeries) BorderColorChanged(color qt6.QColor) {
-	defer runtime.KeepAlive(color)
-	C.QScatterSeries_borderColorChanged(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QScatterSeries_borderColorChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 func (this *QScatterSeries) OnBorderColorChanged(slot func(color qt6.QColor)) {
 	C.QScatterSeries_connect_borderColorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScatterSeries_borderColorChanged
-func miqt_exec_callback_QScatterSeries_borderColorChanged(cb C.intptr_t, color *C.QColor) {
+func miqt_exec_callback_QScatterSeries_borderColorChanged(cb C.intptr_t, color C.struct_miqt_qcolor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	color_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(color))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *color_goptr
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc(slotval1)
 }
@@ -405,13 +394,12 @@ func miqt_exec_callback_QScatterSeries_setBrush(self *C.QScatterSeries, cb C.int
 
 }
 
-func (this *QScatterSeries) callVirtualBase_SetColor(color *qt6.QColor) {
-	defer runtime.KeepAlive(color)
+func (this *QScatterSeries) callVirtualBase_SetColor(color qt6.QColor) {
 
-	C.QScatterSeries_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(color.UnsafePointer()))
+	C.QScatterSeries_virtualbase_setColor(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 
 }
-func (this *QScatterSeries) OnSetColor(slot func(super func(color *qt6.QColor), color *qt6.QColor)) {
+func (this *QScatterSeries) OnSetColor(slot func(super func(color qt6.QColor), color qt6.QColor)) {
 	ok := C.QScatterSeries_override_virtual_setColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -419,27 +407,25 @@ func (this *QScatterSeries) OnSetColor(slot func(super func(color *qt6.QColor), 
 }
 
 //export miqt_exec_callback_QScatterSeries_setColor
-func miqt_exec_callback_QScatterSeries_setColor(self *C.QScatterSeries, cb C.intptr_t, color *C.QColor) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(color *qt6.QColor), color *qt6.QColor))
+func miqt_exec_callback_QScatterSeries_setColor(self *C.QScatterSeries, cb C.intptr_t, color C.struct_miqt_qcolor) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(color qt6.QColor), color qt6.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQColor(unsafe.Pointer(color))
+	slotval1 := libmiqt.ValueCast[qt6.QColor](color)
 
 	gofunc((&QScatterSeries{h: self}).callVirtualBase_SetColor, slotval1)
 
 }
 
-func (this *QScatterSeries) callVirtualBase_Color() *qt6.QColor {
+func (this *QScatterSeries) callVirtualBase_Color() qt6.QColor {
 
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QScatterSeries_virtualbase_color(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QColor](C.QScatterSeries_virtualbase_color(unsafe.Pointer(this.h)))
 
 }
-func (this *QScatterSeries) OnColor(slot func(super func() *qt6.QColor) *qt6.QColor) {
+func (this *QScatterSeries) OnColor(slot func(super func() qt6.QColor) qt6.QColor) {
 	ok := C.QScatterSeries_override_virtual_color(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -447,16 +433,15 @@ func (this *QScatterSeries) OnColor(slot func(super func() *qt6.QColor) *qt6.QCo
 }
 
 //export miqt_exec_callback_QScatterSeries_color
-func miqt_exec_callback_QScatterSeries_color(self *C.QScatterSeries, cb C.intptr_t) *C.QColor {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QColor) *qt6.QColor)
+func miqt_exec_callback_QScatterSeries_color(self *C.QScatterSeries, cb C.intptr_t) C.struct_miqt_qcolor {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QColor) qt6.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QScatterSeries{h: self}).callVirtualBase_Color)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QScatterSeries_virtualreturncopy_QColor((*C.QColor)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qcolor](virtualReturn)
 
 }
 

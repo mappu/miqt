@@ -283,12 +283,12 @@ void QMediaRecorder_setQuality(QMediaRecorder* self, int quality) {
 	self->setQuality(static_cast<QMediaRecorder::Quality>(quality));
 }
 
-QSize* QMediaRecorder_videoResolution(const QMediaRecorder* self) {
-	return new QSize(self->videoResolution());
+struct miqt_qsize QMediaRecorder_videoResolution(const QMediaRecorder* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->videoResolution());
 }
 
-void QMediaRecorder_setVideoResolution(QMediaRecorder* self, QSize* videoResolution) {
-	self->setVideoResolution(*videoResolution);
+void QMediaRecorder_setVideoResolution(QMediaRecorder* self, struct miqt_qsize videoResolution) {
+	self->setVideoResolution(miqt_from_cabi<QSize>(videoResolution));
 }
 
 void QMediaRecorder_setVideoResolution2(QMediaRecorder* self, int width, int height) {

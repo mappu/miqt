@@ -28,7 +28,7 @@ QWebEngineContextMenuData* QWebEngineContextMenuData_new();
 QWebEngineContextMenuData* QWebEngineContextMenuData_new2(QWebEngineContextMenuData* other);
 void QWebEngineContextMenuData_operatorAssign(QWebEngineContextMenuData* self, QWebEngineContextMenuData* other);
 bool QWebEngineContextMenuData_isValid(const QWebEngineContextMenuData* self);
-QPoint* QWebEngineContextMenuData_position(const QWebEngineContextMenuData* self);
+struct miqt_qpoint QWebEngineContextMenuData_position(const QWebEngineContextMenuData* self);
 struct miqt_string QWebEngineContextMenuData_selectedText(const QWebEngineContextMenuData* self);
 struct miqt_string QWebEngineContextMenuData_linkText(const QWebEngineContextMenuData* self);
 QUrl* QWebEngineContextMenuData_linkUrl(const QWebEngineContextMenuData* self);

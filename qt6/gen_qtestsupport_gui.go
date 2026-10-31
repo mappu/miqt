@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -52,26 +53,23 @@ func UnsafeNewQTest__QTouchEventSequence(h unsafe.Pointer) *QTest__QTouchEventSe
 	return newQTest__QTouchEventSequence((*C.QTest__QTouchEventSequence)(h))
 }
 
-func (this *QTest__QTouchEventSequence) Press(touchId int, pt *QPoint) *QTest__QTouchEventSequence {
+func (this *QTest__QTouchEventSequence) Press(touchId int, pt QPoint) *QTest__QTouchEventSequence {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_press(this.h, (C.int)(touchId), pt.cPointer()))
+	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_press(this.h, (C.int)(touchId), libmiqt.ValueCast[C.struct_miqt_qpoint](pt)))
 	_ret.miqtSetGC(this.gc)
 	return _ret
 }
 
-func (this *QTest__QTouchEventSequence) Move(touchId int, pt *QPoint) *QTest__QTouchEventSequence {
+func (this *QTest__QTouchEventSequence) Move(touchId int, pt QPoint) *QTest__QTouchEventSequence {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_move(this.h, (C.int)(touchId), pt.cPointer()))
+	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_move(this.h, (C.int)(touchId), libmiqt.ValueCast[C.struct_miqt_qpoint](pt)))
 	_ret.miqtSetGC(this.gc)
 	return _ret
 }
 
-func (this *QTest__QTouchEventSequence) Release(touchId int, pt *QPoint) *QTest__QTouchEventSequence {
+func (this *QTest__QTouchEventSequence) Release(touchId int, pt QPoint) *QTest__QTouchEventSequence {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_release(this.h, (C.int)(touchId), pt.cPointer()))
+	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_release(this.h, (C.int)(touchId), libmiqt.ValueCast[C.struct_miqt_qpoint](pt)))
 	_ret.miqtSetGC(this.gc)
 	return _ret
 }
@@ -94,26 +92,23 @@ func (this *QTest__QTouchEventSequence) OperatorAssign(param1 *QTest__QTouchEven
 	C.QTest__QTouchEventSequence_operatorAssign(this.h, param1.cPointer())
 }
 
-func (this *QTest__QTouchEventSequence) Press2(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
+func (this *QTest__QTouchEventSequence) Press2(touchId int, pt QPoint, window *QWindow) *QTest__QTouchEventSequence {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_press2(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
+	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_press2(this.h, (C.int)(touchId), libmiqt.ValueCast[C.struct_miqt_qpoint](pt), window.cPointer()))
 	_ret.miqtSetGC(this.gc)
 	return _ret
 }
 
-func (this *QTest__QTouchEventSequence) Move2(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
+func (this *QTest__QTouchEventSequence) Move2(touchId int, pt QPoint, window *QWindow) *QTest__QTouchEventSequence {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_move2(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
+	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_move2(this.h, (C.int)(touchId), libmiqt.ValueCast[C.struct_miqt_qpoint](pt), window.cPointer()))
 	_ret.miqtSetGC(this.gc)
 	return _ret
 }
 
-func (this *QTest__QTouchEventSequence) Release2(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
+func (this *QTest__QTouchEventSequence) Release2(touchId int, pt QPoint, window *QWindow) *QTest__QTouchEventSequence {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(pt)
-	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_release2(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
+	_ret := newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_release2(this.h, (C.int)(touchId), libmiqt.ValueCast[C.struct_miqt_qpoint](pt), window.cPointer()))
 	_ret.miqtSetGC(this.gc)
 	return _ret
 }

@@ -151,12 +151,12 @@ void QwtPlotLegendItem_updateLegend(QwtPlotLegendItem* self, QwtPlotItem* param1
 	self->updateLegend(param1, param2_QList);
 }
 
-QRect* QwtPlotLegendItem_geometry(const QwtPlotLegendItem* self, QRectF* canvasRect) {
-	return new QRect(self->geometry(*canvasRect));
+struct miqt_qrect QwtPlotLegendItem_geometry(const QwtPlotLegendItem* self, struct miqt_qrectf canvasRect) {
+	return miqt_to_cabi<struct miqt_qrect>(self->geometry(miqt_from_cabi<QRectF>(canvasRect)));
 }
 
-QSize* QwtPlotLegendItem_minimumSize(const QwtPlotLegendItem* self, QwtLegendData* param1) {
-	return new QSize(self->minimumSize(*param1));
+struct miqt_qsize QwtPlotLegendItem_minimumSize(const QwtPlotLegendItem* self, QwtLegendData* param1) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSize(*param1));
 }
 
 int QwtPlotLegendItem_heightForWidth(const QwtPlotLegendItem* self, QwtLegendData* param1, int width) {
@@ -176,12 +176,12 @@ struct miqt_array /* of QwtPlotItem* */  QwtPlotLegendItem_plotItems(const QwtPl
 	return _out;
 }
 
-struct miqt_array /* of QRect* */  QwtPlotLegendItem_legendGeometries(const QwtPlotLegendItem* self, QwtPlotItem* param1) {
+struct miqt_array /* of struct miqt_qrect */  QwtPlotLegendItem_legendGeometries(const QwtPlotLegendItem* self, QwtPlotItem* param1) {
 	QList<QRect> _ret = self->legendGeometries(param1);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QRect** _arr = static_cast<QRect**>(malloc(sizeof(QRect*) * _ret.length()));
+	struct miqt_qrect* _arr = static_cast<struct miqt_qrect*>(malloc(sizeof(struct miqt_qrect) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QRect(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qrect>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

@@ -76,20 +76,20 @@ bool QWebSelectData_multiple(const QWebSelectData* self) {
 	return self->multiple();
 }
 
-QColor* QWebSelectData_backgroundColor(const QWebSelectData* self) {
-	return new QColor(self->backgroundColor());
+struct miqt_qcolor QWebSelectData_backgroundColor(const QWebSelectData* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->backgroundColor());
 }
 
-QColor* QWebSelectData_foregroundColor(const QWebSelectData* self) {
-	return new QColor(self->foregroundColor());
+struct miqt_qcolor QWebSelectData_foregroundColor(const QWebSelectData* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->foregroundColor());
 }
 
-QColor* QWebSelectData_itemBackgroundColor(const QWebSelectData* self, int index) {
-	return new QColor(self->itemBackgroundColor(static_cast<int>(index)));
+struct miqt_qcolor QWebSelectData_itemBackgroundColor(const QWebSelectData* self, int index) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->itemBackgroundColor(static_cast<int>(index)));
 }
 
-QColor* QWebSelectData_itemForegroundColor(const QWebSelectData* self, int index) {
-	return new QColor(self->itemForegroundColor(static_cast<int>(index)));
+struct miqt_qcolor QWebSelectData_itemForegroundColor(const QWebSelectData* self, int index) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->itemForegroundColor(static_cast<int>(index)));
 }
 
 void QWebSelectData_operatorAssign(QWebSelectData* self, QWebSelectData* param1) {
@@ -142,8 +142,8 @@ void QWebSelectMethod_hide(QWebSelectMethod* self) {
 	self->hide();
 }
 
-void QWebSelectMethod_setGeometry(QWebSelectMethod* self, QRect* geometry) {
-	self->setGeometry(*geometry);
+void QWebSelectMethod_setGeometry(QWebSelectMethod* self, struct miqt_qrect geometry) {
+	self->setGeometry(miqt_from_cabi<QRect>(geometry));
 }
 
 void QWebSelectMethod_setFont(QWebSelectMethod* self, QFont* font) {

@@ -9,6 +9,7 @@ package printsupport
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -195,14 +196,12 @@ func (this *QPrinterInfo) SupportedSizesWithNames() []struct {
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_lv_mm.keys))
-		_lv_Second_CArray := (*[0xffff]*C.QSizeF)(unsafe.Pointer(_lv_mm.values))
+		_lv_Second_CArray := (*[0xffff]C.struct_miqt_qsizef)(unsafe.Pointer(_lv_mm.values))
 		var _lv_first_ms C.struct_miqt_string = _lv_First_CArray[0]
 		_lv_first_ret := C.GoStringN(_lv_first_ms.data, C.int(int64(_lv_first_ms.len)))
 		C.free(unsafe.Pointer(_lv_first_ms.data))
 		_lv_entry_First := _lv_first_ret
-		_lv_second_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(_lv_Second_CArray[0]))
-		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_lv_entry_Second := *_lv_second_goptr
+		_lv_entry_Second := libmiqt.ValueCast[qt.QSizeF](_lv_Second_CArray[0])
 
 		_ret[i] = struct {
 			First  string

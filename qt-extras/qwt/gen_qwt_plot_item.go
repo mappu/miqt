@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -179,17 +180,14 @@ func (this *QwtPlotItem) RenderThreadCount() uint {
 	return (uint)(C.QwtPlotItem_renderThreadCount(this.h))
 }
 
-func (this *QwtPlotItem) SetLegendIconSize(legendIconSize *qt.QSize) {
+func (this *QwtPlotItem) SetLegendIconSize(legendIconSize qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(legendIconSize)
-	C.QwtPlotItem_setLegendIconSize(this.h, (*C.QSize)(legendIconSize.UnsafePointer()))
+	C.QwtPlotItem_setLegendIconSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](legendIconSize))
 }
 
-func (this *QwtPlotItem) LegendIconSize() *qt.QSize {
+func (this *QwtPlotItem) LegendIconSize() qt.QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtPlotItem_legendIconSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtPlotItem_legendIconSize(this.h))
 }
 
 func (this *QwtPlotItem) Z() float64 {
@@ -257,11 +255,9 @@ func (this *QwtPlotItem) LegendChanged() {
 	C.QwtPlotItem_legendChanged(this.h)
 }
 
-func (this *QwtPlotItem) BoundingRect() *qt.QRectF {
+func (this *QwtPlotItem) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotItem_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotItem_boundingRect(this.h))
 }
 
 func (this *QwtPlotItem) UpdateScaleDiv(param1 *QwtScaleDiv, param2 *QwtScaleDiv) {
@@ -298,10 +294,9 @@ func (this *QwtPlotItem) LegendData() []QwtLegendData {
 	return _ret
 }
 
-func (this *QwtPlotItem) LegendIcon(index int, param2 *qt.QSizeF) *QwtGraphic {
+func (this *QwtPlotItem) LegendIcon(index int, param2 qt.QSizeF) *QwtGraphic {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param2)
-	_goptr := newQwtGraphic(C.QwtPlotItem_legendIcon(this.h, (C.int)(index), (*C.QSizeF)(param2.UnsafePointer())))
+	_goptr := newQwtGraphic(C.QwtPlotItem_legendIcon(this.h, (C.int)(index), libmiqt.ValueCast[C.struct_miqt_qsizef](param2)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

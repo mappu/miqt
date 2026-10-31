@@ -112,9 +112,9 @@ void QAbstractScrollArea_addScrollBarWidget(QAbstractScrollArea* self, QWidget* 
 struct miqt_array /* of QWidget* */  QAbstractScrollArea_scrollBarWidgets(QAbstractScrollArea* self, int alignment);
 QWidget* QAbstractScrollArea_viewport(const QAbstractScrollArea* self);
 void QAbstractScrollArea_setViewport(QAbstractScrollArea* self, QWidget* widget);
-QSize* QAbstractScrollArea_maximumViewportSize(const QAbstractScrollArea* self);
-QSize* QAbstractScrollArea_minimumSizeHint(const QAbstractScrollArea* self);
-QSize* QAbstractScrollArea_sizeHint(const QAbstractScrollArea* self);
+struct miqt_qsize QAbstractScrollArea_maximumViewportSize(const QAbstractScrollArea* self);
+struct miqt_qsize QAbstractScrollArea_minimumSizeHint(const QAbstractScrollArea* self);
+struct miqt_qsize QAbstractScrollArea_sizeHint(const QAbstractScrollArea* self);
 void QAbstractScrollArea_setupViewport(QAbstractScrollArea* self, QWidget* viewport);
 int QAbstractScrollArea_sizeAdjustPolicy(const QAbstractScrollArea* self);
 void QAbstractScrollArea_setSizeAdjustPolicy(QAbstractScrollArea* self, int policy);
@@ -135,14 +135,14 @@ void QAbstractScrollArea_dragLeaveEvent(QAbstractScrollArea* self, QDragLeaveEve
 void QAbstractScrollArea_dropEvent(QAbstractScrollArea* self, QDropEvent* param1);
 void QAbstractScrollArea_keyPressEvent(QAbstractScrollArea* self, QKeyEvent* param1);
 void QAbstractScrollArea_scrollContentsBy(QAbstractScrollArea* self, int dx, int dy);
-QSize* QAbstractScrollArea_viewportSizeHint(const QAbstractScrollArea* self);
+struct miqt_qsize QAbstractScrollArea_viewportSizeHint(const QAbstractScrollArea* self);
 struct miqt_string QAbstractScrollArea_tr2(const char* s, const char* c);
 struct miqt_string QAbstractScrollArea_tr3(const char* s, const char* c, int n);
 
 bool QAbstractScrollArea_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QAbstractScrollArea_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QAbstractScrollArea_virtualbase_minimumSizeHint(const void* self);
 bool QAbstractScrollArea_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QAbstractScrollArea_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QAbstractScrollArea_virtualbase_sizeHint(const void* self);
 bool QAbstractScrollArea_override_virtual_setupViewport(void* self, intptr_t slot);
 void QAbstractScrollArea_virtualbase_setupViewport(void* self, QWidget* viewport);
 bool QAbstractScrollArea_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -180,7 +180,7 @@ void QAbstractScrollArea_virtualbase_keyPressEvent(void* self, QKeyEvent* param1
 bool QAbstractScrollArea_override_virtual_scrollContentsBy(void* self, intptr_t slot);
 void QAbstractScrollArea_virtualbase_scrollContentsBy(void* self, int dx, int dy);
 bool QAbstractScrollArea_override_virtual_viewportSizeHint(void* self, intptr_t slot);
-QSize* QAbstractScrollArea_virtualbase_viewportSizeHint(const void* self);
+struct miqt_qsize QAbstractScrollArea_virtualbase_viewportSizeHint(const void* self);
 bool QAbstractScrollArea_override_virtual_changeEvent(void* self, intptr_t slot);
 void QAbstractScrollArea_virtualbase_changeEvent(void* self, QEvent* param1);
 bool QAbstractScrollArea_override_virtual_initStyleOption(void* self, intptr_t slot);
@@ -243,12 +243,11 @@ bool QAbstractScrollArea_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractScrollArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QAbstractScrollArea_virtualreturncopy_QSize(QSize* src);
 QVariant* QAbstractScrollArea_virtualreturncopy_QVariant(QVariant* src);
 
 void QAbstractScrollArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-void QAbstractScrollArea_protectedbase_setViewportMarginsWithMargins(bool* _dynamic_cast_ok, void* self, QMargins* margins);
-QMargins* QAbstractScrollArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+void QAbstractScrollArea_protectedbase_setViewportMarginsWithMargins(bool* _dynamic_cast_ok, void* self, struct miqt_qmargins margins);
+struct miqt_qmargins QAbstractScrollArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 void QAbstractScrollArea_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 void QAbstractScrollArea_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QAbstractScrollArea_protectedbase_create(bool* _dynamic_cast_ok, void* self);

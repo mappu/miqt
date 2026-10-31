@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -125,18 +126,14 @@ func (this *QwtPlotSpectrogram) Interval(param1 qt.Axis) *QwtInterval {
 	return _goptr
 }
 
-func (this *QwtPlotSpectrogram) PixelHint(param1 *qt.QRectF) *qt.QRectF {
+func (this *QwtPlotSpectrogram) PixelHint(param1 qt.QRectF) qt.QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotSpectrogram_pixelHint(this.h, (*C.QRectF)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotSpectrogram_pixelHint(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 }
 
-func (this *QwtPlotSpectrogram) SetDefaultContourPen(param1 *qt.QColor) {
+func (this *QwtPlotSpectrogram) SetDefaultContourPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotSpectrogram_setDefaultContourPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotSpectrogram_setDefaultContourPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotSpectrogram) SetDefaultContourPenWithDefaultContourPen(defaultContourPen *qt.QPen) {
@@ -202,16 +199,14 @@ func (this *QwtPlotSpectrogram) SetDisplayMode2(param1 QwtPlotSpectrogram__Displ
 	C.QwtPlotSpectrogram_setDisplayMode2(this.h, (C.int)(param1), (C.bool)(on))
 }
 
-func (this *QwtPlotSpectrogram) SetDefaultContourPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotSpectrogram) SetDefaultContourPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotSpectrogram_setDefaultContourPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtPlotSpectrogram_setDefaultContourPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotSpectrogram) SetDefaultContourPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtPlotSpectrogram) SetDefaultContourPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotSpectrogram_setDefaultContourPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotSpectrogram_setDefaultContourPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
 // Delete this object from C++ memory.

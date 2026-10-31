@@ -11,8 +11,8 @@ extern "C" {
 } /* extern C */
 #endif
 
-QwtPixelMatrix* QwtPixelMatrix_new(QRect* rect) {
-	return new (std::nothrow) QwtPixelMatrix(*rect);
+QwtPixelMatrix* QwtPixelMatrix_new(struct miqt_qrect rect) {
+	return new (std::nothrow) QwtPixelMatrix(miqt_from_cabi<QRect>(rect));
 }
 
 QwtPixelMatrix* QwtPixelMatrix_new2(QwtPixelMatrix* param1) {
@@ -23,12 +23,12 @@ void QwtPixelMatrix_virtbase(QwtPixelMatrix* src, QBitArray** outptr_QBitArray) 
 	*outptr_QBitArray = static_cast<QBitArray*>(src);
 }
 
-void QwtPixelMatrix_setRect(QwtPixelMatrix* self, QRect* rect) {
-	self->setRect(*rect);
+void QwtPixelMatrix_setRect(QwtPixelMatrix* self, struct miqt_qrect rect) {
+	self->setRect(miqt_from_cabi<QRect>(rect));
 }
 
-QRect* QwtPixelMatrix_rect(const QwtPixelMatrix* self) {
-	return new QRect(self->rect());
+struct miqt_qrect QwtPixelMatrix_rect(const QwtPixelMatrix* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->rect());
 }
 
 bool QwtPixelMatrix_testPixel(const QwtPixelMatrix* self, int x, int y) {

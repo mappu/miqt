@@ -66,8 +66,8 @@ int QVideoFrame_handleType(const QVideoFrame* self) {
 	return static_cast<int>(_ret);
 }
 
-QSize* QVideoFrame_size(const QVideoFrame* self) {
-	return new QSize(self->size());
+struct miqt_qsize QVideoFrame_size(const QVideoFrame* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
 int QVideoFrame_width(const QVideoFrame* self) {
@@ -180,8 +180,8 @@ void QVideoFrame_setSubtitleText(QVideoFrame* self, struct miqt_string text) {
 	self->setSubtitleText(text_QString);
 }
 
-void QVideoFrame_paint(QVideoFrame* self, QPainter* painter, QRectF* rect, QVideoFrame__PaintOptions* options) {
-	self->paint(painter, *rect, *options);
+void QVideoFrame_paint(QVideoFrame* self, QPainter* painter, struct miqt_qrectf rect, QVideoFrame__PaintOptions* options) {
+	self->paint(painter, miqt_from_cabi<QRectF>(rect), *options);
 }
 
 void QVideoFrame_delete(QVideoFrame* self) {
@@ -192,12 +192,12 @@ QVideoFrame__PaintOptions* QVideoFrame__PaintOptions_new() {
 	return new (std::nothrow) QVideoFrame::PaintOptions();
 }
 
-QColor* QVideoFrame__PaintOptions_backgroundColor(const QVideoFrame__PaintOptions* self) {
-	return new QColor(self->backgroundColor);
+struct miqt_qcolor QVideoFrame__PaintOptions_backgroundColor(const QVideoFrame__PaintOptions* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->backgroundColor);
 }
 
-void QVideoFrame__PaintOptions_setBackgroundColor(QVideoFrame__PaintOptions* self, QColor* backgroundColor) {
-	self->backgroundColor = *backgroundColor;
+void QVideoFrame__PaintOptions_setBackgroundColor(QVideoFrame__PaintOptions* self, struct miqt_qcolor backgroundColor) {
+	self->backgroundColor = miqt_from_cabi<QColor>(backgroundColor);
 }
 
 int QVideoFrame__PaintOptions_aspectRatioMode(const QVideoFrame__PaintOptions* self) {

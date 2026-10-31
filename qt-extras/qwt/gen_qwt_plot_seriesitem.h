@@ -37,7 +37,7 @@ typedef struct QwtScaleDiv QwtScaleDiv;
 void QwtPlotSeriesItem_virtbase(QwtPlotSeriesItem* src, QwtPlotItem** outptr_QwtPlotItem, QwtAbstractSeriesStore** outptr_QwtAbstractSeriesStore);
 void QwtPlotSeriesItem_setOrientation(QwtPlotSeriesItem* self, int orientation);
 int QwtPlotSeriesItem_orientation(const QwtPlotSeriesItem* self);
-QRectF* QwtPlotSeriesItem_boundingRect(const QwtPlotSeriesItem* self);
+struct miqt_qrectf QwtPlotSeriesItem_boundingRect(const QwtPlotSeriesItem* self);
 void QwtPlotSeriesItem_updateScaleDiv(QwtPlotSeriesItem* self, QwtScaleDiv* param1, QwtScaleDiv* param2);
 void QwtPlotSeriesItem_dataChanged(QwtPlotSeriesItem* self);
 

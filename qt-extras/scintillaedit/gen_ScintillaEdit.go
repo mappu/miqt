@@ -9,6 +9,7 @@ package scintillaedit
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -7455,9 +7456,7 @@ func (this *ScintillaEditBase) SetViewportMargins(left int, top int, right int, 
 func (this *ScintillaEditBase) ViewportMargins() qt.QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQMargins(unsafe.Pointer(C.ScintillaEditBase_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QMargins](C.ScintillaEditBase_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -8203,14 +8202,12 @@ func miqt_exec_callback_ScintillaEditBase_scrollContentsBy(self *C.ScintillaEdit
 
 }
 
-func (this *ScintillaEditBase) callVirtualBase_MinimumSizeHint() *qt.QSize {
+func (this *ScintillaEditBase) callVirtualBase_MinimumSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.ScintillaEditBase_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *ScintillaEditBase) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *ScintillaEditBase) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.ScintillaEditBase_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -8218,27 +8215,24 @@ func (this *ScintillaEditBase) OnMinimumSizeHint(slot func(super func() *qt.QSiz
 }
 
 //export miqt_exec_callback_ScintillaEditBase_minimumSizeHint
-func miqt_exec_callback_ScintillaEditBase_minimumSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_ScintillaEditBase_minimumSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.ScintillaEditBase_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *ScintillaEditBase) callVirtualBase_SizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *ScintillaEditBase) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *ScintillaEditBase) callVirtualBase_SizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.ScintillaEditBase_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *ScintillaEditBase) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.ScintillaEditBase_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -8246,16 +8240,15 @@ func (this *ScintillaEditBase) OnSizeHint(slot func(super func() *qt.QSize) *qt.
 }
 
 //export miqt_exec_callback_ScintillaEditBase_sizeHint
-func miqt_exec_callback_ScintillaEditBase_sizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_ScintillaEditBase_sizeHint(self *C.ScintillaEditBase, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.ScintillaEditBase_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -8345,14 +8338,12 @@ func miqt_exec_callback_ScintillaEditBase_viewportEvent(self *C.ScintillaEditBas
 
 }
 
-func (this *ScintillaEditBase) callVirtualBase_ViewportSizeHint() *qt.QSize {
+func (this *ScintillaEditBase) callVirtualBase_ViewportSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.ScintillaEditBase_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *ScintillaEditBase) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *ScintillaEditBase) OnViewportSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.ScintillaEditBase_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -8360,16 +8351,15 @@ func (this *ScintillaEditBase) OnViewportSizeHint(slot func(super func() *qt.QSi
 }
 
 //export miqt_exec_callback_ScintillaEditBase_viewportSizeHint
-func miqt_exec_callback_ScintillaEditBase_viewportSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_ScintillaEditBase_viewportSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.ScintillaEditBase_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -8870,7 +8860,6 @@ func miqt_exec_callback_ScintillaEditBase_initPainter(self *C.ScintillaEditBase,
 }
 
 func (this *ScintillaEditBase) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.ScintillaEditBase_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
@@ -9962,20 +9951,16 @@ func (this *ScintillaEdit) TextRange(start int, end int) []byte {
 	return _ret
 }
 
-func (this *ScintillaEdit) FormatRange(draw bool, target *qt.QPaintDevice, measure *qt.QPaintDevice, print_rect *qt.QRect, page_rect *qt.QRect, range_start int64, range_end int64) int64 {
+func (this *ScintillaEdit) FormatRange(draw bool, target *qt.QPaintDevice, measure *qt.QPaintDevice, print_rect qt.QRect, page_rect qt.QRect, range_start int64, range_end int64) int64 {
 	defer runtime.KeepAlive(target)
 	defer runtime.KeepAlive(measure)
-	defer runtime.KeepAlive(print_rect)
-	defer runtime.KeepAlive(page_rect)
-	return (int64)(C.ScintillaEdit_formatRange(this.h, (C.bool)(draw), (*C.QPaintDevice)(target.UnsafePointer()), (*C.QPaintDevice)(measure.UnsafePointer()), (*C.QRect)(print_rect.UnsafePointer()), (*C.QRect)(page_rect.UnsafePointer()), (C.long)(range_start), (C.long)(range_end)))
+	return (int64)(C.ScintillaEdit_formatRange(this.h, (C.bool)(draw), (*C.QPaintDevice)(target.UnsafePointer()), (*C.QPaintDevice)(measure.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrect](print_rect), libmiqt.ValueCast[C.struct_miqt_qrect](page_rect), (C.long)(range_start), (C.long)(range_end)))
 }
 
-func (this *ScintillaEdit) FormatRange2(draw bool, target *qt.QPaintDevice, measure *qt.QPaintDevice, print_rect *qt.QRect, page_rect *qt.QRect, range_start int64, range_end int64) int64 {
+func (this *ScintillaEdit) FormatRange2(draw bool, target *qt.QPaintDevice, measure *qt.QPaintDevice, print_rect qt.QRect, page_rect qt.QRect, range_start int64, range_end int64) int64 {
 	defer runtime.KeepAlive(target)
 	defer runtime.KeepAlive(measure)
-	defer runtime.KeepAlive(print_rect)
-	defer runtime.KeepAlive(page_rect)
-	return (int64)(C.ScintillaEdit_formatRange2(this.h, (C.bool)(draw), (*C.QPaintDevice)(target.UnsafePointer()), (*C.QPaintDevice)(measure.UnsafePointer()), (*C.QRect)(print_rect.UnsafePointer()), (*C.QRect)(page_rect.UnsafePointer()), (C.long)(range_start), (C.long)(range_end)))
+	return (int64)(C.ScintillaEdit_formatRange2(this.h, (C.bool)(draw), (*C.QPaintDevice)(target.UnsafePointer()), (*C.QPaintDevice)(measure.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrect](print_rect), libmiqt.ValueCast[C.struct_miqt_qrect](page_rect), (C.long)(range_start), (C.long)(range_end)))
 }
 
 func (this *ScintillaEdit) AddText(length uintptr, text string) {
@@ -13460,9 +13445,7 @@ func (this *ScintillaEdit) SetViewportMargins(left int, top int, right int, bott
 func (this *ScintillaEdit) ViewportMargins() qt.QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQMargins(unsafe.Pointer(C.ScintillaEdit_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QMargins](C.ScintillaEdit_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -14208,14 +14191,12 @@ func miqt_exec_callback_ScintillaEdit_scrollContentsBy(self *C.ScintillaEdit, cb
 
 }
 
-func (this *ScintillaEdit) callVirtualBase_MinimumSizeHint() *qt.QSize {
+func (this *ScintillaEdit) callVirtualBase_MinimumSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.ScintillaEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *ScintillaEdit) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *ScintillaEdit) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.ScintillaEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -14223,27 +14204,24 @@ func (this *ScintillaEdit) OnMinimumSizeHint(slot func(super func() *qt.QSize) *
 }
 
 //export miqt_exec_callback_ScintillaEdit_minimumSizeHint
-func miqt_exec_callback_ScintillaEdit_minimumSizeHint(self *C.ScintillaEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_ScintillaEdit_minimumSizeHint(self *C.ScintillaEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&ScintillaEdit{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.ScintillaEdit_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *ScintillaEdit) callVirtualBase_SizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *ScintillaEdit) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *ScintillaEdit) callVirtualBase_SizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.ScintillaEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *ScintillaEdit) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.ScintillaEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -14251,16 +14229,15 @@ func (this *ScintillaEdit) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSiz
 }
 
 //export miqt_exec_callback_ScintillaEdit_sizeHint
-func miqt_exec_callback_ScintillaEdit_sizeHint(self *C.ScintillaEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_ScintillaEdit_sizeHint(self *C.ScintillaEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&ScintillaEdit{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.ScintillaEdit_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -14350,14 +14327,12 @@ func miqt_exec_callback_ScintillaEdit_viewportEvent(self *C.ScintillaEdit, cb C.
 
 }
 
-func (this *ScintillaEdit) callVirtualBase_ViewportSizeHint() *qt.QSize {
+func (this *ScintillaEdit) callVirtualBase_ViewportSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.ScintillaEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *ScintillaEdit) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *ScintillaEdit) OnViewportSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.ScintillaEdit_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -14365,16 +14340,15 @@ func (this *ScintillaEdit) OnViewportSizeHint(slot func(super func() *qt.QSize) 
 }
 
 //export miqt_exec_callback_ScintillaEdit_viewportSizeHint
-func miqt_exec_callback_ScintillaEdit_viewportSizeHint(self *C.ScintillaEdit, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_ScintillaEdit_viewportSizeHint(self *C.ScintillaEdit, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&ScintillaEdit{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.ScintillaEdit_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -14875,7 +14849,6 @@ func miqt_exec_callback_ScintillaEdit_initPainter(self *C.ScintillaEdit, cb C.in
 }
 
 func (this *ScintillaEdit) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.ScintillaEdit_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

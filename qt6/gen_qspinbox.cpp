@@ -53,8 +53,8 @@ int miqt_exec_callback_QSpinBox_validate(const QSpinBox*, intptr_t, struct miqt_
 int miqt_exec_callback_QSpinBox_valueFromText(const QSpinBox*, intptr_t, struct miqt_string);
 struct miqt_string miqt_exec_callback_QSpinBox_textFromValue(const QSpinBox*, intptr_t, int);
 void miqt_exec_callback_QSpinBox_fixup(const QSpinBox*, intptr_t, struct miqt_string);
-QSize* miqt_exec_callback_QSpinBox_sizeHint(const QSpinBox*, intptr_t);
-QSize* miqt_exec_callback_QSpinBox_minimumSizeHint(const QSpinBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSpinBox_sizeHint(const QSpinBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSpinBox_minimumSizeHint(const QSpinBox*, intptr_t);
 QVariant* miqt_exec_callback_QSpinBox_inputMethodQuery(const QSpinBox*, intptr_t, int);
 void miqt_exec_callback_QSpinBox_stepBy(QSpinBox*, intptr_t, int);
 void miqt_exec_callback_QSpinBox_clear(QSpinBox*, intptr_t);
@@ -109,8 +109,8 @@ int miqt_exec_callback_QDoubleSpinBox_validate(const QDoubleSpinBox*, intptr_t, 
 double miqt_exec_callback_QDoubleSpinBox_valueFromText(const QDoubleSpinBox*, intptr_t, struct miqt_string);
 struct miqt_string miqt_exec_callback_QDoubleSpinBox_textFromValue(const QDoubleSpinBox*, intptr_t, double);
 void miqt_exec_callback_QDoubleSpinBox_fixup(const QDoubleSpinBox*, intptr_t, struct miqt_string);
-QSize* miqt_exec_callback_QDoubleSpinBox_sizeHint(const QDoubleSpinBox*, intptr_t);
-QSize* miqt_exec_callback_QDoubleSpinBox_minimumSizeHint(const QDoubleSpinBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDoubleSpinBox_sizeHint(const QDoubleSpinBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDoubleSpinBox_minimumSizeHint(const QDoubleSpinBox*, intptr_t);
 bool miqt_exec_callback_QDoubleSpinBox_event(QDoubleSpinBox*, intptr_t, QEvent*);
 QVariant* miqt_exec_callback_QDoubleSpinBox_inputMethodQuery(const QDoubleSpinBox*, intptr_t, int);
 void miqt_exec_callback_QDoubleSpinBox_stepBy(QDoubleSpinBox*, intptr_t, int);
@@ -286,13 +286,11 @@ public:
 			return QSpinBox::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSpinBox_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSpinBox_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSpinBox_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QSpinBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -303,13 +301,11 @@ public:
 			return QSpinBox::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSpinBox_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSpinBox_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSpinBox_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QSpinBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1410,8 +1406,8 @@ bool QSpinBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSpinBox_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::sizeHint());
+struct miqt_qsize QSpinBox_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::sizeHint());
 }
 
 bool QSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1424,8 +1420,8 @@ bool QSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSpinBox_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::minimumSizeHint());
+struct miqt_qsize QSpinBox_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::minimumSizeHint());
 }
 
 bool QSpinBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2102,10 +2098,6 @@ void QSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::disconnectNotify(*signal);
 }
 
-QSize* QSpinBox_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QSpinBox_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -2341,13 +2333,11 @@ public:
 			return QDoubleSpinBox::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDoubleSpinBox_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDoubleSpinBox_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDoubleSpinBox_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDoubleSpinBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -2358,13 +2348,11 @@ public:
 			return QDoubleSpinBox::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDoubleSpinBox_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDoubleSpinBox_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDoubleSpinBox_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDoubleSpinBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -3494,8 +3482,8 @@ bool QDoubleSpinBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDoubleSpinBox_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::sizeHint());
+struct miqt_qsize QDoubleSpinBox_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::sizeHint());
 }
 
 bool QDoubleSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -3508,8 +3496,8 @@ bool QDoubleSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSize* QDoubleSpinBox_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::minimumSizeHint());
+struct miqt_qsize QDoubleSpinBox_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::minimumSizeHint());
 }
 
 bool QDoubleSpinBox_override_virtual_event(void* self, intptr_t slot) {
@@ -4198,10 +4186,6 @@ bool QDoubleSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QDoubleSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::disconnectNotify(*signal);
-}
-
-QSize* QDoubleSpinBox_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QDoubleSpinBox_virtualreturncopy_QVariant(QVariant* src) {

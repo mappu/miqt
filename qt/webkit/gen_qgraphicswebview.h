@@ -127,12 +127,12 @@ bool QGraphicsWebView_resizesToContents(const QGraphicsWebView* self);
 void QGraphicsWebView_setResizesToContents(QGraphicsWebView* self, bool enabled);
 bool QGraphicsWebView_isTiledBackingStoreFrozen(const QGraphicsWebView* self);
 void QGraphicsWebView_setTiledBackingStoreFrozen(QGraphicsWebView* self, bool frozen);
-void QGraphicsWebView_setGeometry(QGraphicsWebView* self, QRectF* rect);
+void QGraphicsWebView_setGeometry(QGraphicsWebView* self, struct miqt_qrectf rect);
 void QGraphicsWebView_updateGeometry(QGraphicsWebView* self);
 void QGraphicsWebView_paint(QGraphicsWebView* self, QPainter* param1, QStyleOptionGraphicsItem* options, QWidget* widget);
 QVariant* QGraphicsWebView_itemChange(QGraphicsWebView* self, int change, QVariant* value);
 bool QGraphicsWebView_event(QGraphicsWebView* self, QEvent* param1);
-QSizeF* QGraphicsWebView_sizeHint(const QGraphicsWebView* self, int which, QSizeF* constraint);
+struct miqt_qsizef QGraphicsWebView_sizeHint(const QGraphicsWebView* self, int which, struct miqt_qsizef constraint);
 QVariant* QGraphicsWebView_inputMethodQuery(const QGraphicsWebView* self, int query);
 int QGraphicsWebView_renderHints(const QGraphicsWebView* self);
 void QGraphicsWebView_setRenderHints(QGraphicsWebView* self, int renderHints);
@@ -190,7 +190,7 @@ bool QGraphicsWebView_findText2(QGraphicsWebView* self, struct miqt_string subSt
 void QGraphicsWebView_setRenderHint2(QGraphicsWebView* self, int param1, bool enabled);
 
 bool QGraphicsWebView_override_virtual_setGeometry(void* self, intptr_t slot);
-void QGraphicsWebView_virtualbase_setGeometry(void* self, QRectF* rect);
+void QGraphicsWebView_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 bool QGraphicsWebView_override_virtual_updateGeometry(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_updateGeometry(void* self);
 bool QGraphicsWebView_override_virtual_paint(void* self, intptr_t slot);
@@ -200,7 +200,7 @@ QVariant* QGraphicsWebView_virtualbase_itemChange(void* self, int change, QVaria
 bool QGraphicsWebView_override_virtual_event(void* self, intptr_t slot);
 bool QGraphicsWebView_virtualbase_event(void* self, QEvent* param1);
 bool QGraphicsWebView_override_virtual_sizeHint(void* self, intptr_t slot);
-QSizeF* QGraphicsWebView_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+struct miqt_qsizef QGraphicsWebView_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint);
 bool QGraphicsWebView_override_virtual_inputMethodQuery(void* self, intptr_t slot);
 QVariant* QGraphicsWebView_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsWebView_override_virtual_mousePressEvent(void* self, intptr_t slot);
@@ -248,7 +248,7 @@ int QGraphicsWebView_virtualbase_type(const void* self);
 bool QGraphicsWebView_override_virtual_paintWindowFrame(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_paintWindowFrame(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
 bool QGraphicsWebView_override_virtual_boundingRect(void* self, intptr_t slot);
-QRectF* QGraphicsWebView_virtualbase_boundingRect(const void* self);
+struct miqt_qrectf QGraphicsWebView_virtualbase_boundingRect(const void* self);
 bool QGraphicsWebView_override_virtual_shape(void* self, intptr_t slot);
 QPainterPath* QGraphicsWebView_virtualbase_shape(const void* self);
 bool QGraphicsWebView_override_virtual_initStyleOption(void* self, intptr_t slot);
@@ -258,7 +258,7 @@ QVariant* QGraphicsWebView_virtualbase_propertyChange(void* self, struct miqt_st
 bool QGraphicsWebView_override_virtual_windowFrameEvent(void* self, intptr_t slot);
 bool QGraphicsWebView_virtualbase_windowFrameEvent(void* self, QEvent* e);
 bool QGraphicsWebView_override_virtual_windowFrameSectionAt(void* self, intptr_t slot);
-int QGraphicsWebView_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos);
+int QGraphicsWebView_virtualbase_windowFrameSectionAt(const void* self, struct miqt_qpointf pos);
 bool QGraphicsWebView_override_virtual_changeEvent(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_changeEvent(void* self, QEvent* event);
 bool QGraphicsWebView_override_virtual_closeEvent(void* self, intptr_t slot);
@@ -296,7 +296,7 @@ void QGraphicsWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 bool QGraphicsWebView_override_virtual_advance(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_advance(void* self, int phase);
 bool QGraphicsWebView_override_virtual_contains(void* self, intptr_t slot);
-bool QGraphicsWebView_virtualbase_contains(const void* self, QPointF* point);
+bool QGraphicsWebView_virtualbase_contains(const void* self, struct miqt_qpointf point);
 bool QGraphicsWebView_override_virtual_collidesWithItem(void* self, intptr_t slot);
 bool QGraphicsWebView_virtualbase_collidesWithItem(const void* self, QGraphicsItem* other, int mode);
 bool QGraphicsWebView_override_virtual_collidesWithPath(void* self, intptr_t slot);
@@ -316,8 +316,6 @@ void QGraphicsWebView_virtualbase_setExtension(void* self, int extension, QVaria
 bool QGraphicsWebView_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsWebView_virtualbase_extension(const void* self, QVariant* variant);
 QVariant* QGraphicsWebView_virtualreturncopy_QVariant(QVariant* src);
-QSizeF* QGraphicsWebView_virtualreturncopy_QSizeF(QSizeF* src);
-QRectF* QGraphicsWebView_virtualreturncopy_QRectF(QRectF* src);
 QPainterPath* QGraphicsWebView_virtualreturncopy_QPainterPath(QPainterPath* src);
 
 void QGraphicsWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);

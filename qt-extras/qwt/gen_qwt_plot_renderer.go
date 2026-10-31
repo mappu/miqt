@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"github.com/mappu/miqt/qt/printsupport"
 	"github.com/mappu/miqt/qt/svg"
@@ -151,17 +152,15 @@ func (this *QwtPlotRenderer) LayoutFlags() QwtPlotRenderer__LayoutFlag {
 	return (QwtPlotRenderer__LayoutFlag)(C.QwtPlotRenderer_layoutFlags(this.h))
 }
 
-func (this *QwtPlotRenderer) RenderDocument(param1 *QwtPlot, fileName string, sizeMM *qt.QSizeF) {
-	defer runtime.KeepAlive(sizeMM)
+func (this *QwtPlotRenderer) RenderDocument(param1 *QwtPlot, fileName string, sizeMM qt.QSizeF) {
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QwtPlotRenderer_renderDocument(this.h, param1.cPointer(), fileName_ms, (*C.QSizeF)(sizeMM.UnsafePointer()))
+	C.QwtPlotRenderer_renderDocument(this.h, param1.cPointer(), fileName_ms, libmiqt.ValueCast[C.struct_miqt_qsizef](sizeMM))
 }
 
-func (this *QwtPlotRenderer) RenderDocument2(param1 *QwtPlot, fileName string, format string, sizeMM *qt.QSizeF) {
-	defer runtime.KeepAlive(sizeMM)
+func (this *QwtPlotRenderer) RenderDocument2(param1 *QwtPlot, fileName string, format string, sizeMM qt.QSizeF) {
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -170,7 +169,7 @@ func (this *QwtPlotRenderer) RenderDocument2(param1 *QwtPlot, fileName string, f
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	C.QwtPlotRenderer_renderDocument2(this.h, param1.cPointer(), fileName_ms, format_ms, (*C.QSizeF)(sizeMM.UnsafePointer()))
+	C.QwtPlotRenderer_renderDocument2(this.h, param1.cPointer(), fileName_ms, format_ms, libmiqt.ValueCast[C.struct_miqt_qsizef](sizeMM))
 }
 
 func (this *QwtPlotRenderer) RenderTo(param1 *QwtPlot, param2 *svg.QSvgGenerator) {
@@ -188,34 +187,29 @@ func (this *QwtPlotRenderer) RenderTo3(param1 *QwtPlot, param2 *qt.QPaintDevice)
 	C.QwtPlotRenderer_renderTo3(this.h, param1.cPointer(), (*C.QPaintDevice)(param2.UnsafePointer()))
 }
 
-func (this *QwtPlotRenderer) Render(param1 *QwtPlot, param2 *qt.QPainter, plotRect *qt.QRectF) {
+func (this *QwtPlotRenderer) Render(param1 *QwtPlot, param2 *qt.QPainter, plotRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(plotRect)
-	C.QwtPlotRenderer_render(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (*C.QRectF)(plotRect.UnsafePointer()))
+	C.QwtPlotRenderer_render(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](plotRect))
 }
 
-func (this *QwtPlotRenderer) RenderTitle(param1 *QwtPlot, param2 *qt.QPainter, titleRect *qt.QRectF) {
+func (this *QwtPlotRenderer) RenderTitle(param1 *QwtPlot, param2 *qt.QPainter, titleRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(titleRect)
-	C.QwtPlotRenderer_renderTitle(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (*C.QRectF)(titleRect.UnsafePointer()))
+	C.QwtPlotRenderer_renderTitle(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](titleRect))
 }
 
-func (this *QwtPlotRenderer) RenderFooter(param1 *QwtPlot, param2 *qt.QPainter, footerRect *qt.QRectF) {
+func (this *QwtPlotRenderer) RenderFooter(param1 *QwtPlot, param2 *qt.QPainter, footerRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(footerRect)
-	C.QwtPlotRenderer_renderFooter(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (*C.QRectF)(footerRect.UnsafePointer()))
+	C.QwtPlotRenderer_renderFooter(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](footerRect))
 }
 
-func (this *QwtPlotRenderer) RenderScale(param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect *qt.QRectF) {
+func (this *QwtPlotRenderer) RenderScale(param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(scaleRect)
-	C.QwtPlotRenderer_renderScale(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (C.int)(axisId), (C.int)(startDist), (C.int)(endDist), (C.int)(baseDist), (*C.QRectF)(scaleRect.UnsafePointer()))
+	C.QwtPlotRenderer_renderScale(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (C.int)(axisId), (C.int)(startDist), (C.int)(endDist), (C.int)(baseDist), libmiqt.ValueCast[C.struct_miqt_qrectf](scaleRect))
 }
 
-func (this *QwtPlotRenderer) RenderLegend(param1 *QwtPlot, param2 *qt.QPainter, legendRect *qt.QRectF) {
+func (this *QwtPlotRenderer) RenderLegend(param1 *QwtPlot, param2 *qt.QPainter, legendRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(legendRect)
-	C.QwtPlotRenderer_renderLegend(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (*C.QRectF)(legendRect.UnsafePointer()))
+	C.QwtPlotRenderer_renderLegend(this.h, param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](legendRect))
 }
 
 func (this *QwtPlotRenderer) ExportTo(param1 *QwtPlot, documentName string) bool {
@@ -278,17 +272,15 @@ func (this *QwtPlotRenderer) SetLayoutFlag2(flag QwtPlotRenderer__LayoutFlag, on
 	C.QwtPlotRenderer_setLayoutFlag2(this.h, (C.int)(flag), (C.bool)(on))
 }
 
-func (this *QwtPlotRenderer) RenderDocument3(param1 *QwtPlot, fileName string, sizeMM *qt.QSizeF, resolution int) {
-	defer runtime.KeepAlive(sizeMM)
+func (this *QwtPlotRenderer) RenderDocument3(param1 *QwtPlot, fileName string, sizeMM qt.QSizeF, resolution int) {
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QwtPlotRenderer_renderDocument3(this.h, param1.cPointer(), fileName_ms, (*C.QSizeF)(sizeMM.UnsafePointer()), (C.int)(resolution))
+	C.QwtPlotRenderer_renderDocument3(this.h, param1.cPointer(), fileName_ms, libmiqt.ValueCast[C.struct_miqt_qsizef](sizeMM), (C.int)(resolution))
 }
 
-func (this *QwtPlotRenderer) RenderDocument4(param1 *QwtPlot, fileName string, format string, sizeMM *qt.QSizeF, resolution int) {
-	defer runtime.KeepAlive(sizeMM)
+func (this *QwtPlotRenderer) RenderDocument4(param1 *QwtPlot, fileName string, format string, sizeMM qt.QSizeF, resolution int) {
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -297,25 +289,23 @@ func (this *QwtPlotRenderer) RenderDocument4(param1 *QwtPlot, fileName string, f
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	C.QwtPlotRenderer_renderDocument4(this.h, param1.cPointer(), fileName_ms, format_ms, (*C.QSizeF)(sizeMM.UnsafePointer()), (C.int)(resolution))
+	C.QwtPlotRenderer_renderDocument4(this.h, param1.cPointer(), fileName_ms, format_ms, libmiqt.ValueCast[C.struct_miqt_qsizef](sizeMM), (C.int)(resolution))
 }
 
-func (this *QwtPlotRenderer) ExportTo2(param1 *QwtPlot, documentName string, sizeMM *qt.QSizeF) bool {
-	defer runtime.KeepAlive(sizeMM)
+func (this *QwtPlotRenderer) ExportTo2(param1 *QwtPlot, documentName string, sizeMM qt.QSizeF) bool {
 	documentName_ms := C.struct_miqt_string{}
 	documentName_ms.data = C.CString(documentName)
 	documentName_ms.len = C.size_t(len(documentName))
 	defer C.free(unsafe.Pointer(documentName_ms.data))
-	return (bool)(C.QwtPlotRenderer_exportTo2(this.h, param1.cPointer(), documentName_ms, (*C.QSizeF)(sizeMM.UnsafePointer())))
+	return (bool)(C.QwtPlotRenderer_exportTo2(this.h, param1.cPointer(), documentName_ms, libmiqt.ValueCast[C.struct_miqt_qsizef](sizeMM)))
 }
 
-func (this *QwtPlotRenderer) ExportTo3(param1 *QwtPlot, documentName string, sizeMM *qt.QSizeF, resolution int) bool {
-	defer runtime.KeepAlive(sizeMM)
+func (this *QwtPlotRenderer) ExportTo3(param1 *QwtPlot, documentName string, sizeMM qt.QSizeF, resolution int) bool {
 	documentName_ms := C.struct_miqt_string{}
 	documentName_ms.data = C.CString(documentName)
 	documentName_ms.len = C.size_t(len(documentName))
 	defer C.free(unsafe.Pointer(documentName_ms.data))
-	return (bool)(C.QwtPlotRenderer_exportTo3(this.h, param1.cPointer(), documentName_ms, (*C.QSizeF)(sizeMM.UnsafePointer()), (C.int)(resolution)))
+	return (bool)(C.QwtPlotRenderer_exportTo3(this.h, param1.cPointer(), documentName_ms, libmiqt.ValueCast[C.struct_miqt_qsizef](sizeMM), (C.int)(resolution)))
 }
 
 // Sender can only be called from a QwtPlotRenderer that was directly constructed.
@@ -377,14 +367,13 @@ func (this *QwtPlotRenderer) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 
-func (this *QwtPlotRenderer) callVirtualBase_Render(param1 *QwtPlot, param2 *qt.QPainter, plotRect *qt.QRectF) {
+func (this *QwtPlotRenderer) callVirtualBase_Render(param1 *QwtPlot, param2 *qt.QPainter, plotRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(plotRect)
 
-	C.QwtPlotRenderer_virtualbase_render(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (*C.QRectF)(plotRect.UnsafePointer()))
+	C.QwtPlotRenderer_virtualbase_render(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](plotRect))
 
 }
-func (this *QwtPlotRenderer) OnRender(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, plotRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, plotRect *qt.QRectF)) {
+func (this *QwtPlotRenderer) OnRender(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, plotRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, plotRect qt.QRectF)) {
 	ok := C.QwtPlotRenderer_override_virtual_render(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -392,8 +381,8 @@ func (this *QwtPlotRenderer) OnRender(slot func(super func(param1 *QwtPlot, para
 }
 
 //export miqt_exec_callback_QwtPlotRenderer_render
-func miqt_exec_callback_QwtPlotRenderer_render(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, plotRect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, plotRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, plotRect *qt.QRectF))
+func miqt_exec_callback_QwtPlotRenderer_render(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, plotRect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, plotRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, plotRect qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -403,20 +392,19 @@ func miqt_exec_callback_QwtPlotRenderer_render(self *C.QwtPlotRenderer, cb C.int
 
 	slotval2 := qt.UnsafeNewQPainter(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQRectF(unsafe.Pointer(plotRect))
+	slotval3 := libmiqt.ValueCast[qt.QRectF](plotRect)
 
 	gofunc((&QwtPlotRenderer{h: self}).callVirtualBase_Render, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QwtPlotRenderer) callVirtualBase_RenderTitle(param1 *QwtPlot, param2 *qt.QPainter, titleRect *qt.QRectF) {
+func (this *QwtPlotRenderer) callVirtualBase_RenderTitle(param1 *QwtPlot, param2 *qt.QPainter, titleRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(titleRect)
 
-	C.QwtPlotRenderer_virtualbase_renderTitle(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (*C.QRectF)(titleRect.UnsafePointer()))
+	C.QwtPlotRenderer_virtualbase_renderTitle(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](titleRect))
 
 }
-func (this *QwtPlotRenderer) OnRenderTitle(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, titleRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, titleRect *qt.QRectF)) {
+func (this *QwtPlotRenderer) OnRenderTitle(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, titleRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, titleRect qt.QRectF)) {
 	ok := C.QwtPlotRenderer_override_virtual_renderTitle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -424,8 +412,8 @@ func (this *QwtPlotRenderer) OnRenderTitle(slot func(super func(param1 *QwtPlot,
 }
 
 //export miqt_exec_callback_QwtPlotRenderer_renderTitle
-func miqt_exec_callback_QwtPlotRenderer_renderTitle(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, titleRect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, titleRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, titleRect *qt.QRectF))
+func miqt_exec_callback_QwtPlotRenderer_renderTitle(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, titleRect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, titleRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, titleRect qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -435,20 +423,19 @@ func miqt_exec_callback_QwtPlotRenderer_renderTitle(self *C.QwtPlotRenderer, cb 
 
 	slotval2 := qt.UnsafeNewQPainter(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQRectF(unsafe.Pointer(titleRect))
+	slotval3 := libmiqt.ValueCast[qt.QRectF](titleRect)
 
 	gofunc((&QwtPlotRenderer{h: self}).callVirtualBase_RenderTitle, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QwtPlotRenderer) callVirtualBase_RenderFooter(param1 *QwtPlot, param2 *qt.QPainter, footerRect *qt.QRectF) {
+func (this *QwtPlotRenderer) callVirtualBase_RenderFooter(param1 *QwtPlot, param2 *qt.QPainter, footerRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(footerRect)
 
-	C.QwtPlotRenderer_virtualbase_renderFooter(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (*C.QRectF)(footerRect.UnsafePointer()))
+	C.QwtPlotRenderer_virtualbase_renderFooter(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](footerRect))
 
 }
-func (this *QwtPlotRenderer) OnRenderFooter(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, footerRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, footerRect *qt.QRectF)) {
+func (this *QwtPlotRenderer) OnRenderFooter(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, footerRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, footerRect qt.QRectF)) {
 	ok := C.QwtPlotRenderer_override_virtual_renderFooter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -456,8 +443,8 @@ func (this *QwtPlotRenderer) OnRenderFooter(slot func(super func(param1 *QwtPlot
 }
 
 //export miqt_exec_callback_QwtPlotRenderer_renderFooter
-func miqt_exec_callback_QwtPlotRenderer_renderFooter(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, footerRect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, footerRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, footerRect *qt.QRectF))
+func miqt_exec_callback_QwtPlotRenderer_renderFooter(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, footerRect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, footerRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, footerRect qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -467,20 +454,19 @@ func miqt_exec_callback_QwtPlotRenderer_renderFooter(self *C.QwtPlotRenderer, cb
 
 	slotval2 := qt.UnsafeNewQPainter(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQRectF(unsafe.Pointer(footerRect))
+	slotval3 := libmiqt.ValueCast[qt.QRectF](footerRect)
 
 	gofunc((&QwtPlotRenderer{h: self}).callVirtualBase_RenderFooter, slotval1, slotval2, slotval3)
 
 }
 
-func (this *QwtPlotRenderer) callVirtualBase_RenderScale(param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect *qt.QRectF) {
+func (this *QwtPlotRenderer) callVirtualBase_RenderScale(param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(scaleRect)
 
-	C.QwtPlotRenderer_virtualbase_renderScale(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (C.int)(axisId), (C.int)(startDist), (C.int)(endDist), (C.int)(baseDist), (*C.QRectF)(scaleRect.UnsafePointer()))
+	C.QwtPlotRenderer_virtualbase_renderScale(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (C.int)(axisId), (C.int)(startDist), (C.int)(endDist), (C.int)(baseDist), libmiqt.ValueCast[C.struct_miqt_qrectf](scaleRect))
 
 }
-func (this *QwtPlotRenderer) OnRenderScale(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect *qt.QRectF)) {
+func (this *QwtPlotRenderer) OnRenderScale(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect qt.QRectF)) {
 	ok := C.QwtPlotRenderer_override_virtual_renderScale(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -488,8 +474,8 @@ func (this *QwtPlotRenderer) OnRenderScale(slot func(super func(param1 *QwtPlot,
 }
 
 //export miqt_exec_callback_QwtPlotRenderer_renderScale
-func miqt_exec_callback_QwtPlotRenderer_renderScale(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, axisId C.int, startDist C.int, endDist C.int, baseDist C.int, scaleRect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect *qt.QRectF))
+func miqt_exec_callback_QwtPlotRenderer_renderScale(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, axisId C.int, startDist C.int, endDist C.int, baseDist C.int, scaleRect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, axisId int, startDist int, endDist int, baseDist int, scaleRect qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -507,20 +493,19 @@ func miqt_exec_callback_QwtPlotRenderer_renderScale(self *C.QwtPlotRenderer, cb 
 
 	slotval6 := (int)(baseDist)
 
-	slotval7 := qt.UnsafeNewQRectF(unsafe.Pointer(scaleRect))
+	slotval7 := libmiqt.ValueCast[qt.QRectF](scaleRect)
 
 	gofunc((&QwtPlotRenderer{h: self}).callVirtualBase_RenderScale, slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7)
 
 }
 
-func (this *QwtPlotRenderer) callVirtualBase_RenderLegend(param1 *QwtPlot, param2 *qt.QPainter, legendRect *qt.QRectF) {
+func (this *QwtPlotRenderer) callVirtualBase_RenderLegend(param1 *QwtPlot, param2 *qt.QPainter, legendRect qt.QRectF) {
 	defer runtime.KeepAlive(param2)
-	defer runtime.KeepAlive(legendRect)
 
-	C.QwtPlotRenderer_virtualbase_renderLegend(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), (*C.QRectF)(legendRect.UnsafePointer()))
+	C.QwtPlotRenderer_virtualbase_renderLegend(unsafe.Pointer(this.h), param1.cPointer(), (*C.QPainter)(param2.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](legendRect))
 
 }
-func (this *QwtPlotRenderer) OnRenderLegend(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, legendRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, legendRect *qt.QRectF)) {
+func (this *QwtPlotRenderer) OnRenderLegend(slot func(super func(param1 *QwtPlot, param2 *qt.QPainter, legendRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, legendRect qt.QRectF)) {
 	ok := C.QwtPlotRenderer_override_virtual_renderLegend(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -528,8 +513,8 @@ func (this *QwtPlotRenderer) OnRenderLegend(slot func(super func(param1 *QwtPlot
 }
 
 //export miqt_exec_callback_QwtPlotRenderer_renderLegend
-func miqt_exec_callback_QwtPlotRenderer_renderLegend(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, legendRect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, legendRect *qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, legendRect *qt.QRectF))
+func miqt_exec_callback_QwtPlotRenderer_renderLegend(self *C.QwtPlotRenderer, cb C.intptr_t, param1 *C.QwtPlot, param2 *C.QPainter, legendRect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QwtPlot, param2 *qt.QPainter, legendRect qt.QRectF), param1 *QwtPlot, param2 *qt.QPainter, legendRect qt.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -539,7 +524,7 @@ func miqt_exec_callback_QwtPlotRenderer_renderLegend(self *C.QwtPlotRenderer, cb
 
 	slotval2 := qt.UnsafeNewQPainter(unsafe.Pointer(param2))
 
-	slotval3 := qt.UnsafeNewQRectF(unsafe.Pointer(legendRect))
+	slotval3 := libmiqt.ValueCast[qt.QRectF](legendRect)
 
 	gofunc((&QwtPlotRenderer{h: self}).callVirtualBase_RenderLegend, slotval1, slotval2, slotval3)
 

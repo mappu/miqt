@@ -33,39 +33,39 @@ extern "C" {
 void miqt_exec_callback_QFileSystemModel_rootPathChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QFileSystemModel_fileRenamed(intptr_t, struct miqt_string, struct miqt_string, struct miqt_string);
 void miqt_exec_callback_QFileSystemModel_directoryLoaded(intptr_t, struct miqt_string);
-QModelIndex* miqt_exec_callback_QFileSystemModel_index(const QFileSystemModel*, intptr_t, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QFileSystemModel_parent(const QFileSystemModel*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QFileSystemModel_sibling(const QFileSystemModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_hasChildren(const QFileSystemModel*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_canFetchMore(const QFileSystemModel*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QFileSystemModel_fetchMore(QFileSystemModel*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QFileSystemModel_rowCount(const QFileSystemModel*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QFileSystemModel_columnCount(const QFileSystemModel*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QFileSystemModel_data(const QFileSystemModel*, intptr_t, QModelIndex*, int);
-bool miqt_exec_callback_QFileSystemModel_setData(QFileSystemModel*, intptr_t, QModelIndex*, QVariant*, int);
+struct miqt_qmodelindex miqt_exec_callback_QFileSystemModel_index(const QFileSystemModel*, intptr_t, int, int, struct miqt_qmodelindex);
+struct miqt_qmodelindex miqt_exec_callback_QFileSystemModel_parent(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
+struct miqt_qmodelindex miqt_exec_callback_QFileSystemModel_sibling(const QFileSystemModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QFileSystemModel_hasChildren(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
+bool miqt_exec_callback_QFileSystemModel_canFetchMore(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
+void miqt_exec_callback_QFileSystemModel_fetchMore(QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
+int miqt_exec_callback_QFileSystemModel_rowCount(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
+int miqt_exec_callback_QFileSystemModel_columnCount(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
+QVariant* miqt_exec_callback_QFileSystemModel_data(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex, int);
+bool miqt_exec_callback_QFileSystemModel_setData(QFileSystemModel*, intptr_t, struct miqt_qmodelindex, QVariant*, int);
 QVariant* miqt_exec_callback_QFileSystemModel_headerData(const QFileSystemModel*, intptr_t, int, int, int);
-int miqt_exec_callback_QFileSystemModel_flags(const QFileSystemModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QFileSystemModel_flags(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QFileSystemModel_sort(QFileSystemModel*, intptr_t, int, int);
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QFileSystemModel_mimeTypes(const QFileSystemModel*, intptr_t);
-QMimeData* miqt_exec_callback_QFileSystemModel_mimeData(const QFileSystemModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
-bool miqt_exec_callback_QFileSystemModel_dropMimeData(QFileSystemModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+QMimeData* miqt_exec_callback_QFileSystemModel_mimeData(const QFileSystemModel*, intptr_t, struct miqt_array /* of struct miqt_qmodelindex */ );
+bool miqt_exec_callback_QFileSystemModel_dropMimeData(QFileSystemModel*, intptr_t, QMimeData*, int, int, int, struct miqt_qmodelindex);
 int miqt_exec_callback_QFileSystemModel_supportedDropActions(const QFileSystemModel*, intptr_t);
 void miqt_exec_callback_QFileSystemModel_timerEvent(QFileSystemModel*, intptr_t, QTimerEvent*);
 bool miqt_exec_callback_QFileSystemModel_event(QFileSystemModel*, intptr_t, QEvent*);
 bool miqt_exec_callback_QFileSystemModel_setHeaderData(QFileSystemModel*, intptr_t, int, int, QVariant*, int);
-struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QFileSystemModel_itemData(const QFileSystemModel*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_setItemData(QFileSystemModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
-bool miqt_exec_callback_QFileSystemModel_canDropMimeData(const QFileSystemModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QFileSystemModel_itemData(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
+bool miqt_exec_callback_QFileSystemModel_setItemData(QFileSystemModel*, intptr_t, struct miqt_qmodelindex, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QFileSystemModel_canDropMimeData(const QFileSystemModel*, intptr_t, QMimeData*, int, int, int, struct miqt_qmodelindex);
 int miqt_exec_callback_QFileSystemModel_supportedDragActions(const QFileSystemModel*, intptr_t);
-bool miqt_exec_callback_QFileSystemModel_insertRows(QFileSystemModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_insertColumns(QFileSystemModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_removeRows(QFileSystemModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_removeColumns(QFileSystemModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_moveRows(QFileSystemModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QFileSystemModel_moveColumns(QFileSystemModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-QModelIndex* miqt_exec_callback_QFileSystemModel_buddy(const QFileSystemModel*, intptr_t, QModelIndex*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QFileSystemModel_match(const QFileSystemModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
-QSize* miqt_exec_callback_QFileSystemModel_span(const QFileSystemModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_insertRows(QFileSystemModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QFileSystemModel_insertColumns(QFileSystemModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QFileSystemModel_removeRows(QFileSystemModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QFileSystemModel_removeColumns(QFileSystemModel*, intptr_t, int, int, struct miqt_qmodelindex);
+bool miqt_exec_callback_QFileSystemModel_moveRows(QFileSystemModel*, intptr_t, struct miqt_qmodelindex, int, int, struct miqt_qmodelindex, int);
+bool miqt_exec_callback_QFileSystemModel_moveColumns(QFileSystemModel*, intptr_t, struct miqt_qmodelindex, int, int, struct miqt_qmodelindex, int);
+struct miqt_qmodelindex miqt_exec_callback_QFileSystemModel_buddy(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
+struct miqt_array /* of struct miqt_qmodelindex */  miqt_exec_callback_QFileSystemModel_match(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex, int, QVariant*, int, int);
+struct miqt_qsize miqt_exec_callback_QFileSystemModel_span(const QFileSystemModel*, intptr_t, struct miqt_qmodelindex);
 struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QFileSystemModel_roleNames(const QFileSystemModel*, intptr_t);
 bool miqt_exec_callback_QFileSystemModel_submit(QFileSystemModel*, intptr_t);
 void miqt_exec_callback_QFileSystemModel_revert(QFileSystemModel*, intptr_t);
@@ -97,16 +97,12 @@ public:
 
 		int sigval1 = row;
 		int sigval2 = column;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_index(this, handle__index, sigval1, sigval2, sigval3);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QFileSystemModel_index(this, handle__index, sigval1, sigval2, sigval3);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QFileSystemModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
+	friend struct miqt_qmodelindex QFileSystemModel_virtualbase_index(const void* self, int row, int column, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__parent = 0;
@@ -117,16 +113,12 @@ public:
 			return QFileSystemModel::parent(child);
 		}
 
-		const QModelIndex& child_ret = child;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_parent(this, handle__parent, sigval1);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(child);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QFileSystemModel_parent(this, handle__parent, sigval1);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QFileSystemModel_virtualbase_parent(const void* self, QModelIndex* child);
+	friend struct miqt_qmodelindex QFileSystemModel_virtualbase_parent(const void* self, struct miqt_qmodelindex child);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sibling = 0;
@@ -139,16 +131,12 @@ public:
 
 		int sigval1 = row;
 		int sigval2 = column;
-		const QModelIndex& idx_ret = idx;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(idx);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QFileSystemModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QFileSystemModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx);
+	friend struct miqt_qmodelindex QFileSystemModel_virtualbase_sibling(const void* self, int row, int column, struct miqt_qmodelindex idx);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasChildren = 0;
@@ -159,14 +147,12 @@ public:
 			return QFileSystemModel::hasChildren(parent);
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_hasChildren(this, handle__hasChildren, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_hasChildren(const void* self, QModelIndex* parent);
+	friend bool QFileSystemModel_virtualbase_hasChildren(const void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canFetchMore = 0;
@@ -177,14 +163,12 @@ public:
 			return QFileSystemModel::canFetchMore(parent);
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_canFetchMore(this, handle__canFetchMore, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent);
+	friend bool QFileSystemModel_virtualbase_canFetchMore(const void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__fetchMore = 0;
@@ -196,14 +180,12 @@ public:
 			return;
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		miqt_exec_callback_QFileSystemModel_fetchMore(this, handle__fetchMore, sigval1);
 
 	}
 
-	friend void QFileSystemModel_virtualbase_fetchMore(void* self, QModelIndex* parent);
+	friend void QFileSystemModel_virtualbase_fetchMore(void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowCount = 0;
@@ -214,14 +196,12 @@ public:
 			return QFileSystemModel::rowCount(parent);
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int callback_return_value = miqt_exec_callback_QFileSystemModel_rowCount(this, handle__rowCount, sigval1);
 		return static_cast<int>(callback_return_value);
 	}
 
-	friend int QFileSystemModel_virtualbase_rowCount(const void* self, QModelIndex* parent);
+	friend int QFileSystemModel_virtualbase_rowCount(const void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__columnCount = 0;
@@ -232,14 +212,12 @@ public:
 			return QFileSystemModel::columnCount(parent);
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int callback_return_value = miqt_exec_callback_QFileSystemModel_columnCount(this, handle__columnCount, sigval1);
 		return static_cast<int>(callback_return_value);
 	}
 
-	friend int QFileSystemModel_virtualbase_columnCount(const void* self, QModelIndex* parent);
+	friend int QFileSystemModel_virtualbase_columnCount(const void* self, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__data = 0;
@@ -250,9 +228,7 @@ public:
 			return QFileSystemModel::data(index, role);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		int sigval2 = role;
 		QVariant* callback_return_value = miqt_exec_callback_QFileSystemModel_data(this, handle__data, sigval1, sigval2);
 		QVariant callback_return_value_ret = *callback_return_value;
@@ -260,7 +236,7 @@ public:
 		return callback_return_value_ret;
 	}
 
-	friend QVariant* QFileSystemModel_virtualbase_data(const void* self, QModelIndex* index, int role);
+	friend QVariant* QFileSystemModel_virtualbase_data(const void* self, struct miqt_qmodelindex index, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setData = 0;
@@ -271,9 +247,7 @@ public:
 			return QFileSystemModel::setData(index, value, role);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
@@ -282,7 +256,7 @@ public:
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role);
+	friend bool QFileSystemModel_virtualbase_setData(void* self, struct miqt_qmodelindex index, QVariant* value, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__headerData = 0;
@@ -314,14 +288,12 @@ public:
 			return QFileSystemModel::flags(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		int callback_return_value = miqt_exec_callback_QFileSystemModel_flags(this, handle__flags, sigval1);
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
 
-	friend int QFileSystemModel_virtualbase_flags(const void* self, QModelIndex* index);
+	friend int QFileSystemModel_virtualbase_flags(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sort = 0;
@@ -380,19 +352,19 @@ public:
 
 		const QModelIndexList& indexes_ret = indexes;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
+		struct miqt_qmodelindex* indexes_arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * indexes_ret.length()));
 		for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
-			indexes_arr[i] = new QModelIndex(indexes_ret[i]);
+			indexes_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(indexes_ret[i]);
 		}
 		struct miqt_array indexes_out;
 		indexes_out.len = indexes_ret.length();
 		indexes_out.data = static_cast<void*>(indexes_arr);
-		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
+		struct miqt_array /* of struct miqt_qmodelindex */  sigval1 = indexes_out;
 		QMimeData* callback_return_value = miqt_exec_callback_QFileSystemModel_mimeData(this, handle__mimeData, sigval1);
 		return callback_return_value;
 	}
 
-	friend QMimeData* QFileSystemModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes);
+	friend QMimeData* QFileSystemModel_virtualbase_mimeData(const void* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropMimeData = 0;
@@ -408,14 +380,12 @@ public:
 		int sigval2 = static_cast<int>(action_ret);
 		int sigval3 = row;
 		int sigval4 = column;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval5 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_dropMimeData(this, handle__dropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
+	friend bool QFileSystemModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportedDropActions = 0;
@@ -496,9 +466,7 @@ public:
 			return QFileSystemModel::itemData(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QFileSystemModel_itemData(this, handle__itemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
@@ -515,7 +483,7 @@ public:
 		return callback_return_value_QMap;
 	}
 
-	friend struct miqt_map /* of int to QVariant* */  QFileSystemModel_virtualbase_itemData(const void* self, QModelIndex* index);
+	friend struct miqt_map /* of int to QVariant* */  QFileSystemModel_virtualbase_itemData(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setItemData = 0;
@@ -526,9 +494,7 @@ public:
 			return QFileSystemModel::setItemData(index, roles);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		const QMap<int, QVariant>& roles_ret = roles;
 		// Convert QMap<> from C++ memory to manually-managed C memory
 		int* roles_karr = static_cast<int*>(malloc(sizeof(int) * roles_ret.size()));
@@ -548,7 +514,7 @@ public:
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles);
+	friend bool QFileSystemModel_virtualbase_setItemData(void* self, struct miqt_qmodelindex index, struct miqt_map /* of int to QVariant* */  roles);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canDropMimeData = 0;
@@ -564,14 +530,12 @@ public:
 		int sigval2 = static_cast<int>(action_ret);
 		int sigval3 = row;
 		int sigval4 = column;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval5 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_canDropMimeData(this, handle__canDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
+	friend bool QFileSystemModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportedDragActions = 0;
@@ -599,14 +563,12 @@ public:
 
 		int sigval1 = row;
 		int sigval2 = count;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_insertRows(this, handle__insertRows, sigval1, sigval2, sigval3);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent);
+	friend bool QFileSystemModel_virtualbase_insertRows(void* self, int row, int count, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insertColumns = 0;
@@ -619,14 +581,12 @@ public:
 
 		int sigval1 = column;
 		int sigval2 = count;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_insertColumns(this, handle__insertColumns, sigval1, sigval2, sigval3);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent);
+	friend bool QFileSystemModel_virtualbase_insertColumns(void* self, int column, int count, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeRows = 0;
@@ -639,14 +599,12 @@ public:
 
 		int sigval1 = row;
 		int sigval2 = count;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_removeRows(this, handle__removeRows, sigval1, sigval2, sigval3);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent);
+	friend bool QFileSystemModel_virtualbase_removeRows(void* self, int row, int count, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeColumns = 0;
@@ -659,14 +617,12 @@ public:
 
 		int sigval1 = column;
 		int sigval2 = count;
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval3 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_removeColumns(this, handle__removeColumns, sigval1, sigval2, sigval3);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent);
+	friend bool QFileSystemModel_virtualbase_removeColumns(void* self, int column, int count, struct miqt_qmodelindex parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveRows = 0;
@@ -677,20 +633,16 @@ public:
 			return QFileSystemModel::moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 		}
 
-		const QModelIndex& sourceParent_ret = sourceParent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(sourceParent);
 		int sigval2 = sourceRow;
 		int sigval3 = count;
-		const QModelIndex& destinationParent_ret = destinationParent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		struct miqt_qmodelindex sigval4 = miqt_to_cabi<struct miqt_qmodelindex>(destinationParent);
 		int sigval5 = destinationChild;
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_moveRows(this, handle__moveRows, sigval1, sigval2, sigval3, sigval4, sigval5);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
+	friend bool QFileSystemModel_virtualbase_moveRows(void* self, struct miqt_qmodelindex sourceParent, int sourceRow, int count, struct miqt_qmodelindex destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveColumns = 0;
@@ -701,20 +653,16 @@ public:
 			return QFileSystemModel::moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 		}
 
-		const QModelIndex& sourceParent_ret = sourceParent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(sourceParent);
 		int sigval2 = sourceColumn;
 		int sigval3 = count;
-		const QModelIndex& destinationParent_ret = destinationParent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		struct miqt_qmodelindex sigval4 = miqt_to_cabi<struct miqt_qmodelindex>(destinationParent);
 		int sigval5 = destinationChild;
 		bool callback_return_value = miqt_exec_callback_QFileSystemModel_moveColumns(this, handle__moveColumns, sigval1, sigval2, sigval3, sigval4, sigval5);
 		return callback_return_value;
 	}
 
-	friend bool QFileSystemModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild);
+	friend bool QFileSystemModel_virtualbase_moveColumns(void* self, struct miqt_qmodelindex sourceParent, int sourceColumn, int count, struct miqt_qmodelindex destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__buddy = 0;
@@ -725,16 +673,12 @@ public:
 			return QFileSystemModel::buddy(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_buddy(this, handle__buddy, sigval1);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QFileSystemModel_buddy(this, handle__buddy, sigval1);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QFileSystemModel_virtualbase_buddy(const void* self, QModelIndex* index);
+	friend struct miqt_qmodelindex QFileSystemModel_virtualbase_buddy(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__match = 0;
@@ -745,9 +689,7 @@ public:
 			return QFileSystemModel::match(start, role, value, hits, flags);
 		}
 
-		const QModelIndex& start_ret = start;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&start_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(start);
 		int sigval2 = role;
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
@@ -755,22 +697,18 @@ public:
 		int sigval4 = hits;
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QFileSystemModel_match(this, handle__match, sigval1, sigval2, sigval3, sigval4, sigval5);
+		struct miqt_array /* of struct miqt_qmodelindex */  callback_return_value = miqt_exec_callback_QFileSystemModel_match(this, handle__match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
-		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		struct miqt_qmodelindex* callback_return_value_arr = static_cast<struct miqt_qmodelindex*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
-		}
-		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
-		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			delete callback_return_value_free_arr[i];
+			callback_return_value_QList.push_back(miqt_from_cabi<QModelIndex>(callback_return_value_arr[i]));
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 
-	friend struct miqt_array /* of QModelIndex* */  QFileSystemModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
+	friend struct miqt_array /* of struct miqt_qmodelindex */  QFileSystemModel_virtualbase_match(const void* self, struct miqt_qmodelindex start, int role, QVariant* value, int hits, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__span = 0;
@@ -781,16 +719,12 @@ public:
 			return QFileSystemModel::span(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		QSize* callback_return_value = miqt_exec_callback_QFileSystemModel_span(this, handle__span, sigval1);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFileSystemModel_span(this, handle__span, sigval1);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFileSystemModel_virtualbase_span(const void* self, QModelIndex* index);
+	friend struct miqt_qsize QFileSystemModel_virtualbase_span(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__roleNames = 0;
@@ -943,26 +877,26 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QFileSystemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
-	friend QModelIndex* QFileSystemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
-	friend void QFileSystemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
-	friend bool QFileSystemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
-	friend void QFileSystemModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend struct miqt_qmodelindex QFileSystemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
+	friend void QFileSystemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes, QDataStream* stream);
+	friend bool QFileSystemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, struct miqt_qmodelindex parent, QDataStream* stream);
+	friend void QFileSystemModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last);
 	friend void QFileSystemModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self);
-	friend void QFileSystemModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QFileSystemModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last);
 	friend void QFileSystemModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self);
-	friend bool QFileSystemModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow);
+	friend bool QFileSystemModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex sourceParent, int sourceFirst, int sourceLast, struct miqt_qmodelindex destinationParent, int destinationRow);
 	friend void QFileSystemModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self);
-	friend void QFileSystemModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QFileSystemModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last);
 	friend void QFileSystemModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self);
-	friend void QFileSystemModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QFileSystemModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last);
 	friend void QFileSystemModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self);
-	friend bool QFileSystemModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn);
+	friend bool QFileSystemModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex sourceParent, int sourceFirst, int sourceLast, struct miqt_qmodelindex destinationParent, int destinationColumn);
 	friend void QFileSystemModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self);
 	friend void QFileSystemModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self);
 	friend void QFileSystemModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self);
-	friend void QFileSystemModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to);
-	friend void QFileSystemModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to);
-	friend struct miqt_array /* of QModelIndex* */  QFileSystemModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
+	friend void QFileSystemModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex from, struct miqt_qmodelindex to);
+	friend void QFileSystemModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of struct miqt_qmodelindex */  from, struct miqt_array /* of struct miqt_qmodelindex */  to);
+	friend struct miqt_array /* of struct miqt_qmodelindex */  QFileSystemModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
 	friend QObject* QFileSystemModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QFileSystemModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QFileSystemModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -1086,61 +1020,61 @@ void QFileSystemModel_connect_directoryLoaded(QFileSystemModel* self, intptr_t s
 	});
 }
 
-QModelIndex* QFileSystemModel_index(const QFileSystemModel* self, int row, int column, QModelIndex* parent) {
-	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
+struct miqt_qmodelindex QFileSystemModel_index(const QFileSystemModel* self, int row, int column, struct miqt_qmodelindex parent) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->index(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent)));
 }
 
-QModelIndex* QFileSystemModel_indexWithPath(const QFileSystemModel* self, struct miqt_string path) {
+struct miqt_qmodelindex QFileSystemModel_indexWithPath(const QFileSystemModel* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	return new QModelIndex(self->index(path_QString));
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->index(path_QString));
 }
 
-QModelIndex* QFileSystemModel_parent(const QFileSystemModel* self, QModelIndex* child) {
-	return new QModelIndex(self->parent(*child));
+struct miqt_qmodelindex QFileSystemModel_parent(const QFileSystemModel* self, struct miqt_qmodelindex child) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->parent(miqt_from_cabi<QModelIndex>(child)));
 }
 
-QModelIndex* QFileSystemModel_sibling(const QFileSystemModel* self, int row, int column, QModelIndex* idx) {
-	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+struct miqt_qmodelindex QFileSystemModel_sibling(const QFileSystemModel* self, int row, int column, struct miqt_qmodelindex idx) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->sibling(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(idx)));
 }
 
-bool QFileSystemModel_hasChildren(const QFileSystemModel* self, QModelIndex* parent) {
-	return self->hasChildren(*parent);
+bool QFileSystemModel_hasChildren(const QFileSystemModel* self, struct miqt_qmodelindex parent) {
+	return self->hasChildren(miqt_from_cabi<QModelIndex>(parent));
 }
 
-bool QFileSystemModel_canFetchMore(const QFileSystemModel* self, QModelIndex* parent) {
-	return self->canFetchMore(*parent);
+bool QFileSystemModel_canFetchMore(const QFileSystemModel* self, struct miqt_qmodelindex parent) {
+	return self->canFetchMore(miqt_from_cabi<QModelIndex>(parent));
 }
 
-void QFileSystemModel_fetchMore(QFileSystemModel* self, QModelIndex* parent) {
-	self->fetchMore(*parent);
+void QFileSystemModel_fetchMore(QFileSystemModel* self, struct miqt_qmodelindex parent) {
+	self->fetchMore(miqt_from_cabi<QModelIndex>(parent));
 }
 
-int QFileSystemModel_rowCount(const QFileSystemModel* self, QModelIndex* parent) {
-	return self->rowCount(*parent);
+int QFileSystemModel_rowCount(const QFileSystemModel* self, struct miqt_qmodelindex parent) {
+	return self->rowCount(miqt_from_cabi<QModelIndex>(parent));
 }
 
-int QFileSystemModel_columnCount(const QFileSystemModel* self, QModelIndex* parent) {
-	return self->columnCount(*parent);
+int QFileSystemModel_columnCount(const QFileSystemModel* self, struct miqt_qmodelindex parent) {
+	return self->columnCount(miqt_from_cabi<QModelIndex>(parent));
 }
 
 QVariant* QFileSystemModel_myComputer(const QFileSystemModel* self) {
 	return new QVariant(self->myComputer());
 }
 
-QVariant* QFileSystemModel_data(const QFileSystemModel* self, QModelIndex* index, int role) {
-	return new QVariant(self->data(*index, static_cast<int>(role)));
+QVariant* QFileSystemModel_data(const QFileSystemModel* self, struct miqt_qmodelindex index, int role) {
+	return new QVariant(self->data(miqt_from_cabi<QModelIndex>(index), static_cast<int>(role)));
 }
 
-bool QFileSystemModel_setData(QFileSystemModel* self, QModelIndex* index, QVariant* value, int role) {
-	return self->setData(*index, *value, static_cast<int>(role));
+bool QFileSystemModel_setData(QFileSystemModel* self, struct miqt_qmodelindex index, QVariant* value, int role) {
+	return self->setData(miqt_from_cabi<QModelIndex>(index), *value, static_cast<int>(role));
 }
 
 QVariant* QFileSystemModel_headerData(const QFileSystemModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
-int QFileSystemModel_flags(const QFileSystemModel* self, QModelIndex* index) {
-	Qt::ItemFlags _ret = self->flags(*index);
+int QFileSystemModel_flags(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	Qt::ItemFlags _ret = self->flags(miqt_from_cabi<QModelIndex>(index));
 	return static_cast<int>(_ret);
 }
 
@@ -1168,18 +1102,18 @@ struct miqt_array /* of struct miqt_string */  QFileSystemModel_mimeTypes(const 
 	return _out;
 }
 
-QMimeData* QFileSystemModel_mimeData(const QFileSystemModel* self, struct miqt_array /* of QModelIndex* */  indexes) {
+QMimeData* QFileSystemModel_mimeData(const QFileSystemModel* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes) {
 	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes.len);
-	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	struct miqt_qmodelindex* indexes_arr = static_cast<struct miqt_qmodelindex*>(indexes.data);
 	for(size_t i = 0; i < indexes.len; ++i) {
-		indexes_QList.push_back(*(indexes_arr[i]));
+		indexes_QList.push_back(miqt_from_cabi<QModelIndex>(indexes_arr[i]));
 	}
 	return self->mimeData(indexes_QList);
 }
 
-bool QFileSystemModel_dropMimeData(QFileSystemModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+bool QFileSystemModel_dropMimeData(QFileSystemModel* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent) {
+	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent));
 }
 
 int QFileSystemModel_supportedDropActions(const QFileSystemModel* self) {
@@ -1187,9 +1121,9 @@ int QFileSystemModel_supportedDropActions(const QFileSystemModel* self) {
 	return static_cast<int>(_ret);
 }
 
-QModelIndex* QFileSystemModel_setRootPath(QFileSystemModel* self, struct miqt_string path) {
+struct miqt_qmodelindex QFileSystemModel_setRootPath(QFileSystemModel* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	return new QModelIndex(self->setRootPath(path_QString));
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->setRootPath(path_QString));
 }
 
 struct miqt_string QFileSystemModel_rootPath(const QFileSystemModel* self) {
@@ -1296,8 +1230,8 @@ int QFileSystemModel_options(const QFileSystemModel* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QFileSystemModel_filePath(const QFileSystemModel* self, QModelIndex* index) {
-	QString _ret = self->filePath(*index);
+struct miqt_string QFileSystemModel_filePath(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	QString _ret = self->filePath(miqt_from_cabi<QModelIndex>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1307,17 +1241,17 @@ struct miqt_string QFileSystemModel_filePath(const QFileSystemModel* self, QMode
 	return _ms;
 }
 
-bool QFileSystemModel_isDir(const QFileSystemModel* self, QModelIndex* index) {
-	return self->isDir(*index);
+bool QFileSystemModel_isDir(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	return self->isDir(miqt_from_cabi<QModelIndex>(index));
 }
 
-long long QFileSystemModel_size(const QFileSystemModel* self, QModelIndex* index) {
-	qint64 _ret = self->size(*index);
+long long QFileSystemModel_size(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	qint64 _ret = self->size(miqt_from_cabi<QModelIndex>(index));
 	return static_cast<long long>(_ret);
 }
 
-struct miqt_string QFileSystemModel_type(const QFileSystemModel* self, QModelIndex* index) {
-	QString _ret = self->type(*index);
+struct miqt_string QFileSystemModel_type(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	QString _ret = self->type(miqt_from_cabi<QModelIndex>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1327,21 +1261,21 @@ struct miqt_string QFileSystemModel_type(const QFileSystemModel* self, QModelInd
 	return _ms;
 }
 
-QDateTime* QFileSystemModel_lastModified(const QFileSystemModel* self, QModelIndex* index) {
-	return new QDateTime(self->lastModified(*index));
+QDateTime* QFileSystemModel_lastModified(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	return new QDateTime(self->lastModified(miqt_from_cabi<QModelIndex>(index)));
 }
 
-QModelIndex* QFileSystemModel_mkdir(QFileSystemModel* self, QModelIndex* parent, struct miqt_string name) {
+struct miqt_qmodelindex QFileSystemModel_mkdir(QFileSystemModel* self, struct miqt_qmodelindex parent, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QModelIndex(self->mkdir(*parent, name_QString));
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->mkdir(miqt_from_cabi<QModelIndex>(parent), name_QString));
 }
 
-bool QFileSystemModel_rmdir(QFileSystemModel* self, QModelIndex* index) {
-	return self->rmdir(*index);
+bool QFileSystemModel_rmdir(QFileSystemModel* self, struct miqt_qmodelindex index) {
+	return self->rmdir(miqt_from_cabi<QModelIndex>(index));
 }
 
-struct miqt_string QFileSystemModel_fileName(const QFileSystemModel* self, QModelIndex* index) {
-	QString _ret = self->fileName(*index);
+struct miqt_string QFileSystemModel_fileName(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	QString _ret = self->fileName(miqt_from_cabi<QModelIndex>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1351,21 +1285,21 @@ struct miqt_string QFileSystemModel_fileName(const QFileSystemModel* self, QMode
 	return _ms;
 }
 
-QIcon* QFileSystemModel_fileIcon(const QFileSystemModel* self, QModelIndex* index) {
-	return new QIcon(self->fileIcon(*index));
+QIcon* QFileSystemModel_fileIcon(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	return new QIcon(self->fileIcon(miqt_from_cabi<QModelIndex>(index)));
 }
 
-int QFileSystemModel_permissions(const QFileSystemModel* self, QModelIndex* index) {
-	QFile::Permissions _ret = self->permissions(*index);
+int QFileSystemModel_permissions(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	QFile::Permissions _ret = self->permissions(miqt_from_cabi<QModelIndex>(index));
 	return static_cast<int>(_ret);
 }
 
-QFileInfo* QFileSystemModel_fileInfo(const QFileSystemModel* self, QModelIndex* index) {
-	return new QFileInfo(self->fileInfo(*index));
+QFileInfo* QFileSystemModel_fileInfo(const QFileSystemModel* self, struct miqt_qmodelindex index) {
+	return new QFileInfo(self->fileInfo(miqt_from_cabi<QModelIndex>(index)));
 }
 
-bool QFileSystemModel_remove(QFileSystemModel* self, QModelIndex* index) {
-	return self->remove(*index);
+bool QFileSystemModel_remove(QFileSystemModel* self, struct miqt_qmodelindex index) {
+	return self->remove(miqt_from_cabi<QModelIndex>(index));
 }
 
 struct miqt_string QFileSystemModel_tr2(const char* s, const char* c) {
@@ -1412,9 +1346,9 @@ struct miqt_string QFileSystemModel_trUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-QModelIndex* QFileSystemModel_index2(const QFileSystemModel* self, struct miqt_string path, int column) {
+struct miqt_qmodelindex QFileSystemModel_index2(const QFileSystemModel* self, struct miqt_string path, int column) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	return new QModelIndex(self->index(path_QString, static_cast<int>(column)));
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->index(path_QString, static_cast<int>(column)));
 }
 
 QVariant* QFileSystemModel_myComputerWithRole(const QFileSystemModel* self, int role) {
@@ -1435,8 +1369,8 @@ bool QFileSystemModel_override_virtual_index(void* self, intptr_t slot) {
 	return true;
 }
 
-QModelIndex* QFileSystemModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
-	return new QModelIndex(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
+struct miqt_qmodelindex QFileSystemModel_virtualbase_index(const void* self, int row, int column, struct miqt_qmodelindex parent) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::index(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent)));
 }
 
 bool QFileSystemModel_override_virtual_parent(void* self, intptr_t slot) {
@@ -1449,8 +1383,8 @@ bool QFileSystemModel_override_virtual_parent(void* self, intptr_t slot) {
 	return true;
 }
 
-QModelIndex* QFileSystemModel_virtualbase_parent(const void* self, QModelIndex* child) {
-	return new QModelIndex(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::parent(*child));
+struct miqt_qmodelindex QFileSystemModel_virtualbase_parent(const void* self, struct miqt_qmodelindex child) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::parent(miqt_from_cabi<QModelIndex>(child)));
 }
 
 bool QFileSystemModel_override_virtual_sibling(void* self, intptr_t slot) {
@@ -1463,8 +1397,8 @@ bool QFileSystemModel_override_virtual_sibling(void* self, intptr_t slot) {
 	return true;
 }
 
-QModelIndex* QFileSystemModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
-	return new QModelIndex(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+struct miqt_qmodelindex QFileSystemModel_virtualbase_sibling(const void* self, int row, int column, struct miqt_qmodelindex idx) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::sibling(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(idx)));
 }
 
 bool QFileSystemModel_override_virtual_hasChildren(void* self, intptr_t slot) {
@@ -1477,8 +1411,8 @@ bool QFileSystemModel_override_virtual_hasChildren(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_hasChildren(const void* self, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::hasChildren(*parent);
+bool QFileSystemModel_virtualbase_hasChildren(const void* self, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::hasChildren(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
@@ -1491,8 +1425,8 @@ bool QFileSystemModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::canFetchMore(*parent);
+bool QFileSystemModel_virtualbase_canFetchMore(const void* self, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::canFetchMore(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_fetchMore(void* self, intptr_t slot) {
@@ -1505,8 +1439,8 @@ bool QFileSystemModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 	return true;
 }
 
-void QFileSystemModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
-	static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::fetchMore(*parent);
+void QFileSystemModel_virtualbase_fetchMore(void* self, struct miqt_qmodelindex parent) {
+	static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::fetchMore(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_rowCount(void* self, intptr_t slot) {
@@ -1519,8 +1453,8 @@ bool QFileSystemModel_override_virtual_rowCount(void* self, intptr_t slot) {
 	return true;
 }
 
-int QFileSystemModel_virtualbase_rowCount(const void* self, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::rowCount(*parent);
+int QFileSystemModel_virtualbase_rowCount(const void* self, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::rowCount(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_columnCount(void* self, intptr_t slot) {
@@ -1533,8 +1467,8 @@ bool QFileSystemModel_override_virtual_columnCount(void* self, intptr_t slot) {
 	return true;
 }
 
-int QFileSystemModel_virtualbase_columnCount(const void* self, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::columnCount(*parent);
+int QFileSystemModel_virtualbase_columnCount(const void* self, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::columnCount(miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_data(void* self, intptr_t slot) {
@@ -1547,8 +1481,8 @@ bool QFileSystemModel_override_virtual_data(void* self, intptr_t slot) {
 	return true;
 }
 
-QVariant* QFileSystemModel_virtualbase_data(const void* self, QModelIndex* index, int role) {
-	return new QVariant(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::data(*index, static_cast<int>(role)));
+QVariant* QFileSystemModel_virtualbase_data(const void* self, struct miqt_qmodelindex index, int role) {
+	return new QVariant(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::data(miqt_from_cabi<QModelIndex>(index), static_cast<int>(role)));
 }
 
 bool QFileSystemModel_override_virtual_setData(void* self, intptr_t slot) {
@@ -1561,8 +1495,8 @@ bool QFileSystemModel_override_virtual_setData(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
-	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::setData(*index, *value, static_cast<int>(role));
+bool QFileSystemModel_virtualbase_setData(void* self, struct miqt_qmodelindex index, QVariant* value, int role) {
+	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::setData(miqt_from_cabi<QModelIndex>(index), *value, static_cast<int>(role));
 }
 
 bool QFileSystemModel_override_virtual_headerData(void* self, intptr_t slot) {
@@ -1589,8 +1523,8 @@ bool QFileSystemModel_override_virtual_flags(void* self, intptr_t slot) {
 	return true;
 }
 
-int QFileSystemModel_virtualbase_flags(const void* self, QModelIndex* index) {
-	Qt::ItemFlags _ret = static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::flags(*index);
+int QFileSystemModel_virtualbase_flags(const void* self, struct miqt_qmodelindex index) {
+	Qt::ItemFlags _ret = static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::flags(miqt_from_cabi<QModelIndex>(index));
 	return static_cast<int>(_ret);
 }
 
@@ -1648,12 +1582,12 @@ bool QFileSystemModel_override_virtual_mimeData(void* self, intptr_t slot) {
 	return true;
 }
 
-QMimeData* QFileSystemModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
+QMimeData* QFileSystemModel_virtualbase_mimeData(const void* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes) {
 	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes.len);
-	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	struct miqt_qmodelindex* indexes_arr = static_cast<struct miqt_qmodelindex*>(indexes.data);
 	for(size_t i = 0; i < indexes.len; ++i) {
-		indexes_QList.push_back(*(indexes_arr[i]));
+		indexes_QList.push_back(miqt_from_cabi<QModelIndex>(indexes_arr[i]));
 	}
 	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::mimeData(indexes_QList);
 }
@@ -1668,8 +1602,8 @@ bool QFileSystemModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+bool QFileSystemModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_supportedDropActions(void* self, intptr_t slot) {
@@ -1739,8 +1673,8 @@ bool QFileSystemModel_override_virtual_itemData(void* self, intptr_t slot) {
 	return true;
 }
 
-struct miqt_map /* of int to QVariant* */  QFileSystemModel_virtualbase_itemData(const void* self, QModelIndex* index) {
-	QMap<int, QVariant> _ret = static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::itemData(*index);
+struct miqt_map /* of int to QVariant* */  QFileSystemModel_virtualbase_itemData(const void* self, struct miqt_qmodelindex index) {
+	QMap<int, QVariant> _ret = static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::itemData(miqt_from_cabi<QModelIndex>(index));
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
@@ -1767,14 +1701,14 @@ bool QFileSystemModel_override_virtual_setItemData(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
+bool QFileSystemModel_virtualbase_setItemData(void* self, struct miqt_qmodelindex index, struct miqt_map /* of int to QVariant* */  roles) {
 	QMap<int, QVariant> roles_QMap;
 	int* roles_karr = static_cast<int*>(roles.keys);
 	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
 	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
 	}
-	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::setItemData(*index, roles_QMap);
+	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::setItemData(miqt_from_cabi<QModelIndex>(index), roles_QMap);
 }
 
 bool QFileSystemModel_override_virtual_canDropMimeData(void* self, intptr_t slot) {
@@ -1787,8 +1721,8 @@ bool QFileSystemModel_override_virtual_canDropMimeData(void* self, intptr_t slot
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+bool QFileSystemModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, struct miqt_qmodelindex parent) {
+	return static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_supportedDragActions(void* self, intptr_t slot) {
@@ -1816,8 +1750,8 @@ bool QFileSystemModel_override_virtual_insertRows(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
+bool QFileSystemModel_virtualbase_insertRows(void* self, int row, int count, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::insertRows(static_cast<int>(row), static_cast<int>(count), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_insertColumns(void* self, intptr_t slot) {
@@ -1830,8 +1764,8 @@ bool QFileSystemModel_override_virtual_insertColumns(void* self, intptr_t slot) 
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+bool QFileSystemModel_virtualbase_insertColumns(void* self, int column, int count, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::insertColumns(static_cast<int>(column), static_cast<int>(count), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_removeRows(void* self, intptr_t slot) {
@@ -1844,8 +1778,8 @@ bool QFileSystemModel_override_virtual_removeRows(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
+bool QFileSystemModel_virtualbase_removeRows(void* self, int row, int count, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::removeRows(static_cast<int>(row), static_cast<int>(count), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_removeColumns(void* self, intptr_t slot) {
@@ -1858,8 +1792,8 @@ bool QFileSystemModel_override_virtual_removeColumns(void* self, intptr_t slot) 
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
-	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+bool QFileSystemModel_virtualbase_removeColumns(void* self, int column, int count, struct miqt_qmodelindex parent) {
+	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::removeColumns(static_cast<int>(column), static_cast<int>(count), miqt_from_cabi<QModelIndex>(parent));
 }
 
 bool QFileSystemModel_override_virtual_moveRows(void* self, intptr_t slot) {
@@ -1872,8 +1806,8 @@ bool QFileSystemModel_override_virtual_moveRows(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+bool QFileSystemModel_virtualbase_moveRows(void* self, struct miqt_qmodelindex sourceParent, int sourceRow, int count, struct miqt_qmodelindex destinationParent, int destinationChild) {
+	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::moveRows(miqt_from_cabi<QModelIndex>(sourceParent), static_cast<int>(sourceRow), static_cast<int>(count), miqt_from_cabi<QModelIndex>(destinationParent), static_cast<int>(destinationChild));
 }
 
 bool QFileSystemModel_override_virtual_moveColumns(void* self, intptr_t slot) {
@@ -1886,8 +1820,8 @@ bool QFileSystemModel_override_virtual_moveColumns(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QFileSystemModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+bool QFileSystemModel_virtualbase_moveColumns(void* self, struct miqt_qmodelindex sourceParent, int sourceColumn, int count, struct miqt_qmodelindex destinationParent, int destinationChild) {
+	return static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::moveColumns(miqt_from_cabi<QModelIndex>(sourceParent), static_cast<int>(sourceColumn), static_cast<int>(count), miqt_from_cabi<QModelIndex>(destinationParent), static_cast<int>(destinationChild));
 }
 
 bool QFileSystemModel_override_virtual_buddy(void* self, intptr_t slot) {
@@ -1900,8 +1834,8 @@ bool QFileSystemModel_override_virtual_buddy(void* self, intptr_t slot) {
 	return true;
 }
 
-QModelIndex* QFileSystemModel_virtualbase_buddy(const void* self, QModelIndex* index) {
-	return new QModelIndex(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::buddy(*index));
+struct miqt_qmodelindex QFileSystemModel_virtualbase_buddy(const void* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::buddy(miqt_from_cabi<QModelIndex>(index)));
 }
 
 bool QFileSystemModel_override_virtual_match(void* self, intptr_t slot) {
@@ -1914,12 +1848,12 @@ bool QFileSystemModel_override_virtual_match(void* self, intptr_t slot) {
 	return true;
 }
 
-struct miqt_array /* of QModelIndex* */  QFileSystemModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	QModelIndexList _ret = static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+struct miqt_array /* of struct miqt_qmodelindex */  QFileSystemModel_virtualbase_match(const void* self, struct miqt_qmodelindex start, int role, QVariant* value, int hits, int flags) {
+	QModelIndexList _ret = static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::match(miqt_from_cabi<QModelIndex>(start), static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -1937,8 +1871,8 @@ bool QFileSystemModel_override_virtual_span(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFileSystemModel_virtualbase_span(const void* self, QModelIndex* index) {
-	return new QSize(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::span(*index));
+struct miqt_qsize QFileSystemModel_virtualbase_span(const void* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::span(miqt_from_cabi<QModelIndex>(index)));
 }
 
 bool QFileSystemModel_override_virtual_roleNames(void* self, intptr_t slot) {
@@ -2072,16 +2006,8 @@ void QFileSystemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	static_cast<MiqtVirtualQFileSystemModel*>(self)->QFileSystemModel::disconnectNotify(*signal);
 }
 
-QModelIndex* QFileSystemModel_virtualreturncopy_QModelIndex(QModelIndex* src) {
-	return new QModelIndex(*src);
-}
-
 QVariant* QFileSystemModel_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
-}
-
-QSize* QFileSystemModel_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 void QFileSystemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
@@ -2095,18 +2021,18 @@ void QFileSystemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, vo
 	self_cast->resetInternalData();
 }
 
-QModelIndex* QFileSystemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
+struct miqt_qmodelindex QFileSystemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmodelindex){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QModelIndex(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
+	return miqt_to_cabi<struct miqt_qmodelindex>(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
 }
 
-void QFileSystemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+void QFileSystemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of struct miqt_qmodelindex */  indexes, QDataStream* stream) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2116,14 +2042,14 @@ void QFileSystemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const voi
 	*_dynamic_cast_ok = true;
 		QModelIndexList indexes_QList;
 		indexes_QList.reserve(indexes.len);
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		struct miqt_qmodelindex* indexes_arr = static_cast<struct miqt_qmodelindex*>(indexes.data);
 		for(size_t i = 0; i < indexes.len; ++i) {
-			indexes_QList.push_back(*(indexes_arr[i]));
+			indexes_QList.push_back(miqt_from_cabi<QModelIndex>(indexes_arr[i]));
 		}
 	self_cast->encodeData(indexes_QList, *stream);
 }
 
-bool QFileSystemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+bool QFileSystemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, struct miqt_qmodelindex parent, QDataStream* stream) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2131,10 +2057,10 @@ bool QFileSystemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* sel
 	}
 
 	*_dynamic_cast_ok = true;
-	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), miqt_from_cabi<QModelIndex>(parent), *stream);
 }
 
-void QFileSystemModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+void QFileSystemModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2142,7 +2068,7 @@ void QFileSystemModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+	self_cast->beginInsertRows(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(first), static_cast<int>(last));
 }
 
 void QFileSystemModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self) {
@@ -2156,7 +2082,7 @@ void QFileSystemModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* 
 	self_cast->endInsertRows();
 }
 
-void QFileSystemModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+void QFileSystemModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2164,7 +2090,7 @@ void QFileSystemModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+	self_cast->beginRemoveRows(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(first), static_cast<int>(last));
 }
 
 void QFileSystemModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self) {
@@ -2178,7 +2104,7 @@ void QFileSystemModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* 
 	self_cast->endRemoveRows();
 }
 
-bool QFileSystemModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+bool QFileSystemModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex sourceParent, int sourceFirst, int sourceLast, struct miqt_qmodelindex destinationParent, int destinationRow) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2186,7 +2112,7 @@ bool QFileSystemModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* 
 	}
 
 	*_dynamic_cast_ok = true;
-	return self_cast->beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+	return self_cast->beginMoveRows(miqt_from_cabi<QModelIndex>(sourceParent), static_cast<int>(sourceFirst), static_cast<int>(sourceLast), miqt_from_cabi<QModelIndex>(destinationParent), static_cast<int>(destinationRow));
 }
 
 void QFileSystemModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self) {
@@ -2200,7 +2126,7 @@ void QFileSystemModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* se
 	self_cast->endMoveRows();
 }
 
-void QFileSystemModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+void QFileSystemModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2208,7 +2134,7 @@ void QFileSystemModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, v
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+	self_cast->beginInsertColumns(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(first), static_cast<int>(last));
 }
 
 void QFileSystemModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self) {
@@ -2222,7 +2148,7 @@ void QFileSystemModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, voi
 	self_cast->endInsertColumns();
 }
 
-void QFileSystemModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+void QFileSystemModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex parent, int first, int last) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2230,7 +2156,7 @@ void QFileSystemModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, v
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+	self_cast->beginRemoveColumns(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(first), static_cast<int>(last));
 }
 
 void QFileSystemModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self) {
@@ -2244,7 +2170,7 @@ void QFileSystemModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, voi
 	self_cast->endRemoveColumns();
 }
 
-bool QFileSystemModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+bool QFileSystemModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex sourceParent, int sourceFirst, int sourceLast, struct miqt_qmodelindex destinationParent, int destinationColumn) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2252,7 +2178,7 @@ bool QFileSystemModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, voi
 	}
 
 	*_dynamic_cast_ok = true;
-	return self_cast->beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+	return self_cast->beginMoveColumns(miqt_from_cabi<QModelIndex>(sourceParent), static_cast<int>(sourceFirst), static_cast<int>(sourceLast), miqt_from_cabi<QModelIndex>(destinationParent), static_cast<int>(destinationColumn));
 }
 
 void QFileSystemModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self) {
@@ -2288,7 +2214,7 @@ void QFileSystemModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* 
 	self_cast->endResetModel();
 }
 
-void QFileSystemModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to) {
+void QFileSystemModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, struct miqt_qmodelindex from, struct miqt_qmodelindex to) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2296,10 +2222,10 @@ void QFileSystemModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok
 	}
 
 	*_dynamic_cast_ok = true;
-	self_cast->changePersistentIndex(*from, *to);
+	self_cast->changePersistentIndex(miqt_from_cabi<QModelIndex>(from), miqt_from_cabi<QModelIndex>(to));
 }
 
-void QFileSystemModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+void QFileSystemModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of struct miqt_qmodelindex */  from, struct miqt_array /* of struct miqt_qmodelindex */  to) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2309,20 +2235,20 @@ void QFileSystemModel_protectedbase_changePersistentIndexList(bool* _dynamic_cas
 	*_dynamic_cast_ok = true;
 		QModelIndexList from_QList;
 		from_QList.reserve(from.len);
-		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		struct miqt_qmodelindex* from_arr = static_cast<struct miqt_qmodelindex*>(from.data);
 		for(size_t i = 0; i < from.len; ++i) {
-			from_QList.push_back(*(from_arr[i]));
+			from_QList.push_back(miqt_from_cabi<QModelIndex>(from_arr[i]));
 		}
 		QModelIndexList to_QList;
 		to_QList.reserve(to.len);
-		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		struct miqt_qmodelindex* to_arr = static_cast<struct miqt_qmodelindex*>(to.data);
 		for(size_t i = 0; i < to.len; ++i) {
-			to_QList.push_back(*(to_arr[i]));
+			to_QList.push_back(miqt_from_cabi<QModelIndex>(to_arr[i]));
 		}
 	self_cast->changePersistentIndexList(from_QList, to_QList);
 }
 
-struct miqt_array /* of QModelIndex* */  QFileSystemModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QFileSystemModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2332,9 +2258,9 @@ struct miqt_array /* of QModelIndex* */  QFileSystemModel_protectedbase_persiste
 	*_dynamic_cast_ok = true;
 	QModelIndexList _ret = self_cast->persistentIndexList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();

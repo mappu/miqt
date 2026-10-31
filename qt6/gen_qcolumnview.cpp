@@ -56,35 +56,35 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QColumnView_updatePreviewWidget(intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QColumnView_indexAt(const QColumnView*, intptr_t, QPoint*);
-void miqt_exec_callback_QColumnView_scrollTo(QColumnView*, intptr_t, QModelIndex*, int);
-QSize* miqt_exec_callback_QColumnView_sizeHint(const QColumnView*, intptr_t);
-QRect* miqt_exec_callback_QColumnView_visualRect(const QColumnView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QColumnView_updatePreviewWidget(intptr_t, struct miqt_qmodelindex);
+struct miqt_qmodelindex miqt_exec_callback_QColumnView_indexAt(const QColumnView*, intptr_t, struct miqt_qpoint);
+void miqt_exec_callback_QColumnView_scrollTo(QColumnView*, intptr_t, struct miqt_qmodelindex, int);
+struct miqt_qsize miqt_exec_callback_QColumnView_sizeHint(const QColumnView*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QColumnView_visualRect(const QColumnView*, intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QColumnView_setModel(QColumnView*, intptr_t, QAbstractItemModel*);
 void miqt_exec_callback_QColumnView_setSelectionModel(QColumnView*, intptr_t, QItemSelectionModel*);
-void miqt_exec_callback_QColumnView_setRootIndex(QColumnView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QColumnView_setRootIndex(QColumnView*, intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QColumnView_selectAll(QColumnView*, intptr_t);
-bool miqt_exec_callback_QColumnView_isIndexHidden(const QColumnView*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QColumnView_moveCursor(QColumnView*, intptr_t, int, int);
+bool miqt_exec_callback_QColumnView_isIndexHidden(const QColumnView*, intptr_t, struct miqt_qmodelindex);
+struct miqt_qmodelindex miqt_exec_callback_QColumnView_moveCursor(QColumnView*, intptr_t, int, int);
 void miqt_exec_callback_QColumnView_resizeEvent(QColumnView*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QColumnView_setSelection(QColumnView*, intptr_t, QRect*, int);
+void miqt_exec_callback_QColumnView_setSelection(QColumnView*, intptr_t, struct miqt_qrect, int);
 QRegion* miqt_exec_callback_QColumnView_visualRegionForSelection(const QColumnView*, intptr_t, QItemSelection*);
 int miqt_exec_callback_QColumnView_horizontalOffset(const QColumnView*, intptr_t);
 int miqt_exec_callback_QColumnView_verticalOffset(const QColumnView*, intptr_t);
-void miqt_exec_callback_QColumnView_rowsInserted(QColumnView*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QColumnView_currentChanged(QColumnView*, intptr_t, QModelIndex*, QModelIndex*);
+void miqt_exec_callback_QColumnView_rowsInserted(QColumnView*, intptr_t, struct miqt_qmodelindex, int, int);
+void miqt_exec_callback_QColumnView_currentChanged(QColumnView*, intptr_t, struct miqt_qmodelindex, struct miqt_qmodelindex);
 void miqt_exec_callback_QColumnView_scrollContentsBy(QColumnView*, intptr_t, int, int);
-QAbstractItemView* miqt_exec_callback_QColumnView_createColumn(QColumnView*, intptr_t, QModelIndex*);
+QAbstractItemView* miqt_exec_callback_QColumnView_createColumn(QColumnView*, intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QColumnView_keyboardSearch(QColumnView*, intptr_t, struct miqt_string);
 int miqt_exec_callback_QColumnView_sizeHintForRow(const QColumnView*, intptr_t, int);
 int miqt_exec_callback_QColumnView_sizeHintForColumn(const QColumnView*, intptr_t, int);
-QAbstractItemDelegate* miqt_exec_callback_QColumnView_itemDelegateForIndex(const QColumnView*, intptr_t, QModelIndex*);
+QAbstractItemDelegate* miqt_exec_callback_QColumnView_itemDelegateForIndex(const QColumnView*, intptr_t, struct miqt_qmodelindex);
 QVariant* miqt_exec_callback_QColumnView_inputMethodQuery(const QColumnView*, intptr_t, int);
 void miqt_exec_callback_QColumnView_reset(QColumnView*, intptr_t);
 void miqt_exec_callback_QColumnView_doItemsLayout(QColumnView*, intptr_t);
-void miqt_exec_callback_QColumnView_dataChanged(QColumnView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
-void miqt_exec_callback_QColumnView_rowsAboutToBeRemoved(QColumnView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QColumnView_dataChanged(QColumnView*, intptr_t, struct miqt_qmodelindex, struct miqt_qmodelindex, struct miqt_array /* of int */ );
+void miqt_exec_callback_QColumnView_rowsAboutToBeRemoved(QColumnView*, intptr_t, struct miqt_qmodelindex, int, int);
 void miqt_exec_callback_QColumnView_selectionChanged(QColumnView*, intptr_t, QItemSelection*, QItemSelection*);
 void miqt_exec_callback_QColumnView_updateEditorData(QColumnView*, intptr_t);
 void miqt_exec_callback_QColumnView_updateEditorGeometries(QColumnView*, intptr_t);
@@ -96,9 +96,9 @@ void miqt_exec_callback_QColumnView_horizontalScrollbarValueChanged(QColumnView*
 void miqt_exec_callback_QColumnView_closeEditor(QColumnView*, intptr_t, QWidget*, int);
 void miqt_exec_callback_QColumnView_commitData(QColumnView*, intptr_t, QWidget*);
 void miqt_exec_callback_QColumnView_editorDestroyed(QColumnView*, intptr_t, QObject*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QColumnView_selectedIndexes(const QColumnView*, intptr_t);
-bool miqt_exec_callback_QColumnView_edit2(QColumnView*, intptr_t, QModelIndex*, int, QEvent*);
-int miqt_exec_callback_QColumnView_selectionCommand(const QColumnView*, intptr_t, QModelIndex*, QEvent*);
+struct miqt_array /* of struct miqt_qmodelindex */  miqt_exec_callback_QColumnView_selectedIndexes(const QColumnView*, intptr_t);
+bool miqt_exec_callback_QColumnView_edit2(QColumnView*, intptr_t, struct miqt_qmodelindex, int, QEvent*);
+int miqt_exec_callback_QColumnView_selectionCommand(const QColumnView*, intptr_t, struct miqt_qmodelindex, QEvent*);
 void miqt_exec_callback_QColumnView_startDrag(QColumnView*, intptr_t, int);
 void miqt_exec_callback_QColumnView_initViewItemOption(const QColumnView*, intptr_t, QStyleOptionViewItem*);
 bool miqt_exec_callback_QColumnView_focusNextPrevChild(QColumnView*, intptr_t, bool);
@@ -118,8 +118,8 @@ void miqt_exec_callback_QColumnView_keyPressEvent(QColumnView*, intptr_t, QKeyEv
 void miqt_exec_callback_QColumnView_timerEvent(QColumnView*, intptr_t, QTimerEvent*);
 void miqt_exec_callback_QColumnView_inputMethodEvent(QColumnView*, intptr_t, QInputMethodEvent*);
 bool miqt_exec_callback_QColumnView_eventFilter(QColumnView*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QColumnView_viewportSizeHint(const QColumnView*, intptr_t);
-QSize* miqt_exec_callback_QColumnView_minimumSizeHint(const QColumnView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QColumnView_viewportSizeHint(const QColumnView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QColumnView_minimumSizeHint(const QColumnView*, intptr_t);
 void miqt_exec_callback_QColumnView_setupViewport(QColumnView*, intptr_t, QWidget*);
 void miqt_exec_callback_QColumnView_paintEvent(QColumnView*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QColumnView_wheelEvent(QColumnView*, intptr_t, QWheelEvent*);
@@ -170,16 +170,12 @@ public:
 			return QColumnView::indexAt(point);
 		}
 
-		const QPoint& point_ret = point;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&point_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QColumnView_indexAt(this, handle__indexAt, sigval1);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(point);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QColumnView_indexAt(this, handle__indexAt, sigval1);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QColumnView_virtualbase_indexAt(const void* self, QPoint* point);
+	friend struct miqt_qmodelindex QColumnView_virtualbase_indexAt(const void* self, struct miqt_qpoint point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrollTo = 0;
@@ -191,16 +187,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QAbstractItemView::ScrollHint hint_ret = hint;
 		int sigval2 = static_cast<int>(hint_ret);
 		miqt_exec_callback_QColumnView_scrollTo(this, handle__scrollTo, sigval1, sigval2);
 
 	}
 
-	friend void QColumnView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint);
+	friend void QColumnView_virtualbase_scrollTo(void* self, struct miqt_qmodelindex index, int hint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -211,13 +205,11 @@ public:
 			return QColumnView::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QColumnView_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QColumnView_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QColumnView_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QColumnView_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__visualRect = 0;
@@ -228,16 +220,12 @@ public:
 			return QColumnView::visualRect(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		QRect* callback_return_value = miqt_exec_callback_QColumnView_visualRect(this, handle__visualRect, sigval1);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QColumnView_visualRect(this, handle__visualRect, sigval1);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QColumnView_virtualbase_visualRect(const void* self, QModelIndex* index);
+	friend struct miqt_qrect QColumnView_virtualbase_visualRect(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setModel = 0;
@@ -283,14 +271,12 @@ public:
 			return;
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QColumnView_setRootIndex(this, handle__setRootIndex, sigval1);
 
 	}
 
-	friend void QColumnView_virtualbase_setRootIndex(void* self, QModelIndex* index);
+	friend void QColumnView_virtualbase_setRootIndex(void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectAll = 0;
@@ -317,14 +303,12 @@ public:
 			return QColumnView::isIndexHidden(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		bool callback_return_value = miqt_exec_callback_QColumnView_isIndexHidden(this, handle__isIndexHidden, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QColumnView_virtualbase_isIndexHidden(const void* self, QModelIndex* index);
+	friend bool QColumnView_virtualbase_isIndexHidden(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveCursor = 0;
@@ -339,13 +323,11 @@ public:
 		int sigval1 = static_cast<int>(cursorAction_ret);
 		Qt::KeyboardModifiers modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QColumnView_moveCursor(this, handle__moveCursor, sigval1, sigval2);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QColumnView_moveCursor(this, handle__moveCursor, sigval1, sigval2);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
-	friend QModelIndex* QColumnView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers);
+	friend struct miqt_qmodelindex QColumnView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -374,16 +356,14 @@ public:
 			return;
 		}
 
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(rect);
 		QItemSelectionModel::SelectionFlags command_ret = command;
 		int sigval2 = static_cast<int>(command_ret);
 		miqt_exec_callback_QColumnView_setSelection(this, handle__setSelection, sigval1, sigval2);
 
 	}
 
-	friend void QColumnView_virtualbase_setSelection(void* self, QRect* rect, int command);
+	friend void QColumnView_virtualbase_setSelection(void* self, struct miqt_qrect rect, int command);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__visualRegionForSelection = 0;
@@ -445,16 +425,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int sigval2 = start;
 		int sigval3 = end;
 		miqt_exec_callback_QColumnView_rowsInserted(this, handle__rowsInserted, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QColumnView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end);
+	friend void QColumnView_virtualbase_rowsInserted(void* self, struct miqt_qmodelindex parent, int start, int end);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__currentChanged = 0;
@@ -466,17 +444,13 @@ public:
 			return;
 		}
 
-		const QModelIndex& current_ret = current;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&current_ret);
-		const QModelIndex& previous_ret = previous;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&previous_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(current);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(previous);
 		miqt_exec_callback_QColumnView_currentChanged(this, handle__currentChanged, sigval1, sigval2);
 
 	}
 
-	friend void QColumnView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous);
+	friend void QColumnView_virtualbase_currentChanged(void* self, struct miqt_qmodelindex current, struct miqt_qmodelindex previous);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrollContentsBy = 0;
@@ -505,14 +479,12 @@ public:
 			return QColumnView::createColumn(rootIndex);
 		}
 
-		const QModelIndex& rootIndex_ret = rootIndex;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&rootIndex_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(rootIndex);
 		QAbstractItemView* callback_return_value = miqt_exec_callback_QColumnView_createColumn(this, handle__createColumn, sigval1);
 		return callback_return_value;
 	}
 
-	friend QAbstractItemView* QColumnView_virtualbase_createColumn(void* self, QModelIndex* rootIndex);
+	friend QAbstractItemView* QColumnView_virtualbase_createColumn(void* self, struct miqt_qmodelindex rootIndex);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyboardSearch = 0;
@@ -579,14 +551,12 @@ public:
 			return QColumnView::itemDelegateForIndex(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QColumnView_itemDelegateForIndex(this, handle__itemDelegateForIndex, sigval1);
 		return callback_return_value;
 	}
 
-	friend QAbstractItemDelegate* QColumnView_virtualbase_itemDelegateForIndex(const void* self, QModelIndex* index);
+	friend QAbstractItemDelegate* QColumnView_virtualbase_itemDelegateForIndex(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -649,12 +619,8 @@ public:
 			return;
 		}
 
-		const QModelIndex& topLeft_ret = topLeft;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&topLeft_ret);
-		const QModelIndex& bottomRight_ret = bottomRight;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&bottomRight_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(topLeft);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(bottomRight);
 		const QList<int>& roles_ret = roles;
 		// Convert QList<> from C++ memory to manually-managed C memory
 		int* roles_arr = static_cast<int*>(malloc(sizeof(int) * roles_ret.length()));
@@ -669,7 +635,7 @@ public:
 
 	}
 
-	friend void QColumnView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles);
+	friend void QColumnView_virtualbase_dataChanged(void* self, struct miqt_qmodelindex topLeft, struct miqt_qmodelindex bottomRight, struct miqt_array /* of int */  roles);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowsAboutToBeRemoved = 0;
@@ -681,16 +647,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int sigval2 = start;
 		int sigval3 = end;
 		miqt_exec_callback_QColumnView_rowsAboutToBeRemoved(this, handle__rowsAboutToBeRemoved, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QColumnView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end);
+	friend void QColumnView_virtualbase_rowsAboutToBeRemoved(void* self, struct miqt_qmodelindex parent, int start, int end);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectionChanged = 0;
@@ -892,22 +856,18 @@ public:
 			return QColumnView::selectedIndexes();
 		}
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QColumnView_selectedIndexes(this, handle__selectedIndexes);
+		struct miqt_array /* of struct miqt_qmodelindex */  callback_return_value = miqt_exec_callback_QColumnView_selectedIndexes(this, handle__selectedIndexes);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
-		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		struct miqt_qmodelindex* callback_return_value_arr = static_cast<struct miqt_qmodelindex*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
-		}
-		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
-		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			delete callback_return_value_free_arr[i];
+			callback_return_value_QList.push_back(miqt_from_cabi<QModelIndex>(callback_return_value_arr[i]));
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 
-	friend struct miqt_array /* of QModelIndex* */  QColumnView_virtualbase_selectedIndexes(const void* self);
+	friend struct miqt_array /* of struct miqt_qmodelindex */  QColumnView_virtualbase_selectedIndexes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__edit2 = 0;
@@ -918,9 +878,7 @@ public:
 			return QColumnView::edit(index, trigger, event);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QAbstractItemView::EditTrigger trigger_ret = trigger;
 		int sigval2 = static_cast<int>(trigger_ret);
 		QEvent* sigval3 = event;
@@ -928,7 +886,7 @@ public:
 		return callback_return_value;
 	}
 
-	friend bool QColumnView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event);
+	friend bool QColumnView_virtualbase_edit2(void* self, struct miqt_qmodelindex index, int trigger, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectionCommand = 0;
@@ -939,15 +897,13 @@ public:
 			return QColumnView::selectionCommand(index, event);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QEvent* sigval2 = (QEvent*) event;
 		int callback_return_value = miqt_exec_callback_QColumnView_selectionCommand(this, handle__selectionCommand, sigval1, sigval2);
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
 
-	friend int QColumnView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event);
+	friend int QColumnView_virtualbase_selectionCommand(const void* self, struct miqt_qmodelindex index, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__startDrag = 0;
@@ -1279,13 +1235,11 @@ public:
 			return QColumnView::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QColumnView_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QColumnView_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QColumnView_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QColumnView_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -1296,13 +1250,11 @@ public:
 			return QColumnView::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QColumnView_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QColumnView_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QColumnView_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QColumnView_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -1806,13 +1758,13 @@ public:
 	friend void QColumnView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
 	friend void QColumnView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region);
 	friend void QColumnView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy);
-	friend QPoint* QColumnView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qpoint QColumnView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
 	friend void QColumnView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self);
 	friend void QColumnView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self);
 	friend void QColumnView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self);
 	friend int QColumnView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self);
 	friend void QColumnView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QColumnView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QColumnView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QColumnView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QColumnView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QColumnView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -1856,33 +1808,31 @@ struct miqt_string QColumnView_tr(const char* s) {
 	return _ms;
 }
 
-void QColumnView_updatePreviewWidget(QColumnView* self, QModelIndex* index) {
-	self->updatePreviewWidget(*index);
+void QColumnView_updatePreviewWidget(QColumnView* self, struct miqt_qmodelindex index) {
+	self->updatePreviewWidget(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QColumnView_connect_updatePreviewWidget(QColumnView* self, intptr_t slot) {
 	QColumnView::connect(self, static_cast<void (QColumnView::*)(const QModelIndex&)>(&QColumnView::updatePreviewWidget), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QColumnView_updatePreviewWidget(slot, sigval1);
 	});
 }
 
-QModelIndex* QColumnView_indexAt(const QColumnView* self, QPoint* point) {
-	return new QModelIndex(self->indexAt(*point));
+struct miqt_qmodelindex QColumnView_indexAt(const QColumnView* self, struct miqt_qpoint point) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->indexAt(miqt_from_cabi<QPoint>(point)));
 }
 
-void QColumnView_scrollTo(QColumnView* self, QModelIndex* index, int hint) {
-	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
+void QColumnView_scrollTo(QColumnView* self, struct miqt_qmodelindex index, int hint) {
+	self->scrollTo(miqt_from_cabi<QModelIndex>(index), static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
-QSize* QColumnView_sizeHint(const QColumnView* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QColumnView_sizeHint(const QColumnView* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QRect* QColumnView_visualRect(const QColumnView* self, QModelIndex* index) {
-	return new QRect(self->visualRect(*index));
+struct miqt_qrect QColumnView_visualRect(const QColumnView* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qrect>(self->visualRect(miqt_from_cabi<QModelIndex>(index)));
 }
 
 void QColumnView_setModel(QColumnView* self, QAbstractItemModel* model) {
@@ -1893,8 +1843,8 @@ void QColumnView_setSelectionModel(QColumnView* self, QItemSelectionModel* selec
 	self->setSelectionModel(selectionModel);
 }
 
-void QColumnView_setRootIndex(QColumnView* self, QModelIndex* index) {
-	self->setRootIndex(*index);
+void QColumnView_setRootIndex(QColumnView* self, struct miqt_qmodelindex index) {
+	self->setRootIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QColumnView_selectAll(QColumnView* self) {
@@ -1972,8 +1922,8 @@ bool QColumnView_override_virtual_indexAt(void* self, intptr_t slot) {
 	return true;
 }
 
-QModelIndex* QColumnView_virtualbase_indexAt(const void* self, QPoint* point) {
-	return new QModelIndex(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::indexAt(*point));
+struct miqt_qmodelindex QColumnView_virtualbase_indexAt(const void* self, struct miqt_qpoint point) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::indexAt(miqt_from_cabi<QPoint>(point)));
 }
 
 bool QColumnView_override_virtual_scrollTo(void* self, intptr_t slot) {
@@ -1986,8 +1936,8 @@ bool QColumnView_override_virtual_scrollTo(void* self, intptr_t slot) {
 	return true;
 }
 
-void QColumnView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint) {
-	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::scrollTo(*index, static_cast<MiqtVirtualQColumnView::ScrollHint>(hint));
+void QColumnView_virtualbase_scrollTo(void* self, struct miqt_qmodelindex index, int hint) {
+	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::scrollTo(miqt_from_cabi<QModelIndex>(index), static_cast<MiqtVirtualQColumnView::ScrollHint>(hint));
 }
 
 bool QColumnView_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -2000,8 +1950,8 @@ bool QColumnView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QColumnView_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::sizeHint());
+struct miqt_qsize QColumnView_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::sizeHint());
 }
 
 bool QColumnView_override_virtual_visualRect(void* self, intptr_t slot) {
@@ -2014,8 +1964,8 @@ bool QColumnView_override_virtual_visualRect(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QColumnView_virtualbase_visualRect(const void* self, QModelIndex* index) {
-	return new QRect(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::visualRect(*index));
+struct miqt_qrect QColumnView_virtualbase_visualRect(const void* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::visualRect(miqt_from_cabi<QModelIndex>(index)));
 }
 
 bool QColumnView_override_virtual_setModel(void* self, intptr_t slot) {
@@ -2056,8 +2006,8 @@ bool QColumnView_override_virtual_setRootIndex(void* self, intptr_t slot) {
 	return true;
 }
 
-void QColumnView_virtualbase_setRootIndex(void* self, QModelIndex* index) {
-	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::setRootIndex(*index);
+void QColumnView_virtualbase_setRootIndex(void* self, struct miqt_qmodelindex index) {
+	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::setRootIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QColumnView_override_virtual_selectAll(void* self, intptr_t slot) {
@@ -2084,8 +2034,8 @@ bool QColumnView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QColumnView_virtualbase_isIndexHidden(const void* self, QModelIndex* index) {
-	return static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::isIndexHidden(*index);
+bool QColumnView_virtualbase_isIndexHidden(const void* self, struct miqt_qmodelindex index) {
+	return static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::isIndexHidden(miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QColumnView_override_virtual_moveCursor(void* self, intptr_t slot) {
@@ -2098,8 +2048,8 @@ bool QColumnView_override_virtual_moveCursor(void* self, intptr_t slot) {
 	return true;
 }
 
-QModelIndex* QColumnView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers) {
-	return new QModelIndex(static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::moveCursor(static_cast<MiqtVirtualQColumnView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
+struct miqt_qmodelindex QColumnView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::moveCursor(static_cast<MiqtVirtualQColumnView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
 }
 
 bool QColumnView_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -2126,8 +2076,8 @@ bool QColumnView_override_virtual_setSelection(void* self, intptr_t slot) {
 	return true;
 }
 
-void QColumnView_virtualbase_setSelection(void* self, QRect* rect, int command) {
-	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
+void QColumnView_virtualbase_setSelection(void* self, struct miqt_qrect rect, int command) {
+	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::setSelection(miqt_from_cabi<QRect>(rect), static_cast<QItemSelectionModel::SelectionFlags>(command));
 }
 
 bool QColumnView_override_virtual_visualRegionForSelection(void* self, intptr_t slot) {
@@ -2182,8 +2132,8 @@ bool QColumnView_override_virtual_rowsInserted(void* self, intptr_t slot) {
 	return true;
 }
 
-void QColumnView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
-	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
+void QColumnView_virtualbase_rowsInserted(void* self, struct miqt_qmodelindex parent, int start, int end) {
+	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::rowsInserted(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(start), static_cast<int>(end));
 }
 
 bool QColumnView_override_virtual_currentChanged(void* self, intptr_t slot) {
@@ -2196,8 +2146,8 @@ bool QColumnView_override_virtual_currentChanged(void* self, intptr_t slot) {
 	return true;
 }
 
-void QColumnView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
-	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::currentChanged(*current, *previous);
+void QColumnView_virtualbase_currentChanged(void* self, struct miqt_qmodelindex current, struct miqt_qmodelindex previous) {
+	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::currentChanged(miqt_from_cabi<QModelIndex>(current), miqt_from_cabi<QModelIndex>(previous));
 }
 
 bool QColumnView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
@@ -2224,8 +2174,8 @@ bool QColumnView_override_virtual_createColumn(void* self, intptr_t slot) {
 	return true;
 }
 
-QAbstractItemView* QColumnView_virtualbase_createColumn(void* self, QModelIndex* rootIndex) {
-	return static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::createColumn(*rootIndex);
+QAbstractItemView* QColumnView_virtualbase_createColumn(void* self, struct miqt_qmodelindex rootIndex) {
+	return static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::createColumn(miqt_from_cabi<QModelIndex>(rootIndex));
 }
 
 bool QColumnView_override_virtual_keyboardSearch(void* self, intptr_t slot) {
@@ -2281,8 +2231,8 @@ bool QColumnView_override_virtual_itemDelegateForIndex(void* self, intptr_t slot
 	return true;
 }
 
-QAbstractItemDelegate* QColumnView_virtualbase_itemDelegateForIndex(const void* self, QModelIndex* index) {
-	return static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::itemDelegateForIndex(*index);
+QAbstractItemDelegate* QColumnView_virtualbase_itemDelegateForIndex(const void* self, struct miqt_qmodelindex index) {
+	return static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::itemDelegateForIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QColumnView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2337,14 +2287,14 @@ bool QColumnView_override_virtual_dataChanged(void* self, intptr_t slot) {
 	return true;
 }
 
-void QColumnView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
+void QColumnView_virtualbase_dataChanged(void* self, struct miqt_qmodelindex topLeft, struct miqt_qmodelindex bottomRight, struct miqt_array /* of int */  roles) {
 	QList<int> roles_QList;
 	roles_QList.reserve(roles.len);
 	int* roles_arr = static_cast<int*>(roles.data);
 	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QList.push_back(static_cast<int>(roles_arr[i]));
 	}
-	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::dataChanged(*topLeft, *bottomRight, roles_QList);
+	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::dataChanged(miqt_from_cabi<QModelIndex>(topLeft), miqt_from_cabi<QModelIndex>(bottomRight), roles_QList);
 }
 
 bool QColumnView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot) {
@@ -2357,8 +2307,8 @@ bool QColumnView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot
 	return true;
 }
 
-void QColumnView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
-	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
+void QColumnView_virtualbase_rowsAboutToBeRemoved(void* self, struct miqt_qmodelindex parent, int start, int end) {
+	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::rowsAboutToBeRemoved(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(start), static_cast<int>(end));
 }
 
 bool QColumnView_override_virtual_selectionChanged(void* self, intptr_t slot) {
@@ -2525,12 +2475,12 @@ bool QColumnView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 	return true;
 }
 
-struct miqt_array /* of QModelIndex* */  QColumnView_virtualbase_selectedIndexes(const void* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QColumnView_virtualbase_selectedIndexes(const void* self) {
 	QModelIndexList _ret = static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -2548,8 +2498,8 @@ bool QColumnView_override_virtual_edit2(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QColumnView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
-	return static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::edit(*index, static_cast<MiqtVirtualQColumnView::EditTrigger>(trigger), event);
+bool QColumnView_virtualbase_edit2(void* self, struct miqt_qmodelindex index, int trigger, QEvent* event) {
+	return static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::edit(miqt_from_cabi<QModelIndex>(index), static_cast<MiqtVirtualQColumnView::EditTrigger>(trigger), event);
 }
 
 bool QColumnView_override_virtual_selectionCommand(void* self, intptr_t slot) {
@@ -2562,8 +2512,8 @@ bool QColumnView_override_virtual_selectionCommand(void* self, intptr_t slot) {
 	return true;
 }
 
-int QColumnView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
-	QItemSelectionModel::SelectionFlags _ret = static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::selectionCommand(*index, event);
+int QColumnView_virtualbase_selectionCommand(const void* self, struct miqt_qmodelindex index, QEvent* event) {
+	QItemSelectionModel::SelectionFlags _ret = static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::selectionCommand(miqt_from_cabi<QModelIndex>(index), event);
 	return static_cast<int>(_ret);
 }
 
@@ -2843,8 +2793,8 @@ bool QColumnView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QColumnView_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::viewportSizeHint());
+struct miqt_qsize QColumnView_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::viewportSizeHint());
 }
 
 bool QColumnView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -2857,8 +2807,8 @@ bool QColumnView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QColumnView_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::minimumSizeHint());
+struct miqt_qsize QColumnView_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQColumnView*>(self)->QColumnView::minimumSizeHint());
 }
 
 bool QColumnView_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -3268,18 +3218,6 @@ void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQColumnView*>(self)->QColumnView::disconnectNotify(*signal);
 }
 
-QModelIndex* QColumnView_virtualreturncopy_QModelIndex(QModelIndex* src) {
-	return new QModelIndex(*src);
-}
-
-QSize* QColumnView_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
-QRect* QColumnView_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
 QRegion* QColumnView_virtualreturncopy_QRegion(QRegion* src) {
 	return new QRegion(*src);
 }
@@ -3366,15 +3304,15 @@ void QColumnView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* s
 	self_cast->scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
 }
 
-QPoint* QColumnView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qpoint QColumnView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qpoint){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QPoint(self_cast->dirtyRegionOffset());
+	return miqt_to_cabi<struct miqt_qpoint>(self_cast->dirtyRegionOffset());
 }
 
 void QColumnView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self) {
@@ -3433,15 +3371,15 @@ void QColumnView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* 
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QColumnView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QColumnView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QColumnView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

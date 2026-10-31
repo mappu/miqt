@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -214,17 +215,15 @@ func NewQPageSize2(pageSizeId QPageSize__PageSizeId) *QPageSize {
 }
 
 // NewQPageSize3 constructs a new QPageSize object.
-func NewQPageSize3(pointSize *QSize) *QPageSize {
-	defer runtime.KeepAlive(pointSize)
+func NewQPageSize3(pointSize QSize) *QPageSize {
 
-	return newQPageSize(C.QPageSize_new3(pointSize.cPointer()))
+	return newQPageSize(C.QPageSize_new3(libmiqt.ValueCast[C.struct_miqt_qsize](pointSize)))
 }
 
 // NewQPageSize4 constructs a new QPageSize object.
-func NewQPageSize4(size *QSizeF, units QPageSize__Unit) *QPageSize {
-	defer runtime.KeepAlive(size)
+func NewQPageSize4(size QSizeF, units QPageSize__Unit) *QPageSize {
 
-	return newQPageSize(C.QPageSize_new4(size.cPointer(), (C.int)(units)))
+	return newQPageSize(C.QPageSize_new4(libmiqt.ValueCast[C.struct_miqt_qsizef](size), (C.int)(units)))
 }
 
 // NewQPageSize5 constructs a new QPageSize object.
@@ -235,47 +234,43 @@ func NewQPageSize5(other *QPageSize) *QPageSize {
 }
 
 // NewQPageSize6 constructs a new QPageSize object.
-func NewQPageSize6(pointSize *QSize, name string) *QPageSize {
-	defer runtime.KeepAlive(pointSize)
+func NewQPageSize6(pointSize QSize, name string) *QPageSize {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	return newQPageSize(C.QPageSize_new6(pointSize.cPointer(), name_ms))
+	return newQPageSize(C.QPageSize_new6(libmiqt.ValueCast[C.struct_miqt_qsize](pointSize), name_ms))
 }
 
 // NewQPageSize7 constructs a new QPageSize object.
-func NewQPageSize7(pointSize *QSize, name string, matchPolicy QPageSize__SizeMatchPolicy) *QPageSize {
-	defer runtime.KeepAlive(pointSize)
+func NewQPageSize7(pointSize QSize, name string, matchPolicy QPageSize__SizeMatchPolicy) *QPageSize {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	return newQPageSize(C.QPageSize_new7(pointSize.cPointer(), name_ms, (C.int)(matchPolicy)))
+	return newQPageSize(C.QPageSize_new7(libmiqt.ValueCast[C.struct_miqt_qsize](pointSize), name_ms, (C.int)(matchPolicy)))
 }
 
 // NewQPageSize8 constructs a new QPageSize object.
-func NewQPageSize8(size *QSizeF, units QPageSize__Unit, name string) *QPageSize {
-	defer runtime.KeepAlive(size)
+func NewQPageSize8(size QSizeF, units QPageSize__Unit, name string) *QPageSize {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	return newQPageSize(C.QPageSize_new8(size.cPointer(), (C.int)(units), name_ms))
+	return newQPageSize(C.QPageSize_new8(libmiqt.ValueCast[C.struct_miqt_qsizef](size), (C.int)(units), name_ms))
 }
 
 // NewQPageSize9 constructs a new QPageSize object.
-func NewQPageSize9(size *QSizeF, units QPageSize__Unit, name string, matchPolicy QPageSize__SizeMatchPolicy) *QPageSize {
-	defer runtime.KeepAlive(size)
+func NewQPageSize9(size QSizeF, units QPageSize__Unit, name string, matchPolicy QPageSize__SizeMatchPolicy) *QPageSize {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	return newQPageSize(C.QPageSize_new9(size.cPointer(), (C.int)(units), name_ms, (C.int)(matchPolicy)))
+	return newQPageSize(C.QPageSize_new9(libmiqt.ValueCast[C.struct_miqt_qsizef](size), (C.int)(units), name_ms, (C.int)(matchPolicy)))
 }
 
 func (this *QPageSize) OperatorAssign(other *QPageSize) {
@@ -327,11 +322,9 @@ func (this *QPageSize) WindowsId() int {
 	return (int)(C.QPageSize_windowsId(this.h))
 }
 
-func (this *QPageSize) DefinitionSize() *QSizeF {
+func (this *QPageSize) DefinitionSize() QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QPageSize_definitionSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QPageSize_definitionSize(this.h))
 }
 
 func (this *QPageSize) DefinitionUnits() QPageSize__Unit {
@@ -339,46 +332,34 @@ func (this *QPageSize) DefinitionUnits() QPageSize__Unit {
 	return (QPageSize__Unit)(C.QPageSize_definitionUnits(this.h))
 }
 
-func (this *QPageSize) Size(units QPageSize__Unit) *QSizeF {
+func (this *QPageSize) Size(units QPageSize__Unit) QSizeF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSizeF(C.QPageSize_size(this.h, (C.int)(units)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QPageSize_size(this.h, (C.int)(units)))
 }
 
-func (this *QPageSize) SizePoints() *QSize {
+func (this *QPageSize) SizePoints() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QPageSize_sizePoints(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QPageSize_sizePoints(this.h))
 }
 
-func (this *QPageSize) SizePixels(resolution int) *QSize {
+func (this *QPageSize) SizePixels(resolution int) QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QPageSize_sizePixels(this.h, (C.int)(resolution)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QPageSize_sizePixels(this.h, (C.int)(resolution)))
 }
 
-func (this *QPageSize) Rect(units QPageSize__Unit) *QRectF {
+func (this *QPageSize) Rect(units QPageSize__Unit) QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRectF(C.QPageSize_rect(this.h, (C.int)(units)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QPageSize_rect(this.h, (C.int)(units)))
 }
 
-func (this *QPageSize) RectPoints() *QRect {
+func (this *QPageSize) RectPoints() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QPageSize_rectPoints(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPageSize_rectPoints(this.h))
 }
 
-func (this *QPageSize) RectPixels(resolution int) *QRect {
+func (this *QPageSize) RectPixels(resolution int) QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QPageSize_rectPixels(this.h, (C.int)(resolution)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QPageSize_rectPixels(this.h, (C.int)(resolution)))
 }
 
 func QPageSize_KeyWithPageSizeId(pageSizeId QPageSize__PageSizeId) string {
@@ -395,14 +376,12 @@ func QPageSize_NameWithPageSizeId(pageSizeId QPageSize__PageSizeId) string {
 	return _ret
 }
 
-func QPageSize_IdWithPointSize(pointSize *QSize) QPageSize__PageSizeId {
-	defer runtime.KeepAlive(pointSize)
-	return (QPageSize__PageSizeId)(C.QPageSize_idWithPointSize(pointSize.cPointer()))
+func QPageSize_IdWithPointSize(pointSize QSize) QPageSize__PageSizeId {
+	return (QPageSize__PageSizeId)(C.QPageSize_idWithPointSize(libmiqt.ValueCast[C.struct_miqt_qsize](pointSize)))
 }
 
-func QPageSize_Id2(size *QSizeF, units QPageSize__Unit) QPageSize__PageSizeId {
-	defer runtime.KeepAlive(size)
-	return (QPageSize__PageSizeId)(C.QPageSize_id2(size.cPointer(), (C.int)(units)))
+func QPageSize_Id2(size QSizeF, units QPageSize__Unit) QPageSize__PageSizeId {
+	return (QPageSize__PageSizeId)(C.QPageSize_id2(libmiqt.ValueCast[C.struct_miqt_qsizef](size), (C.int)(units)))
 }
 
 func QPageSize_IdWithWindowsId(windowsId int) QPageSize__PageSizeId {
@@ -413,42 +392,32 @@ func QPageSize_WindowsIdWithPageSizeId(pageSizeId QPageSize__PageSizeId) int {
 	return (int)(C.QPageSize_windowsIdWithPageSizeId((C.int)(pageSizeId)))
 }
 
-func QPageSize_DefinitionSizeWithPageSizeId(pageSizeId QPageSize__PageSizeId) *QSizeF {
-	_goptr := newQSizeF(C.QPageSize_definitionSizeWithPageSizeId((C.int)(pageSizeId)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QPageSize_DefinitionSizeWithPageSizeId(pageSizeId QPageSize__PageSizeId) QSizeF {
+	return libmiqt.ValueCast[QSizeF](C.QPageSize_definitionSizeWithPageSizeId((C.int)(pageSizeId)))
 }
 
 func QPageSize_DefinitionUnitsWithPageSizeId(pageSizeId QPageSize__PageSizeId) QPageSize__Unit {
 	return (QPageSize__Unit)(C.QPageSize_definitionUnitsWithPageSizeId((C.int)(pageSizeId)))
 }
 
-func QPageSize_Size2(pageSizeId QPageSize__PageSizeId, units QPageSize__Unit) *QSizeF {
-	_goptr := newQSizeF(C.QPageSize_size2((C.int)(pageSizeId), (C.int)(units)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QPageSize_Size2(pageSizeId QPageSize__PageSizeId, units QPageSize__Unit) QSizeF {
+	return libmiqt.ValueCast[QSizeF](C.QPageSize_size2((C.int)(pageSizeId), (C.int)(units)))
 }
 
-func QPageSize_SizePointsWithPageSizeId(pageSizeId QPageSize__PageSizeId) *QSize {
-	_goptr := newQSize(C.QPageSize_sizePointsWithPageSizeId((C.int)(pageSizeId)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QPageSize_SizePointsWithPageSizeId(pageSizeId QPageSize__PageSizeId) QSize {
+	return libmiqt.ValueCast[QSize](C.QPageSize_sizePointsWithPageSizeId((C.int)(pageSizeId)))
 }
 
-func QPageSize_SizePixels2(pageSizeId QPageSize__PageSizeId, resolution int) *QSize {
-	_goptr := newQSize(C.QPageSize_sizePixels2((C.int)(pageSizeId), (C.int)(resolution)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func QPageSize_SizePixels2(pageSizeId QPageSize__PageSizeId, resolution int) QSize {
+	return libmiqt.ValueCast[QSize](C.QPageSize_sizePixels2((C.int)(pageSizeId), (C.int)(resolution)))
 }
 
-func QPageSize_Id3(pointSize *QSize, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
-	defer runtime.KeepAlive(pointSize)
-	return (QPageSize__PageSizeId)(C.QPageSize_id3(pointSize.cPointer(), (C.int)(matchPolicy)))
+func QPageSize_Id3(pointSize QSize, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
+	return (QPageSize__PageSizeId)(C.QPageSize_id3(libmiqt.ValueCast[C.struct_miqt_qsize](pointSize), (C.int)(matchPolicy)))
 }
 
-func QPageSize_Id4(size *QSizeF, units QPageSize__Unit, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
-	defer runtime.KeepAlive(size)
-	return (QPageSize__PageSizeId)(C.QPageSize_id4(size.cPointer(), (C.int)(units), (C.int)(matchPolicy)))
+func QPageSize_Id4(size QSizeF, units QPageSize__Unit, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
+	return (QPageSize__PageSizeId)(C.QPageSize_id4(libmiqt.ValueCast[C.struct_miqt_qsizef](size), (C.int)(units), (C.int)(matchPolicy)))
 }
 
 // Delete this object from C++ memory.

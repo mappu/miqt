@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -179,34 +180,28 @@ func (this *QGraphicsWidget) SetAutoFillBackground(enabled bool) {
 	C.QGraphicsWidget_setAutoFillBackground(this.h, (C.bool)(enabled))
 }
 
-func (this *QGraphicsWidget) Resize(size *QSizeF) {
-	defer runtime.KeepAlive(size)
-	C.QGraphicsWidget_resize(this.h, size.cPointer())
+func (this *QGraphicsWidget) Resize(size QSizeF) {
+	C.QGraphicsWidget_resize(this.h, libmiqt.ValueCast[C.struct_miqt_qsizef](size))
 }
 
 func (this *QGraphicsWidget) Resize2(w float64, h float64) {
 	C.QGraphicsWidget_resize2(this.h, (C.double)(w), (C.double)(h))
 }
 
-func (this *QGraphicsWidget) Size() *QSizeF {
-	_goptr := newQSizeF(C.QGraphicsWidget_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsWidget) Size() QSizeF {
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsWidget_size(this.h))
 }
 
-func (this *QGraphicsWidget) SetGeometry(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsWidget_setGeometry(this.h, rect.cPointer())
+func (this *QGraphicsWidget) SetGeometry(rect QRectF) {
+	C.QGraphicsWidget_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
 func (this *QGraphicsWidget) SetGeometry2(x float64, y float64, w float64, h float64) {
 	C.QGraphicsWidget_setGeometry2(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h))
 }
 
-func (this *QGraphicsWidget) Rect() *QRectF {
-	_goptr := newQRectF(C.QGraphicsWidget_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsWidget) Rect() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsWidget_rect(this.h))
 }
 
 func (this *QGraphicsWidget) SetContentsMargins(left float64, top float64, right float64, bottom float64) {
@@ -214,8 +209,7 @@ func (this *QGraphicsWidget) SetContentsMargins(left float64, top float64, right
 }
 
 func (this *QGraphicsWidget) SetContentsMarginsWithMargins(margins QMarginsF) {
-	defer runtime.KeepAlive(margins)
-	C.QGraphicsWidget_setContentsMarginsWithMargins(this.h, margins.cPointer())
+	C.QGraphicsWidget_setContentsMarginsWithMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins))
 }
 
 func (this *QGraphicsWidget) GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
@@ -227,8 +221,7 @@ func (this *QGraphicsWidget) SetWindowFrameMargins(left float64, top float64, ri
 }
 
 func (this *QGraphicsWidget) SetWindowFrameMarginsWithMargins(margins QMarginsF) {
-	defer runtime.KeepAlive(margins)
-	C.QGraphicsWidget_setWindowFrameMarginsWithMargins(this.h, margins.cPointer())
+	C.QGraphicsWidget_setWindowFrameMarginsWithMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins))
 }
 
 func (this *QGraphicsWidget) GetWindowFrameMargins(left *float64, top *float64, right *float64, bottom *float64) {
@@ -239,16 +232,12 @@ func (this *QGraphicsWidget) UnsetWindowFrameMargins() {
 	C.QGraphicsWidget_unsetWindowFrameMargins(this.h)
 }
 
-func (this *QGraphicsWidget) WindowFrameGeometry() *QRectF {
-	_goptr := newQRectF(C.QGraphicsWidget_windowFrameGeometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsWidget) WindowFrameGeometry() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsWidget_windowFrameGeometry(this.h))
 }
 
-func (this *QGraphicsWidget) WindowFrameRect() *QRectF {
-	_goptr := newQRectF(C.QGraphicsWidget_windowFrameRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsWidget) WindowFrameRect() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsWidget_windowFrameRect(this.h))
 }
 
 func (this *QGraphicsWidget) WindowFlags() WindowType {
@@ -383,10 +372,8 @@ func (this *QGraphicsWidget) PaintWindowFrame(painter *QPainter, option *QStyleO
 	C.QGraphicsWidget_paintWindowFrame(this.h, painter.cPointer(), option.cPointer(), widget.cPointer())
 }
 
-func (this *QGraphicsWidget) BoundingRect() *QRectF {
-	_goptr := newQRectF(C.QGraphicsWidget_boundingRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QGraphicsWidget) BoundingRect() QRectF {
+	return libmiqt.ValueCast[QRectF](C.QGraphicsWidget_boundingRect(this.h))
 }
 
 func (this *QGraphicsWidget) Shape() *QPainterPath {
@@ -626,13 +613,12 @@ func (this *QGraphicsWidget) SetOwnedByLayout(ownedByLayout bool) {
 
 }
 
-func (this *QGraphicsWidget) callVirtualBase_SetGeometry(rect *QRectF) {
-	defer runtime.KeepAlive(rect)
+func (this *QGraphicsWidget) callVirtualBase_SetGeometry(rect QRectF) {
 
-	C.QGraphicsWidget_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QGraphicsWidget_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsWidget) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+func (this *QGraphicsWidget) OnSetGeometry(slot func(super func(rect QRectF), rect QRectF)) {
 	ok := C.QGraphicsWidget_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -640,14 +626,14 @@ func (this *QGraphicsWidget) OnSetGeometry(slot func(super func(rect *QRectF), r
 }
 
 //export miqt_exec_callback_QGraphicsWidget_setGeometry
-func miqt_exec_callback_QGraphicsWidget_setGeometry(self *C.QGraphicsWidget, cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF), rect *QRectF))
+func miqt_exec_callback_QGraphicsWidget_setGeometry(self *C.QGraphicsWidget, cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRectF), rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(rect)
+	slotval1 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc((&QGraphicsWidget{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -774,14 +760,12 @@ func miqt_exec_callback_QGraphicsWidget_paintWindowFrame(self *C.QGraphicsWidget
 
 }
 
-func (this *QGraphicsWidget) callVirtualBase_BoundingRect() *QRectF {
+func (this *QGraphicsWidget) callVirtualBase_BoundingRect() QRectF {
 
-	_goptr := newQRectF(C.QGraphicsWidget_virtualbase_boundingRect(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRectF](C.QGraphicsWidget_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsWidget) OnBoundingRect(slot func(super func() *QRectF) *QRectF) {
+func (this *QGraphicsWidget) OnBoundingRect(slot func(super func() QRectF) QRectF) {
 	ok := C.QGraphicsWidget_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -789,16 +773,15 @@ func (this *QGraphicsWidget) OnBoundingRect(slot func(super func() *QRectF) *QRe
 }
 
 //export miqt_exec_callback_QGraphicsWidget_boundingRect
-func miqt_exec_callback_QGraphicsWidget_boundingRect(self *C.QGraphicsWidget, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRectF) *QRectF)
+func miqt_exec_callback_QGraphicsWidget_boundingRect(self *C.QGraphicsWidget, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRectF) QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsWidget_virtualreturncopy_QRectF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -857,15 +840,12 @@ func miqt_exec_callback_QGraphicsWidget_initStyleOption(self *C.QGraphicsWidget,
 
 }
 
-func (this *QGraphicsWidget) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
-	defer runtime.KeepAlive(constraint)
+func (this *QGraphicsWidget) callVirtualBase_SizeHint(which SizeHint, constraint QSizeF) QSizeF {
 
-	_goptr := newQSizeF(C.QGraphicsWidget_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsWidget_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 
 }
-func (this *QGraphicsWidget) OnSizeHint(slot func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF) {
+func (this *QGraphicsWidget) OnSizeHint(slot func(super func(which SizeHint, constraint QSizeF) QSizeF, which SizeHint, constraint QSizeF) QSizeF) {
 	ok := C.QGraphicsWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -873,8 +853,8 @@ func (this *QGraphicsWidget) OnSizeHint(slot func(super func(which SizeHint, con
 }
 
 //export miqt_exec_callback_QGraphicsWidget_sizeHint
-func miqt_exec_callback_QGraphicsWidget_sizeHint(self *C.QGraphicsWidget, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF)
+func miqt_exec_callback_QGraphicsWidget_sizeHint(self *C.QGraphicsWidget, cb C.intptr_t, which C.int, constraint C.struct_miqt_qsizef) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint QSizeF) QSizeF, which SizeHint, constraint QSizeF) QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -882,12 +862,11 @@ func miqt_exec_callback_QGraphicsWidget_sizeHint(self *C.QGraphicsWidget, cb C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := newQSizeF(constraint)
+	slotval2 := libmiqt.ValueCast[QSizeF](constraint)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsWidget_virtualreturncopy_QSizeF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 
@@ -1046,13 +1025,12 @@ func miqt_exec_callback_QGraphicsWidget_windowFrameEvent(self *C.QGraphicsWidget
 
 }
 
-func (this *QGraphicsWidget) callVirtualBase_WindowFrameSectionAt(pos *QPointF) WindowFrameSection {
-	defer runtime.KeepAlive(pos)
+func (this *QGraphicsWidget) callVirtualBase_WindowFrameSectionAt(pos QPointF) WindowFrameSection {
 
-	return (WindowFrameSection)(C.QGraphicsWidget_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), pos.cPointer()))
+	return (WindowFrameSection)(C.QGraphicsWidget_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](pos)))
 
 }
-func (this *QGraphicsWidget) OnWindowFrameSectionAt(slot func(super func(pos *QPointF) WindowFrameSection, pos *QPointF) WindowFrameSection) {
+func (this *QGraphicsWidget) OnWindowFrameSectionAt(slot func(super func(pos QPointF) WindowFrameSection, pos QPointF) WindowFrameSection) {
 	ok := C.QGraphicsWidget_override_virtual_windowFrameSectionAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1060,14 +1038,14 @@ func (this *QGraphicsWidget) OnWindowFrameSectionAt(slot func(super func(pos *QP
 }
 
 //export miqt_exec_callback_QGraphicsWidget_windowFrameSectionAt
-func miqt_exec_callback_QGraphicsWidget_windowFrameSectionAt(self *C.QGraphicsWidget, cb C.intptr_t, pos *C.QPointF) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos *QPointF) WindowFrameSection, pos *QPointF) WindowFrameSection)
+func miqt_exec_callback_QGraphicsWidget_windowFrameSectionAt(self *C.QGraphicsWidget, cb C.intptr_t, pos C.struct_miqt_qpointf) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos QPointF) WindowFrameSection, pos QPointF) WindowFrameSection)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(pos)
+	slotval1 := libmiqt.ValueCast[QPointF](pos)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_WindowFrameSectionAt, slotval1)
 
@@ -1725,13 +1703,12 @@ func miqt_exec_callback_QGraphicsWidget_advance(self *C.QGraphicsWidget, cb C.in
 
 }
 
-func (this *QGraphicsWidget) callVirtualBase_Contains(point *QPointF) bool {
-	defer runtime.KeepAlive(point)
+func (this *QGraphicsWidget) callVirtualBase_Contains(point QPointF) bool {
 
-	return (bool)(C.QGraphicsWidget_virtualbase_contains(unsafe.Pointer(this.h), point.cPointer()))
+	return (bool)(C.QGraphicsWidget_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QGraphicsWidget) OnContains(slot func(super func(point *QPointF) bool, point *QPointF) bool) {
+func (this *QGraphicsWidget) OnContains(slot func(super func(point QPointF) bool, point QPointF) bool) {
 	ok := C.QGraphicsWidget_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1739,14 +1716,14 @@ func (this *QGraphicsWidget) OnContains(slot func(super func(point *QPointF) boo
 }
 
 //export miqt_exec_callback_QGraphicsWidget_contains
-func miqt_exec_callback_QGraphicsWidget_contains(self *C.QGraphicsWidget, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *QPointF) bool, point *QPointF) bool)
+func miqt_exec_callback_QGraphicsWidget_contains(self *C.QGraphicsWidget, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point QPointF) bool, point QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPointF(point)
+	slotval1 := libmiqt.ValueCast[QPointF](point)
 
 	virtualReturn := gofunc((&QGraphicsWidget{h: self}).callVirtualBase_Contains, slotval1)
 

@@ -25,17 +25,17 @@ void miqt_exec_callback_QStackedLayout_widgetRemoved(intptr_t, int);
 void miqt_exec_callback_QStackedLayout_currentChanged(intptr_t, int);
 int miqt_exec_callback_QStackedLayout_count(const QStackedLayout*, intptr_t);
 void miqt_exec_callback_QStackedLayout_addItem(QStackedLayout*, intptr_t, QLayoutItem*);
-QSize* miqt_exec_callback_QStackedLayout_sizeHint(const QStackedLayout*, intptr_t);
-QSize* miqt_exec_callback_QStackedLayout_minimumSize(const QStackedLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QStackedLayout_sizeHint(const QStackedLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QStackedLayout_minimumSize(const QStackedLayout*, intptr_t);
 QLayoutItem* miqt_exec_callback_QStackedLayout_itemAt(const QStackedLayout*, intptr_t, int);
 QLayoutItem* miqt_exec_callback_QStackedLayout_takeAt(QStackedLayout*, intptr_t, int);
-void miqt_exec_callback_QStackedLayout_setGeometry(QStackedLayout*, intptr_t, QRect*);
+void miqt_exec_callback_QStackedLayout_setGeometry(QStackedLayout*, intptr_t, struct miqt_qrect);
 bool miqt_exec_callback_QStackedLayout_hasHeightForWidth(const QStackedLayout*, intptr_t);
 int miqt_exec_callback_QStackedLayout_heightForWidth(const QStackedLayout*, intptr_t, int);
 void miqt_exec_callback_QStackedLayout_invalidate(QStackedLayout*, intptr_t);
-QRect* miqt_exec_callback_QStackedLayout_geometry(const QStackedLayout*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QStackedLayout_geometry(const QStackedLayout*, intptr_t);
 int miqt_exec_callback_QStackedLayout_expandingDirections(const QStackedLayout*, intptr_t);
-QSize* miqt_exec_callback_QStackedLayout_maximumSize(const QStackedLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QStackedLayout_maximumSize(const QStackedLayout*, intptr_t);
 int miqt_exec_callback_QStackedLayout_indexOf(const QStackedLayout*, intptr_t, QWidget*);
 bool miqt_exec_callback_QStackedLayout_isEmpty(const QStackedLayout*, intptr_t);
 int miqt_exec_callback_QStackedLayout_controlTypes(const QStackedLayout*, intptr_t);
@@ -104,13 +104,11 @@ public:
 			return QStackedLayout::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QStackedLayout_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QStackedLayout_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QStackedLayout_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -121,13 +119,11 @@ public:
 			return QStackedLayout::minimumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_minimumSize(this, handle__minimumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QStackedLayout_minimumSize(this, handle__minimumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QStackedLayout_virtualbase_minimumSize(const void* self);
+	friend struct miqt_qsize QStackedLayout_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemAt = 0;
@@ -171,14 +167,12 @@ public:
 			return;
 		}
 
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(rect);
 		miqt_exec_callback_QStackedLayout_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QStackedLayout_virtualbase_setGeometry(void* self, QRect* rect);
+	friend void QStackedLayout_virtualbase_setGeometry(void* self, struct miqt_qrect rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -236,13 +230,11 @@ public:
 			return QStackedLayout::geometry();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QStackedLayout_geometry(this, handle__geometry);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QStackedLayout_geometry(this, handle__geometry);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QStackedLayout_virtualbase_geometry(const void* self);
+	friend struct miqt_qrect QStackedLayout_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__expandingDirections = 0;
@@ -268,13 +260,11 @@ public:
 			return QStackedLayout::maximumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_maximumSize(this, handle__maximumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QStackedLayout_maximumSize(this, handle__maximumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QStackedLayout_virtualbase_maximumSize(const void* self);
+	friend struct miqt_qsize QStackedLayout_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indexOf = 0;
@@ -510,7 +500,7 @@ public:
 	friend void QStackedLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 	friend void QStackedLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
 	friend bool QStackedLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout);
-	friend QRect* QStackedLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
+	friend struct miqt_qrect QStackedLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1);
 	friend QObject* QStackedLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QStackedLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QStackedLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -600,12 +590,12 @@ void QStackedLayout_addItem(QStackedLayout* self, QLayoutItem* item) {
 	self->addItem(item);
 }
 
-QSize* QStackedLayout_sizeHint(const QStackedLayout* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QStackedLayout_sizeHint(const QStackedLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QStackedLayout_minimumSize(const QStackedLayout* self) {
-	return new QSize(self->minimumSize());
+struct miqt_qsize QStackedLayout_minimumSize(const QStackedLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSize());
 }
 
 QLayoutItem* QStackedLayout_itemAt(const QStackedLayout* self, int param1) {
@@ -616,8 +606,8 @@ QLayoutItem* QStackedLayout_takeAt(QStackedLayout* self, int param1) {
 	return self->takeAt(static_cast<int>(param1));
 }
 
-void QStackedLayout_setGeometry(QStackedLayout* self, QRect* rect) {
-	self->setGeometry(*rect);
+void QStackedLayout_setGeometry(QStackedLayout* self, struct miqt_qrect rect) {
+	self->setGeometry(miqt_from_cabi<QRect>(rect));
 }
 
 bool QStackedLayout_hasHeightForWidth(const QStackedLayout* self) {
@@ -740,8 +730,8 @@ bool QStackedLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QStackedLayout_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQStackedLayout*>(self)->QStackedLayout::sizeHint());
+struct miqt_qsize QStackedLayout_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQStackedLayout*>(self)->QStackedLayout::sizeHint());
 }
 
 bool QStackedLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -754,8 +744,8 @@ bool QStackedLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QStackedLayout_virtualbase_minimumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQStackedLayout*>(self)->QStackedLayout::minimumSize());
+struct miqt_qsize QStackedLayout_virtualbase_minimumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQStackedLayout*>(self)->QStackedLayout::minimumSize());
 }
 
 bool QStackedLayout_override_virtual_itemAt(void* self, intptr_t slot) {
@@ -796,8 +786,8 @@ bool QStackedLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 	return true;
 }
 
-void QStackedLayout_virtualbase_setGeometry(void* self, QRect* rect) {
-	static_cast<MiqtVirtualQStackedLayout*>(self)->QStackedLayout::setGeometry(*rect);
+void QStackedLayout_virtualbase_setGeometry(void* self, struct miqt_qrect rect) {
+	static_cast<MiqtVirtualQStackedLayout*>(self)->QStackedLayout::setGeometry(miqt_from_cabi<QRect>(rect));
 }
 
 bool QStackedLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -852,8 +842,8 @@ bool QStackedLayout_override_virtual_geometry(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QStackedLayout_virtualbase_geometry(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQStackedLayout*>(self)->QStackedLayout::geometry());
+struct miqt_qrect QStackedLayout_virtualbase_geometry(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQStackedLayout*>(self)->QStackedLayout::geometry());
 }
 
 bool QStackedLayout_override_virtual_expandingDirections(void* self, intptr_t slot) {
@@ -881,8 +871,8 @@ bool QStackedLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QStackedLayout_virtualbase_maximumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQStackedLayout*>(self)->QStackedLayout::maximumSize());
+struct miqt_qsize QStackedLayout_virtualbase_maximumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQStackedLayout*>(self)->QStackedLayout::maximumSize());
 }
 
 bool QStackedLayout_override_virtual_indexOf(void* self, intptr_t slot) {
@@ -1082,14 +1072,6 @@ QSpacerItem* QStackedLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQStackedLayout*>(self)->QStackedLayout::spacerItem();
 }
 
-QSize* QStackedLayout_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
-QRect* QStackedLayout_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
 void QStackedLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -1134,15 +1116,15 @@ bool QStackedLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self
 	return self_cast->adoptLayout(layout);
 }
 
-QRect* QStackedLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
+struct miqt_qrect QStackedLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1) {
 	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->alignmentRect(*param1));
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->alignmentRect(miqt_from_cabi<QRect>(param1)));
 }
 
 QObject* QStackedLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

@@ -27,16 +27,16 @@ void miqt_exec_callback_QFormLayout_setSpacing(QFormLayout*, intptr_t, int);
 void miqt_exec_callback_QFormLayout_addItem(QFormLayout*, intptr_t, QLayoutItem*);
 QLayoutItem* miqt_exec_callback_QFormLayout_itemAtWithIndex(const QFormLayout*, intptr_t, int);
 QLayoutItem* miqt_exec_callback_QFormLayout_takeAt(QFormLayout*, intptr_t, int);
-void miqt_exec_callback_QFormLayout_setGeometry(QFormLayout*, intptr_t, QRect*);
-QSize* miqt_exec_callback_QFormLayout_minimumSize(const QFormLayout*, intptr_t);
-QSize* miqt_exec_callback_QFormLayout_sizeHint(const QFormLayout*, intptr_t);
+void miqt_exec_callback_QFormLayout_setGeometry(QFormLayout*, intptr_t, struct miqt_qrect);
+struct miqt_qsize miqt_exec_callback_QFormLayout_minimumSize(const QFormLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFormLayout_sizeHint(const QFormLayout*, intptr_t);
 void miqt_exec_callback_QFormLayout_invalidate(QFormLayout*, intptr_t);
 bool miqt_exec_callback_QFormLayout_hasHeightForWidth(const QFormLayout*, intptr_t);
 int miqt_exec_callback_QFormLayout_heightForWidth(const QFormLayout*, intptr_t, int);
 int miqt_exec_callback_QFormLayout_expandingDirections(const QFormLayout*, intptr_t);
 int miqt_exec_callback_QFormLayout_count(const QFormLayout*, intptr_t);
-QRect* miqt_exec_callback_QFormLayout_geometry(const QFormLayout*, intptr_t);
-QSize* miqt_exec_callback_QFormLayout_maximumSize(const QFormLayout*, intptr_t);
+struct miqt_qrect miqt_exec_callback_QFormLayout_geometry(const QFormLayout*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFormLayout_maximumSize(const QFormLayout*, intptr_t);
 int miqt_exec_callback_QFormLayout_indexOf(const QFormLayout*, intptr_t, QWidget*);
 bool miqt_exec_callback_QFormLayout_isEmpty(const QFormLayout*, intptr_t);
 int miqt_exec_callback_QFormLayout_controlTypes(const QFormLayout*, intptr_t);
@@ -155,14 +155,12 @@ public:
 			return;
 		}
 
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(rect);
 		miqt_exec_callback_QFormLayout_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QFormLayout_virtualbase_setGeometry(void* self, QRect* rect);
+	friend void QFormLayout_virtualbase_setGeometry(void* self, struct miqt_qrect rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -173,13 +171,11 @@ public:
 			return QFormLayout::minimumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFormLayout_minimumSize(this, handle__minimumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFormLayout_minimumSize(this, handle__minimumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFormLayout_virtualbase_minimumSize(const void* self);
+	friend struct miqt_qsize QFormLayout_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -190,13 +186,11 @@ public:
 			return QFormLayout::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFormLayout_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFormLayout_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFormLayout_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QFormLayout_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -284,13 +278,11 @@ public:
 			return QFormLayout::geometry();
 		}
 
-		QRect* callback_return_value = miqt_exec_callback_QFormLayout_geometry(this, handle__geometry);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QFormLayout_geometry(this, handle__geometry);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
-	friend QRect* QFormLayout_virtualbase_geometry(const void* self);
+	friend struct miqt_qrect QFormLayout_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -301,13 +293,11 @@ public:
 			return QFormLayout::maximumSize();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFormLayout_maximumSize(this, handle__maximumSize);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFormLayout_maximumSize(this, handle__maximumSize);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFormLayout_virtualbase_maximumSize(const void* self);
+	friend struct miqt_qsize QFormLayout_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indexOf = 0;
@@ -562,7 +552,7 @@ public:
 	friend void QFormLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 	friend void QFormLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
 	friend bool QFormLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, QLayout* layout);
-	friend QRect* QFormLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1);
+	friend struct miqt_qrect QFormLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1);
 	friend QObject* QFormLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QFormLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QFormLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -796,16 +786,16 @@ QLayoutItem* QFormLayout_takeAt(QFormLayout* self, int index) {
 	return self->takeAt(static_cast<int>(index));
 }
 
-void QFormLayout_setGeometry(QFormLayout* self, QRect* rect) {
-	self->setGeometry(*rect);
+void QFormLayout_setGeometry(QFormLayout* self, struct miqt_qrect rect) {
+	self->setGeometry(miqt_from_cabi<QRect>(rect));
 }
 
-QSize* QFormLayout_minimumSize(const QFormLayout* self) {
-	return new QSize(self->minimumSize());
+struct miqt_qsize QFormLayout_minimumSize(const QFormLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSize());
 }
 
-QSize* QFormLayout_sizeHint(const QFormLayout* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QFormLayout_sizeHint(const QFormLayout* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QFormLayout_invalidate(QFormLayout* self) {
@@ -935,8 +925,8 @@ bool QFormLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 	return true;
 }
 
-void QFormLayout_virtualbase_setGeometry(void* self, QRect* rect) {
-	static_cast<MiqtVirtualQFormLayout*>(self)->QFormLayout::setGeometry(*rect);
+void QFormLayout_virtualbase_setGeometry(void* self, struct miqt_qrect rect) {
+	static_cast<MiqtVirtualQFormLayout*>(self)->QFormLayout::setGeometry(miqt_from_cabi<QRect>(rect));
 }
 
 bool QFormLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -949,8 +939,8 @@ bool QFormLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFormLayout_virtualbase_minimumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFormLayout*>(self)->QFormLayout::minimumSize());
+struct miqt_qsize QFormLayout_virtualbase_minimumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFormLayout*>(self)->QFormLayout::minimumSize());
 }
 
 bool QFormLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -963,8 +953,8 @@ bool QFormLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFormLayout_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFormLayout*>(self)->QFormLayout::sizeHint());
+struct miqt_qsize QFormLayout_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFormLayout*>(self)->QFormLayout::sizeHint());
 }
 
 bool QFormLayout_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -1048,8 +1038,8 @@ bool QFormLayout_override_virtual_geometry(void* self, intptr_t slot) {
 	return true;
 }
 
-QRect* QFormLayout_virtualbase_geometry(const void* self) {
-	return new QRect(static_cast<const MiqtVirtualQFormLayout*>(self)->QFormLayout::geometry());
+struct miqt_qrect QFormLayout_virtualbase_geometry(const void* self) {
+	return miqt_to_cabi<struct miqt_qrect>(static_cast<const MiqtVirtualQFormLayout*>(self)->QFormLayout::geometry());
 }
 
 bool QFormLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -1062,8 +1052,8 @@ bool QFormLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFormLayout_virtualbase_maximumSize(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFormLayout*>(self)->QFormLayout::maximumSize());
+struct miqt_qsize QFormLayout_virtualbase_maximumSize(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFormLayout*>(self)->QFormLayout::maximumSize());
 }
 
 bool QFormLayout_override_virtual_indexOf(void* self, intptr_t slot) {
@@ -1277,14 +1267,6 @@ QSpacerItem* QFormLayout_virtualbase_spacerItem(void* self) {
 	return static_cast<MiqtVirtualQFormLayout*>(self)->QFormLayout::spacerItem();
 }
 
-QSize* QFormLayout_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
-QRect* QFormLayout_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
 void QFormLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
 	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
 	if (self_cast == nullptr) {
@@ -1329,15 +1311,15 @@ bool QFormLayout_protectedbase_adoptLayout(bool* _dynamic_cast_ok, void* self, Q
 	return self_cast->adoptLayout(layout);
 }
 
-QRect* QFormLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, QRect* param1) {
+struct miqt_qrect QFormLayout_protectedbase_alignmentRect(bool* _dynamic_cast_ok, const void* self, struct miqt_qrect param1) {
 	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->alignmentRect(*param1));
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->alignmentRect(miqt_from_cabi<QRect>(param1)));
 }
 
 QObject* QFormLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

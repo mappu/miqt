@@ -9,6 +9,7 @@ package sql
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -120,9 +121,8 @@ func (this *QSqlTableModel) TableName() string {
 	return _ret
 }
 
-func (this *QSqlTableModel) Flags(index *qt6.QModelIndex) qt6.ItemFlag {
-	defer runtime.KeepAlive(index)
-	return (qt6.ItemFlag)(C.QSqlTableModel_flags(this.h, (*C.QModelIndex)(index.UnsafePointer())))
+func (this *QSqlTableModel) Flags(index qt6.QModelIndex) qt6.ItemFlag {
+	return (qt6.ItemFlag)(C.QSqlTableModel_flags(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QSqlTableModel) Record() *QSqlRecord {
@@ -137,22 +137,19 @@ func (this *QSqlTableModel) RecordWithRow(row int) *QSqlRecord {
 	return _goptr
 }
 
-func (this *QSqlTableModel) Data(idx *qt6.QModelIndex, role int) *qt6.QVariant {
-	defer runtime.KeepAlive(idx)
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSqlTableModel_data(this.h, (*C.QModelIndex)(idx.UnsafePointer()), (C.int)(role))))
+func (this *QSqlTableModel) Data(idx qt6.QModelIndex, role int) *qt6.QVariant {
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSqlTableModel_data(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](idx), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QSqlTableModel) SetData(index *qt6.QModelIndex, value *qt6.QVariant, role int) bool {
-	defer runtime.KeepAlive(index)
+func (this *QSqlTableModel) SetData(index qt6.QModelIndex, value *qt6.QVariant, role int) bool {
 	defer runtime.KeepAlive(value)
-	return (bool)(C.QSqlTableModel_setData(this.h, (*C.QModelIndex)(index.UnsafePointer()), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
+	return (bool)(C.QSqlTableModel_setData(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
 }
 
-func (this *QSqlTableModel) ClearItemData(index *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(index)
-	return (bool)(C.QSqlTableModel_clearItemData(this.h, (*C.QModelIndex)(index.UnsafePointer())))
+func (this *QSqlTableModel) ClearItemData(index qt6.QModelIndex) bool {
+	return (bool)(C.QSqlTableModel_clearItemData(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QSqlTableModel) HeaderData(section int, orientation qt6.Orientation, role int) *qt6.QVariant {
@@ -165,9 +162,8 @@ func (this *QSqlTableModel) IsDirty() bool {
 	return (bool)(C.QSqlTableModel_isDirty(this.h))
 }
 
-func (this *QSqlTableModel) IsDirtyWithIndex(index *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(index)
-	return (bool)(C.QSqlTableModel_isDirtyWithIndex(this.h, (*C.QModelIndex)(index.UnsafePointer())))
+func (this *QSqlTableModel) IsDirtyWithIndex(index qt6.QModelIndex) bool {
+	return (bool)(C.QSqlTableModel_isDirtyWithIndex(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 }
 
 func (this *QSqlTableModel) Clear() {
@@ -225,24 +221,20 @@ func (this *QSqlTableModel) SetFilter(filter string) {
 	C.QSqlTableModel_setFilter(this.h, filter_ms)
 }
 
-func (this *QSqlTableModel) RowCount(parent *qt6.QModelIndex) int {
-	defer runtime.KeepAlive(parent)
-	return (int)(C.QSqlTableModel_rowCount(this.h, (*C.QModelIndex)(parent.UnsafePointer())))
+func (this *QSqlTableModel) RowCount(parent qt6.QModelIndex) int {
+	return (int)(C.QSqlTableModel_rowCount(this.h, libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QSqlTableModel) RemoveColumns(column int, count int, parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QSqlTableModel_removeColumns(this.h, (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
+func (this *QSqlTableModel) RemoveColumns(column int, count int, parent qt6.QModelIndex) bool {
+	return (bool)(C.QSqlTableModel_removeColumns(this.h, (C.int)(column), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QSqlTableModel) RemoveRows(row int, count int, parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QSqlTableModel_removeRows(this.h, (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
+func (this *QSqlTableModel) RemoveRows(row int, count int, parent qt6.QModelIndex) bool {
+	return (bool)(C.QSqlTableModel_removeRows(this.h, (C.int)(row), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
-func (this *QSqlTableModel) InsertRows(row int, count int, parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-	return (bool)(C.QSqlTableModel_insertRows(this.h, (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
+func (this *QSqlTableModel) InsertRows(row int, count int, parent qt6.QModelIndex) bool {
+	return (bool)(C.QSqlTableModel_insertRows(this.h, (C.int)(row), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 }
 
 func (this *QSqlTableModel) InsertRecord(row int, record *QSqlRecord) bool {
@@ -435,11 +427,10 @@ func (this *QSqlTableModel) PrimaryValues(row int) QSqlRecord {
 }
 
 // BeginInsertRows can only be called from a QSqlTableModel that was directly constructed.
-func (this *QSqlTableModel) BeginInsertRows(parent *qt6.QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) BeginInsertRows(parent qt6.QModelIndex, first int, last int) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSqlTableModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
+	C.QSqlTableModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(first), (C.int)(last))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -460,11 +451,10 @@ func (this *QSqlTableModel) EndInsertRows() {
 }
 
 // BeginRemoveRows can only be called from a QSqlTableModel that was directly constructed.
-func (this *QSqlTableModel) BeginRemoveRows(parent *qt6.QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) BeginRemoveRows(parent qt6.QModelIndex, first int, last int) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSqlTableModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
+	C.QSqlTableModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(first), (C.int)(last))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -485,11 +475,10 @@ func (this *QSqlTableModel) EndRemoveRows() {
 }
 
 // BeginInsertColumns can only be called from a QSqlTableModel that was directly constructed.
-func (this *QSqlTableModel) BeginInsertColumns(parent *qt6.QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) BeginInsertColumns(parent qt6.QModelIndex, first int, last int) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSqlTableModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
+	C.QSqlTableModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(first), (C.int)(last))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -510,11 +499,10 @@ func (this *QSqlTableModel) EndInsertColumns() {
 }
 
 // BeginRemoveColumns can only be called from a QSqlTableModel that was directly constructed.
-func (this *QSqlTableModel) BeginRemoveColumns(parent *qt6.QModelIndex, first int, last int) {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) BeginRemoveColumns(parent qt6.QModelIndex, first int, last int) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSqlTableModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()), (C.int)(first), (C.int)(last))
+	C.QSqlTableModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (C.int)(first), (C.int)(last))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -575,9 +563,7 @@ func (this *QSqlTableModel) SetLastError(error *QSqlError) {
 func (this *QSqlTableModel) CreateIndex(row int, column int) qt6.QModelIndex {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlTableModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt6.QModelIndex](C.QSqlTableModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -589,13 +575,12 @@ func (this *QSqlTableModel) CreateIndex(row int, column int) qt6.QModelIndex {
 
 // EncodeData can only be called from a QSqlTableModel that was directly constructed.
 func (this *QSqlTableModel) EncodeData(indexes []qt6.QModelIndex, stream *qt6.QDataStream) {
-	defer runtime.KeepAlive(indexes)
 	defer runtime.KeepAlive(stream)
-	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	indexes_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
-		indexes_CArray[i] = (*C.QModelIndex)(indexes[i].UnsafePointer())
+		indexes_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](indexes[i])
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
@@ -609,12 +594,11 @@ func (this *QSqlTableModel) EncodeData(indexes []qt6.QModelIndex, stream *qt6.QD
 }
 
 // DecodeData can only be called from a QSqlTableModel that was directly constructed.
-func (this *QSqlTableModel) DecodeData(row int, column int, parent *qt6.QModelIndex, stream *qt6.QDataStream) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) DecodeData(row int, column int, parent qt6.QModelIndex, stream *qt6.QDataStream) bool {
 	defer runtime.KeepAlive(stream)
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := (bool)(C.QSqlTableModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer()), (*C.QDataStream)(stream.UnsafePointer())))
+	_method_ret := (bool)(C.QSqlTableModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent), (*C.QDataStream)(stream.UnsafePointer())))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -625,12 +609,10 @@ func (this *QSqlTableModel) DecodeData(row int, column int, parent *qt6.QModelIn
 }
 
 // BeginMoveRows can only be called from a QSqlTableModel that was directly constructed.
-func (this *QSqlTableModel) BeginMoveRows(sourceParent *qt6.QModelIndex, sourceFirst int, sourceLast int, destinationParent *qt6.QModelIndex, destinationRow int) bool {
-	defer runtime.KeepAlive(sourceParent)
-	defer runtime.KeepAlive(destinationParent)
+func (this *QSqlTableModel) BeginMoveRows(sourceParent qt6.QModelIndex, sourceFirst int, sourceLast int, destinationParent qt6.QModelIndex, destinationRow int) bool {
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := (bool)(C.QSqlTableModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceFirst), (C.int)(sourceLast), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationRow)))
+	_method_ret := (bool)(C.QSqlTableModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](sourceParent), (C.int)(sourceFirst), (C.int)(sourceLast), libmiqt.ValueCast[C.struct_miqt_qmodelindex](destinationParent), (C.int)(destinationRow)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -653,12 +635,10 @@ func (this *QSqlTableModel) EndMoveRows() {
 }
 
 // BeginMoveColumns can only be called from a QSqlTableModel that was directly constructed.
-func (this *QSqlTableModel) BeginMoveColumns(sourceParent *qt6.QModelIndex, sourceFirst int, sourceLast int, destinationParent *qt6.QModelIndex, destinationColumn int) bool {
-	defer runtime.KeepAlive(sourceParent)
-	defer runtime.KeepAlive(destinationParent)
+func (this *QSqlTableModel) BeginMoveColumns(sourceParent qt6.QModelIndex, sourceFirst int, sourceLast int, destinationParent qt6.QModelIndex, destinationColumn int) bool {
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := (bool)(C.QSqlTableModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceFirst), (C.int)(sourceLast), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationColumn)))
+	_method_ret := (bool)(C.QSqlTableModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](sourceParent), (C.int)(sourceFirst), (C.int)(sourceLast), libmiqt.ValueCast[C.struct_miqt_qmodelindex](destinationParent), (C.int)(destinationColumn)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -681,12 +661,10 @@ func (this *QSqlTableModel) EndMoveColumns() {
 }
 
 // ChangePersistentIndex can only be called from a QSqlTableModel that was directly constructed.
-func (this *QSqlTableModel) ChangePersistentIndex(from *qt6.QModelIndex, to *qt6.QModelIndex) {
-	defer runtime.KeepAlive(from)
-	defer runtime.KeepAlive(to)
+func (this *QSqlTableModel) ChangePersistentIndex(from qt6.QModelIndex, to qt6.QModelIndex) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSqlTableModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QModelIndex)(from.UnsafePointer()), (*C.QModelIndex)(to.UnsafePointer()))
+	C.QSqlTableModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](from), libmiqt.ValueCast[C.struct_miqt_qmodelindex](to))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -696,20 +674,18 @@ func (this *QSqlTableModel) ChangePersistentIndex(from *qt6.QModelIndex, to *qt6
 
 // ChangePersistentIndexList can only be called from a QSqlTableModel that was directly constructed.
 func (this *QSqlTableModel) ChangePersistentIndexList(from []qt6.QModelIndex, to []qt6.QModelIndex) {
-	defer runtime.KeepAlive(from)
-	defer runtime.KeepAlive(to)
-	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
+	from_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(from))))
 	defer C.free(unsafe.Pointer(from_CArray_ptr))
 	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
 	for i := range from {
-		from_CArray[i] = (*C.QModelIndex)(from[i].UnsafePointer())
+		from_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](from[i])
 	}
 	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray_ptr)}
-	to_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
+	to_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(to))))
 	defer C.free(unsafe.Pointer(to_CArray_ptr))
 	to_CArray := unsafe.Slice(to_CArray_ptr, len(to))
 	for i := range to {
-		to_CArray[i] = (*C.QModelIndex)(to[i].UnsafePointer())
+		to_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](to[i])
 	}
 	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray_ptr)}
 
@@ -728,11 +704,9 @@ func (this *QSqlTableModel) PersistentIndexList() []qt6.QModelIndex {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QSqlTableModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]qt6.QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt6.QModelIndex](_outCast[i])
 	}
 	_method_ret := _ret
 
@@ -836,13 +810,12 @@ func miqt_exec_callback_QSqlTableModel_setTable(self *C.QSqlTableModel, cb C.int
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_Flags(index *qt6.QModelIndex) qt6.ItemFlag {
-	defer runtime.KeepAlive(index)
+func (this *QSqlTableModel) callVirtualBase_Flags(index qt6.QModelIndex) qt6.ItemFlag {
 
-	return (qt6.ItemFlag)(C.QSqlTableModel_virtualbase_flags(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer())))
+	return (qt6.ItemFlag)(C.QSqlTableModel_virtualbase_flags(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QSqlTableModel) OnFlags(slot func(super func(index *qt6.QModelIndex) qt6.ItemFlag, index *qt6.QModelIndex) qt6.ItemFlag) {
+func (this *QSqlTableModel) OnFlags(slot func(super func(index qt6.QModelIndex) qt6.ItemFlag, index qt6.QModelIndex) qt6.ItemFlag) {
 	ok := C.QSqlTableModel_override_virtual_flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -850,14 +823,14 @@ func (this *QSqlTableModel) OnFlags(slot func(super func(index *qt6.QModelIndex)
 }
 
 //export miqt_exec_callback_QSqlTableModel_flags
-func miqt_exec_callback_QSqlTableModel_flags(self *C.QSqlTableModel, cb C.intptr_t, index *C.QModelIndex) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *qt6.QModelIndex) qt6.ItemFlag, index *qt6.QModelIndex) qt6.ItemFlag)
+func miqt_exec_callback_QSqlTableModel_flags(self *C.QSqlTableModel, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index qt6.QModelIndex) qt6.ItemFlag, index qt6.QModelIndex) qt6.ItemFlag)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](index)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_Flags, slotval1)
 
@@ -865,15 +838,14 @@ func miqt_exec_callback_QSqlTableModel_flags(self *C.QSqlTableModel, cb C.intptr
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_Data(idx *qt6.QModelIndex, role int) *qt6.QVariant {
-	defer runtime.KeepAlive(idx)
+func (this *QSqlTableModel) callVirtualBase_Data(idx qt6.QModelIndex, role int) *qt6.QVariant {
 
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSqlTableModel_virtualbase_data(unsafe.Pointer(this.h), (*C.QModelIndex)(idx.UnsafePointer()), (C.int)(role))))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSqlTableModel_virtualbase_data(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](idx), (C.int)(role))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSqlTableModel) OnData(slot func(super func(idx *qt6.QModelIndex, role int) *qt6.QVariant, idx *qt6.QModelIndex, role int) *qt6.QVariant) {
+func (this *QSqlTableModel) OnData(slot func(super func(idx qt6.QModelIndex, role int) *qt6.QVariant, idx qt6.QModelIndex, role int) *qt6.QVariant) {
 	ok := C.QSqlTableModel_override_virtual_data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -881,14 +853,14 @@ func (this *QSqlTableModel) OnData(slot func(super func(idx *qt6.QModelIndex, ro
 }
 
 //export miqt_exec_callback_QSqlTableModel_data
-func miqt_exec_callback_QSqlTableModel_data(self *C.QSqlTableModel, cb C.intptr_t, idx *C.QModelIndex, role C.int) *C.QVariant {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(idx *qt6.QModelIndex, role int) *qt6.QVariant, idx *qt6.QModelIndex, role int) *qt6.QVariant)
+func miqt_exec_callback_QSqlTableModel_data(self *C.QSqlTableModel, cb C.intptr_t, idx C.struct_miqt_qmodelindex, role C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(idx qt6.QModelIndex, role int) *qt6.QVariant, idx qt6.QModelIndex, role int) *qt6.QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(idx))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](idx)
 
 	slotval2 := (int)(role)
 
@@ -899,14 +871,13 @@ func miqt_exec_callback_QSqlTableModel_data(self *C.QSqlTableModel, cb C.intptr_
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_SetData(index *qt6.QModelIndex, value *qt6.QVariant, role int) bool {
-	defer runtime.KeepAlive(index)
+func (this *QSqlTableModel) callVirtualBase_SetData(index qt6.QModelIndex, value *qt6.QVariant, role int) bool {
 	defer runtime.KeepAlive(value)
 
-	return (bool)(C.QSqlTableModel_virtualbase_setData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
+	return (bool)(C.QSqlTableModel_virtualbase_setData(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (*C.QVariant)(value.UnsafePointer()), (C.int)(role)))
 
 }
-func (this *QSqlTableModel) OnSetData(slot func(super func(index *qt6.QModelIndex, value *qt6.QVariant, role int) bool, index *qt6.QModelIndex, value *qt6.QVariant, role int) bool) {
+func (this *QSqlTableModel) OnSetData(slot func(super func(index qt6.QModelIndex, value *qt6.QVariant, role int) bool, index qt6.QModelIndex, value *qt6.QVariant, role int) bool) {
 	ok := C.QSqlTableModel_override_virtual_setData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -914,14 +885,14 @@ func (this *QSqlTableModel) OnSetData(slot func(super func(index *qt6.QModelInde
 }
 
 //export miqt_exec_callback_QSqlTableModel_setData
-func miqt_exec_callback_QSqlTableModel_setData(self *C.QSqlTableModel, cb C.intptr_t, index *C.QModelIndex, value *C.QVariant, role C.int) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *qt6.QModelIndex, value *qt6.QVariant, role int) bool, index *qt6.QModelIndex, value *qt6.QVariant, role int) bool)
+func miqt_exec_callback_QSqlTableModel_setData(self *C.QSqlTableModel, cb C.intptr_t, index C.struct_miqt_qmodelindex, value *C.QVariant, role C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index qt6.QModelIndex, value *qt6.QVariant, role int) bool, index qt6.QModelIndex, value *qt6.QVariant, role int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](index)
 
 	slotval2 := qt6.UnsafeNewQVariant(unsafe.Pointer(value))
 
@@ -933,13 +904,12 @@ func miqt_exec_callback_QSqlTableModel_setData(self *C.QSqlTableModel, cb C.intp
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_ClearItemData(index *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(index)
+func (this *QSqlTableModel) callVirtualBase_ClearItemData(index qt6.QModelIndex) bool {
 
-	return (bool)(C.QSqlTableModel_virtualbase_clearItemData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer())))
+	return (bool)(C.QSqlTableModel_virtualbase_clearItemData(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QSqlTableModel) OnClearItemData(slot func(super func(index *qt6.QModelIndex) bool, index *qt6.QModelIndex) bool) {
+func (this *QSqlTableModel) OnClearItemData(slot func(super func(index qt6.QModelIndex) bool, index qt6.QModelIndex) bool) {
 	ok := C.QSqlTableModel_override_virtual_clearItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -947,14 +917,14 @@ func (this *QSqlTableModel) OnClearItemData(slot func(super func(index *qt6.QMod
 }
 
 //export miqt_exec_callback_QSqlTableModel_clearItemData
-func miqt_exec_callback_QSqlTableModel_clearItemData(self *C.QSqlTableModel, cb C.intptr_t, index *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *qt6.QModelIndex) bool, index *qt6.QModelIndex) bool)
+func miqt_exec_callback_QSqlTableModel_clearItemData(self *C.QSqlTableModel, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index qt6.QModelIndex) bool, index qt6.QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](index)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_ClearItemData, slotval1)
 
@@ -1135,13 +1105,12 @@ func miqt_exec_callback_QSqlTableModel_setFilter(self *C.QSqlTableModel, cb C.in
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_RowCount(parent *qt6.QModelIndex) int {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) callVirtualBase_RowCount(parent qt6.QModelIndex) int {
 
-	return (int)(C.QSqlTableModel_virtualbase_rowCount(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
+	return (int)(C.QSqlTableModel_virtualbase_rowCount(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QSqlTableModel) OnRowCount(slot func(super func(parent *qt6.QModelIndex) int, parent *qt6.QModelIndex) int) {
+func (this *QSqlTableModel) OnRowCount(slot func(super func(parent qt6.QModelIndex) int, parent qt6.QModelIndex) int) {
 	ok := C.QSqlTableModel_override_virtual_rowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1149,14 +1118,14 @@ func (this *QSqlTableModel) OnRowCount(slot func(super func(parent *qt6.QModelIn
 }
 
 //export miqt_exec_callback_QSqlTableModel_rowCount
-func miqt_exec_callback_QSqlTableModel_rowCount(self *C.QSqlTableModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *qt6.QModelIndex) int, parent *qt6.QModelIndex) int)
+func miqt_exec_callback_QSqlTableModel_rowCount(self *C.QSqlTableModel, cb C.intptr_t, parent C.struct_miqt_qmodelindex) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent qt6.QModelIndex) int, parent qt6.QModelIndex) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_RowCount, slotval1)
 
@@ -1164,13 +1133,12 @@ func miqt_exec_callback_QSqlTableModel_rowCount(self *C.QSqlTableModel, cb C.int
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_RemoveColumns(column int, count int, parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) callVirtualBase_RemoveColumns(column int, count int, parent qt6.QModelIndex) bool {
 
-	return (bool)(C.QSqlTableModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
+	return (bool)(C.QSqlTableModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QSqlTableModel) OnRemoveColumns(slot func(super func(column int, count int, parent *qt6.QModelIndex) bool, column int, count int, parent *qt6.QModelIndex) bool) {
+func (this *QSqlTableModel) OnRemoveColumns(slot func(super func(column int, count int, parent qt6.QModelIndex) bool, column int, count int, parent qt6.QModelIndex) bool) {
 	ok := C.QSqlTableModel_override_virtual_removeColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1178,8 +1146,8 @@ func (this *QSqlTableModel) OnRemoveColumns(slot func(super func(column int, cou
 }
 
 //export miqt_exec_callback_QSqlTableModel_removeColumns
-func miqt_exec_callback_QSqlTableModel_removeColumns(self *C.QSqlTableModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent *qt6.QModelIndex) bool, column int, count int, parent *qt6.QModelIndex) bool)
+func miqt_exec_callback_QSqlTableModel_removeColumns(self *C.QSqlTableModel, cb C.intptr_t, column C.int, count C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent qt6.QModelIndex) bool, column int, count int, parent qt6.QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1189,7 +1157,7 @@ func miqt_exec_callback_QSqlTableModel_removeColumns(self *C.QSqlTableModel, cb 
 
 	slotval2 := (int)(count)
 
-	slotval3 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_RemoveColumns, slotval1, slotval2, slotval3)
 
@@ -1197,13 +1165,12 @@ func miqt_exec_callback_QSqlTableModel_removeColumns(self *C.QSqlTableModel, cb 
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_RemoveRows(row int, count int, parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) callVirtualBase_RemoveRows(row int, count int, parent qt6.QModelIndex) bool {
 
-	return (bool)(C.QSqlTableModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
+	return (bool)(C.QSqlTableModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QSqlTableModel) OnRemoveRows(slot func(super func(row int, count int, parent *qt6.QModelIndex) bool, row int, count int, parent *qt6.QModelIndex) bool) {
+func (this *QSqlTableModel) OnRemoveRows(slot func(super func(row int, count int, parent qt6.QModelIndex) bool, row int, count int, parent qt6.QModelIndex) bool) {
 	ok := C.QSqlTableModel_override_virtual_removeRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1211,8 +1178,8 @@ func (this *QSqlTableModel) OnRemoveRows(slot func(super func(row int, count int
 }
 
 //export miqt_exec_callback_QSqlTableModel_removeRows
-func miqt_exec_callback_QSqlTableModel_removeRows(self *C.QSqlTableModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent *qt6.QModelIndex) bool, row int, count int, parent *qt6.QModelIndex) bool)
+func miqt_exec_callback_QSqlTableModel_removeRows(self *C.QSqlTableModel, cb C.intptr_t, row C.int, count C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent qt6.QModelIndex) bool, row int, count int, parent qt6.QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1222,7 +1189,7 @@ func miqt_exec_callback_QSqlTableModel_removeRows(self *C.QSqlTableModel, cb C.i
 
 	slotval2 := (int)(count)
 
-	slotval3 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_RemoveRows, slotval1, slotval2, slotval3)
 
@@ -1230,13 +1197,12 @@ func miqt_exec_callback_QSqlTableModel_removeRows(self *C.QSqlTableModel, cb C.i
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_InsertRows(row int, count int, parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) callVirtualBase_InsertRows(row int, count int, parent qt6.QModelIndex) bool {
 
-	return (bool)(C.QSqlTableModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
+	return (bool)(C.QSqlTableModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QSqlTableModel) OnInsertRows(slot func(super func(row int, count int, parent *qt6.QModelIndex) bool, row int, count int, parent *qt6.QModelIndex) bool) {
+func (this *QSqlTableModel) OnInsertRows(slot func(super func(row int, count int, parent qt6.QModelIndex) bool, row int, count int, parent qt6.QModelIndex) bool) {
 	ok := C.QSqlTableModel_override_virtual_insertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1244,8 +1210,8 @@ func (this *QSqlTableModel) OnInsertRows(slot func(super func(row int, count int
 }
 
 //export miqt_exec_callback_QSqlTableModel_insertRows
-func miqt_exec_callback_QSqlTableModel_insertRows(self *C.QSqlTableModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent *qt6.QModelIndex) bool, row int, count int, parent *qt6.QModelIndex) bool)
+func miqt_exec_callback_QSqlTableModel_insertRows(self *C.QSqlTableModel, cb C.intptr_t, row C.int, count C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent qt6.QModelIndex) bool, row int, count int, parent qt6.QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1255,7 +1221,7 @@ func miqt_exec_callback_QSqlTableModel_insertRows(self *C.QSqlTableModel, cb C.i
 
 	slotval2 := (int)(count)
 
-	slotval3 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_InsertRows, slotval1, slotval2, slotval3)
 
@@ -1538,15 +1504,12 @@ func miqt_exec_callback_QSqlTableModel_selectStatement(self *C.QSqlTableModel, c
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_IndexInQuery(item *qt6.QModelIndex) *qt6.QModelIndex {
-	defer runtime.KeepAlive(item)
+func (this *QSqlTableModel) callVirtualBase_IndexInQuery(item qt6.QModelIndex) qt6.QModelIndex {
 
-	_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlTableModel_virtualbase_indexInQuery(unsafe.Pointer(this.h), (*C.QModelIndex)(item.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QModelIndex](C.QSqlTableModel_virtualbase_indexInQuery(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](item)))
 
 }
-func (this *QSqlTableModel) OnIndexInQuery(slot func(super func(item *qt6.QModelIndex) *qt6.QModelIndex, item *qt6.QModelIndex) *qt6.QModelIndex) {
+func (this *QSqlTableModel) OnIndexInQuery(slot func(super func(item qt6.QModelIndex) qt6.QModelIndex, item qt6.QModelIndex) qt6.QModelIndex) {
 	ok := C.QSqlTableModel_override_virtual_indexInQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1554,29 +1517,27 @@ func (this *QSqlTableModel) OnIndexInQuery(slot func(super func(item *qt6.QModel
 }
 
 //export miqt_exec_callback_QSqlTableModel_indexInQuery
-func miqt_exec_callback_QSqlTableModel_indexInQuery(self *C.QSqlTableModel, cb C.intptr_t, item *C.QModelIndex) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(item *qt6.QModelIndex) *qt6.QModelIndex, item *qt6.QModelIndex) *qt6.QModelIndex)
+func miqt_exec_callback_QSqlTableModel_indexInQuery(self *C.QSqlTableModel, cb C.intptr_t, item C.struct_miqt_qmodelindex) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(item qt6.QModelIndex) qt6.QModelIndex, item qt6.QModelIndex) qt6.QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(item))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](item)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_IndexInQuery, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSqlTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QSqlTableModel) callVirtualBase_ColumnCount(parent *qt6.QModelIndex) int {
-	defer runtime.KeepAlive(parent)
-
-	return (int)(C.QSqlTableModel_virtualbase_columnCount(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
-func (this *QSqlTableModel) OnColumnCount(slot func(super func(parent *qt6.QModelIndex) int, parent *qt6.QModelIndex) int) {
+
+func (this *QSqlTableModel) callVirtualBase_ColumnCount(parent qt6.QModelIndex) int {
+
+	return (int)(C.QSqlTableModel_virtualbase_columnCount(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
+
+}
+func (this *QSqlTableModel) OnColumnCount(slot func(super func(parent qt6.QModelIndex) int, parent qt6.QModelIndex) int) {
 	ok := C.QSqlTableModel_override_virtual_columnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1584,14 +1545,14 @@ func (this *QSqlTableModel) OnColumnCount(slot func(super func(parent *qt6.QMode
 }
 
 //export miqt_exec_callback_QSqlTableModel_columnCount
-func miqt_exec_callback_QSqlTableModel_columnCount(self *C.QSqlTableModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *qt6.QModelIndex) int, parent *qt6.QModelIndex) int)
+func miqt_exec_callback_QSqlTableModel_columnCount(self *C.QSqlTableModel, cb C.intptr_t, parent C.struct_miqt_qmodelindex) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent qt6.QModelIndex) int, parent qt6.QModelIndex) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_ColumnCount, slotval1)
 
@@ -1634,13 +1595,12 @@ func miqt_exec_callback_QSqlTableModel_setHeaderData(self *C.QSqlTableModel, cb 
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_InsertColumns(column int, count int, parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) callVirtualBase_InsertColumns(column int, count int, parent qt6.QModelIndex) bool {
 
-	return (bool)(C.QSqlTableModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), (*C.QModelIndex)(parent.UnsafePointer())))
+	return (bool)(C.QSqlTableModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QSqlTableModel) OnInsertColumns(slot func(super func(column int, count int, parent *qt6.QModelIndex) bool, column int, count int, parent *qt6.QModelIndex) bool) {
+func (this *QSqlTableModel) OnInsertColumns(slot func(super func(column int, count int, parent qt6.QModelIndex) bool, column int, count int, parent qt6.QModelIndex) bool) {
 	ok := C.QSqlTableModel_override_virtual_insertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1648,8 +1608,8 @@ func (this *QSqlTableModel) OnInsertColumns(slot func(super func(column int, cou
 }
 
 //export miqt_exec_callback_QSqlTableModel_insertColumns
-func miqt_exec_callback_QSqlTableModel_insertColumns(self *C.QSqlTableModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent *qt6.QModelIndex) bool, column int, count int, parent *qt6.QModelIndex) bool)
+func miqt_exec_callback_QSqlTableModel_insertColumns(self *C.QSqlTableModel, cb C.intptr_t, column C.int, count C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent qt6.QModelIndex) bool, column int, count int, parent qt6.QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1659,7 +1619,7 @@ func miqt_exec_callback_QSqlTableModel_insertColumns(self *C.QSqlTableModel, cb 
 
 	slotval2 := (int)(count)
 
-	slotval3 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_InsertColumns, slotval1, slotval2, slotval3)
 
@@ -1667,13 +1627,12 @@ func miqt_exec_callback_QSqlTableModel_insertColumns(self *C.QSqlTableModel, cb 
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_FetchMore(parent *qt6.QModelIndex) {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) callVirtualBase_FetchMore(parent qt6.QModelIndex) {
 
-	C.QSqlTableModel_virtualbase_fetchMore(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer()))
+	C.QSqlTableModel_virtualbase_fetchMore(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent))
 
 }
-func (this *QSqlTableModel) OnFetchMore(slot func(super func(parent *qt6.QModelIndex), parent *qt6.QModelIndex)) {
+func (this *QSqlTableModel) OnFetchMore(slot func(super func(parent qt6.QModelIndex), parent qt6.QModelIndex)) {
 	ok := C.QSqlTableModel_override_virtual_fetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1681,26 +1640,25 @@ func (this *QSqlTableModel) OnFetchMore(slot func(super func(parent *qt6.QModelI
 }
 
 //export miqt_exec_callback_QSqlTableModel_fetchMore
-func miqt_exec_callback_QSqlTableModel_fetchMore(self *C.QSqlTableModel, cb C.intptr_t, parent *C.QModelIndex) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *qt6.QModelIndex), parent *qt6.QModelIndex))
+func miqt_exec_callback_QSqlTableModel_fetchMore(self *C.QSqlTableModel, cb C.intptr_t, parent C.struct_miqt_qmodelindex) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent qt6.QModelIndex), parent qt6.QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	gofunc((&QSqlTableModel{h: self}).callVirtualBase_FetchMore, slotval1)
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_CanFetchMore(parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) callVirtualBase_CanFetchMore(parent qt6.QModelIndex) bool {
 
-	return (bool)(C.QSqlTableModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), (*C.QModelIndex)(parent.UnsafePointer())))
+	return (bool)(C.QSqlTableModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QSqlTableModel) OnCanFetchMore(slot func(super func(parent *qt6.QModelIndex) bool, parent *qt6.QModelIndex) bool) {
+func (this *QSqlTableModel) OnCanFetchMore(slot func(super func(parent qt6.QModelIndex) bool, parent qt6.QModelIndex) bool) {
 	ok := C.QSqlTableModel_override_virtual_canFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1708,14 +1666,14 @@ func (this *QSqlTableModel) OnCanFetchMore(slot func(super func(parent *qt6.QMod
 }
 
 //export miqt_exec_callback_QSqlTableModel_canFetchMore
-func miqt_exec_callback_QSqlTableModel_canFetchMore(self *C.QSqlTableModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *qt6.QModelIndex) bool, parent *qt6.QModelIndex) bool)
+func miqt_exec_callback_QSqlTableModel_canFetchMore(self *C.QSqlTableModel, cb C.intptr_t, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent qt6.QModelIndex) bool, parent qt6.QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_CanFetchMore, slotval1)
 
@@ -1806,15 +1764,12 @@ func miqt_exec_callback_QSqlTableModel_queryChange(self *C.QSqlTableModel, cb C.
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_Index(row int, column int, parent *qt6.QModelIndex) *qt6.QModelIndex {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) callVirtualBase_Index(row int, column int, parent qt6.QModelIndex) qt6.QModelIndex {
 
-	_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlTableModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QModelIndex](C.QSqlTableModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QSqlTableModel) OnIndex(slot func(super func(row int, column int, parent *qt6.QModelIndex) *qt6.QModelIndex, row int, column int, parent *qt6.QModelIndex) *qt6.QModelIndex) {
+func (this *QSqlTableModel) OnIndex(slot func(super func(row int, column int, parent qt6.QModelIndex) qt6.QModelIndex, row int, column int, parent qt6.QModelIndex) qt6.QModelIndex) {
 	ok := C.QSqlTableModel_override_virtual_index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1822,8 +1777,8 @@ func (this *QSqlTableModel) OnIndex(slot func(super func(row int, column int, pa
 }
 
 //export miqt_exec_callback_QSqlTableModel_index
-func miqt_exec_callback_QSqlTableModel_index(self *C.QSqlTableModel, cb C.intptr_t, row C.int, column C.int, parent *C.QModelIndex) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, parent *qt6.QModelIndex) *qt6.QModelIndex, row int, column int, parent *qt6.QModelIndex) *qt6.QModelIndex)
+func miqt_exec_callback_QSqlTableModel_index(self *C.QSqlTableModel, cb C.intptr_t, row C.int, column C.int, parent C.struct_miqt_qmodelindex) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, parent qt6.QModelIndex) qt6.QModelIndex, row int, column int, parent qt6.QModelIndex) qt6.QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1833,24 +1788,20 @@ func miqt_exec_callback_QSqlTableModel_index(self *C.QSqlTableModel, cb C.intptr
 
 	slotval2 := (int)(column)
 
-	slotval3 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSqlTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QSqlTableModel) callVirtualBase_Sibling(row int, column int, idx *qt6.QModelIndex) *qt6.QModelIndex {
-	defer runtime.KeepAlive(idx)
-
-	_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlTableModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), (*C.QModelIndex)(idx.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
-func (this *QSqlTableModel) OnSibling(slot func(super func(row int, column int, idx *qt6.QModelIndex) *qt6.QModelIndex, row int, column int, idx *qt6.QModelIndex) *qt6.QModelIndex) {
+
+func (this *QSqlTableModel) callVirtualBase_Sibling(row int, column int, idx qt6.QModelIndex) qt6.QModelIndex {
+
+	return libmiqt.ValueCast[qt6.QModelIndex](C.QSqlTableModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](idx)))
+
+}
+func (this *QSqlTableModel) OnSibling(slot func(super func(row int, column int, idx qt6.QModelIndex) qt6.QModelIndex, row int, column int, idx qt6.QModelIndex) qt6.QModelIndex) {
 	ok := C.QSqlTableModel_override_virtual_sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1858,8 +1809,8 @@ func (this *QSqlTableModel) OnSibling(slot func(super func(row int, column int, 
 }
 
 //export miqt_exec_callback_QSqlTableModel_sibling
-func miqt_exec_callback_QSqlTableModel_sibling(self *C.QSqlTableModel, cb C.intptr_t, row C.int, column C.int, idx *C.QModelIndex) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, idx *qt6.QModelIndex) *qt6.QModelIndex, row int, column int, idx *qt6.QModelIndex) *qt6.QModelIndex)
+func miqt_exec_callback_QSqlTableModel_sibling(self *C.QSqlTableModel, cb C.intptr_t, row C.int, column C.int, idx C.struct_miqt_qmodelindex) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, idx qt6.QModelIndex) qt6.QModelIndex, row int, column int, idx qt6.QModelIndex) qt6.QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1869,22 +1820,20 @@ func miqt_exec_callback_QSqlTableModel_sibling(self *C.QSqlTableModel, cb C.intp
 
 	slotval2 := (int)(column)
 
-	slotval3 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(idx))
+	slotval3 := libmiqt.ValueCast[qt6.QModelIndex](idx)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSqlTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QSqlTableModel) callVirtualBase_DropMimeData(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
-
-	return (bool)(C.QSqlTableModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer())))
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
-func (this *QSqlTableModel) OnDropMimeData(slot func(super func(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool, data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool) {
+
+func (this *QSqlTableModel) callVirtualBase_DropMimeData(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool {
+
+	return (bool)(C.QSqlTableModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
+
+}
+func (this *QSqlTableModel) OnDropMimeData(slot func(super func(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool, data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool) {
 	ok := C.QSqlTableModel_override_virtual_dropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1892,8 +1841,8 @@ func (this *QSqlTableModel) OnDropMimeData(slot func(super func(data *qt6.QMimeD
 }
 
 //export miqt_exec_callback_QSqlTableModel_dropMimeData
-func miqt_exec_callback_QSqlTableModel_dropMimeData(self *C.QSqlTableModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool, data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool)
+func miqt_exec_callback_QSqlTableModel_dropMimeData(self *C.QSqlTableModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool, data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1907,7 +1856,7 @@ func miqt_exec_callback_QSqlTableModel_dropMimeData(self *C.QSqlTableModel, cb C
 
 	slotval4 := (int)(column)
 
-	slotval5 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1915,10 +1864,9 @@ func miqt_exec_callback_QSqlTableModel_dropMimeData(self *C.QSqlTableModel, cb C
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_ItemData(index *qt6.QModelIndex) map[int]qt6.QVariant {
-	defer runtime.KeepAlive(index)
+func (this *QSqlTableModel) callVirtualBase_ItemData(index qt6.QModelIndex) map[int]qt6.QVariant {
 
-	var _mm C.struct_miqt_map = C.QSqlTableModel_virtualbase_itemData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))
+	var _mm C.struct_miqt_map = C.QSqlTableModel_virtualbase_itemData(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index))
 	_ret := make(map[int]qt6.QVariant, int(_mm.len))
 	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
 	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
@@ -1934,7 +1882,7 @@ func (this *QSqlTableModel) callVirtualBase_ItemData(index *qt6.QModelIndex) map
 	return _ret
 
 }
-func (this *QSqlTableModel) OnItemData(slot func(super func(index *qt6.QModelIndex) map[int]qt6.QVariant, index *qt6.QModelIndex) map[int]qt6.QVariant) {
+func (this *QSqlTableModel) OnItemData(slot func(super func(index qt6.QModelIndex) map[int]qt6.QVariant, index qt6.QModelIndex) map[int]qt6.QVariant) {
 	ok := C.QSqlTableModel_override_virtual_itemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1942,14 +1890,14 @@ func (this *QSqlTableModel) OnItemData(slot func(super func(index *qt6.QModelInd
 }
 
 //export miqt_exec_callback_QSqlTableModel_itemData
-func miqt_exec_callback_QSqlTableModel_itemData(self *C.QSqlTableModel, cb C.intptr_t, index *C.QModelIndex) C.struct_miqt_map {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *qt6.QModelIndex) map[int]qt6.QVariant, index *qt6.QModelIndex) map[int]qt6.QVariant)
+func miqt_exec_callback_QSqlTableModel_itemData(self *C.QSqlTableModel, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_map {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index qt6.QModelIndex) map[int]qt6.QVariant, index qt6.QModelIndex) map[int]qt6.QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](index)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_ItemData, slotval1)
 	defer runtime.KeepAlive(virtualReturn)
@@ -1973,8 +1921,7 @@ func miqt_exec_callback_QSqlTableModel_itemData(self *C.QSqlTableModel, cb C.int
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_SetItemData(index *qt6.QModelIndex, roles map[int]qt6.QVariant) bool {
-	defer runtime.KeepAlive(index)
+func (this *QSqlTableModel) callVirtualBase_SetItemData(index qt6.QModelIndex, roles map[int]qt6.QVariant) bool {
 	defer runtime.KeepAlive(roles)
 	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
@@ -1994,10 +1941,10 @@ func (this *QSqlTableModel) callVirtualBase_SetItemData(index *qt6.QModelIndex, 
 		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
 
-	return (bool)(C.QSqlTableModel_virtualbase_setItemData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()), roles_mm))
+	return (bool)(C.QSqlTableModel_virtualbase_setItemData(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), roles_mm))
 
 }
-func (this *QSqlTableModel) OnSetItemData(slot func(super func(index *qt6.QModelIndex, roles map[int]qt6.QVariant) bool, index *qt6.QModelIndex, roles map[int]qt6.QVariant) bool) {
+func (this *QSqlTableModel) OnSetItemData(slot func(super func(index qt6.QModelIndex, roles map[int]qt6.QVariant) bool, index qt6.QModelIndex, roles map[int]qt6.QVariant) bool) {
 	ok := C.QSqlTableModel_override_virtual_setItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2005,14 +1952,14 @@ func (this *QSqlTableModel) OnSetItemData(slot func(super func(index *qt6.QModel
 }
 
 //export miqt_exec_callback_QSqlTableModel_setItemData
-func miqt_exec_callback_QSqlTableModel_setItemData(self *C.QSqlTableModel, cb C.intptr_t, index *C.QModelIndex, roles C.struct_miqt_map) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *qt6.QModelIndex, roles map[int]qt6.QVariant) bool, index *qt6.QModelIndex, roles map[int]qt6.QVariant) bool)
+func miqt_exec_callback_QSqlTableModel_setItemData(self *C.QSqlTableModel, cb C.intptr_t, index C.struct_miqt_qmodelindex, roles C.struct_miqt_map) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index qt6.QModelIndex, roles map[int]qt6.QVariant) bool, index qt6.QModelIndex, roles map[int]qt6.QVariant) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](index)
 
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]qt6.QVariant, int(roles_mm.len))
@@ -2079,12 +2026,11 @@ func miqt_exec_callback_QSqlTableModel_mimeTypes(self *C.QSqlTableModel, cb C.in
 }
 
 func (this *QSqlTableModel) callVirtualBase_MimeData(indexes []qt6.QModelIndex) *qt6.QMimeData {
-	defer runtime.KeepAlive(indexes)
-	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	indexes_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(indexes))))
 	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
 	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
-		indexes_CArray[i] = (*C.QModelIndex)(indexes[i].UnsafePointer())
+		indexes_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](indexes[i])
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
@@ -2108,11 +2054,9 @@ func miqt_exec_callback_QSqlTableModel_mimeData(self *C.QSqlTableModel, cb C.int
 	// Convert all CABI parameters to Go parameters
 	var indexes_ma C.struct_miqt_array = indexes
 	indexes_ret := make([]qt6.QModelIndex, int(indexes_ma.len))
-	indexes_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
+	indexes_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
 	for i := 0; i < int(indexes_ma.len); i++ {
-		indexes_lv_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(indexes_outCast[i]))
-		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		indexes_ret[i] = *indexes_lv_goptr
+		indexes_ret[i] = libmiqt.ValueCast[qt6.QModelIndex](indexes_outCast[i])
 	}
 	slotval1 := indexes_ret
 
@@ -2122,13 +2066,12 @@ func miqt_exec_callback_QSqlTableModel_mimeData(self *C.QSqlTableModel, cb C.int
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_CanDropMimeData(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool {
-	defer runtime.KeepAlive(parent)
+func (this *QSqlTableModel) callVirtualBase_CanDropMimeData(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool {
 
-	return (bool)(C.QSqlTableModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), (*C.QModelIndex)(parent.UnsafePointer())))
+	return (bool)(C.QSqlTableModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(data.UnsafePointer()), (C.int)(action), (C.int)(row), (C.int)(column), libmiqt.ValueCast[C.struct_miqt_qmodelindex](parent)))
 
 }
-func (this *QSqlTableModel) OnCanDropMimeData(slot func(super func(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool, data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool) {
+func (this *QSqlTableModel) OnCanDropMimeData(slot func(super func(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool, data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool) {
 	ok := C.QSqlTableModel_override_virtual_canDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2136,8 +2079,8 @@ func (this *QSqlTableModel) OnCanDropMimeData(slot func(super func(data *qt6.QMi
 }
 
 //export miqt_exec_callback_QSqlTableModel_canDropMimeData
-func miqt_exec_callback_QSqlTableModel_canDropMimeData(self *C.QSqlTableModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool, data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent *qt6.QModelIndex) bool)
+func miqt_exec_callback_QSqlTableModel_canDropMimeData(self *C.QSqlTableModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent C.struct_miqt_qmodelindex) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool, data *qt6.QMimeData, action qt6.DropAction, row int, column int, parent qt6.QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -2151,7 +2094,7 @@ func miqt_exec_callback_QSqlTableModel_canDropMimeData(self *C.QSqlTableModel, c
 
 	slotval4 := (int)(column)
 
-	slotval5 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := libmiqt.ValueCast[qt6.QModelIndex](parent)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_CanDropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -2209,14 +2152,12 @@ func miqt_exec_callback_QSqlTableModel_supportedDragActions(self *C.QSqlTableMod
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_MoveRows(sourceParent *qt6.QModelIndex, sourceRow int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(sourceParent)
-	defer runtime.KeepAlive(destinationParent)
+func (this *QSqlTableModel) callVirtualBase_MoveRows(sourceParent qt6.QModelIndex, sourceRow int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool {
 
-	return (bool)(C.QSqlTableModel_virtualbase_moveRows(unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceRow), (C.int)(count), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationChild)))
+	return (bool)(C.QSqlTableModel_virtualbase_moveRows(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](sourceParent), (C.int)(sourceRow), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](destinationParent), (C.int)(destinationChild)))
 
 }
-func (this *QSqlTableModel) OnMoveRows(slot func(super func(sourceParent *qt6.QModelIndex, sourceRow int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool, sourceParent *qt6.QModelIndex, sourceRow int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool) {
+func (this *QSqlTableModel) OnMoveRows(slot func(super func(sourceParent qt6.QModelIndex, sourceRow int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool, sourceParent qt6.QModelIndex, sourceRow int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool) {
 	ok := C.QSqlTableModel_override_virtual_moveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2224,20 +2165,20 @@ func (this *QSqlTableModel) OnMoveRows(slot func(super func(sourceParent *qt6.QM
 }
 
 //export miqt_exec_callback_QSqlTableModel_moveRows
-func miqt_exec_callback_QSqlTableModel_moveRows(self *C.QSqlTableModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceRow C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent *qt6.QModelIndex, sourceRow int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool, sourceParent *qt6.QModelIndex, sourceRow int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool)
+func miqt_exec_callback_QSqlTableModel_moveRows(self *C.QSqlTableModel, cb C.intptr_t, sourceParent C.struct_miqt_qmodelindex, sourceRow C.int, count C.int, destinationParent C.struct_miqt_qmodelindex, destinationChild C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent qt6.QModelIndex, sourceRow int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool, sourceParent qt6.QModelIndex, sourceRow int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](sourceParent)
 
 	slotval2 := (int)(sourceRow)
 
 	slotval3 := (int)(count)
 
-	slotval4 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := libmiqt.ValueCast[qt6.QModelIndex](destinationParent)
 
 	slotval5 := (int)(destinationChild)
 
@@ -2247,14 +2188,12 @@ func miqt_exec_callback_QSqlTableModel_moveRows(self *C.QSqlTableModel, cb C.int
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_MoveColumns(sourceParent *qt6.QModelIndex, sourceColumn int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool {
-	defer runtime.KeepAlive(sourceParent)
-	defer runtime.KeepAlive(destinationParent)
+func (this *QSqlTableModel) callVirtualBase_MoveColumns(sourceParent qt6.QModelIndex, sourceColumn int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool {
 
-	return (bool)(C.QSqlTableModel_virtualbase_moveColumns(unsafe.Pointer(this.h), (*C.QModelIndex)(sourceParent.UnsafePointer()), (C.int)(sourceColumn), (C.int)(count), (*C.QModelIndex)(destinationParent.UnsafePointer()), (C.int)(destinationChild)))
+	return (bool)(C.QSqlTableModel_virtualbase_moveColumns(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](sourceParent), (C.int)(sourceColumn), (C.int)(count), libmiqt.ValueCast[C.struct_miqt_qmodelindex](destinationParent), (C.int)(destinationChild)))
 
 }
-func (this *QSqlTableModel) OnMoveColumns(slot func(super func(sourceParent *qt6.QModelIndex, sourceColumn int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool, sourceParent *qt6.QModelIndex, sourceColumn int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool) {
+func (this *QSqlTableModel) OnMoveColumns(slot func(super func(sourceParent qt6.QModelIndex, sourceColumn int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool, sourceParent qt6.QModelIndex, sourceColumn int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool) {
 	ok := C.QSqlTableModel_override_virtual_moveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2262,20 +2201,20 @@ func (this *QSqlTableModel) OnMoveColumns(slot func(super func(sourceParent *qt6
 }
 
 //export miqt_exec_callback_QSqlTableModel_moveColumns
-func miqt_exec_callback_QSqlTableModel_moveColumns(self *C.QSqlTableModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceColumn C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent *qt6.QModelIndex, sourceColumn int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool, sourceParent *qt6.QModelIndex, sourceColumn int, count int, destinationParent *qt6.QModelIndex, destinationChild int) bool)
+func miqt_exec_callback_QSqlTableModel_moveColumns(self *C.QSqlTableModel, cb C.intptr_t, sourceParent C.struct_miqt_qmodelindex, sourceColumn C.int, count C.int, destinationParent C.struct_miqt_qmodelindex, destinationChild C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent qt6.QModelIndex, sourceColumn int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool, sourceParent qt6.QModelIndex, sourceColumn int, count int, destinationParent qt6.QModelIndex, destinationChild int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](sourceParent)
 
 	slotval2 := (int)(sourceColumn)
 
 	slotval3 := (int)(count)
 
-	slotval4 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := libmiqt.ValueCast[qt6.QModelIndex](destinationParent)
 
 	slotval5 := (int)(destinationChild)
 
@@ -2285,15 +2224,12 @@ func miqt_exec_callback_QSqlTableModel_moveColumns(self *C.QSqlTableModel, cb C.
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_Buddy(index *qt6.QModelIndex) *qt6.QModelIndex {
-	defer runtime.KeepAlive(index)
+func (this *QSqlTableModel) callVirtualBase_Buddy(index qt6.QModelIndex) qt6.QModelIndex {
 
-	_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(C.QSqlTableModel_virtualbase_buddy(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QModelIndex](C.QSqlTableModel_virtualbase_buddy(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QSqlTableModel) OnBuddy(slot func(super func(index *qt6.QModelIndex) *qt6.QModelIndex, index *qt6.QModelIndex) *qt6.QModelIndex) {
+func (this *QSqlTableModel) OnBuddy(slot func(super func(index qt6.QModelIndex) qt6.QModelIndex, index qt6.QModelIndex) qt6.QModelIndex) {
 	ok := C.QSqlTableModel_override_virtual_buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2301,38 +2237,34 @@ func (this *QSqlTableModel) OnBuddy(slot func(super func(index *qt6.QModelIndex)
 }
 
 //export miqt_exec_callback_QSqlTableModel_buddy
-func miqt_exec_callback_QSqlTableModel_buddy(self *C.QSqlTableModel, cb C.intptr_t, index *C.QModelIndex) *C.QModelIndex {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *qt6.QModelIndex) *qt6.QModelIndex, index *qt6.QModelIndex) *qt6.QModelIndex)
+func miqt_exec_callback_QSqlTableModel_buddy(self *C.QSqlTableModel, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_qmodelindex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index qt6.QModelIndex) qt6.QModelIndex, index qt6.QModelIndex) qt6.QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](index)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_Buddy, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSqlTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn)
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_Match(start *qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex {
-	defer runtime.KeepAlive(start)
+func (this *QSqlTableModel) callVirtualBase_Match(start qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex {
 	defer runtime.KeepAlive(value)
 
-	var _ma C.struct_miqt_array = C.QSqlTableModel_virtualbase_match(unsafe.Pointer(this.h), (*C.QModelIndex)(start.UnsafePointer()), (C.int)(role), (*C.QVariant)(value.UnsafePointer()), (C.int)(hits), (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QSqlTableModel_virtualbase_match(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](start), (C.int)(role), (*C.QVariant)(value.UnsafePointer()), (C.int)(hits), (C.int)(flags))
 	_ret := make([]qt6.QModelIndex, int(_ma.len))
-	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
+	_outCast := unsafe.Slice((*C.struct_miqt_qmodelindex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(_outCast[i]))
-		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-		_ret[i] = *_lv_goptr
+		_ret[i] = libmiqt.ValueCast[qt6.QModelIndex](_outCast[i])
 	}
 	return _ret
 
 }
-func (this *QSqlTableModel) OnMatch(slot func(super func(start *qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex, start *qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex) {
+func (this *QSqlTableModel) OnMatch(slot func(super func(start qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex, start qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex) {
 	ok := C.QSqlTableModel_override_virtual_match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2340,14 +2272,14 @@ func (this *QSqlTableModel) OnMatch(slot func(super func(start *qt6.QModelIndex,
 }
 
 //export miqt_exec_callback_QSqlTableModel_match
-func miqt_exec_callback_QSqlTableModel_match(self *C.QSqlTableModel, cb C.intptr_t, start *C.QModelIndex, role C.int, value *C.QVariant, hits C.int, flags C.int) C.struct_miqt_array {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(start *qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex, start *qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex)
+func miqt_exec_callback_QSqlTableModel_match(self *C.QSqlTableModel, cb C.intptr_t, start C.struct_miqt_qmodelindex, role C.int, value *C.QVariant, hits C.int, flags C.int) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(start qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex, start qt6.QModelIndex, role int, value *qt6.QVariant, hits int, flags qt6.MatchFlag) []qt6.QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(start))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](start)
 
 	slotval2 := (int)(role)
 
@@ -2358,11 +2290,10 @@ func miqt_exec_callback_QSqlTableModel_match(self *C.QSqlTableModel, cb C.intptr
 	slotval5 := (qt6.MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
-	defer runtime.KeepAlive(virtualReturn)
-	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_qmodelindex)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qmodelindex{})) * len(virtualReturn))))
 	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
-		virtualReturn_CArray[i] = C.QSqlTableModel_virtualreturncopy_QModelIndex((*C.QModelIndex)(virtualReturn[i].UnsafePointer()))
+		virtualReturn_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qmodelindex](virtualReturn[i])
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
@@ -2370,15 +2301,12 @@ func miqt_exec_callback_QSqlTableModel_match(self *C.QSqlTableModel, cb C.intptr
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_Span(index *qt6.QModelIndex) *qt6.QSize {
-	defer runtime.KeepAlive(index)
+func (this *QSqlTableModel) callVirtualBase_Span(index qt6.QModelIndex) qt6.QSize {
 
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QSqlTableModel_virtualbase_span(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSize](C.QSqlTableModel_virtualbase_span(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index)))
 
 }
-func (this *QSqlTableModel) OnSpan(slot func(super func(index *qt6.QModelIndex) *qt6.QSize, index *qt6.QModelIndex) *qt6.QSize) {
+func (this *QSqlTableModel) OnSpan(slot func(super func(index qt6.QModelIndex) qt6.QSize, index qt6.QModelIndex) qt6.QSize) {
 	ok := C.QSqlTableModel_override_virtual_span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2386,30 +2314,28 @@ func (this *QSqlTableModel) OnSpan(slot func(super func(index *qt6.QModelIndex) 
 }
 
 //export miqt_exec_callback_QSqlTableModel_span
-func miqt_exec_callback_QSqlTableModel_span(self *C.QSqlTableModel, cb C.intptr_t, index *C.QModelIndex) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *qt6.QModelIndex) *qt6.QSize, index *qt6.QModelIndex) *qt6.QSize)
+func miqt_exec_callback_QSqlTableModel_span(self *C.QSqlTableModel, cb C.intptr_t, index C.struct_miqt_qmodelindex) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index qt6.QModelIndex) qt6.QSize, index qt6.QModelIndex) qt6.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](index)
 
 	virtualReturn := gofunc((&QSqlTableModel{h: self}).callVirtualBase_Span, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QSqlTableModel_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
-func (this *QSqlTableModel) callVirtualBase_MultiData(index *qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan) {
-	defer runtime.KeepAlive(index)
+func (this *QSqlTableModel) callVirtualBase_MultiData(index qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan) {
 	defer runtime.KeepAlive(roleDataSpan)
 
-	C.QSqlTableModel_virtualbase_multiData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()), (*C.QModelRoleDataSpan)(roleDataSpan.UnsafePointer()))
+	C.QSqlTableModel_virtualbase_multiData(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qmodelindex](index), (*C.QModelRoleDataSpan)(roleDataSpan.UnsafePointer()))
 
 }
-func (this *QSqlTableModel) OnMultiData(slot func(super func(index *qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan), index *qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan)) {
+func (this *QSqlTableModel) OnMultiData(slot func(super func(index qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan), index qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan)) {
 	ok := C.QSqlTableModel_override_virtual_multiData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2417,14 +2343,14 @@ func (this *QSqlTableModel) OnMultiData(slot func(super func(index *qt6.QModelIn
 }
 
 //export miqt_exec_callback_QSqlTableModel_multiData
-func miqt_exec_callback_QSqlTableModel_multiData(self *C.QSqlTableModel, cb C.intptr_t, index *C.QModelIndex, roleDataSpan *C.QModelRoleDataSpan) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan), index *qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan))
+func miqt_exec_callback_QSqlTableModel_multiData(self *C.QSqlTableModel, cb C.intptr_t, index C.struct_miqt_qmodelindex, roleDataSpan *C.QModelRoleDataSpan) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan), index qt6.QModelIndex, roleDataSpan qt6.QModelRoleDataSpan))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := libmiqt.ValueCast[qt6.QModelIndex](index)
 
 	roleDataSpan_goptr := qt6.UnsafeNewQModelRoleDataSpan(unsafe.Pointer(roleDataSpan))
 	roleDataSpan_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

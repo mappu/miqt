@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -81,19 +82,17 @@ func NewQwtPlotSvgItem3(title string) *QwtPlotSvgItem {
 	return newQwtPlotSvgItem(C.QwtPlotSvgItem_new3(title_ms))
 }
 
-func (this *QwtPlotSvgItem) LoadFile(param1 *qt.QRectF, fileName string) bool {
+func (this *QwtPlotSvgItem) LoadFile(param1 qt.QRectF, fileName string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	return (bool)(C.QwtPlotSvgItem_loadFile(this.h, (*C.QRectF)(param1.UnsafePointer()), fileName_ms))
+	return (bool)(C.QwtPlotSvgItem_loadFile(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1), fileName_ms))
 }
 
-func (this *QwtPlotSvgItem) LoadData(param1 *qt.QRectF, param2 []byte) bool {
+func (this *QwtPlotSvgItem) LoadData(param1 qt.QRectF, param2 []byte) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 	param2_alias := C.struct_miqt_string{}
 	if len(param2) > 0 {
 		param2_alias.data = (*C.char)(unsafe.Pointer(&param2[0]))
@@ -101,14 +100,12 @@ func (this *QwtPlotSvgItem) LoadData(param1 *qt.QRectF, param2 []byte) bool {
 		param2_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	param2_alias.len = C.size_t(len(param2))
-	return (bool)(C.QwtPlotSvgItem_loadData(this.h, (*C.QRectF)(param1.UnsafePointer()), param2_alias))
+	return (bool)(C.QwtPlotSvgItem_loadData(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1), param2_alias))
 }
 
-func (this *QwtPlotSvgItem) BoundingRect() *qt.QRectF {
+func (this *QwtPlotSvgItem) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotSvgItem_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotSvgItem_boundingRect(this.h))
 }
 
 func (this *QwtPlotSvgItem) Rtti() int {

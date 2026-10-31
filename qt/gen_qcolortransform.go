@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -82,20 +83,14 @@ func (this *QColorTransform) Map(argb uint) uint {
 	return (uint)(C.QColorTransform_map(this.h, (C.uint)(argb)))
 }
 
-func (this *QColorTransform) MapWithRgba64(rgba64 QRgba64) *QRgba64 {
+func (this *QColorTransform) MapWithRgba64(rgba64 QRgba64) QRgba64 {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rgba64)
-	_goptr := newQRgba64(C.QColorTransform_mapWithRgba64(this.h, rgba64.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRgba64](C.QColorTransform_mapWithRgba64(this.h, libmiqt.ValueCast[C.struct_miqt_qrgba64](rgba64)))
 }
 
-func (this *QColorTransform) MapWithColor(color *QColor) *QColor {
+func (this *QColorTransform) MapWithColor(color QColor) QColor {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(color)
-	_goptr := newQColor(C.QColorTransform_mapWithColor(this.h, color.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QColorTransform_mapWithColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color)))
 }
 
 // Delete this object from C++ memory.

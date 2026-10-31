@@ -39,7 +39,7 @@ void QwtPlotTextLabel_setText(QwtPlotTextLabel* self, QwtText* text);
 QwtText* QwtPlotTextLabel_text(const QwtPlotTextLabel* self);
 void QwtPlotTextLabel_setMargin(QwtPlotTextLabel* self, int margin);
 int QwtPlotTextLabel_margin(const QwtPlotTextLabel* self);
-QRectF* QwtPlotTextLabel_textRect(const QwtPlotTextLabel* self, QRectF* param1, QSizeF* param2);
+struct miqt_qrectf QwtPlotTextLabel_textRect(const QwtPlotTextLabel* self, struct miqt_qrectf param1, struct miqt_qsizef param2);
 
 void QwtPlotTextLabel_delete(QwtPlotTextLabel* self);
 

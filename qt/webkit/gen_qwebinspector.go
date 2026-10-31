@@ -9,6 +9,7 @@ package webkit
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -106,10 +107,8 @@ func (this *QWebInspector) Page() *QWebPage {
 	return newQWebPage(C.QWebInspector_page(this.h))
 }
 
-func (this *QWebInspector) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebInspector_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebInspector) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QWebInspector_sizeHint(this.h))
 }
 
 func (this *QWebInspector) Event(param1 *qt.QEvent) bool {
@@ -284,14 +283,12 @@ func (this *QWebInspector) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 
-func (this *QWebInspector) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QWebInspector) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebInspector_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QWebInspector_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QWebInspector) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QWebInspector) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QWebInspector_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -299,16 +296,15 @@ func (this *QWebInspector) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSiz
 }
 
 //export miqt_exec_callback_QWebInspector_sizeHint
-func miqt_exec_callback_QWebInspector_sizeHint(self *C.QWebInspector, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QWebInspector_sizeHint(self *C.QWebInspector, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QWebInspector{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QWebInspector_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -500,14 +496,12 @@ func miqt_exec_callback_QWebInspector_setVisible(self *C.QWebInspector, cb C.int
 
 }
 
-func (this *QWebInspector) callVirtualBase_MinimumSizeHint() *qt.QSize {
+func (this *QWebInspector) callVirtualBase_MinimumSizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebInspector_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QWebInspector_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QWebInspector) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QWebInspector) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QWebInspector_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -515,16 +509,15 @@ func (this *QWebInspector) OnMinimumSizeHint(slot func(super func() *qt.QSize) *
 }
 
 //export miqt_exec_callback_QWebInspector_minimumSizeHint
-func miqt_exec_callback_QWebInspector_minimumSizeHint(self *C.QWebInspector, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QWebInspector_minimumSizeHint(self *C.QWebInspector, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QWebInspector{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QWebInspector_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1271,7 +1264,6 @@ func miqt_exec_callback_QWebInspector_initPainter(self *C.QWebInspector, cb C.in
 }
 
 func (this *QWebInspector) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QWebInspector_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

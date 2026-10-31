@@ -96,7 +96,7 @@ void QScrollBar_virtbase(QScrollBar* src, QAbstractSlider** outptr_QAbstractSlid
 QMetaObject* QScrollBar_metaObject(const QScrollBar* self);
 void* QScrollBar_metacast(QScrollBar* self, const char* param1);
 struct miqt_string QScrollBar_tr(const char* s);
-QSize* QScrollBar_sizeHint(const QScrollBar* self);
+struct miqt_qsize QScrollBar_sizeHint(const QScrollBar* self);
 bool QScrollBar_event(QScrollBar* self, QEvent* event);
 void QScrollBar_wheelEvent(QScrollBar* self, QWheelEvent* param1);
 void QScrollBar_paintEvent(QScrollBar* self, QPaintEvent* param1);
@@ -111,7 +111,7 @@ struct miqt_string QScrollBar_tr2(const char* s, const char* c);
 struct miqt_string QScrollBar_tr3(const char* s, const char* c, int n);
 
 bool QScrollBar_override_virtual_sizeHint(void* self, intptr_t slot);
-QSize* QScrollBar_virtualbase_sizeHint(const void* self);
+struct miqt_qsize QScrollBar_virtualbase_sizeHint(const void* self);
 bool QScrollBar_override_virtual_event(void* self, intptr_t slot);
 bool QScrollBar_virtualbase_event(void* self, QEvent* event);
 bool QScrollBar_override_virtual_wheelEvent(void* self, intptr_t slot);
@@ -143,7 +143,7 @@ int QScrollBar_virtualbase_devType(const void* self);
 bool QScrollBar_override_virtual_setVisible(void* self, intptr_t slot);
 void QScrollBar_virtualbase_setVisible(void* self, bool visible);
 bool QScrollBar_override_virtual_minimumSizeHint(void* self, intptr_t slot);
-QSize* QScrollBar_virtualbase_minimumSizeHint(const void* self);
+struct miqt_qsize QScrollBar_virtualbase_minimumSizeHint(const void* self);
 bool QScrollBar_override_virtual_heightForWidth(void* self, intptr_t slot);
 int QScrollBar_virtualbase_heightForWidth(const void* self, int param1);
 bool QScrollBar_override_virtual_hasHeightForWidth(void* self, intptr_t slot);
@@ -208,7 +208,6 @@ bool QScrollBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScrollBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScrollBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
-QSize* QScrollBar_virtualreturncopy_QSize(QSize* src);
 QVariant* QScrollBar_virtualreturncopy_QVariant(QVariant* src);
 
 void QScrollBar_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);

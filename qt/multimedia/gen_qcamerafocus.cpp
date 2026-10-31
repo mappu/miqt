@@ -29,16 +29,16 @@ QCameraFocusZone* QCameraFocusZone_new() {
 	return new (std::nothrow) QCameraFocusZone();
 }
 
-QCameraFocusZone* QCameraFocusZone_new2(QRectF* area) {
-	return new (std::nothrow) QCameraFocusZone(*area);
+QCameraFocusZone* QCameraFocusZone_new2(struct miqt_qrectf area) {
+	return new (std::nothrow) QCameraFocusZone(miqt_from_cabi<QRectF>(area));
 }
 
 QCameraFocusZone* QCameraFocusZone_new3(QCameraFocusZone* other) {
 	return new (std::nothrow) QCameraFocusZone(*other);
 }
 
-QCameraFocusZone* QCameraFocusZone_new4(QRectF* area, int status) {
-	return new (std::nothrow) QCameraFocusZone(*area, static_cast<QCameraFocusZone::FocusZoneStatus>(status));
+QCameraFocusZone* QCameraFocusZone_new4(struct miqt_qrectf area, int status) {
+	return new (std::nothrow) QCameraFocusZone(miqt_from_cabi<QRectF>(area), static_cast<QCameraFocusZone::FocusZoneStatus>(status));
 }
 
 void QCameraFocusZone_operatorAssign(QCameraFocusZone* self, QCameraFocusZone* other) {
@@ -57,8 +57,8 @@ bool QCameraFocusZone_isValid(const QCameraFocusZone* self) {
 	return self->isValid();
 }
 
-QRectF* QCameraFocusZone_area(const QCameraFocusZone* self) {
-	return new QRectF(self->area());
+struct miqt_qrectf QCameraFocusZone_area(const QCameraFocusZone* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->area());
 }
 
 int QCameraFocusZone_status(const QCameraFocusZone* self) {
@@ -138,12 +138,12 @@ bool QCameraFocus_isFocusPointModeSupported(const QCameraFocus* self, int param1
 	return self->isFocusPointModeSupported(static_cast<QCameraFocus::FocusPointMode>(param1));
 }
 
-QPointF* QCameraFocus_customFocusPoint(const QCameraFocus* self) {
-	return new QPointF(self->customFocusPoint());
+struct miqt_qpointf QCameraFocus_customFocusPoint(const QCameraFocus* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->customFocusPoint());
 }
 
-void QCameraFocus_setCustomFocusPoint(QCameraFocus* self, QPointF* point) {
-	self->setCustomFocusPoint(*point);
+void QCameraFocus_setCustomFocusPoint(QCameraFocus* self, struct miqt_qpointf point) {
+	self->setCustomFocusPoint(miqt_from_cabi<QPointF>(point));
 }
 
 struct miqt_array /* of QCameraFocusZone* */  QCameraFocus_focusZones(const QCameraFocus* self) {

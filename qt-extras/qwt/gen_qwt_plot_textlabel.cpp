@@ -40,8 +40,8 @@ int QwtPlotTextLabel_margin(const QwtPlotTextLabel* self) {
 	return self->margin();
 }
 
-QRectF* QwtPlotTextLabel_textRect(const QwtPlotTextLabel* self, QRectF* param1, QSizeF* param2) {
-	return new QRectF(self->textRect(*param1, *param2));
+struct miqt_qrectf QwtPlotTextLabel_textRect(const QwtPlotTextLabel* self, struct miqt_qrectf param1, struct miqt_qsizef param2) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->textRect(miqt_from_cabi<QRectF>(param1), miqt_from_cabi<QSizeF>(param2)));
 }
 
 void QwtPlotTextLabel_delete(QwtPlotTextLabel* self) {

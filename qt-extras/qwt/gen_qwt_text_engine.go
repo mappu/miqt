@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -71,16 +72,14 @@ func (this *QwtTextEngine) HeightForWidth(font *qt.QFont, flags int, text string
 	return (float64)(C.QwtTextEngine_heightForWidth(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms, (C.double)(width)))
 }
 
-func (this *QwtTextEngine) TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+func (this *QwtTextEngine) TextSize(font *qt.QFont, flags int, text string) qt.QSizeF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtTextEngine_textSize(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtTextEngine_textSize(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms))
 }
 
 func (this *QwtTextEngine) MightRender(text string) bool {
@@ -102,15 +101,14 @@ func (this *QwtTextEngine) TextMargins(font *qt.QFont, text string, left *float6
 	C.QwtTextEngine_textMargins(this.h, (*C.QFont)(font.UnsafePointer()), text_ms, (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(bottom)))
 }
 
-func (this *QwtTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+func (this *QwtTextEngine) Draw(painter *qt.QPainter, rect qt.QRectF, flags int, text string) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QwtTextEngine_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()), (C.int)(flags), text_ms)
+	C.QwtTextEngine_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(flags), text_ms)
 }
 
 func (this *QwtTextEngine) OperatorAssign(param1 *QwtTextEngine) {
@@ -148,7 +146,7 @@ func miqt_exec_callback_QwtTextEngine_heightForWidth(self *C.QwtTextEngine, cb C
 	return (C.double)(virtualReturn)
 
 }
-func (this *QwtTextEngine) OnTextSize(slot func(font *qt.QFont, flags int, text string) *qt.QSizeF) {
+func (this *QwtTextEngine) OnTextSize(slot func(font *qt.QFont, flags int, text string) qt.QSizeF) {
 	ok := C.QwtTextEngine_override_virtual_textSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -156,8 +154,8 @@ func (this *QwtTextEngine) OnTextSize(slot func(font *qt.QFont, flags int, text 
 }
 
 //export miqt_exec_callback_QwtTextEngine_textSize
-func miqt_exec_callback_QwtTextEngine_textSize(self *C.QwtTextEngine, cb C.intptr_t, font *C.QFont, flags C.int, text C.struct_miqt_string) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(font *qt.QFont, flags int, text string) *qt.QSizeF)
+func miqt_exec_callback_QwtTextEngine_textSize(self *C.QwtTextEngine, cb C.intptr_t, font *C.QFont, flags C.int, text C.struct_miqt_string) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(font *qt.QFont, flags int, text string) qt.QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -173,9 +171,8 @@ func miqt_exec_callback_QwtTextEngine_textSize(self *C.QwtTextEngine, cb C.intpt
 	slotval3 := text_ret
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtTextEngine_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 func (this *QwtTextEngine) OnMightRender(slot func(text string) bool) {
@@ -235,7 +232,7 @@ func miqt_exec_callback_QwtTextEngine_textMargins(self *C.QwtTextEngine, cb C.in
 	gofunc(slotval1, slotval2, slotval3, slotval4, slotval5, slotval6)
 
 }
-func (this *QwtTextEngine) OnDraw(slot func(painter *qt.QPainter, rect *qt.QRectF, flags int, text string)) {
+func (this *QwtTextEngine) OnDraw(slot func(painter *qt.QPainter, rect qt.QRectF, flags int, text string)) {
 	ok := C.QwtTextEngine_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -243,8 +240,8 @@ func (this *QwtTextEngine) OnDraw(slot func(painter *qt.QPainter, rect *qt.QRect
 }
 
 //export miqt_exec_callback_QwtTextEngine_draw
-func miqt_exec_callback_QwtTextEngine_draw(self *C.QwtTextEngine, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF, flags C.int, text C.struct_miqt_string) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(painter *qt.QPainter, rect *qt.QRectF, flags int, text string))
+func miqt_exec_callback_QwtTextEngine_draw(self *C.QwtTextEngine, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf, flags C.int, text C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(painter *qt.QPainter, rect qt.QRectF, flags int, text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -252,7 +249,7 @@ func miqt_exec_callback_QwtTextEngine_draw(self *C.QwtTextEngine, cb C.intptr_t,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval2 := libmiqt.ValueCast[qt.QRectF](rect)
 
 	slotval3 := (int)(flags)
 
@@ -351,27 +348,24 @@ func (this *QwtPlainTextEngine) HeightForWidth(font *qt.QFont, flags int, text s
 	return (float64)(C.QwtPlainTextEngine_heightForWidth(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms, (C.double)(width)))
 }
 
-func (this *QwtPlainTextEngine) TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+func (this *QwtPlainTextEngine) TextSize(font *qt.QFont, flags int, text string) qt.QSizeF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtPlainTextEngine_textSize(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtPlainTextEngine_textSize(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms))
 }
 
-func (this *QwtPlainTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+func (this *QwtPlainTextEngine) Draw(painter *qt.QPainter, rect qt.QRectF, flags int, text string) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QwtPlainTextEngine_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()), (C.int)(flags), text_ms)
+	C.QwtPlainTextEngine_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(flags), text_ms)
 }
 
 func (this *QwtPlainTextEngine) MightRender(param1 string) bool {
@@ -441,7 +435,7 @@ func miqt_exec_callback_QwtPlainTextEngine_heightForWidth(self *C.QwtPlainTextEn
 
 }
 
-func (this *QwtPlainTextEngine) callVirtualBase_TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+func (this *QwtPlainTextEngine) callVirtualBase_TextSize(font *qt.QFont, flags int, text string) qt.QSizeF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
@@ -449,12 +443,10 @@ func (this *QwtPlainTextEngine) callVirtualBase_TextSize(font *qt.QFont, flags i
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtPlainTextEngine_virtualbase_textSize(unsafe.Pointer(this.h), (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtPlainTextEngine_virtualbase_textSize(unsafe.Pointer(this.h), (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms))
 
 }
-func (this *QwtPlainTextEngine) OnTextSize(slot func(super func(font *qt.QFont, flags int, text string) *qt.QSizeF, font *qt.QFont, flags int, text string) *qt.QSizeF) {
+func (this *QwtPlainTextEngine) OnTextSize(slot func(super func(font *qt.QFont, flags int, text string) qt.QSizeF, font *qt.QFont, flags int, text string) qt.QSizeF) {
 	ok := C.QwtPlainTextEngine_override_virtual_textSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -462,8 +454,8 @@ func (this *QwtPlainTextEngine) OnTextSize(slot func(super func(font *qt.QFont, 
 }
 
 //export miqt_exec_callback_QwtPlainTextEngine_textSize
-func miqt_exec_callback_QwtPlainTextEngine_textSize(self *C.QwtPlainTextEngine, cb C.intptr_t, font *C.QFont, flags C.int, text C.struct_miqt_string) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(font *qt.QFont, flags int, text string) *qt.QSizeF, font *qt.QFont, flags int, text string) *qt.QSizeF)
+func miqt_exec_callback_QwtPlainTextEngine_textSize(self *C.QwtPlainTextEngine, cb C.intptr_t, font *C.QFont, flags C.int, text C.struct_miqt_string) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(font *qt.QFont, flags int, text string) qt.QSizeF, font *qt.QFont, flags int, text string) qt.QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -479,25 +471,23 @@ func miqt_exec_callback_QwtPlainTextEngine_textSize(self *C.QwtPlainTextEngine, 
 	slotval3 := text_ret
 
 	virtualReturn := gofunc((&QwtPlainTextEngine{h: self}).callVirtualBase_TextSize, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtPlainTextEngine_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 
-func (this *QwtPlainTextEngine) callVirtualBase_Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+func (this *QwtPlainTextEngine) callVirtualBase_Draw(painter *qt.QPainter, rect qt.QRectF, flags int, text string) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	C.QwtPlainTextEngine_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()), (C.int)(flags), text_ms)
+	C.QwtPlainTextEngine_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(flags), text_ms)
 
 }
-func (this *QwtPlainTextEngine) OnDraw(slot func(super func(painter *qt.QPainter, rect *qt.QRectF, flags int, text string), painter *qt.QPainter, rect *qt.QRectF, flags int, text string)) {
+func (this *QwtPlainTextEngine) OnDraw(slot func(super func(painter *qt.QPainter, rect qt.QRectF, flags int, text string), painter *qt.QPainter, rect qt.QRectF, flags int, text string)) {
 	ok := C.QwtPlainTextEngine_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -505,8 +495,8 @@ func (this *QwtPlainTextEngine) OnDraw(slot func(super func(painter *qt.QPainter
 }
 
 //export miqt_exec_callback_QwtPlainTextEngine_draw
-func miqt_exec_callback_QwtPlainTextEngine_draw(self *C.QwtPlainTextEngine, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF, flags C.int, text C.struct_miqt_string) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, rect *qt.QRectF, flags int, text string), painter *qt.QPainter, rect *qt.QRectF, flags int, text string))
+func miqt_exec_callback_QwtPlainTextEngine_draw(self *C.QwtPlainTextEngine, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf, flags C.int, text C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, rect qt.QRectF, flags int, text string), painter *qt.QPainter, rect qt.QRectF, flags int, text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -514,7 +504,7 @@ func miqt_exec_callback_QwtPlainTextEngine_draw(self *C.QwtPlainTextEngine, cb C
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval2 := libmiqt.ValueCast[qt.QRectF](rect)
 
 	slotval3 := (int)(flags)
 
@@ -693,27 +683,24 @@ func (this *QwtRichTextEngine) HeightForWidth(font *qt.QFont, flags int, text st
 	return (float64)(C.QwtRichTextEngine_heightForWidth(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms, (C.double)(width)))
 }
 
-func (this *QwtRichTextEngine) TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+func (this *QwtRichTextEngine) TextSize(font *qt.QFont, flags int, text string) qt.QSizeF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtRichTextEngine_textSize(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtRichTextEngine_textSize(this.h, (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms))
 }
 
-func (this *QwtRichTextEngine) Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+func (this *QwtRichTextEngine) Draw(painter *qt.QPainter, rect qt.QRectF, flags int, text string) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QwtRichTextEngine_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()), (C.int)(flags), text_ms)
+	C.QwtRichTextEngine_draw(this.h, (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(flags), text_ms)
 }
 
 func (this *QwtRichTextEngine) MightRender(param1 string) bool {
@@ -783,7 +770,7 @@ func miqt_exec_callback_QwtRichTextEngine_heightForWidth(self *C.QwtRichTextEngi
 
 }
 
-func (this *QwtRichTextEngine) callVirtualBase_TextSize(font *qt.QFont, flags int, text string) *qt.QSizeF {
+func (this *QwtRichTextEngine) callVirtualBase_TextSize(font *qt.QFont, flags int, text string) qt.QSizeF {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(font)
 	text_ms := C.struct_miqt_string{}
@@ -791,12 +778,10 @@ func (this *QwtRichTextEngine) callVirtualBase_TextSize(font *qt.QFont, flags in
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	_goptr := qt.UnsafeNewQSizeF(unsafe.Pointer(C.QwtRichTextEngine_virtualbase_textSize(unsafe.Pointer(this.h), (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSizeF](C.QwtRichTextEngine_virtualbase_textSize(unsafe.Pointer(this.h), (*C.QFont)(font.UnsafePointer()), (C.int)(flags), text_ms))
 
 }
-func (this *QwtRichTextEngine) OnTextSize(slot func(super func(font *qt.QFont, flags int, text string) *qt.QSizeF, font *qt.QFont, flags int, text string) *qt.QSizeF) {
+func (this *QwtRichTextEngine) OnTextSize(slot func(super func(font *qt.QFont, flags int, text string) qt.QSizeF, font *qt.QFont, flags int, text string) qt.QSizeF) {
 	ok := C.QwtRichTextEngine_override_virtual_textSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -804,8 +789,8 @@ func (this *QwtRichTextEngine) OnTextSize(slot func(super func(font *qt.QFont, f
 }
 
 //export miqt_exec_callback_QwtRichTextEngine_textSize
-func miqt_exec_callback_QwtRichTextEngine_textSize(self *C.QwtRichTextEngine, cb C.intptr_t, font *C.QFont, flags C.int, text C.struct_miqt_string) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(font *qt.QFont, flags int, text string) *qt.QSizeF, font *qt.QFont, flags int, text string) *qt.QSizeF)
+func miqt_exec_callback_QwtRichTextEngine_textSize(self *C.QwtRichTextEngine, cb C.intptr_t, font *C.QFont, flags C.int, text C.struct_miqt_string) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(font *qt.QFont, flags int, text string) qt.QSizeF, font *qt.QFont, flags int, text string) qt.QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -821,25 +806,23 @@ func miqt_exec_callback_QwtRichTextEngine_textSize(self *C.QwtRichTextEngine, cb
 	slotval3 := text_ret
 
 	virtualReturn := gofunc((&QwtRichTextEngine{h: self}).callVirtualBase_TextSize, slotval1, slotval2, slotval3)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtRichTextEngine_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 
-func (this *QwtRichTextEngine) callVirtualBase_Draw(painter *qt.QPainter, rect *qt.QRectF, flags int, text string) {
+func (this *QwtRichTextEngine) callVirtualBase_Draw(painter *qt.QPainter, rect qt.QRectF, flags int, text string) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(painter)
-	defer runtime.KeepAlive(rect)
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	C.QwtRichTextEngine_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (*C.QRectF)(rect.UnsafePointer()), (C.int)(flags), text_ms)
+	C.QwtRichTextEngine_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrectf](rect), (C.int)(flags), text_ms)
 
 }
-func (this *QwtRichTextEngine) OnDraw(slot func(super func(painter *qt.QPainter, rect *qt.QRectF, flags int, text string), painter *qt.QPainter, rect *qt.QRectF, flags int, text string)) {
+func (this *QwtRichTextEngine) OnDraw(slot func(super func(painter *qt.QPainter, rect qt.QRectF, flags int, text string), painter *qt.QPainter, rect qt.QRectF, flags int, text string)) {
 	ok := C.QwtRichTextEngine_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -847,8 +830,8 @@ func (this *QwtRichTextEngine) OnDraw(slot func(super func(painter *qt.QPainter,
 }
 
 //export miqt_exec_callback_QwtRichTextEngine_draw
-func miqt_exec_callback_QwtRichTextEngine_draw(self *C.QwtRichTextEngine, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF, flags C.int, text C.struct_miqt_string) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, rect *qt.QRectF, flags int, text string), painter *qt.QPainter, rect *qt.QRectF, flags int, text string))
+func miqt_exec_callback_QwtRichTextEngine_draw(self *C.QwtRichTextEngine, cb C.intptr_t, painter *C.QPainter, rect C.struct_miqt_qrectf, flags C.int, text C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter, rect qt.QRectF, flags int, text string), painter *qt.QPainter, rect qt.QRectF, flags int, text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -856,7 +839,7 @@ func miqt_exec_callback_QwtRichTextEngine_draw(self *C.QwtRichTextEngine, cb C.i
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
 
-	slotval2 := qt.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval2 := libmiqt.ValueCast[qt.QRectF](rect)
 
 	slotval3 := (int)(flags)
 

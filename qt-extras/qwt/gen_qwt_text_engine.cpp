@@ -13,18 +13,18 @@ extern "C" {
 #endif
 
 double miqt_exec_callback_QwtTextEngine_heightForWidth(const QwtTextEngine*, intptr_t, QFont*, int, struct miqt_string, double);
-QSizeF* miqt_exec_callback_QwtTextEngine_textSize(const QwtTextEngine*, intptr_t, QFont*, int, struct miqt_string);
+struct miqt_qsizef miqt_exec_callback_QwtTextEngine_textSize(const QwtTextEngine*, intptr_t, QFont*, int, struct miqt_string);
 bool miqt_exec_callback_QwtTextEngine_mightRender(const QwtTextEngine*, intptr_t, struct miqt_string);
 void miqt_exec_callback_QwtTextEngine_textMargins(const QwtTextEngine*, intptr_t, QFont*, struct miqt_string, double*, double*, double*, double*);
-void miqt_exec_callback_QwtTextEngine_draw(const QwtTextEngine*, intptr_t, QPainter*, QRectF*, int, struct miqt_string);
+void miqt_exec_callback_QwtTextEngine_draw(const QwtTextEngine*, intptr_t, QPainter*, struct miqt_qrectf, int, struct miqt_string);
 double miqt_exec_callback_QwtPlainTextEngine_heightForWidth(const QwtPlainTextEngine*, intptr_t, QFont*, int, struct miqt_string, double);
-QSizeF* miqt_exec_callback_QwtPlainTextEngine_textSize(const QwtPlainTextEngine*, intptr_t, QFont*, int, struct miqt_string);
-void miqt_exec_callback_QwtPlainTextEngine_draw(const QwtPlainTextEngine*, intptr_t, QPainter*, QRectF*, int, struct miqt_string);
+struct miqt_qsizef miqt_exec_callback_QwtPlainTextEngine_textSize(const QwtPlainTextEngine*, intptr_t, QFont*, int, struct miqt_string);
+void miqt_exec_callback_QwtPlainTextEngine_draw(const QwtPlainTextEngine*, intptr_t, QPainter*, struct miqt_qrectf, int, struct miqt_string);
 bool miqt_exec_callback_QwtPlainTextEngine_mightRender(const QwtPlainTextEngine*, intptr_t, struct miqt_string);
 void miqt_exec_callback_QwtPlainTextEngine_textMargins(const QwtPlainTextEngine*, intptr_t, QFont*, struct miqt_string, double*, double*, double*, double*);
 double miqt_exec_callback_QwtRichTextEngine_heightForWidth(const QwtRichTextEngine*, intptr_t, QFont*, int, struct miqt_string, double);
-QSizeF* miqt_exec_callback_QwtRichTextEngine_textSize(const QwtRichTextEngine*, intptr_t, QFont*, int, struct miqt_string);
-void miqt_exec_callback_QwtRichTextEngine_draw(const QwtRichTextEngine*, intptr_t, QPainter*, QRectF*, int, struct miqt_string);
+struct miqt_qsizef miqt_exec_callback_QwtRichTextEngine_textSize(const QwtRichTextEngine*, intptr_t, QFont*, int, struct miqt_string);
+void miqt_exec_callback_QwtRichTextEngine_draw(const QwtRichTextEngine*, intptr_t, QPainter*, struct miqt_qrectf, int, struct miqt_string);
 bool miqt_exec_callback_QwtRichTextEngine_mightRender(const QwtRichTextEngine*, intptr_t, struct miqt_string);
 void miqt_exec_callback_QwtRichTextEngine_textMargins(const QwtRichTextEngine*, intptr_t, QFont*, struct miqt_string, double*, double*, double*, double*);
 #ifdef __cplusplus
@@ -85,10 +85,8 @@ public:
 		text_ms.data = static_cast<char*>(malloc(text_ms.len));
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval3 = text_ms;
-		QSizeF* callback_return_value = miqt_exec_callback_QwtTextEngine_textSize(this, handle__textSize, sigval1, sigval2, sigval3);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QwtTextEngine_textSize(this, handle__textSize, sigval1, sigval2, sigval3);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -150,9 +148,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		int sigval3 = flags;
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -177,9 +173,9 @@ double QwtTextEngine_heightForWidth(const QwtTextEngine* self, QFont* font, int 
 	return self->heightForWidth(*font, static_cast<int>(flags), text_QString, static_cast<double>(width));
 }
 
-QSizeF* QwtTextEngine_textSize(const QwtTextEngine* self, QFont* font, int flags, struct miqt_string text) {
+struct miqt_qsizef QwtTextEngine_textSize(const QwtTextEngine* self, QFont* font, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QSizeF(self->textSize(*font, static_cast<int>(flags), text_QString));
+	return miqt_to_cabi<struct miqt_qsizef>(self->textSize(*font, static_cast<int>(flags), text_QString));
 }
 
 bool QwtTextEngine_mightRender(const QwtTextEngine* self, struct miqt_string text) {
@@ -192,9 +188,9 @@ void QwtTextEngine_textMargins(const QwtTextEngine* self, QFont* font, struct mi
 	self->textMargins(*font, text_QString, static_cast<double&>(*left), static_cast<double&>(*right), static_cast<double&>(*top), static_cast<double&>(*bottom));
 }
 
-void QwtTextEngine_draw(const QwtTextEngine* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text) {
+void QwtTextEngine_draw(const QwtTextEngine* self, QPainter* painter, struct miqt_qrectf rect, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	self->draw(painter, *rect, static_cast<int>(flags), text_QString);
+	self->draw(painter, miqt_from_cabi<QRectF>(rect), static_cast<int>(flags), text_QString);
 }
 
 void QwtTextEngine_operatorAssign(QwtTextEngine* self, QwtTextEngine* param1) {
@@ -249,10 +245,6 @@ bool QwtTextEngine_override_virtual_draw(void* self, intptr_t slot) {
 
 	self_cast->handle__draw = slot;
 	return true;
-}
-
-QSizeF* QwtTextEngine_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
 }
 
 void QwtTextEngine_delete(QwtTextEngine* self) {
@@ -316,13 +308,11 @@ public:
 		text_ms.data = static_cast<char*>(malloc(text_ms.len));
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval3 = text_ms;
-		QSizeF* callback_return_value = miqt_exec_callback_QwtPlainTextEngine_textSize(this, handle__textSize, sigval1, sigval2, sigval3);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QwtPlainTextEngine_textSize(this, handle__textSize, sigval1, sigval2, sigval3);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
-	friend QSizeF* QwtPlainTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text);
+	friend struct miqt_qsizef QwtPlainTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__draw = 0;
@@ -335,9 +325,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		int sigval3 = flags;
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -351,7 +339,7 @@ public:
 
 	}
 
-	friend void QwtPlainTextEngine_virtualbase_draw(const void* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text);
+	friend void QwtPlainTextEngine_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qrectf rect, int flags, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mightRender = 0;
@@ -426,14 +414,14 @@ double QwtPlainTextEngine_heightForWidth(const QwtPlainTextEngine* self, QFont* 
 	return self->heightForWidth(*font, static_cast<int>(flags), text_QString, static_cast<double>(width));
 }
 
-QSizeF* QwtPlainTextEngine_textSize(const QwtPlainTextEngine* self, QFont* font, int flags, struct miqt_string text) {
+struct miqt_qsizef QwtPlainTextEngine_textSize(const QwtPlainTextEngine* self, QFont* font, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QSizeF(self->textSize(*font, static_cast<int>(flags), text_QString));
+	return miqt_to_cabi<struct miqt_qsizef>(self->textSize(*font, static_cast<int>(flags), text_QString));
 }
 
-void QwtPlainTextEngine_draw(const QwtPlainTextEngine* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text) {
+void QwtPlainTextEngine_draw(const QwtPlainTextEngine* self, QPainter* painter, struct miqt_qrectf rect, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	self->draw(painter, *rect, static_cast<int>(flags), text_QString);
+	self->draw(painter, miqt_from_cabi<QRectF>(rect), static_cast<int>(flags), text_QString);
 }
 
 bool QwtPlainTextEngine_mightRender(const QwtPlainTextEngine* self, struct miqt_string param1) {
@@ -475,9 +463,9 @@ bool QwtPlainTextEngine_override_virtual_textSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSizeF* QwtPlainTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text) {
+struct miqt_qsizef QwtPlainTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QSizeF(static_cast<const MiqtVirtualQwtPlainTextEngine*>(self)->QwtPlainTextEngine::textSize(*font, static_cast<int>(flags), text_QString));
+	return miqt_to_cabi<struct miqt_qsizef>(static_cast<const MiqtVirtualQwtPlainTextEngine*>(self)->QwtPlainTextEngine::textSize(*font, static_cast<int>(flags), text_QString));
 }
 
 bool QwtPlainTextEngine_override_virtual_draw(void* self, intptr_t slot) {
@@ -490,9 +478,9 @@ bool QwtPlainTextEngine_override_virtual_draw(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtPlainTextEngine_virtualbase_draw(const void* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text) {
+void QwtPlainTextEngine_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qrectf rect, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	static_cast<const MiqtVirtualQwtPlainTextEngine*>(self)->QwtPlainTextEngine::draw(painter, *rect, static_cast<int>(flags), text_QString);
+	static_cast<const MiqtVirtualQwtPlainTextEngine*>(self)->QwtPlainTextEngine::draw(painter, miqt_from_cabi<QRectF>(rect), static_cast<int>(flags), text_QString);
 }
 
 bool QwtPlainTextEngine_override_virtual_mightRender(void* self, intptr_t slot) {
@@ -523,10 +511,6 @@ bool QwtPlainTextEngine_override_virtual_textMargins(void* self, intptr_t slot) 
 void QwtPlainTextEngine_virtualbase_textMargins(const void* self, QFont* param1, struct miqt_string param2, double* left, double* right, double* top, double* bottom) {
 	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
 	static_cast<const MiqtVirtualQwtPlainTextEngine*>(self)->QwtPlainTextEngine::textMargins(*param1, param2_QString, static_cast<double&>(*left), static_cast<double&>(*right), static_cast<double&>(*top), static_cast<double&>(*bottom));
-}
-
-QSizeF* QwtPlainTextEngine_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
 }
 
 void QwtPlainTextEngine_delete(QwtPlainTextEngine* self) {
@@ -590,13 +574,11 @@ public:
 		text_ms.data = static_cast<char*>(malloc(text_ms.len));
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval3 = text_ms;
-		QSizeF* callback_return_value = miqt_exec_callback_QwtRichTextEngine_textSize(this, handle__textSize, sigval1, sigval2, sigval3);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QwtRichTextEngine_textSize(this, handle__textSize, sigval1, sigval2, sigval3);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
-	friend QSizeF* QwtRichTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text);
+	friend struct miqt_qsizef QwtRichTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__draw = 0;
@@ -609,9 +591,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		int sigval3 = flags;
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -625,7 +605,7 @@ public:
 
 	}
 
-	friend void QwtRichTextEngine_virtualbase_draw(const void* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text);
+	friend void QwtRichTextEngine_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qrectf rect, int flags, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mightRender = 0;
@@ -700,14 +680,14 @@ double QwtRichTextEngine_heightForWidth(const QwtRichTextEngine* self, QFont* fo
 	return self->heightForWidth(*font, static_cast<int>(flags), text_QString, static_cast<double>(width));
 }
 
-QSizeF* QwtRichTextEngine_textSize(const QwtRichTextEngine* self, QFont* font, int flags, struct miqt_string text) {
+struct miqt_qsizef QwtRichTextEngine_textSize(const QwtRichTextEngine* self, QFont* font, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QSizeF(self->textSize(*font, static_cast<int>(flags), text_QString));
+	return miqt_to_cabi<struct miqt_qsizef>(self->textSize(*font, static_cast<int>(flags), text_QString));
 }
 
-void QwtRichTextEngine_draw(const QwtRichTextEngine* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text) {
+void QwtRichTextEngine_draw(const QwtRichTextEngine* self, QPainter* painter, struct miqt_qrectf rect, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	self->draw(painter, *rect, static_cast<int>(flags), text_QString);
+	self->draw(painter, miqt_from_cabi<QRectF>(rect), static_cast<int>(flags), text_QString);
 }
 
 bool QwtRichTextEngine_mightRender(const QwtRichTextEngine* self, struct miqt_string param1) {
@@ -749,9 +729,9 @@ bool QwtRichTextEngine_override_virtual_textSize(void* self, intptr_t slot) {
 	return true;
 }
 
-QSizeF* QwtRichTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text) {
+struct miqt_qsizef QwtRichTextEngine_virtualbase_textSize(const void* self, QFont* font, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QSizeF(static_cast<const MiqtVirtualQwtRichTextEngine*>(self)->QwtRichTextEngine::textSize(*font, static_cast<int>(flags), text_QString));
+	return miqt_to_cabi<struct miqt_qsizef>(static_cast<const MiqtVirtualQwtRichTextEngine*>(self)->QwtRichTextEngine::textSize(*font, static_cast<int>(flags), text_QString));
 }
 
 bool QwtRichTextEngine_override_virtual_draw(void* self, intptr_t slot) {
@@ -764,9 +744,9 @@ bool QwtRichTextEngine_override_virtual_draw(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtRichTextEngine_virtualbase_draw(const void* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text) {
+void QwtRichTextEngine_virtualbase_draw(const void* self, QPainter* painter, struct miqt_qrectf rect, int flags, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	static_cast<const MiqtVirtualQwtRichTextEngine*>(self)->QwtRichTextEngine::draw(painter, *rect, static_cast<int>(flags), text_QString);
+	static_cast<const MiqtVirtualQwtRichTextEngine*>(self)->QwtRichTextEngine::draw(painter, miqt_from_cabi<QRectF>(rect), static_cast<int>(flags), text_QString);
 }
 
 bool QwtRichTextEngine_override_virtual_mightRender(void* self, intptr_t slot) {
@@ -797,10 +777,6 @@ bool QwtRichTextEngine_override_virtual_textMargins(void* self, intptr_t slot) {
 void QwtRichTextEngine_virtualbase_textMargins(const void* self, QFont* param1, struct miqt_string param2, double* left, double* right, double* top, double* bottom) {
 	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
 	static_cast<const MiqtVirtualQwtRichTextEngine*>(self)->QwtRichTextEngine::textMargins(*param1, param2_QString, static_cast<double&>(*left), static_cast<double&>(*right), static_cast<double&>(*top), static_cast<double&>(*bottom));
-}
-
-QSizeF* QwtRichTextEngine_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
 }
 
 void QwtRichTextEngine_delete(QwtRichTextEngine* self) {

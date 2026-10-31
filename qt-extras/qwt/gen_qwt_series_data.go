@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -62,34 +63,29 @@ func NewQwtPointSeriesData() *QwtPointSeriesData {
 
 // NewQwtPointSeriesData2 constructs a new QwtPointSeriesData object.
 func NewQwtPointSeriesData2(param1 []qt.QPointF) *QwtPointSeriesData {
-	defer runtime.KeepAlive(param1)
-	param1_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(param1))))
+	param1_CArray_ptr := (*C.struct_miqt_qpointf)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_qpointf{})) * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray_ptr))
 	param1_CArray := unsafe.Slice(param1_CArray_ptr, len(param1))
 	for i := range param1 {
-		param1_CArray[i] = (*C.QPointF)(param1[i].UnsafePointer())
+		param1_CArray[i] = libmiqt.ValueCast[C.struct_miqt_qpointf](param1[i])
 	}
 	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray_ptr)}
 
 	return newQwtPointSeriesData(C.QwtPointSeriesData_new2(param1_ma))
 }
 
-func (this *QwtPointSeriesData) BoundingRect() *qt.QRectF {
+func (this *QwtPointSeriesData) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPointSeriesData_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPointSeriesData_boundingRect(this.h))
 }
 
-func (this *QwtPointSeriesData) callVirtualBase_BoundingRect() *qt.QRectF {
+func (this *QwtPointSeriesData) callVirtualBase_BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPointSeriesData_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPointSeriesData_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtPointSeriesData) OnBoundingRect(slot func(super func() *qt.QRectF) *qt.QRectF) {
+func (this *QwtPointSeriesData) OnBoundingRect(slot func(super func() qt.QRectF) qt.QRectF) {
 	ok := C.QwtPointSeriesData_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -97,16 +93,15 @@ func (this *QwtPointSeriesData) OnBoundingRect(slot func(super func() *qt.QRectF
 }
 
 //export miqt_exec_callback_QwtPointSeriesData_boundingRect
-func miqt_exec_callback_QwtPointSeriesData_boundingRect(self *C.QwtPointSeriesData, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRectF) *qt.QRectF)
+func miqt_exec_callback_QwtPointSeriesData_boundingRect(self *C.QwtPointSeriesData, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRectF) qt.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtPointSeriesData{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtPointSeriesData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -188,22 +183,18 @@ func NewQwtPoint3DSeriesData2(param1 []QwtPoint3D) *QwtPoint3DSeriesData {
 	return newQwtPoint3DSeriesData(C.QwtPoint3DSeriesData_new2(param1_ma))
 }
 
-func (this *QwtPoint3DSeriesData) BoundingRect() *qt.QRectF {
+func (this *QwtPoint3DSeriesData) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPoint3DSeriesData_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPoint3DSeriesData_boundingRect(this.h))
 }
 
-func (this *QwtPoint3DSeriesData) callVirtualBase_BoundingRect() *qt.QRectF {
+func (this *QwtPoint3DSeriesData) callVirtualBase_BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPoint3DSeriesData_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPoint3DSeriesData_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtPoint3DSeriesData) OnBoundingRect(slot func(super func() *qt.QRectF) *qt.QRectF) {
+func (this *QwtPoint3DSeriesData) OnBoundingRect(slot func(super func() qt.QRectF) qt.QRectF) {
 	ok := C.QwtPoint3DSeriesData_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -211,16 +202,15 @@ func (this *QwtPoint3DSeriesData) OnBoundingRect(slot func(super func() *qt.QRec
 }
 
 //export miqt_exec_callback_QwtPoint3DSeriesData_boundingRect
-func miqt_exec_callback_QwtPoint3DSeriesData_boundingRect(self *C.QwtPoint3DSeriesData, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRectF) *qt.QRectF)
+func miqt_exec_callback_QwtPoint3DSeriesData_boundingRect(self *C.QwtPoint3DSeriesData, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRectF) qt.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtPoint3DSeriesData{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtPoint3DSeriesData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -302,22 +292,18 @@ func NewQwtIntervalSeriesData2(param1 []QwtIntervalSample) *QwtIntervalSeriesDat
 	return newQwtIntervalSeriesData(C.QwtIntervalSeriesData_new2(param1_ma))
 }
 
-func (this *QwtIntervalSeriesData) BoundingRect() *qt.QRectF {
+func (this *QwtIntervalSeriesData) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtIntervalSeriesData_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtIntervalSeriesData_boundingRect(this.h))
 }
 
-func (this *QwtIntervalSeriesData) callVirtualBase_BoundingRect() *qt.QRectF {
+func (this *QwtIntervalSeriesData) callVirtualBase_BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtIntervalSeriesData_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtIntervalSeriesData_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtIntervalSeriesData) OnBoundingRect(slot func(super func() *qt.QRectF) *qt.QRectF) {
+func (this *QwtIntervalSeriesData) OnBoundingRect(slot func(super func() qt.QRectF) qt.QRectF) {
 	ok := C.QwtIntervalSeriesData_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -325,16 +311,15 @@ func (this *QwtIntervalSeriesData) OnBoundingRect(slot func(super func() *qt.QRe
 }
 
 //export miqt_exec_callback_QwtIntervalSeriesData_boundingRect
-func miqt_exec_callback_QwtIntervalSeriesData_boundingRect(self *C.QwtIntervalSeriesData, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRectF) *qt.QRectF)
+func miqt_exec_callback_QwtIntervalSeriesData_boundingRect(self *C.QwtIntervalSeriesData, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRectF) qt.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtIntervalSeriesData{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtIntervalSeriesData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -416,22 +401,18 @@ func NewQwtSetSeriesData2(param1 []QwtSetSample) *QwtSetSeriesData {
 	return newQwtSetSeriesData(C.QwtSetSeriesData_new2(param1_ma))
 }
 
-func (this *QwtSetSeriesData) BoundingRect() *qt.QRectF {
+func (this *QwtSetSeriesData) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtSetSeriesData_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtSetSeriesData_boundingRect(this.h))
 }
 
-func (this *QwtSetSeriesData) callVirtualBase_BoundingRect() *qt.QRectF {
+func (this *QwtSetSeriesData) callVirtualBase_BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtSetSeriesData_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtSetSeriesData_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtSetSeriesData) OnBoundingRect(slot func(super func() *qt.QRectF) *qt.QRectF) {
+func (this *QwtSetSeriesData) OnBoundingRect(slot func(super func() qt.QRectF) qt.QRectF) {
 	ok := C.QwtSetSeriesData_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -439,16 +420,15 @@ func (this *QwtSetSeriesData) OnBoundingRect(slot func(super func() *qt.QRectF) 
 }
 
 //export miqt_exec_callback_QwtSetSeriesData_boundingRect
-func miqt_exec_callback_QwtSetSeriesData_boundingRect(self *C.QwtSetSeriesData, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRectF) *qt.QRectF)
+func miqt_exec_callback_QwtSetSeriesData_boundingRect(self *C.QwtSetSeriesData, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRectF) qt.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtSetSeriesData{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtSetSeriesData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -530,22 +510,18 @@ func NewQwtTradingChartData2(param1 []QwtOHLCSample) *QwtTradingChartData {
 	return newQwtTradingChartData(C.QwtTradingChartData_new2(param1_ma))
 }
 
-func (this *QwtTradingChartData) BoundingRect() *qt.QRectF {
+func (this *QwtTradingChartData) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtTradingChartData_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtTradingChartData_boundingRect(this.h))
 }
 
-func (this *QwtTradingChartData) callVirtualBase_BoundingRect() *qt.QRectF {
+func (this *QwtTradingChartData) callVirtualBase_BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
 
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtTradingChartData_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtTradingChartData_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtTradingChartData) OnBoundingRect(slot func(super func() *qt.QRectF) *qt.QRectF) {
+func (this *QwtTradingChartData) OnBoundingRect(slot func(super func() qt.QRectF) qt.QRectF) {
 	ok := C.QwtTradingChartData_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -553,16 +529,15 @@ func (this *QwtTradingChartData) OnBoundingRect(slot func(super func() *qt.QRect
 }
 
 //export miqt_exec_callback_QwtTradingChartData_boundingRect
-func miqt_exec_callback_QwtTradingChartData_boundingRect(self *C.QwtTradingChartData, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QRectF) *qt.QRectF)
+func miqt_exec_callback_QwtTradingChartData_boundingRect(self *C.QwtTradingChartData, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QRectF) qt.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtTradingChartData{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtTradingChartData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 

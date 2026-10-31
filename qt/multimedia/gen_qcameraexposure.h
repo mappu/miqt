@@ -42,8 +42,8 @@ bool QCameraExposure_isExposureModeSupported(const QCameraExposure* self, int mo
 double QCameraExposure_exposureCompensation(const QCameraExposure* self);
 int QCameraExposure_meteringMode(const QCameraExposure* self);
 bool QCameraExposure_isMeteringModeSupported(const QCameraExposure* self, int mode);
-QPointF* QCameraExposure_spotMeteringPoint(const QCameraExposure* self);
-void QCameraExposure_setSpotMeteringPoint(QCameraExposure* self, QPointF* point);
+struct miqt_qpointf QCameraExposure_spotMeteringPoint(const QCameraExposure* self);
+void QCameraExposure_setSpotMeteringPoint(QCameraExposure* self, struct miqt_qpointf point);
 int QCameraExposure_isoSensitivity(const QCameraExposure* self);
 double QCameraExposure_aperture(const QCameraExposure* self);
 double QCameraExposure_shutterSpeed(const QCameraExposure* self);

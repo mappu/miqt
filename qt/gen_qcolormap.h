@@ -30,9 +30,9 @@ void QColormap_operatorAssign(QColormap* self, QColormap* colormap);
 int QColormap_mode(const QColormap* self);
 int QColormap_depth(const QColormap* self);
 int QColormap_size(const QColormap* self);
-unsigned int QColormap_pixel(const QColormap* self, QColor* color);
-QColor* QColormap_colorAt(const QColormap* self, unsigned int pixel);
-struct miqt_array /* of QColor* */  QColormap_colormap(const QColormap* self);
+unsigned int QColormap_pixel(const QColormap* self, struct miqt_qcolor color);
+struct miqt_qcolor QColormap_colorAt(const QColormap* self, unsigned int pixel);
+struct miqt_array /* of struct miqt_qcolor */  QColormap_colormap(const QColormap* self);
 QColormap* QColormap_instanceWithScreen(int screen);
 
 void QColormap_delete(QColormap* self);

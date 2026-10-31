@@ -17,55 +17,63 @@ extern "C" {
 } /* extern C */
 #endif
 
-QVector3D* QVector3D_new() {
-	return new (std::nothrow) QVector3D();
+struct miqt_qvector3d QVector3D_new() {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D());
 }
 
-QVector3D* QVector3D_new2(int param1) {
-	return new (std::nothrow) QVector3D(static_cast<Qt::Initialization>(param1));
+struct miqt_qvector3d QVector3D_new2(int param1) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D(static_cast<Qt::Initialization>(param1)));
 }
 
-QVector3D* QVector3D_new3(float xpos, float ypos, float zpos) {
-	return new (std::nothrow) QVector3D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
+struct miqt_qvector3d QVector3D_new3(float xpos, float ypos, float zpos) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos)));
 }
 
-QVector3D* QVector3D_new4(QPoint* point) {
-	return new (std::nothrow) QVector3D(*point);
+struct miqt_qvector3d QVector3D_new4(struct miqt_qpoint point) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D(miqt_from_cabi<QPoint>(point)));
 }
 
-QVector3D* QVector3D_new5(QPointF* point) {
-	return new (std::nothrow) QVector3D(*point);
+struct miqt_qvector3d QVector3D_new5(struct miqt_qpointf point) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D(miqt_from_cabi<QPointF>(point)));
 }
 
-QVector3D* QVector3D_new6(QVector2D* vector) {
-	return new (std::nothrow) QVector3D(*vector);
+struct miqt_qvector3d QVector3D_new6(QVector2D* vector) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D(*vector));
 }
 
-QVector3D* QVector3D_new7(QVector2D* vector, float zpos) {
-	return new (std::nothrow) QVector3D(*vector, static_cast<float>(zpos));
+struct miqt_qvector3d QVector3D_new7(QVector2D* vector, float zpos) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D(*vector, static_cast<float>(zpos)));
 }
 
-QVector3D* QVector3D_new8(QVector4D* vector) {
-	return new (std::nothrow) QVector3D(*vector);
+struct miqt_qvector3d QVector3D_new8(QVector4D* vector) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D(*vector));
 }
 
-QVector3D* QVector3D_new9(QVector3D* param1) {
-	return new (std::nothrow) QVector3D(*param1);
+struct miqt_qvector3d QVector3D_new9(struct miqt_qvector3d param1) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D(miqt_from_cabi<QVector3D>(param1)));
 }
 
-bool QVector3D_isNull(const QVector3D* self) {
+bool QVector3D_isNull(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return self->isNull();
 }
 
-float QVector3D_x(const QVector3D* self) {
+float QVector3D_x(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return self->x();
 }
 
-float QVector3D_y(const QVector3D* self) {
+float QVector3D_y(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return self->y();
 }
 
-float QVector3D_z(const QVector3D* self) {
+float QVector3D_z(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return self->z();
 }
 
@@ -81,34 +89,42 @@ void QVector3D_setZ(QVector3D* self, float z) {
 	self->setZ(static_cast<float>(z));
 }
 
-float QVector3D_operatorSubscript(const QVector3D* self, int i) {
+float QVector3D_operatorSubscript(struct miqt_qvector3d self_cabi, int i) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return self->operator[](static_cast<int>(i));
 }
 
-float QVector3D_length(const QVector3D* self) {
+float QVector3D_length(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return self->length();
 }
 
-float QVector3D_lengthSquared(const QVector3D* self) {
+float QVector3D_lengthSquared(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return self->lengthSquared();
 }
 
-QVector3D* QVector3D_normalized(const QVector3D* self) {
-	return new QVector3D(self->normalized());
+struct miqt_qvector3d QVector3D_normalized(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
+	return miqt_to_cabi<struct miqt_qvector3d>(self->normalized());
 }
 
 void QVector3D_normalize(QVector3D* self) {
 	self->normalize();
 }
 
-QVector3D* QVector3D_operatorPlusAssign(QVector3D* self, QVector3D* vector) {
-	QVector3D& _ret = self->operator+=(*vector);
+QVector3D* QVector3D_operatorPlusAssign(QVector3D* self, struct miqt_qvector3d vector) {
+	QVector3D& _ret = self->operator+=(miqt_from_cabi<QVector3D>(vector));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector3D* QVector3D_operatorMinusAssign(QVector3D* self, QVector3D* vector) {
-	QVector3D& _ret = self->operator-=(*vector);
+QVector3D* QVector3D_operatorMinusAssign(QVector3D* self, struct miqt_qvector3d vector) {
+	QVector3D& _ret = self->operator-=(miqt_from_cabi<QVector3D>(vector));
 	// Cast returned reference into pointer
 	return &_ret;
 }
@@ -119,8 +135,8 @@ QVector3D* QVector3D_operatorMultiplyAssign(QVector3D* self, float factor) {
 	return &_ret;
 }
 
-QVector3D* QVector3D_operatorMultiplyAssignWithVector(QVector3D* self, QVector3D* vector) {
-	QVector3D& _ret = self->operator*=(*vector);
+QVector3D* QVector3D_operatorMultiplyAssignWithVector(QVector3D* self, struct miqt_qvector3d vector) {
+	QVector3D& _ret = self->operator*=(miqt_from_cabi<QVector3D>(vector));
 	// Cast returned reference into pointer
 	return &_ret;
 }
@@ -131,73 +147,91 @@ QVector3D* QVector3D_operatorDivideAssign(QVector3D* self, float divisor) {
 	return &_ret;
 }
 
-QVector3D* QVector3D_operatorDivideAssignWithVector(QVector3D* self, QVector3D* vector) {
-	QVector3D& _ret = self->operator/=(*vector);
+QVector3D* QVector3D_operatorDivideAssignWithVector(QVector3D* self, struct miqt_qvector3d vector) {
+	QVector3D& _ret = self->operator/=(miqt_from_cabi<QVector3D>(vector));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-float QVector3D_dotProduct(QVector3D* v1, QVector3D* v2) {
-	return QVector3D::dotProduct(*v1, *v2);
+float QVector3D_dotProduct(struct miqt_qvector3d v1, struct miqt_qvector3d v2) {
+	return QVector3D::dotProduct(miqt_from_cabi<QVector3D>(v1), miqt_from_cabi<QVector3D>(v2));
 }
 
-QVector3D* QVector3D_crossProduct(QVector3D* v1, QVector3D* v2) {
-	return new QVector3D(QVector3D::crossProduct(*v1, *v2));
+struct miqt_qvector3d QVector3D_crossProduct(struct miqt_qvector3d v1, struct miqt_qvector3d v2) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D::crossProduct(miqt_from_cabi<QVector3D>(v1), miqt_from_cabi<QVector3D>(v2)));
 }
 
-QVector3D* QVector3D_normal(QVector3D* v1, QVector3D* v2) {
-	return new QVector3D(QVector3D::normal(*v1, *v2));
+struct miqt_qvector3d QVector3D_normal(struct miqt_qvector3d v1, struct miqt_qvector3d v2) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D::normal(miqt_from_cabi<QVector3D>(v1), miqt_from_cabi<QVector3D>(v2)));
 }
 
-QVector3D* QVector3D_normal2(QVector3D* v1, QVector3D* v2, QVector3D* v3) {
-	return new QVector3D(QVector3D::normal(*v1, *v2, *v3));
+struct miqt_qvector3d QVector3D_normal2(struct miqt_qvector3d v1, struct miqt_qvector3d v2, struct miqt_qvector3d v3) {
+	return miqt_to_cabi<struct miqt_qvector3d>(QVector3D::normal(miqt_from_cabi<QVector3D>(v1), miqt_from_cabi<QVector3D>(v2), miqt_from_cabi<QVector3D>(v3)));
 }
 
-QVector3D* QVector3D_project(const QVector3D* self, QMatrix4x4* modelView, QMatrix4x4* projection, QRect* viewport) {
-	return new QVector3D(self->project(*modelView, *projection, *viewport));
+struct miqt_qvector3d QVector3D_project(struct miqt_qvector3d self_cabi, QMatrix4x4* modelView, QMatrix4x4* projection, struct miqt_qrect viewport) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
+	return miqt_to_cabi<struct miqt_qvector3d>(self->project(*modelView, *projection, miqt_from_cabi<QRect>(viewport)));
 }
 
-QVector3D* QVector3D_unproject(const QVector3D* self, QMatrix4x4* modelView, QMatrix4x4* projection, QRect* viewport) {
-	return new QVector3D(self->unproject(*modelView, *projection, *viewport));
+struct miqt_qvector3d QVector3D_unproject(struct miqt_qvector3d self_cabi, QMatrix4x4* modelView, QMatrix4x4* projection, struct miqt_qrect viewport) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
+	return miqt_to_cabi<struct miqt_qvector3d>(self->unproject(*modelView, *projection, miqt_from_cabi<QRect>(viewport)));
 }
 
-float QVector3D_distanceToPoint(const QVector3D* self, QVector3D* point) {
-	return self->distanceToPoint(*point);
+float QVector3D_distanceToPoint(struct miqt_qvector3d self_cabi, struct miqt_qvector3d point) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
+	return self->distanceToPoint(miqt_from_cabi<QVector3D>(point));
 }
 
-float QVector3D_distanceToPlane(const QVector3D* self, QVector3D* plane, QVector3D* normal) {
-	return self->distanceToPlane(*plane, *normal);
+float QVector3D_distanceToPlane(struct miqt_qvector3d self_cabi, struct miqt_qvector3d plane, struct miqt_qvector3d normal) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
+	return self->distanceToPlane(miqt_from_cabi<QVector3D>(plane), miqt_from_cabi<QVector3D>(normal));
 }
 
-float QVector3D_distanceToPlane2(const QVector3D* self, QVector3D* plane1, QVector3D* plane2, QVector3D* plane3) {
-	return self->distanceToPlane(*plane1, *plane2, *plane3);
+float QVector3D_distanceToPlane2(struct miqt_qvector3d self_cabi, struct miqt_qvector3d plane1, struct miqt_qvector3d plane2, struct miqt_qvector3d plane3) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
+	return self->distanceToPlane(miqt_from_cabi<QVector3D>(plane1), miqt_from_cabi<QVector3D>(plane2), miqt_from_cabi<QVector3D>(plane3));
 }
 
-float QVector3D_distanceToLine(const QVector3D* self, QVector3D* point, QVector3D* direction) {
-	return self->distanceToLine(*point, *direction);
+float QVector3D_distanceToLine(struct miqt_qvector3d self_cabi, struct miqt_qvector3d point, struct miqt_qvector3d direction) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
+	return self->distanceToLine(miqt_from_cabi<QVector3D>(point), miqt_from_cabi<QVector3D>(direction));
 }
 
-QVector2D* QVector3D_toVector2D(const QVector3D* self) {
+QVector2D* QVector3D_toVector2D(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return new QVector2D(self->toVector2D());
 }
 
-QVector4D* QVector3D_toVector4D(const QVector3D* self) {
+QVector4D* QVector3D_toVector4D(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return new QVector4D(self->toVector4D());
 }
 
-QPoint* QVector3D_toPoint(const QVector3D* self) {
-	return new QPoint(self->toPoint());
+struct miqt_qpoint QVector3D_toPoint(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
+	return miqt_to_cabi<struct miqt_qpoint>(self->toPoint());
 }
 
-QPointF* QVector3D_toPointF(const QVector3D* self) {
-	return new QPointF(self->toPointF());
+struct miqt_qpointf QVector3D_toPointF(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
+	return miqt_to_cabi<struct miqt_qpointf>(self->toPointF());
 }
 
-QVariant* QVector3D_ToQVariant(const QVector3D* self) {
+QVariant* QVector3D_ToQVariant(struct miqt_qvector3d self_cabi) {
+	const QVector3D self_val = miqt_from_cabi<QVector3D>(self_cabi);
+	const QVector3D* self = &self_val;
 	return new QVariant(self->operator QVariant());
-}
-
-void QVector3D_delete(QVector3D* self) {
-	delete self;
 }
 

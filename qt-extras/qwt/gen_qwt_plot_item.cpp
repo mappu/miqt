@@ -81,12 +81,12 @@ unsigned int QwtPlotItem_renderThreadCount(const QwtPlotItem* self) {
 	return static_cast<unsigned int>(_ret);
 }
 
-void QwtPlotItem_setLegendIconSize(QwtPlotItem* self, QSize* legendIconSize) {
-	self->setLegendIconSize(*legendIconSize);
+void QwtPlotItem_setLegendIconSize(QwtPlotItem* self, struct miqt_qsize legendIconSize) {
+	self->setLegendIconSize(miqt_from_cabi<QSize>(legendIconSize));
 }
 
-QSize* QwtPlotItem_legendIconSize(const QwtPlotItem* self) {
-	return new QSize(self->legendIconSize());
+struct miqt_qsize QwtPlotItem_legendIconSize(const QwtPlotItem* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->legendIconSize());
 }
 
 double QwtPlotItem_z(const QwtPlotItem* self) {
@@ -141,8 +141,8 @@ void QwtPlotItem_legendChanged(QwtPlotItem* self) {
 	self->legendChanged();
 }
 
-QRectF* QwtPlotItem_boundingRect(const QwtPlotItem* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPlotItem_boundingRect(const QwtPlotItem* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 void QwtPlotItem_updateScaleDiv(QwtPlotItem* self, QwtScaleDiv* param1, QwtScaleDiv* param2) {
@@ -172,8 +172,8 @@ struct miqt_array /* of QwtLegendData* */  QwtPlotItem_legendData(const QwtPlotI
 	return _out;
 }
 
-QwtGraphic* QwtPlotItem_legendIcon(const QwtPlotItem* self, int index, QSizeF* param2) {
-	return new QwtGraphic(self->legendIcon(static_cast<int>(index), *param2));
+QwtGraphic* QwtPlotItem_legendIcon(const QwtPlotItem* self, int index, struct miqt_qsizef param2) {
+	return new QwtGraphic(self->legendIcon(static_cast<int>(index), miqt_from_cabi<QSizeF>(param2)));
 }
 
 void QwtPlotItem_setItemAttribute2(QwtPlotItem* self, int param1, bool on) {

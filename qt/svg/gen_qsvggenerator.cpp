@@ -171,28 +171,28 @@ void QSvgGenerator_setDescription(QSvgGenerator* self, struct miqt_string descri
 	self->setDescription(description_QString);
 }
 
-QSize* QSvgGenerator_size(const QSvgGenerator* self) {
-	return new QSize(self->size());
+struct miqt_qsize QSvgGenerator_size(const QSvgGenerator* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
-void QSvgGenerator_setSize(QSvgGenerator* self, QSize* size) {
-	self->setSize(*size);
+void QSvgGenerator_setSize(QSvgGenerator* self, struct miqt_qsize size) {
+	self->setSize(miqt_from_cabi<QSize>(size));
 }
 
-QRect* QSvgGenerator_viewBox(const QSvgGenerator* self) {
-	return new QRect(self->viewBox());
+struct miqt_qrect QSvgGenerator_viewBox(const QSvgGenerator* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->viewBox());
 }
 
-QRectF* QSvgGenerator_viewBoxF(const QSvgGenerator* self) {
-	return new QRectF(self->viewBoxF());
+struct miqt_qrectf QSvgGenerator_viewBoxF(const QSvgGenerator* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->viewBoxF());
 }
 
-void QSvgGenerator_setViewBox(QSvgGenerator* self, QRect* viewBox) {
-	self->setViewBox(*viewBox);
+void QSvgGenerator_setViewBox(QSvgGenerator* self, struct miqt_qrect viewBox) {
+	self->setViewBox(miqt_from_cabi<QRect>(viewBox));
 }
 
-void QSvgGenerator_setViewBoxWithViewBox(QSvgGenerator* self, QRectF* viewBox) {
-	self->setViewBox(*viewBox);
+void QSvgGenerator_setViewBoxWithViewBox(QSvgGenerator* self, struct miqt_qrectf viewBox) {
+	self->setViewBox(miqt_from_cabi<QRectF>(viewBox));
 }
 
 struct miqt_string QSvgGenerator_fileName(const QSvgGenerator* self) {

@@ -53,11 +53,11 @@ void miqt_exec_callback_QwtWheel_mouseMoveEvent(QwtWheel*, intptr_t, QMouseEvent
 void miqt_exec_callback_QwtWheel_keyPressEvent(QwtWheel*, intptr_t, QKeyEvent*);
 void miqt_exec_callback_QwtWheel_wheelEvent(QwtWheel*, intptr_t, QWheelEvent*);
 void miqt_exec_callback_QwtWheel_timerEvent(QwtWheel*, intptr_t, QTimerEvent*);
-QSize* miqt_exec_callback_QwtWheel_sizeHint(const QwtWheel*, intptr_t);
-QSize* miqt_exec_callback_QwtWheel_minimumSizeHint(const QwtWheel*, intptr_t);
-void miqt_exec_callback_QwtWheel_drawTicks(QwtWheel*, intptr_t, QPainter*, QRectF*);
-void miqt_exec_callback_QwtWheel_drawWheelBackground(QwtWheel*, intptr_t, QPainter*, QRectF*);
-double miqt_exec_callback_QwtWheel_valueAt(const QwtWheel*, intptr_t, QPoint*);
+struct miqt_qsize miqt_exec_callback_QwtWheel_sizeHint(const QwtWheel*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtWheel_minimumSizeHint(const QwtWheel*, intptr_t);
+void miqt_exec_callback_QwtWheel_drawTicks(QwtWheel*, intptr_t, QPainter*, struct miqt_qrectf);
+void miqt_exec_callback_QwtWheel_drawWheelBackground(QwtWheel*, intptr_t, QPainter*, struct miqt_qrectf);
+double miqt_exec_callback_QwtWheel_valueAt(const QwtWheel*, intptr_t, struct miqt_qpoint);
 int miqt_exec_callback_QwtWheel_devType(const QwtWheel*, intptr_t);
 void miqt_exec_callback_QwtWheel_setVisible(QwtWheel*, intptr_t, bool);
 int miqt_exec_callback_QwtWheel_heightForWidth(const QwtWheel*, intptr_t, int);
@@ -236,13 +236,11 @@ public:
 			return QwtWheel::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtWheel_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtWheel_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtWheel_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtWheel_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -253,13 +251,11 @@ public:
 			return QwtWheel::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtWheel_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtWheel_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtWheel_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtWheel_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawTicks = 0;
@@ -272,14 +268,12 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QRectF& param2_ret = param2;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&param2_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(param2);
 		miqt_exec_callback_QwtWheel_drawTicks(this, handle__drawTicks, sigval1, sigval2);
 
 	}
 
-	friend void QwtWheel_virtualbase_drawTicks(void* self, QPainter* param1, QRectF* param2);
+	friend void QwtWheel_virtualbase_drawTicks(void* self, QPainter* param1, struct miqt_qrectf param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawWheelBackground = 0;
@@ -292,14 +286,12 @@ public:
 		}
 
 		QPainter* sigval1 = param1;
-		const QRectF& param2_ret = param2;
-		// Cast returned reference into pointer
-		QRectF* sigval2 = const_cast<QRectF*>(&param2_ret);
+		struct miqt_qrectf sigval2 = miqt_to_cabi<struct miqt_qrectf>(param2);
 		miqt_exec_callback_QwtWheel_drawWheelBackground(this, handle__drawWheelBackground, sigval1, sigval2);
 
 	}
 
-	friend void QwtWheel_virtualbase_drawWheelBackground(void* self, QPainter* param1, QRectF* param2);
+	friend void QwtWheel_virtualbase_drawWheelBackground(void* self, QPainter* param1, struct miqt_qrectf param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__valueAt = 0;
@@ -310,14 +302,12 @@ public:
 			return QwtWheel::valueAt(param1);
 		}
 
-		const QPoint& param1_ret = param1;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(param1);
 		double callback_return_value = miqt_exec_callback_QwtWheel_valueAt(this, handle__valueAt, sigval1);
 		return static_cast<double>(callback_return_value);
 	}
 
-	friend double QwtWheel_virtualbase_valueAt(const void* self, QPoint* param1);
+	friend double QwtWheel_virtualbase_valueAt(const void* self, struct miqt_qpoint param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -967,7 +957,7 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QwtWheel_protectedbase_stopFlying(bool* _dynamic_cast_ok, void* self);
-	friend QRect* QwtWheel_protectedbase_wheelRect(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qrect QwtWheel_protectedbase_wheelRect(bool* _dynamic_cast_ok, const void* self);
 	friend void QwtWheel_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QwtWheel_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 	friend void QwtWheel_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -1364,8 +1354,8 @@ bool QwtWheel_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtWheel_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtWheel*>(self)->QwtWheel::sizeHint());
+struct miqt_qsize QwtWheel_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtWheel*>(self)->QwtWheel::sizeHint());
 }
 
 bool QwtWheel_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1378,8 +1368,8 @@ bool QwtWheel_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtWheel_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtWheel*>(self)->QwtWheel::minimumSizeHint());
+struct miqt_qsize QwtWheel_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtWheel*>(self)->QwtWheel::minimumSizeHint());
 }
 
 bool QwtWheel_override_virtual_drawTicks(void* self, intptr_t slot) {
@@ -1392,8 +1382,8 @@ bool QwtWheel_override_virtual_drawTicks(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtWheel_virtualbase_drawTicks(void* self, QPainter* param1, QRectF* param2) {
-	static_cast<MiqtVirtualQwtWheel*>(self)->QwtWheel::drawTicks(param1, *param2);
+void QwtWheel_virtualbase_drawTicks(void* self, QPainter* param1, struct miqt_qrectf param2) {
+	static_cast<MiqtVirtualQwtWheel*>(self)->QwtWheel::drawTicks(param1, miqt_from_cabi<QRectF>(param2));
 }
 
 bool QwtWheel_override_virtual_drawWheelBackground(void* self, intptr_t slot) {
@@ -1406,8 +1396,8 @@ bool QwtWheel_override_virtual_drawWheelBackground(void* self, intptr_t slot) {
 	return true;
 }
 
-void QwtWheel_virtualbase_drawWheelBackground(void* self, QPainter* param1, QRectF* param2) {
-	static_cast<MiqtVirtualQwtWheel*>(self)->QwtWheel::drawWheelBackground(param1, *param2);
+void QwtWheel_virtualbase_drawWheelBackground(void* self, QPainter* param1, struct miqt_qrectf param2) {
+	static_cast<MiqtVirtualQwtWheel*>(self)->QwtWheel::drawWheelBackground(param1, miqt_from_cabi<QRectF>(param2));
 }
 
 bool QwtWheel_override_virtual_valueAt(void* self, intptr_t slot) {
@@ -1420,8 +1410,8 @@ bool QwtWheel_override_virtual_valueAt(void* self, intptr_t slot) {
 	return true;
 }
 
-double QwtWheel_virtualbase_valueAt(const void* self, QPoint* param1) {
-	return static_cast<const MiqtVirtualQwtWheel*>(self)->QwtWheel::valueAt(*param1);
+double QwtWheel_virtualbase_valueAt(const void* self, struct miqt_qpoint param1) {
+	return static_cast<const MiqtVirtualQwtWheel*>(self)->QwtWheel::valueAt(miqt_from_cabi<QPoint>(param1));
 }
 
 bool QwtWheel_override_virtual_devType(void* self, intptr_t slot) {
@@ -1957,10 +1947,6 @@ void QwtWheel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtWheel*>(self)->QwtWheel::disconnectNotify(*signal);
 }
 
-QSize* QwtWheel_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QwtWheel_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -1976,15 +1962,15 @@ void QwtWheel_protectedbase_stopFlying(bool* _dynamic_cast_ok, void* self) {
 	self_cast->stopFlying();
 }
 
-QRect* QwtWheel_protectedbase_wheelRect(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qrect QwtWheel_protectedbase_wheelRect(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQwtWheel* self_cast = dynamic_cast<MiqtVirtualQwtWheel*>( (QwtWheel*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qrect){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QRect(self_cast->wheelRect());
+	return miqt_to_cabi<struct miqt_qrect>(self_cast->wheelRect());
 }
 
 void QwtWheel_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -97,10 +98,9 @@ func (this *QwtPlotZoneItem) Interval() *QwtInterval {
 	return _goptr
 }
 
-func (this *QwtPlotZoneItem) SetPen(param1 *qt.QColor) {
+func (this *QwtPlotZoneItem) SetPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotZoneItem_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotZoneItem_setPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotZoneItem) SetPenWithPen(pen *qt.QPen) {
@@ -125,23 +125,19 @@ func (this *QwtPlotZoneItem) Brush() *qt.QBrush {
 	return qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtPlotZoneItem_brush(this.h)))
 }
 
-func (this *QwtPlotZoneItem) BoundingRect() *qt.QRectF {
+func (this *QwtPlotZoneItem) BoundingRect() qt.QRectF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPlotZoneItem_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtPlotZoneItem_boundingRect(this.h))
 }
 
-func (this *QwtPlotZoneItem) SetPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotZoneItem) SetPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotZoneItem_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtPlotZoneItem_setPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotZoneItem) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtPlotZoneItem) SetPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotZoneItem_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotZoneItem_setPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
 // Delete this object from C++ memory.

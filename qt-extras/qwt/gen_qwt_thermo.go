@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -234,16 +235,12 @@ func (this *QwtThermo) Value() float64 {
 	return (float64)(C.QwtThermo_value(this.h))
 }
 
-func (this *QwtThermo) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtThermo_sizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtThermo) SizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtThermo_sizeHint(this.h))
 }
 
-func (this *QwtThermo) MinimumSizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtThermo_minimumSizeHint(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QwtThermo) MinimumSizeHint() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QwtThermo_minimumSizeHint(this.h))
 }
 
 func (this *QwtThermo) SetScaleDraw(scaleDraw *QwtScaleDraw) {
@@ -321,9 +318,7 @@ func (this *QwtThermo) ScaleDraw2() *QwtScaleDraw {
 func (this *QwtThermo) PipeRect() qt.QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtThermo_protectedbase_pipeRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRect](C.QwtThermo_protectedbase_pipeRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -334,13 +329,10 @@ func (this *QwtThermo) PipeRect() qt.QRect {
 }
 
 // FillRect can only be called from a QwtThermo that was directly constructed.
-func (this *QwtThermo) FillRect(param1 *qt.QRect) qt.QRect {
-	defer runtime.KeepAlive(param1)
+func (this *QwtThermo) FillRect(param1 qt.QRect) qt.QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtThermo_protectedbase_fillRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRect](C.QwtThermo_protectedbase_fillRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -351,13 +343,10 @@ func (this *QwtThermo) FillRect(param1 *qt.QRect) qt.QRect {
 }
 
 // AlarmRect can only be called from a QwtThermo that was directly constructed.
-func (this *QwtThermo) AlarmRect(param1 *qt.QRect) qt.QRect {
-	defer runtime.KeepAlive(param1)
+func (this *QwtThermo) AlarmRect(param1 qt.QRect) qt.QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QwtThermo_protectedbase_alarmRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[qt.QRect](C.QwtThermo_protectedbase_alarmRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -529,14 +518,12 @@ func (this *QwtThermo) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 
-func (this *QwtThermo) callVirtualBase_SizeHint() *qt.QSize {
+func (this *QwtThermo) callVirtualBase_SizeHint() qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtThermo_virtualbase_sizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QSize](C.QwtThermo_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QwtThermo) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+func (this *QwtThermo) OnSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtThermo_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -544,27 +531,24 @@ func (this *QwtThermo) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
 }
 
 //export miqt_exec_callback_QwtThermo_sizeHint
-func miqt_exec_callback_QwtThermo_sizeHint(self *C.QwtThermo, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtThermo_sizeHint(self *C.QwtThermo, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtThermo{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtThermo_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
-
-}
-
-func (this *QwtThermo) callVirtualBase_MinimumSizeHint() *qt.QSize {
-
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QwtThermo_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QwtThermo) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+
+func (this *QwtThermo) callVirtualBase_MinimumSizeHint() qt.QSize {
+
+	return libmiqt.ValueCast[qt.QSize](C.QwtThermo_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QwtThermo) OnMinimumSizeHint(slot func(super func() qt.QSize) qt.QSize) {
 	ok := C.QwtThermo_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -572,16 +556,15 @@ func (this *QwtThermo) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.Q
 }
 
 //export miqt_exec_callback_QwtThermo_minimumSizeHint
-func miqt_exec_callback_QwtThermo_minimumSizeHint(self *C.QwtThermo, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
+func miqt_exec_callback_QwtThermo_minimumSizeHint(self *C.QwtThermo, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt.QSize) qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QwtThermo{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtThermo_virtualreturncopy_QSize((*C.QSize)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -611,14 +594,13 @@ func miqt_exec_callback_QwtThermo_setValue(self *C.QwtThermo, cb C.intptr_t, val
 
 }
 
-func (this *QwtThermo) callVirtualBase_DrawLiquid(param1 *qt.QPainter, param2 *qt.QRect) {
+func (this *QwtThermo) callVirtualBase_DrawLiquid(param1 *qt.QPainter, param2 qt.QRect) {
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(param2)
 
-	C.QwtThermo_virtualbase_drawLiquid(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (*C.QRect)(param2.UnsafePointer()))
+	C.QwtThermo_virtualbase_drawLiquid(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), libmiqt.ValueCast[C.struct_miqt_qrect](param2))
 
 }
-func (this *QwtThermo) OnDrawLiquid(slot func(super func(param1 *qt.QPainter, param2 *qt.QRect), param1 *qt.QPainter, param2 *qt.QRect)) {
+func (this *QwtThermo) OnDrawLiquid(slot func(super func(param1 *qt.QPainter, param2 qt.QRect), param1 *qt.QPainter, param2 qt.QRect)) {
 	ok := C.QwtThermo_override_virtual_drawLiquid(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -626,8 +608,8 @@ func (this *QwtThermo) OnDrawLiquid(slot func(super func(param1 *qt.QPainter, pa
 }
 
 //export miqt_exec_callback_QwtThermo_drawLiquid
-func miqt_exec_callback_QwtThermo_drawLiquid(self *C.QwtThermo, cb C.intptr_t, param1 *C.QPainter, param2 *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 *qt.QRect), param1 *qt.QPainter, param2 *qt.QRect))
+func miqt_exec_callback_QwtThermo_drawLiquid(self *C.QwtThermo, cb C.intptr_t, param1 *C.QPainter, param2 C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.QRect), param1 *qt.QPainter, param2 qt.QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -635,7 +617,7 @@ func miqt_exec_callback_QwtThermo_drawLiquid(self *C.QwtThermo, cb C.intptr_t, p
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(param1))
 
-	slotval2 := qt.UnsafeNewQRect(unsafe.Pointer(param2))
+	slotval2 := libmiqt.ValueCast[qt.QRect](param2)
 
 	gofunc((&QwtThermo{h: self}).callVirtualBase_DrawLiquid, slotval1, slotval2)
 
@@ -1595,7 +1577,6 @@ func miqt_exec_callback_QwtThermo_initPainter(self *C.QwtThermo, cb C.intptr_t, 
 }
 
 func (this *QwtThermo) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QwtThermo_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 

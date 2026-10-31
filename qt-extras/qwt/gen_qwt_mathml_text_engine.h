@@ -32,8 +32,8 @@ typedef struct QwtTextEngine QwtTextEngine;
 
 void QwtMathMLTextEngine_virtbase(QwtMathMLTextEngine* src, QwtTextEngine** outptr_QwtTextEngine);
 double QwtMathMLTextEngine_heightForWidth(const QwtMathMLTextEngine* self, QFont* font, int flags, struct miqt_string text, double width);
-QSizeF* QwtMathMLTextEngine_textSize(const QwtMathMLTextEngine* self, QFont* font, int flags, struct miqt_string text);
-void QwtMathMLTextEngine_draw(const QwtMathMLTextEngine* self, QPainter* painter, QRectF* rect, int flags, struct miqt_string text);
+struct miqt_qsizef QwtMathMLTextEngine_textSize(const QwtMathMLTextEngine* self, QFont* font, int flags, struct miqt_string text);
+void QwtMathMLTextEngine_draw(const QwtMathMLTextEngine* self, QPainter* painter, struct miqt_qrectf rect, int flags, struct miqt_string text);
 bool QwtMathMLTextEngine_mightRender(const QwtMathMLTextEngine* self, struct miqt_string param1);
 void QwtMathMLTextEngine_textMargins(const QwtMathMLTextEngine* self, QFont* param1, struct miqt_string param2, double* left, double* right, double* top, double* bottom);
 void QwtMathMLTextEngine_operatorAssign(QwtMathMLTextEngine* self, QwtMathMLTextEngine* param1);

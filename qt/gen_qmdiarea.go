@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -119,16 +120,12 @@ func QMdiArea_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QMdiArea) SizeHint() *QSize {
-	_goptr := newQSize(C.QMdiArea_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMdiArea) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QMdiArea_sizeHint(this.h))
 }
 
-func (this *QMdiArea) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QMdiArea_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMdiArea) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QMdiArea_minimumSizeHint(this.h))
 }
 
 func (this *QMdiArea) CurrentSubWindow() *QMdiSubWindow {
@@ -358,9 +355,7 @@ func (this *QMdiArea) SetViewportMargins(left int, top int, right int, bottom in
 func (this *QMdiArea) ViewportMargins() QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQMargins(C.QMdiArea_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QMargins](C.QMdiArea_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -519,14 +514,12 @@ func (this *QMdiArea) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QMdiArea) callVirtualBase_SizeHint() *QSize {
+func (this *QMdiArea) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QMdiArea_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QMdiArea_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QMdiArea) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QMdiArea) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMdiArea_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -534,27 +527,24 @@ func (this *QMdiArea) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QMdiArea_sizeHint
-func miqt_exec_callback_QMdiArea_sizeHint(self *C.QMdiArea, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMdiArea_sizeHint(self *C.QMdiArea, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMdiArea_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QMdiArea) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QMdiArea_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QMdiArea) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QMdiArea) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QMdiArea_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QMdiArea) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMdiArea_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -562,16 +552,15 @@ func (this *QMdiArea) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QMdiArea_minimumSizeHint
-func miqt_exec_callback_QMdiArea_minimumSizeHint(self *C.QMdiArea, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMdiArea_minimumSizeHint(self *C.QMdiArea, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMdiArea_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1150,14 +1139,12 @@ func miqt_exec_callback_QMdiArea_keyPressEvent(self *C.QMdiArea, cb C.intptr_t, 
 
 }
 
-func (this *QMdiArea) callVirtualBase_ViewportSizeHint() *QSize {
+func (this *QMdiArea) callVirtualBase_ViewportSizeHint() QSize {
 
-	_goptr := newQSize(C.QMdiArea_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QMdiArea_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QMdiArea) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QMdiArea) OnViewportSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMdiArea_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1165,16 +1152,15 @@ func (this *QMdiArea) OnViewportSizeHint(slot func(super func() *QSize) *QSize) 
 }
 
 //export miqt_exec_callback_QMdiArea_viewportSizeHint
-func miqt_exec_callback_QMdiArea_viewportSizeHint(self *C.QMdiArea, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMdiArea_viewportSizeHint(self *C.QMdiArea, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMdiArea{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMdiArea_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1702,7 +1688,6 @@ func miqt_exec_callback_QMdiArea_initPainter(self *C.QMdiArea, cb C.intptr_t, pa
 }
 
 func (this *QMdiArea) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QMdiArea_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

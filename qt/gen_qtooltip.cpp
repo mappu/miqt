@@ -18,19 +18,19 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QToolTip_showText(QPoint* pos, struct miqt_string text) {
+void QToolTip_showText(struct miqt_qpoint pos, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QToolTip::showText(*pos, text_QString);
+	QToolTip::showText(miqt_from_cabi<QPoint>(pos), text_QString);
 }
 
-void QToolTip_showText2(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect) {
+void QToolTip_showText2(struct miqt_qpoint pos, struct miqt_string text, QWidget* w, struct miqt_qrect rect) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QToolTip::showText(*pos, text_QString, w, *rect);
+	QToolTip::showText(miqt_from_cabi<QPoint>(pos), text_QString, w, miqt_from_cabi<QRect>(rect));
 }
 
-void QToolTip_showText3(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect, int msecShowTime) {
+void QToolTip_showText3(struct miqt_qpoint pos, struct miqt_string text, QWidget* w, struct miqt_qrect rect, int msecShowTime) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QToolTip::showText(*pos, text_QString, w, *rect, static_cast<int>(msecShowTime));
+	QToolTip::showText(miqt_from_cabi<QPoint>(pos), text_QString, w, miqt_from_cabi<QRect>(rect), static_cast<int>(msecShowTime));
 }
 
 void QToolTip_hideText() {
@@ -68,9 +68,9 @@ void QToolTip_setFont(QFont* font) {
 	QToolTip::setFont(*font);
 }
 
-void QToolTip_showText4(QPoint* pos, struct miqt_string text, QWidget* w) {
+void QToolTip_showText4(struct miqt_qpoint pos, struct miqt_string text, QWidget* w) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QToolTip::showText(*pos, text_QString, w);
+	QToolTip::showText(miqt_from_cabi<QPoint>(pos), text_QString, w);
 }
 
 void QToolTip_delete(QToolTip* self) {

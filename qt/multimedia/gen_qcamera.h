@@ -89,7 +89,7 @@ void QCamera_setViewfinderWithSurface(QCamera* self, QAbstractVideoSurface* surf
 QCameraViewfinderSettings* QCamera_viewfinderSettings(const QCamera* self);
 void QCamera_setViewfinderSettings(QCamera* self, QCameraViewfinderSettings* settings);
 struct miqt_array /* of QCameraViewfinderSettings* */  QCamera_supportedViewfinderSettings(const QCamera* self);
-struct miqt_array /* of QSize* */  QCamera_supportedViewfinderResolutions(const QCamera* self);
+struct miqt_array /* of struct miqt_qsize */  QCamera_supportedViewfinderResolutions(const QCamera* self);
 struct miqt_array /* of QCamera__FrameRateRange* */  QCamera_supportedViewfinderFrameRateRanges(const QCamera* self);
 struct miqt_array /* of int */  QCamera_supportedViewfinderPixelFormats(const QCamera* self);
 int QCamera_error(const QCamera* self);
@@ -130,7 +130,7 @@ struct miqt_string QCamera_tr3(const char* s, const char* c, int n);
 struct miqt_string QCamera_trUtf82(const char* s, const char* c);
 struct miqt_string QCamera_trUtf83(const char* s, const char* c, int n);
 struct miqt_array /* of QCameraViewfinderSettings* */  QCamera_supportedViewfinderSettingsWithSettings(const QCamera* self, QCameraViewfinderSettings* settings);
-struct miqt_array /* of QSize* */  QCamera_supportedViewfinderResolutionsWithSettings(const QCamera* self, QCameraViewfinderSettings* settings);
+struct miqt_array /* of struct miqt_qsize */  QCamera_supportedViewfinderResolutionsWithSettings(const QCamera* self, QCameraViewfinderSettings* settings);
 struct miqt_array /* of QCamera__FrameRateRange* */  QCamera_supportedViewfinderFrameRateRangesWithSettings(const QCamera* self, QCameraViewfinderSettings* settings);
 struct miqt_array /* of int */  QCamera_supportedViewfinderPixelFormatsWithSettings(const QCamera* self, QCameraViewfinderSettings* settings);
 

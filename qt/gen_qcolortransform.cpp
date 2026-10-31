@@ -33,12 +33,12 @@ unsigned int QColorTransform_map(const QColorTransform* self, unsigned int argb)
 	return static_cast<unsigned int>(_ret);
 }
 
-QRgba64* QColorTransform_mapWithRgba64(const QColorTransform* self, QRgba64* rgba64) {
-	return new QRgba64(self->map(*rgba64));
+struct miqt_qrgba64 QColorTransform_mapWithRgba64(const QColorTransform* self, struct miqt_qrgba64 rgba64) {
+	return miqt_to_cabi<struct miqt_qrgba64>(self->map(miqt_from_cabi<QRgba64>(rgba64)));
 }
 
-QColor* QColorTransform_mapWithColor(const QColorTransform* self, QColor* color) {
-	return new QColor(self->map(*color));
+struct miqt_qcolor QColorTransform_mapWithColor(const QColorTransform* self, struct miqt_qcolor color) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->map(miqt_from_cabi<QColor>(color)));
 }
 
 void QColorTransform_delete(QColorTransform* self) {

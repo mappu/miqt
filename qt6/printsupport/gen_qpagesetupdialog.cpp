@@ -47,8 +47,8 @@ extern "C" {
 int miqt_exec_callback_QPageSetupDialog_exec(QPageSetupDialog*, intptr_t);
 void miqt_exec_callback_QPageSetupDialog_done(QPageSetupDialog*, intptr_t, int);
 void miqt_exec_callback_QPageSetupDialog_setVisible(QPageSetupDialog*, intptr_t, bool);
-QSize* miqt_exec_callback_QPageSetupDialog_sizeHint(const QPageSetupDialog*, intptr_t);
-QSize* miqt_exec_callback_QPageSetupDialog_minimumSizeHint(const QPageSetupDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPageSetupDialog_sizeHint(const QPageSetupDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPageSetupDialog_minimumSizeHint(const QPageSetupDialog*, intptr_t);
 void miqt_exec_callback_QPageSetupDialog_open(QPageSetupDialog*, intptr_t);
 void miqt_exec_callback_QPageSetupDialog_accept(QPageSetupDialog*, intptr_t);
 void miqt_exec_callback_QPageSetupDialog_reject(QPageSetupDialog*, intptr_t);
@@ -168,13 +168,11 @@ public:
 			return QPageSetupDialog::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPageSetupDialog_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPageSetupDialog_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPageSetupDialog_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QPageSetupDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -185,13 +183,11 @@ public:
 			return QPageSetupDialog::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPageSetupDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPageSetupDialog_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPageSetupDialog_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QPageSetupDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1128,8 +1124,8 @@ bool QPageSetupDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPageSetupDialog_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPageSetupDialog*>(self)->QPageSetupDialog::sizeHint());
+struct miqt_qsize QPageSetupDialog_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPageSetupDialog*>(self)->QPageSetupDialog::sizeHint());
 }
 
 bool QPageSetupDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1142,8 +1138,8 @@ bool QPageSetupDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot
 	return true;
 }
 
-QSize* QPageSetupDialog_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPageSetupDialog*>(self)->QPageSetupDialog::minimumSizeHint());
+struct miqt_qsize QPageSetupDialog_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPageSetupDialog*>(self)->QPageSetupDialog::minimumSizeHint());
 }
 
 bool QPageSetupDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1803,10 +1799,6 @@ bool QPageSetupDialog_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QPageSetupDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQPageSetupDialog*>(self)->QPageSetupDialog::disconnectNotify(*signal);
-}
-
-QSize* QPageSetupDialog_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QPageSetupDialog_virtualreturncopy_QVariant(QVariant* src) {

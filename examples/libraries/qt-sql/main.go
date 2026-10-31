@@ -121,6 +121,5 @@ func toNext() {
 func updateButtons(index int) {
 	previousButton.SetEnabled(index > 0)
 	modelIndex := qt.NewQModelIndex()
-	defer modelIndex.Delete()
 	nextButton.SetEnabled(index < model.RowCount(modelIndex)-1)
 }

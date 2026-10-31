@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -364,10 +365,8 @@ func (this *QWizard) SetVisible(visible bool) {
 	C.QWizard_setVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QWizard) SizeHint() *QSize {
-	_goptr := newQSize(C.QWizard_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWizard) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QWizard_sizeHint(this.h))
 }
 
 func (this *QWizard) CurrentIdChanged(id int) {
@@ -738,14 +737,12 @@ func miqt_exec_callback_QWizard_setVisible(self *C.QWizard, cb C.intptr_t, visib
 
 }
 
-func (this *QWizard) callVirtualBase_SizeHint() *QSize {
+func (this *QWizard) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QWizard_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QWizard_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QWizard) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QWizard) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QWizard_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -753,16 +750,15 @@ func (this *QWizard) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QWizard_sizeHint
-func miqt_exec_callback_QWizard_sizeHint(self *C.QWizard, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QWizard_sizeHint(self *C.QWizard, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QWizard_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -927,14 +923,12 @@ func miqt_exec_callback_QWizard_cleanupPage(self *C.QWizard, cb C.intptr_t, id C
 
 }
 
-func (this *QWizard) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QWizard) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QWizard_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QWizard_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QWizard) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QWizard) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QWizard_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -942,16 +936,15 @@ func (this *QWizard) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QWizard_minimumSizeHint
-func miqt_exec_callback_QWizard_minimumSizeHint(self *C.QWizard, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QWizard_minimumSizeHint(self *C.QWizard, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QWizard{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QWizard_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1902,7 +1895,6 @@ func miqt_exec_callback_QWizard_initPainter(self *C.QWizard, cb C.intptr_t, pain
 }
 
 func (this *QWizard) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QWizard_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
@@ -2836,14 +2828,12 @@ func miqt_exec_callback_QWizardPage_setVisible(self *C.QWizardPage, cb C.intptr_
 
 }
 
-func (this *QWizardPage) callVirtualBase_SizeHint() *QSize {
+func (this *QWizardPage) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QWizardPage_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QWizardPage_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QWizardPage) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QWizardPage) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QWizardPage_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2851,27 +2841,24 @@ func (this *QWizardPage) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QWizardPage_sizeHint
-func miqt_exec_callback_QWizardPage_sizeHint(self *C.QWizardPage, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QWizardPage_sizeHint(self *C.QWizardPage, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QWizardPage_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QWizardPage) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QWizardPage_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QWizardPage) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QWizardPage) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QWizardPage_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QWizardPage) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QWizardPage_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2879,16 +2866,15 @@ func (this *QWizardPage) OnMinimumSizeHint(slot func(super func() *QSize) *QSize
 }
 
 //export miqt_exec_callback_QWizardPage_minimumSizeHint
-func miqt_exec_callback_QWizardPage_minimumSizeHint(self *C.QWizardPage, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QWizardPage_minimumSizeHint(self *C.QWizardPage, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QWizardPage{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QWizardPage_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -3772,7 +3758,6 @@ func miqt_exec_callback_QWizardPage_initPainter(self *C.QWizardPage, cb C.intptr
 }
 
 func (this *QWizardPage) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QWizardPage_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

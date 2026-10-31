@@ -32,27 +32,27 @@ const char* miqt_exec_callback_QsciLexerYAML_blockStart(const QsciLexerYAML*, in
 const char* miqt_exec_callback_QsciLexerYAML_blockStartKeyword(const QsciLexerYAML*, intptr_t, int*);
 int miqt_exec_callback_QsciLexerYAML_braceStyle(const QsciLexerYAML*, intptr_t);
 bool miqt_exec_callback_QsciLexerYAML_caseSensitive(const QsciLexerYAML*, intptr_t);
-QColor* miqt_exec_callback_QsciLexerYAML_color(const QsciLexerYAML*, intptr_t, int);
+struct miqt_qcolor miqt_exec_callback_QsciLexerYAML_color(const QsciLexerYAML*, intptr_t, int);
 bool miqt_exec_callback_QsciLexerYAML_eolFill(const QsciLexerYAML*, intptr_t, int);
 QFont* miqt_exec_callback_QsciLexerYAML_font(const QsciLexerYAML*, intptr_t, int);
 int miqt_exec_callback_QsciLexerYAML_indentationGuideView(const QsciLexerYAML*, intptr_t);
 const char* miqt_exec_callback_QsciLexerYAML_keywords(const QsciLexerYAML*, intptr_t, int);
 int miqt_exec_callback_QsciLexerYAML_defaultStyle(const QsciLexerYAML*, intptr_t);
 struct miqt_string miqt_exec_callback_QsciLexerYAML_description(const QsciLexerYAML*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerYAML_paper(const QsciLexerYAML*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerYAML_defaultColorWithStyle(const QsciLexerYAML*, intptr_t, int);
+struct miqt_qcolor miqt_exec_callback_QsciLexerYAML_paper(const QsciLexerYAML*, intptr_t, int);
+struct miqt_qcolor miqt_exec_callback_QsciLexerYAML_defaultColorWithStyle(const QsciLexerYAML*, intptr_t, int);
 bool miqt_exec_callback_QsciLexerYAML_defaultEolFill(const QsciLexerYAML*, intptr_t, int);
 QFont* miqt_exec_callback_QsciLexerYAML_defaultFontWithStyle(const QsciLexerYAML*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerYAML_defaultPaperWithStyle(const QsciLexerYAML*, intptr_t, int);
+struct miqt_qcolor miqt_exec_callback_QsciLexerYAML_defaultPaperWithStyle(const QsciLexerYAML*, intptr_t, int);
 void miqt_exec_callback_QsciLexerYAML_setEditor(QsciLexerYAML*, intptr_t, QsciScintilla*);
 void miqt_exec_callback_QsciLexerYAML_refreshProperties(QsciLexerYAML*, intptr_t);
 int miqt_exec_callback_QsciLexerYAML_styleBitsNeeded(const QsciLexerYAML*, intptr_t);
 const char* miqt_exec_callback_QsciLexerYAML_wordCharacters(const QsciLexerYAML*, intptr_t);
 void miqt_exec_callback_QsciLexerYAML_setAutoIndentStyle(QsciLexerYAML*, intptr_t, int);
-void miqt_exec_callback_QsciLexerYAML_setColor(QsciLexerYAML*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerYAML_setColor(QsciLexerYAML*, intptr_t, struct miqt_qcolor, int);
 void miqt_exec_callback_QsciLexerYAML_setEolFill(QsciLexerYAML*, intptr_t, bool, int);
 void miqt_exec_callback_QsciLexerYAML_setFont(QsciLexerYAML*, intptr_t, QFont*, int);
-void miqt_exec_callback_QsciLexerYAML_setPaper(QsciLexerYAML*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerYAML_setPaper(QsciLexerYAML*, intptr_t, struct miqt_qcolor, int);
 bool miqt_exec_callback_QsciLexerYAML_readProperties(QsciLexerYAML*, intptr_t, QSettings*, struct miqt_string);
 bool miqt_exec_callback_QsciLexerYAML_writeProperties(const QsciLexerYAML*, intptr_t, QSettings*, struct miqt_string);
 bool miqt_exec_callback_QsciLexerYAML_event(QsciLexerYAML*, intptr_t, QEvent*);
@@ -309,13 +309,11 @@ public:
 		}
 
 		int sigval1 = style;
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerYAML_color(this, handle__color, sigval1);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QsciLexerYAML_color(this, handle__color, sigval1);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QsciLexerYAML_virtualbase_color(const void* self, int style);
+	friend struct miqt_qcolor QsciLexerYAML_virtualbase_color(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eolFill = 0;
@@ -428,13 +426,11 @@ public:
 		}
 
 		int sigval1 = style;
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerYAML_paper(this, handle__paper, sigval1);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QsciLexerYAML_paper(this, handle__paper, sigval1);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QsciLexerYAML_virtualbase_paper(const void* self, int style);
+	friend struct miqt_qcolor QsciLexerYAML_virtualbase_paper(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__defaultColorWithStyle = 0;
@@ -446,13 +442,11 @@ public:
 		}
 
 		int sigval1 = style;
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerYAML_defaultColorWithStyle(this, handle__defaultColorWithStyle, sigval1);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QsciLexerYAML_defaultColorWithStyle(this, handle__defaultColorWithStyle, sigval1);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QsciLexerYAML_virtualbase_defaultColorWithStyle(const void* self, int style);
+	friend struct miqt_qcolor QsciLexerYAML_virtualbase_defaultColorWithStyle(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__defaultEolFill = 0;
@@ -498,13 +492,11 @@ public:
 		}
 
 		int sigval1 = style;
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerYAML_defaultPaperWithStyle(this, handle__defaultPaperWithStyle, sigval1);
-		QColor callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qcolor callback_return_value = miqt_exec_callback_QsciLexerYAML_defaultPaperWithStyle(this, handle__defaultPaperWithStyle, sigval1);
+		return miqt_from_cabi<QColor>(callback_return_value);
 	}
 
-	friend QColor* QsciLexerYAML_virtualbase_defaultPaperWithStyle(const void* self, int style);
+	friend struct miqt_qcolor QsciLexerYAML_virtualbase_defaultPaperWithStyle(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEditor = 0;
@@ -601,15 +593,13 @@ public:
 			return;
 		}
 
-		const QColor& c_ret = c;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&c_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(c);
 		int sigval2 = style;
 		miqt_exec_callback_QsciLexerYAML_setColor(this, handle__setColor, sigval1, sigval2);
 
 	}
 
-	friend void QsciLexerYAML_virtualbase_setColor(void* self, QColor* c, int style);
+	friend void QsciLexerYAML_virtualbase_setColor(void* self, struct miqt_qcolor c, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEolFill = 0;
@@ -659,15 +649,13 @@ public:
 			return;
 		}
 
-		const QColor& c_ret = c;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&c_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(c);
 		int sigval2 = style;
 		miqt_exec_callback_QsciLexerYAML_setPaper(this, handle__setPaper, sigval1, sigval2);
 
 	}
 
-	friend void QsciLexerYAML_virtualbase_setPaper(void* self, QColor* c, int style);
+	friend void QsciLexerYAML_virtualbase_setPaper(void* self, struct miqt_qcolor c, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__readProperties = 0;
@@ -902,8 +890,8 @@ const char* QsciLexerYAML_lexer(const QsciLexerYAML* self) {
 	return (const char*) self->lexer();
 }
 
-QColor* QsciLexerYAML_defaultColor(const QsciLexerYAML* self, int style) {
-	return new QColor(self->defaultColor(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerYAML_defaultColor(const QsciLexerYAML* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->defaultColor(static_cast<int>(style)));
 }
 
 bool QsciLexerYAML_defaultEolFill(const QsciLexerYAML* self, int style) {
@@ -914,8 +902,8 @@ QFont* QsciLexerYAML_defaultFont(const QsciLexerYAML* self, int style) {
 	return new QFont(self->defaultFont(static_cast<int>(style)));
 }
 
-QColor* QsciLexerYAML_defaultPaper(const QsciLexerYAML* self, int style) {
-	return new QColor(self->defaultPaper(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerYAML_defaultPaper(const QsciLexerYAML* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->defaultPaper(static_cast<int>(style)));
 }
 
 const char* QsciLexerYAML_keywords(const QsciLexerYAML* self, int set) {
@@ -1179,8 +1167,8 @@ bool QsciLexerYAML_override_virtual_color(void* self, intptr_t slot) {
 	return true;
 }
 
-QColor* QsciLexerYAML_virtualbase_color(const void* self, int style) {
-	return new QColor(static_cast<const MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::color(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerYAML_virtualbase_color(const void* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::color(static_cast<int>(style)));
 }
 
 bool QsciLexerYAML_override_virtual_eolFill(void* self, intptr_t slot) {
@@ -1273,8 +1261,8 @@ bool QsciLexerYAML_override_virtual_paper(void* self, intptr_t slot) {
 	return true;
 }
 
-QColor* QsciLexerYAML_virtualbase_paper(const void* self, int style) {
-	return new QColor(static_cast<const MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::paper(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerYAML_virtualbase_paper(const void* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::paper(static_cast<int>(style)));
 }
 
 bool QsciLexerYAML_override_virtual_defaultColorWithStyle(void* self, intptr_t slot) {
@@ -1287,8 +1275,8 @@ bool QsciLexerYAML_override_virtual_defaultColorWithStyle(void* self, intptr_t s
 	return true;
 }
 
-QColor* QsciLexerYAML_virtualbase_defaultColorWithStyle(const void* self, int style) {
-	return new QColor(static_cast<const MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::defaultColor(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerYAML_virtualbase_defaultColorWithStyle(const void* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::defaultColor(static_cast<int>(style)));
 }
 
 bool QsciLexerYAML_override_virtual_defaultEolFill(void* self, intptr_t slot) {
@@ -1329,8 +1317,8 @@ bool QsciLexerYAML_override_virtual_defaultPaperWithStyle(void* self, intptr_t s
 	return true;
 }
 
-QColor* QsciLexerYAML_virtualbase_defaultPaperWithStyle(const void* self, int style) {
-	return new QColor(static_cast<const MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::defaultPaper(static_cast<int>(style)));
+struct miqt_qcolor QsciLexerYAML_virtualbase_defaultPaperWithStyle(const void* self, int style) {
+	return miqt_to_cabi<struct miqt_qcolor>(static_cast<const MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::defaultPaper(static_cast<int>(style)));
 }
 
 bool QsciLexerYAML_override_virtual_setEditor(void* self, intptr_t slot) {
@@ -1413,8 +1401,8 @@ bool QsciLexerYAML_override_virtual_setColor(void* self, intptr_t slot) {
 	return true;
 }
 
-void QsciLexerYAML_virtualbase_setColor(void* self, QColor* c, int style) {
-	static_cast<MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::setColor(*c, static_cast<int>(style));
+void QsciLexerYAML_virtualbase_setColor(void* self, struct miqt_qcolor c, int style) {
+	static_cast<MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::setColor(miqt_from_cabi<QColor>(c), static_cast<int>(style));
 }
 
 bool QsciLexerYAML_override_virtual_setEolFill(void* self, intptr_t slot) {
@@ -1455,8 +1443,8 @@ bool QsciLexerYAML_override_virtual_setPaper(void* self, intptr_t slot) {
 	return true;
 }
 
-void QsciLexerYAML_virtualbase_setPaper(void* self, QColor* c, int style) {
-	static_cast<MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::setPaper(*c, static_cast<int>(style));
+void QsciLexerYAML_virtualbase_setPaper(void* self, struct miqt_qcolor c, int style) {
+	static_cast<MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::setPaper(miqt_from_cabi<QColor>(c), static_cast<int>(style));
 }
 
 bool QsciLexerYAML_override_virtual_readProperties(void* self, intptr_t slot) {
@@ -1585,10 +1573,6 @@ bool QsciLexerYAML_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QsciLexerYAML_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQsciLexerYAML*>(self)->QsciLexerYAML::disconnectNotify(*signal);
-}
-
-QColor* QsciLexerYAML_virtualreturncopy_QColor(QColor* src) {
-	return new QColor(*src);
 }
 
 QFont* QsciLexerYAML_virtualreturncopy_QFont(QFont* src) {

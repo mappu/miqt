@@ -22,8 +22,8 @@ QwtPoint3D* QwtPoint3D_new3(QwtPoint3D* param1) {
 	return new (std::nothrow) QwtPoint3D(*param1);
 }
 
-QwtPoint3D* QwtPoint3D_new4(QPointF* param1) {
-	return new (std::nothrow) QwtPoint3D(*param1);
+QwtPoint3D* QwtPoint3D_new4(struct miqt_qpointf param1) {
+	return new (std::nothrow) QwtPoint3D(miqt_from_cabi<QPointF>(param1));
 }
 
 bool QwtPoint3D_isNull(const QwtPoint3D* self) {
@@ -54,8 +54,8 @@ void QwtPoint3D_setZ(QwtPoint3D* self, double y) {
 	self->setZ(static_cast<double>(y));
 }
 
-QPointF* QwtPoint3D_toPoint(const QwtPoint3D* self) {
-	return new QPointF(self->toPoint());
+struct miqt_qpointf QwtPoint3D_toPoint(const QwtPoint3D* self) {
+	return miqt_to_cabi<struct miqt_qpointf>(self->toPoint());
 }
 
 bool QwtPoint3D_operatorEqual(const QwtPoint3D* self, QwtPoint3D* param1) {

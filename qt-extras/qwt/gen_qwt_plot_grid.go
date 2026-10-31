@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -135,10 +136,9 @@ func (this *QwtPlotGrid) YScaleDiv() *QwtScaleDiv {
 	return _ret
 }
 
-func (this *QwtPlotGrid) SetPen(param1 *qt.QColor) {
+func (this *QwtPlotGrid) SetPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotGrid_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotGrid_setPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotGrid) SetPenWithPen(pen *qt.QPen) {
@@ -147,10 +147,9 @@ func (this *QwtPlotGrid) SetPenWithPen(pen *qt.QPen) {
 	C.QwtPlotGrid_setPenWithPen(this.h, (*C.QPen)(pen.UnsafePointer()))
 }
 
-func (this *QwtPlotGrid) SetMajorPen(param1 *qt.QColor) {
+func (this *QwtPlotGrid) SetMajorPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotGrid_setMajorPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotGrid_setMajorPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotGrid) SetMajorPenWithMajorPen(majorPen *qt.QPen) {
@@ -164,10 +163,9 @@ func (this *QwtPlotGrid) MajorPen() *qt.QPen {
 	return qt.UnsafeNewQPen(unsafe.Pointer(C.QwtPlotGrid_majorPen(this.h)))
 }
 
-func (this *QwtPlotGrid) SetMinorPen(param1 *qt.QColor) {
+func (this *QwtPlotGrid) SetMinorPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotGrid_setMinorPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtPlotGrid_setMinorPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtPlotGrid) SetMinorPenWithMinorPen(minorPen *qt.QPen) {
@@ -188,40 +186,34 @@ func (this *QwtPlotGrid) UpdateScaleDiv(xScaleDiv *QwtScaleDiv, yScaleDiv *QwtSc
 	C.QwtPlotGrid_updateScaleDiv(this.h, xScaleDiv.cPointer(), yScaleDiv.cPointer())
 }
 
-func (this *QwtPlotGrid) SetPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotGrid) SetPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotGrid_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtPlotGrid_setPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotGrid) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtPlotGrid) SetPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotGrid_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotGrid_setPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
-func (this *QwtPlotGrid) SetMajorPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotGrid) SetMajorPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotGrid_setMajorPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtPlotGrid_setMajorPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotGrid) SetMajorPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtPlotGrid) SetMajorPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotGrid_setMajorPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotGrid_setMajorPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
-func (this *QwtPlotGrid) SetMinorPen2(param1 *qt.QColor, width float64) {
+func (this *QwtPlotGrid) SetMinorPen2(param1 qt.QColor, width float64) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotGrid_setMinorPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
+	C.QwtPlotGrid_setMinorPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
 }
 
-func (this *QwtPlotGrid) SetMinorPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
+func (this *QwtPlotGrid) SetMinorPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtPlotGrid_setMinorPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
+	C.QwtPlotGrid_setMinorPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
 }
 
 // Delete this object from C++ memory.

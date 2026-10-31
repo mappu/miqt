@@ -31,12 +31,12 @@ void QBackingStore_flush(QBackingStore* self, QRegion* region) {
 	self->flush(*region);
 }
 
-void QBackingStore_resize(QBackingStore* self, QSize* size) {
-	self->resize(*size);
+void QBackingStore_resize(QBackingStore* self, struct miqt_qsize size) {
+	self->resize(miqt_from_cabi<QSize>(size));
 }
 
-QSize* QBackingStore_size(const QBackingStore* self) {
-	return new QSize(self->size());
+struct miqt_qsize QBackingStore_size(const QBackingStore* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
 bool QBackingStore_scroll(QBackingStore* self, QRegion* area, int dx, int dy) {
@@ -67,8 +67,8 @@ void QBackingStore_flush2(QBackingStore* self, QRegion* region, QWindow* window)
 	self->flush(*region, window);
 }
 
-void QBackingStore_flush3(QBackingStore* self, QRegion* region, QWindow* window, QPoint* offset) {
-	self->flush(*region, window, *offset);
+void QBackingStore_flush3(QBackingStore* self, QRegion* region, QWindow* window, struct miqt_qpoint offset) {
+	self->flush(*region, window, miqt_from_cabi<QPoint>(offset));
 }
 
 void QBackingStore_delete(QBackingStore* self) {

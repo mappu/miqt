@@ -30,10 +30,10 @@ int QPdfDocumentRenderOptions_rotation(const QPdfDocumentRenderOptions* self);
 void QPdfDocumentRenderOptions_setRotation(QPdfDocumentRenderOptions* self, int r);
 int QPdfDocumentRenderOptions_renderFlags(const QPdfDocumentRenderOptions* self);
 void QPdfDocumentRenderOptions_setRenderFlags(QPdfDocumentRenderOptions* self, int r);
-QRect* QPdfDocumentRenderOptions_scaledClipRect(const QPdfDocumentRenderOptions* self);
-void QPdfDocumentRenderOptions_setScaledClipRect(QPdfDocumentRenderOptions* self, QRect* r);
-QSize* QPdfDocumentRenderOptions_scaledSize(const QPdfDocumentRenderOptions* self);
-void QPdfDocumentRenderOptions_setScaledSize(QPdfDocumentRenderOptions* self, QSize* s);
+struct miqt_qrect QPdfDocumentRenderOptions_scaledClipRect(const QPdfDocumentRenderOptions* self);
+void QPdfDocumentRenderOptions_setScaledClipRect(QPdfDocumentRenderOptions* self, struct miqt_qrect r);
+struct miqt_qsize QPdfDocumentRenderOptions_scaledSize(const QPdfDocumentRenderOptions* self);
+void QPdfDocumentRenderOptions_setScaledSize(QPdfDocumentRenderOptions* self, struct miqt_qsize s);
 
 void QPdfDocumentRenderOptions_delete(QPdfDocumentRenderOptions* self);
 

@@ -61,8 +61,8 @@ void miqt_exec_callback_QFileDialog_setVisible(QFileDialog*, intptr_t, bool);
 void miqt_exec_callback_QFileDialog_done(QFileDialog*, intptr_t, int);
 void miqt_exec_callback_QFileDialog_accept(QFileDialog*, intptr_t);
 void miqt_exec_callback_QFileDialog_changeEvent(QFileDialog*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QFileDialog_sizeHint(const QFileDialog*, intptr_t);
-QSize* miqt_exec_callback_QFileDialog_minimumSizeHint(const QFileDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFileDialog_sizeHint(const QFileDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QFileDialog_minimumSizeHint(const QFileDialog*, intptr_t);
 void miqt_exec_callback_QFileDialog_open(QFileDialog*, intptr_t);
 int miqt_exec_callback_QFileDialog_exec(QFileDialog*, intptr_t);
 void miqt_exec_callback_QFileDialog_reject(QFileDialog*, intptr_t);
@@ -201,13 +201,11 @@ public:
 			return QFileDialog::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFileDialog_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFileDialog_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFileDialog_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QFileDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -218,13 +216,11 @@ public:
 			return QFileDialog::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QFileDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QFileDialog_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QFileDialog_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QFileDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -2222,8 +2218,8 @@ bool QFileDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFileDialog_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFileDialog*>(self)->QFileDialog::sizeHint());
+struct miqt_qsize QFileDialog_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFileDialog*>(self)->QFileDialog::sizeHint());
 }
 
 bool QFileDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -2236,8 +2232,8 @@ bool QFileDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QFileDialog_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQFileDialog*>(self)->QFileDialog::minimumSizeHint());
+struct miqt_qsize QFileDialog_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQFileDialog*>(self)->QFileDialog::minimumSizeHint());
 }
 
 bool QFileDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -2883,10 +2879,6 @@ bool QFileDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFileDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQFileDialog*>(self)->QFileDialog::disconnectNotify(*signal);
-}
-
-QSize* QFileDialog_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QFileDialog_virtualreturncopy_QVariant(QVariant* src) {

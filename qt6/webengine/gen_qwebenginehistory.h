@@ -60,8 +60,8 @@ void QWebEngineHistoryModel_virtbase(QWebEngineHistoryModel* src, QAbstractListM
 QMetaObject* QWebEngineHistoryModel_metaObject(const QWebEngineHistoryModel* self);
 void* QWebEngineHistoryModel_metacast(QWebEngineHistoryModel* self, const char* param1);
 struct miqt_string QWebEngineHistoryModel_tr(const char* s);
-int QWebEngineHistoryModel_rowCount(const QWebEngineHistoryModel* self, QModelIndex* parent);
-QVariant* QWebEngineHistoryModel_data(const QWebEngineHistoryModel* self, QModelIndex* index, int role);
+int QWebEngineHistoryModel_rowCount(const QWebEngineHistoryModel* self, struct miqt_qmodelindex parent);
+QVariant* QWebEngineHistoryModel_data(const QWebEngineHistoryModel* self, struct miqt_qmodelindex index, int role);
 struct miqt_map /* of int to struct miqt_string */  QWebEngineHistoryModel_roleNames(const QWebEngineHistoryModel* self);
 void QWebEngineHistoryModel_reset(QWebEngineHistoryModel* self);
 struct miqt_string QWebEngineHistoryModel_tr2(const char* s, const char* c);

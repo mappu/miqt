@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -226,9 +227,8 @@ func (this *QMenu) ShowTearOffMenu() {
 	C.QMenu_showTearOffMenu(this.h)
 }
 
-func (this *QMenu) ShowTearOffMenuWithPos(pos *QPoint) {
-	defer runtime.KeepAlive(pos)
-	C.QMenu_showTearOffMenuWithPos(this.h, pos.cPointer())
+func (this *QMenu) ShowTearOffMenuWithPos(pos QPoint) {
+	C.QMenu_showTearOffMenuWithPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QMenu) HideTearOffMenu() {
@@ -251,22 +251,19 @@ func (this *QMenu) ActiveAction() *QAction {
 	return newQAction(C.QMenu_activeAction(this.h))
 }
 
-func (this *QMenu) Popup(pos *QPoint) {
-	defer runtime.KeepAlive(pos)
-	C.QMenu_popup(this.h, pos.cPointer())
+func (this *QMenu) Popup(pos QPoint) {
+	C.QMenu_popup(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QMenu) Exec() *QAction {
 	return newQAction(C.QMenu_exec(this.h))
 }
 
-func (this *QMenu) ExecWithPos(pos *QPoint) *QAction {
-	defer runtime.KeepAlive(pos)
-	return newQAction(C.QMenu_execWithPos(this.h, pos.cPointer()))
+func (this *QMenu) ExecWithPos(pos QPoint) *QAction {
+	return newQAction(C.QMenu_execWithPos(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
-func QMenu_Exec2(actions []*QAction, pos *QPoint) *QAction {
-	defer runtime.KeepAlive(pos)
+func QMenu_Exec2(actions []*QAction, pos QPoint) *QAction {
 	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray_ptr))
 	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
@@ -274,24 +271,19 @@ func QMenu_Exec2(actions []*QAction, pos *QPoint) *QAction {
 		actions_CArray[i] = actions[i].cPointer()
 	}
 	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray_ptr)}
-	return newQAction(C.QMenu_exec2(actions_ma, pos.cPointer()))
+	return newQAction(C.QMenu_exec2(actions_ma, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 }
 
-func (this *QMenu) SizeHint() *QSize {
-	_goptr := newQSize(C.QMenu_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMenu) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QMenu_sizeHint(this.h))
 }
 
-func (this *QMenu) ActionGeometry(param1 *QAction) *QRect {
-	_goptr := newQRect(C.QMenu_actionGeometry(this.h, param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMenu) ActionGeometry(param1 *QAction) QRect {
+	return libmiqt.ValueCast[QRect](C.QMenu_actionGeometry(this.h, param1.cPointer()))
 }
 
-func (this *QMenu) ActionAt(param1 *QPoint) *QAction {
-	defer runtime.KeepAlive(param1)
-	return newQAction(C.QMenu_actionAt(this.h, param1.cPointer()))
+func (this *QMenu) ActionAt(param1 QPoint) *QAction {
+	return newQAction(C.QMenu_actionAt(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](param1)))
 }
 
 func (this *QMenu) MenuAction() *QAction {
@@ -462,18 +454,15 @@ func QMenu_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QMenu) Popup2(pos *QPoint, at *QAction) {
-	defer runtime.KeepAlive(pos)
-	C.QMenu_popup2(this.h, pos.cPointer(), at.cPointer())
+func (this *QMenu) Popup2(pos QPoint, at *QAction) {
+	C.QMenu_popup2(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos), at.cPointer())
 }
 
-func (this *QMenu) Exec3(pos *QPoint, at *QAction) *QAction {
-	defer runtime.KeepAlive(pos)
-	return newQAction(C.QMenu_exec3(this.h, pos.cPointer(), at.cPointer()))
+func (this *QMenu) Exec3(pos QPoint, at *QAction) *QAction {
+	return newQAction(C.QMenu_exec3(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos), at.cPointer()))
 }
 
-func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction) *QAction {
-	defer runtime.KeepAlive(pos)
+func QMenu_Exec4(actions []*QAction, pos QPoint, at *QAction) *QAction {
 	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray_ptr))
 	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
@@ -481,11 +470,10 @@ func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction) *QAction {
 		actions_CArray[i] = actions[i].cPointer()
 	}
 	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray_ptr)}
-	return newQAction(C.QMenu_exec4(actions_ma, pos.cPointer(), at.cPointer()))
+	return newQAction(C.QMenu_exec4(actions_ma, libmiqt.ValueCast[C.struct_miqt_qpoint](pos), at.cPointer()))
 }
 
-func QMenu_Exec5(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) *QAction {
-	defer runtime.KeepAlive(pos)
+func QMenu_Exec5(actions []*QAction, pos QPoint, at *QAction, parent *QWidget) *QAction {
 	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray_ptr))
 	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
@@ -493,7 +481,7 @@ func QMenu_Exec5(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) 
 		actions_CArray[i] = actions[i].cPointer()
 	}
 	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray_ptr)}
-	return newQAction(C.QMenu_exec5(actions_ma, pos.cPointer(), at.cPointer(), parent.cPointer()))
+	return newQAction(C.QMenu_exec5(actions_ma, libmiqt.ValueCast[C.struct_miqt_qpoint](pos), at.cPointer(), parent.cPointer()))
 }
 
 // ColumnCount can only be called from a QMenu that was directly constructed.
@@ -646,14 +634,12 @@ func (this *QMenu) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QMenu) callVirtualBase_SizeHint() *QSize {
+func (this *QMenu) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QMenu_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QMenu_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QMenu) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QMenu) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMenu_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -661,16 +647,15 @@ func (this *QMenu) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QMenu_sizeHint
-func miqt_exec_callback_QMenu_sizeHint(self *C.QMenu, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMenu_sizeHint(self *C.QMenu, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMenu{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMenu_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1106,14 +1091,12 @@ func miqt_exec_callback_QMenu_setVisible(self *C.QMenu, cb C.intptr_t, visible C
 
 }
 
-func (this *QMenu) callVirtualBase_MinimumSizeHint() *QSize {
+func (this *QMenu) callVirtualBase_MinimumSizeHint() QSize {
 
-	_goptr := newQSize(C.QMenu_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QMenu_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QMenu) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QMenu) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QMenu_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1121,16 +1104,15 @@ func (this *QMenu) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QMenu_minimumSizeHint
-func miqt_exec_callback_QMenu_minimumSizeHint(self *C.QMenu, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QMenu_minimumSizeHint(self *C.QMenu, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QMenu{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QMenu_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1688,7 +1670,6 @@ func miqt_exec_callback_QMenu_initPainter(self *C.QMenu, cb C.intptr_t, painter 
 }
 
 func (this *QMenu) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QMenu_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

@@ -109,14 +109,14 @@ void miqt_exec_callback_QsciScintillaBase_mouseReleaseEvent(QsciScintillaBase*, 
 void miqt_exec_callback_QsciScintillaBase_paintEvent(QsciScintillaBase*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QsciScintillaBase_resizeEvent(QsciScintillaBase*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QsciScintillaBase_scrollContentsBy(QsciScintillaBase*, intptr_t, int, int);
-QSize* miqt_exec_callback_QsciScintillaBase_minimumSizeHint(const QsciScintillaBase*, intptr_t);
-QSize* miqt_exec_callback_QsciScintillaBase_sizeHint(const QsciScintillaBase*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QsciScintillaBase_minimumSizeHint(const QsciScintillaBase*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QsciScintillaBase_sizeHint(const QsciScintillaBase*, intptr_t);
 void miqt_exec_callback_QsciScintillaBase_setupViewport(QsciScintillaBase*, intptr_t, QWidget*);
 bool miqt_exec_callback_QsciScintillaBase_eventFilter(QsciScintillaBase*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QsciScintillaBase_event(QsciScintillaBase*, intptr_t, QEvent*);
 bool miqt_exec_callback_QsciScintillaBase_viewportEvent(QsciScintillaBase*, intptr_t, QEvent*);
 void miqt_exec_callback_QsciScintillaBase_wheelEvent(QsciScintillaBase*, intptr_t, QWheelEvent*);
-QSize* miqt_exec_callback_QsciScintillaBase_viewportSizeHint(const QsciScintillaBase*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QsciScintillaBase_viewportSizeHint(const QsciScintillaBase*, intptr_t);
 int miqt_exec_callback_QsciScintillaBase_devType(const QsciScintillaBase*, intptr_t);
 void miqt_exec_callback_QsciScintillaBase_setVisible(QsciScintillaBase*, intptr_t, bool);
 int miqt_exec_callback_QsciScintillaBase_heightForWidth(const QsciScintillaBase*, intptr_t, int);
@@ -544,13 +544,11 @@ public:
 			return QsciScintillaBase::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QsciScintillaBase_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QsciScintillaBase_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QsciScintillaBase_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QsciScintillaBase_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -561,13 +559,11 @@ public:
 			return QsciScintillaBase::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QsciScintillaBase_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QsciScintillaBase_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QsciScintillaBase_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QsciScintillaBase_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -661,13 +657,11 @@ public:
 			return QsciScintillaBase::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QsciScintillaBase_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QsciScintillaBase_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QsciScintillaBase_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QsciScintillaBase_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -1083,7 +1077,7 @@ public:
 	friend struct miqt_string QsciScintillaBase_protectedbase_bytesAsText(bool* _dynamic_cast_ok, const void* self, const char* bytes);
 	friend bool QsciScintillaBase_protectedbase_contextMenuNeeded(bool* _dynamic_cast_ok, const void* self, int x, int y);
 	friend void QsciScintillaBase_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QsciScintillaBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QsciScintillaBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QsciScintillaBase_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QsciScintillaBase_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 	friend void QsciScintillaBase_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1183,16 +1177,16 @@ long QsciScintillaBase_SendScintilla8(const QsciScintillaBase* self, unsigned in
 	return self->SendScintilla(static_cast<unsigned int>(msg), static_cast<long>(cpMin), static_cast<long>(cpMax), lpstrText);
 }
 
-long QsciScintillaBase_SendScintilla9(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam, QColor* col) {
-	return self->SendScintilla(static_cast<unsigned int>(msg), static_cast<unsigned long>(wParam), *col);
+long QsciScintillaBase_SendScintilla9(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam, struct miqt_qcolor col) {
+	return self->SendScintilla(static_cast<unsigned int>(msg), static_cast<unsigned long>(wParam), miqt_from_cabi<QColor>(col));
 }
 
-long QsciScintillaBase_SendScintilla10(const QsciScintillaBase* self, unsigned int msg, QColor* col) {
-	return self->SendScintilla(static_cast<unsigned int>(msg), *col);
+long QsciScintillaBase_SendScintilla10(const QsciScintillaBase* self, unsigned int msg, struct miqt_qcolor col) {
+	return self->SendScintilla(static_cast<unsigned int>(msg), miqt_from_cabi<QColor>(col));
 }
 
-long QsciScintillaBase_SendScintilla11(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam, QPainter* hdc, QRect* rc, long cpMin, long cpMax) {
-	return self->SendScintilla(static_cast<unsigned int>(msg), static_cast<unsigned long>(wParam), hdc, *rc, static_cast<long>(cpMin), static_cast<long>(cpMax));
+long QsciScintillaBase_SendScintilla11(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam, QPainter* hdc, struct miqt_qrect rc, long cpMin, long cpMax) {
+	return self->SendScintilla(static_cast<unsigned int>(msg), static_cast<unsigned long>(wParam), hdc, miqt_from_cabi<QRect>(rc), static_cast<long>(cpMin), static_cast<long>(cpMax));
 }
 
 long QsciScintillaBase_SendScintilla12(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam, QPixmap* lParam) {
@@ -2019,8 +2013,8 @@ bool QsciScintillaBase_override_virtual_minimumSizeHint(void* self, intptr_t slo
 	return true;
 }
 
-QSize* QsciScintillaBase_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQsciScintillaBase*>(self)->QsciScintillaBase::minimumSizeHint());
+struct miqt_qsize QsciScintillaBase_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQsciScintillaBase*>(self)->QsciScintillaBase::minimumSizeHint());
 }
 
 bool QsciScintillaBase_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -2033,8 +2027,8 @@ bool QsciScintillaBase_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QsciScintillaBase_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQsciScintillaBase*>(self)->QsciScintillaBase::sizeHint());
+struct miqt_qsize QsciScintillaBase_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQsciScintillaBase*>(self)->QsciScintillaBase::sizeHint());
 }
 
 bool QsciScintillaBase_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -2117,8 +2111,8 @@ bool QsciScintillaBase_override_virtual_viewportSizeHint(void* self, intptr_t sl
 	return true;
 }
 
-QSize* QsciScintillaBase_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQsciScintillaBase*>(self)->QsciScintillaBase::viewportSizeHint());
+struct miqt_qsize QsciScintillaBase_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQsciScintillaBase*>(self)->QsciScintillaBase::viewportSizeHint());
 }
 
 bool QsciScintillaBase_override_virtual_devType(void* self, intptr_t slot) {
@@ -2462,10 +2456,6 @@ QVariant* QsciScintillaBase_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
 
-QSize* QsciScintillaBase_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 void QsciScintillaBase_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self) {
 	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
 	if (self_cast == nullptr) {
@@ -2534,15 +2524,15 @@ void QsciScintillaBase_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, 
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QsciScintillaBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QsciScintillaBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QsciScintillaBase_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

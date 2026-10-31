@@ -115,7 +115,7 @@ struct miqt_array /* of unsigned int */  QRawFont_glyphIndexesForString(const QR
 	return _out;
 }
 
-struct miqt_array /* of QPointF* */  QRawFont_advancesForGlyphIndexes(const QRawFont* self, struct miqt_array /* of unsigned int */  glyphIndexes) {
+struct miqt_array /* of struct miqt_qpointf */  QRawFont_advancesForGlyphIndexes(const QRawFont* self, struct miqt_array /* of unsigned int */  glyphIndexes) {
 	QList<quint32> glyphIndexes_QList;
 	glyphIndexes_QList.reserve(glyphIndexes.len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes.data);
@@ -124,9 +124,9 @@ struct miqt_array /* of QPointF* */  QRawFont_advancesForGlyphIndexes(const QRaw
 	}
 	QList<QPointF> _ret = self->advancesForGlyphIndexes(glyphIndexes_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
+	struct miqt_qpointf* _arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QPointF(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qpointf>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -134,7 +134,7 @@ struct miqt_array /* of QPointF* */  QRawFont_advancesForGlyphIndexes(const QRaw
 	return _out;
 }
 
-struct miqt_array /* of QPointF* */  QRawFont_advancesForGlyphIndexes2(const QRawFont* self, struct miqt_array /* of unsigned int */  glyphIndexes, int layoutFlags) {
+struct miqt_array /* of struct miqt_qpointf */  QRawFont_advancesForGlyphIndexes2(const QRawFont* self, struct miqt_array /* of unsigned int */  glyphIndexes, int layoutFlags) {
 	QList<quint32> glyphIndexes_QList;
 	glyphIndexes_QList.reserve(glyphIndexes.len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes.data);
@@ -143,9 +143,9 @@ struct miqt_array /* of QPointF* */  QRawFont_advancesForGlyphIndexes2(const QRa
 	}
 	QList<QPointF> _ret = self->advancesForGlyphIndexes(glyphIndexes_QList, static_cast<QRawFont::LayoutFlags>(layoutFlags));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
+	struct miqt_qpointf* _arr = static_cast<struct miqt_qpointf*>(malloc(sizeof(struct miqt_qpointf) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QPointF(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qpointf>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -173,8 +173,8 @@ QPainterPath* QRawFont_pathForGlyph(const QRawFont* self, unsigned int glyphInde
 	return new QPainterPath(self->pathForGlyph(static_cast<quint32>(glyphIndex)));
 }
 
-QRectF* QRawFont_boundingRect(const QRawFont* self, unsigned int glyphIndex) {
-	return new QRectF(self->boundingRect(static_cast<quint32>(glyphIndex)));
+struct miqt_qrectf QRawFont_boundingRect(const QRawFont* self, unsigned int glyphIndex) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect(static_cast<quint32>(glyphIndex)));
 }
 
 void QRawFont_setPixelSize(QRawFont* self, double pixelSize) {

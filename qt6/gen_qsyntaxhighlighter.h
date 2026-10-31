@@ -76,7 +76,7 @@ bool QSyntaxHighlighter_override_virtual_disconnectNotify(void* self, intptr_t s
 void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 void QSyntaxHighlighter_protectedbase_setFormat(bool* _dynamic_cast_ok, void* self, int start, int count, QTextCharFormat* format);
-void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* self, int start, int count, QColor* color);
+void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* self, int start, int count, struct miqt_qcolor color);
 void QSyntaxHighlighter_protectedbase_setFormat3(bool* _dynamic_cast_ok, void* self, int start, int count, QFont* font);
 QTextCharFormat* QSyntaxHighlighter_protectedbase_format(bool* _dynamic_cast_ok, const void* self, int pos);
 int QSyntaxHighlighter_protectedbase_previousBlockState(bool* _dynamic_cast_ok, const void* self);

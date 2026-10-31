@@ -169,12 +169,12 @@ void QAudioListener_virtbase(QAudioListener* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-void QAudioListener_setPosition(QAudioListener* self, QVector3D* pos) {
-	self->setPosition(*pos);
+void QAudioListener_setPosition(QAudioListener* self, struct miqt_qvector3d pos) {
+	self->setPosition(miqt_from_cabi<QVector3D>(pos));
 }
 
-QVector3D* QAudioListener_position(const QAudioListener* self) {
-	return new QVector3D(self->position());
+struct miqt_qvector3d QAudioListener_position(const QAudioListener* self) {
+	return miqt_to_cabi<struct miqt_qvector3d>(self->position());
 }
 
 void QAudioListener_setRotation(QAudioListener* self, QQuaternion* q) {

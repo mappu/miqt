@@ -40,17 +40,17 @@ void QwtIntervalSymbol_setWidth(QwtIntervalSymbol* self, int width);
 int QwtIntervalSymbol_width(const QwtIntervalSymbol* self);
 void QwtIntervalSymbol_setBrush(QwtIntervalSymbol* self, QBrush* brush);
 QBrush* QwtIntervalSymbol_brush(const QwtIntervalSymbol* self);
-void QwtIntervalSymbol_setPen(QwtIntervalSymbol* self, QColor* param1);
+void QwtIntervalSymbol_setPen(QwtIntervalSymbol* self, struct miqt_qcolor param1);
 void QwtIntervalSymbol_setPenWithPen(QwtIntervalSymbol* self, QPen* pen);
 QPen* QwtIntervalSymbol_pen(const QwtIntervalSymbol* self);
 void QwtIntervalSymbol_setStyle(QwtIntervalSymbol* self, int style);
 int QwtIntervalSymbol_style(const QwtIntervalSymbol* self);
-void QwtIntervalSymbol_draw(const QwtIntervalSymbol* self, QPainter* param1, int param2, QPointF* from, QPointF* to);
-void QwtIntervalSymbol_setPen2(QwtIntervalSymbol* self, QColor* param1, double width);
-void QwtIntervalSymbol_setPen3(QwtIntervalSymbol* self, QColor* param1, double width, int param3);
+void QwtIntervalSymbol_draw(const QwtIntervalSymbol* self, QPainter* param1, int param2, struct miqt_qpointf from, struct miqt_qpointf to);
+void QwtIntervalSymbol_setPen2(QwtIntervalSymbol* self, struct miqt_qcolor param1, double width);
+void QwtIntervalSymbol_setPen3(QwtIntervalSymbol* self, struct miqt_qcolor param1, double width, int param3);
 
 bool QwtIntervalSymbol_override_virtual_draw(void* self, intptr_t slot);
-void QwtIntervalSymbol_virtualbase_draw(const void* self, QPainter* param1, int param2, QPointF* from, QPointF* to);
+void QwtIntervalSymbol_virtualbase_draw(const void* self, QPainter* param1, int param2, struct miqt_qpointf from, struct miqt_qpointf to);
 
 void QwtIntervalSymbol_delete(QwtIntervalSymbol* self);
 

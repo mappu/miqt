@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -192,10 +193,8 @@ func (this *QInputDevice) SeatName() string {
 	return _ret
 }
 
-func (this *QInputDevice) AvailableVirtualGeometry() *QRect {
-	_goptr := newQRect(C.QInputDevice_availableVirtualGeometry(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QInputDevice) AvailableVirtualGeometry() QRect {
+	return libmiqt.ValueCast[QRect](C.QInputDevice_availableVirtualGeometry(this.h))
 }
 
 func QInputDevice_SeatNames() []string {
@@ -230,24 +229,21 @@ func (this *QInputDevice) OperatorEqual(other *QInputDevice) bool {
 }
 
 func (this *QInputDevice) AvailableVirtualGeometryChanged(area QRect) {
-	defer runtime.KeepAlive(area)
-	C.QInputDevice_availableVirtualGeometryChanged(this.h, area.cPointer())
+	C.QInputDevice_availableVirtualGeometryChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](area))
 }
 func (this *QInputDevice) OnAvailableVirtualGeometryChanged(slot func(area QRect)) {
 	C.QInputDevice_connect_availableVirtualGeometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged
-func miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged(cb C.intptr_t, area *C.QRect) {
+func miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged(cb C.intptr_t, area C.struct_miqt_qrect) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(area QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	area_goptr := newQRect(area)
-	area_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *area_goptr
+	slotval1 := libmiqt.ValueCast[QRect](area)
 
 	gofunc(slotval1)
 }

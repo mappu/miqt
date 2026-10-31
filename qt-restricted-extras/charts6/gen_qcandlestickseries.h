@@ -70,10 +70,10 @@ void QCandlestickSeries_setCapsWidth(QCandlestickSeries* self, double capsWidth)
 double QCandlestickSeries_capsWidth(const QCandlestickSeries* self);
 void QCandlestickSeries_setCapsVisible(QCandlestickSeries* self, bool capsVisible);
 bool QCandlestickSeries_capsVisible(const QCandlestickSeries* self);
-void QCandlestickSeries_setIncreasingColor(QCandlestickSeries* self, QColor* increasingColor);
-QColor* QCandlestickSeries_increasingColor(const QCandlestickSeries* self);
-void QCandlestickSeries_setDecreasingColor(QCandlestickSeries* self, QColor* decreasingColor);
-QColor* QCandlestickSeries_decreasingColor(const QCandlestickSeries* self);
+void QCandlestickSeries_setIncreasingColor(QCandlestickSeries* self, struct miqt_qcolor increasingColor);
+struct miqt_qcolor QCandlestickSeries_increasingColor(const QCandlestickSeries* self);
+void QCandlestickSeries_setDecreasingColor(QCandlestickSeries* self, struct miqt_qcolor decreasingColor);
+struct miqt_qcolor QCandlestickSeries_decreasingColor(const QCandlestickSeries* self);
 void QCandlestickSeries_setBrush(QCandlestickSeries* self, QBrush* brush);
 QBrush* QCandlestickSeries_brush(const QCandlestickSeries* self);
 void QCandlestickSeries_setPen(QCandlestickSeries* self, QPen* pen);

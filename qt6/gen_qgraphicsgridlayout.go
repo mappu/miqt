@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -291,18 +292,14 @@ func (this *QGraphicsGridLayout) Invalidate() {
 	C.QGraphicsGridLayout_invalidate(this.h)
 }
 
-func (this *QGraphicsGridLayout) SetGeometry(rect *QRectF) {
+func (this *QGraphicsGridLayout) SetGeometry(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
-	C.QGraphicsGridLayout_setGeometry(this.h, rect.cPointer())
+	C.QGraphicsGridLayout_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 }
 
-func (this *QGraphicsGridLayout) SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+func (this *QGraphicsGridLayout) SizeHint(which SizeHint, constraint QSizeF) QSizeF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(constraint)
-	_goptr := newQSizeF(C.QGraphicsGridLayout_sizeHint(this.h, (C.int)(which), constraint.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsGridLayout_sizeHint(this.h, (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 }
 
 func (this *QGraphicsGridLayout) AddItem3(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int, alignment AlignmentFlag) {
@@ -465,14 +462,13 @@ func miqt_exec_callback_QGraphicsGridLayout_invalidate(self *C.QGraphicsGridLayo
 
 }
 
-func (this *QGraphicsGridLayout) callVirtualBase_SetGeometry(rect *QRectF) {
+func (this *QGraphicsGridLayout) callVirtualBase_SetGeometry(rect QRectF) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(rect)
 
-	C.QGraphicsGridLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QGraphicsGridLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QGraphicsGridLayout) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+func (this *QGraphicsGridLayout) OnSetGeometry(slot func(super func(rect QRectF), rect QRectF)) {
 	ok := C.QGraphicsGridLayout_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -480,29 +476,26 @@ func (this *QGraphicsGridLayout) OnSetGeometry(slot func(super func(rect *QRectF
 }
 
 //export miqt_exec_callback_QGraphicsGridLayout_setGeometry
-func miqt_exec_callback_QGraphicsGridLayout_setGeometry(self *C.QGraphicsGridLayout, cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF), rect *QRectF))
+func miqt_exec_callback_QGraphicsGridLayout_setGeometry(self *C.QGraphicsGridLayout, cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRectF), rect QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRectF(rect)
+	slotval1 := libmiqt.ValueCast[QRectF](rect)
 
 	gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
 }
 
-func (this *QGraphicsGridLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
+func (this *QGraphicsGridLayout) callVirtualBase_SizeHint(which SizeHint, constraint QSizeF) QSizeF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(constraint)
 
-	_goptr := newQSizeF(C.QGraphicsGridLayout_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSizeF](C.QGraphicsGridLayout_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 
 }
-func (this *QGraphicsGridLayout) OnSizeHint(slot func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF) {
+func (this *QGraphicsGridLayout) OnSizeHint(slot func(super func(which SizeHint, constraint QSizeF) QSizeF, which SizeHint, constraint QSizeF) QSizeF) {
 	ok := C.QGraphicsGridLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -510,8 +503,8 @@ func (this *QGraphicsGridLayout) OnSizeHint(slot func(super func(which SizeHint,
 }
 
 //export miqt_exec_callback_QGraphicsGridLayout_sizeHint
-func miqt_exec_callback_QGraphicsGridLayout_sizeHint(self *C.QGraphicsGridLayout, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF)
+func miqt_exec_callback_QGraphicsGridLayout_sizeHint(self *C.QGraphicsGridLayout, cb C.intptr_t, which C.int, constraint C.struct_miqt_qsizef) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint QSizeF) QSizeF, which SizeHint, constraint QSizeF) QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -519,12 +512,11 @@ func miqt_exec_callback_QGraphicsGridLayout_sizeHint(self *C.QGraphicsGridLayout
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (SizeHint)(which)
 
-	slotval2 := newQSizeF(constraint)
+	slotval2 := libmiqt.ValueCast[QSizeF](constraint)
 
 	virtualReturn := gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QGraphicsGridLayout_virtualreturncopy_QSizeF(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 

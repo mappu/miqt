@@ -55,32 +55,32 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAbstractItemView_pressed(intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_clicked(intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_doubleClicked(intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_activated(intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_entered(intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractItemView_pressed(intptr_t, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemView_clicked(intptr_t, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemView_doubleClicked(intptr_t, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemView_activated(intptr_t, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemView_entered(intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QAbstractItemView_viewportEntered(intptr_t);
-void miqt_exec_callback_QAbstractItemView_iconSizeChanged(intptr_t, QSize*);
+void miqt_exec_callback_QAbstractItemView_iconSizeChanged(intptr_t, struct miqt_qsize);
 void miqt_exec_callback_QAbstractItemView_setModel(QAbstractItemView*, intptr_t, QAbstractItemModel*);
 void miqt_exec_callback_QAbstractItemView_setSelectionModel(QAbstractItemView*, intptr_t, QItemSelectionModel*);
 void miqt_exec_callback_QAbstractItemView_keyboardSearch(QAbstractItemView*, intptr_t, struct miqt_string);
-QRect* miqt_exec_callback_QAbstractItemView_visualRect(const QAbstractItemView*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_scrollTo(QAbstractItemView*, intptr_t, QModelIndex*, int);
-QModelIndex* miqt_exec_callback_QAbstractItemView_indexAt(const QAbstractItemView*, intptr_t, QPoint*);
+struct miqt_qrect miqt_exec_callback_QAbstractItemView_visualRect(const QAbstractItemView*, intptr_t, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemView_scrollTo(QAbstractItemView*, intptr_t, struct miqt_qmodelindex, int);
+struct miqt_qmodelindex miqt_exec_callback_QAbstractItemView_indexAt(const QAbstractItemView*, intptr_t, struct miqt_qpoint);
 int miqt_exec_callback_QAbstractItemView_sizeHintForRow(const QAbstractItemView*, intptr_t, int);
 int miqt_exec_callback_QAbstractItemView_sizeHintForColumn(const QAbstractItemView*, intptr_t, int);
-QAbstractItemDelegate* miqt_exec_callback_QAbstractItemView_itemDelegateForIndex(const QAbstractItemView*, intptr_t, QModelIndex*);
+QAbstractItemDelegate* miqt_exec_callback_QAbstractItemView_itemDelegateForIndex(const QAbstractItemView*, intptr_t, struct miqt_qmodelindex);
 QVariant* miqt_exec_callback_QAbstractItemView_inputMethodQuery(const QAbstractItemView*, intptr_t, int);
 void miqt_exec_callback_QAbstractItemView_reset(QAbstractItemView*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_setRootIndex(QAbstractItemView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractItemView_setRootIndex(QAbstractItemView*, intptr_t, struct miqt_qmodelindex);
 void miqt_exec_callback_QAbstractItemView_doItemsLayout(QAbstractItemView*, intptr_t);
 void miqt_exec_callback_QAbstractItemView_selectAll(QAbstractItemView*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_dataChanged(QAbstractItemView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
-void miqt_exec_callback_QAbstractItemView_rowsInserted(QAbstractItemView*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved(QAbstractItemView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemView_dataChanged(QAbstractItemView*, intptr_t, struct miqt_qmodelindex, struct miqt_qmodelindex, struct miqt_array /* of int */ );
+void miqt_exec_callback_QAbstractItemView_rowsInserted(QAbstractItemView*, intptr_t, struct miqt_qmodelindex, int, int);
+void miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved(QAbstractItemView*, intptr_t, struct miqt_qmodelindex, int, int);
 void miqt_exec_callback_QAbstractItemView_selectionChanged(QAbstractItemView*, intptr_t, QItemSelection*, QItemSelection*);
-void miqt_exec_callback_QAbstractItemView_currentChanged(QAbstractItemView*, intptr_t, QModelIndex*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemView_currentChanged(QAbstractItemView*, intptr_t, struct miqt_qmodelindex, struct miqt_qmodelindex);
 void miqt_exec_callback_QAbstractItemView_updateEditorData(QAbstractItemView*, intptr_t);
 void miqt_exec_callback_QAbstractItemView_updateEditorGeometries(QAbstractItemView*, intptr_t);
 void miqt_exec_callback_QAbstractItemView_updateGeometries(QAbstractItemView*, intptr_t);
@@ -91,15 +91,15 @@ void miqt_exec_callback_QAbstractItemView_horizontalScrollbarValueChanged(QAbstr
 void miqt_exec_callback_QAbstractItemView_closeEditor(QAbstractItemView*, intptr_t, QWidget*, int);
 void miqt_exec_callback_QAbstractItemView_commitData(QAbstractItemView*, intptr_t, QWidget*);
 void miqt_exec_callback_QAbstractItemView_editorDestroyed(QAbstractItemView*, intptr_t, QObject*);
-QModelIndex* miqt_exec_callback_QAbstractItemView_moveCursor(QAbstractItemView*, intptr_t, int, int);
+struct miqt_qmodelindex miqt_exec_callback_QAbstractItemView_moveCursor(QAbstractItemView*, intptr_t, int, int);
 int miqt_exec_callback_QAbstractItemView_horizontalOffset(const QAbstractItemView*, intptr_t);
 int miqt_exec_callback_QAbstractItemView_verticalOffset(const QAbstractItemView*, intptr_t);
-bool miqt_exec_callback_QAbstractItemView_isIndexHidden(const QAbstractItemView*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_setSelection(QAbstractItemView*, intptr_t, QRect*, int);
+bool miqt_exec_callback_QAbstractItemView_isIndexHidden(const QAbstractItemView*, intptr_t, struct miqt_qmodelindex);
+void miqt_exec_callback_QAbstractItemView_setSelection(QAbstractItemView*, intptr_t, struct miqt_qrect, int);
 QRegion* miqt_exec_callback_QAbstractItemView_visualRegionForSelection(const QAbstractItemView*, intptr_t, QItemSelection*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QAbstractItemView_selectedIndexes(const QAbstractItemView*, intptr_t);
-bool miqt_exec_callback_QAbstractItemView_edit2(QAbstractItemView*, intptr_t, QModelIndex*, int, QEvent*);
-int miqt_exec_callback_QAbstractItemView_selectionCommand(const QAbstractItemView*, intptr_t, QModelIndex*, QEvent*);
+struct miqt_array /* of struct miqt_qmodelindex */  miqt_exec_callback_QAbstractItemView_selectedIndexes(const QAbstractItemView*, intptr_t);
+bool miqt_exec_callback_QAbstractItemView_edit2(QAbstractItemView*, intptr_t, struct miqt_qmodelindex, int, QEvent*);
+int miqt_exec_callback_QAbstractItemView_selectionCommand(const QAbstractItemView*, intptr_t, struct miqt_qmodelindex, QEvent*);
 void miqt_exec_callback_QAbstractItemView_startDrag(QAbstractItemView*, intptr_t, int);
 void miqt_exec_callback_QAbstractItemView_initViewItemOption(const QAbstractItemView*, intptr_t, QStyleOptionViewItem*);
 bool miqt_exec_callback_QAbstractItemView_focusNextPrevChild(QAbstractItemView*, intptr_t, bool);
@@ -120,9 +120,9 @@ void miqt_exec_callback_QAbstractItemView_resizeEvent(QAbstractItemView*, intptr
 void miqt_exec_callback_QAbstractItemView_timerEvent(QAbstractItemView*, intptr_t, QTimerEvent*);
 void miqt_exec_callback_QAbstractItemView_inputMethodEvent(QAbstractItemView*, intptr_t, QInputMethodEvent*);
 bool miqt_exec_callback_QAbstractItemView_eventFilter(QAbstractItemView*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QAbstractItemView_viewportSizeHint(const QAbstractItemView*, intptr_t);
-QSize* miqt_exec_callback_QAbstractItemView_minimumSizeHint(const QAbstractItemView*, intptr_t);
-QSize* miqt_exec_callback_QAbstractItemView_sizeHint(const QAbstractItemView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QAbstractItemView_viewportSizeHint(const QAbstractItemView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QAbstractItemView_minimumSizeHint(const QAbstractItemView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QAbstractItemView_sizeHint(const QAbstractItemView*, intptr_t);
 void miqt_exec_callback_QAbstractItemView_setupViewport(QAbstractItemView*, intptr_t, QWidget*);
 void miqt_exec_callback_QAbstractItemView_paintEvent(QAbstractItemView*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QAbstractItemView_wheelEvent(QAbstractItemView*, intptr_t, QWheelEvent*);
@@ -232,13 +232,9 @@ public:
 			return QRect(); // Pure virtual, there is no base we can call
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-		QRect* callback_return_value = miqt_exec_callback_QAbstractItemView_visualRect(this, handle__visualRect, sigval1);
-		QRect callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
+		struct miqt_qrect callback_return_value = miqt_exec_callback_QAbstractItemView_visualRect(this, handle__visualRect, sigval1);
+		return miqt_from_cabi<QRect>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -250,9 +246,7 @@ public:
 			return; // Pure virtual, there is no base we can call
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QAbstractItemView::ScrollHint hint_ret = hint;
 		int sigval2 = static_cast<int>(hint_ret);
 		miqt_exec_callback_QAbstractItemView_scrollTo(this, handle__scrollTo, sigval1, sigval2);
@@ -268,13 +262,9 @@ public:
 			return QModelIndex(); // Pure virtual, there is no base we can call
 		}
 
-		const QPoint& point_ret = point;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&point_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractItemView_indexAt(this, handle__indexAt, sigval1);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(point);
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QAbstractItemView_indexAt(this, handle__indexAt, sigval1);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -318,14 +308,12 @@ public:
 			return QAbstractItemView::itemDelegateForIndex(index);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QAbstractItemView_itemDelegateForIndex(this, handle__itemDelegateForIndex, sigval1);
 		return callback_return_value;
 	}
 
-	friend QAbstractItemDelegate* QAbstractItemView_virtualbase_itemDelegateForIndex(const void* self, QModelIndex* index);
+	friend QAbstractItemDelegate* QAbstractItemView_virtualbase_itemDelegateForIndex(const void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -372,14 +360,12 @@ public:
 			return;
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemView_setRootIndex(this, handle__setRootIndex, sigval1);
 
 	}
 
-	friend void QAbstractItemView_virtualbase_setRootIndex(void* self, QModelIndex* index);
+	friend void QAbstractItemView_virtualbase_setRootIndex(void* self, struct miqt_qmodelindex index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__doItemsLayout = 0;
@@ -423,12 +409,8 @@ public:
 			return;
 		}
 
-		const QModelIndex& topLeft_ret = topLeft;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&topLeft_ret);
-		const QModelIndex& bottomRight_ret = bottomRight;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&bottomRight_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(topLeft);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(bottomRight);
 		const QList<int>& roles_ret = roles;
 		// Convert QList<> from C++ memory to manually-managed C memory
 		int* roles_arr = static_cast<int*>(malloc(sizeof(int) * roles_ret.length()));
@@ -443,7 +425,7 @@ public:
 
 	}
 
-	friend void QAbstractItemView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles);
+	friend void QAbstractItemView_virtualbase_dataChanged(void* self, struct miqt_qmodelindex topLeft, struct miqt_qmodelindex bottomRight, struct miqt_array /* of int */  roles);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowsInserted = 0;
@@ -455,16 +437,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int sigval2 = start;
 		int sigval3 = end;
 		miqt_exec_callback_QAbstractItemView_rowsInserted(this, handle__rowsInserted, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QAbstractItemView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end);
+	friend void QAbstractItemView_virtualbase_rowsInserted(void* self, struct miqt_qmodelindex parent, int start, int end);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowsAboutToBeRemoved = 0;
@@ -476,16 +456,14 @@ public:
 			return;
 		}
 
-		const QModelIndex& parent_ret = parent;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(parent);
 		int sigval2 = start;
 		int sigval3 = end;
 		miqt_exec_callback_QAbstractItemView_rowsAboutToBeRemoved(this, handle__rowsAboutToBeRemoved, sigval1, sigval2, sigval3);
 
 	}
 
-	friend void QAbstractItemView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end);
+	friend void QAbstractItemView_virtualbase_rowsAboutToBeRemoved(void* self, struct miqt_qmodelindex parent, int start, int end);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectionChanged = 0;
@@ -519,17 +497,13 @@ public:
 			return;
 		}
 
-		const QModelIndex& current_ret = current;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&current_ret);
-		const QModelIndex& previous_ret = previous;
-		// Cast returned reference into pointer
-		QModelIndex* sigval2 = const_cast<QModelIndex*>(&previous_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(current);
+		struct miqt_qmodelindex sigval2 = miqt_to_cabi<struct miqt_qmodelindex>(previous);
 		miqt_exec_callback_QAbstractItemView_currentChanged(this, handle__currentChanged, sigval1, sigval2);
 
 	}
 
-	friend void QAbstractItemView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous);
+	friend void QAbstractItemView_virtualbase_currentChanged(void* self, struct miqt_qmodelindex current, struct miqt_qmodelindex previous);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateEditorData = 0;
@@ -713,10 +687,8 @@ public:
 		int sigval1 = static_cast<int>(cursorAction_ret);
 		Qt::KeyboardModifiers modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
-		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractItemView_moveCursor(this, handle__moveCursor, sigval1, sigval2);
-		QModelIndex callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qmodelindex callback_return_value = miqt_exec_callback_QAbstractItemView_moveCursor(this, handle__moveCursor, sigval1, sigval2);
+		return miqt_from_cabi<QModelIndex>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -754,9 +726,7 @@ public:
 			return false; // Pure virtual, there is no base we can call
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		bool callback_return_value = miqt_exec_callback_QAbstractItemView_isIndexHidden(this, handle__isIndexHidden, sigval1);
 		return callback_return_value;
 	}
@@ -770,9 +740,7 @@ public:
 			return; // Pure virtual, there is no base we can call
 		}
 
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval1 = miqt_to_cabi<struct miqt_qrect>(rect);
 		QItemSelectionModel::SelectionFlags command_ret = command;
 		int sigval2 = static_cast<int>(command_ret);
 		miqt_exec_callback_QAbstractItemView_setSelection(this, handle__setSelection, sigval1, sigval2);
@@ -806,22 +774,18 @@ public:
 			return QAbstractItemView::selectedIndexes();
 		}
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QAbstractItemView_selectedIndexes(this, handle__selectedIndexes);
+		struct miqt_array /* of struct miqt_qmodelindex */  callback_return_value = miqt_exec_callback_QAbstractItemView_selectedIndexes(this, handle__selectedIndexes);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
-		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
+		struct miqt_qmodelindex* callback_return_value_arr = static_cast<struct miqt_qmodelindex*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
-		}
-		QModelIndex** callback_return_value_free_arr = static_cast<QModelIndex**>(callback_return_value.data);
-		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			delete callback_return_value_free_arr[i];
+			callback_return_value_QList.push_back(miqt_from_cabi<QModelIndex>(callback_return_value_arr[i]));
 		}
 		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 
-	friend struct miqt_array /* of QModelIndex* */  QAbstractItemView_virtualbase_selectedIndexes(const void* self);
+	friend struct miqt_array /* of struct miqt_qmodelindex */  QAbstractItemView_virtualbase_selectedIndexes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__edit2 = 0;
@@ -832,9 +796,7 @@ public:
 			return QAbstractItemView::edit(index, trigger, event);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QAbstractItemView::EditTrigger trigger_ret = trigger;
 		int sigval2 = static_cast<int>(trigger_ret);
 		QEvent* sigval3 = event;
@@ -842,7 +804,7 @@ public:
 		return callback_return_value;
 	}
 
-	friend bool QAbstractItemView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event);
+	friend bool QAbstractItemView_virtualbase_edit2(void* self, struct miqt_qmodelindex index, int trigger, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectionCommand = 0;
@@ -853,15 +815,13 @@ public:
 			return QAbstractItemView::selectionCommand(index, event);
 		}
 
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		QEvent* sigval2 = (QEvent*) event;
 		int callback_return_value = miqt_exec_callback_QAbstractItemView_selectionCommand(this, handle__selectionCommand, sigval1, sigval2);
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
 
-	friend int QAbstractItemView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event);
+	friend int QAbstractItemView_virtualbase_selectionCommand(const void* self, struct miqt_qmodelindex index, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__startDrag = 0;
@@ -1210,13 +1170,11 @@ public:
 			return QAbstractItemView::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractItemView_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractItemView_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QAbstractItemView_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QAbstractItemView_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -1227,13 +1185,11 @@ public:
 			return QAbstractItemView::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractItemView_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractItemView_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QAbstractItemView_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QAbstractItemView_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -1244,13 +1200,11 @@ public:
 			return QAbstractItemView::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractItemView_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QAbstractItemView_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QAbstractItemView_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QAbstractItemView_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -1771,13 +1725,13 @@ public:
 	friend void QAbstractItemView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
 	friend void QAbstractItemView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region);
 	friend void QAbstractItemView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy);
-	friend QPoint* QAbstractItemView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qpoint QAbstractItemView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
 	friend void QAbstractItemView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self);
 	friend void QAbstractItemView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self);
 	friend void QAbstractItemView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self);
 	friend int QAbstractItemView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self);
 	friend void QAbstractItemView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QAbstractItemView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QAbstractItemView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QAbstractItemView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QAbstractItemView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QAbstractItemView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -1863,12 +1817,12 @@ int QAbstractItemView_selectionBehavior(const QAbstractItemView* self) {
 	return static_cast<int>(_ret);
 }
 
-QModelIndex* QAbstractItemView_currentIndex(const QAbstractItemView* self) {
-	return new QModelIndex(self->currentIndex());
+struct miqt_qmodelindex QAbstractItemView_currentIndex(const QAbstractItemView* self) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->currentIndex());
 }
 
-QModelIndex* QAbstractItemView_rootIndex(const QAbstractItemView* self) {
-	return new QModelIndex(self->rootIndex());
+struct miqt_qmodelindex QAbstractItemView_rootIndex(const QAbstractItemView* self) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->rootIndex());
 }
 
 void QAbstractItemView_setEditTriggers(QAbstractItemView* self, int triggers) {
@@ -1980,12 +1934,12 @@ bool QAbstractItemView_alternatingRowColors(const QAbstractItemView* self) {
 	return self->alternatingRowColors();
 }
 
-void QAbstractItemView_setIconSize(QAbstractItemView* self, QSize* size) {
-	self->setIconSize(*size);
+void QAbstractItemView_setIconSize(QAbstractItemView* self, struct miqt_qsize size) {
+	self->setIconSize(miqt_from_cabi<QSize>(size));
 }
 
-QSize* QAbstractItemView_iconSize(const QAbstractItemView* self) {
-	return new QSize(self->iconSize());
+struct miqt_qsize QAbstractItemView_iconSize(const QAbstractItemView* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->iconSize());
 }
 
 void QAbstractItemView_setTextElideMode(QAbstractItemView* self, int mode) {
@@ -2002,20 +1956,20 @@ void QAbstractItemView_keyboardSearch(QAbstractItemView* self, struct miqt_strin
 	self->keyboardSearch(search_QString);
 }
 
-QRect* QAbstractItemView_visualRect(const QAbstractItemView* self, QModelIndex* index) {
-	return new QRect(self->visualRect(*index));
+struct miqt_qrect QAbstractItemView_visualRect(const QAbstractItemView* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qrect>(self->visualRect(miqt_from_cabi<QModelIndex>(index)));
 }
 
-void QAbstractItemView_scrollTo(QAbstractItemView* self, QModelIndex* index, int hint) {
-	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
+void QAbstractItemView_scrollTo(QAbstractItemView* self, struct miqt_qmodelindex index, int hint) {
+	self->scrollTo(miqt_from_cabi<QModelIndex>(index), static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
-QModelIndex* QAbstractItemView_indexAt(const QAbstractItemView* self, QPoint* point) {
-	return new QModelIndex(self->indexAt(*point));
+struct miqt_qmodelindex QAbstractItemView_indexAt(const QAbstractItemView* self, struct miqt_qpoint point) {
+	return miqt_to_cabi<struct miqt_qmodelindex>(self->indexAt(miqt_from_cabi<QPoint>(point)));
 }
 
-QSize* QAbstractItemView_sizeHintForIndex(const QAbstractItemView* self, QModelIndex* index) {
-	return new QSize(self->sizeHintForIndex(*index));
+struct miqt_qsize QAbstractItemView_sizeHintForIndex(const QAbstractItemView* self, struct miqt_qmodelindex index) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHintForIndex(miqt_from_cabi<QModelIndex>(index)));
 }
 
 int QAbstractItemView_sizeHintForRow(const QAbstractItemView* self, int row) {
@@ -2026,24 +1980,24 @@ int QAbstractItemView_sizeHintForColumn(const QAbstractItemView* self, int colum
 	return self->sizeHintForColumn(static_cast<int>(column));
 }
 
-void QAbstractItemView_openPersistentEditor(QAbstractItemView* self, QModelIndex* index) {
-	self->openPersistentEditor(*index);
+void QAbstractItemView_openPersistentEditor(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->openPersistentEditor(miqt_from_cabi<QModelIndex>(index));
 }
 
-void QAbstractItemView_closePersistentEditor(QAbstractItemView* self, QModelIndex* index) {
-	self->closePersistentEditor(*index);
+void QAbstractItemView_closePersistentEditor(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->closePersistentEditor(miqt_from_cabi<QModelIndex>(index));
 }
 
-bool QAbstractItemView_isPersistentEditorOpen(const QAbstractItemView* self, QModelIndex* index) {
-	return self->isPersistentEditorOpen(*index);
+bool QAbstractItemView_isPersistentEditorOpen(const QAbstractItemView* self, struct miqt_qmodelindex index) {
+	return self->isPersistentEditorOpen(miqt_from_cabi<QModelIndex>(index));
 }
 
-void QAbstractItemView_setIndexWidget(QAbstractItemView* self, QModelIndex* index, QWidget* widget) {
-	self->setIndexWidget(*index, widget);
+void QAbstractItemView_setIndexWidget(QAbstractItemView* self, struct miqt_qmodelindex index, QWidget* widget) {
+	self->setIndexWidget(miqt_from_cabi<QModelIndex>(index), widget);
 }
 
-QWidget* QAbstractItemView_indexWidget(const QAbstractItemView* self, QModelIndex* index) {
-	return self->indexWidget(*index);
+QWidget* QAbstractItemView_indexWidget(const QAbstractItemView* self, struct miqt_qmodelindex index) {
+	return self->indexWidget(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QAbstractItemView_setItemDelegateForRow(QAbstractItemView* self, int row, QAbstractItemDelegate* delegate) {
@@ -2062,12 +2016,12 @@ QAbstractItemDelegate* QAbstractItemView_itemDelegateForColumn(const QAbstractIt
 	return self->itemDelegateForColumn(static_cast<int>(column));
 }
 
-QAbstractItemDelegate* QAbstractItemView_itemDelegateWithIndex(const QAbstractItemView* self, QModelIndex* index) {
-	return self->itemDelegate(*index);
+QAbstractItemDelegate* QAbstractItemView_itemDelegateWithIndex(const QAbstractItemView* self, struct miqt_qmodelindex index) {
+	return self->itemDelegate(miqt_from_cabi<QModelIndex>(index));
 }
 
-QAbstractItemDelegate* QAbstractItemView_itemDelegateForIndex(const QAbstractItemView* self, QModelIndex* index) {
-	return self->itemDelegateForIndex(*index);
+QAbstractItemDelegate* QAbstractItemView_itemDelegateForIndex(const QAbstractItemView* self, struct miqt_qmodelindex index) {
+	return self->itemDelegateForIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 QVariant* QAbstractItemView_inputMethodQuery(const QAbstractItemView* self, int query) {
@@ -2078,8 +2032,8 @@ void QAbstractItemView_reset(QAbstractItemView* self) {
 	self->reset();
 }
 
-void QAbstractItemView_setRootIndex(QAbstractItemView* self, QModelIndex* index) {
-	self->setRootIndex(*index);
+void QAbstractItemView_setRootIndex(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->setRootIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QAbstractItemView_doItemsLayout(QAbstractItemView* self) {
@@ -2090,16 +2044,16 @@ void QAbstractItemView_selectAll(QAbstractItemView* self) {
 	self->selectAll();
 }
 
-void QAbstractItemView_edit(QAbstractItemView* self, QModelIndex* index) {
-	self->edit(*index);
+void QAbstractItemView_edit(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->edit(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QAbstractItemView_clearSelection(QAbstractItemView* self) {
 	self->clearSelection();
 }
 
-void QAbstractItemView_setCurrentIndex(QAbstractItemView* self, QModelIndex* index) {
-	self->setCurrentIndex(*index);
+void QAbstractItemView_setCurrentIndex(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->setCurrentIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QAbstractItemView_scrollToTop(QAbstractItemView* self) {
@@ -2110,71 +2064,61 @@ void QAbstractItemView_scrollToBottom(QAbstractItemView* self) {
 	self->scrollToBottom();
 }
 
-void QAbstractItemView_update(QAbstractItemView* self, QModelIndex* index) {
-	self->update(*index);
+void QAbstractItemView_update(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->update(miqt_from_cabi<QModelIndex>(index));
 }
 
-void QAbstractItemView_pressed(QAbstractItemView* self, QModelIndex* index) {
-	self->pressed(*index);
+void QAbstractItemView_pressed(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->pressed(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QAbstractItemView_connect_pressed(QAbstractItemView* self, intptr_t slot) {
 	QAbstractItemView::connect(self, static_cast<void (QAbstractItemView::*)(const QModelIndex&)>(&QAbstractItemView::pressed), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemView_pressed(slot, sigval1);
 	});
 }
 
-void QAbstractItemView_clicked(QAbstractItemView* self, QModelIndex* index) {
-	self->clicked(*index);
+void QAbstractItemView_clicked(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->clicked(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QAbstractItemView_connect_clicked(QAbstractItemView* self, intptr_t slot) {
 	QAbstractItemView::connect(self, static_cast<void (QAbstractItemView::*)(const QModelIndex&)>(&QAbstractItemView::clicked), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemView_clicked(slot, sigval1);
 	});
 }
 
-void QAbstractItemView_doubleClicked(QAbstractItemView* self, QModelIndex* index) {
-	self->doubleClicked(*index);
+void QAbstractItemView_doubleClicked(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->doubleClicked(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QAbstractItemView_connect_doubleClicked(QAbstractItemView* self, intptr_t slot) {
 	QAbstractItemView::connect(self, static_cast<void (QAbstractItemView::*)(const QModelIndex&)>(&QAbstractItemView::doubleClicked), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemView_doubleClicked(slot, sigval1);
 	});
 }
 
-void QAbstractItemView_activated(QAbstractItemView* self, QModelIndex* index) {
-	self->activated(*index);
+void QAbstractItemView_activated(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->activated(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QAbstractItemView_connect_activated(QAbstractItemView* self, intptr_t slot) {
 	QAbstractItemView::connect(self, static_cast<void (QAbstractItemView::*)(const QModelIndex&)>(&QAbstractItemView::activated), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemView_activated(slot, sigval1);
 	});
 }
 
-void QAbstractItemView_entered(QAbstractItemView* self, QModelIndex* index) {
-	self->entered(*index);
+void QAbstractItemView_entered(QAbstractItemView* self, struct miqt_qmodelindex index) {
+	self->entered(miqt_from_cabi<QModelIndex>(index));
 }
 
 void QAbstractItemView_connect_entered(QAbstractItemView* self, intptr_t slot) {
 	QAbstractItemView::connect(self, static_cast<void (QAbstractItemView::*)(const QModelIndex&)>(&QAbstractItemView::entered), self, [=](const QModelIndex& index) {
-		const QModelIndex& index_ret = index;
-		// Cast returned reference into pointer
-		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		struct miqt_qmodelindex sigval1 = miqt_to_cabi<struct miqt_qmodelindex>(index);
 		miqt_exec_callback_QAbstractItemView_entered(slot, sigval1);
 	});
 }
@@ -2189,15 +2133,13 @@ void QAbstractItemView_connect_viewportEntered(QAbstractItemView* self, intptr_t
 	});
 }
 
-void QAbstractItemView_iconSizeChanged(QAbstractItemView* self, QSize* size) {
-	self->iconSizeChanged(*size);
+void QAbstractItemView_iconSizeChanged(QAbstractItemView* self, struct miqt_qsize size) {
+	self->iconSizeChanged(miqt_from_cabi<QSize>(size));
 }
 
 void QAbstractItemView_connect_iconSizeChanged(QAbstractItemView* self, intptr_t slot) {
 	QAbstractItemView::connect(self, static_cast<void (QAbstractItemView::*)(const QSize&)>(&QAbstractItemView::iconSizeChanged), self, [=](const QSize& size) {
-		const QSize& size_ret = size;
-		// Cast returned reference into pointer
-		QSize* sigval1 = const_cast<QSize*>(&size_ret);
+		struct miqt_qsize sigval1 = miqt_to_cabi<struct miqt_qsize>(size);
 		miqt_exec_callback_QAbstractItemView_iconSizeChanged(slot, sigval1);
 	});
 }
@@ -2335,8 +2277,8 @@ bool QAbstractItemView_override_virtual_itemDelegateForIndex(void* self, intptr_
 	return true;
 }
 
-QAbstractItemDelegate* QAbstractItemView_virtualbase_itemDelegateForIndex(const void* self, QModelIndex* index) {
-	return static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::itemDelegateForIndex(*index);
+QAbstractItemDelegate* QAbstractItemView_virtualbase_itemDelegateForIndex(const void* self, struct miqt_qmodelindex index) {
+	return static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::itemDelegateForIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QAbstractItemView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2377,8 +2319,8 @@ bool QAbstractItemView_override_virtual_setRootIndex(void* self, intptr_t slot) 
 	return true;
 }
 
-void QAbstractItemView_virtualbase_setRootIndex(void* self, QModelIndex* index) {
-	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::setRootIndex(*index);
+void QAbstractItemView_virtualbase_setRootIndex(void* self, struct miqt_qmodelindex index) {
+	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::setRootIndex(miqt_from_cabi<QModelIndex>(index));
 }
 
 bool QAbstractItemView_override_virtual_doItemsLayout(void* self, intptr_t slot) {
@@ -2419,14 +2361,14 @@ bool QAbstractItemView_override_virtual_dataChanged(void* self, intptr_t slot) {
 	return true;
 }
 
-void QAbstractItemView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
+void QAbstractItemView_virtualbase_dataChanged(void* self, struct miqt_qmodelindex topLeft, struct miqt_qmodelindex bottomRight, struct miqt_array /* of int */  roles) {
 	QList<int> roles_QList;
 	roles_QList.reserve(roles.len);
 	int* roles_arr = static_cast<int*>(roles.data);
 	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QList.push_back(static_cast<int>(roles_arr[i]));
 	}
-	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::dataChanged(*topLeft, *bottomRight, roles_QList);
+	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::dataChanged(miqt_from_cabi<QModelIndex>(topLeft), miqt_from_cabi<QModelIndex>(bottomRight), roles_QList);
 }
 
 bool QAbstractItemView_override_virtual_rowsInserted(void* self, intptr_t slot) {
@@ -2439,8 +2381,8 @@ bool QAbstractItemView_override_virtual_rowsInserted(void* self, intptr_t slot) 
 	return true;
 }
 
-void QAbstractItemView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
-	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
+void QAbstractItemView_virtualbase_rowsInserted(void* self, struct miqt_qmodelindex parent, int start, int end) {
+	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::rowsInserted(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(start), static_cast<int>(end));
 }
 
 bool QAbstractItemView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot) {
@@ -2453,8 +2395,8 @@ bool QAbstractItemView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_
 	return true;
 }
 
-void QAbstractItemView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
-	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
+void QAbstractItemView_virtualbase_rowsAboutToBeRemoved(void* self, struct miqt_qmodelindex parent, int start, int end) {
+	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::rowsAboutToBeRemoved(miqt_from_cabi<QModelIndex>(parent), static_cast<int>(start), static_cast<int>(end));
 }
 
 bool QAbstractItemView_override_virtual_selectionChanged(void* self, intptr_t slot) {
@@ -2481,8 +2423,8 @@ bool QAbstractItemView_override_virtual_currentChanged(void* self, intptr_t slot
 	return true;
 }
 
-void QAbstractItemView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
-	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::currentChanged(*current, *previous);
+void QAbstractItemView_virtualbase_currentChanged(void* self, struct miqt_qmodelindex current, struct miqt_qmodelindex previous) {
+	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::currentChanged(miqt_from_cabi<QModelIndex>(current), miqt_from_cabi<QModelIndex>(previous));
 }
 
 bool QAbstractItemView_override_virtual_updateEditorData(void* self, intptr_t slot) {
@@ -2695,12 +2637,12 @@ bool QAbstractItemView_override_virtual_selectedIndexes(void* self, intptr_t slo
 	return true;
 }
 
-struct miqt_array /* of QModelIndex* */  QAbstractItemView_virtualbase_selectedIndexes(const void* self) {
+struct miqt_array /* of struct miqt_qmodelindex */  QAbstractItemView_virtualbase_selectedIndexes(const void* self) {
 	QModelIndexList _ret = static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	struct miqt_qmodelindex* _arr = static_cast<struct miqt_qmodelindex*>(malloc(sizeof(struct miqt_qmodelindex) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-		_arr[i] = new QModelIndex(_ret[i]);
+		_arr[i] = miqt_to_cabi<struct miqt_qmodelindex>(_ret[i]);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -2718,8 +2660,8 @@ bool QAbstractItemView_override_virtual_edit2(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QAbstractItemView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
-	return static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::edit(*index, static_cast<MiqtVirtualQAbstractItemView::EditTrigger>(trigger), event);
+bool QAbstractItemView_virtualbase_edit2(void* self, struct miqt_qmodelindex index, int trigger, QEvent* event) {
+	return static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::edit(miqt_from_cabi<QModelIndex>(index), static_cast<MiqtVirtualQAbstractItemView::EditTrigger>(trigger), event);
 }
 
 bool QAbstractItemView_override_virtual_selectionCommand(void* self, intptr_t slot) {
@@ -2732,8 +2674,8 @@ bool QAbstractItemView_override_virtual_selectionCommand(void* self, intptr_t sl
 	return true;
 }
 
-int QAbstractItemView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
-	QItemSelectionModel::SelectionFlags _ret = static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::selectionCommand(*index, event);
+int QAbstractItemView_virtualbase_selectionCommand(const void* self, struct miqt_qmodelindex index, QEvent* event) {
+	QItemSelectionModel::SelectionFlags _ret = static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::selectionCommand(miqt_from_cabi<QModelIndex>(index), event);
 	return static_cast<int>(_ret);
 }
 
@@ -3027,8 +2969,8 @@ bool QAbstractItemView_override_virtual_viewportSizeHint(void* self, intptr_t sl
 	return true;
 }
 
-QSize* QAbstractItemView_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::viewportSizeHint());
+struct miqt_qsize QAbstractItemView_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::viewportSizeHint());
 }
 
 bool QAbstractItemView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -3041,8 +2983,8 @@ bool QAbstractItemView_override_virtual_minimumSizeHint(void* self, intptr_t slo
 	return true;
 }
 
-QSize* QAbstractItemView_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::minimumSizeHint());
+struct miqt_qsize QAbstractItemView_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::minimumSizeHint());
 }
 
 bool QAbstractItemView_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -3055,8 +2997,8 @@ bool QAbstractItemView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QAbstractItemView_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::sizeHint());
+struct miqt_qsize QAbstractItemView_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::sizeHint());
 }
 
 bool QAbstractItemView_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -3480,24 +3422,12 @@ void QAbstractItemView_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	static_cast<MiqtVirtualQAbstractItemView*>(self)->QAbstractItemView::disconnectNotify(*signal);
 }
 
-QRect* QAbstractItemView_virtualreturncopy_QRect(QRect* src) {
-	return new QRect(*src);
-}
-
-QModelIndex* QAbstractItemView_virtualreturncopy_QModelIndex(QModelIndex* src) {
-	return new QModelIndex(*src);
-}
-
 QVariant* QAbstractItemView_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
 
 QRegion* QAbstractItemView_virtualreturncopy_QRegion(QRegion* src) {
 	return new QRegion(*src);
-}
-
-QSize* QAbstractItemView_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 int QAbstractItemView_protectedbase_state(bool* _dynamic_cast_ok, const void* self) {
@@ -3567,15 +3497,15 @@ void QAbstractItemView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, v
 	self_cast->scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
 }
 
-QPoint* QAbstractItemView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qpoint QAbstractItemView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qpoint){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QPoint(self_cast->dirtyRegionOffset());
+	return miqt_to_cabi<struct miqt_qpoint>(self_cast->dirtyRegionOffset());
 }
 
 void QAbstractItemView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self) {
@@ -3634,15 +3564,15 @@ void QAbstractItemView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, 
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QAbstractItemView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QAbstractItemView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QAbstractItemView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

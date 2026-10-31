@@ -44,8 +44,8 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QDial_sizeHint(const QDial*, intptr_t);
-QSize* miqt_exec_callback_QDial_minimumSizeHint(const QDial*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDial_sizeHint(const QDial*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDial_minimumSizeHint(const QDial*, intptr_t);
 bool miqt_exec_callback_QDial_event(QDial*, intptr_t, QEvent*);
 void miqt_exec_callback_QDial_resizeEvent(QDial*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QDial_paintEvent(QDial*, intptr_t, QPaintEvent*);
@@ -114,13 +114,11 @@ public:
 			return QDial::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDial_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDial_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDial_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDial_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -131,13 +129,11 @@ public:
 			return QDial::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDial_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDial_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDial_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDial_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -1006,12 +1002,12 @@ bool QDial_notchesVisible(const QDial* self) {
 	return self->notchesVisible();
 }
 
-QSize* QDial_sizeHint(const QDial* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QDial_sizeHint(const QDial* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QDial_minimumSizeHint(const QDial* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QDial_minimumSizeHint(const QDial* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 void QDial_setNotchesVisible(QDial* self, bool visible) {
@@ -1054,8 +1050,8 @@ bool QDial_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDial_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDial*>(self)->QDial::sizeHint());
+struct miqt_qsize QDial_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDial*>(self)->QDial::sizeHint());
 }
 
 bool QDial_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1068,8 +1064,8 @@ bool QDial_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QDial_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDial*>(self)->QDial::minimumSizeHint());
+struct miqt_qsize QDial_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDial*>(self)->QDial::minimumSizeHint());
 }
 
 bool QDial_override_virtual_event(void* self, intptr_t slot) {
@@ -1729,10 +1725,6 @@ bool QDial_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDial*>(self)->QDial::disconnectNotify(*signal);
-}
-
-QSize* QDial_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QDial_virtualreturncopy_QVariant(QVariant* src) {

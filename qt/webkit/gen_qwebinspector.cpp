@@ -42,7 +42,7 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QWebInspector_sizeHint(const QWebInspector*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWebInspector_sizeHint(const QWebInspector*, intptr_t);
 bool miqt_exec_callback_QWebInspector_event(QWebInspector*, intptr_t, QEvent*);
 void miqt_exec_callback_QWebInspector_resizeEvent(QWebInspector*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QWebInspector_showEvent(QWebInspector*, intptr_t, QShowEvent*);
@@ -50,7 +50,7 @@ void miqt_exec_callback_QWebInspector_hideEvent(QWebInspector*, intptr_t, QHideE
 void miqt_exec_callback_QWebInspector_closeEvent(QWebInspector*, intptr_t, QCloseEvent*);
 int miqt_exec_callback_QWebInspector_devType(const QWebInspector*, intptr_t);
 void miqt_exec_callback_QWebInspector_setVisible(QWebInspector*, intptr_t, bool);
-QSize* miqt_exec_callback_QWebInspector_minimumSizeHint(const QWebInspector*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QWebInspector_minimumSizeHint(const QWebInspector*, intptr_t);
 int miqt_exec_callback_QWebInspector_heightForWidth(const QWebInspector*, intptr_t, int);
 bool miqt_exec_callback_QWebInspector_hasHeightForWidth(const QWebInspector*, intptr_t);
 QPaintEngine* miqt_exec_callback_QWebInspector_paintEngine(const QWebInspector*, intptr_t);
@@ -110,13 +110,11 @@ public:
 			return QWebInspector::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWebInspector_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWebInspector_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWebInspector_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QWebInspector_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -243,13 +241,11 @@ public:
 			return QWebInspector::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QWebInspector_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QWebInspector_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QWebInspector_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QWebInspector_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -962,8 +958,8 @@ QWebPage* QWebInspector_page(const QWebInspector* self) {
 	return self->page();
 }
 
-QSize* QWebInspector_sizeHint(const QWebInspector* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QWebInspector_sizeHint(const QWebInspector* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 bool QWebInspector_event(QWebInspector* self, QEvent* param1) {
@@ -1024,8 +1020,8 @@ bool QWebInspector_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWebInspector_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWebInspector*>(self)->QWebInspector::sizeHint());
+struct miqt_qsize QWebInspector_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWebInspector*>(self)->QWebInspector::sizeHint());
 }
 
 bool QWebInspector_override_virtual_event(void* self, intptr_t slot) {
@@ -1136,8 +1132,8 @@ bool QWebInspector_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QWebInspector_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQWebInspector*>(self)->QWebInspector::minimumSizeHint());
+struct miqt_qsize QWebInspector_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQWebInspector*>(self)->QWebInspector::minimumSizeHint());
 }
 
 bool QWebInspector_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1671,10 +1667,6 @@ bool QWebInspector_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QWebInspector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQWebInspector*>(self)->QWebInspector::disconnectNotify(*signal);
-}
-
-QSize* QWebInspector_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QWebInspector_virtualreturncopy_QVariant(QVariant* src) {

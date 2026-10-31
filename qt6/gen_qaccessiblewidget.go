@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -136,11 +137,9 @@ func (this *QAccessibleWidget) FocusChild() *QAccessibleInterface {
 	return newQAccessibleInterface(C.QAccessibleWidget_focusChild(this.h))
 }
 
-func (this *QAccessibleWidget) Rect() *QRect {
+func (this *QAccessibleWidget) Rect() QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := newQRect(C.QAccessibleWidget_rect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QAccessibleWidget_rect(this.h))
 }
 
 func (this *QAccessibleWidget) Parent() *QAccessibleInterface {
@@ -173,18 +172,14 @@ func (this *QAccessibleWidget) State() *QAccessible__State {
 	return _goptr
 }
 
-func (this *QAccessibleWidget) ForegroundColor() *QColor {
+func (this *QAccessibleWidget) ForegroundColor() QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QAccessibleWidget_foregroundColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QAccessibleWidget_foregroundColor(this.h))
 }
 
-func (this *QAccessibleWidget) BackgroundColor() *QColor {
+func (this *QAccessibleWidget) BackgroundColor() QColor {
 	defer runtime.KeepAlive(this)
-	_goptr := newQColor(C.QAccessibleWidget_backgroundColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QColor](C.QAccessibleWidget_backgroundColor(this.h))
 }
 
 func (this *QAccessibleWidget) InterfaceCast(t QAccessible__InterfaceType) unsafe.Pointer {

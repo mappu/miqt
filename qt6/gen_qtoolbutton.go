@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -97,16 +98,12 @@ func QToolButton_Tr(s string) string {
 	return _ret
 }
 
-func (this *QToolButton) SizeHint() *QSize {
-	_goptr := newQSize(C.QToolButton_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QToolButton) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QToolButton_sizeHint(this.h))
 }
 
-func (this *QToolButton) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QToolButton_minimumSizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QToolButton) MinimumSizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QToolButton_minimumSizeHint(this.h))
 }
 
 func (this *QToolButton) ToolButtonStyle() ToolButtonStyle {
@@ -326,14 +323,12 @@ func (this *QToolButton) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QToolButton) callVirtualBase_SizeHint() *QSize {
+func (this *QToolButton) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QToolButton_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QToolButton_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QToolButton) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QToolButton) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QToolButton_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -341,27 +336,24 @@ func (this *QToolButton) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QToolButton_sizeHint
-func miqt_exec_callback_QToolButton_sizeHint(self *C.QToolButton, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QToolButton_sizeHint(self *C.QToolButton, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QToolButton{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QToolButton_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QToolButton) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QToolButton_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QToolButton) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QToolButton) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QToolButton_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QToolButton) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QToolButton_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -369,16 +361,15 @@ func (this *QToolButton) OnMinimumSizeHint(slot func(super func() *QSize) *QSize
 }
 
 //export miqt_exec_callback_QToolButton_minimumSizeHint
-func miqt_exec_callback_QToolButton_minimumSizeHint(self *C.QToolButton, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QToolButton_minimumSizeHint(self *C.QToolButton, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QToolButton{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QToolButton_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -627,13 +618,12 @@ func miqt_exec_callback_QToolButton_changeEvent(self *C.QToolButton, cb C.intptr
 
 }
 
-func (this *QToolButton) callVirtualBase_HitButton(pos *QPoint) bool {
-	defer runtime.KeepAlive(pos)
+func (this *QToolButton) callVirtualBase_HitButton(pos QPoint) bool {
 
-	return (bool)(C.QToolButton_virtualbase_hitButton(unsafe.Pointer(this.h), pos.cPointer()))
+	return (bool)(C.QToolButton_virtualbase_hitButton(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 
 }
-func (this *QToolButton) OnHitButton(slot func(super func(pos *QPoint) bool, pos *QPoint) bool) {
+func (this *QToolButton) OnHitButton(slot func(super func(pos QPoint) bool, pos QPoint) bool) {
 	ok := C.QToolButton_override_virtual_hitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -641,14 +631,14 @@ func (this *QToolButton) OnHitButton(slot func(super func(pos *QPoint) bool, pos
 }
 
 //export miqt_exec_callback_QToolButton_hitButton
-func miqt_exec_callback_QToolButton_hitButton(self *C.QToolButton, cb C.intptr_t, pos *C.QPoint) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos *QPoint) bool, pos *QPoint) bool)
+func miqt_exec_callback_QToolButton_hitButton(self *C.QToolButton, cb C.intptr_t, pos C.struct_miqt_qpoint) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos QPoint) bool, pos QPoint) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQPoint(pos)
+	slotval1 := libmiqt.ValueCast[QPoint](pos)
 
 	virtualReturn := gofunc((&QToolButton{h: self}).callVirtualBase_HitButton, slotval1)
 
@@ -1442,7 +1432,6 @@ func miqt_exec_callback_QToolButton_initPainter(self *C.QToolButton, cb C.intptr
 }
 
 func (this *QToolButton) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QToolButton_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

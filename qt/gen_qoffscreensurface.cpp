@@ -22,7 +22,7 @@ extern "C" {
 void miqt_exec_callback_QOffscreenSurface_screenChanged(intptr_t, QScreen*);
 int miqt_exec_callback_QOffscreenSurface_surfaceType(const QOffscreenSurface*, intptr_t);
 QSurfaceFormat* miqt_exec_callback_QOffscreenSurface_format(const QOffscreenSurface*, intptr_t);
-QSize* miqt_exec_callback_QOffscreenSurface_size(const QOffscreenSurface*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QOffscreenSurface_size(const QOffscreenSurface*, intptr_t);
 bool miqt_exec_callback_QOffscreenSurface_event(QOffscreenSurface*, intptr_t, QEvent*);
 bool miqt_exec_callback_QOffscreenSurface_eventFilter(QOffscreenSurface*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QOffscreenSurface_timerEvent(QOffscreenSurface*, intptr_t, QTimerEvent*);
@@ -84,13 +84,11 @@ public:
 			return QOffscreenSurface::size();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QOffscreenSurface_size(this, handle__size);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QOffscreenSurface_size(this, handle__size);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QOffscreenSurface_virtualbase_size(const void* self);
+	friend struct miqt_qsize QOffscreenSurface_virtualbase_size(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -297,8 +295,8 @@ QSurfaceFormat* QOffscreenSurface_requestedFormat(const QOffscreenSurface* self)
 	return new QSurfaceFormat(self->requestedFormat());
 }
 
-QSize* QOffscreenSurface_size(const QOffscreenSurface* self) {
-	return new QSize(self->size());
+struct miqt_qsize QOffscreenSurface_size(const QOffscreenSurface* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->size());
 }
 
 QScreen* QOffscreenSurface_screen(const QOffscreenSurface* self) {
@@ -411,8 +409,8 @@ bool QOffscreenSurface_override_virtual_size(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QOffscreenSurface_virtualbase_size(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQOffscreenSurface*>(self)->QOffscreenSurface::size());
+struct miqt_qsize QOffscreenSurface_virtualbase_size(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQOffscreenSurface*>(self)->QOffscreenSurface::size());
 }
 
 bool QOffscreenSurface_override_virtual_event(void* self, intptr_t slot) {
@@ -515,10 +513,6 @@ void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 
 QSurfaceFormat* QOffscreenSurface_virtualreturncopy_QSurfaceFormat(QSurfaceFormat* src) {
 	return new QSurfaceFormat(*src);
-}
-
-QSize* QOffscreenSurface_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QObject* QOffscreenSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

@@ -47,8 +47,8 @@ QDesignerFormEditorInterface* miqt_exec_callback_QDesignerObjectInspectorInterfa
 void miqt_exec_callback_QDesignerObjectInspectorInterface_setFormWindow(QDesignerObjectInspectorInterface*, intptr_t, QDesignerFormWindowInterface*);
 int miqt_exec_callback_QDesignerObjectInspectorInterface_devType(const QDesignerObjectInspectorInterface*, intptr_t);
 void miqt_exec_callback_QDesignerObjectInspectorInterface_setVisible(QDesignerObjectInspectorInterface*, intptr_t, bool);
-QSize* miqt_exec_callback_QDesignerObjectInspectorInterface_sizeHint(const QDesignerObjectInspectorInterface*, intptr_t);
-QSize* miqt_exec_callback_QDesignerObjectInspectorInterface_minimumSizeHint(const QDesignerObjectInspectorInterface*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDesignerObjectInspectorInterface_sizeHint(const QDesignerObjectInspectorInterface*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QDesignerObjectInspectorInterface_minimumSizeHint(const QDesignerObjectInspectorInterface*, intptr_t);
 int miqt_exec_callback_QDesignerObjectInspectorInterface_heightForWidth(const QDesignerObjectInspectorInterface*, intptr_t, int);
 bool miqt_exec_callback_QDesignerObjectInspectorInterface_hasHeightForWidth(const QDesignerObjectInspectorInterface*, intptr_t);
 QPaintEngine* miqt_exec_callback_QDesignerObjectInspectorInterface_paintEngine(const QDesignerObjectInspectorInterface*, intptr_t);
@@ -174,13 +174,11 @@ public:
 			return QDesignerObjectInspectorInterface::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDesignerObjectInspectorInterface_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDesignerObjectInspectorInterface_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDesignerObjectInspectorInterface_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QDesignerObjectInspectorInterface_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -191,13 +189,11 @@ public:
 			return QDesignerObjectInspectorInterface::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QDesignerObjectInspectorInterface_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QDesignerObjectInspectorInterface_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QDesignerObjectInspectorInterface_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QDesignerObjectInspectorInterface_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1100,8 +1096,8 @@ bool QDesignerObjectInspectorInterface_override_virtual_sizeHint(void* self, int
 	return true;
 }
 
-QSize* QDesignerObjectInspectorInterface_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDesignerObjectInspectorInterface*>(self)->QDesignerObjectInspectorInterface::sizeHint());
+struct miqt_qsize QDesignerObjectInspectorInterface_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDesignerObjectInspectorInterface*>(self)->QDesignerObjectInspectorInterface::sizeHint());
 }
 
 bool QDesignerObjectInspectorInterface_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1114,8 +1110,8 @@ bool QDesignerObjectInspectorInterface_override_virtual_minimumSizeHint(void* se
 	return true;
 }
 
-QSize* QDesignerObjectInspectorInterface_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQDesignerObjectInspectorInterface*>(self)->QDesignerObjectInspectorInterface::minimumSizeHint());
+struct miqt_qsize QDesignerObjectInspectorInterface_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQDesignerObjectInspectorInterface*>(self)->QDesignerObjectInspectorInterface::minimumSizeHint());
 }
 
 bool QDesignerObjectInspectorInterface_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1719,10 +1715,6 @@ bool QDesignerObjectInspectorInterface_override_virtual_disconnectNotify(void* s
 
 void QDesignerObjectInspectorInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQDesignerObjectInspectorInterface*>(self)->QDesignerObjectInspectorInterface::disconnectNotify(*signal);
-}
-
-QSize* QDesignerObjectInspectorInterface_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QDesignerObjectInspectorInterface_virtualreturncopy_QVariant(QVariant* src) {

@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -87,10 +88,9 @@ func (this *QPagedPaintDevice) SetPageOrientation(orientation QPageLayout__Orien
 	return (bool)(C.QPagedPaintDevice_setPageOrientation(this.h, (C.int)(orientation)))
 }
 
-func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF, units QPageLayout__Unit) bool {
+func (this *QPagedPaintDevice) SetPageMargins(margins QMarginsF, units QPageLayout__Unit) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(margins)
-	return (bool)(C.QPagedPaintDevice_setPageMargins(this.h, margins.cPointer(), (C.int)(units)))
+	return (bool)(C.QPagedPaintDevice_setPageMargins(this.h, libmiqt.ValueCast[C.struct_miqt_qmarginsf](margins), (C.int)(units)))
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {

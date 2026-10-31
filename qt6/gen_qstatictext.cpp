@@ -80,8 +80,8 @@ QTextOption* QStaticText_textOption(const QStaticText* self) {
 	return new QTextOption(self->textOption());
 }
 
-QSizeF* QStaticText_size(const QStaticText* self) {
-	return new QSizeF(self->size());
+struct miqt_qsizef QStaticText_size(const QStaticText* self) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->size());
 }
 
 void QStaticText_prepare(QStaticText* self) {

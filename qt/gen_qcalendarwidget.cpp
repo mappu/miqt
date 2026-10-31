@@ -50,14 +50,14 @@ void miqt_exec_callback_QCalendarWidget_selectionChanged(intptr_t);
 void miqt_exec_callback_QCalendarWidget_clicked(intptr_t, QDate*);
 void miqt_exec_callback_QCalendarWidget_activated(intptr_t, QDate*);
 void miqt_exec_callback_QCalendarWidget_currentPageChanged(intptr_t, int, int);
-QSize* miqt_exec_callback_QCalendarWidget_sizeHint(const QCalendarWidget*, intptr_t);
-QSize* miqt_exec_callback_QCalendarWidget_minimumSizeHint(const QCalendarWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QCalendarWidget_sizeHint(const QCalendarWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QCalendarWidget_minimumSizeHint(const QCalendarWidget*, intptr_t);
 bool miqt_exec_callback_QCalendarWidget_event(QCalendarWidget*, intptr_t, QEvent*);
 bool miqt_exec_callback_QCalendarWidget_eventFilter(QCalendarWidget*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QCalendarWidget_mousePressEvent(QCalendarWidget*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QCalendarWidget_resizeEvent(QCalendarWidget*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QCalendarWidget_keyPressEvent(QCalendarWidget*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QCalendarWidget_paintCell(const QCalendarWidget*, intptr_t, QPainter*, QRect*, QDate*);
+void miqt_exec_callback_QCalendarWidget_paintCell(const QCalendarWidget*, intptr_t, QPainter*, struct miqt_qrect, QDate*);
 int miqt_exec_callback_QCalendarWidget_devType(const QCalendarWidget*, intptr_t);
 void miqt_exec_callback_QCalendarWidget_setVisible(QCalendarWidget*, intptr_t, bool);
 int miqt_exec_callback_QCalendarWidget_heightForWidth(const QCalendarWidget*, intptr_t, int);
@@ -119,13 +119,11 @@ public:
 			return QCalendarWidget::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QCalendarWidget_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QCalendarWidget_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QCalendarWidget_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QCalendarWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -136,13 +134,11 @@ public:
 			return QCalendarWidget::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QCalendarWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QCalendarWidget_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QCalendarWidget_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QCalendarWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -239,9 +235,7 @@ public:
 		}
 
 		QPainter* sigval1 = painter;
-		const QRect& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRect* sigval2 = const_cast<QRect*>(&rect_ret);
+		struct miqt_qrect sigval2 = miqt_to_cabi<struct miqt_qrect>(rect);
 		const QDate& date_ret = date;
 		// Cast returned reference into pointer
 		QDate* sigval3 = const_cast<QDate*>(&date_ret);
@@ -249,7 +243,7 @@ public:
 
 	}
 
-	friend void QCalendarWidget_virtualbase_paintCell(const void* self, QPainter* painter, QRect* rect, QDate* date);
+	friend void QCalendarWidget_virtualbase_paintCell(const void* self, QPainter* painter, struct miqt_qrect rect, QDate* date);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -988,12 +982,12 @@ struct miqt_string QCalendarWidget_trUtf8(const char* s) {
 	return _ms;
 }
 
-QSize* QCalendarWidget_sizeHint(const QCalendarWidget* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QCalendarWidget_sizeHint(const QCalendarWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QCalendarWidget_minimumSizeHint(const QCalendarWidget* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QCalendarWidget_minimumSizeHint(const QCalendarWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 QDate* QCalendarWidget_selectedDate(const QCalendarWidget* self) {
@@ -1280,8 +1274,8 @@ bool QCalendarWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QCalendarWidget_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::sizeHint());
+struct miqt_qsize QCalendarWidget_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::sizeHint());
 }
 
 bool QCalendarWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1294,8 +1288,8 @@ bool QCalendarWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 	return true;
 }
 
-QSize* QCalendarWidget_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::minimumSizeHint());
+struct miqt_qsize QCalendarWidget_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::minimumSizeHint());
 }
 
 bool QCalendarWidget_override_virtual_event(void* self, intptr_t slot) {
@@ -1378,8 +1372,8 @@ bool QCalendarWidget_override_virtual_paintCell(void* self, intptr_t slot) {
 	return true;
 }
 
-void QCalendarWidget_virtualbase_paintCell(const void* self, QPainter* painter, QRect* rect, QDate* date) {
-	static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::paintCell(painter, *rect, *date);
+void QCalendarWidget_virtualbase_paintCell(const void* self, QPainter* painter, struct miqt_qrect rect, QDate* date) {
+	static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::paintCell(painter, miqt_from_cabi<QRect>(rect), *date);
 }
 
 bool QCalendarWidget_override_virtual_devType(void* self, intptr_t slot) {
@@ -1941,10 +1935,6 @@ bool QCalendarWidget_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::disconnectNotify(*signal);
-}
-
-QSize* QCalendarWidget_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QCalendarWidget_virtualreturncopy_QVariant(QVariant* src) {

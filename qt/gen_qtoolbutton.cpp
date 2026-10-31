@@ -46,8 +46,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QToolButton_triggered(intptr_t, QAction*);
-QSize* miqt_exec_callback_QToolButton_sizeHint(const QToolButton*, intptr_t);
-QSize* miqt_exec_callback_QToolButton_minimumSizeHint(const QToolButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QToolButton_sizeHint(const QToolButton*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QToolButton_minimumSizeHint(const QToolButton*, intptr_t);
 bool miqt_exec_callback_QToolButton_event(QToolButton*, intptr_t, QEvent*);
 void miqt_exec_callback_QToolButton_mousePressEvent(QToolButton*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QToolButton_mouseReleaseEvent(QToolButton*, intptr_t, QMouseEvent*);
@@ -57,7 +57,7 @@ void miqt_exec_callback_QToolButton_enterEvent(QToolButton*, intptr_t, QEvent*);
 void miqt_exec_callback_QToolButton_leaveEvent(QToolButton*, intptr_t, QEvent*);
 void miqt_exec_callback_QToolButton_timerEvent(QToolButton*, intptr_t, QTimerEvent*);
 void miqt_exec_callback_QToolButton_changeEvent(QToolButton*, intptr_t, QEvent*);
-bool miqt_exec_callback_QToolButton_hitButton(const QToolButton*, intptr_t, QPoint*);
+bool miqt_exec_callback_QToolButton_hitButton(const QToolButton*, intptr_t, struct miqt_qpoint);
 void miqt_exec_callback_QToolButton_nextCheckState(QToolButton*, intptr_t);
 void miqt_exec_callback_QToolButton_checkStateSet(QToolButton*, intptr_t);
 void miqt_exec_callback_QToolButton_keyPressEvent(QToolButton*, intptr_t, QKeyEvent*);
@@ -117,13 +117,11 @@ public:
 			return QToolButton::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QToolButton_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QToolButton_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QToolButton_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QToolButton_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -134,13 +132,11 @@ public:
 			return QToolButton::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QToolButton_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QToolButton_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QToolButton_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QToolButton_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -303,14 +299,12 @@ public:
 			return QToolButton::hitButton(pos);
 		}
 
-		const QPoint& pos_ret = pos;
-		// Cast returned reference into pointer
-		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
+		struct miqt_qpoint sigval1 = miqt_to_cabi<struct miqt_qpoint>(pos);
 		bool callback_return_value = miqt_exec_callback_QToolButton_hitButton(this, handle__hitButton, sigval1);
 		return callback_return_value;
 	}
 
-	friend bool QToolButton_virtualbase_hitButton(const void* self, QPoint* pos);
+	friend bool QToolButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nextCheckState = 0;
@@ -1012,12 +1006,12 @@ struct miqt_string QToolButton_trUtf8(const char* s) {
 	return _ms;
 }
 
-QSize* QToolButton_sizeHint(const QToolButton* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QToolButton_sizeHint(const QToolButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QToolButton_minimumSizeHint(const QToolButton* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QToolButton_minimumSizeHint(const QToolButton* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 int QToolButton_toolButtonStyle(const QToolButton* self) {
@@ -1140,8 +1134,8 @@ bool QToolButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QToolButton_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQToolButton*>(self)->QToolButton::sizeHint());
+struct miqt_qsize QToolButton_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQToolButton*>(self)->QToolButton::sizeHint());
 }
 
 bool QToolButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1154,8 +1148,8 @@ bool QToolButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QToolButton_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQToolButton*>(self)->QToolButton::minimumSizeHint());
+struct miqt_qsize QToolButton_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQToolButton*>(self)->QToolButton::minimumSizeHint());
 }
 
 bool QToolButton_override_virtual_event(void* self, intptr_t slot) {
@@ -1294,8 +1288,8 @@ bool QToolButton_override_virtual_hitButton(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QToolButton_virtualbase_hitButton(const void* self, QPoint* pos) {
-	return static_cast<const MiqtVirtualQToolButton*>(self)->QToolButton::hitButton(*pos);
+bool QToolButton_virtualbase_hitButton(const void* self, struct miqt_qpoint pos) {
+	return static_cast<const MiqtVirtualQToolButton*>(self)->QToolButton::hitButton(miqt_from_cabi<QPoint>(pos));
 }
 
 bool QToolButton_override_virtual_nextCheckState(void* self, intptr_t slot) {
@@ -1829,10 +1823,6 @@ bool QToolButton_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QToolButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQToolButton*>(self)->QToolButton::disconnectNotify(*signal);
-}
-
-QSize* QToolButton_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QToolButton_virtualreturncopy_QVariant(QVariant* src) {

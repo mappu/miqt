@@ -43,13 +43,13 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QColorDialog_currentColorChanged(intptr_t, QColor*);
-void miqt_exec_callback_QColorDialog_colorSelected(intptr_t, QColor*);
+void miqt_exec_callback_QColorDialog_currentColorChanged(intptr_t, struct miqt_qcolor);
+void miqt_exec_callback_QColorDialog_colorSelected(intptr_t, struct miqt_qcolor);
 void miqt_exec_callback_QColorDialog_setVisible(QColorDialog*, intptr_t, bool);
 void miqt_exec_callback_QColorDialog_changeEvent(QColorDialog*, intptr_t, QEvent*);
 void miqt_exec_callback_QColorDialog_done(QColorDialog*, intptr_t, int);
-QSize* miqt_exec_callback_QColorDialog_sizeHint(const QColorDialog*, intptr_t);
-QSize* miqt_exec_callback_QColorDialog_minimumSizeHint(const QColorDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QColorDialog_sizeHint(const QColorDialog*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QColorDialog_minimumSizeHint(const QColorDialog*, intptr_t);
 void miqt_exec_callback_QColorDialog_open(QColorDialog*, intptr_t);
 int miqt_exec_callback_QColorDialog_exec(QColorDialog*, intptr_t);
 void miqt_exec_callback_QColorDialog_accept(QColorDialog*, intptr_t);
@@ -171,13 +171,11 @@ public:
 			return QColorDialog::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QColorDialog_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QColorDialog_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QColorDialog_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QColorDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -188,13 +186,11 @@ public:
 			return QColorDialog::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QColorDialog_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QColorDialog_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QColorDialog_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QColorDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1011,12 +1007,12 @@ QColorDialog* QColorDialog_new2() {
 	return new (std::nothrow) MiqtVirtualQColorDialog();
 }
 
-QColorDialog* QColorDialog_new3(QColor* initial) {
-	return new (std::nothrow) MiqtVirtualQColorDialog(*initial);
+QColorDialog* QColorDialog_new3(struct miqt_qcolor initial) {
+	return new (std::nothrow) MiqtVirtualQColorDialog(miqt_from_cabi<QColor>(initial));
 }
 
-QColorDialog* QColorDialog_new4(QColor* initial, QWidget* parent) {
-	return new (std::nothrow) MiqtVirtualQColorDialog(*initial, parent);
+QColorDialog* QColorDialog_new4(struct miqt_qcolor initial, QWidget* parent) {
+	return new (std::nothrow) MiqtVirtualQColorDialog(miqt_from_cabi<QColor>(initial), parent);
 }
 
 void QColorDialog_virtbase(QColorDialog* src, QDialog** outptr_QDialog) {
@@ -1053,16 +1049,16 @@ struct miqt_string QColorDialog_trUtf8(const char* s) {
 	return _ms;
 }
 
-void QColorDialog_setCurrentColor(QColorDialog* self, QColor* color) {
-	self->setCurrentColor(*color);
+void QColorDialog_setCurrentColor(QColorDialog* self, struct miqt_qcolor color) {
+	self->setCurrentColor(miqt_from_cabi<QColor>(color));
 }
 
-QColor* QColorDialog_currentColor(const QColorDialog* self) {
-	return new QColor(self->currentColor());
+struct miqt_qcolor QColorDialog_currentColor(const QColorDialog* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->currentColor());
 }
 
-QColor* QColorDialog_selectedColor(const QColorDialog* self) {
-	return new QColor(self->selectedColor());
+struct miqt_qcolor QColorDialog_selectedColor(const QColorDialog* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->selectedColor());
 }
 
 void QColorDialog_setOption(QColorDialog* self, int option) {
@@ -1086,8 +1082,8 @@ void QColorDialog_setVisible(QColorDialog* self, bool visible) {
 	self->setVisible(visible);
 }
 
-QColor* QColorDialog_getColor() {
-	return new QColor(QColorDialog::getColor());
+struct miqt_qcolor QColorDialog_getColor() {
+	return miqt_to_cabi<struct miqt_qcolor>(QColorDialog::getColor());
 }
 
 unsigned int QColorDialog_getRgba() {
@@ -1099,44 +1095,40 @@ int QColorDialog_customCount() {
 	return QColorDialog::customCount();
 }
 
-QColor* QColorDialog_customColor(int index) {
-	return new QColor(QColorDialog::customColor(static_cast<int>(index)));
+struct miqt_qcolor QColorDialog_customColor(int index) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColorDialog::customColor(static_cast<int>(index)));
 }
 
-void QColorDialog_setCustomColor(int index, QColor* color) {
-	QColorDialog::setCustomColor(static_cast<int>(index), *color);
+void QColorDialog_setCustomColor(int index, struct miqt_qcolor color) {
+	QColorDialog::setCustomColor(static_cast<int>(index), miqt_from_cabi<QColor>(color));
 }
 
-QColor* QColorDialog_standardColor(int index) {
-	return new QColor(QColorDialog::standardColor(static_cast<int>(index)));
+struct miqt_qcolor QColorDialog_standardColor(int index) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColorDialog::standardColor(static_cast<int>(index)));
 }
 
-void QColorDialog_setStandardColor(int index, QColor* color) {
-	QColorDialog::setStandardColor(static_cast<int>(index), *color);
+void QColorDialog_setStandardColor(int index, struct miqt_qcolor color) {
+	QColorDialog::setStandardColor(static_cast<int>(index), miqt_from_cabi<QColor>(color));
 }
 
-void QColorDialog_currentColorChanged(QColorDialog* self, QColor* color) {
-	self->currentColorChanged(*color);
+void QColorDialog_currentColorChanged(QColorDialog* self, struct miqt_qcolor color) {
+	self->currentColorChanged(miqt_from_cabi<QColor>(color));
 }
 
 void QColorDialog_connect_currentColorChanged(QColorDialog* self, intptr_t slot) {
 	QColorDialog::connect(self, static_cast<void (QColorDialog::*)(const QColor&)>(&QColorDialog::currentColorChanged), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QColorDialog_currentColorChanged(slot, sigval1);
 	});
 }
 
-void QColorDialog_colorSelected(QColorDialog* self, QColor* color) {
-	self->colorSelected(*color);
+void QColorDialog_colorSelected(QColorDialog* self, struct miqt_qcolor color) {
+	self->colorSelected(miqt_from_cabi<QColor>(color));
 }
 
 void QColorDialog_connect_colorSelected(QColorDialog* self, intptr_t slot) {
 	QColorDialog::connect(self, static_cast<void (QColorDialog::*)(const QColor&)>(&QColorDialog::colorSelected), self, [=](const QColor& color) {
-		const QColor& color_ret = color;
-		// Cast returned reference into pointer
-		QColor* sigval1 = const_cast<QColor*>(&color_ret);
+		struct miqt_qcolor sigval1 = miqt_to_cabi<struct miqt_qcolor>(color);
 		miqt_exec_callback_QColorDialog_colorSelected(slot, sigval1);
 	});
 }
@@ -1189,22 +1181,22 @@ void QColorDialog_setOption2(QColorDialog* self, int option, bool on) {
 	self->setOption(static_cast<QColorDialog::ColorDialogOption>(option), on);
 }
 
-QColor* QColorDialog_getColorWithInitial(QColor* initial) {
-	return new QColor(QColorDialog::getColor(*initial));
+struct miqt_qcolor QColorDialog_getColorWithInitial(struct miqt_qcolor initial) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColorDialog::getColor(miqt_from_cabi<QColor>(initial)));
 }
 
-QColor* QColorDialog_getColor2(QColor* initial, QWidget* parent) {
-	return new QColor(QColorDialog::getColor(*initial, parent));
+struct miqt_qcolor QColorDialog_getColor2(struct miqt_qcolor initial, QWidget* parent) {
+	return miqt_to_cabi<struct miqt_qcolor>(QColorDialog::getColor(miqt_from_cabi<QColor>(initial), parent));
 }
 
-QColor* QColorDialog_getColor3(QColor* initial, QWidget* parent, struct miqt_string title) {
+struct miqt_qcolor QColorDialog_getColor3(struct miqt_qcolor initial, QWidget* parent, struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	return new QColor(QColorDialog::getColor(*initial, parent, title_QString));
+	return miqt_to_cabi<struct miqt_qcolor>(QColorDialog::getColor(miqt_from_cabi<QColor>(initial), parent, title_QString));
 }
 
-QColor* QColorDialog_getColor4(QColor* initial, QWidget* parent, struct miqt_string title, int options) {
+struct miqt_qcolor QColorDialog_getColor4(struct miqt_qcolor initial, QWidget* parent, struct miqt_string title, int options) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	return new QColor(QColorDialog::getColor(*initial, parent, title_QString, static_cast<QColorDialog::ColorDialogOptions>(options)));
+	return miqt_to_cabi<struct miqt_qcolor>(QColorDialog::getColor(miqt_from_cabi<QColor>(initial), parent, title_QString, static_cast<QColorDialog::ColorDialogOptions>(options)));
 }
 
 unsigned int QColorDialog_getRgbaWithRgba(unsigned int rgba) {
@@ -1274,8 +1266,8 @@ bool QColorDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QColorDialog_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQColorDialog*>(self)->QColorDialog::sizeHint());
+struct miqt_qsize QColorDialog_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQColorDialog*>(self)->QColorDialog::sizeHint());
 }
 
 bool QColorDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1288,8 +1280,8 @@ bool QColorDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QColorDialog_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQColorDialog*>(self)->QColorDialog::minimumSizeHint());
+struct miqt_qsize QColorDialog_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQColorDialog*>(self)->QColorDialog::minimumSizeHint());
 }
 
 bool QColorDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1949,10 +1941,6 @@ bool QColorDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QColorDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQColorDialog*>(self)->QColorDialog::disconnectNotify(*signal);
-}
-
-QSize* QColorDialog_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QColorDialog_virtualreturncopy_QVariant(QVariant* src) {

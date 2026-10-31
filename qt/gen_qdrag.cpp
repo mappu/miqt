@@ -221,12 +221,12 @@ QPixmap* QDrag_pixmap(const QDrag* self) {
 	return new QPixmap(self->pixmap());
 }
 
-void QDrag_setHotSpot(QDrag* self, QPoint* hotspot) {
-	self->setHotSpot(*hotspot);
+void QDrag_setHotSpot(QDrag* self, struct miqt_qpoint hotspot) {
+	self->setHotSpot(miqt_from_cabi<QPoint>(hotspot));
 }
 
-QPoint* QDrag_hotSpot(const QDrag* self) {
-	return new QPoint(self->hotSpot());
+struct miqt_qpoint QDrag_hotSpot(const QDrag* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->hotSpot());
 }
 
 QObject* QDrag_source(const QDrag* self) {

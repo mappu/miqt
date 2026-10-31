@@ -31,12 +31,12 @@ bool QCameraViewfinderSettings_isNull(const QCameraViewfinderSettings* self) {
 	return self->isNull();
 }
 
-QSize* QCameraViewfinderSettings_resolution(const QCameraViewfinderSettings* self) {
-	return new QSize(self->resolution());
+struct miqt_qsize QCameraViewfinderSettings_resolution(const QCameraViewfinderSettings* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->resolution());
 }
 
-void QCameraViewfinderSettings_setResolution(QCameraViewfinderSettings* self, QSize* resolution) {
-	self->setResolution(*resolution);
+void QCameraViewfinderSettings_setResolution(QCameraViewfinderSettings* self, struct miqt_qsize resolution) {
+	self->setResolution(miqt_from_cabi<QSize>(resolution));
 }
 
 void QCameraViewfinderSettings_setResolution2(QCameraViewfinderSettings* self, int width, int height) {
@@ -70,12 +70,12 @@ void QCameraViewfinderSettings_setPixelFormat(QCameraViewfinderSettings* self, i
 	self->setPixelFormat(static_cast<QVideoFrame::PixelFormat>(format));
 }
 
-QSize* QCameraViewfinderSettings_pixelAspectRatio(const QCameraViewfinderSettings* self) {
-	return new QSize(self->pixelAspectRatio());
+struct miqt_qsize QCameraViewfinderSettings_pixelAspectRatio(const QCameraViewfinderSettings* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->pixelAspectRatio());
 }
 
-void QCameraViewfinderSettings_setPixelAspectRatio(QCameraViewfinderSettings* self, QSize* ratio) {
-	self->setPixelAspectRatio(*ratio);
+void QCameraViewfinderSettings_setPixelAspectRatio(QCameraViewfinderSettings* self, struct miqt_qsize ratio) {
+	self->setPixelAspectRatio(miqt_from_cabi<QSize>(ratio));
 }
 
 void QCameraViewfinderSettings_setPixelAspectRatio2(QCameraViewfinderSettings* self, int horizontal, int vertical) {

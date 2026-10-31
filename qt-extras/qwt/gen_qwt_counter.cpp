@@ -42,13 +42,13 @@ extern "C" {
 
 void miqt_exec_callback_QwtCounter_buttonReleased(intptr_t, double);
 void miqt_exec_callback_QwtCounter_valueChanged(intptr_t, double);
-QSize* miqt_exec_callback_QwtCounter_sizeHint(const QwtCounter*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtCounter_sizeHint(const QwtCounter*, intptr_t);
 bool miqt_exec_callback_QwtCounter_event(QwtCounter*, intptr_t, QEvent*);
 void miqt_exec_callback_QwtCounter_wheelEvent(QwtCounter*, intptr_t, QWheelEvent*);
 void miqt_exec_callback_QwtCounter_keyPressEvent(QwtCounter*, intptr_t, QKeyEvent*);
 int miqt_exec_callback_QwtCounter_devType(const QwtCounter*, intptr_t);
 void miqt_exec_callback_QwtCounter_setVisible(QwtCounter*, intptr_t, bool);
-QSize* miqt_exec_callback_QwtCounter_minimumSizeHint(const QwtCounter*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtCounter_minimumSizeHint(const QwtCounter*, intptr_t);
 int miqt_exec_callback_QwtCounter_heightForWidth(const QwtCounter*, intptr_t, int);
 bool miqt_exec_callback_QwtCounter_hasHeightForWidth(const QwtCounter*, intptr_t);
 QPaintEngine* miqt_exec_callback_QwtCounter_paintEngine(const QwtCounter*, intptr_t);
@@ -110,13 +110,11 @@ public:
 			return QwtCounter::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtCounter_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtCounter_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtCounter_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtCounter_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -209,13 +207,11 @@ public:
 			return QwtCounter::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtCounter_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtCounter_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtCounter_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtCounter_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -994,8 +990,8 @@ int QwtCounter_incSteps(const QwtCounter* self, int param1) {
 	return self->incSteps(static_cast<QwtCounter::Button>(param1));
 }
 
-QSize* QwtCounter_sizeHint(const QwtCounter* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QwtCounter_sizeHint(const QwtCounter* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 double QwtCounter_singleStep(const QwtCounter* self) {
@@ -1134,8 +1130,8 @@ bool QwtCounter_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtCounter_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtCounter*>(self)->QwtCounter::sizeHint());
+struct miqt_qsize QwtCounter_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtCounter*>(self)->QwtCounter::sizeHint());
 }
 
 bool QwtCounter_override_virtual_event(void* self, intptr_t slot) {
@@ -1218,8 +1214,8 @@ bool QwtCounter_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtCounter_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtCounter*>(self)->QwtCounter::minimumSizeHint());
+struct miqt_qsize QwtCounter_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtCounter*>(self)->QwtCounter::minimumSizeHint());
 }
 
 bool QwtCounter_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1781,10 +1777,6 @@ bool QwtCounter_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QwtCounter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtCounter*>(self)->QwtCounter::disconnectNotify(*signal);
-}
-
-QSize* QwtCounter_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtCounter_virtualreturncopy_QVariant(QVariant* src) {

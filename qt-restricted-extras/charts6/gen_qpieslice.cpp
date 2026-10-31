@@ -288,12 +288,12 @@ QPen* QPieSlice_pen(const QPieSlice* self) {
 	return new QPen(self->pen());
 }
 
-QColor* QPieSlice_borderColor(QPieSlice* self) {
-	return new QColor(self->borderColor());
+struct miqt_qcolor QPieSlice_borderColor(QPieSlice* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->borderColor());
 }
 
-void QPieSlice_setBorderColor(QPieSlice* self, QColor* color) {
-	self->setBorderColor(*color);
+void QPieSlice_setBorderColor(QPieSlice* self, struct miqt_qcolor color) {
+	self->setBorderColor(miqt_from_cabi<QColor>(color));
 }
 
 int QPieSlice_borderWidth(QPieSlice* self) {
@@ -312,12 +312,12 @@ QBrush* QPieSlice_brush(const QPieSlice* self) {
 	return new QBrush(self->brush());
 }
 
-QColor* QPieSlice_color(QPieSlice* self) {
-	return new QColor(self->color());
+struct miqt_qcolor QPieSlice_color(QPieSlice* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->color());
 }
 
-void QPieSlice_setColor(QPieSlice* self, QColor* color) {
-	self->setColor(*color);
+void QPieSlice_setColor(QPieSlice* self, struct miqt_qcolor color) {
+	self->setColor(miqt_from_cabi<QColor>(color));
 }
 
 void QPieSlice_setLabelBrush(QPieSlice* self, QBrush* brush) {
@@ -328,12 +328,12 @@ QBrush* QPieSlice_labelBrush(const QPieSlice* self) {
 	return new QBrush(self->labelBrush());
 }
 
-QColor* QPieSlice_labelColor(QPieSlice* self) {
-	return new QColor(self->labelColor());
+struct miqt_qcolor QPieSlice_labelColor(QPieSlice* self) {
+	return miqt_to_cabi<struct miqt_qcolor>(self->labelColor());
 }
 
-void QPieSlice_setLabelColor(QPieSlice* self, QColor* color) {
-	self->setLabelColor(*color);
+void QPieSlice_setLabelColor(QPieSlice* self, struct miqt_qcolor color) {
+	self->setLabelColor(miqt_from_cabi<QColor>(color));
 }
 
 void QPieSlice_setLabelFont(QPieSlice* self, QFont* font) {

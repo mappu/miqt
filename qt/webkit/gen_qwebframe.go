@@ -9,6 +9,7 @@ package webkit
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"github.com/mappu/miqt/qt/network"
 	"github.com/mappu/miqt/qt/printsupport"
@@ -97,18 +98,14 @@ func (this *QWebHitTestResult) IsNull() bool {
 	return (bool)(C.QWebHitTestResult_isNull(this.h))
 }
 
-func (this *QWebHitTestResult) Pos() *qt.QPoint {
+func (this *QWebHitTestResult) Pos() qt.QPoint {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebHitTestResult_pos(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPoint](C.QWebHitTestResult_pos(this.h))
 }
 
-func (this *QWebHitTestResult) BoundingRect() *qt.QRect {
+func (this *QWebHitTestResult) BoundingRect() qt.QRect {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebHitTestResult_boundingRect(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRect](C.QWebHitTestResult_boundingRect(this.h))
 }
 
 func (this *QWebHitTestResult) EnclosingBlockElement() *QWebElement {
@@ -445,25 +442,20 @@ func (this *QWebFrame) ScrollBarMaximum(orientation qt.Orientation) int {
 	return (int)(C.QWebFrame_scrollBarMaximum(this.h, (C.int)(orientation)))
 }
 
-func (this *QWebFrame) ScrollBarGeometry(orientation qt.Orientation) *qt.QRect {
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebFrame_scrollBarGeometry(this.h, (C.int)(orientation))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebFrame) ScrollBarGeometry(orientation qt.Orientation) qt.QRect {
+	return libmiqt.ValueCast[qt.QRect](C.QWebFrame_scrollBarGeometry(this.h, (C.int)(orientation)))
 }
 
 func (this *QWebFrame) Scroll(param1 int, param2 int) {
 	C.QWebFrame_scroll(this.h, (C.int)(param1), (C.int)(param2))
 }
 
-func (this *QWebFrame) ScrollPosition() *qt.QPoint {
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebFrame_scrollPosition(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebFrame) ScrollPosition() qt.QPoint {
+	return libmiqt.ValueCast[qt.QPoint](C.QWebFrame_scrollPosition(this.h))
 }
 
-func (this *QWebFrame) SetScrollPosition(pos *qt.QPoint) {
-	defer runtime.KeepAlive(pos)
-	C.QWebFrame_setScrollPosition(this.h, (*C.QPoint)(pos.UnsafePointer()))
+func (this *QWebFrame) SetScrollPosition(pos qt.QPoint) {
+	C.QWebFrame_setScrollPosition(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos))
 }
 
 func (this *QWebFrame) ScrollToAnchor(anchor string) {
@@ -508,22 +500,16 @@ func (this *QWebFrame) SetFocus() {
 	C.QWebFrame_setFocus(this.h)
 }
 
-func (this *QWebFrame) Pos() *qt.QPoint {
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebFrame_pos(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebFrame) Pos() qt.QPoint {
+	return libmiqt.ValueCast[qt.QPoint](C.QWebFrame_pos(this.h))
 }
 
-func (this *QWebFrame) Geometry() *qt.QRect {
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebFrame_geometry(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebFrame) Geometry() qt.QRect {
+	return libmiqt.ValueCast[qt.QRect](C.QWebFrame_geometry(this.h))
 }
 
-func (this *QWebFrame) ContentsSize() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebFrame_contentsSize(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QWebFrame) ContentsSize() qt.QSize {
+	return libmiqt.ValueCast[qt.QSize](C.QWebFrame_contentsSize(this.h))
 }
 
 func (this *QWebFrame) DocumentElement() *QWebElement {
@@ -558,9 +544,8 @@ func (this *QWebFrame) FindFirstElement(selectorQuery string) *QWebElement {
 	return _goptr
 }
 
-func (this *QWebFrame) HitTestContent(pos *qt.QPoint) *QWebHitTestResult {
-	defer runtime.KeepAlive(pos)
-	_goptr := newQWebHitTestResult(C.QWebFrame_hitTestContent(this.h, (*C.QPoint)(pos.UnsafePointer())))
+func (this *QWebFrame) HitTestContent(pos qt.QPoint) *QWebHitTestResult {
+	_goptr := newQWebHitTestResult(C.QWebFrame_hitTestContent(this.h, libmiqt.ValueCast[C.struct_miqt_qpoint](pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -707,23 +692,22 @@ func miqt_exec_callback_QWebFrame_iconChanged(cb C.intptr_t) {
 	gofunc()
 }
 
-func (this *QWebFrame) ContentsSizeChanged(size *qt.QSize) {
-	defer runtime.KeepAlive(size)
-	C.QWebFrame_contentsSizeChanged(this.h, (*C.QSize)(size.UnsafePointer()))
+func (this *QWebFrame) ContentsSizeChanged(size qt.QSize) {
+	C.QWebFrame_contentsSizeChanged(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
-func (this *QWebFrame) OnContentsSizeChanged(slot func(size *qt.QSize)) {
+func (this *QWebFrame) OnContentsSizeChanged(slot func(size qt.QSize)) {
 	C.QWebFrame_connect_contentsSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebFrame_contentsSizeChanged
-func miqt_exec_callback_QWebFrame_contentsSizeChanged(cb C.intptr_t, size *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(size *qt.QSize))
+func miqt_exec_callback_QWebFrame_contentsSizeChanged(cb C.intptr_t, size C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(size qt.QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQSize(unsafe.Pointer(size))
+	slotval1 := libmiqt.ValueCast[qt.QSize](size)
 
 	gofunc(slotval1)
 }

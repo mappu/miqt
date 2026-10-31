@@ -23,8 +23,8 @@ typedef struct QwtAbstractSeriesStore QwtAbstractSeriesStore;
 #endif
 
 void QwtAbstractSeriesStore_dataChanged(QwtAbstractSeriesStore* self);
-void QwtAbstractSeriesStore_setRectOfInterest(QwtAbstractSeriesStore* self, QRectF* rectOfInterest);
-QRectF* QwtAbstractSeriesStore_dataRect(const QwtAbstractSeriesStore* self);
+void QwtAbstractSeriesStore_setRectOfInterest(QwtAbstractSeriesStore* self, struct miqt_qrectf rectOfInterest);
+struct miqt_qrectf QwtAbstractSeriesStore_dataRect(const QwtAbstractSeriesStore* self);
 size_t QwtAbstractSeriesStore_dataSize(const QwtAbstractSeriesStore* self);
 void QwtAbstractSeriesStore_operatorAssign(QwtAbstractSeriesStore* self, QwtAbstractSeriesStore* param1);
 

@@ -46,7 +46,7 @@ extern "C" {
 void miqt_exec_callback_QGroupBox_clicked(intptr_t);
 void miqt_exec_callback_QGroupBox_toggled(intptr_t, bool);
 void miqt_exec_callback_QGroupBox_clickedWithChecked(intptr_t, bool);
-QSize* miqt_exec_callback_QGroupBox_minimumSizeHint(const QGroupBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QGroupBox_minimumSizeHint(const QGroupBox*, intptr_t);
 bool miqt_exec_callback_QGroupBox_event(QGroupBox*, intptr_t, QEvent*);
 void miqt_exec_callback_QGroupBox_childEvent(QGroupBox*, intptr_t, QChildEvent*);
 void miqt_exec_callback_QGroupBox_resizeEvent(QGroupBox*, intptr_t, QResizeEvent*);
@@ -59,7 +59,7 @@ void miqt_exec_callback_QGroupBox_mouseReleaseEvent(QGroupBox*, intptr_t, QMouse
 void miqt_exec_callback_QGroupBox_initStyleOption(const QGroupBox*, intptr_t, QStyleOptionGroupBox*);
 int miqt_exec_callback_QGroupBox_devType(const QGroupBox*, intptr_t);
 void miqt_exec_callback_QGroupBox_setVisible(QGroupBox*, intptr_t, bool);
-QSize* miqt_exec_callback_QGroupBox_sizeHint(const QGroupBox*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QGroupBox_sizeHint(const QGroupBox*, intptr_t);
 int miqt_exec_callback_QGroupBox_heightForWidth(const QGroupBox*, intptr_t, int);
 bool miqt_exec_callback_QGroupBox_hasHeightForWidth(const QGroupBox*, intptr_t);
 QPaintEngine* miqt_exec_callback_QGroupBox_paintEngine(const QGroupBox*, intptr_t);
@@ -117,13 +117,11 @@ public:
 			return QGroupBox::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGroupBox_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGroupBox_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGroupBox_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QGroupBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -335,13 +333,11 @@ public:
 			return QGroupBox::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QGroupBox_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QGroupBox_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QGroupBox_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QGroupBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1003,8 +999,8 @@ void QGroupBox_setAlignment(QGroupBox* self, int alignment) {
 	self->setAlignment(static_cast<int>(alignment));
 }
 
-QSize* QGroupBox_minimumSizeHint(const QGroupBox* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QGroupBox_minimumSizeHint(const QGroupBox* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 bool QGroupBox_isFlat(const QGroupBox* self) {
@@ -1095,8 +1091,8 @@ bool QGroupBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QGroupBox_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGroupBox*>(self)->QGroupBox::minimumSizeHint());
+struct miqt_qsize QGroupBox_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGroupBox*>(self)->QGroupBox::minimumSizeHint());
 }
 
 bool QGroupBox_override_virtual_event(void* self, intptr_t slot) {
@@ -1277,8 +1273,8 @@ bool QGroupBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QGroupBox_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQGroupBox*>(self)->QGroupBox::sizeHint());
+struct miqt_qsize QGroupBox_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQGroupBox*>(self)->QGroupBox::sizeHint());
 }
 
 bool QGroupBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1756,10 +1752,6 @@ bool QGroupBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QGroupBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQGroupBox*>(self)->QGroupBox::disconnectNotify(*signal);
-}
-
-QSize* QGroupBox_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QGroupBox_virtualreturncopy_QVariant(QVariant* src) {

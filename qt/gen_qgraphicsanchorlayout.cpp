@@ -20,11 +20,11 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsAnchorLayout_removeAt(QGraphicsAnchorLayout*, intptr_t, int);
-void miqt_exec_callback_QGraphicsAnchorLayout_setGeometry(QGraphicsAnchorLayout*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsAnchorLayout_setGeometry(QGraphicsAnchorLayout*, intptr_t, struct miqt_qrectf);
 int miqt_exec_callback_QGraphicsAnchorLayout_count(const QGraphicsAnchorLayout*, intptr_t);
 QGraphicsLayoutItem* miqt_exec_callback_QGraphicsAnchorLayout_itemAt(const QGraphicsAnchorLayout*, intptr_t, int);
 void miqt_exec_callback_QGraphicsAnchorLayout_invalidate(QGraphicsAnchorLayout*, intptr_t);
-QSizeF* miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(const QGraphicsAnchorLayout*, intptr_t, int, QSizeF*);
+struct miqt_qsizef miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(const QGraphicsAnchorLayout*, intptr_t, int, struct miqt_qsizef);
 void miqt_exec_callback_QGraphicsAnchorLayout_getContentsMargins(const QGraphicsAnchorLayout*, intptr_t, double*, double*, double*, double*);
 void miqt_exec_callback_QGraphicsAnchorLayout_updateGeometry(QGraphicsAnchorLayout*, intptr_t);
 void miqt_exec_callback_QGraphicsAnchorLayout_widgetEvent(QGraphicsAnchorLayout*, intptr_t, QEvent*);
@@ -171,14 +171,12 @@ public:
 			return;
 		}
 
-		const QRectF& rect_ret = rect;
-		// Cast returned reference into pointer
-		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
+		struct miqt_qrectf sigval1 = miqt_to_cabi<struct miqt_qrectf>(rect);
 		miqt_exec_callback_QGraphicsAnchorLayout_setGeometry(this, handle__setGeometry, sigval1);
 
 	}
 
-	friend void QGraphicsAnchorLayout_virtualbase_setGeometry(void* self, QRectF* rect);
+	friend void QGraphicsAnchorLayout_virtualbase_setGeometry(void* self, struct miqt_qrectf rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__count = 0;
@@ -238,16 +236,12 @@ public:
 
 		Qt::SizeHint which_ret = which;
 		int sigval1 = static_cast<int>(which_ret);
-		const QSizeF& constraint_ret = constraint;
-		// Cast returned reference into pointer
-		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
-		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-		QSizeF callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsizef sigval2 = miqt_to_cabi<struct miqt_qsizef>(constraint);
+		struct miqt_qsizef callback_return_value = miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(this, handle__sizeHint, sigval1, sigval2);
+		return miqt_from_cabi<QSizeF>(callback_return_value);
 	}
 
-	friend QSizeF* QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+	friend struct miqt_qsizef QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__getContentsMargins = 0;
@@ -366,8 +360,8 @@ void QGraphicsAnchorLayout_removeAt(QGraphicsAnchorLayout* self, int index) {
 	self->removeAt(static_cast<int>(index));
 }
 
-void QGraphicsAnchorLayout_setGeometry(QGraphicsAnchorLayout* self, QRectF* rect) {
-	self->setGeometry(*rect);
+void QGraphicsAnchorLayout_setGeometry(QGraphicsAnchorLayout* self, struct miqt_qrectf rect) {
+	self->setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 int QGraphicsAnchorLayout_count(const QGraphicsAnchorLayout* self) {
@@ -410,8 +404,8 @@ bool QGraphicsAnchorLayout_override_virtual_setGeometry(void* self, intptr_t slo
 	return true;
 }
 
-void QGraphicsAnchorLayout_virtualbase_setGeometry(void* self, QRectF* rect) {
-	static_cast<MiqtVirtualQGraphicsAnchorLayout*>(self)->QGraphicsAnchorLayout::setGeometry(*rect);
+void QGraphicsAnchorLayout_virtualbase_setGeometry(void* self, struct miqt_qrectf rect) {
+	static_cast<MiqtVirtualQGraphicsAnchorLayout*>(self)->QGraphicsAnchorLayout::setGeometry(miqt_from_cabi<QRectF>(rect));
 }
 
 bool QGraphicsAnchorLayout_override_virtual_count(void* self, intptr_t slot) {
@@ -466,8 +460,8 @@ bool QGraphicsAnchorLayout_override_virtual_sizeHint(void* self, intptr_t slot) 
 	return true;
 }
 
-QSizeF* QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
-	return new QSizeF(static_cast<const MiqtVirtualQGraphicsAnchorLayout*>(self)->QGraphicsAnchorLayout::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+struct miqt_qsizef QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, struct miqt_qsizef constraint) {
+	return miqt_to_cabi<struct miqt_qsizef>(static_cast<const MiqtVirtualQGraphicsAnchorLayout*>(self)->QGraphicsAnchorLayout::sizeHint(static_cast<Qt::SizeHint>(which), miqt_from_cabi<QSizeF>(constraint)));
 }
 
 bool QGraphicsAnchorLayout_override_virtual_getContentsMargins(void* self, intptr_t slot) {
@@ -510,10 +504,6 @@ bool QGraphicsAnchorLayout_override_virtual_widgetEvent(void* self, intptr_t slo
 
 void QGraphicsAnchorLayout_virtualbase_widgetEvent(void* self, QEvent* e) {
 	static_cast<MiqtVirtualQGraphicsAnchorLayout*>(self)->QGraphicsAnchorLayout::widgetEvent(e);
-}
-
-QSizeF* QGraphicsAnchorLayout_virtualreturncopy_QSizeF(QSizeF* src) {
-	return new QSizeF(*src);
 }
 
 void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {

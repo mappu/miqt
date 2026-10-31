@@ -27,7 +27,7 @@ typedef struct QVideoFrame QVideoFrame;
 #endif
 
 QVideoFrame* QVideoFrame_new();
-QVideoFrame* QVideoFrame_new2(int bytes, QSize* size, int bytesPerLine, int format);
+QVideoFrame* QVideoFrame_new2(int bytes, struct miqt_qsize size, int bytesPerLine, int format);
 QVideoFrame* QVideoFrame_new3(QImage* image);
 QVideoFrame* QVideoFrame_new4(QVideoFrame* other);
 void QVideoFrame_operatorAssign(QVideoFrame* self, QVideoFrame* other);
@@ -36,7 +36,7 @@ bool QVideoFrame_operatorNotEqual(const QVideoFrame* self, QVideoFrame* other);
 bool QVideoFrame_isValid(const QVideoFrame* self);
 int QVideoFrame_pixelFormat(const QVideoFrame* self);
 int QVideoFrame_handleType(const QVideoFrame* self);
-QSize* QVideoFrame_size(const QVideoFrame* self);
+struct miqt_qsize QVideoFrame_size(const QVideoFrame* self);
 int QVideoFrame_width(const QVideoFrame* self);
 int QVideoFrame_height(const QVideoFrame* self);
 int QVideoFrame_fieldType(const QVideoFrame* self);

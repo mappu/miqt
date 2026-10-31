@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -74,17 +75,14 @@ func (this *QBackingStore) Flush(region *QRegion) {
 	C.QBackingStore_flush(this.h, region.cPointer())
 }
 
-func (this *QBackingStore) Resize(size *QSize) {
+func (this *QBackingStore) Resize(size QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(size)
-	C.QBackingStore_resize(this.h, size.cPointer())
+	C.QBackingStore_resize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
-func (this *QBackingStore) Size() *QSize {
+func (this *QBackingStore) Size() QSize {
 	defer runtime.KeepAlive(this)
-	_goptr := newQSize(C.QBackingStore_size(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QBackingStore_size(this.h))
 }
 
 func (this *QBackingStore) Scroll(area *QRegion, dx int, dy int) bool {
@@ -128,11 +126,10 @@ func (this *QBackingStore) Flush2(region *QRegion, window *QWindow) {
 	C.QBackingStore_flush2(this.h, region.cPointer(), window.cPointer())
 }
 
-func (this *QBackingStore) Flush3(region *QRegion, window *QWindow, offset *QPoint) {
+func (this *QBackingStore) Flush3(region *QRegion, window *QWindow, offset QPoint) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(region)
-	defer runtime.KeepAlive(offset)
-	C.QBackingStore_flush3(this.h, region.cPointer(), window.cPointer(), offset.cPointer())
+	C.QBackingStore_flush3(this.h, region.cPointer(), window.cPointer(), libmiqt.ValueCast[C.struct_miqt_qpoint](offset))
 }
 
 // Delete this object from C++ memory.

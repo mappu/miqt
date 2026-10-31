@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"unsafe"
 )
@@ -64,13 +65,12 @@ func QWhatsThis_LeaveWhatsThisMode() {
 	C.QWhatsThis_leaveWhatsThisMode()
 }
 
-func QWhatsThis_ShowText(pos *QPoint, text string) {
-	defer runtime.KeepAlive(pos)
+func QWhatsThis_ShowText(pos QPoint, text string) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QWhatsThis_showText(pos.cPointer(), text_ms)
+	C.QWhatsThis_showText(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), text_ms)
 }
 
 func QWhatsThis_HideText() {
@@ -81,13 +81,12 @@ func QWhatsThis_CreateAction() *QAction {
 	return newQAction(C.QWhatsThis_createAction())
 }
 
-func QWhatsThis_ShowText2(pos *QPoint, text string, w *QWidget) {
-	defer runtime.KeepAlive(pos)
+func QWhatsThis_ShowText2(pos QPoint, text string, w *QWidget) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QWhatsThis_showText2(pos.cPointer(), text_ms, w.cPointer())
+	C.QWhatsThis_showText2(libmiqt.ValueCast[C.struct_miqt_qpoint](pos), text_ms, w.cPointer())
 }
 
 func QWhatsThis_CreateActionWithParent(parent *QObject) *QAction {

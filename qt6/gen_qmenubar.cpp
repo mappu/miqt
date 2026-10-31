@@ -49,8 +49,8 @@ extern "C" {
 
 void miqt_exec_callback_QMenuBar_triggered(intptr_t, QAction*);
 void miqt_exec_callback_QMenuBar_hovered(intptr_t, QAction*);
-QSize* miqt_exec_callback_QMenuBar_sizeHint(const QMenuBar*, intptr_t);
-QSize* miqt_exec_callback_QMenuBar_minimumSizeHint(const QMenuBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMenuBar_sizeHint(const QMenuBar*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QMenuBar_minimumSizeHint(const QMenuBar*, intptr_t);
 int miqt_exec_callback_QMenuBar_heightForWidth(const QMenuBar*, intptr_t, int);
 void miqt_exec_callback_QMenuBar_setVisible(QMenuBar*, intptr_t, bool);
 void miqt_exec_callback_QMenuBar_changeEvent(QMenuBar*, intptr_t, QEvent*);
@@ -118,13 +118,11 @@ public:
 			return QMenuBar::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMenuBar_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMenuBar_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMenuBar_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QMenuBar_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -135,13 +133,11 @@ public:
 			return QMenuBar::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QMenuBar_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QMenuBar_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QMenuBar_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QMenuBar_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1016,24 +1012,24 @@ bool QMenuBar_isDefaultUp(const QMenuBar* self) {
 	return self->isDefaultUp();
 }
 
-QSize* QMenuBar_sizeHint(const QMenuBar* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QMenuBar_sizeHint(const QMenuBar* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
-QSize* QMenuBar_minimumSizeHint(const QMenuBar* self) {
-	return new QSize(self->minimumSizeHint());
+struct miqt_qsize QMenuBar_minimumSizeHint(const QMenuBar* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->minimumSizeHint());
 }
 
 int QMenuBar_heightForWidth(const QMenuBar* self, int param1) {
 	return self->heightForWidth(static_cast<int>(param1));
 }
 
-QRect* QMenuBar_actionGeometry(const QMenuBar* self, QAction* param1) {
-	return new QRect(self->actionGeometry(param1));
+struct miqt_qrect QMenuBar_actionGeometry(const QMenuBar* self, QAction* param1) {
+	return miqt_to_cabi<struct miqt_qrect>(self->actionGeometry(param1));
 }
 
-QAction* QMenuBar_actionAt(const QMenuBar* self, QPoint* param1) {
-	return self->actionAt(*param1);
+QAction* QMenuBar_actionAt(const QMenuBar* self, struct miqt_qpoint param1) {
+	return self->actionAt(miqt_from_cabi<QPoint>(param1));
 }
 
 void QMenuBar_setCornerWidget(QMenuBar* self, QWidget* w) {
@@ -1118,8 +1114,8 @@ bool QMenuBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMenuBar_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMenuBar*>(self)->QMenuBar::sizeHint());
+struct miqt_qsize QMenuBar_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMenuBar*>(self)->QMenuBar::sizeHint());
 }
 
 bool QMenuBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1132,8 +1128,8 @@ bool QMenuBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QMenuBar_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQMenuBar*>(self)->QMenuBar::minimumSizeHint());
+struct miqt_qsize QMenuBar_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQMenuBar*>(self)->QMenuBar::minimumSizeHint());
 }
 
 bool QMenuBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1779,10 +1775,6 @@ bool QMenuBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQMenuBar*>(self)->QMenuBar::disconnectNotify(*signal);
-}
-
-QSize* QMenuBar_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QMenuBar_virtualreturncopy_QVariant(QVariant* src) {

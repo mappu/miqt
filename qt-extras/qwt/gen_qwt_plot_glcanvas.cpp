@@ -62,8 +62,8 @@ void miqt_exec_callback_QwtPlotGLCanvas_glInit(QwtPlotGLCanvas*, intptr_t);
 void miqt_exec_callback_QwtPlotGLCanvas_glDraw(QwtPlotGLCanvas*, intptr_t);
 int miqt_exec_callback_QwtPlotGLCanvas_devType(const QwtPlotGLCanvas*, intptr_t);
 void miqt_exec_callback_QwtPlotGLCanvas_setVisible(QwtPlotGLCanvas*, intptr_t, bool);
-QSize* miqt_exec_callback_QwtPlotGLCanvas_sizeHint(const QwtPlotGLCanvas*, intptr_t);
-QSize* miqt_exec_callback_QwtPlotGLCanvas_minimumSizeHint(const QwtPlotGLCanvas*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtPlotGLCanvas_sizeHint(const QwtPlotGLCanvas*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QwtPlotGLCanvas_minimumSizeHint(const QwtPlotGLCanvas*, intptr_t);
 int miqt_exec_callback_QwtPlotGLCanvas_heightForWidth(const QwtPlotGLCanvas*, intptr_t, int);
 bool miqt_exec_callback_QwtPlotGLCanvas_hasHeightForWidth(const QwtPlotGLCanvas*, intptr_t);
 void miqt_exec_callback_QwtPlotGLCanvas_mousePressEvent(QwtPlotGLCanvas*, intptr_t, QMouseEvent*);
@@ -436,13 +436,11 @@ public:
 			return QwtPlotGLCanvas::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtPlotGLCanvas_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtPlotGLCanvas_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtPlotGLCanvas_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QwtPlotGLCanvas_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -453,13 +451,11 @@ public:
 			return QwtPlotGLCanvas::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QwtPlotGLCanvas_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QwtPlotGLCanvas_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QwtPlotGLCanvas_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QwtPlotGLCanvas_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1231,12 +1227,12 @@ int QwtPlotGLCanvas_frameWidth(const QwtPlotGLCanvas* self) {
 	return self->frameWidth();
 }
 
-QRect* QwtPlotGLCanvas_frameRect(const QwtPlotGLCanvas* self) {
-	return new QRect(self->frameRect());
+struct miqt_qrect QwtPlotGLCanvas_frameRect(const QwtPlotGLCanvas* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->frameRect());
 }
 
-QPainterPath* QwtPlotGLCanvas_borderPath(const QwtPlotGLCanvas* self, QRect* param1) {
-	return new QPainterPath(self->borderPath(*param1));
+QPainterPath* QwtPlotGLCanvas_borderPath(const QwtPlotGLCanvas* self, struct miqt_qrect param1) {
+	return new QPainterPath(self->borderPath(miqt_from_cabi<QRect>(param1)));
 }
 
 bool QwtPlotGLCanvas_event(QwtPlotGLCanvas* self, QEvent* param1) {
@@ -1567,8 +1563,8 @@ bool QwtPlotGLCanvas_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QwtPlotGLCanvas_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtPlotGLCanvas*>(self)->QwtPlotGLCanvas::sizeHint());
+struct miqt_qsize QwtPlotGLCanvas_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtPlotGLCanvas*>(self)->QwtPlotGLCanvas::sizeHint());
 }
 
 bool QwtPlotGLCanvas_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1581,8 +1577,8 @@ bool QwtPlotGLCanvas_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 	return true;
 }
 
-QSize* QwtPlotGLCanvas_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQwtPlotGLCanvas*>(self)->QwtPlotGLCanvas::minimumSizeHint());
+struct miqt_qsize QwtPlotGLCanvas_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQwtPlotGLCanvas*>(self)->QwtPlotGLCanvas::minimumSizeHint());
 }
 
 bool QwtPlotGLCanvas_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2130,10 +2126,6 @@ bool QwtPlotGLCanvas_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QwtPlotGLCanvas_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQwtPlotGLCanvas*>(self)->QwtPlotGLCanvas::disconnectNotify(*signal);
-}
-
-QSize* QwtPlotGLCanvas_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QwtPlotGLCanvas_virtualreturncopy_QVariant(QVariant* src) {

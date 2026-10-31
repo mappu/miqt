@@ -74,7 +74,7 @@ int QsciPrinter_virtualbase_devType(const void* self);
 bool QsciPrinter_override_virtual_setPageSize(void* self, intptr_t slot);
 void QsciPrinter_virtualbase_setPageSize(void* self, int pageSize);
 bool QsciPrinter_override_virtual_setPageSizeMM(void* self, intptr_t slot);
-void QsciPrinter_virtualbase_setPageSizeMM(void* self, QSizeF* size);
+void QsciPrinter_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size);
 bool QsciPrinter_override_virtual_newPage(void* self, intptr_t slot);
 bool QsciPrinter_virtualbase_newPage(void* self);
 bool QsciPrinter_override_virtual_paintEngine(void* self, intptr_t slot);

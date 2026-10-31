@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -126,12 +127,9 @@ func (this *QwtMatrixRasterData) NumRows() int {
 	return (int)(C.QwtMatrixRasterData_numRows(this.h))
 }
 
-func (this *QwtMatrixRasterData) PixelHint(param1 *qt.QRectF) *qt.QRectF {
+func (this *QwtMatrixRasterData) PixelHint(param1 qt.QRectF) qt.QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtMatrixRasterData_pixelHint(this.h, (*C.QRectF)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtMatrixRasterData_pixelHint(this.h, libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 }
 
 func (this *QwtMatrixRasterData) Value(x float64, y float64) float64 {
@@ -169,16 +167,13 @@ func miqt_exec_callback_QwtMatrixRasterData_setInterval(self *C.QwtMatrixRasterD
 
 }
 
-func (this *QwtMatrixRasterData) callVirtualBase_PixelHint(param1 *qt.QRectF) *qt.QRectF {
+func (this *QwtMatrixRasterData) callVirtualBase_PixelHint(param1 qt.QRectF) qt.QRectF {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
 
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtMatrixRasterData_virtualbase_pixelHint(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QRectF](C.QwtMatrixRasterData_virtualbase_pixelHint(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1)))
 
 }
-func (this *QwtMatrixRasterData) OnPixelHint(slot func(super func(param1 *qt.QRectF) *qt.QRectF, param1 *qt.QRectF) *qt.QRectF) {
+func (this *QwtMatrixRasterData) OnPixelHint(slot func(super func(param1 qt.QRectF) qt.QRectF, param1 qt.QRectF) qt.QRectF) {
 	ok := C.QwtMatrixRasterData_override_virtual_pixelHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -186,19 +181,18 @@ func (this *QwtMatrixRasterData) OnPixelHint(slot func(super func(param1 *qt.QRe
 }
 
 //export miqt_exec_callback_QwtMatrixRasterData_pixelHint
-func miqt_exec_callback_QwtMatrixRasterData_pixelHint(self *C.QwtMatrixRasterData, cb C.intptr_t, param1 *C.QRectF) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF) *qt.QRectF, param1 *qt.QRectF) *qt.QRectF)
+func miqt_exec_callback_QwtMatrixRasterData_pixelHint(self *C.QwtMatrixRasterData, cb C.intptr_t, param1 C.struct_miqt_qrectf) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF) qt.QRectF, param1 qt.QRectF) qt.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
 	virtualReturn := gofunc((&QwtMatrixRasterData{h: self}).callVirtualBase_PixelHint, slotval1)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QwtMatrixRasterData_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -233,15 +227,13 @@ func miqt_exec_callback_QwtMatrixRasterData_value(self *C.QwtMatrixRasterData, c
 
 }
 
-func (this *QwtMatrixRasterData) callVirtualBase_InitRaster(param1 *qt.QRectF, raster *qt.QSize) {
+func (this *QwtMatrixRasterData) callVirtualBase_InitRaster(param1 qt.QRectF, raster qt.QSize) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(raster)
 
-	C.QwtMatrixRasterData_virtualbase_initRaster(unsafe.Pointer(this.h), (*C.QRectF)(param1.UnsafePointer()), (*C.QSize)(raster.UnsafePointer()))
+	C.QwtMatrixRasterData_virtualbase_initRaster(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](param1), libmiqt.ValueCast[C.struct_miqt_qsize](raster))
 
 }
-func (this *QwtMatrixRasterData) OnInitRaster(slot func(super func(param1 *qt.QRectF, raster *qt.QSize), param1 *qt.QRectF, raster *qt.QSize)) {
+func (this *QwtMatrixRasterData) OnInitRaster(slot func(super func(param1 qt.QRectF, raster qt.QSize), param1 qt.QRectF, raster qt.QSize)) {
 	ok := C.QwtMatrixRasterData_override_virtual_initRaster(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -249,16 +241,16 @@ func (this *QwtMatrixRasterData) OnInitRaster(slot func(super func(param1 *qt.QR
 }
 
 //export miqt_exec_callback_QwtMatrixRasterData_initRaster
-func miqt_exec_callback_QwtMatrixRasterData_initRaster(self *C.QwtMatrixRasterData, cb C.intptr_t, param1 *C.QRectF, raster *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QRectF, raster *qt.QSize), param1 *qt.QRectF, raster *qt.QSize))
+func miqt_exec_callback_QwtMatrixRasterData_initRaster(self *C.QwtMatrixRasterData, cb C.intptr_t, param1 C.struct_miqt_qrectf, raster C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QRectF, raster qt.QSize), param1 qt.QRectF, raster qt.QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQRectF(unsafe.Pointer(param1))
+	slotval1 := libmiqt.ValueCast[qt.QRectF](param1)
 
-	slotval2 := qt.UnsafeNewQSize(unsafe.Pointer(raster))
+	slotval2 := libmiqt.ValueCast[qt.QSize](raster)
 
 	gofunc((&QwtMatrixRasterData{h: self}).callVirtualBase_InitRaster, slotval1, slotval2)
 

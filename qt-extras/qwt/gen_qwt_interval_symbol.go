@@ -9,6 +9,7 @@ package qwt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"runtime/cgo"
@@ -121,10 +122,9 @@ func (this *QwtIntervalSymbol) Brush() *qt.QBrush {
 	return qt.UnsafeNewQBrush(unsafe.Pointer(C.QwtIntervalSymbol_brush(this.h)))
 }
 
-func (this *QwtIntervalSymbol) SetPen(param1 *qt.QColor) {
+func (this *QwtIntervalSymbol) SetPen(param1 qt.QColor) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtIntervalSymbol_setPen(this.h, (*C.QColor)(param1.UnsafePointer()))
+	C.QwtIntervalSymbol_setPen(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1))
 }
 
 func (this *QwtIntervalSymbol) SetPenWithPen(pen *qt.QPen) {
@@ -148,36 +148,30 @@ func (this *QwtIntervalSymbol) Style() QwtIntervalSymbol__Style {
 	return (QwtIntervalSymbol__Style)(C.QwtIntervalSymbol_style(this.h))
 }
 
-func (this *QwtIntervalSymbol) Draw(param1 *qt.QPainter, param2 qt.Orientation, from *qt.QPointF, to *qt.QPointF) {
+func (this *QwtIntervalSymbol) Draw(param1 *qt.QPainter, param2 qt.Orientation, from qt.QPointF, to qt.QPointF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(from)
-	defer runtime.KeepAlive(to)
-	C.QwtIntervalSymbol_draw(this.h, (*C.QPainter)(param1.UnsafePointer()), (C.int)(param2), (*C.QPointF)(from.UnsafePointer()), (*C.QPointF)(to.UnsafePointer()))
+	C.QwtIntervalSymbol_draw(this.h, (*C.QPainter)(param1.UnsafePointer()), (C.int)(param2), libmiqt.ValueCast[C.struct_miqt_qpointf](from), libmiqt.ValueCast[C.struct_miqt_qpointf](to))
 }
 
-func (this *QwtIntervalSymbol) SetPen2(param1 *qt.QColor, width float64) {
+func (this *QwtIntervalSymbol) SetPen2(param1 qt.QColor, width float64) {
+	defer runtime.KeepAlive(this)
+	C.QwtIntervalSymbol_setPen2(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width))
+}
+
+func (this *QwtIntervalSymbol) SetPen3(param1 qt.QColor, width float64, param3 qt.PenStyle) {
+	defer runtime.KeepAlive(this)
+	C.QwtIntervalSymbol_setPen3(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](param1), (C.double)(width), (C.int)(param3))
+}
+
+func (this *QwtIntervalSymbol) callVirtualBase_Draw(param1 *qt.QPainter, param2 qt.Orientation, from qt.QPointF, to qt.QPointF) {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(param1)
-	C.QwtIntervalSymbol_setPen2(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width))
-}
 
-func (this *QwtIntervalSymbol) SetPen3(param1 *qt.QColor, width float64, param3 qt.PenStyle) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	C.QwtIntervalSymbol_setPen3(this.h, (*C.QColor)(param1.UnsafePointer()), (C.double)(width), (C.int)(param3))
-}
-
-func (this *QwtIntervalSymbol) callVirtualBase_Draw(param1 *qt.QPainter, param2 qt.Orientation, from *qt.QPointF, to *qt.QPointF) {
-	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(param1)
-	defer runtime.KeepAlive(from)
-	defer runtime.KeepAlive(to)
-
-	C.QwtIntervalSymbol_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.int)(param2), (*C.QPointF)(from.UnsafePointer()), (*C.QPointF)(to.UnsafePointer()))
+	C.QwtIntervalSymbol_virtualbase_draw(unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()), (C.int)(param2), libmiqt.ValueCast[C.struct_miqt_qpointf](from), libmiqt.ValueCast[C.struct_miqt_qpointf](to))
 
 }
-func (this *QwtIntervalSymbol) OnDraw(slot func(super func(param1 *qt.QPainter, param2 qt.Orientation, from *qt.QPointF, to *qt.QPointF), param1 *qt.QPainter, param2 qt.Orientation, from *qt.QPointF, to *qt.QPointF)) {
+func (this *QwtIntervalSymbol) OnDraw(slot func(super func(param1 *qt.QPainter, param2 qt.Orientation, from qt.QPointF, to qt.QPointF), param1 *qt.QPainter, param2 qt.Orientation, from qt.QPointF, to qt.QPointF)) {
 	ok := C.QwtIntervalSymbol_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -185,8 +179,8 @@ func (this *QwtIntervalSymbol) OnDraw(slot func(super func(param1 *qt.QPainter, 
 }
 
 //export miqt_exec_callback_QwtIntervalSymbol_draw
-func miqt_exec_callback_QwtIntervalSymbol_draw(self *C.QwtIntervalSymbol, cb C.intptr_t, param1 *C.QPainter, param2 C.int, from *C.QPointF, to *C.QPointF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.Orientation, from *qt.QPointF, to *qt.QPointF), param1 *qt.QPainter, param2 qt.Orientation, from *qt.QPointF, to *qt.QPointF))
+func miqt_exec_callback_QwtIntervalSymbol_draw(self *C.QwtIntervalSymbol, cb C.intptr_t, param1 *C.QPainter, param2 C.int, from C.struct_miqt_qpointf, to C.struct_miqt_qpointf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QPainter, param2 qt.Orientation, from qt.QPointF, to qt.QPointF), param1 *qt.QPainter, param2 qt.Orientation, from qt.QPointF, to qt.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -196,9 +190,9 @@ func miqt_exec_callback_QwtIntervalSymbol_draw(self *C.QwtIntervalSymbol, cb C.i
 
 	slotval2 := (qt.Orientation)(param2)
 
-	slotval3 := qt.UnsafeNewQPointF(unsafe.Pointer(from))
+	slotval3 := libmiqt.ValueCast[qt.QPointF](from)
 
-	slotval4 := qt.UnsafeNewQPointF(unsafe.Pointer(to))
+	slotval4 := libmiqt.ValueCast[qt.QPointF](to)
 
 	gofunc((&QwtIntervalSymbol{h: self}).callVirtualBase_Draw, slotval1, slotval2, slotval3, slotval4)
 

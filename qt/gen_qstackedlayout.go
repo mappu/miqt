@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -148,16 +149,12 @@ func (this *QStackedLayout) AddItem(item *QLayoutItem) {
 	C.QStackedLayout_addItem(this.h, item.cPointer())
 }
 
-func (this *QStackedLayout) SizeHint() *QSize {
-	_goptr := newQSize(C.QStackedLayout_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QStackedLayout) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QStackedLayout_sizeHint(this.h))
 }
 
-func (this *QStackedLayout) MinimumSize() *QSize {
-	_goptr := newQSize(C.QStackedLayout_minimumSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QStackedLayout) MinimumSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QStackedLayout_minimumSize(this.h))
 }
 
 func (this *QStackedLayout) ItemAt(param1 int) *QLayoutItem {
@@ -168,9 +165,8 @@ func (this *QStackedLayout) TakeAt(param1 int) *QLayoutItem {
 	return newQLayoutItem(C.QStackedLayout_takeAt(this.h, (C.int)(param1)))
 }
 
-func (this *QStackedLayout) SetGeometry(rect *QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QStackedLayout_setGeometry(this.h, rect.cPointer())
+func (this *QStackedLayout) SetGeometry(rect QRect) {
+	C.QStackedLayout_setGeometry(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
 
 func (this *QStackedLayout) HasHeightForWidth() bool {
@@ -325,13 +321,10 @@ func (this *QStackedLayout) AdoptLayout(layout *QLayout) bool {
 }
 
 // AlignmentRect can only be called from a QStackedLayout that was directly constructed.
-func (this *QStackedLayout) AlignmentRect(param1 *QRect) QRect {
-	defer runtime.KeepAlive(param1)
+func (this *QStackedLayout) AlignmentRect(param1 QRect) QRect {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRect(C.QStackedLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QRect](C.QStackedLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](param1)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -452,14 +445,12 @@ func miqt_exec_callback_QStackedLayout_addItem(self *C.QStackedLayout, cb C.intp
 
 }
 
-func (this *QStackedLayout) callVirtualBase_SizeHint() *QSize {
+func (this *QStackedLayout) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QStackedLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QStackedLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QStackedLayout) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QStackedLayout) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QStackedLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -467,27 +458,24 @@ func (this *QStackedLayout) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QStackedLayout_sizeHint
-func miqt_exec_callback_QStackedLayout_sizeHint(self *C.QStackedLayout, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QStackedLayout_sizeHint(self *C.QStackedLayout, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QStackedLayout{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QStackedLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QStackedLayout) callVirtualBase_MinimumSize() *QSize {
-
-	_goptr := newQSize(C.QStackedLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QStackedLayout) OnMinimumSize(slot func(super func() *QSize) *QSize) {
+
+func (this *QStackedLayout) callVirtualBase_MinimumSize() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QStackedLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
+
+}
+func (this *QStackedLayout) OnMinimumSize(slot func(super func() QSize) QSize) {
 	ok := C.QStackedLayout_override_virtual_minimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -495,16 +483,15 @@ func (this *QStackedLayout) OnMinimumSize(slot func(super func() *QSize) *QSize)
 }
 
 //export miqt_exec_callback_QStackedLayout_minimumSize
-func miqt_exec_callback_QStackedLayout_minimumSize(self *C.QStackedLayout, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QStackedLayout_minimumSize(self *C.QStackedLayout, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QStackedLayout{h: self}).callVirtualBase_MinimumSize)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QStackedLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -566,13 +553,12 @@ func miqt_exec_callback_QStackedLayout_takeAt(self *C.QStackedLayout, cb C.intpt
 
 }
 
-func (this *QStackedLayout) callVirtualBase_SetGeometry(rect *QRect) {
-	defer runtime.KeepAlive(rect)
+func (this *QStackedLayout) callVirtualBase_SetGeometry(rect QRect) {
 
-	C.QStackedLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QStackedLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 
 }
-func (this *QStackedLayout) OnSetGeometry(slot func(super func(rect *QRect), rect *QRect)) {
+func (this *QStackedLayout) OnSetGeometry(slot func(super func(rect QRect), rect QRect)) {
 	ok := C.QStackedLayout_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -580,14 +566,14 @@ func (this *QStackedLayout) OnSetGeometry(slot func(super func(rect *QRect), rec
 }
 
 //export miqt_exec_callback_QStackedLayout_setGeometry
-func miqt_exec_callback_QStackedLayout_setGeometry(self *C.QStackedLayout, cb C.intptr_t, rect *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRect), rect *QRect))
+func miqt_exec_callback_QStackedLayout_setGeometry(self *C.QStackedLayout, cb C.intptr_t, rect C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect QRect), rect QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(rect)
+	slotval1 := libmiqt.ValueCast[QRect](rect)
 
 	gofunc((&QStackedLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -669,14 +655,12 @@ func miqt_exec_callback_QStackedLayout_invalidate(self *C.QStackedLayout, cb C.i
 
 }
 
-func (this *QStackedLayout) callVirtualBase_Geometry() *QRect {
+func (this *QStackedLayout) callVirtualBase_Geometry() QRect {
 
-	_goptr := newQRect(C.QStackedLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QRect](C.QStackedLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
 
 }
-func (this *QStackedLayout) OnGeometry(slot func(super func() *QRect) *QRect) {
+func (this *QStackedLayout) OnGeometry(slot func(super func() QRect) QRect) {
 	ok := C.QStackedLayout_override_virtual_geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -684,16 +668,15 @@ func (this *QStackedLayout) OnGeometry(slot func(super func() *QRect) *QRect) {
 }
 
 //export miqt_exec_callback_QStackedLayout_geometry
-func miqt_exec_callback_QStackedLayout_geometry(self *C.QStackedLayout, cb C.intptr_t) *C.QRect {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRect) *QRect)
+func miqt_exec_callback_QStackedLayout_geometry(self *C.QStackedLayout, cb C.intptr_t) C.struct_miqt_qrect {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QRect) QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QStackedLayout{h: self}).callVirtualBase_Geometry)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QStackedLayout_virtualreturncopy_QRect(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qrect](virtualReturn)
 
 }
 
@@ -722,14 +705,12 @@ func miqt_exec_callback_QStackedLayout_expandingDirections(self *C.QStackedLayou
 
 }
 
-func (this *QStackedLayout) callVirtualBase_MaximumSize() *QSize {
+func (this *QStackedLayout) callVirtualBase_MaximumSize() QSize {
 
-	_goptr := newQSize(C.QStackedLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QStackedLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
 
 }
-func (this *QStackedLayout) OnMaximumSize(slot func(super func() *QSize) *QSize) {
+func (this *QStackedLayout) OnMaximumSize(slot func(super func() QSize) QSize) {
 	ok := C.QStackedLayout_override_virtual_maximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -737,16 +718,15 @@ func (this *QStackedLayout) OnMaximumSize(slot func(super func() *QSize) *QSize)
 }
 
 //export miqt_exec_callback_QStackedLayout_maximumSize
-func miqt_exec_callback_QStackedLayout_maximumSize(self *C.QStackedLayout, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QStackedLayout_maximumSize(self *C.QStackedLayout, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QStackedLayout{h: self}).callVirtualBase_MaximumSize)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QStackedLayout_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 

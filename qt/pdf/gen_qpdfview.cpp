@@ -52,12 +52,12 @@ void miqt_exec_callback_QPdfView_pageModeChanged(intptr_t, int);
 void miqt_exec_callback_QPdfView_zoomModeChanged(intptr_t, int);
 void miqt_exec_callback_QPdfView_zoomFactorChanged(intptr_t, double);
 void miqt_exec_callback_QPdfView_pageSpacingChanged(intptr_t, int);
-void miqt_exec_callback_QPdfView_documentMarginsChanged(intptr_t, QMargins*);
+void miqt_exec_callback_QPdfView_documentMarginsChanged(intptr_t, struct miqt_qmargins);
 void miqt_exec_callback_QPdfView_paintEvent(QPdfView*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QPdfView_resizeEvent(QPdfView*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QPdfView_scrollContentsBy(QPdfView*, intptr_t, int, int);
-QSize* miqt_exec_callback_QPdfView_minimumSizeHint(const QPdfView*, intptr_t);
-QSize* miqt_exec_callback_QPdfView_sizeHint(const QPdfView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPdfView_minimumSizeHint(const QPdfView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPdfView_sizeHint(const QPdfView*, intptr_t);
 void miqt_exec_callback_QPdfView_setupViewport(QPdfView*, intptr_t, QWidget*);
 bool miqt_exec_callback_QPdfView_eventFilter(QPdfView*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QPdfView_event(QPdfView*, intptr_t, QEvent*);
@@ -73,7 +73,7 @@ void miqt_exec_callback_QPdfView_dragMoveEvent(QPdfView*, intptr_t, QDragMoveEve
 void miqt_exec_callback_QPdfView_dragLeaveEvent(QPdfView*, intptr_t, QDragLeaveEvent*);
 void miqt_exec_callback_QPdfView_dropEvent(QPdfView*, intptr_t, QDropEvent*);
 void miqt_exec_callback_QPdfView_keyPressEvent(QPdfView*, intptr_t, QKeyEvent*);
-QSize* miqt_exec_callback_QPdfView_viewportSizeHint(const QPdfView*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QPdfView_viewportSizeHint(const QPdfView*, intptr_t);
 void miqt_exec_callback_QPdfView_changeEvent(QPdfView*, intptr_t, QEvent*);
 int miqt_exec_callback_QPdfView_devType(const QPdfView*, intptr_t);
 void miqt_exec_callback_QPdfView_setVisible(QPdfView*, intptr_t, bool);
@@ -177,13 +177,11 @@ public:
 			return QPdfView::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPdfView_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPdfView_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPdfView_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QPdfView_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -194,13 +192,11 @@ public:
 			return QPdfView::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPdfView_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPdfView_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPdfView_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QPdfView_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -464,13 +460,11 @@ public:
 			return QPdfView::viewportSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QPdfView_viewportSizeHint(this, handle__viewportSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QPdfView_viewportSizeHint(this, handle__viewportSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QPdfView_virtualbase_viewportSizeHint(const void* self);
+	friend struct miqt_qsize QPdfView_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -985,7 +979,7 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QPdfView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
-	friend QMargins* QPdfView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend struct miqt_qmargins QPdfView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 	friend void QPdfView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 	friend void QPdfView_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 	friend void QPdfView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1076,12 +1070,12 @@ void QPdfView_setPageSpacing(QPdfView* self, int spacing) {
 	self->setPageSpacing(static_cast<int>(spacing));
 }
 
-QMargins* QPdfView_documentMargins(const QPdfView* self) {
-	return new QMargins(self->documentMargins());
+struct miqt_qmargins QPdfView_documentMargins(const QPdfView* self) {
+	return miqt_to_cabi<struct miqt_qmargins>(self->documentMargins());
 }
 
-void QPdfView_setDocumentMargins(QPdfView* self, QMargins* margins) {
-	self->setDocumentMargins(*margins);
+void QPdfView_setDocumentMargins(QPdfView* self, struct miqt_qmargins margins) {
+	self->setDocumentMargins(miqt_from_cabi<QMargins>(margins));
 }
 
 void QPdfView_setPageMode(QPdfView* self, int mode) {
@@ -1154,13 +1148,13 @@ void QPdfView_connect_pageSpacingChanged(QPdfView* self, intptr_t slot) {
 	});
 }
 
-void QPdfView_documentMarginsChanged(QPdfView* self, QMargins* documentMargins) {
-	self->documentMarginsChanged(*documentMargins);
+void QPdfView_documentMarginsChanged(QPdfView* self, struct miqt_qmargins documentMargins) {
+	self->documentMarginsChanged(miqt_from_cabi<QMargins>(documentMargins));
 }
 
 void QPdfView_connect_documentMarginsChanged(QPdfView* self, intptr_t slot) {
 	QPdfView::connect(self, static_cast<void (QPdfView::*)(QMargins)>(&QPdfView::documentMarginsChanged), self, [=](QMargins documentMargins) {
-		QMargins* sigval1 = new QMargins(documentMargins);
+		struct miqt_qmargins sigval1 = miqt_to_cabi<struct miqt_qmargins>(documentMargins);
 		miqt_exec_callback_QPdfView_documentMarginsChanged(slot, sigval1);
 	});
 }
@@ -1261,8 +1255,8 @@ bool QPdfView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPdfView_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::minimumSizeHint());
+struct miqt_qsize QPdfView_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::minimumSizeHint());
 }
 
 bool QPdfView_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1275,8 +1269,8 @@ bool QPdfView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPdfView_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::sizeHint());
+struct miqt_qsize QPdfView_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::sizeHint());
 }
 
 bool QPdfView_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -1499,8 +1493,8 @@ bool QPdfView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QPdfView_virtualbase_viewportSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::viewportSizeHint());
+struct miqt_qsize QPdfView_virtualbase_viewportSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::viewportSizeHint());
 }
 
 bool QPdfView_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1924,10 +1918,6 @@ void QPdfView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::disconnectNotify(*signal);
 }
 
-QSize* QPdfView_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
-}
-
 QVariant* QPdfView_virtualreturncopy_QVariant(QVariant* src) {
 	return new QVariant(*src);
 }
@@ -1943,15 +1933,15 @@ void QPdfView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* sel
 	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-QMargins* QPdfView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+struct miqt_qmargins QPdfView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
 	MiqtVirtualQPdfView* self_cast = dynamic_cast<MiqtVirtualQPdfView*>( (QPdfView*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
-		return nullptr;
+		return (struct miqt_qmargins){};
 	}
 
 	*_dynamic_cast_ok = true;
-	return new QMargins(self_cast->viewportMargins());
+	return miqt_to_cabi<struct miqt_qmargins>(self_cast->viewportMargins());
 }
 
 void QPdfView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

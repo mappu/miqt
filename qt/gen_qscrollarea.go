@@ -9,6 +9,7 @@ package qt
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -118,10 +119,8 @@ func (this *QScrollArea) SetWidgetResizable(resizable bool) {
 	C.QScrollArea_setWidgetResizable(this.h, (C.bool)(resizable))
 }
 
-func (this *QScrollArea) SizeHint() *QSize {
-	_goptr := newQSize(C.QScrollArea_sizeHint(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QScrollArea) SizeHint() QSize {
+	return libmiqt.ValueCast[QSize](C.QScrollArea_sizeHint(this.h))
 }
 
 func (this *QScrollArea) FocusNextPrevChild(next bool) bool {
@@ -220,9 +219,7 @@ func (this *QScrollArea) SetViewportMargins(left int, top int, right int, bottom
 func (this *QScrollArea) ViewportMargins() QMargins {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQMargins(C.QScrollArea_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	_method_ret := *_goptr
+	_method_ret := libmiqt.ValueCast[QMargins](C.QScrollArea_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -381,14 +378,12 @@ func (this *QScrollArea) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 
-func (this *QScrollArea) callVirtualBase_SizeHint() *QSize {
+func (this *QScrollArea) callVirtualBase_SizeHint() QSize {
 
-	_goptr := newQSize(C.QScrollArea_virtualbase_sizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QScrollArea_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QScrollArea) OnSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QScrollArea) OnSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QScrollArea_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -396,16 +391,15 @@ func (this *QScrollArea) OnSizeHint(slot func(super func() *QSize) *QSize) {
 }
 
 //export miqt_exec_callback_QScrollArea_sizeHint
-func miqt_exec_callback_QScrollArea_sizeHint(self *C.QScrollArea, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QScrollArea_sizeHint(self *C.QScrollArea, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QScrollArea{h: self}).callVirtualBase_SizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QScrollArea_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -552,14 +546,12 @@ func miqt_exec_callback_QScrollArea_scrollContentsBy(self *C.QScrollArea, cb C.i
 
 }
 
-func (this *QScrollArea) callVirtualBase_ViewportSizeHint() *QSize {
+func (this *QScrollArea) callVirtualBase_ViewportSizeHint() QSize {
 
-	_goptr := newQSize(C.QScrollArea_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[QSize](C.QScrollArea_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 
 }
-func (this *QScrollArea) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QScrollArea) OnViewportSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QScrollArea_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -567,27 +559,24 @@ func (this *QScrollArea) OnViewportSizeHint(slot func(super func() *QSize) *QSiz
 }
 
 //export miqt_exec_callback_QScrollArea_viewportSizeHint
-func miqt_exec_callback_QScrollArea_viewportSizeHint(self *C.QScrollArea, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QScrollArea_viewportSizeHint(self *C.QScrollArea, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QScrollArea{h: self}).callVirtualBase_ViewportSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QScrollArea_virtualreturncopy_QSize(virtualReturn.cPointer())
-
-}
-
-func (this *QScrollArea) callVirtualBase_MinimumSizeHint() *QSize {
-
-	_goptr := newQSize(C.QScrollArea_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
-func (this *QScrollArea) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+
+func (this *QScrollArea) callVirtualBase_MinimumSizeHint() QSize {
+
+	return libmiqt.ValueCast[QSize](C.QScrollArea_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
+
+}
+func (this *QScrollArea) OnMinimumSizeHint(slot func(super func() QSize) QSize) {
 	ok := C.QScrollArea_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -595,16 +584,15 @@ func (this *QScrollArea) OnMinimumSizeHint(slot func(super func() *QSize) *QSize
 }
 
 //export miqt_exec_callback_QScrollArea_minimumSizeHint
-func miqt_exec_callback_QScrollArea_minimumSizeHint(self *C.QScrollArea, cb C.intptr_t) *C.QSize {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+func miqt_exec_callback_QScrollArea_minimumSizeHint(self *C.QScrollArea, cb C.intptr_t) C.struct_miqt_qsize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSize) QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QScrollArea{h: self}).callVirtualBase_MinimumSizeHint)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QScrollArea_virtualreturncopy_QSize(virtualReturn.cPointer())
+	return libmiqt.ValueCast[C.struct_miqt_qsize](virtualReturn)
 
 }
 
@@ -1538,7 +1526,6 @@ func miqt_exec_callback_QScrollArea_initPainter(self *C.QScrollArea, cb C.intptr
 }
 
 func (this *QScrollArea) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
-	defer runtime.KeepAlive(offset)
 
 	return newQPaintDevice(C.QScrollArea_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 

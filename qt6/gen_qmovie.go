@@ -9,6 +9,7 @@ package qt6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -234,25 +235,20 @@ func (this *QMovie) Format() []byte {
 	return _ret
 }
 
-func (this *QMovie) SetBackgroundColor(color *QColor) {
-	defer runtime.KeepAlive(color)
-	C.QMovie_setBackgroundColor(this.h, color.cPointer())
+func (this *QMovie) SetBackgroundColor(color QColor) {
+	C.QMovie_setBackgroundColor(this.h, libmiqt.ValueCast[C.struct_miqt_qcolor](color))
 }
 
-func (this *QMovie) BackgroundColor() *QColor {
-	_goptr := newQColor(C.QMovie_backgroundColor(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMovie) BackgroundColor() QColor {
+	return libmiqt.ValueCast[QColor](C.QMovie_backgroundColor(this.h))
 }
 
 func (this *QMovie) State() QMovie__MovieState {
 	return (QMovie__MovieState)(C.QMovie_state(this.h))
 }
 
-func (this *QMovie) FrameRect() *QRect {
-	_goptr := newQRect(C.QMovie_frameRect(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMovie) FrameRect() QRect {
+	return libmiqt.ValueCast[QRect](C.QMovie_frameRect(this.h))
 }
 
 func (this *QMovie) CurrentImage() *QImage {
@@ -306,15 +302,12 @@ func (this *QMovie) Speed() int {
 	return (int)(C.QMovie_speed(this.h))
 }
 
-func (this *QMovie) ScaledSize() *QSize {
-	_goptr := newQSize(C.QMovie_scaledSize(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+func (this *QMovie) ScaledSize() QSize {
+	return libmiqt.ValueCast[QSize](C.QMovie_scaledSize(this.h))
 }
 
-func (this *QMovie) SetScaledSize(size *QSize) {
-	defer runtime.KeepAlive(size)
-	C.QMovie_setScaledSize(this.h, size.cPointer())
+func (this *QMovie) SetScaledSize(size QSize) {
+	C.QMovie_setScaledSize(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
 
 func (this *QMovie) CacheMode() QMovie__CacheMode {
@@ -342,44 +335,42 @@ func miqt_exec_callback_QMovie_started(cb C.intptr_t) {
 	gofunc()
 }
 
-func (this *QMovie) Resized(size *QSize) {
-	defer runtime.KeepAlive(size)
-	C.QMovie_resized(this.h, size.cPointer())
+func (this *QMovie) Resized(size QSize) {
+	C.QMovie_resized(this.h, libmiqt.ValueCast[C.struct_miqt_qsize](size))
 }
-func (this *QMovie) OnResized(slot func(size *QSize)) {
+func (this *QMovie) OnResized(slot func(size QSize)) {
 	C.QMovie_connect_resized(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMovie_resized
-func miqt_exec_callback_QMovie_resized(cb C.intptr_t, size *C.QSize) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(size *QSize))
+func miqt_exec_callback_QMovie_resized(cb C.intptr_t, size C.struct_miqt_qsize) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(size QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQSize(size)
+	slotval1 := libmiqt.ValueCast[QSize](size)
 
 	gofunc(slotval1)
 }
 
-func (this *QMovie) Updated(rect *QRect) {
-	defer runtime.KeepAlive(rect)
-	C.QMovie_updated(this.h, rect.cPointer())
+func (this *QMovie) Updated(rect QRect) {
+	C.QMovie_updated(this.h, libmiqt.ValueCast[C.struct_miqt_qrect](rect))
 }
-func (this *QMovie) OnUpdated(slot func(rect *QRect)) {
+func (this *QMovie) OnUpdated(slot func(rect QRect)) {
 	C.QMovie_connect_updated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMovie_updated
-func miqt_exec_callback_QMovie_updated(cb C.intptr_t, rect *C.QRect) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(rect *QRect))
+func miqt_exec_callback_QMovie_updated(cb C.intptr_t, rect C.struct_miqt_qrect) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(rect QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := newQRect(rect)
+	slotval1 := libmiqt.ValueCast[QRect](rect)
 
 	gofunc(slotval1)
 }

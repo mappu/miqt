@@ -24,7 +24,7 @@ extern "C" {
 
 int miqt_exec_callback_QPrinter_devType(const QPrinter*, intptr_t);
 void miqt_exec_callback_QPrinter_setPageSize(QPrinter*, intptr_t, int);
-void miqt_exec_callback_QPrinter_setPageSizeMM(QPrinter*, intptr_t, QSizeF*);
+void miqt_exec_callback_QPrinter_setPageSizeMM(QPrinter*, intptr_t, struct miqt_qsizef);
 bool miqt_exec_callback_QPrinter_newPage(QPrinter*, intptr_t);
 QPaintEngine* miqt_exec_callback_QPrinter_paintEngine(const QPrinter*, intptr_t);
 void miqt_exec_callback_QPrinter_setMargins(QPrinter*, intptr_t, QPagedPaintDevice__Margins*);
@@ -89,14 +89,12 @@ public:
 			return;
 		}
 
-		const QSizeF& size_ret = size;
-		// Cast returned reference into pointer
-		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
+		struct miqt_qsizef sigval1 = miqt_to_cabi<struct miqt_qsizef>(size);
 		miqt_exec_callback_QPrinter_setPageSizeMM(this, handle__setPageSizeMM, sigval1);
 
 	}
 
-	friend void QPrinter_virtualbase_setPageSizeMM(void* self, QSizeF* size);
+	friend void QPrinter_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__newPage = 0;
@@ -361,8 +359,8 @@ int QPrinter_pageSize(const QPrinter* self) {
 	return static_cast<int>(_ret);
 }
 
-void QPrinter_setPageSizeMM(QPrinter* self, QSizeF* size) {
-	self->setPageSizeMM(*size);
+void QPrinter_setPageSizeMM(QPrinter* self, struct miqt_qsizef size) {
+	self->setPageSizeMM(miqt_from_cabi<QSizeF>(size));
 }
 
 void QPrinter_setPaperSize(QPrinter* self, int paperSize) {
@@ -374,12 +372,12 @@ int QPrinter_paperSize(const QPrinter* self) {
 	return static_cast<int>(_ret);
 }
 
-void QPrinter_setPaperSize2(QPrinter* self, QSizeF* paperSize, int unit) {
-	self->setPaperSize(*paperSize, static_cast<QPrinter::Unit>(unit));
+void QPrinter_setPaperSize2(QPrinter* self, struct miqt_qsizef paperSize, int unit) {
+	self->setPaperSize(miqt_from_cabi<QSizeF>(paperSize), static_cast<QPrinter::Unit>(unit));
 }
 
-QSizeF* QPrinter_paperSizeWithUnit(const QPrinter* self, int unit) {
-	return new QSizeF(self->paperSize(static_cast<QPrinter::Unit>(unit)));
+struct miqt_qsizef QPrinter_paperSizeWithUnit(const QPrinter* self, int unit) {
+	return miqt_to_cabi<struct miqt_qsizef>(self->paperSize(static_cast<QPrinter::Unit>(unit)));
 }
 
 void QPrinter_setPaperName(QPrinter* self, struct miqt_string paperName) {
@@ -519,20 +517,20 @@ int QPrinter_winPageSize(const QPrinter* self) {
 	return self->winPageSize();
 }
 
-QRect* QPrinter_paperRect(const QPrinter* self) {
-	return new QRect(self->paperRect());
+struct miqt_qrect QPrinter_paperRect(const QPrinter* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->paperRect());
 }
 
-QRect* QPrinter_pageRect(const QPrinter* self) {
-	return new QRect(self->pageRect());
+struct miqt_qrect QPrinter_pageRect(const QPrinter* self) {
+	return miqt_to_cabi<struct miqt_qrect>(self->pageRect());
 }
 
-QRectF* QPrinter_paperRectWithQPrinterUnit(const QPrinter* self, int param1) {
-	return new QRectF(self->paperRect(static_cast<QPrinter::Unit>(param1)));
+struct miqt_qrectf QPrinter_paperRectWithQPrinterUnit(const QPrinter* self, int param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->paperRect(static_cast<QPrinter::Unit>(param1)));
 }
 
-QRectF* QPrinter_pageRectWithQPrinterUnit(const QPrinter* self, int param1) {
-	return new QRectF(self->pageRect(static_cast<QPrinter::Unit>(param1)));
+struct miqt_qrectf QPrinter_pageRectWithQPrinterUnit(const QPrinter* self, int param1) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->pageRect(static_cast<QPrinter::Unit>(param1)));
 }
 
 struct miqt_string QPrinter_printerSelectionOption(const QPrinter* self) {
@@ -643,8 +641,8 @@ bool QPrinter_override_virtual_setPageSizeMM(void* self, intptr_t slot) {
 	return true;
 }
 
-void QPrinter_virtualbase_setPageSizeMM(void* self, QSizeF* size) {
-	static_cast<MiqtVirtualQPrinter*>(self)->QPrinter::setPageSizeMM(*size);
+void QPrinter_virtualbase_setPageSizeMM(void* self, struct miqt_qsizef size) {
+	static_cast<MiqtVirtualQPrinter*>(self)->QPrinter::setPageSizeMM(miqt_from_cabi<QSizeF>(size));
 }
 
 bool QPrinter_override_virtual_newPage(void* self, intptr_t slot) {

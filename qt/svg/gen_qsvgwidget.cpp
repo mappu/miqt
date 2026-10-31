@@ -42,11 +42,11 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QSvgWidget_sizeHint(const QSvgWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSvgWidget_sizeHint(const QSvgWidget*, intptr_t);
 void miqt_exec_callback_QSvgWidget_paintEvent(QSvgWidget*, intptr_t, QPaintEvent*);
 int miqt_exec_callback_QSvgWidget_devType(const QSvgWidget*, intptr_t);
 void miqt_exec_callback_QSvgWidget_setVisible(QSvgWidget*, intptr_t, bool);
-QSize* miqt_exec_callback_QSvgWidget_minimumSizeHint(const QSvgWidget*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QSvgWidget_minimumSizeHint(const QSvgWidget*, intptr_t);
 int miqt_exec_callback_QSvgWidget_heightForWidth(const QSvgWidget*, intptr_t, int);
 bool miqt_exec_callback_QSvgWidget_hasHeightForWidth(const QSvgWidget*, intptr_t);
 QPaintEngine* miqt_exec_callback_QSvgWidget_paintEngine(const QSvgWidget*, intptr_t);
@@ -112,13 +112,11 @@ public:
 			return QSvgWidget::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSvgWidget_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSvgWidget_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSvgWidget_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QSvgWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -178,13 +176,11 @@ public:
 			return QSvgWidget::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QSvgWidget_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QSvgWidget_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QSvgWidget_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QSvgWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -970,8 +966,8 @@ QSvgRenderer* QSvgWidget_renderer(const QSvgWidget* self) {
 	return self->renderer();
 }
 
-QSize* QSvgWidget_sizeHint(const QSvgWidget* self) {
-	return new QSize(self->sizeHint());
+struct miqt_qsize QSvgWidget_sizeHint(const QSvgWidget* self) {
+	return miqt_to_cabi<struct miqt_qsize>(self->sizeHint());
 }
 
 void QSvgWidget_load(QSvgWidget* self, struct miqt_string file) {
@@ -1038,8 +1034,8 @@ bool QSvgWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSvgWidget_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSvgWidget*>(self)->QSvgWidget::sizeHint());
+struct miqt_qsize QSvgWidget_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSvgWidget*>(self)->QSvgWidget::sizeHint());
 }
 
 bool QSvgWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1094,8 +1090,8 @@ bool QSvgWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QSvgWidget_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQSvgWidget*>(self)->QSvgWidget::minimumSizeHint());
+struct miqt_qsize QSvgWidget_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQSvgWidget*>(self)->QSvgWidget::minimumSizeHint());
 }
 
 bool QSvgWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1685,10 +1681,6 @@ bool QSvgWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSvgWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQSvgWidget*>(self)->QSvgWidget::disconnectNotify(*signal);
-}
-
-QSize* QSvgWidget_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QSvgWidget_virtualreturncopy_QVariant(QVariant* src) {

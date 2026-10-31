@@ -45,8 +45,8 @@ extern "C" {
 void miqt_exec_callback_QErrorMessage_done(QErrorMessage*, intptr_t, int);
 void miqt_exec_callback_QErrorMessage_changeEvent(QErrorMessage*, intptr_t, QEvent*);
 void miqt_exec_callback_QErrorMessage_setVisible(QErrorMessage*, intptr_t, bool);
-QSize* miqt_exec_callback_QErrorMessage_sizeHint(const QErrorMessage*, intptr_t);
-QSize* miqt_exec_callback_QErrorMessage_minimumSizeHint(const QErrorMessage*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QErrorMessage_sizeHint(const QErrorMessage*, intptr_t);
+struct miqt_qsize miqt_exec_callback_QErrorMessage_minimumSizeHint(const QErrorMessage*, intptr_t);
 void miqt_exec_callback_QErrorMessage_open(QErrorMessage*, intptr_t);
 int miqt_exec_callback_QErrorMessage_exec(QErrorMessage*, intptr_t);
 void miqt_exec_callback_QErrorMessage_accept(QErrorMessage*, intptr_t);
@@ -166,13 +166,11 @@ public:
 			return QErrorMessage::sizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QErrorMessage_sizeHint(this, handle__sizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QErrorMessage_sizeHint(this, handle__sizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QErrorMessage_virtualbase_sizeHint(const void* self);
+	friend struct miqt_qsize QErrorMessage_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -183,13 +181,11 @@ public:
 			return QErrorMessage::minimumSizeHint();
 		}
 
-		QSize* callback_return_value = miqt_exec_callback_QErrorMessage_minimumSizeHint(this, handle__minimumSizeHint);
-		QSize callback_return_value_ret = *callback_return_value;
-		delete callback_return_value;
-		return callback_return_value_ret;
+		struct miqt_qsize callback_return_value = miqt_exec_callback_QErrorMessage_minimumSizeHint(this, handle__minimumSizeHint);
+		return miqt_from_cabi<QSize>(callback_return_value);
 	}
 
-	friend QSize* QErrorMessage_virtualbase_minimumSizeHint(const void* self);
+	friend struct miqt_qsize QErrorMessage_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -1151,8 +1147,8 @@ bool QErrorMessage_override_virtual_sizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QErrorMessage_virtualbase_sizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQErrorMessage*>(self)->QErrorMessage::sizeHint());
+struct miqt_qsize QErrorMessage_virtualbase_sizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQErrorMessage*>(self)->QErrorMessage::sizeHint());
 }
 
 bool QErrorMessage_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1165,8 +1161,8 @@ bool QErrorMessage_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	return true;
 }
 
-QSize* QErrorMessage_virtualbase_minimumSizeHint(const void* self) {
-	return new QSize(static_cast<const MiqtVirtualQErrorMessage*>(self)->QErrorMessage::minimumSizeHint());
+struct miqt_qsize QErrorMessage_virtualbase_minimumSizeHint(const void* self) {
+	return miqt_to_cabi<struct miqt_qsize>(static_cast<const MiqtVirtualQErrorMessage*>(self)->QErrorMessage::minimumSizeHint());
 }
 
 bool QErrorMessage_override_virtual_open(void* self, intptr_t slot) {
@@ -1826,10 +1822,6 @@ bool QErrorMessage_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QErrorMessage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	static_cast<MiqtVirtualQErrorMessage*>(self)->QErrorMessage::disconnectNotify(*signal);
-}
-
-QSize* QErrorMessage_virtualreturncopy_QSize(QSize* src) {
-	return new QSize(*src);
 }
 
 QVariant* QErrorMessage_virtualreturncopy_QVariant(QVariant* src) {

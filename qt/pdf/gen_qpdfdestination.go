@@ -9,6 +9,7 @@ package pdf
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt"
 	"runtime"
 	"unsafe"
@@ -82,11 +83,9 @@ func (this *QPdfDestination) Page() int {
 	return (int)(C.QPdfDestination_page(this.h))
 }
 
-func (this *QPdfDestination) Location() *qt.QPointF {
+func (this *QPdfDestination) Location() qt.QPointF {
 	defer runtime.KeepAlive(this)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QPdfDestination_location(this.h)))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt.QPointF](C.QPdfDestination_location(this.h))
 }
 
 func (this *QPdfDestination) Zoom() float64 {

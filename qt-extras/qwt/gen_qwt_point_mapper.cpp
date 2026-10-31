@@ -31,12 +31,12 @@ bool QwtPointMapper_testFlag(const QwtPointMapper* self, int param1) {
 	return self->testFlag(static_cast<QwtPointMapper::TransformationFlag>(param1));
 }
 
-void QwtPointMapper_setBoundingRect(QwtPointMapper* self, QRectF* boundingRect) {
-	self->setBoundingRect(*boundingRect);
+void QwtPointMapper_setBoundingRect(QwtPointMapper* self, struct miqt_qrectf boundingRect) {
+	self->setBoundingRect(miqt_from_cabi<QRectF>(boundingRect));
 }
 
-QRectF* QwtPointMapper_boundingRect(const QwtPointMapper* self) {
-	return new QRectF(self->boundingRect());
+struct miqt_qrectf QwtPointMapper_boundingRect(const QwtPointMapper* self) {
+	return miqt_to_cabi<struct miqt_qrectf>(self->boundingRect());
 }
 
 void QwtPointMapper_setFlag2(QwtPointMapper* self, int param1, bool on) {

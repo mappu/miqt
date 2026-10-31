@@ -9,6 +9,7 @@ package charts6
 import "C"
 
 import (
+	"github.com/mappu/miqt/libmiqt"
 	"github.com/mappu/miqt/qt6"
 	"runtime"
 	"runtime/cgo"
@@ -297,13 +298,12 @@ func (this *QPolarChart) SetOwnedByLayout(ownedByLayout bool) {
 
 }
 
-func (this *QPolarChart) callVirtualBase_SetGeometry(rect *qt6.QRectF) {
-	defer runtime.KeepAlive(rect)
+func (this *QPolarChart) callVirtualBase_SetGeometry(rect qt6.QRectF) {
 
-	C.QPolarChart_virtualbase_setGeometry(unsafe.Pointer(this.h), (*C.QRectF)(rect.UnsafePointer()))
+	C.QPolarChart_virtualbase_setGeometry(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qrectf](rect))
 
 }
-func (this *QPolarChart) OnSetGeometry(slot func(super func(rect *qt6.QRectF), rect *qt6.QRectF)) {
+func (this *QPolarChart) OnSetGeometry(slot func(super func(rect qt6.QRectF), rect qt6.QRectF)) {
 	ok := C.QPolarChart_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -311,14 +311,14 @@ func (this *QPolarChart) OnSetGeometry(slot func(super func(rect *qt6.QRectF), r
 }
 
 //export miqt_exec_callback_QPolarChart_setGeometry
-func miqt_exec_callback_QPolarChart_setGeometry(self *C.QPolarChart, cb C.intptr_t, rect *C.QRectF) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *qt6.QRectF), rect *qt6.QRectF))
+func miqt_exec_callback_QPolarChart_setGeometry(self *C.QPolarChart, cb C.intptr_t, rect C.struct_miqt_qrectf) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect qt6.QRectF), rect qt6.QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQRectF(unsafe.Pointer(rect))
+	slotval1 := libmiqt.ValueCast[qt6.QRectF](rect)
 
 	gofunc((&QPolarChart{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -445,14 +445,12 @@ func miqt_exec_callback_QPolarChart_paintWindowFrame(self *C.QPolarChart, cb C.i
 
 }
 
-func (this *QPolarChart) callVirtualBase_BoundingRect() *qt6.QRectF {
+func (this *QPolarChart) callVirtualBase_BoundingRect() qt6.QRectF {
 
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QPolarChart_virtualbase_boundingRect(unsafe.Pointer(this.h))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QRectF](C.QPolarChart_virtualbase_boundingRect(unsafe.Pointer(this.h)))
 
 }
-func (this *QPolarChart) OnBoundingRect(slot func(super func() *qt6.QRectF) *qt6.QRectF) {
+func (this *QPolarChart) OnBoundingRect(slot func(super func() qt6.QRectF) qt6.QRectF) {
 	ok := C.QPolarChart_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -460,16 +458,15 @@ func (this *QPolarChart) OnBoundingRect(slot func(super func() *qt6.QRectF) *qt6
 }
 
 //export miqt_exec_callback_QPolarChart_boundingRect
-func miqt_exec_callback_QPolarChart_boundingRect(self *C.QPolarChart, cb C.intptr_t) *C.QRectF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QRectF) *qt6.QRectF)
+func miqt_exec_callback_QPolarChart_boundingRect(self *C.QPolarChart, cb C.intptr_t) C.struct_miqt_qrectf {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() qt6.QRectF) qt6.QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QPolarChart{h: self}).callVirtualBase_BoundingRect)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPolarChart_virtualreturncopy_QRectF((*C.QRectF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qrectf](virtualReturn)
 
 }
 
@@ -528,15 +525,12 @@ func miqt_exec_callback_QPolarChart_initStyleOption(self *C.QPolarChart, cb C.in
 
 }
 
-func (this *QPolarChart) callVirtualBase_SizeHint(which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF {
-	defer runtime.KeepAlive(constraint)
+func (this *QPolarChart) callVirtualBase_SizeHint(which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF {
 
-	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QPolarChart_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), (*C.QSizeF)(constraint.UnsafePointer()))))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	return libmiqt.ValueCast[qt6.QSizeF](C.QPolarChart_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), libmiqt.ValueCast[C.struct_miqt_qsizef](constraint)))
 
 }
-func (this *QPolarChart) OnSizeHint(slot func(super func(which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF, which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF) {
+func (this *QPolarChart) OnSizeHint(slot func(super func(which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF, which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF) {
 	ok := C.QPolarChart_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -544,8 +538,8 @@ func (this *QPolarChart) OnSizeHint(slot func(super func(which qt6.SizeHint, con
 }
 
 //export miqt_exec_callback_QPolarChart_sizeHint
-func miqt_exec_callback_QPolarChart_sizeHint(self *C.QPolarChart, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF, which qt6.SizeHint, constraint *qt6.QSizeF) *qt6.QSizeF)
+func miqt_exec_callback_QPolarChart_sizeHint(self *C.QPolarChart, cb C.intptr_t, which C.int, constraint C.struct_miqt_qsizef) C.struct_miqt_qsizef {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF, which qt6.SizeHint, constraint qt6.QSizeF) qt6.QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -553,12 +547,11 @@ func miqt_exec_callback_QPolarChart_sizeHint(self *C.QPolarChart, cb C.intptr_t,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (qt6.SizeHint)(which)
 
-	slotval2 := qt6.UnsafeNewQSizeF(unsafe.Pointer(constraint))
+	slotval2 := libmiqt.ValueCast[qt6.QSizeF](constraint)
 
 	virtualReturn := gofunc((&QPolarChart{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
-	defer runtime.KeepAlive(virtualReturn)
 
-	return C.QPolarChart_virtualreturncopy_QSizeF((*C.QSizeF)(virtualReturn.UnsafePointer()))
+	return libmiqt.ValueCast[C.struct_miqt_qsizef](virtualReturn)
 
 }
 
@@ -717,13 +710,12 @@ func miqt_exec_callback_QPolarChart_windowFrameEvent(self *C.QPolarChart, cb C.i
 
 }
 
-func (this *QPolarChart) callVirtualBase_WindowFrameSectionAt(pos *qt6.QPointF) qt6.WindowFrameSection {
-	defer runtime.KeepAlive(pos)
+func (this *QPolarChart) callVirtualBase_WindowFrameSectionAt(pos qt6.QPointF) qt6.WindowFrameSection {
 
-	return (qt6.WindowFrameSection)(C.QPolarChart_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), (*C.QPointF)(pos.UnsafePointer())))
+	return (qt6.WindowFrameSection)(C.QPolarChart_virtualbase_windowFrameSectionAt(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](pos)))
 
 }
-func (this *QPolarChart) OnWindowFrameSectionAt(slot func(super func(pos *qt6.QPointF) qt6.WindowFrameSection, pos *qt6.QPointF) qt6.WindowFrameSection) {
+func (this *QPolarChart) OnWindowFrameSectionAt(slot func(super func(pos qt6.QPointF) qt6.WindowFrameSection, pos qt6.QPointF) qt6.WindowFrameSection) {
 	ok := C.QPolarChart_override_virtual_windowFrameSectionAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -731,14 +723,14 @@ func (this *QPolarChart) OnWindowFrameSectionAt(slot func(super func(pos *qt6.QP
 }
 
 //export miqt_exec_callback_QPolarChart_windowFrameSectionAt
-func miqt_exec_callback_QPolarChart_windowFrameSectionAt(self *C.QPolarChart, cb C.intptr_t, pos *C.QPointF) C.int {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos *qt6.QPointF) qt6.WindowFrameSection, pos *qt6.QPointF) qt6.WindowFrameSection)
+func miqt_exec_callback_QPolarChart_windowFrameSectionAt(self *C.QPolarChart, cb C.intptr_t, pos C.struct_miqt_qpointf) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos qt6.QPointF) qt6.WindowFrameSection, pos qt6.QPointF) qt6.WindowFrameSection)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(pos))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](pos)
 
 	virtualReturn := gofunc((&QPolarChart{h: self}).callVirtualBase_WindowFrameSectionAt, slotval1)
 
@@ -1396,13 +1388,12 @@ func miqt_exec_callback_QPolarChart_advance(self *C.QPolarChart, cb C.intptr_t, 
 
 }
 
-func (this *QPolarChart) callVirtualBase_Contains(point *qt6.QPointF) bool {
-	defer runtime.KeepAlive(point)
+func (this *QPolarChart) callVirtualBase_Contains(point qt6.QPointF) bool {
 
-	return (bool)(C.QPolarChart_virtualbase_contains(unsafe.Pointer(this.h), (*C.QPointF)(point.UnsafePointer())))
+	return (bool)(C.QPolarChart_virtualbase_contains(unsafe.Pointer(this.h), libmiqt.ValueCast[C.struct_miqt_qpointf](point)))
 
 }
-func (this *QPolarChart) OnContains(slot func(super func(point *qt6.QPointF) bool, point *qt6.QPointF) bool) {
+func (this *QPolarChart) OnContains(slot func(super func(point qt6.QPointF) bool, point qt6.QPointF) bool) {
 	ok := C.QPolarChart_override_virtual_contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1410,14 +1401,14 @@ func (this *QPolarChart) OnContains(slot func(super func(point *qt6.QPointF) boo
 }
 
 //export miqt_exec_callback_QPolarChart_contains
-func miqt_exec_callback_QPolarChart_contains(self *C.QPolarChart, cb C.intptr_t, point *C.QPointF) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *qt6.QPointF) bool, point *qt6.QPointF) bool)
+func miqt_exec_callback_QPolarChart_contains(self *C.QPolarChart, cb C.intptr_t, point C.struct_miqt_qpointf) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point qt6.QPointF) bool, point qt6.QPointF) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQPointF(unsafe.Pointer(point))
+	slotval1 := libmiqt.ValueCast[qt6.QPointF](point)
 
 	virtualReturn := gofunc((&QPolarChart{h: self}).callVirtualBase_Contains, slotval1)
 

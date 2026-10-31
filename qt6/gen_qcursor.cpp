@@ -92,16 +92,16 @@ QPixmap* QCursor_pixmap(const QCursor* self) {
 	return new QPixmap(self->pixmap());
 }
 
-QPoint* QCursor_hotSpot(const QCursor* self) {
-	return new QPoint(self->hotSpot());
+struct miqt_qpoint QCursor_hotSpot(const QCursor* self) {
+	return miqt_to_cabi<struct miqt_qpoint>(self->hotSpot());
 }
 
-QPoint* QCursor_pos() {
-	return new QPoint(QCursor::pos());
+struct miqt_qpoint QCursor_pos() {
+	return miqt_to_cabi<struct miqt_qpoint>(QCursor::pos());
 }
 
-QPoint* QCursor_posWithScreen(QScreen* screen) {
-	return new QPoint(QCursor::pos(screen));
+struct miqt_qpoint QCursor_posWithScreen(QScreen* screen) {
+	return miqt_to_cabi<struct miqt_qpoint>(QCursor::pos(screen));
 }
 
 void QCursor_setPos(int x, int y) {
@@ -112,12 +112,12 @@ void QCursor_setPos2(QScreen* screen, int x, int y) {
 	QCursor::setPos(screen, static_cast<int>(x), static_cast<int>(y));
 }
 
-void QCursor_setPosWithQPoint(QPoint* p) {
-	QCursor::setPos(*p);
+void QCursor_setPosWithQPoint(struct miqt_qpoint p) {
+	QCursor::setPos(miqt_from_cabi<QPoint>(p));
 }
 
-void QCursor_setPos3(QScreen* screen, QPoint* p) {
-	QCursor::setPos(screen, *p);
+void QCursor_setPos3(QScreen* screen, struct miqt_qpoint p) {
+	QCursor::setPos(screen, miqt_from_cabi<QPoint>(p));
 }
 
 void QCursor_delete(QCursor* self) {
