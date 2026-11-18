@@ -31,6 +31,7 @@ class QRegExp;
 class QRegularExpression;
 class QSizeF;
 class QTextBlock;
+class QTextCodec;
 class QTextCursor;
 class QTextDocument;
 class QTextFormat;
@@ -57,6 +58,7 @@ typedef struct QRegExp QRegExp;
 typedef struct QRegularExpression QRegularExpression;
 typedef struct QSizeF QSizeF;
 typedef struct QTextBlock QTextBlock;
+typedef struct QTextCodec QTextCodec;
 typedef struct QTextCursor QTextCursor;
 typedef struct QTextDocument QTextDocument;
 typedef struct QTextFormat QTextFormat;
@@ -236,6 +238,10 @@ int QTextDocument_protectedbase_receivers(bool* _dynamic_cast_ok, const void* se
 bool QTextDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 
 void QTextDocument_delete(QTextDocument* self);
+
+bool miqt_MightBeRichTextWithQString(struct miqt_string param1);
+struct miqt_string miqt_ConvertFromPlainText2(struct miqt_string plain, int mode);
+QTextCodec* miqt_CodecForHtmlWithBa(struct miqt_string ba);
 
 #ifdef __cplusplus
 } /* extern C */

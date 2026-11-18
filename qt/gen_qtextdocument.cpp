@@ -18,6 +18,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTextBlock>
+#include <QTextCodec>
 #include <QTextCursor>
 #include <QTextDocument>
 #include <QTextFormat>
@@ -1142,5 +1143,30 @@ bool QTextDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const
 
 void QTextDocument_delete(QTextDocument* self) {
 	delete self;
+}
+
+bool miqt_MightBeRichTextWithQString(struct miqt_string param1) {
+	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
+
+	return Qt::mightBeRichText(param1_QString);
+}
+
+struct miqt_string miqt_ConvertFromPlainText2(struct miqt_string plain, int mode) {
+	QString plain_QString = QString::fromUtf8(plain.data, plain.len);
+
+	QString _ret = Qt::convertFromPlainText(plain_QString, static_cast<Qt::WhiteSpaceMode>(mode));
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+}
+
+QTextCodec* miqt_CodecForHtmlWithBa(struct miqt_string ba) {
+	QByteArray ba_QByteArray(ba.data, ba.len);
+
+	return Qt::codecForHtml(ba_QByteArray);
 }
 

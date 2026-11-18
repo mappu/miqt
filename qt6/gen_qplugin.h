@@ -26,6 +26,9 @@ QJsonObject* QStaticPlugin_metaData(const QStaticPlugin* self);
 
 void QStaticPlugin_delete(QStaticPlugin* self);
 
+unsigned char miqt_QPluginArchRequirements2();
+void miqt_QRegisterStaticPluginFunctionWithStaticPlugin(QStaticPlugin* staticPlugin);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

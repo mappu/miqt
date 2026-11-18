@@ -420,6 +420,10 @@ void QAccessible__ActivationObserver_operatorAssign(QAccessible__ActivationObser
 
 void QAccessible__ActivationObserver_delete(QAccessible__ActivationObserver* self);
 
+const char* miqt_QAccessibleRoleStringWithRole(int role);
+const char* miqt_QAccessibleEventStringWithEvent(int event);
+struct miqt_string miqt_QAccessibleLocalizedActionDescriptionWithActionName(struct miqt_string actionName);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -310,3 +310,9 @@ func (this *QVector4D) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QFuzzyCompare11(v1 *QVector4D, v2 *QVector4D) bool {
+	defer runtime.KeepAlive(v1)
+	defer runtime.KeepAlive(v2)
+	return (bool)(C.miqt_QFuzzyCompare11(v1.cPointer(), v2.cPointer()))
+}

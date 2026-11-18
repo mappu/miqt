@@ -128,6 +128,9 @@ void QSignalBlocker_unblock(QSignalBlocker* self);
 
 void QSignalBlocker_delete(QSignalBlocker* self);
 
+QBindingStorage* miqt_QGetBindingStorageWithQObject(QObject* o);
+QBindingStorage* miqt_QGetBindingStorage2(QObject* o);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

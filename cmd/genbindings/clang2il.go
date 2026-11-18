@@ -116,6 +116,30 @@ func parseHeader(node *AstNode, addNamePrefix string, output *CppParsedHeader, m
 			panic(fmt.Errorf("processTypedef: %w", err)) // A real problem
 		}
 		output.Typedefs = append(output.Typedefs, td)
+
+	case "FunctionDecl":
+		if !matcher(node.file(), output.Filename) {
+			return
+		}
+
+		if !AllowFreeFunctionsInHeader(output.Filename) {
+			return
+		}
+
+		// Top-level free function
+		fn, err := processFunction(node, addNamePrefix)
+		if err != nil {
+			if errors.Is(err, ErrNoContent) {
+				log.Printf("-> Skipping (%v)\n", err)
+				return
+			}
+
+			// A real error (shouldn't happen)
+			panic(err)
+		}
+
+		output.Functions = append(output.Functions, fn)
+
 	default:
 		panic(fmt.Sprintf("missing handling for clang ast node type %q id %v", kind, node.Id))
 	}
@@ -148,6 +172,63 @@ const (
 	VsProtected                 = 2
 	VsPrivate                   = 3
 )
+
+// processFunction parses a single top-level free function into our intermediate format.
+func processFunction(node *AstNode, addNamePrefix string) (CppFunction, error) {
+	var ret CppFunction
+
+	// Skip template instantiations - we'd need to link a concrete instantiation
+	// for each type in the CABI
+	for _, inner := range node.Inner {
+		if inner.Kind == "TemplateArgument" {
+			return CppFunction{}, ErrNoContent
+		}
+	}
+
+	// Must have a name
+	nodename, ok := node.Fields["name"].(string)
+	if !ok {
+		return CppFunction{}, errors.New("function has no name")
+	}
+	nodename = addNamePrefix + nodename
+	ret.FunctionName = nodename
+
+	log.Printf("-> Processing function %q...\n", nodename)
+
+	// Parse return type and parameters
+	if typobj, ok := node.Fields["type"].(map[string]interface{}); ok {
+		if qualType, ok := typobj["qualType"].(string); ok {
+			var err error
+			ret.ReturnType, ret.Parameters, _, _, err = parseTypeString(qualType)
+			if err != nil {
+				return CppFunction{}, err
+			}
+		}
+	}
+
+	if storageClass, ok := node.Fields["storageClass"].(string); ok && storageClass == "static" {
+		ret.IsStatic = true
+	}
+
+	// Fill in parameter names
+	if methodInner := node.Inner; len(methodInner) > 0 {
+		paramCounter := 0
+		for _, methodObj := range methodInner {
+			if methodObj.Kind == "ParmVarDecl" {
+				parmName, _ := methodObj.Fields["name"].(string) // n.b. may be unnamed
+				if parmName == "" {
+					parmName = fmt.Sprintf("param%d", paramCounter+1)
+				}
+				if paramCounter < len(ret.Parameters) {
+					ret.Parameters[paramCounter].ParameterName = parmName
+				}
+				paramCounter++
+			}
+		}
+	}
+
+	return ret, nil // done
+}
 
 // processClassType parses a single C++ class definition into our intermediate format.
 func processClassType(node *AstNode, addNamePrefix string) (CppClass, error) {

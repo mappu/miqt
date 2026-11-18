@@ -49,6 +49,15 @@ void QRgba64_operatorAssign(QRgba64* self, unsigned long long _rgba);
 
 void QRgba64_delete(QRgba64* self);
 
+QRgba64* miqt_QRgba642(unsigned short r, unsigned short g, unsigned short b, unsigned short a);
+QRgba64* miqt_QRgba64WithQuint64(unsigned long long c);
+QRgba64* miqt_QPremultiplyWithQRgba64(QRgba64* c);
+QRgba64* miqt_QUnpremultiplyWithQRgba64(QRgba64* c);
+unsigned int miqt_QRed2(QRgba64* rgb);
+unsigned int miqt_QGreen2(QRgba64* rgb);
+unsigned int miqt_QBlue2(QRgba64* rgb);
+unsigned int miqt_QAlpha2(QRgba64* rgb);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

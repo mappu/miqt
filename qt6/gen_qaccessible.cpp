@@ -1464,3 +1464,26 @@ void QAccessibleTableModelChangeEvent_delete(QAccessibleTableModelChangeEvent* s
 	delete self;
 }
 
+const char* miqt_QAccessibleRoleStringWithRole(int role) {
+
+	return (const char*) qAccessibleRoleString(static_cast<QAccessible::Role>(role));
+}
+
+const char* miqt_QAccessibleEventStringWithEvent(int event) {
+
+	return (const char*) qAccessibleEventString(static_cast<QAccessible::Event>(event));
+}
+
+struct miqt_string miqt_QAccessibleLocalizedActionDescriptionWithActionName(struct miqt_string actionName) {
+	QString actionName_QString = QString::fromUtf8(actionName.data, actionName.len);
+
+	QString _ret = qAccessibleLocalizedActionDescription(actionName_QString);
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+}
+

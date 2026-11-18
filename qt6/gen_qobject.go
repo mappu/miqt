@@ -722,3 +722,13 @@ func (this *QSignalBlocker) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QGetBindingStorageWithQObject(o *QObject) *QBindingStorage {
+	defer runtime.KeepAlive(o)
+	return newQBindingStorage(C.miqt_QGetBindingStorageWithQObject(o.cPointer()))
+}
+
+func QGetBindingStorage2(o *QObject) *QBindingStorage {
+	defer runtime.KeepAlive(o)
+	return newQBindingStorage(C.miqt_QGetBindingStorage2(o.cPointer()))
+}

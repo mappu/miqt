@@ -294,3 +294,8 @@ void QMatrix4x4_delete(QMatrix4x4* self) {
 	delete self;
 }
 
+bool miqt_QFuzzyCompare6(QMatrix4x4* m1, QMatrix4x4* m2) {
+
+	return qFuzzyCompare(*m1, *m2);
+}
+

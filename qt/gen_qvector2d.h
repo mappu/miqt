@@ -65,6 +65,8 @@ QVariant* QVector2D_ToQVariant(const QVector2D* self);
 
 void QVector2D_delete(QVector2D* self);
 
+bool miqt_QFuzzyCompare9(QVector2D* v1, QVector2D* v2);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

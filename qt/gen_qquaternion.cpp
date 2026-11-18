@@ -227,3 +227,8 @@ void QQuaternion_delete(QQuaternion* self) {
 	delete self;
 }
 
+bool miqt_QFuzzyCompare7(QQuaternion* q1, QQuaternion* q2) {
+
+	return qFuzzyCompare(*q1, *q2);
+}
+

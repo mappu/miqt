@@ -137,3 +137,8 @@ void QGeoAreaMonitorInfo_delete(QGeoAreaMonitorInfo* self) {
 	delete self;
 }
 
+char* miqt_QTest_ToStringWithInfo(QGeoAreaMonitorInfo* info) {
+
+	return QTest::toString(*info);
+}
+

@@ -79,6 +79,8 @@ QVariant* QVector3D_ToQVariant(const QVector3D* self);
 
 void QVector3D_delete(QVector3D* self);
 
+bool miqt_QFuzzyCompare10(QVector3D* v1, QVector3D* v2);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

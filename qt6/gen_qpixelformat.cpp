@@ -144,3 +144,38 @@ void QPixelFormat_delete(QPixelFormat* self) {
 	delete self;
 }
 
+QPixelFormat* miqt_QPixelFormatRgba2(unsigned char red, unsigned char green, unsigned char blue, unsigned char alfa, int usage, int position, int pmul, int typeInt) {
+
+	return new QPixelFormat(qPixelFormatRgba(static_cast<uchar>(red), static_cast<uchar>(green), static_cast<uchar>(blue), static_cast<uchar>(alfa), static_cast<QPixelFormat::AlphaUsage>(usage), static_cast<QPixelFormat::AlphaPosition>(position), static_cast<QPixelFormat::AlphaPremultiplied>(pmul), static_cast<QPixelFormat::TypeInterpretation>(typeInt)));
+}
+
+QPixelFormat* miqt_QPixelFormatGrayscale2(unsigned char channelSize, int typeInt) {
+
+	return new QPixelFormat(qPixelFormatGrayscale(static_cast<uchar>(channelSize), static_cast<QPixelFormat::TypeInterpretation>(typeInt)));
+}
+
+QPixelFormat* miqt_QPixelFormatAlpha2(unsigned char channelSize, int typeInt) {
+
+	return new QPixelFormat(qPixelFormatAlpha(static_cast<uchar>(channelSize), static_cast<QPixelFormat::TypeInterpretation>(typeInt)));
+}
+
+QPixelFormat* miqt_QPixelFormatCmyk2(unsigned char channelSize, unsigned char alfa, int usage, int position, int typeInt) {
+
+	return new QPixelFormat(qPixelFormatCmyk(static_cast<uchar>(channelSize), static_cast<uchar>(alfa), static_cast<QPixelFormat::AlphaUsage>(usage), static_cast<QPixelFormat::AlphaPosition>(position), static_cast<QPixelFormat::TypeInterpretation>(typeInt)));
+}
+
+QPixelFormat* miqt_QPixelFormatHsl2(unsigned char channelSize, unsigned char alfa, int usage, int position, int typeInt) {
+
+	return new QPixelFormat(qPixelFormatHsl(static_cast<uchar>(channelSize), static_cast<uchar>(alfa), static_cast<QPixelFormat::AlphaUsage>(usage), static_cast<QPixelFormat::AlphaPosition>(position), static_cast<QPixelFormat::TypeInterpretation>(typeInt)));
+}
+
+QPixelFormat* miqt_QPixelFormatHsv2(unsigned char channelSize, unsigned char alfa, int usage, int position, int typeInt) {
+
+	return new QPixelFormat(qPixelFormatHsv(static_cast<uchar>(channelSize), static_cast<uchar>(alfa), static_cast<QPixelFormat::AlphaUsage>(usage), static_cast<QPixelFormat::AlphaPosition>(position), static_cast<QPixelFormat::TypeInterpretation>(typeInt)));
+}
+
+QPixelFormat* miqt_QPixelFormatYuv2(int layout, unsigned char alfa, int usage, int position, int p_mul, int typeInt, int b_order) {
+
+	return new QPixelFormat(qPixelFormatYuv(static_cast<QPixelFormat::YUVLayout>(layout), static_cast<uchar>(alfa), static_cast<QPixelFormat::AlphaUsage>(usage), static_cast<QPixelFormat::AlphaPosition>(position), static_cast<QPixelFormat::AlphaPremultiplied>(p_mul), static_cast<QPixelFormat::TypeInterpretation>(typeInt), static_cast<QPixelFormat::ByteOrder>(b_order)));
+}
+

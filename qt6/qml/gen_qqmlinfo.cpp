@@ -2,6 +2,9 @@
 #include <QChar>
 #include <QDebug>
 #include <QIODeviceBase>
+#include <QList>
+#include <QObject>
+#include <QQmlError>
 #include <QQmlInfo>
 #include <QString>
 #include <QByteArray>
@@ -142,5 +145,68 @@ void QQmlInfo_operatorAssign(QQmlInfo* self, QQmlInfo* param1) {
 
 void QQmlInfo_delete(QQmlInfo* self) {
 	delete self;
+}
+
+QQmlInfo* miqt_QmlDebugWithMe(QObject* me) {
+
+	return new QQmlInfo(qmlDebug(me));
+}
+
+QQmlInfo* miqt_QmlDebug2(QObject* me, QQmlError* error) {
+
+	return new QQmlInfo(qmlDebug(me, *error));
+}
+
+QQmlInfo* miqt_QmlDebug3(QObject* me, struct miqt_array /* of QQmlError* */  errors) {
+	QList<QQmlError> errors_QList;
+	errors_QList.reserve(errors.len);
+	QQmlError** errors_arr = static_cast<QQmlError**>(errors.data);
+	for(size_t i = 0; i < errors.len; ++i) {
+		errors_QList.push_back(*(errors_arr[i]));
+	}
+
+	return new QQmlInfo(qmlDebug(me, errors_QList));
+}
+
+QQmlInfo* miqt_QmlInfoWithMe(QObject* me) {
+
+	return new QQmlInfo(qmlInfo(me));
+}
+
+QQmlInfo* miqt_QmlInfo2(QObject* me, QQmlError* error) {
+
+	return new QQmlInfo(qmlInfo(me, *error));
+}
+
+QQmlInfo* miqt_QmlInfo3(QObject* me, struct miqt_array /* of QQmlError* */  errors) {
+	QList<QQmlError> errors_QList;
+	errors_QList.reserve(errors.len);
+	QQmlError** errors_arr = static_cast<QQmlError**>(errors.data);
+	for(size_t i = 0; i < errors.len; ++i) {
+		errors_QList.push_back(*(errors_arr[i]));
+	}
+
+	return new QQmlInfo(qmlInfo(me, errors_QList));
+}
+
+QQmlInfo* miqt_QmlWarningWithMe(QObject* me) {
+
+	return new QQmlInfo(qmlWarning(me));
+}
+
+QQmlInfo* miqt_QmlWarning2(QObject* me, QQmlError* error) {
+
+	return new QQmlInfo(qmlWarning(me, *error));
+}
+
+QQmlInfo* miqt_QmlWarning3(QObject* me, struct miqt_array /* of QQmlError* */  errors) {
+	QList<QQmlError> errors_QList;
+	errors_QList.reserve(errors.len);
+	QQmlError** errors_arr = static_cast<QQmlError**>(errors.data);
+	for(size_t i = 0; i < errors.len; ++i) {
+		errors_QList.push_back(*(errors_arr[i]));
+	}
+
+	return new QQmlInfo(qmlWarning(me, errors_QList));
 }
 

@@ -426,3 +426,339 @@ void QTextStream_delete(QTextStream* self) {
 	delete self;
 }
 
+QTextStream* miqt_BinWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::bin(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_OctWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::oct(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_DecWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::dec(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_HexWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::hex(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_ShowbaseWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::showbase(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_ForcesignWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::forcesign(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_ForcepointWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::forcepoint(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_NoshowbaseWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::noshowbase(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_NoforcesignWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::noforcesign(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_NoforcepointWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::noforcepoint(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_UppercasebaseWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::uppercasebase(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_UppercasedigitsWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::uppercasedigits(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_LowercasebaseWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::lowercasebase(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_LowercasedigitsWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::lowercasedigits(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_FixedWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::fixed(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_ScientificWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::scientific(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_LeftWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::left(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_RightWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::right(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_CenterWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::center(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_EndlWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::endl(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_FlushWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::flush(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_ResetWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::reset(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_BomWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::bom(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_WsWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = Qt::ws(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_BinWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::bin(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_OctWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::oct(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_DecWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::dec(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_HexWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::hex(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_ShowbaseWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::showbase(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_ForcesignWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::forcesign(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_ForcepointWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::forcepoint(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_NoshowbaseWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::noshowbase(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_NoforcesignWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::noforcesign(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_NoforcepointWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::noforcepoint(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_UppercasebaseWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::uppercasebase(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_UppercasedigitsWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::uppercasedigits(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_LowercasebaseWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::lowercasebase(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_LowercasedigitsWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::lowercasedigits(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_FixedWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::fixed(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_ScientificWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::scientific(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_LeftWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::left(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_RightWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::right(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_CenterWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::center(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_EndlWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::endl(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_FlushWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::flush(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_ResetWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::reset(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_BomWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::bom(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QTextStream* miqt_QTextStreamFunctions_WsWithQTextStream(QTextStream* s) {
+
+	QTextStream& _ret = QTextStreamFunctions::ws(*s);
+	// Cast returned reference into pointer
+	return &_ret;
+}
+

@@ -34,3 +34,18 @@ void QHashSeed_delete(QHashSeed* self) {
 	delete self;
 }
 
+int miqt_QGlobalQHashSeed2() {
+
+	return qGlobalQHashSeed();
+}
+
+void miqt_QSetGlobalQHashSeedWithNewSeed(int newSeed) {
+
+	qSetGlobalQHashSeed(static_cast<int>(newSeed));
+}
+
+size_t miqt_QHashBits2(const void* p, size_t size, size_t seed) {
+
+	return qHashBits(p, static_cast<size_t>(size), static_cast<size_t>(seed));
+}
+

@@ -596,3 +596,13 @@ void QSignalBlocker_delete(QSignalBlocker* self) {
 	delete self;
 }
 
+QBindingStorage* miqt_QGetBindingStorageWithQObject(QObject* o) {
+
+	return (QBindingStorage*) qGetBindingStorage(o);
+}
+
+QBindingStorage* miqt_QGetBindingStorage2(QObject* o) {
+
+	return qGetBindingStorage(o);
+}
+

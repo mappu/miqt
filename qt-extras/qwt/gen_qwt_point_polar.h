@@ -15,9 +15,11 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QPoint;
 class QPointF;
 class QwtPointPolar;
 #else
+typedef struct QPoint QPoint;
 typedef struct QPointF QPointF;
 typedef struct QwtPointPolar QwtPointPolar;
 #endif
@@ -39,6 +41,14 @@ bool QwtPointPolar_operatorNotEqual(const QwtPointPolar* self, QwtPointPolar* pa
 QwtPointPolar* QwtPointPolar_normalized(const QwtPointPolar* self);
 
 void QwtPointPolar_delete(QwtPointPolar* self);
+
+QPoint* miqt_QwtPolar2Pos2(QPoint* pole, double radius, double angle);
+QPoint* miqt_QwtDegree2Pos2(QPoint* pole, double radius, double angle);
+QPointF* miqt_QwtPolar2Pos3(QPointF* pole, double radius, double angle);
+QPointF* miqt_QwtDegree2Pos3(QPointF* pole, double radius, double angle);
+QPointF* miqt_QwtFastPolar2Pos2(QPointF* pole, double radius, double angle);
+QPointF* miqt_QwtFastDegree2Pos2(QPointF* pole, double radius, double angle);
+QwtPointPolar* miqt_QwtFastPos2PolarWithPos(QPointF* pos);
 
 #ifdef __cplusplus
 } /* extern C */

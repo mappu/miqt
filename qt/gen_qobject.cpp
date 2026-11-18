@@ -647,3 +647,8 @@ void QSignalBlocker_delete(QSignalBlocker* self) {
 	delete self;
 }
 
+QMetaObject* miqt_GetQtMetaObject2() {
+
+	return (QMetaObject*) qt_getQtMetaObject();
+}
+

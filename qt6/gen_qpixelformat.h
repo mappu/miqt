@@ -50,6 +50,14 @@ unsigned char QPixelFormat_subEnum(const QPixelFormat* self);
 
 void QPixelFormat_delete(QPixelFormat* self);
 
+QPixelFormat* miqt_QPixelFormatRgba2(unsigned char red, unsigned char green, unsigned char blue, unsigned char alfa, int usage, int position, int pmul, int typeInt);
+QPixelFormat* miqt_QPixelFormatGrayscale2(unsigned char channelSize, int typeInt);
+QPixelFormat* miqt_QPixelFormatAlpha2(unsigned char channelSize, int typeInt);
+QPixelFormat* miqt_QPixelFormatCmyk2(unsigned char channelSize, unsigned char alfa, int usage, int position, int typeInt);
+QPixelFormat* miqt_QPixelFormatHsl2(unsigned char channelSize, unsigned char alfa, int usage, int position, int typeInt);
+QPixelFormat* miqt_QPixelFormatHsv2(unsigned char channelSize, unsigned char alfa, int usage, int position, int typeInt);
+QPixelFormat* miqt_QPixelFormatYuv2(int layout, unsigned char alfa, int usage, int position, int p_mul, int typeInt, int b_order);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

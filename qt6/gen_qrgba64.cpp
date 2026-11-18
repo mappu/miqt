@@ -129,3 +129,47 @@ void QRgba64_delete(QRgba64* self) {
 	delete self;
 }
 
+QRgba64* miqt_QRgba642(unsigned short r, unsigned short g, unsigned short b, unsigned short a) {
+
+	return new QRgba64(qRgba64(static_cast<quint16>(r), static_cast<quint16>(g), static_cast<quint16>(b), static_cast<quint16>(a)));
+}
+
+QRgba64* miqt_QRgba64WithQuint64(unsigned long long c) {
+
+	return new QRgba64(qRgba64(static_cast<quint64>(c)));
+}
+
+QRgba64* miqt_QPremultiplyWithQRgba64(QRgba64* c) {
+
+	return new QRgba64(qPremultiply(*c));
+}
+
+QRgba64* miqt_QUnpremultiplyWithQRgba64(QRgba64* c) {
+
+	return new QRgba64(qUnpremultiply(*c));
+}
+
+unsigned int miqt_QRed2(QRgba64* rgb) {
+
+	uint _ret = qRed(*rgb);
+	return static_cast<unsigned int>(_ret);
+}
+
+unsigned int miqt_QGreen2(QRgba64* rgb) {
+
+	uint _ret = qGreen(*rgb);
+	return static_cast<unsigned int>(_ret);
+}
+
+unsigned int miqt_QBlue2(QRgba64* rgb) {
+
+	uint _ret = qBlue(*rgb);
+	return static_cast<unsigned int>(_ret);
+}
+
+unsigned int miqt_QAlpha2(QRgba64* rgb) {
+
+	uint _ret = qAlpha(*rgb);
+	return static_cast<unsigned int>(_ret);
+}
+

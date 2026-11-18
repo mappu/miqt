@@ -98,6 +98,8 @@ int QByteArrayView_compare2(const QByteArrayView* self, QByteArrayView* a, int c
 
 void QByteArrayView_delete(QByteArrayView* self);
 
+unsigned short miqt_QChecksum3(const char* s, ptrdiff_t len, int standard);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -136,6 +136,8 @@ void QCoreApplication_connect_aboutToQuit(QCoreApplication* self, intptr_t slot)
 
 void QCoreApplication_delete(QCoreApplication* self);
 
+struct miqt_string miqt_QAppName2();
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -108,6 +108,8 @@ void QMatrix4x4_viewport4(QMatrix4x4* self, float left, float bottom, float widt
 
 void QMatrix4x4_delete(QMatrix4x4* self);
 
+bool miqt_QFuzzyCompare6(QMatrix4x4* m1, QMatrix4x4* m2);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

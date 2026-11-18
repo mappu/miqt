@@ -211,3 +211,49 @@ func (this *QRgba64) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QRgba642(r uint16, g uint16, b uint16, a uint16) *QRgba64 {
+	_goptr := newQRgba64(C.miqt_QRgba642((C.ushort)(r), (C.ushort)(g), (C.ushort)(b), (C.ushort)(a)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QRgba64WithQuint64(c uint64) *QRgba64 {
+	_goptr := newQRgba64(C.miqt_QRgba64WithQuint64((C.ulonglong)(c)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QPremultiplyWithQRgba64(c QRgba64) *QRgba64 {
+	defer runtime.KeepAlive(c)
+	_goptr := newQRgba64(C.miqt_QPremultiplyWithQRgba64(c.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QUnpremultiplyWithQRgba64(c QRgba64) *QRgba64 {
+	defer runtime.KeepAlive(c)
+	_goptr := newQRgba64(C.miqt_QUnpremultiplyWithQRgba64(c.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func QRed2(rgb QRgba64) uint {
+	defer runtime.KeepAlive(rgb)
+	return (uint)(C.miqt_QRed2(rgb.cPointer()))
+}
+
+func QGreen2(rgb QRgba64) uint {
+	defer runtime.KeepAlive(rgb)
+	return (uint)(C.miqt_QGreen2(rgb.cPointer()))
+}
+
+func QBlue2(rgb QRgba64) uint {
+	defer runtime.KeepAlive(rgb)
+	return (uint)(C.miqt_QBlue2(rgb.cPointer()))
+}
+
+func QAlpha2(rgb QRgba64) uint {
+	defer runtime.KeepAlive(rgb)
+	return (uint)(C.miqt_QAlpha2(rgb.cPointer()))
+}

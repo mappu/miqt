@@ -136,6 +136,8 @@ void QSignalBlocker_unblock(QSignalBlocker* self);
 
 void QSignalBlocker_delete(QSignalBlocker* self);
 
+QMetaObject* miqt_GetQtMetaObject2();
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -78,6 +78,8 @@ QMatrix* QMatrix_invertedWithInvertible(const QMatrix* self, bool* invertible);
 
 void QMatrix_delete(QMatrix* self);
 
+bool miqt_QFuzzyCompare5(QMatrix* m1, QMatrix* m2);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -268,3 +268,8 @@ void QWebSettings_enablePersistentStorageWithPath(struct miqt_string path) {
 	QWebSettings::enablePersistentStorage(path_QString);
 }
 
+void miqt_NetworkAccessAllowedWithIsAllowed(bool isAllowed) {
+
+	qt_networkAccessAllowed(isAllowed);
+}
+

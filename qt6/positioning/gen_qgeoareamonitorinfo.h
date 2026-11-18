@@ -47,6 +47,8 @@ void QGeoAreaMonitorInfo_detach(QGeoAreaMonitorInfo* self);
 
 void QGeoAreaMonitorInfo_delete(QGeoAreaMonitorInfo* self);
 
+char* miqt_QTest_ToStringWithInfo(QGeoAreaMonitorInfo* info);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -159,12 +159,23 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 
 	processHeaders := parseHeaders(includeFiles, clangBin, cflags, matcher)
 
+	// Collect names so we avoid collisions (cross-header and cross-type e.g. struct vs function collision)
+	for _, parsed := range processHeaders {
+		for _, c := range parsed.Classes {
+			KnownFunctionNames[c.ClassName] = struct{}{}
+		}
+		for _, fn := range parsed.Functions {
+			KnownFunctionNames[fn.goMethodName()] = struct{}{}
+		}
+	}
+
 	for _, parsed := range processHeaders {
 		// AST transforms on our IL
 		astTransformChildClasses(parsed)             // must be first
 		astTransformApplyQuirks(packageName, parsed) // must be before optional/overload expansion
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
+		astTransformOverloadFunctions(parsed, KnownFunctionNames)
 		astTransformConstructorOrder(packageName, parsed)
 		atr.Process(parsed)
 
@@ -183,6 +194,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 		// More AST transforms on our IL
 		astTransformTypedefs(parsed)
 		astTransformBlocklist(parsed) // Must happen after typedef transformation
+		astTransformBlocklistFunctions(parsed)
 
 		{
 			// Save the IL file for debug inspection

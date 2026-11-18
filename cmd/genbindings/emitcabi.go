@@ -35,7 +35,7 @@ func (p CppParameter) cParameterName() string {
 }
 
 func cabiCallbackName(c CppClass, m CppMethod) string {
-	return "miqt_exec_callback_" + cabiClassName(c.ClassName) + "_" + m.SafeMethodName()
+	return "miqt_exec_callback_" + cabiClassName(c.ClassName) + "_" + m.CabiMethodName()
 }
 
 func cabiNewName(c CppClass, i int) string {
@@ -51,23 +51,23 @@ func cabiVirtBaseName(c CppClass) string {
 }
 
 func cabiMethodName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_` + m.CabiMethodName()
 }
 
 func cabiConnectName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_connect_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_connect_` + m.CabiMethodName()
 }
 
 func cabiVirtualBaseName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_virtualbase_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_virtualbase_` + m.CabiMethodName()
 }
 
 func cabiProtectedBaseName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_protectedbase_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_protectedbase_` + m.CabiMethodName()
 }
 
 func cabiOverrideVirtualName(c CppClass, m CppMethod) string {
-	return cabiClassName(c.ClassName) + `_override_virtual_` + m.SafeMethodName()
+	return cabiClassName(c.ClassName) + `_override_virtual_` + m.CabiMethodName()
 }
 
 func cppSubclassName(c CppClass) string {
@@ -899,6 +899,14 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 		delete(foundTypes, td.Alias)
 	}
 
+	// Also scan free functions for referenced types
+	for _, fn := range src.Functions {
+		for _, p := range fn.Parameters {
+			maybeAddType(p)
+		}
+		maybeAddType(fn.ReturnType)
+	}
+
 	// Convert to sorted list
 	foundTypesList := make([]string, 0, len(foundTypes))
 	for ft := range foundTypes {
@@ -924,6 +932,10 @@ func cabiClassName(className string) string {
 
 	// Must use __ to avoid subclass/method name collision e.g. QPagedPaintDevice::Margins
 	return strings.Replace(className, `::`, `__`, -1)
+}
+
+func cabiFunctionName(fn CppFunction) string {
+	return "miqt_" + cabiClassName(fn.FunctionName)
 }
 
 func cabiPreventStructDeclaration(className string) bool {
@@ -1075,6 +1087,14 @@ extern "C" {
 		ret.WriteString("\n")
 	}
 
+	// Free functions
+	for _, fn := range src.Functions {
+		ret.WriteString(fmt.Sprintf("%s %s(%s);\n", fn.ReturnType.RenderTypeCabi(), cabiFunctionName(fn), emitParametersCabiFunction(&fn)))
+	}
+	if len(src.Functions) > 0 {
+		ret.WriteString("\n")
+	}
+
 	ret.WriteString(
 		`#ifdef __cplusplus
 } /* extern C */
@@ -1083,6 +1103,16 @@ extern "C" {
 #endif
 `)
 	return ret.String(), nil
+}
+
+func emitParametersCabiFunction(fn *CppFunction) string {
+
+	slist := make([]string, 0, len(fn.Parameters))
+	for _, p := range fn.Parameters {
+		slist = append(slist, p.RenderTypeCabi()+" "+p.cParameterName())
+	}
+
+	return strings.Join(slist, `, `)
 }
 
 func emitParametersCabiConstructor(c *CppClass, ctor *CppMethod) string {
@@ -1234,7 +1264,7 @@ extern "C" {
 							// stores QsciLexer::wordCharacters()), so it must outlive this
 							// call. Copy the malloc'd C string into storage owned by this
 							// object, free it, and return the stored copy instead.
-							storageVarname := "cstrings__" + m.SafeMethodName()
+							storageVarname := "cstrings__" + m.CabiMethodName()
 							ret.WriteString(
 								"\t// Storage for the strings returned by the Go implementation\n" +
 									"\tmutable std::set<std::string> " + storageVarname + ";\n" +
@@ -1254,7 +1284,7 @@ extern "C" {
 						}
 					}
 
-					handleVarname := "handle__" + m.SafeMethodName()
+					handleVarname := "handle__" + m.CabiMethodName()
 
 					ret.WriteString(
 						"\t// cgo.Handle value for overwritten implementation\n" +
@@ -1456,7 +1486,7 @@ extern "C" {
 						"#endif\n"+
 						"}\n"+
 						"\n",
-					m.ReturnType.RenderTypeCabi(), className, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
+					m.ReturnType.RenderTypeCabi(), className, m.CabiMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
 					unavailableRetn,
@@ -1467,7 +1497,7 @@ extern "C" {
 				nonConstCallTarget := "const_cast<" + c.ClassName + "*>(self)->" + m.CppCallTarget() + "(" + forwarding + ")"
 
 				ret.WriteString("" +
-					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
+					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.CabiMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
 					preamble + "\n" +
 					"// This method was changed from const to non-const in Qt " + *m.BecomesNonConstInVersion + "\n" +
 					"#if QT_VERSION < QT_VERSION_CHECK(" + strings.Replace(*m.BecomesNonConstInVersion, `.`, `,`, -1) + ",0)\n" +
@@ -1484,9 +1514,9 @@ extern "C" {
 				ret.WriteString("" +
 					"// This method's return type was changed from non-const to const in Qt " + *m.ReturnType.BecomesConstInVersion + "\n" +
 					"#if QT_VERSION >= QT_VERSION_CHECK(" + strings.Replace(*m.ReturnType.BecomesConstInVersion, `.`, `,`, -1) + ",0)\n" +
-					"const " + m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
+					"const " + m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.CabiMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
 					"#else\n" +
-					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
+					m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.CabiMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n" +
 					"#endif\n" +
 					preamble + "\n" +
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget) +
@@ -1496,7 +1526,7 @@ extern "C" {
 			} else {
 
 				if m.IsVariable {
-					ret.WriteString(m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n")
+					ret.WriteString(m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.CabiMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n")
 					if strings.HasPrefix(m.MethodName, "set") {
 						ret.WriteString(preamble + "\tself->" + m.VariableFieldName + " = " + forwarding + ";\n}\n\n")
 					} else {
@@ -1511,7 +1541,7 @@ extern "C" {
 						"%s"+
 						"}\n"+
 						"\n",
-					m.ReturnType.RenderTypeCabi(), className, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
+					m.ReturnType.RenderTypeCabi(), className, m.CabiMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
 				))
@@ -1601,7 +1631,7 @@ extern "C" {
 						"\t\treturn false;\n" +
 						"\t}\n" +
 						"\n" +
-						"\tself_cast->handle__" + m.SafeMethodName() + " = slot;\n" +
+						"\tself_cast->handle__" + m.CabiMethodName() + " = slot;\n" +
 						"\treturn true;\n" +
 						"}\n" +
 						"\n",
@@ -1702,6 +1732,40 @@ extern "C" {
 					"\n",
 			)
 		}
+	}
+
+	// Free function implementations
+	for _, fn := range src.Functions {
+
+		if fn.RequireCpp != nil {
+			ret.WriteString(
+				"#if " + *fn.RequireCpp + "\n",
+			)
+		}
+
+		preamble, forwarding := emitParametersCABI2CppForwarding(fn.Parameters, "\t")
+
+		ret.WriteString(
+			fn.ReturnType.RenderTypeCabi() + " " + cabiFunctionName(fn) + "(" + emitParametersCabiFunction(&fn) + ") {\n",
+		)
+
+		ret.WriteString(preamble + "\n")
+
+		// Forward to the actual Qt free function
+		callTarget := fn.CppCallTarget() + "(" + forwarding + ")"
+		ret.WriteString(emitAssignCppToCabi("\treturn ", fn.ReturnType, callTarget))
+
+		ret.WriteString("}\n")
+
+		if fn.RequireCpp != nil {
+			ret.WriteString(
+				"#else\n" +
+					"\treturn " + getCabiZeroValue(fn.ReturnType) + ";\n" +
+					"#endif\n",
+			)
+		}
+
+		ret.WriteString("\n")
 	}
 
 	//

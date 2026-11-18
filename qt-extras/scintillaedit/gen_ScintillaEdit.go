@@ -15113,3 +15113,140 @@ func (this *ScintillaEdit) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func Scintilla__Internal__Platform__DebugDisplayWithChar(s string) {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	C.miqt_Scintilla__Internal__Platform__DebugDisplayWithChar(s_Cstring)
+}
+
+func Scintilla__Internal__Platform__ShowAssertionPopUpsWithAssertionPopUps_(assertionPopUps_ bool) bool {
+	return (bool)(C.miqt_Scintilla__Internal__Platform__ShowAssertionPopUpsWithAssertionPopUps_((C.bool)(assertionPopUps_)))
+}
+
+func Scintilla__Internal__Platform__Assert2(c string, file string, line int) {
+	c_Cstring := C.CString(c)
+	defer C.free(unsafe.Pointer(c_Cstring))
+	file_Cstring := C.CString(file)
+	defer C.free(unsafe.Pointer(file_Cstring))
+	C.miqt_Scintilla__Internal__Platform__Assert2(c_Cstring, file_Cstring, (C.int)(line))
+}
+
+func Scintilla__Internal__Clamp2(rc Scintilla__Internal__PRectangle, edge Scintilla__Internal__Edge, position float64) *Scintilla__Internal__PRectangle {
+	defer runtime.KeepAlive(rc)
+	_goptr := newScintilla__Internal__PRectangle(C.miqt_Scintilla__Internal__Clamp2(rc.cPointer(), (C.int)(edge), (C.double)(position)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__Internal__Side2(rc Scintilla__Internal__PRectangle, edge Scintilla__Internal__Edge, size float64) *Scintilla__Internal__PRectangle {
+	defer runtime.KeepAlive(rc)
+	_goptr := newScintilla__Internal__PRectangle(C.miqt_Scintilla__Internal__Side2(rc.cPointer(), (C.int)(edge), (C.double)(size)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__Internal__Intersection2(a Scintilla__Internal__Interval, b Scintilla__Internal__Interval) *Scintilla__Internal__Interval {
+	defer runtime.KeepAlive(a)
+	defer runtime.KeepAlive(b)
+	_goptr := newScintilla__Internal__Interval(C.miqt_Scintilla__Internal__Intersection2(a.cPointer(), b.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__Internal__Intersection3(rc Scintilla__Internal__PRectangle, horizontalBounds Scintilla__Internal__Interval) *Scintilla__Internal__PRectangle {
+	defer runtime.KeepAlive(rc)
+	defer runtime.KeepAlive(horizontalBounds)
+	_goptr := newScintilla__Internal__PRectangle(C.miqt_Scintilla__Internal__Intersection3(rc.cPointer(), horizontalBounds.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__Internal__HorizontalBoundsWithRc(rc Scintilla__Internal__PRectangle) *Scintilla__Internal__Interval {
+	defer runtime.KeepAlive(rc)
+	_goptr := newScintilla__Internal__Interval(C.miqt_Scintilla__Internal__HorizontalBoundsWithRc(rc.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__Internal__PixelAlign2(xy float64, pixelDivisions int) float64 {
+	return (float64)(C.miqt_Scintilla__Internal__PixelAlign2((C.double)(xy), (C.int)(pixelDivisions)))
+}
+
+func Scintilla__Internal__PixelAlignFloor2(xy float64, pixelDivisions int) float64 {
+	return (float64)(C.miqt_Scintilla__Internal__PixelAlignFloor2((C.double)(xy), (C.int)(pixelDivisions)))
+}
+
+func Scintilla__Internal__PixelAlignCeil2(xy float64, pixelDivisions int) float64 {
+	return (float64)(C.miqt_Scintilla__Internal__PixelAlignCeil2((C.double)(xy), (C.int)(pixelDivisions)))
+}
+
+func Scintilla__Internal__PixelAlign3(pt *Scintilla__Internal__Point, pixelDivisions int) *Scintilla__Internal__Point {
+	defer runtime.KeepAlive(pt)
+	_goptr := newScintilla__Internal__Point(C.miqt_Scintilla__Internal__PixelAlign3(pt.cPointer(), (C.int)(pixelDivisions)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__Internal__PixelAlign4(rc *Scintilla__Internal__PRectangle, pixelDivisions int) *Scintilla__Internal__PRectangle {
+	defer runtime.KeepAlive(rc)
+	_goptr := newScintilla__Internal__PRectangle(C.miqt_Scintilla__Internal__PixelAlign4(rc.cPointer(), (C.int)(pixelDivisions)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__Internal__PixelAlignOutside2(rc *Scintilla__Internal__PRectangle, pixelDivisions int) *Scintilla__Internal__PRectangle {
+	defer runtime.KeepAlive(rc)
+	_goptr := newScintilla__Internal__PRectangle(C.miqt_Scintilla__Internal__PixelAlignOutside2(rc.cPointer(), (C.int)(pixelDivisions)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__LevelNumberPartWithLevel(level Scintilla__FoldLevel) Scintilla__FoldLevel {
+	return (Scintilla__FoldLevel)(C.miqt_Scintilla__LevelNumberPartWithLevel((C.int)(level)))
+}
+
+func Scintilla__LevelNumberWithLevel(level Scintilla__FoldLevel) int {
+	return (int)(C.miqt_Scintilla__LevelNumberWithLevel((C.int)(level)))
+}
+
+func Scintilla__LevelIsHeaderWithLevel(level Scintilla__FoldLevel) bool {
+	return (bool)(C.miqt_Scintilla__LevelIsHeaderWithLevel((C.int)(level)))
+}
+
+func Scintilla__LevelIsWhitespaceWithLevel(level Scintilla__FoldLevel) bool {
+	return (bool)(C.miqt_Scintilla__LevelIsWhitespaceWithLevel((C.int)(level)))
+}
+
+func Scintilla__ModifierFlags2(shift bool, ctrl bool, alt bool, meta bool, superVal bool) Scintilla__KeyMod {
+	return (Scintilla__KeyMod)(C.miqt_Scintilla__ModifierFlags2((C.bool)(shift), (C.bool)(ctrl), (C.bool)(alt), (C.bool)(meta), (C.bool)(superVal)))
+}
+
+func Scintilla__Internal__Platform__Chrome2() *Scintilla__Internal__ColourRGBA {
+	_goptr := newScintilla__Internal__ColourRGBA(C.miqt_Scintilla__Internal__Platform__Chrome2())
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__Internal__Platform__ChromeHighlight2() *Scintilla__Internal__ColourRGBA {
+	_goptr := newScintilla__Internal__ColourRGBA(C.miqt_Scintilla__Internal__Platform__ChromeHighlight2())
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func Scintilla__Internal__Platform__DefaultFont2() string {
+	_ret := C.miqt_Scintilla__Internal__Platform__DefaultFont2()
+	return C.GoString(_ret)
+}
+
+func Scintilla__Internal__Platform__DefaultFontSize2() int {
+	return (int)(C.miqt_Scintilla__Internal__Platform__DefaultFontSize2())
+}
+
+func Scintilla__Internal__Platform__DoubleClickTime2() uint {
+	return (uint)(C.miqt_Scintilla__Internal__Platform__DoubleClickTime2())
+}
+
+func Scintilla__Internal__Platform__LongFromTwoShorts2(a int16, b int16) int64 {
+	return (int64)(C.miqt_Scintilla__Internal__Platform__LongFromTwoShorts2((C.short)(a), (C.short)(b)))
+}

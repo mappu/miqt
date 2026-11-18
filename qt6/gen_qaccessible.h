@@ -318,6 +318,10 @@ QAccessibleInterface* QAccessibleTableModelChangeEvent_virtualbase_accessibleInt
 
 void QAccessibleTableModelChangeEvent_delete(QAccessibleTableModelChangeEvent* self);
 
+const char* miqt_QAccessibleRoleStringWithRole(int role);
+const char* miqt_QAccessibleEventStringWithEvent(int event);
+struct miqt_string miqt_QAccessibleLocalizedActionDescriptionWithActionName(struct miqt_string actionName);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

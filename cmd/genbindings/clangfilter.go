@@ -45,6 +45,11 @@ func parseInner(ctx *ParseCtx, kind string) bool {
 	case "CXXConstructorDecl", "CXXMethodDecl", "CXXConversionDecl":
 		// Parameters, return type - skip when it's outside of a class declaration
 		return ctx.stack[len(ctx.stack)-1].Kind == "CXXRecordDecl"
+	case "FunctionDecl":
+		// Only parse free functions at top level (not methods inside classes)
+		// TODO is there anything else interesting in there?
+		parent := ctx.stack[len(ctx.stack)-1]
+		return parent.Kind == "TranslationUnitDecl" || parent.Kind == "NamespaceDecl"
 	case "CXXDestructorDecl":
 		return false
 	case "ParmVarDecl": // Parameter defaults
@@ -53,7 +58,7 @@ func parseInner(ctx *ParseCtx, kind string) bool {
 		return false
 	case "CompoundStmt", "CXXCtorInitializer": // Bodies
 		return false
-	case "LinkageSpecDecl", "FunctionDecl", "AccessSpecDecl", "VarDecl",
+	case "LinkageSpecDecl", "AccessSpecDecl", "VarDecl",
 		"FileScopeAsmDecl", "FriendDecl", "UsingShadowDecl", "UsingDecl",
 		"StaticAssertDecl", "ElaboratedType", "FullComment", "ParagraphComment",
 		"EmptyDecl", "IndirectFieldDecl", "FieldDecl":
@@ -92,7 +97,7 @@ func keepField(ctx *ParseCtx, kind, field string, val interface{}) bool {
 	case "loc":
 		switch kind {
 		case "TranslationUnitDecl", "NamespaceDecl", "CXXRecordDecl", "EnumDecl",
-			"TypeAliasDecl", "TypedefDecl":
+			"TypeAliasDecl", "TypedefDecl", "FunctionDecl":
 			// only needed in parseHeader
 			return true
 		case "AccessSpecDecl":
@@ -145,10 +150,12 @@ func keepInner(ctx *ParseCtx, parentKind string, child *AstNode) bool {
 		// we would need to link a concrete instantiation for each type in
 		// the CABI
 		"FileScopeAsmDecl",
-		"FunctionDecl",
 		"FriendDecl", // TODO
 		"ElaboratedType":
 		return false
+	case "FunctionDecl":
+		// Allow top-level free functions (not inside a class)
+		return parentKind == "TranslationUnitDecl" || parentKind == "NamespaceDecl"
 	case "VarDecl", "FieldDecl", "IndirectFieldDecl":
 		// TODO e.g. qmath.h
 		// We could probably generate setter/getter for this in the CABI

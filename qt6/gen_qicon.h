@@ -102,6 +102,8 @@ struct miqt_array /* of QSize* */  QIcon_availableSizes2(const QIcon* self, int 
 
 void QIcon_delete(QIcon* self);
 
+struct miqt_string miqt_FindAtNxFile2(struct miqt_string baseFileName, double targetDevicePixelRatio, double* sourceDevicePixelRatio);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

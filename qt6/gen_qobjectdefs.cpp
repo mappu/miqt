@@ -608,3 +608,8 @@ void QMetaObject__Data_delete(QMetaObject__Data* self) {
 	delete self;
 }
 
+const char* miqt_QFlagLocationWithMethod(const char* method) {
+
+	return (const char*) qFlagLocation(method);
+}
+

@@ -58,6 +58,9 @@ QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint
 
 void QTest__QTouchEventWidgetSequence_delete(QTest__QTouchEventWidgetSequence* self);
 
+bool miqt_QTest_QWaitForWindowActive3(QWidget* widget, int timeout);
+bool miqt_QTest_QWaitForWindowExposed3(QWidget* widget, int timeout);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -76,3 +76,8 @@ void QGeoSatelliteInfo_delete(QGeoSatelliteInfo* self) {
 	delete self;
 }
 
+char* miqt_QTest_ToString3(QGeoSatelliteInfo* info) {
+
+	return QTest::toString(*info);
+}
+

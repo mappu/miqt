@@ -479,3 +479,9 @@ func (this *QByteArrayView) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QChecksum3(s string, lenVal int64, standard ChecksumType) uint16 {
+	s_Cstring := C.CString(s)
+	defer C.free(unsafe.Pointer(s_Cstring))
+	return (uint16)(C.miqt_QChecksum3(s_Cstring, (C.ptrdiff_t)(lenVal), (C.int)(standard)))
+}

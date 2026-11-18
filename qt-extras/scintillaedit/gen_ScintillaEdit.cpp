@@ -10770,3 +10770,133 @@ void ScintillaEdit_delete(ScintillaEdit* self) {
 	delete self;
 }
 
+void miqt_Scintilla__Internal__Platform__DebugDisplayWithChar(const char* s) {
+
+	Scintilla::Internal::Platform::DebugDisplay(s);
+}
+
+bool miqt_Scintilla__Internal__Platform__ShowAssertionPopUpsWithAssertionPopUps_(bool assertionPopUps_) {
+
+	return Scintilla::Internal::Platform::ShowAssertionPopUps(assertionPopUps_);
+}
+
+void miqt_Scintilla__Internal__Platform__Assert2(const char* c, const char* file, int line) {
+
+	Scintilla::Internal::Platform::Assert(c, file, static_cast<int>(line));
+}
+
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__Clamp2(Scintilla__Internal__PRectangle* rc, int edge, double position) {
+
+	return new Scintilla::Internal::PRectangle(Scintilla::Internal::Clamp(*rc, static_cast<Scintilla::Internal::Edge>(edge), static_cast<Scintilla::Internal::XYPOSITION>(position)));
+}
+
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__Side2(Scintilla__Internal__PRectangle* rc, int edge, double size) {
+
+	return new Scintilla::Internal::PRectangle(Scintilla::Internal::Side(*rc, static_cast<Scintilla::Internal::Edge>(edge), static_cast<Scintilla::Internal::XYPOSITION>(size)));
+}
+
+Scintilla__Internal__Interval* miqt_Scintilla__Internal__Intersection2(Scintilla__Internal__Interval* a, Scintilla__Internal__Interval* b) {
+
+	return new Scintilla::Internal::Interval(Scintilla::Internal::Intersection(*a, *b));
+}
+
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__Intersection3(Scintilla__Internal__PRectangle* rc, Scintilla__Internal__Interval* horizontalBounds) {
+
+	return new Scintilla::Internal::PRectangle(Scintilla::Internal::Intersection(*rc, *horizontalBounds));
+}
+
+Scintilla__Internal__Interval* miqt_Scintilla__Internal__HorizontalBoundsWithRc(Scintilla__Internal__PRectangle* rc) {
+
+	return new Scintilla::Internal::Interval(Scintilla::Internal::HorizontalBounds(*rc));
+}
+
+double miqt_Scintilla__Internal__PixelAlign2(double xy, int pixelDivisions) {
+
+	Scintilla::Internal::XYPOSITION _ret = Scintilla::Internal::PixelAlign(static_cast<Scintilla::Internal::XYPOSITION>(xy), static_cast<int>(pixelDivisions));
+	return static_cast<double>(_ret);
+}
+
+double miqt_Scintilla__Internal__PixelAlignFloor2(double xy, int pixelDivisions) {
+
+	Scintilla::Internal::XYPOSITION _ret = Scintilla::Internal::PixelAlignFloor(static_cast<Scintilla::Internal::XYPOSITION>(xy), static_cast<int>(pixelDivisions));
+	return static_cast<double>(_ret);
+}
+
+double miqt_Scintilla__Internal__PixelAlignCeil2(double xy, int pixelDivisions) {
+
+	Scintilla::Internal::XYPOSITION _ret = Scintilla::Internal::PixelAlignCeil(static_cast<Scintilla::Internal::XYPOSITION>(xy), static_cast<int>(pixelDivisions));
+	return static_cast<double>(_ret);
+}
+
+Scintilla__Internal__Point* miqt_Scintilla__Internal__PixelAlign3(Scintilla__Internal__Point* pt, int pixelDivisions) {
+
+	return new Scintilla::Internal::Point(Scintilla::Internal::PixelAlign(*pt, static_cast<int>(pixelDivisions)));
+}
+
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__PixelAlign4(Scintilla__Internal__PRectangle* rc, int pixelDivisions) {
+
+	return new Scintilla::Internal::PRectangle(Scintilla::Internal::PixelAlign(*rc, static_cast<int>(pixelDivisions)));
+}
+
+Scintilla__Internal__PRectangle* miqt_Scintilla__Internal__PixelAlignOutside2(Scintilla__Internal__PRectangle* rc, int pixelDivisions) {
+
+	return new Scintilla::Internal::PRectangle(Scintilla::Internal::PixelAlignOutside(*rc, static_cast<int>(pixelDivisions)));
+}
+
+int miqt_Scintilla__LevelNumberPartWithLevel(int level) {
+
+	Scintilla::FoldLevel _ret = Scintilla::LevelNumberPart(static_cast<Scintilla::FoldLevel>(level));
+	return static_cast<int>(_ret);
+}
+
+int miqt_Scintilla__LevelNumberWithLevel(int level) {
+
+	return Scintilla::LevelNumber(static_cast<Scintilla::FoldLevel>(level));
+}
+
+bool miqt_Scintilla__LevelIsHeaderWithLevel(int level) {
+
+	return Scintilla::LevelIsHeader(static_cast<Scintilla::FoldLevel>(level));
+}
+
+bool miqt_Scintilla__LevelIsWhitespaceWithLevel(int level) {
+
+	return Scintilla::LevelIsWhitespace(static_cast<Scintilla::FoldLevel>(level));
+}
+
+int miqt_Scintilla__ModifierFlags2(bool shift, bool ctrl, bool alt, bool meta, bool super) {
+
+	Scintilla::KeyMod _ret = Scintilla::ModifierFlags(shift, ctrl, alt, meta, super);
+	return static_cast<int>(_ret);
+}
+
+Scintilla__Internal__ColourRGBA* miqt_Scintilla__Internal__Platform__Chrome2() {
+
+	return new Scintilla::Internal::ColourRGBA(Scintilla::Internal::Platform::Chrome());
+}
+
+Scintilla__Internal__ColourRGBA* miqt_Scintilla__Internal__Platform__ChromeHighlight2() {
+
+	return new Scintilla::Internal::ColourRGBA(Scintilla::Internal::Platform::ChromeHighlight());
+}
+
+const char* miqt_Scintilla__Internal__Platform__DefaultFont2() {
+
+	return (const char*) Scintilla::Internal::Platform::DefaultFont();
+}
+
+int miqt_Scintilla__Internal__Platform__DefaultFontSize2() {
+
+	return Scintilla::Internal::Platform::DefaultFontSize();
+}
+
+unsigned int miqt_Scintilla__Internal__Platform__DoubleClickTime2() {
+
+	return Scintilla::Internal::Platform::DoubleClickTime();
+}
+
+long miqt_Scintilla__Internal__Platform__LongFromTwoShorts2(short a, short b) {
+
+	return Scintilla::Internal::Platform::LongFromTwoShorts(static_cast<short>(a), static_cast<short>(b));
+}
+

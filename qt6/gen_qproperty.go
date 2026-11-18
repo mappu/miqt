@@ -716,3 +716,11 @@ func (this *QUntypedBindable) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func BeginPropertyUpdateGroup2() {
+	C.miqt_BeginPropertyUpdateGroup2()
+}
+
+func EndPropertyUpdateGroup2() {
+	C.miqt_EndPropertyUpdateGroup2()
+}

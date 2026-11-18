@@ -83,3 +83,41 @@ func astTransformBlocklist(parsed *CppParsedHeader) {
 
 	}
 }
+
+// astTransformBlocklistFunctions filters out free functions using disallowed types.
+func astTransformBlocklistFunctions(parsed *CppParsedHeader) {
+
+	j := 0
+nextFunction:
+	for _, fn := range parsed.Functions {
+		if !AllowFunction(fn) {
+			log.Printf("Blocking function %q(%v): not allowed", fn.FunctionName, fn.Parameters)
+			continue nextFunction
+		}
+
+		if err := blocklist_FunctionAllowed(&fn); err != nil {
+			log.Printf("Blocking function %q(%v): %s", fn.FunctionName, fn.Parameters, err)
+			continue nextFunction
+		}
+
+		// Keep
+		parsed.Functions[j] = fn
+		j++
+	}
+	parsed.Functions = parsed.Functions[:j] // reslice
+}
+
+func blocklist_FunctionAllowed(fn *CppFunction) error {
+	if err := AllowType(fn.ReturnType, true); err != nil {
+		return err
+	}
+
+	for _, p := range fn.Parameters {
+		if err := AllowType(p, false); err != nil {
+			return err
+		}
+	}
+
+	// Nothing was blocked
+	return nil
+}

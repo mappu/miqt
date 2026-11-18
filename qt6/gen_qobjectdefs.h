@@ -207,6 +207,8 @@ void QMetaObject__Data_operatorAssign(QMetaObject__Data* self, QMetaObject__Data
 
 void QMetaObject__Data_delete(QMetaObject__Data* self);
 
+const char* miqt_QFlagLocationWithMethod(const char* method);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

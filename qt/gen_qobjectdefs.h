@@ -179,6 +179,8 @@ void QMetaObject__SuperData_operatorAssign(QMetaObject__SuperData* self, QMetaOb
 
 void QMetaObject__SuperData_delete(QMetaObject__SuperData* self);
 
+const char* miqt_QFlagLocationWithMethod(const char* method);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

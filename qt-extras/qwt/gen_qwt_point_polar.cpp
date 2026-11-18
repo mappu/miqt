@@ -1,3 +1,4 @@
+#include <QPoint>
 #include <QPointF>
 #include <qwt_point_polar.h>
 #include "gen_qwt_point_polar.h"
@@ -72,5 +73,40 @@ QwtPointPolar* QwtPointPolar_normalized(const QwtPointPolar* self) {
 
 void QwtPointPolar_delete(QwtPointPolar* self) {
 	delete self;
+}
+
+QPoint* miqt_QwtPolar2Pos2(QPoint* pole, double radius, double angle) {
+
+	return new QPoint(qwtPolar2Pos(*pole, static_cast<double>(radius), static_cast<double>(angle)));
+}
+
+QPoint* miqt_QwtDegree2Pos2(QPoint* pole, double radius, double angle) {
+
+	return new QPoint(qwtDegree2Pos(*pole, static_cast<double>(radius), static_cast<double>(angle)));
+}
+
+QPointF* miqt_QwtPolar2Pos3(QPointF* pole, double radius, double angle) {
+
+	return new QPointF(qwtPolar2Pos(*pole, static_cast<double>(radius), static_cast<double>(angle)));
+}
+
+QPointF* miqt_QwtDegree2Pos3(QPointF* pole, double radius, double angle) {
+
+	return new QPointF(qwtDegree2Pos(*pole, static_cast<double>(radius), static_cast<double>(angle)));
+}
+
+QPointF* miqt_QwtFastPolar2Pos2(QPointF* pole, double radius, double angle) {
+
+	return new QPointF(qwtFastPolar2Pos(*pole, static_cast<double>(radius), static_cast<double>(angle)));
+}
+
+QPointF* miqt_QwtFastDegree2Pos2(QPointF* pole, double radius, double angle) {
+
+	return new QPointF(qwtFastDegree2Pos(*pole, static_cast<double>(radius), static_cast<double>(angle)));
+}
+
+QwtPointPolar* miqt_QwtFastPos2PolarWithPos(QPointF* pos) {
+
+	return new QwtPointPolar(qwtFastPos2Polar(*pos));
 }
 

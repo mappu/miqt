@@ -307,3 +307,9 @@ func (this *QMatrix) GoGC() {
 	})
 	this.miqtSetGC(gc)
 }
+
+func QFuzzyCompare5(m1 *QMatrix, m2 *QMatrix) bool {
+	defer runtime.KeepAlive(m1)
+	defer runtime.KeepAlive(m2)
+	return (bool)(C.miqt_QFuzzyCompare5(m1.cPointer(), m2.cPointer()))
+}

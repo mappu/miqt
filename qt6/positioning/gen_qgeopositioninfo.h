@@ -42,6 +42,8 @@ void QGeoPositionInfo_detach(QGeoPositionInfo* self);
 
 void QGeoPositionInfo_delete(QGeoPositionInfo* self);
 
+char* miqt_QTest_ToString2(QGeoPositionInfo* info);
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
