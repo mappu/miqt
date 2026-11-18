@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -211,10 +212,14 @@ func filterAst(in io.Reader) (*AstNode, error) {
 }
 
 func writeCache(ast *AstNode, inputHeader string) {
+	// Create parent directory for the cache file (handles versioned subdir like qt5.15/)
+	astPath := filteredAstPath(inputHeader)
+	if err := os.MkdirAll(filepath.Dir(astPath), 0755); err != nil {
+		panic("could not create cache directory for " + inputHeader + ": " + err.Error())
+	}
 	// Write a compressed version of the AST to disk - the AST is generally
 	// highly redundant a compresses by a factor of 10-20x - the typical Qt file
 	// is 5-10MB and compresses to ~300-600kB
-	astPath := filteredAstPath(inputHeader)
 	compressedFile, err := os.Create(astPath)
 	if err != nil {
 		panic("could not create filtered AST cache for " + inputHeader + ": " + err.Error())
@@ -261,22 +266,22 @@ func readCache(inputHeader string) (*AstNode, error) {
 // Get or create the filtered AST from either the given input header or a version
 // When changing this function, make sure to clear the on-disk cache:
 // rm -rf cachedir/*.filtered.json.gz
-func getFilteredAst(inputHeader, clangBin string, cflags []string) *AstNode {
+func getFilteredAst(inputHeader, clangBin string, cflags []string) (*AstNode, error) {
 	ast, err := readCache(inputHeader)
 	if err != nil {
 		if !os.IsNotExist(err) {
-			panic("could not open filtered AST cache for " + inputHeader + ": " + err.Error())
+			return nil, fmt.Errorf("could not read filtered AST cache for %s: %w", inputHeader, err)
 		}
 
 		// If the file does not exist, we need to create it
 		// First, we need to create the AST cache
 		ast, err = clangExec(clangBin, inputHeader, cflags)
 		if err != nil {
-			panic("could not create AST cache for " + inputHeader + ": " + err.Error())
+			return nil, fmt.Errorf("could not parse clang AST for %s: %w", inputHeader, err)
 		}
 
 		writeCache(ast, inputHeader)
 	}
 
-	return ast
+	return ast, nil
 }
