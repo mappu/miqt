@@ -157,10 +157,7 @@ func (this *QDesignerPropertySheetExtension) IsEnabled(index int) bool {
 	return (bool)(C.QDesignerPropertySheetExtension_isEnabled(this.h, (C.int)(index)))
 }
 func (this *QDesignerPropertySheetExtension) OnCount(slot func() int) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_count
@@ -176,10 +173,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_count(self *C.QDesignerP
 
 }
 func (this *QDesignerPropertySheetExtension) OnIndexOf(slot func(name string) int) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_indexOf(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_indexOf(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_indexOf
@@ -201,10 +195,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_indexOf(self *C.QDesigne
 
 }
 func (this *QDesignerPropertySheetExtension) OnPropertyName(slot func(index int) string) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_propertyName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_propertyName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_propertyName
@@ -226,10 +217,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_propertyName(self *C.QDe
 
 }
 func (this *QDesignerPropertySheetExtension) OnPropertyGroup(slot func(index int) string) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_propertyGroup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_propertyGroup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_propertyGroup
@@ -251,10 +239,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_propertyGroup(self *C.QD
 
 }
 func (this *QDesignerPropertySheetExtension) OnSetPropertyGroup(slot func(index int, group string)) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_setPropertyGroup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_setPropertyGroup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_setPropertyGroup
@@ -276,10 +261,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_setPropertyGroup(self *C
 
 }
 func (this *QDesignerPropertySheetExtension) OnHasReset(slot func(index int) bool) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_hasReset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_hasReset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_hasReset
@@ -298,10 +280,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_hasReset(self *C.QDesign
 
 }
 func (this *QDesignerPropertySheetExtension) OnReset(slot func(index int) bool) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_reset
@@ -320,10 +299,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_reset(self *C.QDesignerP
 
 }
 func (this *QDesignerPropertySheetExtension) OnIsVisible(slot func(index int) bool) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_isVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_isVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_isVisible
@@ -342,10 +318,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_isVisible(self *C.QDesig
 
 }
 func (this *QDesignerPropertySheetExtension) OnSetVisible(slot func(index int, b bool)) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_setVisible
@@ -364,10 +337,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_setVisible(self *C.QDesi
 
 }
 func (this *QDesignerPropertySheetExtension) OnIsAttribute(slot func(index int) bool) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_isAttribute(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_isAttribute(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_isAttribute
@@ -386,10 +356,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_isAttribute(self *C.QDes
 
 }
 func (this *QDesignerPropertySheetExtension) OnSetAttribute(slot func(index int, b bool)) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_setAttribute(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_setAttribute(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_setAttribute
@@ -408,10 +375,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_setAttribute(self *C.QDe
 
 }
 func (this *QDesignerPropertySheetExtension) OnProperty(slot func(index int) *qt6.QVariant) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_property(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_property(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_property
@@ -431,10 +395,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_property(self *C.QDesign
 
 }
 func (this *QDesignerPropertySheetExtension) OnSetProperty(slot func(index int, value *qt6.QVariant)) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_setProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_setProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_setProperty
@@ -453,10 +414,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_setProperty(self *C.QDes
 
 }
 func (this *QDesignerPropertySheetExtension) OnIsChanged(slot func(index int) bool) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_isChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_isChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_isChanged
@@ -475,10 +433,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_isChanged(self *C.QDesig
 
 }
 func (this *QDesignerPropertySheetExtension) OnSetChanged(slot func(index int, changed bool)) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_setChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_setChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_setChanged
@@ -497,10 +452,7 @@ func miqt_exec_callback_QDesignerPropertySheetExtension_setChanged(self *C.QDesi
 
 }
 func (this *QDesignerPropertySheetExtension) OnIsEnabled(slot func(index int) bool) {
-	ok := C.QDesignerPropertySheetExtension_override_virtual_isEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerPropertySheetExtension_override_virtual_isEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerPropertySheetExtension_isEnabled

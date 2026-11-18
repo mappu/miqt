@@ -280,10 +280,7 @@ func miqt_exec_callback_QGraphicsLayout_widgetEvent(self *C.QGraphicsLayout, cb 
 
 }
 func (this *QGraphicsLayout) OnCount(slot func() int) {
-	ok := C.QGraphicsLayout_override_virtual_count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsLayout_override_virtual_count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLayout_count
@@ -299,10 +296,7 @@ func miqt_exec_callback_QGraphicsLayout_count(self *C.QGraphicsLayout, cb C.intp
 
 }
 func (this *QGraphicsLayout) OnItemAt(slot func(i int) *QGraphicsLayoutItem) {
-	ok := C.QGraphicsLayout_override_virtual_itemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsLayout_override_virtual_itemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLayout_itemAt
@@ -322,10 +316,7 @@ func miqt_exec_callback_QGraphicsLayout_itemAt(self *C.QGraphicsLayout, cb C.int
 
 }
 func (this *QGraphicsLayout) OnRemoveAt(slot func(index int)) {
-	ok := C.QGraphicsLayout_override_virtual_removeAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsLayout_override_virtual_removeAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLayout_removeAt
@@ -396,10 +387,7 @@ func miqt_exec_callback_QGraphicsLayout_isEmpty(self *C.QGraphicsLayout, cb C.in
 
 }
 func (this *QGraphicsLayout) OnSizeHint(slot func(which SizeHint, constraint *QSizeF) *QSizeF) {
-	ok := C.QGraphicsLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLayout_sizeHint

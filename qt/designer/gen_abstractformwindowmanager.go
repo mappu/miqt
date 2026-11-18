@@ -454,10 +454,7 @@ func (this *QDesignerFormWindowManagerInterface) IsSignalConnected(signal *qt.QM
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnAction(slot func(action QDesignerFormWindowManagerInterface__Action) *qt.QAction) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_action(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_action(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_action
@@ -476,10 +473,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_action(self *C.QDesi
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnActionGroup(slot func(actionGroup QDesignerFormWindowManagerInterface__ActionGroup) *qt.QActionGroup) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_actionGroup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_actionGroup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_actionGroup
@@ -498,10 +492,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_actionGroup(self *C.
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnActiveFormWindow(slot func() *QDesignerFormWindowInterface) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_activeFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_activeFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_activeFormWindow
@@ -517,10 +508,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_activeFormWindow(sel
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnFormWindowCount(slot func() int) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_formWindowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_formWindowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_formWindowCount
@@ -536,10 +524,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_formWindowCount(self
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnFormWindow(slot func(index int) *QDesignerFormWindowInterface) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_formWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_formWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_formWindow
@@ -558,10 +543,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_formWindow(self *C.Q
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnCreateFormWindow(slot func(parentWidget *qt.QWidget, flags qt.WindowType) *QDesignerFormWindowInterface) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_createFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_createFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_createFormWindow
@@ -582,10 +564,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_createFormWindow(sel
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnCore(slot func() *QDesignerFormEditorInterface) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_core(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_core(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_core
@@ -601,10 +580,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_core(self *C.QDesign
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnDragItems(slot func(item_list []*QDesignerDnDItemInterface)) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_dragItems(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_dragItems(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_dragItems
@@ -627,10 +603,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_dragItems(self *C.QD
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnCreatePreviewPixmap(slot func() *qt.QPixmap) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_createPreviewPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_createPreviewPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_createPreviewPixmap
@@ -647,10 +620,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_createPreviewPixmap(
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnAddFormWindow(slot func(formWindow *QDesignerFormWindowInterface)) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_addFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_addFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_addFormWindow
@@ -667,10 +637,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_addFormWindow(self *
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnRemoveFormWindow(slot func(formWindow *QDesignerFormWindowInterface)) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_removeFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_removeFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_removeFormWindow
@@ -687,10 +654,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_removeFormWindow(sel
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnSetActiveFormWindow(slot func(formWindow *QDesignerFormWindowInterface)) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_setActiveFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_setActiveFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_setActiveFormWindow
@@ -707,10 +671,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_setActiveFormWindow(
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnShowPreview(slot func()) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_showPreview(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_showPreview(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_showPreview
@@ -724,10 +685,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_showPreview(self *C.
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnCloseAllPreviews(slot func()) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_closeAllPreviews(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_closeAllPreviews(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_closeAllPreviews
@@ -741,10 +699,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_closeAllPreviews(sel
 
 }
 func (this *QDesignerFormWindowManagerInterface) OnShowPluginDialog(slot func()) {
-	ok := C.QDesignerFormWindowManagerInterface_override_virtual_showPluginDialog(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowManagerInterface_override_virtual_showPluginDialog(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowManagerInterface_showPluginDialog

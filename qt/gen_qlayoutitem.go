@@ -172,10 +172,7 @@ func (this *QLayoutItem) OperatorAssign(param1 *QLayoutItem) {
 	C.QLayoutItem_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QLayoutItem) OnSizeHint(slot func() *QSize) {
-	ok := C.QLayoutItem_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayoutItem_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayoutItem_sizeHint
@@ -192,10 +189,7 @@ func miqt_exec_callback_QLayoutItem_sizeHint(self *C.QLayoutItem, cb C.intptr_t)
 
 }
 func (this *QLayoutItem) OnMinimumSize(slot func() *QSize) {
-	ok := C.QLayoutItem_override_virtual_minimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayoutItem_override_virtual_minimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayoutItem_minimumSize
@@ -212,10 +206,7 @@ func miqt_exec_callback_QLayoutItem_minimumSize(self *C.QLayoutItem, cb C.intptr
 
 }
 func (this *QLayoutItem) OnMaximumSize(slot func() *QSize) {
-	ok := C.QLayoutItem_override_virtual_maximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayoutItem_override_virtual_maximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayoutItem_maximumSize
@@ -232,10 +223,7 @@ func miqt_exec_callback_QLayoutItem_maximumSize(self *C.QLayoutItem, cb C.intptr
 
 }
 func (this *QLayoutItem) OnExpandingDirections(slot func() Orientation) {
-	ok := C.QLayoutItem_override_virtual_expandingDirections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayoutItem_override_virtual_expandingDirections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayoutItem_expandingDirections
@@ -251,10 +239,7 @@ func miqt_exec_callback_QLayoutItem_expandingDirections(self *C.QLayoutItem, cb 
 
 }
 func (this *QLayoutItem) OnSetGeometry(slot func(geometry *QRect)) {
-	ok := C.QLayoutItem_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayoutItem_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayoutItem_setGeometry
@@ -271,10 +256,7 @@ func miqt_exec_callback_QLayoutItem_setGeometry(self *C.QLayoutItem, cb C.intptr
 
 }
 func (this *QLayoutItem) OnGeometry(slot func() *QRect) {
-	ok := C.QLayoutItem_override_virtual_geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayoutItem_override_virtual_geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayoutItem_geometry
@@ -291,10 +273,7 @@ func miqt_exec_callback_QLayoutItem_geometry(self *C.QLayoutItem, cb C.intptr_t)
 
 }
 func (this *QLayoutItem) OnIsEmpty(slot func() bool) {
-	ok := C.QLayoutItem_override_virtual_isEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QLayoutItem_override_virtual_isEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLayoutItem_isEmpty

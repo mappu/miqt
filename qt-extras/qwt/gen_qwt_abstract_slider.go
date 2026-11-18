@@ -620,10 +620,7 @@ func miqt_exec_callback_QwtAbstractSlider_wheelEvent(self *C.QwtAbstractSlider, 
 
 }
 func (this *QwtAbstractSlider) OnIsScrollPosition(slot func(pos *qt.QPoint) bool) {
-	ok := C.QwtAbstractSlider_override_virtual_isScrollPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtAbstractSlider_override_virtual_isScrollPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtAbstractSlider_isScrollPosition
@@ -642,10 +639,7 @@ func miqt_exec_callback_QwtAbstractSlider_isScrollPosition(self *C.QwtAbstractSl
 
 }
 func (this *QwtAbstractSlider) OnScrolledTo(slot func(pos *qt.QPoint) float64) {
-	ok := C.QwtAbstractSlider_override_virtual_scrolledTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtAbstractSlider_override_virtual_scrolledTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtAbstractSlider_scrolledTo

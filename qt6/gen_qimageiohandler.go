@@ -224,10 +224,7 @@ func QImageIOHandler_AllocateImage(size QSize, format QImage__Format, image *QIm
 	return (bool)(C.QImageIOHandler_allocateImage(size.cPointer(), (C.int)(format), image.cPointer()))
 }
 func (this *QImageIOHandler) OnCanRead(slot func() bool) {
-	ok := C.QImageIOHandler_override_virtual_canRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QImageIOHandler_override_virtual_canRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QImageIOHandler_canRead
@@ -243,10 +240,7 @@ func miqt_exec_callback_QImageIOHandler_canRead(self *C.QImageIOHandler, cb C.in
 
 }
 func (this *QImageIOHandler) OnRead(slot func(image *QImage) bool) {
-	ok := C.QImageIOHandler_override_virtual_read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QImageIOHandler_override_virtual_read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QImageIOHandler_read
@@ -771,10 +765,7 @@ func (this *QImageIOPlugin) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 func (this *QImageIOPlugin) OnCapabilities(slot func(device *QIODevice, format []byte) QImageIOPlugin__Capability) {
-	ok := C.QImageIOPlugin_override_virtual_capabilities(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QImageIOPlugin_override_virtual_capabilities(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QImageIOPlugin_capabilities
@@ -798,10 +789,7 @@ func miqt_exec_callback_QImageIOPlugin_capabilities(self *C.QImageIOPlugin, cb C
 
 }
 func (this *QImageIOPlugin) OnCreate(slot func(device *QIODevice, format []byte) *QImageIOHandler) {
-	ok := C.QImageIOPlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QImageIOPlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QImageIOPlugin_create

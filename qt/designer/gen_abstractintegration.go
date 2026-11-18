@@ -582,10 +582,7 @@ func (this *QDesignerIntegrationInterface) IsSignalConnected(signal *qt.QMetaMet
 
 }
 func (this *QDesignerIntegrationInterface) OnContainerWindow(slot func(widget *qt.QWidget) *qt.QWidget) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_containerWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_containerWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_containerWindow
@@ -604,10 +601,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_containerWindow(self *C.QD
 
 }
 func (this *QDesignerIntegrationInterface) OnCreateResourceBrowser(slot func(parent *qt.QWidget) *QDesignerResourceBrowserInterface) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_createResourceBrowser(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_createResourceBrowser(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_createResourceBrowser
@@ -626,10 +620,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_createResourceBrowser(self
 
 }
 func (this *QDesignerIntegrationInterface) OnHeaderSuffix(slot func() string) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_headerSuffix(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_headerSuffix(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_headerSuffix
@@ -648,10 +639,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_headerSuffix(self *C.QDesi
 
 }
 func (this *QDesignerIntegrationInterface) OnSetHeaderSuffix(slot func(headerSuffix string)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_setHeaderSuffix(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_setHeaderSuffix(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_setHeaderSuffix
@@ -671,10 +659,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_setHeaderSuffix(self *C.QD
 
 }
 func (this *QDesignerIntegrationInterface) OnIsHeaderLowercase(slot func() bool) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_isHeaderLowercase(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_isHeaderLowercase(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_isHeaderLowercase
@@ -690,10 +675,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_isHeaderLowercase(self *C.
 
 }
 func (this *QDesignerIntegrationInterface) OnSetHeaderLowercase(slot func(headerLowerCase bool)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_setHeaderLowercase(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_setHeaderLowercase(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_setHeaderLowercase
@@ -710,10 +692,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_setHeaderLowercase(self *C
 
 }
 func (this *QDesignerIntegrationInterface) OnFeatures(slot func() QDesignerIntegrationInterface__FeatureFlag) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_features(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_features(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_features
@@ -729,10 +708,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_features(self *C.QDesigner
 
 }
 func (this *QDesignerIntegrationInterface) OnResourceFileWatcherBehaviour(slot func() QDesignerIntegrationInterface__ResourceFileWatcherBehaviour) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_resourceFileWatcherBehaviour(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_resourceFileWatcherBehaviour(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_resourceFileWatcherBehaviour
@@ -748,10 +724,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_resourceFileWatcherBehavio
 
 }
 func (this *QDesignerIntegrationInterface) OnSetResourceFileWatcherBehaviour(slot func(behaviour QDesignerIntegrationInterface__ResourceFileWatcherBehaviour)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_setResourceFileWatcherBehaviour(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_setResourceFileWatcherBehaviour(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_setResourceFileWatcherBehaviour
@@ -768,10 +741,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_setResourceFileWatcherBeha
 
 }
 func (this *QDesignerIntegrationInterface) OnContextHelpId(slot func() string) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_contextHelpId(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_contextHelpId(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_contextHelpId
@@ -790,10 +760,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_contextHelpId(self *C.QDes
 
 }
 func (this *QDesignerIntegrationInterface) OnSetFeatures(slot func(f QDesignerIntegrationInterface__FeatureFlag)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_setFeatures(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_setFeatures(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_setFeatures
@@ -810,10 +777,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_setFeatures(self *C.QDesig
 
 }
 func (this *QDesignerIntegrationInterface) OnUpdateProperty(slot func(name string, value *qt.QVariant, enableSubPropertyHandling bool)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_updateProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_updateProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_updateProperty
@@ -836,10 +800,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_updateProperty(self *C.QDe
 
 }
 func (this *QDesignerIntegrationInterface) OnUpdateProperty2(slot func(name string, value *qt.QVariant)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_updateProperty2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_updateProperty2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_updateProperty2
@@ -860,10 +821,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_updateProperty2(self *C.QD
 
 }
 func (this *QDesignerIntegrationInterface) OnResetProperty(slot func(name string)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_resetProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_resetProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_resetProperty
@@ -883,10 +841,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_resetProperty(self *C.QDes
 
 }
 func (this *QDesignerIntegrationInterface) OnAddDynamicProperty(slot func(name string, value *qt.QVariant)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_addDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_addDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_addDynamicProperty
@@ -907,10 +862,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_addDynamicProperty(self *C
 
 }
 func (this *QDesignerIntegrationInterface) OnRemoveDynamicProperty(slot func(name string)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_removeDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_removeDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_removeDynamicProperty
@@ -930,10 +882,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_removeDynamicProperty(self
 
 }
 func (this *QDesignerIntegrationInterface) OnUpdateActiveFormWindow(slot func(formWindow *QDesignerFormWindowInterface)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_updateActiveFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_updateActiveFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_updateActiveFormWindow
@@ -950,10 +899,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_updateActiveFormWindow(sel
 
 }
 func (this *QDesignerIntegrationInterface) OnSetupFormWindow(slot func(formWindow *QDesignerFormWindowInterface)) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_setupFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_setupFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_setupFormWindow
@@ -970,10 +916,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_setupFormWindow(self *C.QD
 
 }
 func (this *QDesignerIntegrationInterface) OnUpdateSelection(slot func()) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_updateSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_updateSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_updateSelection
@@ -987,10 +930,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_updateSelection(self *C.QD
 
 }
 func (this *QDesignerIntegrationInterface) OnUpdateCustomWidgetPlugins(slot func()) {
-	ok := C.QDesignerIntegrationInterface_override_virtual_updateCustomWidgetPlugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerIntegrationInterface_override_virtual_updateCustomWidgetPlugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerIntegrationInterface_updateCustomWidgetPlugins

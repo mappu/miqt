@@ -233,10 +233,7 @@ func (this *QDesignerWidgetFactoryInterface) IsSignalConnected(signal *qt.QMetaM
 
 }
 func (this *QDesignerWidgetFactoryInterface) OnCore(slot func() *QDesignerFormEditorInterface) {
-	ok := C.QDesignerWidgetFactoryInterface_override_virtual_core(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetFactoryInterface_override_virtual_core(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetFactoryInterface_core
@@ -252,10 +249,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_core(self *C.QDesignerWi
 
 }
 func (this *QDesignerWidgetFactoryInterface) OnContainerOfWidget(slot func(w *qt.QWidget) *qt.QWidget) {
-	ok := C.QDesignerWidgetFactoryInterface_override_virtual_containerOfWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetFactoryInterface_override_virtual_containerOfWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetFactoryInterface_containerOfWidget
@@ -274,10 +268,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_containerOfWidget(self *
 
 }
 func (this *QDesignerWidgetFactoryInterface) OnWidgetOfContainer(slot func(w *qt.QWidget) *qt.QWidget) {
-	ok := C.QDesignerWidgetFactoryInterface_override_virtual_widgetOfContainer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetFactoryInterface_override_virtual_widgetOfContainer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetFactoryInterface_widgetOfContainer
@@ -296,10 +287,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_widgetOfContainer(self *
 
 }
 func (this *QDesignerWidgetFactoryInterface) OnCreateWidget(slot func(name string, parentWidget *qt.QWidget) *qt.QWidget) {
-	ok := C.QDesignerWidgetFactoryInterface_override_virtual_createWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetFactoryInterface_override_virtual_createWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetFactoryInterface_createWidget
@@ -322,10 +310,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_createWidget(self *C.QDe
 
 }
 func (this *QDesignerWidgetFactoryInterface) OnCreateLayout(slot func(widget *qt.QWidget, layout *qt.QLayout, typeVal int) *qt.QLayout) {
-	ok := C.QDesignerWidgetFactoryInterface_override_virtual_createLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetFactoryInterface_override_virtual_createLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetFactoryInterface_createLayout
@@ -348,10 +333,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_createLayout(self *C.QDe
 
 }
 func (this *QDesignerWidgetFactoryInterface) OnIsPassiveInteractor(slot func(widget *qt.QWidget) bool) {
-	ok := C.QDesignerWidgetFactoryInterface_override_virtual_isPassiveInteractor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetFactoryInterface_override_virtual_isPassiveInteractor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetFactoryInterface_isPassiveInteractor
@@ -370,10 +352,7 @@ func miqt_exec_callback_QDesignerWidgetFactoryInterface_isPassiveInteractor(self
 
 }
 func (this *QDesignerWidgetFactoryInterface) OnInitialize(slot func(object *qt.QObject)) {
-	ok := C.QDesignerWidgetFactoryInterface_override_virtual_initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetFactoryInterface_override_virtual_initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetFactoryInterface_initialize
