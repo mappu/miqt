@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArrayView;
 class QChar;
 class QDebug;
 class QDebugStateSaver;
@@ -23,7 +22,6 @@ class QIODevice;
 class QIODeviceBase;
 class QNoDebug;
 #else
-typedef struct QByteArrayView QByteArrayView;
 typedef struct QChar QChar;
 typedef struct QDebug QDebug;
 typedef struct QDebugStateSaver QDebugStateSaver;
@@ -65,7 +63,7 @@ QDebug* QDebug_operatorShiftLeftWithDouble(QDebug* self, double t);
 QDebug* QDebug_operatorShiftLeft2(QDebug* self, const char* t);
 QDebug* QDebug_operatorShiftLeftWithQString(QDebug* self, struct miqt_string t);
 QDebug* QDebug_operatorShiftLeftWithQByteArray(QDebug* self, struct miqt_string t);
-QDebug* QDebug_operatorShiftLeftWithQByteArrayView(QDebug* self, QByteArrayView* t);
+QDebug* QDebug_operatorShiftLeftWithQByteArrayView(QDebug* self, struct miqt_string t);
 QDebug* QDebug_operatorShiftLeftWithVoid(QDebug* self, const void* t);
 QDebug* QDebug_maybeQuoteWithChar(QDebug* self, char c);
 

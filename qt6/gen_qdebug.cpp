@@ -1,5 +1,4 @@
 #include <QByteArray>
-#include <QByteArrayView>
 #include <QChar>
 #include <QDebug>
 #include <QDebugStateSaver>
@@ -202,8 +201,9 @@ QDebug* QDebug_operatorShiftLeftWithQByteArray(QDebug* self, struct miqt_string 
 	return &_ret;
 }
 
-QDebug* QDebug_operatorShiftLeftWithQByteArrayView(QDebug* self, QByteArrayView* t) {
-	QDebug& _ret = self->operator<<(*t);
+QDebug* QDebug_operatorShiftLeftWithQByteArrayView(QDebug* self, struct miqt_string t) {
+	QByteArrayView t_QByteArrayView(t.data, t.len);
+	QDebug& _ret = self->operator<<(t_QByteArrayView);
 	// Cast returned reference into pointer
 	return &_ret;
 }

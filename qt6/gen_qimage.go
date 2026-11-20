@@ -681,10 +681,16 @@ func (this *QImage) LoadWithFileName(fileName string) bool {
 	return (bool)(C.QImage_loadWithFileName(this.h, fileName_ms))
 }
 
-func (this *QImage) LoadFromData(data QByteArrayView) bool {
+func (this *QImage) LoadFromData(data []byte) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
-	return (bool)(C.QImage_loadFromData(this.h, data.cPointer()))
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
+	return (bool)(C.QImage_loadFromData(this.h, data_alias))
 }
 
 func (this *QImage) LoadFromData2(buf *byte, lenVal int) bool {
@@ -718,9 +724,15 @@ func (this *QImage) SaveWithDevice(device *QIODevice) bool {
 	return (bool)(C.QImage_saveWithDevice(this.h, device.cPointer()))
 }
 
-func QImage_FromData(data QByteArrayView) *QImage {
-	defer runtime.KeepAlive(data)
-	_goptr := newQImage(C.QImage_fromData(data.cPointer()))
+func QImage_FromData(data []byte) *QImage {
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
+	_goptr := newQImage(C.QImage_fromData(data_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -994,12 +1006,18 @@ func (this *QImage) Load2(fileName string, format string) bool {
 	return (bool)(C.QImage_load2(this.h, fileName_ms, format_Cstring))
 }
 
-func (this *QImage) LoadFromData3(data QByteArrayView, format string) bool {
+func (this *QImage) LoadFromData3(data []byte, format string) bool {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QImage_loadFromData3(this.h, data.cPointer(), format_Cstring))
+	return (bool)(C.QImage_loadFromData3(this.h, data_alias, format_Cstring))
 }
 
 func (this *QImage) LoadFromData4(buf *byte, lenVal int, format string) bool {
@@ -1059,11 +1077,17 @@ func (this *QImage) Save5(device *QIODevice, format string, quality int) bool {
 	return (bool)(C.QImage_save5(this.h, device.cPointer(), format_Cstring, (C.int)(quality)))
 }
 
-func QImage_FromData3(data QByteArrayView, format string) *QImage {
-	defer runtime.KeepAlive(data)
+func QImage_FromData3(data []byte, format string) *QImage {
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	_goptr := newQImage(C.QImage_fromData3(data.cPointer(), format_Cstring))
+	_goptr := newQImage(C.QImage_fromData3(data_alias, format_Cstring))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

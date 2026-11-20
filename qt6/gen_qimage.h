@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArrayView;
 class QColor;
 class QColorSpace;
 class QColorTransform;
@@ -32,7 +31,6 @@ class QSizeF;
 class QTransform;
 class QVariant;
 #else
-typedef struct QByteArrayView QByteArrayView;
 typedef struct QColor QColor;
 typedef struct QColorSpace QColorSpace;
 typedef struct QColorTransform QColorTransform;
@@ -142,12 +140,12 @@ QImage* QImage_colorTransformed(const QImage* self, QColorTransform* transform);
 void QImage_applyColorTransform(QImage* self, QColorTransform* transform);
 bool QImage_load(QImage* self, QIODevice* device, const char* format);
 bool QImage_loadWithFileName(QImage* self, struct miqt_string fileName);
-bool QImage_loadFromData(QImage* self, QByteArrayView* data);
+bool QImage_loadFromData(QImage* self, struct miqt_string data);
 bool QImage_loadFromData2(QImage* self, const unsigned char* buf, int len);
 bool QImage_loadFromDataWithData(QImage* self, struct miqt_string data);
 bool QImage_save(const QImage* self, struct miqt_string fileName);
 bool QImage_saveWithDevice(const QImage* self, QIODevice* device);
-QImage* QImage_fromData(QByteArrayView* data);
+QImage* QImage_fromData(struct miqt_string data);
 QImage* QImage_fromData2(const unsigned char* data, int size);
 QImage* QImage_fromDataWithData(struct miqt_string data);
 long long QImage_cacheKey(const QImage* self);
@@ -186,14 +184,14 @@ void QImage_mirrorWithHorizontally(QImage* self, bool horizontally);
 void QImage_mirror2(QImage* self, bool horizontally, bool vertically);
 void QImage_invertPixelsWithQImageInvertMode(QImage* self, int param1);
 bool QImage_load2(QImage* self, struct miqt_string fileName, const char* format);
-bool QImage_loadFromData3(QImage* self, QByteArrayView* data, const char* format);
+bool QImage_loadFromData3(QImage* self, struct miqt_string data, const char* format);
 bool QImage_loadFromData4(QImage* self, const unsigned char* buf, int len, const char* format);
 bool QImage_loadFromData5(QImage* self, struct miqt_string data, const char* format);
 bool QImage_save2(const QImage* self, struct miqt_string fileName, const char* format);
 bool QImage_save3(const QImage* self, struct miqt_string fileName, const char* format, int quality);
 bool QImage_save4(const QImage* self, QIODevice* device, const char* format);
 bool QImage_save5(const QImage* self, QIODevice* device, const char* format, int quality);
-QImage* QImage_fromData3(QByteArrayView* data, const char* format);
+QImage* QImage_fromData3(struct miqt_string data, const char* format);
 QImage* QImage_fromData4(const unsigned char* data, int size, const char* format);
 QImage* QImage_fromData5(struct miqt_string data, const char* format);
 struct miqt_string QImage_textWithKey(const QImage* self, struct miqt_string key);

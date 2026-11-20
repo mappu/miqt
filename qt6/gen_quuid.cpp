@@ -1,5 +1,4 @@
 #include <QByteArray>
-#include <QByteArrayView>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -64,8 +63,9 @@ struct miqt_string QUuid_toRfc4122(const QUuid* self) {
 	return _ms;
 }
 
-QUuid* QUuid_fromRfc4122(QByteArrayView* param1) {
-	return new QUuid(QUuid::fromRfc4122(*param1));
+QUuid* QUuid_fromRfc4122(struct miqt_string param1) {
+	QByteArrayView param1_QByteArrayView(param1.data, param1.len);
+	return new QUuid(QUuid::fromRfc4122(param1_QByteArrayView));
 }
 
 bool QUuid_isNull(const QUuid* self) {

@@ -145,9 +145,15 @@ func (this *QUuid) ToRfc4122() []byte {
 	return _ret
 }
 
-func QUuid_FromRfc4122(param1 QByteArrayView) *QUuid {
-	defer runtime.KeepAlive(param1)
-	_goptr := newQUuid(C.QUuid_fromRfc4122(param1.cPointer()))
+func QUuid_FromRfc4122(param1 []byte) *QUuid {
+	param1_alias := C.struct_miqt_string{}
+	if len(param1) > 0 {
+		param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	} else {
+		param1_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	param1_alias.len = C.size_t(len(param1))
+	_goptr := newQUuid(C.QUuid_fromRfc4122(param1_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

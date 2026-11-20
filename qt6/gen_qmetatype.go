@@ -365,9 +365,15 @@ func QMetaType_Load2(stream *QDataStream, typeVal int, data unsafe.Pointer) bool
 	return (bool)(C.QMetaType_load2(stream.cPointer(), (C.int)(typeVal), data))
 }
 
-func QMetaType_FromName(name QByteArrayView) *QMetaType {
-	defer runtime.KeepAlive(name)
-	_goptr := newQMetaType(C.QMetaType_fromName(name.cPointer()))
+func QMetaType_FromName(name []byte) *QMetaType {
+	name_alias := C.struct_miqt_string{}
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	name_alias.len = C.size_t(len(name))
+	_goptr := newQMetaType(C.QMetaType_fromName(name_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
