@@ -72,10 +72,16 @@ func NewQByteArrayMatcher2(pattern []byte) *QByteArrayMatcher {
 }
 
 // NewQByteArrayMatcher3 constructs a new QByteArrayMatcher object.
-func NewQByteArrayMatcher3(pattern QByteArrayView) *QByteArrayMatcher {
-	defer runtime.KeepAlive(pattern)
+func NewQByteArrayMatcher3(pattern []byte) *QByteArrayMatcher {
+	pattern_alias := C.struct_miqt_string{}
+	if len(pattern) > 0 {
+		pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
+	} else {
+		pattern_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	pattern_alias.len = C.size_t(len(pattern))
 
-	return newQByteArrayMatcher(C.QByteArrayMatcher_new3(pattern.cPointer()))
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new3(pattern_alias))
 }
 
 // NewQByteArrayMatcher4 constructs a new QByteArrayMatcher object.
@@ -126,10 +132,16 @@ func (this *QByteArrayMatcher) IndexIn(str string, lenVal int64) int64 {
 	return (int64)(C.QByteArrayMatcher_indexIn(this.h, str_Cstring, (C.ptrdiff_t)(lenVal)))
 }
 
-func (this *QByteArrayMatcher) IndexInWithData(data QByteArrayView) int64 {
+func (this *QByteArrayMatcher) IndexInWithData(data []byte) int64 {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
-	return (int64)(C.QByteArrayMatcher_indexInWithData(this.h, data.cPointer()))
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
+	return (int64)(C.QByteArrayMatcher_indexInWithData(this.h, data_alias))
 }
 
 func (this *QByteArrayMatcher) Pattern() []byte {
@@ -147,10 +159,16 @@ func (this *QByteArrayMatcher) IndexIn2(str string, lenVal int64, from int64) in
 	return (int64)(C.QByteArrayMatcher_indexIn2(this.h, str_Cstring, (C.ptrdiff_t)(lenVal), (C.ptrdiff_t)(from)))
 }
 
-func (this *QByteArrayMatcher) IndexIn3(data QByteArrayView, from int64) int64 {
+func (this *QByteArrayMatcher) IndexIn3(data []byte, from int64) int64 {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
-	return (int64)(C.QByteArrayMatcher_indexIn3(this.h, data.cPointer(), (C.ptrdiff_t)(from)))
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
+	return (int64)(C.QByteArrayMatcher_indexIn3(this.h, data_alias, (C.ptrdiff_t)(from)))
 }
 
 // Delete this object from C++ memory.

@@ -15,10 +15,8 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArrayView;
 class QUuid;
 #else
-typedef struct QByteArrayView QByteArrayView;
 typedef struct QUuid QUuid;
 #endif
 
@@ -30,7 +28,7 @@ QUuid* QUuid_fromString(struct miqt_string string);
 struct miqt_string QUuid_toString(const QUuid* self);
 struct miqt_string QUuid_toByteArray(const QUuid* self);
 struct miqt_string QUuid_toRfc4122(const QUuid* self);
-QUuid* QUuid_fromRfc4122(QByteArrayView* param1);
+QUuid* QUuid_fromRfc4122(struct miqt_string param1);
 bool QUuid_isNull(const QUuid* self);
 bool QUuid_operatorEqual(const QUuid* self, QUuid* orig);
 bool QUuid_operatorNotEqual(const QUuid* self, QUuid* orig);

@@ -1,5 +1,4 @@
 #include <QByteArray>
-#include <QByteArrayView>
 #include <QCryptographicHash>
 #include <QIODevice>
 #include <qcryptographichash.h>
@@ -25,8 +24,9 @@ void QCryptographicHash_addData(QCryptographicHash* self, const char* data, ptrd
 	self->addData(data, (qsizetype)(length));
 }
 
-void QCryptographicHash_addDataWithData(QCryptographicHash* self, QByteArrayView* data) {
-	self->addData(*data);
+void QCryptographicHash_addDataWithData(QCryptographicHash* self, struct miqt_string data) {
+	QByteArrayView data_QByteArrayView(data.data, data.len);
+	self->addData(data_QByteArrayView);
 }
 
 bool QCryptographicHash_addDataWithDevice(QCryptographicHash* self, QIODevice* device) {
@@ -42,12 +42,18 @@ struct miqt_string QCryptographicHash_result(const QCryptographicHash* self) {
 	return _ms;
 }
 
-QByteArrayView* QCryptographicHash_resultView(const QCryptographicHash* self) {
-	return new QByteArrayView(self->resultView());
+struct miqt_string QCryptographicHash_resultView(const QCryptographicHash* self) {
+	QByteArrayView _qb = self->resultView();
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
 }
 
-struct miqt_string QCryptographicHash_hash(QByteArrayView* data, int method) {
-	QByteArray _qb = QCryptographicHash::hash(*data, static_cast<QCryptographicHash::Algorithm>(method));
+struct miqt_string QCryptographicHash_hash(struct miqt_string data, int method) {
+	QByteArrayView data_QByteArrayView(data.data, data.len);
+	QByteArray _qb = QCryptographicHash::hash(data_QByteArrayView, static_cast<QCryptographicHash::Algorithm>(method));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
 	_ms.data = static_cast<char*>(malloc(_ms.len));

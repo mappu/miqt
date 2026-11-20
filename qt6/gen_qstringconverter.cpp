@@ -1,4 +1,3 @@
-#include <QByteArrayView>
 #include <QChar>
 #include <QStringConverter>
 #include <QStringDecoder>
@@ -76,12 +75,14 @@ ptrdiff_t QStringDecoder_requiredSpace(const QStringDecoder* self, ptrdiff_t inp
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-QChar* QStringDecoder_appendToBuffer(QStringDecoder* self, QChar* out, QByteArrayView* ba) {
-	return self->appendToBuffer(out, *ba);
+QChar* QStringDecoder_appendToBuffer(QStringDecoder* self, QChar* out, struct miqt_string ba) {
+	QByteArrayView ba_QByteArrayView(ba.data, ba.len);
+	return self->appendToBuffer(out, ba_QByteArrayView);
 }
 
-QStringDecoder* QStringDecoder_decoderForHtml(QByteArrayView* data) {
-	return new QStringDecoder(QStringDecoder::decoderForHtml(*data));
+QStringDecoder* QStringDecoder_decoderForHtml(struct miqt_string data) {
+	QByteArrayView data_QByteArrayView(data.data, data.len);
+	return new QStringDecoder(QStringDecoder::decoderForHtml(data_QByteArrayView));
 }
 
 void QStringDecoder_delete(QStringDecoder* self) {

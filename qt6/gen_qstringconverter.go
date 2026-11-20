@@ -198,16 +198,28 @@ func (this *QStringDecoder) RequiredSpace(inputLength int64) int64 {
 	return (int64)(C.QStringDecoder_requiredSpace(this.h, (C.ptrdiff_t)(inputLength)))
 }
 
-func (this *QStringDecoder) AppendToBuffer(out *QChar, ba QByteArrayView) *QChar {
+func (this *QStringDecoder) AppendToBuffer(out *QChar, ba []byte) *QChar {
 	defer runtime.KeepAlive(this)
 	defer runtime.KeepAlive(out)
-	defer runtime.KeepAlive(ba)
-	return newQChar(C.QStringDecoder_appendToBuffer(this.h, out.cPointer(), ba.cPointer()))
+	ba_alias := C.struct_miqt_string{}
+	if len(ba) > 0 {
+		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	} else {
+		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	ba_alias.len = C.size_t(len(ba))
+	return newQChar(C.QStringDecoder_appendToBuffer(this.h, out.cPointer(), ba_alias))
 }
 
-func QStringDecoder_DecoderForHtml(data QByteArrayView) *QStringDecoder {
-	defer runtime.KeepAlive(data)
-	_goptr := newQStringDecoder(C.QStringDecoder_decoderForHtml(data.cPointer()))
+func QStringDecoder_DecoderForHtml(data []byte) *QStringDecoder {
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
+	_goptr := newQStringDecoder(C.QStringDecoder_decoderForHtml(data_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

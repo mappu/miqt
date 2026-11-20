@@ -79,7 +79,7 @@ func (p CppParameter) RenderTypeCabi() string {
 	if p.ParameterType == "QString" {
 		return "struct miqt_string"
 
-	} else if p.ParameterType == "QByteArray" {
+	} else if p.ParameterType == "QByteArray" || p.ParameterType == "QByteArrayView" {
 		return "struct miqt_string"
 
 	} else if p.ParameterType == "QAnyStringView" {
@@ -422,11 +422,11 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 		preamble += indent + "QString " + nameprefix + "_QString = QString::fromUtf8(" + p.cParameterName() + ".data, " + p.cParameterName() + ".len);\n"
 		return preamble, nameprefix + "_QString"
 
-	} else if p.ParameterType == "QByteArray" {
+	} else if p.ParameterType == "QByteArray" || p.ParameterType == "QByteArrayView" {
 		// The caller will free the miqt_string data
 		// This ctor makes a deep copy, on the stack which will be dtor'd by RAII
-		preamble += indent + "QByteArray " + nameprefix + "_QByteArray(" + p.cParameterName() + ".data, " + p.cParameterName() + ".len);\n"
-		return preamble, nameprefix + "_QByteArray"
+		preamble += indent + p.ParameterType + " " + nameprefix + "_" + p.ParameterType + "(" + p.cParameterName() + ".data, " + p.cParameterName() + ".len);\n"
+		return preamble, nameprefix + "_" + p.ParameterType
 
 	} else if p.ParameterType == "QAnyStringView" {
 		return preamble, p.ParameterType + "(" + nameprefix + ".data, " + nameprefix + ".len)"
@@ -601,11 +601,11 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
 		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
-	} else if p.ParameterType == "QByteArray" {
+	} else if p.ParameterType == "QByteArray" || p.ParameterType == "QByteArrayView" {
 		// C++ has given us a QByteArray. CABI needs this as a struct miqt_string
 		// Do not free the data, the caller will free it
 
-		shouldReturn = ifv(p.Const, "const ", "") + "QByteArray " + namePrefix + "_qb = "
+		shouldReturn = ifv(p.Const, "const ", "") + p.ParameterType + " " + namePrefix + "_qb = "
 
 		afterCall += indent + "struct miqt_string " + namePrefix + "_ms;\n"
 		afterCall += indent + namePrefix + "_ms.len = " + namePrefix + "_qb.length();\n"
@@ -806,7 +806,8 @@ func getCabiZeroValue(p CppParameter) string {
 	} else if p.ParameterType == "void" {
 		return getCppZeroValue(p)
 
-	} else if p.ParameterType == "QString" || p.ParameterType == "QByteArray" || p.ParameterType == "QAnyStringView" {
+	} else if p.ParameterType == "QString" || p.ParameterType == "QByteArray" ||
+		p.ParameterType == "QByteArrayView" || p.ParameterType == "QAnyStringView" {
 		return "(struct miqt_string){}"
 
 	} else if _, _, ok := p.QListOf(); ok {
@@ -928,7 +929,7 @@ func cabiClassName(className string) string {
 
 func cabiPreventStructDeclaration(className string) bool {
 	switch className {
-	case "QList", "QString", "QSet", "QMap", "QHash", "QPair", "QVector", "QByteArray", "QAnyStringView":
+	case "QList", "QString", "QSet", "QMap", "QHash", "QPair", "QVector", "QByteArray", "QByteArrayView", "QAnyStringView":
 		return true // These types are reprojected
 	default:
 		return false

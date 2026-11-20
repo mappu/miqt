@@ -292,10 +292,16 @@ func (this *QDebug) OperatorShiftLeftWithQByteArray(t []byte) *QDebug {
 	return _ret
 }
 
-func (this *QDebug) OperatorShiftLeftWithQByteArrayView(t QByteArrayView) *QDebug {
+func (this *QDebug) OperatorShiftLeftWithQByteArrayView(t []byte) *QDebug {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(t)
-	_ret := newQDebug(C.QDebug_operatorShiftLeftWithQByteArrayView(this.h, t.cPointer()))
+	t_alias := C.struct_miqt_string{}
+	if len(t) > 0 {
+		t_alias.data = (*C.char)(unsafe.Pointer(&t[0]))
+	} else {
+		t_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	t_alias.len = C.size_t(len(t))
+	_ret := newQDebug(C.QDebug_operatorShiftLeftWithQByteArrayView(this.h, t_alias))
 	_ret.miqtSetGC(this.gc)
 	return _ret
 }

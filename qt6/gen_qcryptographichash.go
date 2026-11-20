@@ -102,10 +102,16 @@ func (this *QCryptographicHash) AddData(data string, length int64) {
 	C.QCryptographicHash_addData(this.h, data_Cstring, (C.ptrdiff_t)(length))
 }
 
-func (this *QCryptographicHash) AddDataWithData(data QByteArrayView) {
+func (this *QCryptographicHash) AddDataWithData(data []byte) {
 	defer runtime.KeepAlive(this)
-	defer runtime.KeepAlive(data)
-	C.QCryptographicHash_addDataWithData(this.h, data.cPointer())
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
+	C.QCryptographicHash_addDataWithData(this.h, data_alias)
 }
 
 func (this *QCryptographicHash) AddDataWithDevice(device *QIODevice) bool {
@@ -121,16 +127,23 @@ func (this *QCryptographicHash) Result() []byte {
 	return _ret
 }
 
-func (this *QCryptographicHash) ResultView() *QByteArrayView {
+func (this *QCryptographicHash) ResultView() []byte {
 	defer runtime.KeepAlive(this)
-	_goptr := newQByteArrayView(C.QCryptographicHash_resultView(this.h))
-	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return _goptr
+	var _bytearray C.struct_miqt_string = C.QCryptographicHash_resultView(this.h)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	return _ret
 }
 
-func QCryptographicHash_Hash(data QByteArrayView, method QCryptographicHash__Algorithm) []byte {
-	defer runtime.KeepAlive(data)
-	var _bytearray C.struct_miqt_string = C.QCryptographicHash_hash(data.cPointer(), (C.int)(method))
+func QCryptographicHash_Hash(data []byte, method QCryptographicHash__Algorithm) []byte {
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
+	var _bytearray C.struct_miqt_string = C.QCryptographicHash_hash(data_alias, (C.int)(method))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret

@@ -15,14 +15,12 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QByteArrayView;
 class QDataStream;
 class QDebug;
 class QMetaObject;
 class QMetaType;
 class QPartialOrdering;
 #else
-typedef struct QByteArrayView QByteArrayView;
 typedef struct QDataStream QDataStream;
 typedef struct QDebug QDebug;
 typedef struct QMetaObject QMetaObject;
@@ -66,7 +64,7 @@ bool QMetaType_load(const QMetaType* self, QDataStream* stream, void* data);
 bool QMetaType_hasRegisteredDataStreamOperators(const QMetaType* self);
 bool QMetaType_save2(QDataStream* stream, int type, const void* data);
 bool QMetaType_load2(QDataStream* stream, int type, void* data);
-QMetaType* QMetaType_fromName(QByteArrayView* name);
+QMetaType* QMetaType_fromName(struct miqt_string name);
 bool QMetaType_debugStream(QMetaType* self, QDebug* dbg, const void* rhs);
 bool QMetaType_hasRegisteredDebugStreamOperator(const QMetaType* self);
 bool QMetaType_debugStream2(QDebug* dbg, const void* rhs, int typeId);

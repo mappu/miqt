@@ -46,7 +46,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	if p.ParameterType == "QString" {
 		return "string"
 	}
-	if p.ParameterType == "QByteArray" {
+	if p.ParameterType == "QByteArray" || p.ParameterType == "QByteArrayView" {
 		return "[]byte"
 	}
 	if p.ParameterType == "QAnyStringView" {
@@ -188,7 +188,8 @@ func (p CppParameter) renderReturnTypeGo(gfs *goFileState, indirection bool) str
 		ret = ""
 	}
 
-	if indirection && p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" && p.ParameterType != "QAnyStringView" && !(p.Pointer || p.ByRef) {
+	if indirection && p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" &&
+		p.ParameterType != "QByteArrayView" && p.ParameterType != "QAnyStringView" && !(p.Pointer || p.ByRef) {
 		// FIXME normalize this part
 		ret = "*" + ret
 	}
@@ -201,7 +202,7 @@ func (p CppParameter) parameterTypeCgo() string {
 		return "C.struct_miqt_string"
 	}
 
-	if p.ParameterType == "QByteArray" {
+	if p.ParameterType == "QByteArray" || p.ParameterType == "QByteArrayView" {
 		return "C.struct_miqt_string"
 	}
 
@@ -252,7 +253,7 @@ func (p CppParameter) parameterTypeCgo() string {
 }
 
 func (p CppParameter) mallocSizeCgoExpression() string {
-	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" || p.ParameterType == "QAnyStringView" {
+	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" || p.ParameterType == "QByteArrayView" || p.ParameterType == "QAnyStringView" {
 		return "int(unsafe.Sizeof(C.struct_miqt_string{}))"
 	}
 
@@ -412,7 +413,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter, shouldDef
 
 		rvalue = nameprefix + "_ms"
 
-	} else if p.ParameterType == "QByteArray" {
+	} else if p.ParameterType == "QByteArray" || p.ParameterType == "QByteArrayView" {
 		// Go: convert []byte -> miqt_string
 		// CABI: convert miqt_string -> QByteArray
 		// n.b. This can ALIAS the existing []byte data
@@ -630,7 +631,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += assignExpr + namePrefix + "_ret"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
-	} else if rt.ParameterType == "QByteArray" {
+	} else if rt.ParameterType == "QByteArray" || rt.ParameterType == "QByteArrayView" {
 		// We receive the CABI type of a miqt_string. Convert it into []byte
 		// We must free the miqt_string data pointer - this is a data copy,
 		// not an alias
